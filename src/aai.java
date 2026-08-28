@@ -1,31 +1,31 @@
-public record aai(ji c, String d, int e) implements zy {
-   public static final ym<vl, aai> a = zy.a(aai::a, aai::new);
-   public static final zy.b<aai> b = zy.a("debug/poi_added");
+public record aai(int c, etm d, float e) implements zz {
+   public static final yn<vl, aai> a = zz.a(aai::a, aai::new);
+   public static final zz.b<aai> b = zz.a("debug/path");
 
    private aai(vl $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+      this($$0.readInt(), etm.b($$0), $$0.readFloat());
    }
 
    private void a(vl $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public zy.b<aai> a() {
+   public zz.b<aai> a() {
       return b;
    }
 
-   public ji b() {
+   public int b() {
       return this.c;
    }
 
-   public String c() {
+   public etm c() {
       return this.d;
    }
 
-   public int d() {
+   public float d() {
       return this.e;
    }
 }

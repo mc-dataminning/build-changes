@@ -1,20 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hcy(String b) implements hdc<String> {
-   public static final hdc.a<hcy, String> a = hdc.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hcy::b)).apply($$0, hcy::new)), Codec.STRING
-   );
+public record hcy() implements hdh<cvf.a> {
+   public static final hdh.a<hcy, cvf.a> a = hdh.a.a(MapCodec.unit(new hcy()), cvf.a.d);
 
-   @Nullable
-   public String a(cwn $$0, @Nullable gfw $$1, @Nullable bvf $$2, int $$3, cwl $$4) {
-      cyp $$5 = $$0.a(kv.am);
-      return $$5 == null ? null : $$5.b().get(this.b);
+   public cvf.a a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
+      cyt $$5 = $$0.a(kv.O);
+      if ($$5 == null || $$5.b()) {
+         return cvf.a.a;
+      } else {
+         return $$5.a(cws.vt) ? cvf.a.c : cvf.a.b;
+      }
    }
 
    @Override
-   public hdc.a<hcy, String> a() {
+   public hdh.a<hcy, cvf.a> a() {
       return a;
    }
 }

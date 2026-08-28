@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ki {
-   private static final Set<akt<? extends ke<?>>> a = akp.c.stream().map(akp.d::a).collect(Collectors.toUnmodifiableSet());
+   private static final Set<aku<? extends ke<?>>> a = akq.c.stream().map(akq.d::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<un> $$0, kf $$1, Set<atv> $$2, BiConsumer<akt<? extends ke<?>>, List<ki.a>> $$3) {
-      akp.c.forEach($$4 -> a($$0, (akp.d<?>)$$4, $$1, $$2, $$3));
+   public static void a(DynamicOps<un> $$0, kf $$1, Set<atw> $$2, BiConsumer<aku<? extends ke<?>>, List<ki.a>> $$3) {
+      akq.c.forEach($$4 -> a($$0, (akq.d<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<un> $$0, akp.d<T> $$1, kf $$2, Set<atv> $$3, BiConsumer<akt<? extends ke<?>>, List<ki.a>> $$4) {
+   private static <T> void a(DynamicOps<un> $$0, akq.d<T> $$1, kf $$2, Set<atw> $$3, BiConsumer<aku<? extends ke<?>>, List<ki.a>> $$4) {
       $$2.a($$1.a())
          .ifPresent(
             $$4x -> {
@@ -46,24 +46,24 @@ public class ki {
       return $$0.a().filter($$0x -> a($$0x.a()));
    }
 
-   public static Stream<kf.d<?>> a(jy<ald> $$0) {
-      return a($$0.c(ald.b));
+   public static Stream<kf.d<?>> a(jy<ale> $$0) {
+      return a($$0.c(ale.b));
    }
 
-   public static Stream<kf.d<?>> b(jy<ald> $$0) {
-      Stream<kf.d<?>> $$1 = $$0.a(ald.a).a();
+   public static Stream<kf.d<?>> b(jy<ale> $$0) {
+      Stream<kf.d<?>> $$1 = $$0.a(ale.a).a();
       Stream<kf.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   public static boolean a(akt<? extends ke<?>> $$0) {
+   public static boolean a(aku<? extends ke<?>> $$0) {
       return a.contains($$0);
    }
 
-   public static record a(aku b, Optional<un> c) {
-      public static final ym<ByteBuf, ki.a> a = ym.a(aku.b, ki.a::a, yk.p.a(yk::a), ki.a::b, ki.a::new);
+   public static record a(akv b, Optional<un> c) {
+      public static final yn<ByteBuf, ki.a> a = yn.a(akv.b, ki.a::a, yl.p.a(yl::a), ki.a::b, ki.a::new);
 
-      public aku a() {
+      public akv a() {
          return this.b;
       }
 

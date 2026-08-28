@@ -1,44 +1,43 @@
-public class gdk extends gal {
-   public gdk(gfa $$0) {
+public class gdk<T extends gzj> extends gca<T> {
+   protected final gfc b;
+   protected final gfc c;
+   protected final gfc d;
+   protected final gfc e;
+   protected final gfc f;
+   protected final gfc g;
+
+   protected gdk(gfc $$0) {
       super($$0);
+      this.b = $$0.b("head");
+      this.c = $$0.b("body");
+      this.d = $$0.b("right_hind_leg");
+      this.e = $$0.b("left_hind_leg");
+      this.f = $$0.b("right_front_leg");
+      this.g = $$0.b("left_front_leg");
    }
 
-   private static void a(gfk $$0) {
-      $$0.a(
-         "bottom",
-         gff.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         gfc.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gff.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gfc.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gff.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gfc.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public static gfk a(int $$0, gfg $$1) {
+      gfk $$2 = new gfk();
+      gfm $$3 = $$2.a();
+      $$3.a("head", gfh.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gfe.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", gfh.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gfe.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gfh $$4 = gfh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, gfe.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, gfe.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, gfe.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, gfe.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      a($$1);
-      return gfg.a($$0, 128, 64);
-   }
-
-   public static gfg b() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gff.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gfc.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gff.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gfc.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gff.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gfc.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gfg.a($$0, 128, 128);
+   public void a(T $$0) {
+      super.a($$0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      this.d.e = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.e.e = ayz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.e = ayz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

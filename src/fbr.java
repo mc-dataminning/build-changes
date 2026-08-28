@@ -1,46 +1,24 @@
-public final class fbr extends fbh {
-   private final fbh d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   protected fbr(fbh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class fbr extends fbt {
+   private final fbt b;
+   private final jn.a c;
+   private static final DoubleList d = new fbf(1);
+
+   public fbr(fbt $$0, jn.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private static fbi a(fbi $$0, jn.a $$1, int $$2) {
+      return new fbs(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(jn.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(jn.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(jn.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return ayy.a($$1, $$2, $$3) - $$2;
+   public DoubleList a(jn.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

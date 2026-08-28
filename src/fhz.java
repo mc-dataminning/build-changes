@@ -1,46 +1,27 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fhz extends fhx {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public fhz.a i = fhz.a.a;
+public class fhz extends fhy {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public static fhz a(JsonObject $$0) {
-      fhz $$1 = new fhz();
+   public static fhz a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fhz $$3 = new fhz();
 
       try {
-         $$1.a = fjt.b("id", $$0, "");
-         $$1.b = fjt.b("name", $$0, "");
-         $$1.c = fjt.b("version", $$0, "");
-         $$1.d = fjt.b("author", $$0, "");
-         $$1.e = fjt.b("link", $$0, "");
-         $$1.f = fjt.b("image", $$0, null);
-         $$1.g = fjt.b("trailer", $$0, "");
-         $$1.h = fjt.b("recommendedPlayers", $$0, "");
-         $$1.i = fhz.a.valueOf(fjt.b("type", $$0, fhz.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+         $$3.a = fju.b("downloadLink", $$2, "");
+         $$3.b = fju.b("resourcePackUrl", $$2, "");
+         $$3.c = fju.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
 
-      return $$1;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+      return $$3;
    }
 }

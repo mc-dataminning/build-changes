@@ -1,11 +1,19 @@
-public class cxy extends cyc {
-   public cxy(cwj.a $$0) {
+import javax.annotation.Nullable;
+
+public class cxy extends cup {
+   public cxy(cwk.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsi a(dgg $$0, cov $$1, bsh $$2) {
-      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), avz.zE, awa.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public cpd a(dgh $$0, cwo $$1, bvg $$2, @Nullable cwo $$3) {
+      return new cpv($$0, $$2, $$1.c(1), $$3);
+   }
+
+   @Override
+   public cpp a(dgh $$0, kb $$1, cwo $$2, jn $$3) {
+      cpv $$4 = new cpv($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = cpd.a.b;
+      return $$4;
    }
 }

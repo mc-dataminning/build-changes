@@ -1,38 +1,48 @@
-public class gea extends gby<gzt> {
-   private static final int a = 2;
-   private final gfa[] b = new gfa[2];
+public class gea extends gca<gzj> {
+   private static final String a = "upper_body";
+   private final gfc b;
+   private final gfc c;
+   private final gfc d;
+   private final gfc e;
 
-   public gea(gfa $$0) {
+   public gea(gfc $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gfg $$3 = new gfg(-0.5F);
+      $$1.a("head", gfh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gfe.a(0.0F, 4.0F, 0.0F));
+      gfh $$4 = gfh.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gfe.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gfe.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gfh.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gfe.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gfh.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gfe.a(0.0F, 24.0F, 0.0F));
+      return gfi.a($$0, 64, 64);
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), gff.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gfc.a.a($$4));
-      }
-
-      return gfg.a($$0, 64, 64);
-   }
-
-   public void a(gzt $$0) {
+   public void a(gzj $$0) {
       super.a($$0);
+      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = ayz.a(this.b.f);
+      float $$2 = ayz.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
+   }
 
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = ayy.h($$2) * (float) (Math.PI / 180.0);
-      }
+   public gfc b() {
+      return this.c;
    }
 }

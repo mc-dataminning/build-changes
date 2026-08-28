@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cap {
+public interface cap<E extends bvg> {
+   boolean trigger(ard var1, E var2, long var3);
 }

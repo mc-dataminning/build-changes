@@ -1,31 +1,67 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface bnw<S, T> {
-   Optional<T> a(bnv<S> var1);
+public abstract class bnw<S> {
+   private final Map<bnw.b<?>, bnw.a<?>> a = new HashMap<>();
+   private final bnt<S> b;
+   private final bnu<S> c;
 
-   static <S, T> bnw<S, T> a(bnz<S> $$0, bnw.a<S, T> $$1) {
-      return new bnw.c<>($$1, $$0);
+   protected bnw(bnt<S> $$0, bnu<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static <S, T> bnw<S, T> a(bnz<S> $$0, bnw.b<T> $$1) {
-      return new bnw.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   public bnu<S> a() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bnv<S> var1, bnx var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bnx var1);
-   }
-
-   public static record c<S, T>(bnw.a<S, T> a, bnz<S> b) implements bnw<S, T> {
-      @Override
-      public Optional<T> a(bnv<S> $$0) {
-         bnx $$1 = new bnx();
-         return this.b.a($$0, $$1, bnr.a) ? this.a.run($$0, $$1) : Optional.empty();
+   public <T> Optional<T> a(bnr<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
       }
+
+      return $$1;
+   }
+
+   public <T> Optional<T> b(bnr<T> $$0) {
+      bnw.b<T> $$1 = new bnw.b<>($$0, this.c());
+      bnw.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         bnx<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> bnw.a<T> a(bnw.b<T> $$0) {
+      return (bnw.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(bnw.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bnw.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bnr<T> a, int b) {
    }
 }

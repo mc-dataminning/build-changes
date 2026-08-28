@@ -18,43 +18,43 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class ex implements ez<ex>, fc {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("permissions.requires.entity"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("permissions.requires.entity"));
    private final ew d;
-   private final fay e;
-   private final arc f;
+   private final faz e;
+   private final ard f;
    private final int g;
    private final String h;
-   private final wo i;
+   private final wp i;
    private final MinecraftServer j;
    private final boolean k;
    @Nullable
-   private final buj l;
+   private final buk l;
    private final eu m;
    private final fj.a n;
-   private final fax o;
+   private final fay o;
    private final ev p;
-   private final azw q;
+   private final azx q;
 
-   public ex(ew $$0, fay $$1, fax $$2, arc $$3, int $$4, String $$5, wo $$6, MinecraftServer $$7, @Nullable buj $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eu.a, fj.a.a, ev.a, azw.immediate($$7));
+   public ex(ew $$0, faz $$1, fay $$2, ard $$3, int $$4, String $$5, wp $$6, MinecraftServer $$7, @Nullable buk $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eu.a, fj.a.a, ev.a, azx.immediate($$7));
    }
 
    protected ex(
       ew $$0,
-      fay $$1,
-      fax $$2,
-      arc $$3,
+      faz $$1,
+      fay $$2,
+      ard $$3,
       int $$4,
       String $$5,
-      wo $$6,
+      wp $$6,
       MinecraftServer $$7,
-      @Nullable buj $$8,
+      @Nullable buk $$8,
       boolean $$9,
       eu $$10,
       fj.a $$11,
       ev $$12,
-      azw $$13
+      azx $$13
    ) {
       this.d = $$0;
       this.e = $$1;
@@ -76,17 +76,17 @@ public class ex implements ez<ex>, fc {
       return this.d == $$0 ? this : new ex($$0, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ex a(buj $$0) {
+   public ex a(buk $$0) {
       return this.l == $$0
          ? this
          : new ex(this.d, this.e, this.o, this.f, this.g, $$0.al().getString(), $$0.p_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ex a(fay $$0) {
+   public ex a(faz $$0) {
       return this.e.equals($$0) ? this : new ex(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ex a(fax $$0) {
+   public ex a(fay $$0) {
       return this.o.c($$0) ? this : new ex(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
@@ -119,38 +119,38 @@ public class ex implements ez<ex>, fc {
       return $$0 == this.n ? this : new ex(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, $$0, this.p, this.q);
    }
 
-   public ex a(arc $$0) {
+   public ex a(ard $$0) {
       if ($$0 == this.f) {
          return this;
       } else {
-         double $$1 = eaq.a(this.f.G_(), $$0.G_());
-         fay $$2 = new fay(this.e.d * $$1, this.e.e, this.e.f * $$1);
+         double $$1 = ear.a(this.f.G_(), $$0.G_());
+         faz $$2 = new faz(this.e.d * $$1, this.e.e, this.e.f * $$1);
          return new ex(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
       }
    }
 
-   public ex a(buj $$0, fj.a $$1) {
+   public ex a(buk $$0, fj.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ex b(fay $$0) {
-      fay $$1 = this.n.a(this);
+   public ex b(faz $$0) {
+      faz $$1 = this.n.a(this);
       double $$2 = $$0.d - $$1.d;
       double $$3 = $$0.e - $$1.e;
       double $$4 = $$0.f - $$1.f;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = ayy.h((float)(-(ayy.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = ayy.h((float)(ayy.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new fax($$6, $$7));
+      float $$6 = ayz.h((float)(-(ayz.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = ayz.h((float)(ayz.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new fay($$6, $$7));
    }
 
-   public ex a(ev $$0, azw $$1) {
+   public ex a(ev $$0, azx $$1) {
       return $$0 == this.p && $$1 == this.q
          ? this
          : new ex(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, $$0, $$1);
    }
 
-   public wo b() {
+   public wp b() {
       return this.i;
    }
 
@@ -163,20 +163,20 @@ public class ex implements ez<ex>, fc {
       return this.g >= $$0;
    }
 
-   public fay d() {
+   public faz d() {
       return this.e;
    }
 
-   public arc e() {
+   public ard e() {
       return this.f;
    }
 
    @Nullable
-   public buj f() {
+   public buk f() {
       return this.l;
    }
 
-   public buj g() throws CommandSyntaxException {
+   public buk g() throws CommandSyntaxException {
       if (this.l == null) {
          throw b.create();
       } else {
@@ -184,25 +184,25 @@ public class ex implements ez<ex>, fc {
       }
    }
 
-   public ard h() throws CommandSyntaxException {
-      buj var2 = this.l;
-      if (var2 instanceof ard) {
-         return (ard)var2;
+   public are h() throws CommandSyntaxException {
+      buk var2 = this.l;
+      if (var2 instanceof are) {
+         return (are)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public ard i() {
-      return this.l instanceof ard $$0 ? $$0 : null;
+   public are i() {
+      return this.l instanceof are $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.l instanceof ard;
+      return this.l instanceof are;
    }
 
-   public fax k() {
+   public fay k() {
       return this.o;
    }
 
@@ -218,18 +218,18 @@ public class ex implements ez<ex>, fc {
       return this.p;
    }
 
-   public azw o() {
+   public azx o() {
       return this.q;
    }
 
-   public boolean a(ard $$0) {
-      ard $$1 = this.i();
+   public boolean a(are $$0) {
+      are $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.aa() || $$0.aa();
    }
 
-   public void a(xd $$0, boolean $$1, wk.a $$2) {
+   public void a(xe $$0, boolean $$1, wl.a $$2) {
       if (!this.k) {
-         ard $$3 = this.i();
+         are $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -238,9 +238,9 @@ public class ex implements ez<ex>, fc {
       }
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       if (!this.k) {
-         ard $$1 = this.i();
+         are $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -249,11 +249,11 @@ public class ex implements ez<ex>, fc {
       }
    }
 
-   public void a(Supplier<wo> $$0, boolean $$1) {
+   public void a(Supplier<wp> $$0, boolean $$1) {
       boolean $$2 = this.d.y_() && !this.k;
       boolean $$3 = $$1 && this.d.c() && !this.k;
       if ($$2 || $$3) {
-         wo $$4 = $$0.get();
+         wp $$4 = $$0.get();
          if ($$2) {
             this.d.a($$4);
          }
@@ -264,24 +264,24 @@ public class ex implements ez<ex>, fc {
       }
    }
 
-   private void c(wo $$0) {
-      wo $$1 = wo.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.j.aL().b(dgc.p)) {
-         for (ard $$2 : this.j.ag().t()) {
+   private void c(wp $$0) {
+      wp $$1 = wp.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
+      if (this.j.aL().b(dgd.p)) {
+         for (are $$2 : this.j.ag().t()) {
             if ($$2.z() != this.d && this.j.ag().f($$2.gh())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.d != this.j && this.j.aL().b(dgc.m)) {
+      if (this.d != this.j && this.j.aL().b(dgd.m)) {
          this.j.a($$1);
       }
    }
 
-   public void b(wo $$0) {
+   public void b(wp $$0) {
       if (this.d.z_() && !this.k) {
-         this.d.a(wo.i().b($$0).a(n.m));
+         this.d.a(wp.i().b($$0).a(n.m));
       }
    }
 
@@ -301,8 +301,8 @@ public class ex implements ez<ex>, fc {
    }
 
    @Override
-   public Stream<aku> s() {
-      return mb.b.s().map(avy::a);
+   public Stream<akv> s() {
+      return mb.b.s().map(avz::a);
    }
 
    @Override
@@ -311,7 +311,7 @@ public class ex implements ez<ex>, fc {
    }
 
    @Override
-   public CompletableFuture<Suggestions> a(akt<? extends ke<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+   public CompletableFuture<Suggestions> a(aku<? extends ke<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
       if ($$0 == mc.bk) {
          return fc.a(this.j.aI().e().stream().map($$0x -> $$0x.a().a()), $$2);
       } else if ($$0 == mc.bj) {
@@ -326,7 +326,7 @@ public class ex implements ez<ex>, fc {
    }
 
    @Override
-   public Set<akt<dgg>> t() {
+   public Set<aku<dgh>> t() {
       return this.j.K();
    }
 
@@ -336,7 +336,7 @@ public class ex implements ez<ex>, fc {
    }
 
    @Override
-   public crr v() {
+   public crs v() {
       return this.f.K();
    }
 
@@ -352,7 +352,7 @@ public class ex implements ez<ex>, fc {
       }
 
       if (!$$2) {
-         this.b(wr.a($$1));
+         this.b(ws.a($$1));
       }
    }
 

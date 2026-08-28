@@ -1,65 +1,313 @@
+import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.BitSet;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public class aqg {
-   private static final int c = 33;
-   private static final int d = 32;
-   private static final int e = 31;
-   private static final dzu f = dzq.a.a(dzr.n);
-   public static final int a = f.c().c();
-   public static final int b = 33 + a;
+public class aqg extends aqu {
+   public static final aqj<dzb> a = aqj.a("Unloaded level chunk");
+   private static final CompletableFuture<aqj<dzb>> e = CompletableFuture.completedFuture(a);
+   private final dgj f;
+   private volatile CompletableFuture<aqj<dzb>> g = e;
+   private volatile CompletableFuture<aqj<dzb>> h = e;
+   private volatile CompletableFuture<aqj<dzb>> i = e;
+   private int j;
+   private int k;
+   private int l;
+   private boolean m;
+   private final ShortSet[] n;
+   private final BitSet o = new BitSet();
+   private final BitSet p = new BitSet();
+   private final esn q;
+   private final aqg.a r;
+   private final aqg.b s;
+   private boolean t;
+   private CompletableFuture<?> u = CompletableFuture.completedFuture(null);
+   private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
+   private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
 
-   @Nullable
-   public static dzr a(int $$0) {
-      return a($$0 - 33, null);
+   public aqg(dfn $$0, int $$1, dgj $$2, esn $$3, aqg.a $$4, aqg.b $$5) {
+      super($$0);
+      this.f = $$2;
+      this.q = $$3;
+      this.r = $$4;
+      this.s = $$5;
+      this.j = aqh.b + 1;
+      this.k = this.j;
+      this.l = this.j;
+      this.a($$1);
+      this.n = new ShortSet[$$2.ao()];
+   }
+
+   public CompletableFuture<aqj<dzb>> a() {
+      return this.h;
+   }
+
+   public CompletableFuture<aqj<dzb>> b() {
+      return this.i;
+   }
+
+   public CompletableFuture<aqj<dzb>> c() {
+      return this.g;
    }
 
    @Nullable
-   @Contract("_,!null->!null;_,_->_")
-   public static dzr a(int $$0, @Nullable dzr $$1) {
-      if ($$0 > a) {
-         return $$1;
+   public dzb d() {
+      return this.a().getNow(a).b(null);
+   }
+
+   @Nullable
+   public dzb e() {
+      return !this.v.isDone() ? null : this.d();
+   }
+
+   public CompletableFuture<?> f() {
+      return this.v;
+   }
+
+   public void a(CompletableFuture<?> $$0) {
+      if (this.v.isDone()) {
+         this.v = $$0;
       } else {
-         return $$0 <= 0 ? dzr.n : f.c().a($$0);
+         this.v = this.v.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
       }
    }
 
-   public static dzr b(int $$0) {
-      return a($$0, dzr.c);
+   public CompletableFuture<?> g() {
+      return this.w;
    }
 
-   public static int a(dzr $$0) {
-      return 33 + f.a($$0);
+   public boolean h() {
+      return this.w.isDone();
    }
 
-   public static aqr c(int $$0) {
-      if ($$0 <= 31) {
-         return aqr.d;
-      } else if ($$0 <= 32) {
-         return aqr.c;
+   @Override
+   protected void b(CompletableFuture<?> $$0) {
+      if (this.w.isDone()) {
+         this.w = $$0;
       } else {
-         return $$0 <= 33 ? aqr.b : aqr.a;
+         this.w = this.w.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
       }
    }
 
-   public static int a(aqr $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
+   public boolean a(ji $$0) {
+      dzb $$1 = this.d();
+      if ($$1 == null) {
+         return false;
+      } else {
+         boolean $$2 = this.m;
+         int $$3 = this.f.f($$0.v());
+         if (this.n[$$3] == null) {
+            this.m = true;
+            this.n[$$3] = new ShortOpenHashSet();
+         }
+
+         this.n[$$3].add(kk.b($$0));
+         return !$$2;
+      }
    }
 
-   public static boolean d(int $$0) {
-      return $$0 <= 31;
+   public boolean a(dgq $$0, int $$1) {
+      dyr $$2 = this.b(dzs.k);
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.i();
+         dzb $$3 = this.d();
+         if ($$3 == null) {
+            return false;
+         } else {
+            int $$4 = this.q.d();
+            int $$5 = this.q.e();
+            if ($$1 >= $$4 && $$1 <= $$5) {
+               BitSet $$6 = $$0 == dgq.a ? this.p : this.o;
+               int $$7 = $$1 - $$4;
+               if (!$$6.get($$7)) {
+                  $$6.set($$7);
+                  return true;
+               } else {
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
+      }
    }
 
-   public static boolean e(int $$0) {
-      return $$0 <= 32;
+   public boolean i() {
+      return this.m || !this.p.isEmpty() || !this.o.isEmpty();
    }
 
-   public static boolean f(int $$0) {
-      return $$0 <= b;
+   public void a(dzb $$0) {
+      if (this.i()) {
+         dgh $$1 = $$0.H();
+         if (!this.p.isEmpty() || !this.o.isEmpty()) {
+            List<are> $$2 = this.s.a(this.d, true);
+            if (!$$2.isEmpty()) {
+               adb $$3 = new adb($$0.f(), this.q, this.p, this.o);
+               this.a($$2, $$3);
+            }
+
+            this.p.clear();
+            this.o.clear();
+         }
+
+         if (this.m) {
+            List<are> $$4 = this.s.a(this.d, false);
+
+            for (int $$5 = 0; $$5 < this.n.length; $$5++) {
+               ShortSet $$6 = this.n[$$5];
+               if ($$6 != null) {
+                  this.n[$$5] = null;
+                  if (!$$4.isEmpty()) {
+                     int $$7 = this.f.h($$5);
+                     kk $$8 = kk.a($$0.f(), $$7);
+                     if ($$6.size() == 1) {
+                        ji $$9 = $$8.g($$6.iterator().nextShort());
+                        dww $$10 = $$1.a_($$9);
+                        this.a($$4, new abu($$9, $$10));
+                        this.a($$4, $$1, $$9, $$10);
+                     } else {
+                        dzc $$11 = $$0.b($$5);
+                        aeg $$12 = new aeg($$8, $$6, $$11);
+                        this.a($$4, $$12);
+                        $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
+                     }
+                  }
+               }
+            }
+
+            this.m = false;
+         }
+      }
+   }
+
+   private void a(List<are> $$0, dgh $$1, ji $$2, dww $$3) {
+      if ($$3.x()) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   private void a(List<are> $$0, dgh $$1, ji $$2) {
+      dty $$3 = $$1.c_($$2);
+      if ($$3 != null) {
+         yw<?> $$4 = $$3.ax_();
+         if ($$4 != null) {
+            this.a($$0, $$4);
+         }
+      }
+   }
+
+   private void a(List<are> $$0, yw<?> $$1) {
+      $$0.forEach($$1x -> $$1x.f.b($$1));
+   }
+
+   @Override
+   public int j() {
+      return this.k;
+   }
+
+   @Override
+   public int k() {
+      return this.l;
+   }
+
+   private void b(int $$0) {
+      this.l = $$0;
+   }
+
+   public void a(int $$0) {
+      this.k = $$0;
+   }
+
+   private void a(aqi $$0, CompletableFuture<aqj<dzb>> $$1, Executor $$2, aqs $$3) {
+      this.u.cancel(false);
+      CompletableFuture<Void> $$4 = new CompletableFuture<>();
+      $$4.thenRunAsync(() -> $$0.a(this.d, $$3), $$2);
+      this.u = $$4;
+      $$1.thenAccept($$1x -> $$1x.a($$1xx -> $$4.complete(null)));
+   }
+
+   private void a(aqi $$0, aqs $$1) {
+      this.u.cancel(false);
+      $$0.a(this.d, $$1);
+   }
+
+   protected void a(aqi $$0, Executor $$1) {
+      aqs $$2 = aqh.c(this.j);
+      aqs $$3 = aqh.c(this.k);
+      boolean $$4 = $$2.a(aqs.b);
+      boolean $$5 = $$3.a(aqs.b);
+      this.t |= $$5;
+      if (!$$4 && $$5) {
+         this.g = $$0.c(this);
+         this.a($$0, this.g, $$1, aqs.b);
+         this.b(this.g);
+      }
+
+      if ($$4 && !$$5) {
+         this.g.complete(a);
+         this.g = e;
+      }
+
+      boolean $$6 = $$2.a(aqs.c);
+      boolean $$7 = $$3.a(aqs.c);
+      if (!$$6 && $$7) {
+         this.h = $$0.b(this);
+         this.a($$0, this.h, $$1, aqs.c);
+         this.b(this.h);
+      }
+
+      if ($$6 && !$$7) {
+         this.h.complete(a);
+         this.h = e;
+      }
+
+      boolean $$8 = $$2.a(aqs.d);
+      boolean $$9 = $$3.a(aqs.d);
+      if (!$$8 && $$9) {
+         if (this.i != e) {
+            throw (IllegalStateException)af.b(new IllegalStateException());
+         }
+
+         this.i = $$0.a(this);
+         this.a($$0, this.i, $$1, aqs.d);
+         this.b(this.i);
+      }
+
+      if ($$8 && !$$9) {
+         this.i.complete(a);
+         this.i = e;
+      }
+
+      if (!$$3.a($$2)) {
+         this.a($$0, $$3);
+      }
+
+      this.r.onLevelChange(this.d, this::k, this.k, this::b);
+      this.j = this.k;
+   }
+
+   public boolean l() {
+      return this.t;
+   }
+
+   public void m() {
+      this.t = aqh.c(this.k).a(aqs.b);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onLevelChange(dfn var1, IntSupplier var2, int var3, IntConsumer var4);
+   }
+
+   public interface b {
+      List<are> a(dfn var1, boolean var2);
    }
 }

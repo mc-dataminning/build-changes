@@ -1,53 +1,23 @@
-public class gou implements goh<dvj> {
-   private final gou.a a;
+public class gou implements goj<dvd> {
+   private final gbj a;
 
-   public gou(goi.a $$0) {
-      this($$0.f());
+   public gou(gok.a $$0) {
+      this.a = new gbj($$0.a(gfb.J));
    }
 
-   public gou(gew $$0) {
-      this.a = new gou.a($$0.a(gez.cF));
-   }
-
-   public void a(dvj $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
-      jn $$6 = $$0.m().a(dqo.b, jn.b);
-      cvk $$7 = $$0.s();
-      hgt $$8;
-      if ($$7 == null) {
-         $$8 = gmq.i;
-      } else {
-         $$8 = gmq.d($$7);
-      }
-
-      float $$10 = $$0.a($$1);
-      this.a($$2, $$3, $$4, $$5, $$6, $$10, $$8);
-   }
-
-   public void a(ffs $$0, glv $$1, int $$2, int $$3, jn $$4, float $$5, hgt $$6) {
-      $$0.a();
-      $$0.a(0.5F, 0.5F, 0.5F);
-      float $$7 = 0.9995F;
-      $$0.b(0.9995F, 0.9995F, 0.9995F);
-      $$0.a($$4.b());
-      $$0.b(1.0F, -1.0F, -1.0F);
-      $$0.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$5);
-      ffw $$8 = $$6.a($$1, this.a::a);
-      this.a.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   static class a extends gct {
-      private final gfa a;
-
-      public a(gfa $$0) {
-         super($$0, gmf::g);
-         this.a = $$0.b("lid");
-      }
-
-      public void a(float $$0) {
-         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+   public void a(dvd $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      dww $$6 = $$0.m();
+      if ($$6.c(dny.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(dny.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         ffx $$8 = gos.a.a($$3, gmh::d);
+         this.a.a($$2, $$8, $$4, $$5);
+         $$2.b();
       }
    }
 }

@@ -1,56 +1,131 @@
 import com.mojang.logging.LogUtils;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public abstract class fkf implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fkf extends fkg {
+   private static final wp b = wp.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final wp d = wp.c("mco.connect.connecting");
+   private final fhk e;
+   private final fuk f;
 
-   protected static void a(long $$0) {
+   public fkf(fuk $$0, fhk $$1) {
+      this.f = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public void run() {
+      fhl $$0;
       try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (fif var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new fjm(this.f, this.e));
+               return;
+            case 6006:
+               boolean $$3 = fli.Q().b(this.e.g);
+               a(
+                  (fuk)($$3
+                     ? new fir(this.f, this.e.a, this.e.i())
+                     : new fix(wp.c("mco.brokenworld.nonowner.title"), wp.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(wp.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
       }
-   }
 
-   public static void a(fui $$0) {
-      flh $$1 = flh.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(wo $$0) {
-      this.b();
-      flh $$1 = flh.Q();
-      $$1.execute(() -> $$1.a(new fiw($$0, new fgd(new fuk()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fie $$1) {
-         this.a($$1.a.b());
+      if ($$0.a == null) {
+         this.a(wp.c("mco.errorMessage.connectionFailure"));
       } else {
-         this.a(wo.b($$0.getMessage()));
+         boolean $$7 = $$0.b != null && $$0.c != null;
+         fuk $$8 = (fuk)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+         a($$8);
       }
    }
 
-   protected void a(fie $$0) {
-      this.a($$0.a.b());
+   private static UUID a(fhk $$0) {
+      return $$0.q != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
    }
 
-   public abstract wo a();
-
-   public boolean d() {
-      return this.c;
+   @Override
+   public wp a() {
+      return d;
    }
 
-   public void c() {
+   private fhl f() throws fif, TimeoutException, CancellationException {
+      fgj $$0 = fgj.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.e.a);
+         } catch (fig var4) {
+            a((long)var4.c);
+         }
+      }
+
+      throw new TimeoutException();
    }
 
-   public void e() {
+   public fiz a(fhl $$0) {
+      return new fja(this.f, new fkd(this.f, this.e, $$0));
    }
 
-   public void b() {
-      this.c = true;
+   private fpu a(fhl $$0, UUID $$1, Function<fhl, fuk> $$2) {
+      wp $$3 = wp.c("mco.configure.world.resourcepack.question");
+      return fjf.a(this.f, $$3, $$3x -> {
+         a(new ftv(b));
+         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+            fli.Q().af().i();
+            c.error("Failed to download resource pack from {}", $$0, $$1xx);
+            a(new fix(wp.c("mco.download.resourcePack.fail"), this.f));
+            return null;
+         });
+      });
+   }
+
+   private CompletableFuture<?> a(fhl $$0, UUID $$1) {
+      try {
+         if ($$0.b == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
+         } else if ($$0.c == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+         } else {
+            hhq $$2 = fli.Q().af();
+            CompletableFuture<Void> $$3 = $$2.b($$1);
+            $$2.g();
+            $$2.a($$1, new URL($$0.b), $$0.c);
+            return $$3;
+         }
+      } catch (Exception var5) {
+         return CompletableFuture.failedFuture(var5);
+      }
    }
 }

@@ -1,175 +1,84 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.lang.reflect.Type;
 
-public class gno {
-   public static final gno a = new gno(Map.of());
-   private static final char b = '#';
-   private final Map<String, hgt> c;
+public record gno(gnn b, gnn c, gnn d, gnn e, gnn f, gnn g, gnn h, gnn i) {
+   public static final gno a = new gno(gnn.a, gnn.a, gnn.a, gnn.a, gnn.a, gnn.a, gnn.a, gnn.a);
 
-   gno(Map<String, hgt> $$0) {
-      this.c = $$0;
+   public gnn a(cwm $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gnn.a;
+      };
    }
 
-   @Nullable
-   public hgt a(String $$0) {
-      if (b($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      return this.c.get($$0);
+   public gnn a() {
+      return this.b;
    }
 
-   private static boolean b(String $$0) {
-      return $$0.charAt(0) == '#';
+   public gnn b() {
+      return this.c;
    }
 
-   public static gno.a a(JsonObject $$0, aku $$1) {
-      gno.a.a $$2 = new gno.a.a();
-
-      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
-         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
-      }
-
-      return $$2.a();
+   public gnn c() {
+      return this.d;
    }
 
-   private static void a(aku $$0, String $$1, String $$2, gno.a.a $$3) {
-      if (b($$2)) {
-         $$3.a($$1, $$2.substring(1));
-      } else {
-         aku $$4 = aku.c($$2);
-         if ($$4 == null) {
-            throw new JsonParseException($$2 + " is not valid resource location");
+   public gnn d() {
+      return this.e;
+   }
+
+   public gnn e() {
+      return this.f;
+   }
+
+   public gnn f() {
+      return this.g;
+   }
+
+   public gnn g() {
+      return this.h;
+   }
+
+   public gnn h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<gno> {
+      public gno a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gnn $$4 = this.a($$2, $$3, cwm.c);
+         gnn $$5 = this.a($$2, $$3, cwm.b);
+         if ($$5 == gnn.a) {
+            $$5 = $$4;
          }
 
-         $$3.a($$1, new hgt($$0, $$4));
-      }
-   }
-
-   public static record a(Map<String, gno.d> b) {
-      public static final gno.a a = new gno.a(Map.of());
-
-      public Map<String, gno.d> a() {
-         return this.b;
-      }
-
-      public static class a {
-         private final Map<String, gno.d> a = new HashMap<>();
-
-         public gno.a.a a(String $$0, String $$1) {
-            this.a.put($$0, new gno.b($$1));
-            return this;
+         gnn $$6 = this.a($$2, $$3, cwm.e);
+         gnn $$7 = this.a($$2, $$3, cwm.d);
+         if ($$7 == gnn.a) {
+            $$7 = $$6;
          }
 
-         public gno.a.a a(String $$0, hgt $$1) {
-            this.a.put($$0, new gno.e($$1));
-            return this;
-         }
-
-         public gno.a a() {
-            return this.a.isEmpty() ? gno.a.a : new gno.a(Map.copyOf(this.a));
-         }
-      }
-   }
-
-   static record b(String a) implements gno.d {
-   }
-
-   public static class c {
-      private static final Logger a = LogUtils.getLogger();
-      private final List<gno.a> b = new ArrayList<>();
-
-      public gno.c a(gno.a $$0) {
-         this.b.addLast($$0);
-         return this;
+         gnn $$8 = this.a($$2, $$3, cwm.f);
+         gnn $$9 = this.a($$2, $$3, cwm.g);
+         gnn $$10 = this.a($$2, $$3, cwm.h);
+         gnn $$11 = this.a($$2, $$3, cwm.i);
+         return new gno($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      public gno.c b(gno.a $$0) {
-         this.b.addFirst($$0);
-         return this;
+      private gnn a(JsonDeserializationContext $$0, JsonObject $$1, cwm $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gnn)$$0.deserialize($$1.get($$3), gnn.class) : gnn.a;
       }
-
-      public gno a(hgx $$0) {
-         if (this.b.isEmpty()) {
-            return gno.a;
-         } else {
-            Object2ObjectMap<String, hgt> $$1 = new Object2ObjectArrayMap();
-            Object2ObjectMap<String, gno.b> $$2 = new Object2ObjectArrayMap();
-
-            for (gno.a $$3 : Lists.reverse(this.b)) {
-               $$3.b.forEach(($$2x, $$3x) -> {
-                  Objects.requireNonNull($$3x);
-                  switch ($$3x) {
-                     case gno.e $$6x:
-                        $$2.remove($$2x);
-                        $$1.put($$2x, $$6x.a());
-                        break;
-                     case gno.b $$7x:
-                        $$1.remove($$2x);
-                        $$2.put($$2x, $$7x);
-                        break;
-                     default:
-                        throw new MatchException(null, null);
-                  }
-               });
-            }
-
-            if ($$2.isEmpty()) {
-               return new gno($$1);
-            } else {
-               boolean $$4 = true;
-
-               while ($$4) {
-                  $$4 = false;
-                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gno.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
-
-                  while ($$5.hasNext()) {
-                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gno.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gno.b>)$$5.next();
-                     hgt $$7 = (hgt)$$1.get(((gno.b)$$6.getValue()).a);
-                     if ($$7 != null) {
-                        $$1.put((String)$$6.getKey(), $$7);
-                        $$5.remove();
-                        $$4 = true;
-                     }
-                  }
-               }
-
-               if (!$$2.isEmpty()) {
-                  a.warn(
-                     "Unresolved texture references in {}:\n{}",
-                     $$0.get(),
-                     $$2.entrySet()
-                        .stream()
-                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((gno.b)$$0x.getValue()).a + "\n")
-                        .collect(Collectors.joining())
-                  );
-               }
-
-               return new gno($$1);
-            }
-         }
-      }
-   }
-
-   public sealed interface d permits gno.e, gno.b {
-   }
-
-   static record e(hgt a) implements gno.d {
    }
 }

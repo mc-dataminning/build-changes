@@ -1,83 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class exq extends exc {
+public class exq extends exd {
+   private static final Codec<ezv> b = Codec.withAlternative(ezw.a, ayi.i, ezs::new);
    public static final MapCodec<exq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.unboundedMap(dcx.c, ezv.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+                  exc.e.a(ezw.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
+                  exc.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
+                  exc.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
+                  exc.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
                )
             )
             .apply($$0, exq::new)
    );
-   private final Map<jr<dcx>, ezu> b;
-   private final boolean c;
+   private final Optional<exc.e<ezv>> c;
+   private final Optional<exc.e<Boolean>> d;
+   private final Optional<exc.e<String>> e;
+   private final Optional<exc.e<ezv>> f;
 
-   exq(List<eyy> $$0, Map<jr<dcx>, ezu> $$1, boolean $$2) {
+   public exq(List<eyz> $$0, Optional<exc.e<ezv>> $$1, Optional<exc.e<Boolean>> $$2, Optional<exc.e<String>> $$3, Optional<exc.e<ezv>> $$4) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
    @Override
-   public exe<exq> b() {
-      return exf.i;
+   public Set<bai<?>> a() {
+      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
    }
 
    @Override
-   public Set<bah<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public exf<exq> b() {
+      return exg.R;
+   }
+
+   private static <T> List<T> a(Optional<exc.e<T>> $$0, List<T> $$1) {
+      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
+   }
+
+   private static <T, E> List<E> a(Optional<exc.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
+      return $$0.<List<E>>map($$2x -> {
+         List<E> $$3 = $$2x.a().stream().map($$2).toList();
+         return $$2x.b().a($$1, $$3);
+      }).orElse($$1);
    }
 
    @Override
-   public cwn a(cwn $$0, evp $$1) {
-      if ($$0.a(cwr.rw)) {
-         $$0 = $$0.a((dgf)cwr.vv);
-      }
-
-      dcz.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jr<dcx>)$$2, ayy.a($$1x.a((jr<dcx>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jr<dcx>)$$2, ayy.a($$3.a($$1), 0, 255)));
-         }
-      });
+   public cwo a(cwo $$0, evq $$1) {
+      cyy $$2 = $$0.a(kv.p, cyy.a);
+      $$0.b(kv.p, new cyy(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
       return $$0;
-   }
-
-   public static class a extends exc.a<exq.a> {
-      private final Builder<jr<dcx>, ezu> a = ImmutableMap.builder();
-      private final boolean b;
-
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected exq.a a() {
-         return this;
-      }
-
-      public exq.a a(jr<dcx> $$0, ezu $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public exd b() {
-         return new exq(this.g(), this.a.build(), this.b);
-      }
    }
 }

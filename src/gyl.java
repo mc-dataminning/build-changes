@@ -1,3 +1,4 @@
-public class gyl extends gyh {
-   public int a;
+public class gyl extends gyj {
+   public float a;
+   public float b;
 }

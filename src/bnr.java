@@ -1,6 +1,10 @@
-public interface bnr {
-   bnr a = () -> {
-   };
+public record bnr<T>(String a) {
+   @Override
+   public String toString() {
+      return "<" + this.a + ">";
+   }
 
-   void cut();
+   public static <T> bnr<T> a(String $$0) {
+      return new bnr<>($$0);
+   }
 }

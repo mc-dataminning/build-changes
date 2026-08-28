@@ -1,48 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqb extends djk {
-   public static final MapCodec<dqb> h = b(dqb::new);
-   public static final dxs<jn.a> i = dxl.L;
+public class dqb extends djv {
+   public static final MapCodec<dqb> a = b(dqb::new);
+   protected static final float b = 6.0F;
+   protected static final fbt c = djl.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends dqb> a() {
-      return h;
+   public MapCodec<dqb> a() {
+      return a;
    }
 
-   public dqb(dwu.d $$0) {
+   protected dqb(dwv.d $$0) {
       super($$0);
-      this.l(this.m().b(i, jn.a.b));
    }
 
    @Override
-   protected dwv a(dwv $$0, dqc $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dwv b(dwv $$0, dqc $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jn.a)$$0.c(i)) {
-               case a:
-                  return $$0.b(i, jn.a.c);
-               case c:
-                  return $$0.b(i, jn.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public dwv a(dae $$0) {
-      return this.m().b(i, $$0.k().o());
+   protected boolean b(dww $$0, dfm $$1, ji $$2) {
+      return $$0.a(awp.aO) || $$0.a(djn.ek) || super.b($$0, $$1, $$2);
    }
 }

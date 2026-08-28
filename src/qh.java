@@ -1,24 +1,24 @@
 import java.util.OptionalLong;
 
 public class qh {
-   public static void a(qe<eaq> $$0) {
+   public static void a(qe<ear> $$0) {
       $$0.a(
-         eao.a,
-         new eaq(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awo.bd, eao.e, 0.0F, new eaq.a(false, true, brt.a(0, 7), 0))
+         eap.a,
+         new ear(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awp.bd, eap.e, 0.0F, new ear.a(false, true, bru.a(0, 7), 0))
       );
       $$0.a(
-         eao.b,
-         new eaq(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awo.be, eao.f, 0.1F, new eaq.a(true, false, brk.a(7), 15))
+         eap.b,
+         new ear(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awp.be, eap.f, 0.1F, new ear.a(true, false, brl.a(7), 15))
       );
       $$0.a(
-         eao.c,
-         new eaq(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awo.bf, eao.g, 0.0F, new eaq.a(false, true, brt.a(0, 7), 0)
+         eap.c,
+         new ear(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awp.bf, eap.g, 0.0F, new ear.a(false, true, bru.a(0, 7), 0)
          )
       );
       $$0.a(
-         eao.d,
-         new eaq(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awo.bd, eao.e, 0.0F, new eaq.a(false, true, brt.a(0, 7), 0))
+         eap.d,
+         new ear(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awp.bd, eap.e, 0.0F, new ear.a(false, true, bru.a(0, 7), 0))
       );
    }
 }

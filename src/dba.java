@@ -1,54 +1,66 @@
-import java.util.Map;
-
-public class dba extends dbq {
-   public dba(dap $$0) {
-      super("", $$0, dbr.a(Map.of('#', day.a(cwr.rv), 'x', day.a(cwr.sR)), "###", "#x#", "###"), new cwn(cwr.vi));
+public class dba extends dat {
+   public dba(daq $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(daq $$0, dgg $$1) {
-      if (!super.a($$0, $$1)) {
+   public boolean a(dar $$0, dgh $$1) {
+      if ($$0.e() < 2) {
          return false;
       } else {
-         cwn $$2 = c($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            eur $$3 = cxa.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwo $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.b(kv.L)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cws.vi)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cwo a(dar $$0, jt.a $$1) {
+      int $$2 = 0;
+      cwo $$3 = cwo.j;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwo $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.b(kv.L)) {
+               if (!$$3.f()) {
+                  return cwo.j;
+               }
+
+               $$3 = $$5;
             } else {
-               return $$3.g() ? false : $$3.f < 4;
+               if (!$$5.a(cws.vi)) {
+                  return cwo.j;
+               }
+
+               $$2++;
             }
          }
       }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cwo.j;
    }
 
    @Override
-   public cwn a(daq $$0, jt.a $$1) {
-      cwn $$2 = c($$0).c(1);
-      $$2.b(kv.N, czk.b);
-      return $$2;
-   }
-
-   private static cwn c(daq $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         cwn $$2 = $$0.a($$1);
-         if ($$2.b(kv.L)) {
-            return $$2;
-         }
-      }
-
-      return cwn.j;
-   }
-
-   @Override
-   public boolean ap_() {
-      return true;
-   }
-
-   @Override
-   public dbm<dba> a() {
-      return dbm.f;
+   public dbn<dba> a() {
+      return dbn.e;
    }
 }

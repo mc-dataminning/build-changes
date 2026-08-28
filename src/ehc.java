@@ -1,40 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class ehc extends efw<eik> {
-   public ehc(Codec<eik> $$0) {
+public class ehc extends efx<ehw> {
+   public ehc(Codec<ehw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efy<eik> $$0) {
-      boolean $$1 = false;
-      azg $$2 = $$0.d();
-      dhe $$3 = $$0.b();
+   public boolean a(efz<ehw> $$0) {
+      int $$1 = 0;
+      azh $$2 = $$0.d();
+      dhf $$3 = $$0.b();
       ji $$4 = $$0.e();
-      eik $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(ecq.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      ji $$9 = new ji($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(djm.J)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dwv $$11 = $$10 ? djm.bE.m() : djm.bD.m();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dwv $$12 = $$11.b(drv.d, dxq.a);
-               ji $$13 = $$9.d();
-               if ($$3.a_($$13).a(djm.J)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+      int $$5 = $$0.f().a().a($$2);
 
-            $$1 = true;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(ecr.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ji $$10 = new ji($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dww $$11 = djn.nx.m().b(dqn.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(djn.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
       }
 
-      return $$1;
+      return $$1 > 0;
    }
 }

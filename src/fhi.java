@@ -1,179 +1,24 @@
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fhi {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "notificationUuid";
-   private static final String c = "dismissable";
-   private static final String d = "seen";
-   private static final String e = "type";
-   private static final String f = "visitUrl";
-   private static final String g = "infoPopup";
-   static final wo h = wo.c("mco.notification.visitUrl.buttonText.default");
-   final UUID i;
-   final boolean j;
-   final boolean k;
-   final String l;
+public class fhi extends fhy {
+   private static final Logger b = LogUtils.getLogger();
+   @Nullable
+   public String a;
 
-   fhi(UUID $$0, boolean $$1, boolean $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-   }
-
-   public boolean a() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public UUID c() {
-      return this.i;
-   }
-
-   public static List<fhi> a(String $$0) {
-      List<fhi> $$1 = new ArrayList<>();
+   public static fhi a(String $$0) {
+      fhi $$1 = new fhi();
 
       try {
-         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
-            $$1.add(a($$3.getAsJsonObject()));
-         }
-      } catch (Exception var5) {
-         a.error("Could not parse list of RealmsNotifications", var5);
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = fju.b("newsLink", $$2, null);
+      } catch (Exception var3) {
+         b.error("Could not parse RealmsNews: {}", var3.getMessage());
       }
 
       return $$1;
-   }
-
-   private static fhi a(JsonObject $$0) {
-      UUID $$1 = fjt.a("notificationUuid", $$0, null);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing required property notificationUuid");
-      } else {
-         boolean $$2 = fjt.a("dismissable", $$0, true);
-         boolean $$3 = fjt.a("seen", $$0, false);
-         String $$4 = fjt.a("type", $$0);
-         fhi $$5 = new fhi($$1, $$2, $$3, $$4);
-
-         return (fhi)(switch ($$4) {
-            case "visitUrl" -> fhi.c.a($$5, $$0);
-            case "infoPopup" -> fhi.a.a($$5, $$0);
-            default -> $$5;
-         });
-      }
-   }
-
-   public static class a extends fhi {
-      private static final String a = "title";
-      private static final String b = "message";
-      private static final String c = "image";
-      private static final String d = "urlButton";
-      private final fho e;
-      private final fho f;
-      private final aku g;
-      @Nullable
-      private final fhi.b h;
-
-      private a(fhi $$0, fho $$1, fho $$2, aku $$3, @Nullable fhi.b $$4) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
-      }
-
-      public static fhi.a a(fhi $$0, JsonObject $$1) {
-         fho $$2 = fjt.a("title", $$1, fho::a);
-         fho $$3 = fjt.a("message", $$1, fho::a);
-         aku $$4 = aku.a(fjt.a("image", $$1));
-         fhi.b $$5 = fjt.b("urlButton", $$1, fhi.b::a);
-         return new fhi.a($$0, $$2, $$3, $$4, $$5);
-      }
-
-      @Nullable
-      public fps a(fui $$0, Consumer<UUID> $$1) {
-         wo $$2 = this.e.a();
-         if ($$2 == null) {
-            fhi.a.warn("Realms info popup had title with no available translation: {}", this.e);
-            return null;
-         } else {
-            fps.a $$3 = new fps.a($$0, $$2).a(this.g).a(this.f.a(wn.a));
-            if (this.h != null) {
-               $$3.a(this.h.b.a(fhi.h), $$2x -> {
-                  flh $$3x = flh.Q();
-                  $$3x.a(new ftf($$3xx -> {
-                     if ($$3xx) {
-                        af.m().a(this.h.a);
-                        $$3x.a($$0);
-                     } else {
-                        $$3x.a($$2x);
-                     }
-                  }, this.h.a, true));
-                  $$1.accept(this.c());
-               });
-            }
-
-            $$3.a(wn.h, $$1x -> {
-               $$1x.aO_();
-               $$1.accept(this.c());
-            });
-            $$3.a(() -> $$1.accept(this.c()));
-            return $$3.a();
-         }
-      }
-   }
-
-   static record b(String a, fho b) {
-      private static final String c = "url";
-      private static final String d = "urlText";
-
-      public static fhi.b a(JsonObject $$0) {
-         String $$1 = fjt.a("url", $$0);
-         fho $$2 = fjt.a("urlText", $$0, fho::a);
-         return new fhi.b($$1, $$2);
-      }
-   }
-
-   public static class c extends fhi {
-      private static final String a = "url";
-      private static final String b = "buttonText";
-      private static final String c = "message";
-      private final String d;
-      private final fho e;
-      private final fho f;
-
-      private c(fhi $$0, String $$1, fho $$2, fho $$3) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
-
-      public static fhi.c a(fhi $$0, JsonObject $$1) {
-         String $$2 = fjt.a("url", $$1);
-         fho $$3 = fjt.a("buttonText", $$1, fho::a);
-         fho $$4 = fjt.a("message", $$1, fho::a);
-         return new fhi.c($$0, $$2, $$3, $$4);
-      }
-
-      public wo d() {
-         return this.f.a(wo.c("mco.notification.visitUrl.message.default"));
-      }
-
-      public fop a(fui $$0) {
-         wo $$1 = this.e.a(fhi.h);
-         return fop.a($$1, ftf.b($$0, this.d)).a();
-      }
    }
 }

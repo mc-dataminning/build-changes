@@ -1,27 +1,27 @@
-public class guw extends gth<cmk, haq, gei> {
-   private static final aku a = aku.b("textures/entity/illager/vex.png");
-   private static final aku b = aku.b("textures/entity/illager/vex_charging.png");
+public class guw extends gqx<chy, har, gej> {
+   private static final akv a = akv.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public guw(gsb.a $$0) {
-      super($$0, new gei($$0.a(gez.ds)), 0.3F);
-      this.a(new gwi<>(this));
+   public guw(gsd.a $$0) {
+      super($$0, new gej($$0.a(gfb.dq)), new gej($$0.a(gfb.dr)), 0.7F);
    }
 
-   protected int a(cmk $$0, ji $$1) {
-      return 15;
+   protected float a(har $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public aku a(haq $$0) {
-      return $$0.a ? b : a;
+   public har b() {
+      return new har();
    }
 
-   public haq b() {
-      return new haq();
-   }
-
-   public void a(cmk $$0, haq $$1, float $$2) {
+   public void a(chy $$0, har $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gxm.a($$0, $$1, this.i);
-      $$1.a = $$0.gp();
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.e_() && $$0.p();
+   }
+
+   public akv b(har $$0) {
+      return a;
    }
 }

@@ -1,12 +1,20 @@
-public record afh(wo b) implements yv<abk> {
-   public static final ym<vz, afh> a = ym.a(wq.d, afh::b, afh::new);
+public record afh(int b) implements yw<abl> {
+   public static final yn<vl, afh> a = yw.a(afh::a, afh::new);
 
-   @Override
-   public yx<afh> a() {
-      return agd.aR;
+   private afh(vl $$0) {
+      this($$0.l());
    }
 
-   public void a(abk $$0) {
+   private void a(vl $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public yy<afh> a() {
+      return age.aQ;
+   }
+
+   public void a(abl $$0) {
       $$0.a(this);
    }
 }

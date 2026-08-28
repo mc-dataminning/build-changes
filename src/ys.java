@@ -1,9 +1,8 @@
-public abstract class ys<T extends vu> implements yv<T> {
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public abstract yx<? extends ys<T>> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ys {
 }

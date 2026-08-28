@@ -1,30 +1,24 @@
-public class gdp extends gct {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final gfa e;
-   private final gfa f;
-
-   public gdp(gfa $$0) {
-      super($$0, gmf::d);
-      this.e = $$0.b("plate");
-      this.f = $$0.b("handle");
+public class gdp extends gdk<hac> {
+   public gdp(gfc $$0) {
+      super($$0);
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      $$1.a("plate", gff.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gfc.a);
-      $$1.a("handle", gff.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gfc.a);
-      return gfg.a($$0, 64, 64);
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("head", gfh.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new gfg(0.6F)), gfe.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gfh.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new gfg(1.75F)), gfe.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gfh $$2 = gfh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new gfg(0.5F));
+      $$1.a("right_hind_leg", $$2, gfe.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, gfe.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, gfe.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, gfe.a(3.0F, 12.0F, -5.0F));
+      return gfi.a($$0, 64, 32);
    }
 
-   public gfa b() {
-      return this.e;
-   }
-
-   public gfa c() {
-      return this.f;
+   public void a(hac $$0) {
+      super.a($$0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ag;
+      this.b.e = $$0.b;
    }
 }

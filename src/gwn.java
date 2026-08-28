@@ -1,35 +1,51 @@
-public class gwn extends gwq<gzt, gdd> {
-   private final gcw a;
-   private final gzp b = new gzp();
+public class gwn extends gws<gzo, gbq> {
+   private final gnb a;
 
-   public gwn(gty<gzt, gdd> $$0, gew $$1) {
+   public gwn(gua<gzo, gbq> $$0, gnb $$1) {
       super($$0);
-      this.a = new gcw($$1.a(gez.bN));
-      this.b.c = gcw.a.e;
+      this.a = $$1;
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gzt $$3, float $$4, float $$5) {
-      chm.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
-
-      chm.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+   public void a(fft $$0, glx $$1, int $$2, gzo $$3, float $$4, float $$5) {
+      if (!$$3.aj) {
+         boolean $$6 = $$3.ao && $$3.z;
+         if (!$$3.z || $$6) {
+            dww $$7 = $$3.a.a();
+            int $$8 = gte.a($$3, 0.0F);
+            hgr $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().b().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
       }
    }
 
-   private void a(ffs $$0, glv $$1, int $$2, gzt $$3, chm.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
-      this.b.u = $$3.u;
-      this.b.ad = $$3.ad;
-      this.b.ae = $$3.ae;
-      this.b.aa = $$5;
-      this.b.ab = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gto.a($$4))), $$2, hec.d);
-      $$0.b();
+   private void a(fft $$0, glx $$1, int $$2, boolean $$3, dww $$4, int $$5, hgr $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(gmh.s(heq.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

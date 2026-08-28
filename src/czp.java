@@ -1,84 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record czp(List<czp.a> c, float d, int e) {
-   public static final Codec<czp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               czp.a.a.listOf().fieldOf("rules").forGetter(czp::a),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(czp::b),
-               ayh.l.optionalFieldOf("damage_per_block", 1).forGetter(czp::c)
-            )
-            .apply($$0, czp::new)
-   );
-   public static final ym<vz, czp> b = ym.a(czp.a.b.a(yk.a()), czp::a, yk.l, czp::b, yk.h, czp::c, czp::new);
+public record czp(List<czp.a> e) implements cyv, czr {
+   public static final czp a = new czp(List.of());
+   public static final int b = 160;
+   public static final Codec<czp> c = czp.a.a.listOf().xmap(czp::new, czp::a);
+   public static final yn<wa, czp> d = czp.a.b.a(yl.a()).a(czp::new, czp::a);
 
-   public float a(dwv $$0) {
-      for (czp.a $$1 : this.c) {
-         if ($$1.d.isPresent() && $$0.a($$1.c)) {
-            return $$1.d.get();
-         }
-      }
-
-      return this.d;
+   public czp a(czp.a $$0) {
+      return new czp(af.a(this.e, $$0));
    }
 
-   public boolean b(dwv $$0) {
-      for (czp.a $$1 : this.c) {
-         if ($$1.e.isPresent() && $$0.a($$1.c)) {
-            return $$1.e.get();
-         }
+   @Override
+   public void a(dgh $$0, bvg $$1, cwo $$2, cyu $$3) {
+      for (czp.a $$4 : this.e) {
+         $$1.a($$4.a());
       }
+   }
 
-      return false;
+   @Override
+   public void a(cwk.b $$0, Consumer<wp> $$1, cyg $$2) {
+      if ($$2.b()) {
+         List<btp> $$3 = new ArrayList<>();
+
+         for (czp.a $$4 : this.e) {
+            $$3.add($$4.a());
+         }
+
+         cyn.a($$3, $$1, 1.0F, $$0.b());
+      }
    }
 
    public List<czp.a> a() {
-      return this.c;
-   }
-
-   public float b() {
-      return this.d;
-   }
-
-   public int c() {
       return this.e;
    }
 
-   public static record a(jv<djk> c, Optional<Float> d, Optional<Boolean> e) {
+   public static record a(jr<btn> c, int d) {
       public static final Codec<czp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  kg.a(mc.f).fieldOf("blocks").forGetter(czp.a::a),
-                  ayh.o.optionalFieldOf("speed").forGetter(czp.a::b),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(czp.a::c)
-               )
+         $$0 -> $$0.group(btn.a.fieldOf("id").forGetter(czp.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(czp.a::c))
                .apply($$0, czp.a::new)
       );
-      public static final ym<vz, czp.a> b = ym.a(yk.c(mc.f), czp.a::a, yk.l.a(yk::a), czp.a::b, yk.b.a(yk::a), czp.a::c, czp.a::new);
+      public static final yn<wa, czp.a> b = yn.a(btn.b, czp.a::b, yl.h, czp.a::c, czp.a::new);
 
-      public static czp.a a(jv<djk> $$0, float $$1) {
-         return new czp.a($$0, Optional.of($$1), Optional.of(true));
+      public btp a() {
+         return new btp(this.c, this.d);
       }
 
-      public static czp.a a(jv<djk> $$0) {
-         return new czp.a($$0, Optional.empty(), Optional.of(false));
-      }
-
-      public static czp.a b(jv<djk> $$0, float $$1) {
-         return new czp.a($$0, Optional.of($$1), Optional.empty());
-      }
-
-      public jv<djk> a() {
+      public jr<btn> b() {
          return this.c;
       }
 
-      public Optional<Float> b() {
+      public int c() {
          return this.d;
-      }
-
-      public Optional<Boolean> c() {
-         return this.e;
       }
    }
 }

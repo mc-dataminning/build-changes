@@ -1,16 +1,18 @@
-public class gvx extends gwq<hay, gbt> {
-   private static final aku a = aku.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final gbt b;
-   private final gbt c;
+public class gvx extends gws<gzv, gdf> {
+   private final gcn<gzv> a;
 
-   public gvx(gty<hay, gbt> $$0, gew $$1) {
+   public gvx(gua<gzv, gdf> $$0, gey $$1) {
       super($$0);
-      this.b = new gbt($$1.a(gez.aD));
-      this.c = new gbt($$1.a(gez.aA));
+      this.a = new gde($$1.a(gfb.cg));
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, hay $$3, float $$4, float $$5) {
-      gbt $$6 = $$3.aj ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   public void a(fft $$0, glx $$1, int $$2, gzv $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.z) {
+         ffx $$6 = $$1.getBuffer(gmh.d($$3.a.a()));
+         int $$7 = gte.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
+      }
    }
 }

@@ -1,60 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class eyo implements eyy {
-   protected final List<eyy> c;
-   private final Predicate<evp> a;
+public record eyo(jr<dcy> b, List<Float> c) implements eyz {
+   public static final MapCodec<eyo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcy.c.fieldOf("enchantment").forGetter(eyo::c), ayi.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eyo::d)).apply($$0, eyo::new)
+   );
 
-   protected eyo(List<eyy> $$0, Predicate<evp> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends eyo> MapCodec<T> a(Function<List<eyy>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(eyy.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends eyo> Codec<T> b(Function<List<eyy>, T> $$0) {
-      return eyy.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(evp $$0) {
-      return this.a.test($$0);
+   @Override
+   public eza b() {
+      return ezb.k;
    }
 
    @Override
-   public void a(evv $$0) {
-      eyy.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public Set<bai<?>> a() {
+      return Set.of(eyk.i);
    }
 
-   public abstract static class a implements eyy.a {
-      private final Builder<eyy> a = ImmutableList.builder();
+   public boolean a(evq $$0) {
+      cwo $$1 = $$0.c(eyk.i);
+      int $$2 = $$1 != null ? dda.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
 
-      protected a(eyy.a... $$0) {
-         for (eyy.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+   public static eyz.a a(jr<dcy> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      public void a(eyy.a $$0) {
-         this.a.add($$0.build());
-      }
+      return () -> new eyo($$0, $$2);
+   }
 
-      @Override
-      public eyy build() {
-         return this.a(this.a.build());
-      }
+   public jr<dcy> c() {
+      return this.b;
+   }
 
-      protected abstract eyy a(List<eyy> var1);
+   public List<Float> d() {
+      return this.c;
    }
 }

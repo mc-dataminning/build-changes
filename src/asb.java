@@ -1,137 +1,105 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import javax.annotation.Nullable;
+import com.google.common.collect.Comparators;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import org.slf4j.Logger;
 
-public class asb extends ask {
-   private final ConfidentialClientApplication b;
-   private final ClientCredentialParameters c;
-   private final Set<String> d;
-   private final int e;
+public class asb {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   private asb(URL $$0, ask.b $$1, ask.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$4;
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   public asb(boolean $$0) {
+      this.g = $$0;
    }
 
-   @Nullable
-   public static ask a(String $$0) {
-      JsonObject $$1 = ayo.a($$0);
-      URI $$2 = URI.create(ayo.i($$1, "apiServer"));
-      String $$3 = ayo.i($$1, "apiPath");
-      String $$4 = ayo.i($$1, "scope");
-      String $$5 = ayo.a($$1, "serverId", "");
-      String $$6 = ayo.i($$1, "applicationId");
-      String $$7 = ayo.i($$1, "tenantId");
-      String $$8 = ayo.a($$1, "roomId", "Java:Chat");
-      String $$9 = ayo.i($$1, "certificatePath");
-      String $$10 = ayo.a($$1, "certificatePassword", "");
-      int $$11 = ayo.a($$1, "hashesToDrop", -1);
-      int $$12 = ayo.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = ayo.v($$1, "fullyFilteredEvents");
-      Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(ayo.a($$1x, "filteredEvent")));
-      int $$15 = ayo.a($$1, "connectionReadTimeoutMs", 2000);
+   public void a(dzb $$0) {
+      this.f.add($$0.f().a());
+   }
 
-      URL $$16;
-      try {
-         $$16 = $$2.resolve($$3).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
+   public void a(are $$0, dfn $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bL()) {
+         $$0.f.b(new acs($$1));
       }
-
-      ask.b $$19 = ($$2x, $$3x) -> {
-         JsonObject $$4x = new JsonObject();
-         $$4x.addProperty("userId", $$2x.getId().toString());
-         $$4x.addProperty("userDisplayName", $$2x.getName());
-         $$4x.addProperty("server", $$5);
-         $$4x.addProperty("room", $$8);
-         $$4x.addProperty("area", "JavaChatRealms");
-         $$4x.addProperty("data", $$3x);
-         $$4x.addProperty("language", "*");
-         return $$4x;
-      };
-      ask.a $$20 = ask.a.select($$11);
-      ExecutorService $$21 = a($$12);
-
-      IClientCertificate $$23;
-      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
-         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
-      } catch (Exception var28) {
-         a.warn("Failed to open certificate file");
-         return null;
-      }
-
-      ConfidentialClientApplication $$27;
-      try {
-         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
-            .build();
-      } catch (Exception var25) {
-         a.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
-      return new asb($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
    }
 
-   private IAuthenticationResult b() {
-      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
-   }
+   public void a(are $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               ard $$2 = $$0.y();
+               aqi $$3 = $$2.m().a;
+               List<dzb> $$4 = this.a($$3, $$0.dx());
+               if (!$$4.isEmpty()) {
+                  asg $$5 = $$0.f;
+                  this.j++;
+                  $$5.b(aca.a);
 
-   @Override
-   protected void a(HttpURLConnection $$0) {
-      IAuthenticationResult $$1 = this.b();
-      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
-   }
+                  for (dzb $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
 
-   @Override
-   protected arv a(String $$0, ask.a $$1, JsonObject $$2) {
-      JsonObject $$3 = ayo.a($$2, "result", null);
-      if ($$3 == null) {
-         return arv.b($$0);
-      } else {
-         boolean $$4 = ayo.a($$3, "filtered", true);
-         if (!$$4) {
-            return arv.a($$0);
-         } else {
-            for (JsonElement $$6 : ayo.a($$3, "events", new JsonArray())) {
-               JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = ayo.a($$7, "id", "");
-               if (this.d.contains($$8)) {
-                  return arv.b($$0);
+                  $$5.b(new abz($$4.size()));
+                  this.i = this.i - (float)$$4.size();
                }
             }
-
-            JsonArray $$9 = ayo.a($$3, "redactedTextIndex", new JsonArray());
-            return new arv($$0, this.a($$0, $$9, $$1));
          }
       }
    }
 
-   @Override
-   protected int a() {
-      return this.e;
+   private static void a(asg $$0, ard $$1, dzb $$2) {
+      $$0.b(new acy($$2, $$1.C_(), null, null));
+      dfn $$3 = $$2.f();
+      agd.a($$1, $$3);
+   }
+
+   private List<dzb> a(aqi $$0, dfn $$1) {
+      int $$2 = ayz.d(this.i);
+      List<dzb> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::e)
+            .filter(Objects::nonNull)
+            .toList();
+      } else {
+         $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
+      }
+
+      for (dzb $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
+   }
+
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : ayz.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
+      }
+
+      this.k = 10;
+   }
+
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

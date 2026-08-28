@@ -1,74 +1,59 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hke {
-   public static final hke a = new hke(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hka<hke.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class hke implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bnj d;
+   @Nullable
+   private CompletableFuture<Optional<hka>> e;
 
-   protected hke(Ticker $$0) {
-      this.c = $$0;
+   private hke(bnj $$0) {
+      this.d = $$0;
    }
 
-   public synchronized void a(hka<hke.a> $$0) {
-      this.a($$0, (Function<hka<hke.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(hka<hke.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hka<hke.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(hka<hke.a> $$0, Function<hka<hke.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hka<hke.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+   public static CompletableFuture<Optional<hke>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bnj $$1 = bnj.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new hke($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
          }
+      }, af.g());
+   }
+
+   public CompletableFuture<Optional<hkb>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bnj.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new hka($$1, af.g()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, af.g());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(hka::a));
    }
 
-   public void a(hjx $$0) {
-      $$0.send(hjy.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hka<hke.a>)$$1, new hke.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hjy.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hka.B, new hke.a((int)$$1)));
-            this.d.clear();
-         }
-      });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<hke.a> a = Codec.INT.xmap(hke.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(hka::close));
       }
    }
 }

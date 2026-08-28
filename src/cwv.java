@@ -1,51 +1,85 @@
-public interface cwv {
-   akt<cwt> a = a("13");
-   akt<cwt> b = a("cat");
-   akt<cwt> c = a("blocks");
-   akt<cwt> d = a("chirp");
-   akt<cwt> e = a("far");
-   akt<cwt> f = a("mall");
-   akt<cwt> g = a("mellohi");
-   akt<cwt> h = a("stal");
-   akt<cwt> i = a("strad");
-   akt<cwt> j = a("ward");
-   akt<cwt> k = a("11");
-   akt<cwt> l = a("wait");
-   akt<cwt> m = a("pigstep");
-   akt<cwt> n = a("otherside");
-   akt<cwt> o = a("5");
-   akt<cwt> p = a("relic");
-   akt<cwt> q = a("precipice");
-   akt<cwt> r = a("creator");
-   akt<cwt> s = a("creator_music_box");
+import javax.annotation.Nullable;
 
-   private static akt<cwt> a(String $$0) {
-      return akt.a(mc.L, aku.b($$0));
+public class cwv {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jr<cwu> c;
+   private final ji d;
+   private final cwv.a e;
+
+   public cwv(cwv.a $$0, ji $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   private static void a(qe<cwt> $$0, akt<cwt> $$1, jr.c<avy> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cwt($$2, wo.c(af.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   public boolean a() {
+      return this.c != null;
    }
 
-   static void a(qe<cwt> $$0) {
-      a($$0, a, avz.qg, 178, 1);
-      a($$0, b, avz.qi, 185, 2);
-      a($$0, c, avz.qh, 345, 3);
-      a($$0, d, avz.qj, 185, 4);
-      a($$0, e, avz.qk, 174, 5);
-      a($$0, f, avz.ql, 197, 6);
-      a($$0, g, avz.qm, 96, 7);
-      a($$0, h, avz.qo, 150, 8);
-      a($$0, i, avz.qp, 188, 9);
-      a($$0, j, avz.qr, 251, 10);
-      a($$0, k, avz.qf, 71, 11);
-      a($$0, l, avz.qq, 238, 12);
-      a($$0, m, avz.qn, 149, 13);
-      a($$0, n, avz.qs, 195, 14);
-      a($$0, o, avz.qe, 178, 15);
-      a($$0, p, avz.qt, 218, 14);
-      a($$0, q, avz.qw, 299, 13);
-      a($$0, r, avz.qu, 176, 12);
-      a($$0, s, avz.qv, 73, 11);
+   @Nullable
+   public cwu b() {
+      return this.c == null ? null : this.c.a();
+   }
+
+   public long c() {
+      return this.b;
+   }
+
+   public void a(jr<cwu> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
+      }
+   }
+
+   public void a(dgi $$0, jr<cwu> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.K_().e(mc.L).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
+
+   public void a(dgi $$0, @Nullable dww $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(ebs.F, this.d, ebs.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(dgi $$0, @Nullable dww $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(ebs.E, this.d, ebs.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(dgi $$0, ji $$1) {
+      if ($$0 instanceof ard $$2) {
+         faz $$3 = faz.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.H_().a(4) / 24.0F;
+         $$2.a(lt.ac, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

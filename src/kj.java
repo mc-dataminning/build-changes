@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
 public class kj {
-   public static final ym<ByteBuf, kj> a = new ym<ByteBuf, kj>() {
+   public static final yn<ByteBuf, kj> a = new yn<ByteBuf, kj>() {
       public kj a(ByteBuf $$0) {
          return new kj($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
@@ -52,14 +52,14 @@ public class kj {
    }
 
    public float e() {
-      return ayy.h(this.b);
+      return ayz.h(this.b);
    }
 
    public float f() {
-      return ayy.h(this.c);
+      return ayz.h(this.c);
    }
 
    public float g() {
-      return ayy.h(this.d);
+      return ayz.h(this.d);
    }
 }

@@ -1,23 +1,51 @@
-public record zz(aku a) implements zy {
-   public static <T extends vl> ym<T, zz> a(aku $$0, int $$1) {
-      return zy.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.k($$3);
-            return new zz($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public interface zz {
+   zz.b<? extends zz> a();
+
+   static <B extends ByteBuf, T extends zz> yn<B, T> a(yq<B, T> $$0, yo<B, T> $$1) {
+      return yn.a($$0, $$1);
+   }
+
+   static <T extends zz> zz.b<T> a(String $$0) {
+      return new zz.b<>(akv.b($$0));
+   }
+
+   static <B extends vl> yn<B, zz> a(final zz.a<B> $$0, List<zz.c<? super B, ?>> $$1) {
+      final Map<akv, yn<? super B, ? extends zz>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), zz.c::b));
+      return new yn<B, zz>() {
+         private yn<? super B, ? extends zz> a(akv $$0x) {
+            yn<? super B, ? extends zz> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
          }
-      });
+
+         private <T extends zz> void a(B $$0x, zz.b<T> $$1, zz $$2x) {
+            $$0.a($$1.a());
+            yn<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, zz $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public zz a(B $$0x) {
+            akv $$1 = $$0.q();
+            return (zz)this.a($$1).decode($$0);
+         }
+      };
    }
 
-   @Override
-   public zy.b<zz> a() {
-      return new zy.b<>(this.a);
+   public interface a<B extends vl> {
+      yn<B, ? extends zz> create(akv var1);
    }
 
-   public aku b() {
-      return this.a;
+   public static record b<T extends zz>(akv a) {
+   }
+
+   public static record c<B extends vl, T extends zz>(zz.b<T> a, yn<B, T> b) {
    }
 }

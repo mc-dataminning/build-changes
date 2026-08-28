@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 public class so {
    public static final int a = 8;
    private static final Logger b = LogUtils.getLogger();
-   final arc c;
+   final ard c;
    private final sr d;
    private final List<sl> e;
    private ImmutableList<sf> f;
@@ -27,7 +27,7 @@ public class so {
    private final so.c m;
    final boolean n;
 
-   protected so(so.b $$0, Collection<sf> $$1, arc $$2, sr $$3, so.c $$4, so.c $$5, boolean $$6) {
+   protected so(so.b $$0, Collection<sf> $$1, ard $$2, sr $$3, so.c $$4, so.c $$5, boolean $$6) {
       this.c = $$2;
       this.d = $$3;
       this.i = $$0;
@@ -86,7 +86,7 @@ public class so {
                   so.this.k.d().accept(so.this.c);
                   so.this.g.forEach($$0xxx -> $$0xxx.b(so.this.k));
                   LongSet $$0 = new LongArraySet(so.this.c.y());
-                  $$0.forEach($$0xxx -> so.this.c.a(dfm.a($$0xxx), dfm.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> so.this.c.a(dfn.a($$0xxx), dfn.b($$0xxx), false));
                   so.this.a($$0 + 1);
                }
             }
@@ -105,7 +105,7 @@ public class so {
                if (so.this.n) {
                   so.this.k.d().accept(so.this.c);
                   LongSet $$2 = new LongArraySet(so.this.c.y());
-                  $$2.forEach($$0xxx -> so.this.c.a(dfm.a($$0xxx), dfm.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> so.this.c.a(dfn.a($$0xxx), dfn.b($$0xxx), false));
                   sr.a.a();
                } else {
                   this.a();
@@ -145,12 +145,12 @@ public class so {
       return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
    }
 
-   public static void a(arc $$0) {
-      agc.a($$0);
+   public static void a(ard $$0) {
+      agd.a($$0);
    }
 
    public static class a {
-      private final arc a;
+      private final ard a;
       private final sr b = sr.a;
       private so.b c = sg.a();
       private so.c d = so.c.a;
@@ -158,16 +158,16 @@ public class so {
       private final Collection<sf> f;
       private boolean g = false;
 
-      private a(Collection<sf> $$0, arc $$1) {
+      private a(Collection<sf> $$0, ard $$1) {
          this.f = $$0;
          this.a = $$1;
       }
 
-      public static so.a a(Collection<sf> $$0, arc $$1) {
+      public static so.a a(Collection<sf> $$0, ard $$1) {
          return new so.a($$0, $$1);
       }
 
-      public static so.a b(Collection<sl> $$0, arc $$1) {
+      public static so.a b(Collection<sl> $$0, ard $$1) {
          return a(sg.a().batch($$0), $$1);
       }
 
@@ -206,7 +206,7 @@ public class so {
 
       Optional<sl> spawnStructure(sl var1);
 
-      default void a(arc $$0) {
+      default void a(ard $$0) {
       }
    }
 }

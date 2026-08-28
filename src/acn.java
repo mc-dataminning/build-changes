@@ -1,21 +1,20 @@
-public record acn(wo b, wk.a c) implements yv<abk> {
-   public static final ym<vz, acn> a = ym.a(wq.d, acn::b, wk.a.a, acn::e, acn::new);
+public record acn(xb.a b) implements yw<abl> {
+   public static final yn<vl, acn> a = yw.a(acn::a, acn::new);
 
-   @Override
-   public yx<acn> a() {
-      return agd.C;
+   private acn(vl $$0) {
+      this(xb.a.a($$0));
    }
 
-   public void a(abk $$0) {
+   private void a(vl $$0) {
+      xb.a.a($$0, this.b);
+   }
+
+   @Override
+   public yy<acn> a() {
+      return age.B;
+   }
+
+   public void a(abl $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wk.a e() {
-      return this.c;
    }
 }

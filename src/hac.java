@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public class hac extends gzh {
-   public fay a = fay.c;
-   @Nullable
-   public cvk b;
-   public float c;
-   public float d;
-   public float e;
-   public jn f = jn.a;
+public class hac extends gzj {
+   public float a;
+   public float b;
+   public boolean c;
+   public cvl d = cvl.a;
+   public int e;
 }

@@ -1,97 +1,57 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ali implements aui {
-   private static final Logger b = LogUtils.getLogger();
-   public static final akt<ke<il<ex>>> a = akt.a(aku.b("function"));
-   private static final akn c = new akn(mc.c(a), ".mcfunction");
-   private volatile Map<aku, il<ex>> d = ImmutableMap.of();
-   private final axf<il<ex>> e = new axf<>(($$0x, $$1x) -> this.a($$0x), mc.d(a));
-   private volatile Map<aku, List<il<ex>>> f = Map.of();
-   private final int g;
-   private final CommandDispatcher<ex> h;
+public class ali extends aut<ah> {
+   private static final Logger a = LogUtils.getLogger();
+   private Map<akv, ai> b = Map.of();
+   private an c = new an();
+   private final jt.a d;
 
-   public Optional<il<ex>> a(aku $$0) {
-      return Optional.ofNullable(this.d.get($$0));
+   public ali(jt.a $$0) {
+      super($$0, ah.a, mc.bj);
+      this.d = $$0;
    }
 
-   public Map<aku, il<ex>> a() {
-      return this.d;
-   }
-
-   public List<il<ex>> b(aku $$0) {
-      return this.f.getOrDefault($$0, List.of());
-   }
-
-   public Iterable<aku> b() {
-      return this.f.keySet();
-   }
-
-   public ali(int $$0, CommandDispatcher<ex> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public CompletableFuture<Void> a(aui.a $$0, auo $$1, Executor $$2, Executor $$3) {
-      CompletableFuture<Map<aku, List<axf.b>>> $$4 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$2);
-      CompletableFuture<Map<aku, CompletableFuture<il<ex>>>> $$5 = CompletableFuture.<Map<aku, aum>>supplyAsync(() -> c.a($$1), $$2).thenCompose($$1x -> {
-         Map<aku, CompletableFuture<il<ex>>> $$2x = Maps.newHashMap();
-         ex $$3x = new ex(ew.a, fay.c, fax.a, null, this.g, "", wn.a, null, null);
-
-         for (Entry<aku, aum> $$4x : $$1x.entrySet()) {
-            aku $$5x = $$4x.getKey();
-            aku $$6 = c.b($$5x);
-            $$2x.put($$6, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return il.a($$6, this.h, $$3x, $$3xx);
-            }, $$2));
-         }
-
-         CompletableFuture<?>[] $$7 = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7).handle(($$1xx, $$2xx) -> $$2x);
+   protected void a(Map<akv, ah> $$0, aup $$1, bos $$2) {
+      Builder<akv, ai> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         this.a($$1x, $$2x);
+         $$3.put($$1x, new ai($$1x, $$2x));
       });
-      return $$4.thenCombine($$5, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<aku, CompletableFuture<il<ex>>> $$1x = (Map<aku, CompletableFuture<il<ex>>>)$$0x.getSecond();
-         Builder<aku, il<ex>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  b.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
+      this.b = $$3.buildOrThrow();
+      an $$4 = new an();
+      $$4.a(this.b.values());
 
-               return null;
-            }).join());
-         this.d = $$2x.build();
-         this.f = this.e.a((Map<aku, List<axf.b>>)$$0x.getFirst());
-      }, $$3);
+      for (aj $$5 : $$4.b()) {
+         if ($$5.b().b().c().isPresent()) {
+            av.a($$5);
+         }
+      }
+
+      this.c = $$4;
    }
 
-   private static List<String> a(aum $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
+   private void a(akv $$0, ah $$1) {
+      azf.a $$2 = new azf.a();
+      $$1.a($$2, this.d);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
+   }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
-      }
+   @Nullable
+   public ai a(akv $$0) {
+      return this.b.get($$0);
+   }
+
+   public an a() {
+      return this.c;
+   }
+
+   public Collection<ai> b() {
+      return this.b.values();
    }
 }

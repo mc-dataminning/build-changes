@@ -1,49 +1,19 @@
-public class gba extends gby<gxq> {
-   private final gfa a;
-   private final gfa b;
-   private final gfa c;
-   private final gfa d;
-   private final gfa e;
-   private final gfa f;
-   private final gfa g;
+public class gba extends gcv {
+   private final gfc a;
 
-   public gba(gfa $$0) {
-      super($$0, gmf::f);
-      this.b = $$0.b("body");
-      this.a = $$0.b("head");
-      this.c = this.b.b("right_wing");
-      this.e = this.c.b("right_wing_tip");
-      this.d = this.b.b("left_wing");
-      this.f = this.d.b("left_wing_tip");
-      this.g = this.b.b("feet");
+   public gba(gfc $$0) {
+      super($$0, gmh::d);
+      this.a = $$0.b("flag");
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      gfk $$2 = $$1.a("body", gff.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), gfc.a(0.0F, 17.0F, 0.0F));
-      gfk $$3 = $$1.a("head", gff.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), gfc.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", gff.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), gfc.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", gff.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), gfc.a(1.1F, -3.0F, 0.0F));
-      gfk $$4 = $$2.a("right_wing", gff.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gfc.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", gff.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gfc.a(-2.0F, 0.0F, 0.0F));
-      gfk $$5 = $$2.a("left_wing", gff.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gfc.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", gff.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gfc.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", gff.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), gfc.a(0.0F, 5.0F, 0.0F));
-      return gfg.a($$0, 32, 32);
+   public static gfi a(boolean $$0) {
+      gfk $$1 = new gfk();
+      gfm $$2 = $$1.a();
+      $$2.a("flag", gfh.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gfe.a(0.0F, $$0 ? -44.0F : -20.5F, $$0 ? 0.0F : 10.5F));
+      return gfi.a($$1, 64, 64);
    }
 
-   public void a(gxq $$0) {
-      super.a($$0);
-      if ($$0.a) {
-         this.a($$0.aa);
-      }
-
-      this.a($$0.b, flz.b, $$0.u, 1.0F);
-      this.a($$0.c, flz.a, $$0.u, 1.0F);
-   }
-
-   private void a(float $$0) {
-      this.a.f = $$0 * (float) (Math.PI / 180.0);
+   public void a(float $$0) {
+      this.a.e = (-0.0125F + 0.01F * ayz.b((float) (Math.PI * 2) * $$0)) * (float) Math.PI;
    }
 }

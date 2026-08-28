@@ -1,25 +1,36 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ezs(dde b) implements ezu {
-   public static final MapCodec<ezs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dde.b.fieldOf("amount").forGetter(ezs::c)).apply($$0, ezs::new));
+public record ezs(float c) implements ezv {
+   public static final MapCodec<ezs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ezs::c)).apply($$0, ezs::new));
+   public static final Codec<ezs> b = Codec.FLOAT.xmap(ezs::new, ezs::c);
 
    @Override
-   public float b(evp $$0) {
-      int $$1 = $$0.b(eyj.k);
-      return this.b.a($$1);
+   public ezu b() {
+      return ezw.b;
    }
 
    @Override
-   public ezt b() {
-      return ezv.g;
+   public float b(evq $$0) {
+      return this.c;
    }
 
-   public static ezs a(dde $$0) {
+   public static ezs a(float $$0) {
       return new ezs($$0);
    }
 
-   public dde c() {
-      return this.b;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ezs)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

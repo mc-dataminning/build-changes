@@ -5,22 +5,22 @@ public interface ev {
    ev a = new ev() {
       @Nullable
       @Override
-      public xe a(String $$0) {
+      public xf a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   xe a(String var1);
+   xf a(String var1);
 
-   public static record a(Map<String, xe> b) implements ev {
+   public static record a(Map<String, xf> b) implements ev {
       @Nullable
       @Override
-      public xe a(String $$0) {
+      public xf a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, xe> a() {
+      public Map<String, xf> a() {
          return this.b;
       }
    }

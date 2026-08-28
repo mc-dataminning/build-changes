@@ -1,88 +1,77 @@
-public class ctg extends csa {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final bsb s;
-   private final csm t;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public ctg(int $$0) {
-      this($$0, new bsp(1), new ctw(1));
-   }
+public class ctg {
+   private final List<ctg.b> a;
+   private final ctg.b b;
 
-   public ctg(int $$0, bsb $$1, csm $$2) {
-      super(ctj.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new ctx($$1, 0, 0, 0) {
-         @Override
-         public void c() {
-            super.c();
-            ctg.this.a(this.c);
-         }
-      });
-      this.a($$2);
-   }
-
-   @Override
-   public boolean a(cov $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
+   ctg(List<ctg.b> $$0, ctg.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(ctg.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
       } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gv()) {
-                  return false;
-               }
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
+   }
 
-               cwn $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gi().f($$5)) {
-                  $$0.a($$5, false);
-               }
+   public static ctg.a a() {
+      return new ctg.a();
+   }
 
-               return true;
-            default:
-               return false;
+   public ctg.b a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public ctg.b b() {
+      return this.b;
+   }
+
+   public List<ctg.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public static class a {
+      private final List<ctg.b> a = new ArrayList<>();
+      private ctg.b b = ctg.b.e;
+
+      public ctg.a a(int $$0, int $$1, int $$2, Predicate<cwo> $$3) {
+         this.a.add(new ctg.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public ctg.a a(int $$0, int $$1, int $$2) {
+         this.b = new ctg.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public ctg a() {
+         int $$0 = this.a.size();
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            ctg.b $$2 = this.a.get($$1);
+            if ($$2.a != $$1) {
+               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+            }
+         }
+
+         if (this.b.a != $$0) {
+            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
+         } else {
+            return new ctg(this.a, this.b);
          }
       }
    }
 
-   @Override
-   public cwn b(cov $$0, int $$1) {
-      return cwn.j;
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public boolean b(cov $$0) {
-      return this.s.a($$0);
-   }
-
-   public cwn l() {
-      return this.s.a(0);
-   }
-
-   public int m() {
-      return this.t.a(0);
+   public static record b(int a, int b, int c, Predicate<cwo> d) {
+      static final ctg.b e = new ctg.b(0, 0, 0, $$0 -> true);
    }
 }

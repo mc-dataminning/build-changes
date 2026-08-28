@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtb extends dsc implements dsu {
-   public static final MapCodec<dtb> m = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxk.a.fieldOf("block_set_type").forGetter(dsc::q), dsu.a.e.fieldOf("weathering_state").forGetter(dtb::r), t()).apply($$0, dtb::new)
+public class dtb extends drk implements dsv {
+   public static final MapCodec<dtb> J = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsv.a.e.fieldOf("weathering_state").forGetter(dkn::c), dww.a.fieldOf("base_state").forGetter($$0x -> $$0x.I), t()).apply($$0, dtb::new)
    );
-   private final dsu.a n;
+   private final dsv.a K;
 
    @Override
    public MapCodec<dtb> a() {
-      return m;
+      return J;
    }
 
-   protected dtb(dxk $$0, dsu.a $$1, dwu.d $$2) {
-      super($$0, $$2);
-      this.n = $$1;
+   public dtb(dsv.a $$0, dww $$1, dwv.d $$2) {
+      super($$1, $$2);
+      this.K = $$0;
    }
 
    @Override
-   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+   protected void b(dww $$0, ard $$1, ji $$2, azh $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean f(dwv $$0) {
-      return dsu.c($$0.b()).isPresent();
+   protected boolean f(dww $$0) {
+      return dsv.c($$0.b()).isPresent();
    }
 
-   public dsu.a r() {
-      return this.n;
+   public dsv.a q() {
+      return this.K;
    }
 }

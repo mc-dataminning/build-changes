@@ -1,59 +1,98 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnq extends dna implements dod {
-   public static final MapCodec<dnq> c = b(dnq::new);
-   protected static final fbs g = djk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class dnq extends dix {
+   public static final MapCodec<dnq> a = b(dnq::new);
+   public static final dxn b = dxm.r;
 
    @Override
    public MapCodec<dnq> a() {
-      return c;
+      return a;
    }
 
-   protected dnq(dwu.d $$0) {
-      super($$0, jn.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean h(dwv $$0) {
-      return $$0.a(djm.J);
+   protected dnq(dwv.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected djk b() {
-      return djm.mF;
+   public void a(dgh $$0, ji $$1, dww $$2, @Nullable bvg $$3, cwo $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cyx $$5 = $$4.a(kv.Y, cyx.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
+      }
    }
 
    @Override
-   protected boolean o(dwv $$0) {
-      return !$$0.a(djm.ll);
+   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dvc $$5) {
+         $$5.s();
+         return bsj.a;
+      } else {
+         return bsj.e;
+      }
    }
 
    @Override
-   public boolean a(@Nullable cov $$0, dfl $$1, ji $$2, dwv $$3, esw $$4) {
-      return false;
+   protected bsj a(cwo $$0, dww $$1, dgh $$2, ji $$3, cow $$4, bsi $$5, fav $$6) {
+      if ($$1.c(b)) {
+         return bsj.f;
+      } else {
+         cwo $$7 = $$4.b($$5);
+         bsj $$8 = cwt.a($$2, $$3, $$7, $$4);
+         return (bsj)(!$$8.a() ? bsj.f : $$8);
+      }
    }
 
    @Override
-   public boolean a(dgh $$0, ji $$1, dwv $$2, esx $$3) {
-      return false;
+   protected void a(dww $$0, dgh $$1, ji $$2, dww $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dvc $$5) {
+            $$5.s();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   protected int a(azg $$0) {
-      return 1;
+   public dty a(ji $$0, dww $$1) {
+      return new dvc($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dww $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dww $$0, dfm $$1, ji $$2, jn $$3) {
+      if ($$1.c_($$2) instanceof dvc $$4 && $$4.j().a()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dww $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dww $$0, dgh $$1, ji $$2) {
+      return $$1.c_($$2) instanceof dvc $$3 ? $$3.u() : 0;
+   }
+
+   @Override
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(b);
    }
 
    @Nullable
    @Override
-   public dwv a(dae $$0) {
-      esx $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awu.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected esx b_(dwv $$0) {
-      return esy.c.a(false);
+   public <T extends dty> dtz<T> a(dgh $$0, dww $$1, dua<T> $$2) {
+      return $$1.c(b) ? a($$2, dua.e, dvc::a) : null;
    }
 }

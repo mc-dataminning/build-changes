@@ -1,25 +1,33 @@
-public class gwr<S extends gzh & gzy, M extends gby<? super S>> extends gwq<S, M> {
-   private final aku a;
-   private final M b;
-   private final M c;
+public class gwr<S extends gzv, M extends gca<S> & gau & gcj> extends gwk<S, M> {
+   private static final float a = (float) (-Math.PI / 6);
+   private static final float b = (float) (Math.PI / 2);
 
-   public gwr(gty<S, M> $$0, M $$1, M $$2, aku $$3) {
+   public gwr(gua<S, M> $$0) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
    }
 
-   public gwr(gty<S, M> $$0, M $$1, aku $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
-
-   public void a(ffs $$0, glv $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.a()) {
-         M $$6 = $$3.aj ? this.c : this.b;
-         $$6.a($$3);
-         ffw $$7 = $$1.getBuffer(gmf.g(this.a));
-         $$6.a($$0, $$7, $$2, hec.d);
+   protected void a(S $$0, hbn $$1, bva $$2, fft $$3, glx $$4, int $$5) {
+      if (!$$1.c()) {
+         if ($$0.H < 1.0E-5F && $$0.e == $$2 && !$$0.aI.c()) {
+            this.a($$0.aI, $$2, $$3, $$4, $$5);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
+   }
+
+   private void a(hbn $$0, bva $$1, fft $$2, glx $$3, int $$4) {
+      $$2.a();
+      this.d().e().a($$2);
+      gfc $$5 = this.d().b();
+      float $$6 = $$5.e;
+      $$5.e = ayz.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$5.a($$2);
+      $$5.e = $$6;
+      gvw.a($$2, gvw.a.a);
+      boolean $$7 = $$1 == bva.a;
+      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      $$0.a($$2, $$3, $$4, heh.d);
+      $$2.b();
    }
 }

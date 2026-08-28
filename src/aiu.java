@@ -1,20 +1,29 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
+public class aiu implements yw<aiq> {
+   public static final yn<vl, aiu> a = yw.a(aiu::a, aiu::new);
+   private final wp b;
 
-public record aiu(GameProfile b) implements yv<aip> {
-   public static final ym<ByteBuf, aiu> a = ym.a(yk.y, aiu::b, aiu::new);
-
-   @Override
-   public yx<aiu> a() {
-      return aiv.b;
+   public aiu(wp $$0) {
+      this.b = $$0;
    }
 
-   public void a(aip $$0) {
+   private aiu(vl $$0) {
+      this.b = wp.a.b($$0.d(262144), kf.b);
+   }
+
+   private void a(vl $$0) {
+      $$0.a(wp.a.a(this.b, kf.b));
+   }
+
+   @Override
+   public yy<aiu> a() {
+      return aiw.e;
+   }
+
+   public void a(aiq $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public wp b() {
+      return this.b;
    }
 }

@@ -1,66 +1,284 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gpr {
-   private static final int a = axj.a(255, 255, 100, 255);
-   private static final int b = axj.a(255, 100, 255, 255);
-   private static final int c = axj.a(255, 0, 255, 0);
-   private static final int d = axj.a(255, 255, 165, 0);
-   private static final int e = axj.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final flh h;
-   private final Map<Integer, zx.a> i = new HashMap<>();
+public class gpr implements gpy.a {
+   private static final boolean a = true;
+   private static final boolean b = true;
+   private static final boolean c = true;
+   private static final boolean d = true;
+   private static final boolean e = true;
+   private static final boolean f = false;
+   private static final boolean g = true;
+   private static final boolean h = true;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final boolean k = true;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final int q = 8;
+   private static final int r = 20;
+   private static final float s = 0.02F;
+   private static final int t = -23296;
+   private static final int u = -3355444;
+   private static final int v = -98404;
+   private final fli w;
+   private final Map<ji, gpr.a> x = new HashMap<>();
+   private final Map<UUID, zv.a> y = new HashMap<>();
+   @Nullable
+   private UUID z;
 
-   public gpr(flh $$0) {
-      this.h = $$0;
+   public gpr(fli $$0) {
+      this.w = $$0;
    }
 
-   public void a(ffs $$0, glv $$1, double $$2, double $$3, double $$4) {
-      gkt $$5 = this.h.t;
-      $$5.dW().a(buq.r, $$5.cR().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<zx.a> $$7 = Optional.ofNullable(this.i.get($$6.ar()));
-         $$7.map(zx.a::d).map($$1xx -> $$5.dW().a($$1xx)).map($$0xx -> $$0xx.o(this.h.av().a(true))).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.du(), $$6x, b);
-            fay $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gmf.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gmf.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gmf.a(2.0)), $$7x, 24.0F, e);
-         });
-         $$7.map(zx.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.du(), $$6x.b(), a);
-            gpw.a($$0, $$1, fat.a(fay.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
+   @Override
+   public void a() {
+      this.x.clear();
+      this.y.clear();
+      this.z = null;
+   }
+
+   public void a(aag.a $$0, long $$1) {
+      this.x.put($$0.a(), new gpr.a($$0, $$1));
+   }
+
+   public void a(zv.a $$0) {
+      this.y.put($$0.b(), $$0);
+   }
+
+   public void a(int $$0) {
+      this.y.values().removeIf($$1 -> $$1.c() == $$0);
+   }
+
+   @Override
+   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
+      this.c();
+      this.b();
+      this.a($$0, $$1);
+      if (!this.w.t.Z_()) {
+         this.g();
+      }
+   }
+
+   private void b() {
+      this.y.entrySet().removeIf($$0 -> this.w.s.a($$0.getValue().c()) == null);
+   }
+
+   private void c() {
+      long $$0 = this.w.s.ad() - 20L;
+      this.x.entrySet().removeIf($$1 -> $$1.getValue().b() < $$0);
+   }
+
+   private void a(fft $$0, glx $$1) {
+      ji $$2 = this.e().c();
+      this.y.values().forEach($$2x -> {
+         if (this.c($$2x)) {
+            this.b($$0, $$1, $$2x);
+         }
+      });
+      this.b($$0, $$1);
+
+      for (ji $$3 : this.x.keySet()) {
+         if ($$2.a($$3, 30.0)) {
+            a($$0, $$1, $$3);
+         }
+      }
+
+      Map<ji, Set<UUID>> $$4 = this.d();
+      this.x.values().forEach($$4x -> {
+         if ($$2.a($$4x.a.a(), 30.0)) {
+            Set<UUID> $$5 = $$4.get($$4x.a.a());
+            this.a($$0, $$1, $$4x.a, (Collection<UUID>)($$5 == null ? Sets.newHashSet() : $$5));
+         }
+      });
+      this.f().forEach(($$3x, $$4x) -> {
+         if ($$2.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, (List<String>)$$4x);
+         }
       });
    }
 
-   private static void a(ffs $$0, glv $$1, double $$2, double $$3, double $$4, fay $$5, fay $$6, int $$7) {
-      ffw $$8 = $$1.getBuffer(gmf.a(2.0));
-      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
-      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
+   private Map<ji, Set<UUID>> d() {
+      Map<ji, Set<UUID>> $$0 = Maps.newHashMap();
+      this.y.values().forEach($$1 -> $$1.j().forEach($$2 -> $$0.computeIfAbsent($$2, $$0xxx -> Sets.newHashSet()).add($$1.b())));
+      return $$0;
    }
 
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, ffw $$4, fay $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   private void b(fft $$0, glx $$1) {
+      Map<ji, Set<UUID>> $$2 = Maps.newHashMap();
+      this.y.values().forEach($$1x -> {
+         if ($$1x.g() != null) {
+            $$2.computeIfAbsent($$1x.g(), $$0xx -> new HashSet<>()).add($$1x.b());
+         }
+      });
+      $$2.forEach(($$2x, $$3) -> {
+         Set<String> $$4 = $$3.stream().map(agc::a).collect(Collectors.toSet());
+         int $$5 = 1;
+         a($$0, $$1, $$4.toString(), $$2x, $$5++, -256);
+         a($$0, $$1, "Flower", $$2x, $$5++, -1);
+         float $$6 = 0.05F;
+         gpy.a($$0, $$1, $$2x, 0.05F, 0.8F, 0.8F, 0.0F, 0.3F);
+      });
+   }
+
+   private static String a(Collection<UUID> $$0) {
+      if ($$0.isEmpty()) {
+         return "-";
+      } else {
+         return $$0.size() > 3 ? $$0.size() + " bees" : $$0.stream().map(agc::a).collect(Collectors.toSet()).toString();
+      }
+   }
+
+   private static void a(fft $$0, glx $$1, ji $$2) {
+      float $$3 = 0.05F;
+      gpy.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+   }
+
+   private void a(fft $$0, glx $$1, ji $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      gpy.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
+   }
+
+   private void a(fft $$0, glx $$1, aag.a $$2, Collection<UUID> $$3) {
+      int $$4 = 0;
+      if (!$$3.isEmpty()) {
+         a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
       }
 
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      a($$0, $$1, "Out: " + a(this.a($$2.a())), $$2, $$4++, -3355444);
+      if ($$2.c() == 0) {
+         a($$0, $$1, "In: -", $$2, $$4++, -256);
+      } else if ($$2.c() == 1) {
+         a($$0, $$1, "In: 1 bee", $$2, $$4++, -256);
+      } else {
+         a($$0, $$1, "In: " + $$2.c() + " bees", $$2, $$4++, -256);
+      }
+
+      a($$0, $$1, "Honey: " + $$2.d(), $$2, $$4++, -23296);
+      a($$0, $$1, $$2.b() + ($$2.e() ? " (sedated)" : ""), $$2, $$4++, -1);
    }
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, ffw $$5, fay $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      fay $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
+   private void a(fft $$0, glx $$1, zv.a $$2) {
+      if ($$2.e() != null) {
+         gqh.a($$0, $$1, $$2.e(), 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
+      }
    }
 
-   public void a() {
-      this.i.clear();
+   private void b(fft $$0, glx $$1, zv.a $$2) {
+      boolean $$3 = this.b($$2);
+      int $$4 = 0;
+      a($$0, $$1, $$2.d(), $$4++, $$2.toString(), -1, 0.03F);
+      if ($$2.f() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No hive", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Hive: " + this.a($$2, $$2.f()), -256, 0.02F);
+      }
+
+      if ($$2.g() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No flower", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Flower: " + this.a($$2, $$2.g()), -256, 0.02F);
+      }
+
+      for (String $$5 : $$2.i()) {
+         a($$0, $$1, $$2.d(), $$4++, $$5, -16711936, 0.02F);
+      }
+
+      if ($$3) {
+         this.a($$0, $$1, $$2);
+      }
+
+      if ($$2.h() > 0) {
+         int $$6 = $$2.h() < 2400 ? -3355444 : -23296;
+         a($$0, $$1, $$2.d(), $$4++, "Travelling: " + $$2.h() + " ticks", $$6, 0.02F);
+      }
    }
 
-   public void a(zx.a $$0) {
-      this.i.put($$0.c(), $$0);
+   private static void a(fft $$0, glx $$1, String $$2, aag.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a(), $$4, $$5);
+   }
+
+   private static void a(fft $$0, glx $$1, String $$2, ji $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      gpy.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
+   }
+
+   private static void a(fft $$0, glx $$1, kb $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      ji $$9 = ji.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      gpy.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
+
+   private fkq e() {
+      return this.w.j.k();
+   }
+
+   private Set<String> a(aag.a $$0) {
+      return this.a($$0.a()).stream().map(agc::a).collect(Collectors.toSet());
+   }
+
+   private String a(zv.a $$0, ji $$1) {
+      double $$2 = Math.sqrt($$1.b($$0.d()));
+      double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
+      return $$1.x() + " (dist " + $$3 + ")";
+   }
+
+   private boolean b(zv.a $$0) {
+      return Objects.equals(this.z, $$0.b());
+   }
+
+   private boolean c(zv.a $$0) {
+      cow $$1 = this.w.t;
+      ji $$2 = ji.a($$1.dA(), $$0.d().b(), $$1.dG());
+      ji $$3 = ji.a((kb)$$0.d());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> a(ji $$0) {
+      return this.y.values().stream().filter($$1 -> $$1.a($$0)).map(zv.a::b).collect(Collectors.toSet());
+   }
+
+   private Map<ji, List<String>> f() {
+      Map<ji, List<String>> $$0 = Maps.newHashMap();
+
+      for (zv.a $$1 : this.y.values()) {
+         if ($$1.f() != null && !this.x.containsKey($$1.f())) {
+            $$0.computeIfAbsent($$1.f(), $$0x -> Lists.newArrayList()).add($$1.a());
+         }
+      }
+
+      return $$0;
+   }
+
+   private void g() {
+      gpy.a(this.w.ao(), 8).ifPresent($$0 -> this.z = $$0.cG());
+   }
+
+   static record a(aag.a a, long b) {
    }
 }

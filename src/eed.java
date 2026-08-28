@@ -1,24 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eed extends eei {
-   private final jv<djk> e;
-   public static final MapCodec<eed> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kg.a(mc.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, eed::new)
+public class eed extends eej {
+   final axf<djl> a;
+   public static final MapCodec<eed> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axf.a(mc.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eed::new)
    );
 
-   public eed(km $$0, jv<djk> $$1) {
+   protected eed(km $$0, axf<djl> $$1) {
       super($$0);
-      this.e = $$1;
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dwv $$0) {
-      return $$0.a(this.e);
+   protected boolean a(dww $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public edy<?> a() {
-      return edy.a;
+   public edz<?> a() {
+      return edz.b;
    }
 }

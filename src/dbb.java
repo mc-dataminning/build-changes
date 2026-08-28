@@ -1,72 +1,54 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class dbb {
-   public static final int a = -1;
-   public static final dbb b = new dbb(List.of(), IntList.of());
-   private final List<day> c;
-   private final IntList d;
-
-   private dbb(List<day> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class dbb extends dbr {
+   public dbb(daq $$0) {
+      super("", $$0, dbs.a(Map.of('#', daz.a(cws.rv), 'x', daz.a(cws.sR)), "###", "#x#", "###"), new cwo(cws.vi));
    }
 
-   public static dbb a(day $$0) {
-      return $$0.b() ? b : new dbb(List.of($$0), IntList.of(0));
-   }
-
-   public static dbb a(List<Optional<day>> $$0) {
-      int $$1 = $$0.size();
-      List<day> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
-
-      for (Optional<day> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            day $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
-            }
-
-            $$2.add($$6);
-            $$3.add($$4++);
+   @Override
+   public boolean a(dar $$0, dgh $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cwo $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
          } else {
-            $$3.add(-1);
+            eus $$3 = cxb.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
+
+   @Override
+   public cwo a(dar $$0, jt.a $$1) {
+      cwo $$2 = c($$0).c(1);
+      $$2.b(kv.N, czl.b);
+      return $$2;
+   }
+
+   private static cwo c(dar $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cwo $$2 = $$0.a($$1);
+         if ($$2.b(kv.L)) {
+            return $$2;
          }
       }
 
-      return new dbb($$2, $$3);
+      return cwo.j;
    }
 
-   public static dbb b(List<day> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         day $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new dbb($$0, $$2);
+   @Override
+   public boolean ap_() {
+      return true;
    }
 
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<day> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public dbn<dbb> a() {
+      return dbn.f;
    }
 }

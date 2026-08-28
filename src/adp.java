@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class adp implements yw<abl> {
+   public static final yn<vl, adp> a = yw.a(adp::a, adp::new);
+   private final int b;
 
-public class adp implements yv<abk> {
-   public static final adp a = new adp();
-   public static final ym<ByteBuf, adp> b = ym.a(a);
+   public adp(bsx $$0) {
+      this($$0.b());
+   }
 
-   private adp() {
+   public adp(int $$0) {
+      this.b = $$0;
+   }
+
+   private adp(vl $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yx<adp> a() {
-      return agd.ad;
+   public yy<adp> a() {
+      return age.ac;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 }

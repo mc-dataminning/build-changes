@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eef implements edx {
+class eef extends eej {
+   private final jv<esx> e;
    public static final MapCodec<eef> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(edx.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, eef::new)
+      $$0 -> a($$0).and(kg.a(mc.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eef::new)
    );
-   private final edx e;
 
-   public eef(edx $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(dhe $$0, ji $$1) {
-      return !this.e.test($$0, $$1);
+   public eef(km $$0, jv<esx> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public edy<?> a() {
-      return edy.k;
+   protected boolean a(dww $$0) {
+      return $$0.y().a(this.e);
+   }
+
+   @Override
+   public edz<?> a() {
+      return edz.c;
    }
 }

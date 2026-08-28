@@ -1,32 +1,23 @@
-import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record aam(long c, List<aam.a> d) implements zy {
-   public static final zy.b<aam> a = zy.a("debug/redstone_update_order");
-   public static final ym<vl, aam> b = ym.a(yk.k, aam::b, aam.a.a.a(yk.a()), aam::c, aam::new);
+public record aam(List<ji> c) implements zz {
+   public static final yn<vl, aam> a = zz.a(aam::a, aam::new);
+   public static final zz.b<aam> b = zz.a("debug/raids");
+
+   private aam(vl $$0) {
+      this($$0.a(ji.b));
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.c, ji.b);
+   }
 
    @Override
-   public zy.b<aam> a() {
-      return a;
+   public zz.b<aam> a() {
+      return b;
    }
 
-   public long b() {
+   public List<ji> b() {
       return this.c;
-   }
-
-   public List<aam.a> c() {
-      return this.d;
-   }
-
-   public static record a(ji b, euf c) {
-      public static final ym<ByteBuf, aam.a> a = ym.a(ji.b, aam.a::a, euf.a, aam.a::b, aam.a::new);
-
-      public ji a() {
-         return this.b;
-      }
-
-      public euf b() {
-         return this.c;
-      }
    }
 }

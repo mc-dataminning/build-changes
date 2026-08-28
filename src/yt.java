@@ -1,14 +1,9 @@
-public abstract class yt<T extends vu> implements yv<T> {
-   private final Iterable<yv<? super T>> a;
-
-   protected yt(Iterable<yv<? super T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<yv<? super T>> b() {
-      return this.a;
+public abstract class yt<T extends vv> implements yw<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 
    @Override
-   public abstract yx<? extends yt<T>> a();
+   public abstract yy<? extends yt<T>> a();
 }

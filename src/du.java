@@ -16,8 +16,8 @@ public record du(boolean d, boolean e) implements by {
    }
 
    @Override
-   public boolean a(buj $$0, arc $$1, @Nullable fay $$2) {
-      return !($$0 instanceof cqj $$3) ? false : $$3.gE() == this.d && $$3.gD() == this.e;
+   public boolean a(buk $$0, ard $$1, @Nullable faz $$2) {
+      return !($$0 instanceof cqk $$3) ? false : $$3.gH() == this.d && $$3.gG() == this.e;
    }
 
    public boolean b() {

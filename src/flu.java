@@ -1,37 +1,77 @@
-import org.joml.Vector3f;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record flu(flu.c a, flw... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, flw[] var3, int var4, int var5, float var6);
+public class flu {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final flu.a f;
+
+   public flu(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, flu.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public static class b {
-      public static final flu.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final flu.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            ayy.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            ayy.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            ayy.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
    }
 
-   public interface c {
-      void apply(gfa var1, Vector3f var2);
+   public UUID b() {
+      return this.b;
    }
 
-   public static class d {
-      public static final flu.c a = gfa::a;
-      public static final flu.c b = gfa::b;
-      public static final flu.c c = gfa::c;
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public flu.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, flu.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static flu.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
    }
 }

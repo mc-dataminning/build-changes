@@ -8,5 +8,5 @@ public interface by {
 
    MapCodec<? extends by> a();
 
-   boolean a(buj var1, arc var2, @Nullable fay var3);
+   boolean a(buk var1, ard var2, @Nullable faz var3);
 }

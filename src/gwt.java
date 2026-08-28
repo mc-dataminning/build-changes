@@ -1,14 +1,25 @@
-public class gwt<S extends had, M extends gby<S>> extends gwq<S, M> {
-   private final gdt<S> a;
-   private final aku b;
+public class gwt<S extends gzj & haa, M extends gca<? super S>> extends gws<S, M> {
+   private final akv a;
+   private final M b;
+   private final M c;
 
-   public gwt(gty<S, M> $$0, gew $$1, gey $$2, aku $$3) {
+   public gwt(gua<S, M> $$0, M $$1, M $$2, akv $$3) {
       super($$0);
-      this.b = $$3;
-      this.a = new gdt<>($$1.a($$2));
+      this.b = $$1;
+      this.c = $$2;
+      this.a = $$3;
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public gwt(gua<S, M> $$0, M $$1, akv $$2) {
+      this($$0, $$1, $$1, $$2);
+   }
+
+   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
+      if ($$3.a()) {
+         M $$6 = $$3.aj ? this.c : this.b;
+         $$6.a($$3);
+         ffx $$7 = $$1.getBuffer(gmh.g(this.a));
+         $$6.a($$0, $$7, $$2, heh.d);
+      }
    }
 }

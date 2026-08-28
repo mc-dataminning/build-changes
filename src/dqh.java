@@ -1,50 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqh extends diw {
-   public static final MapCodec<dqh> a = b(dqh::new);
-   public static final dxm b = dxl.d;
-   private final brn c = brk.a(5);
+public class dqh extends dlw implements dqg {
+   public static final MapCodec<dqh> b = b(dqh::new);
 
    @Override
    public MapCodec<dqh> a() {
-      return a;
+      return b;
    }
 
-   public dqh(dwu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(b);
+   public dqh(dwv.d $$0) {
+      super(brl.a(1), $$0);
    }
 
    @Override
-   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+   public int a(dql.a $$0, dgi $$1, ji $$2, azh $$3, dql $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         ji $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               ji $$10 = $$7.d();
+               dww $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awb.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
       }
    }
 
-   @Nullable
-   @Override
-   public dtx a(ji $$0, dwv $$1) {
-      return new dvg($$0, $$1);
+   private static int a(dql $$0, ji $$1, ji $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = ayz.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = ayz.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Nullable
-   @Override
-   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
-      return $$0.C ? null : a($$2, dtz.L, dvg::a);
-   }
-
-   @Override
-   protected void a(dwv $$0, arc $$1, ji $$2, cwn $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   private dww a(dgi $$0, ji $$1, azh $$2, boolean $$3) {
+      dww $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = djn.rx.m().b(dqk.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = djn.rs.m();
       }
+
+      return $$4.b(dxm.J) && !$$0.b_($$1).c() ? $$4.b(dxm.J, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(dgi $$0, ji $$1) {
+      dww $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(djn.J) && $$2.y().b(esz.c)) {
+         int $$3 = 0;
+
+         for (ji $$4 : ji.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dww $$5 = $$0.a_($$4);
+            if ($$5.a(djn.rs) || $$5.a(djn.rx)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

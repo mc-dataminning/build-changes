@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class han extends gyh {
+public class han extends gyj {
    public float a;
-   @Nullable
-   public dwv b;
+   public float b;
+   public boolean c;
 }

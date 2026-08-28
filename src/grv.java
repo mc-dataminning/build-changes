@@ -1,57 +1,32 @@
-public class grv extends gsa<cjs, gye> {
-   private static final aku a = aku.b("textures/entity/end_crystal/end_crystal.png");
-   private static final gmf b = gmf.g(a);
-   private final gbv h;
+public class grv extends gqw<cll, hba, gbv> {
+   private static final akv a = akv.b("textures/entity/zombie/drowned.png");
 
-   public grv(gsb.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.h = new gbv($$0.a(gez.aK));
+   public grv(gsd.a $$0) {
+      super($$0, new gbv($$0.a(gfb.aw)), new gbv($$0.a(gfb.ax)), new gbv($$0.a(gfb.aB)), new gbv($$0.a(gfb.aC)), new gbv($$0.a(gfb.ay)), new gbv($$0.a(gfb.az)));
+      this.a(new gvz(this, $$0.f()));
    }
 
-   public void a(gye $$0, ffs $$1, glv $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(0.0F, -0.5F, 0.0F);
-      this.h.a($$0);
-      this.h.a($$1, $$2.getBuffer(b), $$3, hec.d);
-      $$1.b();
-      fay $$4 = $$0.b;
-      if ($$4 != null) {
-         float $$5 = a($$0.u);
-         float $$6 = (float)$$4.d;
-         float $$7 = (float)$$4.e;
-         float $$8 = (float)$$4.f;
-         $$1.a($$4);
-         grw.a(-$$6, -$$7 + $$5, -$$8, $$0.u, $$1, $$2, $$3);
-      }
+   public hba a() {
+      return new hba();
+   }
 
+   @Override
+   public akv a(hba $$0) {
+      return a;
+   }
+
+   protected void a(hba $$0, fft $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static float a(float $$0) {
-      float $$1 = ayy.a($$0 * 0.2F) / 2.0F + 0.5F;
-      $$1 = ($$1 * $$1 + $$1) * 0.4F;
-      return $$1 - 1.4F;
-   }
-
-   public gye a() {
-      return new gye();
-   }
-
-   public void a(cjs $$0, gye $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.u = (float)$$0.a + $$2;
-      $$1.a = $$0.m();
-      ji $$3 = $$0.l();
-      if ($$3 != null) {
-         $$1.b = fay.b($$3).d($$0.o($$2));
-      } else {
-         $$1.b = null;
+      float $$4 = $$0.G;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.ab;
+         float $$6 = ayz.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
       }
    }
 
-   public boolean a(cjs $$0, gpn $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.l() != null;
+   protected gcn.a a(cll $$0, bva $$1) {
+      cwo $$2 = $$0.a($$1);
+      return $$0.fy() == $$1 && $$0.gh() && $$2.a(cws.wS) ? gcn.a.e : gcn.a.a;
    }
 }

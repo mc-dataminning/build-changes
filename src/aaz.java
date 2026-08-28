@@ -1,27 +1,17 @@
 public class aaz {
-   public static final vw.a<aba, vl> a = za.a(
-      vj.e, $$0 -> $$0.a(zn.l, zp.a).a(abg.b, abi.a).a(zn.m, zq.a).a(aay.f, abb.b).a(zn.n, zr.a).a(zn.o, zs.a).a(zn.p, zt.a).a(aay.g, abc.a)
-   );
-   public static final vw<aba> b = a.a(vl::new);
-   public static final vw.a<aas, vl> c = za.b(
-      vj.e,
-      $$0 -> $$0.a(abg.a, abf.a)
-            .a(zn.a, zc.b)
-            .a(zn.c, ze.a)
-            .a(aay.a, aat.b)
-            .a(zn.d, zf.a)
-            .a(zn.e, zg.a)
-            .a(aay.e, aav.b)
-            .a(aay.b, aau.a)
-            .a(zn.f, zh.a)
-            .a(zn.g, zi.b)
-            .a(zn.i, zk.a)
-            .a(zn.j, zl.a)
-            .a(aay.c, aax.a)
-            .a(zn.k, zm.a)
-            .a(aay.d, aaw.a)
-            .a(zn.b, zd.a)
-            .a(zn.h, zj.a)
-   );
-   public static final vw<aas> d = c.a(vl::new);
+   public static final yy<aau> a = a("finish_configuration");
+   public static final yy<aav> b = a("registry_data");
+   public static final yy<aay> c = a("update_enabled_features");
+   public static final yy<aax> d = a("select_known_packs");
+   public static final yy<aaw> e = a("reset_chat");
+   public static final yy<abc> f = b("finish_configuration");
+   public static final yy<abd> g = b("select_known_packs");
+
+   private static <T extends yw<aat>> yy<T> a(String $$0) {
+      return new yy<>(yx.b, akv.b($$0));
+   }
+
+   private static <T extends yw<abb>> yy<T> b(String $$0) {
+      return new yy<>(yx.a, akv.b($$0));
+   }
 }

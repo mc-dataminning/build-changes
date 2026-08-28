@@ -1,216 +1,140 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class dvc extends dtx implements brz, bsk {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bsb e = new bsb() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class dvc extends dty implements fcl.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private cwo d = cwo.j;
+   private final cwv e = new cwv(this::k, this.aA_());
 
-      @Override
-      public boolean c() {
-         return dvc.this.g.f();
-      }
-
-      @Override
-      public cwn a(int $$0) {
-         return $$0 == 0 ? dvc.this.g : cwn.j;
-      }
-
-      @Override
-      public cwn a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cwn $$2 = dvc.this.g.a($$1);
-            if (dvc.this.g.f()) {
-               dvc.this.k();
-            }
-
-            return $$2;
-         } else {
-            return cwn.j;
-         }
-      }
-
-      @Override
-      public cwn b(int $$0) {
-         if ($$0 == 0) {
-            cwn $$1 = dvc.this.g;
-            dvc.this.g = cwn.j;
-            dvc.this.k();
-            return $$1;
-         } else {
-            return cwn.j;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cwn $$1) {
-      }
-
-      @Override
-      public int an_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dvc.this.e();
-      }
-
-      @Override
-      public boolean a(cov $$0) {
-         return bsb.a(dvc.this, $$0) && dvc.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cwn $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final csm f = new csm() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dvc.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dvc.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cwn g = cwn.j;
-   int h;
-   private int i;
-
-   public dvc(ji $$0, dwv $$1) {
-      super(dtz.E, $$0, $$1);
+   public dvc(ji $$0, dww $$1) {
+      super(dua.e, $$0, $$1);
    }
 
-   public cwn b() {
-      return this.g;
+   public cwv j() {
+      return this.e;
    }
 
-   public boolean c() {
-      return this.g.b(kv.S) || this.g.b(kv.T);
-   }
-
-   public void b(cwn $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      dnx.a(null, this.i(), this.aA_(), this.m(), false);
-   }
-
-   public void a(cwn $$0, @Nullable cov $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
+   public void k() {
+      this.o.a(this.aA_(), this.m().b());
       this.e();
    }
 
-   void a(int $$0) {
-      int $$1 = ayy.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         dnx.a(this.i(), this.aA_(), this.m());
+   private void a(boolean $$0) {
+      if (this.o != null && this.o.a_(this.aA_()) == this.m()) {
+         this.o.a(this.aA_(), this.m().b(dnq.b, Boolean.valueOf($$0)), 2);
+         this.o.a(ebs.c, this.aA_(), ebs.a.a(this.m()));
       }
    }
 
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return ayy.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cwn b(cwn $$0, @Nullable cov $$1) {
-      if (this.o instanceof arc $$2) {
-         cyj.a($$0, this.a($$1, $$2), $$1);
+   public void s() {
+      if (this.o != null && !this.o.C) {
+         ji $$0 = this.aA_();
+         cwo $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            faz $$2 = faz.a($$0, 0.5, 1.01, 0.5).a(this.o.A, 0.7F);
+            cwo $$3 = $$1.v();
+            clb $$4 = new clb(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.s();
+            this.o.b($$4);
+         }
       }
-
-      return $$0;
    }
 
-   private ex a(@Nullable cov $$0, arc $$1) {
-      String $$2;
-      wo $$3;
-      if ($$0 == null) {
-         $$2 = "Lectern";
-         $$3 = wo.b("Lectern");
-      } else {
-         $$2 = $$0.al().getString();
-         $$3 = $$0.p_();
-      }
+   public static void a(dgh $$0, ji $$1, dww $$2, dvc $$3) {
+      $$3.e.b($$0, $$2);
+   }
 
-      fay $$6 = fay.b(this.p);
-      return new ex(ew.a, $$6, fax.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
+   public int u() {
+      return cwu.a(this.o.K_(), this.d).map(jr::a).map(cwu::e).orElse(0);
    }
 
    @Override
    protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cwn.a($$1, (un)$$0.p("Book")).orElse(cwn.j), null);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cwo.a($$1, (un)$$0.p("RecordItem")).orElse(cwo.j);
       } else {
-         this.g = cwn.j;
+         if (!this.d.f()) {
+            this.e.a(this.o, this.m());
+         }
+
+         this.d = cwo.j;
       }
 
-      this.i = c(this.g);
-      this.h = ayy.a($$0.h("Page"), 0, this.i - 1);
+      if ($$0.b("ticks_since_song_started", 4)) {
+         cwu.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
+      }
    }
 
    @Override
    protected void b(tq $$0, jt.a $$1) {
       super.b($$0, $$1);
-      if (!this.b().f()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
+      if (!this.f().f()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
       }
    }
 
    @Override
-   public void a() {
-      this.b(cwn.j);
+   public cwo f() {
+      return this.d;
    }
 
    @Override
-   public csa createMenu(int $$0, cou $$1, cov $$2) {
-      return new ctg($$0, this.e, this.f);
+   public cwo c(int $$0) {
+      cwo $$1 = this.d;
+      this.b(cwo.j);
+      return $$1;
    }
 
    @Override
-   public wo p_() {
-      return wo.c("container.lectern");
-   }
-
-   private static int c(cwn $$0) {
-      czv $$1 = $$0.a(kv.T);
-      if ($$1 != null) {
-         return $$1.a().size();
+   public void b(cwo $$0) {
+      this.d = $$0;
+      boolean $$1 = !this.d.f();
+      Optional<jr<cwu>> $$2 = cwu.a(this.o.K_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.o, $$2.get());
       } else {
-         czu $$2 = $$0.a(kv.S);
-         return $$2 != null ? $$2.a().size() : 0;
+         this.e.a(this.o, this.m());
       }
+   }
+
+   @Override
+   public int an_() {
+      return 1;
+   }
+
+   @Override
+   public dty t() {
+      return this;
+   }
+
+   @Override
+   public boolean b(int $$0, cwo $$1) {
+      return $$1.b(kv.ab) && this.a($$0).f();
+   }
+
+   @Override
+   public boolean a(bsc $$0, int $$1, cwo $$2) {
+      return $$0.a_(cwo::f);
+   }
+
+   @VisibleForTesting
+   public void c(cwo $$0) {
+      this.d = $$0;
+      cwu.a(this.o.K_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.o.a(this.aA_(), this.m().b());
+      this.e();
+   }
+
+   @VisibleForTesting
+   public void v() {
+      cwu.a(this.o.K_(), this.f()).ifPresent($$0 -> this.e.a(this.o, (jr<cwu>)$$0));
    }
 }

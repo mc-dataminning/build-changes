@@ -1,31 +1,26 @@
-public record aah(int c, etl d, float e) implements zy {
-   public static final ym<vl, aah> a = zy.a(aah::a, aah::new);
-   public static final zy.b<aah> b = zy.a("debug/path");
+public record aah(long c, ji d) implements zz {
+   public static final yn<vl, aah> a = zz.a(aah::a, aah::new);
+   public static final zz.b<aah> b = zz.a("debug/neighbors_update");
 
    private aah(vl $$0) {
-      this($$0.readInt(), etl.b($$0), $$0.readFloat());
+      this($$0.m(), $$0.e());
    }
 
    private void a(vl $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zy.b<aah> a() {
+   public zz.b<aah> a() {
       return b;
    }
 
-   public int b() {
+   public long b() {
       return this.c;
    }
 
-   public etl c() {
+   public ji c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

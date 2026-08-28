@@ -1,45 +1,43 @@
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hbi {
-   private final Function<aku, hbh> a;
+public class hbi implements hbk {
+   private final hbw a;
+   private final hbk b;
+   private final hbk c;
 
-   public hbi(hha $$0) {
-      this.a = $$0::a;
+   public hbi(hbw $$0, hbk $$1, hbk $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(hbk $$0, cwn $$1, cwl $$2, boolean $$3, bvf $$4) {
-      this.a($$0, $$1, $$2, $$3, $$4.dW(), $$4, $$4.ar() + $$2.ordinal());
+   @Override
+   public void a(hbn $$0, cwo $$1, hbl $$2, cwm $$3, @Nullable gfy $$4, @Nullable bvg $$5, int $$6) {
+      (this.a.a($$1, $$4, $$5, $$6, $$3) ? this.b : this.c).a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public void a(hbk $$0, cwn $$1, cwl $$2, buj $$3) {
-      this.a($$0, $$1, $$2, false, $$3.dW(), null, $$3.ar());
-   }
+   public static record a(hbw b, hbk.b c, hbk.b d) implements hbk.b {
+      public static final MapCodec<hbi.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(hbv.a.forGetter(hbi.a::b), hbm.a.fieldOf("on_true").forGetter(hbi.a::c), hbm.a.fieldOf("on_false").forGetter(hbi.a::d))
+               .apply($$0, hbi.a::new)
+      );
 
-   public void a(hbk $$0, cwn $$1, cwl $$2, boolean $$3, @Nullable dgg $$4, @Nullable bvf $$5, int $$6) {
-      $$0.b();
-      if (!$$1.f()) {
-         $$0.a = $$2;
-         $$0.b = $$3;
-         this.a($$0, $$1, $$2, $$4, $$5, $$6);
+      @Override
+      public MapCodec<hbi.a> a() {
+         return a;
       }
-   }
 
-   private static void a(cwn $$0) {
-      if ($$0.h() instanceof cut $$1 && $$1.d() instanceof dig) {
-         czm $$2 = $$0.a(kv.ag);
-         if ($$2 != null && !$$2.b()) {
-            $$0.d(kv.ag);
-            $$2.a().thenAcceptAsync($$1x -> $$0.b(kv.ag, $$1x), flh.Q());
-         }
+      @Override
+      public hbk a(hbk.a $$0) {
+         return new hbi(this.b, this.c.a($$0), this.d.a($$0));
       }
-   }
 
-   public void a(hbk $$0, cwn $$1, cwl $$2, @Nullable dgg $$3, @Nullable bvf $$4, int $$5) {
-      a($$1);
-      aku $$6 = $$1.a(kv.i);
-      if ($$6 != null) {
-         this.a.apply($$6).a($$0, $$1, this, $$2, $$3 instanceof gfw $$7 ? $$7 : null, $$4, $$5);
+      @Override
+      public void a(hhj.a $$0) {
+         this.c.a($$0);
+         this.d.a($$0);
       }
    }
 }

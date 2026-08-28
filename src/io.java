@@ -20,31 +20,31 @@ public class io<T extends ez<T>> implements il<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, in<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final aku e;
+   private final akv e;
    private final List<io.a<T>> f;
 
-   public io(aku $$0, List<io.a<T>> $$1, List<String> $$2) {
+   public io(akv $$0, List<io.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public aku a() {
+   public akv a() {
       return this.e;
    }
 
    @Override
    public in<T> a(@Nullable tq $$0, CommandDispatcher<T> $$1) throws fa {
       if ($$0 == null) {
-         throw new fa(wo.a("commands.function.error.missing_arguments", wo.a(this.a())));
+         throw new fa(wp.a("commands.function.error.missing_arguments", wp.a(this.a())));
       } else {
          List<String> $$2 = new ArrayList<>(this.c.size());
 
          for (String $$3 : this.c) {
             un $$4 = $$0.c($$3);
             if ($$4 == null) {
-               throw new fa(wo.a("commands.function.error.missing_argument", wo.a(this.a()), $$3));
+               throw new fa(wp.a("commands.function.error.missing_argument", wp.a(this.a()), $$3));
             }
 
             $$2.add(a($$4));
@@ -99,7 +99,7 @@ public class io<T extends ez<T>> implements il<T> {
    interface a<T> {
       IntList a();
 
-      ib<T> a(List<String> var1, CommandDispatcher<T> var2, aku var3) throws fa;
+      ib<T> a(List<String> var1, CommandDispatcher<T> var2, akv var3) throws fa;
    }
 
    static class b<T extends ez<T>> implements io.a<T> {
@@ -119,13 +119,13 @@ public class io<T extends ez<T>> implements il<T> {
       }
 
       @Override
-      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, aku $$2) throws fa {
+      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, akv $$2) throws fa {
          String $$3 = this.a.a($$0);
 
          try {
             return il.a($$1, this.c, new StringReader($$3));
          } catch (CommandSyntaxException var6) {
-            throw new fa(wo.a("commands.function.error.parse", wo.a($$2), $$3, var6.getMessage()));
+            throw new fa(wp.a("commands.function.error.parse", wp.a($$2), $$3, var6.getMessage()));
          }
       }
    }
@@ -143,7 +143,7 @@ public class io<T extends ez<T>> implements il<T> {
       }
 
       @Override
-      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, aku $$2) {
+      public ib<T> a(List<String> $$0, CommandDispatcher<T> $$1, akv $$2) {
          return this.a;
       }
    }

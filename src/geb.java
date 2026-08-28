@@ -1,45 +1,84 @@
-import java.util.Arrays;
+public class geb extends gca<gzj> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String c = "right_middle_front_leg";
+   private static final String d = "left_middle_front_leg";
+   private static final String e = "right_middle_hind_leg";
+   private static final String f = "left_middle_hind_leg";
+   private final gfc g;
+   private final gfc i;
+   private final gfc j;
+   private final gfc k;
+   private final gfc l;
+   private final gfc m;
+   private final gfc n;
+   private final gfc o;
+   private final gfc p;
 
-public class geb extends gby<hah> {
-   public static final gfj a = gfj.scaling(0.5F);
-   private final gfa[] b = new gfa[8];
-
-   public geb(gfa $$0) {
+   public geb(gfc $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+      this.g = $$0.b("head");
+      this.i = $$0.b("right_hind_leg");
+      this.j = $$0.b("left_hind_leg");
+      this.k = $$0.b("right_middle_hind_leg");
+      this.l = $$0.b("left_middle_hind_leg");
+      this.m = $$0.b("right_middle_front_leg");
+      this.n = $$0.b("left_middle_front_leg");
+      this.o = $$0.b("right_front_leg");
+      this.p = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", gfh.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), gfe.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", gfh.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfe.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", gfh.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), gfe.a(0.0F, 15.0F, 9.0F));
+      gfh $$3 = gfh.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      gfh $$4 = gfh.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      float $$5 = (float) (Math.PI / 4);
+      float $$6 = (float) (Math.PI / 8);
+      $$1.a("right_hind_leg", $$3, gfe.a(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_hind_leg", $$4, gfe.a(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4)));
+      $$1.a("right_middle_hind_leg", $$3, gfe.a(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_hind_leg", $$4, gfe.a(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F));
+      $$1.a("right_middle_front_leg", $$3, gfe.a(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_front_leg", $$4, gfe.a(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F));
+      $$1.a("right_front_leg", $$3, gfe.a(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_front_leg", $$4, gfe.a(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4)));
+      return gfi.a($$0, 64, 32);
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      gfe $$2 = new gfe(0.02F);
-      int $$3 = -16;
-      $$1.a("body", gff.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), gfc.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      gff $$5 = gff.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, gfc.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return gfg.a($$0, 64, 32);
-   }
-
-   public void a(hah $$0) {
+   public void a(gzj $$0) {
       super.a($$0);
-
-      for (gfa $$1 : this.b) {
-         $$1.e = $$0.a;
-      }
+      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ad * 0.6662F;
+      float $$2 = $$0.ae;
+      float $$3 = -(ayz.b($$1 * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$4 = -(ayz.b($$1 * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$5 = -(ayz.b($$1 * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$6 = -(ayz.b($$1 * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$7 = Math.abs(ayz.a($$1 + 0.0F) * 0.4F) * $$2;
+      float $$8 = Math.abs(ayz.a($$1 + (float) Math.PI) * 0.4F) * $$2;
+      float $$9 = Math.abs(ayz.a($$1 + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$10 = Math.abs(ayz.a($$1 + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.i.f += $$3;
+      this.j.f -= $$3;
+      this.k.f += $$4;
+      this.l.f -= $$4;
+      this.m.f += $$5;
+      this.n.f -= $$5;
+      this.o.f += $$6;
+      this.p.f -= $$6;
+      this.i.g += $$7;
+      this.j.g -= $$7;
+      this.k.g += $$8;
+      this.l.g -= $$8;
+      this.m.g += $$9;
+      this.n.g -= $$9;
+      this.o.g += $$10;
+      this.p.g -= $$10;
    }
 }

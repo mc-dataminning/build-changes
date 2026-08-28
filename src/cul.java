@@ -1,31 +1,21 @@
-public class cul extends cwj {
-   private final cul.a a;
+import java.util.List;
 
-   public cul(den $$0, cul.a $$1, cwj.a $$2) {
-      super($$0.a($$2, $$1.d));
-      this.a = $$1;
-   }
+public class cul extends cwk {
+   private final djl a;
 
-   public cul(den $$0, cul.a $$1, jr<avy> $$2, boolean $$3, cwj.a $$4) {
-      super($$0.a($$4, $$2, $$3, $$1.d));
-      this.a = $$1;
+   public cul(djl $$0, cwk.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public avy a() {
-      return this.a.c;
+   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public static enum a {
-      a(avz.nZ, buq.al),
-      b(avz.Dw, buq.bL);
-
-      final avy c;
-      final jv<buq<?>> d;
-
-      private a(final avy $$0, final buq<?>... $$1) {
-         this.c = $$0;
-         this.d = jv.a(buq::r, $$1);
-      }
+   @Override
+   public wp a(cwo $$0) {
+      return this.m();
    }
 }

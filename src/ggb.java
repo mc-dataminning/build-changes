@@ -1,18 +1,13 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record ggb(
-   GameProfile a,
-   hkc b,
-   kf.b c,
-   crr d,
-   @Nullable String e,
-   @Nullable ggl f,
-   @Nullable fui g,
-   Map<aku, byte[]> h,
-   @Nullable foq.b i,
-   Map<String, String> j,
-   alm k
-) {
+public enum ggb {
+   a,
+   b;
+
+   private static final List<ggb> c = List.of(values());
+   private static final kf.b d = kf.a(mb.aC);
+
+   public static jy<ggb> a() {
+      return new jy<>(c).a(a, d);
+   }
 }

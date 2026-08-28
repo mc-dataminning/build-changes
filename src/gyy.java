@@ -1,21 +1,7 @@
-public class gyy extends gxm {
-   public float G;
-   public float H;
-   public float I = 1.0F;
-   public float J;
-   public int K;
-   public buz L = buz.b;
-   public bsh M = bsh.a;
-   public boolean N;
-   public boolean O;
-   public boolean P;
-   public boolean Q;
-   public boolean R;
-   public float S;
-   public float T;
-   public float U;
-   public cwn V = cwn.j;
-   public cwn W = cwn.j;
-   public cwn X = cwn.j;
-   public cwn Y = cwn.j;
+public class gyy extends gzj {
+   public final hbn i = new hbn();
+
+   public static void a(bvg $$0, gyy $$1, hbl $$2) {
+      $$2.a($$1.i, $$0.eZ(), cwm.h, false, $$0);
+   }
 }

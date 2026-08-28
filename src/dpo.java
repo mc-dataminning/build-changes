@@ -1,165 +1,37 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpo extends diz {
-   public static final MapCodec<dpo> d = b(dpo::new);
-   public static final dxs<dxy> e = dxl.aj;
+public class dpo extends djl {
+   public static final MapCodec<dpo> a = b(dpo::new);
 
    @Override
    public MapCodec<dpo> a() {
-      return d;
+      return a;
    }
 
-   protected dpo(dwu.d $$0) {
-      super(false, $$0);
-      this.l(this.F.b().b(e, dxy.a).b(c, Boolean.valueOf(false)));
+   protected dpo(dwv.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dwv $$0, dgg $$1, ji $$2, djk $$3) {
-      if ($$3.m().p() && new dpp($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
+   protected bsj a(cwo $$0, dww $$1, dgh $$2, ji $$3, cow $$4, bsi $$5, fav $$6) {
+      if (!$$0.a(cws.sS)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bsj.a;
+      } else {
+         jn $$7 = $$6.c();
+         jn $$8 = $$7.o() == jn.a.b ? $$4.cO().g() : $$7;
+         $$2.a(null, $$3, awa.vw, awb.e, 1.0F, 1.0F);
+         $$2.a($$3, djn.er.m().b(dkg.b, $$8), 11);
+         clb $$9 = new clb(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cwo(cws.sV, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bvg.d($$5));
+         $$2.a($$4, ebs.M, $$3);
+         $$4.b(awk.c.b(cws.sS));
+         return bsj.a;
       }
-   }
-
-   @Override
-   public dxx<dxy> c() {
-      return e;
-   }
-
-   @Override
-   protected dwv a(dwv $$0, dqc $$1) {
-      dxy $$2 = $$0.c(e);
-
-      return $$0.b(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dxy.a;
-               case b:
-                  yield dxy.b;
-               case c:
-                  yield dxy.d;
-               case d:
-                  yield dxy.c;
-               case e:
-                  yield dxy.f;
-               case f:
-                  yield dxy.e;
-               case g:
-                  yield dxy.i;
-               case h:
-                  yield dxy.j;
-               case i:
-                  yield dxy.g;
-               case j:
-                  yield dxy.h;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dxy.b;
-               case b:
-                  yield dxy.a;
-               case c:
-                  yield dxy.e;
-               case d:
-                  yield dxy.f;
-               case e:
-                  yield dxy.d;
-               case f:
-                  yield dxy.c;
-               case g:
-                  yield dxy.j;
-               case h:
-                  yield dxy.g;
-               case i:
-                  yield dxy.h;
-               case j:
-                  yield dxy.i;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dxy.b;
-               case b:
-                  yield dxy.a;
-               case c:
-                  yield dxy.f;
-               case d:
-                  yield dxy.e;
-               case e:
-                  yield dxy.c;
-               case f:
-                  yield dxy.d;
-               case g:
-                  yield dxy.h;
-               case h:
-                  yield dxy.i;
-               case i:
-                  yield dxy.j;
-               case j:
-                  yield dxy.g;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> $$2;
-      });
-   }
-
-   @Override
-   protected dwv a(dwv $$0, doj $$1) {
-      dxy $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.b(e, dxy.f);
-               case f:
-                  return $$0.b(e, dxy.e);
-               case g:
-                  return $$0.b(e, dxy.j);
-               case h:
-                  return $$0.b(e, dxy.i);
-               case i:
-                  return $$0.b(e, dxy.h);
-               case j:
-                  return $$0.b(e, dxy.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.b(e, dxy.d);
-               case d:
-                  return $$0.b(e, dxy.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.b(e, dxy.h);
-               case h:
-                  return $$0.b(e, dxy.g);
-               case i:
-                  return $$0.b(e, dxy.j);
-               case j:
-                  return $$0.b(e, dxy.i);
-            }
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(e, c);
    }
 }

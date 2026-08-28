@@ -1,54 +1,88 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Function;
 
-public record ddj(jv<btm> d, dde e, dde f, dde g, dde h) implements ddo {
-   public static final MapCodec<ddj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kg.a(mc.W).fieldOf("to_apply").forGetter(ddj::b),
-               dde.b.fieldOf("min_duration").forGetter(ddj::c),
-               dde.b.fieldOf("max_duration").forGetter(ddj::d),
-               dde.b.fieldOf("min_amplifier").forGetter(ddj::e),
-               dde.b.fieldOf("max_amplifier").forGetter(ddj::f)
-            )
-            .apply($$0, ddj::new)
-   );
+public interface ddj {
+   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
+      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+   }
 
-   @Override
-   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
-      if ($$3 instanceof bvf $$5) {
-         azg $$6 = $$5.dZ();
-         Optional<jr<btm>> $$7 = this.d.a($$6);
-         if ($$7.isPresent()) {
-            int $$8 = Math.round(ayy.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
-            int $$9 = Math.max(0, Math.round(ayy.b($$6, this.g.a($$1), this.h.a($$1))));
-            $$5.a(new bto($$7.get(), $$8, $$9));
+   static ddj.a a(ddp... $$0) {
+      return new ddj.a(List.of($$0));
+   }
+
+   static ddj.b a(ddq... $$0) {
+      return new ddj.b(List.of($$0));
+   }
+
+   static ddj.c a(ddr... $$0) {
+      return new ddj.c(List.of($$0));
+   }
+
+   public static record a(List<ddp> d) implements ddp {
+      public static final MapCodec<ddj.a> a = ddj.a(ddp.b, ddj.a::new, ddj.a::b);
+
+      @Override
+      public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4) {
+         for (ddp $$5 : this.d) {
+            $$5.a($$0, $$1, $$2, $$3, $$4);
          }
+      }
+
+      @Override
+      public MapCodec<ddj.a> a() {
+         return a;
+      }
+
+      public List<ddp> b() {
+         return this.d;
       }
    }
 
-   @Override
-   public MapCodec<ddj> a() {
-      return a;
+   public static record b(List<ddq> b) implements ddq {
+      public static final MapCodec<ddj.b> a = ddj.a(ddq.c, ddj.b::new, ddj.b::b);
+
+      @Override
+      public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4, boolean $$5) {
+         for (ddq $$6 : this.b) {
+            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
+
+      @Override
+      public void a(dcx $$0, buk $$1, faz $$2, int $$3) {
+         for (ddq $$4 : this.b) {
+            $$4.a($$0, $$1, $$2, $$3);
+         }
+      }
+
+      @Override
+      public MapCodec<ddj.b> a() {
+         return a;
+      }
    }
 
-   public jv<btm> b() {
-      return this.d;
-   }
+   public static record c(List<ddr> c) implements ddr {
+      public static final MapCodec<ddj.c> a = ddj.a(ddr.b, ddj.c::new, ddj.c::b);
 
-   public dde c() {
-      return this.e;
-   }
+      @Override
+      public float a(int $$0, azh $$1, float $$2) {
+         for (ddr $$3 : this.c) {
+            $$2 = $$3.a($$0, $$1, $$2);
+         }
 
-   public dde d() {
-      return this.f;
-   }
+         return $$2;
+      }
 
-   public dde e() {
-      return this.g;
-   }
+      @Override
+      public MapCodec<ddj.c> a() {
+         return a;
+      }
 
-   public dde f() {
-      return this.h;
+      public List<ddr> b() {
+         return this.c;
+      }
    }
 }

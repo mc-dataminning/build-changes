@@ -1,62 +1,68 @@
-public enum dxv implements azu {
-   a("harp", avz.sw, dxv.a.a),
-   b("basedrum", avz.sq, dxv.a.a),
-   c("snare", avz.sz, dxv.a.a),
-   d("hat", avz.sx, dxv.a.a),
-   e("bass", avz.sr, dxv.a.a),
-   f("flute", avz.su, dxv.a.a),
-   g("bell", avz.ss, dxv.a.a),
-   h("guitar", avz.sv, dxv.a.a),
-   i("chime", avz.st, dxv.a.a),
-   j("xylophone", avz.sA, dxv.a.a),
-   k("iron_xylophone", avz.sB, dxv.a.a),
-   l("cow_bell", avz.sC, dxv.a.a),
-   m("didgeridoo", avz.sD, dxv.a.a),
-   n("bit", avz.sE, dxv.a.a),
-   o("banjo", avz.sF, dxv.a.a),
-   p("pling", avz.sy, dxv.a.a),
-   q("zombie", avz.sG, dxv.a.b),
-   r("skeleton", avz.sH, dxv.a.b),
-   s("creeper", avz.sI, dxv.a.b),
-   t("dragon", avz.sJ, dxv.a.b),
-   u("wither_skeleton", avz.sK, dxv.a.b),
-   v("piglin", avz.sL, dxv.a.b),
-   w("custom_head", avz.Bf, dxv.a.c);
+import it.unimi.dsi.fastutil.ints.IntImmutableList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-   private final String x;
-   private final jr<avy> y;
-   private final dxv.a z;
+public final class dxv extends dxy<Integer> {
+   private final IntImmutableList a;
+   private final int b;
+   private final int c;
 
-   private dxv(final String $$0, final jr<avy> $$1, final dxv.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   private dxv(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public List<Integer> a() {
+      return this.a;
    }
 
-   public jr<avy> a() {
-      return this.y;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dxv $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public boolean b() {
-      return this.z == dxv.a.a;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dxv.a.c;
+   public static dxv a(String $$0, int $$1, int $$2) {
+      return new dxv($$0, $$1, $$2);
    }
 
-   public boolean e() {
-      return this.z != dxv.a.a;
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         int $$1 = Integer.parseInt($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public String a(Integer $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Integer $$0) {
+      return $$0 <= this.c ? $$0 - this.b : -1;
    }
 }

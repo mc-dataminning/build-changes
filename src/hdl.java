@@ -1,29 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hdl implements hdm {
-   private final gct a;
-   private final hgt b;
+public class hdl implements hdv<dtp> {
+   private final goe a;
+   private final cvl b;
 
-   public hdl(gct $$0, hgt $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public hdl(cvl $$0, goe $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   @Override
-   public void a(cwl $$0, ffs $$1, glv $$2, int $$3, int $$4, boolean $$5) {
-      gor.a($$1, $$2, $$3, $$4, this.a, this.b);
+   @Nullable
+   public dtp a(cwo $$0) {
+      return $$0.a(kv.ai);
    }
 
-   public static record a(dyh b, Optional<aku> c) implements hdq.a {
-      public static final MapCodec<hdl.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(dyh.a.fieldOf("wood_type").forGetter(hdl.a::b), aku.a.optionalFieldOf("texture").forGetter(hdl.a::c)).apply($$0, hdl.a::new)
-      );
+   public void a(@Nullable dtp $$0, cwm $$1, fft $$2, glx $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dtp.a));
+   }
 
-      public a(dyh $$0) {
-         this($$0, Optional.empty());
-      }
+   public static record a(cvl b) implements hdv.a {
+      public static final MapCodec<hdl.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvl.q.fieldOf("color").forGetter(hdl.a::b)).apply($$0, hdl.a::new));
 
       @Override
       public MapCodec<hdl.a> a() {
@@ -31,10 +30,8 @@ public class hdl implements hdm {
       }
 
       @Override
-      public hdq<?> a(gew $$0) {
-         gct $$1 = gor.a($$0, this.b, gor.a.c);
-         hgt $$2 = this.c.<hgt>map(gmq::d).orElseGet(() -> gmq.b(this.b));
-         return new hdl($$1, $$2);
+      public hdv<?> a(gey $$0) {
+         return new hdl(this.b, new goe($$0));
       }
    }
 }

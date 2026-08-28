@@ -97,17 +97,17 @@ public class tr extends ug {
 
    @Override
    public int g() {
-      return ayy.a(this.w);
+      return ayz.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(ayy.a(this.w) & 65535);
+      return (short)(ayz.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ayy.a(this.w) & 0xFF);
+      return (byte)(ayz.a(this.w) & 0xFF);
    }
 
    @Override

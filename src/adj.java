@@ -1,33 +1,29 @@
-public class adj implements yv<abk> {
-   public static final ym<vz, adj> a = ym.a(yk.w, adj::b, yk.a(mc.V), adj::e, wq.d, adj::f, adj::new);
-   private final int b;
-   private final ctj<?> c;
-   private final wo d;
+public class adj implements yw<abl> {
+   public static final yn<vl, adj> a = yw.a(adj::a, adj::new);
+   private final bsi b;
 
-   public adj(int $$0, ctj<?> $$1, wo $$2) {
+   public adj(bsi $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   private adj(vl $$0) {
+      this.b = $$0.b(bsi.class);
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yx<adj> a() {
-      return agd.X;
+   public yy<adj> a() {
+      return age.W;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bsi b() {
       return this.b;
-   }
-
-   public ctj<?> e() {
-      return this.c;
-   }
-
-   public wo f() {
-      return this.d;
    }
 }

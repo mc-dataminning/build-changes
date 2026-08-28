@@ -1,31 +1,25 @@
-import java.util.List;
-
-public class dcc extends dbu {
-   public dcc(String $$0, day $$1, cwn $$2) {
-      super($$0, $$1, $$2);
+public class dcc extends daj {
+   public dcc(String $$0, dap $$1, daz $$2, cwo $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dbn<dcc> b() {
-      return dbn.f;
+   protected cwk f() {
+      return cws.xl;
    }
 
    @Override
-   public dbm<dcc> a() {
-      return dbm.s;
+   public dbo<dcc> b() {
+      return dbo.d;
    }
 
    @Override
-   public List<dch> g() {
-      return List.of(new dcr(this.k().c(), this.c(), new dcn.d(cwr.xr)));
-   }
-
-   public dcn c() {
-      return new dcn.f(this.l());
+   public dbn<dcc> a() {
+      return dbn.q;
    }
 
    @Override
-   public dbf h() {
-      return dbe.k;
+   public dbg h() {
+      return dbf.j;
    }
 }

@@ -1,22 +1,22 @@
 public class lg extends lb {
-   private final cxi c;
-   private final cxi.a d;
+   private final cxj c;
+   private final cxj.a d;
 
-   public lg(cwj $$0) {
-      if ($$0 instanceof cxi $$1) {
+   public lg(cwk $$0) {
+      if ($$0 instanceof cxj $$1) {
          this.c = $$1;
          this.d = $$1.b();
       } else {
-         throw new IllegalArgumentException($$0 + " not instance of " + cxi.class.getSimpleName());
+         throw new IllegalArgumentException($$0 + " not instance of " + cxj.class.getSimpleName());
       }
    }
 
    @Override
-   public cwn a(kz $$0, cwn $$1) {
-      arc $$2 = $$0.b();
-      jn $$3 = $$0.d().c(dlq.b);
+   public cwo a(kz $$0, cwo $$1) {
+      ard $$2 = $$0.b();
+      jn $$3 = $$0.d().c(dlr.b);
       kb $$4 = this.d.b().getDispensePosition($$0, $$3);
-      cpo.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      cpp.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
       $$1.h(1);
       return $$1;
    }

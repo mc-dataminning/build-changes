@@ -1,20 +1,40 @@
-public class gvr extends gwq<gxx, gbk> {
-   private static final aku a = aku.b("textures/entity/cat/cat_collar.png");
-   private final gbk b;
-   private final gbk c;
+public class gvr extends gws<gzv, gdf> {
+   private final gcn<gzv> a;
+   private final hgw b;
 
-   public gvr(gty<gxx, gbk> $$0, gew $$1) {
+   public gvr(gua<gzv, gdf> $$0, gey $$1, hgw $$2) {
       super($$0);
-      this.b = new gbk($$1.a(gez.R));
-      this.c = new gbk($$1.a(gez.Q));
+      this.a = new gdd<>($$1.a(gfb.cf));
+      this.b = $$2;
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gxx $$3, float $$4, float $$5) {
-      cvk $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         gbk $$8 = $$3.aj ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+   private boolean a(cwo $$0, hgx.d $$1) {
+      det $$2 = $$0.a(kv.D);
+      if ($$2 != null && !$$2.c().isEmpty()) {
+         hgx $$3 = this.b.a($$2.c().get());
+         return !$$3.a($$1).isEmpty();
+      } else {
+         return false;
+      }
+   }
+
+   public void a(fft $$0, glx $$1, int $$2, gzv $$3, float $$4, float $$5) {
+      if (!$$3.z && $$3.ay) {
+         hft $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.W, hgx.d.c)) {
+               $$0.a();
+               if (this.a($$3.W, hgx.d.a)) {
+                  $$0.a(0.0F, -0.053125F, 0.06875F);
+               }
+
+               ffx $$7 = $$1.getBuffer(gmh.d($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, heh.d);
+               $$0.b();
+            }
+         }
       }
    }
 }

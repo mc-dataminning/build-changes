@@ -1,204 +1,239 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class gsc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<buq<?>, gsb<?>> b = new Object2ObjectOpenHashMap();
-   private static final Map<hfo.a, gsb<gkq>> c = Map.of(hfo.a.b, $$0 -> new gxi($$0, false), hfo.a.a, $$0 -> new gxi($$0, true));
+public abstract class gsc<T extends buk, S extends gyj> {
+   protected static final float c = 0.025F;
+   public static final int d = 24;
+   protected final gsb e;
+   private final fob a;
+   protected float f;
+   protected float g = 1.0F;
+   private final S b = this.d();
 
-   private static <T extends buj> void a(buq<? extends T> $$0, gsb<T> $$1) {
-      b.put($$0, $$1);
+   protected gsc(gsd.a $$0) {
+      this.e = $$0.a();
+      this.a = $$0.j();
    }
 
-   public static Map<buq<?>, gsa<?, ?>> a(gsb.a $$0) {
-      Builder<buq<?>, gsa<?, ?>> $$1 = ImmutableMap.builder();
-      b.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create model for " + mb.f.b((buq<?>)$$2), var5);
+   public final int a(T $$0, float $$1) {
+      ji $$2 = ji.a((kb)$$0.n($$1));
+      return glv.a(this.a($$0, $$2), this.b($$0, $$2));
+   }
+
+   protected int b(T $$0, ji $$1) {
+      return $$0.dV().a(dgq.a, $$1);
+   }
+
+   protected int a(T $$0, ji $$1) {
+      return $$0.bY() ? 15 : $$0.dV().a(dgq.b, $$1);
+   }
+
+   public boolean a(T $$0, gpp $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if (!this.b($$0)) {
+         return true;
+      } else {
+         fau $$5 = this.a($$0).g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new fau($$0.dA() - 2.0, $$0.dC() - 2.0, $$0.dG() - 2.0, $$0.dA() + 2.0, $$0.dC() + 2.0, $$0.dG() + 2.0);
          }
-      });
-      return $$1.build();
-   }
 
-   public static Map<hfo.a, gsa<? extends cov, ?>> b(gsb.a $$0) {
-      Builder<hfo.a, gsa<? extends cov, ?>> $$1 = ImmutableMap.builder();
-      c.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
-         }
-      });
-      return $$1.build();
-   }
+         if ($$1.a($$5)) {
+            return true;
+         } else {
+            if ($$0 instanceof bve $$6) {
+               buk $$7 = $$6.D();
+               if ($$7 != null) {
+                  return $$1.a(this.e.a($$7).a($$7));
+               }
+            }
 
-   public static boolean a() {
-      boolean $$0 = true;
-
-      for (buq<?> $$1 : mb.f) {
-         if ($$1 != buq.bR && !b.containsKey($$1)) {
-            a.warn("No renderer registered for {}", mb.f.b($$1));
-            $$0 = false;
+            return false;
          }
       }
-
-      return !$$0;
    }
 
-   static {
-      a(buq.c, gqw::new);
-      a(buq.d, gtj::new);
-      a(buq.e, gqx::new);
-      a(buq.f, gqy::new);
-      a(buq.g, guq::new);
-      a(buq.h, gra::new);
-      a(buq.k, grb::new);
-      a(buq.l, grc::new);
-      a(buq.o, grd::new);
-      a(buq.p, grp.a::new);
-      a(buq.aG, $$0 -> new gre($$0, gez.bF));
-      a(buq.bo, $$0 -> new gre($$0, gez.cV));
-      a(buq.m, $$0 -> new gre($$0, gez.B));
-      a(buq.at, $$0 -> new gre($$0, gez.bp));
-      a(buq.a, $$0 -> new gre($$0, gez.a));
-      a(buq.w, $$0 -> new gre($$0, gez.T));
-      a(buq.F, $$0 -> new gre($$0, gez.al));
-      a(buq.aL, $$0 -> new gre($$0, gez.bJ));
-      a(buq.aA, $$0 -> new gre($$0, gez.by));
-      a(buq.j, $$0 -> new gtw($$0, gez.p));
-      a(buq.q, grf::new);
-      a(buq.r, grg::new);
-      a(buq.s, gvb::new);
-      a(buq.u, gri::new);
-      a(buq.t, grh::new);
-      a(buq.v, grj::new);
-      a(buq.aH, $$0 -> new gre($$0, gez.bG));
-      a(buq.bp, $$0 -> new gre($$0, gez.cW));
-      a(buq.n, $$0 -> new gre($$0, gez.C));
-      a(buq.au, $$0 -> new gre($$0, gez.bq));
-      a(buq.b, $$0 -> new gre($$0, gez.b));
-      a(buq.x, $$0 -> new gre($$0, gez.U));
-      a(buq.G, $$0 -> new gre($$0, gez.am));
-      a(buq.aM, $$0 -> new gre($$0, gez.bK));
-      a(buq.aB, $$0 -> new gre($$0, gez.bz));
-      a(buq.i, $$0 -> new gtw($$0, gez.o));
-      a(buq.y, $$0 -> new gtg($$0, gez.W));
-      a(buq.z, grk::new);
-      a(buq.A, grl::new);
-      a(buq.B, $$0 -> new gtg($$0, gez.aa));
-      a(buq.C, grm::new);
-      a(buq.D, grn::new);
-      a(buq.E, gro::new);
-      a(buq.H, grq::new);
-      a(buq.I, $$0 -> new grr<>($$0, gez.ar, gez.as, false));
-      a(buq.J, grs::new);
-      a(buq.K, grt::new);
-      a(buq.L, guo::new);
-      a(buq.M, gru::new);
-      a(buq.N, grx::new);
-      a(buq.O, gry::new);
-      a(buq.P, grw::new);
-      a(buq.Q, guo::new);
-      a(buq.R, grv::new);
-      a(buq.S, gse::new);
-      a(buq.T, gsd::new);
-      a(buq.U, guo::new);
-      a(buq.V, gsf::new);
-      a(buq.W, $$0 -> new guo<>($$0, 1.0F, true));
-      a(buq.X, gsg::new);
-      a(buq.Y, $$0 -> new guo<>($$0, 3.0F, true));
-      a(buq.Z, gsh::new);
-      a(buq.bS, gsi::new);
-      a(buq.aa, gsj::new);
-      a(buq.ab, gsk::new);
-      a(buq.ac, $$0 -> new gtg($$0, gez.aQ));
-      a(buq.ad, gsl::new);
-      a(buq.ae, $$0 -> new gsm($$0, 6.0F));
-      a(buq.af, gsy::new);
-      a(buq.ag, $$0 -> new gsn($$0, new geb($$0.a(gez.aV)), new geb($$0.a(gez.aW))));
-      a(buq.ah, gso::new);
-      a(buq.ai, gsp::new);
-      a(buq.aj, gsq::new);
-      a(buq.ak, $$0 -> new gtg($$0, gez.bc));
-      a(buq.al, gsr::new);
-      a(buq.am, gst::new);
-      a(buq.an, gsv::new);
-      a(buq.ao, gtj::new);
-      a(buq.ap, gsw::new);
-      a(buq.aq, gsx::new);
-      a(buq.ar, grp.b::new);
-      a(buq.as, gsy::new);
-      a(buq.aJ, gtl::new);
-      a(buq.av, gta::new);
-      a(buq.aw, gtb::new);
-      a(buq.ax, $$0 -> new gtd($$0, gez.bs, gez.bt));
-      a(buq.ay, gte::new);
-      a(buq.az, gtf::new);
-      a(buq.aC, gtj::new);
-      a(buq.aD, $$0 -> new gtg($$0, gez.bA));
-      a(buq.aE, gti::new);
-      a(buq.aF, $$0 -> new grr<>($$0, gez.bD, gez.bE, true));
-      a(buq.aI, gtk::new);
-      a(buq.aK, gtm::new);
-      a(buq.aN, gtn::new);
-      a(buq.aO, gto::new);
-      a(buq.aP, gtp::new);
-      a(buq.aQ, gtq::new);
-      a(buq.aR, $$0 -> new gtr($$0, gez.bQ, gez.bR, gez.bY, gez.bZ, gez.bS, gez.bT));
-      a(buq.aS, $$0 -> new gtr($$0, gez.bU, gez.bU, gez.bV, gez.bW, gez.bV, gez.bW));
-      a(buq.aT, gts::new);
-      a(buq.aU, gtt::new);
-      a(buq.aV, guo::new);
-      a(buq.aW, gtu::new);
-      a(buq.aX, gtv::new);
-      a(buq.aY, gtx::new);
-      a(buq.aZ, gtz::new);
-      a(buq.ba, gua::new);
-      a(buq.bb, guc::new);
-      a(buq.bc, gub::new);
-      a(buq.bd, gud::new);
-      a(buq.be, gue::new);
-      a(buq.bf, $$0 -> new guv($$0, gez.cJ, gez.cK, true));
-      a(buq.bg, guf::new);
-      a(buq.bh, $$0 -> new guo<>($$0, 0.75F, true));
-      a(buq.bi, gug::new);
-      a(buq.bj, guo::new);
-      a(buq.bk, guh::new);
-      a(buq.bl, $$0 -> new gtg($$0, gez.cT));
-      a(buq.bm, gui::new);
-      a(buq.bn, guj::new);
-      a(buq.bq, $$0 -> new guk<>($$0, new geb($$0.a(gez.cX)), new geb($$0.a(gez.cY))));
-      a(buq.br, gul::new);
-      a(buq.bs, gum::new);
-      a(buq.bt, gun::new);
-      a(buq.bu, grp.c::new);
-      a(buq.bv, gus::new);
-      a(buq.bw, gur::new);
-      a(buq.bx, $$0 -> new gtd($$0, gez.dj, gez.dk));
-      a(buq.by, gup::new);
-      a(buq.bz, gut::new);
-      a(buq.bA, guu::new);
-      a(buq.bB, guw::new);
-      a(buq.bC, gux::new);
-      a(buq.bD, guy::new);
-      a(buq.bF, gva::new);
-      a(buq.bE, guz::new);
-      a(buq.bG, gvb::new);
-      a(buq.bH, gvc::new);
-      a(buq.bI, gvd::new);
-      a(buq.bJ, gve::new);
-      a(buq.bK, gvf::new);
-      a(buq.bL, gvg::new);
-      a(buq.bM, gvh::new);
-      a(buq.bN, gvi::new);
-      a(buq.bO, $$0 -> new guv($$0, gez.dS, gez.dT, false));
-      a(buq.bP, gvj::new);
-      a(buq.bQ, $$0 -> new gvk($$0, gez.ec, gez.ed, gez.eg, gez.eh, gez.ee, gez.ef));
+   protected fau a(T $$0) {
+      return $$0.cR();
+   }
+
+   protected boolean b(T $$0) {
+      return true;
+   }
+
+   public faz a(S $$0) {
+      return $$0.C != null ? $$0.C : faz.c;
+   }
+
+   public void a(S $$0, fft $$1, glx $$2, int $$3) {
+      gyj.a $$4 = $$0.F;
+      if ($$4 != null) {
+         a($$1, $$2, $$4);
+      }
+
+      if ($$0.D != null) {
+         this.a($$0, $$0.D, $$1, $$2, $$3);
+      }
+   }
+
+   private static void a(fft $$0, glx $$1, gyj.a $$2) {
+      float $$3 = 0.025F;
+      float $$4 = (float)($$2.c.d - $$2.b.d);
+      float $$5 = (float)($$2.c.e - $$2.b.e);
+      float $$6 = (float)($$2.c.f - $$2.b.f);
+      float $$7 = ayz.j($$4 * $$4 + $$6 * $$6) * 0.025F / 2.0F;
+      float $$8 = $$6 * $$7;
+      float $$9 = $$4 * $$7;
+      $$0.a();
+      $$0.a($$2.a);
+      ffx $$10 = $$1.getBuffer(gmh.h());
+      Matrix4f $$11 = $$0.c().a();
+
+      for (int $$12 = 0; $$12 <= 24; $$12++) {
+         a($$10, $$11, $$4, $$5, $$6, $$2.d, $$2.e, $$2.f, $$2.g, 0.025F, 0.025F, $$8, $$9, $$12, false);
+      }
+
+      for (int $$13 = 24; $$13 >= 0; $$13--) {
+         a($$10, $$11, $$4, $$5, $$6, $$2.d, $$2.e, $$2.f, $$2.g, 0.025F, 0.0F, $$8, $$9, $$13, true);
+      }
+
+      $$0.b();
+   }
+
+   private static void a(
+      ffx $$0,
+      Matrix4f $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      int $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      int $$13,
+      boolean $$14
+   ) {
+      float $$15 = (float)$$13 / 24.0F;
+      int $$16 = (int)ayz.h($$15, (float)$$5, (float)$$6);
+      int $$17 = (int)ayz.h($$15, (float)$$7, (float)$$8);
+      int $$18 = glv.a($$16, $$17);
+      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
+      float $$20 = 0.5F * $$19;
+      float $$21 = 0.4F * $$19;
+      float $$22 = 0.3F * $$19;
+      float $$23 = $$2 * $$15;
+      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
+      float $$25 = $$4 * $$15;
+      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).c($$18);
+      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).c($$18);
+   }
+
+   protected boolean a(T $$0, double $$1) {
+      return $$0.cM() || $$0.l_() && $$0 == this.e.c;
+   }
+
+   public fob e() {
+      return this.a;
+   }
+
+   protected void a(S $$0, wp $$1, fft $$2, glx $$3, int $$4) {
+      faz $$5 = $$0.E;
+      if ($$5 != null) {
+         boolean $$6 = !$$0.A;
+         int $$7 = "deadmau5".equals($$1.getString()) ? -10 : 0;
+         $$2.a();
+         $$2.a($$5.d, $$5.e + 0.5, $$5.f);
+         $$2.a(this.e.b());
+         $$2.b(0.025F, -0.025F, 0.025F);
+         Matrix4f $$8 = $$2.c().a();
+         fob $$9 = this.e();
+         float $$10 = (float)(-$$9.a($$1)) / 2.0F;
+         int $$11 = (int)(fli.Q().n.a(0.25F) * 255.0F) << 24;
+         $$9.a($$1, $$10, (float)$$7, -2130706433, false, $$8, $$3, $$6 ? fob.a.b : fob.a.a, $$11, $$4);
+         if ($$6) {
+            $$9.a($$1, $$10, (float)$$7, -1, false, $$8, $$3, fob.a.a, 0, glv.b($$4, 2));
+         }
+
+         $$2.b();
+      }
+   }
+
+   @Nullable
+   protected wp c(T $$0) {
+      return $$0.p_();
+   }
+
+   protected float c(S $$0) {
+      return this.f;
+   }
+
+   protected float b(S $$0) {
+      return this.g;
+   }
+
+   public abstract S d();
+
+   public final S b(T $$0, float $$1) {
+      S $$2 = this.b;
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
+      $$1.r = ayz.d((double)$$2, $$0.aa, $$0.dA());
+      $$1.s = ayz.d((double)$$2, $$0.ab, $$0.dC());
+      $$1.t = ayz.d((double)$$2, $$0.ac, $$0.dG());
+      $$1.z = $$0.cp();
+      $$1.u = (float)$$0.af + $$2;
+      $$1.v = $$0.dq();
+      $$1.w = $$0.dr();
+      $$1.x = $$0.cS();
+      if ($$0.bZ() && $$0.dk() instanceof cqv $$3 && $$3.l() instanceof crk $$4 && $$4.t()) {
+         double $$5 = ayz.d((double)$$2, $$3.aa, $$3.dA());
+         double $$6 = ayz.d((double)$$2, $$3.ab, $$3.dC());
+         double $$7 = ayz.d((double)$$2, $$3.ac, $$3.dG());
+         $$1.C = $$4.e($$2).d(new faz($$5, $$6, $$7));
+      } else {
+         $$1.C = null;
+      }
+
+      $$1.y = this.e.b($$0);
+      boolean $$8 = $$1.y < 4096.0 && this.a($$0, $$1.y);
+      if ($$8) {
+         $$1.D = this.c($$0);
+         $$1.E = $$0.ds().a(bul.c, 0, $$0.k($$2));
+      } else {
+         $$1.D = null;
+      }
+
+      $$1.A = $$0.cg();
+      buk $$10 = $$0 instanceof bve $$9 ? $$9.D() : null;
+      if ($$10 != null) {
+         float $$11 = $$0.t($$2) * (float) (Math.PI / 180.0);
+         faz $$12 = $$0.s($$2).b(-$$11);
+         ji $$13 = ji.a((kb)$$0.m($$2));
+         ji $$14 = ji.a((kb)$$10.m($$2));
+         if ($$1.F == null) {
+            $$1.F = new gyj.a();
+         }
+
+         gyj.a $$15 = $$1.F;
+         $$15.a = $$12;
+         $$15.b = $$0.o($$2).e($$12);
+         $$15.c = $$10.u($$2);
+         $$15.d = this.a($$0, $$13);
+         $$15.e = this.e.a($$10).a($$10, $$14);
+         $$15.f = $$0.dV().a(dgq.a, $$13);
+         $$15.g = $$0.dV().a(dgq.a, $$14);
+      } else {
+         $$1.F = null;
+      }
+
+      $$1.B = $$0.cF();
    }
 }

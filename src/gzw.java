@@ -1,5 +1,3 @@
-public class gzw extends gzh {
+public class gzw extends gzj {
    public float a;
-   public boolean b;
-   public chq.g c = chq.g.a;
 }

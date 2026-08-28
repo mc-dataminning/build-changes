@@ -1,60 +1,26 @@
-public class fax {
-   public static final fax a = new fax(0.0F, 0.0F);
-   public static final fax b = new fax(1.0F, 1.0F);
-   public static final fax c = new fax(1.0F, 0.0F);
-   public static final fax d = new fax(-1.0F, 0.0F);
-   public static final fax e = new fax(0.0F, 1.0F);
-   public static final fax f = new fax(0.0F, -1.0F);
-   public static final fax g = new fax(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final fax h = new fax(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+public abstract class fax {
+   protected final faz a;
 
-   public fax(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   protected fax(faz $$0) {
+      this.a = $$0;
    }
 
-   public fax a(float $$0) {
-      return new fax(this.i * $$0, this.j * $$0);
+   public double a(buk $$0) {
+      double $$1 = this.a.d - $$0.dA();
+      double $$2 = this.a.e - $$0.dC();
+      double $$3 = this.a.f - $$0.dG();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public float a(fax $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
+   public abstract fax.a d();
+
+   public faz g() {
+      return this.a;
    }
 
-   public fax b(fax $$0) {
-      return new fax(this.i + $$0.i, this.j + $$0.j);
-   }
-
-   public fax b(float $$0) {
-      return new fax(this.i + $$0, this.j + $$0);
-   }
-
-   public boolean c(fax $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
-
-   public fax a() {
-      float $$0 = ayy.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new fax(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return ayy.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(fax $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public fax d() {
-      return new fax(-this.i, -this.j);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

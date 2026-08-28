@@ -1,8 +1,12 @@
 public class akj {
-   public static final akt<cwj> a = a("pumpkin_seeds");
-   public static final akt<cwj> b = a("melon_seeds");
+   public static final aku<djl> a = a("pumpkin");
+   public static final aku<djl> b = a("pumpkin_stem");
+   public static final aku<djl> c = a("attached_pumpkin_stem");
+   public static final aku<djl> d = a("melon");
+   public static final aku<djl> e = a("melon_stem");
+   public static final aku<djl> f = a("attached_melon_stem");
 
-   private static akt<cwj> a(String $$0) {
-      return akt.a(mc.K, aku.b($$0));
+   private static aku<djl> a(String $$0) {
+      return aku.a(mc.f, akv.b($$0));
    }
 }

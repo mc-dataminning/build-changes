@@ -1,37 +1,20 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public enum cwp implements azu {
-   a(0, "none"),
-   b(1, "eat"),
-   c(2, "drink"),
-   d(3, "block"),
-   e(4, "bow"),
-   f(5, "spear"),
-   g(6, "crossbow"),
-   h(7, "spyglass"),
-   i(8, "toot_horn"),
-   j(9, "brush"),
-   k(10, "bundle");
+public class cwp {
+   private static final Strategy<? super cwo> a = new Strategy<cwo>() {
+      public int a(@Nullable cwo $$0) {
+         return cwo.a($$0);
+      }
 
-   private static final IntFunction<cwp> n = axp.a(cwp::a, values(), axp.a.a);
-   public static final Codec<cwp> l = azu.a(cwp::values);
-   public static final ym<ByteBuf, cwp> m = yk.a(n, cwp::a);
-   private final int o;
-   private final String p;
+      public boolean a(@Nullable cwo $$0, @Nullable cwo $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && cwo.c($$0, $$1);
+      }
+   };
 
-   private cwp(final int $$0, final String $$1) {
-      this.o = $$0;
-      this.p = $$1;
-   }
-
-   public int a() {
-      return this.o;
-   }
-
-   @Override
-   public String c() {
-      return this.p;
+   public static Set<cwo> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

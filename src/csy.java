@@ -1,9 +1,22 @@
-public class csy extends csc {
-   public csy(int $$0, cou $$1) {
-      super(ctj.o, dbn.b, dbl.e, ctq.b, $$0, $$1);
+public class csy extends cty {
+   private final csd a;
+
+   public csy(csd $$0, bsc $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   public csy(int $$0, cou $$1, bsb $$2, csm $$3) {
-      super(ctj.o, dbn.b, dbl.e, ctq.b, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cwo $$0) {
+      return this.a.d($$0) || c($$0);
+   }
+
+   @Override
+   public int a_(cwo $$0) {
+      return c($$0) ? 1 : super.a_($$0);
+   }
+
+   public static boolean c(cwo $$0) {
+      return $$0.a(cws.rf);
    }
 }

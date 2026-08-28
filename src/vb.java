@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class vb {
    private final AtomicInteger a = new AtomicInteger();
-   private final bnb b;
+   private final bnc b;
 
-   public vb(bnb $$0) {
+   public vb(bnc $$0) {
       this.b = $$0;
    }
 

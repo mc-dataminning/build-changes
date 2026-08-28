@@ -1,41 +1,36 @@
-public class goz extends gpa<dvq> {
-   private static final aku c = aku.b("textures/entity/end_gateway_beam.png");
+public class goz implements goj<dvp> {
+   private final gsb a;
 
-   public goz(goi.a $$0) {
-      super($$0);
+   public goz(gok.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dvq $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().an() : 50.0;
-         $$6 = ayy.a($$6 * (float) Math.PI);
-         int $$8 = ayy.a((double)$$6 * $$7);
-         int $$9 = $$0.b() ? cvk.c.d() : cvk.k.d();
-         long $$10 = $$0.i().ad();
-         god.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dvp $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      dgh $$6 = $$0.i();
+      if ($$6 != null) {
+         dfi $$7 = $$0.c();
+         buk $$8 = $$7.b($$6, $$0.aA_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
+   }
+
+   public static void a(float $$0, fft $$1, glx $$2, int $$3, buk $$4, gsb $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected gmf d() {
-      return gmf.u();
-   }
-
-   @Override
-   public int aU_() {
-      return 256;
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)ayz.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

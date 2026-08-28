@@ -1,43 +1,32 @@
-public class gsj extends gqv<chg, gyq, gcb> {
-   private static final aku a = aku.b("textures/entity/fox/fox.png");
-   private static final aku b = aku.b("textures/entity/fox/fox_sleep.png");
-   private static final aku k = aku.b("textures/entity/fox/snow_fox.png");
-   private static final aku l = aku.b("textures/entity/fox/snow_fox_sleep.png");
+public class gsj extends gsc<cpk, gyq> {
+   private final hbl a;
 
-   public gsj(gsb.a $$0) {
-      super($$0, new gcb($$0.a(gez.aN)), new gcb($$0.a(gez.aO)), 0.4F);
-      this.a(new gwc(this));
+   public gsj(gsd.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   protected void a(gyq $$0, ffs $$1, float $$2, float $$3) {
+   public void a(gyq $$0, fft $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.e.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
+      }
+
+      $$0.b.a($$1, $$2, $$3, heh.d);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.ab));
-      }
    }
 
-   public aku a(gyq $$0) {
-      if ($$0.h == chg.v.a) {
-         return $$0.d ? b : a;
-      } else {
-         return $$0.d ? l : k;
-      }
-   }
-
-   public gyq b() {
+   public gyq a() {
       return new gyq();
    }
 
-   public void a(chg $$0, gyq $$1, float $$2) {
+   public void a(cpk $$0, gyq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gyw.a($$0, $$1, this.i);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.ci();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fR();
-      $$1.e = $$0.x();
-      $$1.f = $$0.gp();
-      $$1.g = $$0.gq();
-      $$1.h = $$0.t();
+      $$1.a = $$0.m();
+      this.a.a($$1.b, $$0.l(), cwm.h, $$0);
    }
 }

@@ -1,127 +1,213 @@
-import com.google.common.base.Preconditions;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class etb {
-   private static final etb[] am = new etb[64];
-   public static final etb a = new etb(0, 0);
-   public static final etb b = new etb(1, 8368696);
-   public static final etb c = new etb(2, 16247203);
-   public static final etb d = new etb(3, 13092807);
-   public static final etb e = new etb(4, 16711680);
-   public static final etb f = new etb(5, 10526975);
-   public static final etb g = new etb(6, 10987431);
-   public static final etb h = new etb(7, 31744);
-   public static final etb i = new etb(8, 16777215);
-   public static final etb j = new etb(9, 10791096);
-   public static final etb k = new etb(10, 9923917);
-   public static final etb l = new etb(11, 7368816);
-   public static final etb m = new etb(12, 4210943);
-   public static final etb n = new etb(13, 9402184);
-   public static final etb o = new etb(14, 16776437);
-   public static final etb p = new etb(15, 14188339);
-   public static final etb q = new etb(16, 11685080);
-   public static final etb r = new etb(17, 6724056);
-   public static final etb s = new etb(18, 15066419);
-   public static final etb t = new etb(19, 8375321);
-   public static final etb u = new etb(20, 15892389);
-   public static final etb v = new etb(21, 5000268);
-   public static final etb w = new etb(22, 10066329);
-   public static final etb x = new etb(23, 5013401);
-   public static final etb y = new etb(24, 8339378);
-   public static final etb z = new etb(25, 3361970);
-   public static final etb A = new etb(26, 6704179);
-   public static final etb B = new etb(27, 6717235);
-   public static final etb C = new etb(28, 10040115);
-   public static final etb D = new etb(29, 1644825);
-   public static final etb E = new etb(30, 16445005);
-   public static final etb F = new etb(31, 6085589);
-   public static final etb G = new etb(32, 4882687);
-   public static final etb H = new etb(33, 55610);
-   public static final etb I = new etb(34, 8476209);
-   public static final etb J = new etb(35, 7340544);
-   public static final etb K = new etb(36, 13742497);
-   public static final etb L = new etb(37, 10441252);
-   public static final etb M = new etb(38, 9787244);
-   public static final etb N = new etb(39, 7367818);
-   public static final etb O = new etb(40, 12223780);
-   public static final etb P = new etb(41, 6780213);
-   public static final etb Q = new etb(42, 10505550);
-   public static final etb R = new etb(43, 3746083);
-   public static final etb S = new etb(44, 8874850);
-   public static final etb T = new etb(45, 5725276);
-   public static final etb U = new etb(46, 8014168);
-   public static final etb V = new etb(47, 4996700);
-   public static final etb W = new etb(48, 4993571);
-   public static final etb X = new etb(49, 5001770);
-   public static final etb Y = new etb(50, 9321518);
-   public static final etb Z = new etb(51, 2430480);
-   public static final etb aa = new etb(52, 12398641);
-   public static final etb ab = new etb(53, 9715553);
-   public static final etb ac = new etb(54, 6035741);
-   public static final etb ad = new etb(55, 1474182);
-   public static final etb ae = new etb(56, 3837580);
-   public static final etb af = new etb(57, 5647422);
-   public static final etb ag = new etb(58, 1356933);
-   public static final etb ah = new etb(59, 6579300);
-   public static final etb ai = new etb(60, 14200723);
-   public static final etb aj = new etb(61, 8365974);
-   public final int ak;
-   public final int al;
+public abstract class etb extends esw {
+   public static final float e = 0.44444445F;
 
-   private etb(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
-      } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+   @Override
+   public esx d() {
+      return esz.d;
+   }
+
+   @Override
+   public esx e() {
+      return esz.e;
+   }
+
+   @Override
+   public cwk a() {
+      return cws.rh;
+   }
+
+   @Override
+   public void a(dgh $$0, ji $$1, esy $$2, azh $$3) {
+      ji $$4 = $$1.d();
+      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(lt.aa, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, awa.op, awb.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awa.on, awb.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
    }
 
-   public int a(etb.a $$0) {
-      return this == a ? 0 : axj.b(axj.f(this.ak), $$0.f);
+   @Override
+   public void a(ard $$0, ji $$1, esy $$2, azh $$3) {
+      if ($$0.O().b(dgd.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            ji $$5 = $$1;
+
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
+
+               dww $$7 = $$0.a_($$5);
+               if ($$7.l()) {
+                  if (this.a((dgk)$$0, $$5)) {
+                     $$0.b($$5, diy.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
+            }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               ji $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
+
+               if ($$0.u($$9.d()) && this.b($$0, $$9)) {
+                  $$0.b($$9.d(), diy.a($$0, $$9));
+               }
+            }
+         }
+      }
    }
 
-   public static etb a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
-
-   private static etb c(int $$0) {
-      etb $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
-
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(etb.a.b($$1 & 3));
-   }
-
-   public byte b(etb.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final etb.a[] g = new etb.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(final int $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private boolean a(dgk $$0, ji $$1) {
+      for (jn $$2 : jn.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
+         }
       }
 
-      public static etb.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      return false;
+   }
+
+   private boolean b(dgk $$0, ji $$1) {
+      return $$0.d($$1.v()) && !$$0.B($$1) ? false : $$0.a_($$1).m();
+   }
+
+   @Nullable
+   @Override
+   public lr h() {
+      return lt.i;
+   }
+
+   @Override
+   protected void a(dgi $$0, ji $$1, dww $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(dgk $$0) {
+      return $$0.G_().i() ? 4 : 2;
+   }
+
+   @Override
+   public dww b(esy $$0) {
+      return djn.K.m().b(dod.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(esx $$0) {
+      return $$0 == esz.e || $$0 == esz.d;
+   }
+
+   @Override
+   public int c(dgk $$0) {
+      return $$0.G_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(esy $$0, dfm $$1, ji $$2, esx $$3, jn $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(awv.a);
+   }
+
+   @Override
+   public int a(dgk $$0) {
+      return $$0.G_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(dgh $$0, ji $$1, esy $$2, esy $$3) {
+      int $$4 = this.a($$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.H_().a(4) != 0) {
+         $$4 *= 4;
       }
 
-      static etb.a b(int $$0) {
-         return g[$$0];
+      return $$4;
+   }
+
+   private void a(dgi $$0, ji $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(ard $$0) {
+      return $$0.O().b(dgd.W);
+   }
+
+   @Override
+   protected void a(dgi $$0, ji $$1, dww $$2, jn $$3, esy $$4) {
+      if ($$3 == jn.a) {
+         esy $$5 = $$0.b_($$1);
+         if (this.a(awv.b) && $$5.a(awv.a)) {
+            if ($$2.b() instanceof dod) {
+               $$0.a($$1, djn.b.m(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<avz> j() {
+      return Optional.of(awa.dm);
+   }
+
+   public static class a extends etb {
+      @Override
+      protected void a(dwx.a<esx, esy> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(esy $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(esy $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends etb {
+      @Override
+      public int d(esy $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(esy $$0) {
+         return true;
       }
    }
 }

@@ -1,9 +1,11 @@
-public interface aww {
-   axe<cwg> a = a("regular_goat_horns");
-   axe<cwg> b = a("screaming_goat_horns");
-   axe<cwg> c = a("goat_horns");
+public class aww {
+   public static final axf<ebs> a = a("vibrations");
+   public static final axf<ebs> b = a("warden_can_listen");
+   public static final axf<ebs> c = a("shrieker_can_listen");
+   public static final axf<ebs> d = a("ignore_vibrations_sneaking");
+   public static final axf<ebs> e = a("allay_can_listen");
 
-   private static axe<cwg> a(String $$0) {
-      return axe.a(mc.I, aku.b($$0));
+   private static axf<ebs> a(String $$0) {
+      return axf.a(mc.G, akv.b($$0));
    }
 }

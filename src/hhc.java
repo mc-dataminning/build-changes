@@ -1,9 +1,5 @@
-public interface hhc {
-   default j a() {
-      return j.a();
-   }
+import java.util.function.Supplier;
 
-   default boolean b() {
-      return false;
-   }
+@FunctionalInterface
+public interface hhc extends Supplier<String> {
 }

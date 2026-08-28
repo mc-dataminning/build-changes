@@ -9,21 +9,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class gg implements ArgumentType<cty> {
+public class gg implements ArgumentType<ctz> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wo.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("slot.unknown", $$0));
 
    public static gg a() {
       return new gg();
    }
 
-   public static cty a(CommandContext<ex> $$0, String $$1) {
-      return (cty)$$0.getArgument($$1, cty.class);
+   public static ctz a(CommandContext<ex> $$0, String $$1) {
+      return (ctz)$$0.getArgument($$1, ctz.class);
    }
 
-   public cty a(StringReader $$0) throws CommandSyntaxException {
+   public ctz a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = fb.a($$0, $$0x -> $$0x != ' ');
-      cty $$2 = ctz.a($$1);
+      ctz $$2 = cua.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class gg implements ArgumentType<cty> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fc.b(ctz.a(), $$1);
+      return fc.b(cua.a(), $$1);
    }
 
    public Collection<String> getExamples() {

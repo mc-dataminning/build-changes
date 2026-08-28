@@ -1,23 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record aeb(int b, jr<btm> c) implements yv<abk> {
-   public static final ym<vz, aeb> a = ym.a(yk.h, aeb::b, btm.b, aeb::e, aeb::new);
+public class aeb implements yw<abl> {
+   public static final yn<vl, aeb> a = yw.a(aeb::a, aeb::new);
+   private final IntList b;
 
-   @Override
-   public yx<aeb> a() {
-      return agd.ao;
+   public aeb(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   public void a(abk $$0) {
+   public aeb(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aeb(vl $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yy<aeb> a() {
+      return age.an;
+   }
+
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public buj a(dgg $$0) {
-      return $$0.a(this.b);
-   }
-
-   public jr<btm> e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

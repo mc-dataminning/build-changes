@@ -1,7 +1,7 @@
 public interface ew {
    ew a = new ew() {
       @Override
-      public void a(wo $$0) {
+      public void a(wp $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface ew {
       }
    };
 
-   void a(wo var1);
+   void a(wp var1);
 
    boolean y_();
 

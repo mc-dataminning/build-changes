@@ -1,10 +1,8 @@
-public abstract class cgp extends bvh {
-   protected cgp(buq<? extends cgp> $$0, dgg $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean y() {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cgp {
 }

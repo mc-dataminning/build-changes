@@ -1,5 +1,9 @@
-public class gzb extends gzh {
-   public float a;
-   public int b;
-   public bug.a c = bug.a.a;
+public class gzb extends gxo {
+   public boolean b;
+   public boolean c;
+   public bva d = bva.b;
+   public cle.a j = cle.a.h;
+   public int k;
+   public int l;
+   public float m;
 }

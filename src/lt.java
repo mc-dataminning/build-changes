@@ -116,13 +116,13 @@ public class lt {
    public static final lx bg = a("trial_omen", false);
    public static final ls<ll> bh = a("block_crumble", false, ll::a, ll::b);
    public static final Codec<lr> bi = mb.i.q().dispatch("type", lr::a, ls::c);
-   public static final ym<vz, lr> bj = yk.a(mc.Y).b(lr::a, ls::d);
+   public static final yn<wa, lr> bj = yl.a(mc.Y).b(lr::a, ls::d);
 
    private static lx a(String $$0, boolean $$1) {
       return ke.a(mb.i, $$0, new lx($$1));
    }
 
-   private static <T extends lr> ls<T> a(String $$0, boolean $$1, final Function<ls<T>, MapCodec<T>> $$2, final Function<ls<T>, ym<? super vz, T>> $$3) {
+   private static <T extends lr> ls<T> a(String $$0, boolean $$1, final Function<ls<T>, MapCodec<T>> $$2, final Function<ls<T>, yn<? super wa, T>> $$3) {
       return ke.a(mb.i, $$0, new ls<T>($$1) {
          @Override
          public MapCodec<T> c() {
@@ -130,7 +130,7 @@ public class lt {
          }
 
          @Override
-         public ym<? super vz, T> d() {
+         public yn<? super wa, T> d() {
             return $$3.apply(this);
          }
       });

@@ -1,181 +1,176 @@
-public class csi extends csa {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final csn u;
-   long v;
-   public final bsb p = new bsp(2) {
-      @Override
-      public void e() {
-         csi.this.a(this);
-         super.e();
-      }
-   };
-   private final cts w = new cts() {
-      @Override
-      public void e() {
-         csi.this.a(this);
-         super.e();
-      }
-   };
+import java.util.Optional;
 
-   public csi(int $$0, cou $$1) {
-      this($$0, $$1, csn.a);
+public class csi extends csb {
+   static final akv m = akv.b("container/slot/brewing_fuel");
+   static final akv n = akv.b("container/slot/potion");
+   private static final int o = 0;
+   private static final int p = 2;
+   private static final int q = 3;
+   private static final int r = 4;
+   private static final int s = 5;
+   private static final int t = 2;
+   private static final int u = 5;
+   private static final int v = 32;
+   private static final int w = 32;
+   private static final int x = 41;
+   private final bsc y;
+   private final csn z;
+   private final cty A;
+
+   public csi(int $$0, cov $$1) {
+      this($$0, $$1, new bsq(5), new ctx(2));
    }
 
-   public csi(int $$0, cou $$1, final csn $$2) {
-      super(ctj.x, $$0);
-      this.u = $$2;
-      this.a(new ctx(this.p, 0, 15, 15) {
-         @Override
-         public boolean a(cwn $$0) {
-            return $$0.b(kv.L);
-         }
-      });
-      this.a(new ctx(this.p, 1, 15, 52) {
-         @Override
-         public boolean a(cwn $$0) {
-            return $$0.a(cwr.rv) || $$0.a(cwr.vi) || $$0.a(cwr.gi);
-         }
-      });
-      this.a(new ctx(this.w, 2, 145, 39) {
-         @Override
-         public boolean a(cwn $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(cov $$0, cwn $$1) {
-            csi.this.k.get(0).a(1);
-            csi.this.k.get(1).a(1);
-            $$1.h().a($$1, $$0.dW(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.ad();
-               if (csi.this.v != $$2xx) {
-                  $$0x.a(null, $$1x, avz.Bi, awa.e, 1.0F, 1.0F);
-                  csi.this.v = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
+   public csi(int $$0, cov $$1, bsc $$2, csn $$3) {
+      super(ctk.l, $$0);
+      a($$2, 5);
+      a($$3, 2);
+      this.y = $$2;
+      this.z = $$3;
+      cym $$4 = $$1.k.dV().L();
+      this.a(new csi.c($$2, 0, 56, 51));
+      this.a(new csi.c($$2, 1, 79, 58));
+      this.a(new csi.c($$2, 2, 102, 51));
+      this.A = this.a(new csi.b($$4, $$2, 3, 79, 17));
+      this.a(new csi.a($$2, 4, 17, 17));
+      this.a($$3);
       this.c($$1, 8, 84);
    }
 
    @Override
-   public boolean b(cov $$0) {
-      return a(this.u, $$0, djm.oz);
+   public boolean b(cow $$0) {
+      return this.y.a($$0);
    }
 
    @Override
-   public void a(bsb $$0) {
-      cwn $$1 = this.p.a(0);
-      cwn $$2 = this.p.a(1);
-      cwn $$3 = this.w.a(2);
-      if ($$3.f() || !$$1.f() && !$$2.f()) {
-         if (!$$1.f() && !$$2.f()) {
-            this.a($$1, $$2, $$3);
-         }
-      } else {
-         this.w.b(2);
-      }
-   }
-
-   private void a(cwn $$0, cwn $$1, cwn $$2) {
-      this.u.a(($$3, $$4) -> {
-         eur $$5 = cxa.b($$0, $$3);
-         if ($$5 != null) {
-            cwn $$6;
-            if ($$1.a(cwr.rv) && !$$5.h && $$5.f < 4) {
-               $$6 = $$0.c(1);
-               $$6.b(kv.N, czk.b);
-               this.d();
-            } else if ($$1.a(cwr.gi) && !$$5.h) {
-               $$6 = $$0.c(1);
-               $$6.b(kv.N, czk.a);
-               this.d();
-            } else {
-               if (!$$1.a(cwr.vi)) {
-                  this.w.b(2);
-                  this.d();
-                  return;
-               }
-
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!cwn.a($$6, $$2)) {
-               this.w.a(2, $$6);
-               this.d();
-            }
-         }
-      });
-   }
-
-   @Override
-   public boolean a(cwn $$0, ctx $$1) {
-      return $$1.c != this.w && super.a($$0, $$1);
-   }
-
-   @Override
-   public cwn b(cov $$0, int $$1) {
-      cwn $$2 = cwn.j;
-      ctx $$3 = this.k.get($$1);
+   public cwo b(cow $$0, int $$1) {
+      cwo $$2 = cwo.j;
+      cty $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwn $$4 = $$3.g();
+         cwo $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 == 2) {
-            $$4.h().a($$4, $$0.dW(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return cwn.j;
+         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
+            if (csi.a.b($$2)) {
+               if (this.a($$4, 4, 5, false) || this.A.a($$4) && !this.a($$4, 3, 4, false)) {
+                  return cwo.j;
+               }
+            } else if (this.A.a($$4)) {
+               if (!this.a($$4, 3, 4, false)) {
+                  return cwo.j;
+               }
+            } else if (csi.c.b($$2)) {
+               if (!this.a($$4, 0, 3, false)) {
+                  return cwo.j;
+               }
+            } else if ($$1 >= 5 && $$1 < 32) {
+               if (!this.a($$4, 32, 41, false)) {
+                  return cwo.j;
+               }
+            } else if ($$1 >= 32 && $$1 < 41) {
+               if (!this.a($$4, 5, 32, false)) {
+                  return cwo.j;
+               }
+            } else if (!this.a($$4, 5, 41, false)) {
+               return cwo.j;
+            }
+         } else {
+            if (!this.a($$4, 5, 41, true)) {
+               return cwo.j;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.b(kv.L)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cwn.j;
-               }
-            } else if (!$$4.a(cwr.rv) && !$$4.a(cwr.vi) && !$$4.a(cwr.gi)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return cwn.j;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cwn.j;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return cwn.j;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cwn.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cwn.j);
+            $$3.e(cwo.j);
+         } else {
+            $$3.c();
          }
 
-         $$3.c();
          if ($$4.M() == $$2.M()) {
-            return cwn.j;
+            return cwo.j;
          }
 
-         $$3.a($$0, $$4);
-         this.d();
+         $$3.a($$0, $$2);
       }
 
       return $$2;
    }
 
-   @Override
-   public void a(cov $$0) {
-      super.a($$0);
-      this.w.b(2);
-      this.u.a(($$1, $$2) -> this.a($$0, this.p));
+   public int l() {
+      return this.z.a(1);
+   }
+
+   public int m() {
+      return this.z.a(0);
+   }
+
+   static class a extends cty {
+      public a(bsc $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cwo $$0) {
+         return b($$0);
+      }
+
+      public static boolean b(cwo $$0) {
+         return $$0.a(awy.X);
+      }
+
+      @Override
+      public akv b() {
+         return csi.m;
+      }
+   }
+
+   static class b extends cty {
+      private final cym a;
+
+      public b(cym $$0, bsc $$1, int $$2, int $$3, int $$4) {
+         super($$1, $$2, $$3, $$4);
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean a(cwo $$0) {
+         return this.a.a($$0);
+      }
+   }
+
+   static class c extends cty {
+      public c(bsc $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cwo $$0) {
+         return b($$0);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+
+      @Override
+      public void a(cow $$0, cwo $$1) {
+         Optional<jr<cyl>> $$2 = $$1.a(kv.Q, cyn.a).e();
+         if ($$2.isPresent() && $$0 instanceof are $$3) {
+            ap.l.a($$3, $$2.get());
+         }
+
+         super.a($$0, $$1);
+      }
+
+      public static boolean b(cwo $$0) {
+         return $$0.a(cws.ti) || $$0.a(cws.wo) || $$0.a(cws.wr) || $$0.a(cws.th);
+      }
+
+      @Override
+      public akv b() {
+         return csi.n;
+      }
    }
 }

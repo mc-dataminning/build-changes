@@ -1,26 +1,35 @@
+import com.google.common.collect.Sets;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class eub {
-   @Nullable
-   public static euf a(dgg $$0, @Nullable jn $$1, @Nullable jn $$2) {
-      if ($$0.K().b(crt.c)) {
-         euf $$3 = euf.a($$0.A).a(euf.a.a);
-         if ($$2 != null) {
-            $$3 = $$3.a($$2);
+public class eub extends eui {
+   public eub(dps $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(dgh $$0, ji $$1, dww $$2, @Nullable eug $$3, boolean $$4) {
+      int $$5 = this.c($$0, $$1);
+      if ($$2.c(dps.f) != $$5) {
+         if ($$0.a_($$1) == $$2) {
+            $$0.a($$1, $$2.b(dps.f, Integer.valueOf($$5)), 2);
          }
 
-         if ($$1 != null) {
-            $$3 = $$3.b($$1);
+         Set<ji> $$6 = Sets.newHashSet();
+         $$6.add($$1);
+
+         for (jn $$7 : jn.values()) {
+            $$6.add($$1.a($$7));
          }
 
-         return $$3;
-      } else {
-         return null;
+         for (ji $$8 : $$6) {
+            $$0.a($$8, this.a);
+         }
       }
    }
 
-   @Nullable
-   public static euf a(@Nullable euf $$0, jn $$1) {
-      return $$0 == null ? null : $$0.b($$1);
+   private int c(dgh $$0, ji $$1) {
+      int $$2 = this.a($$0, $$1);
+      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
    }
 }

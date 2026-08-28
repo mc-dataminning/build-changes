@@ -1,16 +1,6 @@
-public enum dxq implements azu {
-   a(jn.a),
-   b(jn.b);
-
-   private final jn c;
-
-   private dxq(final jn $$0) {
-      this.c = $$0;
-   }
-
-   public jn a() {
-      return this.c;
-   }
+public enum dxq implements azv {
+   a,
+   b;
 
    @Override
    public String toString() {
@@ -19,10 +9,6 @@ public enum dxq implements azu {
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dxq b() {
-      return this == a ? b : a;
+      return this == a ? "left" : "right";
    }
 }

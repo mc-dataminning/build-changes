@@ -1,72 +1,81 @@
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class fyj {
-   public static final fyj a = new fyj(List.of());
-   private final List<dci> b;
-   private final Set<dcj> c = new HashSet<>();
-   private final Set<dcj> d = new HashSet<>();
+public class fyj extends fpy {
+   private static final fqf c = new fqf(akv.b("recipe_book/tab"), akv.b("recipe_book/tab_selected"));
+   private final fyh.a d;
+   private static final float e = 15.0F;
+   private float f;
 
-   public fyj(List<dci> $$0) {
-      this.b = $$0;
+   public fyj(fyh.a $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   public void a(cpa $$0, Predicate<dch> $$1) {
-      for (dci $$2 : this.b) {
-         boolean $$3 = $$1.test($$2.b());
-         if ($$3) {
-            this.d.add($$2.a());
-         } else {
-            this.d.remove($$2.a());
-         }
+   public void a(fkt $$0, boolean $$1) {
+      fyl.a $$2 = $$1 ? fyl.a.b : fyl.a.a;
 
-         if ($$3 && $$2.a($$0)) {
-            this.c.add($$2.a());
-         } else {
-            this.c.remove($$2.a());
+      for (fyl $$4 : $$0.a(this.d.c())) {
+         for (dcj $$5 : $$4.a($$2)) {
+            if ($$0.b($$5.a())) {
+               this.f = 15.0F;
+               return;
+            }
          }
       }
    }
 
-   public boolean a(dcj $$0) {
-      return this.c.contains($$0);
+   @Override
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
+         }
+
+         akv $$5 = this.a.a(true, this.b);
+         int $$6 = this.F();
+         if (this.b) {
+            $$6 -= 2;
+         }
+
+         $$0.a(gmh::H, $$5, $$6, this.G(), this.g, this.h);
+         this.a($$0);
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
    }
 
-   public boolean a() {
-      return !this.c.isEmpty();
+   private void a(fod $$0) {
+      int $$1 = this.b ? -2 : 0;
+      if (this.d.b().isPresent()) {
+         $$0.b(this.d.a(), this.F() + 3 + $$1, this.G() + 5);
+         $$0.b(this.d.b().get(), this.F() + 14 + $$1, this.G() + 5);
+      } else {
+         $$0.b(this.d.a(), this.F() + 9 + $$1, this.G() + 5);
+      }
    }
 
-   public boolean b() {
-      return !this.d.isEmpty();
+   public dav b() {
+      return this.d.c();
    }
 
-   public List<dci> c() {
-      return this.b;
-   }
+   public boolean a(fkt $$0) {
+      List<fyl> $$1 = $$0.a(this.d.c());
+      this.k = false;
 
-   public List<dci> a(fyj.a $$0) {
-      Predicate<dcj> $$1 = switch ($$0) {
-         case a -> this.d::contains;
-         case b -> this.c::contains;
-         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
-      };
-      List<dci> $$2 = new ArrayList<>();
-
-      for (dci $$3 : this.b) {
-         if ($$1.test($$3.a())) {
-            $$2.add($$3);
+      for (fyl $$2 : $$1) {
+         if ($$2.b()) {
+            this.k = true;
+            break;
          }
       }
 
-      return $$2;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+      return this.k;
    }
 }

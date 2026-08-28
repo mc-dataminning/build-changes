@@ -1,65 +1,107 @@
-public abstract class hhw extends hhs {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cgx n;
-   private boolean r;
+public abstract class hhw implements hio {
+   protected hil a;
+   protected final awb b;
+   protected final akv c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hio.a k = hio.a.b;
+   protected boolean l;
+   protected azh m;
 
-   public hhw(cgx $$0, avy $$1, awa $$2) {
-      super($$1, $$2, hij.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dB());
-      this.g = (double)((float)$$0.dD());
-      this.h = (double)((float)$$0.dH());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   protected hhw(avz $$0, awb $$1, azh $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected hhw(akv $$0, awb $$1, azh $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         flh.Q().ak().a((hik)this.o());
-         this.r = true;
-      }
+   public akv a() {
+      return this.c;
+   }
 
-      if (!this.n.dR() && !this.r) {
-         this.f = (double)((float)this.n.dB());
-         this.g = (double)((float)this.n.dD());
-         this.h = (double)((float)this.n.dH());
-         float $$1 = (float)this.n.dz().i();
-         if ($$1 >= 0.01F) {
-            this.e = ayy.h(ayy.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = ayy.h(ayy.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
+   @Override
+   public hjv a(hju $$0) {
+      if (this.c.equals(hju.c)) {
+         this.a = hju.e;
+         return hju.d;
       } else {
-         this.n();
+         hjv $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hju.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
       }
    }
 
-   private float u() {
-      return this.n.e_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.e_() ? 1.5F : 1.1F;
+   @Override
+   public hil b() {
+      return this.a;
    }
 
    @Override
-   public boolean r() {
-      return true;
+   public awb c() {
+      return this.b;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.bb();
+   public boolean d() {
+      return this.i;
    }
 
-   protected abstract hhs o();
+   @Override
+   public int e() {
+      return this.j;
+   }
 
-   protected abstract boolean p();
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hio.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
+   }
 }

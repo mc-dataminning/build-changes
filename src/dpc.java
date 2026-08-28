@@ -1,88 +1,89 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.function.BiFunction;
 
-public abstract class dpc extends djk {
-   private static final jn[] a = jn.values();
-   public static final dxm b = dxl.O;
-   public static final dxm c = dxl.P;
-   public static final dxm d = dxl.Q;
-   public static final dxm e = dxl.R;
-   public static final dxm f = dxl.M;
-   public static final dxm g = dxl.N;
-   public static final Map<jn, dxm> h = ImmutableMap.copyOf(af.a(Maps.newEnumMap(jn.class), $$0 -> {
-      $$0.put(jn.c, b);
-      $$0.put(jn.f, c);
-      $$0.put(jn.d, d);
-      $$0.put(jn.e, e);
-      $$0.put(jn.b, f);
-      $$0.put(jn.a, g);
-   }));
-   protected final fbs[] i;
+public class dpc extends djv implements djo {
+   public static final MapCodec<dpc> a = b(dpc::new);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dxt<jn> d = dxm.U;
+   public static final dxv e = dxm.V;
+   private static final BiFunction<jn, Integer, fbt> f = af.a(
+      ($$0, $$1) -> {
+         fbt[] $$2 = new fbt[]{
+            djl.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            djl.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            djl.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            djl.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         fbt $$3 = fbq.a();
 
-   protected dpc(float $$0, dwu.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dpc> a();
-
-   private fbs[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      fbs $$3 = djk.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      fbs[] $$4 = new fbs[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         jn $$6 = a[$$5];
-         $$4[$$5] = fbp.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      fbs[] $$7 = new fbs[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         fbs $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = fbp.a($$9, $$4[$$10]);
-            }
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = fbq.a($$3, $$2[$$5]);
          }
 
-         $$7[$$8] = $$9;
+         return $$3.b();
       }
+   );
 
-      return $$7;
+   @Override
+   public MapCodec<dpc> a() {
+      return a;
+   }
+
+   protected dpc(dwv.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, jn.c).b(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean e_(dwv $$0) {
-      return false;
+   public dww a(dww $$0, dqd $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return this.i[this.o($$0)];
+   public dww a(dww $$0, dok $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
-   protected int o(dwv $$0) {
-      int $$1 = 0;
+   @Override
+   public boolean a(dww $$0, daf $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
 
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
+   @Override
+   public fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dww a(daf $$0) {
+      dww $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.m().b(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean a(dgk $$0, ji $$1, dww $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dgh $$0, azh $$1, ji $$2, dww $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ard $$0, azh $$1, ji $$2, dww $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cwo(this));
       }
-
-      return $$1;
    }
 }

@@ -1,29 +1,38 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
 public class bwv {
-   public static byj<bua> a(brt $$0, float $$1) {
-      return a($$0, $$1x -> $$1);
-   }
-
-   public static byj<bua> a(brt $$0, Function<bvf, Float> $$1) {
-      return cal.a(
-         (Function<cal.b<bua>, ? extends App<cal.c<bua>, cao<bua>>>)($$2 -> $$2.group($$2.b(cej.K), $$2.a(cej.n), $$2.c(cej.m))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     if (!$$7.e_()) {
-                        return false;
-                     } else {
-                        bua $$9 = $$2.b($$3);
-                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
-                           cem $$10 = new cem(new bxj($$9, false), $$1.apply($$7), $$0.a() - 1);
-                           $$4.a(new bxj($$9, true));
-                           $$5.a($$10);
-                           return true;
-                        } else {
+   public static bxa<coh> a() {
+      return cam.a(
+         (Function<cam.b<coh>, ? extends App<cam.c<coh>, cap<coh>>>)($$0 -> $$0.group($$0.b(cek.d), $$0.a(cek.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jq $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dt(), 2.0) && !$$4.gD()) {
                            return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gC().b() != cok.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.p();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.A().c($$6.b()))
+                                 .flatMap($$0xxx -> mb.x.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gC().a($$2xx));
+                                    $$4.g($$3);
+                                 });
+                              return true;
+                           }
                         }
                      }
-                  }))
+               ))
       );
    }
 }

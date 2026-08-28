@@ -1,222 +1,256 @@
-import com.google.common.collect.Sets;
-import java.util.List;
+import com.mojang.datafixers.util.Either;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class bve extends buj {
-   private static final int b = 2;
-   private static final double c = 3.0;
-   private static final double d = 15.0;
-   private int e;
-   public long a;
-   private int f;
-   private boolean g;
-   @Nullable
-   private ard h;
-   private final Set<buj> i = Sets.newHashSet();
-   private int j;
-
-   public bve(buq<? extends bve> $$0, dgg $$1) {
-      super($$0, $$1);
-      this.e = 2;
-      this.a = this.ae.g();
-      this.f = this.ae.a(3) + 1;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public awa dn() {
-      return awa.d;
-   }
+public interface bve {
+   String o_ = "leash";
+   double p_ = 10.0;
+   double q_ = 6.0;
 
    @Nullable
-   public ard l() {
-      return this.h;
+   bve.a T_();
+
+   void a(@Nullable bve.a var1);
+
+   default boolean P_() {
+      return this.T_() != null && this.T_().a != null;
    }
 
-   public void b(@Nullable ard $$0) {
-      this.h = $$0;
+   default boolean q() {
+      return this.T_() != null;
    }
 
-   private void s() {
-      ji $$0 = this.t();
-      dwv $$1 = this.dW().a_($$0);
-      if ($$1.a(djm.sU)) {
-         ((dob)$$1.b()).e($$1, this.dW(), $$0);
-      }
+   default boolean Q_() {
+      return this.y() && !this.P_();
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.e == 2) {
-         if (this.dW().B_()) {
-            this.dW().a(this.dB(), this.dD(), this.dH(), avz.ou, awa.d, 10000.0F, 0.8F + this.ae.i() * 0.2F, false);
-            this.dW().a(this.dB(), this.dD(), this.dH(), avz.ot, awa.d, 2.0F, 0.5F + this.ae.i() * 0.2F, false);
-         } else {
-            bsf $$0 = this.dW().am();
-            if ($$0 == bsf.c || $$0 == bsf.d) {
-               this.b(4);
-            }
+   default boolean y() {
+      return true;
+   }
 
-            this.s();
-            a(this.dW(), this.t());
-            this.a(ebr.G);
-         }
+   default void e_(int $$0) {
+      this.a(new bve.a($$0));
+      a((buk)this, false, false);
+   }
+
+   default void c(tq $$0) {
+      bve.a $$1 = a($$0);
+      if (this.T_() != null && $$1 == null) {
+         this.A();
       }
 
-      this.e--;
-      if (this.e < 0) {
-         if (this.f == 0) {
-            if (this.dW() instanceof arc) {
-               List<buj> $$1 = this.dW()
-                  .a(
-                     this,
-                     new fat(this.dB() - 15.0, this.dD() - 15.0, this.dH() - 15.0, this.dB() + 15.0, this.dD() + 6.0 + 15.0, this.dH() + 15.0),
-                     $$0 -> $$0.bL() && !this.i.contains($$0)
-                  );
-
-               for (ard $$2 : ((arc)this.dW()).a($$0 -> $$0.f(this) < 256.0F)) {
-                  ap.V.a($$2, this, $$1);
-               }
-            }
-
-            this.at();
-         } else if (this.e < -this.ae.a(10)) {
-            this.f--;
-            this.e = 1;
-            this.a = this.ae.g();
-            this.b(0);
-         }
-      }
-
-      if (this.e >= 0) {
-         if (!(this.dW() instanceof arc)) {
-            this.dW().c(2);
-         } else if (!this.g) {
-            List<buj> $$3 = this.dW()
-               .a(this, new fat(this.dB() - 3.0, this.dD() - 3.0, this.dH() - 3.0, this.dB() + 3.0, this.dD() + 6.0 + 3.0, this.dH() + 3.0), buj::bL);
-
-            for (buj $$4 : $$3) {
-               $$4.a((arc)this.dW(), this);
-            }
-
-            this.i.addAll($$3);
-            if (this.h != null) {
-               ap.F.a(this.h, $$3);
-            }
-         }
-      }
+      this.a($$1);
    }
 
-   private ji t() {
-      fay $$0 = this.du();
-      return ji.a($$0.d, $$0.e - 1.0E-6, $$0.f);
-   }
-
-   private void b(int $$0) {
-      if (!this.g && this.dW() instanceof arc $$1 && $$1.O().b(dgc.b)) {
-         ji $$3 = this.dw();
-         dwv $$4 = dix.a(this.dW(), $$3);
-         if (this.dW().a_($$3).l() && $$4.a((dgj)this.dW(), $$3)) {
-            this.dW().b($$3, $$4);
-            this.j++;
-         }
-
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            ji $$6 = $$3.b(this.ae.a(3) - 1, this.ae.a(3) - 1, this.ae.a(3) - 1);
-            $$4 = dix.a(this.dW(), $$6);
-            if (this.dW().a_($$6).l() && $$4.a((dgj)this.dW(), $$6)) {
-               this.dW().b($$6, $$4);
-               this.j++;
-            }
-         }
-      }
-   }
-
-   private static void a(dgg $$0, ji $$1) {
-      dwv $$2 = $$0.a_($$1);
-      ji $$3;
-      dwv $$4;
-      if ($$2.a(djm.sU)) {
-         $$3 = $$1.a($$2.c(dob.a).g());
-         $$4 = $$0.a_($$3);
+   @Nullable
+   private static bve.a a(tq $$0) {
+      if ($$0.b("leash", 10)) {
+         return new bve.a(Either.left($$0.p("leash").a("UUID")));
       } else {
-         $$3 = $$1;
-         $$4 = $$2;
+         if ($$0.b("leash", 11)) {
+            Either<UUID, ji> $$1 = uf.a($$0, "leash").<Either<UUID, ji>>map(Either::right).orElse(null);
+            if ($$1 != null) {
+               return new bve.a($$1);
+            }
+         }
+
+         return null;
       }
+   }
 
-      if ($$4.b() instanceof dsu) {
-         $$0.b($$3, dsu.c($$0.a_($$3)));
-         ji.a $$7 = $$1.k();
-         int $$8 = $$0.A.a(3) + 3;
+   default void a(tq $$0, @Nullable bve.a $$1) {
+      if ($$1 != null) {
+         Either<UUID, ji> $$2 = $$1.b;
+         if ($$1.a instanceof ckv $$3) {
+            $$2 = Either.right($$3.p());
+         } else if ($$1.a != null) {
+            $$2 = Either.left($$1.a.cG());
+         }
 
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$0.A.a(8) + 1;
-            a($$0, $$3, $$7, $$10);
+         if ($$2 != null) {
+            $$0.a("leash", (un)$$2.map($$0x -> {
+               tq $$1x = new tq();
+               $$1x.a("UUID", $$0x);
+               return $$1x;
+            }, uf::a));
          }
       }
    }
 
-   private static void a(dgg $$0, ji $$1, ji.a $$2, int $$3) {
-      $$2.g($$1);
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         Optional<ji> $$5 = b($$0, $$2);
-         if ($$5.isEmpty()) {
-            break;
+   private static <E extends buk & bve> void a(E $$0, bve.a $$1) {
+      if ($$1.b != null && $$0.dV() instanceof ard $$2) {
+         Optional<UUID> $$3 = $$1.b.left();
+         Optional<ji> $$4 = $$1.b.right();
+         if ($$3.isPresent()) {
+            buk $$5 = $$2.a($$3.get());
+            if ($$5 != null) {
+               a($$0, $$5, true);
+               return;
+            }
+         } else if ($$4.isPresent()) {
+            a($$0, ckv.a($$2, $$4.get()), true);
+            return;
          }
 
-         $$2.g($$5.get());
+         if ($$0.af > 100) {
+            $$0.a($$2, cws.vK);
+            $$0.a(null);
+         }
+      }
+   }
+
+   default void z() {
+      a((buk)this, true, true);
+   }
+
+   default void A() {
+      a((buk)this, true, false);
+   }
+
+   default void B() {
+   }
+
+   private static <E extends buk & bve> void a(E $$0, boolean $$1, boolean $$2) {
+      bve.a $$3 = $$0.T_();
+      if ($$3 != null && $$3.a != null) {
+         $$0.a(null);
+         $$0.B();
+         if ($$0.dV() instanceof ard $$4) {
+            if ($$2) {
+               $$0.a($$4, cws.vK);
+            }
+
+            if ($$1) {
+               $$4.m().b($$0, new aew($$0, null));
+            }
+         }
       }
    }
 
-   private static Optional<ji> b(dgg $$0, ji $$1) {
-      for (ji $$2 : ji.a($$0.A, 10, $$1, 1)) {
-         dwv $$3 = $$0.a_($$2);
-         if ($$3.b() instanceof dsu) {
-            dsu.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
-            $$0.c(3002, $$2, -1);
-            return Optional.of($$2);
-         }
+   static <E extends buk & bve> void a_(ard $$0, E $$1) {
+      bve.a $$2 = $$1.T_();
+      if ($$2 != null && $$2.b != null) {
+         a($$1, $$2);
       }
 
-      return Optional.empty();
+      if ($$2 != null && $$2.a != null) {
+         if (!$$1.bL() || !$$2.a.bL()) {
+            if ($$0.O().b(dgd.i)) {
+               $$1.z();
+            } else {
+               $$1.A();
+            }
+         }
+
+         buk $$3 = $$1.D();
+         if ($$3 != null && $$3.dV() == $$1.dV()) {
+            float $$4 = $$1.f($$3);
+            if (!$$1.a($$3, $$4)) {
+               return;
+            }
+
+            if ((double)$$4 > 10.0) {
+               $$1.C();
+            } else if ((double)$$4 > 6.0) {
+               $$1.b($$3, $$4);
+               $$1.cy();
+            } else {
+               $$1.a($$3);
+            }
+         }
+      }
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = 64.0 * cK();
-      return $$0 < $$1 * $$1;
+   default boolean a(buk $$0, float $$1) {
+      return true;
    }
 
-   @Override
-   protected void a(akb.a $$0) {
+   default void C() {
+      this.z();
    }
 
-   @Override
-   protected void a(tq $$0) {
+   default void a(buk $$0) {
    }
 
-   @Override
-   protected void b(tq $$0) {
+   default void b(buk $$0, float $$1) {
+      a((buk)this, $$0, $$1);
    }
 
-   public int m() {
-      return this.j;
+   private static <E extends buk & bve> void a(E $$0, buk $$1, float $$2) {
+      double $$3 = ($$1.dA() - $$0.dA()) / (double)$$2;
+      double $$4 = ($$1.dC() - $$0.dC()) / (double)$$2;
+      double $$5 = ($$1.dG() - $$0.dG()) / (double)$$2;
+      $$0.i($$0.dy().b(Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5)));
    }
 
-   public Stream<buj> p() {
-      return this.i.stream().filter(buj::bL);
+   default void b(buk $$0, boolean $$1) {
+      a((buk)this, $$0, $$1);
    }
 
-   @Override
-   public final boolean a(arc $$0, bsz $$1, float $$2) {
-      return false;
+   private static <E extends buk & bve> void a(E $$0, buk $$1, boolean $$2) {
+      bve.a $$3 = $$0.T_();
+      if ($$3 == null) {
+         $$3 = new bve.a($$1);
+         $$0.a($$3);
+      } else {
+         $$3.a($$1);
+      }
+
+      if ($$2 && $$0.dV() instanceof ard $$4) {
+         $$4.m().b($$0, new aew($$0, $$1));
+      }
+
+      if ($$0.bZ()) {
+         $$0.ae();
+      }
+   }
+
+   @Nullable
+   default buk D() {
+      return b((buk)this);
+   }
+
+   @Nullable
+   private static <E extends buk & bve> buk b(E $$0) {
+      bve.a $$1 = $$0.T_();
+      if ($$1 == null) {
+         return null;
+      } else {
+         if ($$1.c != 0 && $$0.dV().C) {
+            buk var3 = $$0.dV().a($$1.c);
+            if (var3 instanceof buk) {
+               $$1.a(var3);
+            }
+         }
+
+         return $$1.a;
+      }
+   }
+
+   public static final class a {
+      int c;
+      @Nullable
+      public buk a;
+      @Nullable
+      public Either<UUID, ji> b;
+
+      a(Either<UUID, ji> $$0) {
+         this.b = $$0;
+      }
+
+      a(buk $$0) {
+         this.a = $$0;
+      }
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a(buk $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = 0;
+      }
    }
 }

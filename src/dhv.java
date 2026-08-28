@@ -1,84 +1,129 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dhv extends dhm {
-   private static final MapCodec<jr<dhi>> d = dhi.c.fieldOf("biome");
-   public static final MapCodec<dhr.c<jr<dhi>>> b = dhr.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jr<dhw>> e = dhw.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dhv> c = Codec.mapEither(b, e).xmap(dhv::new, $$0 -> $$0.f);
-   private final Either<dhr.c<jr<dhi>>, jr<dhw>> f;
+public class dhv {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bqv<dhv.c> a = bqv.c();
+   public static final dhv b = new dhv.a().a();
+   public static final MapCodec<dhv> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bvj.i, bqv.c(dhv.c.a).promotePartial(af.a("Spawn data: ", d::error)), azv.a(bvj.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(mb.f.q(), dhv.b.a, mb.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dhv::new)
+   );
+   private final float f;
+   private final Map<bvj, bqv<dhv.c>> g;
+   private final Map<bur<?>, dhv.b> h;
 
-   private dhv(Either<dhr.c<jr<dhi>>, jr<dhw>> $$0) {
+   dhv(float $$0, Map<bvj, bqv<dhv.c>> $$1, Map<bur<?>, dhv.b> $$2) {
       this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   public static dhv a(dhr.c<jr<dhi>> $$0) {
-      return new dhv(Either.left($$0));
+   public bqv<dhv.c> a(bvj $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   public static dhv a(jr<dhw> $$0) {
-      return new dhv(Either.right($$0));
+   @Nullable
+   public dhv.b a(bur<?> $$0) {
+      return this.h.get($$0);
    }
 
-   private dhr.c<jr<dhi>> d() {
-      return (dhr.c<jr<dhi>>)this.f.map($$0 -> $$0, $$0 -> ((dhw)$$0.a()).a());
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected Stream<jr<dhi>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public static class a {
+      private final Map<bvj, List<dhv.c>> a = Stream.of(bvj.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bur<?>, dhv.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dhv.a a(bvj $$0, dhv.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public dhv.a a(bur<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dhv.b($$2, $$1));
+         return this;
+      }
+
+      public dhv.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dhv a() {
+         return new dhv(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bqv.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
+      }
    }
 
-   @Override
-   protected MapCodec<? extends dhm> a() {
-      return c;
-   }
-
-   public boolean a(akt<dhw> $$0) {
-      Optional<jr<dhw>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public jr<dhi> getNoiseBiome(int $$0, int $$1, int $$2, dhr.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @baf
-   public jr<dhi> a(dhr.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, ji $$1, dhr.f $$2) {
-      int $$3 = kc.a($$1.u());
-      int $$4 = kc.a($$1.v());
-      int $$5 = kc.a($$1.w());
-      dhr.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dhr.a($$6.d());
-      float $$8 = dhr.a($$6.e());
-      float $$9 = dhr.a($$6.b());
-      float $$10 = dhr.a($$6.c());
-      float $$11 = dhr.a($$6.g());
-      double $$12 = (double)ecx.a($$11);
-      dhy $$13 = new dhy();
-      $$0.add(
-         "Biome builder PV: "
-            + dhy.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
+   public static record b(double b, double c) {
+      public static final Codec<dhv.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dhv.b::new)
       );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+   }
+
+   public static class c extends bqt.a {
+      public static final Codec<dhv.c> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     mb.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bqs.a.fieldOf("weight").forGetter(bqt.a::a),
+                     ayi.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     ayi.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dhv.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+      public final bur<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bur<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bqs.a($$1), $$2, $$3);
+      }
+
+      public c(bur<?> $$0, bqs $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bvj.h ? bur.aQ : $$0;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return bur.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      }
    }
 }

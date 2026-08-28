@@ -1,29 +1,25 @@
-public class ahu implements yv<agf> {
-   public static final ym<vl, ahu> a = yv.a(ahu::a, ahu::new);
-   private final int b;
-
-   public ahu(int $$0) {
-      this.b = $$0;
-   }
+public record ahu(int b, int c) implements yw<agg> {
+   public static final yn<vl, ahu> a = yw.a(ahu::a, ahu::new);
 
    private ahu(vl $$0) {
-      this.b = $$0.l();
+      this($$0.l(), $$0.l());
    }
 
    private void a(vl $$0) {
       $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yx<ahu> a() {
-      return agd.ca;
+   public yy<ahu> a() {
+      return age.bm;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

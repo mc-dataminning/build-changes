@@ -1,28 +1,23 @@
 import javax.annotation.Nullable;
 
-public record aec(String b, @Nullable String c) implements yv<abk> {
-   public static final ym<vl, aec> a = yv.a(aec::a, aec::new);
-
-   private aec(vl $$0) {
-      this($$0.p(), $$0.c(vl::p));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vl::a);
-   }
+public record aec(int b, jr<btn> c) implements yw<abl> {
+   public static final yn<wa, aec> a = yn.a(yl.h, aec::b, btn.b, aec::e, aec::new);
 
    @Override
-   public yx<aec> a() {
-      return agd.cn;
+   public yy<aec> a() {
+      return age.ao;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
    @Nullable
-   public String e() {
+   public buk a(dgh $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jr<btn> e() {
       return this.c;
    }
 }

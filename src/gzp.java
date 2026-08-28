@@ -1,10 +1,8 @@
-public class gzp extends gzh {
-   public chm.b a;
-   public float b;
-   public gcw.a c;
+import javax.annotation.Nullable;
 
-   public gzp() {
-      this.a = chm.b.a;
-      this.c = gcw.a.a;
-   }
+public class gzp extends gyj {
+   public jn a = jn.c;
+   @Nullable
+   public ckx b;
+   public int[] c = new int[0];
 }

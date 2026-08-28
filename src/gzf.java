@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+public class gzf extends gyd {
+   public final hbn a = new hbn();
 
-public class gzf extends gyh {
-   public jn a = jn.c;
-   public final hbk b = new hbk();
-   public int c;
-   public boolean d;
-   @Nullable
-   public eup e;
-   public final hdv f = new hdv();
+   @Override
+   public boolean a() {
+      return !this.a.c();
+   }
 }

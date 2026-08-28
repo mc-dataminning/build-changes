@@ -1,22 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record fmn(int b, int c) implements fmr {
-   public static final MapCodec<fmn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayh.l.optionalFieldOf("index", 0).forGetter(fmn::b), ayh.i.fieldOf("default").forGetter(fmn::c)).apply($$0, fmn::new)
-   );
+public record fmn(int b) implements fms {
+   public static final MapCodec<fmn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("value").forGetter(fmn::b)).apply($$0, fmn::new));
+
+   public fmn(int b) {
+      b = axk.f(b);
+      this.b = b;
+   }
 
    @Override
-   public int a(cwn $$0) {
-      cyx $$1 = $$0.a(kv.p);
-      if ($$1 != null) {
-         Integer $$2 = $$1.d(this.b);
-         if ($$2 != null) {
-            return axj.f($$2);
-         }
-      }
-
-      return axj.f(this.c);
+   public int a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2) {
+      return this.b;
    }
 
    @Override

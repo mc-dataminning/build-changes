@@ -1,18 +1,44 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface hbh {
-   void a(hbk var1, cwn var2, hbi var3, cwl var4, @Nullable gfw var5, @Nullable bvf var6, int var7);
+public class hbh implements hbk {
+   private final List<hbk> a;
 
-   public static record a(hgv a, gew b, hbh c) {
-      public hgm a(aku $$0) {
-         return this.a().a($$0, hgn.a);
+   public hbh(List<hbk> $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(hbn $$0, cwo $$1, hbl $$2, cwm $$3, @Nullable gfy $$4, @Nullable bvg $$5, int $$6) {
+      $$0.a(this.a.size());
+
+      for (hbk $$7 : this.a) {
+         $$7.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   public interface b extends hhe {
-      MapCodec<? extends hbh.b> a();
+   public static record a(List<hbk.b> b) implements hbk.b {
+      public static final MapCodec<hbh.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(hbm.a.listOf().fieldOf("models").forGetter(hbh.a::b)).apply($$0, hbh.a::new)
+      );
 
-      hbh a(hbh.a var1);
+      @Override
+      public MapCodec<hbh.a> a() {
+         return a;
+      }
+
+      @Override
+      public void a(hhj.a $$0) {
+         for (hbk.b $$1 : this.b) {
+            $$1.a($$0);
+         }
+      }
+
+      @Override
+      public hbk a(hbk.a $$0) {
+         return new hbh(this.b.stream().map($$1 -> $$1.a($$0)).toList());
+      }
    }
 }

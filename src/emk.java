@@ -2,30 +2,33 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public class emk extends emr {
-   public static final MapCodec<emk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ecq.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, emk::new)
-   );
-   private final ecq.a c;
+public class emk extends ems {
+   public static final MapCodec<emk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(els.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, emk::new));
+   private final els c;
 
-   private emk(ecq.a $$0) {
+   private emk(els $$0) {
       this.c = $$0;
    }
 
-   public static emk a(ecq.a $$0) {
+   public static emk a(els $$0) {
       return new emk($$0);
    }
 
-   @Override
-   public Stream<ji> a_(emp $$0, azg $$1, ji $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new ji($$3, $$5, $$4)) : Stream.of();
+   public static emk a(edl $$0, edl $$1) {
+      return a(elv.a($$0, $$1));
+   }
+
+   public static emk b(edl $$0, edl $$1) {
+      return a(elu.a($$0, $$1));
    }
 
    @Override
-   public ems<?> b() {
-      return ems.k;
+   public Stream<ji> a_(emq $$0, azh $$1, ji $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public emt<?> b() {
+      return emt.l;
    }
 }

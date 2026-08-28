@@ -1,61 +1,69 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public record dbp<T extends dbc<?>>(dcn a, Optional<dbh<T>> b) {
-   public static <T extends dbc<?>> ym<vz, dbp<T>> a() {
-      return ym.a(dcn.b, dbp::b, $$0 -> new dbp<>($$0, Optional.empty()));
+public class dbp extends dat {
+   public dbp(daq $$0) {
+      super($$0);
    }
 
-   public dcn b() {
-      return this.a;
+   @Nullable
+   private static Pair<cwo, cwo> c(dar $$0) {
+      if ($$0.e() != 2) {
+         return null;
+      } else {
+         cwo $$1 = null;
+
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cwo $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
+               }
+
+               $$1 = $$3;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public Optional<dbh<T>> c() {
-      return this.b;
+   private static boolean a(cwo $$0, cwo $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.b(kv.d) && $$1.b(kv.d) && $$0.b(kv.e) && $$1.b(kv.e);
    }
 
-   public static record a<T extends dbc<?>>(day a, dbp<T> b) {
+   public boolean a(dar $$0, dgh $$1) {
+      return c($$0) != null;
+   }
 
-      public static <T extends dbc<?>> ym<vz, dbp.a<T>> a() {
-         return ym.a(day.a, dbp.a::b, dbp.a(), dbp.a::c, dbp.a::new);
-      }
-
-      public day b() {
-         return this.a;
-      }
-
-      public dbp<T> c() {
-         return this.b;
+   public cwo a(dar $$0, jt.a $$1) {
+      Pair<cwo, cwo> $$2 = c($$0);
+      if ($$2 == null) {
+         return cwo.j;
+      } else {
+         cwo $$3 = (cwo)$$2.getFirst();
+         cwo $$4 = (cwo)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cwo $$9 = new cwo($$3.h());
+         $$9.b(kv.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         dde $$10 = dda.b($$3);
+         dde $$11 = dda.b($$4);
+         dda.a($$9, $$3x -> $$1.d(mc.aO).c().filter($$0xx -> $$0xx.a(aws.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
    }
 
-   public static record b<T extends dbc<?>>(List<dbp.a<T>> a) {
-      public static <T extends dbc<?>> dbp.b<T> a() {
-         return new dbp.b<>(List.of());
-      }
-
-      public static <T extends dbc<?>> ym<vz, dbp.b<T>> b() {
-         return ym.a(dbp.a.<T>a().a(yk.a()), dbp.b::e, dbp.b::new);
-      }
-
-      public boolean a(cwn $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public dbp.b<T> b(cwn $$0) {
-         return new dbp.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dbp.a<T>> e() {
-         return this.a;
-      }
+   @Override
+   public dbn<dbp> a() {
+      return dbn.n;
    }
 }

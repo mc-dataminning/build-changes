@@ -1,41 +1,25 @@
-import javax.annotation.Nullable;
+public class cxv extends cwk implements cxj {
+   public static float a = 1.5F;
 
-public class cxv extends cut implements cvi {
-   private final avy b;
-
-   public cxv(djk $$0, avy $$1, cwj.a $$2) {
-      super($$0, $$2);
-      this.b = $$1;
+   public cxv(cwk.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsi a(dag $$0) {
-      bsi $$1 = super.a($$0);
-      cov $$2 = $$0.o();
-      if ($$1.a() && $$2 != null) {
-         $$2.a($$0.p(), cuz.a($$0.n(), $$2));
+   public bsj a(dgh $$0, cow $$1, bsi $$2) {
+      cwo $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.zo, awb.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ard $$4) {
+         cpp.a(cpu::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
 
-      return $$1;
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsj.a;
    }
 
    @Override
-   protected avy a(dwv $$0) {
-      return this.b;
-   }
-
-   @Override
-   public boolean a(@Nullable cov $$0, dgg $$1, ji $$2, @Nullable fau $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.C) {
-            $$1.a($$2, this.d().m(), 3);
-         }
-
-         $$1.a($$0, ebr.z, $$2);
-         $$1.a($$0, $$2, this.b, awa.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public cpp a(dgh $$0, kb $$1, cwo $$2, jn $$3) {
+      return new cpu($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

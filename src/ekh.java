@@ -1,69 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ekh extends ekb {
+public class ekh extends ekf {
    public static final MapCodec<ekh> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ekb.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               brn.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dww.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  ayi.b(dww.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  ayi.b(dww.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
             )
             .apply($$0, ekh::new)
    );
-   private final ekb c;
-   private final String d;
-   @Nullable
-   private dxu e;
-   private final brn f;
+   private final float g;
+   private final float h;
+   private final dww i;
+   private final List<dww> j;
+   private final List<dww> k;
 
-   public ekh(ekb $$0, dxu $$1, brn $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public ekh(ekb $$0, String $$1, brn $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public ekh(long $$0, esb.a $$1, float $$2, float $$3, float $$4, dww $$5, List<dww> $$6, List<dww> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected ekc<?> a() {
-      return ekc.g;
+   protected ekd<?> a() {
+      return ekd.c;
    }
 
    @Override
-   public dwv a(azg $$0, ji $$1) {
-      dwv $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         dxu $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
-
-         this.e = $$3;
+   public dww a(azh $$0, ji $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return af.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? af.a(this.k, $$0) : this.i;
       }
-
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   @Nullable
-   private static dxu a(dwv $$0, String $$1) {
-      Collection<dxx<?>> $$2 = $$0.F();
-      Optional<dxu> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dxu).map($$0x -> (dxu)$$0x).findAny();
-      return $$3.orElse(null);
    }
 }

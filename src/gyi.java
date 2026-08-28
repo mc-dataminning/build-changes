@@ -1,8 +1,7 @@
-public class gyi extends gzh {
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+import javax.annotation.Nullable;
+
+public class gyi extends gza {
+   public boolean a;
+   @Nullable
+   public dww b;
 }

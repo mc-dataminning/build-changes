@@ -1,9 +1,17 @@
-public class hfm extends hfr {
-   public hfm(heo $$0) {
-      super($$0, aku.b("textures/atlas/mob_effects.png"), aku.b("mob_effects"));
+import java.io.IOException;
+
+public class hfm extends auu<int[]> {
+   private static final akv a = akv.b("textures/colormap/grass.png");
+
+   protected int[] a(aup $$0, bos $$1) {
+      try {
+         return hfo.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   public hem a(jr<btm> $$0) {
-      return this.a($$0.e().map(akt::a).orElseGet(heb::c));
+   protected void a(int[] $$0, aup $$1, bos $$2) {
+      dgf.a($$0);
    }
 }

@@ -1,14 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface ebw<T extends ebv> {
-   ebw<ebn> a = a("block", new ebn.a());
-   ebw<ebp> b = a("entity", new ebp.a());
+public interface ebw {
+   Codec<ebw> c = mb.t.q().dispatch(ebw::a, ebx::a);
+   yn<wa, ebw> d = yl.a(mc.ab).b(ebw::a, ebx::b);
 
-   MapCodec<T> a();
+   Optional<faz> a(dgh var1);
 
-   ym<? super vz, T> b();
-
-   static <S extends ebw<T>, T extends ebv> S a(String $$0, S $$1) {
-      return ke.a(mb.t, $$0, $$1);
-   }
+   ebx<? extends ebw> a();
 }

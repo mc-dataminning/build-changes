@@ -1,63 +1,104 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public class xb {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xa[] c;
+public record xb(byte[] c) {
+   public static final Codec<xb> a = ayi.r.xmap(xb::new, xb::b);
+   public static final int b = 256;
 
-   public xb(int $$0) {
-      this.c = new xa[$$0];
+   public xb(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static xb a() {
-      return new xb(128);
+   public static xb a(vl $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xb($$1);
    }
 
-   public int a(xa $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public static void a(vl $$0, xb $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(azm $$0, azl $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xb $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public xb.a a(xc $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xb.a($$1) : new xb.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable xb c) {
+      public static final int a = -1;
+
+      public a(xb $$0) {
+         this(-1, $$0);
+      }
+
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static xb.a a(vl $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xb.a(xb.a($$0)) : new xb.a($$1);
+      }
+
+      public static void a(vl $$0, xb.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xb.a($$0, $$1.b());
          }
       }
 
-      return -1;
-   }
-
-   @Nullable
-   public xa a(int $$0) {
-      return this.c[$$0];
-   }
-
-   public void a(xh $$0, @Nullable xa $$1) {
-      List<xa> $$2 = $$0.d().a();
-      ArrayDeque<xa> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
+      public Optional<xb> a(xc $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
       }
 
-      this.a($$3);
-   }
+      public int a() {
+         return this.b;
+      }
 
-   @VisibleForTesting
-   void a(List<xa> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<xa> $$0) {
-      Set<xa> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xa $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
+      @Nullable
+      public xb b() {
+         return this.c;
       }
    }
 }

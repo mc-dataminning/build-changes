@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aio extends agh {
+   @Override
+   default vj b() {
+      return vj.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aio {
+   void a(ail var1);
 }

@@ -1,46 +1,31 @@
-public class grg extends gth<cms, gxv, gbi> {
-   private static final aku a = aku.b("textures/entity/breeze/breeze.png");
+import java.util.function.UnaryOperator;
 
-   public grg(gsb.a $$0) {
-      super($$0, new gbi($$0.a(gez.K)), 0.5F);
-      this.a(new gvo($$0, this));
-      this.a(new gvn(this));
+public class grg extends gqr {
+   private final gcv a;
+   private final akv b;
+   private final gca<gxv> h;
+
+   public grg(gsd.a $$0, gfa $$1) {
+      super($$0);
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gcv.a($$0.a(gfb.E), $$0x -> gmh.i());
+      this.h = new gbh($$0.a($$1));
    }
 
-   public void a(gxv $$0, ffs $$1, glv $$2, int $$3) {
-      gbi $$4 = this.c();
-      a($$4, $$4.a(), $$4.c());
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   protected gca<gxv> a() {
+      return this.h;
    }
 
-   public aku a(gxv $$0) {
-      return a;
+   @Override
+   protected gmh b() {
+      return this.h.a(this.b);
    }
 
-   public gxv a() {
-      return new gxv();
-   }
-
-   public void a(cms $$0, gxv $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a.a($$0.a);
-      $$1.b.a($$0.bY);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.bZ);
-      $$1.f.a($$0.d);
-   }
-
-   public static gbi a(gbi $$0, gfa... $$1) {
-      $$0.a().k = false;
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-
-      for (gfa $$2 : $$1) {
-         $$2.k = true;
+   @Override
+   protected void b(gxv $$0, fft $$1, glx $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, heh.d);
       }
-
-      return $$0;
    }
 }

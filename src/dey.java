@@ -1,56 +1,37 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dey {
-   public static final akt<dex> a = a("sentry");
-   public static final akt<dex> b = a("dune");
-   public static final akt<dex> c = a("coast");
-   public static final akt<dex> d = a("wild");
-   public static final akt<dex> e = a("ward");
-   public static final akt<dex> f = a("eye");
-   public static final akt<dex> g = a("vex");
-   public static final akt<dex> h = a("tide");
-   public static final akt<dex> i = a("snout");
-   public static final akt<dex> j = a("rib");
-   public static final akt<dex> k = a("spire");
-   public static final akt<dex> l = a("wayfinder");
-   public static final akt<dex> m = a("shaper");
-   public static final akt<dex> n = a("silence");
-   public static final akt<dex> o = a("raiser");
-   public static final akt<dex> p = a("host");
-   public static final akt<dex> q = a("flow");
-   public static final akt<dex> r = a("bolt");
+public record dey(akv e, jr<cwk> f, wp g, boolean h) {
+   public static final Codec<dey> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akv.a.fieldOf("asset_id").forGetter(dey::a),
+               cwk.e.fieldOf("template_item").forGetter(dey::b),
+               wr.a.fieldOf("description").forGetter(dey::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dey::d)
+            )
+            .apply($$0, dey::new)
+   );
+   public static final yn<wa, dey> b = yn.a(akv.b, dey::a, yl.b(mc.K), dey::b, wr.b, dey::c, yl.b, dey::d, dey::new);
+   public static final Codec<jr<dey>> c = akr.a(mc.ba, a);
+   public static final yn<wa, jr<dey>> d = yl.a(mc.ba, b);
 
-   public static void a(qe<dex> $$0) {
-      a($$0, cwr.yx, a);
-      a($$0, cwr.yy, b);
-      a($$0, cwr.yz, c);
-      a($$0, cwr.yA, d);
-      a($$0, cwr.yB, e);
-      a($$0, cwr.yC, f);
-      a($$0, cwr.yD, g);
-      a($$0, cwr.yE, h);
-      a($$0, cwr.yF, i);
-      a($$0, cwr.yG, j);
-      a($$0, cwr.yH, k);
-      a($$0, cwr.yI, l);
-      a($$0, cwr.yJ, m);
-      a($$0, cwr.yK, n);
-      a($$0, cwr.yL, o);
-      a($$0, cwr.yM, p);
-      a($$0, cwr.yN, q);
-      a($$0, cwr.yO, r);
+   public wp a(jr<dew> $$0) {
+      return this.g.f().c($$0.a().d().a());
    }
 
-   public static Optional<jr.c<dex>> a(jt.a $$0, cwn $$1) {
-      return $$0.d(mc.ba).c().filter($$1x -> $$1.a(((dex)$$1x.a()).b())).findFirst();
+   public akv a() {
+      return this.e;
    }
 
-   public static void a(qe<dex> $$0, cwj $$1, akt<dex> $$2) {
-      dex $$3 = new dex($$2.a(), mb.g.e($$1), wo.c(af.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public jr<cwk> b() {
+      return this.f;
    }
 
-   private static akt<dex> a(String $$0) {
-      return akt.a(mc.ba, aku.b($$0));
+   public wp c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
    }
 }

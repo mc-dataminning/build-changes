@@ -1,23 +1,31 @@
-public class guz extends gth<com, has, gek> {
-   private static final aku a = aku.b("textures/entity/wandering_trader.png");
+public class guz extends gqx<coh, hau, gem> {
+   private static final akv b = akv.b("textures/entity/villager/villager.png");
+   public static final gvw.a a = new gvw.a(-0.1171875F, -0.07421875F, 1.0F);
 
-   public guz(gsb.a $$0) {
-      super($$0, new gek($$0.a(gez.dw)), 0.5F);
-      this.a(new gvu<>(this, $$0.f()));
-      this.a(new gvt<>(this));
+   public guz(gsd.a $$0) {
+      super($$0, new gem($$0.a(gfb.dt)), new gem($$0.a(gfb.du)), 0.5F);
+      this.a(new gvw<>(this, $$0.f(), a));
+      this.a(new gxc<>(this, $$0.e(), "villager"));
+      this.a(new gvv<>(this));
    }
 
-   public aku a(has $$0) {
-      return a;
+   public akv a(hau $$0) {
+      return b;
    }
 
-   public has b() {
-      return new has();
+   protected float b(hau $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   public void a(com $$0, has $$1, float $$2) {
+   public hau b() {
+      return new hau();
+   }
+
+   public void a(coh $$0, hau $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gyw.a($$0, $$1, this.i);
+      gyy.a($$0, $$1, this.i);
       $$1.a = $$0.p() > 0;
+      $$1.b = $$0.gC();
    }
 }

@@ -1,19 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bhy extends bgq {
-   public bhy(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", bhv.B, "minecraft:villager");
+public class bhy extends bgs {
+   public bhy(Schema $$0) {
+      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bhw.s, "minecraft:brushable_block");
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bhy::a);
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
+      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   private static boolean b(Dynamic<?> $$0) {
+      String $$1 = bjk.a($$0.get("id").asString("minecraft:air"));
+      int $$2 = $$0.get("count").asInt(0);
+      return $$1.equals("minecraft:air") || $$2 == 0;
    }
 }

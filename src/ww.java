@@ -1,77 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class ww {
-   private final wy[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xa d;
+public record ww(List<xb> d) {
+   public static final Codec<ww> a = xb.a.listOf().xmap(ww::new, ww::a);
+   public static ww b = new ww(List.of());
+   public static final int c = 20;
 
-   public ww(int $$0) {
-      this.a = new wy[$$0];
-   }
+   public void a(azl.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
 
-   public boolean a(xa $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new wy($$0, true) : null);
-         return true;
+      for (xb $$1 : this.d) {
+         $$0.update($$1.b());
       }
    }
 
-   private void a(@Nullable wy $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public ww.a a(xc $$0) {
+      return new ww.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public void a(xa $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         wy $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   public List<xb> a() {
+      return this.d;
+   }
+
+   public static record a(List<xb.a> b) {
+      public static final ww.a a = new ww.a(List.of());
+
+      public a(vl $$0) {
+         this($$0.a(vl.a(ArrayList::new, 20), xb.a::a));
+      }
+
+      public void a(vl $$0) {
+         $$0.a(this.b, xb.a::a);
+      }
+
+      public Optional<ww> a(xc $$0) {
+         List<xb> $$1 = new ArrayList<>(this.b.size());
+
+         for (xb.a $$2 : this.b) {
+            Optional<xb> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
          }
+
+         return Optional.of(new ww($$1));
+      }
+
+      public List<xb.a> a() {
+         return this.b;
       }
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public ww.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xa> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         wy $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+   public static record b(int a, BitSet b) {
+      public b(vl $$0) {
+         this($$0.l(), $$0.e(20));
       }
 
-      wv $$6 = new wv($$2);
-      wv.b $$7 = new wv.b($$0, $$1);
-      return new ww.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(wv a, wv.b b) {
+      public void a(vl $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

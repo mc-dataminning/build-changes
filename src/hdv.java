@@ -1,20 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class hdv {
-   @Nullable
-   public aku a;
-   public final List<hdv.a> b = new ArrayList<>();
+public interface hdv<T> {
+   void a(@Nullable T var1, cwm var2, fft var3, glx var4, int var5, int var6, boolean var7);
 
-   public static class a {
+   @Nullable
+   T b(cwo var1);
+
+   public interface a {
       @Nullable
-      public hem a;
-      public byte b;
-      public byte c;
-      public byte d;
-      public boolean e;
-      @Nullable
-      public wo f;
+      hdv<?> a(gey var1);
+
+      MapCodec<? extends hdv.a> a();
    }
 }

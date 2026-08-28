@@ -1,20 +1,19 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hcu() implements hdc<cve.a> {
-   public static final hdc.a<hcu, cve.a> a = hdc.a.a(MapCodec.unit(new hcu()), cve.a.d);
+public record hcu(float b) implements hcs {
+   public static final MapCodec<hcu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.o.optionalFieldOf("period", 1.0F).forGetter(hcu::b)).apply($$0, hcu::new)
+   );
 
-   public cve.a a(cwn $$0, @Nullable gfw $$1, @Nullable bvf $$2, int $$3, cwl $$4) {
-      cys $$5 = $$0.a(kv.O);
-      if ($$5 == null || $$5.b()) {
-         return cve.a.a;
-      } else {
-         return $$5.a(cwr.vt) ? cve.a.c : cve.a.b;
-      }
+   @Override
+   public float a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      return $$2 != null && $$2.fB() == $$0 ? (float)$$2.fC() % this.b : 0.0F;
    }
 
    @Override
-   public hdc.a<hcu, cve.a> a() {
+   public MapCodec<hcu> a() {
       return a;
    }
 }

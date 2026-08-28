@@ -1,61 +1,84 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class hhd extends hgp {
-   private final List<hhd.a> b;
-   private final Map<dwv, BitSet> c = new Reference2ObjectOpenHashMap();
+public class hhd {
+   static final Logger a = LogUtils.getLogger();
+   private final Map<akv, hhm> b;
+   final hhm c;
+   private final List<hhj> d = new ArrayList<>();
+   private final Map<akv, hhm> e = new HashMap<>();
 
-   private static hgm a(List<hhd.a> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Model must have at least one selector");
-      } else {
-         return $$0.getFirst().b();
-      }
-   }
-
-   public hhd(List<hhd.a> $$0) {
-      super(a($$0));
+   public hhd(Map<akv, hhm> $$0, hhm $$1) {
       this.b = $$0;
+      this.c = $$1;
+      this.e.put(hgz.a, $$1);
    }
 
-   @Override
-   public List<gnc> a(@Nullable dwv $$0, @Nullable jn $$1, azg $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
+   public void a() {
+      this.e.put(gnm.a, new gnm());
+   }
+
+   public void a(hhj $$0) {
+      this.d.add($$0);
+   }
+
+   public void b() {
+      this.d.forEach($$0 -> $$0.a(new hhd.a()));
+   }
+
+   public Map<akv, hhm> c() {
+      return this.e;
+   }
+
+   public Set<akv> d() {
+      return Sets.difference(this.b.keySet(), this.e.keySet());
+   }
+
+   hhm a(akv $$0) {
+      return this.e.computeIfAbsent($$0, this::b);
+   }
+
+   private hhm b(akv $$0) {
+      hhm $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         a.warn("Missing block model: '{}'", $$0);
+         return this.c;
       } else {
-         BitSet $$3 = this.c.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
-               if (this.b.get($$4).a.test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.c.put($$0, $$3);
-         }
-
-         List<gnc> $$5 = new ArrayList<>();
-         long $$6 = $$2.g();
-
-         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
-            if ($$3.get($$7)) {
-               $$2.b($$6);
-               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
-            }
-         }
-
-         return $$5;
+         return $$1;
       }
    }
 
-   public static record a(Predicate<dwv> a, hgm b) {
+   class a implements hhj.a {
+      private final List<akv> b = new ArrayList<>();
+      private final Set<akv> c = new HashSet<>();
+
+      @Override
+      public hhm a(akv $$0) {
+         if (this.b.contains($$0)) {
+            hhd.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hhd.this.c;
+         } else {
+            hhm $$1 = hhd.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
+            }
+
+            return $$1;
+         }
+      }
+
+      private String a() {
+         return this.b.stream().map(akv::toString).collect(Collectors.joining("->"));
+      }
    }
 }

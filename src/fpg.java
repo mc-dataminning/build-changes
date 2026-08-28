@@ -1,49 +1,31 @@
-public class fpg extends fop {
-   private boolean a;
+import java.util.UUID;
 
-   public fpg(int $$0, int $$1, fop.c $$2) {
-      super($$0, $$1, 20, 20, wo.c("narrator.button.difficulty_lock"), $$2, q);
+public class fpg extends brz {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
+
+   public fpg(UUID $$0, wp $$1, float $$2, brz.a $$3, brz.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = af.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected xc d() {
-      return wn.a(super.d(), this.a() ? wo.c("narrator.button.difficulty_lock.locked") : wo.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = af.c();
    }
 
    @Override
-   public void b(fob $$0, int $$1, int $$2, float $$3) {
-      fpg.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fpg.a.c : fpg.a.f;
-      } else if (this.D()) {
-         $$4 = this.a ? fpg.a.b : fpg.a.e;
-      } else {
-         $$4 = this.a ? fpg.a.a : fpg.a.d;
-      }
-
-      $$0.a(gmf::H, $$4.g, this.F(), this.G(), this.g, this.h);
-   }
-
-   static enum a {
-      a(aku.b("widget/locked_button")),
-      b(aku.b("widget/locked_button_highlighted")),
-      c(aku.b("widget/locked_button_disabled")),
-      d(aku.b("widget/unlocked_button")),
-      e(aku.b("widget/unlocked_button_highlighted")),
-      f(aku.b("widget/unlocked_button_disabled"));
-
-      final aku g;
-
-      private a(final aku $$0) {
-         this.g = $$0;
-      }
+   public float j() {
+      long $$0 = af.c() - this.i;
+      float $$1 = ayz.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayz.h($$1, this.b, this.h);
    }
 }

@@ -1,38 +1,30 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class ccs extends ccd {
-   private final bvn a;
-   @Nullable
-   private bvf b;
+public class ccs extends cce {
+   private final bvo a;
+   private double b;
    private double c;
    private double d;
-   private double e;
-   private final double f;
-   private final float g;
+   private final double e;
 
-   public ccs(bvn $$0, double $$1, float $$2) {
+   public ccs(bvo $$0, double $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(ccd.a.a));
+      this.e = $$1;
+      this.a(EnumSet.of(cce.a.a));
    }
 
    @Override
    public boolean b() {
-      this.b = this.a.O_();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      if (this.a.ga()) {
          return false;
       } else {
-         fay $$0 = cga.a(this.a, 16, 7, this.b.du(), (float) (Math.PI / 2));
+         faz $$0 = cgb.a(this.a, 16, 7, faz.c(this.a.gb()), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
             return true;
          }
       }
@@ -40,16 +32,11 @@ public class ccs extends ccd {
 
    @Override
    public boolean c() {
-      return !this.a.L().k() && this.b.bL() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
+      return !this.a.P().k();
    }
 
    @Override
    public void d() {
-      this.a.L().a(this.c, this.d, this.e, this.f);
+      this.a.P().a(this.b, this.c, this.d, this.e);
    }
 }

@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class dit extends diu {
+public class dit extends div {
    public static final MapCodec<dit> a = b(dit::new);
-   protected static final float b = 6.0F;
-   protected static final fbs c = djk.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+   private static final fbt b = djl.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
    @Override
-   public MapCodec<dit> a() {
+   public MapCodec<? extends dit> a() {
       return a;
    }
 
-   protected dit(dwu.d $$0) {
+   protected dit(dwv.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return c;
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return b;
    }
 }

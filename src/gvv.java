@@ -1,18 +1,23 @@
-public class gvv extends gwq<gzt, gdd> {
-   private final gcl<gzt> a;
-
-   public gvv(gty<gzt, gdd> $$0, gew $$1) {
+public class gvv<S extends gyy, M extends gca<S> & gel> extends gws<S, M> {
+   public gvv(gua<S, M> $$0) {
       super($$0);
-      this.a = new gdc($$1.a(gez.cg));
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gzt $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         ffw $$6 = $$1.getBuffer(gmf.d($$3.a.a()));
-         int $$7 = gtc.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
+   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
+      hbn $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         this.a($$3, $$0);
+         $$6.a($$0, $$1, $$2, heh.d);
+         $$0.b();
       }
+   }
+
+   protected void a(S $$0, fft $$1) {
+      this.d().a($$1);
+      $$1.a(a.b.rotation(0.75F));
+      $$1.b(1.07F, 1.07F, 1.07F);
+      $$1.a(0.0F, 0.13F, -0.34F);
+      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

@@ -1,30 +1,38 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public interface vw<T extends vu> {
-   vj a();
+public interface vw {
+   static vw a(final Runnable $$0) {
+      return new vw() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
 
-   yw b();
+         @Nullable
+         @Override
+         public yw<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
+   }
 
-   ym<ByteBuf, yv<? super T>> c();
+   static vw a(final Supplier<yw<?>> $$0) {
+      return new vw() {
+         @Nullable
+         @Override
+         public yw<?> b() {
+            return $$0.get();
+         }
+      };
+   }
+
+   default void a() {
+   }
 
    @Nullable
-   yu d();
-
-   public interface a<T extends vu, B extends ByteBuf> {
-      vw<T> a(Function<ByteBuf, B> var1);
-
-      vj a();
-
-      yw b();
-
-      @baf
-      void a(vw.a.a var1);
-
-      @FunctionalInterface
-      public interface a {
-         void accept(yx<?> var1, int var2);
-      }
+   default yw<?> b() {
+      return null;
    }
 }

@@ -1,23 +1,15 @@
-public class dux extends dvk {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public dux(ji $$0, dwv $$1) {
-      super(dtz.i, $$0, $$1);
+public class dux extends dtm {
+   public dux(ji $$0, dww $$1) {
+      super(dua.a, $$0, $$1, dbo.b);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected wp j() {
+      return wp.c("container.furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public avy d() {
-      return avz.CO;
+   protected csb a(int $$0, cov $$1) {
+      return new csz($$0, $$1, this, this.n);
    }
 }

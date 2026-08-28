@@ -1,29 +1,20 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record efi<FC extends eia, F extends efw<FC>>(F d, FC e) {
-   public static final Codec<efi<?, ?>> a = mb.O.q().dispatch($$0 -> $$0.d, efw::a);
-   public static final Codec<jr<efi<?, ?>>> b = akq.a(mc.aL, a);
-   public static final Codec<jv<efi<?, ?>>> c = kg.a(mc.aL, a);
-
-   public boolean a(dhe $$0, dyr $$1, azg $$2, ji $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<efi<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class efi extends efx<eii> {
+   public efi(Codec<eii> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
-
-   public F b() {
-      return this.d;
-   }
-
-   public FC c() {
-      return this.e;
+   public boolean a(efz<eii> $$0) {
+      dhf $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      if ($$1.u($$2) && $$1.a_($$2.e()).a(djn.fU)) {
+         dkq.a($$1, $$2, $$3, 8);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

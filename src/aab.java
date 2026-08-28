@@ -1,17 +1,26 @@
-public record aab(ebv c, int d) implements zy {
-   public static final ym<vz, aab> a = ym.a(ebv.d, aab::b, yk.h, aab::c, aab::new);
-   public static final zy.b<aab> b = zy.a("debug/game_event_listeners");
+public record aab(aku<ebs> c, faz d) implements zz {
+   public static final yn<vl, aab> a = zz.a(aab::a, aab::new);
+   public static final zz.b<aab> b = zz.a("debug/game_event");
+
+   private aab(vl $$0) {
+      this($$0.a(mc.G), $$0.k());
+   }
+
+   private void a(vl $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
+   }
 
    @Override
-   public zy.b<aab> a() {
+   public zz.b<aab> a() {
       return b;
    }
 
-   public ebv b() {
+   public aku<ebs> b() {
       return this.c;
    }
 
-   public int c() {
+   public faz c() {
       return this.d;
    }
 }

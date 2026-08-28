@@ -1,64 +1,128 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dox extends djk implements djn {
+public class dox extends djl {
    public static final MapCodec<dox> a = b(dox::new);
+   public static final dxt<dxw> b = dxm.bi;
+   public static final dxn c = dxm.B;
+   public static final dxv d = dxm.aU;
+   public static final int e = 3;
 
    @Override
    public MapCodec<dox> a() {
       return a;
    }
 
-   protected dox(dwu.d $$0) {
+   public dox(dwv.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, dxw.a).b(d, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
-   private static boolean b(dwv $$0, dgj $$1, ji $$2) {
-      ji $$3 = $$2.d();
-      dwv $$4 = $$1.a_($$3);
-      int $$5 = eso.a($$0, $$4, jn.b, $$4.g());
-      return $$5 < 15;
-   }
-
-   @Override
-   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, djm.ei.m());
+   private dww a(dgk $$0, ji $$1, dww $$2) {
+      dxw $$3 = $$0.a_($$1.d()).E();
+      if ($$3.e()) {
+         return $$2.b(b, $$3);
+      } else {
+         dxw $$4 = $$0.a_($$1.e()).E();
+         dxw $$5 = $$4.e() ? dxw.a : $$4;
+         return $$2.b(b, $$5);
       }
    }
 
    @Override
-   public boolean a(dgj $$0, ji $$1, dwv $$2) {
-      return $$0.a_($$1.d()).l();
+   public dww a(daf $$0) {
+      return this.a($$0.q(), $$0.a(), this.m());
    }
 
    @Override
-   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
+      boolean $$8 = $$4.o() == jn.a.b;
+      return $$8 ? this.a($$1, $$3, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(dww $$0, dgh $$1, ji $$2, djl $$3, @Nullable eug $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2);
+      if ($$6 != $$0.c(c)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
+         }
+
+         $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   private void a(@Nullable buk $$0, dww $$1, dgh $$2, ji $$3) {
+      if ($$1.c(b).e() || $$2.a_($$3.d()).l()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, ebs.H, $$3);
+      }
+   }
+
+   @Override
+   protected bsj a(cwo $$0, dww $$1, dgh $$2, ji $$3, cow $$4, bsi $$5, fav $$6) {
+      return (bsj)($$0.a(awy.bw) && $$6.c() == jn.b ? bsj.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
+   }
+
+   @Override
+   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
+      if (!$$1.C) {
+         $$0 = $$0.a(d);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(awk.ag);
+      }
+
+      return bsj.a;
+   }
+
+   @Override
+   protected void a_(dww $$0, dgh $$1, ji $$2, cow $$3) {
+      if (!$$1.C) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(awk.af);
+      }
+   }
+
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
+   }
+
+   @Override
+   protected boolean a(dww $$0, dgh $$1, ji $$2, int $$3, int $$4) {
+      dxw $$5 = $$0.c(b);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(d);
+         $$7 = b($$6);
+         $$1.a(lt.ac, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+      } else {
+         $$7 = 1.0F;
+      }
+
+      jr<avz> $$10;
+      if ($$5.d()) {
+         akv $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
+         }
+
+         $$10 = jr.a(avz.a($$9));
+      } else {
+         $$10 = $$5.a();
+      }
+
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, awb.c, 3.0F, $$7, $$1.A.g());
       return true;
    }
 
-   @Override
-   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
-      dwv $$4 = $$0.a_($$2);
-      ji $$5 = $$2.d();
-      dyr $$6 = $$0.m().g();
-      ke<efi<?, ?>> $$7 = $$0.K_().e(mc.aL);
-      if ($$4.a(djm.oY)) {
-         this.a($$7, rh.h, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(djm.oP)) {
-         this.a($$7, rh.j, $$0, $$6, $$1, $$5);
-         this.a($$7, rh.l, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, rh.n, $$0, $$6, $$1, $$5);
-         }
-      }
-   }
-
-   private void a(ke<efi<?, ?>> $$0, akt<efi<?, ?>> $$1, arc $$2, dyr $$3, azg $$4, ji $$5) {
-      $$0.a($$1).ifPresent($$4x -> ((efi)$$4x.a()).a($$2, $$3, $$4, $$5));
+   @Nullable
+   private akv a(dgh $$0, ji $$1) {
+      return $$0.c_($$1.d()) instanceof dvn $$2 ? $$2.d() : null;
    }
 
    @Override
-   public djn.a aq_() {
-      return djn.a.a;
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(b, c, d);
    }
 }

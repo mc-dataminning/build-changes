@@ -1,20 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dte extends dmz {
+public class dte extends dnb {
    public static final MapCodec<dte> c = b(dte::new);
-   public static final fbs e = djk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   protected static final fbt g = djl.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dte> a() {
       return c;
    }
 
-   public dte(dwu.d $$0) {
-      super($$0, jn.a, e, false);
+   public dte(dwv.d $$0) {
+      super($$0, jn.a, g, false, 0.1);
    }
 
    @Override
-   protected dna c() {
-      return (dna)djm.pb;
+   protected int a(azh $$0) {
+      return dou.a($$0);
+   }
+
+   @Override
+   protected djl b() {
+      return djn.pc;
+   }
+
+   @Override
+   protected boolean h(dww $$0) {
+      return dou.a($$0);
    }
 }

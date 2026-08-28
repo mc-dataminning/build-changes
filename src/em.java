@@ -8,7 +8,7 @@ public class em extends dz<em.a> {
       return em.a.a;
    }
 
-   public void a(ard $$0, cwn $$1) {
+   public void a(are $$0, cwo $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class em extends dz<em.a> {
          return ap.C.a(new em.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public static aq<em.a> a(js<cwj> $$0, dgf $$1) {
+      public static aq<em.a> a(js<cwk> $$0, dgg $$1) {
          return ap.C.a(new em.a(Optional.empty(), Optional.of(cv.a.a().a($$0, $$1).b())));
       }
 
-      public boolean a(cwn $$0) {
+      public boolean a(cwo $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

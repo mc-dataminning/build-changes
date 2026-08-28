@@ -24,7 +24,7 @@ public class ji extends km {
    public static final Codec<ji> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> af.a($$0, 3).map($$0x -> new ji($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
-   public static final ym<ByteBuf, ji> b = new ym<ByteBuf, ji>() {
+   public static final yn<ByteBuf, ji> b = new yn<ByteBuf, ji>() {
       public ji a(ByteBuf $$0) {
          return vl.b($$0);
       }
@@ -35,7 +35,7 @@ public class ji extends km {
    };
    private static final Logger i = LogUtils.getLogger();
    public static final ji c = new ji(0, 0, 0);
-   public static final int d = 1 + ayy.f(ayy.c(30000000));
+   public static final int d = 1 + ayz.f(ayz.c(30000000));
    public static final int e = 64 - 2 * d;
    private static final long j = (1L << d) - 1L;
    private static final long k = (1L << e) - 1L;
@@ -78,7 +78,7 @@ public class ji extends km {
    }
 
    public static ji a(double $$0, double $$1, double $$2) {
-      return new ji(ayy.a($$0), ayy.a($$1), ayy.a($$2));
+      return new ji(ayz.a($$0), ayz.a($$1), ayz.a($$2));
    }
 
    public static ji a(kb $$0) {
@@ -112,12 +112,12 @@ public class ji extends km {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ji(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public fay b() {
-      return fay.b(this);
+   public faz b() {
+      return faz.b(this);
    }
 
-   public fay c() {
-      return fay.c(this);
+   public faz c() {
+      return faz.c(this);
    }
 
    public ji a(km $$0) {
@@ -203,7 +203,7 @@ public class ji extends km {
       }
    }
 
-   public ji a(dqc $$0) {
+   public ji a(dqd $$0) {
       switch ($$0) {
          case a:
          default:
@@ -233,15 +233,15 @@ public class ji extends km {
       return new ji.a(this.u(), this.v(), this.w());
    }
 
-   public fay a(fay $$0) {
-      return new fay(
-         ayy.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
-         ayy.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
-         ayy.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
+   public faz a(faz $$0) {
+      return new faz(
+         ayz.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
+         ayz.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
+         ayz.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
       );
    }
 
-   public static Iterable<ji> a(azg $$0, int $$1, ji $$2, int $$3) {
+   public static Iterable<ji> a(azh $$0, int $$1, ji $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -250,7 +250,7 @@ public class ji extends km {
       return Stream.of($$0, $$0.g(), $$0.i(), $$0.g().i());
    }
 
-   public static Iterable<ji> a(azg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<ji> a(azh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -337,7 +337,7 @@ public class ji extends km {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<ji> a(fat $$0) {
+   public static Iterable<ji> a(fau $$0) {
       ji $$1 = a($$0.a, $$0.b, $$0.c);
       ji $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -358,7 +358,7 @@ public class ji extends km {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ji> a(enc $$0) {
+   public static Stream<ji> a(end $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -369,8 +369,8 @@ public class ji extends km {
       );
    }
 
-   public static Stream<ji> b(fat $$0) {
-      return a(ayy.a($$0.a), ayy.a($$0.b), ayy.a($$0.c), ayy.a($$0.d), ayy.a($$0.e), ayy.a($$0.f));
+   public static Stream<ji> b(fau $$0) {
+      return a(ayz.a($$0.a), ayz.a($$0.b), ayz.a($$0.c), ayz.a($$0.d), ayz.a($$0.e), ayz.a($$0.f));
    }
 
    public static Stream<ji> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -477,7 +477,7 @@ public class ji extends km {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(ayy.a($$0), ayy.a($$1), ayy.a($$2));
+         this(ayz.a($$0), ayz.a($$1), ayz.a($$2));
       }
 
       @Override
@@ -501,7 +501,7 @@ public class ji extends km {
       }
 
       @Override
-      public ji a(dqc $$0) {
+      public ji a(dqd $$0) {
          return super.a($$0).j();
       }
 
@@ -513,7 +513,7 @@ public class ji extends km {
       }
 
       public ji.a b(double $$0, double $$1, double $$2) {
-         return this.d(ayy.a($$0), ayy.a($$1), ayy.a($$2));
+         return this.d(ayz.a($$0), ayz.a($$1), ayz.a($$2));
       }
 
       public ji.a g(km $$0) {
@@ -559,11 +559,11 @@ public class ji extends km {
       public ji.a a(jn.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(ayy.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(ayz.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), ayy.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), ayz.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), ayy.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), ayz.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

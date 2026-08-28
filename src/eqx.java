@@ -1,14 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eqx extends erj {
-   public static final MapCodec<eqx> a = MapCodec.unit(() -> eqx.b);
-   public static final eqx b = new eqx();
+public enum eqx implements azv {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   private eqx() {
+   public static Codec<eqx> c = azv.b(eqx::values);
+   private final String d;
+
+   private eqx(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected erl<?> a() {
-      return erl.j;
+   public String c() {
+      return this.d;
    }
 }

@@ -1,59 +1,146 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.joml.Matrix4f;
 
 public class gmd {
-   private final gmi a = new gmi();
-   private final gmj b;
-   private final glv.a c;
-   private final glv.a d;
-   private final glx e;
+   private final String a;
+   private final glh b;
+   private final akv c;
+   private final List<gmc.h> d;
+   private final List<gmd.a> e = new ArrayList<>();
 
-   public gmd(int $$0) {
-      this.b = gmj.a($$0);
-      SequencedMap<gmf, ffp> $$1 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gmq.h(), this.a.a(gmf.c()));
-         $$0x.put(gmq.i(), this.a.a(gmf.e()));
-         $$0x.put(gmq.a(), this.a.a(gmf.d()));
-         $$0x.put(gmq.j(), this.a.a(gmf.f()));
-         a($$0x, gmq.b());
-         a($$0x, gmq.c());
-         a($$0x, gmq.d());
-         a($$0x, gmq.e());
-         a($$0x, gmq.f());
-         $$0x.put(gmq.g(), new ffp(786432));
-         a($$0x, gmf.j());
-         a($$0x, gmf.l());
-         a($$0x, gmf.k());
-         a($$0x, gmf.m());
-         a($$0x, gmf.i());
-      });
-      this.c = glv.a($$1, new ffp(786432));
-      this.e = new glx(this.c);
-      SequencedMap<gmf, ffp> $$2 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hgw.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = glv.a($$2, new ffp(0));
+   public gmd(String $$0, glh $$1, akv $$2, List<gmc.h> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gmf, ffp> $$0, gmf $$1) {
-      $$0.put($$1, new ffp($$1.R()));
+   public void a(gmd.a $$0) {
+      this.e.add($$0);
    }
 
-   public gmi a() {
-      return this.a;
+   public void a(fdx $$0, Map<akv, fff<fed>> $$1, Matrix4f $$2) {
+      fdy $$3 = $$0.a(this.a);
+
+      for (gmd.a $$4 : this.e) {
+         $$4.a($$3, $$1);
+      }
+
+      fff<fed> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
+      if ($$5 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
+      } else {
+         $$3.a(() -> {
+            fed $$3x = $$5.get();
+            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
+
+            for (gmd.a $$4x : this.e) {
+               $$4x.a(this.b, $$1);
+            }
+
+            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
+
+            for (gmc.h $$5x : this.d) {
+               ffk $$6 = this.b.a($$5x.a());
+               if ($$6 != null) {
+                  $$6.a($$5x.b(), $$5x.b().size());
+               }
+            }
+
+            $$3x.a(0.0F, 0.0F, 0.0F, 0.0F);
+            $$3x.f();
+            $$3x.a(false);
+            RenderSystem.depthFunc(519);
+            RenderSystem.setShader(this.b);
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix($$2, fdc.b);
+            ffo $$7 = ffv.b().a(ffy.c.h, ffr.e);
+            $$7.a(0.0F, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
+            $$7.a(0.0F, (float)$$3x.d, 500.0F);
+            ffp.a($$7.b());
+            RenderSystem.depthFunc(515);
+            RenderSystem.restoreProjectionMatrix();
+            $$3x.e();
+
+            for (gmd.a $$8 : this.e) {
+               $$8.a($$1);
+            }
+
+            this.b();
+         });
+      }
    }
 
-   public gmj b() {
+   private void b() {
+      for (gmc.h $$0 : this.d) {
+         String $$1 = $$0.a();
+         ffk $$2 = this.b.a($$1);
+         gmq.b $$3 = this.b.b($$1);
+         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
+            $$2.a($$3);
+         }
+      }
+   }
+
+   public glh a() {
       return this.b;
    }
 
-   public glv.a c() {
-      return this.c;
+   public interface a {
+      void a(fdy var1, Map<akv, fff<fed>> var2);
+
+      void a(glh var1, Map<akv, fff<fed>> var2);
+
+      default void a(Map<akv, fff<fed>> $$0) {
+      }
    }
 
-   public glv.a d() {
-      return this.d;
+   public static record b(String a, akv b, boolean c, boolean d) implements gmd.a {
+      private fff<fed> b(Map<akv, fff<fed>> $$0) {
+         fff<fed> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public void a(fdy $$0, Map<akv, fff<fed>> $$1) {
+         $$0.a(this.b($$1));
+      }
+
+      @Override
+      public void a(glh $$0, Map<akv, fff<fed>> $$1) {
+         fff<fed> $$2 = this.b($$1);
+         fed $$3 = $$2.get();
+         $$3.a(this.d ? 9729 : 9728);
+         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
+         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
+      }
+
+      @Override
+      public void a(Map<akv, fff<fed>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(9728);
+         }
+      }
    }
 
-   public glx e() {
-      return this.e;
+   public static record c(String a, hec b, int c, int d) implements gmd.a {
+      @Override
+      public void a(fdy $$0, Map<akv, fff<fed>> $$1) {
+      }
+
+      @Override
+      public void a(glh $$0, Map<akv, fff<fed>> $$1) {
+         $$0.a(this.a + "Sampler", this.b.a());
+         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
+      }
    }
 }

@@ -1,22 +1,25 @@
-public class hkx implements fpt {
-   private final wo a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public hkx(wo $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface hkx {
+   default void b() {
    }
 
-   @Override
-   public void a(fob $$0, int $$1, int $$2, float $$3) {
-      $$0.a(flh.Q().h, this.a, this.b, this.c, this.d);
+   default void a() {
    }
 
-   public wo a() {
-      return this.a;
+   default void a(gkt $$0) {
+   }
+
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(gfy $$0, fax $$1) {
+   }
+
+   default void a(gfy $$0, ji $$1, dww $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(cwo $$0) {
    }
 }

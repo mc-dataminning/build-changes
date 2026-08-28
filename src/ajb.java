@@ -1,23 +1,46 @@
-import io.netty.buffer.ByteBuf;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-public class ajb implements yv<aix> {
-   public static final ajb a = new ajb();
-   public static final ym<ByteBuf, ajb> b = ym.a(a);
+public class ajb implements yw<aiy> {
+   public static final yn<vl, ajb> a = yw.a(ajb::a, ajb::new);
+   private final byte[] b;
+   private final byte[] c;
 
-   private ajb() {
+   public ajb(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axy {
+      this.b = axx.a($$1, $$0.getEncoded());
+      this.c = axx.a($$1, $$2);
+   }
+
+   private ajb(vl $$0) {
+      this.b = $$0.b();
+      this.c = $$0.b();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yx<ajb> a() {
-      return aiv.i;
+   public yy<ajb> a() {
+      return aiw.h;
    }
 
-   public void a(aix $$0) {
+   public void a(aiy $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public SecretKey a(PrivateKey $$0) throws axy {
+      return axx.a($$0, this.b);
+   }
+
+   public boolean a(byte[] $$0, PrivateKey $$1) {
+      try {
+         return Arrays.equals($$0, axx.b($$1, this.c));
+      } catch (axy var4) {
+         return false;
+      }
    }
 }

@@ -5,7 +5,7 @@ public interface ia extends AutoCloseable {
 
    void a(String var1);
 
-   void a(int var1, aku var2, int var3);
+   void a(int var1, akv var2, int var3);
 
    @Override
    void close();

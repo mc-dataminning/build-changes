@@ -1,122 +1,114 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class eab implements ebb<buj> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arc d;
-   private final eam e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bqy g;
+public class eab implements AutoCloseable {
+   public static final int d = 1493;
+   private final ead a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile eng b;
 
-   public eab(eam $$0, arc $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = new bqy($$2, "entity-deserializer");
+   public eab(eak $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new ead($$0, $$1, $$3);
    }
 
-   @Override
-   public CompletableFuture<eaw<buj>> a(dfm $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
+   public boolean b(dfn $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public tq a(aku<dgh> $$0, Supplier<euy> $$1, tq $$2, Optional<aku<MapCodec<? extends dys>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
+         return $$2;
       } else {
-         CompletableFuture<Optional<tq>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  dfm $$2 = a((tq)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.p().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.p().a(var6, this.e.a(), $$0);
+         try {
+            if ($$4 < 1493) {
+               $$2 = ban.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  eng $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
                }
-
-               tq $$4 = this.e.a((tq)$$1x.get(), -1);
-               tw $$5 = $$4.c("Entities", 10);
-               List<buj> $$6 = buq.a($$5, this.d, bup.r).collect(ImmutableList.toImmutableList());
-               return new eaw<>($$0, $$6);
             }
-         }, this.g::a_);
-      }
-   }
 
-   private static dfm a(tq $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dfm($$1[0], $$1[1]);
-   }
-
-   private static void a(tq $$0, dfm $$1) {
-      $$0.a("Position", new tu(new int[]{$$1.h, $$1.i}));
-   }
-
-   private static eaw<buj> b(dfm $$0) {
-      return new eaw<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(eaw<buj> $$0) {
-      dfm $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
+            a($$2, $$0, $$3);
+            $$2 = ban.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            uf.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
          }
-      } else {
-         tw $$2 = new tw();
-         $$0.b().forEach($$1x -> {
-            tq $$2x = new tq();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         tq $$3 = uf.e(new tq());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
       }
    }
 
-   private void a(CompletableFuture<?> $$0, dfm $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.p().b($$1x, this.e.a(), $$1);
-         return null;
-      });
+   private eng a(aku<dgh> $$0, Supplier<euy> $$1) {
+      eng $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = eng.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   private void b(CompletableFuture<?> $$0, dfm $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.p().a($$1x, this.e.a(), $$1);
-         return null;
-      });
+   public static void a(tq $$0, aku<dgh> $$1, Optional<aku<MapCodec<? extends dys>>> $$2) {
+      tq $$3 = new tq();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+   private static void b(tq $$0) {
+      $$0.r("__context");
+   }
+
+   public static int a(tq $$0) {
+      return uf.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<tq>> d(dfn $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(dfn $$0, Supplier<tq> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(dfn $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      this.e.close();
+      this.a.close();
+   }
+
+   public eaa p() {
+      return this.a;
+   }
+
+   protected eak q() {
+      return this.a.a();
    }
 }

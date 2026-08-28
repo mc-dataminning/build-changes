@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.meta.TypeQualifierDefault;
 
 @Nonnull
-@TypeQualifierDefault({ElementType.METHOD})
+@TypeQualifierDefault({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface fda {
 }

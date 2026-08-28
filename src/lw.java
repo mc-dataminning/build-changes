@@ -4,7 +4,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class lw implements lr {
    public static final MapCodec<lw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, lw::new));
-   public static final ym<vz, lw> b = ym.a(yk.h, $$0 -> $$0.c, lw::new);
+   public static final yn<wa, lw> b = yn.a(yl.h, $$0 -> $$0.c, lw::new);
    private final int c;
 
    public lw(int $$0) {

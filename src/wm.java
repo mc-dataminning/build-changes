@@ -1,81 +1,95 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class wm {
+public record wm(String c, List<wm.a> d, xm e) {
    public static final Codec<wm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(wm.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, wm::new)
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(wm::a),
+               wm.a.d.listOf().fieldOf("parameters").forGetter(wm::b),
+               xm.b.b.optionalFieldOf("style", xm.a).forGetter(wm::c)
+            )
+            .apply($$0, wm::new)
    );
-   private final wm.a b;
-   private final String c;
+   public static final yn<wa, wm> b = yn.a(yl.o, wm::a, wm.a.e.a(yl.a()), wm::b, xm.b.c, wm::c, wm::new);
 
-   public wm(wm.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static wm a(String $$0) {
+      return new wm($$0, List.of(wm.a.a, wm.a.c), xm.a);
    }
 
-   public wm.a a() {
-      return this.b;
+   public static wm b(String $$0) {
+      xm $$1 = xm.a.a(n.h).b(true);
+      return new wm($$0, List.of(wm.a.a, wm.a.c), $$1);
    }
 
-   public String b() {
+   public static wm c(String $$0) {
+      xm $$1 = xm.a.a(n.h).b(true);
+      return new wm($$0, List.of(wm.a.b, wm.a.c), $$1);
+   }
+
+   public static wm d(String $$0) {
+      return new wm($$0, List.of(wm.a.b, wm.a.a, wm.a.c), xm.a);
+   }
+
+   public wp a(wp $$0, wl.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return wp.a(this.c, $$2).c(this.e);
+   }
+
+   private wp[] b(wp $$0, wl.a $$1) {
+      wp[] $$2 = new wp[this.d.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         wm.a $$4 = this.d.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
+      }
+
+      return $$2;
+   }
+
+   public String a() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         wm $$1 = (wm)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public List<wm.a> b() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public xm c() {
+      return this.e;
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
+   public static enum a implements azv {
+      a(0, "sender", ($$0, $$1) -> $$1.b()),
+      b(1, "target", ($$0, $$1) -> $$1.c().orElse(wo.a)),
+      c(2, "content", ($$0, $$1) -> $$0);
 
-   public static enum a implements azu {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+      private static final IntFunction<wm.a> f = axq.a($$0 -> $$0.g, values(), axq.a.a);
+      public static final Codec<wm.a> d = azv.a(wm.a::values);
+      public static final yn<ByteBuf, wm.a> e = yl.a(f, $$0 -> $$0.g);
+      private final int g;
+      private final String h;
+      private final wm.a.a i;
 
-      public static final MapCodec<wm.a> g = azu.a(wm.a::values).fieldOf("action");
-      public static final MapCodec<wm.a> h = g.validate(wm.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(final String $$0, final boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      private a(final int $$0, final String $$1, final wm.a.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      public boolean a() {
-         return this.i;
+      public wp a(wp $$0, wl.a $$1) {
+         return this.i.select($$0, $$1);
       }
 
       @Override
       public String c() {
-         return this.j;
+         return this.h;
       }
 
-      public static DataResult<wm.a> a(wm.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public interface a {
+         wp select(wp var1, wl.a var2);
       }
    }
 }

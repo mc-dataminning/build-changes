@@ -1,22 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import java.util.Map;
+import java.util.Objects;
 
-public class beq extends DataFix {
+public class beq extends bii {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+
    public beq(Schema $$0) {
-      super($$0, true);
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhv.w);
-      OpticFinder<?> $$1 = $$0.findField("minecraft:equippable");
-      return this.fixTypeEverywhereTyped(
-         "equippable asset rename fix",
-         $$0,
-         $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameField("model", "asset_id")))
-      );
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

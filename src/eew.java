@@ -1,174 +1,42 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class eew<C extends eep> {
-   public static final eew<ees> a = a("cave", new eet(ees.a));
-   public static final eew<ees> b = a("nether_cave", new eev(ees.a));
-   public static final eew<een> c = a("canyon", new eeo(een.a));
-   protected static final dwv d = djm.a.m();
-   protected static final dwv e = djm.nE.m();
-   protected static final esx f = esy.c.g();
-   protected static final esx g = esy.e.g();
-   protected Set<esw> h = ImmutableSet.of(esy.c);
-   private final MapCodec<eeu<C>> i;
-
-   private static <C extends eep, F extends eew<C>> F a(String $$0, F $$1) {
-      return ke.a(mb.N, $$0, $$1);
+public class eew extends eeu {
+   public eew(Codec<eet> $$0) {
+      super($$0);
+      this.h = ImmutableSet.of(esz.e, esz.c);
    }
 
-   public eew(Codec<C> $$0) {
-      this.i = $$0.fieldOf("config").xmap(this::a, eeu::b);
+   @Override
+   protected int a() {
+      return 10;
    }
 
-   public eeu<C> a(C $$0) {
-      return new eeu<>(this, $$0);
+   @Override
+   protected float a(azh $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
    }
 
-   public MapCodec<eeu<C>> c() {
-      return this.i;
+   @Override
+   protected double b() {
+      return 5.0;
    }
 
-   public int d() {
-      return 4;
-   }
-
-   protected boolean a(
-      eer $$0, C $$1, dyq $$2, Function<ji, jr<dhi>> $$3, ecc $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dyp $$10, eew.a $$11
-   ) {
-      dfm $$12 = $$2.f();
-      double $$13 = (double)$$12.b();
-      double $$14 = (double)$$12.c();
-      double $$15 = 16.0 + $$8 * 2.0;
-      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
-         int $$16 = $$12.d();
-         int $$17 = $$12.e();
-         int $$18 = Math.max(ayy.a($$5 - $$8) - $$16 - 1, 0);
-         int $$19 = Math.min(ayy.a($$5 + $$8) - $$16, 15);
-         int $$20 = Math.max(ayy.a($$6 - $$9) - 1, $$0.a() + 1);
-         int $$21 = $$2.A() ? 0 : 7;
-         int $$22 = Math.min(ayy.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
-         int $$23 = Math.max(ayy.a($$7 - $$8) - $$17 - 1, 0);
-         int $$24 = Math.min(ayy.a($$7 + $$8) - $$17, 15);
-         boolean $$25 = false;
-         ji.a $$26 = new ji.a();
-         ji.a $$27 = new ji.a();
-
-         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
-            int $$29 = $$12.a($$28);
-            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
-
-            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
-               int $$32 = $$12.b($$31);
-               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
-               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
-                  MutableBoolean $$34 = new MutableBoolean(false);
-
-                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
-                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
-                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
-                        $$10.a($$28, $$35, $$31);
-                        $$26.d($$29, $$35, $$32);
-                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
-                     }
-                  }
-               }
-            }
+   protected boolean a(ees $$0, eet $$1, dyr $$2, Function<ji, jr<dhj>> $$3, dyq $$4, ji.a $$5, ji.a $$6, ecd $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dww $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
 
-         return $$25;
+         $$2.a($$5, $$9, false);
+         return true;
       } else {
          return false;
       }
-   }
-
-   protected boolean a(eer $$0, C $$1, dyq $$2, Function<ji, jr<dhi>> $$3, dyp $$4, ji.a $$5, ji.a $$6, ecc $$7, MutableBoolean $$8) {
-      dwv $$9 = $$2.a_($$5);
-      if ($$9.a(djm.i) || $$9.a(djm.fA)) {
-         $$8.setTrue();
-      }
-
-      if (!this.a($$1, $$9) && !b($$1)) {
-         return false;
-      } else {
-         dwv $$10 = this.a($$0, $$1, $$5, $$7);
-         if ($$10 == null) {
-            return false;
-         } else {
-            $$2.a($$5, $$10, false);
-            if ($$7.a() && !$$10.y().c()) {
-               $$2.e($$5);
-            }
-
-            if ($$8.isTrue()) {
-               $$6.a($$5, jn.a);
-               if ($$2.a_($$6).a(djm.j)) {
-                  $$0.a($$3, $$2, $$6, !$$10.y().c()).ifPresent($$2x -> {
-                     $$2.a($$6, $$2x, false);
-                     if (!$$2x.y().c()) {
-                        $$2.e($$6);
-                     }
-                  });
-               }
-            }
-
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   private dwv a(eer $$0, C $$1, ji $$2, ecc $$3) {
-      if ($$2.v() <= $$1.g.a($$0)) {
-         return g.g();
-      } else {
-         dwv $$4 = $$3.a(new ecj.e($$2.u(), $$2.v(), $$2.w()), 0.0);
-         if ($$4 == null) {
-            return b($$1) ? $$1.h.e() : null;
-         } else {
-            return b($$1) ? b($$1, $$4) : $$4;
-         }
-      }
-   }
-
-   private static dwv b(eep $$0, dwv $$1) {
-      if ($$1.a(djm.a)) {
-         return $$0.h.b();
-      } else if ($$1.a(djm.J)) {
-         dwv $$2 = $$0.h.c();
-         return $$2.b(dxl.J) ? $$2.b(dxl.J, Boolean.valueOf(true)) : $$2;
-      } else {
-         return $$1.a(djm.K) ? $$0.h.d() : $$1;
-      }
-   }
-
-   public abstract boolean a(eer var1, C var2, dyq var3, Function<ji, jr<dhi>> var4, azg var5, ecc var6, dfm var7, dyp var8);
-
-   public abstract boolean a(C var1, azg var2);
-
-   protected boolean a(C $$0, dwv $$1) {
-      return $$1.a($$0.i);
-   }
-
-   protected static boolean a(dfm $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
-      double $$6 = (double)$$0.b();
-      double $$7 = (double)$$0.c();
-      double $$8 = $$1 - $$6;
-      double $$9 = $$2 - $$7;
-      double $$10 = (double)($$4 - $$3);
-      double $$11 = (double)($$5 + 2.0F + 16.0F);
-      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
-   }
-
-   private static boolean b(eep $$0) {
-      return $$0.h.a();
-   }
-
-   public interface a {
-      boolean shouldSkip(eer var1, double var2, double var4, double var6, int var8);
    }
 }

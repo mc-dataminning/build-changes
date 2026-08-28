@@ -1,30 +1,40 @@
-public class cdn extends ccd {
-   private final bvn a;
+import java.util.EnumSet;
 
-   public cdn(bvn $$0) {
+public class cdn extends cce {
+   private final coc a;
+
+   public cdn(coc $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cce.a.c, cce.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dW().b_(this.a.dw()).a(awu.a);
+      if (!this.a.bL()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cow $$0 = this.a.gs();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
+      }
    }
 
    @Override
    public void d() {
-      ji $$0 = null;
+      this.a.P().m();
+   }
 
-      for (ji $$2 : ji.b(
-         ayy.a(this.a.dB() - 2.0), ayy.a(this.a.dD() - 2.0), ayy.a(this.a.dH() - 2.0), ayy.a(this.a.dB() + 2.0), this.a.dC(), ayy.a(this.a.dH() + 2.0)
-      )) {
-         if (this.a.dW().b_($$2).a(awu.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

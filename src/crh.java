@@ -1,65 +1,121 @@
-public class crh extends cqu {
-   private final dfh b = new dfh() {
-      @Override
-      public void a(dgg $$0, ji $$1, int $$2) {
-         $$0.a(crh.this, (byte)$$2);
-      }
-   };
-   private final Runnable c;
+public class crh extends cqw implements duz {
+   private boolean c = true;
+   private boolean d = false;
 
-   public crh(buq<? extends crh> $$0, dgg $$1) {
+   public crh(bur<? extends crh> $$0, dgh $$1) {
       super($$0, $$1);
-      this.c = this.c($$1);
    }
 
    @Override
-   protected cwj u() {
-      return cwr.oo;
+   public dww w() {
+      return djn.hz.m();
    }
 
    @Override
-   public cwn dJ() {
-      return new cwn(cwr.oo);
-   }
-
-   private Runnable c(dgg $$0) {
-      return $$0 instanceof arc ? () -> this.b.a((arc)$$0, this.dw()) : () -> this.b.a($$0, this.dw());
+   public int z() {
+      return 1;
    }
 
    @Override
-   public dwv w() {
-      return djm.cA.m();
+   public int b() {
+      return 5;
    }
 
    @Override
-   protected void a(tq $$0) {
-      super.a($$0);
-      this.b.a(this.dW(), this.dw(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.D()) {
+         this.s($$4);
+      }
+   }
+
+   public boolean D() {
+      return this.c;
+   }
+
+   public void s(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double G() {
+      return this.dA();
+   }
+
+   @Override
+   public double H() {
+      return this.dC() + 0.5;
+   }
+
+   @Override
+   public double I() {
+      return this.dG();
+   }
+
+   @Override
+   public boolean J() {
+      return false;
+   }
+
+   @Override
+   public void h() {
+      this.d = false;
+      super.h();
+      this.P();
+   }
+
+   @Override
+   protected double a(ji $$0, dxz $$1, double $$2) {
+      double $$3 = super.a($$0, $$1, $$2);
+      this.P();
+      return $$3;
+   }
+
+   private void P() {
+      if (!this.dV().C && this.bL() && this.D() && !this.d && this.K()) {
+         this.d = true;
+         this.e();
+      }
+   }
+
+   public boolean K() {
+      if (dva.a(this.dV(), this)) {
+         return true;
+      } else {
+         for (clb $$1 : this.dV().a(clb.class, this.cR().c(0.25, 0.0, 0.25), bup.a)) {
+            if (dva.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected cwk u() {
+      return cws.os;
+   }
+
+   @Override
+   public cwo dI() {
+      return new cwo(cws.os);
    }
 
    @Override
    protected void b(tq $$0) {
       super.b($$0);
-      this.b.a($$0);
+      $$0.a("Enabled", this.c);
    }
 
    @Override
-   public void b(byte $$0) {
-      this.b.a(this.dW(), $$0);
+   protected void a(tq $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
    }
 
    @Override
-   public void h() {
-      super.h();
-      this.c.run();
-   }
-
-   public dfh v() {
-      return this.b;
-   }
-
-   @Override
-   public boolean cW() {
-      return true;
+   public csb a(int $$0, cov $$1) {
+      return new ctc($$0, $$1, this);
    }
 }

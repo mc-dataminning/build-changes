@@ -1,34 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
-public abstract class hky extends fui {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   protected static final int B = 8;
-   private final List<hkx> a = Lists.newArrayList();
+public enum hky {
+   a("movement", hkt::new),
+   b("find_tree", hks::new),
+   c("punch_tree", hkv::new),
+   d("open_inventory", hku::new),
+   e("craft_planks", hkr::new),
+   f("none", hkq::new);
 
-   public hky(wo $$0) {
-      super($$0);
+   private final String g;
+   private final Function<hkw, ? extends hkx> h;
+
+   private <T extends hkx> hky(final String $$0, final Function<hkw, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public hkx a(hkw $$0) {
+      return this.h.apply($$0);
    }
 
-   protected hkx a(hkx $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public String a() {
+      return this.g;
    }
 
-   public wo m() {
-      return wn.a(this.a.stream().map(hkx::a).collect(Collectors.toList()));
+   public static hky a(String $$0) {
+      for (hky $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      return f;
    }
 }

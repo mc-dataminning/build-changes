@@ -1,30 +1,23 @@
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-
-public record gax(boolean a, float b, float c, float d, float e, float f, Set<String> g) implements gfj {
-   public gax(Set<String> $$0) {
-      this(false, 5.0F, 2.0F, $$0);
+public class gax extends gca<gxq> {
+   public gax(gfc $$0) {
+      super($$0, gmh::f);
    }
 
-   public gax(boolean $$0, float $$1, float $$2, Set<String> $$3) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("back", gfh.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), gfe.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
+      gfh $$2 = gfh.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, gfg.a, 1.0F, 0.8F);
+      $$1.a("cross_1", $$2, gfe.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gfe.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return gfi.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
    }
 
-   @Override
-   public gfi apply(gfi $$0) {
-      float $$1 = this.a ? 1.5F / this.d : 1.0F;
-      float $$2 = 1.0F / this.e;
-      UnaryOperator<gfc> $$3 = $$1x -> $$1x.c(0.0F, this.b, this.c).b($$1);
-      UnaryOperator<gfc> $$4 = $$1x -> $$1x.c(0.0F, this.f, 0.0F).b($$2);
-      gfi $$5 = new gfi();
-
-      for (Entry<String, gfk> $$6 : $$0.a().a()) {
-         String $$7 = $$6.getKey();
-         gfk $$8 = $$6.getValue();
-         $$5.a().a($$7, $$8.a(this.g.contains($$7) ? $$3 : $$4));
+   public void a(gxq $$0) {
+      super.a($$0);
+      if ($$0.c > 0.0F) {
+         float $$1 = -ayz.a($$0.c * 3.0F) * $$0.c;
+         this.v.g += $$1 * (float) (Math.PI / 180.0);
       }
-
-      return $$5;
    }
 }

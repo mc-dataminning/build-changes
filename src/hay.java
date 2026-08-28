@@ -1,4 +1,5 @@
-public class hay extends gyy {
+public class hay extends gyj {
    public boolean a;
-   public boolean b;
+   public float b;
+   public float c;
 }

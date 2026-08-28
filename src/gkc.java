@@ -1,118 +1,54 @@
-public class gkc extends gke {
-   gkc(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
-   }
-
-   @Override
-   public gji b() {
-      return gji.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+public class gkc extends gjs {
+   gkc(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gkb $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axk.b($$7), (float)axk.c($$7), (float)axk.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(ji.a(this.g, this.h, this.i)).l()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-      public a(gjz $$0) {
+      public a(gkb $$0) {
          this.a = $$0;
       }
 
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkc $$8 = new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.H_().a(5));
-         return $$8;
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7, axk.a(255, 204, 31, 102), this.a);
       }
    }
 
-   public static class b implements gjh<lx> {
-      private final gjz a;
+   public static class b implements gjj<lx> {
+      private final gkb a;
 
-      public b(gjz $$0) {
+      public b(gkb $$0) {
          this.a = $$0;
       }
 
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkc $$8 = new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.A.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
-   }
-
-   public static class c implements gjh<lx> {
-      private final gjz a;
-
-      public c(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkc $$8 = new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gjh<lx> {
-      private final gjz a;
-
-      public d(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkc $$8 = new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements gjh<lx> {
-      private final gjz a;
-
-      public e(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkc $$8 = new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkc($$1, $$2, $$3, $$4, $$5, $$6, $$7, axk.a(255, 255, 255, 255), this.a);
       }
    }
 }

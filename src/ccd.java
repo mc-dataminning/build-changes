@@ -1,65 +1,78 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class ccd {
-   private final EnumSet<ccd.a> a = EnumSet.noneOf(ccd.a.class);
+public class ccd extends cce {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final cgx d;
+   @Nullable
+   private cgx e;
+   private final double f;
+   private int g;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
-   }
-
-   public boolean U_() {
-      return true;
-   }
-
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<ccd.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public ccd(cgx $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (this.d.Y_() >= 0) {
+         return false;
+      } else {
+         List<? extends cgx> $$0 = this.d.dV().a((Class<? extends cgx>)this.d.getClass(), this.d.cR().c(8.0, 4.0, 8.0));
+         cgx $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (cgx $$3 : $$0) {
+            if ($$3.Y_() >= 0) {
+               double $$4 = this.d.g($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
+      }
    }
 
-   public EnumSet<ccd.a> j() {
-      return this.a;
+   @Override
+   public boolean c() {
+      if (this.d.Y_() >= 0) {
+         return false;
+      } else if (!this.e.bL()) {
+         return false;
+      } else {
+         double $$0 = this.d.g(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
+      }
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
+   @Override
+   public void d() {
+      this.g = 0;
    }
 
-   protected static int b(int $$0) {
-      return ayy.e($$0, 2);
+   @Override
+   public void e() {
+      this.e = null;
    }
 
-   protected static arc a(buj $$0) {
-      return (arc)$$0.dW();
-   }
-
-   protected static arc a(dgg $$0) {
-      return (arc)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.P().a(this.e, this.f);
+      }
    }
 }

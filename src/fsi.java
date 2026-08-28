@@ -1,111 +1,26 @@
 import java.util.function.Consumer;
 
-public class fsi implements fsf {
-   private final fsd a;
-   private final fsi.a b;
-   private int c = 0;
+public interface fsi {
+   void j(int var1);
 
-   private fsi(fsi.a $$0) {
-      this(0, 0, $$0);
+   void k(int var1);
+
+   int F();
+
+   int G();
+
+   int A();
+
+   int y();
+
+   default fsz J() {
+      return new fsz(this.F(), this.G(), this.A(), this.y());
    }
 
-   public fsi(int $$0, int $$1, fsi.a $$2) {
-      this.a = new fsd($$0, $$1);
-      this.b = $$2;
+   default void c(int $$0, int $$1) {
+      this.j($$0);
+      this.k($$1);
    }
 
-   public fsi a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fsh b() {
-      return this.a.b();
-   }
-
-   public fsh c() {
-      return this.a.c();
-   }
-
-   public <T extends fsg> T a(T $$0, fsh $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fsg> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fsg> T a(T $$0, Consumer<fsh> $$1) {
-      return this.b.a(this.a, $$0, this.c++, af.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fsg> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int A() {
-      return this.a.A();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public int F() {
-      return this.a.F();
-   }
-
-   @Override
-   public int G() {
-      return this.a.G();
-   }
-
-   public static fsi d() {
-      return new fsi(fsi.a.b);
-   }
-
-   public static fsi e() {
-      return new fsi(fsi.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fsd $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
-      }
-
-      public <T extends fsg> T a(fsd $$0, T $$1, int $$2, fsh $$3) {
-         return (T)(switch (this) {
-            case a -> (fsg)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fsg)$$0.a($$1, $$2, 0, $$3);
-         });
-      }
-   }
+   void a(Consumer<fop> var1);
 }

@@ -1,9 +1,64 @@
-public class ftx {
-   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
-   private static final long b = 300L;
+public class ftx extends ftg {
+   private fos c;
 
-   public static String a(long $$0) {
-      int $$1 = (int)($$0 / 300L % (long)a.length);
-      return a[$$1];
+   public ftx() {
+      super("");
+   }
+
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.c = fos.a(wp.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void aO_() {
+      this.E();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
+      }
+
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
+   }
+
+   private void E() {
+      gfz $$0 = this.m.t.j;
+      $$0.b(new ahn(this.m.t, ahn.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new ftg(this.b.a()));
+      }
    }
 }

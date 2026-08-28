@@ -12,13 +12,13 @@ public class cj extends dz<cj.a> {
       return cj.a.a;
    }
 
-   public void a(ard $$0, cou $$1, cwn $$2) {
+   public void a(are $$0, cov $$1, cwo $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cwn $$7 = $$1.a($$6);
+         cwo $$7 = $$1.a($$6);
          if ($$7.f()) {
             $$4++;
          } else {
@@ -32,7 +32,7 @@ public class cj extends dz<cj.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(ard $$0, cou $$1, cwn $$2, int $$3, int $$4, int $$5) {
+   private void a(are $$0, cov $$1, cwo $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -54,7 +54,7 @@ public class cj extends dz<cj.a> {
          return ap.f.a(new cj.a(Optional.empty(), cj.a.a.b, List.of($$0)));
       }
 
-      public static aq<cj.a> a(dgf... $$0) {
+      public static aq<cj.a> a(dgg... $$0) {
          cv[] $$1 = new cv[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -64,7 +64,7 @@ public class cj extends dz<cj.a> {
          return a($$1);
       }
 
-      public boolean a(cou $$0, cwn $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cov $$0, cwo $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class cj extends dz<cj.a> {
                   return true;
                }
 
-               cwn $$8 = $$0.a($$7);
+               cwo $$8 = $$0.a($$7);
                if (!$$8.f()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

@@ -1,12 +1,20 @@
-public class ajl {
-   public static final yx<ajk> a = a("pong_response");
-   public static final yx<ajn> b = b("ping_request");
+public record ajl(long b) implements yw<ajk> {
+   public static final yn<vl, ajl> a = yw.a(ajl::a, ajl::new);
 
-   private static <T extends yv<ajj>> yx<T> a(String $$0) {
-      return new yx<>(yw.b, aku.b($$0));
+   private ajl(vl $$0) {
+      this($$0.readLong());
    }
 
-   private static <T extends yv<ajm>> yx<T> b(String $$0) {
-      return new yx<>(yw.a, aku.b($$0));
+   private void a(vl $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public yy<ajl> a() {
+      return ajm.a;
+   }
+
+   public void a(ajk $$0) {
+      $$0.a(this);
    }
 }

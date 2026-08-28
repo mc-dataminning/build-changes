@@ -1,13 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
-public class cez extends cfp<bvf> {
+public class cez extends cfj<cmt> {
    @Override
-   protected void a(arc $$0, bvf $$1) {
+   public Set<cek<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cek.B)));
    }
 
-   @Override
-   public Set<cej<?>> a() {
-      return ImmutableSet.of();
+   protected void a(ard $$0, cmt $$1) {
+      super.a($$0, $$1);
+      $$1.eb()
+         .c(cek.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bup.e)
+         .filter($$2 -> cfq.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.eb().a(cek.B, $$1x), () -> $$1.eb().b(cek.B));
    }
 }

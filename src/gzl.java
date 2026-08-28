@@ -1,3 +1,4 @@
-public class gzl extends gzk {
-   public float n = -1.0F;
+public class gzl extends gyj {
+   public float a;
+   public float b;
 }

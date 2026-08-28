@@ -1,48 +1,80 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
 
-public class caj extends bwy<cog> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class caj extends cak {
+   private static final List<cwk> c = ImmutableList.of(cws.qa, cws.wl);
 
-   public caj() {
-      super(ImmutableMap.of(cej.c, cek.a, cej.n, cek.c));
-   }
-
-   protected boolean b(arc $$0, cog $$1) {
-      if ($$0.ad() - this.e < 300L) {
-         return false;
-      } else if ($$0.A.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.ad();
-         jq $$2 = $$1.ec().c(cej.c).get();
-         return $$2.a() == $$0.ai() && $$2.b().a($$1.du(), 1.73);
+   @Override
+   protected void a(ard $$0, coh $$1) {
+      Optional<jq> $$2 = $$1.eb().c(cek.c);
+      if (!$$2.isEmpty()) {
+         jq $$3 = $$2.get();
+         dww $$4 = $$0.a_($$3.b());
+         if ($$4.a(djn.pE)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   protected void a(arc $$0, cog $$1, long $$2) {
-      bwh<cog> $$3 = $$1.ec();
-      $$3.a(cej.J, $$2);
-      $$3.c(cej.c).ifPresent($$1x -> $$3.a(cej.n, new bxb($$1x.b())));
-      $$1.gE();
-      this.a($$0, $$1);
-      if ($$1.gD()) {
-         $$1.gC();
+   private void a(ard $$0, coh $$1, jq $$2, dww $$3) {
+      ji $$4 = $$2.b();
+      if ($$3.c(dkw.e) == 8) {
+         $$3 = dkw.a($$1, $$3, (dgh)$$0, $$4);
       }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bsq $$8 = $$1.t();
+      int $$9 = $$8.b();
+      dww $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cwo $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.M();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dkw.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dkw.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   protected void a(arc $$0, cog $$1) {
+   private void a(ard $$0, dww $$1, ji $$2, dww $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
    }
 
-   protected boolean b(arc $$0, cog $$1, long $$2) {
-      Optional<jq> $$3 = $$1.ec().c(cej.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jq $$4 = $$3.get();
-         return $$4.a() == $$0.ai() && $$4.b().a($$1.du(), 1.73);
+   private void c(ard $$0, coh $$1) {
+      bsq $$2 = $$1.t();
+      if ($$2.a_(cws.qc) <= 36) {
+         int $$3 = $$2.a_(cws.qb);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(cws.qb, $$7);
+            cwo $$8 = $$2.b(new cwo(cws.qc, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
       }
    }
 }

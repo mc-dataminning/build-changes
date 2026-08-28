@@ -1,8 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface cvi {
-   default void a(@Nullable cov $$0, dgg $$1, cwn $$2, ji $$3) {
+public class cvi extends cwk {
+   public cvi(cwk.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cov var1, dgg var2, ji var3, @Nullable fau var4);
+   @Override
+   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
+      $$2.add(this.b().a(n.h));
+   }
+
+   public xd b() {
+      return wp.c(this.l + ".desc");
+   }
 }

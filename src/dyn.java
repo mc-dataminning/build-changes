@@ -1,5 +1,8 @@
-public interface dyn {
-   dwv a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dwv var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dyn {
 }

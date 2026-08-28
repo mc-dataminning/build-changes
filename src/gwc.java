@@ -1,42 +1,85 @@
-public class gwc extends gwq<gyq, gcb> {
-   public gwc(gty<gyq, gcb> $$0) {
-      super($$0);
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+
+public class gwc {
+   private static final int a = 0;
+   private final hgw b;
+   private final Function<gwc.a, akv> c;
+   private final Function<gwc.b, her> d;
+
+   public gwc(hgw $$0, heq $$1) {
+      this.b = $$0;
+      this.c = af.b($$0x -> $$0x.b.a($$0x.a));
+      this.d = af.b($$1x -> $$1.a($$1x.a()));
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gyq $$3, float $$4, float $$5) {
-      hbk $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
+   public void a(hgx.d $$0, aku<der> $$1, gcv $$2, cwo $$3, fft $$4, glx $$5, int $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, null);
+   }
 
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
+   public void a(hgx.d $$0, aku<der> $$1, gcv $$2, cwo $$3, fft $$4, glx $$5, int $$6, @Nullable akv $$7) {
+      List<hgx.c> $$8 = this.b.a($$1).a($$0);
+      if (!$$8.isEmpty()) {
+         int $$9 = $$3.a(awy.bO) ? czc.a($$3, 0) : 0;
+         boolean $$10 = $$3.C();
+
+         for (hgx.c $$11 : $$8) {
+            int $$12 = a($$11, $$9);
+            if ($$12 != 0) {
+               akv $$13 = $$11.c() && $$7 != null ? $$7 : this.c.apply(new gwc.a($$0, $$11));
+               ffx $$14 = gtb.a($$5, gmh.a($$13), $$10);
+               $$2.a($$4, $$14, $$6, heh.d, $$12);
+               $$10 = false;
             }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
          }
 
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
+         dev $$15 = $$3.a(kv.U);
+         if ($$15 != null) {
+            her $$16 = this.d.apply(new gwc.b($$15, $$0, $$1));
+            ffx $$17 = $$16.a($$5.getBuffer(gms.a($$15.b().a().d())));
+            $$2.a($$4, $$17, $$6, heh.d);
          }
+      }
+   }
 
-         $$6.a($$0, $$1, $$2, hec.d);
-         $$0.b();
+   private static int a(hgx.c $$0, int $$1) {
+      Optional<hgx.b> $$2 = $$0.b();
+      if ($$2.isPresent()) {
+         int $$3 = $$2.get().a().map(axk::f).orElse(0);
+         return $$1 != 0 ? $$1 : $$3;
+      } else {
+         return -1;
+      }
+   }
+
+   static record a(hgx.d a, hgx.c b) {
+   }
+
+   static record b(dev a, hgx.d b, aku<der> c) {
+      private static String a(jr<dew> $$0, aku<der> $$1) {
+         String $$2 = $$0.a().c().get($$1);
+         return $$2 != null ? $$2 : $$0.a().a();
+      }
+
+      public akv a() {
+         akv $$0 = this.a.b().a().a();
+         String $$1 = a(this.a.a(), this.c);
+         return $$0.a((UnaryOperator<String>)($$1x -> "trims/entity/" + this.b.c() + "/" + $$1x + "_" + $$1));
+      }
+
+      public dev b() {
+         return this.a;
+      }
+
+      public hgx.d c() {
+         return this.b;
+      }
+
+      public aku<der> d() {
+         return this.c;
       }
    }
 }

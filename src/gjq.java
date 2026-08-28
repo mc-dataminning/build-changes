@@ -1,53 +1,38 @@
-public class gjq extends gke {
-   protected final gjz a;
-   private float b;
-   private float F;
-   private float G;
-   private boolean H;
+public class gjq extends gkg {
+   private final gkb a;
 
-   protected gjq(gfw $$0, double $$1, double $$2, double $$3, gjz $$4, float $$5) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.91F;
-      this.u = $$5;
-      this.a = $$4;
-   }
-
-   public void b(int $$0) {
-      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      float $$4 = 1.0F;
-      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
-   }
-
-   public void c(int $$0) {
-      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      this.H = true;
+   gjq(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public gji b() {
-      return gji.c;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gjk b() {
+      return gjk.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
-      if (this.s > this.t / 2) {
-         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         if (this.H) {
-            this.v = this.v + (this.b - this.v) * 0.2F;
-            this.w = this.w + (this.F - this.w) * 0.2F;
-            this.x = this.x + (this.G - this.x) * 0.2F;
-         }
-      }
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public static record a(gkb a) implements gjj<lx> {
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjq $$8 = new gjq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.A.a(4) + 6);
+         return $$8;
+      }
    }
 }

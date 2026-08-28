@@ -1,71 +1,76 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public abstract class eku {
-   public static final Codec<eku> h = mb.X.q().dispatch(eku::a, ekv::a);
+public class eku extends ekv {
+   public static final MapCodec<eku> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, eku::new)
+   );
+   private final float b;
+   private final float c;
+   private final float d;
 
-   protected abstract ekv<?> a();
+   @Override
+   protected ekw<?> a() {
+      return ekw.c;
+   }
 
-   public abstract void a(eku.a var1);
+   public eku(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   public static final class a {
-      private final dgm a;
-      private final BiConsumer<ji, dwv> b;
-      private final azg c;
-      private final ObjectArrayList<ji> d;
-      private final ObjectArrayList<ji> e;
-      private final ObjectArrayList<ji> f;
+   @Override
+   public void a(ekv.a $$0) {
+      azh $$1 = $$0.b();
+      dhf $$2 = (dhf)$$0.a();
+      List<ji> $$3 = af.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<ji> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((ji)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
+            }
+         });
+         ji $$5 = (ji)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.K_().a(mc.aL).flatMap($$0x -> $$0x.a(rl.F)).ifPresent($$3x -> ((efj)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
+         }
 
-      public a(dgm $$0, BiConsumer<ji, dwv> $$1, azg $$2, Set<ji> $$3, Set<ji> $$4, Set<ji> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(km::v));
-         this.e.sort(Comparator.comparingInt(km::v));
-         this.f.sort(Comparator.comparingInt(km::v));
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               ji $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               ji $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+      }
+   }
+
+   private static void a(ji $$0, ekv.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, djn.tY.m().b(dnd.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
       }
 
-      public void a(ji $$0, dxm $$1) {
-         this.a($$0, djm.ft.m().b($$1, Boolean.valueOf(true)));
-      }
-
-      public void a(ji $$0, dwv $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(ji $$0) {
-         return this.a.a($$0, dwu.a::l);
-      }
-
-      public boolean a(ji $$0, Predicate<dwv> $$1) {
-         return this.a.a($$0, $$1);
-      }
-
-      public dgm a() {
-         return this.a;
-      }
-
-      public azg b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<ji> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<ji> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<ji> e() {
-         return this.f;
-      }
+      $$1.a($$0, djn.tY.m().b(dnd.b, Boolean.valueOf(true)));
    }
 }

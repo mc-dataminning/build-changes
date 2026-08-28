@@ -1,169 +1,173 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
 
-public abstract class cte extends csa {
-   private static final int m = 9;
-   private static final int n = 3;
-   private static final int o = 0;
-   protected final csn q;
-   protected final cov r;
-   protected final bsb s;
-   protected final cts t = new cts() {
-      @Override
-      public void e() {
-         cte.this.a(this);
+public class cte extends csc {
+   public static final int o = 0;
+   public static final int p = 0;
+   private static final int H = 2;
+   private static final int I = 2;
+   public static final int q = 1;
+   public static final int r = 4;
+   public static final int s = 5;
+   public static final int t = 5;
+   public static final int u = 4;
+   public static final int v = 9;
+   public static final int w = 9;
+   public static final int x = 36;
+   public static final int y = 36;
+   public static final int z = 45;
+   public static final int A = 45;
+   public static final akv B = akv.b("container/slot/helmet");
+   public static final akv C = akv.b("container/slot/chestplate");
+   public static final akv D = akv.b("container/slot/leggings");
+   public static final akv E = akv.b("container/slot/boots");
+   public static final akv F = akv.b("container/slot/shield");
+   private static final Map<bus, akv> J = Map.of(bus.c, E, bus.d, D, bus.e, C, bus.f, B);
+   private static final bus[] K = new bus[]{bus.f, bus.e, bus.d, bus.c};
+   public final boolean G;
+   private final cow L;
+
+   public cte(cov $$0, boolean $$1, final cow $$2) {
+      super(null, 0, 2, 2);
+      this.G = $$1;
+      this.L = $$2;
+      this.a($$2, 154, 28);
+      this.d(98, 18);
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         bus $$4 = K[$$3];
+         akv $$5 = J.get($$4);
+         this.a(new csf($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
       }
-   };
-   private final int p;
 
-   protected boolean a(cov $$0, boolean $$1) {
-      return true;
-   }
-
-   protected abstract void a(cov var1, cwn var2);
-
-   protected abstract boolean a(dwv var1);
-
-   public cte(@Nullable ctj<?> $$0, int $$1, cou $$2, csn $$3, ctf $$4) {
-      super($$0, $$1);
-      this.q = $$3;
-      this.r = $$2.k;
-      this.s = this.e($$4.d());
-      this.p = $$4.e();
-      this.a($$4);
-      this.b($$4);
-      this.c($$2, 8, 84);
-   }
-
-   private void a(ctf $$0) {
-      for (final ctf.b $$1 : $$0.c()) {
-         this.a(new ctx(this.s, $$1.a(), $$1.b(), $$1.c()) {
-            @Override
-            public boolean a(cwn $$0) {
-               return $$1.d().test($$0);
-            }
-         });
-      }
-   }
-
-   private void b(ctf $$0) {
-      this.a(new ctx(this.t, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
+      this.c($$0, 8, 84);
+      this.a(new cty($$0, 40, 77, 62) {
          @Override
-         public boolean a(cwn $$0) {
-            return false;
+         public void a(cwo $$0, cwo $$1) {
+            $$2.a(bus.b, $$1, $$0);
+            super.a($$0, $$1);
          }
 
          @Override
-         public boolean a(cov $$0) {
-            return cte.this.a($$0, this.h());
-         }
-
-         @Override
-         public void a(cov $$0, cwn $$1) {
-            cte.this.a($$0, $$1);
+         public akv b() {
+            return cte.F;
          }
       });
    }
 
-   @Override
-   public abstract void l();
-
-   private bsp e(int $$0) {
-      return new bsp($$0) {
-         @Override
-         public void e() {
-            super.e();
-            cte.this.a(this);
-         }
-      };
+   public static boolean e(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
    }
 
    @Override
-   public void a(bsb $$0) {
-      super.a($$0);
-      if ($$0 == this.s) {
-         this.l();
+   public void a(bsc $$0) {
+      if (this.L.dV() instanceof ard $$1) {
+         csu.a(this, $$1, this.L, this.m, this.n, null);
       }
    }
 
    @Override
-   public void a(cov $$0) {
+   public void a(cow $$0) {
       super.a($$0);
-      this.q.a(($$1, $$2) -> this.a($$0, this.s));
+      this.n.a();
+      if (!$$0.dV().C) {
+         this.a($$0, this.m);
+      }
    }
 
    @Override
-   public boolean b(cov $$0) {
-      return this.q.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.a($$2, 4.0), true);
+   public boolean b(cow $$0) {
+      return true;
    }
 
    @Override
-   public cwn b(cov $$0, int $$1) {
-      cwn $$2 = cwn.j;
-      ctx $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwn $$4 = $$3.g();
+   public cwo b(cow $$0, int $$1) {
+      cwo $$2 = cwo.j;
+      cty $$3 = this.k.get($$1);
+      if ($$3.h()) {
+         cwo $$4 = $$3.g();
          $$2 = $$4.v();
-         int $$5 = this.m();
-         int $$6 = this.q();
-         if ($$1 == this.n()) {
-            if (!this.a($$4, $$5, $$6, true)) {
-               return cwn.j;
+         bus $$5 = $$0.f($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cwo.j;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 >= 0 && $$1 < this.n()) {
-            if (!this.a($$4, $$5, $$6, false)) {
-               return cwn.j;
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cwo.j;
             }
-         } else if (this.c($$4) && $$1 >= this.m() && $$1 < this.q()) {
-            if (!this.a($$4, 0, this.n(), false)) {
-               return cwn.j;
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cwo.j;
             }
-         } else if ($$1 >= this.m() && $$1 < this.o()) {
-            if (!this.a($$4, this.p(), this.q(), false)) {
-               return cwn.j;
+         } else if ($$5.a() == bus.a.b && !this.k.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return cwo.j;
             }
-         } else if ($$1 >= this.p() && $$1 < this.q() && !this.a($$4, this.m(), this.o(), false)) {
-            return cwn.j;
+         } else if ($$5 == bus.b && !this.k.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return cwo.j;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return cwo.j;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return cwo.j;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return cwo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cwn.j);
+            $$3.a(cwo.j, $$2);
          } else {
             $$3.c();
          }
 
          if ($$4.M() == $$2.M()) {
-            return cwn.j;
+            return cwo.j;
          }
 
          $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
       }
 
       return $$2;
    }
 
-   protected boolean c(cwn $$0) {
-      return true;
+   @Override
+   public boolean a(cwo $$0, cty $$1) {
+      return $$1.c != this.n && super.a($$0, $$1);
    }
 
-   public int n() {
-      return this.p;
+   @Override
+   public cty m() {
+      return this.k.get(0);
    }
 
-   private int m() {
-      return this.n() + 1;
+   @Override
+   public List<cty> n() {
+      return this.k.subList(1, 5);
    }
 
-   private int o() {
-      return this.m() + 27;
+   public cst r() {
+      return this.m;
    }
 
-   private int p() {
-      return this.o();
+   @Override
+   public ctr am_() {
+      return ctr.a;
    }
 
-   private int q() {
-      return this.p() + 9;
+   @Override
+   protected cow q() {
+      return this.L;
    }
 }

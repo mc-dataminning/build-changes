@@ -1,66 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class emh extends emr {
-   private final jn c;
-   private final edx d;
-   private final edx e;
-   private final int f;
-   public static final MapCodec<emh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jn.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               edx.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               edx.b.optionalFieldOf("allowed_search_condition", edx.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, emh::new)
-   );
+public class emh extends emw {
+   public static final MapCodec<emh> a = bro.b(0, 256).fieldOf("count").xmap(emh::new, $$0 -> $$0.c);
+   private final bro c;
 
-   private emh(jn $$0, edx $$1, edx $$2, int $$3) {
+   private emh(bro $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public static emh a(jn $$0, edx $$1, edx $$2, int $$3) {
-      return new emh($$0, $$1, $$2, $$3);
+   public static emh a(bro $$0) {
+      return new emh($$0);
    }
 
-   public static emh a(jn $$0, edx $$1, int $$2) {
-      return a($$0, $$1, edx.e(), $$2);
+   public static emh a(int $$0) {
+      return a(brl.a($$0));
    }
 
    @Override
-   public Stream<ji> a_(emp $$0, azg $$1, ji $$2) {
-      ji.a $$3 = $$2.k();
-      dhe $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
-
-            $$3.c(this.c);
-            if ($$4.e($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
-      }
+   protected int a(azh $$0, ji $$1) {
+      return this.c.a($$0);
    }
 
    @Override
-   public ems<?> b() {
-      return ems.j;
+   public emt<?> b() {
+      return emt.f;
    }
 }

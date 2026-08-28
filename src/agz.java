@@ -1,30 +1,20 @@
-import java.util.List;
-import java.util.Optional;
+public record agz(bnd b) implements yw<agg> {
+   public static final yn<vl, agz> a = yw.a(agz::a, agz::new);
 
-public record agz(int b, List<String> c, Optional<String> d) implements yv<agf> {
-   public static final ym<vl, agz> a = ym.a(yk.h, agz::b, yk.b(1024).a(yk.c(100)), agz::e, yk.b(32).a(yk::a), agz::f, agz::new);
+   private agz(vl $$0) {
+      this($$0.b(bnd.class));
+   }
 
-   public agz(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yx<agz> a() {
-      return agd.bD;
+   public yy<agz> a() {
+      return age.bC;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
-   }
-
-   public List<String> e() {
-      return this.c;
-   }
-
-   public Optional<String> f() {
-      return this.d;
    }
 }

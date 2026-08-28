@@ -1,23 +1,21 @@
-import java.util.List;
-import java.util.UUID;
+public record adr(int b, wp c) implements yw<abl> {
+   public static final yn<wa, adr> a = yn.a(yl.h, adr::b, wr.d, adr::e, adr::new);
 
-public record adr(List<UUID> b) implements yv<abk> {
-   public static final ym<vl, adr> a = yv.a(adr::a, adr::new);
-
-   private adr(vl $$0) {
-      this($$0.a(kl.g));
+   @Override
+   public yy<adr> a() {
+      return age.ae;
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b, kl.g);
+   public void a(abl $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public yx<adr> a() {
-      return agd.af;
+   public boolean c() {
+      return true;
    }
 
-   public void a(abk $$0) {
-      $$0.a(this);
+   public wp e() {
+      return this.c;
    }
 }

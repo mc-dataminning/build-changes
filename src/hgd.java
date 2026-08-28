@@ -1,14 +1,28 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record hgd(hge d) {
-   public static final hgd a = new hgd(hge.b);
-   public static final Codec<hgd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hge.a.optionalFieldOf("scaling", hge.b).forGetter(hgd::a)).apply($$0, hgd::new)
+public record hgd(int c, Optional<Integer> d) {
+   public static final Codec<hgd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayi.l.fieldOf("index").forGetter(hgd::a), ayi.m.optionalFieldOf("time").forGetter(hgd::b)).apply($$0, hgd::new)
    );
-   public static final ato<hgd> c = new ato<>("gui", b);
+   public static final Codec<hgd> b = Codec.either(ayi.l, a)
+      .xmap($$0 -> (hgd)$$0.map(hgd::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
 
-   public hge a() {
+   public hgd(int $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a(int $$0) {
+      return this.d.orElse($$0);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public Optional<Integer> b() {
       return this.d;
    }
 }

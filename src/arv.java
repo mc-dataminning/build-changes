@@ -1,35 +1,47 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public record arv(String b, ws c) {
-   public static final arv a = a("");
-
-   public static arv a(String $$0) {
-      return new arv($$0, ws.c);
+public record arv<T>(T a, Optional<T> b) {
+   public static <T> Codec<arv<T>> a(Codec<T> $$0) {
+      Codec<arv<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(arv::a), $$0.optionalFieldOf("filtered").forGetter(arv::b)).apply($$1x, arv::new)
+      );
+      Codec<arv<T>> $$2 = $$0.xmap(arv::a, arv::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   public static arv b(String $$0) {
-      return new arv($$0, ws.b);
+   public static <B extends ByteBuf, T> yn<B, arv<T>> a(yn<B, T> $$0) {
+      return yn.a($$0, arv::a, $$0.a(yl::a), arv::b, arv::new);
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   public static <T> arv<T> a(T $$0) {
+      return new arv<>($$0, Optional.empty());
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   public static arv<String> a(arw $$0) {
+      return new arv<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   public boolean c() {
-      return !this.c.a();
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
    }
 
-   public String d() {
-      return this.b;
+   public <U> arv<U> a(Function<T, U> $$0) {
+      return new arv<>($$0.apply(this.a), this.b.map($$0));
    }
 
-   public ws e() {
-      return this.c;
+   public <U> Optional<arv<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new arv<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new arv<>($$1.get(), Optional.empty()));
+      }
    }
 }

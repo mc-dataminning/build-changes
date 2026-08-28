@@ -1,37 +1,28 @@
-public class ahg implements yv<agf> {
-   public static final ym<vl, ahg> a = yv.a(ahg::a, ahg::new);
-   private final boolean b;
-   private final boolean c;
+public record ahg(faz b, float c, float d, boolean e) implements yw<agg> {
+   public static final yn<vl, ahg> a = yn.a(faz.b, ahg::b, yl.l, ahg::e, yl.l, ahg::f, yl.b, ahg::g, ahg::new);
 
-   public ahg(boolean $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private ahg(vl $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agf $$0) {
-      $$0.a(this);
+   public static ahg a(buk $$0) {
+      return new ahg(new faz($$0.R_(), $$0.S_(), $$0.g_()), $$0.dL(), $$0.dN(), $$0.aJ());
    }
 
    @Override
-   public yx<ahg> a() {
-      return agd.bN;
+   public yy<ahg> a() {
+      return age.bM;
    }
 
-   public boolean b() {
-      return this.b;
+   public void a(agg $$0) {
+      $$0.a(this);
    }
 
-   public boolean e() {
+   public float e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

@@ -1,66 +1,42 @@
-import com.google.common.collect.Maps;
-import java.util.EnumMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+public abstract class bna implements bnf {
+   protected final long[] a;
+   protected final long[] b;
 
-public class bna {
-   public static final int a = 200;
-   public static final int b = 10000;
-   private final avc c;
-   private final EnumMap<bnc, Map<ard, bna.b>> d;
-   private final Queue<bna.a> e = new LinkedList<>();
-
-   public bna(avc $$0) {
-      this.c = $$0;
-      this.d = new EnumMap<>(bnc.class);
-
-      for (bnc $$1 : bnc.values()) {
-         this.d.put($$1, Maps.newHashMap());
+   protected bna(int $$0, long[] $$1) {
+      if ($$1.length != $$0) {
+         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
+      } else {
+         this.b = new long[$$0];
+         this.a = $$1;
       }
    }
 
-   public boolean a(bnc $$0) {
-      return !this.d.get($$0).isEmpty();
+   @Override
+   public void a(long[] $$0) {
+      System.arraycopy($$0, 0, this.b, 0, $$0.length);
+      this.a();
+      this.b();
    }
 
-   public void a(acl $$0) {
-      for (ard $$2 : this.d.get($$0.e()).keySet()) {
-         $$2.f.b($$0);
+   @Override
+   public void a(long $$0) {
+      this.b[0] = $$0;
+      this.a();
+      this.b();
+   }
+
+   @Override
+   public void a(long $$0, int $$1) {
+      if ($$1 >= 1 && $$1 < this.b.length) {
+         this.b[$$1] = $$0;
+      } else {
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
       }
    }
 
-   public void a(ard $$0, bnc $$1) {
-      if (this.c.f($$0.gh())) {
-         this.e.add(new bna.a($$0, $$1));
-      }
-   }
+   protected abstract void a();
 
-   public void a(int $$0) {
-      long $$1 = af.c();
-      this.a($$1, $$0);
-      this.b($$1, $$0);
-   }
-
-   private void a(long $$0, int $$1) {
-      for (bna.a $$2 : this.e) {
-         this.d.get($$2.b()).put($$2.a(), new bna.b($$0, $$1));
-      }
-   }
-
-   private void b(long $$0, int $$1) {
-      for (Map<ard, bna.b> $$2 : this.d.values()) {
-         $$2.entrySet().removeIf($$2x -> {
-            boolean $$3 = !this.c.f(((ard)$$2x.getKey()).gh());
-            bna.b $$4 = (bna.b)$$2x.getValue();
-            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
-         });
-      }
-   }
-
-   static record a(ard a, bnc b) {
-   }
-
-   static record b(long a, int b) {
+   protected void b() {
+      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
    }
 }

@@ -1,69 +1,192 @@
-import java.util.OptionalInt;
+import java.util.function.Consumer;
 
-public class fpk extends fol {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final azo<fpk.a, fpj> c;
-   private boolean d = false;
+public class fpk extends foo {
+   private static final int a = 1;
+   private static final int c = -3092272;
+   private static final String d = "_";
+   private static final int e = -2039584;
+   private static final int f = -857677600;
+   private static final int m = 300;
+   private final fob n;
+   private final wp o;
+   private final fpn p;
+   private long q = af.c();
 
-   public fpk(wo $$0, fnz $$1) {
-      this(0, 0, $$0, $$1);
+   public fpk(fob $$0, int $$1, int $$2, int $$3, int $$4, wp $$5, wp $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.n = $$0;
+      this.o = $$5;
+      this.p = new fpn($$0, $$3 - this.b());
+      this.p.a(this::r);
    }
 
-   public fpk(int $$0, int $$1, wo $$2, fnz $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = af.a($$1x -> $$1x.c.isPresent() ? fpj.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fpj.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
+   public void a(int $$0) {
+      this.p.a($$0);
    }
 
-   public fpk c(int $$0) {
-      super.a($$0);
-      return this;
+   public void b(Consumer<String> $$0) {
+      this.p.a($$0);
    }
 
-   public fpk d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
+   public void a(String $$0) {
+      this.p.a($$0);
    }
 
-   public fpk e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fpk b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int A() {
-      return this.c.a(this.c()).b();
+   public String q() {
+      return this.p.c();
    }
 
    @Override
-   public int y() {
-      return this.c.a(this.c()).a() * 9;
+   public void a(fsp $$0) {
+      $$0.a(fso.a, wp.a("gui.narrate.editBox", this.B(), this.q()));
    }
 
    @Override
-   public void b(fob $$0, int $$1, int $$2, float $$3) {
-      fpj $$4 = this.c.a(this.c());
-      int $$5 = this.F();
-      int $$6 = this.G();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.A() / 2, $$6, $$7, $$8);
+   public void a(double $$0, double $$1) {
+      this.p.a(fuk.t());
+      this.c($$0, $$1);
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p.a(true);
+      this.c($$0, $$1);
+      this.p.a(fuk.t());
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.p.e($$0);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aM_() && azw.a($$0)) {
+         this.p.b(Character.toString($$0));
+         return true;
       } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+         return false;
       }
    }
 
-   private fpk.a c() {
-      return new fpk.a(this.B(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   @Override
+   protected void c(fod $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.p.c();
+      if ($$4.isEmpty() && !this.aM_()) {
+         $$0.a(this.n, (wu)this.o, this.e(), this.p(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.p.d();
+         boolean $$6 = this.aM_() && (af.c() - this.q) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.p();
+
+         for (fpn.a $$11 : this.p.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.n, $$4.substring($$11.a(), $$5), this.e(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.n, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.n, $$4.substring($$11.a(), $$11.b()), this.e(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
+            }
+
+            $$10 += 9;
+         }
+
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.n, "_", $$8, $$9, -3092272);
+         }
+
+         if (this.p.i()) {
+            fpn.a $$13 = this.p.e();
+            int $$14 = this.e();
+            $$10 = this.p();
+
+            for (fpn.a $$15 : this.p.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.n.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.n.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
+               }
+            }
+         }
+      }
    }
 
-   static record a(wo a, int b, OptionalInt c) {
+   @Override
+   protected void b(fod $$0) {
+      super.b($$0);
+      if (this.p.b()) {
+         int $$1 = this.p.a();
+         wp $$2 = wp.a("gui.multiLineEditBox.character_limit", this.p.c().length(), $$1);
+         $$0.b(this.n, $$2, this.F() + this.g - this.n.a($$2), this.G() + this.h + 4, 10526880);
+      }
+   }
+
+   @Override
+   public int c() {
+      return 9 * this.p.f();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0 / 2.0;
+   }
+
+   private void b(fod $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(gmh.N(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   private void r() {
+      double $$0 = this.g();
+      fpn.a $$1 = this.p.c((int)($$0 / 9.0));
+      if (this.p.d() <= $$1.a()) {
+         $$0 = (double)(this.p.g() * 9);
+      } else {
+         fpn.a $$2 = this.p.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.p.d() > $$2.b()) {
+            $$0 = (double)(this.p.g() * 9 - this.h + 9 + this.b());
+         }
+      }
+
+      this.a($$0);
+   }
+
+   private void c(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.F() - (double)this.a();
+      double $$3 = $$1 - (double)this.G() - (double)this.a() + this.g();
+      this.p.a($$2, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.q = af.c();
+      }
    }
 }

@@ -1,23 +1,36 @@
-public class gos implements goh<dvc> {
-   private final gbh a;
+public class gos implements goj<duu> {
+   public static final hgy a = new hgy(heq.d, akv.b("entity/enchanting_table_book"));
+   private final gbj b;
 
-   public gos(goi.a $$0) {
-      this.a = new gbh($$0.a(gez.J));
+   public gos(gok.a $$0) {
+      this.b = new gbj($$0.a(gfb.J));
    }
 
-   public void a(dvc $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
-      dwv $$6 = $$0.m();
-      if ($$6.c(dnx.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dnx.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         ffw $$8 = goq.a.a($$3, gmf::d);
-         this.a.a($$2, $$8, $$4, $$5);
-         $$2.b();
+   public void a(duu $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + ayz.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
+
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
+
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = ayz.h($$1, $$0.c, $$0.b);
+      float $$10 = ayz.i($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = ayz.i($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = ayz.h($$1, $$0.g, $$0.f);
+      this.b.a($$6, ayz.a($$10, 0.0F, 1.0F), ayz.a($$11, 0.0F, 1.0F), $$12);
+      ffx $$13 = a.a($$3, gmh::d);
+      this.b.a($$2, $$13, $$4, $$5);
+      $$2.b();
    }
 }

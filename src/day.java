@@ -1,87 +1,118 @@
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public final class day implements coz.a<jr<cwj>>, Predicate<cwn> {
-   public static final ym<vz, day> a = yk.c(mc.K).a(day::new, $$0 -> $$0.e);
-   public static final ym<vz, Optional<day>> b = yk.c(mc.K)
-      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new day((jv<cwj>)$$0)), $$0 -> $$0.<jv.a<cwj>>map($$0x -> $$0x.e).orElse(jv.a()));
-   public static final Codec<jv<cwj>> c = ako.a(mc.K, cwj.e, false);
-   public static final Codec<day> d = ayh.c(c).xmap(day::new, $$0 -> $$0.e);
-   private final jv<cwj> e;
+public class day extends dat {
+   private static final Map<cwk, czd.a> c = Map.of(
+      cws.uV,
+      czd.a.b,
+      cws.pY,
+      czd.a.e,
+      cws.tf,
+      czd.a.c,
+      cws.vk,
+      czd.a.d,
+      cws.vl,
+      czd.a.d,
+      cws.vo,
+      czd.a.d,
+      cws.vm,
+      czd.a.d,
+      cws.vp,
+      czd.a.d,
+      cws.vn,
+      czd.a.d,
+      cws.vq,
+      czd.a.d
+   );
+   private static final daz d = daz.a(cws.pe);
+   private static final daz e = daz.a(cws.rV);
+   private static final daz f = daz.a(cws.pZ);
 
-   private day(jv<cwj> $$0) {
-      $$0.d().ifRight($$0x -> {
-         if ($$0x.isEmpty()) {
-            throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if ($$0x.contains(cwr.a.f())) {
-            throw new UnsupportedOperationException("Ingredient can't contain air");
+   public day(daq $$0) {
+      super($$0);
+   }
+
+   public boolean a(dar $$0, dgh $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+         boolean $$4 = false;
+         boolean $$5 = false;
+         boolean $$6 = false;
+
+         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+            cwo $$8 = $$0.a($$7);
+            if (!$$8.f()) {
+               if (c.containsKey($$8.h())) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else if (e.a($$8)) {
+                  if ($$6) {
+                     return false;
+                  }
+
+                  $$6 = true;
+               } else if (d.a($$8)) {
+                  if ($$5) {
+                     return false;
+                  }
+
+                  $$5 = true;
+               } else if (f.a($$8)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$8.h() instanceof cvm)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
          }
-      });
-      this.e = $$0;
+
+         return $$2 && $$3;
+      }
    }
 
-   public static boolean a(Optional<day> $$0, cwn $$1) {
-      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
-   }
+   public cwo a(dar $$0, jt.a $$1) {
+      czd.a $$2 = czd.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
 
-   @Deprecated
-   public Stream<jr<cwj>> a() {
-      return this.e.a();
-   }
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cwo $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            czd.a $$8 = c.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (e.a($$7)) {
+               $$3 = true;
+            } else if (d.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cvm $$9) {
+               $$5.add($$9.b().f());
+            }
+         }
+      }
 
-   public boolean b() {
-      return this.e.b() == 0;
-   }
-
-   public boolean a(cwn $$0) {
-      return $$0.a(this.e);
-   }
-
-   public boolean a(jr<cwj> $$0) {
-      return this.e.a($$0);
+      cwo $$10 = new cwo(cws.vu);
+      $$10.b(kv.ae, new czd($$2, $$5, IntList.of(), $$4, $$3));
+      return $$10;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof day $$1 ? Objects.equals(this.e, $$1.e) : false;
-   }
-
-   public static day a(dgf $$0) {
-      return new day(jv.a($$0.j().f()));
-   }
-
-   public static day a(dgf... $$0) {
-      return a(Arrays.stream($$0));
-   }
-
-   public static day a(Stream<? extends dgf> $$0) {
-      return new day(jv.a($$0.map($$0x -> $$0x.j().f()).toList()));
-   }
-
-   public static day a(jv<cwj> $$0) {
-      return new day($$0);
-   }
-
-   public dcn c() {
-      return (dcn)this.e.d().map(dcn.h::new, $$0 -> new dcn.b($$0.stream().map(day::b).toList()));
-   }
-
-   public static dcn a(Optional<day> $$0) {
-      return $$0.<dcn>map(day::c).orElse(dcn.c.c);
-   }
-
-   private static dcn b(jr<cwj> $$0) {
-      dcn $$1 = new dcn.d($$0);
-      cwn $$2 = $$0.a().k();
-      if (!$$2.f()) {
-         dcn $$3 = new dcn.f($$2);
-         return new dcn.j($$1, $$3);
-      } else {
-         return $$1;
-      }
+   public dbn<day> a() {
+      return dbn.h;
    }
 }

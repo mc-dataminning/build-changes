@@ -1,38 +1,27 @@
-public class gsg extends gsa<ckz, gym> {
-   private final gmz a;
+public class gsg<T extends cmh> extends gsw<T, gym> {
+   private static final akv a = akv.b("textures/entity/illager/evoker.png");
 
-   public gsg(gsb.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+   public gsg(gsd.a $$0) {
+      super($$0, new gco<>($$0.a(gfb.aL)), 0.5F);
+      this.a(new gwk<gym, gco<gym>>(this) {
+         public void a(fft $$0, glx $$1, int $$2, gym $$3, float $$4, float $$5) {
+            if ($$3.a) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public boolean a(ckz $$0, gpn $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dW().a_($$0.dw());
+   public akv a(gym $$0) {
+      return a;
    }
 
-   public void a(gym $$0, ffs $$1, glv $$2, int $$3) {
-      dwv $$4 = $$0.c;
-      if ($$4.o() == dpv.b) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(glo.b($$4)), false, azg.a(), $$4.b($$0.a), hec.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public gym a() {
+   public gym b() {
       return new gym();
    }
 
-   public void a(ckz $$0, gym $$1, float $$2) {
+   public void a(T $$0, gym $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      ji $$3 = ji.a($$0.dB(), $$0.cR().e, $$0.dH());
-      $$1.a = $$0.l();
-      $$1.b = $$3;
-      $$1.c = $$0.p();
-      $$1.d = $$0.dW().t($$3);
-      $$1.e = $$0.dW();
+      $$1.a = $$0.gB();
    }
 }

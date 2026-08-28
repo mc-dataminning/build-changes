@@ -1,4 +1,5 @@
-@FunctionalInterface
 public interface fym {
-   int currentIndex();
+   void L();
+
+   void a(dci var1);
 }

@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class hew implements her {
-   public static final MapCodec<hew> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, hew::new)
-   );
-   private final String c;
-   private final String d;
+public interface hew {
+   ako a = new ako("textures", ".png");
 
-   public hew(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   void a(aup var1, hew.a var2);
+
+   hey a();
+
+   public interface a {
+      default void a(akv $$0, aun $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(akv var1, hew.b var2);
+
+      void a(Predicate<akv> var1);
    }
 
-   @Override
-   public void a(auo $$0, her.a $$1) {
-      akn $$2 = new akn("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         aku $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public het a() {
-      return heu.b;
+   public interface b extends Function<hev, hel> {
+      default void a() {
+      }
    }
 }

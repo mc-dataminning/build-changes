@@ -1,91 +1,143 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class etk {
-   protected etq b;
-   protected bvh c;
-   protected final Int2ObjectMap<etj> d = new Int2ObjectOpenHashMap();
-   protected int e;
-   protected int f;
-   protected int g;
-   protected boolean h = true;
-   protected boolean i;
-   protected boolean j;
-   protected boolean k;
+public class etk {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public etk h;
+   public boolean i;
+   public float j;
+   public float k;
+   public etp l = etp.a;
 
-   public void a(dgt $$0, bvh $$1) {
-      this.b = new etq($$0, $$1);
-      this.c = $$1;
-      this.d.clear();
-      this.e = ayy.d($$1.dr() + 1.0F);
-      this.f = ayy.d($$1.ds() + 1.0F);
-      this.g = ayy.d($$1.dr() + 1.0F);
+   public etk(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   public void b() {
-      this.b = null;
-      this.c = null;
+   public etk a(int $$0, int $$1, int $$2) {
+      etk $$3 = new etk($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   protected etj b(ji $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
    }
 
-   protected etj c(int $$0, int $$1, int $$2) {
-      return (etj)this.d.computeIfAbsent(etj.b($$0, $$1, $$2), $$3 -> new etj($$0, $$1, $$2));
+   public float a(etk $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public abstract etj a();
-
-   public abstract ets a(double var1, double var3, double var5);
-
-   protected ets b(double $$0, double $$1, double $$2) {
-      return new ets(this.c(ayy.a($$0), ayy.a($$1), ayy.a($$2)));
+   public float b(etk $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2);
    }
 
-   public abstract int a(etj[] var1, etj var2);
-
-   public abstract eto a(etq var1, int var2, int var3, int var4, bvh var5);
-
-   public abstract eto a(etq var1, int var2, int var3, int var4);
-
-   public eto a(bvh $$0, ji $$1) {
-      return this.a(new etq($$0.dW(), $$0), $$1.u(), $$1.v(), $$1.w());
+   public float a(ji $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public void a(boolean $$0) {
-      this.h = $$0;
+   public float c(etk $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public void b(boolean $$0) {
-      this.i = $$0;
+   public float b(ji $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public void c(boolean $$0) {
-      this.j = $$0;
+   public float d(etk $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public void d(boolean $$0) {
-      this.k = $$0;
+   public float c(ji $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public boolean d() {
-      return this.h;
+   public ji a() {
+      return new ji(this.a, this.b, this.c);
    }
 
-   public boolean e() {
-      return this.i;
+   public faz b() {
+      return new faz((double)this.a, (double)this.b, (double)this.c);
    }
 
-   public boolean f() {
-      return this.j;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof etk $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   public boolean g() {
-      return this.k;
+   @Override
+   public int hashCode() {
+      return this.m;
    }
 
-   public static boolean a(dwv $$0) {
-      return $$0.a(awo.aN) || $$0.a(djm.K) || $$0.a(djm.ll) || djz.h($$0) || $$0.a(djm.fQ);
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   }
+
+   public void a(vl $$0) {
+      $$0.q(this.a);
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
+   }
+
+   public static etk b(vl $$0) {
+      etk $$1 = new etk($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
+   }
+
+   protected static void a(vl $$0, etk $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(etp.class);
+      $$1.g = $$0.readFloat();
    }
 }

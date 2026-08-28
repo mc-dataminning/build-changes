@@ -1,31 +1,61 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eer extends edn {
-   private final kf a;
-   private final ecu b;
-   private final ede c;
-   private final edh.o d;
+public class eer {
+   public static final eer a = new eer(false, djn.gV.m(), djn.qn.m(), djn.ew.m(), djn.aX.m());
+   public static final Codec<eer> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eer::a),
+               dww.a.optionalFieldOf("air_state", a.b()).forGetter(eer::b),
+               dww.a.optionalFieldOf("water_state", a.b()).forGetter(eer::c),
+               dww.a.optionalFieldOf("lava_state", a.b()).forGetter(eer::d),
+               dww.a.optionalFieldOf("barrier_state", a.b()).forGetter(eer::e)
+            )
+            .apply($$0, eer::new)
+   );
+   private final boolean c;
+   private final dww d;
+   private final dww e;
+   private final dww f;
+   private final dww g;
 
-   public eer(ect $$0, kf $$1, dgi $$2, ecu $$3, ede $$4, edh.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public static eer a(boolean $$0, dww $$1, dww $$2, dww $$3, dww $$4) {
+      return new eer($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Deprecated
-   public Optional<dwv> a(Function<ji, jr<dhi>> $$0, dyq $$1, ji $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public static eer a(dww $$0, dww $$1, dww $$2, dww $$3) {
+      return new eer(false, $$0, $$1, $$2, $$3);
    }
 
-   @Deprecated
-   public kf c() {
-      return this.a;
+   public static eer a(boolean $$0, dww $$1) {
+      return new eer($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   public ede d() {
+   private eer(boolean $$0, dww $$1, dww $$2, dww $$3, dww $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
       return this.c;
+   }
+
+   public dww b() {
+      return this.d;
+   }
+
+   public dww c() {
+      return this.e;
+   }
+
+   public dww d() {
+      return this.f;
+   }
+
+   public dww e() {
+      return this.g;
    }
 }

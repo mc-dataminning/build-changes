@@ -1,260 +1,158 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
-public class gnj {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+public class gnj implements hhm {
+   @VisibleForTesting
+   static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(gnj.class, new gnj.a())
+      .registerTypeAdapter(gnf.class, new gnf.a())
+      .registerTypeAdapter(gng.class, new gng.a())
+      .registerTypeAdapter(gni.class, new gni.a())
+      .registerTypeAdapter(gnn.class, new gnn.a())
+      .registerTypeAdapter(gno.class, new gno.a())
+      .create();
+   private final List<gnf> b;
+   @Nullable
+   private final hhm.a e;
+   @Nullable
+   private final Boolean f;
+   @Nullable
+   private final gno g;
+   @VisibleForTesting
+   private final gnq.a h;
+   @Nullable
+   private hhm i;
+   @Nullable
+   private final akv j;
 
-   public static gnc a(Vector3f $$0, Vector3f $$1, gne $$2, hem $$3, jn $$4, hhc $$5, @Nullable gnf $$6, boolean $$7, int $$8) {
-      gng $$9 = $$2.d();
-      if ($$5.b()) {
-         $$9 = a($$2.d(), $$4, $$5.a());
+   public static gnj a(Reader $$0) {
+      return ayp.a(a, $$0, gnj.class);
+   }
+
+   public gnj(@Nullable akv $$0, List<gnf> $$1, gnq.a $$2, @Nullable Boolean $$3, @Nullable hhm.a $$4, @Nullable gno $$5) {
+      this.b = $$1;
+      this.f = $$3;
+      this.e = $$4;
+      this.h = $$2;
+      this.j = $$0;
+      this.g = $$5;
+   }
+
+   @Nullable
+   @Override
+   public Boolean a() {
+      return this.f;
+   }
+
+   @Nullable
+   @Override
+   public hhm.a b() {
+      return this.e;
+   }
+
+   @Override
+   public void a(hhj.a $$0) {
+      if (this.j != null) {
+         this.i = $$0.a(this.j);
       }
-
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = ayy.h($$11, $$9.a[0], $$12);
-      $$9.a[2] = ayy.h($$11, $$9.a[2], $$12);
-      $$9.a[1] = ayy.h($$11, $$9.a[1], $$13);
-      $$9.a[3] = ayy.h($$11, $$9.a[3], $$13);
-      int[] $$14 = a($$9, $$3, $$4, a($$0, $$1), $$5.a(), $$6);
-      jn $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         a($$14, $$15);
-      }
-
-      return new gnc($$14, $$2.b(), $$15, $$3, $$7, $$8);
    }
 
-   public static gng a(gng $$0, jn $$1, j $$2) {
-      Matrix4f $$3 = jh.a($$2, $$1).c();
-      float $$4 = $$0.a($$0.c(0));
-      float $$5 = $$0.b($$0.c(0));
-      Vector4f $$6 = $$3.transform(new Vector4f($$4 / 16.0F, $$5 / 16.0F, 0.0F, 1.0F));
-      float $$7 = 16.0F * $$6.x();
-      float $$8 = 16.0F * $$6.y();
-      float $$9 = $$0.a($$0.c(2));
-      float $$10 = $$0.b($$0.c(2));
-      Vector4f $$11 = $$3.transform(new Vector4f($$9 / 16.0F, $$10 / 16.0F, 0.0F, 1.0F));
-      float $$12 = 16.0F * $$11.x();
-      float $$13 = 16.0F * $$11.y();
-      float $$14;
-      float $$15;
-      if (Math.signum($$9 - $$4) == Math.signum($$12 - $$7)) {
-         $$14 = $$7;
-         $$15 = $$12;
-      } else {
-         $$14 = $$12;
-         $$15 = $$7;
-      }
-
-      float $$18;
-      float $$19;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$18 = $$8;
-         $$19 = $$13;
-      } else {
-         $$18 = $$13;
-         $$19 = $$8;
-      }
-
-      float $$22 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$23 = new Matrix3f($$3);
-      Vector3f $$24 = $$23.transform(new Vector3f(ayy.b($$22), ayy.a($$22), 0.0F));
-      int $$25 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$24.y(), (double)$$24.x())) / 90.0)) * 90, 360);
-      return new gng(new float[]{$$14, $$18, $$15, $$19}, $$25);
+   @Nullable
+   @Override
+   public hhm c() {
+      return this.i;
    }
 
-   private static int[] a(gng $$0, hem $$1, jn $$2, float[] $$3, j $$4, @Nullable gnf $$5) {
-      int[] $$6 = new int[32];
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         a($$6, $$7, $$2, $$0, $$3, $$1, $$4, $$5);
-      }
-
-      return $$6;
+   @Override
+   public gnq.a d() {
+      return this.h;
    }
 
-   private static float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[jn.values().length];
-      $$2[glj.a.f] = $$0.x() / 16.0F;
-      $$2[glj.a.e] = $$0.y() / 16.0F;
-      $$2[glj.a.d] = $$0.z() / 16.0F;
-      $$2[glj.a.c] = $$1.x() / 16.0F;
-      $$2[glj.a.b] = $$1.y() / 16.0F;
-      $$2[glj.a.a] = $$1.z() / 16.0F;
-      return $$2;
+   @Nullable
+   @Override
+   public gno e() {
+      return this.g;
    }
 
-   private static void a(int[] $$0, int $$1, jn $$2, gng $$3, float[] $$4, hem $$5, j $$6, @Nullable gnf $$7) {
-      glj.b $$8 = glj.a($$2).a($$1);
-      Vector3f $$9 = new Vector3f($$4[$$8.a], $$4[$$8.b], $$4[$$8.c]);
-      a($$9, $$7);
-      a($$9, $$6);
-      a($$0, $$1, $$9, $$5, $$3);
+   @Override
+   public hgr a(gnq $$0, hha $$1, hhh $$2, boolean $$3, boolean $$4, gno $$5) {
+      return this.b.isEmpty() && this.i != null ? this.i.a($$0, $$1, $$2, $$3, $$4, $$5) : hhk.a(this.b, $$0, $$1.a(), $$2, $$3, $$4, true, $$5);
    }
 
-   private static void a(int[] $$0, int $$1, Vector3f $$2, hem $$3, gng $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
+   @Nullable
+   @VisibleForTesting
+   List<gnf> f() {
+      return this.b;
    }
 
-   private static void a(Vector3f $$0, @Nullable gnf $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
+   @Nullable
+   @VisibleForTesting
+   akv g() {
+      return this.j;
+   }
+
+   public static class a implements JsonDeserializer<gnj> {
+      public gnj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         List<gnf> $$4 = this.a($$2, $$3);
+         String $$5 = this.c($$3);
+         gnq.a $$6 = this.b($$3);
+         Boolean $$7 = this.a($$3);
+         gno $$8 = null;
+         if ($$3.has("display")) {
+            JsonObject $$9 = ayp.u($$3, "display");
+            $$8 = (gno)$$2.deserialize($$9, gno.class);
          }
 
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
-            }
+         hhm.a $$10 = null;
+         if ($$3.has("gui_light")) {
+            $$10 = hhm.a.a(ayp.i($$3, "gui_light"));
+         }
 
-            $$3.add(1.0F, 1.0F, 1.0F);
+         akv $$11 = $$5.isEmpty() ? null : akv.a($$5);
+         return new gnj($$11, $$4, $$6, $$7, $$10, $$8);
+      }
+
+      private gnq.a b(JsonObject $$0) {
+         if ($$0.has("textures")) {
+            JsonObject $$1 = ayp.u($$0, "textures");
+            return gnq.a($$1, heq.d);
          } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
+            return gnq.a.a;
          }
-
-         a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
       }
-   }
 
-   private static void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
+      private String c(JsonObject $$0) {
+         return ayp.a($$0, "parent", "");
       }
-   }
 
-   private static void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
+      @Nullable
+      protected Boolean a(JsonObject $$0) {
+         return $$0.has("ambientocclusion") ? ayp.k($$0, "ambientocclusion") : null;
+      }
 
-   private static jn a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return jn.b;
-      } else {
-         jn $$7 = null;
-         float $$8 = 0.0F;
+      protected List<gnf> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("elements")) {
+            return List.of();
+         } else {
+            List<gnf> $$2 = new ArrayList<>();
 
-         for (jn $$9 : jn.values()) {
-            km $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
+            for (JsonElement $$3 : ayp.v($$1, "elements")) {
+               $$2.add((gnf)$$0.deserialize($$3, gnf.class));
             }
-         }
 
-         return $$7 == null ? jn.b : $$7;
-      }
-   }
-
-   private static void a(int[] $$0, jn $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[jn.values().length];
-      $$3[glj.a.f] = 999.0F;
-      $$3[glj.a.e] = 999.0F;
-      $$3[glj.a.d] = 999.0F;
-      $$3[glj.a.c] = -999.0F;
-      $$3[glj.a.b] = -999.0F;
-      $$3[glj.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[glj.a.f]) {
-            $$3[glj.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[glj.a.e]) {
-            $$3[glj.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[glj.a.d]) {
-            $$3[glj.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[glj.a.c]) {
-            $$3[glj.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[glj.a.b]) {
-            $$3[glj.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[glj.a.a]) {
-            $$3[glj.a.a] = $$8;
-         }
-      }
-
-      glj $$9 = glj.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         glj.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (ayy.a($$13, $$18) && ayy.a($$14, $$19) && ayy.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
-            }
+            return $$2;
          }
       }
    }

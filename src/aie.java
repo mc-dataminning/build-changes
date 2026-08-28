@@ -1,16 +1,13 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aie implements yw<agg> {
+   public static final yn<vl, aie> a = yw.a(aie::a, aie::new);
+   private final bsi b;
 
-public class aie implements yv<agf> {
-   public static final ym<vl, aie> a = yv.a(aie::a, aie::new);
-   private final UUID b;
-
-   public aie(UUID $$0) {
+   public aie(bsi $$0) {
       this.b = $$0;
    }
 
    private aie(vl $$0) {
-      this.b = $$0.n();
+      this.b = $$0.b(bsi.class);
    }
 
    private void a(vl $$0) {
@@ -18,16 +15,15 @@ public class aie implements yv<agf> {
    }
 
    @Override
-   public yx<aie> a() {
-      return agd.ck;
+   public yy<aie> a() {
+      return age.cj;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public buj a(arc $$0) {
-      return $$0.a(this.b);
+   public bsi b() {
+      return this.b;
    }
 }

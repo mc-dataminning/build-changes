@@ -1,19 +1,53 @@
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.util.ReferenceCounted;
 
-public class vn extends ChannelInboundHandlerAdapter {
-   private final vb a;
-
-   public vn(vb $$0) {
-      this.a = $$0;
+public record vn(ByteBuf a) implements ReferenceCounted {
+   public vn(final ByteBuf a) {
+      this.a = ByteBufUtil.ensureAccessible(a);
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
-      }
+   public static Object a(Object $$0) {
+      return $$0 instanceof ByteBuf $$1 ? new vn($$1) : $$0;
+   }
 
-      $$0.fireChannelRead($$1);
+   public static Object b(Object $$0) {
+      return $$0 instanceof vn $$1 ? ByteBufUtil.ensureAccessible($$1.a) : $$0;
+   }
+
+   public int refCnt() {
+      return this.a.refCnt();
+   }
+
+   public vn a() {
+      this.a.retain();
+      return this;
+   }
+
+   public vn a(int $$0) {
+      this.a.retain($$0);
+      return this;
+   }
+
+   public vn b() {
+      this.a.touch();
+      return this;
+   }
+
+   public vn c(Object $$0) {
+      this.a.touch($$0);
+      return this;
+   }
+
+   public boolean release() {
+      return this.a.release();
+   }
+
+   public boolean release(int $$0) {
+      return this.a.release($$0);
+   }
+
+   public ByteBuf c() {
+      return this.a;
    }
 }

@@ -1,119 +1,49 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.primitives.UnsignedLong;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class fal<T> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Callback";
-   private static final String c = "Name";
-   private static final String d = "TriggerTime";
-   private final fak<T> e;
-   private final Queue<fal.a<T>> f = new PriorityQueue<>(c());
-   private UnsignedLong g = UnsignedLong.ZERO;
-   private final Table<String, Long, fal.a<T>> h = HashBasedTable.create();
+public class fal<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final fal<MinecraftServer> a = new fal<MinecraftServer>().a(new fai.a()).a(new faj.a());
+   private final Map<akv, fak.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, fak.a<C, ?>> d = Maps.newHashMap();
 
-   private static <T> Comparator<fal.a<T>> c() {
-      return Comparator.<fal.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   public fal<C> a(fak.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   public fal(fak<T> $$0, Stream<? extends Dynamic<?>> $$1) {
-      this($$0);
-      this.f.clear();
-      this.h.clear();
-      this.g = UnsignedLong.ZERO;
-      $$1.forEach($$0x -> {
-         un $$1x = (un)$$0x.convert(ue.a).getValue();
-         if ($$1x instanceof tq $$2) {
-            this.a($$2);
-         } else {
-            a.warn("Invalid format of events: {}", $$1x);
-         }
-      });
+   private <T extends fak<C>> fak.a<C, T> a(Class<?> $$0) {
+      return (fak.a<C, T>)this.d.get($$0);
    }
 
-   public fal(fak<T> $$0) {
-      this.e = $$0;
-   }
-
-   public void a(T $$0, long $$1) {
-      while (true) {
-         fal.a<T> $$2 = this.f.peek();
-         if ($$2 == null || $$2.a > $$1) {
-            return;
-         }
-
-         this.f.remove();
-         this.h.remove($$2.c, $$1);
-         $$2.d.handle($$0, this, $$1);
-      }
-   }
-
-   public void a(String $$0, long $$1, faj<T> $$2) {
-      if (!this.h.contains($$0, $$1)) {
-         this.g = this.g.plus(UnsignedLong.ONE);
-         fal.a<T> $$3 = new fal.a<>($$1, this.g, $$0, $$2);
-         this.h.put($$0, $$1, $$3);
-         this.f.add($$3);
-      }
-   }
-
-   public int a(String $$0) {
-      Collection<fal.a<T>> $$1 = this.h.row($$0).values();
-      $$1.forEach(this.f::remove);
-      int $$2 = $$1.size();
-      $$1.clear();
+   public <T extends fak<C>> tq a(T $$0) {
+      fak.a<C, T> $$1 = this.a($$0.getClass());
+      tq $$2 = new tq();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
       return $$2;
    }
 
-   public Set<String> a() {
-      return Collections.unmodifiableSet(this.h.rowKeySet());
-   }
-
-   private void a(tq $$0) {
-      tq $$1 = $$0.p("Callback");
-      faj<T> $$2 = this.e.a($$1);
-      if ($$2 != null) {
-         String $$3 = $$0.l("Name");
-         long $$4 = $$0.i("TriggerTime");
-         this.a($$3, $$4, $$2);
-      }
-   }
-
-   private tq a(fal.a<T> $$0) {
-      tq $$1 = new tq();
-      $$1.a("Name", $$0.c);
-      $$1.a("TriggerTime", $$0.a);
-      $$1.a("Callback", this.e.a($$0.d));
-      return $$1;
-   }
-
-   public tw b() {
-      tw $$0 = new tw();
-      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
-      return $$0;
-   }
-
-   public static class a<T> {
-      public final long a;
-      public final UnsignedLong b;
-      public final String c;
-      public final faj<T> d;
-
-      a(long $$0, UnsignedLong $$1, String $$2, faj<T> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   @Nullable
+   public fak<C> a(tq $$0) {
+      akv $$1 = akv.c($$0.l("Type"));
+      fak.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
+         }
       }
    }
 }

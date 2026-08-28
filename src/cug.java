@@ -1,2 +1,8 @@
-public record cug(cyr a) implements cuh {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cug {
 }

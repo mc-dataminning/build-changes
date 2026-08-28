@@ -1,68 +1,57 @@
 import com.mojang.serialization.MapCodec;
 
-public class dov extends djk implements djn {
+public class dov extends djv {
    public static final MapCodec<dov> a = b(dov::new);
+   public static final int b = 3;
+   public static final dxv c = dxm.av;
+   private static final fbt[] d = new fbt[]{
+      djl.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      djl.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      djl.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      djl.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dov> a() {
       return a;
    }
 
-   public dov(dwu.d $$0) {
+   protected dov(dwv.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(dgj $$0, ji $$1, dwv $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
-      } else {
-         for (ji $$3 : ji.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awo.aO)) {
-               return true;
-            }
-         }
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return d[$$0.c(c)];
+   }
 
-         return false;
+   @Override
+   protected boolean b(dww $$0, dfm $$1, ji $$2) {
+      return $$0.a(djn.ej);
+   }
+
+   @Override
+   protected boolean f(dww $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dww $$0, ard $$1, ji $$2, azh $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
-      return true;
+   protected cwo a(dgk $$0, ji $$1, dww $$2, boolean $$3) {
+      return new cwo(cws.tg);
    }
 
    @Override
-   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (ji $$6 : ji.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dwv $$7 = $$0.a_($$6);
-         if ($$7.a(djm.oP)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(djm.oY)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? djm.oP.m() : djm.oY.m(), 3);
-      } else if ($$5) {
-         $$0.a($$2, djm.oP.m(), 3);
-      } else if ($$4) {
-         $$0.a($$2, djm.oY.m(), 3);
-      }
-   }
-
-   @Override
-   public djn.a aq_() {
-      return djn.a.a;
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(c);
    }
 }

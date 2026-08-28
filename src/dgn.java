@@ -1,15 +1,12 @@
-public interface dgn extends dgj {
-   long al();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float ar() {
-      return eaq.j[this.G_().b(this.al())];
-   }
+public interface dgn {
+   boolean a(ji var1, Predicate<dww> var2);
 
-   default float f(float $$0) {
-      return this.G_().a(this.al());
-   }
+   boolean b(ji var1, Predicate<esy> var2);
 
-   default int as() {
-      return this.G_().b(this.al());
-   }
+   <T extends dty> Optional<T> a(ji var1, dua<T> var2);
+
+   ji a(ecr.a var1, ji var2);
 }

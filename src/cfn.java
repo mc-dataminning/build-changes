@@ -1,42 +1,33 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cfn extends cfp<cog> {
-   private static final int a = 40;
-
-   public cfn() {
-      super(40);
-   }
-
-   protected void a(arc $$0, cog $$1) {
-      akt<dgg> $$2 = $$0.ai();
-      ji $$3 = $$1.dw();
-      List<jq> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ji $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gz().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jq.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bwh<?> $$10 = $$1.ec();
-      if (!$$4.isEmpty()) {
-         $$10.a(cej.f, $$4);
-      } else {
-         $$10.b(cej.f);
-      }
+public class cfn extends cfq<bvg> {
+   @Override
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.j, cek.k, cek.l);
    }
 
    @Override
-   public Set<cej<?>> a() {
-      return ImmutableSet.of(cej.f);
+   protected void a(ard $$0, bvg $$1) {
+      List<cow> $$2 = $$0.z()
+         .stream()
+         .filter(bup.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bwi<?> $$3 = $$1.eb();
+      $$3.a(cek.j, $$2);
+      List<cow> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cek.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cow> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
+      $$3.a(cek.l, $$5);
+   }
+
+   protected double a(bvg $$0) {
+      return $$0.h(bwo.m);
    }
 }

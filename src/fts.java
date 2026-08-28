@@ -1,74 +1,80 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fts implements AutoCloseable {
-   private static final aku a = aku.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final heo d;
-   private final aku e;
-   @Nullable
-   private hdz f;
-   private boolean g;
+public class fts extends fuk {
+   private static final wp a = wp.c("addServer.enterName");
+   private static final wp b = wp.c("addServer.enterIp");
+   private fos c;
+   private final BooleanConsumer d;
+   private final ggn s;
+   private fpb u;
+   private fpb v;
+   private final fuk w;
 
-   private fts(heo $$0, aku $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fts a(heo $$0, String $$1) {
-      return new fts($$0, aku.b("worlds/" + af.a($$1, aku::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fts b(heo $$0, String $$1) {
-      return new fts($$0, aku.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(fes $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hdz($$0);
-            } else {
-               this.f.a($$0);
-               this.f.e();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public aku b() {
-      return this.f != null ? this.e : a;
+   public fts(fuk $$0, BooleanConsumer $$1, ggn $$2) {
+      super(wp.c("addServer.title"));
+      this.w = $$0;
+      this.d = $$1;
+      this.s = $$2;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aR_() {
+      this.v = new fpb(this.p, this.n / 2 - 100, 66, 200, 20, wp.c("addServer.enterName"));
+      this.v.a(this.s.a);
+      this.v.b($$0 -> this.E());
+      this.d(this.v);
+      this.u = new fpb(this.p, this.n / 2 - 100, 106, 200, 20, wp.c("addServer.enterIp"));
+      this.u.f(128);
+      this.u.a(this.s.b);
+      this.u.b($$0 -> this.E());
+      this.d(this.u);
+      this.c(
+         foz.a(ggn.a::a)
+            .a(ggn.a.values())
+            .a(this.s.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, wp.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
+      );
+      this.c = this.c(fos.a(wp.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(fos.a(wo.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.E();
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   protected void aF_() {
+      this.b(this.v);
+   }
+
+   @Override
+   public void a(fli $$0, int $$1, int $$2) {
+      String $$3 = this.u.a();
+      String $$4 = this.v.a();
+      this.b($$0, $$1, $$2);
+      this.u.a($$3);
+      this.v.a($$4);
+   }
+
+   private void m() {
+      this.s.a = this.v.a();
+      this.s.b = this.u.a();
+      this.d.accept(true);
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.w);
+   }
+
+   private void E() {
+      this.c.j = ghq.b(this.u.a()) && !this.v.a().isEmpty();
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      this.u.a($$0, $$1, $$2, $$3);
    }
 }

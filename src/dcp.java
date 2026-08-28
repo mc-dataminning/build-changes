@@ -1,12 +1,9 @@
 public class dcp {
-   public static dcn.i<?> a(ke<dcn.i<?>> $$0) {
-      ke.a($$0, "empty", dcn.c.f);
-      ke.a($$0, "any_fuel", dcn.a.f);
-      ke.a($$0, "item", dcn.d.e);
-      ke.a($$0, "item_stack", dcn.f.e);
-      ke.a($$0, "tag", dcn.h.e);
-      ke.a($$0, "smithing_trim", dcn.g.e);
-      ke.a($$0, "with_remainder", dcn.j.e);
-      return ke.a($$0, "composite", dcn.b.e);
+   public static final bai<duw> a = bai.a("fuel_values");
+   public static final bai<jt.a> b = bai.a("registries");
+   public static final baj c = new baj.a().b(a).b(b).a();
+
+   public static bak a(dgh $$0) {
+      return new bak.a().a(a, $$0.M()).a(b, $$0.K_()).a(c);
    }
 }

@@ -1,64 +1,15 @@
-public abstract class bvn extends bvh {
-   protected static final float bX = 0.0F;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected bvn(buq<? extends bvn> $$0, dgg $$1) {
-      super($$0, $$1);
-   }
+public interface bvn {
+   @Nullable
+   UUID aa_();
 
-   public float c(ji $$0) {
-      return this.a($$0, this.dW());
-   }
+   dfy e();
 
-   public float a(ji $$0, dgj $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(dgh $$0, bup $$1) {
-      return this.a(this.dw(), $$0) >= 0.0F;
-   }
-
-   public boolean gl() {
-      return !this.L().k();
-   }
-
-   public boolean gm() {
-      if (this.bE.a(cej.Z)) {
-         return this.bE.c(cej.Z).isPresent();
-      } else {
-         for (cdr $$0 : this.bS.b()) {
-            if ($$0.h() && $$0.k() instanceof ccw) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   protected boolean gn() {
-      return true;
-   }
-
-   @Override
-   public void a(buj $$0) {
-      super.a($$0);
-      if (this.gn() && !this.gm()) {
-         this.bS.b(ccd.a.a);
-         float $$1 = 2.0F;
-         float $$2 = this.f($$0);
-         fay $$3 = new fay($$0.dB() - this.dB(), $$0.dD() - this.dD(), $$0.dH() - this.dH()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.L().a(this.dB() + $$3.d, this.dD() + $$3.e, this.dH() + $$3.f, this.go());
-      }
-   }
-
-   @Override
-   public boolean a(buj $$0, float $$1) {
-      this.a($$0.dw(), 5);
-      return true;
-   }
-
-   protected double go() {
-      return 1.0;
+   @Nullable
+   default bvg ag_() {
+      UUID $$0 = this.aa_();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

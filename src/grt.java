@@ -1,32 +1,23 @@
-public class grt extends gqu<clk, hay, gbt> {
-   private static final aku a = aku.b("textures/entity/zombie/drowned.png");
+public class grt<T extends cja> extends gqt<T, gyf, gbu> {
+   public static final akv a = akv.b("textures/entity/horse/donkey.png");
+   public static final akv b = akv.b("textures/entity/horse/mule.png");
+   private final akv k;
 
-   public grt(gsb.a $$0) {
-      super($$0, new gbt($$0.a(gez.aw)), new gbt($$0.a(gez.ax)), new gbt($$0.a(gez.aB)), new gbt($$0.a(gez.aC)), new gbt($$0.a(gez.ay)), new gbt($$0.a(gez.az)));
-      this.a(new gvx(this, $$0.f()));
+   public grt(gsd.a $$0, gfa $$1, gfa $$2, boolean $$3) {
+      super($$0, new gbu($$0.a($$1)), new gbu($$0.a($$2)));
+      this.k = $$3 ? b : a;
    }
 
-   public hay a() {
-      return new hay();
+   public akv a(gyf $$0) {
+      return this.k;
    }
 
-   @Override
-   public aku a(hay $$0) {
-      return a;
+   public gyf a() {
+      return new gyf();
    }
 
-   protected void a(hay $$0, ffs $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.G;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.ab;
-         float $$6 = ayy.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
-      }
-   }
-
-   protected gcl.a a(clk $$0, buz $$1) {
-      cwn $$2 = $$0.a($$1);
-      return $$0.fy() == $$1 && $$0.ge() && $$2.a(cwr.wS) ? gcl.a.e : gcl.a.a;
+   public void a(T $$0, gyf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
    }
 }

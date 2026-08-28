@@ -1,146 +1,75 @@
-public class gis extends gke {
-   static final azg a = azg.a();
-   private final gjz b;
+public class gis extends gkg {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
 
-   gis(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
+   gis(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
       this.n = false;
-      this.b($$7);
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
    @Override
-   public gji b() {
-      return gji.c;
+   public gjk b() {
+      return gjk.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
    }
 
    @Override
    public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ayy.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+      return 240;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gjh<lx> {
-      private final double a = 0.25;
-      private final gjz b;
-
-      public a(gjz $$0) {
-         this.b = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = new gis($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.A.a(2) + 2);
-         return $$8;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axk.a($$0, this.G, this.H);
+         this.a((float)axk.b($$2) / 255.0F, (float)axk.c($$2) / 255.0F, (float)axk.d($$2) / 255.0F);
+         this.e((float)axk.a($$2) / 255.0F);
       }
    }
 
-   public static class b implements gjh<lx> {
-      private final gjz a;
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-      public b(gjz $$0) {
+      public a(gkb $$0) {
          this.a = $$0;
       }
 
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = new gis($$1, $$2, $$3, $$4, 0.5 - gis.a.j(), $$6, 0.5 - gis.a.j(), this.a);
-         if ($$1.A.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
-         }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements gjh<lx> {
-      private final double a = 0.01;
-      private final gjz b;
-
-      public c(gjz $$0) {
-         this.b = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = new gis($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.A.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements gjh<lx> {
-      private final double a = 0.01;
-      private final gjz b;
-
-      public d(gjz $$0) {
-         this.b = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = new gis($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements gjh<lx> {
-      private final double a = 0.01;
-      private final gjz b;
-
-      public e(gjz $$0) {
-         this.b = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gis $$8 = new gis($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gis $$8 = new gis($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(ayz.b($$1.H_(), 3.0F, 5.0F));
+         $$8.a(this.a);
          return $$8;
       }
    }

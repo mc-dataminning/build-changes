@@ -1,12 +1,5 @@
-public class fie extends Exception {
-   public final fgk a;
-
-   public fie(fgk $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+public class fie extends RuntimeException {
+   public fie(String $$0, Exception $$1) {
+      super($$0, $$1);
    }
 }

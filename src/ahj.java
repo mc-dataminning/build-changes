@@ -1,20 +1,18 @@
-public record ahj(int b, dcj c, boolean d) implements yv<agf> {
-   public static final ym<vl, ahj> a = ym.a(yk.w, ahj::b, dcj.a, ahj::e, yk.b, ahj::f, ahj::new);
+import io.netty.buffer.ByteBuf;
+
+public record ahj(int b, boolean c) implements yw<agg> {
+   public static final yn<ByteBuf, ahj> a = yn.a(yl.h, ahj::b, yl.b, ahj::e, ahj::new);
 
    @Override
-   public yx<ahj> a() {
-      return agd.bQ;
+   public yy<ahj> a() {
+      return age.bP;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public dcj e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

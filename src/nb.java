@@ -21,7 +21,7 @@ public class nb implements mi {
    private static <T> JsonElement a(ke<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof jm) {
-         aku $$2 = ((jm)$$0).b();
+         akv $$2 = ((jm)$$0).b();
          $$1.addProperty("default", $$2.toString());
       }
 

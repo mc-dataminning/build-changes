@@ -1,92 +1,167 @@
-import java.util.IdentityHashMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ggo {
-   private static final ggo.a a = new ggo.a();
-   private static final ggo.a b = new ggo.a();
-   private static final ggo.a c = new ggo.a();
-   private CompletableFuture<hit<cwn>> d = CompletableFuture.completedFuture(hit.empty());
-   private CompletableFuture<hit<cwn>> e = CompletableFuture.completedFuture(hit.empty());
-   private CompletableFuture<hit<fyj>> f = CompletableFuture.completedFuture(hit.empty());
-   private final Map<ggo.a, Runnable> g = new IdentityHashMap<>();
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqz b = new bqz(af.g(), "server-list-io");
+   private static final int c = 16;
+   private final fli d;
+   private final List<ggn> e = Lists.newArrayList();
+   private final List<ggn> f = Lists.newArrayList();
 
-   private void a(ggo.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public ggo(fli $$0) {
+      this.d = $$0;
    }
 
    public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
+      try {
+         this.e.clear();
+         this.f.clear();
+         tq $$0 = ud.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         tw $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            tq $$3 = $$1.a($$2);
+            ggn $$4 = ggn.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
    }
 
-   private static Stream<String> a(Stream<cwn> $$0, cwj.b $$1, cyf $$2) {
-      return $$0.<wo>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
-   }
+   public void b() {
+      try {
+         tw $$0 = new tw();
 
-   public void a(fks $$0, dgg $$1) {
-      this.a(
-         a,
-         () -> {
-            List<fyj> $$2 = $$0.d();
-            kf $$3 = $$1.K_();
-            ke<cwj> $$4 = $$3.e(mc.K);
-            cwj.b $$5 = cwj.b.a($$3);
-            baj $$6 = dco.a($$1);
-            cyf $$7 = cyf.a.a;
-            CompletableFuture<?> $$8 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new hio<>(
-                     $$3xx -> a($$3xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()), $$5, $$7),
-                     $$2xx -> $$2xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()).map($$1xxxx -> $$4.b($$1xxxx.h())),
-                     $$2
-                  ),
-               af.g()
-            );
-            $$8.cancel(true);
+         for (ggn $$1 : this.e) {
+            tq $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
          }
-      );
+
+         for (ggn $$3 : this.f) {
+            tq $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         tq $$5 = new tq();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         ud.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         af.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   public hit<fyj> b() {
-      return this.f.join();
+   public ggn a(int $$0) {
+      return this.e.get($$0);
    }
 
-   public void a(List<cwn> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new hip<>($$0xxx -> $$0xxx.j().map(axe::b), $$0), af.g());
-         $$1.cancel(true);
+   @Nullable
+   public ggn a(String $$0) {
+      for (ggn $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      for (ggn $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public ggn b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         ggn $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(ggn $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(ggn $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      ggn $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, ggn $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(ggn $$0, List<ggn> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ggn $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(ggn $$0) {
+      b.a_(() -> {
+         ggo $$1 = new ggo(fli.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
       });
-   }
-
-   public hit<cwn> c() {
-      return this.e.join();
-   }
-
-   public void a(jt.a $$0, List<cwn> $$1) {
-      this.a(
-         b,
-         () -> {
-            cwj.b $$2 = cwj.b.a($$0);
-            cyf $$3 = cyf.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new hio<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(akt::a).stream(), $$1), af.g()
-            );
-            $$4.cancel(true);
-         }
-      );
-   }
-
-   public hit<cwn> d() {
-      return this.d.join();
-   }
-
-   static class a {
    }
 }

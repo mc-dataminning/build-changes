@@ -1,22 +1,23 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class fht extends fhx {
-   @Nullable
-   public String a;
-   public long b;
-   public long c;
+public class fht extends fhy implements fhs {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public static fht a(JsonObject $$0) {
-      fht $$1 = new fht();
+   public fht(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      try {
-         $$1.a = fjt.b("profileUuid", $$0, null);
-         $$1.b = fjt.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fjt.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
-      }
+   public int a() {
+      return this.b;
+   }
 
-      return $$1;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

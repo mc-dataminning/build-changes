@@ -1,8 +1,10 @@
-public class gxv extends gzh {
-   public final bub a = new bub();
-   public final bub b = new bub();
-   public final bub c = new bub();
-   public final bub d = new bub();
-   public final bub e = new bub();
-   public final bub f = new bub();
+public class gxv extends gyj {
+   public float a;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
+   public float g;
+   public float h;
 }

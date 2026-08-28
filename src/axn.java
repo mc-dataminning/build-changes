@@ -1,21 +1,35 @@
-import java.util.function.IntConsumer;
+public class axn {
+   private final int a;
+   private final axn.a b;
+   private int c;
+   private int d;
 
-public interface axn {
-   int a(int var1, int var2);
+   public axn(int $$0, axn.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void b(int var1, int var2);
+   public axn(int $$0) {
+      this($$0, $$0x -> $$0x);
+   }
 
-   int a(int var1);
+   public void a(boolean $$0) {
+      this.d = this.c;
+      if ($$0) {
+         if (this.c < this.a) {
+            this.c++;
+         }
+      } else if (this.c > 0) {
+         this.c--;
+      }
+   }
 
-   long[] a();
+   public float a(float $$0) {
+      float $$1 = ayz.h($$0, (float)this.d, (float)this.c) / (float)this.a;
+      return this.b.apply($$1);
+   }
 
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   axn d();
+   public interface a {
+      float apply(float var1);
+   }
 }

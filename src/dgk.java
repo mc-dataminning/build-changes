@@ -1,78 +1,198 @@
-import com.mojang.serialization.Dynamic;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public final class dgk {
-   private final String a;
-   private final dgd b;
-   private final boolean c;
-   private final bsf d;
-   private final boolean e;
-   private final dgc f;
-   private final dhd g;
+public interface dgk extends dfj, dfq, dgz, dhl.a {
+   @Nullable
+   dyr a(int var1, int var2, dzs var3, boolean var4);
 
-   public dgk(String $$0, dgd $$1, boolean $$2, bsf $$3, boolean $$4, dgc $$5, dhd $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   @Deprecated
+   boolean b(int var1, int var2);
+
+   int a(ecr.a var1, int var2, int var3);
+
+   int E_();
+
+   dhl I_();
+
+   default jr<dhj> t(ji $$0) {
+      return this.I_().a($$0);
    }
 
-   public static dgk a(Dynamic<?> $$0, dhd $$1) {
-      dgd $$2 = dgd.a($$0.get("GameType").asInt(0));
-      return new dgk(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bsf.a($$0x.byteValue())).result().orElse(bsf.c),
-         $$0.get("allowCommands").asBoolean($$2 == dgd.b),
-         new dgc($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   default Stream<dww> c(fau $$0) {
+      int $$1 = ayz.a($$0.a);
+      int $$2 = ayz.a($$0.d);
+      int $$3 = ayz.a($$0.b);
+      int $$4 = ayz.a($$0.e);
+      int $$5 = ayz.a($$0.c);
+      int $$6 = ayz.a($$0.f);
+      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   default int a(ji $$0, dfr $$1) {
+      return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
    }
 
-   public dgd b() {
-      return this.b;
+   @Override
+   default jr<dhj> getNoiseBiome(int $$0, int $$1, int $$2) {
+      dyr $$3 = this.a(kc.e($$0), kc.e($$2), dzs.f, false);
+      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
    }
 
-   public boolean c() {
-      return this.c;
+   jr<dhj> a(int var1, int var2, int var3);
+
+   boolean B_();
+
+   int P();
+
+   ear G_();
+
+   @Override
+   default int L_() {
+      return this.G_().n();
    }
 
-   public bsf d() {
-      return this.d;
+   @Override
+   default int M_() {
+      return this.G_().o();
    }
 
-   public boolean e() {
-      return this.e;
+   default ji a(ecr.a $$0, ji $$1) {
+      return new ji($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
    }
 
-   public dgc f() {
-      return this.f;
+   default boolean u(ji $$0) {
+      return this.a_($$0).l();
    }
 
-   public dhd g() {
-      return this.g;
+   default boolean v(ji $$0) {
+      if ($$0.v() >= this.P()) {
+         return this.h($$0);
+      } else {
+         ji $$1 = new ji($$0.u(), this.P(), $$0.w());
+         if (!this.h($$1)) {
+            return false;
+         } else {
+            for (ji var4 = $$1.e(); var4.v() > $$0.v(); var4 = var4.e()) {
+               dww $$2 = this.a_(var4);
+               if ($$2.g() > 0 && !$$2.n()) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 
-   public dgk a(dgd $$0) {
-      return new dgk(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   default float w(ji $$0) {
+      return this.x($$0) - 0.5F;
    }
 
-   public dgk a(bsf $$0) {
-      return new dgk(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   @Deprecated
+   default float x(ji $$0) {
+      float $$1 = (float)this.A($$0) / 15.0F;
+      float $$2 = $$1 / (4.0F - 3.0F * $$1);
+      return ayz.h(this.G_().s(), $$2, 1.0F);
    }
 
-   public dgk a(dhd $$0) {
-      return new dgk(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   default dyr y(ji $$0) {
+      return this.a(kk.a($$0.u()), kk.a($$0.w()));
    }
 
-   public dgk h() {
-      return new dgk(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   default dyr a(int $$0, int $$1) {
+      return this.a($$0, $$1, dzs.n, true);
+   }
+
+   default dyr a(int $$0, int $$1, dzs $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   @Nullable
+   @Override
+   default dfm c(int $$0, int $$1) {
+      return this.a($$0, $$1, dzs.c, false);
+   }
+
+   default boolean z(ji $$0) {
+      return this.b_($$0).a(awv.a);
+   }
+
+   default boolean d(fau $$0) {
+      int $$1 = ayz.a($$0.a);
+      int $$2 = ayz.c($$0.d);
+      int $$3 = ayz.a($$0.b);
+      int $$4 = ayz.c($$0.e);
+      int $$5 = ayz.a($$0.c);
+      int $$6 = ayz.c($$0.f);
+      ji.a $$7 = new ji.a();
+
+      for (int $$8 = $$1; $$8 < $$2; $$8++) {
+         for (int $$9 = $$3; $$9 < $$4; $$9++) {
+            for (int $$10 = $$5; $$10 < $$6; $$10++) {
+               dww $$11 = this.a_($$7.d($$8, $$9, $$10));
+               if (!$$11.y().c()) {
+                  return true;
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   default int A(ji $$0) {
+      return this.c($$0, this.E_());
+   }
+
+   default int c(ji $$0, int $$1) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
+   }
+
+   @Deprecated
+   default boolean f(int $$0, int $$1) {
+      return this.b(kk.a($$0), kk.a($$1));
+   }
+
+   @Deprecated
+   default boolean B(ji $$0) {
+      return this.f($$0.u(), $$0.w());
+   }
+
+   @Deprecated
+   default boolean a(ji $$0, ji $$1) {
+      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   @Deprecated
+   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$4 >= this.L_() && $$1 <= this.an() ? this.b($$0, $$2, $$3, $$5) : false;
+   }
+
+   @Deprecated
+   default boolean b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kk.a($$0);
+      int $$5 = kk.a($$2);
+      int $$6 = kk.a($$1);
+      int $$7 = kk.a($$3);
+
+      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
+         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
+            if (!this.b($$8, $$9)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   kf K_();
+
+   crs K();
+
+   default <T> jt<T> a(aku<? extends ke<? extends T>> $$0) {
+      ke<T> $$1 = this.K_().e($$0);
+      return $$1.a(this.K());
    }
 }

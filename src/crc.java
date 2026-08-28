@@ -1,116 +1,75 @@
-public abstract class crc {
-   protected final cqu a;
+public class crc extends cqv {
+   private float b;
+   private float c;
 
-   protected crc(cqu $$0) {
-      this.a = $$0;
+   public crc(bur<?> $$0, dgh $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
+   @Override
+   public bsj a(cow $$0, bsi $$1) {
+      if (!$$0.fY() && !this.ca() && (this.dV().C || $$0.n(this))) {
+         this.c = this.b;
+         if (!this.dV().C) {
+            return (bsj)($$0.n(this) ? bsj.c : bsj.e);
+         } else {
+            return bsj.a;
+         }
+      } else {
+         return bsj.e;
+      }
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.c($$0, $$1, $$2);
-      this.b($$3 % 360.0F);
-      this.a($$4 % 360.0F);
+   @Override
+   protected cwk u() {
+      return cws.oo;
    }
 
-   public double b() {
-      return this.l();
+   @Override
+   public cwo dI() {
+      return new cwo(cws.oo);
    }
 
-   public double c() {
-      return this.m();
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.ca()) {
+            this.bP();
+         }
+
+         if (this.N() == 0) {
+            this.l(-this.O());
+            this.d(10);
+            this.b(50.0F);
+            this.bD();
+         }
+      }
    }
 
-   public double d() {
-      return this.n();
+   @Override
+   public boolean B() {
+      return true;
    }
 
-   public float e() {
-      return this.o();
+   @Override
+   public void h() {
+      double $$0 = (double)this.dL();
+      faz $$1 = this.dt();
+      super.h();
+      double $$2 = ((double)this.dL() - $$0) % 360.0;
+      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
+         this.b += (float)$$2;
+         this.b %= 360.0F;
+      }
    }
 
-   public float f() {
-      return this.p();
+   @Override
+   protected void a(buk $$0, buk.a $$1) {
+      super.a($$0, $$1);
+      if (this.dV().C && $$0 instanceof cow $$2 && $$2.gQ() && b(this.dV())) {
+         float $$3 = (float)ayz.e(0.5, (double)this.c, (double)this.b);
+         $$2.v($$2.dL() - ($$3 - this.c));
+         this.c = $$3;
+      }
    }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
-   }
-
-   public abstract void g();
-
-   public dgg h() {
-      return this.a.dW();
-   }
-
-   public abstract void a(arc var1);
-
-   public abstract double a(ji var1, dxy var2, double var3);
-
-   public abstract boolean i();
-
-   public fay j() {
-      return this.a.dz();
-   }
-
-   public void a(fay $$0) {
-      this.a.h($$0);
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
-   }
-
-   public fay k() {
-      return this.a.du();
-   }
-
-   public double l() {
-      return this.a.dB();
-   }
-
-   public double m() {
-      return this.a.dD();
-   }
-
-   public double n() {
-      return this.a.dH();
-   }
-
-   public void b(fay $$0) {
-      this.a.b($$0);
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
-   }
-
-   public float o() {
-      return this.a.dO();
-   }
-
-   public void a(float $$0) {
-      this.a.w($$0);
-   }
-
-   public float p() {
-      return this.a.dM();
-   }
-
-   public void b(float $$0) {
-      this.a.v($$0);
-   }
-
-   public jn q() {
-      return this.a.cO();
-   }
-
-   public fay c(fay $$0) {
-      return $$0;
-   }
-
-   public abstract double b(arc var1);
-
-   public abstract double r();
 }

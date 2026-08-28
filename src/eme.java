@@ -1,30 +1,27 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum eme implements azu {
-   a(jn.b, 1, "ceiling"),
-   b(jn.a, -1, "floor");
+public class eme extends emr {
+   public static final MapCodec<eme> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(edy.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eme::new)
+   );
+   private final edy c;
 
-   public static final Codec<eme> c = azu.a(eme::values);
-   private final jn d;
-   private final int e;
-   private final String f;
-
-   private eme(final jn $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eme(edy $$0) {
+      this.c = $$0;
    }
 
-   public jn a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static eme a(edy $$0) {
+      return new eme($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(emq $$0, azh $$1, ji $$2) {
+      return this.c.test($$0.d(), $$2);
+   }
+
+   @Override
+   public emt<?> b() {
+      return emt.a;
    }
 }

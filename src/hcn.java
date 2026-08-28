@@ -1,19 +1,23 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hcn {
-   private static final ayh.b<aku, MapCodec<? extends hco>> b = new ayh.b<>();
-   public static final MapCodec<hco> a = b.a(aku.a).dispatchMap("property", hco::a, $$0 -> $$0);
+public class hcn implements hcs {
+   public static final MapCodec<hcn> a = MapCodec.unit(new hcn());
 
-   public static void a() {
-      b.a(aku.b("custom_model_data"), hck.a);
-      b.a(aku.b("bundle/fullness"), hce.a);
-      b.a(aku.b("damage"), hcl.a);
-      b.a(aku.b("cooldown"), hch.a);
-      b.a(aku.b("time"), hcp.a);
-      b.a(aku.b("compass"), hcf.a);
-      b.a(aku.b("crossbow/pull"), hcj.a);
-      b.a(aku.b("use_cycle"), hcq.a);
-      b.a(aku.b("use_duration"), hcr.a);
-      b.a(aku.b("count"), hci.a);
+   @Override
+   public float a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      if ($$2 == null) {
+         return 0.0F;
+      } else if (cvf.g($$0)) {
+         return 0.0F;
+      } else {
+         int $$4 = cvf.b($$0, $$2);
+         return (float)hcv.a($$0, $$2) / (float)$$4;
+      }
+   }
+
+   @Override
+   public MapCodec<hcn> a() {
+      return a;
    }
 }

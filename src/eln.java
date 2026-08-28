@@ -1,183 +1,112 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class eln {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eln> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  kg.a(mc.aW).lenientOptionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  elk.a.listOf().fieldOf("layers").forGetter(eln::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  dhi.c.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  aks.d(dhp.b),
-                  aks.d(rr.g),
-                  aks.d(rr.h)
-               )
-               .apply($$0, eln::new)
-      )
-      .comapFlatMap(eln::a, Function.identity())
-      .stable();
-   private final Optional<jv<enq>> c;
-   private final List<elk> d = Lists.newArrayList();
-   private final jr<dhi> e;
-   private final List<dwv> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<jr<emo>> j;
+   public static final aku<elm> a = a("classic_flat");
+   public static final aku<elm> b = a("tunnelers_dream");
+   public static final aku<elm> c = a("water_world");
+   public static final aku<elm> d = a("overworld");
+   public static final aku<elm> e = a("snowy_kingdom");
+   public static final aku<elm> f = a("bottomless_pit");
+   public static final aku<elm> g = a("desert");
+   public static final aku<elm> h = a("redstone_ready");
+   public static final aku<elm> i = a("the_void");
 
-   private static DataResult<eln> a(eln $$0) {
-      int $$1 = $$0.d.stream().mapToInt(elk::a).sum();
-      return $$1 > eaq.c ? DataResult.error(() -> "Sum of layer heights is > " + eaq.c, $$0) : DataResult.success($$0);
+   public static void a(qe<elm> $$0) {
+      new eln.a($$0).a();
    }
 
-   private eln(Optional<jv<enq>> $$0, List<elk> $$1, boolean $$2, boolean $$3, Optional<jr<dhi>> $$4, jr.c<dhi> $$5, jr<emo> $$6, jr<emo> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
+   private static aku<elm> a(String $$0) {
+      return aku.a(mc.aQ, akv.b($$0));
+   }
+
+   static class a {
+      private final qe<elm> a;
+
+      a(qe<elm> $$0) {
+         this.a = $$0;
       }
 
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
-   }
-
-   private static jr<dhi> a(Optional<? extends jr<dhi>> $$0, jr<dhi> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
-      } else {
-         return (jr<dhi>)$$0.get();
-      }
-   }
-
-   public eln(Optional<jv<enq>> $$0, jr<dhi> $$1, List<jr<emo>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public eln a(List<elk> $$0, Optional<jv<enq>> $$1, jr<dhi> $$2) {
-      eln $$3 = new eln($$1, $$2, this.j);
-
-      for (elk $$4 : $$0) {
-         $$3.d.add(new elk($$4.a(), $$4.b().b()));
-         $$3.g();
-      }
-
-      if (this.h) {
-         $$3.a();
-      }
-
-      if (this.i) {
-         $$3.b();
-      }
-
-      return $$3;
-   }
-
-   public void a() {
-      this.h = true;
-   }
-
-   public void b() {
-      this.i = true;
-   }
-
-   public dhj a(jr<dhi> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         dhj $$1 = this.d().a().d();
-         dhj.b $$2 = new dhj.b();
-         if (this.i) {
-            for (jr<emo> $$3 : this.j) {
-               $$2.a(ecm.a.b, $$3);
-            }
-         }
-
-         boolean $$4 = (!this.g || $$0.a(dhp.a)) && this.h;
+      private void a(aku<elm> $$0, dgg $$1, aku<dhj> $$2, Set<aku<enr>> $$3, boolean $$4, boolean $$5, ell... $$6) {
+         js<enr> $$7 = this.a.a(mc.aW);
+         js<emp> $$8 = this.a.a(mc.aT);
+         js<dhj> $$9 = this.a.a(mc.aI);
+         jv.a<enr> $$10 = jv.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         elo $$11 = new elo(Optional.of($$10), $$9.b($$2), elo.b($$8));
          if ($$4) {
-            List<jv<emo>> $$5 = $$1.c();
-
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != ecm.a.d.ordinal() && $$6 != ecm.a.e.ordinal() && (!this.i || $$6 != ecm.a.b.ordinal())) {
-                  for (jr<emo> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
-                  }
-               }
-            }
+            $$11.a();
          }
 
-         List<dwv> $$9 = this.f();
-
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            dwv $$11 = $$9.get($$10);
-            if (!ecq.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(ecm.a.k, ru.a(efw.ac, new eie($$10, $$11)));
-            }
+         if ($$5) {
+            $$11.b();
          }
 
-         return $$2.a();
-      }
-   }
-
-   public Optional<jv<enq>> c() {
-      return this.c;
-   }
-
-   public jr<dhi> d() {
-      return this.e;
-   }
-
-   public List<elk> e() {
-      return this.d;
-   }
-
-   public List<dwv> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (elk $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
          }
+
+         this.a.a($$0, new elm($$1.j().f(), $$11));
       }
 
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(djm.a));
-   }
-
-   public static eln a(js<dhi> $$0, js<enq> $$1, js<emo> $$2) {
-      jv<enq> $$3 = jv.a($$1.b(end.r), $$1.b(end.a));
-      eln $$4 = new eln(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new elk(1, djm.I));
-      $$4.e().add(new elk(2, djm.j));
-      $$4.e().add(new elk(1, djm.i));
-      $$4.g();
-      return $$4;
-   }
-
-   public static jr<dhi> a(js<dhi> $$0) {
-      return $$0.b(dhp.b);
-   }
-
-   public static List<jr<emo>> b(js<emo> $$0) {
-      return List.of($$0.b(rr.g), $$0.b(rr.h));
+      public void a() {
+         this.a(eln.a, djn.i, dhq.b, ImmutableSet.of(ene.a), false, false, new ell(1, djn.i), new ell(2, djn.j), new ell(1, djn.I));
+         this.a(eln.b, djn.b, dhq.u, ImmutableSet.of(ene.j, ene.r), true, false, new ell(1, djn.i), new ell(5, djn.j), new ell(230, djn.b), new ell(1, djn.I));
+         this.a(
+            eln.c,
+            cws.rg,
+            dhq.U,
+            ImmutableSet.of(ene.m, ene.l, ene.g),
+            false,
+            false,
+            new ell(90, djn.J),
+            new ell(5, djn.O),
+            new ell(5, djn.j),
+            new ell(5, djn.b),
+            new ell(64, djn.tl),
+            new ell(1, djn.I)
+         );
+         this.a(
+            eln.d,
+            djn.bA,
+            dhq.b,
+            ImmutableSet.of(ene.a, ene.j, ene.f, ene.k, ene.r),
+            true,
+            true,
+            new ell(1, djn.i),
+            new ell(3, djn.j),
+            new ell(59, djn.b),
+            new ell(1, djn.I)
+         );
+         this.a(
+            eln.e,
+            djn.ea,
+            dhq.d,
+            ImmutableSet.of(ene.a, ene.c),
+            false,
+            false,
+            new ell(1, djn.ea),
+            new ell(1, djn.i),
+            new ell(3, djn.j),
+            new ell(59, djn.b),
+            new ell(1, djn.I)
+         );
+         this.a(eln.f, cws.pY, dhq.b, ImmutableSet.of(ene.a), false, false, new ell(1, djn.i), new ell(3, djn.j), new ell(2, djn.m));
+         this.a(
+            eln.g,
+            djn.L,
+            dhq.f,
+            ImmutableSet.of(ene.a, ene.b, ene.j, ene.r),
+            true,
+            false,
+            new ell(8, djn.L),
+            new ell(52, djn.bc),
+            new ell(3, djn.b),
+            new ell(1, djn.I)
+         );
+         this.a(eln.h, cws.me, dhq.f, ImmutableSet.of(), false, false, new ell(116, djn.bc), new ell(3, djn.b), new ell(1, djn.I));
+         this.a(eln.i, djn.iu, dhq.a, ImmutableSet.of(), true, false, new ell(1, djn.a));
+      }
    }
 }

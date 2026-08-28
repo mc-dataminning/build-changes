@@ -1,40 +1,42 @@
-public class gjd extends gke {
-   gjd(gfw $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, ayy.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, ayy.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, ayy.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+public class gjd extends gjg {
+   private final gcv a;
+   private final gmh b = gmh.j(grw.a);
+
+   gjd(gfy $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new gci(fli.Q().aS().a(gfb.aE));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public gji b() {
-      return gji.b;
+   public gjk b() {
+      return gjk.d;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ayy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(fft $$0, glx $$1, fkq $$2, float $$3) {
+      float $$4 = ((float)this.s + $$3) / (float)this.t;
+      float $$5 = 0.05F + 0.5F * ayz.a($$4 * (float) Math.PI);
+      int $$6 = axk.a($$5, 1.0F, 1.0F, 1.0F);
+      $$0.a();
+      $$0.a($$2.f());
+      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
+      float $$7 = 0.42553192F;
+      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
+      $$0.a(0.0F, -0.56F, 3.5F);
+      ffx $$8 = $$1.getBuffer(this.b);
+      this.a.a($$0, $$8, 15728880, heh.d, $$6);
+      $$0.b();
    }
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
+   @Override
+   public void a(ffx $$0, fkq $$1, float $$2) {
+   }
 
-      public a(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjd $$8 = new gjd($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements gjj<lx> {
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjd($$1, $$2, $$3, $$4);
       }
    }
 }

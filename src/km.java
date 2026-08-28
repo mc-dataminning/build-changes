@@ -172,11 +172,11 @@ public class km implements Comparable<km> {
    }
 
    public boolean a(km $$0, double $$1) {
-      return this.j($$0) < ayy.k($$1);
+      return this.j($$0) < ayz.k($$1);
    }
 
    public boolean a(kb $$0, double $$1) {
-      return this.b($$0) < ayy.k($$1);
+      return this.b($$0) < ayz.k($$1);
    }
 
    public double j(km $$0) {

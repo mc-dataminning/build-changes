@@ -1,103 +1,53 @@
-public interface btc {
-   akt<btb> a = akt.a(mc.s, aku.b("in_fire"));
-   akt<btb> b = akt.a(mc.s, aku.b("campfire"));
-   akt<btb> c = akt.a(mc.s, aku.b("lightning_bolt"));
-   akt<btb> d = akt.a(mc.s, aku.b("on_fire"));
-   akt<btb> e = akt.a(mc.s, aku.b("lava"));
-   akt<btb> f = akt.a(mc.s, aku.b("hot_floor"));
-   akt<btb> g = akt.a(mc.s, aku.b("in_wall"));
-   akt<btb> h = akt.a(mc.s, aku.b("cramming"));
-   akt<btb> i = akt.a(mc.s, aku.b("drown"));
-   akt<btb> j = akt.a(mc.s, aku.b("starve"));
-   akt<btb> k = akt.a(mc.s, aku.b("cactus"));
-   akt<btb> l = akt.a(mc.s, aku.b("fall"));
-   akt<btb> m = akt.a(mc.s, aku.b("ender_pearl"));
-   akt<btb> n = akt.a(mc.s, aku.b("fly_into_wall"));
-   akt<btb> o = akt.a(mc.s, aku.b("out_of_world"));
-   akt<btb> p = akt.a(mc.s, aku.b("generic"));
-   akt<btb> q = akt.a(mc.s, aku.b("magic"));
-   akt<btb> r = akt.a(mc.s, aku.b("wither"));
-   akt<btb> s = akt.a(mc.s, aku.b("dragon_breath"));
-   akt<btb> t = akt.a(mc.s, aku.b("dry_out"));
-   akt<btb> u = akt.a(mc.s, aku.b("sweet_berry_bush"));
-   akt<btb> v = akt.a(mc.s, aku.b("freeze"));
-   akt<btb> w = akt.a(mc.s, aku.b("stalagmite"));
-   akt<btb> x = akt.a(mc.s, aku.b("falling_block"));
-   akt<btb> y = akt.a(mc.s, aku.b("falling_anvil"));
-   akt<btb> z = akt.a(mc.s, aku.b("falling_stalactite"));
-   akt<btb> A = akt.a(mc.s, aku.b("sting"));
-   akt<btb> B = akt.a(mc.s, aku.b("mob_attack"));
-   akt<btb> C = akt.a(mc.s, aku.b("mob_attack_no_aggro"));
-   akt<btb> D = akt.a(mc.s, aku.b("player_attack"));
-   akt<btb> E = akt.a(mc.s, aku.b("arrow"));
-   akt<btb> F = akt.a(mc.s, aku.b("trident"));
-   akt<btb> G = akt.a(mc.s, aku.b("mob_projectile"));
-   akt<btb> H = akt.a(mc.s, aku.b("spit"));
-   akt<btb> I = akt.a(mc.s, aku.b("wind_charge"));
-   akt<btb> J = akt.a(mc.s, aku.b("fireworks"));
-   akt<btb> K = akt.a(mc.s, aku.b("fireball"));
-   akt<btb> L = akt.a(mc.s, aku.b("unattributed_fireball"));
-   akt<btb> M = akt.a(mc.s, aku.b("wither_skull"));
-   akt<btb> N = akt.a(mc.s, aku.b("thrown"));
-   akt<btb> O = akt.a(mc.s, aku.b("indirect_magic"));
-   akt<btb> P = akt.a(mc.s, aku.b("thorns"));
-   akt<btb> Q = akt.a(mc.s, aku.b("explosion"));
-   akt<btb> R = akt.a(mc.s, aku.b("player_explosion"));
-   akt<btb> S = akt.a(mc.s, aku.b("sonic_boom"));
-   akt<btb> T = akt.a(mc.s, aku.b("bad_respawn_point"));
-   akt<btb> U = akt.a(mc.s, aku.b("outside_border"));
-   akt<btb> V = akt.a(mc.s, aku.b("generic_kill"));
-   akt<btb> W = akt.a(mc.s, aku.b("mace_smash"));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qe<btb> $$0) {
-      $$0.a(a, new btb("inFire", 0.1F, bsx.d));
-      $$0.a(b, new btb("inFire", 0.1F, bsx.d));
-      $$0.a(c, new btb("lightningBolt", 0.1F));
-      $$0.a(d, new btb("onFire", 0.0F, bsx.d));
-      $$0.a(e, new btb("lava", 0.1F, bsx.d));
-      $$0.a(f, new btb("hotFloor", 0.1F, bsx.d));
-      $$0.a(g, new btb("inWall", 0.0F));
-      $$0.a(h, new btb("cramming", 0.0F));
-      $$0.a(i, new btb("drown", 0.0F, bsx.c));
-      $$0.a(j, new btb("starve", 0.0F));
-      $$0.a(k, new btb("cactus", 0.1F));
-      $$0.a(l, new btb("fall", bsy.b, 0.0F, bsx.a, btd.b));
-      $$0.a(m, new btb("fall", bsy.b, 0.0F, bsx.a, btd.b));
-      $$0.a(n, new btb("flyIntoWall", 0.0F));
-      $$0.a(o, new btb("outOfWorld", 0.0F));
-      $$0.a(p, new btb("generic", 0.0F));
-      $$0.a(q, new btb("magic", 0.0F));
-      $$0.a(r, new btb("wither", 0.0F));
-      $$0.a(s, new btb("dragonBreath", 0.0F));
-      $$0.a(t, new btb("dryout", 0.1F));
-      $$0.a(u, new btb("sweetBerryBush", 0.1F, bsx.e));
-      $$0.a(v, new btb("freeze", 0.0F, bsx.f));
-      $$0.a(w, new btb("stalagmite", 0.0F));
-      $$0.a(x, new btb("fallingBlock", 0.1F));
-      $$0.a(y, new btb("anvil", 0.1F));
-      $$0.a(z, new btb("fallingStalactite", 0.1F));
-      $$0.a(A, new btb("sting", 0.1F));
-      $$0.a(B, new btb("mob", 0.1F));
-      $$0.a(C, new btb("mob", 0.1F));
-      $$0.a(D, new btb("player", 0.1F));
-      $$0.a(E, new btb("arrow", 0.1F));
-      $$0.a(F, new btb("trident", 0.1F));
-      $$0.a(G, new btb("mob", 0.1F));
-      $$0.a(H, new btb("mob", 0.1F));
-      $$0.a(J, new btb("fireworks", 0.1F));
-      $$0.a(L, new btb("onFire", 0.1F, bsx.d));
-      $$0.a(K, new btb("fireball", 0.1F, bsx.d));
-      $$0.a(M, new btb("witherSkull", 0.1F));
-      $$0.a(N, new btb("thrown", 0.1F));
-      $$0.a(O, new btb("indirectMagic", 0.0F));
-      $$0.a(P, new btb("thorns", 0.1F, bsx.b));
-      $$0.a(Q, new btb("explosion", bsy.c, 0.1F));
-      $$0.a(R, new btb("explosion.player", bsy.c, 0.1F));
-      $$0.a(S, new btb("sonic_boom", bsy.c, 0.0F));
-      $$0.a(T, new btb("badRespawnPoint", bsy.c, 0.1F, bsx.a, btd.c));
-      $$0.a(U, new btb("outsideBorder", 0.0F));
-      $$0.a(V, new btb("genericKill", 0.0F));
-      $$0.a(I, new btb("mob", 0.1F));
-      $$0.a(W, new btb("mace_smash", 0.1F));
+public record btc(String d, bsz e, float f, bsy g, bte h) {
+   public static final Codec<btc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(btc::a),
+               bsz.d.fieldOf("scaling").forGetter(btc::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(btc::c),
+               bsy.g.optionalFieldOf("effects", bsy.a).forGetter(btc::d),
+               bte.d.optionalFieldOf("death_message_type", bte.a).forGetter(btc::e)
+            )
+            .apply($$0, btc::new)
+   );
+   public static final Codec<jr<btc>> b = aks.a(mc.s);
+   public static final yn<wa, jr<btc>> c = yl.b(mc.s);
+
+   public btc(String $$0, bsz $$1, float $$2) {
+      this($$0, $$1, $$2, bsy.a, bte.a);
+   }
+
+   public btc(String $$0, bsz $$1, float $$2, bsy $$3) {
+      this($$0, $$1, $$2, $$3, bte.a);
+   }
+
+   public btc(String $$0, float $$1, bsy $$2) {
+      this($$0, bsz.b, $$1, $$2);
+   }
+
+   public btc(String $$0, float $$1) {
+      this($$0, bsz.b, $$1);
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public bsz b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public bsy d() {
+      return this.g;
+   }
+
+   public bte e() {
+      return this.h;
    }
 }

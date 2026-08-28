@@ -1,24 +1,24 @@
-public record adh(fay b, float c, float d) implements yv<abk> {
-   public static final ym<vl, adh> a = ym.a(fay.b, adh::b, yk.l, adh::e, yk.l, adh::f, adh::new);
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public static adh a(buj $$0) {
-      return new adh($$0.du(), $$0.dM(), $$0.dO());
-   }
+public record adh(int b, List<crk.a> c) implements yw<abl> {
+   public static final yn<vl, adh> a = yn.a(yl.h, adh::b, crk.a.a.a(yl.a()), adh::e, adh::new);
 
    @Override
-   public yx<adh> a() {
-      return agd.V;
+   public yy<adh> a() {
+      return age.T;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public float e() {
-      return this.c;
+   @Nullable
+   public buk a(dgh $$0) {
+      return $$0.a(this.b);
    }
 
-   public float f() {
-      return this.d;
+   public List<crk.a> e() {
+      return this.c;
    }
 }

@@ -1,11 +1,13 @@
-public class grh extends gqv<cin, gxw, gbj> {
-   private static final aku a = aku.b("textures/entity/camel/camel.png");
+public class grh extends gqv<clh, gxw> {
+   private static final akv a = akv.b("textures/entity/skeleton/bogged.png");
+   private static final akv b = akv.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public grh(gsb.a $$0) {
-      super($$0, new gbj($$0.a(gez.M)), new gbj($$0.a(gez.N)), 0.7F);
+   public grh(gsd.a $$0) {
+      super($$0, gfb.G, gfb.H, new gbi($$0.a(gfb.F)));
+      this.a(new gwv<>(this, $$0.f(), gfb.I, b));
    }
 
-   public aku a(gxw $$0) {
+   public akv a(gxw $$0) {
       return a;
    }
 
@@ -13,15 +15,8 @@ public class grh extends gqv<cin, gxw, gbj> {
       return new gxw();
    }
 
-   public void a(cin $$0, gxw $$1, float $$2) {
+   public void a(clh $$0, gxw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
-      $$1.b = $$0.ca();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f.a($$0.cg);
-      $$1.g.a($$0.ch);
-      $$1.h.a($$0.ci);
+      $$1.a = $$0.gv();
    }
 }

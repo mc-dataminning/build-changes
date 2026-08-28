@@ -1,110 +1,122 @@
 import java.util.List;
 
-public class god implements goh<dts> {
-   public static final aku a = aku.b("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public abstract class god implements goj<dvl> {
+   private static final int a = -988212;
+   private static final int b = ayz.h(16);
+   private final fob c;
 
-   public god(goi.a $$0) {
+   public god(gok.a $$0) {
+      this.c = $$0.g();
    }
 
-   public void a(dts $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().ad();
-      List<dts.a> $$7 = $$0.b();
-      int $$8 = 0;
+   protected abstract gcv a(dww var1, dyi var2);
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dts.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   protected abstract hgy a(dyi var1);
+
+   protected abstract float a();
+
+   protected abstract float b();
+
+   protected abstract faz c();
+
+   protected abstract void a(fft var1, float var2, dww var3);
+
+   public void a(dvl $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      dww $$6 = $$0.m();
+      dqq $$7 = (dqq)$$6.b();
+      gcv $$8 = this.a($$6, $$7.d());
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$7.d(), $$8);
+   }
+
+   private void a(dvl $$0, fft $$1, glx $$2, int $$3, int $$4, dww $$5, dqq $$6, dyi $$7, gcv $$8) {
+      $$1.a();
+      this.a($$1, -$$6.h($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aA_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
+      this.a($$0.aA_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
+      $$1.b();
+   }
+
+   protected void a(fft $$0, glx $$1, int $$2, int $$3, dyi $$4, gcv $$5) {
+      $$0.a();
+      float $$6 = this.a();
+      $$0.b($$6, -$$6, -$$6);
+      hgy $$7 = this.a($$4);
+      ffx $$8 = $$7.a($$1, $$5::a);
+      $$5.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
+
+   private void a(ji $$0, dvm $$1, fft $$2, glx $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.c());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      ayl[] $$10 = $$1.a(fli.Q().aT(), $$1x -> {
+         List<ayl> $$2x = this.c.c($$1x, $$6);
+         return $$2x.isEmpty() ? ayl.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
+      } else {
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
+      }
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         ayl $$18 = $$10[$$17];
+         float $$19 = (float)(-this.c.a($$18) / 2);
+         if ($$12) {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fob.a.c, 0, $$13);
+         }
+      }
+
+      $$2.b();
+   }
+
+   private void a(fft $$0, boolean $$1, faz $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
+
+      float $$3 = 0.015625F * this.b();
+      $$0.a($$2);
+      $$0.b($$3, -$$3, $$3);
+   }
+
+   private static boolean a(ji $$0, int $$1) {
+      if ($$1 == cvl.p.g()) {
+         return true;
+      } else {
+         fli $$2 = fli.Q();
+         gkv $$3 = $$2.t;
+         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
+            return true;
+         } else {
+            buk $$4 = $$2.ao();
+            return $$4 != null && $$4.g(faz.b($$0)) < (double)b;
+         }
       }
    }
 
-   private static void a(ffs $$0, glv $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
-
-   public static void a(ffs $$0, glv $$1, aku $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = ayy.i($$13 * 0.2F - (float)ayy.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(gmf.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(gmf.e($$2, true)), axj.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-   }
-
-   private static void a(
-      ffs $$0,
-      ffw $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      ffs.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
-   }
-
-   private static void a(
-      ffs.a $$0, ffw $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
-   }
-
-   private static void a(ffs.a $$0, ffw $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hec.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
-
-   public boolean a(dts $$0) {
-      return true;
-   }
-
-   @Override
-   public int aU_() {
-      return 256;
-   }
-
-   public boolean a(dts $$0, fay $$1) {
-      return fay.b($$0.aA_()).d(1.0, 0.0, 1.0).a((kb)$$1.d(1.0, 0.0, 1.0), (double)this.aU_());
+   public static int a(dvm $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == cvl.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)axk.b($$1) * 0.4);
+         int $$4 = (int)((double)axk.c($$1) * 0.4);
+         int $$5 = (int)((double)axk.d($$1) * 0.4);
+         return axk.a(0, $$3, $$4, $$5);
+      }
    }
 }

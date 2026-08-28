@@ -1,10 +1,12 @@
-public class cus extends cut {
-   public cus(djk $$0, cwj.a $$1) {
-      super($$0, $$1);
+public class cus extends cwk {
+   private final axf<dto> a;
+
+   public cus(axf<dto> $$0, cwk.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   @Override
-   protected boolean a(dae $$0, dwv $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public axf<dto> b() {
+      return this.a;
    }
 }

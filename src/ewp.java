@@ -1,88 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ewp extends exc {
+public class ewp extends exd {
    public static final MapCodec<ewp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  ewp.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  ku.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  ku.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+                  mb.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dxy::f).toList())
                )
             )
             .apply($$0, ewp::new)
    );
-   private final ewp.b b;
-   private final Optional<List<ku<?>>> c;
-   private final Optional<List<ku<?>>> d;
-   private final Predicate<ku<?>> e;
+   private final jr<djl> b;
+   private final Set<dxy<?>> c;
 
-   ewp(List<eyy> $$0, ewp.b $$1, Optional<List<ku<?>>> $$2, Optional<List<ku<?>>> $$3) {
+   ewp(List<eyz> $$0, jr<djl> $$1, Set<dxy<?>> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<ku<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = af.a($$4);
+      this.c = $$2;
+   }
+
+   private ewp(List<eyz> $$0, jr<djl> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public exe<ewp> b() {
-      return exf.J;
+   public exf<ewp> b() {
+      return exg.D;
    }
 
    @Override
-   public Set<bah<?>> a() {
-      return this.b.a();
+   public Set<bai<?>> a() {
+      return Set.of(eyk.g);
    }
 
    @Override
-   public cwn a(cwn $$0, evp $$1) {
-      kr $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
+   protected cwo a(cwo $$0, evq $$1) {
+      dww $$2 = $$1.c(eyk.g);
+      if ($$2 != null) {
+         $$0.a(kv.am, cyq.a, $$1x -> {
+            for (dxy<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
       return $$0;
    }
 
-   public static ewp.a a(ewp.b $$0) {
+   public static ewp.a a(djl $$0) {
       return new ewp.a($$0);
    }
 
-   public static class a extends exc.a<ewp.a> {
-      private final ewp.b a;
-      private Optional<Builder<ku<?>>> b = Optional.empty();
-      private Optional<Builder<ku<?>>> c = Optional.empty();
+   public static class a extends exd.a<ewp.a> {
+      private final jr<djl> a;
+      private final Builder<dxy<?>> b = ImmutableSet.builder();
 
-      a(ewp.b $$0) {
-         this.a = $$0;
+      a(djl $$0) {
+         this.a = $$0.p();
       }
 
-      public ewp.a a(ku<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+      public ewp.a a(dxy<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
          }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public ewp.a b(ku<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
       }
 
       protected ewp.a a() {
@@ -90,43 +86,8 @@ public class ewp extends exc {
       }
 
       @Override
-      public exd b() {
-         return new ewp(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements azu {
-      a("block_entity");
-
-      public static final Codec<ewp.b> b = azu.b(ewp.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kr a(evp $$0) {
-         switch (this) {
-            case a:
-               dtx $$1 = $$0.c(eyj.h);
-               return $$1 != null ? $$1.q() : kr.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<bah<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(eyj.h);
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
+      public exe b() {
+         return new ewp(this.g(), this.a, this.b.build());
       }
    }
 }

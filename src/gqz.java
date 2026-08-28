@@ -1,28 +1,23 @@
-public abstract class gqz<T extends cpc, S extends gxo> extends gsa<T, S> {
-   private final gav a;
+public class gqz extends gqx<cig, gxn, gat> {
+   private static final akv a = akv.b("textures/entity/armadillo.png");
 
-   public gqz(gsb.a $$0) {
-      super($$0);
-      this.a = new gav($$0.a(gez.l));
+   public gqz(gsd.a $$0) {
+      super($$0, new gat($$0.a(gfb.d)), new gat($$0.a(gfb.e)), 0.4F);
    }
 
-   public void a(S $$0, ffs $$1, glv $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      ffw $$4 = $$2.getBuffer(gmf.f(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, hec.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public akv a(gxn $$0) {
+      return a;
    }
 
-   protected abstract aku a(S var1);
+   public gxn a() {
+      return new gxn();
+   }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public void a(cig $$0, gxn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j($$2);
-      $$1.b = $$0.k($$2);
-      $$1.c = (float)$$0.c - $$2;
+      $$1.a = $$0.x();
+      $$1.d.a($$0.ce);
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.cd);
    }
 }

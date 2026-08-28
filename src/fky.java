@@ -1,104 +1,120 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public class fky {
-   public static final wo a = wn.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final flh c;
-   private final Narrator d = Narrator.getNarrator();
+public interface fky {
+   fky a = new fky.a(0.0F);
+   fky b = new fky.a(1.0F);
 
-   public fky(flh $$0) {
-      this.c = $$0;
-   }
+   float a();
 
-   public void a(wo $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
+   float a(boolean var1);
+
+   float b();
+
+   public static class a implements fky {
+      private final float c;
+
+      a(float $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
       }
    }
 
-   public void b(wo $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
+   public static class b implements fky {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
+
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
       }
-   }
 
-   public void c(wo $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
+      public int a(long $$0, boolean $$1) {
          this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
-         }
+         return $$1 ? this.a($$0) : 0;
       }
-   }
 
-   private flj d() {
-      return this.c.n.av().c();
-   }
-
-   private void b(String $$0) {
-      if (ab.aU) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
       }
-   }
 
-   public void a(flj $$0) {
-      this.b();
-      this.d.say(wo.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      frb $$1 = flh.Q().aA();
-      if (this.d.active()) {
-         if ($$0 == flj.a) {
-            fqz.b($$1, fqz.a.a, wo.c("narrator.toast.disabled"), null);
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
          } else {
-            fqz.b($$1, fqz.a.a, wo.c("narrator.toast.enabled"), $$0.b());
+            this.d();
          }
-      } else {
-         fqz.b($$1, fqz.a.a, wo.c("narrator.toast.disabled"), wo.c("options.narrator.notavailable"));
       }
-   }
 
-   public boolean a() {
-      return this.d.active();
-   }
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
 
-   public void b() {
-      if (this.d() != flj.a && this.d.active()) {
-         this.d.clear();
+         this.k = true;
       }
-   }
 
-   public void c() {
-      this.d.destroy();
-   }
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
 
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new fky.a("Narrator library is not active");
+         this.k = false;
       }
-   }
 
-   public static class a extends gaj {
-      public a(String $$0) {
-         super($$0);
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
+         }
+      }
+
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
       }
    }
 }

@@ -1,76 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public abstract class did extends djk {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final fbs h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final fbs b = fbp.a(
-      fbp.b(), fbp.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), fbc.e
-   );
-   protected final ko.a c;
+public abstract class did extends djl {
+   public static final int a = 3;
+   public static final dxn b = dxm.v;
 
    @Override
    protected abstract MapCodec<? extends did> a();
 
-   public did(dwu.d $$0, ko.a $$1) {
+   protected did(dwv.d $$0) {
       super($$0);
-      this.c = $$1;
    }
 
-   protected double b(dwv $$0) {
-      return 0.0;
-   }
+   protected abstract Iterable<faz> b(dww var1);
 
-   protected boolean a(dwv $$0, ji $$1, buj $$2) {
-      return $$2.dD() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
+   public static boolean c(dww $$0) {
+      return $$0.b(b) && ($$0.a(awp.ag) || $$0.a(awp.bm)) && $$0.c(b);
    }
 
    @Override
-   protected bsi a(cwn $$0, dwv $$1, dgg $$2, ji $$3, cov $$4, bsh $$5, fau $$6) {
-      ko $$7 = this.c.b().get($$0.h());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
-   }
-
-   @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return b;
-   }
-
-   @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean c_(dwv $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dwv $$0, etm $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dwv var1);
-
-   @Override
-   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
-      ji $$4 = dpg.a((dgg)$$1, $$2);
-      if ($$4 != null) {
-         esw $$5 = dpg.a($$1, $$4);
-         if ($$5 != esy.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
+   protected void a(dgh $$0, dww $$1, fav $$2, cpp $$3) {
+      if (!$$0.C && $$3.bY() && this.d($$1)) {
+         a($$0, $$1, $$2.b(), true);
       }
    }
 
-   protected boolean a(esw $$0) {
-      return false;
+   protected boolean d(dww $$0) {
+      return !$$0.c(b);
    }
 
-   protected void a(dwv $$0, dgg $$1, ji $$2, esw $$3) {
+   @Override
+   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
+   }
+
+   private static void a(dgh $$0, faz $$1, azh $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(lt.ag, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awa.dL, awb.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+         }
+      }
+
+      $$0.a(lt.aL, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
+   }
+
+   public static void a(@Nullable cow $$0, dww $$1, dgi $$2, ji $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof did) {
+         ((did)$$1.b())
+            .b($$1)
+            .forEach($$2x -> $$2.a(lt.ag, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      }
+
+      $$2.a(null, $$3, awa.dN, awb.e, 1.0F, 1.0F);
+      $$2.a($$0, ebs.c, $$3);
+   }
+
+   private static void a(dgi $$0, dww $$1, ji $$2, boolean $$3) {
+      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
+   }
+
+   @Override
+   protected void a(dww $$0, ard $$1, ji $$2, dfz $$3, BiConsumer<cwo, ji> $$4) {
+      if ($$3.g() && $$0.c(b)) {
+         a(null, $$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

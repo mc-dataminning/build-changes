@@ -1,170 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
 
-public class dmk extends dni {
-   public static final MapCodec<dmk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dyh.a.fieldOf("wood_type").forGetter($$0x -> $$0x.H), t()).apply($$0, dmk::new)
-   );
-   public static final dxm b = dxl.z;
-   public static final dxm c = dxl.B;
-   public static final dxm d = dxl.u;
-   protected static final fbs e = djk.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final fbs f = djk.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
-   protected static final fbs g = djk.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
-   protected static final fbs h = djk.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
-   protected static final fbs i = djk.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final fbs j = djk.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final fbs k = djk.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final fbs l = djk.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final fbs m = fbp.a(djk.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), djk.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
-   protected static final fbs n = fbp.a(djk.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), djk.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
-   protected static final fbs o = fbp.a(djk.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), djk.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
-   protected static final fbs G = fbp.a(djk.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), djk.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
-   private final dyh H;
+public class dmk extends dli {
+   public static final MapCodec<dmk> i = b(dmk::new);
+   private final fbt[] j;
 
    @Override
    public MapCodec<dmk> a() {
-      return a;
+      return i;
    }
 
-   public dmk(dyh $$0, dwu.d $$1) {
-      super($$1.a($$0.d()));
-      this.H = $$0;
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      if ($$0.c(d)) {
-         return $$0.c(aF).o() == jn.a.a ? h : g;
-      } else {
-         return $$0.c(aF).o() == jn.a.a ? f : e;
-      }
-   }
-
-   @Override
-   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      jn.a $$8 = $$4.o();
-      if ($$0.c(aF).h().o() != $$8) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$9 = this.o($$6) || this.o($$1.a_($$3.a($$4.g())));
-         return $$0.b(d, Boolean.valueOf($$9));
-      }
+   public dmk(dwv.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected fbs b_(dwv $$0, dfl $$1, ji $$2) {
-      if ($$0.c(b)) {
-         return fbp.a();
-      } else {
-         return $$0.c(aF).o() == jn.a.c ? k : l;
-      }
+   protected fbt d_(dww $$0) {
+      return this.j[this.h($$0)];
    }
 
    @Override
-   protected fbs b(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      if ($$0.c(b)) {
-         return fbp.a();
-      } else {
-         return $$0.c(aF).o() == jn.a.c ? i : j;
-      }
+   protected fbt c(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected fbs d_(dwv $$0) {
-      if ($$0.c(d)) {
-         return $$0.c(aF).o() == jn.a.a ? G : o;
-      } else {
-         return $$0.c(aF).o() == jn.a.a ? n : m;
-      }
+   protected boolean a(dww $$0, etn $$1) {
+      return false;
+   }
+
+   public boolean a(dww $$0, boolean $$1, jn $$2) {
+      djl $$3 = $$0.b();
+      boolean $$4 = this.o($$0);
+      boolean $$5 = $$3 instanceof dml && dml.a($$0, $$2);
+      return !k($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean o(dww $$0) {
+      return $$0.a(awp.U) && $$0.a(awp.l) == this.m().a(awp.l);
    }
 
    @Override
-   protected boolean a(dwv $$0, etm $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(b);
-         case b:
-            return false;
-         case c:
-            return $$0.c(b);
-         default:
-            return false;
-      }
+   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
+      return (bsj)(!$$1.B_() ? cwy.a($$3, $$1, $$2) : bsj.e);
    }
 
    @Override
-   public dwv a(dae $$0) {
-      dgg $$1 = $$0.q();
+   public dww a(daf $$0) {
+      dfm $$1 = $$0.q();
       ji $$2 = $$0.a();
-      boolean $$3 = $$1.C($$2);
-      jn $$4 = $$0.g();
-      jn.a $$5 = $$4.o();
-      boolean $$6 = $$5 == jn.a.c && (this.o($$1.a_($$2.h())) || this.o($$1.a_($$2.i())))
-         || $$5 == jn.a.a && (this.o($$1.a_($$2.f())) || this.o($$1.a_($$2.g())));
-      return this.m().b(aF, $$4).b(b, Boolean.valueOf($$3)).b(c, Boolean.valueOf($$3)).b(d, Boolean.valueOf($$6));
-   }
-
-   private boolean o(dwv $$0) {
-      return $$0.a(awo.N);
+      esy $$3 = $$0.q().b_($$0.a());
+      ji $$4 = $$2.f();
+      ji $$5 = $$2.i();
+      ji $$6 = $$2.g();
+      ji $$7 = $$2.h();
+      dww $$8 = $$1.a_($$4);
+      dww $$9 = $$1.a_($$5);
+      dww $$10 = $$1.a_($$6);
+      dww $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jn.d), jn.d)))
+         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jn.e), jn.e)))
+         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jn.c), jn.c)))
+         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jn.f), jn.f)))
+         .b(e, Boolean.valueOf($$3.a() == esz.c));
    }
 
    @Override
-   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
-      if ($$0.c(b)) {
-         $$0 = $$0.b(b, Boolean.valueOf(false));
-         $$1.a($$2, $$0, 10);
-      } else {
-         jn $$5 = $$3.cO();
-         if ($$0.c(aF) == $$5.g()) {
-            $$0 = $$0.b(aF, $$5);
-         }
-
-         $$0 = $$0.b(b, Boolean.valueOf(true));
-         $$1.a($$2, $$0, 10);
+   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, esz.c, esz.c.a($$1));
       }
 
-      boolean $$6 = $$0.c(b);
-      $$1.a($$3, $$2, $$6 ? this.H.g() : this.H.f(), awa.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
-      $$1.a($$3, $$6 ? ebr.h : ebr.d, $$2);
-      return bsi.a;
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dwv $$0, arc $$1, ji $$2, dfy $$3, BiConsumer<cwn, ji> $$4) {
-      if ($$3.g() && !$$0.c(c)) {
-         boolean $$5 = $$0.c(b);
-         $$1.b($$2, $$0.b(b, Boolean.valueOf(!$$5)));
-         $$1.a(null, $$2, $$5 ? this.H.f() : this.H.g(), awa.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
-         $$1.a($$5 ? ebr.d : ebr.h, $$2, ebr.a.a($$0));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dwv $$0, dgg $$1, ji $$2, djk $$3, @Nullable euf $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$0.c(c) != $$6) {
-            $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)).b(b, Boolean.valueOf($$6)), 2);
-            if ($$0.c(b) != $$6) {
-               $$1.a(null, $$2, $$6 ? this.H.g() : this.H.f(), awa.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
-               $$1.a(null, $$6 ? ebr.h : ebr.d, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(aF, b, c, d);
-   }
-
-   public static boolean a(dwv $$0, jn $$1) {
-      return $$0.c(aF).o() == $$1.h().o();
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

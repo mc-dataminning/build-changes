@@ -1,73 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dmz extends dmy implements djn {
-   protected dmz(dwu.d $$0, jn $$1, fbs $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public abstract class dmz extends djl {
+   protected final jn a;
+   protected final boolean b;
+   protected final fbt d;
+
+   protected dmz(dwv.d $$0, jn $$1, fbt $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends dmz> a();
 
-   protected dwv a(dwv $$0, dwv $$1) {
-      return $$1;
+   @Nullable
+   @Override
+   public dww a(daf $$0) {
+      dww $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public dww b(azh $$0) {
+      return this.m();
    }
 
    @Override
-   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+   protected boolean a(dww $$0, dgk $$1, ji $$2) {
+      ji $$3 = $$2.a(this.a.g());
+      dww $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dww $$0, ard $$1, ji $$2, azh $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
-
-      dna $$8 = this.c();
-      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
-         return this.a($$0, $$8.b($$7));
-      } else {
-         if (this.b) {
-            $$2.a($$3, esy.c, esy.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
    }
 
-   @Override
-   protected cwn a(dgj $$0, ji $$1, dwv $$2, boolean $$3) {
-      return new cwn(this.c());
-   }
-
-   @Override
-   public boolean a(dgj $$0, ji $$1, dwv $$2) {
-      Optional<ji> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+   protected boolean o(dww $$0) {
       return true;
    }
 
    @Override
-   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
-      Optional<ji> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dwv $$5 = $$0.a_($$4.get());
-         ((dna)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return this.d;
    }
 
-   private Optional<ji> a(dfl $$0, ji $$1, djk $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
+   protected abstract dnb c();
 
-   @Override
-   protected boolean a(dwv $$0, dae $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
-   }
-
-   @Override
-   protected djk b() {
-      return this;
-   }
+   protected abstract djl b();
 }

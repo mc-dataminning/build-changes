@@ -1,50 +1,81 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record xx(ho c, Optional<wo> d) implements wp {
+public record xx(Either<ho, String> d, String e) implements wq {
    public static final MapCodec<xx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ho.a.fieldOf("selector").forGetter(xx::b), wq.a.optionalFieldOf("separator").forGetter(xx::c)).apply($$0, xx::new)
+      $$0 -> $$0.group(Codec.either(ho.a, Codec.STRING).fieldOf("name").forGetter(xx::b), Codec.STRING.fieldOf("objective").forGetter(xx::c))
+            .apply($$0, xx::new)
    );
-   public static final wp.a<xx> b = new wp.a<>(a, "selector");
+   public static final MapCodec<xx> b = a.fieldOf("score");
+   public static final wq.a<xx> c = new wq.a<>(b, "score");
 
    @Override
-   public wp.a<?> a() {
-      return b;
+   public wq.a<?> a() {
+      return c;
+   }
+
+   private fcd a(ex $$0) throws CommandSyntaxException {
+      Optional<ho> $$1 = this.d.left();
+      if ($$1.isPresent()) {
+         List<? extends buk> $$2 = $$1.get().b().b($$0);
+         if (!$$2.isEmpty()) {
+            if ($$2.size() != 1) {
+               throw fk.a.create();
+            } else {
+               return $$2.getFirst();
+            }
+         } else {
+            return fcd.c($$1.get().a());
+         }
+      } else {
+         return fcd.c((String)this.d.right().orElseThrow());
+      }
+   }
+
+   private xd a(fcd $$0, ex $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         fce $$3 = $$2.aJ();
+         fbw $$4 = $$3.a(this.e);
+         if ($$4 != null) {
+            fca $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yi.b));
+            }
+         }
+      }
+
+      return wp.i();
    }
 
    @Override
-   public xc a(@Nullable ex $$0, @Nullable buj $$1, int $$2) throws CommandSyntaxException {
+   public xd a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
-         return wo.i();
+         return wp.i();
       } else {
-         Optional<? extends wo> $$3 = wr.a($$0, this.d, $$1, $$2);
-         return wr.a(this.c.b().b($$0), $$3, buj::p_);
+         fcd $$3 = this.a($$0);
+         fcd $$4 = (fcd)($$1 != null && $$3.equals(fcd.cB) ? $$1 : $$3);
+         return this.a($$4, $$0);
       }
    }
 
    @Override
-   public <T> Optional<T> a(wt.b<T> $$0, xl $$1) {
-      return $$0.accept($$1, this.c.a());
-   }
-
-   @Override
-   public <T> Optional<T> a(wt.a<T> $$0) {
-      return $$0.accept(this.c.a());
-   }
-
-   @Override
    public String toString() {
-      return "pattern{" + this.c + "}";
+      return "score{name='" + this.d + "', objective='" + this.e + "'}";
    }
 
-   public ho b() {
-      return this.c;
-   }
-
-   public Optional<wo> c() {
+   public Either<ho, String> b() {
       return this.d;
+   }
+
+   public String c() {
+      return this.e;
    }
 }

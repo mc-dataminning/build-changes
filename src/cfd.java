@@ -1,30 +1,43 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cfd extends cfp<bvf> {
+public class cfd extends cfq<cne> {
    @Override
-   public Set<cej<?>> a() {
-      return ImmutableSet.of(cej.x, cej.y);
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.h, cek.aw, cek.aq, cek.ap, cek.as, cek.at, new cek[0]);
    }
 
-   @Override
-   protected void a(arc $$0, bvf $$1) {
-      bwh<?> $$2 = $$1.ec();
-      bsz $$3 = $$1.eG();
-      if ($$3 != null) {
-         $$2.a(cej.x, $$1.eG());
-         buj $$4 = $$3.d();
-         if ($$4 instanceof bvf) {
-            $$2.a(cej.y, (bvf)$$4);
+   protected void a(ard $$0, cne $$1) {
+      bwi<?> $$2 = $$1.eb();
+      $$2.a(cek.aw, this.b($$0, $$1));
+      Optional<cnk> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cne> $$5 = Lists.newArrayList();
+      cem $$6 = $$2.c(cek.h).orElse(cem.a());
+
+      for (bvg $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cnk || $$0x instanceof cne))) {
+         if ($$7 instanceof cnk $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
          }
-      } else {
-         $$2.b(cej.x);
+
+         if ($$7 instanceof cne $$9) {
+            $$5.add($$9);
+         }
       }
 
-      $$2.c(cej.y).ifPresent($$2x -> {
-         if (!$$2x.bL() || $$2x.dW() != $$0) {
-            $$2.b(cej.y);
-         }
-      });
+      $$2.a(cek.aq, $$3);
+      $$2.a(cek.ap, $$5);
+      $$2.a(cek.as, $$4);
+      $$2.a(cek.at, $$5.size());
+   }
+
+   private Optional<ji> b(ard $$0, cne $$1) {
+      return ji.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(awp.aU));
    }
 }

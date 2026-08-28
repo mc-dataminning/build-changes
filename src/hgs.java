@@ -1,73 +1,63 @@
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class hgs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akn b = akn.a("items");
+public enum hgs implements hhh {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public static CompletableFuture<hgs.a> a(auo $$0, Executor $$1) {
-      return CompletableFuture.<Map<aku, aum>>supplyAsync(() -> b.a($$0), $$1)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<hgs.b>> $$2 = new ArrayList<>($$1x.size());
-               $$1x.forEach(
-                  ($$2x, $$3) -> $$2.add(
-                        CompletableFuture.supplyAsync(
-                           () -> {
-                              aku $$2xx = b.b($$2x);
+   private static final int q = 360;
+   private static final Map<Integer, hgs> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hgs)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
 
-                              try {
-                                 hgs.b var5;
-                                 try (Reader $$3x = $$3.e()) {
-                                    hbh.b $$4 = hbe.a
-                                       .parse(JsonOps.INSTANCE, JsonParser.parseReader($$3x))
-                                       .ifError(
-                                          $$2xxx -> a.error("Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$2xx, $$3.b(), $$2xxx.message()})
-                                       )
-                                       .result()
-                                       .map(hbe::a)
-                                       .orElse(null);
-                                    var5 = new hgs.b($$2xx, $$4);
-                                 }
-
-                                 return var5;
-                              } catch (Exception var8) {
-                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$2x, $$3.b(), var8});
-                                 return new hgs.b($$2xx, null);
-                              }
-                           },
-                           $$1
-                        )
-                     )
-               );
-               return af.d($$2).thenApply($$0xx -> {
-                  Map<aku, hbh.b> $$1xx = new HashMap<>();
-
-                  for (hgs.b $$2x : $$0xx) {
-                     if ($$2x.b != null) {
-                        $$1xx.put($$2x.a, $$2x.b);
-                     }
-                  }
-
-                  return new hgs.a($$1xx);
-               });
-            }
-         );
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public static record a(Map<aku, hbh.b> a) {
+   private hgs(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
+      }
+
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
-   static record b(aku a, @Nullable hbh.b b) {
+   @Override
+   public j a() {
+      return this.s;
+   }
+
+   public static hgs a(int $$0, int $$1) {
+      return r.get(b(ayz.b($$0, 360), ayz.b($$1, 360)));
+   }
+
+   public h c() {
+      return this.t;
    }
 }

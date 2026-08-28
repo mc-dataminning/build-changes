@@ -1,42 +1,53 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record eul(jr<eum> b, byte c, byte d, byte e, Optional<wo> f) {
-   public static final ym<vz, eul> a = ym.a(eum.c, eul::c, yk.c, eul::d, yk.c, eul::e, yk.c, eul::f, wq.c, eul::g, eul::new);
+public record eul(ji c, cvl d, Optional<wp> e) {
+   public static final Codec<eul> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ji.a.fieldOf("pos").forGetter(eul::c),
+               cvl.q.lenientOptionalFieldOf("color", cvl.a).forGetter(eul::d),
+               wr.g.lenientOptionalFieldOf("name").forGetter(eul::e)
+            )
+            .apply($$0, eul::new)
+   );
+   public static final Codec<List<eul>> b = a.listOf();
 
-   public eul(jr<eum> b, byte c, byte d, byte e, Optional<wo> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   @Nullable
+   public static eul a(dfm $$0, ji $$1) {
+      if ($$0.c_($$1) instanceof dtn $$3) {
+         cvl $$4 = $$3.f();
+         Optional<wp> $$5 = Optional.ofNullable($$3.an());
+         return new eul($$1, $$4, $$5);
+      } else {
+         return null;
+      }
    }
 
-   public aku a() {
-      return this.b.a().b();
+   public jr<eun> a() {
+      return switch (this.d) {
+         case a -> euo.k;
+         case b -> euo.l;
+         case c -> euo.m;
+         case d -> euo.n;
+         case e -> euo.o;
+         case f -> euo.p;
+         case g -> euo.q;
+         case h -> euo.r;
+         case i -> euo.s;
+         case j -> euo.t;
+         case k -> euo.u;
+         case l -> euo.v;
+         case m -> euo.w;
+         case n -> euo.x;
+         case o -> euo.y;
+         case p -> euo.z;
+      };
    }
 
-   public boolean b() {
-      return this.b.a().c();
-   }
-
-   public jr<eum> c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<wo> g() {
-      return this.f;
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
    }
 }

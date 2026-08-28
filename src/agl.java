@@ -1,20 +1,20 @@
-public record agl(String b) implements yv<agf> {
-   public static final ym<vl, agl> a = yv.a(agl::a, agl::new);
+public record agl(int b) implements yw<agg> {
+   public static final yn<vl, agl> a = yw.a(agl::a, agl::new);
 
    private agl(vl $$0) {
-      this($$0.p());
+      this($$0.l());
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b);
+      $$0.c(this.b);
    }
 
    @Override
-   public yx<agl> a() {
-      return agd.bp;
+   public yy<agl> a() {
+      return age.bo;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 }

@@ -1,57 +1,32 @@
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record aan(akt<dgg> c, enc d, List<aan.a> e) implements zy {
-   public static final ym<vl, aan> a = zy.a(aan::a, aan::new);
-   public static final zy.b<aan> b = zy.a("debug/structures");
-
-   private aan(vl $$0) {
-      this($$0.a(mc.be), b($$0), $$0.a(aan.a::new));
-   }
-
-   private void a(vl $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
-   }
+public record aan(long c, List<aan.a> d) implements zz {
+   public static final zz.b<aan> a = zz.a("debug/redstone_update_order");
+   public static final yn<vl, aan> b = yn.a(yl.k, aan::b, aan.a.a.a(yl.a()), aan::c, aan::new);
 
    @Override
-   public zy.b<aan> a() {
-      return b;
+   public zz.b<aan> a() {
+      return a;
    }
 
-   static enc b(vl $$0) {
-      return new enc($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vl $$0, enc $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public akt<dgg> b() {
+   public long b() {
       return this.c;
    }
 
-   public enc c() {
+   public List<aan.a> c() {
       return this.d;
    }
 
-   public List<aan.a> d() {
-      return this.e;
-   }
+   public static record a(ji b, eug c) {
+      public static final yn<ByteBuf, aan.a> a = yn.a(ji.b, aan.a::a, eug.a, aan.a::b, aan.a::new);
 
-   public static record a(enc a, boolean b) {
-      public a(vl $$0) {
-         this(aan.b($$0), $$0.readBoolean());
+      public ji a() {
+         return this.b;
       }
 
-      public void a(vl $$0) {
-         aan.a($$0, this.a);
-         $$0.a(this.b);
+      public eug b() {
+         return this.c;
       }
    }
 }

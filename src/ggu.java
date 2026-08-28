@@ -1,119 +1,60 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ggu extends ggt {
-   static ggu.a a(GameProfile $$0, xe $$1, ggs $$2) {
-      return new ggu.a($$0, $$1, $$2);
+public enum ggu implements azv {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<ggu> d = azv.a(ggu::values);
+   private final String e;
+
+   private ggu(final String $$0) {
+      this.e = $$0;
    }
 
-   static ggu.b a(wo $$0, Instant $$1) {
-      return new ggu.b($$0, $$1);
-   }
-
-   wo b();
-
-   default wo c() {
-      return this.b();
-   }
-
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, xe d, ggs e) implements ggu {
-      public static final MapCodec<ggu.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayh.z.fieldOf("profile").forGetter(ggu.a::f), xe.a.forGetter(ggu.a::g), ggs.d.optionalFieldOf("trust_level", ggs.a).forGetter(ggu.a::h)
-               )
-               .apply($$0, ggu.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public wo b() {
-         if (!this.d.o().a()) {
-            wo $$0 = this.d.o().b(this.d.c());
-            return (wo)($$0 != null ? $$0 : wo.i());
-         } else {
-            return this.d.d();
-         }
-      }
-
-      @Override
-      public wo c() {
-         wo $$0 = this.b();
-         wo $$1 = this.i();
-         return wo.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public wo d() {
-         wo $$0 = this.i();
-         return wo.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private wo i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return wo.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public ggt.a a() {
-         return ggt.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xe g() {
-         return this.d;
-      }
-
-      public ggs h() {
-         return this.e;
+   public static ggu a(xf $$0, wp $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
    }
 
-   public static record b(wo c, Instant d) implements ggu {
-      public static final MapCodec<ggu.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(wq.a.fieldOf("message").forGetter(ggu.b::d), ayh.q.fieldOf("time_stamp").forGetter(ggu.b::e)).apply($$0, ggu.b::new)
-      );
-
-      @Override
-      public wo b() {
-         return this.c;
+   private static boolean a(xf $$0, wp $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wp $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
       }
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+   private static boolean a(wp $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xm.a).orElse(false);
+   }
 
-      @Override
-      public ggt.a a() {
-         return ggt.a.b;
-      }
+   private static boolean a(xm $$0) {
+      return !$$0.l().equals(xm.b);
+   }
 
-      public wo d() {
-         return this.c;
-      }
+   public boolean a() {
+      return this == c;
+   }
 
-      public Instant e() {
-         return this.d;
-      }
+   @Nullable
+   public flc a(xf $$0) {
+      return switch (this) {
+         case b -> flc.a($$0.c());
+         case c -> flc.c();
+         default -> null;
+      };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

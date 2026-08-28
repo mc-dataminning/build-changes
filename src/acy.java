@@ -1,53 +1,57 @@
-public class acy implements yv<abk> {
-   public static final ym<vl, acy> a = yv.a(acy::a, acy::new);
+import java.util.BitSet;
+import javax.annotation.Nullable;
+
+public class acy implements yw<abl> {
+   public static final yn<wa, acy> a = yw.a(acy::a, acy::new);
    private final int b;
-   private final ji c;
-   private final int d;
-   private final boolean e;
+   private final int c;
+   private final acx d;
+   private final adc e;
 
-   public acy(int $$0, ji $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1.j();
-      this.d = $$2;
-      this.e = $$3;
+   public acy(dzb $$0, esn $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      dfn $$4 = $$0.f();
+      this.b = $$4.h;
+      this.c = $$4.i;
+      this.d = new acx($$0);
+      this.e = new adc($$4, $$1, $$2, $$3);
    }
 
-   private acy(vl $$0) {
+   private acy(wa $$0) {
       this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
+      this.c = $$0.readInt();
+      this.d = new acx($$0, this.b, this.c);
+      this.e = new adc($$0, this.b, this.c);
    }
 
-   private void a(vl $$0) {
+   private void a(wa $$0) {
       $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
+      $$0.q(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public yx<acy> a() {
-      return agd.L;
+   public yy<acy> a() {
+      return age.K;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
+   public int b() {
       return this.b;
    }
 
-   public int f() {
+   public int e() {
+      return this.c;
+   }
+
+   public acx f() {
       return this.d;
    }
 
-   public ji g() {
-      return this.c;
+   public adc g() {
+      return this.e;
    }
 }

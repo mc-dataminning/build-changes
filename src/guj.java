@@ -1,30 +1,21 @@
-public class guj<T extends cmh> extends gth<T, gzh, gdz> {
-   private static final aku a = aku.b("textures/entity/spider/spider.png");
+public class guj extends gtj<chv, hai, gea> {
+   private static final akv a = akv.b("textures/entity/snow_golem.png");
 
-   public guj(gsb.a $$0) {
-      this($$0, gez.cU);
+   public guj(gsd.a $$0) {
+      super($$0, new gea($$0.a(gfb.cS)), 0.5F);
+      this.a(new gwx(this, $$0.d()));
    }
 
-   public guj(gsb.a $$0, gey $$1) {
-      super($$0, new gdz($$0.a($$1)), 0.8F);
-      this.a(new gww<>(this));
-   }
-
-   @Override
-   protected float aV_() {
-      return 180.0F;
-   }
-
-   @Override
-   public aku b(gzh $$0) {
+   public akv a(hai $$0) {
       return a;
    }
 
-   public gzh b() {
-      return new gzh();
+   public hai b() {
+      return new hai();
    }
 
-   public void a(T $$0, gzh $$1, float $$2) {
+   public void a(chv $$0, hai $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.p();
    }
 }

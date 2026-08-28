@@ -16,7 +16,7 @@ public class sl {
    private ji b;
    @Nullable
    private ji c;
-   private final arc d;
+   private final ard d;
    private final Collection<sm> e = Lists.newArrayList();
    private final int f;
    private final Collection<sp> g = Lists.newCopyOnWriteArrayList();
@@ -30,13 +30,13 @@ public class sl {
    private final sy o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dqc r;
+   private final dqd r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dvp t;
+   private dvq t;
 
-   public sl(tf $$0, dqc $$1, arc $$2, sy $$3) {
+   public sl(tf $$0, dqd $$1, ard $$2, sy $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class sl {
       } else {
          this.j = 0;
          this.k = true;
-         dvp $$0 = this.f();
+         dvq $$0 = this.f();
          $$0.c(this.d);
-         enc $$1 = tb.b($$0);
+         end $$1 = tb.b($$0);
          this.d.n().a($$1);
          this.d.a($$1);
          return this;
@@ -169,18 +169,18 @@ public class sl {
       return tb.c(this.t);
    }
 
-   public fat e() {
-      dvp $$0 = this.f();
+   public fau e() {
+      dvq $$0 = this.f();
       return tb.a($$0);
    }
 
-   public dvp f() {
+   public dvq f() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dvp)this.d.c_(this.b);
+         this.t = (dvq)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -189,7 +189,7 @@ public class sl {
       return this.t;
    }
 
-   public arc g() {
+   public ard g() {
       return this.d;
    }
 
@@ -225,9 +225,9 @@ public class sl {
    public void m() {
       if (this.s == null) {
          this.H();
-         fat $$0 = this.e();
-         List<buj> $$1 = this.g().a(buj.class, $$0.g(1.0), $$0x -> !($$0x instanceof cov));
-         $$1.forEach($$0x -> $$0x.a(buj.d.b));
+         fau $$0 = this.e();
+         List<buk> $$1 = this.g().a(buk.class, $$0.g(1.0), $$0x -> !($$0x instanceof cow));
+         $$1.forEach($$0x -> $$0x.a(buk.d.b));
       }
    }
 
@@ -282,7 +282,7 @@ public class sl {
       return this.a.d();
    }
 
-   public dqc u() {
+   public dqd u() {
       return this.r;
    }
 
@@ -329,7 +329,7 @@ public class sl {
 
    public ji D() {
       if (this.c == null) {
-         enc $$0 = tb.b(this.f());
+         end $$0 = tb.b(this.f());
          this.c = new ji($$0.h(), $$0.i(), $$0.j());
       }
 

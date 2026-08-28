@@ -1,63 +1,127 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class edf {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+   final ede a;
+   private final js<esb.a> b;
+   private final ecx c;
+   private final dhs.f d;
+   private final edj e;
+   private final ede f;
+   private final ede g;
+   private final Map<aku<esb.a>, esb> h;
+   private final Map<akv, ede> i;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public static edf a(js.a $$0, aku<ecw> $$1, long $$2) {
+      return a($$0.b(mc.aR).b($$1).a(), $$0.b(mc.aS), $$2);
    }
 
-   public static edf.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new edf.a($$1, $$2);
+   public static edf a(ecw $$0, js<esb.a> $$1, long $$2) {
+      return new edf($$0, $$1, $$2);
    }
 
-   public static edf.a c(long $$0) {
-      return b($$0).a();
+   private edf(ecw $$0, js<esb.a> $$1, final long $$2) {
+      this.a = $$0.d().a($$2).e();
+      this.b = $$1;
+      this.f = this.a.a(akv.b("aquifer")).e();
+      this.g = this.a.a(akv.b("ore")).e();
+      this.h = new ConcurrentHashMap<>();
+      this.i = new ConcurrentHashMap<>();
+      this.e = new edj(this, $$0.g(), $$0.l(), this.a);
+      final boolean $$3 = $$0.n();
+
+      class a implements eck.f {
+         private final Map<eck, eck> d = new HashMap<>();
+
+         private azh a(long $$0) {
+            return new ecs($$2 + $$0);
+         }
+
+         @Override
+         public eck.c a(eck.c $$0) {
+            jr<esb.a> $$1 = $$0.b();
+            if ($$3) {
+               if ($$1.a(eda.a)) {
+                  esb $$2 = esb.a(this.a(0L), new esb.a(-7, 1.0, 1.0));
+                  return new eck.c($$1, $$2);
+               }
+
+               if ($$1.a(eda.b)) {
+                  esb $$3 = esb.a(this.a(1L), new esb.a(-7, 1.0, 1.0));
+                  return new eck.c($$1, $$3);
+               }
+
+               if ($$1.a(eda.j)) {
+                  esb $$4 = esb.b(edf.this.a.a(eda.j.a()), new esb.a(0, 0.0));
+                  return new eck.c($$1, $$4);
+               }
+            }
+
+            esb $$5 = edf.this.a($$1.e().orElseThrow());
+            return new eck.c($$1, $$5);
+         }
+
+         private eck a(eck $$0) {
+            if ($$0 instanceof ery $$1) {
+               azh $$2 = $$3 ? this.a(0L) : edf.this.a.a(akv.b("terrain"));
+               return $$1.a($$2);
+            } else {
+               return (eck)($$0 instanceof ecl.i ? new ecl.i($$2) : $$0);
+            }
+         }
+
+         @Override
+         public eck apply(eck $$0) {
+            return this.d.computeIfAbsent($$0, this::a);
+         }
+      }
+
+      this.c = $$0.i().a(new a());
+      eck.f $$4 = new eck.f() {
+         private final Map<eck, eck> a = new HashMap<>();
+
+         private eck a(eck $$0) {
+            if ($$0 instanceof ecl.j $$1) {
+               return $$1.j().a();
+            } else {
+               return $$0 instanceof ecl.l $$2 ? $$2.k() : $$0;
+            }
+         }
+
+         @Override
+         public eck apply(eck $$0) {
+            return this.a.computeIfAbsent($$0, this::a);
+         }
+      };
+      this.d = new dhs.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   public static edf.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new edf.a($$2, $$3);
+   public esb a(aku<esb.a> $$0) {
+      return this.h.computeIfAbsent($$0, $$1 -> eda.a(this.b, this.a, $$0));
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public ede a(akv $$0) {
+      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
    }
 
-   public static record a(long a, long b) {
-      public edf.a a(long $$0, long $$1) {
-         return new edf.a(this.a ^ $$0, this.b ^ $$1);
-      }
+   public ecx a() {
+      return this.c;
+   }
 
-      public edf.a a(edf.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   public dhs.f b() {
+      return this.d;
+   }
 
-      public edf.a a() {
-         return new edf.a(edf.a(this.a), edf.a(this.b));
-      }
+   public edj c() {
+      return this.e;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public ede d() {
+      return this.f;
+   }
 
-      public long c() {
-         return this.b;
-      }
+   public ede e() {
+      return this.g;
    }
 }

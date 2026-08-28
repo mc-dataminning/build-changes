@@ -1,144 +1,120 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class ggk {
+   private final GameProfile a;
+   private final Supplier<hft> b;
+   private dge c = dge.e;
+   private int d;
    @Nullable
-   private ggk.a a;
+   private wp e;
+   private boolean f = true;
    @Nullable
-   private ggk.b b;
+   private xg g;
+   private xl h;
+   private int i;
 
-   public void a(akt<? extends ke<?>> $$0, List<ki.a> $$1) {
-      if (this.a == null) {
-         this.a = new ggk.a();
-      }
-
-      this.a.a($$0, $$1);
+   public ggk(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.h = c($$1);
+      Supplier<Supplier<hft>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public void a(Map<akt<? extends ke<?>>, axg.a> $$0) {
-      if (this.b == null) {
-         this.b = new ggk.b();
-      }
-
-      $$0.forEach(this.b::a);
+   private static Supplier<hft> a(GameProfile $$0) {
+      fli $$1 = fli.Q();
+      hfu $$2 = $$1.an();
+      CompletableFuture<Optional<hft>> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hft $$5 = hfk.a($$0);
+      return () -> {
+         hft $$3x = $$3.getNow(Optional.empty()).orElse($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   private static <T> ke.a<T> a(kf.b $$0, akt<? extends ke<? extends T>> $$1, axg.a $$2) {
-      ke<T> $$3 = $$0.e($$1);
-      return $$3.a($$2.a($$3));
+   public GameProfile a() {
+      return this.a;
    }
 
-   private kf a(aur $$0, ggk.a $$1, boolean $$2) {
-      jy<gfz> $$3 = gfz.a();
-      kf.b $$4 = $$3.b(gfz.b);
-      Map<akt<? extends ke<?>>, akp.c> $$5 = new HashMap<>();
-      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new akp.c($$2x, axg.a.a)));
-      List<ke.a<?>> $$6 = new ArrayList<>();
-      if (this.b != null) {
-         this.b.a(($$4x, $$5x) -> {
-            if (!$$5x.a()) {
-               if (ki.a($$4x)) {
-                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
-                     List<ki.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
-                     return new akp.c($$3xx, $$5x);
-                  });
-               } else if (!$$2) {
-                  $$6.add(a($$4, $$4x, $$5x));
-               }
-            }
-         });
-      }
-
-      List<jt.b<?>> $$7 = axf.a($$4, $$6);
-
-      kf.b $$8;
-      try {
-         $$8 = akp.a($$5, $$0, $$7, akp.c).e();
-      } catch (Exception var13) {
-         o $$10 = o.a(var13, "Network Registry Load");
-         a($$10, $$5, $$6);
-         throw new z($$10);
-      }
-
-      kf $$12 = $$3.a(gfz.b, $$8).a();
-      $$6.forEach(ke.a::d);
-      return $$12;
+   @Nullable
+   public xg b() {
+      return this.g;
    }
 
-   private static void a(o $$0, Map<akt<? extends ke<?>>, akp.c> $$1, List<ke.a<?>> $$2) {
-      p $$3 = $$0.a("Received Elements and Tags");
-      $$3.a(
-         "Dynamic Registries",
-         () -> $$1.entrySet()
-               .stream()
-               .sorted(Comparator.comparing($$0xx -> ((akt)$$0xx.getKey()).a()))
-               .map(
-                  $$0xx -> String.format(
-                        Locale.ROOT,
-                        "\n\t\t%s: elements=%d tags=%d",
-                        ((akt)$$0xx.getKey()).a(),
-                        ((akp.c)$$0xx.getValue()).a().size(),
-                        ((akp.c)$$0xx.getValue()).b().b()
-                     )
-               )
-               .collect(Collectors.joining())
-      );
-      $$3.a(
-         "Static Registries",
-         () -> $$2.stream()
-               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
-               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
-               .collect(Collectors.joining())
-      );
+   public xl c() {
+      return this.h;
    }
 
-   private void a(ggk.b $$0, kf.b $$1, boolean $$2) {
-      $$0.a(($$2x, $$3) -> {
-         if ($$2 || ki.a($$2x)) {
-            a($$1, $$2x, $$3).d();
-         }
-      });
+   public boolean d() {
+      return this.g != null;
    }
 
-   public kf.b a(aur $$0, kf.b $$1, boolean $$2) {
-      kf $$3;
-      if (this.a != null) {
-         $$3 = this.a($$0, this.a, $$2);
-      } else {
-         if (this.b != null) {
-            this.a(this.b, $$1, !$$2);
-         }
-
-         $$3 = $$1;
-      }
-
-      return $$3.e();
+   protected void a(xg $$0) {
+      this.g = $$0;
+      this.h = $$0.a(coz.b);
    }
 
-   static class a {
-      final Map<akt<? extends ke<?>>, List<ki.a>> a = new HashMap<>();
-
-      public void a(akt<? extends ke<?>> $$0, List<ki.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
+   protected void a(boolean $$0) {
+      this.g = null;
+      this.h = c($$0);
    }
 
-   static class b {
-      private final Map<akt<? extends ke<?>>, axg.a> a = new HashMap<>();
+   private static xl c(boolean $$0) {
+      return $$0 ? xl.c : xl.b;
+   }
 
-      public void a(akt<? extends ke<?>> $$0, axg.a $$1) {
-         this.a.put($$0, $$1);
-      }
+   public dge e() {
+      return this.c;
+   }
 
-      public void a(BiConsumer<? super akt<? extends ke<?>>, ? super axg.a> $$0) {
-         this.a.forEach($$0);
-      }
+   protected void a(dge $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public hft g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fbz h() {
+      return fli.Q().s.R().e(this.a().getName());
+   }
+
+   public void a(@Nullable wp $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wp i() {
+      return this.e;
+   }
+
+   public void b(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

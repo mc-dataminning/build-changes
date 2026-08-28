@@ -1,52 +1,56 @@
-public class giv extends gke {
-   giv(gfw $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class giv extends gkg {
+   private final gkb a;
+
+   protected giv(gfy $$0, double $$1, double $$2, double $$3, gkb $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gji b() {
-      return gji.b;
+   public gjk b() {
+      return gjk.b;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ayy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
-
-      public a(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giv $$8 = new giv($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class b implements gjh<lx> {
-      private final gjz a;
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-      public b(gjz $$0) {
+      public a(gkb $$0) {
          this.a = $$0;
       }
 
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giv $$8 = new giv($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new giv($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gjj<lx> {
+      private final gkb a;
+
+      public b(gkb $$0) {
+         this.a = $$0;
+      }
+
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjg $$8 = new giv($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
          return $$8;
       }
    }

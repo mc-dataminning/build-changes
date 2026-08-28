@@ -20,7 +20,7 @@ public class na implements mi {
 
    private JsonElement b() {
       JsonObject $$0 = new JsonObject();
-      Stream.of(aim.a, ajv.c, ajv.a, aiw.c, aiw.a, aaz.c, aaz.a, age.b, age.a).collect(Collectors.groupingBy(vw.a::a)).forEach(($$1, $$2) -> {
+      Stream.of(ain.a, ajw.c, ajw.a, aix.c, aix.a, aba.c, aba.a, agf.b, agf.a).collect(Collectors.groupingBy(vx.a::a)).forEach(($$1, $$2) -> {
          JsonObject $$3 = new JsonObject();
          $$0.add($$1.a(), $$3);
          $$2.forEach($$1x -> {

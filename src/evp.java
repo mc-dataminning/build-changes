@@ -1,147 +1,109 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
 public class evp {
-   private final evs a;
-   private final azg b;
-   private final js.a c;
-   private final Set<evp.c<?>> d = Sets.newLinkedHashSet();
-
-   evp(evs $$0, azg $$1, js.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public boolean a(bah<?> $$0) {
-      return this.a.b().a($$0);
-   }
-
-   public <T> T b(bah<T> $$0) {
-      return this.a.b().b($$0);
-   }
-
+   private static final Codec<evp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ezw.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               ezw.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, evp::new)
+   );
+   public static final Codec<evp> a = Codec.either(Codec.INT, b).xmap($$0 -> (evp)$$0.map(evp::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
    @Nullable
-   public <T> T c(bah<T> $$0) {
-      return this.a.b().c($$0);
-   }
+   private final ezv c;
+   @Nullable
+   private final ezv d;
+   private final evp.b e;
+   private final evp.a f;
 
-   public void a(aku $$0, Consumer<cwn> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public boolean a(evp.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(evp.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(evp.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public js.a a() {
-      return this.c;
-   }
-
-   public azg b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.c();
-   }
-
-   public arc d() {
-      return this.a.a();
-   }
-
-   public static evp.c<evu> a(evu $$0) {
-      return new evp.c<>(evr.c, $$0);
-   }
-
-   public static evp.c<eyy> a(eyy $$0) {
-      return new evp.c<>(evr.a, $$0);
-   }
-
-   public static evp.c<exd> a(exd $$0) {
-      return new evp.c<>(evr.b, $$0);
-   }
-
-   public static class a {
-      private final evs a;
-      @Nullable
-      private azg b;
-
-      public a(evs $$0) {
-         this.a = $$0;
+   public Set<bai<?>> a() {
+      Builder<bai<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      public evp.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = azg.a($$0);
-         }
-
-         return this;
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
       }
 
-      public evp.a a(azg $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public arc a() {
-         return this.a.a();
-      }
-
-      public evp a(Optional<aku> $$0) {
-         arc $$1 = this.a();
-         MinecraftServer $$2 = $$1.p();
-         azg $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::H_);
-         return new evp(this.a, $$3, $$2.bc().a());
-      }
+      return $$0.build();
    }
 
-   public static enum b implements azu {
-      a("this", eyj.a),
-      b("attacker", eyj.d),
-      c("direct_attacker", eyj.e),
-      d("attacking_player", eyj.b);
+   private evp(Optional<ezv> $$0, Optional<ezv> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-      public static final azu.a<evp.b> e = azu.a(evp.b::values);
-      private final String f;
-      private final bah<? extends buj> g;
-
-      private b(final String $$0, final bah<? extends buj> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public bah<? extends buj> a() {
-         return this.g;
-      }
-
-      public static evp.b a(String $$0) {
-         evp.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+   private evp(@Nullable ezv $$0, @Nullable ezv $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayz.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static record c<T>(evr<T> a, T b) {
+   public static evp a(int $$0) {
+      ezs $$1 = ezs.a((float)$$0);
+      return new evp(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static evp a(int $$0, int $$1) {
+      return new evp(Optional.of(ezs.a((float)$$0)), Optional.of(ezs.a((float)$$1)));
+   }
+
+   public static evp b(int $$0) {
+      return new evp(Optional.of(ezs.a((float)$$0)), Optional.empty());
+   }
+
+   public static evp c(int $$0) {
+      return new evp(Optional.empty(), Optional.of(ezs.a((float)$$0)));
+   }
+
+   public int a(evq $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(evq $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof ezs $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(evq var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(evq var1, int var2);
    }
 }

@@ -1,18 +1,30 @@
-import io.netty.channel.ChannelHandlerContext;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface vx {
-   static void a(ChannelHandlerContext $$0, yv<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new wd.a());
-         $$0.pipeline().remove($$0.name());
-      }
-   }
+public interface vx<T extends vv> {
+   vj a();
 
-   static void b(ChannelHandlerContext $$0, yv<?> $$1) {
-      if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new wd.c());
-         $$0.pipeline().remove($$0.name());
+   yx b();
+
+   yn<ByteBuf, yw<? super T>> c();
+
+   @Nullable
+   yv d();
+
+   public interface a<T extends vv, B extends ByteBuf> {
+      vx<T> a(Function<ByteBuf, B> var1);
+
+      vj a();
+
+      yx b();
+
+      @bag
+      void a(vx.a.a var1);
+
+      @FunctionalInterface
+      public interface a {
+         void accept(yy<?> var1, int var2);
       }
    }
 }

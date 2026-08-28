@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ehr(List<ehr.a> b, jn c, edx d, boolean e) implements eia {
+public class ehr {
    public static final Codec<ehr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehr.a.a.listOf().fieldOf("layers").forGetter(ehr::a),
-               jn.g.fieldOf("direction").forGetter(ehr::b),
-               edx.b.fieldOf("allowed_placement").forGetter(ehr::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ehr::d)
-            )
+      $$0 -> $$0.group(emp.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, ehr::new)
    );
+   public final jr<emp> b;
+   public final float c;
 
-   public static ehr.a a(brn $$0, ekb $$1) {
-      return new ehr.a($$0, $$1);
+   public ehr(jr<emp> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ehr b(brn $$0, ekb $$1) {
-      return new ehr(List.of(a($$0, $$1)), jn.b, edx.c, false);
-   }
-
-   public List<ehr.a> a() {
-      return this.b;
-   }
-
-   public jn b() {
-      return this.c;
-   }
-
-   public edx c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(brn b, ekb c) {
-      public static final Codec<ehr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brn.d.fieldOf("height").forGetter(ehr.a::a), ekb.a.fieldOf("provider").forGetter(ehr.a::b)).apply($$0, ehr.a::new)
-      );
-
-      public brn a() {
-         return this.b;
-      }
-
-      public ekb b() {
-         return this.c;
-      }
+   public boolean a(dhf $$0, dys $$1, azh $$2, ji $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

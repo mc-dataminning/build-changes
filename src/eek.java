@@ -1,19 +1,18 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-record eek(km e) implements edx {
-   public static MapCodec<eek> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(km.g.optionalFieldOf("offset", km.h).forGetter(eek::g)).apply($$0, eek::new));
+class eek implements edy {
+   public static eek a = new eek();
+   public static final MapCodec<eek> e = MapCodec.unit(() -> a);
+
+   private eek() {
+   }
+
+   public boolean a(dhf $$0, ji $$1) {
+      return true;
+   }
 
    @Override
-   public edy<?> a() {
-      return edy.m;
-   }
-
-   public boolean a(dhe $$0, ji $$1) {
-      return $$0.a(null, fbp.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   public km g() {
-      return this.e;
+   public edz<?> a() {
+      return edz.l;
    }
 }

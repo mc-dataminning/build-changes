@@ -1,137 +1,436 @@
-public class dva extends dtx {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private aku h = aku.b("empty");
-   private aku i = aku.b("empty");
-   private akt<eou> j = akt.a(mc.aX, aku.b("empty"));
-   private dva.a k = dva.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int n;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-   public dva(ji $$0, dwv $$1) {
-      super(dtz.G, $$0, $$1);
-   }
+public class dva extends dvg implements duz {
+   public static final int d = 8;
+   public static final int e = 5;
+   private static final int[][] f = new int[54][];
+   private ka<cwo> g = ka.a(5, cwo.j);
+   private int h = -1;
+   private long i;
+   private jn j;
 
-   public aku b() {
-      return this.h;
-   }
-
-   public aku c() {
-      return this.i;
-   }
-
-   public akt<eou> d() {
-      return this.j;
-   }
-
-   public String f() {
-      return this.l;
-   }
-
-   public dva.a j() {
-      return this.k;
-   }
-
-   public int k() {
-      return this.m;
-   }
-
-   public int s() {
-      return this.n;
-   }
-
-   public void a(aku $$0) {
-      this.h = $$0;
-   }
-
-   public void b(aku $$0) {
-      this.i = $$0;
-   }
-
-   public void a(akt<eou> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
-      this.l = $$0;
-   }
-
-   public void a(dva.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", this.k.c());
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.n);
+   public dva(ji $$0, dww $$1) {
+      super(dua.s, $$0, $$1);
+      this.j = $$1.c(dni.b);
    }
 
    @Override
    protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      this.h = aku.a($$0.l("name"));
-      this.i = aku.a($$0.l("target"));
-      this.j = akt.a(mc.aX, aku.a($$0.l("pool")));
-      this.l = $$0.l("final_state");
-      this.k = erm.a($$0, this.m());
-      this.m = $$0.h("placement_priority");
-      this.n = $$0.h("selection_priority");
-   }
+      this.g = ka.a(this.b(), cwo.j);
+      if (!this.b_($$0)) {
+         bsd.b($$0, this.g, $$1);
+      }
 
-   public abr t() {
-      return abr.a(this);
+      this.h = $$0.h("TransferCooldown");
    }
 
    @Override
-   public tq a(jt.a $$0) {
-      return this.e($$0);
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bsd.a($$0, this.g, $$1);
+      }
+
+      $$0.a("TransferCooldown", this.h);
    }
 
-   public void a(arc $$0, int $$1, boolean $$2) {
-      ji $$3 = this.aA_().a(this.m().c(dno.b).a());
-      ke<eou> $$4 = $$0.K_().e(mc.aX);
-      jr<eou> $$5 = $$4.b(this.j);
-      eoo.a($$0, $$5, this.i, $$1, $$3, $$2);
+   @Override
+   public int b() {
+      return this.g.size();
    }
 
-   public static enum a implements azu {
-      a("rollable"),
-      b("aligned");
+   @Override
+   public cwo a(int $$0, int $$1) {
+      this.d_(null);
+      return bsd.a(this.f(), $$0, $$1);
+   }
 
-      public static final azu.a<dva.a> c = azu.a(dva.a::values);
-      private final String d;
+   @Override
+   public void a(int $$0, cwo $$1) {
+      this.d_(null);
+      this.f().set($$0, $$1);
+      $$1.f(this.e_($$1));
+   }
 
-      private a(final String $$0) {
-         this.d = $$0;
+   @Override
+   public void c(dww $$0) {
+      super.c($$0);
+      this.j = $$0.c(dni.b);
+   }
+
+   @Override
+   protected wp j() {
+      return wp.c("container.hopper");
+   }
+
+   public static void a(dgh $$0, ji $$1, dww $$2, dva $$3) {
+      $$3.h--;
+      $$3.i = $$0.ad();
+      if (!$$3.s()) {
+         $$3.d(0);
+         a($$0, $$1, $$2, $$3, () -> a($$0, (duz)$$3));
+      }
+   }
+
+   private static boolean a(dgh $$0, ji $$1, dww $$2, dva $$3, BooleanSupplier $$4) {
+      if ($$0.C) {
+         return false;
+      } else {
+         if (!$$3.s() && $$2.c(dni.c)) {
+            boolean $$5 = false;
+            if (!$$3.c()) {
+               $$5 = a($$0, $$1, $$3);
+            }
+
+            if (!$$3.k()) {
+               $$5 |= $$4.getAsBoolean();
+            }
+
+            if ($$5) {
+               $$3.d(8);
+               a($$0, $$1, $$2);
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private boolean k() {
+      for (cwo $$0 : this.g) {
+         if ($$0.f() || $$0.M() != $$0.k()) {
+            return false;
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      return true;
+   }
+
+   private static boolean a(dgh $$0, ji $$1, dva $$2) {
+      bsc $$3 = b($$0, $$1, $$2);
+      if ($$3 == null) {
+         return false;
+      } else {
+         jn $$4 = $$2.j.g();
+         if (b($$3, $$4)) {
+            return false;
+         } else {
+            for (int $$5 = 0; $$5 < $$2.b(); $$5++) {
+               cwo $$6 = $$2.a($$5);
+               if (!$$6.f()) {
+                  int $$7 = $$6.M();
+                  cwo $$8 = a($$2, $$3, $$2.a($$5, 1), $$4);
+                  if ($$8.f()) {
+                     $$3.e();
+                     return true;
+                  }
+
+                  $$6.e($$7);
+                  if ($$7 == 1) {
+                     $$2.a($$5, $$6);
+                  }
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   private static int[] a(bsc $$0, jn $$1) {
+      if ($$0 instanceof bst $$2) {
+         return $$2.a($$1);
+      } else {
+         int $$3 = $$0.b();
+         if ($$3 < f.length) {
+            int[] $$4 = f[$$3];
+            if ($$4 != null) {
+               return $$4;
+            } else {
+               int[] $$5 = c($$3);
+               f[$$3] = $$5;
+               return $$5;
+            }
+         } else {
+            return c($$3);
+         }
+      }
+   }
+
+   private static int[] c(int $$0) {
+      int[] $$1 = new int[$$0];
+      int $$2 = 0;
+
+      while ($$2 < $$1.length) {
+         $$1[$$2] = $$2++;
       }
 
-      public wo a() {
-         return wo.c("jigsaw_block.joint." + this.d);
+      return $$1;
+   }
+
+   private static boolean b(bsc $$0, jn $$1) {
+      int[] $$2 = a($$0, $$1);
+
+      for (int $$3 : $$2) {
+         cwo $$4 = $$0.a($$3);
+         if ($$4.M() < $$4.k()) {
+            return false;
+         }
       }
+
+      return true;
+   }
+
+   public static boolean a(dgh $$0, duz $$1) {
+      ji $$2 = ji.a($$1.G(), $$1.H() + 1.0, $$1.I());
+      dww $$3 = $$0.a_($$2);
+      bsc $$4 = a($$0, $$1, $$2, $$3);
+      if ($$4 != null) {
+         jn $$5 = jn.a;
+
+         for (int $$6 : a($$4, $$5)) {
+            if (a($$1, $$4, $$6, $$5)) {
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         boolean $$7 = $$1.J() && $$3.m($$0, $$2) && !$$3.a(awp.cC);
+         if (!$$7) {
+            for (clb $$8 : b($$0, $$1)) {
+               if (a($$1, $$8)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static boolean a(duz $$0, bsc $$1, int $$2, jn $$3) {
+      cwo $$4 = $$1.a($$2);
+      if (!$$4.f() && a($$0, $$1, $$4, $$2, $$3)) {
+         int $$5 = $$4.M();
+         cwo $$6 = a($$1, $$0, $$1.a($$2, 1), null);
+         if ($$6.f()) {
+            $$1.e();
+            return true;
+         }
+
+         $$4.e($$5);
+         if ($$5 == 1) {
+            $$1.a($$2, $$4);
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(bsc $$0, clb $$1) {
+      boolean $$2 = false;
+      cwo $$3 = $$1.l().v();
+      cwo $$4 = a(null, $$0, $$3, null);
+      if ($$4.f()) {
+         $$2 = true;
+         $$1.a(cwo.j);
+         $$1.at();
+      } else {
+         $$1.a($$4);
+      }
+
+      return $$2;
+   }
+
+   public static cwo a(@Nullable bsc $$0, bsc $$1, cwo $$2, @Nullable jn $$3) {
+      if ($$1 instanceof bst $$4 && $$3 != null) {
+         int[] $$5 = $$4.a($$3);
+
+         for (int $$6 = 0; $$6 < $$5.length && !$$2.f(); $$6++) {
+            $$2 = b($$0, $$1, $$2, $$5[$$6], $$3);
+         }
+
+         return $$2;
+      }
+
+      int $$7 = $$1.b();
+
+      for (int $$8 = 0; $$8 < $$7 && !$$2.f(); $$8++) {
+         $$2 = b($$0, $$1, $$2, $$8, $$3);
+      }
+
+      return $$2;
+   }
+
+   private static boolean a(bsc $$0, cwo $$1, int $$2, @Nullable jn $$3) {
+      if (!$$0.b($$2, $$1)) {
+         return false;
+      } else {
+         if ($$0 instanceof bst $$4 && !$$4.a($$2, $$1, $$3)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(bsc $$0, bsc $$1, cwo $$2, int $$3, jn $$4) {
+      if (!$$1.a($$0, $$3, $$2)) {
+         return false;
+      } else {
+         if ($$1 instanceof bst $$5 && !$$5.b($$3, $$2, $$4)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static cwo b(@Nullable bsc $$0, bsc $$1, cwo $$2, int $$3, @Nullable jn $$4) {
+      cwo $$5 = $$1.a($$3);
+      if (a($$1, $$2, $$3, $$4)) {
+         boolean $$6 = false;
+         boolean $$7 = $$1.c();
+         if ($$5.f()) {
+            $$1.a($$3, $$2);
+            $$2 = cwo.j;
+            $$6 = true;
+         } else if (a($$5, $$2)) {
+            int $$8 = $$2.k() - $$5.M();
+            int $$9 = Math.min($$2.M(), $$8);
+            $$2.h($$9);
+            $$5.g($$9);
+            $$6 = $$9 > 0;
+         }
+
+         if ($$6) {
+            if ($$7 && $$1 instanceof dva $$10 && !$$10.t()) {
+               int $$11 = 0;
+               if ($$0 instanceof dva $$12 && $$10.i >= $$12.i) {
+                  $$11 = 1;
+               }
+
+               $$10.d(8 - $$11);
+            }
+
+            $$1.e();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static bsc b(dgh $$0, ji $$1, dva $$2) {
+      return a($$0, $$1.a($$2.j));
+   }
+
+   @Nullable
+   private static bsc a(dgh $$0, duz $$1, ji $$2, dww $$3) {
+      return a($$0, $$2, $$3, $$1.G(), $$1.H() + 1.0, $$1.I());
+   }
+
+   public static List<clb> b(dgh $$0, duz $$1) {
+      fau $$2 = $$1.al_().d($$1.G() - 0.5, $$1.H() - 0.5, $$1.I() - 0.5);
+      return $$0.a(clb.class, $$2, bup.a);
+   }
+
+   @Nullable
+   public static bsc a(dgh $$0, ji $$1) {
+      return a($$0, $$1, $$0.a_($$1), (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5);
+   }
+
+   @Nullable
+   private static bsc a(dgh $$0, ji $$1, dww $$2, double $$3, double $$4, double $$5) {
+      bsc $$6 = b($$0, $$1, $$2);
+      if ($$6 == null) {
+         $$6 = a($$0, $$3, $$4, $$5);
+      }
+
+      return $$6;
+   }
+
+   @Nullable
+   private static bsc b(dgh $$0, ji $$1, dww $$2) {
+      djl $$3 = $$2.b();
+      if ($$3 instanceof bsu) {
+         return ((bsu)$$3).a($$2, $$0, $$1);
+      } else if ($$2.x() && $$0.c_($$1) instanceof bsc $$5) {
+         if ($$5 instanceof duf && $$3 instanceof dko) {
+            $$5 = dko.a((dko)$$3, $$2, $$0, $$1, true);
+         }
+
+         return $$5;
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   private static bsc a(dgh $$0, double $$1, double $$2, double $$3) {
+      List<buk> $$4 = $$0.a((buk)null, new fau($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bup.d);
+      return !$$4.isEmpty() ? (bsc)$$4.get($$0.A.a($$4.size())) : null;
+   }
+
+   private static boolean a(cwo $$0, cwo $$1) {
+      return $$0.M() <= $$0.k() && cwo.c($$0, $$1);
+   }
+
+   @Override
+   public double G() {
+      return (double)this.p.u() + 0.5;
+   }
+
+   @Override
+   public double H() {
+      return (double)this.p.v() + 0.5;
+   }
+
+   @Override
+   public double I() {
+      return (double)this.p.w() + 0.5;
+   }
+
+   @Override
+   public boolean J() {
+      return true;
+   }
+
+   private void d(int $$0) {
+      this.h = $$0;
+   }
+
+   private boolean s() {
+      return this.h > 0;
+   }
+
+   private boolean t() {
+      return this.h > 8;
+   }
+
+   @Override
+   protected ka<cwo> f() {
+      return this.g;
+   }
+
+   @Override
+   protected void a(ka<cwo> $$0) {
+      this.g = $$0;
+   }
+
+   public static void a(dgh $$0, ji $$1, dww $$2, buk $$3, dva $$4) {
+      if ($$3 instanceof clb $$5 && !$$5.l().f() && $$3.cR().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.al_())) {
+         a($$0, $$1, $$2, $$4, () -> a((bsc)$$4, $$5));
+      }
+   }
+
+   @Override
+   protected csb a(int $$0, cov $$1) {
+      return new ctc($$0, $$1, this);
    }
 }

@@ -1,86 +1,49 @@
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class cux extends cxj {
-   public static final int a = 20;
-   public static final int b = 15;
-
-   public cux(cwj.a $$0) {
+public class cux extends cwk {
+   public cux(cwk.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cwn $$0, dgg $$1, bvf $$2, int $$3) {
-      if (!($$2 instanceof cov $$4)) {
-         return false;
+   public bsj a(dgh $$0, cow $$1, bsi $$2) {
+      List<bud> $$3 = $$0.a(bud.class, $$1.cR().g(2.0), $$0x -> $$0x != null && $$0x.bL() && $$0x.n() instanceof cju);
+      cwo $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         bud $$5 = $$3.get(0);
+         $$5.a($$5.c() - 0.5F);
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awa.cD, awb.g, 1.0F, 1.0F);
+         $$0.a($$1, ebs.y, $$1.dt());
+         if ($$1 instanceof are $$6) {
+            ap.T.a($$6, $$4, $$5);
+         }
+
+         return bsj.a.a(this.a($$4, $$1, new cwo(cws.wn)));
       } else {
-         cwn $$5 = $$4.d($$0);
-         if ($$5.f()) {
-            return false;
+         fav $$7 = a($$0, $$1, dfp.b.b);
+         if ($$7.d() == fax.a.a) {
+            return bsj.e;
          } else {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if ((double)$$7 < 0.1) {
-               return false;
-            } else {
-               List<cwn> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof arc $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fA(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+            if ($$7.d() == fax.a.b) {
+               ji $$8 = $$7.b();
+               if (!$$0.a($$1, $$8)) {
+                  return bsj.e;
                }
 
-               $$1.a(null, $$4.dB(), $$4.dD(), $$4.dH(), avz.aG, awa.h, 1.0F, 1.0F / ($$1.H_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awj.c.b(this));
-               return true;
+               if ($$0.b_($$8).a(awv.a)) {
+                  $$0.a($$1, $$1.dA(), $$1.dC(), $$1.dG(), awa.cC, awb.g, 1.0F, 1.0F);
+                  $$0.a($$1, ebs.y, $$8);
+                  return bsj.a.a(this.a($$4, $$1, cyn.a(cws.ti, cyo.a)));
+               }
             }
+
+            return bsj.e;
          }
       }
    }
 
-   @Override
-   protected void a(bvf $$0, cpo $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bvf $$6) {
-      $$1.a($$0, $$0.dO(), $$0.dM() + $$5, 0.0F, $$3, $$4);
-   }
-
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public int a(cwn $$0, bvf $$1) {
-      return 72000;
-   }
-
-   @Override
-   public cwp b(cwn $$0) {
-      return cwp.e;
-   }
-
-   @Override
-   public bsi a(dgg $$0, cov $$1, bsh $$2) {
-      cwn $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.d($$3).f();
-      if (!$$1.fV() && !$$4) {
-         return bsi.d;
-      } else {
-         $$1.c($$2);
-         return bsi.c;
-      }
-   }
-
-   @Override
-   public Predicate<cwn> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+   protected cwo a(cwo $$0, cow $$1, cwo $$2) {
+      $$1.b(awk.c.b(this));
+      return cwr.a($$0, $$1, $$2);
    }
 }

@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public class gyg extends gyy {
-   public boolean a;
+public class gyg extends gyj {
+   public boolean a = true;
    @Nullable
-   public dwv b;
+   public faz b;
 }

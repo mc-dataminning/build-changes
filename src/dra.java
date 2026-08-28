@@ -1,33 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dra extends dix {
-   public static final MapCodec<dra> c = b(dra::new);
+public class dra extends djl {
+   public static final MapCodec<dra> b = b(dra::new);
+   public static final dxn c = dxm.F;
 
    @Override
-   public MapCodec<dra> a() {
-      return c;
+   protected MapCodec<? extends dra> a() {
+      return b;
    }
 
-   public dra(dwu.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      return this.a($$0, $$1, $$3) ? this.m() : djm.a.m();
+   protected dra(dwv.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
-      return o($$1.a_($$2.e()));
-   }
-
-   public static boolean o(dwv $$0) {
-      return $$0.a(awo.aV);
+   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
+      return $$4 == jn.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean g(dwv $$0) {
-      return true;
+   public dww a(daf $$0) {
+      dww $$1 = $$0.q().a_($$0.a().d());
+      return this.m().b(c, Boolean.valueOf(o($$1)));
+   }
+
+   protected static boolean o(dww $$0) {
+      return $$0.a(awp.bB);
+   }
+
+   @Override
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(c);
    }
 }

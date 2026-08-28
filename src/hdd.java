@@ -1,17 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hdd() implements hdc<akt<dev>> {
-   public static final hdc.a<hdd, akt<dev>> a = hdc.a.a(MapCodec.unit(new hdd()), akt.a(mc.aZ));
+public record hdd(String b) implements hdh<String> {
+   public static final hdh.a<hdd, String> a = hdh.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hdd::b)).apply($$0, hdd::new)), Codec.STRING
+   );
 
    @Nullable
-   public akt<dev> a(cwn $$0, @Nullable gfw $$1, @Nullable bvf $$2, int $$3, cwl $$4) {
-      deu $$5 = $$0.a(kv.U);
-      return $$5 == null ? null : $$5.a().e().orElse(null);
+   public String a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
+      cyq $$5 = $$0.a(kv.am);
+      return $$5 == null ? null : $$5.b().get(this.b);
    }
 
    @Override
-   public hdc.a<hdd, akt<dev>> a() {
+   public hdh.a<hdd, String> a() {
       return a;
    }
 }

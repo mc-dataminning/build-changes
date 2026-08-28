@@ -1,4 +1,4 @@
-// 24w46a	2026-08-28T03:06:52.12950463	vanilla/Tags for minecraft:block
+// 1.21.4 Pre-Release 1	2026-08-28T03:09:16.424556383	vanilla/Tags for minecraft:block
 5c92e6e6d0a21918a0d7f6652b7b230a122e2fd5 data/minecraft/tags/block/bee_attractive.json
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 e58f5fa3c4fe3090b27304fa8f3c92e23594f085 data/minecraft/tags/block/flower_pots.json
@@ -11,8 +11,8 @@ e85d473045cf55c6f706798af73a74b69875c186 data/minecraft/tags/block/smelts_to_gla
 075c604ae0640d843483f8a2a7e6ef7b2bba6e0f data/minecraft/tags/block/flowers.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data/minecraft/tags/block/stone_ore_replaceables.json
 6299f7ad8a9284576b52d7fc7afac872d389dc57 data/minecraft/tags/block/standing_signs.json
-37c1e07dffc966dafe0401977955eba42bfaeccf data/minecraft/tags/block/copper_ores.json
 837bf053d44a820743fe76f981febdde02bc78a2 data/minecraft/tags/block/underwater_bonemeals.json
+37c1e07dffc966dafe0401977955eba42bfaeccf data/minecraft/tags/block/copper_ores.json
 6d8c49aebfc6e8906a021084112fa9efdc950177 data/minecraft/tags/block/azalea_root_replaceable.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data/minecraft/tags/block/stone_bricks.json
 09908e684acdab9f0e492f79a24a4421bf2c7d0a data/minecraft/tags/block/planks.json
@@ -86,8 +86,8 @@ e096b0c31004c577be60ad20cf513bd59bbaed94 data/minecraft/tags/block/wall_signs.js
 882f7161808179f92ed953b9200fdaf74eec6c36 data/minecraft/tags/block/infiniburn_overworld.json
 a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 ef8b53a5070a43fe7b9c6aa14d13e5b64c516aae data/minecraft/tags/block/incorrect_for_stone_tool.json
-3c4ac3776003f4217a20f6ed7a55765569f41a87 data/minecraft/tags/block/beacon_base_blocks.json
 63155bd2e062478d6c9822ed300f20263356b435 data/minecraft/tags/block/piglin_repellents.json
+3c4ac3776003f4217a20f6ed7a55765569f41a87 data/minecraft/tags/block/beacon_base_blocks.json
 556915eeb5e4d0b1b58a27c2bc8d920443253d36 data/minecraft/tags/block/replaceable.json
 53c57757f5ee96d1a6d3e90d92e8914db0ad1d8c data/minecraft/tags/block/cauldrons.json
 45bb9869c8765a149d367b37f30de3aa7b649c59 data/minecraft/tags/block/dirt.json
@@ -162,8 +162,8 @@ c48bbed46970bff31dd0e696398a3e105fa0fa1f data/minecraft/tags/block/stairs.json
 e552b504472828620709403e49e9aca495f2e6ef data/minecraft/tags/block/snow_layer_can_survive_on.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/minecraft/tags/block/soul_speed_blocks.json
 864b82c0176addd3a0a560b4bfb7cfd232de8a9e data/minecraft/tags/block/hoglin_repellents.json
-01c83076a79daac23b51bcb33b623b81a2c21856 data/minecraft/tags/block/needs_diamond_tool.json
 5b64c6e3c9cd3170bab9758491e742e0307d6617 data/minecraft/tags/block/deepslate_ore_replaceables.json
+01c83076a79daac23b51bcb33b623b81a2c21856 data/minecraft/tags/block/needs_diamond_tool.json
 3970b76be7ae4036da7a0d208370acfa1fc1577c data/minecraft/tags/block/birch_logs.json
 ec1e5e186c92959fded287ecc70517d940073a3d data/minecraft/tags/block/wooden_trapdoors.json
 f729e414f251f498f99f18ca92e3ff59de1b98d7 data/minecraft/tags/block/sniffer_diggable_block.json

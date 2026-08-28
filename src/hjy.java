@@ -1,130 +1,94 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.google.common.base.Suppliers;
 import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class hjy {
-   static final Map<String, hjy> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<hjy> a = Codec.STRING.comapFlatMap($$0 -> {
-      hjy $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, hjy::a);
-   private static final List<hka<?>> i = List.of(hka.a, hka.b, hka.c, hka.d, hka.e, hka.f, hka.g, hka.h, hka.m, hka.l);
-   private static final List<hka<?>> j = Stream.concat(i.stream(), Stream.of(hka.i, hka.j, hka.k)).toList();
-   public static final hjy b = a("world_loaded", "WorldLoaded").a(j).a(hka.n).a(hka.o).b();
-   public static final hjy c = a("performance_metrics", "PerformanceMetrics").a(j).a(hka.r).a(hka.s).a(hka.t).a(hka.u).a(hka.v).a(hka.w).a().b();
-   public static final hjy d = a("world_load_times", "WorldLoadTimes").a(j).a(hka.x).a(hka.y).a().b();
-   public static final hjy e = a("world_unloaded", "WorldUnloaded").a(j).a(hka.p).a(hka.q).b();
-   public static final hjy f = a("advancement_made", "AdvancementMade").a(j).a(hka.D).a(hka.E).a().b();
-   public static final hjy g = a("game_load_times", "GameLoadTimes").a(i).a(hka.z).a(hka.A).a(hka.B).a(hka.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<hka<?>> m;
-   private final boolean n;
-   private final MapCodec<hju> o;
+public class hjy implements AutoCloseable {
+   private static final AtomicInteger a = new AtomicInteger(1);
+   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
+      return $$1;
+   });
+   private final fli c;
+   private final UserApiService d;
+   private final hkg e;
+   private final Path f;
+   private final CompletableFuture<Optional<hke>> g;
+   private final Supplier<hkc> h = Suppliers.memoize(this::c);
 
-   hjy(String $$0, String $$1, List<hka<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = hkb.a($$2).xmap($$0x -> new hju(this, $$0x), hju::b);
+   public hjy(fli $$0, UserApiService $$1, flu $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      hkg.a $$3 = hkg.a();
+      $$2.f().ifPresent($$1x -> $$3.a(hkf.a, $$1x));
+      $$2.e().ifPresent($$1x -> $$3.a(hkf.b, $$1x));
+      $$3.a(hkf.c, UUID.randomUUID());
+      $$3.a(hkf.d, ab.b().b());
+      $$3.a(hkf.e, af.m().a());
+      $$3.a(hkf.f, System.getProperty("os.name"));
+      $$3.a(hkf.g, fli.e().a());
+      $$3.b(hkf.h, fli.bg());
+      this.e = $$3.a();
+      this.f = $$0.q.toPath().resolve("logs/telemetry");
+      this.g = hke.a(this.f);
    }
 
-   public static hjy.a a(String $$0, String $$1) {
-      return new hjy.a($$0, $$1);
+   public hkh a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
+      return new hkh(this.c(), $$0, $$1, $$2);
    }
 
-   public String a() {
-      return this.k;
+   public hkc a() {
+      return this.h.get();
    }
 
-   public List<hka<?>> b() {
-      return this.m;
-   }
-
-   public MapCodec<hju> c() {
-      return this.o;
-   }
-
-   public boolean d() {
-      return this.n;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0, hkb $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
-
-      for (hka<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
+   private hkc c() {
+      if (!this.c.E()) {
+         return hkc.a;
+      } else {
+         TelemetrySession $$0 = this.d.newTelemetrySession(b);
+         if (!$$0.isEnabled()) {
+            return hkc.a;
+         } else {
+            CompletableFuture<Optional<hkb>> $$1 = this.g
+               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<hkb>>>map(hke::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+            return ($$2, $$3) -> {
+               if (!$$2.d() || fli.Q().C()) {
+                  hkg.a $$4 = hkg.a();
+                  $$4.a(this.e);
+                  $$4.a(hkf.m, Instant.now());
+                  $$4.a(hkf.l, $$2.d());
+                  $$3.accept($$4);
+                  hjz $$5 = new hjz($$2, $$4.a());
+                  $$1.thenAccept($$2x -> {
+                     if (!$$2x.isEmpty()) {
+                        ((hkb)$$2x.get()).log($$5);
+                        $$5.a($$0).send();
+                     }
+                  });
+               }
+            };
+         }
       }
-
-      return $$2;
    }
 
-   public <T> boolean a(hka<T> $$0) {
-      return this.m.contains($$0);
+   public Path b() {
+      return this.f;
    }
 
    @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
-   }
-
-   public xc e() {
-      return this.a("title");
-   }
-
-   public xc f() {
-      return this.a("description");
-   }
-
-   private xc a(String $$0) {
-      return wo.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<hjy> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<hka<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public hjy.a a(List<hka<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
-      }
-
-      public <T> hjy.a a(hka<T> $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public hjy.a a() {
-         this.d = true;
-         return this;
-      }
-
-      public hjy b() {
-         hjy $$0 = new hjy(this.a, this.b, List.copyOf(this.c), this.d);
-         if (hjy.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
-         }
-      }
+   public void close() {
+      this.g.thenAccept($$0 -> $$0.ifPresent(hke::close));
    }
 }

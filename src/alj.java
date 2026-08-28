@@ -1,95 +1,97 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class alj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final aku b = aku.b("tick");
-   private static final aku c = aku.b("load");
-   private final MinecraftServer d;
-   private List<il<ex>> e = ImmutableList.of();
-   private boolean f;
-   private ali g;
+public class alj implements auj {
+   private static final Logger b = LogUtils.getLogger();
+   public static final aku<ke<il<ex>>> a = aku.a(akv.b("function"));
+   private static final ako c = new ako(mc.c(a), ".mcfunction");
+   private volatile Map<akv, il<ex>> d = ImmutableMap.of();
+   private final axg<il<ex>> e = new axg<>(($$0x, $$1x) -> this.a($$0x), mc.d(a));
+   private volatile Map<akv, List<il<ex>>> f = Map.of();
+   private final int g;
+   private final CommandDispatcher<ex> h;
 
-   public alj(MinecraftServer $$0, ali $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public Optional<il<ex>> a(akv $$0) {
+      return Optional.ofNullable(this.d.get($$0));
    }
 
-   public CommandDispatcher<ex> a() {
-      return this.d.aG().a();
+   public Map<akv, il<ex>> a() {
+      return this.d;
    }
 
-   public void b() {
-      if (this.d.aP().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<il<ex>> $$0 = this.g.b(c);
-            this.a($$0, c);
+   public List<il<ex>> b(akv $$0) {
+      return this.f.getOrDefault($$0, List.of());
+   }
+
+   public Iterable<akv> b() {
+      return this.f.keySet();
+   }
+
+   public alj(int $$0, CommandDispatcher<ex> $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   @Override
+   public CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
+      CompletableFuture<Map<akv, List<axg.b>>> $$4 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$2);
+      CompletableFuture<Map<akv, CompletableFuture<il<ex>>>> $$5 = CompletableFuture.<Map<akv, aun>>supplyAsync(() -> c.a($$1), $$2).thenCompose($$1x -> {
+         Map<akv, CompletableFuture<il<ex>>> $$2x = Maps.newHashMap();
+         ex $$3x = new ex(ew.a, faz.c, fay.a, null, this.g, "", wo.a, null, null);
+
+         for (Entry<akv, aun> $$4x : $$1x.entrySet()) {
+            akv $$5x = $$4x.getKey();
+            akv $$6 = c.b($$5x);
+            $$2x.put($$6, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return il.a($$6, this.h, $$3x, $$3xx);
+            }, $$2));
          }
 
-         this.a(this.e, b);
-      }
+         CompletableFuture<?>[] $$7 = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$4.thenCombine($$5, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<akv, CompletableFuture<il<ex>>> $$1x = (Map<akv, CompletableFuture<il<ex>>>)$$0x.getSecond();
+         Builder<akv, il<ex>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  b.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
+               }
+
+               return null;
+            }).join());
+         this.d = $$2x.build();
+         this.f = this.e.a((Map<akv, List<axg.b>>)$$0x.getFirst());
+      }, $$3);
    }
 
-   private void a(Collection<il<ex>> $$0, aku $$1) {
-      boq.a().a($$1::toString);
-
-      for (il<ex> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      boq.a().c();
-   }
-
-   public void a(il<ex> $$0, ex $$1) {
-      bor $$2 = boq.a();
-      $$2.a(() -> "function " + $$0.a());
-
+   private static List<String> a(aun $$0) {
       try {
-         in<ex> $$3 = $$0.a(null, this.a());
-         ey.a($$1, $$2x -> hx.a($$2x, $$3, $$1, eu.a));
-      } catch (fa var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
-   }
-
-   public void a(ali $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
-
-   private void b(ali $$0) {
-      this.e = List.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public ex c() {
-      return this.d.aH().a(2).a();
-   }
-
-   public Optional<il<ex>> a(aku $$0) {
-      return this.g.a($$0);
-   }
-
-   public List<il<ex>> b(aku $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<aku> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<aku> e() {
-      return this.g.b();
    }
 }

@@ -1,44 +1,39 @@
-import java.util.Set;
+public class gcf extends gca<gyu> {
+   private final gfc[] a = new gfc[9];
 
-public class gcf extends gdi<gyt> {
-   public static final gfj a = new gax(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public gcf(gfa $$0) {
+   public gcf(gfc $$0) {
       super($$0);
+
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      gfk $$2 = $$1.a(
-         "head",
-         gff.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         gfc.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", gff.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gfc.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", gff.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gfc.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", gff.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gfc.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", gff.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gfc.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", gff.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gfc.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", gff.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gfc.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", gff.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gfc.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", gff.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gfc.a(-3.0F, 14.0F, -6.0F));
-      return gfg.a($$0, 64, 64);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public void a(gyt $$0) {
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("body", gfh.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gfe.a(0.0F, 17.6F, 0.0F));
+      azh $$2 = azh.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), gfh.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gfe.a($$4, 24.6F, $$5));
+      }
+
+      return gfi.a($$0, 64, 32).a(gfl.scaling(4.5F));
+   }
+
+   public void a(gyu $$0) {
       super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
+
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1].e = 0.2F * ayz.a($$0.u * 0.3F + (float)$$1) + 0.4F;
       }
    }
 }

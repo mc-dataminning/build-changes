@@ -1,12 +1,20 @@
-public record afj(wo b) implements yv<abk> {
-   public static final ym<vz, afj> a = ym.a(wq.d, afj::b, afj::new);
+public record afj(long b, long c, boolean d) implements yw<abl> {
+   public static final yn<vl, afj> a = yn.a(yl.j, afj::b, yl.j, afj::e, yl.b, afj::f, afj::new);
 
    @Override
-   public yx<afj> a() {
-      return agd.aT;
+   public yy<afj> a() {
+      return age.aS;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   public long e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

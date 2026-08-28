@@ -1,6 +1,19 @@
 public class aiw {
-   public static final vw.a<aix, vl> a = za.a(vj.d, $$0 -> $$0.a(aiv.g, aiz.a).a(aiv.h, aja.a).a(aiv.f, aiy.a).a(aiv.i, ajb.b).a(abg.b, abi.a));
-   public static final vw<aix> b = a.a(vl::new);
-   public static final vw.a<aip, vl> c = za.b(vj.d, $$0 -> $$0.a(aiv.e, ait.a).a(aiv.c, air.a).a(aiv.b, aiu.a).a(aiv.d, ais.a).a(aiv.a, aiq.a).a(abg.a, abf.a));
-   public static final vw<aip> d = c.a(vl::new);
+   public static final yy<air> a = a("custom_query");
+   public static final yy<aiv> b = a("login_finished");
+   public static final yy<ais> c = a("hello");
+   public static final yy<ait> d = a("login_compression");
+   public static final yy<aiu> e = a("login_disconnect");
+   public static final yy<aiz> f = b("custom_query_answer");
+   public static final yy<aja> g = b("hello");
+   public static final yy<ajb> h = b("key");
+   public static final yy<ajc> i = b("login_acknowledged");
+
+   private static <T extends yw<aiq>> yy<T> a(String $$0) {
+      return new yy<>(yx.b, akv.b($$0));
+   }
+
+   private static <T extends yw<aiy>> yy<T> b(String $$0) {
+      return new yy<>(yx.a, akv.b($$0));
+   }
 }

@@ -1,96 +1,98 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class hkw {
-   static final Logger a = LogUtils.getLogger();
-   final fui b;
-   volatile boolean c;
+   private final fli a;
    @Nullable
-   vi d;
+   private hkx b;
 
-   public hkw(fui $$0) {
-      this.b = $$0;
+   public hkw(fli $$0, flm $$1) {
+      this.a = $$0;
    }
 
-   public void a(final fhj $$0, gho $$1) {
-      final flh $$2 = flh.Q();
-      $$2.aU();
-      $$2.aY().c(wo.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   public void a(gkt $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+   }
 
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (hkw.this.c) {
-                  return;
-               }
+   public void a(double $$0, double $$1) {
+      if (this.b != null) {
+         this.b.a($$0, $$1);
+      }
+   }
 
-               hkw.this.d = vi.a($$0, $$2.n.aD(), $$2.aQ().n());
-               if (hkw.this.c) {
-                  return;
-               }
+   public void a(@Nullable gfy $$0, @Nullable fax $$1) {
+      if (this.b != null && $$1 != null && $$0 != null) {
+         this.b.a($$0, $$1);
+      }
+   }
 
-               gfv $$1 = new gfv(hkw.this.d, $$2, $$0.e($$3), hkw.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.q);
-               }
-
-               if (hkw.this.c) {
-                  return;
-               }
-
-               hkw.this.d.a($$3, $$4, $$1);
-               if (hkw.this.c) {
-                  return;
-               }
-
-               hkw.this.d.a(new aiz($$2.X().c(), $$2.X().b()));
-               $$2.a(ghc.a($$0));
-               $$2.bc().a(glb.c.c, String.valueOf($$0.a), Objects.requireNonNullElse($$0.c, "unknown"));
-               $$2.af().a(hkw.this.d, hhp.c.b);
-            } catch (Exception var5) {
-               $$2.af().i();
-               if (hkw.this.c) {
-                  return;
-               }
-
-               hkw.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               hkv $$5 = new hkv(hkw.this.b, wn.r, wo.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
-            }
-         }
-      }).start();
+   public void a(gfy $$0, ji $$1, dww $$2, float $$3) {
+      if (this.b != null) {
+         this.b.a($$0, $$1, $$2, $$3);
+      }
    }
 
    public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wo.c("disconnect.genericReason"));
-         this.d.n();
+      if (this.b != null) {
+         this.b.c();
+      }
+   }
+
+   public void a(cwo $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
    }
 
    public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
-         }
+      if (this.b != null) {
+         this.b.b();
+         this.b = null;
       }
+   }
+
+   public void c() {
+      if (this.b != null) {
+         this.b();
+      }
+
+      this.b = this.a.n.r.a(this);
+   }
+
+   public void d() {
+      if (this.b != null) {
+         if (this.a.s != null) {
+            this.b.a();
+         } else {
+            this.b();
+         }
+      } else if (this.a.s != null) {
+         this.c();
+      }
+   }
+
+   public void a(hky $$0) {
+      this.a.n.r = $$0;
+      this.a.n.az();
+      if (this.b != null) {
+         this.b.b();
+         this.b = $$0.a(this);
+      }
+   }
+
+   public fli e() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.a.r == null ? false : this.a.r.j() == dge.a;
+   }
+
+   public static wp a(String $$0) {
+      return wp.d("key." + $$0).a(n.r);
+   }
+
+   public void a(cwo $$0, cwo $$1, csl $$2) {
    }
 }

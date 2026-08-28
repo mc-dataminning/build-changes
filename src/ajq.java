@@ -1,20 +1,8 @@
-public record ajq(ajr b) implements yv<ajp> {
-   public static final ym<vl, ajq> a = yv.a(ajq::a, ajq::new);
-
-   private ajq(vl $$0) {
-      this($$0.a(ajr.a));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(ajr.a, this.b);
-   }
-
+public interface ajq extends ajk, vf {
    @Override
-   public yx<ajq> a() {
-      return aju.a;
+   default vj b() {
+      return vj.c;
    }
 
-   public void a(ajp $$0) {
-      $$0.a(this);
-   }
+   void a(ajr var1);
 }

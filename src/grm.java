@@ -1,20 +1,21 @@
-public class grm extends gqv<chd, gzh, gbo> {
-   private static final aku a = aku.b("textures/entity/cow/cow.png");
+public class grm extends gqx<chc, gya, gbo> {
+   private static final akv a = akv.b("textures/entity/chicken.png");
 
-   public grm(gsb.a $$0) {
-      super($$0, new gbo($$0.a(gez.af)), new gbo($$0.a(gez.ag)), 0.7F);
+   public grm(gsd.a $$0) {
+      super($$0, new gbo($$0.a(gfb.X)), new gbo($$0.a(gfb.Y)), 0.3F);
    }
 
-   @Override
-   public aku b(gzh $$0) {
+   public akv a(gya $$0) {
       return a;
    }
 
-   public gzh a() {
-      return new gzh();
+   public gya a() {
+      return new gya();
    }
 
-   public void a(chd $$0, gzh $$1, float $$2) {
+   public void a(chc $$0, gya $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = ayz.h($$2, $$0.cc, $$0.bY);
+      $$1.b = ayz.h($$2, $$0.ca, $$0.bZ);
    }
 }

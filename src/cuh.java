@@ -1,2 +1,2 @@
-public interface cuh {
+public record cuh(cys a) implements cui {
 }

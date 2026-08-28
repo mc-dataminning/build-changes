@@ -1,148 +1,133 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
-
 public class hef {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 64;
-   private static final int c = 64;
-   private static final int d = 32;
-
-   public static CompletableFuture<aku> a(aku $$0, Path $$1, String $$2, boolean $$3) {
-      return CompletableFuture.<fes>supplyAsync(() -> {
-         fes $$3x;
-         try {
-            $$3x = a($$1, $$2);
-         } catch (IOException var5) {
-            throw new UncheckedIOException(var5);
-         }
-
-         return $$3 ? a($$3x, $$2) : $$3x;
-      }, af.i().a("downloadTexture")).thenCompose($$1x -> a($$0, $$1x));
-   }
-
-   private static fes a(Path $$0, String $$1) throws IOException {
-      if (Files.isRegularFile($$0)) {
-         a.debug("Loading HTTP texture from local cache ({})", $$0);
-
-         fes var17;
-         try (InputStream $$2 = Files.newInputStream($$0)) {
-            var17 = fes.a($$2);
-         }
-
-         return var17;
-      } else {
-         HttpURLConnection $$3 = null;
-         a.debug("Downloading HTTP texture from {} to {}", $$1, $$0);
-         URI $$4 = URI.create($$1);
-
-         fes $$7;
-         try {
-            $$3 = (HttpURLConnection)$$4.toURL().openConnection(flh.Q().Z());
-            $$3.setDoInput(true);
-            $$3.setDoOutput(false);
-            $$3.connect();
-            int $$5 = $$3.getResponseCode();
-            if ($$5 / 100 != 2) {
-               throw new IOException("Failed to open " + $$4 + ", HTTP error code: " + $$5);
-            }
-
-            byte[] $$6 = $$3.getInputStream().readAllBytes();
-
-            try {
-               v.c($$0.getParent());
-               Files.write($$0, $$6);
-            } catch (IOException var13) {
-               a.warn("Failed to cache texture {} in {}", $$1, $$0);
-            }
-
-            $$7 = fes.a($$6);
-         } finally {
-            if ($$3 != null) {
-               $$3.disconnect();
-            }
-         }
-
-         return $$7;
+   private static final int a = 96;
+   private static final float[] b = af.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
       }
+   });
+
+   private hef() {
    }
 
-   private static CompletableFuture<aku> a(aku $$0, fes $$1) {
-      flh $$2 = flh.Q();
-      return CompletableFuture.supplyAsync(() -> {
-         $$2.aa().a($$0, new hdz($$1));
-         return $$0;
-      }, $$2);
-   }
-
-   private static fes a(fes $$0, String $$1) {
-      int $$2 = $$0.b();
-      int $$3 = $$0.a();
-      if ($$3 == 64 && ($$2 == 32 || $$2 == 64)) {
-         boolean $$4 = $$2 == 32;
-         if ($$4) {
-            fes $$5 = new fes(64, 64, true);
-            $$5.a($$0);
-            $$0.close();
-            $$0 = $$5;
-            $$5.a(0, 32, 64, 32, 0);
-            $$5.a(4, 16, 16, 32, 4, 4, true, false);
-            $$5.a(8, 16, 16, 32, 4, 4, true, false);
-            $$5.a(0, 20, 24, 32, 4, 12, true, false);
-            $$5.a(4, 20, 16, 32, 4, 12, true, false);
-            $$5.a(8, 20, 8, 32, 4, 12, true, false);
-            $$5.a(12, 20, 16, 32, 4, 12, true, false);
-            $$5.a(44, 16, -8, 32, 4, 4, true, false);
-            $$5.a(48, 16, -8, 32, 4, 4, true, false);
-            $$5.a(40, 20, 0, 32, 4, 12, true, false);
-            $$5.a(44, 20, -8, 32, 4, 12, true, false);
-            $$5.a(48, 20, -16, 32, 4, 12, true, false);
-            $$5.a(52, 20, -8, 32, 4, 12, true, false);
-         }
-
-         b($$0, 0, 0, 32, 16);
-         if ($$4) {
-            a($$0, 32, 0, 64, 32);
-         }
-
-         b($$0, 0, 16, 64, 32);
-         b($$0, 16, 48, 48, 64);
+   public static fet[] a(fet[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
          return $$0;
       } else {
-         $$0.close();
-         throw new IllegalStateException("Discarding incorrectly sized (" + $$3 + "x" + $$2 + ") skin texture from " + $$1);
+         fet[] $$2 = new fet[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
+
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
+            } else {
+               fet $$5 = $$2[$$4 - 1];
+               fet $$6 = new fet($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
+
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
+
+               $$2[$$4] = $$6;
+            }
+         }
+
+         return $$2;
       }
    }
 
-   private static void a(fes $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            int $$7 = $$0.a($$5, $$6);
-            if (axj.a($$7) < 128) {
-               return;
+   private static boolean a(fet $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if (axk.a($$0.a($$1, $$2)) == 0) {
+               return true;
             }
          }
       }
 
-      for (int $$8 = $$1; $$8 < $$3; $$8++) {
-         for (int $$9 = $$2; $$9 < $$4; $$9++) {
-            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
          }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return axk.a($$9, $$10, $$11, $$12);
+      } else {
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return axk.a($$13, $$14, $$15, $$16);
       }
    }
 
-   private static void b(fes $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            $$0.a($$5, $$6, axj.f($$0.a($$5, $$6)));
-         }
-      }
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
+   }
+
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

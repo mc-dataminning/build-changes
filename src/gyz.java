@@ -1,9 +1,11 @@
-public class gyz extends gxm {
-   public boolean b;
-   public boolean c;
-   public buz d = buz.b;
-   public cld.a j = cld.a.h;
-   public int k;
-   public int l;
-   public float m;
+public class gyz extends gyk {
+   public cjk a;
+   public cjf h;
+   public cwo i;
+
+   public gyz() {
+      this.a = cjk.a;
+      this.h = cjf.a;
+      this.i = cwo.j;
+   }
 }

@@ -1,47 +1,42 @@
-public class ccz extends ccd {
-   private final cja a;
-   private int b;
+import java.util.EnumSet;
 
-   public ccz(cja $$0) {
+public class ccz extends cce {
+   private final bvi a;
+   private double b;
+   private double c;
+   private int d;
+
+   public ccz(bvi $$0) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void d() {
-      this.a.gV();
-      this.h();
-   }
-
-   private void h() {
-      avy $$0 = this.a.gU();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return false;
+      this.a(EnumSet.of(cce.a.a, cce.a.b));
    }
 
    @Override
    public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dZ().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fi() && this.a.dZ().a(10) == 0;
-      } else {
-         return false;
-      }
+      return this.a.dY().i() < 0.02F;
    }
 
-   private void a(cja $$0) {
-      this.b = -$$0.gZ();
+   @Override
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void d() {
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
    }
 
    @Override
    public boolean V_() {
       return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.L().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

@@ -1,83 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class gog implements goj<dtu> {
+   private final gcv a;
+   private final gcv b;
 
-public class gog implements aup {
-   private Map<dtz<?>, goh<?>> d = ImmutableMap.of();
-   private final fnz e;
-   private final Supplier<gew> f;
-   public dgg a;
-   public fkp b;
-   public faw c;
-   private final gmz g;
-   private final hbi h;
-   private final gsz i;
-   private final grz j;
-
-   public gog(fnz $$0, Supplier<gew> $$1, gmz $$2, hbi $$3, gsz $$4, grz $$5) {
-      this.i = $$4;
-      this.h = $$3;
-      this.j = $$5;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public gog(gok.a $$0) {
+      this($$0.f());
    }
 
-   @Nullable
-   public <E extends dtx> goh<E> a(E $$0) {
-      return (goh<E>)this.d.get($$0.p());
+   public gog(gey $$0) {
+      this.a = new gcv.a($$0.a(gfb.w), gmh::d);
+      this.b = new gcv.a($$0.a(gfb.v), gmh::d);
    }
 
-   public void a(dgg $$0, fkp $$1, faw $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
+   public static gfi b() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("main", gfh.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gfe.a);
+      $$1.a("left_leg", gfh.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gfe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", gfh.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gfe.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return gfi.a($$0, 64, 64);
    }
 
-   public <E extends dtx> void a(E $$0, float $$1, ffs $$2, glv $$3) {
-      goh<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.p().a($$0.m())) {
-            if ($$4.a($$0, this.b.b())) {
-               try {
-                  a($$4, $$0, $$1, $$2, $$3);
-               } catch (Throwable var9) {
-                  o $$6 = o.a(var9, "Rendering Block Entity");
-                  p $$7 = $$6.a("Block Entity Details");
-                  $$0.a($$7);
-                  throw new z($$6);
-               }
-            }
-         }
+   public static gfi c() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("main", gfh.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gfe.a);
+      $$1.a("left_leg", gfh.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gfe.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", gfh.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gfe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return gfi.a($$0, 64, 64);
+   }
+
+   public void a(dtu $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      dgh $$6 = $$0.i();
+      if ($$6 != null) {
+         hgy $$7 = gms.a($$0.c());
+         dww $$8 = $$0.m();
+         dlt.c<? extends dtu> $$9 = dlt.a(dua.z, dje::i, dje::h, dko.c, $$8, $$6, $$0.aA_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new gom<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dje.b) == dxj.a ? this.a : this.b, $$8.c(dje.aF), $$7, $$10, $$5, false);
       }
    }
 
-   private static <T extends dtx> void a(goh<T> $$0, T $$1, float $$2, ffs $$3, glv $$4) {
-      dgg $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = glr.a($$5, $$1.aA_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, hec.d);
+   public void a(fft $$0, glx $$1, int $$2, int $$3, hgy $$4) {
+      this.a($$0, $$1, this.a, jn.d, $$4, $$2, $$3, false);
+      this.a($$0, $$1, this.b, jn.d, $$4, $$2, $$3, true);
    }
 
-   public void a(@Nullable dgg $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(auo $$0) {
-      goi.a $$1 = new goi.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
-      this.d = goj.a($$1);
+   private void a(fft $$0, glx $$1, gcv $$2, jn $$3, hgy $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      ffx $$8 = $$4.a($$1, gmh::d);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

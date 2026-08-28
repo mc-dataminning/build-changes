@@ -1,17 +1,20 @@
-public abstract class hhs extends hhr implements hik {
-   private boolean n;
+import java.util.UUID;
 
-   protected hhs(avy $$0, awa $$1, azg $$2) {
-      super($$0, $$1, $$2);
+public interface hhs {
+   void a(UUID var1, hhs.b var2);
+
+   void a(UUID var1, hhs.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public static enum b {
+      a,
+      b;
    }
 }

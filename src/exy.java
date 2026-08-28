@@ -1,6 +1,5 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
@@ -8,96 +7,87 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class exy extends exc {
-   private static final Logger b = LogUtils.getLogger();
+public class exy extends exd {
    public static final MapCodec<exy> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  wq.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  evp.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  exy.a.c.optionalFieldOf("target", exy.a.a).forGetter($$0x -> $$0x.e)
+                  wr.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  exc.a(256).forGetter($$0x -> $$0x.c),
+                  evq.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, exy::new)
    );
-   private final Optional<wo> c;
-   private final Optional<evp.b> d;
-   private final exy.a e;
+   private final List<wp> b;
+   private final exc c;
+   private final Optional<evq.b> d;
 
-   private exy(List<eyy> $$0, Optional<wo> $$1, Optional<evp.b> $$2, exy.a $$3) {
+   public exy(List<eyz> $$0, List<wp> $$1, exc $$2, Optional<evq.b> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public exe<exy> b() {
-      return exf.p;
+   public exf<exy> b() {
+      return exg.A;
    }
 
    @Override
-   public Set<bah<?>> a() {
-      return this.d.<Set<bah<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<wo> a(evp $$0, @Nullable evp.b $$1) {
-      if ($$1 != null) {
-         buj $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ex $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return wr.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
+   public Set<bai<?>> a() {
+      return this.d.<Set<bai<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cwn a(cwn $$0, evp $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   public cwo a(cwo $$0, evq $$1) {
+      $$0.a(kv.j, czh.a, $$1x -> new czh(this.a($$1x, $$1)));
       return $$0;
    }
 
-   public static exc.a<?> a(wo $$0, exy.a $$1) {
-      return a($$2 -> new exy($$2, Optional.of($$0), Optional.empty(), $$1));
+   private List<wp> a(@Nullable czh $$0, evq $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
+      } else {
+         UnaryOperator<wp> $$2 = exz.a($$1, this.d.orElse(null));
+         List<wp> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
+      }
    }
 
-   public static exc.a<?> a(wo $$0, exy.a $$1, evp.b $$2) {
-      return a($$3 -> new exy($$3, Optional.of($$0), Optional.of($$2), $$1));
+   public static exy.a c() {
+      return new exy.a();
    }
 
-   public static enum a implements azu {
-      a("custom_name"),
-      b("item_name");
+   public static class a extends exd.a<exy.a> {
+      private Optional<evq.b> a = Optional.empty();
+      private final Builder<wp> b = ImmutableList.builder();
+      private exc c = exc.a.b;
 
-      public static final Codec<exy.a> c = azu.a(exy.a::values);
-      private final String d;
+      public exy.a a(exc $$0) {
+         this.c = $$0;
+         return this;
+      }
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public exy.a a(evq.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public exy.a a(wp $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      protected exy.a a() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.d;
-      }
-
-      public ku<wo> a() {
-         return switch (this) {
-            case a -> kv.g;
-            case b -> kv.h;
-         };
+      public exe b() {
+         return new exy(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

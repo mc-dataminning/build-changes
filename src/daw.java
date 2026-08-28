@@ -1,66 +1,70 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
 
-public class daw extends das {
-   private static final day c = day.a(cwr.vu);
+public class daw extends dat {
+   private static final daz c = daz.a(cws.rv);
+   private static final daz d = daz.a(cws.pZ);
+   private static final daz e = daz.a(cws.vu);
 
-   public daw(dap $$0) {
+   public daw(daq $$0) {
       super($$0);
    }
 
-   public boolean a(daq $$0, dgg $$1) {
+   public boolean a(dar $$0, dgh $$1) {
       if ($$0.e() < 2) {
          return false;
       } else {
          boolean $$2 = false;
-         boolean $$3 = false;
+         int $$3 = 0;
 
          for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cwn $$5 = $$0.a($$4);
+            cwo $$5 = $$0.a($$4);
             if (!$$5.f()) {
-               if ($$5.h() instanceof cvl) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
                   $$2 = true;
-               } else {
-                  if (!c.a($$5)) {
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
                      return false;
                   }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
+               } else if (!e.a($$5)) {
+                  return false;
                }
             }
          }
 
-         return $$3 && $$2;
+         return $$2 && $$3 >= 1;
       }
    }
 
-   public cwn a(daq $$0, jt.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cwn $$3 = null;
+   public cwo a(dar $$0, jt.a $$1) {
+      List<czd> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwn $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cvl $$7) {
-            $$2.add($$7.b().f());
-         } else if (c.a($$5)) {
-            $$3 = $$5.c(1);
+         cwo $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               czd $$6 = $$5.a(kv.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
          }
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kv.ae, czc.a, $$2, czc::a);
-         return $$3;
-      } else {
-         return cwn.j;
-      }
+      cwo $$7 = new cwo(cws.vt, 3);
+      $$7.b(kv.af, new cze($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public dbm<daw> a() {
-      return dbm.i;
+   public dbn<daw> a() {
+      return dbn.g;
    }
 }

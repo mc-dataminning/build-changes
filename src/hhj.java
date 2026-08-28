@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface hhj {
+   void a(hhj.a var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hhj {
+   public interface a {
+      hhm a(akv var1);
+   }
 }

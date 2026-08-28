@@ -14,12 +14,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class fk implements ArgumentType<hm> {
    private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("argument.entity.toomany"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("argument.player.toomany"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("argument.player.entities"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wo.c("argument.entity.notfound.entity"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wo.c("argument.entity.notfound.player"));
-   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wo.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.entity.toomany"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("argument.player.toomany"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("argument.player.entities"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wp.c("argument.entity.notfound.entity"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wp.c("argument.entity.notfound.player"));
+   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wp.c("argument.entity.selector.not_allowed"));
    final boolean h;
    final boolean i;
 
@@ -32,7 +32,7 @@ public class fk implements ArgumentType<hm> {
       return new fk(true, false);
    }
 
-   public static buj a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static buk a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((hm)$$0.getArgument($$1, hm.class)).a((ex)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class fk implements ArgumentType<hm> {
       return new fk(false, false);
    }
 
-   public static Collection<? extends buj> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends buj> $$2 = c($$0, $$1);
+   public static Collection<? extends buk> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends buk> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,11 +49,11 @@ public class fk implements ArgumentType<hm> {
       }
    }
 
-   public static Collection<? extends buj> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends buk> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((hm)$$0.getArgument($$1, hm.class)).b((ex)$$0.getSource());
    }
 
-   public static Collection<ard> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<are> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((hm)$$0.getArgument($$1, hm.class)).d((ex)$$0.getSource());
    }
 
@@ -61,7 +61,7 @@ public class fk implements ArgumentType<hm> {
       return new fk(true, true);
    }
 
-   public static ard e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static are e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((hm)$$0.getArgument($$1, hm.class)).c((ex)$$0.getSource());
    }
 
@@ -69,8 +69,8 @@ public class fk implements ArgumentType<hm> {
       return new fk(false, true);
    }
 
-   public static Collection<ard> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      List<ard> $$2 = ((hm)$$0.getArgument($$1, hm.class)).d((ex)$$0.getSource());
+   public static Collection<are> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      List<are> $$2 = ((hm)$$0.getArgument($$1, hm.class)).d((ex)$$0.getSource());
       if ($$2.isEmpty()) {
          throw e.create();
       } else {

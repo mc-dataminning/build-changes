@@ -1,76 +1,17 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Locale;
 
-public class ghg extends ghb {
-   final Supplier<hfo> g;
+public enum ghg {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   ghg(UUID $$0, Instant $$1, UUID $$2, Supplier<hfo> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   private final String d;
+
+   private ghg(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
    }
 
-   public Supplier<hfo> a() {
-      return this.g;
-   }
-
-   public ghg c() {
-      ghg $$0 = new ghg(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
-
-   @Override
-   public fui a(fui $$0, ghf $$1) {
-      return new fyv($$0, $$1, this);
-   }
-
-   public static class a extends ghb.a<ghg> {
-      public a(ghg $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, Supplier<hfo> $$1, AbuseReportLimits $$2) {
-         super(new ghg(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public ghb.b c() {
-         if (this.a.e == null) {
-            return ghb.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghb.b.d : super.c();
-         }
-      }
-
-      @Override
-      public Either<ghb.c, ghb.b> a(ghf $$0) {
-         ghb.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            hfo $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new ghb.c(this.a.a, ghe.b, $$6));
-         }
-      }
+   public String a() {
+      return this.d;
    }
 }

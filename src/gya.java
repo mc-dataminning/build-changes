@@ -1,4 +1,4 @@
-public class gya extends gzh {
+public class gya extends gzj {
    public float a;
-   public boolean b;
+   public float b;
 }

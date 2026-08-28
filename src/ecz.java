@@ -1,71 +1,70 @@
-public class ecz {
-   public static final akt<esa.a> a = a("temperature");
-   public static final akt<esa.a> b = a("vegetation");
-   public static final akt<esa.a> c = a("continentalness");
-   public static final akt<esa.a> d = a("erosion");
-   public static final akt<esa.a> e = a("temperature_large");
-   public static final akt<esa.a> f = a("vegetation_large");
-   public static final akt<esa.a> g = a("continentalness_large");
-   public static final akt<esa.a> h = a("erosion_large");
-   public static final akt<esa.a> i = a("ridge");
-   public static final akt<esa.a> j = a("offset");
-   public static final akt<esa.a> k = a("aquifer_barrier");
-   public static final akt<esa.a> l = a("aquifer_fluid_level_floodedness");
-   public static final akt<esa.a> m = a("aquifer_lava");
-   public static final akt<esa.a> n = a("aquifer_fluid_level_spread");
-   public static final akt<esa.a> o = a("pillar");
-   public static final akt<esa.a> p = a("pillar_rareness");
-   public static final akt<esa.a> q = a("pillar_thickness");
-   public static final akt<esa.a> r = a("spaghetti_2d");
-   public static final akt<esa.a> s = a("spaghetti_2d_elevation");
-   public static final akt<esa.a> t = a("spaghetti_2d_modulator");
-   public static final akt<esa.a> u = a("spaghetti_2d_thickness");
-   public static final akt<esa.a> v = a("spaghetti_3d_1");
-   public static final akt<esa.a> w = a("spaghetti_3d_2");
-   public static final akt<esa.a> x = a("spaghetti_3d_rarity");
-   public static final akt<esa.a> y = a("spaghetti_3d_thickness");
-   public static final akt<esa.a> z = a("spaghetti_roughness");
-   public static final akt<esa.a> A = a("spaghetti_roughness_modulator");
-   public static final akt<esa.a> B = a("cave_entrance");
-   public static final akt<esa.a> C = a("cave_layer");
-   public static final akt<esa.a> D = a("cave_cheese");
-   public static final akt<esa.a> E = a("ore_veininess");
-   public static final akt<esa.a> F = a("ore_vein_a");
-   public static final akt<esa.a> G = a("ore_vein_b");
-   public static final akt<esa.a> H = a("ore_gap");
-   public static final akt<esa.a> I = a("noodle");
-   public static final akt<esa.a> J = a("noodle_thickness");
-   public static final akt<esa.a> K = a("noodle_ridge_a");
-   public static final akt<esa.a> L = a("noodle_ridge_b");
-   public static final akt<esa.a> M = a("jagged");
-   public static final akt<esa.a> N = a("surface");
-   public static final akt<esa.a> O = a("surface_secondary");
-   public static final akt<esa.a> P = a("clay_bands_offset");
-   public static final akt<esa.a> Q = a("badlands_pillar");
-   public static final akt<esa.a> R = a("badlands_pillar_roof");
-   public static final akt<esa.a> S = a("badlands_surface");
-   public static final akt<esa.a> T = a("iceberg_pillar");
-   public static final akt<esa.a> U = a("iceberg_pillar_roof");
-   public static final akt<esa.a> V = a("iceberg_surface");
-   public static final akt<esa.a> W = a("surface_swamp");
-   public static final akt<esa.a> X = a("calcite");
-   public static final akt<esa.a> Y = a("gravel");
-   public static final akt<esa.a> Z = a("powder_snow");
-   public static final akt<esa.a> aa = a("packed_ice");
-   public static final akt<esa.a> ab = a("ice");
-   public static final akt<esa.a> ac = a("soul_sand_layer");
-   public static final akt<esa.a> ad = a("gravel_layer");
-   public static final akt<esa.a> ae = a("patch");
-   public static final akt<esa.a> af = a("netherrack");
-   public static final akt<esa.a> ag = a("nether_wart");
-   public static final akt<esa.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private static akt<esa.a> a(String $$0) {
-      return akt.a(mc.aS, aku.b($$0));
+public record ecz(int g, int h, int i, int j) {
+   public static final Codec<ecz> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(ear.e, ear.d).fieldOf("min_y").forGetter(ecz::c),
+                  Codec.intRange(0, ear.c).fieldOf("height").forGetter(ecz::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(ecz::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(ecz::f)
+               )
+               .apply($$0, ecz::new)
+      )
+      .comapFlatMap(ecz::a, Function.identity());
+   protected static final ecz b = a(-64, 384, 1, 2);
+   protected static final ecz c = a(0, 128, 1, 2);
+   protected static final ecz d = a(0, 128, 2, 1);
+   protected static final ecz e = a(-64, 192, 1, 2);
+   protected static final ecz f = a(0, 256, 2, 1);
+
+   private static DataResult<ecz> a(ecz $$0) {
+      if ($$0.c() + $$0.d() > ear.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (ear.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public static esa a(js<esa.a> $$0, edd $$1, akt<esa.a> $$2) {
-      jr<esa.a> $$3 = $$0.b($$2);
-      return esa.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static ecz a(int $$0, int $$1, int $$2, int $$3) {
+      ecz $$4 = new ecz($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return kc.c(this.f());
+   }
+
+   public int b() {
+      return kc.c(this.e());
+   }
+
+   public ecz a(dgj $$0) {
+      int $$1 = Math.max(this.g, $$0.L_());
+      int $$2 = Math.min(this.g + this.h, $$0.an() + 1) - $$1;
+      return new ecz($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

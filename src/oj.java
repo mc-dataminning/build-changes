@@ -1,21 +1,21 @@
 import java.util.function.Function;
 
 public class oj {
-   private final Function<dap, dbc<?>> a;
+   private final Function<daq, dbd<?>> a;
 
-   public oj(Function<dap, dbc<?>> $$0) {
+   public oj(Function<daq, dbd<?>> $$0) {
       this.a = $$0;
    }
 
-   public static oj a(Function<dap, dbc<?>> $$0) {
+   public static oj a(Function<daq, dbd<?>> $$0) {
       return new oj($$0);
    }
 
    public void a(ob $$0, String $$1) {
-      this.a($$0, akt.a(mc.bk, aku.a($$1)));
+      this.a($$0, aku.a(mc.bk, akv.a($$1)));
    }
 
-   public void a(ob $$0, akt<dbc<?>> $$1) {
-      $$0.a($$1, this.a.apply(dap.d), null);
+   public void a(ob $$0, aku<dbd<?>> $$1) {
+      $$0.a($$1, this.a.apply(daq.d), null);
    }
 }

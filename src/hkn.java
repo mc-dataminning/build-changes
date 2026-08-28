@@ -1,77 +1,37 @@
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public class hkn implements hks {
-   private static final int a = 6000;
-   private static final wo b = wo.c("tutorial.find_tree.title");
-   private static final wo c = wo.c("tutorial.find_tree.description");
-   private final hkr d;
-   @Nullable
-   private frc e;
-   private int f;
+public class hkn {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public hkn(hkr $$0) {
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
+   }
+
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hkt.f);
-      } else {
-         flh $$0 = this.d.e();
-         if (this.f == 1) {
-            gkt $$1 = $$0.t;
-            if ($$1 != null && (b($$1) || a($$1))) {
-               this.d.a(hkt.e);
-               return;
-            }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new frc($$0.h, frc.a.c, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(gfw $$0, faw $$1) {
-      if ($$1.d() == faw.a.b) {
-         dwv $$2 = $$0.a_(((fau)$$1).b());
-         if ($$2.a(awo.al)) {
-            this.d.a(hkt.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(cwn $$0) {
-      if ($$0.a(awx.aQ)) {
-         this.d.a(hkt.e);
-      }
-   }
-
-   private static boolean b(gkt $$0) {
-      return $$0.gi().a_($$0x -> $$0x.a(awx.aQ));
-   }
-
-   public static boolean a(gkt $$0) {
-      for (jr<djk> $$1 : mb.e.c(awo.al)) {
-         djk $$2 = $$1.a();
-         if ($$0.m().a(awj.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(hkc $$0) {
+      this.b.ifPresent($$1 -> $$0.send(hkd.e, $$1x -> {
+            $$1x.a(hkf.p, this.a($$1));
+            $$1x.a(hkf.q, (int)this.c);
+         }));
    }
 }

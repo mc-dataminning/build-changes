@@ -7,7 +7,7 @@ public class ta implements so.c {
    private static final int d = 6;
    private final int e;
    private int f;
-   private fat g;
+   private fau g;
    private final ji.a h;
    private final ji i;
    private final boolean j;
@@ -17,20 +17,20 @@ public class ta implements so.c {
    public ta(ji $$0, int $$1, boolean $$2) {
       this.e = $$1;
       this.h = $$0.k();
-      this.g = new fat(this.h);
+      this.g = new fau(this.h);
       this.i = $$0;
       this.j = $$2;
    }
 
    @Override
-   public void a(arc $$0) {
+   public void a(ard $$0) {
       if (this.j) {
          this.l.forEach($$1 -> {
-            enc $$2 = tb.b($$1.f());
+            end $$2 = tb.b($$1.f());
             tb.a($$2, $$0);
          });
          this.l.clear();
-         this.g = new fat(this.i);
+         this.g = new fau(this.i);
          this.h.g(this.i);
       }
    }
@@ -40,7 +40,7 @@ public class ta implements so.c {
       ji $$1 = new ji(this.h);
       $$0.b($$1);
       $$0.o();
-      fat $$2 = tb.a($$0.f());
+      fau $$2 = tb.a($$0.f());
       this.g = this.g.b($$2);
       this.h.e((int)$$2.b() + 5, 0, 0);
       if ((float)this.h.u() > this.k) {
@@ -51,7 +51,7 @@ public class ta implements so.c {
          this.f = 0;
          this.h.e(0, 0, (int)this.g.d() + 6);
          this.h.p(this.i.u());
-         this.g = new fat(this.h);
+         this.g = new fau(this.h);
       }
 
       this.l.add($$0);

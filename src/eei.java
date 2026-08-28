@@ -1,21 +1,21 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eei implements edx {
-   protected final km f;
+@Deprecated
+public class eei extends eej {
+   public static final MapCodec<eei> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eei::new));
 
-   protected static <P extends eei> P1<Mu<P>, km> a(Instance<P> $$0) {
-      return $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.f));
+   public eei(km $$0) {
+      super($$0);
    }
 
-   protected eei(km $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dww $$0) {
+      return $$0.e();
    }
 
-   public final boolean a(dhe $$0, ji $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public edz<?> a() {
+      return edz.e;
    }
-
-   protected abstract boolean a(dwv var1);
 }

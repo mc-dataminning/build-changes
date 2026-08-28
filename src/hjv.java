@@ -1,33 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hjv implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bnj<hju> b;
-   private final bqy c;
+public class hjv implements hjw<hil> {
+   private final List<hjw<hil>> a = Lists.newArrayList();
+   @Nullable
+   private final wp b;
 
-   public hjv(FileChannel $$0, Executor $$1) {
-      this.b = new bnj<>(hju.a, $$0);
-      this.c = new bqy($$1, "telemetry-event-log");
-   }
-
-   public hjw a() {
-      return $$0 -> this.c.a_(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public hjv(akv $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : wp.c($$1);
    }
 
    @Override
-   public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   public int e() {
+      int $$0 = 0;
+
+      for (hjw<hil> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public hil a(azh $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hjw<hil> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hju.b;
+      } else {
+         return hju.b;
+      }
+   }
+
+   public void a(hjw<hil> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public wp a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hjr $$0) {
+      for (hjw<hil> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

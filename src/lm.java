@@ -6,11 +6,11 @@ public class lm implements lr {
    private final int b;
 
    public static MapCodec<lm> a(ls<lm> $$0) {
-      return ayh.j.xmap($$1 -> new lm($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+      return ayi.j.xmap($$1 -> new lm($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public static ym<? super ByteBuf, lm> b(ls<lm> $$0) {
-      return yk.g.a($$1 -> new lm($$0, $$1), $$0x -> $$0x.b);
+   public static yn<? super ByteBuf, lm> b(ls<lm> $$0) {
+      return yl.g.a($$1 -> new lm($$0, $$1), $$0x -> $$0x.b);
    }
 
    private lm(ls<lm> $$0, int $$1) {
@@ -24,19 +24,19 @@ public class lm implements lr {
    }
 
    public float b() {
-      return (float)axj.b(this.b) / 255.0F;
+      return (float)axk.b(this.b) / 255.0F;
    }
 
    public float c() {
-      return (float)axj.c(this.b) / 255.0F;
+      return (float)axk.c(this.b) / 255.0F;
    }
 
    public float d() {
-      return (float)axj.d(this.b) / 255.0F;
+      return (float)axk.d(this.b) / 255.0F;
    }
 
    public float e() {
-      return (float)axj.a(this.b) / 255.0F;
+      return (float)axk.a(this.b) / 255.0F;
    }
 
    public static lm a(ls<lm> $$0, int $$1) {
@@ -44,6 +44,6 @@ public class lm implements lr {
    }
 
    public static lm a(ls<lm> $$0, float $$1, float $$2, float $$3) {
-      return a($$0, axj.a(1.0F, $$1, $$2, $$3));
+      return a($$0, axk.a(1.0F, $$1, $$2, $$3));
    }
 }

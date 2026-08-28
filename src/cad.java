@@ -1,22 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cad {
-   private static final int a = 36;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static bwz<bvf> a() {
-      return cal.a(
-         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$0 -> $$0.group($$0.a(cej.x), $$0.a(cej.y), $$0.a(cej.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bvf>a($$2).filter($$1xx -> $$1xx.g((buj)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.ec().a($$4.ae(), $$4.ad());
-                     }
+   public static byk<bvo> a(float $$0) {
+      return a($$0, 10, 7);
+   }
 
-                     return true;
-                  }))
-      );
+   public static byk<bvo> a(float $$0, int $$1, int $$2) {
+      return cam.a((Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               ji $$7 = $$5.dv();
+               faz $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cge.a($$5, $$1, $$2);
+               } else {
+                  kk $$9 = kk.a($$7);
+                  kk $$10 = bxb.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cgb.a($$5, $$1, $$2, faz.c($$10.k()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cge.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cen($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

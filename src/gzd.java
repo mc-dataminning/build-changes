@@ -1,8 +1,5 @@
-public class gzd extends gyb {
-   public final hbk a = new hbk();
-
-   @Override
-   public boolean a() {
-      return !this.a.c();
-   }
+public class gzd extends gzj {
+   public float a;
+   public int b;
+   public buh.a c = buh.a.a;
 }

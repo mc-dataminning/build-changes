@@ -1,65 +1,51 @@
-public class ftp extends fui {
-   private static final wo a = wo.c("gui.toMenu");
-   private static final wo b = wo.c("gui.toTitle");
-   private static final wo c = wo.c("gui.report_to_server");
-   private static final wo d = wo.c("gui.open_report_dir");
-   private final fui s;
-   private final vk u;
-   private final wo v;
-   private final fsi w = fsi.d();
+public class ftp extends fuk {
+   private static final akv a = akv.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private fpl d = fpl.a;
+   private fpl s = fpl.a;
 
-   public ftp(fui $$0, wo $$1, wo $$2) {
-      this($$0, $$1, new vk($$2));
-   }
-
-   public ftp(fui $$0, wo $$1, wo $$2, wo $$3) {
-      this($$0, $$1, new vk($$2), $$3);
-   }
-
-   public ftp(fui $$0, wo $$1, vk $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public ftp(fui $$0, wo $$1, vk $$2, wo $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   public ftp() {
+      super(wp.c("demo.help.title"));
    }
 
    @Override
    protected void aR_() {
-      this.w.c().b().a(10);
-      this.w.a(new fpx(this.l, this.p));
-      this.w.a(new fpk(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(fop.a(c, ftf.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(fop.a(d, $$1x -> af.m().a($$0.getParent())).a(200).a()));
-      fop $$0;
-      if (this.m.F()) {
-         $$0 = fop.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = fop.a(b, $$0x -> this.m.a(new fuk())).a(200).a();
-      }
-
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
-      this.c();
+      int $$0 = -16;
+      this.c(fos.a(wp.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         af.m().a(axv.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fos.a(wp.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      flm $$1 = this.m.n;
+      this.d = fpl.a(
+         this.p,
+         wp.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         wp.c("demo.help.movementMouse"),
+         wp.a("demo.help.jump", $$1.z.k()),
+         wp.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = fpl.a(this.p, wp.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void c() {
-      fsc.a(this.w, this.J());
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(gmh::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
    }
 
    @Override
-   public wo i() {
-      return wn.a(this.l, this.u.a());
-   }
-
-   @Override
-   public boolean aG_() {
-      return false;
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

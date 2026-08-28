@@ -1,746 +1,350 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.longs.Long2IntMap;
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ecu implements ecj.a, ecj.b {
-   private final ecy a;
-   final int b;
-   final int c;
-   final int d;
-   private final int e;
-   private final int f;
-   final int g;
-   final int h;
-   final List<ecu.i> i;
-   final List<ecu.e> j;
-   private final Map<ecj, ecj> k = new HashMap<>();
-   private final Long2IntMap l = new Long2IntOpenHashMap();
-   private final ecc m;
-   private final ecj n;
-   private final ecu.c o;
-   private final eds p;
-   private final ecu.g q;
-   private final ecu.g r;
-   private final eck.c s;
-   private long t = dfm.c;
-   private eds.a u = new eds.a(1.0, 0.0);
-   final int v;
-   final int w;
-   final int x;
-   boolean y;
-   boolean z;
-   private int A;
-   int B;
-   private int C;
-   int D;
-   int E;
-   int F;
-   long G;
-   long H;
-   int I;
-   private final ecj.a J = new ecj.a() {
-      @Override
-      public ecj.b a(int $$0) {
-         ecu.this.B = ($$0 + ecu.this.d) * ecu.this.x;
-         ecu.this.G++;
-         ecu.this.E = 0;
-         ecu.this.I = $$0;
-         return ecu.this;
-      }
+public final class ecu extends dys {
+   public static final MapCodec<ecu> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dhn.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), ecw.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
+            .apply($$0, $$0.stable(ecu::new))
+   );
+   private static final dww d = djn.a.m();
+   private final jr<ecw> e;
+   private final Supplier<ecd.a> f;
 
-      @Override
-      public void a(double[] $$0, ecj $$1) {
-         for (int $$2 = 0; $$2 < ecu.this.c + 1; $$2++) {
-            ecu.this.B = ($$2 + ecu.this.d) * ecu.this.x;
-            ecu.this.G++;
-            ecu.this.E = 0;
-            ecu.this.I = $$2;
-            $$0[$$2] = $$1.a(ecu.this);
-         }
-      }
-   };
-
-   public static ecu a(dyq $$0, ede $$1, eck.c $$2, ecv $$3, ecc.a $$4, eds $$5) {
-      ecy $$6 = $$3.f().a($$0);
-      dfm $$7 = $$0.f();
-      int $$8 = 16 / $$6.b();
-      return new ecu($$8, $$1, $$7.d(), $$7.e(), $$6, $$2, $$3, $$4, $$5);
+   public ecu(dhn $$0, jr<ecw> $$1) {
+      super($$0);
+      this.e = $$1;
+      this.f = Suppliers.memoize(() -> a($$1.a()));
    }
 
-   public ecu(int $$0, ede $$1, int $$2, int $$3, ecy $$4, eck.c $$5, ecv $$6, ecc.a $$7, eds $$8) {
-      this.a = $$4;
-      this.w = $$4.b();
-      this.x = $$4.a();
-      this.b = $$0;
-      this.c = ayy.a($$4.d(), this.x);
-      this.d = ayy.a($$4.c(), this.x);
-      this.e = Math.floorDiv($$2, this.w);
-      this.f = Math.floorDiv($$3, this.w);
-      this.i = Lists.newArrayList();
-      this.j = Lists.newArrayList();
-      this.g = kc.a($$2);
-      this.h = kc.a($$3);
-      this.v = kc.a($$0 * this.w);
-      this.p = $$8;
-      this.s = $$5;
-      this.q = new ecu.g(new ecu.a(), false);
-      this.r = new ecu.g(new ecu.b(), false);
-
-      for (int $$9 = 0; $$9 <= this.v; $$9++) {
-         int $$10 = this.g + $$9;
-         int $$11 = kc.c($$10);
-
-         for (int $$12 = 0; $$12 <= this.v; $$12++) {
-            int $$13 = this.h + $$12;
-            int $$14 = kc.c($$13);
-            eds.a $$15 = $$8.a($$11, $$14);
-            this.q.f[$$9][$$12] = $$15.a();
-            this.r.f[$$9][$$12] = $$15.b();
-         }
-      }
-
-      ecw $$16 = $$1.a();
-      ecw $$17 = $$16.a(this::a);
-      if (!$$6.b()) {
-         this.m = ecc.a($$7);
-      } else {
-         int $$18 = kk.a($$2);
-         int $$19 = kk.a($$3);
-         this.m = ecc.a(this, new dfm($$18, $$19), $$17, $$1.d(), $$4.c(), $$4.d(), $$7);
-      }
-
-      List<ecu.c> $$20 = new ArrayList<>();
-      ecj $$21 = eck.e(eck.a($$17.l(), eck.b.a)).a(this::a);
-      $$20.add($$1x -> this.m.a($$1x, $$21.a($$1x)));
-      if ($$6.c()) {
-         $$20.add(eda.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
-      }
-
-      this.o = new ely($$20.toArray(new ecu.c[0]));
-      this.n = $$17.k();
-   }
-
-   protected dhr.f a(ecw $$0, List<dhr.d> $$1) {
-      return new dhr.f($$0.e().a(this::a), $$0.f().a(this::a), $$0.g().a(this::a), $$0.h().a(this::a), $$0.i().a(this::a), $$0.j().a(this::a), $$1);
-   }
-
-   @Nullable
-   protected dwv e() {
-      return this.o.calculate(this);
+   private static ecd.a a(ecw $$0) {
+      ecd.b $$1 = new ecd.b(-54, djn.K.m());
+      int $$2 = $$0.l();
+      ecd.b $$3 = new ecd.b($$2, $$0.h());
+      ecd.b $$4 = new ecd.b(ear.e * 2, djn.a.m());
+      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
    }
 
    @Override
-   public int a() {
-      return this.A + this.D;
-   }
-
-   @Override
-   public int b() {
-      return this.B + this.E;
-   }
-
-   @Override
-   public int c() {
-      return this.C + this.F;
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = kc.c(kc.a($$0));
-      int $$3 = kc.c(kc.a($$1));
-      return this.l.computeIfAbsent(aqo.a($$2, $$3), this::a);
-   }
-
-   private int a(long $$0) {
-      int $$1 = aqo.a($$0);
-      int $$2 = aqo.b($$0);
-      int $$3 = this.a.c();
-
-      for (int $$4 = $$3 + this.a.d(); $$4 >= $$3; $$4 -= this.x) {
-         if (this.n.a(new ecj.e($$1, $$4, $$2)) > 0.390625) {
-            return $$4;
-         }
-      }
-
-      return Integer.MAX_VALUE;
-   }
-
-   @Override
-   public eds d() {
-      return this.p;
-   }
-
-   private void a(boolean $$0, int $$1) {
-      this.A = $$1 * this.w;
-      this.D = 0;
-
-      for (int $$2 = 0; $$2 < this.b + 1; $$2++) {
-         int $$3 = this.f + $$2;
-         this.C = $$3 * this.w;
-         this.F = 0;
-         this.H++;
-
-         for (ecu.i $$4 : this.i) {
-            double[] $$5 = ($$0 ? $$4.e : $$4.f)[$$2];
-            $$4.a($$5, this.J);
-         }
-      }
-
-      this.H++;
-   }
-
-   public void f() {
-      if (this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
-      } else {
-         this.y = true;
-         this.G = 0L;
-         this.a(true, this.e);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a(false, this.e + $$0 + 1);
-      this.A = (this.e + $$0) * this.w;
-   }
-
-   public ecu c(int $$0) {
-      int $$1 = Math.floorMod($$0, this.w);
-      int $$2 = Math.floorDiv($$0, this.w);
-      int $$3 = Math.floorMod($$2, this.w);
-      int $$4 = this.x - 1 - Math.floorDiv($$2, this.w);
-      this.D = $$3;
-      this.E = $$4;
-      this.F = $$1;
-      this.I = $$0;
-      return this;
-   }
-
-   @Override
-   public void a(double[] $$0, ecj $$1) {
-      this.I = 0;
-
-      for (int $$2 = this.x - 1; $$2 >= 0; $$2--) {
-         this.E = $$2;
-
-         for (int $$3 = 0; $$3 < this.w; $$3++) {
-            this.D = $$3;
-
-            for (int $$4 = 0; $$4 < this.w; $$4++) {
-               this.F = $$4;
-               $$0[this.I++] = $$1.a(this);
-            }
-         }
-      }
-   }
-
-   public void b(int $$0, int $$1) {
-      for (ecu.i $$2 : this.i) {
-         $$2.b($$0, $$1);
-      }
-
-      this.z = true;
-      this.B = ($$0 + this.d) * this.x;
-      this.C = (this.f + $$1) * this.w;
-      this.H++;
-
-      for (ecu.e $$3 : this.j) {
-         $$3.e.a($$3.f, this);
-      }
-
-      this.H++;
-      this.z = false;
-   }
-
-   public void a(int $$0, double $$1) {
-      this.E = $$0 - this.B;
-
-      for (ecu.i $$2 : this.i) {
-         $$2.a($$1);
-      }
-   }
-
-   public void b(int $$0, double $$1) {
-      this.D = $$0 - this.A;
-
-      for (ecu.i $$2 : this.i) {
-         $$2.b($$1);
-      }
-   }
-
-   public void c(int $$0, double $$1) {
-      this.F = $$0 - this.C;
-      this.G++;
-
-      for (ecu.i $$2 : this.i) {
-         $$2.c($$1);
-      }
-   }
-
-   public void g() {
-      if (!this.y) {
-         throw new IllegalStateException("Staring interpolation twice");
-      } else {
-         this.y = false;
-      }
-   }
-
-   public void h() {
-      this.i.forEach(ecu.i::l);
-   }
-
-   public ecc i() {
-      return this.m;
-   }
-
-   protected int j() {
-      return this.w;
-   }
-
-   protected int k() {
-      return this.x;
-   }
-
-   eds.a c(int $$0, int $$1) {
-      long $$2 = dfm.c($$0, $$1);
-      if (this.t == $$2) {
-         return this.u;
-      } else {
-         this.t = $$2;
-         eds.a $$3 = this.p.a($$0, $$1);
-         this.u = $$3;
+   public CompletableFuture<dyr> a(edf $$0, edt $$1, dhd $$2, dyr $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         this.b($$1, $$0, $$2, $$3);
          return $$3;
-      }
+      }, af.g().a("init_biomes"));
    }
 
-   protected ecj a(ecj $$0) {
-      return this.k.computeIfAbsent($$0, this::b);
+   private void b(edt $$0, edf $$1, dhd $$2, dyr $$3) {
+      ecv $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
+      dhm $$5 = ecf.a($$0.a(this.b), $$3);
+      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
    }
 
-   private ecj b(ecj $$0) {
-      if ($$0 instanceof eck.l $$1) {
-         return (ecj)(switch ($$1.j()) {
-            case a -> new ecu.i($$1.k());
-            case b -> new ecu.g($$1.k(), true);
-            case c -> new ecu.d($$1.k());
-            case d -> new ecu.f($$1.k());
-            case e -> new ecu.e($$1.k());
-         });
+   private ecv a(dyr $$0, dhd $$1, edt $$2, edf $$3) {
+      return ecv.a($$0, $$3, ece.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
+   }
+
+   @Override
+   protected MapCodec<? extends dys> b() {
+      return c;
+   }
+
+   public jr<ecw> h() {
+      return this.e;
+   }
+
+   public boolean a(aku<ecw> $$0) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, ecr.a $$2, dgj $$3, edf $$4) {
+      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.L_());
+   }
+
+   @Override
+   public dgt a(int $$0, int $$1, dgj $$2, edf $$3) {
+      MutableObject<dgt> $$4 = new MutableObject();
+      this.a($$2, $$3, $$0, $$1, $$4, null);
+      return (dgt)$$4.getValue();
+   }
+
+   @Override
+   public void a(List<String> $$0, edf $$1, ji $$2) {
+      DecimalFormat $$3 = new DecimalFormat("0.000");
+      ecx $$4 = $$1.a();
+      eck.e $$5 = new eck.e($$2.u(), $$2.v(), $$2.w());
+      double $$6 = $$4.j().a($$5);
+      $$0.add(
+         "NoiseRouter T: "
+            + $$3.format($$4.e().a($$5))
+            + " V: "
+            + $$3.format($$4.f().a($$5))
+            + " C: "
+            + $$3.format($$4.g().a($$5))
+            + " E: "
+            + $$3.format($$4.h().a($$5))
+            + " D: "
+            + $$3.format($$4.i().a($$5))
+            + " W: "
+            + $$3.format($$6)
+            + " PV: "
+            + $$3.format((double)ecy.a((float)$$6))
+            + " AS: "
+            + $$3.format($$4.k().a($$5))
+            + " N: "
+            + $$3.format($$4.l().a($$5))
+      );
+   }
+
+   private OptionalInt a(dgj $$0, edf $$1, int $$2, int $$3, @Nullable MutableObject<dgt> $$4, @Nullable Predicate<dww> $$5) {
+      ecz $$6 = this.e.a().f().a($$0);
+      int $$7 = $$6.a();
+      int $$8 = $$6.c();
+      int $$9 = ayz.a($$8, $$7);
+      int $$10 = ayz.a($$6.d(), $$7);
+      if ($$10 <= 0) {
+         return OptionalInt.empty();
       } else {
-         if (this.p != eds.a()) {
-            if ($$0 == eck.d.a) {
-               return this.q;
-            }
-
-            if ($$0 == eck.f.a) {
-               return this.r;
-            }
-         }
-
-         if ($$0 == eck.b.a) {
-            return this.s;
+         dww[] $$11;
+         if ($$4 == null) {
+            $$11 = null;
          } else {
-            return $$0 instanceof eck.j $$2 ? $$2.j().a() : $$0;
+            $$11 = new dww[$$6.d()];
+            $$4.setValue(new dgt($$8, $$11));
          }
-      }
-   }
 
-   class a implements ecu.h {
-      @Override
-      public ecj k() {
-         return eck.d.a;
-      }
+         int $$13 = $$6.b();
+         int $$14 = Math.floorDiv($$2, $$13);
+         int $$15 = Math.floorDiv($$3, $$13);
+         int $$16 = Math.floorMod($$2, $$13);
+         int $$17 = Math.floorMod($$3, $$13);
+         int $$18 = $$14 * $$13;
+         int $$19 = $$15 * $$13;
+         double $$20 = (double)$$16 / (double)$$13;
+         double $$21 = (double)$$17 / (double)$$13;
+         ecv $$22 = new ecv(1, $$1, $$18, $$19, $$6, ecl.b.a, this.e.a(), this.f.get(), edt.a());
+         $$22.f();
+         $$22.b(0);
 
-      @Override
-      public ecj a(ecj.f $$0) {
-         return this.k().a($$0);
-      }
+         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
+            $$22.b($$23, 0);
 
-      @Override
-      public double a(ecj.b $$0) {
-         return ecu.this.c($$0.a(), $$0.c()).a();
-      }
+            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
+               int $$25 = ($$9 + $$23) * $$7 + $$24;
+               double $$26 = (double)$$24 / (double)$$7;
+               $$22.a($$25, $$26);
+               $$22.b($$2, $$20);
+               $$22.c($$3, $$21);
+               dww $$27 = $$22.e();
+               dww $$28 = $$27 == null ? this.e.a().g() : $$27;
+               if ($$11 != null) {
+                  int $$29 = $$23 * $$7 + $$24;
+                  $$11[$$29] = $$28;
+               }
 
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return 0.0;
-      }
-
-      @Override
-      public double b() {
-         return 1.0;
-      }
-
-      @Override
-      public ayr<? extends ecj> c() {
-         return eck.d.e;
-      }
-   }
-
-   class b implements ecu.h {
-      @Override
-      public ecj k() {
-         return eck.f.a;
-      }
-
-      @Override
-      public ecj a(ecj.f $$0) {
-         return this.k().a($$0);
-      }
-
-      @Override
-      public double a(ecj.b $$0) {
-         return ecu.this.c($$0.a(), $$0.c()).b();
-      }
-
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public double a() {
-         return Double.NEGATIVE_INFINITY;
-      }
-
-      @Override
-      public double b() {
-         return Double.POSITIVE_INFINITY;
-      }
-
-      @Override
-      public ayr<? extends ecj> c() {
-         return eck.f.e;
-      }
-   }
-
-   @FunctionalInterface
-   public interface c {
-      @Nullable
-      dwv calculate(ecj.b var1);
-   }
-
-   static class d implements eck.m, ecu.h {
-      private final ecj a;
-      private long e = dfm.c;
-      private double f;
-
-      d(ecj $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public double a(ecj.b $$0) {
-         int $$1 = $$0.a();
-         int $$2 = $$0.c();
-         long $$3 = dfm.c($$1, $$2);
-         if (this.e == $$3) {
-            return this.f;
-         } else {
-            this.e = $$3;
-            double $$4 = this.a.a($$0);
-            this.f = $$4;
-            return $$4;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         this.a.a($$0, $$1);
-      }
-
-      @Override
-      public ecj k() {
-         return this.a;
-      }
-
-      @Override
-      public eck.l.a j() {
-         return eck.l.a.c;
-      }
-   }
-
-   class e implements eck.m, ecu.h {
-      final ecj e;
-      final double[] f;
-
-      e(final ecj $$0) {
-         this.e = $$0;
-         this.f = new double[ecu.this.w * ecu.this.w * ecu.this.x];
-         ecu.this.j.add(this);
-      }
-
-      @Override
-      public double a(ecj.b $$0) {
-         if ($$0 != ecu.this) {
-            return this.e.a($$0);
-         } else if (!ecu.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            int $$1 = ecu.this.D;
-            int $$2 = ecu.this.E;
-            int $$3 = ecu.this.F;
-            return $$1 >= 0 && $$2 >= 0 && $$3 >= 0 && $$1 < ecu.this.w && $$2 < ecu.this.x && $$3 < ecu.this.w
-               ? this.f[((ecu.this.x - 1 - $$2) * ecu.this.w + $$1) * ecu.this.w + $$3]
-               : this.e.a($$0);
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public ecj k() {
-         return this.e;
-      }
-
-      @Override
-      public eck.l.a j() {
-         return eck.l.a.e;
-      }
-   }
-
-   class f implements eck.m, ecu.h {
-      private final ecj e;
-      private long f;
-      private long g;
-      private double h;
-      @Nullable
-      private double[] i;
-
-      f(final ecj $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public double a(ecj.b $$0) {
-         if ($$0 != ecu.this) {
-            return this.e.a($$0);
-         } else if (this.i != null && this.g == ecu.this.H) {
-            return this.i[ecu.this.I];
-         } else if (this.f == ecu.this.G) {
-            return this.h;
-         } else {
-            this.f = ecu.this.G;
-            double $$1 = this.e.a($$0);
-            this.h = $$1;
-            return $$1;
-         }
-      }
-
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         if (this.i != null && this.g == ecu.this.H) {
-            System.arraycopy(this.i, 0, $$0, 0, $$0.length);
-         } else {
-            this.k().a($$0, $$1);
-            if (this.i != null && this.i.length == $$0.length) {
-               System.arraycopy($$0, 0, this.i, 0, $$0.length);
-            } else {
-               this.i = (double[])$$0.clone();
-            }
-
-            this.g = ecu.this.H;
-         }
-      }
-
-      @Override
-      public ecj k() {
-         return this.e;
-      }
-
-      @Override
-      public eck.l.a j() {
-         return eck.l.a.d;
-      }
-   }
-
-   class g implements eck.m, ecu.h {
-      private final ecj e;
-      final double[][] f;
-
-      g(final ecj $$0, final boolean $$1) {
-         this.e = $$0;
-         this.f = new double[ecu.this.v + 1][ecu.this.v + 1];
-         if ($$1) {
-            for (int $$2 = 0; $$2 <= ecu.this.v; $$2++) {
-               int $$3 = ecu.this.g + $$2;
-               int $$4 = kc.c($$3);
-
-               for (int $$5 = 0; $$5 <= ecu.this.v; $$5++) {
-                  int $$6 = ecu.this.h + $$5;
-                  int $$7 = kc.c($$6);
-                  this.f[$$2][$$5] = $$0.a(new ecj.e($$4, 0, $$7));
+               if ($$5 != null && $$5.test($$28)) {
+                  $$22.g();
+                  return OptionalInt.of($$25 + 1);
                }
             }
          }
-      }
 
-      @Override
-      public double a(ecj.b $$0) {
-         int $$1 = kc.a($$0.a());
-         int $$2 = kc.a($$0.c());
-         int $$3 = $$1 - ecu.this.g;
-         int $$4 = $$2 - ecu.this.h;
-         int $$5 = this.f.length;
-         return $$3 >= 0 && $$4 >= 0 && $$3 < $$5 && $$4 < $$5 ? this.f[$$3][$$4] : this.e.a($$0);
-      }
-
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      public ecj k() {
-         return this.e;
-      }
-
-      @Override
-      public eck.l.a j() {
-         return eck.l.a.b;
+         $$22.g();
+         return OptionalInt.empty();
       }
    }
 
-   interface h extends ecj {
-      ecj k();
-
-      @Override
-      default double a() {
-         return this.k().a();
-      }
-
-      @Override
-      default double b() {
-         return this.k().b();
+   @Override
+   public void a(arl $$0, dhd $$1, edf $$2, dyr $$3) {
+      if (!ab.a($$3.f())) {
+         edo $$4 = new edo(this, $$0);
+         this.a($$3, $$4, $$2, $$1, $$0.I_(), $$0.K_().e(mc.aI), edt.a($$0));
       }
    }
 
-   public class i implements eck.m, ecu.h {
-      double[][] e;
-      double[][] f;
-      private final ecj g;
-      private double h;
-      private double i;
-      private double j;
-      private double k;
-      private double l;
-      private double m;
-      private double n;
-      private double o;
-      private double p;
-      private double q;
-      private double r;
-      private double s;
-      private double t;
-      private double u;
-      private double v;
+   @VisibleForTesting
+   public void a(dyr $$0, edo $$1, edf $$2, dhd $$3, dhl $$4, ke<dhj> $$5, edt $$6) {
+      ecv $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
+      ecw $$8 = this.e.a();
+      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   }
 
-      i(final ecj $$1) {
-         this.g = $$1;
-         this.e = this.a(ecu.this.c, ecu.this.b);
-         this.f = this.a(ecu.this.c, ecu.this.b);
-         ecu.this.i.add(this);
-      }
+   @Override
+   public void a(arl $$0, long $$1, edf $$2, dhl $$3, dhd $$4, dyr $$5) {
+      dhl $$6 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
+      edq $$7 = new edq(new ecs(edg.a()));
+      int $$8 = 8;
+      dfn $$9 = $$5.f();
+      ecv $$10 = $$5.a($$3x -> this.a($$3x, $$4, edt.a($$0), $$2));
+      ecd $$11 = $$10.i();
+      ees $$12 = new ees(this, $$0.K_(), $$5.B(), $$10, $$2, this.e.a().j());
+      dyq $$13 = ((dzl)$$5).F();
 
-      private double[][] a(int $$0, int $$1) {
-         int $$2 = $$1 + 1;
-         int $$3 = $$0 + 1;
-         double[][] $$4 = new double[$$2][$$3];
+      for (int $$14 = -8; $$14 <= 8; $$14++) {
+         for (int $$15 = -8; $$15 <= 8; $$15++) {
+            dfn $$16 = new dfn($$9.h + $$14, $$9.i + $$15);
+            dyr $$17 = $$0.a($$16.h, $$16.i);
+            dhk $$18 = $$17.a(() -> this.a(this.b.getNoiseBiome(kc.a($$16.d()), 0, kc.a($$16.e()), $$2.b())));
+            Iterable<jr<eev<?>>> $$19 = $$18.a();
+            int $$20 = 0;
 
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            $$4[$$5] = new double[$$3];
-         }
+            for (jr<eev<?>> $$21 : $$19) {
+               eev<?> $$22 = $$21.a();
+               $$7.c($$1 + (long)$$20, $$16.h, $$16.i);
+               if ($$22.a($$7)) {
+                  $$22.a($$12, $$5, $$6::a, $$7, $$11, $$16, $$13);
+               }
 
-         return $$4;
-      }
-
-      void b(int $$0, int $$1) {
-         this.h = this.e[$$1][$$0];
-         this.i = this.e[$$1 + 1][$$0];
-         this.j = this.f[$$1][$$0];
-         this.k = this.f[$$1 + 1][$$0];
-         this.l = this.e[$$1][$$0 + 1];
-         this.m = this.e[$$1 + 1][$$0 + 1];
-         this.n = this.f[$$1][$$0 + 1];
-         this.o = this.f[$$1 + 1][$$0 + 1];
-      }
-
-      void a(double $$0) {
-         this.p = ayy.d($$0, this.h, this.l);
-         this.q = ayy.d($$0, this.j, this.n);
-         this.r = ayy.d($$0, this.i, this.m);
-         this.s = ayy.d($$0, this.k, this.o);
-      }
-
-      void b(double $$0) {
-         this.t = ayy.d($$0, this.p, this.q);
-         this.u = ayy.d($$0, this.r, this.s);
-      }
-
-      void c(double $$0) {
-         this.v = ayy.d($$0, this.t, this.u);
-      }
-
-      @Override
-      public double a(ecj.b $$0) {
-         if ($$0 != ecu.this) {
-            return this.g.a($$0);
-         } else if (!ecu.this.y) {
-            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
-         } else {
-            return ecu.this.z
-               ? ayy.a(
-                  (double)ecu.this.D / (double)ecu.this.w,
-                  (double)ecu.this.E / (double)ecu.this.x,
-                  (double)ecu.this.F / (double)ecu.this.w,
-                  this.h,
-                  this.j,
-                  this.l,
-                  this.n,
-                  this.i,
-                  this.k,
-                  this.m,
-                  this.o
-               )
-               : this.v;
+               $$20++;
+            }
          }
       }
+   }
 
-      @Override
-      public void a(double[] $$0, ecj.a $$1) {
-         if (ecu.this.z) {
-            $$1.a($$0, this);
-         } else {
-            this.k().a($$0, $$1);
+   @Override
+   public CompletableFuture<dyr> a(edt $$0, edf $$1, dhd $$2, dyr $$3) {
+      ecz $$4 = this.e.a().f().a($$3.B());
+      int $$5 = $$4.c();
+      int $$6 = ayz.a($$5, $$4.a());
+      int $$7 = ayz.a($$4.d(), $$4.a());
+      return $$7 <= 0 ? CompletableFuture.completedFuture($$3) : CompletableFuture.supplyAsync(() -> {
+         int $$8 = $$3.f($$7 * $$4.a() - 1 + $$5);
+         int $$9 = $$3.f($$5);
+         Set<dzc> $$10 = Sets.newHashSet();
+
+         for (int $$11 = $$8; $$11 >= $$9; $$11--) {
+            dzc $$12 = $$3.b($$11);
+            $$12.a();
+            $$10.add($$12);
          }
+
+         dyr var20;
+         try {
+            var20 = this.a($$0, $$2, $$1, $$3, $$6, $$7);
+         } finally {
+            for (dzc $$14 : $$10) {
+               $$14.b();
+            }
+         }
+
+         return var20;
+      }, af.g().a("wgen_fill_noise"));
+   }
+
+   private dyr a(edt $$0, dhd $$1, edf $$2, dyr $$3, int $$4, int $$5) {
+      ecv $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
+      ecr $$7 = $$3.a(ecr.a.c);
+      ecr $$8 = $$3.a(ecr.a.a);
+      dfn $$9 = $$3.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      ecd $$12 = $$6.i();
+      $$6.f();
+      ji.a $$13 = new ji.a();
+      int $$14 = $$6.j();
+      int $$15 = $$6.k();
+      int $$16 = 16 / $$14;
+      int $$17 = 16 / $$14;
+
+      for (int $$18 = 0; $$18 < $$16; $$18++) {
+         $$6.b($$18);
+
+         for (int $$19 = 0; $$19 < $$17; $$19++) {
+            int $$20 = $$3.ao() - 1;
+            dzc $$21 = $$3.b($$20);
+
+            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
+               $$6.b($$22, $$19);
+
+               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
+                  int $$24 = ($$4 + $$22) * $$15 + $$23;
+                  int $$25 = $$24 & 15;
+                  int $$26 = $$3.f($$24);
+                  if ($$20 != $$26) {
+                     $$20 = $$26;
+                     $$21 = $$3.b($$26);
+                  }
+
+                  double $$27 = (double)$$23 / (double)$$15;
+                  $$6.a($$24, $$27);
+
+                  for (int $$28 = 0; $$28 < $$14; $$28++) {
+                     int $$29 = $$10 + $$18 * $$14 + $$28;
+                     int $$30 = $$29 & 15;
+                     double $$31 = (double)$$28 / (double)$$14;
+                     $$6.b($$29, $$31);
+
+                     for (int $$32 = 0; $$32 < $$14; $$32++) {
+                        int $$33 = $$11 + $$19 * $$14 + $$32;
+                        int $$34 = $$33 & 15;
+                        double $$35 = (double)$$32 / (double)$$14;
+                        $$6.c($$33, $$35);
+                        dww $$36 = $$6.e();
+                        if ($$36 == null) {
+                           $$36 = this.e.a().g();
+                        }
+
+                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
+                        if ($$36 != d && !ab.a($$3.f())) {
+                           $$21.a($$30, $$25, $$34, $$36, false);
+                           $$7.a($$30, $$24, $$34, $$36);
+                           $$8.a($$30, $$24, $$34, $$36);
+                           if ($$12.a() && !$$36.y().c()) {
+                              $$13.d($$29, $$24, $$33);
+                              $$3.e($$13);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         $$6.h();
       }
 
-      @Override
-      public ecj k() {
-         return this.g;
-      }
+      $$6.g();
+      return $$3;
+   }
 
-      private void l() {
-         double[][] $$0 = this.e;
-         this.e = this.f;
-         this.f = $$0;
-      }
+   private dww a(ecv $$0, int $$1, int $$2, int $$3, dww $$4) {
+      return $$4;
+   }
 
-      @Override
-      public eck.l.a j() {
-         return eck.l.a.a;
+   @Override
+   public int e() {
+      return this.e.a().f().d();
+   }
+
+   @Override
+   public int f() {
+      return this.e.a().l();
+   }
+
+   @Override
+   public int g() {
+      return this.e.a().f().c();
+   }
+
+   @Override
+   public void a(arl $$0) {
+      if (!this.e.a().a()) {
+         dfn $$1 = $$0.b();
+         jr<dhj> $$2 = $$0.t($$1.l().h($$0.an()));
+         edq $$3 = new edq(new ecs(edg.a()));
+         $$3.a($$0.E(), $$1.d(), $$1.e());
+         dgs.a($$0, $$2, $$1, $$3);
       }
    }
 }

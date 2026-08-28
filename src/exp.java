@@ -1,65 +1,29 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class exp extends exc {
-   private static final Codec<ezu> b = Codec.withAlternative(ezv.a, ayh.i, ezr::new);
-   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  exb.e.a(ezv.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
-                  exb.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
-                  exb.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
-                  exb.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
-               )
-            )
-            .apply($$0, exp::new)
-   );
-   private final Optional<exb.e<ezu>> c;
-   private final Optional<exb.e<Boolean>> d;
-   private final Optional<exb.e<String>> e;
-   private final Optional<exb.e<ezu>> f;
+public class exp extends exd {
+   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(uo.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, exp::new));
+   private final tq b;
 
-   public exp(List<eyy> $$0, Optional<exb.e<ezu>> $$1, Optional<exb.e<Boolean>> $$2, Optional<exb.e<String>> $$3, Optional<exb.e<ezu>> $$4) {
+   private exp(List<eyz> $$0, tq $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+      this.b = $$1;
    }
 
    @Override
-   public Set<bah<?>> a() {
-      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
+   public exf<exp> b() {
+      return exg.j;
    }
 
    @Override
-   public exe<exp> b() {
-      return exf.R;
-   }
-
-   private static <T> List<T> a(Optional<exb.e<T>> $$0, List<T> $$1) {
-      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
-   }
-
-   private static <T, E> List<E> a(Optional<exb.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
-      return $$0.<List<E>>map($$2x -> {
-         List<E> $$3 = $$2x.a().stream().map($$2).toList();
-         return $$2x.b().a($$1, $$3);
-      }).orElse($$1);
-   }
-
-   @Override
-   public cwn a(cwn $$0, evp $$1) {
-      cyx $$2 = $$0.a(kv.p, cyx.a);
-      $$0.b(kv.p, new cyx(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
+   public cwo a(cwo $$0, evq $$1) {
+      cyx.a(kv.b, $$0, $$0x -> $$0x.a(this.b));
       return $$0;
+   }
+
+   @Deprecated
+   public static exd.a<?> a(tq $$0) {
+      return a($$1 -> new exp($$1, $$0));
    }
 }

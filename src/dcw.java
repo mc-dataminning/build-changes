@@ -1,8 +1,20 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public record dcw(cwn a, @Nullable bur b, @Nullable bvf c, Consumer<cwj> d) {
-   public dcw(cwn $$0, bur $$1, bvf $$2) {
-      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
+public record dcw(int c) {
+   public static final Codec<dcw> a = RecordCodecBuilder.create($$0 -> $$0.group(ayi.m.fieldOf("value").forGetter(dcw::a)).apply($$0, dcw::new));
+   public static final yn<ByteBuf, dcw> b = yn.a(yl.h, dcw::a, dcw::new);
+
+   public dcw(int c) {
+      if (c <= 0) {
+         throw new IllegalArgumentException("Enchantment value must be positive, but was " + c);
+      } else {
+         this.c = c;
+      }
+   }
+
+   public int a() {
+      return this.c;
    }
 }

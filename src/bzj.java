@@ -1,26 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bzj {
-   private static final float a = 0.3F;
+public class bzj extends bwz<bvg> {
+   public static final int c = 100;
+   private long d;
 
-   public static byj<bvf> a() {
-      return cal.a(
-         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$0 -> $$0.group($$0.a(cej.m), $$0.a(cej.n), $$0.b(cej.e), $$0.b(cej.h), $$0.c(cej.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     jq $$9 = $$0.b($$3);
-                     cel $$10 = $$0.b($$4);
-                     if ($$6.H_().a(100) == 0 && $$6.ai() == $$9.a() && $$9.b().a($$7.du(), 4.0) && $$10.d($$0xxx -> buq.bC.equals($$0xxx.aq()))) {
-                        $$10.a($$1xx -> buq.bC.equals($$1xx.aq()) && $$1xx.g((buj)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bxj($$3xx, true));
-                           $$1.a(new cem(new bxj($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bzj() {
+      super(ImmutableMap.of(cek.b, cel.a, cek.I, cel.c));
+   }
+
+   @Override
+   protected boolean a(ard $$0, bvg $$1) {
+      if ($$1.bZ()) {
+         return false;
+      } else {
+         bwi<?> $$2 = $$1.eb();
+         jq $$3 = $$2.c(cek.b).get();
+         if ($$0.ai() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cek.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ad() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dww $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dt(), 2.0) && $$6.a(awp.T) && !$$6.c(dje.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(ard $$0, bvg $$1, long $$2) {
+      Optional<jq> $$3 = $$1.eb().c(cek.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ji $$4 = $$3.get().b();
+         return $$1.eb().c(cqn.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(ard $$0, bvg $$1, long $$2) {
+      if ($$2 > this.d) {
+         bwi<?> $$3 = $$1.eb();
+         if ($$3.a(cek.v)) {
+            Set<jq> $$4 = $$3.c(cek.v).get();
+            Optional<List<bvg>> $$5;
+            if ($$3.a(cek.g)) {
+               $$5 = $$3.c(cek.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bxx.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.eb().c(cek.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(ard $$0, bvg $$1, long $$2) {
+      if ($$1.fR()) {
+         $$1.fS();
+         this.d = $$2 + 40L;
+      }
    }
 }

@@ -1,38 +1,31 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
 public interface vv {
-   static vv a(final Runnable $$0) {
-      return new vv() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+   yx a();
 
-         @Nullable
-         @Override
-         public yv<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   vj b();
+
+   void a(vk var1);
+
+   default void a(yw $$0, Exception $$1) throws z {
+      throw yz.a($$1, $$0, this);
    }
 
-   static vv a(final Supplier<yv<?>> $$0) {
-      return new vv() {
-         @Nullable
-         @Override
-         public yv<?> b() {
-            return $$0.get();
-         }
-      };
+   default vk a(wp $$0, Throwable $$1) {
+      return new vk($$0);
    }
 
-   default void a() {
+   boolean c();
+
+   default boolean a(yw<?> $$0) {
+      return this.c();
    }
 
-   @Nullable
-   default yv<?> b() {
-      return null;
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$0, $$1);
+   }
+
+   default void a(o $$0, p $$1) {
    }
 }

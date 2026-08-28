@@ -155,7 +155,7 @@ public class td {
                            ((LiteralArgumentBuilder)ey.a("clearall").executes($$0x -> n.a($$0x, 200).b()))
                               .then(
                                  ey.a("radius", IntegerArgumentType.integer())
-                                    .executes($$0x -> n.a($$0x, ayy.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024)).b())
+                                    .executes($$0x -> n.a($$0x, ayz.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024)).b())
                               )
                         ))
                      .then(
@@ -209,7 +209,7 @@ public class td {
    }
 
    private static int a(sl $$0) {
-      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(buj.d.b));
+      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(buk.d.b));
       $$0.f().c($$0.g());
       tb.a($$0.e(), $$0.g());
       a($$0.g(), "Reset succeded for: " + $$0.b(), n.k);
@@ -224,8 +224,8 @@ public class td {
       return $$2.findTestFunctions().filter($$1x -> a($$0.e(), $$1x.d())).map($$3x -> new sl($$3x, tb.a($$3), $$0.e(), $$1));
    }
 
-   private static Optional<sl> a(ji $$0, arc $$1, sy $$2) {
-      dvp $$3 = (dvp)$$1.c_($$0);
+   private static Optional<sl> a(ji $$0, ard $$1, sy $$2) {
+      dvq $$3 = (dvq)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -246,13 +246,13 @@ public class td {
 
    private static int a(ex $$0, String $$1, int $$2, int $$3, int $$4) {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
-         arc $$5 = $$0.e();
+         ard $$5 = $$0.e();
          ji $$6 = a($$0).e();
-         tb.a($$1.toLowerCase(), $$6, new km($$2, $$3, $$4), dqc.a, $$5);
+         tb.a($$1.toLowerCase(), $$6, new km($$2, $$3, $$4), dqd.a, $$5);
          ji $$7 = $$6.d();
          ji $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
-         ji.d($$7, $$8).forEach($$1x -> $$5.b($$1x, djm.I.m()));
-         tb.a($$6, new ji(1, 0, -1), dqc.a, $$5);
+         ji.d($$7, $$8).forEach($$1x -> $$5.b($$1x, djn.I.m()));
+         tb.a($$6, new ji(1, 0, -1), dqd.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -260,19 +260,19 @@ public class td {
    }
 
    private static int a(ex $$0, String $$1) throws CommandSyntaxException {
-      fau $$2 = (fau)$$0.h().a(10.0, 1.0F, false);
+      fav $$2 = (fav)$$0.h().a(10.0, 1.0F, false);
       ji $$3 = $$2.b();
-      arc $$4 = $$0.e();
+      ard $$4 = $$0.e();
       Optional<ji> $$5 = tb.a($$3, 15, $$4);
       if ($$5.isEmpty()) {
          $$5 = tb.a($$3, 200, $$4);
       }
 
       if ($$5.isEmpty()) {
-         $$0.b(wo.b("Can't find a structure block that contains the targeted pos " + $$3));
+         $$0.b(wp.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dvp $$6 = (dvp)$$4.c_($$5.get());
+         dvq $$6 = (dvq)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -280,16 +280,16 @@ public class td {
             ji $$7 = $$3.b($$5.get());
             String $$8 = $$7.u() + ", " + $$7.v() + ", " + $$7.w();
             String $$9 = $$6.t();
-            wo $$10 = wo.b($$8)
+            wp $$10 = wp.b($$8)
                .b(
-                  xl.a
+                  xm.a
                      .a(true)
                      .a(n.k)
-                     .a(new wu(wu.a.a, wo.b("Click to copy to clipboard")))
-                     .a(new wm(wm.a.f, "final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");"))
+                     .a(new wv(wv.a.a, wp.b("Click to copy to clipboard")))
+                     .a(new wn(wn.a.f, "final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");"))
                );
-            $$0.a(() -> wo.b("Position relative to " + $$9 + ": ").b($$10), false);
-            agc.a($$4, new ji($$3), $$8, -2147418368, 10000);
+            $$0.a(() -> wp.b("Position relative to " + $$9 + ": ").b($$10), false);
+            agd.a($$4, new ji($$3), $$8, -2147418368, 10000);
             return 1;
          }
       }
@@ -300,7 +300,7 @@ public class td {
       return 1;
    }
 
-   static int a(ex $$0, arc $$1, so $$2) {
+   static int a(ex $$0, ard $$1, so $$2) {
       $$2.a(new td.b($$0));
       sw $$3 = new sw($$2.a());
       $$3.a(new td.c($$1, $$3));
@@ -309,7 +309,7 @@ public class td {
       return 1;
    }
 
-   static int a(ex $$0, dvp $$1) {
+   static int a(ex $$0, dvq $$1) {
       String $$2 = $$1.c();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -320,7 +320,7 @@ public class td {
 
    private static int b(ex $$0, String $$1) {
       Path $$2 = Paths.get(tb.c);
-      aku $$3 = aku.a($$1);
+      akv $$3 = akv.a($$1);
       Path $$4 = $$0.e().r().a($$3, ".nbt");
       Path $$5 = ot.a(mg.a, $$4, $$3.a(), $$2);
       if ($$5 == null) {
@@ -340,8 +340,8 @@ public class td {
       }
    }
 
-   private static boolean a(arc $$0, String $$1) {
-      if ($$0.r().b(aku.a($$1)).isEmpty()) {
+   private static boolean a(ard $$0, String $$1) {
+      if ($$0.r().b(akv.a($$1)).isEmpty()) {
          a($$0, "Test structure " + $$1 + " could not be found", n.m);
          return false;
       } else {
@@ -351,17 +351,17 @@ public class td {
 
    static ji a(ex $$0) {
       ji $$1 = ji.a((kb)$$0.d());
-      int $$2 = $$0.e().a(ecq.a.b, $$1).v();
+      int $$2 = $$0.e().a(ecr.a.b, $$1).v();
       return new ji($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
    static void c(ex $$0, String $$1) {
-      $$0.a(() -> wo.b($$1), false);
+      $$0.a(() -> wp.b($$1), false);
    }
 
    private static int d(ex $$0, String $$1) {
       Path $$2 = Paths.get(tb.c, $$1 + ".snbt");
-      aku $$3 = aku.b($$1);
+      akv $$3 = akv.b($$1);
       Path $$4 = $$0.e().r().a($$3, ".nbt");
 
       try {
@@ -382,8 +382,8 @@ public class td {
       }
    }
 
-   static void a(arc $$0, String $$1, n $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(wo.b($$1).a($$2)));
+   static void a(ard $$0, String $$1, n $$2) {
+      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(wp.b($$1).a($$2)));
    }
 
    public static class a {
@@ -410,14 +410,14 @@ public class td {
       public int b() {
          td.a();
          ex $$0 = this.a.a();
-         arc $$1 = $$0.e();
+         ard $$1 = $$0.e();
          so.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dvp $$2 = (dvp)$$1.c_($$1x);
+            dvq $$2 = (dvq)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               enc $$3 = tb.b($$2);
+               end $$3 = tb.b($$2);
                tb.a($$3, $$1);
                return 1;
             }
@@ -428,9 +428,9 @@ public class td {
       public int c() {
          MutableBoolean $$0 = new MutableBoolean(true);
          ex $$1 = this.a.a();
-         arc $$2 = $$1.e();
+         ard $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dvp $$4 = (dvp)$$2.c_($$3);
+            dvq $$4 = (dvq)$$2.c_($$3);
             if ($$4 == null) {
                td.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -449,7 +449,7 @@ public class td {
       int f() {
          td.a();
          ex $$0 = this.a.a();
-         arc $$1 = $$0.e();
+         ard $$1 = $$0.e();
          ji $$2 = td.a($$0);
          Collection<sl> $$3 = Stream.concat(td.a($$0, sy.a(), this.a), td.a($$0, sy.a(), this.a, 0)).toList();
          so.a($$1);
@@ -457,7 +457,7 @@ public class td {
          Collection<sf> $$4 = new ArrayList<>();
 
          for (sl $$5 : $$3) {
-            for (dqc $$6 : dqc.values()) {
+            for (dqd $$6 : dqd.values()) {
                Collection<sl> $$7 = new ArrayList<>();
 
                for (int $$8 = 0; $$8 < 100; $$8++) {
@@ -478,7 +478,7 @@ public class td {
       public int a(sy $$0, int $$1, int $$2) {
          td.a();
          ex $$3 = this.a.a();
-         arc $$4 = $$3.e();
+         ard $$4 = $$3.e();
          ji $$5 = td.a($$3);
          Collection<sl> $$6 = Stream.concat(td.a($$3, $$0, this.a), td.a($$3, $$0, this.a, $$1)).toList();
          if ($$6.isEmpty()) {
@@ -521,7 +521,7 @@ public class td {
             .findStructureBlockPos()
             .forEach(
                $$2x -> {
-                  dvp $$3 = (dvp)this.a.a().e().c_($$2x);
+                  dvq $$3 = (dvq)this.a.a().e().c_($$2x);
                   if ($$3 != null) {
                      jn $$4 = $$3.s().a(jn.c);
                      ji $$5 = $$3.aA_().a($$4, 2);
@@ -529,10 +529,10 @@ public class td {
                      String $$7 = String.format("/tp @s %d %d %d %d 0", $$5.u(), $$5.v(), $$5.w(), $$6);
                      int $$8 = $$1.u() - $$2x.u();
                      int $$9 = $$1.w() - $$2x.w();
-                     int $$10 = ayy.d(ayy.c((float)($$8 * $$8 + $$9 * $$9)));
-                     wo $$11 = wr.a((wo)wo.a("chat.coordinates", $$2x.u(), $$2x.v(), $$2x.w()))
-                        .a($$1xx -> $$1xx.a(n.k).a(new wm(wm.a.d, $$7)).a(new wu(wu.a.a, wo.c("chat.coordinates.tooltip"))));
-                     wo $$12 = wo.b("Found structure at: ").b($$11).f(" (distance: " + $$10 + ")");
+                     int $$10 = ayz.d(ayz.c((float)($$8 * $$8 + $$9 * $$9)));
+                     wp $$11 = ws.a((wp)wp.a("chat.coordinates", $$2x.u(), $$2x.v(), $$2x.w()))
+                        .a($$1xx -> $$1xx.a(n.k).a(new wn(wn.a.d, $$7)).a(new wv(wv.a.a, wp.c("chat.coordinates.tooltip"))));
+                     wp $$12 = wp.b("Found structure at: ").b($$11).f(" (distance: " + $$10 + ")");
                      this.a.a().a(() -> $$12, false);
                      $$0.increment();
                   }
@@ -560,7 +560,7 @@ public class td {
       }
    }
 
-   public static record c(arc a, sw b) implements sm {
+   public static record c(ard a, sw b) implements sm {
       @Override
       public void a(sl $$0) {
       }
@@ -580,7 +580,7 @@ public class td {
          this.b.a($$1);
       }
 
-      private static void a(arc $$0, sw $$1) {
+      private static void a(ard $$0, sw $$1) {
          if ($$1.i()) {
             td.a($$0, "GameTest done! " + $$1.h() + " tests were run", n.p);
             if ($$1.d()) {

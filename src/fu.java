@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class fu implements ArgumentType<lr> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wo.b("particle.notFound", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wo.b("particle.invalidOptions", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("particle.invalidOptions", $$0));
    private final jt.a d;
 
    public fu(et $$0) {
@@ -41,8 +41,8 @@ public class fu implements ArgumentType<lr> {
    }
 
    private static ls<?> a(StringReader $$0, jt<ls<?>> $$1) throws CommandSyntaxException {
-      aku $$2 = aku.a($$0);
-      akt<ls<?>> $$3 = akt.a(mc.Y, $$2);
+      akv $$2 = akv.a($$0);
+      aku<ls<?>> $$3 = aku.a(mc.Y, $$2);
       return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
    }
 
@@ -59,6 +59,6 @@ public class fu implements ArgumentType<lr> {
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       jt.b<ls<?>> $$2 = this.d.d(mc.Y);
-      return fc.a($$2.c_().map(akt::a), $$1);
+      return fc.a($$2.c_().map(aku::a), $$1);
    }
 }

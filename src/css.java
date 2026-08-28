@@ -1,17 +1,19 @@
-import java.util.List;
+public class css extends cty {
+   private final csr a;
 
-public interface css extends bsb, cuc {
-   int ay_();
-
-   int g();
-
-   List<cwn> h();
-
-   default daq aB_() {
-      return this.aC_().a();
+   public css(bsc $$0, int $$1, int $$2, int $$3, csr $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   default daq.a aC_() {
-      return daq.b(this.ay_(), this.g(), this.h());
+   @Override
+   public boolean a(cwo $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

@@ -1,153 +1,82 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fps extends fui {
-   private static final aku a = aku.b("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int d = 6;
-   private static final int s = 130;
-   private static final int u = 64;
-   private static final int v = 250;
-   private final fui w;
-   @Nullable
-   private final aku x;
-   private final wo y;
-   private final List<fps.b> z;
-   @Nullable
-   private final Runnable A;
-   private final int B;
-   private final fsi C = fsi.d();
+public class fps extends fop {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fps.a n;
+   private final Supplier<hft> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   fps(fui $$0, int $$1, @Nullable aku $$2, wo $$3, wo $$4, List<fps.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.w = $$0;
-      this.x = $$2;
-      this.y = $$4;
-      this.z = $$5;
-      this.A = $$6;
-      this.B = $$1 - 36;
+   public fps(int $$0, int $$1, gey $$2, Supplier<hft> $$3) {
+      super(0, 0, $$0, $$1, wo.a);
+      this.n = fps.a.a($$2);
+      this.o = $$3;
    }
 
    @Override
-   public void aJ_() {
-      super.aJ_();
-      this.w.o();
-   }
-
-   @Override
-   protected void aR_() {
-      this.w.b(this.m, this.n, this.o);
-      this.C.a(12).c().b();
-      this.C.a(new fpk(this.l.f().a(n.r), this.p).d(this.B).b(true));
-      if (this.x != null) {
-         this.C.a(fpd.a(130, 64, this.x, 130, 64));
-      }
-
-      this.C.a(new fpk(this.y, this.p).d(this.B).b(true));
-      this.C.a(this.m());
-      this.C.a($$1 -> {
-         fon var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   private fsi m() {
-      int $$0 = 6 * (this.z.size() - 1);
-      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
-      fsi $$2 = fsi.e();
-      $$2.a(6);
-
-      for (fps.b $$3 : this.z) {
-         $$2.a(fop.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.w.a(this.m, this.n, this.o);
-      this.C.a();
-      fsc.a(this.C, this.J());
-   }
-
-   @Override
-   public void b(fob $$0, int $$1, int $$2, float $$3) {
-      this.w.a($$0, -1, -1, $$3);
+   protected void b(fod $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.F() + (float)this.A() / 2.0F, (float)(this.G() + this.y()), 100.0F);
+      float $$4 = (float)this.y() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
       $$0.d();
-      RenderSystem.clear(256);
-      this.b($$0);
-      $$0.a(gmf::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
+      fep.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.d();
+      fep.d();
+      $$0.c().b();
    }
 
    @Override
-   public wo i() {
-      return wn.a(this.l, this.y);
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = ayz.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
    @Override
-   public void aO_() {
-      if (this.A != null) {
-         this.A.run();
-      }
-
-      this.m.a(this.w);
+   public void a(hju $$0) {
    }
 
-   public static class a {
-      private final fui a;
-      private final wo b;
-      private wo c = wn.a;
-      private int d = 250;
-      @Nullable
-      private aku e;
-      private final List<fps.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(fui $$0, wo $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fps.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fps.a a(aku $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fps.a a(wo $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fps.a a(wo $$0, Consumer<fps> $$1) {
-         this.f.add(new fps.b($$0, $$1));
-         return this;
-      }
-
-      public fps.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public fps a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
-         } else {
-            return new fps(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
-         }
-      }
+   @Override
+   protected void a(fsp $$0) {
    }
 
-   static record b(wo a, Consumer<fps> b) {
+   @Override
+   public boolean E() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public foa a(fsv $$0) {
+      return null;
+   }
+
+   static record a(gdf a, gdf b) {
+      public static fps.a a(gey $$0) {
+         gdf $$1 = new gdf($$0.a(gfb.ce), false);
+         gdf $$2 = new gdf($$0.a(gfb.ck), true);
+         return new fps.a($$1, $$2);
+      }
+
+      public void a(fod $$0, hft $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.501F, 0.0F);
+         gdf $$2 = $$1.e() == hft.a.a ? this.b : this.a;
+         gmh $$3 = $$2.a($$1.a());
+         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, heh.d));
+         $$0.c().b();
+      }
    }
 }

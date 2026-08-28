@@ -1,60 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class eha extends efw<eir> {
-   public eha(Codec<eir> $$0) {
+public class eha extends efx<eij> {
+   private static final int a = 7;
+
+   eha(Codec<eij> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efy<eir> $$0) {
-      dhe $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         eir $$3 = $$0.f();
-         azg $$4 = $$0.d();
-         dqk $$5 = dqk.b();
-         int $$6 = $$3.f() + $$3.d();
+   public boolean a(efz<eij> $$0) {
+      dhf $$1 = $$0.b();
+      azh $$2 = $$0.d();
+      eij $$3 = $$0.f();
+      ji $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ji.a $$6 = new ji.a();
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dww $$8 = $$1.a_($$6);
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         ji $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, djm.rw.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            ji $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jn.b)) {
-               $$1.a($$14, djm.rx.m().b(dqj.d, Boolean.valueOf(true)), 3);
+         for (eij.a $$9 : $$3.b) {
+            if (egs.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
-
-         return true;
       }
+
+      return true;
    }
 
-   private boolean a(dgh $$0, ji $$1) {
-      dwv $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dqf) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(djm.J) || !$$2.y().b()) ? false : jn.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
-      }
+   private void a(ji.a $$0, azh $$1, ji $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azh $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

@@ -1,29 +1,24 @@
-public class adi implements yv<abk> {
-   public static final ym<vl, adi> a = yv.a(adi::a, adi::new);
-   private final bsh b;
+public record adi(faz b, float c, float d) implements yw<abl> {
+   public static final yn<vl, adi> a = yn.a(faz.b, adi::b, yl.l, adi::e, yl.l, adi::f, adi::new);
 
-   public adi(bsh $$0) {
-      this.b = $$0;
-   }
-
-   private adi(vl $$0) {
-      this.b = $$0.b(bsh.class);
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   public static adi a(buk $$0) {
+      return new adi($$0.dt(), $$0.dL(), $$0.dN());
    }
 
    @Override
-   public yx<adi> a() {
-      return agd.W;
+   public yy<adi> a() {
+      return age.V;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public bsh b() {
-      return this.b;
+   public float e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

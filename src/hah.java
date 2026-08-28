@@ -1,5 +1,8 @@
-public class hah extends gzh {
-   public float a;
-   public float b;
-   public float c;
+public class hah extends gzj {
+   public boolean a;
+   public final buc b = new buc();
+   public final buc c = new buc();
+   public final buc d = new buc();
+   public final buc e = new buc();
+   public final buc f = new buc();
 }

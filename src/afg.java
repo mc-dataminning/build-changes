@@ -1,20 +1,30 @@
-public record afg(int b) implements yv<abk> {
-   public static final ym<vl, afg> a = yv.a(afg::a, afg::new);
+import java.util.Optional;
 
-   private afg(vl $$0) {
-      this($$0.l());
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-   }
+public record afg(String b, String c, int d, Optional<wp> e, Optional<yf> f) implements yw<abl> {
+   public static final yn<wa, afg> a = yn.a(yl.o, afg::b, yl.o, afg::e, yl.h, afg::f, wr.e, afg::g, yh.d, afg::h, afg::new);
 
    @Override
-   public yx<afg> a() {
-      return agd.aQ;
+   public yy<afg> a() {
+      return age.aP;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<wp> g() {
+      return this.e;
+   }
+
+   public Optional<yf> h() {
+      return this.f;
    }
 }

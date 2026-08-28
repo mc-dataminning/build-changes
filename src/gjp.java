@@ -1,35 +1,13 @@
-import org.joml.Quaternionf;
+public class gjp extends gkg {
+   private final gkb a;
 
-public class gjp extends gke {
-   private static final float a = 1.0472F;
-   private int b;
-
-   gjp(gfw $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.b = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayy.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(ffw $$0, fkp $$1, float $$2) {
-      if (this.b <= 0) {
-         this.y = 1.0F - ayy.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         Quaternionf $$3 = new Quaternionf();
-         $$3.rotationX(-1.0472F);
-         this.a($$0, $$1, $$3, $$2);
-         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-         this.a($$0, $$1, $$3, $$2);
-      }
+   gjp(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
@@ -38,30 +16,24 @@ public class gjp extends gke {
    }
 
    @Override
-   public gji b() {
-      return gji.c;
+   public gjk b() {
+      return gjk.c;
    }
 
    @Override
    public void a() {
-      if (this.b > 0) {
-         this.b--;
-      } else {
-         super.a();
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gjh<lw> {
-      private final gjz a;
-
-      public a(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lw $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjp $$8 = new gjp($$1, $$2, $$3, $$4, $$0.b());
-         $$8.a(this.a);
+   public static record a(gkb a) implements gjj<lv> {
+      public gjg a(lv $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjp $$8 = new gjp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
          return $$8;
       }
    }

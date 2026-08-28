@@ -1,54 +1,99 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class efp extends efw<ehx> {
-   public efp(Codec<ehx> $$0) {
+public class efp extends efx<eii> {
+   private static final dxf a = dxf.a(djn.L);
+   private final dww b = djn.L.m();
+   private final dww c = djn.ke.m();
+   private final dww d = djn.bc.m();
+   private final dww ao = djn.J.m();
+
+   public efp(Codec<eii> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efy<ehx> $$0) {
-      ehx $$1 = $$0.f();
+   public boolean a(efz<eii> $$0) {
+      dhf $$1 = $$0.b();
       ji $$2 = $$0.e();
-      dhe $$3 = $$0.b();
-      azg $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      ji.a $$10 = new ji.a();
+      $$2 = $$2.d();
 
-      for (ji $$11 : ji.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
+      while ($$1.u($$2) && $$2.v() > $$1.L_() + 2) {
+         $$2 = $$2.e();
       }
 
-      return $$5;
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
+            }
+         }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.ao, 2);
+
+         for (jn $$8 : jn.c.a) {
+            $$1.a($$2.a($$8), this.ao, 2);
+         }
+
+         ji $$9 = $$2.e();
+         $$1.a($$9, this.b, 2);
+
+         for (jn $$10 : jn.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<ji> $$17 = List.of($$2, $$2.i(), $$2.g(), $$2.h(), $$2.f());
+         azh $$18 = $$0.d();
+         b($$1, af.a($$17, $$18).c(1));
+         b($$1, af.a($$17, $$18).c(2));
+         return true;
+      }
    }
 
-   protected boolean a(ehx $$0, dhe $$1, azg $$2, int $$3, int $$4, ji.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
-
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dwv $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
-      }
-
-      return $$6;
+   private static void b(dhf $$0, ji $$1) {
+      $$0.a($$1, djn.M.m(), 3);
+      $$0.a($$1, dua.O).ifPresent($$1x -> $$1x.a(evm.aX, $$1.a()));
    }
 }

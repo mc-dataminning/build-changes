@@ -1,49 +1,51 @@
-public abstract class cpv extends cpw implements cpl {
-   private static final ajx<cwn> a = akb.a(cpv.class, ajz.h);
+import javax.annotation.Nullable;
 
-   public cpv(buq<? extends cpv> $$0, dgg $$1) {
+public class cpv extends cpd {
+   private int d = 200;
+
+   public cpv(bur<? extends cpv> $$0, dgh $$1) {
       super($$0, $$1);
    }
 
-   public cpv(buq<? extends cpv> $$0, double $$1, double $$2, double $$3, dgg $$4, cwn $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a($$5);
+   public cpv(dgh $$0, bvg $$1, cwo $$2, @Nullable cwo $$3) {
+      super(bur.bm, $$1, $$0, $$2, $$3);
    }
 
-   public cpv(buq<? extends cpv> $$0, bvf $$1, dgg $$2, cwn $$3) {
-      this($$0, $$1.dB(), $$1.dF() - 0.1F, $$1.dH(), $$2, $$3);
-      this.c($$1);
-   }
-
-   public void a(cwn $$0) {
-      this.au().a(a, $$0.c(1));
-   }
-
-   protected abstract cwj m();
-
-   @Override
-   public cwn l() {
-      return this.au().a(a);
+   public cpv(dgh $$0, double $$1, double $$2, double $$3, cwo $$4, @Nullable cwo $$5) {
+      super(bur.bm, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   protected void a(akb.a $$0) {
-      $$0.a(a, new cwn(this.m()));
+   public void h() {
+      super.h();
+      if (this.dV().C && !this.l()) {
+         this.dV().a(lt.S, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Item", this.l().a(this.dY()));
+   protected void a(bvg $$0) {
+      super.a($$0);
+      btp $$1 = new btp(btr.x, this.d, 0);
+      $$0.b($$1, this.E());
    }
 
    @Override
    public void a(tq $$0) {
       super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cwn.a(this.dY(), (un)$$0.p("Item")).orElseGet(() -> new cwn(this.m())));
-      } else {
-         this.a(new cwn(this.m()));
+      if ($$0.e("Duration")) {
+         this.d = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.d);
+   }
+
+   @Override
+   protected cwo v() {
+      return new cwo(cws.wp);
    }
 }

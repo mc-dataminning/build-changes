@@ -1,45 +1,37 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-public class awi<T> implements Iterable<awg<T>> {
-   private final ke<T> a;
-   private final Map<T, awg<T>> b = new IdentityHashMap<>();
-   private final wo c;
-   private final ym<vz, awg<T>> d;
+public interface awi {
+   DecimalFormat a = af.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   awi b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   awi c = $$0 -> a.format((double)$$0 * 0.1);
+   awi d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   awi e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
+      }
+   };
 
-   public awi(ke<T> $$0, wo $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = yk.a($$0.g()).a(this::b, awg::b);
-   }
-
-   public ym<vz, awg<T>> a() {
-      return this.d;
-   }
-
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public awg<T> a(T $$0, awh $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new awg<>(this, (T)$$1x, $$1));
-   }
-
-   public ke<T> b() {
-      return this.a;
-   }
-
-   @Override
-   public Iterator<awg<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public awg<T> b(T $$0) {
-      return this.a($$0, awh.b);
-   }
-
-   public wo c() {
-      return this.c;
-   }
+   String format(int var1);
 }

@@ -1,33 +1,26 @@
-public record dby(cwn a, cwn b, cwn c) implements dbi {
+import java.util.Optional;
+
+public interface dby extends dbd<dbz> {
    @Override
-   public cwn a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   default dbo<dby> b() {
+      return dbo.g;
    }
 
    @Override
-   public int a() {
-      return 3;
+   dbn<? extends dby> a();
+
+   default boolean a(dbz $$0, dgh $$1) {
+      return daz.a(this.c(), $$0.c()) && daz.a(this.f(), $$0.d()) && daz.a(this.k(), $$0.e());
    }
+
+   Optional<daz> c();
+
+   Optional<daz> f();
+
+   Optional<daz> k();
 
    @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cwn c() {
-      return this.a;
-   }
-
-   public cwn d() {
-      return this.b;
-   }
-
-   public cwn e() {
-      return this.c;
+   default dbg h() {
+      return dbf.l;
    }
 }

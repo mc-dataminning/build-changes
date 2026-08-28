@@ -1,22 +1,15 @@
-import java.util.Optional;
 import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
 
-public class asn implements art {
-   public static final art.a a = new art.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public class asn implements aru {
+   public static final aru.a a = new aru.a("join_world");
 
-   public asn(MinecraftServer.b $$0) {
-      this.b = $$0;
+   @Override
+   public void a(Consumer<yw<?>> $$0) {
+      $$0.accept(aau.a);
    }
 
    @Override
-   public void a(Consumer<yv<?>> $$0) {
-      $$0.accept(new zi(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
-   }
-
-   @Override
-   public art.a a() {
+   public aru.a a() {
       return a;
    }
 }

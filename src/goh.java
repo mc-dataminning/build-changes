@@ -1,15 +1,14 @@
-public interface goh<T extends dtx> {
-   void a(T var1, float var2, ffs var3, glv var4, int var5, int var6);
+public class goh implements goj<dtw> {
+   public static final hgy a = new hgy(heq.d, akv.b("entity/bell/bell_body"));
+   private final gbf b;
 
-   default boolean a(T $$0) {
-      return false;
+   public goh(gok.a $$0) {
+      this.b = new gbf($$0.a(gfb.A));
    }
 
-   default int aU_() {
-      return 64;
-   }
-
-   default boolean a(T $$0, fay $$1) {
-      return fay.b($$0.aA_()).a((kb)$$1, (double)this.aU_());
+   public void a(dtw $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      ffx $$6 = a.a($$3, gmh::d);
+      this.b.a($$0, $$1);
+      this.b.a($$2, $$6, $$4, $$5);
    }
 }

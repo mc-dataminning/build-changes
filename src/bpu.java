@@ -1,14 +1,7 @@
-import java.time.Duration;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bpu(Duration a, dfm b, String c, String d, boolean e) implements bpx {
+public record bpu(String a, String b, String c) {
    public static bpu a(RecordedEvent $$0) {
-      return new bpu(
-         $$0.getDuration(),
-         new dfm($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         $$0.getString("structure"),
-         $$0.getString("level"),
-         $$0.getBoolean("success")
-      );
+      return new bpu($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
    }
 }

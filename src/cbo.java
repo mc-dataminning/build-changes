@@ -1,62 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class cbo extends ccd {
-   private final bvn a;
+public class cbo extends cbv {
+   private static final int g = 240;
+   private final Predicate<bsg> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cbo(bvn $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccd.a.a, ccd.a.b));
+   public cbo(bvi $$0, Predicate<bsg> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public cbo(bvi $$0, int $$1, Predicate<bsg> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      return this.a.ct() < 140;
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
+      if (!super.b()) {
+         return false;
+      } else {
+         return !a(this.d).O().b(dgd.c) ? false : this.a(this.d.dV().am()) && !this.h();
+      }
    }
 
    @Override
    public void d() {
-      this.h();
+      super.d();
+      this.a = 0;
    }
 
-   private void h() {
-      Iterable<ji> $$0 = ji.b(
-         ayy.a(this.a.dB() - 1.0), this.a.dC(), ayy.a(this.a.dH() - 1.0), ayy.a(this.a.dB() + 1.0), ayy.a(this.a.dD() + 8.0), ayy.a(this.a.dH() + 1.0)
-      );
-      ji $$1 = null;
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().am());
+   }
 
-      for (ji $$2 : $$0) {
-         if (this.a(this.a.dW(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = ji.a(this.a.dB(), this.a.dD() + 8.0, this.a.dH());
-      }
-
-      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void e() {
+      super.e();
+      this.d.dV().a(this.d.ar(), this.e, -1);
    }
 
    @Override
    public void a() {
-      this.h();
-      this.a.a(0.02F, new fay((double)this.a.bn, (double)this.a.bo, (double)this.a.bp));
-      this.a.a(bvj.a, this.a.dz());
+      super.a();
+      if (this.d.dY().a(20) == 0) {
+         this.d.dV().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fA());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dV().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dV().am())) {
+         this.d.dV().a(this.e, false);
+         this.d.dV().c(1021, this.e, 0);
+         this.d.dV().c(2001, this.e, djl.j(this.d.dV().a_(this.e)));
+      }
    }
 
-   private boolean a(dgj $$0, ji $$1) {
-      dwv $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(djm.nF)) && $$2.a(etm.a);
+   private boolean a(bsg $$0) {
+      return this.h.test($$0);
    }
 }

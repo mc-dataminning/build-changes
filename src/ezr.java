@@ -1,36 +1,53 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record ezr(float c) implements ezu {
-   public static final MapCodec<ezr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ezr::c)).apply($$0, ezr::new));
-   public static final Codec<ezr> b = Codec.FLOAT.xmap(ezr::new, ezr::c);
+public record ezr(ezv b, ezv c) implements ezv {
+   public static final MapCodec<ezr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ezw.a.fieldOf("n").forGetter(ezr::c), ezw.a.fieldOf("p").forGetter(ezr::d)).apply($$0, ezr::new)
+   );
 
    @Override
-   public ezt b() {
-      return ezv.b;
+   public ezu b() {
+      return ezw.d;
    }
 
    @Override
-   public float b(evp $$0) {
-      return this.c;
-   }
+   public int a(evq $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      azh $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static ezr a(float $$0) {
-      return new ezr($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ezr)$$0).c, this.c) == 0 : false;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
       }
+
+      return $$4;
    }
 
    @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public float b(evq $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static ezr a(int $$0, float $$1) {
+      return new ezr(ezs.a((float)$$0), ezs.a($$1));
+   }
+
+   @Override
+   public Set<bai<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public ezv c() {
+      return this.b;
+   }
+
+   public ezv d() {
+      return this.c;
    }
 }

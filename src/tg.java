@@ -21,7 +21,7 @@ public class tg implements ArgumentType<tf> {
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         Message $$3 = wo.b("No such test: " + $$1);
+         Message $$3 = wp.b("No such test: " + $$1);
          throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
    }

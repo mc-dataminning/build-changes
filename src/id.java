@@ -11,7 +11,7 @@ import java.util.List;
 
 public class id<T extends ez<T>> {
    @VisibleForTesting
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wo.b("command.forkLimit", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("command.forkLimit", $$0));
    private final String b;
    private final ContextChain<T> c;
 

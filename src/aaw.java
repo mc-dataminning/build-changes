@@ -1,15 +1,18 @@
 import io.netty.buffer.ByteBuf;
-import java.util.List;
 
-public record aaw(List<atv> b) implements yv<aas> {
-   public static final ym<ByteBuf, aaw> a = ym.a(atv.a.a(yk.a()), aaw::b, aaw::new);
+public class aaw implements yw<aat> {
+   public static final aaw a = new aaw();
+   public static final yn<ByteBuf, aaw> b = yn.a(a);
 
-   @Override
-   public yx<aaw> a() {
-      return aay.d;
+   private aaw() {
    }
 
-   public void a(aas $$0) {
+   @Override
+   public yy<aaw> a() {
+      return aaz.e;
+   }
+
+   public void a(aat $$0) {
       $$0.a(this);
    }
 }

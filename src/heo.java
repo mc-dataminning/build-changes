@@ -1,174 +1,225 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class heo implements aui, hep, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final aku a = aku.b("");
-   private final Map<aku, hdx> c = new HashMap<>();
-   private final Set<hep> d = new HashSet<>();
-   private final auo e;
+public class heo<T extends heo.a> {
+   private static final Comparator<heo.b<?>> a = Comparator.<heo.b<?>, Integer>comparing($$0 -> -$$0.c)
+      .thenComparing($$0 -> -$$0.b)
+      .thenComparing($$0 -> $$0.a.c());
+   private final int b;
+   private final List<heo.b<T>> c = new ArrayList<>();
+   private final List<heo.c<T>> d = new ArrayList<>();
+   private int e;
+   private int f;
+   private final int g;
+   private final int h;
 
-   public heo(auo $$0) {
-      this.e = $$0;
-      fes $$1 = heb.a();
-      this.a(heb.c(), new hdz($$1));
+   public heo(int $$0, int $$1, int $$2) {
+      this.b = $$2;
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public void a(aku $$0, hed $$1) {
-      try {
-         $$1.a(a(this.e, $$0, $$1));
-      } catch (Throwable var6) {
-         o $$3 = o.a(var6, "Registering texture");
-         p $$4 = $$3.a("Resource location being registered");
-         $$4.a("Resource location", $$1.e());
-         $$4.a("Texture id", $$0);
-         throw new z($$3);
-      }
-
-      this.a($$0, (hdx)$$1);
+   public int a() {
+      return this.e;
    }
 
-   public void a(aku $$0) {
-      this.a($$0, (hdx)(new hee($$0)));
+   public int b() {
+      return this.f;
    }
 
-   public void a(aku $$0, hdx $$1) {
-      hdx $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null) {
-            this.b($$0, $$2);
-         }
+   public void a(T $$0) {
+      heo.b<T> $$1 = new heo.b<>($$0, this.b);
+      this.c.add($$1);
+   }
 
-         if ($$1 instanceof hep $$3) {
-            this.d.add($$3);
+   public void c() {
+      List<heo.b<T>> $$0 = new ArrayList<>(this.c);
+      $$0.sort(a);
+
+      for (heo.b<T> $$1 : $$0) {
+         if (!this.a($$1)) {
+            throw new hep($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
          }
       }
    }
 
-   private void b(aku $$0, hdx $$1) {
-      this.d.remove($$1);
-
-      try {
-         $$1.close();
-      } catch (Exception var4) {
-         b.warn("Failed to close texture {}", $$0, var4);
+   public void a(heo.d<T> $$0) {
+      for (heo.c<T> $$1 : this.d) {
+         $$1.a($$0);
       }
-
-      $$1.b();
    }
 
-   public hdx b(aku $$0) {
-      hdx $$1 = this.c.get($$0);
-      if ($$1 != null) {
-         return $$1;
+   static int a(int $$0, int $$1) {
+      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
+   }
+
+   private boolean a(heo.b<T> $$0) {
+      for (heo.c<T> $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return this.b($$0);
+   }
+
+   private boolean b(heo.b<T> $$0) {
+      int $$1 = ayz.c(this.e);
+      int $$2 = ayz.c(this.f);
+      int $$3 = ayz.c(this.e + $$0.b);
+      int $$4 = ayz.c(this.f + $$0.c);
+      boolean $$5 = $$3 <= this.g;
+      boolean $$6 = $$4 <= this.h;
+      if (!$$5 && !$$6) {
+         return false;
       } else {
-         hee $$2 = new hee($$0);
-         this.a($$0, (hed)$$2);
-         return $$2;
-      }
-   }
-
-   @Override
-   public void f() {
-      for (hep $$0 : this.d) {
-         $$0.f();
-      }
-   }
-
-   public void c(aku $$0) {
-      hdx $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.b($$0, $$1);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(this::b);
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(aui.a $$0, auo $$1, Executor $$2, Executor $$3) {
-      List<heo.a> $$4 = new ArrayList<>();
-      this.c.forEach(($$3x, $$4x) -> {
-         if ($$4x instanceof hed $$5) {
-            $$4.add(a($$1, $$3x, $$5, $$2));
+         boolean $$7 = $$5 && $$1 != $$3;
+         boolean $$8 = $$6 && $$2 != $$4;
+         boolean $$9;
+         if ($$7 ^ $$8) {
+            $$9 = $$7;
+         } else {
+            $$9 = $$5 && $$1 <= $$2;
          }
-      });
-      return CompletableFuture.allOf($$4.stream().map(heo.a::b).toArray(CompletableFuture[]::new)).thenCompose($$0::a).thenAcceptAsync($$1x -> {
-         fin.a(this.e);
 
-         for (heo.a $$2x : $$4) {
-            $$2x.a.a($$2x.b.join());
+         heo.c<T> $$11;
+         if ($$9) {
+            if (this.f == 0) {
+               this.f = $$4;
+            }
+
+            $$11 = new heo.c<>(this.e, 0, $$3 - this.e, this.f);
+            this.e = $$3;
+         } else {
+            $$11 = new heo.c<>(0, this.f, this.e, $$4 - this.f);
+            this.f = $$4;
          }
-      }, $$3);
-   }
 
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
-      } else {
-         this.b($$0);
+         $$11.a($$0);
+         this.d.add($$11);
+         return true;
       }
    }
 
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
+   public interface a {
+      int a();
+
+      int b();
+
+      akv c();
+   }
+
+   static record b<T extends heo.a>(T a, int b, int c) {
+
+      public b(T $$0, int $$1) {
+         this($$0, heo.a($$0.a(), $$1), heo.a($$0.b(), $$1));
+      }
+   }
+
+   public static class c<T extends heo.a> {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private List<heo.c<T>> e;
+      @Nullable
+      private heo.b<T> f;
+
+      public c(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof hdy $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
+      public int a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean a(heo.b<T> $$0) {
+         if (this.f != null) {
+            return false;
+         } else {
+            int $$1 = $$0.b;
+            int $$2 = $$0.c;
+            if ($$1 <= this.c && $$2 <= this.d) {
+               if ($$1 == this.c && $$2 == this.d) {
+                  this.f = $$0;
+                  return true;
+               } else {
+                  if (this.e == null) {
+                     this.e = new ArrayList<>(1);
+                     this.e.add(new heo.c<>(this.a, this.b, $$1, $$2));
+                     int $$3 = this.c - $$1;
+                     int $$4 = this.d - $$2;
+                     if ($$4 > 0 && $$3 > 0) {
+                        int $$5 = Math.max(this.d, $$3);
+                        int $$6 = Math.max(this.c, $$4);
+                        if ($$5 >= $$6) {
+                           this.e.add(new heo.c<>(this.a, this.b + $$2, $$1, $$4));
+                           this.e.add(new heo.c<>(this.a + $$1, this.b, $$3, this.d));
+                        } else {
+                           this.e.add(new heo.c<>(this.a + $$1, this.b, $$3, $$2));
+                           this.e.add(new heo.c<>(this.a, this.b + $$2, this.c, $$4));
+                        }
+                     } else if ($$3 == 0) {
+                        this.e.add(new heo.c<>(this.a, this.b + $$2, $$1, $$4));
+                     } else if ($$4 == 0) {
+                        this.e.add(new heo.c<>(this.a + $$1, this.b, $$3, $$2));
+                     }
+                  }
+
+                  for (heo.c<T> $$7 : this.e) {
+                     if ($$7.a($$0)) {
+                        return true;
+                     }
+                  }
+
+                  return false;
+               }
+            } else {
+               return false;
             }
          }
-      });
-   }
+      }
 
-   private static hen a(auo $$0, aku $$1, hed $$2) throws IOException {
-      try {
-         return $$2.a($$0);
-      } catch (FileNotFoundException var4) {
-         if ($$1 != a) {
-            b.warn("Missing resource {} referenced from {}", $$2.e(), $$1);
+      public void a(heo.d<T> $$0) {
+         if (this.f != null) {
+            $$0.load(this.f.a, this.a(), this.b());
+         } else if (this.e != null) {
+            for (heo.c<T> $$1 : this.e) {
+               $$1.a($$0);
+            }
          }
+      }
 
-         return hen.a();
+      @Override
+      public String toString() {
+         return "Slot{originX="
+            + this.a
+            + ", originY="
+            + this.b
+            + ", width="
+            + this.c
+            + ", height="
+            + this.d
+            + ", texture="
+            + this.f
+            + ", subSlots="
+            + this.e
+            + "}";
       }
    }
 
-   private static heo.a a(auo $$0, aku $$1, hed $$2, Executor $$3) {
-      return new heo.a($$2, CompletableFuture.supplyAsync(() -> {
-         try {
-            return a($$0, $$1, $$2);
-         } catch (IOException var4) {
-            throw new UncheckedIOException(var4);
-         }
-      }, $$3));
-   }
-
-   static record a(hed a, CompletableFuture<hen> b) {
+   public interface d<T extends heo.a> {
+      void load(T var1, int var2, int var3);
    }
 }

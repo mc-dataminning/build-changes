@@ -1,49 +1,43 @@
-public class giw extends gke {
-   private final gjz a;
+public class giw extends gje {
+   private final double a;
+   private final int b;
 
-   protected giw(gfw $$0, double $$1, double $$2, double $$3, double $$4, gjz $$5) {
+   giw(gfy $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+      this.a = $$4;
+      this.t = $$5;
+      this.b = $$6;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.s % (this.b + 1) == 0) {
+         for (int $$0 = 0; $$0 < 3; $$0++) {
+            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
+            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
+            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
+            this.c.a(lt.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+         }
+      }
+
+      if (this.s++ == this.t) {
          this.k();
-      } else {
-         this.b(this.a);
       }
    }
 
-   @Override
-   public gji b() {
-      return gji.b;
-   }
+   public static class a implements gjj<lx> {
+      private final double a;
+      private final int b;
+      private final int c;
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
-
-      public a(gjz $$0) {
+      public a(double $$0, int $$1, int $$2) {
          this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new giw($$1, $$2, $$3, $$4, $$5, this.a);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new giw($$1, $$2, $$3, $$4, this.a, this.b, this.c);
       }
    }
 }

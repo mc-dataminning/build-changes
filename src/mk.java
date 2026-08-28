@@ -19,11 +19,11 @@ public class mk {
       return new mk.a(this, $$0, $$1);
    }
 
-   public mk.a a(akt<? extends ke<?>> $$0) {
+   public mk.a a(aku<? extends ke<?>> $$0) {
       return this.a(mk.b.a, mc.c($$0));
    }
 
-   public mk.a b(akt<? extends ke<?>> $$0) {
+   public mk.a b(aku<? extends ke<?>> $$0) {
       return this.a(mk.b.a, mc.d($$0));
    }
 
@@ -36,15 +36,15 @@ public class mk {
          this.b = $$2;
       }
 
-      public Path a(aku $$0, String $$1) {
+      public Path a(akv $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(aku $$0) {
+      public Path a(akv $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
 
-      public Path a(akt<?> $$0) {
+      public Path a(aku<?> $$0) {
          return this.a.resolve($$0.a().b()).resolve(this.b).resolve($$0.a().a() + ".json");
       }
    }

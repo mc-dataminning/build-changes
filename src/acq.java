@@ -1,26 +1,24 @@
-import java.util.Optional;
+public record acq(int b, bvt c, boolean d) implements yw<abl> {
+   public static final yn<vl, acq> a = yn.a(yl.h, acq::b, bvt.a, acq::e, yl.b, acq::f, acq::new);
 
-public record acq(fay b, Optional<fay> c, lr d, jr<avy> e) implements yv<abk> {
-   public static final ym<vz, acq> a = ym.a(fay.b, acq::b, fay.b.a(yk::a), acq::e, lt.bj, acq::f, avy.d, acq::g, acq::new);
-
-   @Override
-   public yx<acq> a() {
-      return agd.E;
+   public static acq a(buk $$0) {
+      return new acq($$0.ar(), new bvt($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
    }
 
-   public void a(abk $$0) {
+   @Override
+   public yy<acq> a() {
+      return age.be;
+   }
+
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public Optional<fay> e() {
+   public bvt e() {
       return this.c;
    }
 
-   public lr f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public jr<avy> g() {
-      return this.e;
    }
 }

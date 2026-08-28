@@ -1,110 +1,117 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
 
-public record ecw(ecj b, ecj c, ecj d, ecj e, ecj f, ecj g, ecj h, ecj i, ecj j, ecj k, ecj l, ecj m, ecj n, ecj o, ecj p) {
+public record ecw(ecz j, dww k, dww l, ecx m, edi.o n, List<dhs.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
    public static final Codec<ecw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               a("barrier", ecw::a),
-               a("fluid_level_floodedness", ecw::b),
-               a("fluid_level_spread", ecw::c),
-               a("lava", ecw::d),
-               a("temperature", ecw::e),
-               a("vegetation", ecw::f),
-               a("continents", ecw::g),
-               a("erosion", ecw::h),
-               a("depth", ecw::i),
-               a("ridges", ecw::j),
-               a("initial_density_without_jaggedness", ecw::k),
-               a("final_density", ecw::l),
-               a("vein_toggle", ecw::m),
-               a("vein_ridged", ecw::n),
-               a("vein_gap", ecw::o)
+               ecz.a.fieldOf("noise").forGetter(ecw::f),
+               dww.a.fieldOf("default_block").forGetter(ecw::g),
+               dww.a.fieldOf("default_fluid").forGetter(ecw::h),
+               ecx.a.fieldOf("noise_router").forGetter(ecw::i),
+               edi.o.b.fieldOf("surface_rule").forGetter(ecw::j),
+               dhs.d.a.listOf().fieldOf("spawn_target").forGetter(ecw::k),
+               Codec.INT.fieldOf("sea_level").forGetter(ecw::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ecw::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ecw::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ecw::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ecw::n)
             )
             .apply($$0, ecw::new)
    );
+   public static final Codec<jr<ecw>> b = akr.a(mc.aR, a);
+   public static final aku<ecw> c = aku.a(mc.aR, akv.b("overworld"));
+   public static final aku<ecw> d = aku.a(mc.aR, akv.b("large_biomes"));
+   public static final aku<ecw> e = aku.a(mc.aR, akv.b("amplified"));
+   public static final aku<ecw> f = aku.a(mc.aR, akv.b("nether"));
+   public static final aku<ecw> g = aku.a(mc.aR, akv.b("end"));
+   public static final aku<ecw> h = aku.a(mc.aR, akv.b("caves"));
+   public static final aku<ecw> i = aku.a(mc.aR, akv.b("floating_islands"));
 
-   private static RecordCodecBuilder<ecw, ecj> a(String $$0, Function<ecw, ecj> $$1) {
-      return ecj.d.fieldOf($$0).forGetter($$1);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public ecw a(ecj.f $$0) {
-      return new ecw(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public boolean b() {
+      return this.r;
    }
 
-   public ecj a() {
-      return this.b;
+   public boolean c() {
+      return this.s;
    }
 
-   public ecj b() {
-      return this.c;
+   public edq.a d() {
+      return this.t ? edq.a.a : edq.a.b;
    }
 
-   public ecj c() {
-      return this.d;
+   public static void a(qe<ecw> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public ecj d() {
-      return this.e;
+   private static ecw b(qe<?> $$0) {
+      return new ecw(ecz.d, djn.fU.m(), djn.a.m(), ecy.a($$0.a(mc.aM)), qr.c(), List.of(), 0, true, false, false, true);
    }
 
-   public ecj e() {
-      return this.f;
+   private static ecw c(qe<?> $$0) {
+      return new ecw(ecz.c, djn.ei.m(), djn.K.m(), ecy.a($$0.a(mc.aM), $$0.a(mc.aS)), qr.b(), List.of(), 32, false, false, false, true);
    }
 
-   public ecj f() {
-      return this.g;
+   private static ecw a(qe<?> $$0, boolean $$1, boolean $$2) {
+      return new ecw(ecz.b, djn.b.m(), djn.J.m(), ecy.a($$0.a(mc.aM), $$0.a(mc.aS), $$2, $$1), qr.a(), new dhz().a(), 63, false, true, true, false);
    }
 
-   public ecj g() {
-      return this.h;
+   private static ecw d(qe<?> $$0) {
+      return new ecw(ecz.e, djn.b.m(), djn.J.m(), ecy.b($$0.a(mc.aM), $$0.a(mc.aS)), qr.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   public ecj h() {
-      return this.i;
+   private static ecw e(qe<?> $$0) {
+      return new ecw(ecz.f, djn.b.m(), djn.J.m(), ecy.c($$0.a(mc.aM), $$0.a(mc.aS)), qr.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   public ecj i() {
+   public static ecw e() {
+      return new ecw(ecz.b, djn.b.m(), djn.a.m(), ecy.a(), qr.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public ecz f() {
       return this.j;
    }
 
-   public ecj j() {
+   public dww g() {
       return this.k;
    }
 
-   public ecj k() {
+   public dww h() {
       return this.l;
    }
 
-   public ecj l() {
+   public ecx i() {
       return this.m;
    }
 
-   public ecj m() {
+   public edi.o j() {
       return this.n;
    }
 
-   public ecj n() {
+   public List<dhs.d> k() {
       return this.o;
    }
 
-   public ecj o() {
+   public int l() {
       return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

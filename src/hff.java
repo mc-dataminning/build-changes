@@ -1,45 +1,21 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hff {
-   private static final hfo[] a = new hfo[]{
-      a("textures/entity/player/slim/alex.png", hfo.a.a),
-      a("textures/entity/player/slim/ari.png", hfo.a.a),
-      a("textures/entity/player/slim/efe.png", hfo.a.a),
-      a("textures/entity/player/slim/kai.png", hfo.a.a),
-      a("textures/entity/player/slim/makena.png", hfo.a.a),
-      a("textures/entity/player/slim/noor.png", hfo.a.a),
-      a("textures/entity/player/slim/steve.png", hfo.a.a),
-      a("textures/entity/player/slim/sunny.png", hfo.a.a),
-      a("textures/entity/player/slim/zuri.png", hfo.a.a),
-      a("textures/entity/player/wide/alex.png", hfo.a.b),
-      a("textures/entity/player/wide/ari.png", hfo.a.b),
-      a("textures/entity/player/wide/efe.png", hfo.a.b),
-      a("textures/entity/player/wide/kai.png", hfo.a.b),
-      a("textures/entity/player/wide/makena.png", hfo.a.b),
-      a("textures/entity/player/wide/noor.png", hfo.a.b),
-      a("textures/entity/player/wide/steve.png", hfo.a.b),
-      a("textures/entity/player/wide/sunny.png", hfo.a.b),
-      a("textures/entity/player/wide/zuri.png", hfo.a.b)
-   };
+public class hff implements hew {
+   public static final MapCodec<hff> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azi.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, hff::new));
+   private final azi c;
 
-   public static aku a() {
-      return b().a();
+   public hff(azi $$0) {
+      this.c = $$0;
    }
 
-   public static hfo b() {
-      return a[6];
+   @Override
+   public void a(aup $$0, hew.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public static hfo a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
-   }
-
-   public static hfo a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static hfo a(String $$0, hfo.a $$1) {
-      return new hfo(aku.b($$0), null, null, null, $$1, true);
+   @Override
+   public hey a() {
+      return hez.c;
    }
 }

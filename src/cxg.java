@@ -1,19 +1,17 @@
-public class cxg extends cya {
-   public cxg(djk $$0, djk $$1, cwj.a $$2) {
-      super($$0, $$1, jn.a, $$2);
+public class cxg extends cuu {
+   public cxg(djl $$0, cwk.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public wo a(cwn $$0) {
-      czm $$1 = $$0.a(kv.ag);
-      return (wo)($$1 != null && $$1.c().isPresent() ? wo.a(this.l + ".named", $$1.c().get()) : super.a($$0));
+   public bsj a(dah $$0) {
+      return bsj.e;
    }
 
    @Override
-   public void l(cwn $$0) {
-      czm $$1 = $$0.a(kv.ag);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(kv.ag, $$1x), dvm.a);
-      }
+   public bsj a(dgh $$0, cow $$1, bsi $$2) {
+      fav $$3 = a($$0, $$1, dfp.b.b);
+      fav $$4 = $$3.a($$3.b().d());
+      return super.a(new dah($$1, $$2, $$4));
    }
 }

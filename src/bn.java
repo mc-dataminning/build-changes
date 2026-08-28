@@ -8,11 +8,11 @@ public class bn extends dz<bn.a> {
       return bn.a.a;
    }
 
-   public void a(ard $$0, ji $$1) {
-      arc $$2 = $$0.y();
-      dwv $$3 = $$2.a_($$1);
-      evs $$4 = new evs.a($$2).a(eyj.f, $$1.b()).a(eyj.a, $$0).a(eyj.g, $$3).a(eyi.p);
-      evp $$5 = new evp.a($$4).a(Optional.empty());
+   public void a(are $$0, ji $$1) {
+      ard $$2 = $$0.y();
+      dww $$3 = $$2.a_($$1);
+      evt $$4 = new evt.a($$2).a(eyk.f, $$1.b()).a(eyk.a, $$0).a(eyk.g, $$3).a(eyj.p);
+      evq $$5 = new evq.a($$4).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$5));
    }
 
@@ -21,14 +21,14 @@ public class bn extends dz<bn.a> {
          $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(bn.a::a), bi.a.optionalFieldOf("location").forGetter(bn.a::b)).apply($$0, bn.a::new)
       );
 
-      public boolean a(evp $$0) {
+      public boolean a(evq $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bj $$0) {
          dz.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, eyi.p, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, eyj.p, ".location"));
       }
 
       @Override

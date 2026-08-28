@@ -1,5 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fmi {
-   int getColor(dwv var1, @Nullable dfi var2, @Nullable ji var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fmi {
 }

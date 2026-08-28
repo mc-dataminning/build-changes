@@ -1,27 +1,52 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dfz {
-   public Optional<Float> a(dfy $$0, dfl $$1, ji $$2, dwv $$3, esx $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public interface dfz {
+   static bta a(dgh $$0, @Nullable buk $$1) {
+      return $$0.ak().d($$1, a($$1));
    }
 
-   public boolean a(dfy $$0, dfl $$1, ji $$2, dwv $$3, float $$4) {
-      return true;
+   @Nullable
+   static bvg a(@Nullable buk $$0) {
+      return switch ($$0) {
+         case null, default -> null;
+         case clc $$1 -> $$1.l();
+         case bvg $$2 -> $$2;
+         case cpp $$3 when $$3.p() instanceof bvg $$4 -> $$4;
+      };
    }
 
-   public boolean a(dfy $$0, buj $$1) {
-      return true;
-   }
+   ard a();
 
-   public float a(buj $$0) {
-      return 1.0F;
-   }
+   dfz.a b();
 
-   public float a(dfy $$0, buj $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fay $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   @Nullable
+   bvg c();
+
+   @Nullable
+   buk d();
+
+   float e();
+
+   faz f();
+
+   boolean g();
+
+   boolean h();
+
+   public static enum a {
+      a(false),
+      b(true),
+      c(true),
+      d(false);
+
+      private final boolean e;
+
+      private a(final boolean $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a() {
+         return this.e;
+      }
    }
 }

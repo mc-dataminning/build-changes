@@ -1,23 +1,10 @@
-import io.netty.buffer.ByteBuf;
-
-public class abb implements yv<aba> {
-   public static final abb a = new abb();
-   public static final ym<ByteBuf, abb> b = ym.a(a);
-
-   private abb() {
-   }
-
+public interface abb extends zp {
    @Override
-   public yx<abb> a() {
-      return aay.f;
+   default vj b() {
+      return vj.e;
    }
 
-   public void a(aba $$0) {
-      $$0.a(this);
-   }
+   void a(abc var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(abd var1);
 }

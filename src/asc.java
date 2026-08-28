@@ -1,173 +1,137 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.microsoft.aad.msal4j.ClientCredentialFactory;
+import com.microsoft.aad.msal4j.ClientCredentialParameters;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication;
+import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCertificate;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public abstract class asc implements zo {
-   private static final Logger f = LogUtils.getLogger();
-   public static final int b = 15000;
-   private static final int g = 15000;
-   private static final wo h = wo.c("disconnect.timeout");
-   static final wo c = wo.c("multiplayer.disconnect.unexpected_query_response");
-   protected final MinecraftServer d;
-   protected final vi e;
-   private final boolean i;
-   private long j;
-   private boolean k;
-   private long l;
-   private long m;
-   private boolean n = false;
-   private int o;
-   private volatile boolean p = false;
+public class asc extends asl {
+   private final ConfidentialClientApplication b;
+   private final ClientCredentialParameters c;
+   private final Set<String> d;
+   private final int e;
 
-   public asc(MinecraftServer $$0, vi $$1, ars $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.j = af.c();
-      this.o = $$2.b();
-      this.i = $$2.d();
+   private asc(URL $$0, asl.b $$1, asl.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$4;
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   private void l() {
-      if (!this.n) {
-         this.m = af.c();
-         this.n = true;
-      }
-   }
+   @Nullable
+   public static asl a(String $$0) {
+      JsonObject $$1 = ayp.a($$0);
+      URI $$2 = URI.create(ayp.i($$1, "apiServer"));
+      String $$3 = ayp.i($$1, "apiPath");
+      String $$4 = ayp.i($$1, "scope");
+      String $$5 = ayp.a($$1, "serverId", "");
+      String $$6 = ayp.i($$1, "applicationId");
+      String $$7 = ayp.i($$1, "tenantId");
+      String $$8 = ayp.a($$1, "roomId", "Java:Chat");
+      String $$9 = ayp.i($$1, "certificatePath");
+      String $$10 = ayp.a($$1, "certificatePassword", "");
+      int $$11 = ayp.a($$1, "hashesToDrop", -1);
+      int $$12 = ayp.a($$1, "maxConcurrentRequests", 7);
+      JsonArray $$13 = ayp.v($$1, "fullyFilteredEvents");
+      Set<String> $$14 = new HashSet<>();
+      $$13.forEach($$1x -> $$14.add(ayp.a($$1x, "filteredEvent")));
+      int $$15 = ayp.a($$1, "connectionReadTimeoutMs", 2000);
 
-   @Override
-   public void a(vk $$0) {
-      if (this.h()) {
-         f.info("Stopping singleplayer server as player logged out");
-         this.d.a(false);
-      }
-   }
-
-   @Override
-   public void a(yv $$0, Exception $$1) throws z {
-      zo.super.a($$0, $$1);
-      this.d.a($$1, $$0.a());
-   }
-
-   @Override
-   public void a(zr $$0) {
-      if (this.k && $$0.b() == this.l) {
-         int $$1 = (int)(af.c() - this.j);
-         this.o = (this.o * 3 + $$1) / 4;
-         this.k = false;
-      } else if (!this.h()) {
-         this.a(h);
-      }
-   }
-
-   @Override
-   public void a(zs $$0) {
-   }
-
-   @Override
-   public void a(zq $$0) {
-   }
-
-   @Override
-   public void a(zt $$0) {
-      yy.a($$0, this, this.d);
-      if ($$0.e() == zt.a.b && this.d.Z()) {
-         f.info("Disconnecting {} due to resource pack {} rejection", this.i().getName(), $$0.b());
-         this.a(wo.c("multiplayer.requiredTexturePrompt.disconnect"));
-      }
-   }
-
-   @Override
-   public void a(abi $$0) {
-      this.a(c);
-   }
-
-   protected void e() {
-      boq.a().a("keepAlive");
-      long $$0 = af.c();
-      if (!this.h() && $$0 - this.j >= 15000L) {
-         if (this.k) {
-            this.a(h);
-         } else if (this.a($$0)) {
-            this.k = true;
-            this.j = $$0;
-            this.l = $$0;
-            this.b(new zf(this.l));
-         }
-      }
-
-      boq.a().c();
-   }
-
-   private boolean a(long $$0) {
-      if (this.n) {
-         if ($$0 - this.m >= 15000L) {
-            this.a(h);
-         }
-
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   public void f() {
-      this.p = true;
-   }
-
-   public void g() {
-      this.p = false;
-      this.e.a();
-   }
-
-   public void b(yv<?> $$0) {
-      this.a($$0, null);
-   }
-
-   public void a(yv<?> $$0, @Nullable vv $$1) {
-      if ($$0.d()) {
-         this.l();
-      }
-
-      boolean $$2 = !this.p || !this.d.bx();
-
+      URL $$16;
       try {
-         this.e.a($$0, $$1, $$2);
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
-         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new z($$4);
+         $$16 = $$2.resolve($$3).toURL();
+      } catch (MalformedURLException var26) {
+         throw new RuntimeException(var26);
+      }
+
+      asl.b $$19 = ($$2x, $$3x) -> {
+         JsonObject $$4x = new JsonObject();
+         $$4x.addProperty("userId", $$2x.getId().toString());
+         $$4x.addProperty("userDisplayName", $$2x.getName());
+         $$4x.addProperty("server", $$5);
+         $$4x.addProperty("room", $$8);
+         $$4x.addProperty("area", "JavaChatRealms");
+         $$4x.addProperty("data", $$3x);
+         $$4x.addProperty("language", "*");
+         return $$4x;
+      };
+      asl.a $$20 = asl.a.select($$11);
+      ExecutorService $$21 = a($$12);
+
+      IClientCertificate $$23;
+      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
+         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
+      } catch (Exception var28) {
+         a.warn("Failed to open certificate file");
+         return null;
+      }
+
+      ConfidentialClientApplication $$27;
+      try {
+         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
+               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
+            .build();
+      } catch (Exception var25) {
+         a.warn("Failed to create confidential client application");
+         return null;
+      }
+
+      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
+      return new asc($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
+   }
+
+   private IAuthenticationResult b() {
+      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   }
+
+   @Override
+   protected void a(HttpURLConnection $$0) {
+      IAuthenticationResult $$1 = this.b();
+      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
+   }
+
+   @Override
+   protected arw a(String $$0, asl.a $$1, JsonObject $$2) {
+      JsonObject $$3 = ayp.a($$2, "result", null);
+      if ($$3 == null) {
+         return arw.b($$0);
+      } else {
+         boolean $$4 = ayp.a($$3, "filtered", true);
+         if (!$$4) {
+            return arw.a($$0);
+         } else {
+            for (JsonElement $$6 : ayp.a($$3, "events", new JsonArray())) {
+               JsonObject $$7 = $$6.getAsJsonObject();
+               String $$8 = ayp.a($$7, "id", "");
+               if (this.d.contains($$8)) {
+                  return arw.b($$0);
+               }
+            }
+
+            JsonArray $$9 = ayp.a($$3, "redactedTextIndex", new JsonArray());
+            return new arw($$0, this.a($$0, $$9, $$1));
+         }
       }
    }
 
-   public void a(wo $$0) {
-      this.b(new vk($$0));
-   }
-
-   public void b(vk $$0) {
-      this.e.a(new ze($$0.a()), vv.a(() -> this.e.a($$0)));
-      this.e.m();
-      this.d.h(this.e::n);
-   }
-
-   protected boolean h() {
-      return this.d.a(this.i());
-   }
-
-   protected abstract GameProfile i();
-
-   @baf
-   public GameProfile j() {
-      return this.i();
-   }
-
-   public int k() {
-      return this.o;
-   }
-
-   protected ars a(aqn $$0) {
-      return new ars(this.i(), this.o, $$0, this.i);
+   @Override
+   protected int a() {
+      return this.e;
    }
 }

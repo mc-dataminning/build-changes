@@ -1,21 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class eil implements eia {
-   public static final Codec<eil> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(emo.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), emo.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, eil::new)
+public class eil implements eib {
+   public static final Codec<eil> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, eil::new)
    );
-   public final jr<emo> b;
-   public final jr<emo> c;
+   public final float l;
 
-   public eil(jr<emo> $$0, jr<emo> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<efi<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public eil(float $$0) {
+      this.l = $$0;
    }
 }

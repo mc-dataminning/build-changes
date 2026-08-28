@@ -1,4 +1,3 @@
-public class hab extends gyh {
-   public float a;
-   public float b;
+public class hab extends gzj {
+   public chs.a a = chs.a.b;
 }

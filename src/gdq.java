@@ -1,32 +1,23 @@
-public class gdq extends gby<hab> {
-   private static final String a = "main";
-   private final gfa b;
+import java.util.Set;
 
-   public gdq(gfa $$0) {
+public class gdq extends gdk<hac> {
+   public static final gfl a = new gaz(false, 8.0F, 4.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
+
+   public gdq(gfc $$0) {
       super($$0);
-      this.b = $$0.b("main");
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      $$1.a(
-         "main",
-         gff.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         gfc.a
-      );
-      return gfg.a($$0, 64, 32);
+   public static gfi a() {
+      gfk $$0 = gdk.a(12, gfg.a);
+      gfm $$1 = $$0.a();
+      $$1.a("head", gfh.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), gfe.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gfh.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), gfe.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gfi.a($$0, 64, 32);
    }
 
-   public void a(hab $$0) {
+   public void a(hac $$0) {
       super.a($$0);
-      this.b.f = $$0.b * (float) (Math.PI / 180.0);
-      this.b.e = $$0.a * (float) (Math.PI / 180.0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ag;
+      this.b.e = $$0.b;
    }
 }

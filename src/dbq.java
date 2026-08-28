@@ -1,127 +1,61 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dbq implements dar {
-   final dbr c;
-   final cwn d;
-   final String e;
-   final dap f;
-   final boolean g;
-   @Nullable
-   private dbb h;
-
-   public dbq(String $$0, dap $$1, dbr $$2, cwn $$3, boolean $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.g = $$4;
+public record dbq<T extends dbd<?>>(dco a, Optional<dbi<T>> b) {
+   public static <T extends dbd<?>> yn<wa, dbq<T>> a() {
+      return yn.a(dco.b, dbq::b, $$0 -> new dbq<>($$0, Optional.empty()));
    }
 
-   public dbq(String $$0, dap $$1, dbr $$2, cwn $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public dco b() {
+      return this.a;
    }
 
-   @Override
-   public dbm<? extends dbq> a() {
-      return dbm.a;
+   public Optional<dbi<T>> c() {
+      return this.b;
    }
 
-   @Override
-   public String j() {
-      return this.e;
-   }
+   public static record a<T extends dbd<?>>(daz a, dbq<T> b) {
 
-   @Override
-   public dap c() {
-      return this.f;
-   }
-
-   @VisibleForTesting
-   public List<Optional<day>> f() {
-      return this.c.c();
-   }
-
-   @Override
-   public dbb ao_() {
-      if (this.h == null) {
-         this.h = dbb.a(this.c.c());
+      public static <T extends dbd<?>> yn<wa, dbq.a<T>> a() {
+         return yn.a(daz.a, dbq.a::b, dbq.a(), dbq.a::c, dbq.a::new);
       }
 
-      return this.h;
-   }
-
-   @Override
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean a(daq $$0, dgg $$1) {
-      return this.c.a($$0);
-   }
-
-   public cwn a(daq $$0, jt.a $$1) {
-      return this.d.v();
-   }
-
-   public int k() {
-      return this.c.a();
-   }
-
-   public int l() {
-      return this.c.b();
-   }
-
-   @Override
-   public List<dch> g() {
-      return List.of(
-         new dcl(this.c.a(), this.c.b(), this.c.c().stream().map($$0 -> $$0.<dcn>map(day::c).orElse(dcn.c.c)).toList(), new dcn.f(this.d), new dcn.d(cwr.fc))
-      );
-   }
-
-   public static class a implements dbm<dbq> {
-      public static final MapCodec<dbq> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.e),
-                  dap.e.fieldOf("category").orElse(dap.d).forGetter($$0x -> $$0x.f),
-                  dbr.b.forGetter($$0x -> $$0x.c),
-                  cwn.c.fieldOf("result").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dbq::new)
-      );
-      public static final ym<vz, dbq> x = ym.a(dbq.a::a, dbq.a::a);
-
-      @Override
-      public MapCodec<dbq> a() {
-         return w;
+      public daz b() {
+         return this.a;
       }
 
-      @Override
-      public ym<vz, dbq> b() {
-         return x;
+      public dbq<T> c() {
+         return this.b;
+      }
+   }
+
+   public static record b<T extends dbd<?>>(List<dbq.a<T>> a) {
+      public static <T extends dbd<?>> dbq.b<T> a() {
+         return new dbq.b<>(List.of());
       }
 
-      private static dbq a(vz $$0) {
-         String $$1 = $$0.p();
-         dap $$2 = $$0.b(dap.class);
-         dbr $$3 = dbr.c.decode($$0);
-         cwn $$4 = cwn.h.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dbq($$1, $$2, $$3, $$4, $$5);
+      public static <T extends dbd<?>> yn<wa, dbq.b<T>> b() {
+         return yn.a(dbq.a.<T>a().a(yl.a()), dbq.b::e, dbq.b::new);
       }
 
-      private static void a(vz $$0, dbq $$1) {
-         $$0.a($$1.e);
-         $$0.a($$1.f);
-         dbr.c.encode($$0, $$1.c);
-         cwn.h.encode($$0, $$1.d);
-         $$0.a($$1.g);
+      public boolean a(cwo $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public dbq.b<T> b(cwo $$0) {
+         return new dbq.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<dbq.a<T>> e() {
+         return this.a;
       }
    }
 }

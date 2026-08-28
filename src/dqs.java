@@ -1,111 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dqs extends djk implements dqq {
-   public static final MapCodec<dqs> a = b(dqs::new);
-   public static final dxs<dyc> b = dxl.bk;
-   public static final dxm c = dxl.J;
-   protected static final fbs d = djk.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final fbs e = djk.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class dqs extends dih {
+   public static final MapCodec<dqs> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqs.a.b.fieldOf("kind").forGetter(dih::b), t()).apply($$0, dqs::new));
+   public static final int d = dyb.a();
+   private static final int b = d + 1;
+   public static final dxv e = dxm.bd;
+   protected static final fbt f = djl.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final fbt g = djl.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
    public MapCodec<? extends dqs> a() {
-      return a;
+      return c;
    }
 
-   public dqs(dwu.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, dyc.b).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean g_(dwv $$0) {
-      return $$0.c(b) != dyc.c;
+   protected dqs(dqs.a $$0, dwv.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(b, c);
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return this.b() == dqs.b.h ? g : f;
    }
 
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      dyc $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return fbp.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dwv a(dae $$0) {
-      ji $$1 = $$0.a();
-      dwv $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dyc.c).b(c, Boolean.valueOf(false));
-      } else {
-         esx $$3 = $$0.q().b_($$1);
-         dwv $$4 = this.m().b(b, dyc.b).b(c, Boolean.valueOf($$3.a() == esy.c));
-         jn $$5 = $$0.k();
-         return $$5 != jn.a && ($$5 == jn.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dyc.a);
-      }
+   protected fbt d_(dww $$0) {
+      return fbq.a();
    }
 
    @Override
-   protected boolean a(dwv $$0, dae $$1) {
-      cwn $$2 = $$1.n();
-      dyc $$3 = $$0.c(b);
-      if ($$3 == dyc.c || !$$2.a(this.j())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jn $$5 = $$1.k();
-         return $$3 == dyc.b ? $$5 == jn.b || $$4 && $$5.o().d() : $$5 == jn.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public dww a(daf $$0) {
+      return super.a($$0).b(e, Integer.valueOf(dyb.a($$0.i())));
    }
 
    @Override
-   protected esx b_(dwv $$0) {
-      return $$0.c(c) ? esy.c.a(false) : super.b_($$0);
+   protected dww a(dww $$0, dqd $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
    }
 
    @Override
-   public boolean a(dgh $$0, ji $$1, dwv $$2, esx $$3) {
-      return $$2.c(b) != dyc.c ? dqq.super.a($$0, $$1, $$2, $$3) : false;
+   protected dww a(dww $$0, dok $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
    }
 
    @Override
-   public boolean a(@Nullable cov $$0, dfl $$1, ji $$2, dwv $$3, esw $$4) {
-      return $$3.c(b) != dyc.c ? dqq.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected void a(dwx.a<djl, dww> $$0) {
+      super.a($$0);
+      $$0.a(e);
    }
 
-   @Override
-   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, esy.c, esy.c.a($$1));
+   public interface a extends azv {
+      Map<String, dqs.a> a = new Object2ObjectArrayMap();
+      Codec<dqs.a> b = Codec.stringResolver(azv::c, a::get);
+   }
+
+   public static enum b implements dqs.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dwv $$0, etm $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(awu.a);
-         case c:
-            return false;
-         default:
-            return false;
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

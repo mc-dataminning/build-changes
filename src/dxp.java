@@ -1,14 +1,20 @@
-public enum dxp implements azu {
-   a,
-   b;
+public enum dxp implements azv {
+   a("compare"),
+   b("subtract");
+
+   private final String c;
+
+   private dxp(final String $$0) {
+      this.c = $$0;
+   }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.c;
    }
 }

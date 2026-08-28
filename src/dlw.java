@@ -1,62 +1,27 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlw extends dlq {
-   private static final Logger f = LogUtils.getLogger();
-   public static final MapCodec<dlw> e = b(dlw::new);
-   private static final lc g = new lb();
-
-   @Override
-   public MapCodec<dlw> a() {
-      return e;
-   }
-
-   public dlw(dwu.d $$0) {
-      super($$0);
-   }
+public class dlw extends djl {
+   public static final MapCodec<dlw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bro.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), t()).apply($$0, dlw::new)
+   );
+   private final bro b;
 
    @Override
-   protected lc a(dgg $$0, cwn $$1) {
-      return g;
+   public MapCodec<? extends dlw> a() {
+      return a;
+   }
+
+   public dlw(bro $$0, dwv.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public dtx a(ji $$0, dwv $$1) {
-      return new dus($$0, $$1);
-   }
-
-   @Override
-   protected void a(arc $$0, dwv $$1, ji $$2) {
-      dur $$3 = $$0.a($$2, dtz.g).orElse(null);
-      if ($$3 == null) {
-         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         kz $$4 = new kz($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cwn $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               jn $$7 = $$0.a_($$2).c(b);
-               bsb $$8 = duz.a($$0, $$2.a($$7));
-               cwn $$9;
-               if ($$8 == null) {
-                  $$9 = g.dispense($$4, $$6);
-               } else {
-                  $$9 = duz.a($$3, $$8, $$6.c(1), $$7.g());
-                  if ($$9.f()) {
-                     $$9 = $$6.v();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.v();
-                  }
-               }
-
-               $$3.a($$5, $$9);
-            }
-         }
+   protected void a(dww $$0, ard $$1, ji $$2, cwo $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.b);
       }
    }
 }

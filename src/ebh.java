@@ -1,19 +1,15 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface ebh<T> {
+   void g(T var1);
 
-public interface ebh<T extends eay> {
-   @Nullable
-   T a(int var1);
+   void f(T var1);
 
-   @Nullable
-   T a(UUID var1);
+   void e(T var1);
 
-   Iterable<T> a();
+   void d(T var1);
 
-   <U extends T> void a(ebf<T, U> var1, axk<U> var2);
+   void c(T var1);
 
-   void a(fat var1, Consumer<T> var2);
+   void b(T var1);
 
-   <U extends T> void a(ebf<T, U> var1, fat var2, axk<U> var3);
+   void a(T var1);
 }

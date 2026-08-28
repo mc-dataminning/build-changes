@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record am(int c, List<akt<evu>> d, List<akt<dbc<?>>> e, Optional<es> f) {
+public record am(int c, List<aku<evv>> d, List<aku<dbd<?>>> e, Optional<es> f) {
    public static final Codec<am> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(am::a),
-               akt.a(mc.bg).listOf().optionalFieldOf("loot", List.of()).forGetter(am::b),
-               akt.a(mc.bk).listOf().optionalFieldOf("recipes", List.of()).forGetter(am::c),
+               aku.a(mc.bg).listOf().optionalFieldOf("loot", List.of()).forGetter(am::b),
+               aku.a(mc.bk).listOf().optionalFieldOf("recipes", List.of()).forGetter(am::c),
                es.a.optionalFieldOf("function").forGetter(am::d)
             )
             .apply($$0, am::new)
    );
    public static final am b = new am(0, List.of(), List.of(), Optional.empty());
 
-   public void a(ard $$0) {
+   public void a(are $$0) {
       $$0.d(this.c);
-      evs $$1 = new evs.a($$0.y()).a(eyj.a, $$0).a(eyj.f, $$0.du()).a(eyi.m);
+      evt $$1 = new evt.a($$0.y()).a(eyk.a, $$0).a(eyk.f, $$0.dt()).a(eyj.m);
       boolean $$2 = false;
 
-      for (akt<evu> $$3 : this.d) {
+      for (aku<evv> $$3 : this.d) {
          ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cwn $$4 = (cwn)var6.next();
+            cwo $$4 = (cwo)var6.next();
             if ($$0.i($$4)) {
-               $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), avz.oa, awa.h, 0.2F, (($$0.dZ().i() - $$0.dZ().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awa.oa, awb.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cla $$5 = $$0.a($$4, false);
+               clb $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.t();
                   $$5.b($$0.cG());
@@ -58,11 +58,11 @@ public record am(int c, List<akt<evu>> d, List<akt<dbc<?>>> e, Optional<es> f) {
       return this.c;
    }
 
-   public List<akt<evu>> b() {
+   public List<aku<evv>> b() {
       return this.d;
    }
 
-   public List<akt<dbc<?>>> c() {
+   public List<aku<dbd<?>>> c() {
       return this.e;
    }
 
@@ -72,9 +72,9 @@ public record am(int c, List<akt<evu>> d, List<akt<dbc<?>>> e, Optional<es> f) {
 
    public static class a {
       private int a;
-      private final Builder<akt<evu>> b = ImmutableList.builder();
-      private final Builder<akt<dbc<?>>> c = ImmutableList.builder();
-      private Optional<aku> d = Optional.empty();
+      private final Builder<aku<evv>> b = ImmutableList.builder();
+      private final Builder<aku<dbd<?>>> c = ImmutableList.builder();
+      private Optional<akv> d = Optional.empty();
 
       public static am.a a(int $$0) {
          return new am.a().b($$0);
@@ -85,29 +85,29 @@ public record am(int c, List<akt<evu>> d, List<akt<dbc<?>>> e, Optional<es> f) {
          return this;
       }
 
-      public static am.a a(akt<evu> $$0) {
+      public static am.a a(aku<evv> $$0) {
          return new am.a().b($$0);
       }
 
-      public am.a b(akt<evu> $$0) {
+      public am.a b(aku<evv> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static am.a c(akt<dbc<?>> $$0) {
+      public static am.a c(aku<dbd<?>> $$0) {
          return new am.a().d($$0);
       }
 
-      public am.a d(akt<dbc<?>> $$0) {
+      public am.a d(aku<dbd<?>> $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static am.a a(aku $$0) {
+      public static am.a a(akv $$0) {
          return new am.a().b($$0);
       }
 
-      public am.a b(aku $$0) {
+      public am.a b(akv $$0) {
          this.d = Optional.of($$0);
          return this;
       }

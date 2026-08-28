@@ -1,45 +1,37 @@
-public class aek implements yv<abk> {
-   public static final ym<vl, aek> a = yv.a(aek::a, aek::new);
+public class aek implements yw<abl> {
+   public static final yn<vl, aek> a = yw.a(aek::a, aek::new);
    private final double b;
    private final double c;
-   private final long d;
 
-   public aek(dyl $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   public aek(dym $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
    private aek(vl $$0) {
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
-      this.d = $$0.m();
    }
 
    private void a(vl $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public yx<aek> a() {
-      return agd.aw;
+   public yy<aek> a() {
+      return age.av;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
    public double b() {
-      return this.b;
-   }
-
-   public double e() {
       return this.c;
    }
 
-   public long f() {
-      return this.d;
+   public double e() {
+      return this.b;
    }
 }

@@ -1,15 +1,44 @@
-import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record ady(List<dcj> b) implements yv<abk> {
-   public static final ym<ByteBuf, ady> a = ym.a(dcj.a.a(yk.a()), ady::b, ady::new);
+public record ady(List<ady.a> b, boolean c) implements yw<abl> {
+   public static final yn<wa, ady> a = yn.a(ady.a.c.a(yl.a()), ady::b, yl.b, ady::e, ady::new);
 
    @Override
-   public yx<ady> a() {
-      return agd.al;
+   public yy<ady> a() {
+      return age.ak;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public static record a(dcj d, byte e) {
+      public static final byte a = 1;
+      public static final byte b = 2;
+      public static final yn<wa, ady.a> c = yn.a(dcj.a, ady.a::c, yl.c, ady.a::d, ady.a::new);
+
+      public a(dcj $$0, boolean $$1, boolean $$2) {
+         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
+      }
+
+      public boolean a() {
+         return (this.e & 1) != 0;
+      }
+
+      public boolean b() {
+         return (this.e & 2) != 0;
+      }
+
+      public dcj c() {
+         return this.d;
+      }
+
+      public byte d() {
+         return this.e;
+      }
    }
 }

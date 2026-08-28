@@ -1,21 +1,30 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import java.util.Objects;
 
-public class fbe extends AbstractDoubleList {
-   private final int a;
-
-   public fbe(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+public interface fbe {
+   static fbe a() {
+      return fbj.a;
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   static fbe a(buk $$0) {
+      Objects.requireNonNull($$0);
+
+      return (fbe)(switch ($$0) {
+         case cqv $$1 -> cqv.b($$1.dV()) ? new fbn($$1, false) : new fbj($$0, false);
+         default -> new fbj($$0, false);
+      });
    }
 
-   public int size() {
-      return this.a + 1;
+   static fbe a(buk $$0, boolean $$1) {
+      return new fbj($$0, $$1);
    }
+
+   boolean b();
+
+   boolean a(fbt var1, ji var2, boolean var3);
+
+   boolean a(cwk var1);
+
+   boolean a(esy var1, esy var2);
+
+   fbt a(dww var1, dfq var2, ji var3);
 }

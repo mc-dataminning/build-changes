@@ -1,31 +1,29 @@
-public class hif extends hhs {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final cjn p;
+public class hif extends hhx {
+   private final buk n;
 
-   public hif(cjn $$0) {
-      super(avz.zi, awa.g, hij.t());
-      this.p = $$0;
-      this.k = hij.a.b;
-      this.i = false;
-      this.j = 0;
+   public hif(avz $$0, awb $$1, float $$2, float $$3, buk $$4, long $$5) {
+      super($$0, $$1, azh.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dA());
+      this.g = (double)((float)this.n.dC());
+      this.h = (double)((float)this.n.dG());
    }
 
    @Override
    public boolean s() {
-      return !this.p.bb();
+      return !this.n.bb();
    }
 
    @Override
    public void q() {
-      if (!this.p.dR() && this.p.O_() == null && this.p.gq()) {
-         this.f = (double)((float)this.p.dB());
-         this.g = (double)((float)this.p.dD());
-         this.h = (double)((float)this.p.dH());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
+      if (this.n.dQ()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
       }
    }
 }

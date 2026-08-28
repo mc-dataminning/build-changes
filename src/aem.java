@@ -1,29 +1,29 @@
-public class aem implements yv<abk> {
-   public static final ym<vl, aem> a = yv.a(aem::a, aem::new);
-   private final int b;
+public class aem implements yw<abl> {
+   public static final yn<vl, aem> a = yw.a(aem::a, aem::new);
+   private final double b;
 
-   public aem(dyl $$0) {
-      this.b = $$0.q();
+   public aem(dym $$0) {
+      this.b = $$0.k();
    }
 
    private aem(vl $$0) {
-      this.b = $$0.l();
+      this.b = $$0.readDouble();
    }
 
    private void a(vl $$0) {
-      $$0.c(this.b);
+      $$0.a(this.b);
    }
 
    @Override
-   public yx<aem> a() {
-      return agd.ay;
+   public yy<aem> a() {
+      return age.ax;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

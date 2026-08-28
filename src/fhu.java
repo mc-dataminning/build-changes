@@ -1,29 +1,20 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fhu extends fhx {
-   public long a;
-   public List<fht> b = Lists.newArrayList();
+public class fhu extends fhy {
+   @Nullable
+   public String a;
+   public long b;
+   public long c;
 
-   public static fhu a(String $$0) {
+   public static fhu a(JsonObject $$0) {
       fhu $$1 = new fhu();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fjt.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fht $$8 = fht.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+         $$1.a = fju.b("profileUuid", $$0, null);
+         $$1.b = fju.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = fju.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
       return $$1;

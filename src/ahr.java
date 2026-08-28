@@ -1,29 +1,12 @@
-public class ahr implements yv<agf> {
-   public static final ym<vl, ahr> a = yv.a(ahr::a, ahr::new);
-   private final String b;
-
-   public ahr(String $$0) {
-      this.b = $$0;
-   }
-
-   private ahr(vl $$0) {
-      this.b = $$0.p();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-   }
+public record ahr(dck b) implements yw<agg> {
+   public static final yn<vl, ahr> a = yn.a(dck.a, ahr::b, ahr::new);
 
    @Override
-   public yx<ahr> a() {
-      return agd.bY;
+   public yy<ahr> a() {
+      return age.bX;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
-   }
-
-   public String b() {
-      return this.b;
    }
 }

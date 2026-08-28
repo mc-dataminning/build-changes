@@ -1,41 +1,52 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class gqb implements gpw.a {
-   private final flh a;
-   private static final int b = 10;
+public class gqb implements gpy.a {
+   private static final int a = 160;
+   private final fli b;
+   private final Int2ObjectMap<gqb.a> c = new Int2ObjectOpenHashMap();
 
-   public gqb(flh $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, ji $$1, List<aaf.a> $$2) {
+      this.c.put($$0, new gqb.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public gqb(fli $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ffs $$0, glv $$1, double $$2, double $$3, double $$4) {
-      dgg $$5 = this.a.s;
-      ji $$6 = ji.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
+      fkq $$5 = this.b.j.k();
+      ji $$6 = ji.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      for (ji $$8 : ji.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(dgp.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = ayy.g($$10, 0.9F, 0.9F);
-         long $$12 = kk.e($$8.a());
-         if ($$7.add($$12)) {
-            gpw.a(
-               $$0,
-               $$1,
-               $$5.S().p().a(dgp.a, kk.a($$12)),
-               (double)kk.a(kk.b($$12), 8),
-               (double)kk.a(kk.c($$12), 8),
-               (double)kk.a(kk.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            gpw.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+      while (var11.hasNext()) {
+         gqb.a $$7 = (gqb.a)var11.next();
+         ji $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aaf.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gpy.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
       }
+   }
+
+   static record a(ji a, List<aaf.a> b) {
    }
 }

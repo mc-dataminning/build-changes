@@ -1,24 +1,42 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-
-public class gwe extends gwq<gyx, gcj> {
-   private static final Map<cje, aku> a = af.a(Maps.newEnumMap(cje.class), $$0 -> {
-      $$0.put(cje.a, null);
-      $$0.put(cje.b, aku.b("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cje.c, aku.b("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cje.d, aku.b("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cje.e, aku.b("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gwe(gty<gyx, gcj> $$0) {
+public class gwe extends gws<gys, gcd> {
+   public gwe(gua<gys, gcd> $$0) {
       super($$0);
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gyx $$3, float $$4, float $$5) {
-      aku $$6 = a.get($$3.h);
-      if ($$6 != null && !$$3.z) {
-         ffw $$7 = $$1.getBuffer(gmf.j($$6));
-         this.d().a($$0, $$7, $$2, gtc.a($$3, 0.0F));
+   public void a(fft $$0, glx $$1, int $$2, gys $$3, float $$4, float $$5) {
+      hbn $$6 = $$3.i;
+      if (!$$6.c()) {
+         boolean $$7 = $$3.d;
+         boolean $$8 = $$3.aj;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$8) {
+            float $$9 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
+
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.aj) {
+            if ($$7) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$7) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$7) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         $$6.a($$0, $$1, $$2, heh.d);
+         $$0.b();
       }
    }
 }

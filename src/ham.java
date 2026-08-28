@@ -1,3 +1,3 @@
-public class ham extends gxo {
-   public boolean d;
+public class ham extends gyj {
+   public final hbn a = new hbn();
 }

@@ -16,19 +16,19 @@ import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 public class hi {
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wo.b("argument.item.id.invalid", $$0));
-   static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> wo.b("arguments.item.component.unknown", $$0));
-   static final Dynamic2CommandExceptionType h = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("arguments.item.component.malformed", $$0, $$1));
-   static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wo.c("arguments.item.component.expected"));
-   static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wo.b("arguments.item.component.repeated", $$0));
-   private static final DynamicCommandExceptionType k = new DynamicCommandExceptionType($$0 -> wo.b("arguments.item.malformed", $$0));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wp.b("argument.item.id.invalid", $$0));
+   static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> wp.b("arguments.item.component.unknown", $$0));
+   static final Dynamic2CommandExceptionType h = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("arguments.item.component.malformed", $$0, $$1));
+   static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wp.c("arguments.item.component.expected"));
+   static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wp.b("arguments.item.component.repeated", $$0));
+   private static final DynamicCommandExceptionType k = new DynamicCommandExceptionType($$0 -> wp.b("arguments.item.malformed", $$0));
    public static final char a = '[';
    public static final char b = ']';
    public static final char c = ',';
    public static final char d = '=';
    public static final char e = '!';
    static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = SuggestionsBuilder::buildFuture;
-   final jt.b<cwj> m;
+   final jt.b<cwk> m;
    final DynamicOps<un> n;
 
    public hi(jt.a $$0) {
@@ -37,11 +37,11 @@ public class hi {
    }
 
    public hi.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<jr<cwj>> $$1 = new MutableObject();
+      final MutableObject<jr<cwk>> $$1 = new MutableObject();
       final ks.a $$2 = ks.a();
       this.a($$0, new hi.d() {
          @Override
-         public void a(jr<cwj> $$0) {
+         public void a(jr<cwk> $$0) {
             $$1.setValue($$0);
          }
 
@@ -55,15 +55,15 @@ public class hi {
             $$2.a($$0);
          }
       });
-      jr<cwj> $$3 = Objects.requireNonNull((jr<cwj>)$$1.getValue(), "Parser gave no item");
+      jr<cwk> $$3 = Objects.requireNonNull((jr<cwk>)$$1.getValue(), "Parser gave no item");
       ks $$4 = $$2.a();
       a($$0, $$3, $$4);
       return new hi.a($$3, $$4);
    }
 
-   private static void a(StringReader $$0, jr<cwj> $$1, ks $$2) throws CommandSyntaxException {
+   private static void a(StringReader $$0, jr<cwk> $$1, ks $$2) throws CommandSyntaxException {
       kr $$3 = kw.a($$1.a().g(), $$2);
-      DataResult<bae> $$4 = cwn.a($$3);
+      DataResult<baf> $$4 = cwo.a($$3);
       $$4.getOrThrow($$1x -> k.createWithContext($$0, $$1x));
    }
 
@@ -92,7 +92,7 @@ public class hi {
       return $$2.a($$0, $$1);
    }
 
-   public static record a(jr<cwj> a, ks b) {
+   public static record a(jr<cwk> a, ks b) {
    }
 
    class b {
@@ -116,8 +116,8 @@ public class hi {
 
       private void b() throws CommandSyntaxException {
          int $$0 = this.b.getCursor();
-         aku $$1 = aku.a(this.b);
-         this.c.a(hi.this.m.a(akt.a(mc.K, $$1)).orElseThrow(() -> {
+         akv $$1 = akv.a(this.b);
+         this.c.a(hi.this.m.a(aku.a(mc.K, $$1)).orElseThrow(() -> {
             this.b.setCursor($$0);
             return hi.f.createWithContext(this.b, $$1);
          }));
@@ -178,7 +178,7 @@ public class hi {
             throw hi.i.createWithContext($$0);
          } else {
             int $$1 = $$0.getCursor();
-            aku $$2 = aku.a($$0);
+            akv $$2 = akv.a($$0);
             ku<?> $$3 = mb.ao.a($$2);
             if ($$3 != null && !$$3.d()) {
                return $$3;
@@ -225,7 +225,7 @@ public class hi {
       }
 
       private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
-         return fc.a(hi.this.m.c_().map(akt::a), $$0);
+         return fc.a(hi.this.m.c_().map(aku::a), $$0);
       }
 
       private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0) {
@@ -239,10 +239,10 @@ public class hi {
 
       private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
          String $$2 = $$0.getRemaining().toLowerCase(Locale.ROOT);
-         fc.a(mb.ao.k(), $$2, $$0x -> ((akt)$$0x.getKey()).a(), $$2x -> {
+         fc.a(mb.ao.k(), $$2, $$0x -> ((aku)$$0x.getKey()).a(), $$2x -> {
             ku<?> $$3 = (ku<?>)$$2x.getValue();
             if ($$3.b() != null) {
-               aku $$4 = ((akt)$$2x.getKey()).a();
+               akv $$4 = ((aku)$$2x.getKey()).a();
                $$0.suggest($$4 + $$1);
             }
          });
@@ -264,7 +264,7 @@ public class hi {
    }
 
    public interface d {
-      default void a(jr<cwj> $$0) {
+      default void a(jr<cwk> $$0) {
       }
 
       default <T> void a(ku<T> $$0, T $$1) {

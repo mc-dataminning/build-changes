@@ -1,33 +1,32 @@
-public class afs implements yv<abk> {
-   public static final ym<vl, afs> a = yv.a(afs::a, afs::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public afs(int $$0, int $$1, int $$2) {
+public class afs implements yw<abl> {
+   public static final yn<vl, afs> a = yw.a(afs::a, afs::new);
+   private final int b;
+   @Nullable
+   private final tq c;
+
+   public afs(int $$0, @Nullable tq $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
    private afs(vl $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+      this.c = $$0.o();
    }
 
    private void a(vl $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+      $$0.a((un)this.c);
    }
 
    @Override
-   public yx<afs> a() {
-      return agd.bc;
+   public yy<afs> a() {
+      return age.bb;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +34,13 @@ public class afs implements yv<abk> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public tq e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

@@ -1,83 +1,280 @@
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class cvf extends cwj {
-   public cvf(cwj.a $$0) {
+public class cvf extends cxk {
+   private static final float m = 1.25F;
+   public static final int a = 8;
+   private boolean n = false;
+   private boolean o = false;
+   private static final float p = 0.2F;
+   private static final float q = 0.5F;
+   private static final float r = 3.15F;
+   private static final float s = 1.6F;
+   public static final float b = 1.6F;
+   private static final cvf.b t = new cvf.b(Optional.of(awa.gL), Optional.of(awa.gK), Optional.of(awa.gJ));
+
+   public cvf(cwk.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dwv $$0, dgg $$1, ji $$2, cov $$3) {
-      if (!$$1.C) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bsh.a));
-      }
-
-      return false;
+   public Predicate<cwo> d() {
+      return d;
    }
 
    @Override
-   public bsi a(dag $$0) {
-      cov $$1 = $$0.o();
-      dgg $$2 = $$0.q();
-      if (!$$2.C && $$1 != null) {
-         ji $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bsi.d;
-         }
-      }
-
-      return bsi.a;
+   public Predicate<cwo> b() {
+      return c;
    }
 
-   private boolean a(cov $$0, dwv $$1, dgh $$2, ji $$3, boolean $$4, cwn $$5) {
-      if (!$$0.gG()) {
-         return false;
+   @Override
+   public bsj a(dgh $$0, cow $$1, bsi $$2) {
+      cwo $$3 = $$1.b($$2);
+      cyt $$4 = $$3.a(kv.O);
+      if ($$4 != null && !$$4.b()) {
+         this.a($$0, $$1, $$2, $$3, a($$4), 1.0F, null);
+         return bsj.c;
+      } else if (!$$1.d($$3).f()) {
+         this.n = false;
+         this.o = false;
+         $$1.c($$2);
+         return bsj.c;
       } else {
-         jr<djk> $$6 = $$1.c();
-         dww<djk, dwv> $$7 = $$6.a().l();
-         Collection<dxx<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, wo.a(this.l + ".empty", $$6.g()));
-            return false;
-         } else {
-            cza $$9 = $$5.a(kv.V);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dxx<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
+         return bsj.d;
+      }
+   }
 
-                  dwv $$11 = a($$1, $$10, $$0.fY());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, wo.a(this.l + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fY());
-                  $$5.b(kv.V, $$9.a($$6, $$10));
-                  a($$0, wo.a(this.l + ".select", $$10.f(), a($$1, $$10)));
-               }
+   private static float a(cyt $$0) {
+      return $$0.a(cws.vt) ? 1.6F : 3.15F;
+   }
 
-               return true;
+   @Override
+   public boolean a(cwo $$0, dgh $$1, bvg $$2, int $$3) {
+      int $$4 = this.a($$0, $$2) - $$3;
+      float $$5 = a($$4, $$0, $$2);
+      if ($$5 >= 1.0F && !g($$0) && a($$2, $$0)) {
+         cvf.b $$6 = this.i($$0);
+         $$6.c().ifPresent($$2x -> $$1.a(null, $$2.dA(), $$2.dC(), $$2.dG(), (avz)$$2x.a(), $$2.dm(), 1.0F, 1.0F / ($$1.H_().i() * 0.5F + 1.0F) + 0.2F));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static boolean a(bvg $$0, cwo $$1) {
+      List<cwo> $$2 = a($$1, $$0.d($$1), $$0);
+      if (!$$2.isEmpty()) {
+         $$1.b(kv.O, cyt.a($$2));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static boolean g(cwo $$0) {
+      cyt $$1 = $$0.a(kv.O, cyt.a);
+      return !$$1.b();
+   }
+
+   @Override
+   protected void a(bvg $$0, cpp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bvg $$6) {
+      Vector3f $$11;
+      if ($$6 != null) {
+         double $$7 = $$6.dA() - $$0.dA();
+         double $$8 = $$6.dG() - $$0.dG();
+         double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
+         double $$10 = $$6.e(0.3333333333333333) - $$1.dC() + $$9 * 0.2F;
+         $$11 = a($$0, new faz($$7, $$10, $$8), $$5);
+      } else {
+         faz $$12 = $$0.l(1.0F);
+         Quaternionf $$13 = new Quaternionf().setAngleAxis((double)($$5 * (float) (Math.PI / 180.0)), $$12.d, $$12.e, $$12.f);
+         faz $$14 = $$0.g(1.0F);
+         $$11 = $$14.k().rotate($$13);
+      }
+
+      $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
+      float $$16 = a($$0.dY(), $$2);
+      $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awa.gP, $$0.dm(), 1.0F, $$16);
+   }
+
+   private static Vector3f a(bvg $$0, faz $$1, float $$2) {
+      Vector3f $$3 = $$1.k().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         faz $$5 = $$0.l(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.k());
+      }
+
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
+   }
+
+   @Override
+   protected cpp a(dgh $$0, bvg $$1, cwo $$2, cwo $$3, boolean $$4) {
+      if ($$3.a(cws.vt)) {
+         return new cpk($$0, $$3, $$1, $$1.dA(), $$1.dE() - 0.15F, $$1.dG(), true);
+      } else {
+         cpp $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$5 instanceof cpd $$6) {
+            $$6.b(awa.gI);
+         }
+
+         return $$5;
+      }
+   }
+
+   @Override
+   protected int h(cwo $$0) {
+      return $$0.a(cws.vt) ? 3 : 1;
+   }
+
+   public void a(dgh $$0, bvg $$1, bsi $$2, cwo $$3, float $$4, float $$5, @Nullable bvg $$6) {
+      if ($$0 instanceof ard $$7) {
+         cyt $$9 = $$3.b(kv.O, cyt.a);
+         if ($$9 != null && !$$9.b()) {
+            this.a($$7, $$1, $$2, $$3, $$9.a(), $$4, $$5, $$1 instanceof cow, $$6);
+            if ($$1 instanceof are $$10) {
+               ap.G.a($$10, $$3);
+               $$10.b(awk.c.b($$3.h()));
             }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dwv a(dwv $$0, dxx<T> $$1, boolean $$2) {
-      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   private static float a(azh $$0, int $$1) {
+      return $$1 == 0 ? 1.0F : a(($$1 & 1) == 1, $$0);
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? af.b($$0, $$1) : af.a($$0, $$1);
+   private static float a(boolean $$0, azh $$1) {
+      float $$2 = $$0 ? 0.63F : 0.43F;
+      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
    }
 
-   private static void a(cov $$0, wo $$1) {
-      ((ard)$$0).b($$1, true);
+   @Override
+   public void a(dgh $$0, bvg $$1, cwo $$2, int $$3) {
+      if (!$$0.C) {
+         cvf.b $$4 = this.i($$2);
+         float $$5 = (float)($$2.a($$1) - $$3) / (float)b($$2, $$1);
+         if ($$5 < 0.2F) {
+            this.n = false;
+            this.o = false;
+         }
+
+         if ($$5 >= 0.2F && !this.n) {
+            this.n = true;
+            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (avz)$$2x.a(), awb.h, 0.5F, 1.0F));
+         }
+
+         if ($$5 >= 0.5F && !this.o) {
+            this.o = true;
+            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (avz)$$2x.a(), awb.h, 0.5F, 1.0F));
+         }
+      }
    }
 
-   private static <T extends Comparable<T>> String a(dwv $$0, dxx<T> $$1) {
-      return $$1.b($$0.c($$1));
+   @Override
+   public int a(cwo $$0, bvg $$1) {
+      return b($$0, $$1) + 3;
+   }
+
+   public static int b(cwo $$0, bvg $$1) {
+      float $$2 = dda.a($$0, $$1, 1.25F);
+      return ayz.d($$2 * 20.0F);
+   }
+
+   @Override
+   public cwq b(cwo $$0) {
+      return cwq.g;
+   }
+
+   cvf.b i(cwo $$0) {
+      return dda.b($$0, dcz.B).orElse(t);
+   }
+
+   private static float a(int $$0, cwo $$1, bvg $$2) {
+      float $$3 = (float)$$0 / (float)b($$1, $$2);
+      if ($$3 > 1.0F) {
+         $$3 = 1.0F;
+      }
+
+      return $$3;
+   }
+
+   @Override
+   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
+      cyt $$4 = $$0.a(kv.O);
+      if ($$4 != null && !$$4.b()) {
+         cwo $$5 = $$4.a().get(0);
+         $$2.add(wp.c("item.minecraft.crossbow.projectile").b(wo.v).b($$5.K()));
+         if ($$3.a() && $$5.a(cws.vt)) {
+            List<wp> $$6 = Lists.newArrayList();
+            cws.vt.a($$5, $$1, $$6, $$3);
+            if (!$$6.isEmpty()) {
+               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+                  $$6.set($$7, wp.b("  ").b($$6.get($$7)).a(n.h));
+               }
+
+               $$2.addAll($$6);
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean d_(cwo $$0) {
+      return $$0.a((cwk)this);
+   }
+
+   @Override
+   public int c() {
+      return 8;
+   }
+
+   public static enum a implements azv {
+      a("none"),
+      b("arrow"),
+      c("rocket");
+
+      public static final Codec<cvf.a> d = azv.a(cvf.a::values);
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   public static record b(Optional<jr<avz>> b, Optional<jr<avz>> c, Optional<jr<avz>> d) {
+      public static final Codec<cvf.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  avz.b.optionalFieldOf("start").forGetter(cvf.b::a),
+                  avz.b.optionalFieldOf("mid").forGetter(cvf.b::b),
+                  avz.b.optionalFieldOf("end").forGetter(cvf.b::c)
+               )
+               .apply($$0, cvf.b::new)
+      );
+
+      public Optional<jr<avz>> a() {
+         return this.b;
+      }
+
+      public Optional<jr<avz>> b() {
+         return this.c;
+      }
+
+      public Optional<jr<avz>> c() {
+         return this.d;
+      }
    }
 }

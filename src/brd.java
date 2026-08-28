@@ -1,45 +1,101 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public interface brd<R extends Runnable> extends AutoCloseable {
-   String A_();
+public interface brd<T extends Runnable> {
+   @Nullable
+   Runnable a();
 
-   void a_(R var1);
+   boolean a(T var1);
 
-   @Override
-   default void close() {
+   boolean b();
+
+   int c();
+
+   public static final class a implements brd<brd.c> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
+      }
+
+      @Nullable
+      @Override
+      public Runnable a() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(brd.c $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   R f(Runnable var1);
+   public static final class b implements brd<Runnable> {
+      private final Queue<Runnable> a;
 
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
+      public b(Queue<Runnable> $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public Runnable a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(Runnable $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 
-   static brd<Runnable> a(final String $$0, final Executor $$1) {
-      return new brd<Runnable>() {
-         @Override
-         public String A_() {
-            return $$0;
-         }
+   public static record c(int a, Runnable b) implements Runnable {
 
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+      @Override
+      public void run() {
+         this.b.run();
+      }
    }
 }

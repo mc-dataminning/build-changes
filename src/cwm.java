@@ -1,10 +1,37 @@
-public class cwm extends cwb {
-   public cwm(buq<? extends cks> $$0, cwj.a $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+
+public enum cwm implements azv {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<cwm> j = azv.a(cwm::values);
+   public static final IntFunction<cwm> k = axq.a(cwm::a, values(), axq.a.a);
+   private final byte l;
+   private final String m;
+
+   private cwm(final int $$0, final String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
-   protected boolean a(cov $$0, jn $$1, cwn $$2, ji $$3) {
-      return !$$0.dW().s($$3) && $$0.a($$3, $$1, $$2);
+   public String c() {
+      return this.m;
+   }
+
+   public byte a() {
+      return this.l;
+   }
+
+   public boolean b() {
+      return this == d || this == e;
    }
 }

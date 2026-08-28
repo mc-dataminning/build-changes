@@ -1,4 +1,7 @@
 public class aim {
-   public static final vw.a<ain, vl> a = za.a(vj.a, $$0 -> $$0.a(ail.a, aik.a));
-   public static final vw<ain> b = a.a(vl::new);
+   public static final yy<ail> a = a("intention");
+
+   private static <T extends yw<aio>> yy<T> a(String $$0) {
+      return new yy<>(yx.a, akv.b($$0));
+   }
 }

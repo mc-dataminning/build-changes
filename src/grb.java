@@ -1,22 +1,28 @@
-public class grb extends gth<cgq, gxq, gba> {
-   private static final aku a = aku.b("textures/entity/bat.png");
+public abstract class grb<T extends cpd, S extends gxq> extends gsc<T, S> {
+   private final gax a;
 
-   public grb(gsb.a $$0) {
-      super($$0, new gba($$0.a(gez.u)), 0.25F);
+   public grb(gsd.a $$0) {
+      super($$0);
+      this.a = new gax($$0.a(gfb.l));
    }
 
-   public aku a(gxq $$0) {
-      return a;
+   public void a(S $$0, fft $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      ffx $$4 = $$2.getBuffer(gmh.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, heh.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gxq a() {
-      return new gxq();
-   }
+   protected abstract akv a(S var1);
 
-   public void a(cgq $$0, gxq $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.p();
-      $$1.b.a($$0.c);
-      $$1.c.a($$0.d);
+      $$1.a = $$0.j($$2);
+      $$1.b = $$0.k($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

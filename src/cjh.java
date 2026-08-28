@@ -1,87 +1,141 @@
 import javax.annotation.Nullable;
 
-public class cjh extends ccd {
-   private final cjg a;
+public class cjh extends cjb {
+   private final cji bY = new cji(this);
+   private static final int bZ = 18000;
+   private static final bun ca = bur.bf.n().a(bum.a().a(bul.a, 0.0F, bur.bf.m() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cc;
+   private int cd;
 
-   public cjh(cjg $$0) {
-      this.a = $$0;
+   public cjh(bur<? extends cjh> $$0, dgh $$1) {
+      super($$0, $$1);
+   }
+
+   public static bwn.a p() {
+      return gU().a(bwo.s, 15.0).a(bwo.v, 0.2F);
+   }
+
+   public static boolean c(bur<? extends cgx> $$0, dgi $$1, buq $$2, ji $$3, azh $$4) {
+      return !buq.a($$2) ? cgx.b($$0, $$1, $$2, $$3, $$4) : buq.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public boolean b() {
-      return this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), 10.0);
+   protected void a(azh $$0) {
+      this.g(bwo.o).a(a($$0::j));
    }
 
    @Override
-   public void a() {
-      arc $$0 = (arc)this.a.dW();
-      bsg $$1 = $$0.d_(this.a.dw());
-      this.a.x(false);
-      this.a.y(true);
-      this.a.c_(0);
-      bve $$2 = buq.aw.a($$0, bup.k);
-      if ($$2 != null) {
-         $$2.e(this.a.dB(), this.a.dD(), this.a.dH());
-         $$2.a(true);
-         $$0.b($$2);
-         cme $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected void gK() {
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               cja $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cme $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.dZ().a(0.0, 1.1485), 0.0, this.a.dZ().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
+   @Override
+   protected avz u() {
+      return this.a(awv.a) ? awa.xI : awa.xE;
+   }
+
+   @Override
+   protected avz o_() {
+      return awa.xF;
+   }
+
+   @Override
+   protected avz e(bta $$0) {
+      return awa.xG;
+   }
+
+   @Override
+   protected avz aV() {
+      if (this.aJ()) {
+         if (!this.ca()) {
+            return awa.xL;
+         }
+
+         this.cy++;
+         if (this.cy > 5 && this.cy % 3 == 0) {
+            return awa.xJ;
+         }
+
+         if (this.cy <= 5) {
+            return awa.xL;
+         }
+      }
+
+      return awa.xH;
+   }
+
+   @Override
+   protected void f(float $$0) {
+      if (this.aJ()) {
+         super.f(0.3F);
+      } else {
+         super.f(Math.min(0.1F, $$0 * 25.0F));
+      }
+   }
+
+   @Override
+   protected void ha() {
+      if (this.bj()) {
+         this.a(awa.xK, 0.4F, 1.0F);
+      } else {
+         super.ha();
+      }
+   }
+
+   @Override
+   public bun e(bvs $$0) {
+      return this.e_() ? ca : super.e($$0);
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      if (this.t() && this.cd++ >= 18000) {
+         this.at();
+      }
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.t());
+      $$0.a("SkeletonTrapTime", this.cd);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      this.x($$0.q("SkeletonTrap"));
+      this.cd = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fm() {
+      return 0.96F;
+   }
+
+   public boolean t() {
+      return this.cc;
+   }
+
+   public void x(boolean $$0) {
+      if ($$0 != this.cc) {
+         this.cc = $$0;
+         if ($$0) {
+            this.bS.a(1, this.bY);
+         } else {
+            this.bS.a(this.bY);
          }
       }
    }
 
    @Nullable
-   private cja a(bsg $$0) {
-      cjg $$1 = buq.bf.a(this.a.dW(), bup.k);
-      if ($$1 != null) {
-         $$1.a((arc)this.a.dW(), $$0, bup.k, null);
-         $$1.a_(this.a.dB(), this.a.dD(), this.a.dH());
-         $$1.aj = 60;
-         $$1.aj();
-         $$1.y(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
+   @Override
+   public bub a(ard $$0, bub $$1) {
+      return bur.bf.a($$0, buq.e);
    }
 
-   @Nullable
-   private cme a(bsg $$0, cja $$1) {
-      cme $$2 = buq.be.a($$1.dW(), bup.k);
-      if ($$2 != null) {
-         $$2.a((arc)$$1.dW(), $$0, bup.k, null);
-         $$2.a_($$1.dB(), $$1.dD(), $$1.dH());
-         $$2.aj = 60;
-         $$2.aj();
-         if ($$2.a(bur.f).f()) {
-            $$2.a(bur.f, new cwn(cwr.ql));
-         }
-
-         this.a($$2, bur.a, $$0);
-         this.a($$2, bur.f, $$0);
-      }
-
-      return $$2;
-   }
-
-   private void a(cme $$0, bur $$1, bsg $$2) {
-      cwn $$3 = $$0.a($$1);
-      $$3.b(kv.l, ddd.a);
-      dcz.a($$3, $$0.dW().K_(), del.a, $$2, $$0.dZ());
-      $$0.a($$1, $$3);
+   @Override
+   public bsj b(cow $$0, bsi $$1) {
+      return (bsj)(!this.gJ() ? bsj.e : super.b($$0, $$1));
    }
 }

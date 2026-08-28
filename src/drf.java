@@ -1,53 +1,74 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class drf extends djk {
+public class drf extends djl {
    public static final MapCodec<drf> a = b(drf::new);
-   private static final fbs b = djk.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final jn[] d = jn.values();
 
    @Override
    public MapCodec<drf> a() {
       return a;
    }
 
-   public drf(dwu.d $$0) {
+   protected drf(dwv.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
-      return djk.a($$1, $$2.d(), jn.a) && !$$1.z($$2);
-   }
-
-   @Override
-   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      return $$4 == jn.b && !this.a($$0, $$1, $$3) ? djm.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(lt.aB, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ji.a $$10 = new ji.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + ayy.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ayy.a($$3, -10, 10));
-         dwv $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(lt.aF, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected void b(dww $$0, dgh $$1, ji $$2, dww $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return b;
+   protected void a(dww $$0, dgh $$1, ji $$2, djl $$3, @Nullable eug $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(dgh $$0, ji $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, djn.aW.m(), 2);
+         $$0.a(null, $$1, awa.zK, awb.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(dgh $$0, ji $$1) {
+      return ji.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (jn $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return ji.b.a;
+         } else {
+            dww $$3 = $$0.a_($$2);
+            esy $$4 = $$0.b_($$2);
+            if (!$$4.a(awv.a)) {
+               return ji.b.b;
+            } else {
+               if ($$3.b() instanceof djt $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
+                  return ji.b.a;
+               }
+
+               if ($$3.b() instanceof dod) {
+                  $$0.a($$2, djn.a.m(), 3);
+               } else {
+                  if (!$$3.a(djn.mE) && !$$3.a(djn.mF) && !$$3.a(djn.bD) && !$$3.a(djn.bE)) {
+                     return ji.b.b;
+                  }
+
+                  dty $$7 = $$3.x() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, djn.a.m(), 3);
+               }
+
+               return ji.b.a;
+            }
+         }
+      }) > 1;
    }
 }

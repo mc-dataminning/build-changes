@@ -1,29 +1,29 @@
-public class ait implements yv<aip> {
-   public static final ym<vl, ait> a = yv.a(ait::a, ait::new);
-   private final wo b;
+public class ait implements yw<aiq> {
+   public static final yn<vl, ait> a = yw.a(ait::a, ait::new);
+   private final int b;
 
-   public ait(wo $$0) {
+   public ait(int $$0) {
       this.b = $$0;
    }
 
    private ait(vl $$0) {
-      this.b = wo.a.b($$0.d(262144), kf.b);
+      this.b = $$0.l();
    }
 
    private void a(vl $$0) {
-      $$0.a(wo.a.a(this.b, kf.b));
+      $$0.c(this.b);
    }
 
    @Override
-   public yx<ait> a() {
-      return aiv.e;
+   public yy<ait> a() {
+      return aiw.d;
    }
 
-   public void a(aip $$0) {
+   public void a(aiq $$0) {
       $$0.a(this);
    }
 
-   public wo b() {
+   public int b() {
       return this.b;
    }
 }

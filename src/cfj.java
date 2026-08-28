@@ -1,27 +1,22 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 
-public abstract class cfj extends cfp<bvf> {
-   protected abstract boolean a(arc var1, bvf var2, bvf var3);
-
-   protected abstract cej<bvf> b();
+public class cfj<T extends bvg> extends cfq<T> {
+   @Override
+   protected void a(ard $$0, T $$1) {
+      double $$2 = $$1.h(bwo.m);
+      fau $$3 = $$1.cR().c($$2, $$2, $$2);
+      List<bvg> $$4 = $$0.a(bvg.class, $$3, $$1x -> $$1x != $$1 && $$1x.bL());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      bwi<?> $$5 = $$1.eb();
+      $$5.a(cek.g, $$4);
+      $$5.a(cek.h, new cem($$0, $$1, $$4));
+   }
 
    @Override
-   public Set<cej<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
-
-   @Override
-   protected void a(arc $$0, bvf $$1) {
-      $$1.ec().a(this.b(), this.c($$0, $$1));
-   }
-
-   private Optional<bvf> c(arc $$0, bvf $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
-   }
-
-   protected Optional<cel> a(bvf $$0) {
-      return $$0.ec().c(cej.h);
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.g, cek.h);
    }
 }

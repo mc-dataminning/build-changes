@@ -1,19 +1,12 @@
-public class gvo extends gwq<gxv, gbi> {
-   private static final aku a = aku.b("textures/entity/breeze/breeze_wind.png");
-   private final gbi b;
+public class gvo<M extends gdf> extends gxa<M> {
+   private static final akv a = akv.b("textures/entity/bee/bee_stinger.png");
 
-   public gvo(gsb.a $$0, gty<gxv, gbi> $$1) {
-      super($$1);
-      this.b = new gbi($$0.a(gez.L));
+   public gvo(gte<?, gzv, M> $$0, gsd.a $$1) {
+      super($$0, new gbe($$1.a(gfb.z)), a, gxa.a.b);
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gxv $$3, float $$4, float $$5) {
-      ffw $$6 = $$1.getBuffer(gmf.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      grg.a(this.b, this.b.d()).a($$0, $$6, $$2, hec.d);
-   }
-
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   @Override
+   protected int a(gzv $$0) {
+      return $$0.k;
    }
 }

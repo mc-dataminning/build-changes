@@ -1,16 +1,8 @@
-public interface aas extends zb {
-   @Override
-   default vj b() {
-      return vj.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(aat var1);
-
-   void a(aau var1);
-
-   void a(aax var1);
-
-   void a(aaw var1);
-
-   void a(aav var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aas {
 }

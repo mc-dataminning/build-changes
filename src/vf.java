@@ -1,6 +1,6 @@
-public interface vf extends vu {
+public interface vf extends vv {
    @Override
-   default yw a() {
-      return yw.b;
+   default yx a() {
+      return yx.b;
    }
 }

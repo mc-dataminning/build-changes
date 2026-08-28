@@ -1,36 +1,20 @@
-public class ahk implements yv<agf> {
-   public static final ym<vl, ahk> a = yv.a(ahk::a, ahk::new);
-   private static final int b = 2;
-   private final boolean c;
-
-   public ahk(cor $$0) {
-      this.c = $$0.b;
-   }
-
-   private ahk(vl $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(vl $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
-   }
+public record ahk(int b, dck c, boolean d) implements yw<agg> {
+   public static final yn<vl, ahk> a = yn.a(yl.w, ahk::b, dck.a, ahk::e, yl.b, ahk::f, ahk::new);
 
    @Override
-   public yx<ahk> a() {
-      return agd.bR;
+   public yy<ahk> a() {
+      return age.bQ;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public dck e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

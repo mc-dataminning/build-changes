@@ -1,21 +1,18 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fmt(int b) implements fmr {
-   public static final MapCodec<fmt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayh.i.fieldOf("default").forGetter(fmt::b)).apply($$0, fmt::new));
+public class fmt {
+   private static final ayi.b<akv, MapCodec<? extends fms>> b = new ayi.b<>();
+   public static final Codec<fms> a = b.a(akv.a).dispatch(fms::a, $$0 -> $$0);
 
-   public fmt() {
-      this(czj.c.a());
-   }
-
-   @Override
-   public int a(cwn $$0) {
-      czj $$1 = $$0.a(kv.K);
-      return $$1 != null ? axj.f($$1.a()) : axj.f(this.b);
-   }
-
-   @Override
-   public MapCodec<fmt> a() {
-      return a;
+   public static void a() {
+      b.a(akv.b("custom_model_data"), fmo.a);
+      b.a(akv.b("constant"), fmn.a);
+      b.a(akv.b("dye"), fmp.a);
+      b.a(akv.b("grass"), fmr.a);
+      b.a(akv.b("firework"), fmq.a);
+      b.a(akv.b("potion"), fmv.a);
+      b.a(akv.b("map_color"), fmu.a);
+      b.a(akv.b("team"), fmw.a);
    }
 }

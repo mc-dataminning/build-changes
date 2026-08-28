@@ -1,14 +1,7 @@
-import java.util.function.Consumer;
+import com.mojang.authlib.GameProfile;
 
-public interface art {
-   void a(Consumer<yv<?>> var1);
-
-   art.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+public record art(GameProfile a, int b, aqo c, boolean d) {
+   public static art a(GameProfile $$0, boolean $$1) {
+      return new art($$0, 0, aqo.a(), $$1);
    }
 }

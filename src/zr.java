@@ -1,29 +1,16 @@
-public class zr implements yv<zo> {
-   public static final ym<vl, zr> a = yv.a(zr::a, zr::new);
-   private final long b;
+import com.google.common.collect.Lists;
 
-   public zr(long $$0) {
-      this.b = $$0;
-   }
-
-   private zr(vl $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vl $$0) {
-      $$0.b(this.b);
-   }
+public record zr(zz b) implements yw<zp> {
+   private static final int c = 32767;
+   public static final yn<vl, zr> a = zz.<vl>a($$0 -> aaa.a($$0, 32767), af.a(Lists.newArrayList(new zz.c[]{new zz.c<>(zx.b, zx.a)}), $$0 -> {
+   })).a(zr::new, zr::b);
 
    @Override
-   public yx<zr> a() {
-      return zn.n;
+   public yy<zr> a() {
+      return zo.m;
    }
 
-   public void a(zo $$0) {
+   public void a(zp $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

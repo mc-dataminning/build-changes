@@ -1,23 +1,72 @@
-import java.util.EnumMap;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.joml.Vector3f;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class hgu {
-   private static final String c = "missing";
-   private static final String d = "missingno";
-   public static final aku a = aku.b("builtin/missing");
-   public static final hhb b = new hhb(a, "missing");
+   private static final Logger a = LogUtils.getLogger();
+   private static final ako b = ako.a("items");
 
-   public static hhh a() {
-      gng $$0 = new gng(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jn, gne> $$1 = new EnumMap<>(jn.class);
+   public static CompletableFuture<hgu.a> a(aup $$0, Executor $$1) {
+      return CompletableFuture.<Map<akv, aun>>supplyAsync(() -> b.a($$0), $$1)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<hgu.b>> $$2 = new ArrayList<>($$1x.size());
+               $$1x.forEach(
+                  ($$2x, $$3) -> $$2.add(
+                        CompletableFuture.supplyAsync(
+                           () -> {
+                              akv $$2xx = b.b($$2x);
 
-      for (jn $$2 : jn.values()) {
-         $$1.put($$2, new gne($$2, -1, "missingno", $$0));
-      }
+                              try {
+                                 hgu.b var5;
+                                 try (Reader $$3x = $$3.e()) {
+                                    hbg $$4 = (hbg)hbg.a
+                                       .parse(JsonOps.INSTANCE, JsonParser.parseReader($$3x))
+                                       .ifError(
+                                          $$2xxx -> a.error("Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$2xx, $$3.b(), $$2xxx.message()})
+                                       )
+                                       .result()
+                                       .orElse(null);
+                                    var5 = new hgu.b($$2xx, $$4);
+                                 }
 
-      gnd $$3 = new gnd(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      return new gnh(null, List.of($$3), new gno.a.a().a("particle", "missingno").a("missingno", new hgt(hel.d, heb.c())).a(), null, null, gnm.a);
+                                 return var5;
+                              } catch (Exception var8) {
+                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$2x, $$3.b(), var8});
+                                 return new hgu.b($$2xx, null);
+                              }
+                           },
+                           $$1
+                        )
+                     )
+               );
+               return af.d($$2).thenApply($$0xx -> {
+                  Map<akv, hbg> $$1xx = new HashMap<>();
+
+                  for (hgu.b $$2x : $$0xx) {
+                     if ($$2x.b != null) {
+                        $$1xx.put($$2x.a, $$2x.b);
+                     }
+                  }
+
+                  return new hgu.a($$1xx);
+               });
+            }
+         );
+   }
+
+   public static record a(Map<akv, hbg> a) {
+   }
+
+   static record b(akv a, @Nullable hbg b) {
    }
 }

@@ -4,27 +4,34 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjq extends Schema {
+public class bjq extends bjk {
    public bjq(int $$0, Schema $$1) {
       super($$0, $$1);
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.registerSimple($$1, "minecraft:bed");
+      return $$1;
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bhv.b,
+         bhw.p,
          () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", bhv.A.in($$0)),
-               "ender_pearls",
-               DSL.list(bhv.A.in($$0)),
-               "Inventory",
-               DSL.list(bhv.t.in($$0)),
-               "EnderItems",
-               DSL.list(bhv.t.in($$0))
+               "minecraft:adventure/adventuring_time",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.K.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_a_mob",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.z.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_all_mobs",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.z.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:husbandry/bred_all_animals",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.z.in($$0), DSL.constType(DSL.string())))
             )
       );
-      $$0.registerType(true, bhv.A, () -> DSL.optionalFields("Passengers", DSL.list(bhv.A.in($$0)), bhv.B.in($$0)));
+      $$0.registerType(false, bhw.K, () -> DSL.constType(a()));
+      $$0.registerType(false, bhw.z, () -> DSL.constType(a()));
    }
 }

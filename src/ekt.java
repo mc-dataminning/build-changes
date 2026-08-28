@@ -1,76 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ekt extends eku {
-   public static final MapCodec<ekt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ekt::new)
-   );
+public class ekt extends ekv {
+   public static final MapCodec<ekt> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ekt::new, $$0 -> $$0.b);
    private final float b;
-   private final float c;
-   private final float d;
 
    @Override
-   protected ekv<?> a() {
-      return ekv.c;
+   protected ekw<?> a() {
+      return ekw.b;
    }
 
-   public ekt(float $$0, float $$1, float $$2) {
+   public ekt(float $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
    @Override
-   public void a(eku.a $$0) {
-      azg $$1 = $$0.b();
-      dhe $$2 = (dhe)$$0.a();
-      List<ji> $$3 = af.a($$0.c(), $$1);
-      if (!$$3.isEmpty()) {
-         Mutable<ji> $$4 = new MutableObject($$3.getFirst());
-         $$3.forEach($$1x -> {
-            if ($$1x.v() < ((ji)$$4.getValue()).v()) {
-               $$4.setValue($$1x);
+   public void a(ekv.a $$0) {
+      azh $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            ji $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dsm.d, $$0);
             }
-         });
-         ji $$5 = (ji)$$4.getValue();
-         if ($$1.i() < this.d) {
-            $$2.K_().a(mc.aL).flatMap($$0x -> $$0x.a(rl.F)).ifPresent($$3x -> ((efi)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
 
-         $$0.c().forEach($$2x -> {
-            if ($$1.i() < this.c) {
-               ji $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
+         if ($$1.i() < this.b) {
+            ji $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dsm.f, $$0);
             }
-         });
-         $$0.d().forEach($$2x -> {
-            if ($$1.i() < this.b) {
-               ji $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
+         }
+
+         if ($$1.i() < this.b) {
+            ji $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dsm.e, $$0);
             }
-         });
-      }
+         }
+
+         if ($$1.i() < this.b) {
+            ji $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dsm.c, $$0);
+            }
+         }
+      });
    }
 
-   private static void a(ji $$0, eku.a $$1) {
-      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
-         $$1.a($$0, djm.tY.m().b(dnc.b, Boolean.valueOf(false)));
-         $$0 = $$0.e();
-      }
+   private static void a(ji $$0, dxn $$1, ekv.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-      $$1.a($$0, djm.tY.m().b(dnc.b, Boolean.valueOf(true)));
+      for (ji var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
+      }
    }
 }

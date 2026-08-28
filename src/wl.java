@@ -1,95 +1,86 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Optional;
 
-public record wl(String c, List<wl.a> d, xl e) {
+public record wl(wm l, wm m) {
    public static final Codec<wl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(wl::a),
-               wl.a.d.listOf().fieldOf("parameters").forGetter(wl::b),
-               xl.b.b.optionalFieldOf("style", xl.a).forGetter(wl::c)
-            )
-            .apply($$0, wl::new)
+      $$0 -> $$0.group(wm.a.fieldOf("chat").forGetter(wl::a), wm.a.fieldOf("narration").forGetter(wl::b)).apply($$0, wl::new)
    );
-   public static final ym<vz, wl> b = ym.a(yk.o, wl::a, wl.a.e.a(yk.a()), wl::b, xl.b.c, wl::c, wl::new);
+   public static final yn<wa, wl> b = yn.a(wm.b, wl::a, wm.b, wl::b, wl::new);
+   public static final yn<wa, jr<wl>> c = yl.a(mc.aJ, b);
+   public static final wm d = wm.a("chat.type.text");
+   public static final aku<wl> e = a("chat");
+   public static final aku<wl> f = a("say_command");
+   public static final aku<wl> g = a("msg_command_incoming");
+   public static final aku<wl> h = a("msg_command_outgoing");
+   public static final aku<wl> i = a("team_msg_command_incoming");
+   public static final aku<wl> j = a("team_msg_command_outgoing");
+   public static final aku<wl> k = a("emote_command");
 
-   public static wl a(String $$0) {
-      return new wl($$0, List.of(wl.a.a, wl.a.c), xl.a);
+   private static aku<wl> a(String $$0) {
+      return aku.a(mc.aJ, akv.b($$0));
    }
 
-   public static wl b(String $$0) {
-      xl $$1 = xl.a.a(n.h).b(true);
-      return new wl($$0, List.of(wl.a.a, wl.a.c), $$1);
+   public static void a(qe<wl> $$0) {
+      $$0.a(e, new wl(d, wm.a("chat.type.text.narrate")));
+      $$0.a(f, new wl(wm.a("chat.type.announcement"), wm.a("chat.type.text.narrate")));
+      $$0.a(g, new wl(wm.b("commands.message.display.incoming"), wm.a("chat.type.text.narrate")));
+      $$0.a(h, new wl(wm.c("commands.message.display.outgoing"), wm.a("chat.type.text.narrate")));
+      $$0.a(i, new wl(wm.d("chat.type.team.text"), wm.a("chat.type.text.narrate")));
+      $$0.a(j, new wl(wm.d("chat.type.team.sent"), wm.a("chat.type.text.narrate")));
+      $$0.a(k, new wl(wm.a("chat.type.emote"), wm.a("chat.type.emote")));
    }
 
-   public static wl c(String $$0) {
-      xl $$1 = xl.a.a(n.h).b(true);
-      return new wl($$0, List.of(wl.a.b, wl.a.c), $$1);
+   public static wl.a a(aku<wl> $$0, buk $$1) {
+      return a($$0, $$1.dV().K_(), $$1.p_());
    }
 
-   public static wl d(String $$0) {
-      return new wl($$0, List.of(wl.a.b, wl.a.a, wl.a.c), xl.a);
+   public static wl.a a(aku<wl> $$0, ex $$1) {
+      return a($$0, $$1.u(), $$1.b());
    }
 
-   public wo a(wo $$0, wk.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return wo.a(this.c, $$2).c(this.e);
+   public static wl.a a(aku<wl> $$0, kf $$1, wp $$2) {
+      ke<wl> $$3 = $$1.e(mc.aJ);
+      return new wl.a($$3.b($$0), $$2);
    }
 
-   private wo[] b(wo $$0, wk.a $$1) {
-      wo[] $$2 = new wo[this.d.size()];
+   public wm a() {
+      return this.l;
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         wl.a $$4 = this.d.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+   public wm b() {
+      return this.m;
+   }
+
+   public static record a(jr<wl> b, wp c, Optional<wp> d) {
+      public static final yn<wa, wl.a> a = yn.a(wl.c, wl.a::a, wr.d, wl.a::b, wr.e, wl.a::c, wl.a::new);
+
+      a(jr<wl> $$0, wp $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      return $$2;
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   public List<wl.a> b() {
-      return this.d;
-   }
-
-   public xl c() {
-      return this.e;
-   }
-
-   public static enum a implements azu {
-      a(0, "sender", ($$0, $$1) -> $$1.b()),
-      b(1, "target", ($$0, $$1) -> $$1.c().orElse(wn.a)),
-      c(2, "content", ($$0, $$1) -> $$0);
-
-      private static final IntFunction<wl.a> f = axp.a($$0 -> $$0.g, values(), axp.a.a);
-      public static final Codec<wl.a> d = azu.a(wl.a::values);
-      public static final ym<ByteBuf, wl.a> e = yk.a(f, $$0 -> $$0.g);
-      private final int g;
-      private final String h;
-      private final wl.a.a i;
-
-      private a(final int $$0, final String $$1, final wl.a.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+      public wp a(wp $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      public wo a(wo $$0, wk.a $$1) {
-         return this.i.select($$0, $$1);
+      public wp b(wp $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.h;
+      public wl.a c(wp $$0) {
+         return new wl.a(this.b, this.c, Optional.of($$0));
       }
 
-      public interface a {
-         wo select(wo var1, wk.a var2);
+      public jr<wl> a() {
+         return this.b;
+      }
+
+      public wp b() {
+         return this.c;
+      }
+
+      public Optional<wp> c() {
+         return this.d;
       }
    }
 }

@@ -1,26 +1,35 @@
-public record aag(long c, ji d) implements zy {
-   public static final ym<vl, aag> a = zy.a(aag::a, aag::new);
-   public static final zy.b<aag> b = zy.a("debug/neighbors_update");
+public record aag(aag.a c) implements zz {
+   public static final yn<vl, aag> a = zz.a(aag::a, aag::new);
+   public static final zz.b<aag> b = zz.a("debug/hive");
 
    private aag(vl $$0) {
-      this($$0.m(), $$0.e());
+      this(new aag.a($$0));
    }
 
    private void a(vl $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+      this.c.a($$0);
    }
 
    @Override
-   public zy.b<aag> a() {
+   public zz.b<aag> a() {
       return b;
    }
 
-   public long b() {
+   public aag.a b() {
       return this.c;
    }
 
-   public ji c() {
-      return this.d;
+   public static record a(ji a, String b, int c, int d, boolean e) {
+      public a(vl $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(vl $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

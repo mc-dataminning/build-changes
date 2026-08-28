@@ -1,15 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface eaz {
-   eaz a = new eaz() {
-      @Override
-      public void a() {
-      }
+   int ar();
 
-      @Override
-      public void a(buj.d $$0) {
-      }
-   };
+   UUID cG();
 
-   void a();
+   ji dv();
 
-   void a(buj.d var1);
+   fau cR();
+
+   void a(eba var1);
+
+   Stream<? extends eaz> da();
+
+   Stream<? extends eaz> db();
+
+   void c(buk.d var1);
+
+   boolean dT();
+
+   boolean dU();
 }

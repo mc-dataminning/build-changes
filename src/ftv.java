@@ -1,64 +1,41 @@
-public class ftv extends fte {
-   private fop c;
+import javax.annotation.Nullable;
 
-   public ftv() {
-      super("");
+public class ftv extends fuk {
+   @Nullable
+   private fpd a;
+
+   public ftv(wp $$0) {
+      super($$0);
    }
 
    @Override
    protected void aR_() {
-      super.aR_();
-      this.c = fop.a(wo.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+      this.a = this.c(new fpd(this.n, this.l, this.p, 12));
+      this.c();
    }
 
    @Override
-   public void a(fob $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
       }
    }
 
    @Override
-   public void aO_() {
-      this.E();
+   public boolean aG_() {
+      return false;
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   protected boolean aQ_() {
+      return false;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.E();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
-         return true;
-      }
-   }
-
-   private void E() {
-      gfx $$0 = this.m.t.j;
-      $$0.b(new ahm(this.m.t, ahm.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fte(this.b.a()));
-      }
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.r();
+      this.a($$0);
    }
 }

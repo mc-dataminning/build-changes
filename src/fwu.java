@@ -1,27 +1,32 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-public class fwu implements fwt {
-   public static final fwt a = new fwu();
-
-   private fwu() {
+public interface fwu {
+   static fwu a(ayl $$0) {
+      return new fwt($$0);
    }
 
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   static fwu a(cui $$0) {
+      Objects.requireNonNull($$0);
+
+      return (fwu)(switch ($$0) {
+         case cuh $$1 -> new fws($$1.a());
+         case fwr.a $$2 -> new fwr($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
+      });
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   int a(fob var1);
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   int b(fob var1);
+
+   default boolean a() {
+      return false;
+   }
+
+   default void a(fob $$0, int $$1, int $$2, Matrix4f $$3, glx.a $$4) {
+   }
+
+   default void a(fob $$0, int $$1, int $$2, int $$3, int $$4, fod $$5) {
    }
 }

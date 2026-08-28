@@ -1,24 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
 
-public class cnr<E extends cnj> {
-   public static bwz<bvf> a(int $$0) {
-      return cal.a(
-         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$1 -> $$1.group($$1.b(cej.ad), $$1.a(cej.L))
-               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
-                     if (!$$5.fa().f()) {
-                        return false;
+public class cnr {
+   public static byk<cnk> a() {
+      return cam.a(
+         (Function<cam.b<cnk>, ? extends App<cam.c<cnk>, cap<cnk>>>)($$0 -> $$0.group($$0.b(cek.ak), $$0.c(cek.ab), $$0.c(cek.ah), $$0.a(cek.ao))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.e_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cnr::a)).isPresent()) {
+                        cne $$6 = $$0.b($$1);
+                        cnl.c($$3x, $$4x, $$6);
+                        cnl.b((cnj)$$4x);
+                        cnl.b($$3x, $$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cnl::b));
+                        return true;
                      } else {
-                        Optional<cla> $$7 = $$1.a($$3);
-                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
-                           return false;
-                        } else {
-                           $$2.b();
-                           return true;
-                        }
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(cnj $$0) {
+      return $$0.eb().a(cek.ah);
    }
 }

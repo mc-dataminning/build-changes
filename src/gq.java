@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class gq implements ArgumentType<go> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final jt<djk> b;
+   private final jt<djl> b;
 
    public gq(et $$0) {
       this.b = $$0.d(mc.f);

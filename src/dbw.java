@@ -1,29 +1,19 @@
-public class dbw extends dai {
-   public dbw(String $$0, dao $$1, day $$2, cwn $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public record dbw(cwo a) implements dbj {
+   @Override
+   public cwo a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   protected cwj f() {
-      return cwr.fe;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public dbm<dbw> a() {
-      return dbm.o;
-   }
-
-   @Override
-   public dbn<dbw> b() {
-      return dbn.b;
-   }
-
-   @Override
-   public dbf h() {
-      return switch (this.e()) {
-         case b -> dbe.f;
-         case a -> dbe.e;
-         case c -> dbe.g;
-      };
+   public cwo c() {
+      return this.a;
    }
 }

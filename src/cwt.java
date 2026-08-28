@@ -1,48 +1,59 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record cwt(jr<avy> e, wo f, float g, int h) {
+public record cwt(cvo<cwu> c, boolean d) implements czr {
    public static final Codec<cwt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avy.b.fieldOf("sound_event").forGetter(cwt::b),
-               wq.a.fieldOf("description").forGetter(cwt::c),
-               ayh.o.fieldOf("length_in_seconds").forGetter(cwt::d),
-               ayh.a(0, 15).fieldOf("comparator_output").forGetter(cwt::e)
-            )
+      $$0 -> $$0.group(cvo.a(mc.L, cwu.c).fieldOf("song").forGetter(cwt::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwt::b))
             .apply($$0, cwt::new)
    );
-   public static final ym<vz, cwt> b = ym.a(avy.d, cwt::b, wq.b, cwt::c, yk.l, cwt::d, yk.h, cwt::e, cwt::new);
-   public static final Codec<jr<cwt>> c = akr.a(mc.L);
-   public static final ym<vz, jr<cwt>> d = yk.a(mc.L, b);
-   private static final int i = 20;
+   public static final yn<wa, cwt> b = yn.a(cvo.a(mc.L, cwu.d), cwt::a, yl.b, cwt::b, cwt::new);
 
-   public int a() {
-      return ayy.f(this.g * 20.0F);
+   @Override
+   public void a(cwk.b $$0, Consumer<wp> $$1, cyg $$2) {
+      jt.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            xd $$2x = ((cwu)$$1x.a()).c().f();
+            ws.a($$2x, xm.a.a(n.h));
+            $$1.accept($$2x);
+         });
+      }
    }
 
-   public boolean a(long $$0) {
-      return $$0 >= (long)(this.a() + 20);
+   public cwt a(boolean $$0) {
+      return new cwt(this.c, $$0);
    }
 
-   public static Optional<jr<cwt>> a(jt.a $$0, cwn $$1) {
-      cws $$2 = $$1.a(kv.ab);
-      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   public static bsj a(dgh $$0, ji $$1, cwo $$2, cow $$3) {
+      cwt $$4 = $$2.a(kv.ab);
+      if ($$4 == null) {
+         return bsj.f;
+      } else {
+         dww $$5 = $$0.a_($$1);
+         if ($$5.a(djn.eg) && !$$5.c(dnq.b)) {
+            if (!$$0.C) {
+               cwo $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dvc $$7) {
+                  $$7.b($$6);
+                  $$0.a(ebs.c, $$1, ebs.a.a($$3, $$5));
+               }
+
+               $$3.a(awk.al);
+            }
+
+            return bsj.a;
+         } else {
+            return bsj.f;
+         }
+      }
    }
 
-   public jr<avy> b() {
-      return this.e;
+   public cvo<cwu> a() {
+      return this.c;
    }
 
-   public wo c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   public boolean b() {
+      return this.d;
    }
 }

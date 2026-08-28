@@ -1,22 +1,33 @@
-import javax.annotation.Nullable;
-
 public class cgc {
-   @Nullable
-   public static fay a(bvn $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cgb.a($$0, $$1);
-      return cge.a($$0, () -> {
-         ji $$9 = cge.a($$0.dZ(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            ji $$10 = cgd.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cge.a($$10, $$0.dZ().a($$6 - $$7 + 1) + $$7, $$0.dW().an(), $$1xx -> cgb.c($$0, $$1xx));
-               return !cgb.a($$0, $$10) && !cgb.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+   public static boolean a(bvi $$0) {
+      return $$0.P() instanceof cer;
+   }
+
+   public static boolean a(bvo $$0, int $$1) {
+      return $$0.ge() && $$0.gb().a($$0.dt(), (double)($$0.gc() + (float)$$1) + 1.0);
+   }
+
+   public static boolean a(ji $$0, bvo $$1) {
+      return $$1.dV().e($$0.v());
+   }
+
+   public static boolean a(boolean $$0, bvo $$1, ji $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(ces $$0, ji $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bvo $$0, ji $$1) {
+      return $$0.dV().b_($$1).a(awv.a);
+   }
+
+   public static boolean b(bvo $$0, ji $$1) {
+      return $$0.a(etu.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bvo $$0, ji $$1) {
+      return $$0.dV().a_($$1).e();
    }
 }

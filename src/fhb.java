@@ -1,28 +1,20 @@
-import com.google.common.collect.Sets;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fhb extends fhx {
-   public Set<String> a = Sets.newHashSet();
+public class fhb {
+   private final Gson a = new Gson();
 
-   public static fhb a(String $$0) {
-      fhb $$1 = new fhb();
-      JsonParser $$2 = new JsonParser();
+   public String a(fhs $$0) {
+      return this.a.toJson($$0);
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
-      }
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
 
-      return $$1;
+   @Nullable
+   public <T extends fhs> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

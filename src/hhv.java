@@ -1,15 +1,8 @@
-public class hhv extends hhw {
-   public hhv(cgx $$0) {
-      super($$0, avz.bR, awa.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected hhs o() {
-      return new hhu(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.ac_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hhv {
 }

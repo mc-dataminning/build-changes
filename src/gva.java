@@ -1,36 +1,22 @@
-public class gva extends gth<cnx, hat, gel> {
-   private static final aku a = aku.b("textures/entity/warden/warden.png");
-   private static final aku b = aku.b("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aku k = aku.b("textures/entity/warden/warden_heart.png");
-   private static final aku l = aku.b("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aku m = aku.b("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gva extends gsw<cmm, gzb> {
+   private static final akv a = akv.b("textures/entity/illager/vindicator.png");
 
-   public gva(gsb.a $$0) {
-      super($$0, new gel($$0.a(gez.dx)), 0.9F);
-      this.a(new gwj<>(this, b, ($$0x, $$1) -> 1.0F, gel::d, gmf::k, false));
-      this.a(new gwj<>(this, l, ($$0x, $$1) -> Math.max(0.0F, ayy.b($$1 * 0.045F) * 0.25F), gel::e, gmf::k, false));
-      this.a(new gwj<>(this, m, ($$0x, $$1) -> Math.max(0.0F, ayy.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gel::e, gmf::k, false));
-      this.a(new gwj<>(this, a, ($$0x, $$1) -> $$0x.a, gel::b, gmf::k, false));
-      this.a(new gwj<>(this, k, ($$0x, $$1) -> $$0x.b, gel::c, gmf::k, false));
+   public gva(gsd.a $$0) {
+      super($$0, new gco<>($$0.a(gfb.dv)), 0.5F);
+      this.a(new gwk<gzb, gco<gzb>>(this) {
+         public void a(fft $$0, glx $$1, int $$2, gzb $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public aku a(hat $$0) {
+   public akv a(gzb $$0) {
       return a;
    }
 
-   public hat b() {
-      return new hat();
-   }
-
-   public void a(cnx $$0, hat $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.K($$2);
-      $$1.c.a($$0.a);
-      $$1.d.a($$0.b);
-      $$1.e.a($$0.c);
-      $$1.f.a($$0.d);
-      $$1.g.a($$0.bY);
-      $$1.h.a($$0.bZ);
+   public gzb b() {
+      return new gzb();
    }
 }

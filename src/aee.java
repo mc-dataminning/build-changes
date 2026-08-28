@@ -1,37 +1,36 @@
-public class aee implements yv<abk> {
-   public static final ym<vl, aee> a = yv.a(aee::a, aee::new);
-   private final int b;
-   private final byte c;
+public record aee(agb e, byte f) implements yw<abl> {
+   public static final yn<wa, aee> a = yw.a(aee::a, aee::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aee(buj $$0, byte $$1) {
-      this.b = $$0.ar();
-      this.c = $$1;
+   private aee(wa $$0) {
+      this(new agb($$0), $$0.readByte());
    }
 
-   private aee(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
+   private void a(wa $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public yx<aee> a() {
-      return agd.aq;
+   public yy<aee> a() {
+      return age.ap;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public buj a(dgg $$0) {
-      return $$0.a(this.b);
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public float b() {
-      return ayy.a(this.c);
+   public agb b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

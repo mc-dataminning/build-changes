@@ -1,30 +1,27 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cfk extends cfp<bvf> {
+public abstract class cfk extends cfq<bvg> {
+   protected abstract boolean a(ard var1, bvg var2, bvg var3);
+
+   protected abstract cek<bvg> b();
+
    @Override
-   public Set<cej<?>> a() {
-      return ImmutableSet.of(cej.h, cej.M, cej.an);
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected void a(arc $$0, bvf $$1) {
-      bwh<?> $$2 = $$1.ec();
-      List<cni> $$3 = Lists.newArrayList();
-      cel $$4 = $$2.c(cej.h).orElse(cel.a());
-      Optional<bvh> $$5 = $$4.a($$0x -> $$0x instanceof cmn || $$0x instanceof ckn).map(bvh.class::cast);
+   protected void a(ard $$0, bvg $$1) {
+      $$1.eb().a(this.b(), this.c($$0, $$1));
+   }
 
-      for (bvf $$7 : $$2.c(cej.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cni && ((cni)$$7).gp()) {
-            $$3.add((cni)$$7);
-         }
-      }
+   private Optional<bvg> c(ard $$0, bvg $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   }
 
-      $$2.a(cej.M, $$5);
-      $$2.a(cej.an, $$3);
+   protected Optional<cem> a(bvg $$0) {
+      return $$0.eb().c(cek.h);
    }
 }

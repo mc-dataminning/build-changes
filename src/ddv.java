@@ -1,21 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddv(dde c) implements ddq {
-   public static final MapCodec<ddv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dde.b.fieldOf("chance").forGetter(ddv::b)).apply($$0, ddv::new));
+public record ddv(jr<avz> d, brm e, brm f) implements ddp {
+   public static final MapCodec<ddv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound").forGetter(ddv::b),
+               brm.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(ddv::c),
+               brm.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(ddv::d)
+            )
+            .apply($$0, ddv::new)
+   );
 
    @Override
-   public float a(int $$0, azg $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
+   public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4) {
+      azh $$5 = $$3.dY();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dm(), this.e.a($$5), this.f.a($$5));
       }
-
-      return $$2 - (float)$$4;
    }
 
    @Override
@@ -23,7 +24,15 @@ public record ddv(dde c) implements ddq {
       return a;
    }
 
-   public dde b() {
-      return this.c;
+   public jr<avz> b() {
+      return this.d;
+   }
+
+   public brm c() {
+      return this.e;
+   }
+
+   public brm d() {
+      return this.f;
    }
 }

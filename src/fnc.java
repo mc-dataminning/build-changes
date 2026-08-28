@@ -1,115 +1,132 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Arrays;
+import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public interface fnc extends Supplier<JsonElement> {
-   void a(dww<?, ?> var1);
+public class fnc implements mi {
+   private final mk.a d;
+   private final mk.a e;
+   private final mk.a f;
 
-   static fnc.c a() {
-      return new fnc.c();
+   public fnc(mk $$0) {
+      this.d = $$0.a(mk.b.b, "blockstates");
+      this.e = $$0.a(mk.b.b, "items");
+      this.f = $$0.a(mk.b.b, "models");
    }
 
-   static fnc a(fnc... $$0) {
-      return new fnc.a(fnc.b.a, Arrays.asList($$0));
+   @Override
+   public CompletableFuture<?> a(mg $$0) {
+      fnc.b $$1 = new fnc.b();
+      fnc.a $$2 = new fnc.a();
+      fnc.c $$3 = new fnc.c();
+      new fmy($$2, $$1, $$3).a();
+      new fna($$1, $$3).a();
+      $$2.a();
+      $$1.a();
+      return CompletableFuture.allOf($$2.a($$0, this.d), $$3.a($$0, this.f), $$1.a($$0, this.e));
    }
 
-   static fnc b(fnc... $$0) {
-      return new fnc.a(fnc.b.b, Arrays.asList($$0));
+   static <T> CompletableFuture<?> a(mg $$0, Function<T, Path> $$1, Map<T, ? extends Supplier<JsonElement>> $$2) {
+      return mi.a($$0, Supplier::get, $$1, $$2);
    }
 
-   public static class a implements fnc {
-      private final fnc.b a;
-      private final List<fnc> b;
-
-      a(fnc.b $$0, List<fnc> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(dww<?, ?> $$0) {
-         this.b.forEach($$1 -> $$1.a($$0));
-      }
-
-      public JsonElement b() {
-         JsonArray $$0 = new JsonArray();
-         this.b.stream().map(Supplier::get).forEach($$0::add);
-         JsonObject $$1 = new JsonObject();
-         $$1.add(this.a.c, $$0);
-         return $$1;
-      }
+   @Override
+   public final String a() {
+      return "Model Definitions";
    }
 
-   public static enum b {
-      a("AND"),
-      b("OR");
+   static class a implements Consumer<fnd> {
+      private final Map<djl, fnd> a = new HashMap<>();
 
-      final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static class c implements fnc {
-      private final Map<dxx<?>, String> a = Maps.newHashMap();
-
-      private static <T extends Comparable<T>> String a(dxx<T> $$0, Stream<T> $$1) {
-         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
-      }
-
-      private static <T extends Comparable<T>> String c(dxx<T> $$0, T $$1, T[] $$2) {
-         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
-      }
-
-      private <T extends Comparable<T>> void a(dxx<T> $$0, String $$1) {
-         String $$2 = this.a.put($$0, $$1);
+      public void a(fnd $$0) {
+         djl $$1 = $$0.a();
+         fnd $$2 = this.a.put($$1, $$0);
          if ($$2 != null) {
-            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+            throw new IllegalStateException("Duplicate blockstate definition for " + $$1);
          }
       }
 
-      public final <T extends Comparable<T>> fnc.c a(dxx<T> $$0, T $$1) {
-         this.a($$0, $$0.b($$1));
-         return this;
+      public void a() {
+         Stream<jr.c<djl>> $$0 = mb.e.c().filter($$0x -> true);
+         List<akv> $$1 = $$0.filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Missing blockstate definitions for: " + $$1);
+         }
       }
 
-      @SafeVarargs
-      public final <T extends Comparable<T>> fnc.c a(dxx<T> $$0, T $$1, T... $$2) {
-         this.a($$0, c($$0, $$1, $$2));
-         return this;
+      public CompletableFuture<?> a(mg $$0, mk.a $$1) {
+         return fnc.a($$0, $$1x -> $$1.a($$1x.p().h().a()), this.a);
+      }
+   }
+
+   static class b implements fnb {
+      private final Map<cwk, hbg> a = new HashMap<>();
+      private final Map<cwk, cwk> b = new HashMap<>();
+
+      @Override
+      public void a(cwk $$0, hbk.b $$1) {
+         this.a($$0, new hbg($$1, hbg.a.a));
       }
 
-      public final <T extends Comparable<T>> fnc.c b(dxx<T> $$0, T $$1) {
-         this.a($$0, "!" + $$0.b($$1));
-         return this;
-      }
-
-      @SafeVarargs
-      public final <T extends Comparable<T>> fnc.c b(dxx<T> $$0, T $$1, T... $$2) {
-         this.a($$0, "!" + c($$0, $$1, $$2));
-         return this;
-      }
-
-      public JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
-         return $$0;
+      private void a(cwk $$0, hbg $$1) {
+         hbg $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate item model definition for " + $$0);
+         }
       }
 
       @Override
-      public void a(dww<?, ?> $$0) {
-         List<dxx<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+      public void a(cwk $$0, cwk $$1) {
+         this.b.put($$1, $$0);
+      }
+
+      public void a() {
+         mb.g.forEach($$0x -> {
+            if (!this.b.containsKey($$0x)) {
+               if ($$0x instanceof cuu $$1 && !this.a.containsKey($$1)) {
+                  akv $$2 = fnq.a($$1.d());
+                  this.a($$1, fno.a($$2));
+               }
+            }
+         });
+         this.b.forEach(($$0x, $$1) -> {
+            hbg $$2 = this.a.get($$1);
+            if ($$2 == null) {
+               throw new IllegalStateException("Missing donor: " + $$1 + " -> " + $$0x);
+            } else {
+               this.a($$0x, $$2);
+            }
+         });
+         List<akv> $$0 = mb.g.c().filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
+         if (!$$0.isEmpty()) {
+            throw new IllegalStateException("Missing item model definitions for: " + $$0);
          }
+      }
+
+      public CompletableFuture<?> a(mg $$0, mk.a $$1) {
+         return mi.a($$0, hbg.a, $$1x -> $$1.a($$1x.f().h().a()), this.a);
+      }
+   }
+
+   static class c implements BiConsumer<akv, fnp> {
+      private final Map<akv, fnp> a = new HashMap<>();
+
+      public void a(akv $$0, fnp $$1) {
+         Supplier<JsonElement> $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate model definition for " + $$0);
+         }
+      }
+
+      public CompletableFuture<?> a(mg $$0, mk.a $$1) {
+         return fnc.a($$0, $$1::a, this.a);
       }
    }
 }

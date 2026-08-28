@@ -1,16 +1,17 @@
-public class gun extends gth<cit, gzh, ged> {
-   private static final aku a = aku.b("textures/entity/tadpole/tadpole.png");
+public class gun extends gqv<cmj, haf> {
+   private static final akv a = akv.b("textures/entity/skeleton/stray.png");
+   private static final akv b = akv.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gun(gsb.a $$0) {
-      super($$0, new ged($$0.a(gez.dh)), 0.14F);
+   public gun(gsd.a $$0) {
+      super($$0, gfb.cZ, gfb.da, gfb.db);
+      this.a(new gwv<>(this, $$0.f(), gfb.dc, b));
    }
 
-   @Override
-   public aku b(gzh $$0) {
+   public akv b(haf $$0) {
       return a;
    }
 
-   public gzh b() {
-      return new gzh();
+   public haf b() {
+      return new haf();
    }
 }

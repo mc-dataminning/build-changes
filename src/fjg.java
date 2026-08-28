@@ -1,167 +1,182 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fjg extends hky {
-   private static final Logger b = LogUtils.getLogger();
-   public static final wo a = wo.c("mco.upload.select.world.title");
-   private static final wo c = wo.c("selectWorld.unable_to_load");
-   static final wo C = wo.c("selectWorld.world");
-   private static final wo D = wo.c("mco.upload.hardcore").b(-65536);
-   private static final wo E = wo.c("selectWorld.commands");
-   private static final DateFormat F = new SimpleDateFormat();
+public class fjg extends hld {
+   static final Logger c = LogUtils.getLogger();
+   private static final wp C = wp.c("mco.selectServer.create");
+   private static final wp D = wp.c("mco.selectServer.create.subtitle");
+   private static final wp E = wp.c("mco.configure.world.switch.slot");
+   private static final wp F = wp.c("mco.configure.world.switch.slot.subtitle");
+   private static final wp G = wp.c("mco.reset.world.generate");
+   private static final wp H = wp.c("mco.reset.world.title");
+   private static final wp I = wp.c("mco.reset.world.warning");
+   public static final wp a = wp.c("mco.create.world.reset.title");
+   private static final wp J = wp.c("mco.reset.world.resetting.screen.title");
+   private static final wp K = wp.c("mco.reset.world.template");
+   private static final wp L = wp.c("mco.reset.world.adventure");
+   private static final wp M = wp.c("mco.reset.world.experience");
+   private static final wp N = wp.c("mco.reset.world.inspiration");
+   private final fuk O;
+   private final fhk P;
+   private final wp Q;
+   private final int R;
+   private final wp S;
+   private static final akv T = akv.b("textures/gui/realms/upload.png");
+   private static final akv U = akv.b("textures/gui/realms/adventure.png");
+   private static final akv V = akv.b("textures/gui/realms/survival_spawn.png");
+   private static final akv W = akv.b("textures/gui/realms/new_world.png");
+   private static final akv X = akv.b("textures/gui/realms/experience.png");
+   private static final akv Y = akv.b("textures/gui/realms/inspiration.png");
+   fib Z;
+   fib aa;
+   fib ab;
+   fib ac;
+   public final int b;
    @Nullable
-   private final fkh G;
-   private final fjf H;
-   private final long I;
-   private final int J;
-   fop K;
-   List<eve> L = Lists.newArrayList();
-   int M = -1;
-   fjg.b N;
+   private final fki ad;
+   private final Runnable ae;
+   private final fsg af = new fsg(this);
 
-   public fjg(@Nullable fkh $$0, long $$1, int $$2, fjf $$3) {
-      super(a);
-      this.G = $$0;
-      this.H = $$3;
-      this.I = $$1;
-      this.J = $$2;
+   private fjg(fuk $$0, fhk $$1, int $$2, wp $$3, wp $$4, int $$5, wp $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
    }
 
-   private void E() {
-      evd.a $$0 = this.m.m().b();
-      this.L = this.m.m().a($$0).join().stream().filter(eve::v).collect(Collectors.toList());
+   public fjg(fuk $$0, fhk $$1, int $$2, wp $$3, wp $$4, int $$5, wp $$6, @Nullable fki $$7, Runnable $$8) {
+      super($$3);
+      this.O = $$0;
+      this.P = $$1;
+      this.b = $$2;
+      this.Q = $$4;
+      this.R = $$5;
+      this.S = $$6;
+      this.ad = $$7;
+      this.ae = $$8;
+   }
 
-      for (eve $$1 : this.L) {
-         this.N.a($$1);
-      }
+   public static fjg a(fuk $$0, fhk $$1, fki $$2, Runnable $$3) {
+      return new fjg($$0, $$1, $$1.p, C, D, -6250336, a, $$2, $$3);
+   }
+
+   public static fjg a(fuk $$0, int $$1, fhk $$2, Runnable $$3) {
+      return new fjg($$0, $$2, $$1, E, F, -6250336, a, $$3);
+   }
+
+   public static fjg a(fuk $$0, fhk $$1, Runnable $$2) {
+      return new fjg($$0, $$1, $$1.p, H, I, -65536, J, $$2);
    }
 
    @Override
    public void aR_() {
-      this.N = this.c(new fjg.b());
+      fsk $$0 = this.af.a(fsk.d());
+      $$0.c().a(9 / 3);
+      $$0.a(new fpz(this.l, this.p), fsj::b);
+      $$0.a(new fpz(this.Q, this.p).b(this.R), fsj::b);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            fgj $$0 = fgj.a();
 
-      try {
-         this.E();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.m.a(new fiw(c, wo.a(var2.getMessage()), this.H));
-         return;
-      }
-
-      this.K = this.c(fop.a(wo.c("mco.upload.button.name"), $$0 -> this.F()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
-      this.K.j = this.M >= 0 && this.M < this.L.size();
-      this.c(fop.a(wn.k, $$0 -> this.m.a(this.H)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
-      this.a(new hkx(wo.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
-      if (this.L.isEmpty()) {
-         this.a(new hkx(wo.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
-      }
+            try {
+               fib $$1 = $$0.a(1, 10, fhk.d.a);
+               fib $$2 = $$0.a(1, 10, fhk.d.c);
+               fib $$3 = $$0.a(1, 10, fhk.d.d);
+               fib $$4 = $$0.a(1, 10, fhk.d.e);
+               fjg.this.m.execute(() -> {
+                  fjg.this.Z = $$1;
+                  fjg.this.aa = $$2;
+                  fjg.this.ab = $$3;
+                  fjg.this.ac = $$4;
+               });
+            } catch (fif var6) {
+               fjg.c.error("Couldn't fetch templates in reset world", var6);
+            }
+         }
+      }).start();
+      fsf $$1 = this.af.c(new fsf());
+      fsf.b $$2 = $$1.d(3);
+      $$2.c().f(16);
+      $$2.a(new fjg.a(this.m.h, G, W, $$0x -> fgp.a(this.m, this.O, this, this.b, this.P, this.ad)));
+      $$2.a(new fjg.a(this.m.h, fjh.a, T, $$0x -> this.m.a(new fjh(this.ad, this.P.a, this.b, this))));
+      $$2.a(new fjg.a(this.m.h, K, V, $$0x -> this.m.a(new fji(K, this::a, fhk.d.a, this.Z))));
+      $$2.a(fsl.b(16), 3);
+      $$2.a(new fjg.a(this.m.h, L, U, $$0x -> this.m.a(new fji(L, this::a, fhk.d.c, this.aa))));
+      $$2.a(new fjg.a(this.m.h, M, X, $$0x -> this.m.a(new fji(M, this::a, fhk.d.d, this.ab))));
+      $$2.a(new fjg.a(this.m.h, N, Y, $$0x -> this.m.a(new fji(N, this::a, fhk.d.e, this.ac))));
+      this.af.b(fos.a(wo.k, $$0x -> this.aO_()).a());
+      this.af.a($$1x -> {
+         fop var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public wo i() {
-      return wn.a(this.n(), this.m());
-   }
-
-   private void F() {
-      if (this.M != -1 && !this.L.get(this.M).i()) {
-         eve $$0 = this.L.get(this.M);
-         this.m.a(new fjm(this.G, this.I, this.J, this.H, $$0));
-      }
+   protected void c() {
+      this.af.a();
    }
 
    @Override
-   public void a(fob $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 13, -1);
+   public wp i() {
+      return wo.a(this.n(), this.Q);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.H);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void aO_() {
+      this.m.a(this.O);
+   }
+
+   private void a(@Nullable fia $$0) {
+      this.m.a(this);
+      if ($$0 != null) {
+         this.a(new fkj($$0, this.P.a, this.S, this.ae));
       }
+
+      fge.g();
    }
 
-   static wo a(eve $$0) {
-      return $$0.h().d();
+   private void a(fkg $$0) {
+      List<fkg> $$1 = new ArrayList<>();
+      if (this.ad != null) {
+         $$1.add(this.ad);
+      }
+
+      if (this.b != this.P.p) {
+         $$1.add(new fkn(this.P.a, this.b, () -> {
+         }));
+      }
+
+      $$1.add($$0);
+      this.m.a(new fiz(this.O, $$1.toArray(new fkg[0])));
    }
 
-   static String b(eve $$0) {
-      return F.format(new Date($$0.f()));
-   }
+   class a extends fos {
+      private static final akv b = akv.b("widget/slot_frame");
+      private static final int c = 60;
+      private static final int d = 2;
+      private static final int u = 56;
+      private final akv v;
 
-   class a extends fpm.a<fjg.a> {
-      private final eve b;
-      private final String c;
-      private final wo d;
-      private final wo e;
-
-      public a(final eve $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = wo.a("mco.upload.entry.id", $$0.a(), fjg.b($$0));
-         this.e = $$0.s();
+      a(final fob $$0, final wp $$1, final akv $$2, final fos.c $$3) {
+         super(0, 0, 60, 60 + 9, $$1, $$3, q);
+         this.v = $$2;
       }
 
       @Override
-      public void a(fob $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fjg.this.N.a(fjg.this.L.indexOf(this.b));
-         return super.a($$0, $$1, $$2);
-      }
-
-      protected void a(fob $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = fjg.C + " " + ($$1 + 1);
-         } else {
-            $$4 = this.c;
+      public void b(fod $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.D();
+         int $$5 = -1;
+         if ($$4) {
+            $$5 = axk.a(1.0F, 0.56F, 0.56F, 0.56F);
          }
 
-         $$0.b(fjg.this.p, $$4, $$2 + 2, $$3 + 1, -1);
-         $$0.b(fjg.this.p, this.d, $$2 + 2, $$3 + 12, -8355712);
-         $$0.b(fjg.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712);
-      }
-
-      @Override
-      public wo a() {
-         wo $$0 = wn.b(wo.b(this.b.b()), wo.b(fjg.b(this.b)), fjg.a(this.b));
-         return wo.a("narrator.select", $$0);
-      }
-   }
-
-   class b extends fpm<fjg.a> {
-      public b() {
-         super(flh.Q(), fjg.this.n, fjg.this.o - 40 - fjg.g(0), fjg.g(0), 36);
-      }
-
-      public void a(eve $$0) {
-         this.b(fjg.this.new a($$0));
-      }
-
-      public void a(@Nullable fjg.a $$0) {
-         super.a($$0);
-         fjg.this.M = this.aH_().indexOf($$0);
-         fjg.this.K.j = fjg.this.M >= 0 && fjg.this.M < this.t() && !fjg.this.L.get(fjg.this.M).i();
-      }
-
-      @Override
-      public int a() {
-         return (int)((double)this.g * 0.6);
+         int $$6 = this.F();
+         int $$7 = this.G();
+         $$0.a(gmh::H, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
+         $$0.a(gmh::H, b, $$6, $$7, 60, 60, $$5);
+         int $$8 = $$4 ? -6250336 : -1;
+         $$0.a(fjg.this.p, this.B(), $$6 + 28, $$7 - 14, $$8);
       }
    }
 }

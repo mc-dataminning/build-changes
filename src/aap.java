@@ -1,46 +1,29 @@
-public record aap(ji c, float d, float e, float f, float g, float h) implements zy {
-   public static final ym<vl, aap> a = zy.a(aap::a, aap::new);
-   public static final zy.b<aap> b = zy.a("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
+
+public record aap(Set<kk> c, Set<kk> d) implements zz {
+   public static final yn<vl, aap> a = zz.a(aap::a, aap::new);
+   public static final zz.b<aap> b = zz.a("debug/village_sections");
 
    private aap(vl $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+      this($$0.a(HashSet::new, vl::g), $$0.a(HashSet::new, vl::g));
    }
 
    private void a(vl $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+      $$0.a(this.c, vl::a);
+      $$0.a(this.d, vl::a);
    }
 
    @Override
-   public zy.b<aap> a() {
+   public zz.b<aap> a() {
       return b;
    }
 
-   public ji b() {
+   public Set<kk> b() {
       return this.c;
    }
 
-   public float c() {
+   public Set<kk> c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

@@ -2,32 +2,22 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ddx(dde d, dde e, km f, Optional<edx> g, ekb h, Optional<jr<ebr>> i) implements ddo {
+public record ddx(km d, Optional<edy> e, ekc f, Optional<jr<ebs>> g) implements ddp {
    public static final MapCodec<ddx> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dde.b.fieldOf("radius").forGetter(ddx::b),
-               dde.b.fieldOf("height").forGetter(ddx::c),
-               km.g.optionalFieldOf("offset", km.h).forGetter(ddx::d),
-               edx.b.optionalFieldOf("predicate").forGetter(ddx::e),
-               ekb.a.fieldOf("block_state").forGetter(ddx::f),
-               ebr.aj.optionalFieldOf("trigger_game_event").forGetter(ddx::g)
+               km.g.optionalFieldOf("offset", km.h).forGetter(ddx::b),
+               edy.b.optionalFieldOf("predicate").forGetter(ddx::c),
+               ekc.a.fieldOf("block_state").forGetter(ddx::d),
+               ebs.aj.optionalFieldOf("trigger_game_event").forGetter(ddx::e)
             )
             .apply($$0, ddx::new)
    );
 
    @Override
-   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
-      ji $$5 = ji.a((kb)$$4).a(this.f);
-      azg $$6 = $$3.dZ();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
-
-      for (ji $$9 : ji.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)ayy.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
+   public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4) {
+      ji $$5 = ji.a((kb)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -36,27 +26,19 @@ public record ddx(dde d, dde e, km f, Optional<edx> g, ekb h, Optional<jr<ebr>> 
       return a;
    }
 
-   public dde b() {
+   public km b() {
       return this.d;
    }
 
-   public dde c() {
+   public Optional<edy> c() {
       return this.e;
    }
 
-   public km d() {
+   public ekc d() {
       return this.f;
    }
 
-   public Optional<edx> e() {
+   public Optional<jr<ebs>> e() {
       return this.g;
-   }
-
-   public ekb f() {
-      return this.h;
-   }
-
-   public Optional<jr<ebr>> g() {
-      return this.i;
    }
 }

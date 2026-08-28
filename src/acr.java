@@ -1,20 +1,26 @@
-public record acr(dfm b) implements yv<abk> {
-   public static final ym<vl, acr> a = yv.a(acr::a, acr::new);
+import java.util.Optional;
 
-   private acr(vl $$0) {
-      this($$0.f());
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-   }
+public record acr(faz b, Optional<faz> c, lr d, jr<avz> e) implements yw<abl> {
+   public static final yn<wa, acr> a = yn.a(faz.b, acr::b, faz.b.a(yl::a), acr::e, lt.bj, acr::f, avz.d, acr::g, acr::new);
 
    @Override
-   public yx<acr> a() {
-      return agd.F;
+   public yy<acr> a() {
+      return age.E;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   public Optional<faz> e() {
+      return this.c;
+   }
+
+   public lr f() {
+      return this.d;
+   }
+
+   public jr<avz> g() {
+      return this.e;
    }
 }

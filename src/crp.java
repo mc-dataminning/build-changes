@@ -1,9 +1,11 @@
-public class crp {
-   final crs a;
-   final long b;
+import java.util.Set;
 
-   crp(crs $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface crp {
+   Set<aku<? extends ke<? extends crp>>> bT = Set.of(mc.K, mc.f, mc.z, mc.V, mc.ad, mc.W);
+
+   crs i();
+
+   default boolean a(crs $$0) {
+      return this.i().a($$0);
    }
 }

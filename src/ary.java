@@ -1,160 +1,112 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.SocketAddress;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class ary extends ask {
-   private static final String b = "v1/chat";
-   final URL c;
-   final ary.a d;
-   final URL e;
-   final ary.a f;
-   private final String g;
+public class ary extends ChannelInboundHandlerAdapter {
+   private static final Logger a = LogUtils.getLogger();
+   private final all b;
 
-   private ary(URL $$0, ask.b $$1, URL $$2, ary.a $$3, URL $$4, ary.a $$5, String $$6, ask.a $$7, ExecutorService $$8) {
-      super($$0, $$1, $$7, $$8);
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public ary(all $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public static ask a(String $$0) {
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      ByteBuf $$2 = (ByteBuf)$$1;
+      $$2.markReaderIndex();
+      boolean $$3 = true;
+
       try {
-         JsonObject $$1 = ayo.a($$0);
-         URI $$2 = new URI(ayo.i($$1, "apiServer"));
-         String $$3 = ayo.i($$1, "apiKey");
-         if ($$3.isEmpty()) {
-            throw new IllegalArgumentException("Missing API key");
-         } else {
-            int $$4 = ayo.a($$1, "ruleId", 1);
-            String $$5 = ayo.a($$1, "serverId", "");
-            String $$6 = ayo.a($$1, "roomId", "Java:Chat");
-            int $$7 = ayo.a($$1, "hashesToDrop", -1);
-            int $$8 = ayo.a($$1, "maxConcurrentRequests", 7);
-            JsonObject $$9 = ayo.a($$1, "endpoints", null);
-            String $$10 = a($$9, "chat", "v1/chat");
-            boolean $$11 = $$10.equals("v1/chat");
-            URL $$12 = $$2.resolve("/" + $$10).toURL();
-            URL $$13 = a($$2, $$9, "join", "v1/join");
-            URL $$14 = a($$2, $$9, "leave", "v1/leave");
-            ary.a $$15 = $$2x -> {
-               JsonObject $$3x = new JsonObject();
-               $$3x.addProperty("server", $$5);
-               $$3x.addProperty("room", $$6);
-               $$3x.addProperty("user_id", $$2x.getId().toString());
-               $$3x.addProperty("user_display_name", $$2x.getName());
-               return $$3x;
-            };
-            ask.b $$16;
-            if ($$11) {
-               $$16 = ($$3x, $$4x) -> {
-                  JsonObject $$5x = new JsonObject();
-                  $$5x.addProperty("rule", $$4);
-                  $$5x.addProperty("server", $$5);
-                  $$5x.addProperty("room", $$6);
-                  $$5x.addProperty("player", $$3x.getId().toString());
-                  $$5x.addProperty("player_display_name", $$3x.getName());
-                  $$5x.addProperty("text", $$4x);
-                  $$5x.addProperty("language", "*");
-                  return $$5x;
-               };
-            } else {
-               String $$17 = String.valueOf($$4);
-               $$16 = ($$3x, $$4x) -> {
-                  JsonObject $$5x = new JsonObject();
-                  $$5x.addProperty("rule_id", $$17);
-                  $$5x.addProperty("category", $$5);
-                  $$5x.addProperty("subcategory", $$6);
-                  $$5x.addProperty("user_id", $$3x.getId().toString());
-                  $$5x.addProperty("user_display_name", $$3x.getName());
-                  $$5x.addProperty("text", $$4x);
-                  $$5x.addProperty("language", "*");
-                  return $$5x;
-               };
+         try {
+            if ($$2.readUnsignedByte() != 254) {
+               return;
             }
 
-            ask.a $$19 = ask.a.select($$7);
-            ExecutorService $$20 = a($$8);
-            String $$21 = Base64.getEncoder().encodeToString($$3.getBytes(StandardCharsets.US_ASCII));
-            return new ary($$12, $$16, $$13, $$15, $$14, $$15, $$21, $$19, $$20);
+            SocketAddress $$4 = $$0.channel().remoteAddress();
+            int $$5 = $$2.readableBytes();
+            if ($$5 == 0) {
+               a.debug("Ping: (<1.3.x) from {}", $$4);
+               String $$6 = a(this.b);
+               a($$0, a($$0.alloc(), $$6));
+            } else {
+               if ($$2.readUnsignedByte() != 1) {
+                  return;
+               }
+
+               if ($$2.isReadable()) {
+                  if (!a($$2)) {
+                     return;
+                  }
+
+                  a.debug("Ping: (1.6) from {}", $$4);
+               } else {
+                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+               }
+
+               String $$7 = b(this.b);
+               a($$0, a($$0.alloc(), $$7));
+            }
+
+            $$2.release();
+            $$3 = false;
+         } catch (RuntimeException var11) {
          }
-      } catch (Exception var20) {
-         a.warn("Failed to parse chat filter config {}", $$0, var20);
-         return null;
+      } finally {
+         if ($$3) {
+            $$2.resetReaderIndex();
+            $$0.channel().pipeline().remove(this);
+            $$0.fireChannelRead($$1);
+         }
       }
    }
 
-   @Override
-   public asl a(GameProfile $$0) {
-      return new ask.c($$0) {
-         @Override
-         public void a() {
-            ary.this.a(this.b, ary.this.c, ary.this.d, this.c);
-         }
-
-         @Override
-         public void b() {
-            ary.this.a(this.b, ary.this.e, ary.this.f, this.c);
-         }
-      };
-   }
-
-   void a(GameProfile $$0, URL $$1, ary.a $$2, Executor $$3) {
-      $$3.execute(() -> {
-         JsonObject $$3x = $$2.encode($$0);
-
-         try {
-            this.b($$3x, $$1);
-         } catch (Exception var6) {
-            a.warn("Failed to send join/leave packet to {} for player {}", new Object[]{$$1, $$0, var6});
-         }
-      });
-   }
-
-   private void b(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.a($$0, $$1);
-
-      try (InputStream $$3 = $$2.getInputStream()) {
-         this.a($$3);
-      }
-   }
-
-   @Override
-   protected void a(HttpURLConnection $$0) {
-      $$0.setRequestProperty("Authorization", "Basic " + this.g);
-   }
-
-   @Override
-   protected arv a(String $$0, ask.a $$1, JsonObject $$2) {
-      boolean $$3 = ayo.a($$2, "response", false);
-      if ($$3) {
-         return arv.a($$0);
+   private static boolean a(ByteBuf $$0) {
+      short $$1 = $$0.readUnsignedByte();
+      if ($$1 != 250) {
+         return false;
       } else {
-         String $$4 = ayo.a($$2, "hashed", null);
-         if ($$4 == null) {
-            return arv.b($$0);
+         String $$2 = arx.a($$0);
+         if (!"MC|PingHost".equals($$2)) {
+            return false;
          } else {
-            JsonArray $$5 = ayo.v($$2, "hashes");
-            ws $$6 = this.a($$0, $$5, $$1);
-            return new arv($$0, $$6);
+            int $$3 = $$0.readUnsignedShort();
+            if ($$0.readableBytes() != $$3) {
+               return false;
+            } else {
+               short $$4 = $$0.readUnsignedByte();
+               if ($$4 < 73) {
+                  return false;
+               } else {
+                  String $$5 = arx.a($$0);
+                  int $$6 = $$0.readInt();
+                  return $$6 <= 65535;
+               }
+            }
          }
       }
    }
 
-   @FunctionalInterface
-   interface a {
-      JsonObject encode(GameProfile var1);
+   private static String a(all $$0) {
+      return String.format(Locale.ROOT, "%s§%d§%d", $$0.ae(), $$0.N(), $$0.O());
+   }
+
+   private static String b(all $$0) {
+      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.M(), $$0.ae(), $$0.N(), $$0.O());
+   }
+
+   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   }
+
+   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
+      ByteBuf $$2 = $$0.buffer();
+      $$2.writeByte(255);
+      arx.a($$2, $$1);
+      return $$2;
    }
 }

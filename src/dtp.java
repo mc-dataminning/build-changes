@@ -1,99 +1,76 @@
-public class dtp {
-   public static final akt<dtn> a = a("base");
-   public static final akt<dtn> b = a("square_bottom_left");
-   public static final akt<dtn> c = a("square_bottom_right");
-   public static final akt<dtn> d = a("square_top_left");
-   public static final akt<dtn> e = a("square_top_right");
-   public static final akt<dtn> f = a("stripe_bottom");
-   public static final akt<dtn> g = a("stripe_top");
-   public static final akt<dtn> h = a("stripe_left");
-   public static final akt<dtn> i = a("stripe_right");
-   public static final akt<dtn> j = a("stripe_center");
-   public static final akt<dtn> k = a("stripe_middle");
-   public static final akt<dtn> l = a("stripe_downright");
-   public static final akt<dtn> m = a("stripe_downleft");
-   public static final akt<dtn> n = a("small_stripes");
-   public static final akt<dtn> o = a("cross");
-   public static final akt<dtn> p = a("straight_cross");
-   public static final akt<dtn> q = a("triangle_bottom");
-   public static final akt<dtn> r = a("triangle_top");
-   public static final akt<dtn> s = a("triangles_bottom");
-   public static final akt<dtn> t = a("triangles_top");
-   public static final akt<dtn> u = a("diagonal_left");
-   public static final akt<dtn> v = a("diagonal_up_right");
-   public static final akt<dtn> w = a("diagonal_up_left");
-   public static final akt<dtn> x = a("diagonal_right");
-   public static final akt<dtn> y = a("circle");
-   public static final akt<dtn> z = a("rhombus");
-   public static final akt<dtn> A = a("half_vertical");
-   public static final akt<dtn> B = a("half_horizontal");
-   public static final akt<dtn> C = a("half_vertical_right");
-   public static final akt<dtn> D = a("half_horizontal_bottom");
-   public static final akt<dtn> E = a("border");
-   public static final akt<dtn> F = a("curly_border");
-   public static final akt<dtn> G = a("gradient");
-   public static final akt<dtn> H = a("gradient_up");
-   public static final akt<dtn> I = a("bricks");
-   public static final akt<dtn> J = a("globe");
-   public static final akt<dtn> K = a("creeper");
-   public static final akt<dtn> L = a("skull");
-   public static final akt<dtn> M = a("flower");
-   public static final akt<dtn> N = a("mojang");
-   public static final akt<dtn> O = a("piglin");
-   public static final akt<dtn> P = a("flow");
-   public static final akt<dtn> Q = a("guster");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   private static akt<dtn> a(String $$0) {
-      return akt.a(mc.d, aku.b($$0));
+public record dtp(List<dtp.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dtp a = new dtp(List.of());
+   public static final Codec<dtp> b = dtp.b.a.listOf().xmap(dtp::new, dtp::b);
+   public static final yn<wa, dtp> c = dtp.b.b.a(yl.a()).a(dtp::new, dtp::b);
+
+   public dtp a() {
+      return new dtp(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public static void a(qe<dtn> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, F);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
-      a($$0, P);
-      a($$0, Q);
+   public List<dtp.b> b() {
+      return this.d;
    }
 
-   public static void a(qe<dtn> $$0, akt<dtn> $$1) {
-      $$0.a($$1, new dtn($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   public static class a {
+      private final Builder<dtp.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public dtp.a a(js<dto> $$0, aku<dto> $$1, cvl $$2) {
+         Optional<jr.c<dto>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dtp.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
+
+      public dtp.a a(jr<dto> $$0, cvl $$1) {
+         return this.a(new dtp.b($$0, $$1));
+      }
+
+      public dtp.a a(dtp.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dtp.a a(dtp $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dtp a() {
+         return new dtp(this.a.build());
+      }
+   }
+
+   public static record b(jr<dto> c, cvl d) {
+      public static final Codec<dtp.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dto.c.fieldOf("pattern").forGetter(dtp.b::b), cvl.q.fieldOf("color").forGetter(dtp.b::c)).apply($$0, dtp.b::new)
+      );
+      public static final yn<wa, dtp.b> b = yn.a(dto.d, dtp.b::b, cvl.r, dtp.b::c, dtp.b::new);
+
+      public xd a() {
+         String $$0 = this.c.a().b();
+         return wp.c($$0 + "." + this.d.b());
+      }
+
+      public jr<dto> b() {
+         return this.c;
+      }
+
+      public cvl c() {
+         return this.d;
+      }
    }
 }

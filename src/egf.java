@@ -1,31 +1,46 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egf implements eia {
-   public static final Codec<egf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwv.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dwv.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dwv.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dwv.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               edx.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, egf::new)
-   );
-   public final dwv b;
-   public final dwv c;
-   public final dwv d;
-   public final dwv e;
-   public final edx f;
-   public final boolean g;
+public class egf extends eez {
+   public egf(Codec<eid> $$0) {
+      super($$0);
+   }
 
-   public egf(dwv $$0, dwv $$1, dwv $$2, dwv $$3, edx $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   protected void a(dgi $$0, azh $$1, ji $$2, int $$3, ji.a $$4, eid $$5) {
+      int $$6 = $$5.d;
+
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).s()) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dww $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(dnk.e) && $$19.b(dnk.c) && $$19.b(dnk.b) && $$19.b(dnk.d)) {
+                     $$19 = $$19.b(dnk.e, Boolean.valueOf($$15))
+                        .b(dnk.c, Boolean.valueOf($$16))
+                        .b(dnk.b, Boolean.valueOf($$17))
+                        .b(dnk.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

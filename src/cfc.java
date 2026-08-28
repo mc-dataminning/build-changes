@@ -1,43 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cfc extends cfp<cnd> {
-   @Override
-   public Set<cej<?>> a() {
-      return ImmutableSet.of(cej.h, cej.aw, cej.aq, cej.ap, cej.as, cej.at, new cej[0]);
+public class cfc extends cfq<bvg> {
+   private static final int a = 200;
+   private static final int b = 599;
+
+   public cfc() {
+      this(200);
    }
 
-   protected void a(arc $$0, cnd $$1) {
-      bwh<?> $$2 = $$1.ec();
-      $$2.a(cej.aw, this.b($$0, $$1));
-      Optional<cnj> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cnd> $$5 = Lists.newArrayList();
-      cel $$6 = $$2.c(cej.h).orElse(cel.a());
+   public cfc(int $$0) {
+      super($$0);
+   }
 
-      for (bvf $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cnj || $$0x instanceof cnd))) {
-         if ($$7 instanceof cnj $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
+   @Override
+   protected void a(ard $$0, bvg $$1) {
+      a($$1);
+   }
 
-         if ($$7 instanceof cnd $$9) {
-            $$5.add($$9);
+   @Override
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.g);
+   }
+
+   public static void a(bvg $$0) {
+      Optional<List<bvg>> $$1 = $$0.eb().c(cek.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bur.ap));
+         if ($$2) {
+            b($$0);
          }
       }
-
-      $$2.a(cej.aq, $$3);
-      $$2.a(cej.ap, $$5);
-      $$2.a(cej.as, $$4);
-      $$2.a(cej.at, $$5.size());
    }
 
-   private Optional<ji> b(arc $$0, cnd $$1) {
-      return ji.a($$1.dw(), 8, 4, $$1x -> $$0.a_($$1x).a(awo.aU));
+   public static void b(bvg $$0) {
+      $$0.eb().a(cek.F, true, 599L);
    }
 }

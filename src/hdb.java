@@ -1,17 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hdb {
-   private static final ayh.b<aku, hdc.a<?, ?>> b = new ayh.b<>();
-   public static final Codec<hdc.a<?, ?>> a = b.a(aku.a);
+public record hdb(int b) implements hdh<String> {
+   public static final hdh.a<hdb, String> a = hdh.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(hdb::b)).apply($$0, hdb::new)), Codec.STRING
+   );
 
-   public static void a() {
-      b.a(aku.b("custom_model_data"), hcv.a);
-      b.a(aku.b("main_hand"), hda.a);
-      b.a(aku.b("charge_type"), hcu.a);
-      b.a(aku.b("trim_material"), hdd.a);
-      b.a(aku.b("block_state"), hcy.a);
-      b.a(aku.b("display_context"), hcw.a);
-      b.a(aku.b("local_time"), hcz.b);
-      b.a(aku.b("holder_type"), hcx.a);
+   @Nullable
+   public String a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
+      cyy $$5 = $$0.a(kv.p);
+      return $$5 != null ? $$5.c(this.b) : null;
+   }
+
+   @Override
+   public hdh.a<hdb, String> a() {
+      return a;
    }
 }

@@ -1,24 +1,40 @@
-public record acp(int b, bvs c, boolean d) implements yv<abk> {
-   public static final ym<vl, acp> a = ym.a(yk.h, acp::b, bvs.a, acp::e, yk.b, acp::f, acp::new);
+import javax.annotation.Nullable;
 
-   public static acp a(buj $$0) {
-      return new acp($$0.ar(), new bvs($$0.dv(), $$0.dz(), $$0.dM(), $$0.dO()), $$0.aJ());
+public class acp implements yw<abl> {
+   public static final yn<vl, acp> a = yw.a(acp::a, acp::new);
+   private final int b;
+   private final byte c;
+
+   public acp(buk $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
+   }
+
+   private acp(vl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vl $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public yx<acp> a() {
-      return agd.be;
+   public yy<acp> a() {
+      return age.D;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public bvs e() {
-      return this.c;
+   @Nullable
+   public buk a(dgh $$0) {
+      return $$0.a(this.b);
    }
 
-   public boolean f() {
-      return this.d;
+   public byte b() {
+      return this.c;
    }
 }

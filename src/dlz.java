@@ -1,99 +1,94 @@
 import com.mojang.serialization.MapCodec;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dlz extends diw implements dph {
+public class dlz extends dix implements dpi {
    public static final MapCodec<dlz> a = b(dlz::new);
-   protected static final fbs b = djk.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dlz> a() {
       return a;
    }
 
-   protected dlz(dwu.d $$0) {
+   protected dlz(dwv.d $$0) {
       super($$0);
    }
 
    @Override
-   public dtx a(ji $$0, dwv $$1) {
+   public dty a(ji $$0, dww $$1) {
       return new dvr($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return b;
+   public <T extends dty> dtz<T> a(dgh $$0, dww $$1, dua<T> $$2) {
+      return a($$2, dua.w, $$0.C ? dvr::a : dvr::b);
    }
 
    @Override
-   protected fbs a_(dwv $$0, dgg $$1, ji $$2) {
-      return $$0.f($$1, $$2);
-   }
+   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
+      dty $$4 = $$1.c_($$2);
+      if ($$4 instanceof dvr) {
+         int $$5 = ((dvr)$$4).f();
 
-   @Override
-   protected void a(dwv $$0, dgg $$1, ji $$2, buj $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ai() == dgg.k && $$3 instanceof ard $$4 && !$$4.i) {
-            $$4.n();
-            return;
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
          }
-
-         $$3.a(this, $$2);
       }
    }
 
    @Override
-   public etx a(arc $$0, buj $$1, ji $$2) {
-      akt<dgg> $$3 = $$0.ai() == dgg.k ? dgg.i : dgg.k;
-      arc $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
-      } else {
-         boolean $$5 = $$3 == dgg.k;
-         ji $$6 = $$5 ? arc.a : $$4.Z();
-         fay $$7 = $$6.c();
-         float $$8;
-         Set<bvt> $$9;
-         if ($$5) {
-            efu.a($$4, ji.a((kb)$$7).e(), true);
-            $$8 = jn.e.p();
-            $$9 = bvt.a(bvt.l, Set.of(bvt.e));
-            if ($$1 instanceof ard) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            $$8 = 0.0F;
-            $$9 = bvt.a(bvt.l, bvt.k);
-            if ($$1 instanceof ard $$12) {
-               return $$12.a(false, etx.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new etx($$4, $$7, fay.c, $$8, 0.0F, $$9, etx.b.then(etx.c));
-      }
+   protected cwo a(dgk $$0, ji $$1, dww $$2, boolean $$3) {
+      return cwo.j;
    }
 
    @Override
-   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   protected cwn a(dgj $$0, ji $$1, dwv $$2, boolean $$3) {
-      return cwn.j;
-   }
-
-   @Override
-   protected boolean a(dwv $$0, esw $$1) {
+   protected boolean a(dww $$0, esx $$1) {
       return false;
    }
 
    @Override
-   protected dpv a_(dwv $$0) {
-      return dpv.a;
+   protected void a(dww $$0, dgh $$1, ji $$2, buk $$3) {
+      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dvr $$5 && !$$5.c()) {
+         $$3.a(this, $$2);
+         dvr.c($$1, $$2, $$0, $$5);
+      }
+   }
+
+   @Nullable
+   @Override
+   public ety a(ard $$0, buk $$1, ji $$2) {
+      if ($$0.c_($$2) instanceof dvr $$4) {
+         faz $$6 = $$4.a($$0, $$2);
+         if ($$6 == null) {
+            return null;
+         } else {
+            return $$1 instanceof cpz
+               ? new ety($$0, $$6, faz.c, 0.0F, 0.0F, Set.of(), ety.c)
+               : new ety($$0, $$6, faz.c, 0.0F, 0.0F, bvu.a(bvu.l, bvu.k), ety.c);
+         }
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected dpw a_(dww $$0) {
+      return dpw.a;
    }
 }

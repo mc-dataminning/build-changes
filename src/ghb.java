@@ -1,101 +1,102 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public abstract class ghb {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected ghd e;
-   protected boolean f;
+public class ghb {
+   final int a;
+   private final List<ghb.a> b = new ArrayList<>();
 
-   public ghb(UUID $$0, Instant $$1, UUID $$2) {
+   public ghb(int $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
-   }
+   public void a(ggt $$0, IntCollection $$1, ghb.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   public abstract ghb b();
-
-   public abstract fui a(fui var1, ghf var2);
-
-   public abstract static class a<R extends ghb> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public ghd i() {
-         return this.a.e;
-      }
-
-      public void a(ghd $$0) {
-         this.a.e = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public ghb.b c() {
-         return !this.e().f ? ghb.b.e : null;
-      }
-
-      public abstract Either<ghb.c, ghb.b> a(ghf var1);
-   }
-
-   public static record b(wo f) {
-      public static final ghb.b a = new ghb.b(wo.c("gui.abuseReport.send.no_reason"));
-      public static final ghb.b b = new ghb.b(wo.c("gui.chatReport.send.no_reported_messages"));
-      public static final ghb.b c = new ghb.b(wo.c("gui.chatReport.send.too_many_messages"));
-      public static final ghb.b d = new ghb.b(wo.c("gui.abuseReport.send.comment_too_long"));
-      public static final ghb.b e = new ghb.b(wo.c("gui.abuseReport.send.not_attested"));
-
-      public fqb a() {
-         return fqb.a(this.f);
-      }
-
-      public wo b() {
-         return this.f;
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         ggv $$6 = $$0.b($$4);
+         if ($$6 instanceof ggw.a) {
+            ggw.a $$5 = (ggw.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   public static record c(UUID a, ghe b, AbuseReport c) {
+   public void a(xf $$0) {
+      this.b.add(new ghb.a($$0));
+   }
+
+   public boolean b(xf $$0) {
+      boolean $$1 = false;
+      Iterator<ghb.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         ghb.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xb> b;
+      private xf c;
+      private boolean d = true;
+      private int e;
+
+      a(final xf $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(xf $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= ghb.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, ggw.a var2);
    }
 }

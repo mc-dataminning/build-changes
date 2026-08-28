@@ -1,159 +1,173 @@
-public class due extends dvf implements dvd {
-   private static final int d = 1;
-   private ka<cwn> e = ka.a(27, cwn.j);
-   private final duk f = new duk() {
-      @Override
-      protected void a(dgg $$0, ji $$1, dwv $$2) {
-         due.a($$0, $$1, $$2, avz.eS);
-      }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(dgg $$0, ji $$1, dwv $$2) {
-         due.a($$0, $$1, $$2, avz.eQ);
-      }
+public class due extends dty implements bsa {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final ka<cwo> c = ka.a(4, cwo.j);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
 
-      @Override
-      protected void a(dgg $$0, ji $$1, dwv $$2, int $$3, int $$4) {
-         due.this.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public due(ji $$0, dww $$1) {
+      super(dua.H, $$0, $$1);
+   }
 
-      @Override
-      protected boolean a(cov $$0) {
-         if (!($$0.cd instanceof csj)) {
-            return false;
-         } else {
-            bsb $$1 = ((csj)$$0.cd).l();
-            return $$1 == due.this || $$1 instanceof bsa && ((bsa)$$1).a(due.this);
+   public static void a(ard $$0, ji $$1, dww $$2, due $$3, dbk.a<dbw, dao> $$4) {
+      boolean $$5 = false;
+
+      for (int $$6 = 0; $$6 < $$3.c.size(); $$6++) {
+         cwo $$7 = $$3.c.get($$6);
+         if (!$$7.f()) {
+            $$5 = true;
+            $$3.d[$$6]++;
+            if ($$3.d[$$6] >= $$3.e[$$6]) {
+               dbw $$8 = new dbw($$7);
+               cwo $$9 = $$4.a($$8, $$0).map($$2x -> ((dao)$$2x.b()).a($$8, $$0.K_())).orElse($$7);
+               if ($$9.a($$0.K())) {
+                  bsf.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$9);
+                  $$3.c.set($$6, cwo.j);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(ebs.c, $$1, ebs.a.a($$2));
+               }
+            }
          }
       }
-   };
-   private final duf g = new duf();
 
-   protected due(dtz<?> $$0, ji $$1, dwv $$2) {
-      super($$0, $$1, $$2);
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   public due(ji $$0, dwv $$1) {
-      this(dtz.b, $$0, $$1);
+   public static void a(dgh $$0, ji $$1, dww $$2, due $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = ayz.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public int b() {
-      return 27;
+   public static void b(dgh $$0, ji $$1, dww $$2, due $$3) {
+      azh $$4 = $$0.A;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dka.a($$0, $$1, $$2.c(dka.d), false);
+         }
+      }
+
+      int $$6 = $$2.c(dka.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).f() && $$4.i() < 0.2F) {
+            jn $$8 = jn.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(lt.ag, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
    }
 
-   @Override
-   protected wo j() {
-      return wo.c("container.chest");
+   public ka<cwo> b() {
+      return this.c;
    }
 
    @Override
    protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      this.e = ka.a(this.b(), cwn.j);
-      if (!this.b_($$0)) {
-         bsc.b($$0, this.e, $$1);
+      this.c.clear();
+      bsd.b($$0, this.c, $$1);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
       }
    }
 
    @Override
    protected void b(tq $$0, jt.a $$1) {
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsc.a($$0, this.e, $$1);
-      }
+      bsd.a($$0, this.c, true, $$1);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
    }
 
-   public static void a(dgg $$0, ji $$1, dwv $$2, due $$3) {
-      $$3.g.a();
-   }
-
-   static void a(dgg $$0, ji $$1, dwv $$2, avy $$3) {
-      dxn $$4 = $$2.c(dkn.d);
-      if ($$4 != dxn.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dxn.c) {
-            jn $$8 = dkn.i($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, awa.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
+   public abs c() {
+      return abs.a(this);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.g.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   public tq a(jt.a $$0) {
+      tq $$1 = new tq();
+      bsd.a($$1, this.c, true, $$0);
+      return $$1;
    }
 
-   @Override
-   public void c_(cov $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.f.a($$0, this.i(), this.aA_(), this.m());
-      }
-   }
+   public boolean a(ard $$0, @Nullable bvg $$1, cwo $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cwo $$4 = this.c.get($$3);
+         if ($$4.f()) {
+            Optional<dbi<dao>> $$5 = $$0.t().a(dbo.e, new dbw($$2), $$0);
+            if ($$5.isEmpty()) {
+               return false;
+            }
 
-   @Override
-   public void c(cov $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.f.b($$0, this.i(), this.aA_(), this.m());
-      }
-   }
-
-   @Override
-   protected ka<cwn> f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(ka<cwn> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.g.a($$0);
-   }
-
-   public static int a(dfl $$0, ji $$1) {
-      dwv $$2 = $$0.a_($$1);
-      if ($$2.x()) {
-         dtx $$3 = $$0.c_($$1);
-         if ($$3 instanceof due) {
-            return ((due)$$3).f.a();
+            this.e[$$3] = $$5.get().b().d();
+            this.d[$$3] = 0;
+            this.c.set($$3, $$2.b(1, $$1));
+            $$0.a(ebs.c, this.aA_(), ebs.a.a($$1, this.m()));
+            this.f();
+            return true;
          }
       }
 
-      return 0;
+      return false;
    }
 
-   public static void a(due $$0, due $$1) {
-      ka<cwn> $$2 = $$0.f();
-      $$0.a($$1.f());
-      $$1.a($$2);
+   private void f() {
+      this.e();
+      this.i().a(this.aA_(), this.m(), this.m(), 3);
    }
 
    @Override
-   protected csa a(int $$0, cou $$1) {
-      return csj.a($$0, $$1, this);
+   public void a() {
+      this.c.clear();
    }
 
-   public void k() {
-      if (!this.q) {
-         this.f.c(this.i(), this.aA_(), this.m());
+   public void d() {
+      if (this.o != null) {
+         this.f();
       }
    }
 
-   protected void a(dgg $$0, ji $$1, dwv $$2, int $$3, int $$4) {
-      djk $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   @Override
+   protected void a(dty.b $$0) {
+      super.a($$0);
+      $$0.a(kv.al, czg.a).a(this.b());
+   }
+
+   @Override
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.al, czg.a(this.b()));
+   }
+
+   @Override
+   public void a(tq $$0) {
+      $$0.r("Items");
    }
 }

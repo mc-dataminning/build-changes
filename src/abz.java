@@ -1,18 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record abz(int b) implements yw<abl> {
+   public static final yn<vl, abz> a = yw.a(abz::a, abz::new);
 
-public class abz implements yv<abk> {
-   public static final abz a = new abz();
-   public static final ym<ByteBuf, abz> b = ym.a(a);
+   private abz(vl $$0) {
+      this($$0.l());
+   }
 
-   private abz() {
+   private void a(vl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yx<abz> a() {
-      return agd.o;
+   public yy<abz> a() {
+      return age.n;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 }

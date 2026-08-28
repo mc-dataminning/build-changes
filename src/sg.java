@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class sg {
    private static final int a = 50;
 
-   public static Collection<sf> a(Collection<tf> $$0, arc $$1) {
+   public static Collection<sf> a(Collection<tf> $$0, ard $$1) {
       Map<String, List<tf>> $$2 = $$0.stream().collect(Collectors.groupingBy(tf::b));
       return $$2.entrySet()
          .stream()
@@ -26,7 +26,7 @@ public class sg {
          .toList();
    }
 
-   public static sl a(tf $$0, int $$1, arc $$2) {
+   public static sl a(tf $$0, int $$1, ard $$2) {
       return new sl($$0, tb.a($$1), $$2, sy.a());
    }
 
@@ -46,8 +46,8 @@ public class sg {
    }
 
    public static sf a(Collection<sl> $$0, String $$1, long $$2) {
-      Consumer<arc> $$3 = sn.c($$1);
-      Consumer<arc> $$4 = sn.d($$1);
+      Consumer<ard> $$3 = sn.c($$1);
+      Consumer<ard> $$4 = sn.d($$1);
       return new sf($$1 + ":" + $$2, $$0, $$3, $$4);
    }
 }

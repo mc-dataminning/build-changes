@@ -1,5 +1,4 @@
-public class had extends gyy {
-   public boolean b;
-   public boolean c;
-   public boolean d;
+public class had extends gyj {
+   public float a;
+   public float b;
 }

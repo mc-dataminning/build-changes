@@ -1,11 +1,24 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public abstract class emv extends emr {
-   protected abstract int a(azg var1, ji var2);
+public class emv extends emr {
+   public static final MapCodec<emv> a = ayi.m.fieldOf("chance").xmap(emv::new, $$0 -> $$0.c);
+   private final int c;
+
+   private emv(int $$0) {
+      this.c = $$0;
+   }
+
+   public static emv a(int $$0) {
+      return new emv($$0);
+   }
 
    @Override
-   public Stream<ji> a_(emp $$0, azg $$1, ji $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   protected boolean a(emq $$0, azh $$1, ji $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
+
+   @Override
+   public emt<?> b() {
+      return emt.b;
    }
 }

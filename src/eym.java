@@ -1,35 +1,41 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
 
-public class eym extends eyo {
+public class eym extends eyp {
    public static final MapCodec<eym> a = a(eym::new);
+   public static final Codec<eym> b = b(eym::new);
 
-   eym(List<eyy> $$0) {
-      super($$0, af.b($$0));
+   eym(List<eyz> $$0) {
+      super($$0, af.a($$0));
+   }
+
+   public static eym a(List<eyz> $$0) {
+      return new eym(List.copyOf($$0));
    }
 
    @Override
-   public eyz b() {
-      return eza.b;
+   public eza b() {
+      return ezb.c;
    }
 
-   public static eym.a a(eyy.a... $$0) {
+   public static eym.a a(eyz.a... $$0) {
       return new eym.a($$0);
    }
 
-   public static class a extends eyo.a {
-      public a(eyy.a... $$0) {
+   public static class a extends eyp.a {
+      public a(eyz.a... $$0) {
          super($$0);
       }
 
       @Override
-      public eym.a or(eyy.a $$0) {
+      public eym.a and(eyz.a $$0) {
          this.a($$0);
          return this;
       }
 
       @Override
-      protected eyy a(List<eyy> $$0) {
+      protected eyz a(List<eyz> $$0) {
          return new eym($$0);
       }
    }

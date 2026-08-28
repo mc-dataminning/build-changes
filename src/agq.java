@@ -1,13 +1,8 @@
-public class agq implements yv<agf> {
-   public static final ym<vl, agq> a = yv.a(agq::a, agq::new);
-   private final agq.a b;
-
-   public agq(agq.a $$0) {
-      this.b = $$0;
-   }
+public record agq(float b) implements yw<agg> {
+   public static final yn<vl, agq> a = yw.a(agq::a, agq::new);
 
    private agq(vl $$0) {
-      this.b = $$0.b(agq.a.class);
+      this($$0.readFloat());
    }
 
    private void a(vl $$0) {
@@ -15,20 +10,11 @@ public class agq implements yv<agf> {
    }
 
    @Override
-   public yx<agq> a() {
-      return agd.bu;
+   public yy<agq> a() {
+      return age.bt;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
-   }
-
-   public agq.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

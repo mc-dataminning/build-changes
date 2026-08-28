@@ -1,25 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-record eoz(akt<eou> c, bqq<akt<eou>> d) implements eow {
-   static MapCodec<eoz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akt.a(mc.aX).fieldOf("alias").forGetter(eoz::c), bqq.b(akt.a(mc.aX)).fieldOf("targets").forGetter(eoz::d)).apply($$0, eoz::new)
-   );
+@FunctionalInterface
+public interface eoz {
+   eoz a = $$0 -> $$0;
 
-   @Override
-   public void a(azg $$0, BiConsumer<akt<eou>, akt<eou>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (akt<eou>)$$1x.b()));
-   }
+   aku<eov> lookup(aku<eov> var1);
 
-   @Override
-   public Stream<akt<eou>> a() {
-      return this.d.e().stream().map(bqs.b::b);
-   }
-
-   @Override
-   public MapCodec<eoz> b() {
-      return a;
+   static eoz create(List<eox> $$0, ji $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         azh $$3 = azh.a($$2).e().a($$1);
+         Builder<aku<eov>, aku<eov>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<aku<eov>, aku<eov>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
+      }
    }
 }

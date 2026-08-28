@@ -1,57 +1,57 @@
-import java.util.OptionalInt;
+import java.util.List;
 
-public interface cxi {
-   cpo a(dgg var1, kb var2, cwn var3, jn var4);
-
-   default cxi.a b() {
-      return cxi.a.a;
+public class cxi extends cwk {
+   public cxi(cwk.a $$0) {
+      super($$0);
    }
 
-   default void a(cpo $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
+   @Override
+   public cwo n() {
+      cwo $$0 = super.n();
+      $$0.b(kv.Q, new cyn(cyo.a));
+      return $$0;
    }
 
-   public static record a(cxi.b b, float c, float d, OptionalInt e) {
-      public static final cxi.a a = a().a();
+   @Override
+   public bsj a(dah $$0) {
+      dgh $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      cow $$3 = $$0.o();
+      cwo $$4 = $$0.n();
+      cyn $$5 = $$4.a(kv.Q, cyn.a);
+      dww $$6 = $$1.a_($$2);
+      if ($$0.k() != jn.a && $$6.a(awp.cl) && $$5.a(cyo.a)) {
+         $$1.a(null, $$2, awa.kI, awb.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), cwr.a($$4, $$3, new cwo(cws.th)));
+         $$3.b(awk.c.b($$4.h()));
+         if (!$$1.C) {
+            ard $$7 = (ard)$$1;
 
-      public static cxi.a.a a() {
-         return new cxi.a.a();
-      }
-
-      public static class a {
-         private cxi.b a = ($$0, $$1) -> dlq.a($$0, 0.7, new fay(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cxi.a.a a(cxi.b $$0) {
-            this.a = $$0;
-            return this;
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(lt.ao, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
          }
 
-         public cxi.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cxi.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cxi.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cxi.a a() {
-            return new cxi.a(this.a, this.b, this.c, this.d);
-         }
+         $$1.a(null, $$2, awa.cB, awb.e, 1.0F, 1.0F);
+         $$1.a(null, ebs.z, $$2);
+         $$1.b($$2, djn.tk.m());
+         return bsj.a;
+      } else {
+         return bsj.e;
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      kb getDispensePosition(kz var1, jn var2);
+   @Override
+   public wp a(cwo $$0) {
+      cyn $$1 = $$0.a(kv.Q);
+      return $$1 != null ? $$1.a(this.l + ".effect.") : super.a($$0);
+   }
+
+   @Override
+   public void a(cwo $$0, cwk.b $$1, List<wp> $$2, cyg $$3) {
+      cyn $$4 = $$0.a(kv.Q);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1.b());
+      }
    }
 }

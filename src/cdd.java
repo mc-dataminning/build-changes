@@ -1,55 +1,59 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdd<T extends clw & cma> extends ccd {
-   private final T a;
-   private final double b;
-   private int c;
-   private final float d;
-   private int e = -1;
+public class cdd extends cce {
+   private final bvi a;
+   private final cmb b;
+   @Nullable
+   private bvg c;
+   private int d = -1;
+   private final double e;
    private int f;
-   private boolean g;
-   private boolean h;
-   private int i = -1;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public cdd(T $$0, double $$1, int $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 * $$3;
-      this.a(EnumSet.of(ccd.a.a, ccd.a.b));
+   public cdd(cmb $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
+   public cdd(cmb $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bvg)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (bvi)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(cce.a.a, cce.a.b));
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a.O_() == null ? false : this.h();
-   }
-
-   protected boolean h() {
-      return this.a.b(cwr.pa);
+      bvg $$0 = this.a.O_();
+      if ($$0 != null && $$0.bL()) {
+         this.c = $$0;
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public boolean c() {
-      return (this.b() || !this.a.L().k()) && this.h();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.a.w(true);
+      return this.b() || this.c.bL() && !this.a.P().k();
    }
 
    @Override
    public void e() {
-      super.e();
-      this.a.w(false);
+      this.c = null;
       this.f = 0;
-      this.e = -1;
-      this.a.fF();
+      this.d = -1;
    }
 
    @Override
@@ -59,72 +63,32 @@ public class cdd<T extends clw & cma> extends ccd {
 
    @Override
    public void a() {
-      bvf $$0 = this.a.O_();
-      if ($$0 != null) {
-         double $$1 = this.a.i($$0.dB(), $$0.dD(), $$0.dH());
-         boolean $$2 = this.a.N().a($$0);
-         boolean $$3 = this.f > 0;
-         if ($$2 != $$3) {
-            this.f = 0;
+      double $$0 = this.a.i(this.c.dA(), this.c.dC(), this.c.dG());
+      boolean $$1 = this.a.Q().a(this.c);
+      if ($$1) {
+         this.f++;
+      } else {
+         this.f = 0;
+      }
+
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.P().m();
+      } else {
+         this.a.P().a(this.c, this.e);
+      }
+
+      this.a.L().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
          }
 
-         if ($$2) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         if (!($$1 > (double)this.d) && this.f >= 20) {
-            this.a.L().m();
-            this.i++;
-         } else {
-            this.a.L().a($$0, this.b);
-            this.i = -1;
-         }
-
-         if (this.i >= 20) {
-            if ((double)this.a.dZ().i() < 0.3) {
-               this.g = !this.g;
-            }
-
-            if ((double)this.a.dZ().i() < 0.3) {
-               this.h = !this.h;
-            }
-
-            this.i = 0;
-         }
-
-         if (this.i > -1) {
-            if ($$1 > (double)(this.d * 0.75F)) {
-               this.h = false;
-            } else if ($$1 < (double)(this.d * 0.25F)) {
-               this.h = true;
-            }
-
-            this.a.I().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.dm() instanceof bvh $$4) {
-               $$4.a($$0, 30.0F, 30.0F);
-            }
-
-            this.a.a($$0, 30.0F, 30.0F);
-         } else {
-            this.a.H().a($$0, 30.0F, 30.0F);
-         }
-
-         if (this.a.fz()) {
-            if (!$$2 && this.f < -60) {
-               this.a.fF();
-            } else if ($$2) {
-               int $$5 = this.a.fD();
-               if ($$5 >= 20) {
-                  this.a.fF();
-                  this.a.a($$0, cux.a($$5));
-                  this.e = this.c;
-               }
-            }
-         } else if (--this.e <= 0 && this.f >= -60) {
-            this.a.c(cpq.a(this.a, cwr.pa));
-         }
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = ayz.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = ayz.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = ayz.a(ayz.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
       }
    }
 }

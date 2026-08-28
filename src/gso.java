@@ -1,22 +1,22 @@
-public class gso extends gqv<ciw, gyt, gcf> {
-   private static final aku a = aku.b("textures/entity/goat/goat.png");
+public class gso extends gtj<cls, hba, gcn<hba>> {
+   private static final akv a = akv.b("textures/entity/zombie/zombie.png");
 
-   public gso(gsb.a $$0) {
-      super($$0, new gcf($$0.a(gez.aX)), new gcf($$0.a(gez.aY)), 0.7F);
+   public gso(gsd.a $$0, float $$1) {
+      super($$0, new gcg($$0.a(gfb.aS)), 0.5F * $$1);
+      this.a(new gwk<>(this));
+      this.a(new gwh<>(this, new gcg($$0.a(gfb.aT)), new gcg($$0.a(gfb.aU)), $$0.h()));
    }
 
-   public aku a(gyt $$0) {
+   public akv a(hba $$0) {
       return a;
    }
 
-   public gyt b() {
-      return new gyt();
+   public hba b() {
+      return new hba();
    }
 
-   public void a(ciw $$0, gyt $$1, float $$2) {
+   public void a(cls $$0, hba $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
-      $$1.b = $$0.gq();
-      $$1.c = $$0.gC();
+      gsu.a($$0, $$1, $$2, this.i);
    }
 }

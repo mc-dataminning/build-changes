@@ -15,7 +15,7 @@ public class t implements ag {
    private final String c;
    private final String d;
    private final boolean e;
-   private final euv f;
+   private final euw f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,25 +23,25 @@ public class t implements ag {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "24w45a";
+      this.d = "1.21.4-pre1";
       this.e = false;
-      this.f = new euv(4178, "main");
+      this.f = new euw(4179, "main");
       this.g = ab.c();
-      this.h = 45;
+      this.h = 46;
       this.i = 60;
       this.j = new Date();
    }
 
    private t(JsonObject $$0) {
-      this.c = ayo.i($$0, "id");
-      this.d = ayo.i($$0, "name");
-      this.e = ayo.k($$0, "stable");
-      this.f = new euv(ayo.o($$0, "world_version"), ayo.a($$0, "series_id", euv.a));
-      this.g = ayo.o($$0, "protocol_version");
-      JsonObject $$1 = ayo.u($$0, "pack_version");
-      this.h = ayo.o($$1, "resource");
-      this.i = ayo.o($$1, "data");
-      this.j = Date.from(ZonedDateTime.parse(ayo.i($$0, "build_time")).toInstant());
+      this.c = ayp.i($$0, "id");
+      this.d = ayp.i($$0, "name");
+      this.e = ayp.k($$0, "stable");
+      this.f = new euw(ayp.o($$0, "world_version"), ayp.a($$0, "series_id", euw.a));
+      this.g = ayp.o($$0, "protocol_version");
+      JsonObject $$1 = ayp.u($$0, "pack_version");
+      this.h = ayp.o($$1, "resource");
+      this.i = ayp.o($$1, "data");
+      this.j = Date.from(ZonedDateTime.parse(ayp.i($$0, "build_time")).toInstant());
    }
 
    public static ag a() {
@@ -54,7 +54,7 @@ public class t implements ag {
             }
 
             try (InputStreamReader $$1 = new InputStreamReader($$0)) {
-               var2 = new t(ayo.a($$1));
+               var2 = new t(ayp.a($$1));
             }
          }
 
@@ -75,7 +75,7 @@ public class t implements ag {
    }
 
    @Override
-   public euv d() {
+   public euw d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class t implements ag {
    }
 
    @Override
-   public int a(atd $$0) {
-      return $$0 == atd.b ? this.i : this.h;
+   public int a(ate $$0) {
+      return $$0 == ate.b ? this.i : this.h;
    }
 
    @Override

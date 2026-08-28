@@ -1,37 +1,40 @@
-import com.google.common.net.InetAddresses;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("commands.pardonip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.pardon.failed"));
 
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("pardon").requires($$0x -> $$0x.c(3)))
             .then(
-               ey.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> fc.a(((ex)$$0x.getSource()).l().ag().g().a(), $$1))
-                  .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+               ey.a("targets", fm.a())
+                  .suggests(($$0x, $$1) -> fc.a(((ex)$$0x.getSource()).l().ag().f().a(), $$1))
+                  .executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets")))
             )
       );
    }
 
-   private static int a(ex $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
+   private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avj $$2 = $$0.l().ag().f();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> wp.a("commands.pardon.success", wp.b($$4.getName())), true);
+         }
+      }
+
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         auz $$2 = $$0.l().ag().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> wo.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
+         return $$3;
       }
    }
 }

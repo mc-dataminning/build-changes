@@ -9,7 +9,7 @@ public abstract class lu implements lr {
    private final float a;
 
    public lu(float $$0) {
-      this.a = ayy.a($$0, 0.01F, 4.0F);
+      this.a = ayz.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

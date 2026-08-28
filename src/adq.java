@@ -1,21 +1,18 @@
-public record adq(int b, wo c) implements yv<abk> {
-   public static final ym<vz, adq> a = ym.a(yk.h, adq::b, wq.d, adq::e, adq::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public yx<adq> a() {
-      return agd.ae;
+public class adq implements yw<abl> {
+   public static final adq a = new adq();
+   public static final yn<ByteBuf, adq> b = yn.a(a);
+
+   private adq() {
    }
 
-   public void a(abk $$0) {
+   @Override
+   public yy<adq> a() {
+      return age.ad;
+   }
+
+   public void a(abl $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wo e() {
-      return this.c;
    }
 }

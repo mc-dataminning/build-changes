@@ -1,19 +1,10 @@
-import com.mojang.serialization.Codec;
+public class ddb extends bqt.a {
+   public final jr<dcy> a;
+   public final int b;
 
-public enum ddb implements azu {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<ddb> d = azu.a(ddb::values);
-   private final String e;
-
-   private ddb(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public ddb(jr<dcy> $$0, int $$1) {
+      super($$0.a().b());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

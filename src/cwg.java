@@ -1,33 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cwg(jr<avy> e, float f, float g, wo h) {
-   public static final Codec<cwg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avy.b.fieldOf("sound_event").forGetter(cwg::a),
-               ayh.o.fieldOf("use_duration").forGetter(cwg::b),
-               ayh.o.fieldOf("range").forGetter(cwg::c),
-               wq.a.fieldOf("description").forGetter(cwg::d)
-            )
-            .apply($$0, cwg::new)
-   );
-   public static final ym<vz, cwg> b = ym.a(avy.d, cwg::a, yk.l, cwg::b, yk.l, cwg::c, wq.b, cwg::d, cwg::new);
-   public static final Codec<jr<cwg>> c = akq.a(mc.I, a);
-   public static final ym<vz, jr<cwg>> d = yk.a(mc.I, b);
-
-   public jr<avy> a() {
-      return this.e;
+public class cwg extends cwk implements cxs {
+   public cwg(cwk.a $$0) {
+      super($$0);
    }
 
-   public float b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
-   }
-
-   public wo d() {
-      return this.h;
+   @Override
+   public boolean a(dgh $$0, dvl $$1, boolean $$2, cow $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aA_(), awa.nJ, awb.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

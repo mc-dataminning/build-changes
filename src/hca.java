@@ -1,19 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hca(flf b) implements hbt {
-   private static final Codec<flf> c = Codec.STRING.comapFlatMap($$0 -> {
-      flf $$1 = flf.b($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Invalid keybind: " + $$0);
-   }, flf::h);
-   public static final MapCodec<hca> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.fieldOf("keybind").forGetter(hca::b)).apply($$0, hca::new));
+public record hca() implements hbw {
+   public static final MapCodec<hca> a = MapCodec.unit(new hca());
 
    @Override
-   public boolean a(cwn $$0, @Nullable gfw $$1, @Nullable bvf $$2, int $$3, cwl $$4) {
-      return this.b.e();
+   public boolean a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
+      if ($$2 instanceof cow $$5 && $$5.cw != null) {
+         bva $$6 = gsk.a($$5);
+         return $$2.a($$6) == $$0;
+      }
+
+      return false;
    }
 
    @Override

@@ -1,37 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
 
-public record hfo(aku a, @Nullable String b, @Nullable aku c, @Nullable aku d, hfo.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+public class hfo {
+   @Deprecated
+   public static int[] a(aup $$0, akv $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         fet $$3 = fet.a($$2);
+      ) {
+         var4 = $$3.f();
       }
 
-      public static hfo.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+      return var4;
    }
 }

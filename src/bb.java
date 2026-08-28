@@ -8,16 +8,16 @@ public class bb extends dz<bb.a> {
       return bb.a.a;
    }
 
-   public void a(ard $$0, akt<dgg> $$1, akt<dgg> $$2) {
+   public void a(are $$0, aku<dgh> $$1, aku<dgh> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bi> b, Optional<akt<dgg>> c, Optional<akt<dgg>> d) implements dz.a {
+   public static record a(Optional<bi> b, Optional<aku<dgh>> c, Optional<aku<dgh>> d) implements dz.a {
       public static final Codec<bb.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(bb.a::a),
-                  akt.a(mc.be).optionalFieldOf("from").forGetter(bb.a::c),
-                  akt.a(mc.be).optionalFieldOf("to").forGetter(bb.a::d)
+                  aku.a(mc.be).optionalFieldOf("from").forGetter(bb.a::c),
+                  aku.a(mc.be).optionalFieldOf("to").forGetter(bb.a::d)
                )
                .apply($$0, bb.a::new)
       );
@@ -26,19 +26,19 @@ public class bb extends dz<bb.a> {
          return ap.w.a(new bb.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static aq<bb.a> a(akt<dgg> $$0, akt<dgg> $$1) {
+      public static aq<bb.a> a(aku<dgh> $$0, aku<dgh> $$1) {
          return ap.w.a(new bb.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
       }
 
-      public static aq<bb.a> a(akt<dgg> $$0) {
+      public static aq<bb.a> a(aku<dgh> $$0) {
          return ap.w.a(new bb.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public static aq<bb.a> b(akt<dgg> $$0) {
+      public static aq<bb.a> b(aku<dgh> $$0) {
          return ap.w.a(new bb.a(Optional.empty(), Optional.of($$0), Optional.empty()));
       }
 
-      public boolean b(akt<dgg> $$0, akt<dgg> $$1) {
+      public boolean b(aku<dgh> $$0, aku<dgh> $$1) {
          return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 

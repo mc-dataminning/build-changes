@@ -1,87 +1,91 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.List;
-import java.util.stream.IntStream;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqk {
-   public static final int a = aqg.b + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> b = IntStream.range(0, a).mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap()).toList();
-   private volatile int c = a;
-   private final String d;
+public class aqk implements aqg.a, AutoCloseable {
+   public static final int a = 4;
+   private static final Logger c = LogUtils.getLogger();
+   private final aql d;
+   private final bre<Runnable> e;
+   private final brb f;
+   protected boolean b;
 
-   public aqk(String $$0) {
-      this.d = $$0;
+   public aqk(bre<Runnable> $$0, Executor $$1) {
+      this.d = new aql($$0.A_() + "_queue");
+      this.e = $$0;
+      this.f = new brb(4, $$1, "dispatcher");
+      this.b = true;
    }
 
-   protected void a(int $$0, dfm $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
-         List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
-   }
-
-   protected void a(Runnable $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> $$2 : this.b) {
-         List<Runnable> $$3 = (List<Runnable>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-   }
-
-   @Nullable
-   public aqk.a a() {
-      if (!this.b()) {
-         return null;
-      } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Runnable> $$3 = (List<Runnable>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return new aqk.a($$2, $$3);
-      }
-   }
-
-   public boolean b() {
-      return this.c < a;
+   public boolean a() {
+      return this.f.c() || this.d.b();
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   public void onLevelChange(dfn $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new brd.c(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.d.a($$4, $$0, $$2);
+         $$3.accept($$2);
+      }));
    }
 
-   public static record a(long a, List<Runnable> b) {
+   public void a(long $$0, Runnable $$1, boolean $$2) {
+      this.f.a_(new brd.c(1, () -> {
+         this.d.a($$0, $$2);
+         this.a($$0);
+         if (this.b) {
+            this.b = false;
+            this.b();
+         }
+
+         $$1.run();
+      }));
+   }
+
+   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
+      this.f.a_(new brd.c(2, () -> {
+         int $$3 = $$2.getAsInt();
+         this.d.a($$0, $$1, $$3);
+         if (this.b) {
+            this.b = false;
+            this.b();
+         }
+      }));
+   }
+
+   protected void b() {
+      this.f.a_(new brd.c(3, () -> {
+         aql.a $$0 = this.c();
+         if ($$0 == null) {
+            this.b = true;
+         } else {
+            this.a($$0);
+         }
+      }));
+   }
+
+   protected void a(aql.a $$0) {
+      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
+            $$0x.run();
+            $$1.complete(baf.a);
+         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
+   }
+
+   protected void a(long $$0) {
+   }
+
+   @Nullable
+   protected aql.a c() {
+      return this.d.a();
+   }
+
+   @Override
+   public void close() {
+      this.e.close();
    }
 }

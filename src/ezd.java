@@ -1,28 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record ezd(ezu b) implements eyy {
-   public static final MapCodec<ezd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezv.a.fieldOf("chance").forGetter(ezd::c)).apply($$0, ezd::new));
+public class ezd implements eyz {
+   private static final ezd b = new ezd();
+   public static final MapCodec<ezd> a = MapCodec.unit(b);
+
+   private ezd() {
+   }
 
    @Override
-   public eyz b() {
-      return eza.d;
+   public eza b() {
+      return ezb.g;
    }
 
-   public boolean a(evp $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<bai<?>> a() {
+      return Set.of(eyk.b);
    }
 
-   public static eyy.a a(float $$0) {
-      return () -> new ezd(ezr.a($$0));
+   public boolean a(evq $$0) {
+      return $$0.a(eyk.b);
    }
 
-   public static eyy.a a(ezu $$0) {
-      return () -> new ezd($$0);
-   }
-
-   public ezu c() {
-      return this.b;
+   public static eyz.a c() {
+      return () -> b;
    }
 }

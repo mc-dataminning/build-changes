@@ -1,28 +1,23 @@
-public class gwk extends gwq<gzi, gcq> {
-   private final gcq a;
-   private final gcq b;
-   private final gwa c;
-
-   public gwk(gty<gzi, gcq> $$0, gew $$1, gwa $$2) {
+public class gwk<S extends gxo, M extends gca<S> & gau> extends gws<S, M> {
+   public gwk(gua<S, M> $$0) {
       super($$0);
-      this.c = $$2;
-      this.a = new gcq($$1.a(gez.bv));
-      this.b = new gcq($$1.a(gez.bu));
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gzi $$3, float $$4, float $$5) {
-      cwn $$6 = $$3.c;
-      des $$7 = $$6.a(kv.D);
-      if ($$7 != null && $$7.c().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cwn.j, der.l, $$2);
+   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$3, $$3.g, bva.b, $$0, $$1, $$2);
+      this.a($$3, $$3.i, bva.a, $$0, $$1, $$2);
+   }
+
+   protected void a(S $$0, hbn $$1, bva $$2, fft $$3, glx $$4, int $$5) {
+      if (!$$1.c()) {
+         $$3.a();
+         this.d().a($$2, $$3);
+         $$3.a(a.b.rotationDegrees(-90.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         boolean $$6 = $$2 == bva.a;
+         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         $$1.a($$3, $$4, $$5, heh.d);
+         $$3.b();
       }
-   }
-
-   private void a(ffs $$0, glv $$1, gzi $$2, cwn $$3, akt<deq> $$4, int $$5) {
-      gcq $$6 = $$2.aj ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(hgr.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

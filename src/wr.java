@@ -1,131 +1,153 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class wr {
-   public static final String a = ", ";
-   public static final wo b = wo.b(", ").a(n.h);
-   public static final wo c = wo.b(", ");
+   public static final Codec<wp> a = Codec.recursive("Component", wr::a);
+   public static final yn<wa, wp> b = yl.d(a);
+   public static final yn<wa, Optional<wp>> c = b.a(yl::a);
+   public static final yn<wa, wp> d = yl.c(a);
+   public static final yn<wa, Optional<wp>> e = d.a(yl::a);
+   public static final yn<ByteBuf, wp> f = yl.a(a);
+   public static final Codec<wp> g = a(Integer.MAX_VALUE);
 
-   public static xc a(xc $$0, xl $$1) {
-      if ($$1.h()) {
-         return $$0;
-      } else {
-         xl $$2 = $$0.a();
-         if ($$2.h()) {
-            return $$0.b($$1);
-         } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
-         }
-      }
-   }
-
-   public static Optional<xc> a(@Nullable ex $$0, Optional<wo> $$1, @Nullable buj $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
-   }
-
-   public static xc a(@Nullable ex $$0, wo $$1, @Nullable buj $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
-      } else {
-         xc $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (wo $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+   public static Codec<wp> a(int $$0) {
+      final Codec<String> $$1 = Codec.string(0, $$0);
+      return new Codec<wp>() {
+         public <T> DataResult<Pair<wp, T>> decode(DynamicOps<T> $$0, T $$1x) {
+            DynamicOps<JsonElement> $$2 = a($$0);
+            return $$1.decode($$0, $$1).flatMap($$1xxx -> {
+               try {
+                  JsonElement $$2x = JsonParser.parseString((String)$$1xxx.getFirst());
+                  return wr.a.parse($$2, $$2x).map($$1xxxxx -> Pair.of($$1xxxxx, $$1xxx.getSecond()));
+               } catch (JsonParseException var3x) {
+                  return DataResult.error(var3x::getMessage);
+               }
+            });
          }
 
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
-      }
+         public <T> DataResult<T> a(wp $$0, DynamicOps<T> $$1x, T $$2) {
+            DynamicOps<JsonElement> $$3 = a($$1);
+            return wr.a.encodeStart($$3, $$0).flatMap($$2x -> {
+               try {
+                  return $$1.encodeStart($$1, ayp.e($$2x));
+               } catch (IllegalArgumentException var4x) {
+                  return DataResult.error(var4x::getMessage);
+               }
+            });
+         }
+
+         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0) {
+            return (DynamicOps<JsonElement>)($$0 instanceof akt<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+         }
+      };
    }
 
-   private static xl a(@Nullable ex $$0, xl $$1, @Nullable buj $$2, int $$3) throws CommandSyntaxException {
-      wu $$4 = $$1.j();
-      if ($$4 != null) {
-         wo $$5 = $$4.a(wu.a.a);
-         if ($$5 != null) {
-            wu $$6 = new wu(wu.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
-         }
+   private static xd a(List<wp> $$0) {
+      xd $$1 = $$0.get(0).f();
+
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
       }
 
       return $$1;
    }
 
-   public static wo a(Collection<String> $$0) {
-      return a($$0, $$0x -> wo.b($$0x).a(n.k));
+   public static <T extends azv, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+      MapCodec<E> $$4 = new wr.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$5 = azv.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
+      MapCodec<E> $$7 = new wr.b($$3, $$6, $$4);
+      return ayi.a($$7, $$6);
    }
 
-   public static <T extends Comparable<T>> wo a(Collection<T> $$0, Function<T, wo> $$1) {
-      if ($$0.isEmpty()) {
-         return wn.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
+   private static Codec<wp> a(Codec<wp> $$0) {
+      wq.a<?>[] $$1 = new wq.a[]{xw.b, ya.c, xt.b, xx.c, xy.b, xv.b};
+      MapCodec<wq> $$2 = a($$1, wq.a::a, wq::a, "type");
+      Codec<wp> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(wp::b), ayi.b($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(wp::c), xm.b.a.forGetter(wp::a))
+               .apply($$2x, xd::new)
+      );
+      return Codec.either(Codec.either(Codec.STRING, ayi.b($$0.listOf())), $$3)
+         .xmap($$0x -> (wp)$$0x.map($$0xx -> (wp)$$0xx.map(wp::b, wr::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
+   }
+
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
+
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   public static <T> wo b(Collection<? extends T> $$0, Function<T, wo> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> xc a(Collection<? extends T> $$0, Optional<? extends wo> $$1, Function<T, wo> $$2) {
-      return a($$0, (wo)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static wo a(Collection<? extends wo> $$0, wo $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> xc a(Collection<? extends T> $$0, wo $$1, Function<T, wo> $$2) {
-      if ($$0.isEmpty()) {
-         return wo.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         xc $$3 = wo.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
             }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
          }
 
-         return $$3;
+         return DataResult.error(() -> "No matching codec found");
+      }
+
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
+      }
+
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
       }
    }
 
-   public static xc a(wo $$0) {
-      return wo.a("chat.square_brackets", $$0);
-   }
+   static class b<T> extends MapCodec<T> {
+      private final String a;
+      private final MapCodec<T> b;
+      private final MapCodec<T> c;
 
-   public static wo a(Message $$0) {
-      return (wo)($$0 instanceof wo ? (wo)$$0 : wo.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable wo $$0) {
-      if ($$0 != null && $$0.b() instanceof xz $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || tl.a().b($$2);
-      } else {
-         return true;
+      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
-   }
 
-   public static xc a(String $$0) {
-      return a((wo)wo.b($$0).a($$1 -> $$1.a(n.k).a(new wm(wm.a.f, $$0)).a(new wu(wu.a.a, wo.c("chat.copy.click"))).a($$0)));
+      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
+         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      }
+
+      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
+         return this.c.encode($$0, $$1, $$2);
+      }
+
+      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
+         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+      }
    }
 }

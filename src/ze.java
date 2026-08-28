@@ -1,14 +1,20 @@
 import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-public record ze(wo b) implements yv<zb> {
-   public static final ym<ByteBuf, ze> a = wq.f.a(ze::new, ze::b);
+public record ze(Map<String, String> b) implements yw<zc> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final yn<ByteBuf, Map<String, String>> f = yl.a(HashMap::new, yl.b(128), yl.b(4096), 32);
+   public static final yn<ByteBuf, ze> a = yn.a(f, ze::b, ze::new);
 
    @Override
-   public yx<ze> a() {
-      return zn.c;
+   public yy<ze> a() {
+      return zo.b;
    }
 
-   public void a(zb $$0) {
+   public void a(zc $$0) {
       $$0.a(this);
    }
 }

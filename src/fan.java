@@ -1,25 +1,8 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fan extends Exception {
-   private final Path a;
-   private final List<fap> b;
-
-   public fan(Path $$0, List<fap> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<fap> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fan {
 }

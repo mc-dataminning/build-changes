@@ -1,81 +1,44 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class gqi implements gpw.a {
-   private final flh a;
+public class gqi implements gpy.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fli c;
+   private Collection<ji> d = Lists.newArrayList();
 
-   public gqi(flh $$0) {
-      this.a = $$0;
+   public gqi(fli $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<ji> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(ffs $$0, glv $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      dfl $$6 = this.a.t.dW();
-      ji $$7 = ji.a($$2, $$3, $$4);
+   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
+      ji $$5 = this.b().c();
 
-      for (ji $$8 : ji.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dwv $$9 = $$6.a_($$8);
-         if (!$$9.a(djm.a)) {
-            fbs $$10 = $$9.f($$6, $$8);
-
-            for (fat $$11 : $$10.e()) {
-               fat $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               int $$19 = -2130771968;
-               if ($$9.c($$6, $$8, jn.e)) {
-                  ffw $$20 = $$1.getBuffer(gmf.B());
-                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jn.d)) {
-                  ffw $$21 = $$1.getBuffer(gmf.B());
-                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jn.f)) {
-                  ffw $$22 = $$1.getBuffer(gmf.B());
-                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jn.c)) {
-                  ffw $$23 = $$1.getBuffer(gmf.B());
-                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jn.a)) {
-                  ffw $$24 = $$1.getBuffer(gmf.B());
-                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jn.b)) {
-                  ffw $$25 = $$1.getBuffer(gmf.B());
-                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
-               }
-            }
+      for (ji $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
          }
       }
+   }
+
+   private static void a(fft $$0, glx $$1, ji $$2) {
+      gpy.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fft $$0, glx $$1, String $$2, ji $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gpy.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fkq b() {
+      return this.c.j.k();
    }
 }

@@ -1,109 +1,92 @@
+import com.mojang.authlib.minecraft.BanDetails;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.net.URI;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class ftf extends ftg {
-   private static final wo d = wo.c("chat.copy");
-   private static final wo s = wo.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class ftf {
+   private static final wp b = wp.c("gui.banned.title.temporary").a(n.r);
+   private static final wp c = wp.c("gui.banned.title.permanent").a(n.r);
+   public static final wp a = wp.c("gui.banned.name.title").a(n.r);
+   private static final wp d = wp.c("gui.banned.skin.title").a(n.r);
+   private static final wp e = wp.a("gui.banned.skin.description", wp.a(axv.n));
 
-   public ftf(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), wo.b($$1), $$1, $$2 ? wn.e : wn.g, $$2);
+   public static fth a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fth($$0, a($$1), b($$1), axv.n, wo.m, true);
    }
 
-   public ftf(BooleanConsumer $$0, wo $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wn.e : wn.g, $$3);
+   public static fth a(Runnable $$0) {
+      URI $$1 = axv.n;
+      return new fth($$2 -> {
+         if ($$2) {
+            af.m().a($$1);
+         }
+
+         $$0.run();
+      }, d, e, $$1, wo.m, true);
    }
 
-   public ftf(BooleanConsumer $$0, wo $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
+   public static fth a(String $$0, Runnable $$1) {
+      URI $$2 = axv.n;
+      return new fth($$2x -> {
+         if ($$2x) {
+            af.m().a($$2);
+         }
+
+         $$1.run();
+      }, a, wp.a("gui.banned.name.description", wp.b($$0).a(n.o), wp.a(axv.n)), $$2, wo.m, true);
    }
 
-   public ftf(BooleanConsumer $$0, wo $$1, wo $$2, URI $$3, wo $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   private static wp a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   public ftf(BooleanConsumer $$0, wo $$1, wo $$2, String $$3, wo $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (wo)($$5 ? wo.c("chat.link.open") : wn.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
+   private static wp b(BanDetails $$0) {
+      return wp.a("gui.banned.description", c($$0), d($$0), wp.a(axv.n));
    }
 
-   protected static xc a(boolean $$0, String $$1) {
-      return c($$0).b(wn.v).b(wo.b($$1));
-   }
+   private static wp c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         ggz $$4 = ggz.a($$3);
+         wp $$5;
+         if ($$4 != null) {
+            $$5 = ws.a($$4.a().f(), xm.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wp.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = wp.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
 
-   protected static xc c(boolean $$0) {
-      return wo.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
-   }
-
-   @Override
-   protected void a(int $$0) {
-      this.c(fop.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fop.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fop.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.m.p.a(this.u);
-   }
-
-   @Override
-   public void a(fob $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+         return wp.a("gui.banned.description.reason", $$5);
+      } else {
+         return wp.c("gui.banned.description.unknownreason");
       }
    }
 
-   public static void a(fui $$0, String $$1, boolean $$2) {
-      flh $$3 = flh.Q();
-      $$3.a(new ftf($$3x -> {
-         if ($$3x) {
-            af.m().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1, $$2));
+   private static wp d(BanDetails $$0) {
+      if (f($$0)) {
+         wp $$1 = e($$0);
+         return wp.a("gui.banned.description.temporary", wp.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return wp.c("gui.banned.description.permanent").a(n.r);
+      }
    }
 
-   public static void a(fui $$0, URI $$1, boolean $$2) {
-      flh $$3 = flh.Q();
-      $$3.a(new ftf($$3x -> {
-         if ($$3x) {
-            af.m().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
+   private static wp e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wo.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wo.c($$1.toMinutes()) : wo.b($$1.toHours());
+      }
    }
 
-   public static void a(fui $$0, URI $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static void a(fui $$0, String $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static fop.c b(fui $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fop.c b(fui $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fop.c b(fui $$0, String $$1) {
-      return b($$0, $$1, true);
-   }
-
-   public static fop.c b(fui $$0, URI $$1) {
-      return b($$0, $$1, true);
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

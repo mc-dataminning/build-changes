@@ -1,76 +1,81 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import java.util.Optional;
 
-public enum bam {
-   a(bhv.a),
-   b(bhv.b),
-   c(bhv.c),
-   d(bhv.d),
-   e(bhv.e),
-   f(bhv.f),
-   g(bhv.g),
-   h(bhv.h),
-   i(bhv.i),
-   j(bhv.j),
-   k(bhv.k),
-   l(bhv.l),
-   m(bhv.m),
-   n(bhv.o),
-   o(bhv.n),
-   p(bhv.p),
-   q(bhv.q),
-   r(bhv.M),
-   s(bhv.r);
+public class bam {
+   private static final String a = b("");
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bam(final TypeReference $$0) {
-      this.u = $$0;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   static int a() {
-      return ab.b().d().c();
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bam.a())));
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return ayp.e($$1);
+   }
+
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(ayp.e($$2)));
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   }
+
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
+
+                  return $$0.createString(ayp.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
+
+            return a($$0.getOps(), $$2);
+         } else {
+            return a($$0.getOps());
          }
+      }
+   }
 
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bam.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
          }
-      };
-   }
+      } catch (JsonParseException var4) {
+      }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public tq a(DataFixer $$0, tq $$1, int $$2, int $$3) {
-      return (tq)this.a($$0, new Dynamic(ue.a, $$1), $$2, $$3).getValue();
-   }
-
-   public tq a(DataFixer $$0, tq $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+      return Optional.empty();
    }
 }

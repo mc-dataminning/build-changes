@@ -1,51 +1,15 @@
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface hdc<T> {
-   @Nullable
-   T b(cwn var1, @Nullable gfw var2, @Nullable bvf var3, int var4, cwl var5);
+public record hdc() implements hdh<cwm> {
+   public static final hdh.a<hdc, cwm> a = hdh.a.a(MapCodec.unit(new hdc()), cwm.j);
 
-   hdc.a<? extends hdc<T>, T> a();
+   public cwm a(cwo $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwm $$4) {
+      return $$4;
+   }
 
-   public static record a<P extends hdc<T>, T>(MapCodec<hbn.c<P, T>> a) {
-      public static <P extends hdc<T>, T> hdc.a<P, T> a(MapCodec<P> $$0, Codec<T> $$1) {
-         Codec<List<hbn.a<T>>> $$2 = hbn.a.a($$1)
-            .listOf()
-            .validate(
-               $$0x -> {
-                  if ($$0x.isEmpty()) {
-                     return DataResult.error(() -> "Empty case list");
-                  } else {
-                     Multiset<T> $$1x = HashMultiset.create();
-
-                     for (hbn.a<T> $$2x : $$0x) {
-                        $$1x.addAll($$2x.a());
-                     }
-
-                     return $$1x.size() != $$1x.entrySet().size()
-                        ? DataResult.error(
-                           () -> "Duplicate case conditions: "
-                                 + $$1x.entrySet()
-                                    .stream()
-                                    .filter($$0xxx -> $$0xxx.getCount() > 1)
-                                    .map($$0xxx -> $$0xxx.getElement().toString())
-                                    .collect(Collectors.joining(", "))
-                        )
-                        : DataResult.success($$0x);
-                  }
-               }
-            );
-         MapCodec<hbn.c<P, T>> $$3 = RecordCodecBuilder.mapCodec(
-            $$2x -> $$2x.group($$0.forGetter(hbn.c::a), $$2.fieldOf("cases").forGetter(hbn.c::b)).apply($$2x, hbn.c::new)
-         );
-         return new hdc.a<>($$3);
-      }
+   @Override
+   public hdh.a<hdc, cwm> a() {
+      return a;
    }
 }

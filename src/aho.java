@@ -1,14 +1,12 @@
-import io.netty.buffer.ByteBuf;
-
-public record aho() implements yv<agf> {
-   public static final ym<ByteBuf, aho> a = ym.a(new aho());
+public record aho(cou b) implements yw<agg> {
+   public static final yn<vl, aho> a = yn.a(cou.a, aho::b, aho::new);
 
    @Override
-   public yx<aho> a() {
-      return agd.bV;
+   public yy<aho> a() {
+      return age.bU;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 }

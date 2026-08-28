@@ -1,63 +1,80 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class ckj<T extends ckd> {
-   private static ckj<?>[] l = new ckj[0];
-   public static final ckj<cjz> a = a(cjz.class, "HoldingPattern");
-   public static final ckj<ckh> b = a(ckh.class, "StrafePlayer");
-   public static final ckj<ckb> c = a(ckb.class, "LandingApproach");
-   public static final ckj<ckc> d = a(ckc.class, "Landing");
-   public static final ckj<cki> e = a(cki.class, "Takeoff");
-   public static final ckj<ckf> f = a(ckf.class, "SittingFlaming");
-   public static final ckj<ckg> g = a(ckg.class, "SittingScanning");
-   public static final ckj<cke> h = a(cke.class, "SittingAttacking");
-   public static final ckj<cjx> i = a(cjx.class, "ChargingPlayer");
-   public static final ckj<cjy> j = a(cjy.class, "Dying");
-   public static final ckj<cka> k = a(cka.class, "Hover");
-   private final Class<? extends ckd> m;
-   private final int n;
-   private final String o;
+public class ckj extends cjw {
+   private boolean b;
+   @Nullable
+   private etm c;
+   @Nullable
+   private faz d;
 
-   private ckj(int $$0, Class<? extends ckd> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public ckd a(cjt $$0) {
-      try {
-         Constructor<? extends ckd> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends ckd> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cjt.class);
-   }
-
-   public int b() {
-      return this.n;
+   public ckj(cju $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void a(ard $$0) {
+      if (!this.b && this.c != null) {
+         ji $$1 = $$0.a(ecr.a.f, efw.a(this.a.m()));
+         if (!$$1.a(this.a.dt(), 10.0)) {
+            this.a.go().a(ckk.a);
+         }
+      } else {
+         this.b = false;
+         this.i();
+      }
    }
 
-   public static ckj<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   public static int c() {
-      return l.length;
+   private void i() {
+      int $$0 = this.a.t();
+      faz $$1 = this.a.J(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.gp() != null && this.a.gp().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
    }
 
-   private static <T extends ckd> ckj<T> a(Class<T> $$0, String $$1) {
-      ckj<T> $$2 = new ckj<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            km $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new faz((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public faz f() {
+      return this.d;
+   }
+
+   @Override
+   public ckk<ckj> h() {
+      return ckk.e;
    }
 }

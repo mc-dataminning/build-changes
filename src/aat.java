@@ -1,23 +1,16 @@
-import io.netty.buffer.ByteBuf;
-
-public class aat implements yv<aas> {
-   public static final aat a = new aat();
-   public static final ym<ByteBuf, aat> b = ym.a(a);
-
-   private aat() {
-   }
-
+public interface aat extends zc {
    @Override
-   public yx<aat> a() {
-      return aay.a;
+   default vj b() {
+      return vj.e;
    }
 
-   public void a(aas $$0) {
-      $$0.a(this);
-   }
+   void a(aau var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(aav var1);
+
+   void a(aay var1);
+
+   void a(aax var1);
+
+   void a(aaw var1);
 }

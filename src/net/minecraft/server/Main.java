@@ -66,18 +66,18 @@ public class Main {
 
          o.g();
          if ($$18.has($$15)) {
-            boz.f.a(box.b);
+            bpa.f.a(boy.b);
          }
 
-         akw.a();
-         akw.c();
+         akx.a();
+         akx.c();
          af.o();
          Path $$20 = Paths.get("server.properties");
-         apv $$21 = new apv($$20);
+         apw $$21 = new apw($$20);
          $$21.b();
-         eai.a($$21.a().M);
+         eaj.a($$21.a().M);
          Path $$22 = Paths.get("eula.txt");
-         ala $$23 = new ala($$22);
+         alb $$23 = new alb($$22);
          if ($$18.has($$3)) {
             a.info("Initialized '{}' and '{}'", $$20.toAbsolutePath(), $$22.toAbsolutePath());
             return;
@@ -89,18 +89,18 @@ public class Main {
          }
 
          File $$24 = new File((String)$$18.valueOf($$11));
-         alp $$25 = alp.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
+         alq $$25 = alq.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().l);
-         evd $$27 = evd.b($$24.toPath());
-         evd.c $$28 = $$27.d($$26);
+         eve $$27 = eve.b($$24.toPath());
+         eve.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.m()) {
-            eve $$30;
+            evf $$30;
             try {
                $$29 = $$28.h();
                $$30 = $$28.a($$29);
             } catch (ub | uh | IOException var41) {
-               evd.b $$32 = $$28.e();
+               eve.b $$32 = $$28.e();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
@@ -135,37 +135,37 @@ public class Main {
             a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         atz $$41 = auc.a($$28);
+         aua $$41 = aud.a($$28);
 
-         alt $$43;
+         alu $$43;
          try {
-            als.c $$42 = a($$21.a(), $$39, $$40, $$41);
-            $$43 = af.<alt>c($$6x -> als.a($$42, $$5xx -> {
-                  ke<ear> $$6xx = $$5xx.d().e(mc.bf);
+            alt.c $$42 = a($$21.a(), $$39, $$40, $$41);
+            $$43 = af.<alu>c($$6x -> alt.a($$42, $$5xx -> {
+                  ke<eas> $$6xx = $$5xx.d().e(mc.bf);
                   if ($$39 != null) {
-                     eva $$7x = evd.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
-                     return new als.b<>($$7x.a(), $$7x.b().b());
+                     evb $$7x = eve.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     return new alt.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     dgk $$8x;
-                     edo $$9x;
-                     edl $$10x;
+                     dgl $$8x;
+                     edp $$9x;
+                     edm $$10x;
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = edo.b;
-                        $$10x = ena.a($$5xx.c());
+                        $$9x = edp.b;
+                        $$10x = enb.a($$5xx.c());
                      } else {
-                        apu $$11x = $$21.a();
-                        $$8x = new dgk($$11x.l, $$11x.k, $$11x.t, $$11x.j, false, new dgc($$5xx.b().b()), $$5xx.b());
+                        apv $$11x = $$21.a();
+                        $$8x = new dgl($$11x.l, $$11x.k, $$11x.t, $$11x.j, false, new dgd($$5xx.b().b()), $$5xx.b());
                         $$9x = $$18.has($$5) ? $$11x.aa.a(true) : $$11x.aa;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     edl.b $$15x = $$10x.a($$6xx);
+                     edm.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().d());
-                     return new als.b<>(new evh($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new alt.b<>(new evi($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
-               }, alt::new, af.g(), $$6x)).get();
+               }, alu::new, af.g(), $$6x)).get();
          } catch (Exception var39) {
             a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var39);
             return;
@@ -174,13 +174,13 @@ public class Main {
          kf.b $$46 = $$43.c().a();
          boolean $$47 = $$18.has($$8);
          if ($$18.has($$6) || $$47) {
-            a($$28, ban.a(), $$18.has($$7), () -> true, $$46, $$47);
+            a($$28, bao.a(), $$18.has($$7), () -> true, $$46, $$47);
          }
 
-         evj $$48 = $$43.d();
+         evk $$48 = $$43.d();
          $$28.a($$46, $$48);
-         final apt $$49 = MinecraftServer.a((Function<Thread, apt>)($$11x -> {
-            apt $$12x = new apt($$11x, $$28, $$41, $$43, $$21, ban.a(), $$25, aro::b);
+         final apu $$49 = MinecraftServer.a((Function<Thread, apu>)($$11x -> {
+            apu $$12x = new apu($$11x, $$28, $$41, $$43, $$21, bao.a(), $$25, arp::b);
             $$12x.a((Integer)$$18.valueOf($$13));
             $$12x.c($$18.has($$4));
             $$12x.b((String)$$18.valueOf($$14));
@@ -213,30 +213,30 @@ public class Main {
       }
    }
 
-   private static als.c a(apu $$0, @Nullable Dynamic<?> $$1, boolean $$2, atz $$3) {
+   private static alt.c a(apv $$0, @Nullable Dynamic<?> $$1, boolean $$2, aua $$3) {
       boolean $$5;
-      dhd $$6;
+      dhe $$6;
       if ($$1 != null) {
-         dhd $$4 = evd.a($$1);
+         dhe $$4 = eve.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new dhd($$0.U, crt.h);
+         $$6 = new dhe($$0.U, cru.h);
       }
 
-      als.d $$9 = new als.d($$3, $$6, $$2, $$5);
-      return new als.c($$9, ey.a.b, $$0.A);
+      alt.d $$9 = new alt.d($$3, $$6, $$2, $$5);
+      return new alt.c($$9, ey.a.b, $$0.A);
    }
 
-   private static void a(evd.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, kf $$4, boolean $$5) {
+   private static void a(eve.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, kf $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
 
-      try (brw $$6 = new brw($$0, $$1, $$4, $$2, $$5)) {
-         wo $$7 = null;
+      try (brx $$6 = new brx($$0, $$1, $$4, $$2, $$5)) {
+         wp $$7 = null;
 
          while (!$$6.b()) {
-            wo $$8 = $$6.h();
+            wp $$8 = $$6.h();
             if ($$7 != $$8) {
                $$7 = $$8;
                a.info($$6.h().getString());
@@ -245,7 +245,7 @@ public class Main {
             int $$9 = $$6.e();
             if ($$9 > 0) {
                int $$10 = $$6.f() + $$6.g();
-               a.info("{}% completed ({} / {} chunks)...", new Object[]{ayy.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
+               a.info("{}% completed ({} / {} chunks)...", new Object[]{ayz.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
             }
 
             if (!$$3.getAsBoolean()) {

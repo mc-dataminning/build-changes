@@ -1,10 +1,7 @@
-public class gxt extends gyh {
+public class gxt extends gzj {
    public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

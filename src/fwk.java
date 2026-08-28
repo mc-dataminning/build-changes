@@ -1,13 +1,48 @@
-import java.util.List;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fwk extends fuy<cub> {
-   private static final aku G = aku.b("container/smoker/lit_progress");
-   private static final aku H = aku.b("container/smoker/burn_progress");
-   private static final aku I = aku.b("textures/gui/container/smoker.png");
-   private static final wo J = wo.c("gui.recipebook.toggleRecipes.smokable");
-   private static final List<fyf.a> K = List.of(new fyf.a(fyl.d), new fyf.a(cwr.qC, dbe.j));
+public class fwk extends fvc {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gcv u;
 
-   public fwk(cub $$0, cou $$1, wo $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   public fwk(dvl $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void aR_() {
+      super.aR_();
+      boolean $$0 = this.a.m().b() instanceof drl;
+      this.u = gox.a(this.m.aS(), this.b, $$0);
+   }
+
+   @Override
+   protected void a(fod $$0, dww $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof drl;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
+      }
+   }
+
+   @Override
+   protected void c(fod $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hgy $$2 = gms.a(this.b);
+            ffx $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, heh.d);
+         });
+      }
+   }
+
+   @Override
+   protected Vector3f m() {
+      return s;
    }
 }

@@ -1,28 +1,22 @@
-import java.util.Locale;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.SignStyle;
+import java.time.temporal.ChronoField;
 
-public interface euz {
-   ji a();
-
-   float b();
-
-   long c();
-
-   long d();
-
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   bsf q();
-
-   boolean r();
-
-   default void a(p $$0, dgi $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+public class euz {
+   public static DateTimeFormatter a() {
+      return new DateTimeFormatterBuilder()
+         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.DAY_OF_MONTH, 2)
+         .appendLiteral('_')
+         .appendValue(ChronoField.HOUR_OF_DAY, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+         .toFormatter();
    }
 }

@@ -1,22 +1,51 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class erc extends erj {
-   public final axe<djk> a;
-   public static final MapCodec<erc> b = axe.b(mc.f).xmap(erc::new, $$0 -> $$0.a).fieldOf("value");
+public class erc {
+   public static final eru a = eru.a;
+   public static final Codec<erc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               erh.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               erh.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               era.c.lenientOptionalFieldOf("position_predicate", eqz.b).forGetter($$0x -> $$0x.e),
+               dww.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               erv.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, erc::new)
+   );
+   private final erh c;
+   private final erh d;
+   private final era e;
+   private final dww f;
+   private final erv g;
 
-   public erc(axe<djk> $$0) {
-      this.a = $$0;
+   public erc(erh $$0, erh $$1, dww $$2) {
+      this($$0, $$1, eqz.b, $$2);
+   }
+
+   public erc(erh $$0, erh $$1, era $$2, dww $$3) {
+      this($$0, $$1, $$2, $$3, a);
+   }
+
+   public erc(erh $$0, erh $$1, era $$2, dww $$3, erv $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a(dww $$0, dww $$1, ji $$2, ji $$3, ji $$4, azh $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   }
+
+   public dww a() {
+      return this.f;
    }
 
    @Nullable
-   @Override
-   public erm.d a(dgj $$0, ji $$1, ji $$2, erm.d $$3, erm.d $$4, eri $$5) {
-      return efw.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
-   }
-
-   @Override
-   protected erl<?> a() {
-      return erl.n;
+   public tq a(azh $$0, @Nullable tq $$1) {
+      return this.g.a($$0, $$1);
    }
 }

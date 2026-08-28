@@ -1,94 +1,69 @@
-import com.mojang.serialization.Lifecycle;
 import java.util.Locale;
-import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface evj {
-   int d = 19133;
-   int e = 19132;
-
-   dhd D();
-
-   void a(dhd var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
-   }
-
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
-   }
-
-   @Nullable
-   tq E();
-
-   void a(@Nullable tq var1);
-
-   evi I();
-
-   dgk J();
-
-   tq a(kf var1, @Nullable tq var2);
-
-   boolean l();
-
-   int x();
-
+public interface evj extends evl {
+   @Override
    String e();
 
-   dgd k();
+   void a(boolean var1);
 
-   void a(dgd var1);
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, dgj $$1) {
+      evl.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   }
+
+   int f();
+
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   dge k();
+
+   void a(dym.c var1);
+
+   dym.c p();
+
+   boolean n();
+
+   void c(boolean var1);
 
    boolean m();
 
-   bsf q();
+   void a(dge var1);
 
-   void a(bsf var1);
+   fam<MinecraftServer> s();
 
-   boolean r();
+   void a(long var1);
 
-   void d(boolean var1);
+   void b(long var1);
 
-   dgc o();
-
-   @Nullable
-   tq w();
-
-   eat.a C();
-
-   void a(eat.a var1);
-
-   edo y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default crr K() {
-      return this.D().b();
-   }
+   dgd o();
 }

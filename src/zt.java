@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class zt implements yw<zp> {
+   public static final yn<vl, zt> a = yw.a(zt::a, zt::new);
+   private final int b;
 
-public record zt(UUID b, zt.a c) implements yv<zo> {
-   public static final ym<vl, zt> a = yv.a(zt::a, zt::new);
+   public zt(int $$0) {
+      this.b = $$0;
+   }
 
    private zt(vl $$0) {
-      this($$0.n(), $$0.b(zt.a.class));
+      this.b = $$0.readInt();
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.q(this.b);
    }
 
    @Override
-   public yx<zt> a() {
-      return zn.p;
+   public yy<zt> a() {
+      return zo.o;
    }
 
-   public void a(zo $$0) {
+   public void a(zp $$0) {
       $$0.a(this);
    }
 
-   public zt.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public int b() {
+      return this.b;
    }
 }

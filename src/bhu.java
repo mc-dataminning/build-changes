@@ -1,45 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bhu extends DataFix {
-   public bhu(Schema $$0) {
-      super($$0, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(bhv.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
-      return !$$1
-         ? $$0
-         : $$0.update(
-            "Properties",
-            $$0x -> {
-               String $$1x = $$0x.get("east").asString("none");
-               String $$2 = $$0x.get("west").asString("none");
-               String $$3 = $$0x.get("north").asString("none");
-               String $$4 = $$0x.get("south").asString("none");
-               boolean $$5 = a($$1x) || a($$2);
-               boolean $$6 = a($$3) || a($$4);
-               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
-               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
-               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
-               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
-               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
-                  .update("west", $$1xx -> $$1xx.createString($$8))
-                  .update("north", $$1xx -> $$1xx.createString($$9))
-                  .update("south", $$1xx -> $$1xx.createString($$10));
-            }
-         );
-   }
-
-   private static boolean a(String $$0) {
-      return !"none".equals($$0);
-   }
+public class bhu {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .build();
 }

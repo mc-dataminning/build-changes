@@ -1,103 +1,61 @@
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dvf extends dtr implements bso {
-   @Nullable
-   protected akt<evu> l;
-   protected long m = 0L;
+public record dvf(Optional<cwk> d, Optional<cwk> e, Optional<cwk> f, Optional<cwk> g) {
+   public static final dvf a = new dvf(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dvf> b = mb.g.q().sizeLimitedListOf(4).xmap(dvf::new, dvf::a);
+   public static final yn<wa, dvf> c = yl.a(mc.K).a(yl.c(4)).a(dvf::new, dvf::a);
 
-   protected dvf(dtz<?> $$0, ji $$1, dwv $$2) {
-      super($$0, $$1, $$2);
+   private dvf(List<cwk> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   @Nullable
-   @Override
-   public akt<evu> aw_() {
-      return this.l;
+   public dvf(cwk $$0, cwk $$1, cwk $$2, cwk $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
    }
 
-   @Override
-   public void a(@Nullable akt<evu> $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public long az_() {
-      return this.m;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public boolean c() {
-      this.d_(null);
-      return super.c();
-   }
-
-   @Override
-   public cwn a(int $$0) {
-      this.d_(null);
-      return super.a($$0);
-   }
-
-   @Override
-   public cwn a(int $$0, int $$1) {
-      this.d_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cwn b(int $$0) {
-      this.d_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cwn $$1) {
-      this.d_(null);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(cov $$0) {
-      return super.d($$0) && (this.l == null || !$$0.Z_());
-   }
-
-   @Nullable
-   @Override
-   public csa createMenu(int $$0, cou $$1, cov $$2) {
-      if (this.d($$2)) {
-         this.d_($$1.k);
-         return this.a($$0, $$1);
+   private static Optional<cwk> a(List<cwk> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
       } else {
-         return null;
+         cwk $$2 = $$0.get($$1);
+         return $$2 == cws.rs ? Optional.empty() : Optional.of($$2);
       }
    }
 
-   @Override
-   protected void a(dtx.b $$0) {
-      super.a($$0);
-      czn $$1 = $$0.a(kv.ap);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+   public tq a(tq $$0) {
+      if (this.equals(a)) {
+         return $$0;
+      } else {
+         $$0.a("sherds", (un)b.encodeStart(ue.a, this).getOrThrow());
+         return $$0;
       }
    }
 
-   @Override
-   protected void a(kr.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(kv.ap, new czn(this.l, this.m));
-      }
+   public List<cwk> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cws.rs)).toList();
    }
 
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
+   public static dvf b(@Nullable tq $$0) {
+      return $$0 != null && $$0.e("sherds") ? b.parse(ue.a, $$0.c("sherds")).result().orElse(a) : a;
+   }
+
+   public Optional<cwk> b() {
+      return this.d;
+   }
+
+   public Optional<cwk> c() {
+      return this.e;
+   }
+
+   public Optional<cwk> d() {
+      return this.f;
+   }
+
+   public Optional<cwk> e() {
+      return this.g;
    }
 }

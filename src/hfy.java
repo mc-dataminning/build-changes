@@ -1,28 +1,31 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public record hfy(int c, Optional<Integer> d) {
-   public static final Codec<hfy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayh.l.fieldOf("index").forGetter(hfy::a), ayh.m.optionalFieldOf("time").forGetter(hfy::b)).apply($$0, hfy::new)
-   );
-   public static final Codec<hfy> b = Codec.either(ayh.l, a)
-      .xmap($$0 -> (hfy)$$0.map(hfy::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
+public class hfy {
+   public static ayl a(wu $$0, boolean $$1) {
+      xn $$2 = xn.a($$0, UCharacter::getMirror, hfy::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayl> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public hfy(int $$0) {
-      this($$0, Optional.empty());
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return ayl.composite($$4);
    }
 
-   public int a(int $$0) {
-      return this.d.orElse($$0);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public Optional<Integer> b() {
-      return this.d;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

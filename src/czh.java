@@ -1,32 +1,42 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record czh(Optional<jq> c, boolean d) {
-   public static final Codec<czh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jq.b.optionalFieldOf("target").forGetter(czh::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(czh::b)).apply($$0, czh::new)
-   );
-   public static final ym<ByteBuf, czh> b = ym.a(jq.c.a(yk::a), czh::a, yk.b, czh::b, czh::new);
+public record czh(List<wp> e, List<wp> f) implements czr {
+   public static final czh a = new czh(List.of());
+   public static final int b = 256;
+   private static final xm g = xm.a.a(n.f).b(true);
+   public static final Codec<czh> c = wr.g.sizeLimitedListOf(256).xmap(czh::new, czh::a);
+   public static final yn<wa, czh> d = wr.b.a(yl.c(256)).a(czh::new, czh::a);
 
-   public czh a(arc $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ai()) {
-            return this;
-         } else {
-            ji $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.A().a(cgn.s, $$1) ? this : new czh(Optional.empty(), true);
-         }
+   public czh(List<wp> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> ws.a($$0x.f(), g)));
+   }
+
+   public czh(List<wp> e, List<wp> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
       } else {
-         return this;
+         this.e = e;
+         this.f = f;
       }
    }
 
-   public Optional<jq> a() {
-      return this.c;
+   public czh a(wp $$0) {
+      return new czh(af.a(this.e, $$0));
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public void a(cwk.b $$0, Consumer<wp> $$1, cyg $$2) {
+      this.f.forEach($$1);
+   }
+
+   public List<wp> a() {
+      return this.e;
+   }
+
+   public List<wp> b() {
+      return this.f;
    }
 }

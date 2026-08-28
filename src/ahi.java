@@ -1,14 +1,14 @@
 import io.netty.buffer.ByteBuf;
 
-public record ahi(int b, boolean c) implements yv<agf> {
-   public static final ym<ByteBuf, ahi> a = ym.a(yk.h, ahi::b, yk.b, ahi::e, ahi::new);
+public record ahi(ji b, boolean c) implements yw<agg> {
+   public static final yn<ByteBuf, ahi> a = yn.a(ji.b, ahi::b, yl.b, ahi::e, ahi::new);
 
    @Override
-   public yx<ahi> a() {
-      return agd.bP;
+   public yy<ahi> a() {
+      return age.bO;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 

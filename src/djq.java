@@ -1,99 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class djq extends diw implements dmg {
-   public static final MapCodec<djq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               mb.e.q().fieldOf("turns_into").forGetter(djq::b),
-               mb.b.q().fieldOf("brush_sound").forGetter(djq::c),
-               mb.b.q().fieldOf("brush_completed_sound").forGetter(djq::d),
-               t()
-            )
-            .apply($$0, djq::new)
-   );
-   private static final dxu c = dxl.by;
-   public static final int b = 2;
-   private final djk d;
-   private final avy e;
-   private final avy f;
+public class djq extends dix {
+   public static final MapCodec<djq> a = b(djq::new);
+   public static final dxn[] b = new dxn[]{dxm.o, dxm.p, dxm.q};
+   protected static final fbt c = fbq.a(djl.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), djl.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<djq> a() {
       return a;
    }
 
-   public djq(djk $$0, avy $$1, avy $$2, dwu.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   public djq(dwv.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public void b(dwv $$0, dgg $$1, ji $$2, dwv $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
-   }
-
-   @Override
-   public dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      $$2.a($$3, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
-      if ($$1.c_($$2) instanceof dub $$4) {
-         $$4.a($$1);
-      }
-
-      if (dmh.n($$1.a_($$2.e())) && $$2.v() >= $$1.L_()) {
-         ckz $$5 = ckz.a($$1, $$2, $$0);
-         $$5.m();
-      }
-   }
-
-   @Override
-   public void a(dgg $$0, ji $$1, ckz $$2) {
-      fay $$3 = $$2.cR().f();
-      $$0.c(2001, ji.a((kb)$$3), djk.j($$2.p()));
-      $$0.a($$2, ebr.f, $$3);
-   }
-
-   @Override
-   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
-      if ($$3.a(16) == 0) {
-         ji $$4 = $$2.e();
-         if (dmh.n($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new ll(lt.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
-      }
+   public dty a(ji $$0, dww $$1) {
+      return new dub($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dtx a(ji $$0, dwv $$1) {
-      return new dub($$0, $$1);
+   public <T extends dty> dtz<T> a(dgh $$0, dww $$1, dua<T> $$2) {
+      return $$0.C ? null : a($$2, dua.m, dub::a);
    }
 
-   public djk b() {
-      return this.d;
+   @Override
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return c;
    }
 
-   public avy c() {
-      return this.e;
+   @Override
+   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dub $$5) {
+         $$3.a($$5);
+         $$3.a(awk.aa);
+      }
+
+      return bsj.a;
    }
 
-   public avy d() {
-      return this.f;
+   @Override
+   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected void a(dww $$0, dgh $$1, ji $$2, dww $$3, boolean $$4) {
+      bsf.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean c_(dww $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dww $$0, dgh $$1, ji $$2) {
+      return csb.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dww $$0, etn $$1) {
+      return false;
    }
 }

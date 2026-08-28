@@ -1,148 +1,56 @@
-import java.util.function.Supplier;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public interface bor {
-   String b = "root";
+public final class bor {
+   private static final ThreadLocal<bow> a = ThreadLocal.withInitial(bow::new);
+   private static final ThreadLocal<bos> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   default void e(String $$0) {
+   private bor() {
    }
 
-   default void a(long $$0) {
+   public static bor.a a(bos $$0) {
+      b($$0);
+      return bor::b;
    }
 
-   default void a(int $$0) {
-   }
-
-   default bow d(String $$0) {
-      this.a($$0);
-      return new bow(this);
-   }
-
-   default bow c(Supplier<String> $$0) {
-      this.a($$0);
-      return new bow(this);
-   }
-
-   void a(bqa var1);
-
-   default void f(String $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(String var1, int var2);
-
-   default void d(Supplier<String> $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(Supplier<String> var1, int var2);
-
-   static bor a(bor $$0, bor $$1) {
-      if ($$0 == bon.a) {
-         return $$1;
+   private static void b(bos $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
       } else {
-         return (bor)($$1 == bon.a ? $$0 : new bor.a($$0, $$1));
+         bos $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
    }
 
-   public static class a implements bor {
-      private final bor a;
-      private final bor c;
-
-      public a(bor $$0, bor $$1) {
-         this.a = $$0;
-         this.c = $$1;
+   private static void b() {
+      bos $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
+      } else {
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
       }
+   }
 
+   private static bos c(bos $$0) {
+      return bos.a(c(), $$0);
+   }
+
+   public static bos a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bor::c);
+   }
+
+   private static bos c() {
+      return (bos)(TracyClient.isAvailable() ? a.get() : boo.a);
+   }
+
+   public interface a extends AutoCloseable {
       @Override
-      public void a() {
-         this.a.a();
-         this.c.a();
-      }
-
-      @Override
-      public void b() {
-         this.a.b();
-         this.c.b();
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(bqa $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void c() {
-         this.a.c();
-         this.c.c();
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void b(Supplier<String> $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void a(String $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void e(String $$0) {
-         this.a.e($$0);
-         this.c.e($$0);
-      }
-
-      @Override
-      public void a(long $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
+      void close();
    }
 }

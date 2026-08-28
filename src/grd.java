@@ -1,20 +1,22 @@
-public class grd extends gth<clf, gzh, gbe> {
-   private static final aku a = aku.b("textures/entity/blaze.png");
+public class grd extends gtj<cgr, gxs, gbc> {
+   private static final akv a = akv.b("textures/entity/bat.png");
 
-   public grd(gsb.a $$0) {
-      super($$0, new gbe($$0.a(gez.D)), 0.5F);
+   public grd(gsd.a $$0) {
+      super($$0, new gbc($$0.a(gfb.u)), 0.25F);
    }
 
-   protected int a(clf $$0, ji $$1) {
-      return 15;
-   }
-
-   @Override
-   public aku b(gzh $$0) {
+   public akv a(gxs $$0) {
       return a;
    }
 
-   public gzh a() {
-      return new gzh();
+   public gxs a() {
+      return new gxs();
+   }
+
+   public void a(cgr $$0, gxs $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.p();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

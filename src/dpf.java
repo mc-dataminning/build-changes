@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpf extends dsq {
+public class dpf extends dqs {
    public static final MapCodec<dpf> b = b(dpf::new);
 
    @Override
@@ -8,7 +8,7 @@ public class dpf extends dsq {
       return b;
    }
 
-   protected dpf(dwu.d $$0) {
-      super(dqr.b.e, $$0);
+   protected dpf(dwv.d $$0) {
+      super(dqs.b.e, $$0);
    }
 }

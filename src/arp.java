@@ -1,43 +1,61 @@
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arp implements arm {
-   private final arm a;
-   private final bqy b;
-   private boolean c;
+public class arp implements arn {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   private arp(arm $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = new bqy($$1, "progressListener");
+   private arp(int $$0) {
+      this.b = $$0;
    }
 
-   public static arp a(arm $$0, Executor $$1) {
-      arp $$2 = new arp($$0, $$1);
-      $$2.a();
-      return $$2;
+   public static arp b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static arp c(int $$0) {
+      int $$1 = arn.a($$0);
+      return new arp($$1 * $$1);
+   }
+
+   public static arp c() {
+      return new arp(0);
    }
 
    @Override
-   public void a(dfm $$0) {
-      this.b.a_(() -> this.a.a($$0));
+   public void a(dfn $$0) {
+      this.e = af.c();
+      this.d = this.e;
    }
 
    @Override
-   public void a(dfm $$0, @Nullable dzr $$1) {
-      if (this.c) {
-         this.b.a_(() -> this.a.a($$0, $$1));
+   public void a(dfn $$0, @Nullable dzs $$1) {
+      if ($$1 == dzs.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (af.c() > this.e) {
+         this.e += 500L;
+         a.info(wp.a("menu.preparingSpawn", ayz.a($$2, 0, 100)).getString());
       }
    }
 
    @Override
    public void a() {
-      this.c = true;
-      this.b.a_(this.a::a);
    }
 
    @Override
    public void b() {
-      this.c = false;
-      this.b.a_(this.a::b);
+      a.info("Time elapsed: {} ms", af.c() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : ayz.d((float)this.c * 100.0F / (float)this.b);
    }
 }

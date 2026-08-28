@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class uo {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("argument.nbt.trailing"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("argument.nbt.expected.key"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("argument.nbt.expected.value"));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("argument.nbt.list.mixed", $$0, $$1));
-   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("argument.nbt.array.mixed", $$0, $$1));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wo.b("argument.nbt.array.invalid", $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.nbt.trailing"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("argument.nbt.expected.key"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("argument.nbt.expected.value"));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("argument.nbt.list.mixed", $$0, $$1));
+   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("argument.nbt.array.mixed", $$0, $$1));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wp.b("argument.nbt.array.invalid", $$0));
    public static final char g = ',';
    public static final char h = ':';
    private static final char k = '[';

@@ -1,16 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public interface els<P extends elr> {
-   els<elq> a = a("constant", elq.b);
-   els<elu> b = a("uniform", elu.a);
-   els<elp> c = a("biased_to_bottom", elp.a);
-   els<elv> d = a("very_biased_to_bottom", elv.a);
-   els<elt> e = a("trapezoid", elt.a);
-   els<elw> f = a("weighted_list", elw.a);
+public abstract class els {
+   private static final Codec<Either<edl, els>> a = Codec.either(edl.a, mb.L.q().dispatch(els::a, elt::codec));
+   public static final Codec<els> c = a.xmap(
+      $$0 -> (els)$$0.map(elr::a, $$0x -> $$0x), $$0 -> $$0.a() == elt.a ? Either.left(((elr)$$0).b()) : Either.right($$0)
+   );
 
-   MapCodec<P> codec();
+   public abstract int a(azh var1, edo var2);
 
-   private static <P extends elr> els<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.L, $$0, () -> $$1);
-   }
+   public abstract elt<?> a();
 }

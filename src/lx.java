@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class lx extends ls<lx> implements lr {
    private final MapCodec<lx> a = MapCodec.unit(this::e);
-   private final ym<vz, lx> b = ym.a(this);
+   private final yn<wa, lx> b = yn.a(this);
 
    protected lx(boolean $$0) {
       super($$0);
@@ -18,7 +18,7 @@ public class lx extends ls<lx> implements lr {
    }
 
    @Override
-   public ym<vz, lx> d() {
+   public yn<wa, lx> d() {
       return this.b;
    }
 }

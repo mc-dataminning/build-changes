@@ -1,22 +1,23 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fkk extends fkf {
+public abstract class fkk extends fkg {
    private static final Logger b = LogUtils.getLogger();
-   private static final wo c = wo.c("mco.backup.restoring");
-   private final fgy d;
-   private final long e;
-   private final fis f;
+   private final long c;
+   private final wp d;
+   private final Runnable e;
 
-   public fkk(fgy $$0, long $$1, fis $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fkk(long $$0, wp $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
+
+   protected abstract void a(fgj var1, long var2) throws fif;
 
    @Override
    public void run() {
-      fgi $$0 = fgi.a();
+      fgj $$0 = fgj.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -25,43 +26,34 @@ public class fkk extends fkf {
                return;
             }
 
-            $$0.b(this.e, this.d.a);
-            a(1L);
+            this.a($$0, this.c);
             if (this.d()) {
                return;
             }
 
-            a(this.f.g());
+            this.e.run();
             return;
-         } catch (fif var4) {
+         } catch (fig var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (fie var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var5);
-            a(new fiw(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
+            b.error("Couldn't reset world");
+            this.a(var5);
             return;
          }
       }
    }
 
    @Override
-   public wo a() {
-      return c;
+   public wp a() {
+      return this.d;
    }
 }

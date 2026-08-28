@@ -1,36 +1,16 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class yh implements ye {
-   public static final yf<yh> a = new yf<yh>() {
-      private static final MapCodec<yh> a = xl.b.a.xmap(yh::new, $$0 -> $$0.e);
-      private static final ym<vz, yh> b = ym.a(xl.b.c, $$0 -> $$0.e, yh::new);
+public class yh {
+   public static final MapCodec<yf> a = mb.an.q().dispatchMap(yf::a, yg::a);
+   public static final Codec<yf> b = a.codec();
+   public static final yn<wa, yf> c = yl.a(mc.ay).b(yf::a, yg::b);
+   public static final yn<wa, Optional<yf>> d = c.a(yl::a);
 
-      @Override
-      public MapCodec<yh> a() {
-         return a;
-      }
-
-      @Override
-      public ym<vz, yh> b() {
-         return b;
-      }
-   };
-   public static final yh b = new yh(xl.a);
-   public static final yh c = new yh(xl.a.a(n.m));
-   public static final yh d = new yh(xl.a.a(n.o));
-   final xl e;
-
-   public yh(xl $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public xc a(int $$0) {
-      return wo.b(Integer.toString($$0)).c(this.e);
-   }
-
-   @Override
-   public yf<yh> a() {
-      return a;
+   public static yg<?> a(ke<yg<?>> $$0) {
+      ke.a($$0, "blank", yd.b);
+      ke.a($$0, "styled", yi.a);
+      return ke.a($$0, "fixed", ye.a);
    }
 }

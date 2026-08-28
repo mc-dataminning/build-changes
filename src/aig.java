@@ -1,53 +1,45 @@
-public class aig implements yv<agf> {
-   public static final ym<vl, aig> a = yv.a(aig::a, aig::new);
-   private final bsh b;
-   private final int c;
-   private final float d;
-   private final float e;
+public class aig implements yw<agg> {
+   public static final yn<vl, aig> a = yw.a(aig::a, aig::new);
+   private final fav b;
+   private final bsi c;
+   private final int d;
 
-   public aig(bsh $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
+   public aig(bsi $$0, fav $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
       this.d = $$2;
-      this.e = $$3;
    }
 
    private aig(vl $$0) {
-      this.b = $$0.b(bsh.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+      this.c = $$0.b(bsi.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
    private void a(vl $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.c(this.d);
    }
 
    @Override
-   public yx<aig> a() {
-      return agd.cm;
+   public yy<aig> a() {
+      return age.cl;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public bsh b() {
-      return this.b;
-   }
-
-   public int e() {
+   public bsi b() {
       return this.c;
    }
 
-   public float f() {
-      return this.d;
+   public fav e() {
+      return this.b;
    }
 
-   public float g() {
-      return this.e;
+   public int f() {
+      return this.d;
    }
 }

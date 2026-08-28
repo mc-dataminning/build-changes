@@ -1,78 +1,100 @@
-import java.util.function.Supplier;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class gmz implements aup {
-   private final gmy a;
-   private final gnb b;
-   private final Supplier<gms> c;
-   private final gna d;
-   private final azg e = azg.a();
-   private final fmj f;
+public class gmz {
+   public static final akv a = akv.b("textures/misc/forcefield.png");
 
-   public gmz(gmy $$0, Supplier<gms> $$1, fmj $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gnb(this.f);
-      this.d = new gna();
-   }
+   public void a(dym $$0, faz $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = ayz.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gmh $$12 = gmh.a(fli.O());
+         $$12.a();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axk.b($$13) / 255.0F;
+         float $$15 = (float)axk.c($$13) / 255.0F;
+         float $$16 = (float)axk.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
+         float $$18 = (float)(-ayz.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         ffo $$20 = ffv.b().a(ffy.c.h, ffr.i);
+         double $$21 = Math.max((double)ayz.a($$10 - $$2), $$6);
+         double $$22 = Math.min((double)ayz.c($$10 + $$2), $$7);
+         float $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$24 = $$23;
 
-   public gmy a() {
-      return this.a;
-   }
+            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
+               double $$26 = Math.min(1.0, $$22 - $$25);
+               float $$27 = (float)$$26 * 0.5F;
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
+               $$25++;
+            }
+         }
 
-   public void a(dwv $$0, ji $$1, dfi $$2, ffs $$3, ffw $$4) {
-      if ($$0.o() == dpv.b) {
-         hgm $$5 = this.a.b($$0);
-         long $$6 = $$0.b($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hec.d);
+         if ($$9 < $$4 + $$2) {
+            float $$28 = $$23;
+
+            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
+               double $$30 = Math.min(1.0, $$22 - $$29);
+               float $$31 = (float)$$30 * 0.5F;
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
+               $$29++;
+            }
+         }
+
+         $$21 = Math.max((double)ayz.a($$9 - $$2), $$4);
+         $$22 = Math.min((double)ayz.c($$9 + $$2), $$5);
+         $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$32 = $$23;
+
+            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
+               double $$34 = Math.min(1.0, $$22 - $$33);
+               float $$35 = (float)$$34 * 0.5F;
+               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
+               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
+               $$33++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$36 = $$23;
+
+            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
+               double $$38 = Math.min(1.0, $$22 - $$37);
+               float $$39 = (float)$$38 * 0.5F;
+               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
+               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
+               $$37++;
+            }
+         }
+
+         ffs $$40 = $$20.a();
+         if ($$40 != null) {
+            ffp.a($$40);
+         }
+
+         $$12.b();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
       }
-   }
-
-   public void a(dwv $$0, ji $$1, dfi $$2, ffs $$3, ffw $$4, boolean $$5, azg $$6) {
-      try {
-         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hec.d);
-      } catch (Throwable var11) {
-         o $$8 = o.a(var11, "Tesselating block in world");
-         p $$9 = $$8.a("Block being tesselated");
-         p.a($$9, $$2, $$1, $$0);
-         throw new z($$8);
-      }
-   }
-
-   public void a(ji $$0, dfi $$1, ffw $$2, dwv $$3, esx $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new z($$6);
-      }
-   }
-
-   public gnb b() {
-      return this.b;
-   }
-
-   public hgm a(dwv $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(dwv $$0, ffs $$1, glv $$2, int $$3, int $$4) {
-      dpv $$5 = $$0.o();
-      if ($$5 != dpv.a) {
-         hgm $$6 = this.a($$0);
-         int $$7 = this.f.a($$0, null, null, 0);
-         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-         float $$10 = (float)($$7 & 0xFF) / 255.0F;
-         this.b.a($$1.c(), $$2.getBuffer(glo.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-         this.c.get().a($$0.b(), cwl.a, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public void a(auo $$0) {
-      this.d.a();
    }
 }

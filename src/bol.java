@@ -1,45 +1,33 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bol implements bop {
-   public static final bol a = new bol();
+public class bol {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bop c = boo.a;
 
-   private bol() {
+   public bol(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public List<bot> a(String $$0) {
-      return Collections.emptyList();
+   public boolean a() {
+      return this.c != boo.a;
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
+   public void b() {
+      this.c = boo.a;
    }
 
-   @Override
-   public long a() {
-      return 0L;
+   public void c() {
+      this.c = new bok(this.a, this.b, true);
    }
 
-   @Override
-   public int b() {
-      return 0;
+   public bos d() {
+      return this.c;
    }
 
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public boq e() {
+      return this.c.d();
    }
 }

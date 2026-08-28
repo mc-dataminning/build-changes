@@ -1,59 +1,75 @@
-public class goe implements goh<dtt> {
-   private final gct a;
-   private final gct b;
+public class goe implements goj<dtn> {
+   private static final int a = 16;
+   private static final float b = 0.6666667F;
+   private final gbb c;
+   private final gbb d;
+   private final gba e;
+   private final gba f;
 
-   public goe(goi.a $$0) {
+   public goe(gok.a $$0) {
       this($$0.f());
    }
 
-   public goe(gew $$0) {
-      this.a = new gct.a($$0.a(gez.w), gmf::d);
-      this.b = new gct.a($$0.a(gez.v), gmf::d);
+   public goe(gey $$0) {
+      this.c = new gbb($$0.a(gfb.q));
+      this.d = new gbb($$0.a(gfb.s));
+      this.e = new gba($$0.a(gfb.r));
+      this.f = new gba($$0.a(gfb.t));
    }
 
-   public static gfg b() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      $$1.a("main", gff.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gfc.a);
-      $$1.a("left_leg", gff.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gfc.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", gff.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gfc.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return gfg.a($$0, 64, 64);
+   public void a(dtn $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      dww $$6 = $$0.m();
+      gbb $$8;
+      gba $$9;
+      float $$7;
+      if ($$6.b() instanceof diq) {
+         $$7 = -dyb.b($$6.c(diq.b));
+         $$8 = this.c;
+         $$9 = this.e;
+      } else {
+         $$7 = -$$6.c(dsn.b).p();
+         $$8 = this.d;
+         $$9 = this.f;
+      }
+
+      long $$13 = $$0.i().ad();
+      ji $$14 = $$0.aA_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$13, 100L) + $$1) / 100.0F;
+      a($$2, $$3, $$4, $$5, $$7, $$8, $$9, $$15, $$0.f(), $$0.b());
    }
 
-   public static gfg c() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      $$1.a("main", gff.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gfc.a);
-      $$1.a("left_leg", gff.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gfc.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", gff.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gfc.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return gfg.a($$0, 64, 64);
+   public void a(fft $$0, glx $$1, int $$2, int $$3, cvl $$4, dtp $$5) {
+      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
    }
 
-   public void a(dtt $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
-      dgg $$6 = $$0.i();
-      if ($$6 != null) {
-         hgt $$7 = gmq.a($$0.c());
-         dwv $$8 = $$0.m();
-         dls.c<? extends dtt> $$9 = dls.a(dtz.z, djd::i, djd::h, dkn.c, $$8, $$6, $$0.aA_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gok<>()).get($$4);
-         this.a($$2, $$3, $$8.c(djd.b) == dxi.a ? this.a : this.b, $$8.c(djd.aF), $$7, $$10, $$5, false);
+   private static void a(fft $$0, glx $$1, int $$2, int $$3, float $$4, gbb $$5, gba $$6, float $$7, cvl $$8, dtp $$9) {
+      $$0.a();
+      $$0.a(0.5F, 0.0F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$4));
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      $$5.a($$0, hhb.f.a($$1, gmh::d), $$2, $$3);
+      $$6.a($$7);
+      a($$0, $$1, $$2, $$3, $$6.e(), hhb.f, true, $$8, $$9);
+      $$0.b();
+   }
+
+   public static void a(fft $$0, glx $$1, int $$2, int $$3, gfc $$4, hgy $$5, boolean $$6, cvl $$7, dtp $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(fft $$0, glx $$1, int $$2, int $$3, gfc $$4, hgy $$5, boolean $$6, cvl $$7, dtp $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gmh::d, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gms.m : gms.n, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dtp.b $$12 = $$8.b().get($$11);
+         hgy $$13 = $$6 ? gms.a($$12.b()) : gms.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, int $$3, hgt $$4) {
-      this.a($$0, $$1, this.a, jn.d, $$4, $$2, $$3, false);
-      this.a($$0, $$1, this.b, jn.d, $$4, $$2, $$3, true);
-   }
-
-   private void a(ffs $$0, glv $$1, gct $$2, jn $$3, hgt $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      ffw $$8 = $$4.a($$1, gmf::d);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   private static void a(fft $$0, glx $$1, int $$2, int $$3, gfc $$4, hgy $$5, cvl $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gmh::n), $$2, $$3, $$7);
    }
 }

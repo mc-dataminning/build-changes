@@ -1,64 +1,61 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gqa implements gpw.a {
-   private final flh a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class gqa implements gpy.a {
+   private static final float a = 0.02F;
+   private final Map<ji, gqa.a> b = Maps.newHashMap();
 
-   public gqa(flh $$0) {
-      this.a = $$0;
+   public void a(ji $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gqa.a($$1, $$2, af.c() + (long)$$3));
    }
 
    @Override
-   public void a(ffs $$0, glv $$1, double $$2, double $$3, double $$4) {
-      dgh $$5 = this.a.s;
-      ffw $$6 = $$1.getBuffer(gmf.B());
-      ji $$7 = ji.a($$2, 0.0, $$4);
+   public void a() {
+      this.b.clear();
+   }
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dyq $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+   @Override
+   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
+      long $$5 = af.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gqa.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-            for (Entry<ecq.a, ecq> $$11 : $$10.e()) {
-               ecq.a $$12 = $$11.getKey();
-               dfm $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kk.a($$13.h, $$15);
-                     int $$18 = kk.a($$13.i, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gmp.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
-         }
+   private void a(fft $$0, glx $$1, ji $$2, gqa.a $$3) {
+      gpy.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gpy.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   private Vector3f a(ecq.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

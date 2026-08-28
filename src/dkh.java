@@ -1,29 +1,62 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dkh {
-   fbs s_ = djk.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dxm t_ = dxl.c;
+public class dkh extends die {
+   public static final MapCodec<dkh> d = b(dkh::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
-   static bsi a(@Nullable buj $$0, dwv $$1, dgg $$2, ji $$3) {
-      if ($$1.c(t_)) {
-         djk.a($$2, $$3, new cwn(cwr.xw, 1));
-         float $$4 = ayy.b($$2.A, 0.8F, 1.2F);
-         $$2.a(null, $$3, avz.eg, awa.e, 1.0F, $$4);
-         dwv $$5 = $$1.b(t_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(ebr.c, $$3, ebr.a.a($$0, $$5));
-         return bsi.a;
+   @Override
+   public MapCodec<dkh> a() {
+      return d;
+   }
+
+   public dkh(dwv.d $$0) {
+      super($$0, ko.c);
+   }
+
+   @Override
+   public boolean d(dww $$0) {
+      return false;
+   }
+
+   protected static boolean a(dgh $$0, dhj.c $$1) {
+      if ($$1 == dhj.c.b) {
+         return $$0.H_().i() < 0.05F;
       } else {
-         return bsi.e;
+         return $$1 == dhj.c.c ? $$0.H_().i() < 0.1F : false;
       }
    }
 
-   static boolean j_(dwv $$0) {
-      return $$0.b(t_) && $$0.c(t_);
+   @Override
+   public void a(dww $$0, dgh $$1, ji $$2, dhj.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dhj.c.b) {
+            $$1.b($$2, djn.fP.m());
+            $$1.a(null, ebs.c, $$2);
+         } else if ($$3 == dhj.c.c) {
+            $$1.b($$2, djn.fR.m());
+            $$1.a(null, ebs.c, $$2);
+         }
+      }
    }
 
-   static ToIntFunction<dwv> i_(int $$0) {
-      return $$1 -> $$1.c(dxl.c) ? $$0 : 0;
+   @Override
+   protected boolean a(esx $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dww $$0, dgh $$1, ji $$2, esx $$3) {
+      if ($$3 == esz.c) {
+         dww $$4 = djn.fP.m();
+         $$1.b($$2, $$4);
+         $$1.a(ebs.c, $$2, ebs.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == esz.e) {
+         dww $$5 = djn.fQ.m();
+         $$1.b($$2, $$5);
+         $$1.a(ebs.c, $$2, ebs.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

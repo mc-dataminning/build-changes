@@ -1,32 +1,56 @@
-public class gsh extends gsa<cpj, gyo> {
-   private final hbi a;
+public class gsh extends gsc<buw, gyn> {
+   private static final akv a = akv.b("textures/entity/experience_orb.png");
+   private static final gmh b = gmh.i(a);
 
-   public gsh(gsb.a $$0) {
+   public gsh(gsd.a $$0) {
       super($$0);
-      this.a = $$0.b();
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public void a(gyo $$0, ffs $$1, glv $$2, int $$3) {
-      $$1.a();
-      $$1.a(this.e.b());
-      if ($$0.a) {
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.d.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(90.0F));
-      }
+   protected int a(buw $$0, ji $$1) {
+      return ayz.a(super.a($$0, $$1) + 7, 0, 15);
+   }
 
-      $$0.b.a($$1, $$2, $$3, hec.d);
+   public void a(gyn $$0, fft $$1, glx $$2, int $$3) {
+      $$1.a();
+      int $$4 = $$0.a;
+      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
+      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
+      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
+      float $$9 = 1.0F;
+      float $$10 = 0.5F;
+      float $$11 = 0.25F;
+      float $$12 = 255.0F;
+      float $$13 = $$0.u / 2.0F;
+      int $$14 = (int)((ayz.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$15 = 255;
+      int $$16 = (int)((ayz.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$1.a(0.0F, 0.1F, 0.0F);
+      $$1.a(this.e.b());
+      float $$17 = 0.3F;
+      $$1.b(0.3F, 0.3F, 0.3F);
+      ffx $$18 = $$2.getBuffer(b);
+      fft.a $$19 = $$1.c();
+      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
+      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
+      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
+      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
       $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
 
-   public gyo a() {
-      return new gyo();
+   private static void a(ffx $$0, fft.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(heh.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
    }
 
-   public void a(cpj $$0, gyo $$1, float $$2) {
+   public gyn a() {
+      return new gyn();
+   }
+
+   public void a(buw $$0, gyn $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.m();
-      this.a.a($$1.b, $$0.l(), cwl.h, $$0);
    }
 }

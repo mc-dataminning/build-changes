@@ -1,79 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class diq extends diw {
-   public static final MapCodec<diq> a = b(diq::new);
-   public static final dxs<jn> b = dxl.S;
-   public static final dxm c = dxl.z;
+public class diq extends dic {
+   public static final MapCodec<diq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvl.q.fieldOf("color").forGetter(dic::b), t()).apply($$0, diq::new));
+   public static final dxv b = dxm.bd;
+   private static final Map<cvl, djl> c = Maps.newHashMap();
+   private static final fbt d = djl.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<diq> a() {
       return a;
    }
 
-   public diq(dwu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
+   public diq(cvl $$0, dwv.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
-      if ($$1 instanceof arc $$5 && $$1.c_($$2) instanceof dtq $$6) {
-         $$3.a($$6);
-         $$3.a(awj.ar);
-         cnk.a($$5, $$3, true);
-      }
-
-      return bsi.a;
+   protected boolean a(dww $$0, dgk $$1, ji $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected void a(dwv $$0, dgg $$1, ji $$2, dwv $$3, boolean $$4) {
-      bse.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return d;
    }
 
    @Override
-   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
-      dtx $$4 = $$1.c_($$2);
-      if ($$4 instanceof dtq) {
-         ((dtq)$$4).k();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dtx a(ji $$0, dwv $$1) {
-      return new dtq($$0, $$1);
+   public dww a(daf $$0) {
+      return this.m().b(b, Integer.valueOf(dyb.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected boolean c_(dwv $$0) {
-      return true;
+   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
+      return $$4 == jn.a && !$$0.a($$1, $$3) ? djn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected int a(dwv $$0, dgg $$1, ji $$2) {
-      return csa.a($$1.c_($$2));
+   protected dww a(dww $$0, dqd $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dwv a(dwv $$0, dqc $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected dww a(dww $$0, dok $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dwv a(dwv $$0, doj $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dwv a(dae $$0) {
-      return this.m().b(b, $$0.d().g());
+   public static djl a(cvl $$0) {
+      return c.getOrDefault($$0, djn.jh);
    }
 }

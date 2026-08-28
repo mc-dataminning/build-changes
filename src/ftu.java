@@ -1,82 +1,74 @@
+import com.google.common.hash.Hashing;
 import javax.annotation.Nullable;
 
-public class ftu extends fui {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public class ftu implements AutoCloseable {
+   private static final akv a = akv.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final het d;
+   private final akv e;
    @Nullable
-   private final wo d;
-   private final wo s;
-   private final Runnable u;
-   @Nullable
-   private fpj v;
-   private fop w;
-   private int x;
+   private hee f;
+   private boolean g;
 
-   public static ftu a(wo $$0, wo $$1, Runnable $$2) {
-      return new ftu($$0, null, $$1, $$2, 0);
+   private ftu(het $$0, akv $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static ftu a(wo $$0, wo $$1, wo $$2, Runnable $$3) {
-      return new ftu($$0, $$1, $$2, $$3, 20);
+   public static ftu a(het $$0, String $$1) {
+      return new ftu($$0, akv.b("worlds/" + af.a($$1, akv::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   protected ftu(wo $$0, @Nullable wo $$1, wo $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public static ftu b(het $$0, String $$1) {
+      return new ftu($$0, akv.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.d != null) {
-         this.v = fpj.a(this.p, this.d, 360);
-      }
+   public void a(fet $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new hee($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
 
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fop.a(this.s, $$0x -> this.aO_()).a((this.n - 150) / 2, $$4, 150, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
-   }
-
-   @Override
-   public void a(fob $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = ftx.a(af.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
       } else {
-         this.v.a($$0, this.n / 2, 120);
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   @Override
-   public boolean aG_() {
-      return this.v != null && this.w.j;
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public akv b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   public void aO_() {
-      this.u.run();
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   @Override
-   public wo i() {
-      return wn.a(this.l, this.d != null ? this.d : wn.a);
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

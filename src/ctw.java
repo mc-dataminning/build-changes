@@ -1,22 +1,10 @@
-public class ctw implements csm {
-   private final int[] a;
-
-   public ctw(int $$0) {
-      this.a = new int[$$0];
+public class ctw extends cty {
+   public ctw(bsc $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
-
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.a.length;
+   public boolean a(cwo $$0) {
+      return $$0.h().e();
    }
 }

@@ -1,17 +1,30 @@
-public class gul extends gqt<cmi, had> {
-   private static final aku a = aku.b("textures/entity/skeleton/stray.png");
-   private static final aku b = aku.b("textures/entity/skeleton/stray_overlay.png");
+public class gul<T extends cmi> extends gtj<T, gzj, geb> {
+   private static final akv a = akv.b("textures/entity/spider/spider.png");
 
-   public gul(gsb.a $$0) {
-      super($$0, gez.cZ, gez.da, gez.db);
-      this.a(new gwt<>(this, $$0.f(), gez.dc, b));
+   public gul(gsd.a $$0) {
+      this($$0, gfb.cU);
    }
 
-   public aku b(had $$0) {
+   public gul(gsd.a $$0, gfa $$1) {
+      super($$0, new geb($$0.a($$1)), 0.8F);
+      this.a(new gwy<>(this));
+   }
+
+   @Override
+   protected float aV_() {
+      return 180.0F;
+   }
+
+   @Override
+   public akv b(gzj $$0) {
       return a;
    }
 
-   public had b() {
-      return new had();
+   public gzj b() {
+      return new gzj();
+   }
+
+   public void a(T $$0, gzj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

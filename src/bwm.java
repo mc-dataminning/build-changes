@@ -1,95 +1,78 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bwm {
-   private final Map<jr<bwi>, bwj> a;
+public record bwm(akv d, double e, bwm.a f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final MapCodec<bwm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akv.a.fieldOf("id").forGetter(bwm::b), Codec.DOUBLE.fieldOf("amount").forGetter(bwm::c), bwm.a.f.fieldOf("operation").forGetter(bwm::d))
+            .apply($$0, bwm::new)
+   );
+   public static final Codec<bwm> b = a.codec();
+   public static final yn<ByteBuf, bwm> c = yn.a(akv.b, bwm::b, yl.m, bwm::c, bwm.a.e, bwm::d, bwm::new);
 
-   bwm(Map<jr<bwi>, bwj> $$0) {
-      this.a = $$0;
-   }
-
-   private bwj d(jr<bwi> $$0) {
-      bwj $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
-      }
-   }
-
-   public double a(jr<bwi> $$0) {
-      return this.d($$0).g();
-   }
-
-   public double b(jr<bwi> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(jr<bwi> $$0, aku $$1) {
-      bwl $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
-      }
+   public tq a() {
+      DataResult<un> $$0 = b.encode(this, ue.a, new tq());
+      return (tq)$$0.getOrThrow();
    }
 
    @Nullable
-   public bwj a(Consumer<bwj> $$0, jr<bwi> $$1) {
-      bwj $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
+   public static bwm a(tq $$0) {
+      DataResult<bwm> $$1 = b.parse(ue.a, $$0);
+      if ($$1.isSuccess()) {
+         return (bwm)$$1.getOrThrow();
       } else {
-         bwj $$3 = new bwj($$1, $$0);
-         $$3.a($$2);
-         return $$3;
+         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
+         return null;
       }
    }
 
-   public static bwm.a a() {
-      return new bwm.a();
+   public boolean a(akv $$0) {
+      return $$0.equals(this.d);
    }
 
-   public boolean c(jr<bwi> $$0) {
-      return this.a.containsKey($$0);
+   public akv b() {
+      return this.d;
    }
 
-   public boolean b(jr<bwi> $$0, aku $$1) {
-      bwj $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
+   public double c() {
+      return this.e;
    }
 
-   public static class a {
-      private final Builder<jr<bwi>, bwj> a = ImmutableMap.builder();
-      private boolean b;
+   public bwm.a d() {
+      return this.f;
+   }
 
-      private bwj b(jr<bwi> $$0) {
-         bwj $$1 = new bwj($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+   public static enum a implements azv {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<bwm.a> d = axq.a(bwm.a::a, values(), axq.a.a);
+      public static final yn<ByteBuf, bwm.a> e = yl.a(d, bwm.a::a);
+      public static final Codec<bwm.a> f = azv.a(bwm.a::values);
+      private final String g;
+      private final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      public bwm.a a(jr<bwi> $$0) {
-         this.b($$0);
-         return this;
+      public int a() {
+         return this.h;
       }
 
-      public bwm.a a(jr<bwi> $$0, double $$1) {
-         bwj $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bwm a() {
-         this.b = true;
-         return new bwm(this.a.buildKeepingLast());
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 }

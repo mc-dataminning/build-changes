@@ -1,12 +1,20 @@
-public class abg {
-   public static final yx<abf> a = a("cookie_request");
-   public static final yx<abi> b = b("cookie_response");
+public record abg(akv b) implements yw<abf> {
+   public static final yn<vl, abg> a = yw.a(abg::a, abg::new);
 
-   private static <T extends yv<abe>> yx<T> a(String $$0) {
-      return new yx<>(yw.b, aku.b($$0));
+   private abg(vl $$0) {
+      this($$0.q());
    }
 
-   private static <T extends yv<abh>> yx<T> b(String $$0) {
-      return new yx<>(yw.a, aku.b($$0));
+   private void a(vl $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yy<abg> a() {
+      return abh.a;
+   }
+
+   public void a(abf $$0) {
+      $$0.a(this);
    }
 }

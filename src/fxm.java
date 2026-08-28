@@ -1,67 +1,58 @@
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class fxm extends fui {
-   protected final fui b;
-   protected final fll c;
+public class fxm extends fxo {
+   private static final wp a = wp.c("options.online.title");
    @Nullable
-   protected fpn d;
-   public final fse s = new fse(this);
+   private fll<Unit> u;
 
-   public fxm(fui $$0, fll $$1, wo $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public fxm(fuk $$0, flm $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
    protected void aR_() {
-      this.G();
-      this.F();
-      this.E();
-      this.s.a($$1 -> {
-         fon var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   protected void G() {
-      this.s.a(this.l, this.p);
-   }
-
-   protected void F() {
-      this.d = this.s.c(new fpn(this.m, this.n, this));
-      this.m();
-      if (this.d.b(this.c.av()) instanceof fox $$0) {
-         this.q = $$0;
-         this.q.j = this.m.aY().a();
+      super.aR_();
+      if (this.u != null) {
+         fop $$0 = this.d.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
       }
    }
 
-   protected abstract void m();
-
-   protected void E() {
-      this.s.b(fop.a(wn.d, $$0 -> this.aO_()).a(200).a());
-   }
-
-   @Override
-   protected void c() {
-      this.s.a();
-      if (this.d != null) {
-         this.d.a(this.n, this.s);
+   private fll<?>[] a(flm $$0, fli $$1) {
+      List<fll<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.W());
+      $$2.add($$0.X());
+      fll<Unit> $$3 = x.a(
+         $$1.s,
+         $$0x -> {
+            bsg $$1x = $$0x.am();
+            return new fll<>(
+               "options.difficulty.online",
+               fll.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fll.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$3 != null) {
+         this.u = $$3;
+         $$2.add($$3);
       }
+
+      return $$2.toArray(new fll[0]);
    }
 
    @Override
-   public void aI_() {
-      this.m.n.az();
-   }
-
-   @Override
-   public void aO_() {
-      if (this.d != null) {
-         this.d.b();
-      }
-
-      this.m.a(this.b);
+   protected void m() {
+      this.d.a(this.a(this.c, this.m));
    }
 }

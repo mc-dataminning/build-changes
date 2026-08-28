@@ -1,84 +1,67 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class hgy {
-   static final Logger a = LogUtils.getLogger();
-   private final Map<aku, hhh> b;
-   final hhh c;
-   private final List<hhe> d = new ArrayList<>();
-   private final Map<aku, hhh> e = new HashMap<>();
+   public static final Comparator<hgy> a = Comparator.<hgy, akv>comparing(hgy::a).thenComparing(hgy::b);
+   private final akv b;
+   private final akv c;
+   @Nullable
+   private gmh d;
 
-   public hgy(Map<aku, hhh> $$0, hhh $$1) {
+   public hgy(akv $$0, akv $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.e.put(hgu.a, $$1);
    }
 
-   public void a() {
-      this.e.put(gnk.a, new gnk());
+   public akv a() {
+      return this.b;
    }
 
-   public void a(hhe $$0) {
-      this.d.add($$0);
+   public akv b() {
+      return this.c;
    }
 
-   public void b() {
-      this.d.forEach($$0 -> $$0.a(new hgy.a()));
+   public her c() {
+      return fli.Q().a(this.a()).apply(this.b());
    }
 
-   public Map<aku, hhh> c() {
-      return this.e;
+   public gmh a(Function<akv, gmh> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
    }
 
-   public Set<aku> d() {
-      return Sets.difference(this.b.keySet(), this.e.keySet());
+   public ffx a(glx $$0, Function<akv, gmh> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
    }
 
-   hhh a(aku $$0) {
-      return this.e.computeIfAbsent($$0, this::b);
+   public ffx a(glx $$0, Function<akv, gmh> $$1, boolean $$2, boolean $$3) {
+      return this.c().a(gtb.a($$0, this.a($$1), $$2, $$3));
    }
 
-   private hhh b(aku $$0) {
-      hhh $$1 = this.b.get($$0);
-      if ($$1 == null) {
-         a.warn("Missing block model: '{}'", $$0);
-         return this.c;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         hgy $$1 = (hgy)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
       } else {
-         return $$1;
+         return false;
       }
    }
 
-   class a implements hhe.a {
-      private final List<aku> b = new ArrayList<>();
-      private final Set<aku> c = new HashSet<>();
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
 
-      @Override
-      public hhh a(aku $$0) {
-         if (this.b.contains($$0)) {
-            hgy.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
-            return hgy.this.c;
-         } else {
-            hhh $$1 = hgy.this.a($$0);
-            if (this.c.add($$0)) {
-               this.b.add($$0);
-               $$1.a(this);
-               this.b.remove($$0);
-            }
-
-            return $$1;
-         }
-      }
-
-      private String a() {
-         return this.b.stream().map(aku::toString).collect(Collectors.joining("->"));
-      }
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

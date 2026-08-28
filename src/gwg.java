@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class gwg extends gwq<gzb, gcn> {
-   private static final Map<bug.a, aku> a = ImmutableMap.of(
-      bug.a.b,
-      aku.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bug.a.c,
-      aku.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bug.a.d,
-      aku.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
+public class gwg extends gws<gyz, gcl> {
+   private static final Map<cjf, akv> a = af.a(Maps.newEnumMap(cjf.class), $$0 -> {
+      $$0.put(cjf.a, null);
+      $$0.put(cjf.b, akv.b("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cjf.c, akv.b("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cjf.d, akv.b("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cjf.e, akv.b("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public gwg(gty<gzb, gcn> $$0) {
+   public gwg(gua<gyz, gcl> $$0) {
       super($$0);
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gzb $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bug.a $$6 = $$3.c;
-         if ($$6 != bug.a.a) {
-            aku $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
+   public void a(fft $$0, glx $$1, int $$2, gyz $$3, float $$4, float $$5) {
+      akv $$6 = a.get($$3.h);
+      if ($$6 != null && !$$3.z) {
+         ffx $$7 = $$1.getBuffer(gmh.j($$6));
+         this.d().a($$0, $$7, $$2, gte.a($$3, 0.0F));
       }
    }
 }

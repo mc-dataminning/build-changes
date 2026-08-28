@@ -1,16 +1,23 @@
-public record agu(int b, int c) implements yv<agf> {
-   public static final ym<vl, agu> a = ym.a(yk.w, agu::b, yk.h, agu::e, agu::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public yx<agu> a() {
-      return agd.by;
+public class agu implements yw<agg> {
+   public static final agu a = new agu();
+   public static final yn<ByteBuf, agu> b = yn.a(a);
+
+   private agu() {
    }
 
-   public void a(agf $$0) {
+   @Override
+   public yy<agu> a() {
+      return age.bx;
+   }
+
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

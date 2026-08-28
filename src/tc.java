@@ -18,7 +18,7 @@ public class tc implements ArgumentType<String> {
       if (sn.b($$1)) {
          return $$1;
       } else {
-         Message $$2 = wo.b("No such test class: " + $$1);
+         Message $$2 = wp.b("No such test class: " + $$1);
          throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
    }

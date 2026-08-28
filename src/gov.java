@@ -1,80 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gov implements goj<dws> {
+   private final gnb a;
 
-public class gov extends gob {
-   private static final float a = 0.6666667F;
-   private static final fay b = new fay(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dyh, gov.a> c;
-
-   public gov(goi.a $$0) {
-      super($$0);
-      this.c = dyh.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gov.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   public gov(gok.a $$0) {
+      this.a = $$0.b();
    }
 
-   @Override
-   protected gct a(dwv $$0, dyh $$1) {
-      gov.a $$2 = this.c.get($$1);
-      return $$0.b() instanceof drk ? $$2.a() : $$2.b();
-   }
+   public void a(dws $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      dgh $$6 = $$0.i();
+      if ($$6 != null) {
+         ji $$7 = $$0.aA_().a($$0.f().g());
+         dww $$8 = $$0.j();
+         if (!$$8.l()) {
+            gnd.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(djn.bG) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.b(dwq.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.d() && !$$0.b()) {
+               dxx $$9 = $$8.a(djn.by) ? dxx.b : dxx.a;
+               dww $$10 = djn.bG.m().b(dwq.c, $$9).b(dwq.a, $$8.c(dwp.a));
+               $$10 = $$10.b(dwq.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               ji $$11 = $$7.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.b(dwp.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
 
-   @Override
-   protected hgt a(dyh $$0) {
-      return gmq.a($$0);
-   }
-
-   @Override
-   protected float a() {
-      return 0.6666667F;
-   }
-
-   @Override
-   protected float b() {
-      return 0.6666667F;
-   }
-
-   private static void a(ffs $$0, float $$1) {
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-   }
-
-   @Override
-   protected void a(ffs $$0, float $$1, dwv $$2) {
-      a($$0, $$1);
-      if (!($$2.b() instanceof drk)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+            $$2.b();
+            gnd.b();
+         }
       }
    }
 
+   private void a(ji $$0, dww $$1, fft $$2, glx $$3, dgh $$4, boolean $$5, int $$6) {
+      gmh $$7 = glq.b($$1);
+      ffx $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azh.a(), $$1.b($$0), $$6);
+   }
+
    @Override
-   protected fay c() {
-      return b;
-   }
-
-   public static void a(ffs $$0, glv $$1, int $$2, int $$3, gct $$4, hgt $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      ffw $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static gct a(gew $$0, dyh $$1, boolean $$2) {
-      gey $$3 = $$2 ? gez.a($$1) : gez.b($$1);
-      return new gct.a($$0.a($$3), gmf::g);
-   }
-
-   public static gfg a(boolean $$0) {
-      gfi $$1 = new gfi();
-      gfk $$2 = $$1.a();
-      $$2.a("sign", gff.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gfc.a);
-      if ($$0) {
-         $$2.a("stick", gff.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gfc.a);
-      }
-
-      return gfg.a($$1, 64, 32);
-   }
-
-   static record a(gct a, gct b) {
+   public int aU_() {
+      return 68;
    }
 }

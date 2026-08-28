@@ -1,3 +1,7 @@
+import java.util.List;
+
 public interface gac {
-   void a(fzz var1);
+   List<gad> a();
+
+   wp b();
 }

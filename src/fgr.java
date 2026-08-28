@@ -1,16 +1,13 @@
-public class fgr extends fgq {
-   private final wo a;
+import javax.annotation.Nullable;
 
-   public fgr(wo $$0) {
-      this.a = $$0;
+public abstract class fgr extends RuntimeException {
+   @Nullable
+   public wp a() {
+      return null;
    }
 
-   public fgr(String $$0) {
-      this(wo.b($$0));
-   }
-
-   @Override
-   public wo a() {
-      return wo.a("mco.upload.failed", this.a);
+   @Nullable
+   public wp[] b() {
+      return null;
    }
 }

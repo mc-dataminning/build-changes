@@ -1,30 +1,44 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dcr(dcn f, dcn g, dcn h) implements dch {
+public record dcr(dco f, dco g, dco h, dco i, dco j) implements dci {
    public static final MapCodec<dcr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcn.a.fieldOf("input").forGetter(dcr::b), dcn.a.fieldOf("result").forGetter(dcr::d), dcn.a.fieldOf("crafting_station").forGetter(dcr::e))
+      $$0 -> $$0.group(
+               dco.a.fieldOf("template").forGetter(dcr::b),
+               dco.a.fieldOf("base").forGetter(dcr::c),
+               dco.a.fieldOf("addition").forGetter(dcr::f),
+               dco.a.fieldOf("result").forGetter(dcr::d),
+               dco.a.fieldOf("crafting_station").forGetter(dcr::e)
+            )
             .apply($$0, dcr::new)
    );
-   public static final ym<vz, dcr> b = ym.a(dcn.b, dcr::b, dcn.b, dcr::d, dcn.b, dcr::e, dcr::new);
-   public static final dch.a<dcr> c = new dch.a<>(a, b);
+   public static final yn<wa, dcr> b = yn.a(dco.b, dcr::b, dco.b, dcr::c, dco.b, dcr::f, dco.b, dcr::d, dco.b, dcr::e, dcr::new);
+   public static final dci.a<dcr> c = new dci.a<>(a, b);
 
    @Override
-   public dch.a<dcr> a() {
+   public dci.a<dcr> a() {
       return c;
    }
 
-   public dcn b() {
+   public dco b() {
       return this.f;
    }
 
-   @Override
-   public dcn d() {
+   public dco c() {
       return this.g;
    }
 
-   @Override
-   public dcn e() {
+   public dco f() {
       return this.h;
+   }
+
+   @Override
+   public dco d() {
+      return this.i;
+   }
+
+   @Override
+   public dco e() {
+      return this.j;
    }
 }

@@ -1,78 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class hfw implements aup {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hfv b = new hfv("US", "English", false);
-   private Map<String, hfv> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<hfs> e;
+public abstract class hfw implements auj, AutoCloseable {
+   private final heq a;
+   private final akv b;
+   private final Set<atp<?>> c;
 
-   public hfw(String $$0, Consumer<hfs> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public hfw(het $$0, akv $$1, akv $$2) {
+      this($$0, $$1, $$2, hem.a);
    }
 
-   private static Map<String, hfv> a(Stream<atb> $$0) {
-      Map<String, hfv> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            hgg $$2 = $$1x.a(hgg.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
+   public hfw(het $$0, akv $$1, akv $$2, Set<atp<?>> $$3) {
+      this.b = $$2;
+      this.a = new heq($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected her a(akv $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public void a(auo $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         hfv $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
+   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
+      return hem.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hem.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
+   }
+
+   private void a(hem.a $$0) {
+      try (box $$1 = bor.a().d("upload")) {
+         this.a.a($$0);
       }
-
-      hfs $$4 = hfs.a($$0, $$1, $$2);
-      hfu.a($$4);
-      tl.a($$4);
-      this.e.accept($$4);
    }
 
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, hfv> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public hfv b(String $$0) {
-      return this.c.get($$0);
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

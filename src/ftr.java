@@ -1,27 +1,61 @@
-public class ftr extends fui {
-   private final wo a;
+public class ftr extends fuk {
+   private static final wp a = wp.c("gui.toMenu");
+   private static final wp b = wp.c("gui.toTitle");
+   private static final wp c = wp.c("gui.report_to_server");
+   private static final wp d = wp.c("gui.open_report_dir");
+   private final fuk s;
+   private final vk u;
+   private final wp v;
+   private final fsk w = fsk.d();
 
-   public ftr(wo $$0, wo $$1) {
-      super($$0);
-      this.a = $$1;
+   public ftr(fuk $$0, wp $$1, wp $$2) {
+      this($$0, $$1, new vk($$2));
+   }
+
+   public ftr(fuk $$0, wp $$1, wp $$2, wp $$3) {
+      this($$0, $$1, new vk($$2), $$3);
+   }
+
+   public ftr(fuk $$0, wp $$1, vk $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public ftr(fuk $$0, wp $$1, vk $$2, wp $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
    protected void aR_() {
-      super.aR_();
-      this.c(fop.a(wn.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
+      this.w.c().b().a(10);
+      this.w.a(new fpz(this.l, this.p));
+      this.w.a(new fpm(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fos.a(c, fth.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fos.a(d, $$1x -> af.m().a($$0.getParent())).a(200).a()));
+      fos $$0;
+      if (this.m.F()) {
+         $$0 = fos.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+      } else {
+         $$0 = fos.a(b, $$0x -> this.m.a(new fum())).a(200).a();
+      }
+
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fob $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
-      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
+   protected void c() {
+      fse.a(this.w, this.J());
    }
 
    @Override
-   public void b(fob $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   public wp i() {
+      return wo.a(this.l, this.u.a());
    }
 
    @Override

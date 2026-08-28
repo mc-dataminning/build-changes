@@ -1,24 +1,19 @@
-public class gvq extends gwq<gyg, gbw<gyg>> {
-   private final gmz a;
+public class gvq extends gws<gxx, gbk> {
+   private static final akv a = akv.b("textures/entity/breeze/breeze_wind.png");
+   private final gbk b;
 
-   public gvq(gty<gyg, gbw<gyg>> $$0, gmz $$1) {
-      super($$0);
-      this.a = $$1;
+   public gvq(gsd.a $$0, gua<gxx, gbk> $$1) {
+      super($$1);
+      this.b = new gbk($$0.a(gfb.L));
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gyg $$3, float $$4, float $$5) {
-      dwv $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, hec.d);
-         $$0.b();
-      }
+   public void a(fft $$0, glx $$1, int $$2, gxx $$3, float $$4, float $$5) {
+      ffx $$6 = $$1.getBuffer(gmh.a(a, this.a($$3.u) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gri.a(this.b, this.b.d()).a($$0, $$6, $$2, heh.d);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

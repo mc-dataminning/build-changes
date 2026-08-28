@@ -1,26 +1,41 @@
-public class gtx extends gth<cmb, gzx, gdl> {
-   private static final aku a = aku.b("textures/entity/illager/ravager.png");
+public class gtx extends gqx<chr, gzy, gdl> {
+   private static final akv a = akv.b("textures/entity/rabbit/brown.png");
+   private static final akv b = akv.b("textures/entity/rabbit/white.png");
+   private static final akv k = akv.b("textures/entity/rabbit/black.png");
+   private static final akv l = akv.b("textures/entity/rabbit/gold.png");
+   private static final akv m = akv.b("textures/entity/rabbit/salt.png");
+   private static final akv n = akv.b("textures/entity/rabbit/white_splotched.png");
+   private static final akv o = akv.b("textures/entity/rabbit/toast.png");
+   private static final akv p = akv.b("textures/entity/rabbit/caerbannog.png");
 
-   public gtx(gsb.a $$0) {
-      super($$0, new gdl($$0.a(gez.cv)), 1.1F);
+   public gtx(gsd.a $$0) {
+      super($$0, new gdl($$0.a(gfb.ct)), new gdl($$0.a(gfb.cu)), 0.3F);
    }
 
-   public aku a(gzx $$0) {
-      return a;
-   }
-
-   public gzx b() {
-      return new gzx();
-   }
-
-   public void a(cmb $$0, gzx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.x() > 0.0F ? (float)$$0.x() - $$2 : 0.0F;
-      $$1.b = (float)$$0.p() > 0.0F ? (float)$$0.p() - $$2 : 0.0F;
-      if ($$0.gy() > 0) {
-         $$1.c = ((float)(20 - $$0.gy()) + $$2) / 20.0F;
+   public akv a(gzy $$0) {
+      if ($$0.b) {
+         return o;
       } else {
-         $$1.c = 0.0F;
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> b;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
       }
+   }
+
+   public gzy b() {
+      return new gzy();
+   }
+
+   public void a(chr $$0, gzy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(n.a($$0.al().getString()));
+      $$1.c = $$0.gs();
    }
 }

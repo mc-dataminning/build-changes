@@ -1,79 +1,111 @@
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class bxo<E extends bvf & coe> extends bwy<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<bvf, Optional<bym>> e;
-   private final float f;
+public class bxo extends bwz<coh> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<cok, aku<evv>> g = ImmutableMap.builder()
+      .put(cok.c, evm.ar)
+      .put(cok.d, evm.as)
+      .put(cok.e, evm.at)
+      .put(cok.f, evm.au)
+      .put(cok.g, evm.av)
+      .put(cok.h, evm.aw)
+      .put(cok.i, evm.ax)
+      .put(cok.j, evm.ay)
+      .put(cok.k, evm.az)
+      .put(cok.l, evm.aA)
+      .put(cok.n, evm.aB)
+      .put(cok.o, evm.aC)
+      .put(cok.p, evm.aD)
+      .build();
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
 
-   public bxo(Function<bvf, Optional<bym>> $$0, float $$1, int $$2) {
-      super(Map.of(cej.n, cek.c, cej.m, cek.c, cej.aP, cek.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public bxo(int $$0) {
+      super(ImmutableMap.of(cek.m, cel.c, cek.n, cel.c, cek.q, cel.c, cek.k, cel.a), $$0);
    }
 
-   @Override
-   protected boolean a(arc $$0, E $$1) {
-      return this.b($$1);
-   }
-
-   @Override
-   protected boolean a(arc $$0, E $$1, long $$2) {
-      return this.b($$1);
-   }
-
-   @Override
-   protected void d(arc $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> bxa.a($$1, $$1x, this.f, 3));
-   }
-
-   @Override
-   protected void c(arc $$0, E $$1, long $$2) {
-      Optional<bym> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         bym $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bF());
-         if ($$5 < 3.0) {
-            cwn $$6 = $$1.t().a(0, 1);
-            if (!$$6.f()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof cic $$7) {
-                  cid.a((bvf)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
-
-               $$1.ec().a(cej.aP, 60);
-            }
-         }
-      }
-   }
-
-   private void a(bym $$0, cwn $$1, ard $$2) {
-      ji $$3 = $$0.b().e();
-      ap.aa.a($$2, $$3, $$1);
-   }
-
-   private boolean b(E $$0) {
-      if ($$0.t().c()) {
+   protected boolean a(ard $$0, coh $$1) {
+      if (!this.b($$1)) {
+         return false;
+      } else if (this.i > 0) {
+         this.i--;
          return false;
       } else {
-         Optional<bym> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
+         return true;
       }
    }
 
-   private static fay a(bym $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
+   protected void a(ard $$0, coh $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      cow $$3 = this.c($$1).get();
+      $$1.eb().a(cek.q, $$3);
+      bxb.a($$1, $$3);
    }
 
-   public static void a(bvf $$0, cwn $$1, fay $$2) {
-      fay $$3 = new fay(0.2F, 0.3F, 0.2F);
-      bxa.a($$0, $$1, $$2, $$3, 0.2F);
-      dgg $$4 = $$0.dW();
-      if ($$4.ad() % 7L == 0L && $$4.A.j() < 0.9) {
-         float $$5 = af.<Float>a(cic.d, $$4.H_());
-         $$4.a(null, $$0, avz.g, awa.g, 1.0F, $$5);
+   protected boolean b(ard $$0, coh $$1, long $$2) {
+      return this.b($$1) && !this.j;
+   }
+
+   protected void c(ard $$0, coh $$1, long $$2) {
+      cow $$3 = this.c($$1).get();
+      bxb.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$0, $$1, $$3);
+            this.j = true;
+         }
+      } else {
+         bxb.a($$1, $$3, 0.5F, 5);
       }
+   }
+
+   protected void d(ard $$0, coh $$1, long $$2) {
+      this.i = a($$0);
+      $$1.eb().b(cek.q);
+      $$1.eb().b(cek.m);
+      $$1.eb().b(cek.n);
+   }
+
+   private void a(ard $$0, coh $$1, bvg $$2) {
+      $$1.a($$0, a($$1), ($$2x, $$3) -> bxb.a($$1, $$3, $$2.dt()));
+   }
+
+   private static aku<evv> a(coh $$0) {
+      if ($$0.e_()) {
+         return evm.aF;
+      } else {
+         cok $$1 = $$0.gC().b();
+         return g.getOrDefault($$1, evm.aE);
+      }
+   }
+
+   private boolean b(coh $$0) {
+      return this.c($$0).isPresent();
+   }
+
+   private Optional<cow> c(coh $$0) {
+      return $$0.eb().c(cek.k).filter(this::a);
+   }
+
+   private boolean a(cow $$0) {
+      return $$0.b(btr.F);
+   }
+
+   private boolean a(coh $$0, cow $$1) {
+      ji $$2 = $$1.dv();
+      ji $$3 = $$0.dv();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(ard $$0) {
+      return 600 + $$0.A.a(6001);
    }
 }

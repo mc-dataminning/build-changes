@@ -1,50 +1,32 @@
-public class fxb extends fui {
-   private static final int a = 600;
-   private final vi b;
-   private fop c;
-   private int d;
-   private final fsi s = fsi.d();
+public class fxb extends fxf {
+   private static final wp b = wp.c("multiplayerWarning.header").a(n.r);
+   private static final wp c = wp.c("multiplayerWarning.message");
+   private static final wp d = wp.c("multiplayerWarning.check");
+   private static final wp s = b.f().f("\n").b(c);
+   private final fuk u;
 
-   public fxb(wo $$0, vi $$1) {
-      super($$0);
-      this.b = $$1;
+   public fxb(fuk $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   public boolean aG_() {
-      return false;
+   protected fsh m() {
+      fsk $$0 = fsk.e().a(8);
+      $$0.a(fos.a(wo.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.az();
+         }
+
+         this.m.a(new fxa(this.u));
+      }).a());
+      $$0.a(fos.a(wo.k, $$0x -> this.aO_()).a());
+      return $$0;
    }
 
    @Override
-   protected void aR_() {
-      this.s.c().b().a(10);
-      this.s.a(new fpx(this.l, this.p));
-      this.c = this.s.a(fop.a(wn.p, $$0 -> this.b.a(fth.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fon var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fsc.a(this.s, this.J());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
-      }
+   public void aO_() {
+      this.m.a(this.u);
    }
 }

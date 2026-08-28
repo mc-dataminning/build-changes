@@ -1,33 +1,125 @@
-public record aqn(String b, int c, cos d, boolean e, int f, buz g, boolean h, boolean i, aqu j) {
-   public static final int a = 16;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Consumer;
 
-   public aqn(vl $$0) {
-      this(
-         $$0.d(16),
-         $$0.readByte(),
-         $$0.b(cos.class),
-         $$0.readBoolean(),
-         $$0.readUnsignedByte(),
-         $$0.b(buz.class),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(aqu.class)
-      );
+public interface aqn {
+   aqn a = new aqn() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return false;
+      }
+
+      @Override
+      public void a(Consumer<dfn> $$0) {
+      }
+   };
+
+   static aqn a(dfn $$0, int $$1) {
+      return new aqn.a($$0, $$1);
    }
 
-   public void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.l(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
+   static void a(aqn $$0, aqn $$1, Consumer<dfn> $$2, Consumer<dfn> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof aqn.a $$4 && $$1 instanceof aqn.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
+
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new dfn($$10, $$11));
+                     } else {
+                        $$3.accept(new dfn($$10, $$11));
+                     }
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$0.a($$3);
+         $$1.a($$2);
+      }
    }
 
-   public static aqn a() {
-      return new aqn("en_us", 2, cos.a, true, 0, cov.bG, false, false, aqu.a);
+   default boolean a(dfn $$0) {
+      return this.a($$0.h, $$0.i);
+   }
+
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   boolean a(int var1, int var2, boolean var3);
+
+   void a(Consumer<dfn> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = $$5 ? 2 : 1;
+      long $$7 = (long)Math.max(0, Math.abs($$3 - $$0) - $$6);
+      long $$8 = (long)Math.max(0, Math.abs($$4 - $$1) - $$6);
+      long $$9 = $$7 * $$7 + $$8 * $$8;
+      int $$10 = $$2 * $$2;
+      return $$9 < (long)$$10;
+   }
+
+   public static record a(dfn b, int c) implements aqn {
+      int c() {
+         return this.b.h - this.c - 1;
+      }
+
+      int d() {
+         return this.b.i - this.c - 1;
+      }
+
+      int e() {
+         return this.b.h + this.c + 1;
+      }
+
+      int f() {
+         return this.b.i + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(aqn.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return aqn.a(this.b.h, this.b.i, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<dfn> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new dfn($$1, $$2));
+               }
+            }
+         }
+      }
+
+      public dfn a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

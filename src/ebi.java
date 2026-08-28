@@ -2,44 +2,18 @@ import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ebi<T extends eay> implements ebh<T> {
-   private final eba<T> a;
-   private final ebd<T> b;
-
-   public ebi(eba<T> $$0, ebd<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface ebi<T extends eaz> {
+   @Nullable
+   T a(int var1);
 
    @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
+   T a(UUID var1);
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   Iterable<T> a();
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+   <U extends T> void a(ebg<T, U> var1, axl<U> var2);
 
-   @Override
-   public <U extends T> void a(ebf<T, U> $$0, axk<U> $$1) {
-      this.a.a($$0, $$1);
-   }
+   void a(fau var1, Consumer<T> var2);
 
-   @Override
-   public void a(fat $$0, Consumer<T> $$1) {
-      this.b.b($$0, axk.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(ebf<T, U> $$0, fat $$1, axk<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   <U extends T> void a(ebg<T, U> var1, fau var2, axl<U> var3);
 }

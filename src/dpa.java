@@ -1,33 +1,33 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpa extends dsq {
-   public static final MapCodec<dpa> b = b(dpa::new);
-   private static final Map<jn, fbs> e = Maps.immutableEnumMap(
-      Map.of(
-         jn.c,
-         djk.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         jn.d,
-         djk.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         jn.f,
-         djk.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         jn.e,
-         djk.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
+public class dpa extends dnx {
+   public static final MapCodec<dpa> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.m.fieldOf("chance").forGetter($$0x -> $$0x.h), lt.bi.fieldOf("particle").forGetter($$0x -> $$0x.g), t()).apply($$0, dpa::new)
    );
+   private final lr g;
+   private final int h;
 
    @Override
    public MapCodec<dpa> a() {
-      return b;
+      return f;
    }
 
-   public dpa(dwu.d $$0) {
-      super(dqr.b.h, $$0);
+   public dpa(int $$0, lr $$1, dwv.d $$2) {
+      super($$2);
+      this.h = $$0;
+      this.g = $$1;
    }
 
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return e.get($$0.c(d));
+   public void a(dww $$0, dgh $$1, ji $$2, azh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(this.h) == 0) {
+         ji $$4 = $$2.e();
+         dww $$5 = $$1.a_($$4);
+         if (!a($$5.g($$1, $$4), jn.b)) {
+            azd.a($$1, $$2, $$3, this.g);
+         }
+      }
    }
 }

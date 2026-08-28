@@ -1,66 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fkg extends fkf {
+public abstract class fkg implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final wo c = wo.c("mco.configure.world.opening");
-   private final fhj d;
-   private final fui e;
-   private final boolean f;
-   private final flh g;
+   private boolean c = false;
 
-   public fkg(fhj $$0, fui $$1, boolean $$2, flh $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void run() {
-      fgi $$0 = fgi.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fis) {
-                     ((fis)this.e).f();
-                  }
-
-                  this.d.e = fhj.c.b;
-                  if (this.f) {
-                     fgd.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (fif var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public wo a() {
-      return c;
+   public static void a(fuk $$0) {
+      fli $$1 = fli.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(wp $$0) {
+      this.b();
+      fli $$1 = fli.Q();
+      $$1.execute(() -> $$1.a(new fix($$0, new fge(new fum()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fif $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(wp.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fif $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract wp a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

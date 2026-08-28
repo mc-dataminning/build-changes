@@ -1,150 +1,123 @@
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-public final class czf {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final czf a = new czf(ka.a());
-   public static final Codec<czf> b = czf.a.a.sizeLimitedListOf(256).xmap(czf::b, czf::f);
-   public static final ym<vz, czf> c = cwn.g.a(yk.c(256)).a(czf::new, $$0 -> $$0.f);
-   private final ka<cwn> f;
-   private final int g;
+public record czf(List<czf.b> e, boolean f) {
+   public static final czf a = new czf(List.of(), true);
+   private static final Codec<czf> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(czf.b.a.listOf().fieldOf("modifiers").forGetter(czf::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czf::c))
+            .apply($$0, czf::new)
+   );
+   public static final Codec<czf> b = Codec.withAlternative(g, czf.b.a.listOf(), $$0 -> new czf($$0, true));
+   public static final yn<wa, czf> c = yn.a(czf.b.b.a(yl.a()), czf::b, yl.b, czf::c, czf::new);
+   public static final DecimalFormat d = af.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-   private czf(ka<cwn> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
-      } else {
-         this.f = $$0;
-         this.g = cwn.a($$0);
-      }
+   public czf a(boolean $$0) {
+      return new czf(this.e, $$0);
    }
 
-   private czf(int $$0) {
-      this(ka.a($$0, cwn.j));
+   public static czf.a a() {
+      return new czf.a();
    }
 
-   private czf(List<cwn> $$0) {
-      this($$0.size());
+   public czf a(jr<bwj> $$0, bwm $$1, but $$2) {
+      Builder<czf.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
 
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static czf b(List<czf.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(czf.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         czf $$2 = new czf($$1.getAsInt() + 1);
-
-         for (czf.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
-         }
-
-         return $$2;
-      }
-   }
-
-   public static czf a(List<cwn> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         czf $$2 = new czf($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).v());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cwn> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).f()) {
-            return $$1;
+      for (czf.b $$4 : this.e) {
+         if (!$$4.a($$0, $$1.b())) {
+            $$3.add($$4);
          }
       }
 
-      return -1;
+      $$3.add(new czf.b($$0, $$1, $$2));
+      return new czf($$3.build(), this.f);
    }
 
-   private List<czf.a> f() {
-      List<czf.a> $$0 = new ArrayList<>();
+   public void a(but $$0, BiConsumer<jr<bwj>, bwm> $$1) {
+      for (czf.b $$2 : this.e) {
+         if ($$2.e.equals($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
+   }
 
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cwn $$2 = this.f.get($$1);
-         if (!$$2.f()) {
-            $$0.add(new czf.a($$1, $$2));
+   public void a(bus $$0, BiConsumer<jr<bwj>, bwm> $$1) {
+      for (czf.b $$2 : this.e) {
+         if ($$2.e.b($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
+   }
+
+   public double a(double $$0, bus $$1) {
+      double $$2 = $$0;
+
+      for (czf.b $$3 : this.e) {
+         if ($$3.e.b($$1)) {
+            double $$4 = $$3.d.c();
+
+            $$2 += switch ($$3.d.d()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
          }
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public void a(ka<cwn> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cwn $$2 = $$1 < this.f.size() ? this.f.get($$1) : cwn.j;
-         $$0.set($$1, $$2.v());
+   public List<czf.b> b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Builder<czf.b> a = ImmutableList.builder();
+
+      a() {
+      }
+
+      public czf.a a(jr<bwj> $$0, bwm $$1, but $$2) {
+         this.a.add(new czf.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public czf a() {
+         return new czf(this.a.build(), true);
       }
    }
 
-   public cwn a() {
-      return this.f.isEmpty() ? cwn.j : this.f.get(0).v();
-   }
-
-   public Stream<cwn> b() {
-      return this.f.stream().map(cwn::v);
-   }
-
-   public Stream<cwn> c() {
-      return this.f.stream().filter($$0 -> !$$0.f()).map(cwn::v);
-   }
-
-   public Iterable<cwn> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.f());
-   }
-
-   public Iterable<cwn> e() {
-      return Iterables.transform(this.d(), cwn::v);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof czf $$1 && cwn.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.g;
-   }
-
-   static record a(int b, cwn c) {
-      public static final Codec<czf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(czf.a::a), cwn.a.fieldOf("item").forGetter(czf.a::b)).apply($$0, czf.a::new)
+   public static record b(jr<bwj> c, bwm d, but e) {
+      public static final Codec<czf.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bwj.a.fieldOf("type").forGetter(czf.b::a), bwm.a.forGetter(czf.b::b), but.l.optionalFieldOf("slot", but.a).forGetter(czf.b::c))
+               .apply($$0, czf.b::new)
       );
+      public static final yn<wa, czf.b> b = yn.a(bwj.b, czf.b::a, bwm.c, czf.b::b, but.m, czf.b::c, czf.b::new);
 
-      public int a() {
-         return this.b;
+      public boolean a(jr<bwj> $$0, akv $$1) {
+         return $$0.equals(this.c) && this.d.a($$1);
       }
 
-      public cwn b() {
+      public jr<bwj> a() {
          return this.c;
+      }
+
+      public bwm b() {
+         return this.d;
+      }
+
+      public but c() {
+         return this.e;
       }
    }
 }

@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public abstract class gyb extends gyh {
-   @Nullable
-   public buh.k b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class gyb extends gzj {
+   public final buc a = new buc();
+   public final buc b = new buc();
+   public final buc c = new buc();
+   public boolean d;
+   public boolean e;
 }

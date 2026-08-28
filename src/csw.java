@@ -1,234 +1,72 @@
-import java.util.List;
-import java.util.Optional;
+public class csw extends csb {
+   private static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final bsc r;
 
-public class csw extends csa {
-   static final aku p = aku.b("container/slot/lapis_lazuli");
-   private final bsb q = new bsp(2) {
-      @Override
-      public void e() {
-         super.e();
-         csw.this.a(this);
-      }
-   };
-   private final csn r;
-   private final azg s = azg.a();
-   private final csu t = csu.a();
-   public final int[] m = new int[3];
-   public final int[] n = new int[]{-1, -1, -1};
-   public final int[] o = new int[]{-1, -1, -1};
-
-   public csw(int $$0, cou $$1) {
-      this($$0, $$1, csn.a);
+   public csw(int $$0, cov $$1) {
+      this($$0, $$1, new bsq(9));
    }
 
-   public csw(int $$0, cou $$1, csn $$2) {
-      super(ctj.n, $$0);
+   public csw(int $$0, cov $$1, bsc $$2) {
+      super(ctk.g, $$0);
+      a($$2, 9);
       this.r = $$2;
-      this.a(new ctx(this.q, 0, 15, 47) {
-         @Override
-         public int a() {
-            return 1;
-         }
-      });
-      this.a(new ctx(this.q, 1, 35, 47) {
-         @Override
-         public boolean a(cwn $$0) {
-            return $$0.a(cwr.pg);
-         }
-
-         @Override
-         public aku b() {
-            return csw.p;
-         }
-      });
+      $$2.c_($$1.k);
+      this.d($$2, 62, 17);
       this.c($$1, 8, 84);
-      this.a(csu.a(this.m, 0));
-      this.a(csu.a(this.m, 1));
-      this.a(csu.a(this.m, 2));
-      this.a(this.t).a($$1.k.gr());
-      this.a(csu.a(this.n, 0));
-      this.a(csu.a(this.n, 1));
-      this.a(csu.a(this.n, 2));
-      this.a(csu.a(this.o, 0));
-      this.a(csu.a(this.o, 1));
-      this.a(csu.a(this.o, 2));
    }
 
-   @Override
-   public void a(bsb $$0) {
-      if ($$0 == this.q) {
-         cwn $$1 = $$0.a(0);
-         if (!$$1.f() && $$1.E()) {
-            this.r.a(($$1x, $$2x) -> {
-               jw<jr<dcx>> $$3 = $$1x.K_().e(mc.aO).t();
-               int $$4 = 0;
-
-               for (ji $$5 : dlx.c) {
-                  if (dlx.a($$1x, $$2x, $$5)) {
-                     $$4++;
-                  }
-               }
-
-               this.s.b((long)this.t.b());
-
-               for (int $$6 = 0; $$6 < 3; $$6++) {
-                  this.m[$$6] = dcz.a(this.s, $$6, $$4, $$1);
-                  this.n[$$6] = -1;
-                  this.o[$$6] = -1;
-                  if (this.m[$$6] < $$6 + 1) {
-                     this.m[$$6] = 0;
-                  }
-               }
-
-               for (int $$7 = 0; $$7 < 3; $$7++) {
-                  if (this.m[$$7] > 0) {
-                     List<dda> $$8 = this.a($$1x.K_(), $$1, $$7, this.m[$$7]);
-                     if ($$8 != null && !$$8.isEmpty()) {
-                        dda $$9 = $$8.get(this.s.a($$8.size()));
-                        this.n[$$7] = $$3.a($$9.a);
-                        this.o[$$7] = $$9.b;
-                     }
-                  }
-               }
-
-               this.d();
-            });
-         } else {
-            for (int $$2 = 0; $$2 < 3; $$2++) {
-               this.m[$$2] = 0;
-               this.n[$$2] = -1;
-               this.o[$$2] = -1;
-            }
+   protected void d(bsc $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new cty($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
    }
 
    @Override
-   public boolean a(cov $$0, int $$1) {
-      if ($$1 >= 0 && $$1 < this.m.length) {
-         cwn $$2 = this.q.a(0);
-         cwn $$3 = this.q.a(1);
-         int $$4 = $$1 + 1;
-         if (($$3.f() || $$3.M() < $$4) && !$$0.fV()) {
-            return false;
-         } else if (this.m[$$1] <= 0 || $$2.f() || ($$0.cr < $$4 || $$0.cr < this.m[$$1]) && !$$0.gj().d) {
-            return false;
-         } else {
-            this.r.a(($$5, $$6) -> {
-               cwn $$7 = $$2;
-               List<dda> $$8 = this.a($$5.K_(), $$2, $$1, this.m[$$1]);
-               if (!$$8.isEmpty()) {
-                  $$0.a($$2, $$4);
-                  if ($$2.a(cwr.rw)) {
-                     $$7 = $$2.a((dgf)cwr.vv);
-                     this.q.a(0, $$7);
-                  }
-
-                  for (dda $$9 : $$8) {
-                     $$7.a($$9.a, $$9.b);
-                  }
-
-                  $$3.a($$4, (bvf)$$0);
-                  if ($$3.f()) {
-                     this.q.a(1, cwn.j);
-                  }
-
-                  $$0.a(awj.ak);
-                  if ($$0 instanceof ard) {
-                     ap.j.a((ard)$$0, $$7, $$4);
-                  }
-
-                  this.q.e();
-                  this.t.a($$0.gr());
-                  this.a(this.q);
-                  $$5.a(null, $$6, avz.is, awa.e, 1.0F, $$5.A.i() * 0.1F + 0.9F);
-               }
-            });
-            return true;
-         }
-      } else {
-         af.b($$0.al() + " pressed invalid button id: " + $$1);
-         return false;
-      }
-   }
-
-   private List<dda> a(kf $$0, cwn $$1, int $$2, int $$3) {
-      this.s.b((long)(this.t.b() + $$2));
-      Optional<jv.c<dcx>> $$4 = $$0.e(mc.aO).a(awr.k);
-      if ($$4.isEmpty()) {
-         return List.of();
-      } else {
-         List<dda> $$5 = dcz.b(this.s, $$1, $$3, $$4.get().a());
-         if ($$1.a(cwr.rw) && $$5.size() > 1) {
-            $$5.remove(this.s.a($$5.size()));
-         }
-
-         return $$5;
-      }
-   }
-
-   public int l() {
-      cwn $$0 = this.q.a(1);
-      return $$0.f() ? 0 : $$0.M();
-   }
-
-   public int m() {
-      return this.t.b();
+   public boolean b(cow $$0) {
+      return this.r.a($$0);
    }
 
    @Override
-   public void a(cov $$0) {
-      super.a($$0);
-      this.r.a(($$1, $$2) -> this.a($$0, this.q));
-   }
-
-   @Override
-   public boolean b(cov $$0) {
-      return a(this.r, $$0, djm.fM);
-   }
-
-   @Override
-   public cwn b(cov $$0, int $$1) {
-      cwn $$2 = cwn.j;
-      ctx $$3 = this.k.get($$1);
+   public cwo b(cow $$0, int $$1) {
+      cwo $$2 = cwo.j;
+      cty $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwn $$4 = $$3.g();
+         cwo $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 == 0) {
-            if (!this.a($$4, 2, 38, true)) {
-               return cwn.j;
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cwo.j;
             }
-         } else if ($$1 == 1) {
-            if (!this.a($$4, 2, 38, true)) {
-               return cwn.j;
-            }
-         } else if ($$4.a(cwr.pg)) {
-            if (!this.a($$4, 1, 2, true)) {
-               return cwn.j;
-            }
-         } else {
-            if (this.k.get(0).h() || !this.k.get(0).a($$4)) {
-               return cwn.j;
-            }
-
-            cwn $$5 = $$4.c(1);
-            $$4.h(1);
-            this.k.get(0).e($$5);
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cwo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cwn.j);
+            $$3.e(cwo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.M() == $$2.M()) {
-            return cwn.j;
+            return cwo.j;
          }
 
          $$3.a($$0, $$4);
       }
 
       return $$2;
+   }
+
+   @Override
+   public void a(cow $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

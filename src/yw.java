@@ -1,18 +1,19 @@
-public enum yw {
-   a("serverbound"),
-   b("clientbound");
+import io.netty.buffer.ByteBuf;
 
-   private final String c;
+public interface yw<T extends vv> {
+   yy<? extends yw<T>> a();
 
-   private yw(final String $$0) {
-      this.c = $$0;
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   public yw a() {
-      return this == b ? a : b;
+   default boolean d() {
+      return false;
    }
 
-   public String b() {
-      return this.c;
+   static <B extends ByteBuf, T extends yw<?>> yn<B, T> a(yq<B, T> $$0, yo<B, T> $$1) {
+      return yn.a($$0, $$1);
    }
 }

@@ -1,65 +1,38 @@
-public class gbf extends gal {
-   private static final int a = 28;
-   private static final int b = 32;
-   private static final int c = 6;
-   private static final int d = 20;
-   private static final int e = 4;
-   private static final String f = "water_patch";
-   private static final String g = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
+public class gbf extends gcv {
+   private static final String a = "bell_body";
+   private final gfc b;
 
-   public gbf(gfa $$0) {
-      super($$0);
+   public gbf(gfc $$0) {
+      super($$0, gmh::d);
+      this.b = $$0.b("bell_body");
    }
 
-   private static void a(gfk $$0) {
-      int $$1 = 16;
-      int $$2 = 14;
-      int $$3 = 10;
-      $$0.a("bottom", gff.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gfc.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", gff.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gfc.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", gff.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gfc.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", gff.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gfc.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", gff.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gfc.a(0.0F, 4.0F, 9.0F));
-      int $$4 = 20;
-      int $$5 = 7;
-      int $$6 = 6;
-      float $$7 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gff.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gfc.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gff.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gfc.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfm $$2 = $$1.a("bell_body", gfh.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), gfe.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", gfh.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), gfe.a(-8.0F, -12.0F, -8.0F));
+      return gfi.a($$0, 32, 32);
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      a($$1);
-      return gfg.a($$0, 128, 64);
-   }
+   public void a(dtw $$0, float $$1) {
+      float $$2 = (float)$$0.a + $$1;
+      float $$3 = 0.0F;
+      float $$4 = 0.0F;
+      if ($$0.b) {
+         float $$5 = ayz.a($$2 / (float) Math.PI) / (4.0F + $$2 / 3.0F);
+         if ($$0.c == jn.c) {
+            $$3 = -$$5;
+         } else if ($$0.c == jn.d) {
+            $$3 = $$5;
+         } else if ($$0.c == jn.f) {
+            $$4 = -$$5;
+         } else if ($$0.c == jn.e) {
+            $$4 = $$5;
+         }
+      }
 
-   public static gfg b() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gff.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gfc.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gff.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gfc.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gff.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gfc.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gfg.a($$0, 128, 128);
-   }
-
-   public static gfg c() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      $$1.a("water_patch", gff.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gfc.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return gfg.a($$0, 0, 0);
+      this.b.e = $$3;
+      this.b.g = $$4;
    }
 }

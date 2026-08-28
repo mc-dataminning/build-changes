@@ -1,12 +1,15 @@
-public record adz(awd b) implements yv<abk> {
-   public static final ym<vl, adz> a = ym.a(awd.a, adz::b, adz::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+
+public record adz(List<dck> b) implements yw<abl> {
+   public static final yn<ByteBuf, adz> a = yn.a(dck.a.a(yl.a()), adz::b, adz::new);
 
    @Override
-   public yx<adz> a() {
-      return agd.am;
+   public yy<adz> a() {
+      return age.al;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 }

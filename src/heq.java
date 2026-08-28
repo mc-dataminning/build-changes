@@ -1,50 +1,145 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.Optional;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface heq {
-   Logger a = LogUtils.getLogger();
+public class heq extends hec implements hed, heu {
+   private static final Logger f = LogUtils.getLogger();
+   @Deprecated
+   public static final akv d = akv.b("textures/atlas/blocks.png");
+   @Deprecated
+   public static final akv e = akv.b("textures/atlas/particles.png");
+   private List<hel> g = List.of();
+   private List<her.a> h = List.of();
+   private Map<akv, her> i = Map.of();
+   @Nullable
+   private her j;
+   private final akv k;
+   private final int l;
+   private int m;
+   private int n;
+   private int o;
 
-   static heq create(Collection<ato<?>> $$0) {
-      return ($$1, $$2) -> {
-         auq $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         fes $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fes.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         Optional<hfz> $$11 = $$3.a(hfz.b);
-         hga $$12;
-         if ($$11.isPresent()) {
-            $$12 = $$11.get().a($$7.a(), $$7.b());
-            if (!ayy.c($$7.a(), $$12.a()) || !ayy.c($$7.b(), $$12.b())) {
-               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-               $$7.close();
-               return null;
-            }
-         } else {
-            $$12 = new hga($$7.a(), $$7.b());
-         }
-
-         return new heg($$1, $$12, $$7, $$3);
-      };
+   public heq(akv $$0) {
+      this.k = $$0;
+      this.l = RenderSystem.maxSupportedTextureSize();
    }
 
-   @Nullable
-   heg loadSprite(aku var1, aum var2);
+   public void a(hem.a $$0) {
+      f.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.k});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.m = $$0.b();
+      this.n = $$0.c();
+      this.o = $$0.d();
+      this.f();
+      this.a(false, this.o > 1);
+      this.i = Map.copyOf($$0.f());
+      this.j = this.i.get(heg.c());
+      if (this.j == null) {
+         throw new IllegalStateException("Atlas '" + this.k + "' (" + this.i.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<hel> $$1 = new ArrayList<>();
+         List<her.a> $$2 = new ArrayList<>();
+
+         for (her $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
+
+            try {
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.k);
+               $$6.a("Sprite", $$3);
+               throw new z($$5);
+            }
+
+            her.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
+            }
+         }
+
+         this.g = List.copyOf($$1);
+         this.h = List.copyOf($$2);
+      }
+   }
+
+   @Override
+   public void a(akv $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.o, this.m, this.n);
+      a($$1, $$2, this.i);
+   }
+
+   private static void a(Path $$0, String $$1, Map<akv, her> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<akv, her> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            her $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         }
+      } catch (IOException var10) {
+         f.warn("Failed to write file {}", $$3, var10);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c();
+
+      for (her.a $$0 : this.h) {
+         $$0.a();
+      }
+   }
+
+   @Override
+   public void e() {
+      this.d();
+   }
+
+   public her a(akv $$0) {
+      her $$1 = this.i.getOrDefault($$0, this.j);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
+   }
+
+   public void f() {
+      this.g.forEach(hel::close);
+      this.h.forEach(her.a::close);
+      this.g = List.of();
+      this.h = List.of();
+      this.i = Map.of();
+      this.j = null;
+   }
+
+   public akv g() {
+      return this.k;
+   }
+
+   public int h() {
+      return this.l;
+   }
+
+   int i() {
+      return this.m;
+   }
+
+   int j() {
+      return this.n;
+   }
 }

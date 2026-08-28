@@ -1,15 +1,27 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class asm implements art {
-   public static final art.a a = new art.a("join_world");
+public interface asm {
+   asm e = new asm() {
+      @Override
+      public CompletableFuture<arw> a(String $$0) {
+         return CompletableFuture.completedFuture(arw.a($$0));
+      }
 
-   @Override
-   public void a(Consumer<yv<?>> $$0) {
-      $$0.accept(aat.a);
+      @Override
+      public CompletableFuture<List<arw>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(arw::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public art.a a() {
-      return a;
+   default void b() {
    }
+
+   CompletableFuture<arw> a(String var1);
+
+   CompletableFuture<List<arw>> a(List<String> var1);
 }

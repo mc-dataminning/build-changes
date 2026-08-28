@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class hbb extends hba implements hat {
+   public coi c = new coi(com.c, cok.b, 1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hbb {
+   @Override
+   public coi a() {
+      return this.c;
+   }
 }

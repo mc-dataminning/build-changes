@@ -1,13 +1,96 @@
-import java.util.List;
+public class fvt {
+   private static final akv a = akv.b("alt");
+   private static final xm b = xm.a.a(a);
+   private static final fvt c = new fvt();
+   private final azh d = azh.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public class fvt extends fuy<csy> {
-   private static final aku G = aku.b("container/furnace/lit_progress");
-   private static final aku H = aku.b("container/furnace/burn_progress");
-   private static final aku I = aku.b("textures/gui/container/furnace.png");
-   private static final wo J = wo.c("gui.recipebook.toggleRecipes.smeltable");
-   private static final List<fyf.a> K = List.of(new fyf.a(fyl.b), new fyf.a(cwr.qC, dbe.e), new fyf.a(cwr.b, dbe.f), new fyf.a(cwr.rh, cwr.pf, dbe.g));
+   private fvt() {
+   }
 
-   public fvt(csy $$0, cou $$1, wo $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   public static fvt a() {
+      return c;
+   }
+
+   public wu a(fob $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(af.a(this.e, this.d));
+      }
+
+      return $$0.b().a(wp.b($$2.toString()).c(b), $$1, xm.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

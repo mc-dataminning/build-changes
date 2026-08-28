@@ -1,15 +1,83 @@
-public class cvg extends cwj {
-   protected cvg(cye $$0, axe<djk> $$1, float $$2, float $$3, cwj.a $$4) {
-      super($$0.a($$4, $$1, $$2, $$3));
+import java.util.Collection;
+import javax.annotation.Nullable;
+
+public class cvg extends cwk {
+   public cvg(cwk.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(cwn $$0, bvf $$1, bvf $$2) {
-      return true;
+   public boolean a(dww $$0, dgh $$1, ji $$2, cow $$3) {
+      if (!$$1.C) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bsi.a));
+      }
+
+      return false;
    }
 
    @Override
-   public void b(cwn $$0, bvf $$1, bvf $$2) {
-      $$0.a(2, $$2, bur.a);
+   public bsj a(dah $$0) {
+      cow $$1 = $$0.o();
+      dgh $$2 = $$0.q();
+      if (!$$2.C && $$1 != null) {
+         ji $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bsj.d;
+         }
+      }
+
+      return bsj.a;
+   }
+
+   private boolean a(cow $$0, dww $$1, dgi $$2, ji $$3, boolean $$4, cwo $$5) {
+      if (!$$0.gG()) {
+         return false;
+      } else {
+         jr<djl> $$6 = $$1.c();
+         dwx<djl, dww> $$7 = $$6.a().l();
+         Collection<dxy<?>> $$8 = $$7.d();
+         if ($$8.isEmpty()) {
+            a($$0, wp.a(this.l + ".empty", $$6.g()));
+            return false;
+         } else {
+            czb $$9 = $$5.a(kv.V);
+            if ($$9 == null) {
+               return false;
+            } else {
+               dxy<?> $$10 = $$9.a().get($$6);
+               if ($$4) {
+                  if ($$10 == null) {
+                     $$10 = $$8.iterator().next();
+                  }
+
+                  dww $$11 = a($$1, $$10, $$0.fY());
+                  $$2.a($$3, $$11, 18);
+                  a($$0, wp.a(this.l + ".update", $$10.f(), a($$11, $$10)));
+               } else {
+                  $$10 = a($$8, $$10, $$0.fY());
+                  $$5.b(kv.V, $$9.a($$6, $$10));
+                  a($$0, wp.a(this.l + ".select", $$10.f(), a($$1, $$10)));
+               }
+
+               return true;
+            }
+         }
+      }
+   }
+
+   private static <T extends Comparable<T>> dww a(dww $$0, dxy<T> $$1, boolean $$2) {
+      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? af.b($$0, $$1) : af.a($$0, $$1);
+   }
+
+   private static void a(cow $$0, wp $$1) {
+      ((are)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dww $$0, dxy<T> $$1) {
+      return $$1.b($$0.c($$1));
    }
 }

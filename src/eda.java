@@ -1,68 +1,71 @@
-public final class eda {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public class eda {
+   public static final aku<esb.a> a = a("temperature");
+   public static final aku<esb.a> b = a("vegetation");
+   public static final aku<esb.a> c = a("continentalness");
+   public static final aku<esb.a> d = a("erosion");
+   public static final aku<esb.a> e = a("temperature_large");
+   public static final aku<esb.a> f = a("vegetation_large");
+   public static final aku<esb.a> g = a("continentalness_large");
+   public static final aku<esb.a> h = a("erosion_large");
+   public static final aku<esb.a> i = a("ridge");
+   public static final aku<esb.a> j = a("offset");
+   public static final aku<esb.a> k = a("aquifer_barrier");
+   public static final aku<esb.a> l = a("aquifer_fluid_level_floodedness");
+   public static final aku<esb.a> m = a("aquifer_lava");
+   public static final aku<esb.a> n = a("aquifer_fluid_level_spread");
+   public static final aku<esb.a> o = a("pillar");
+   public static final aku<esb.a> p = a("pillar_rareness");
+   public static final aku<esb.a> q = a("pillar_thickness");
+   public static final aku<esb.a> r = a("spaghetti_2d");
+   public static final aku<esb.a> s = a("spaghetti_2d_elevation");
+   public static final aku<esb.a> t = a("spaghetti_2d_modulator");
+   public static final aku<esb.a> u = a("spaghetti_2d_thickness");
+   public static final aku<esb.a> v = a("spaghetti_3d_1");
+   public static final aku<esb.a> w = a("spaghetti_3d_2");
+   public static final aku<esb.a> x = a("spaghetti_3d_rarity");
+   public static final aku<esb.a> y = a("spaghetti_3d_thickness");
+   public static final aku<esb.a> z = a("spaghetti_roughness");
+   public static final aku<esb.a> A = a("spaghetti_roughness_modulator");
+   public static final aku<esb.a> B = a("cave_entrance");
+   public static final aku<esb.a> C = a("cave_layer");
+   public static final aku<esb.a> D = a("cave_cheese");
+   public static final aku<esb.a> E = a("ore_veininess");
+   public static final aku<esb.a> F = a("ore_vein_a");
+   public static final aku<esb.a> G = a("ore_vein_b");
+   public static final aku<esb.a> H = a("ore_gap");
+   public static final aku<esb.a> I = a("noodle");
+   public static final aku<esb.a> J = a("noodle_thickness");
+   public static final aku<esb.a> K = a("noodle_ridge_a");
+   public static final aku<esb.a> L = a("noodle_ridge_b");
+   public static final aku<esb.a> M = a("jagged");
+   public static final aku<esb.a> N = a("surface");
+   public static final aku<esb.a> O = a("surface_secondary");
+   public static final aku<esb.a> P = a("clay_bands_offset");
+   public static final aku<esb.a> Q = a("badlands_pillar");
+   public static final aku<esb.a> R = a("badlands_pillar_roof");
+   public static final aku<esb.a> S = a("badlands_surface");
+   public static final aku<esb.a> T = a("iceberg_pillar");
+   public static final aku<esb.a> U = a("iceberg_pillar_roof");
+   public static final aku<esb.a> V = a("iceberg_surface");
+   public static final aku<esb.a> W = a("surface_swamp");
+   public static final aku<esb.a> X = a("calcite");
+   public static final aku<esb.a> Y = a("gravel");
+   public static final aku<esb.a> Z = a("powder_snow");
+   public static final aku<esb.a> aa = a("packed_ice");
+   public static final aku<esb.a> ab = a("ice");
+   public static final aku<esb.a> ac = a("soul_sand_layer");
+   public static final aku<esb.a> ad = a("gravel_layer");
+   public static final aku<esb.a> ae = a("patch");
+   public static final aku<esb.a> af = a("netherrack");
+   public static final aku<esb.a> ag = a("nether_wart");
+   public static final aku<esb.a> ah = a("nether_state_selector");
 
-   private eda() {
+   private static aku<esb.a> a(String $$0) {
+      return aku.a(mc.aS, akv.b($$0));
    }
 
-   protected static ecu.c a(ecj $$0, ecj $$1, ecj $$2, edd $$3) {
-      dwv $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         eda.a $$8 = $$6 > 0.0 ? eda.a.a : eda.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = ayy.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azg $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = ayy.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
-
-   protected static enum a {
-      a(djm.rC.m(), djm.tI.m(), djm.c.m(), 0, 50),
-      b(djm.T.m(), djm.tH.m(), djm.rb.m(), -60, -8);
-
-      final dwv e;
-      final dwv f;
-      final dwv g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dwv $$0, final dwv $$1, final dwv $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public static esb a(js<esb.a> $$0, ede $$1, aku<esb.a> $$2) {
+      jr<esb.a> $$3 = $$0.b($$2);
+      return esb.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

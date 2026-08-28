@@ -1,46 +1,16 @@
-import javax.annotation.Nullable;
-
-public class afr implements yv<abk> {
-   public static final ym<vl, afr> a = yv.a(afr::a, afr::new);
-   private final int b;
-   @Nullable
-   private final tq c;
-
-   public afr(int $$0, @Nullable tq $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private afr(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a((un)this.c);
-   }
+public record afr(wp b, wp c) implements yw<abl> {
+   public static final yn<wa, afr> a = yn.a(wr.d, afr::b, wr.d, afr::e, afr::new);
 
    @Override
-   public yx<afr> a() {
-      return agd.bb;
+   public yy<afr> a() {
+      return age.ba;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   @Nullable
-   public tq e() {
+   public wp e() {
       return this.c;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
    }
 }

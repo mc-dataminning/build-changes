@@ -1,89 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class dhw {
-   public static final Codec<dhw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhw.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aks.c(mc.aI)).apply($$0, dhw::new)
-   );
-   public static final Codec<jr<dhw>> b = akq.a(mc.bc, a);
-   private final dhw.a c;
-   private final dhr.c<jr<dhi>> d;
+public class dhw extends dhn {
+   private static final MapCodec<jr<dhj>> d = dhj.c.fieldOf("biome");
+   public static final MapCodec<dhs.c<jr<dhj>>> b = dhs.c.a(d).fieldOf("biomes");
+   private static final MapCodec<jr<dhx>> e = dhx.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final MapCodec<dhw> c = Codec.mapEither(b, e).xmap(dhw::new, $$0 -> $$0.f);
+   private final Either<dhs.c<jr<dhj>>, jr<dhx>> f;
 
-   public dhw(dhw.a $$0, js<dhi> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
+   private dhw(Either<dhs.c<jr<dhj>>, jr<dhx>> $$0) {
+      this.f = $$0;
    }
 
-   public dhr.c<jr<dhi>> a() {
-      return this.d;
+   public static dhw a(dhs.c<jr<dhj>> $$0) {
+      return new dhw(Either.left($$0));
    }
 
-   public static Map<dhw.a, dhr.c<akt<dhi>>> b() {
-      return dhw.a.f.values().stream().collect(Collectors.toMap($$0 -> (dhw.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   public static dhw a(jr<dhx> $$0) {
+      return new dhw(Either.right($$0));
    }
 
-   public static record a(aku d, dhw.a.a e) {
-      public static final dhw.a a = new dhw.a(
-         aku.b("nether"),
-         new dhw.a.a() {
-            @Override
-            public <T> dhr.c<T> apply(Function<akt<dhi>, T> $$0) {
-               return new dhr.c<>(
-                  List.of(
-                     Pair.of(dhr.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dhp.ad)),
-                     Pair.of(dhr.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dhp.ag)),
-                     Pair.of(dhr.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dhp.af)),
-                     Pair.of(dhr.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dhp.ae)),
-                     Pair.of(dhr.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dhp.ah))
-                  )
-               );
-            }
-         }
+   private dhs.c<jr<dhj>> d() {
+      return (dhs.c<jr<dhj>>)this.f.map($$0 -> $$0, $$0 -> ((dhx)$$0.a()).a());
+   }
+
+   @Override
+   protected Stream<jr<dhj>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
+   }
+
+   @Override
+   protected MapCodec<? extends dhn> a() {
+      return c;
+   }
+
+   public boolean a(aku<dhx> $$0) {
+      Optional<jr<dhx>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
+   }
+
+   @Override
+   public jr<dhj> getNoiseBiome(int $$0, int $$1, int $$2, dhs.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @bag
+   public jr<dhj> a(dhs.h $$0) {
+      return this.d().a($$0);
+   }
+
+   @Override
+   public void a(List<String> $$0, ji $$1, dhs.f $$2) {
+      int $$3 = kc.a($$1.u());
+      int $$4 = kc.a($$1.v());
+      int $$5 = kc.a($$1.w());
+      dhs.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = dhs.a($$6.d());
+      float $$8 = dhs.a($$6.e());
+      float $$9 = dhs.a($$6.b());
+      float $$10 = dhs.a($$6.c());
+      float $$11 = dhs.a($$6.g());
+      double $$12 = (double)ecy.a($$11);
+      dhz $$13 = new dhz();
+      $$0.add(
+         "Biome builder PV: "
+            + dhz.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
       );
-      public static final dhw.a b = new dhw.a(aku.b("overworld"), new dhw.a.a() {
-         @Override
-         public <T> dhr.c<T> apply(Function<akt<dhi>, T> $$0) {
-            return dhw.a.a($$0);
-         }
-      });
-      static final Map<aku, dhw.a> f = Stream.of(a, b).collect(Collectors.toMap(dhw.a::b, $$0 -> (dhw.a)$$0));
-      public static final Codec<dhw.a> c = aku.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> dhr.c<T> a(Function<akt<dhi>, T> $$0) {
-         Builder<Pair<dhr.d, T>> $$1 = ImmutableList.builder();
-         new dhy().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new dhr.c<>($$1.build());
-      }
-
-      public Stream<akt<dhi>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<akt<dhi>>map(Pair::getSecond).distinct();
-      }
-
-      public aku b() {
-         return this.d;
-      }
-
-      public dhw.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> dhr.c<T> apply(Function<akt<dhi>, T> var1);
-      }
    }
 }

@@ -1,7 +1,7 @@
-public enum dyc implements azu {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dyc implements azv {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

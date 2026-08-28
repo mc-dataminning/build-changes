@@ -1,40 +1,25 @@
-public class ghz extends gke {
-   ghz(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class ghz extends gkg {
+   ghz(gfy $$0, double $$1, double $$2, double $$3, dww $$4) {
       super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+      this.a(fli.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(ji.a(this.g, this.h, this.i)).a(awu.a)) {
-         this.k();
-      }
+   public gjk b() {
+      return gjk.a;
    }
 
    @Override
-   public gji b() {
-      return gji.b;
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
-
-      public a(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghz $$8 = new ghz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements gjj<ll> {
+      public gjg a(ll $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghz($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

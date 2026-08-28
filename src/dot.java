@@ -1,19 +1,25 @@
-public class dot {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dwv $$0) {
-      return $$0.l();
+public class dot extends djv {
+   public static final MapCodec<dot> a = b(dot::new);
+   protected static final fbt b = djl.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dot> a() {
+      return a;
    }
 
-   public static int a(azg $$0) {
-      double $$1 = 1.0;
+   public dot(dwv.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected boolean b(dww $$0, dfm $$1, ji $$2) {
+      return $$0.a(awp.aO) || $$0.a(djn.ek) || super.b($$0, $$1, $$2);
    }
 }

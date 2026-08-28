@@ -1,23 +1,56 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+@FunctionalInterface
+public interface gok<T extends dty> {
+   goj<T> create(gok.a var1);
 
-public class gok<S extends dtx> implements dls.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = glr.a($$0.i(), $$0.aA_());
-         int $$4 = glr.a($$1.i(), $$1.aA_());
-         int $$5 = glt.a($$3);
-         int $$6 = glt.a($$4);
-         int $$7 = glt.b($$3);
-         int $$8 = glt.b($$4);
-         return glt.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
-   }
+   public static class a {
+      private final goi a;
+      private final gnb b;
+      private final hbl c;
+      private final gtb d;
+      private final gsb e;
+      private final gey f;
+      private final fob g;
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
+      public a(goi $$0, gnb $$1, hbl $$2, gtb $$3, gsb $$4, gey $$5, fob $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+      public goi a() {
+         return this.a;
+      }
+
+      public gnb b() {
+         return this.b;
+      }
+
+      public gsb c() {
+         return this.e;
+      }
+
+      public hbl d() {
+         return this.c;
+      }
+
+      public gtb e() {
+         return this.d;
+      }
+
+      public gey f() {
+         return this.f;
+      }
+
+      public gfc a(gfa $$0) {
+         return this.f.a($$0);
+      }
+
+      public fob g() {
+         return this.g;
+      }
    }
 }

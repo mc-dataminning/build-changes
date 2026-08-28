@@ -1,20 +1,20 @@
-public record agp(float b) implements yv<agf> {
-   public static final ym<vl, agp> a = yv.a(agp::a, agp::new);
+public record agp(xg.a b) implements yw<agg> {
+   public static final yn<vl, agp> a = yw.a(agp::a, agp::new);
 
    private agp(vl $$0) {
-      this($$0.readFloat());
+      this(xg.a.a($$0));
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b);
+      xg.a.a($$0, this.b);
    }
 
    @Override
-   public yx<agp> a() {
-      return agd.bt;
+   public yy<agp> a() {
+      return age.bs;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 }

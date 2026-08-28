@@ -1,79 +1,70 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class drn extends diw implements dmt {
+public class drn extends djl {
    public static final MapCodec<drn> a = b(drn::new);
-   public static final dxs<dye> b = dxl.bm;
+   private static final wp d = wp.c("container.stonecutter");
+   public static final dxt<jn> b = dnj.aF;
+   protected static final fbt c = djl.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<drn> a() {
       return a;
    }
 
-   protected drn(dwu.d $$0) {
+   public drn(dwv.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dye.b));
+      this.l(this.F.b().b(b, jn.c));
    }
 
    @Override
-   public dtx a(ji $$0, dwv $$1) {
-      return new dvp($$0, $$1);
+   public dww a(daf $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
-      dtx $$5 = $$1.c_($$2);
-      if ($$5 instanceof dvp) {
-         return (bsi)(((dvp)$$5).a($$3) ? bsi.a : bsi.e);
-      } else {
-         return bsi.e;
+   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awk.ay);
       }
+
+      return bsj.a;
+   }
+
+   @Nullable
+   @Override
+   protected bsl b(dww $$0, dgh $$1, ji $$2) {
+      return new bsr(($$2x, $$3, $$4) -> new cue($$2x, $$3, cso.a($$1, $$2)), d);
    }
 
    @Override
-   public void a(dgg $$0, ji $$1, dwv $$2, @Nullable bvf $$3, cwn $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            dtx $$5 = $$0.c_($$1);
-            if ($$5 instanceof dvp) {
-               ((dvp)$$5).a($$3);
-            }
-         }
-      }
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dww.a<djk, dwv> $$0) {
+   protected boolean g_(dww $$0) {
+      return true;
+   }
+
+   @Override
+   protected dww a(dww $$0, dqd $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dww a(dww $$0, dok $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwx.a<djl, dww> $$0) {
       $$0.a(b);
    }
 
    @Override
-   protected void a(dwv $$0, dgg $$1, ji $$2, djk $$3, @Nullable euf $$4, boolean $$5) {
-      if ($$1 instanceof arc) {
-         if ($$1.c_($$2) instanceof dvp $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.C();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((arc)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(arc $$0, dvp $$1) {
-      switch ($$1.u()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.A();
-         case d:
-      }
+   protected boolean a(dww $$0, etn $$1) {
+      return false;
    }
 }

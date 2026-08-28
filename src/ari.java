@@ -1,41 +1,60 @@
-import java.util.Comparator;
+import java.util.Objects;
 
-public class ari<T> {
-   private final String h;
-   private final Comparator<T> i;
-   private final long j;
-   public static final ari<bae> a = a("start", ($$0, $$1) -> 0);
-   public static final ari<bae> b = a("dragon", ($$0, $$1) -> 0);
-   public static final ari<dfm> c = a("player", Comparator.comparingLong(dfm::a));
-   public static final ari<dfm> d = a("forced", Comparator.comparingLong(dfm::a));
-   public static final ari<ji> e = a("portal", km::i, 300);
-   public static final ari<dfm> f = a("ender_pearl", Comparator.comparingLong(dfm::a), 40);
-   public static final ari<dfm> g = a("unknown", Comparator.comparingLong(dfm::a), 1);
+public final class ari<T> implements Comparable<ari<?>> {
+   private final arj<T> a;
+   private final int b;
+   private final T c;
+   private long d;
 
-   public static <T> ari<T> a(String $$0, Comparator<T> $$1) {
-      return new ari<>($$0, $$1, 0L);
+   protected ari(arj<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static <T> ari<T> a(String $$0, Comparator<T> $$1, int $$2) {
-      return new ari<>($$0, $$1, (long)$$2);
+   public int a(ari<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
+      } else {
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
+      }
    }
 
-   protected ari(String $$0, Comparator<T> $$1, long $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ari<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
    @Override
    public String toString() {
-      return this.h;
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
    }
 
-   public Comparator<T> a() {
-      return this.i;
+   public arj<T> a() {
+      return this.a;
    }
 
-   public long b() {
-      return this.j;
+   public int b() {
+      return this.b;
+   }
+
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
+
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

@@ -1,126 +1,122 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.EnumSet;
+import java.util.Optional;
 
-public class gor extends gob {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final fay k = new fay(0.0, -0.32F, 0.073F);
-   private final Map<gor.b, gct> l;
+public class gor implements goj<dup> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final gfc h;
+   private final gfc i;
+   private final gfc j;
+   private final gfc k;
+   private final gfc l;
+   private final gfc m;
+   private final gfc n;
+   private static final float o = 0.125F;
 
-   public gor(goi.a $$0) {
-      super($$0);
-      Stream<gor.b> $$1 = dyh.a().flatMap($$0x -> Arrays.stream(gor.a.values()).map($$1x -> new gor.b($$0x, $$1x)));
-      this.l = $$1.collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1x -> a($$0.f(), $$1x.a, $$1x.b)));
+   public gor(gok.a $$0) {
+      this($$0.f());
    }
 
-   public static gct a(gew $$0, dyh $$1, gor.a $$2) {
-      return new gct.a($$0.a(gez.a($$1, $$2)), gmf::g);
+   public gor(gey $$0) {
+      gfc $$1 = $$0.a(gfb.an);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      gfc $$2 = $$0.a(gfb.ao);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   @Override
-   protected float a() {
-      return 1.0F;
+   public static gfi b() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfg $$2 = new gfg(0.2F);
+      gfg $$3 = new gfg(-0.1F);
+      $$1.a(
+         "neck",
+         gfh.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         gfe.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      gfh $$4 = gfh.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, gfe.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, gfe.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return gfi.a($$0, 32, 32);
    }
 
-   @Override
-   protected float b() {
-      return 0.9F;
+   public static gfi c() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfh $$2 = gfh.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jn.c));
+      $$1.a("back", $$2, gfe.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, gfe.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, gfe.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, gfe.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return gfi.a($$0, 16, 16);
    }
 
-   private static void a(ffs $$0, float $$1) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   protected void a(ffs $$0, float $$1, dwv $$2) {
-      a($$0, $$1);
-   }
-
-   @Override
-   protected gct a(dwv $$0, dyh $$1) {
-      gor.a $$2 = gor.a.a($$0);
-      return this.l.get(new gor.b($$1, $$2));
-   }
-
-   @Override
-   protected hgt a(dyh $$0) {
-      return gmq.b($$0);
-   }
-
-   @Override
-   protected fay c() {
-      return k;
-   }
-
-   public static void a(ffs $$0, glv $$1, int $$2, int $$3, gct $$4, hgt $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(1.0F, -1.0F, -1.0F);
-      ffw $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static gfg a(gor.a $$0) {
-      gfi $$1 = new gfi();
-      gfk $$2 = $$1.a();
-      $$2.a("board", gff.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gfc.a);
-      if ($$0 == gor.a.a) {
-         $$2.a("plank", gff.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gfc.a);
-      }
-
-      if ($$0 == gor.a.a || $$0 == gor.a.b) {
-         gfk $$3 = $$2.a("normalChains", gff.c(), gfc.a);
-         $$3.a("chainL1", gff.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfc.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainL2", gff.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfc.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-         $$3.a("chainR1", gff.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfc.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainR2", gff.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfc.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      }
-
-      if ($$0 == gor.a.c) {
-         $$2.a("vChains", gff.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gfc.a);
-      }
-
-      return gfg.a($$1, 64, 32);
-   }
-
-   public static enum a implements azu {
-      a("wall"),
-      b("ceiling"),
-      c("ceiling_middle");
-
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public static gor.a a(dwv $$0) {
-         if ($$0.b() instanceof dkk) {
-            return $$0.c(dxl.b) ? c : b;
-         } else {
-            return a;
+   private static hgy a(Optional<cwk> $$0) {
+      if ($$0.isPresent()) {
+         hgy $$1 = gms.a(dur.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
          }
       }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+      return gms.q;
    }
 
-   public static record b(dyh a, gor.a b) {
+   public void a(dup $$0, float $$1, fft $$2, glx $$3, int $$4, int $$5) {
+      $$2.a();
+      jn $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dup.a $$7 = $$0.h;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().ad() - $$0.g) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dup.a.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (ayz.b($$10) + 0.5F) * ayz.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = ayz.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = ayz.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      this.b($$2, $$3, $$4, $$5, $$0.s());
+      $$2.b();
+   }
+
+   public void a(fft $$0, glx $$1, int $$2, int $$3, dvf $$4) {
+      this.b($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private void b(fft $$0, glx $$1, int $$2, int $$3, dvf $$4) {
+      ffx $$5 = gms.p.a($$1, gmh::d);
+      this.h.a($$0, $$5, $$2, $$3);
+      this.m.a($$0, $$5, $$2, $$3);
+      this.n.a($$0, $$5, $$2, $$3);
+      this.a(this.i, $$0, $$1, $$2, $$3, a($$4.e()));
+      this.a(this.j, $$0, $$1, $$2, $$3, a($$4.b()));
+      this.a(this.k, $$0, $$1, $$2, $$3, a($$4.c()));
+      this.a(this.l, $$0, $$1, $$2, $$3, a($$4.d()));
+   }
+
+   private void a(gfc $$0, fft $$1, glx $$2, int $$3, int $$4, hgy $$5) {
+      $$0.a($$1, $$5.a($$2, gmh::d), $$3, $$4);
    }
 }

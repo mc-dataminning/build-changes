@@ -1,276 +1,136 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.math.Fraction;
+import javax.annotation.Nullable;
 
-public class cva extends cwj {
-   public static final int a = 4;
-   public static final int b = 3;
-   public static final int c = 12;
-   public static final int d = 11;
-   private static final int m = axj.a(1.0F, 1.0F, 0.33F, 0.33F);
-   private static final int n = axj.a(1.0F, 0.44F, 0.53F, 1.0F);
-   private static final int o = 10;
-   private static final int p = 2;
-   private static final int q = 200;
+public class cva extends cwk implements cvj {
+   private final esx a;
 
-   public cva(cwj.a $$0) {
-      super($$0);
-   }
-
-   public static float c(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P, cyr.a);
-      return $$1.f().floatValue();
+   public cva(esx $$0, cwk.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(cwn $$0, ctx $$1, csk $$2, cov $$3) {
-      cyr $$4 = $$0.a(kv.P);
-      if ($$4 == null) {
-         return false;
+   public bsj a(dgh $$0, cow $$1, bsi $$2) {
+      cwo $$3 = $$1.b($$2);
+      fav $$4 = a($$0, $$1, this.a == esz.a ? dfp.b.b : dfp.b.a);
+      if ($$4.d() == fax.a.a) {
+         return bsj.e;
+      } else if ($$4.d() != fax.a.b) {
+         return bsj.e;
       } else {
-         cwn $$5 = $$1.g();
-         cyr.a $$6 = new cyr.a($$4);
-         if ($$2 == csk.a && !$$5.f()) {
-            if ($$6.a($$1, $$3) > 0) {
-               b($$3);
-            } else {
-               c($$3);
-            }
-
-            $$0.b(kv.P, $$6.d());
-            this.a($$3);
-            return true;
-         } else if ($$2 == csk.b && $$5.f()) {
-            cwn $$7 = $$6.b();
-            if ($$7 != null) {
-               cwn $$8 = $$1.d($$7);
-               if ($$8.M() > 0) {
-                  $$6.a($$8);
-               } else {
-                  a((buj)$$3);
-               }
-            }
-
-            $$0.b(kv.P, $$6.d());
-            this.a($$3);
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(cwn $$0, cwn $$1, ctx $$2, csk $$3, cov $$4, bvx $$5) {
-      if ($$3 == csk.a && $$1.f()) {
-         a($$0, -1);
-         return false;
-      } else {
-         cyr $$6 = $$0.a(kv.P);
-         if ($$6 == null) {
-            return false;
-         } else {
-            cyr.a $$7 = new cyr.a($$6);
-            if ($$3 == csk.a && !$$1.f()) {
-               if ($$2.b($$4) && $$7.a($$1) > 0) {
-                  b($$4);
-               } else {
-                  c($$4);
-               }
-
-               $$0.b(kv.P, $$7.d());
-               this.a($$4);
-               return true;
-            } else if ($$3 == csk.b && $$1.f()) {
-               if ($$2.b($$4)) {
-                  cwn $$8 = $$7.b();
-                  if ($$8 != null) {
-                     a((buj)$$4);
-                     $$5.a($$8);
+         ji $$5 = $$4.b();
+         jn $$6 = $$4.c();
+         ji $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bsj.d;
+         } else if (this.a == esz.a) {
+            dww $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof djt $$9) {
+               cwo $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.f()) {
+                  $$1.b(awk.c.b(this));
+                  $$9.as_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, ebs.y, $$5);
+                  cwo $$11 = cwr.a($$3, $$1, $$10);
+                  if (!$$0.C) {
+                     ap.k.a((are)$$1, $$10);
                   }
+
+                  return bsj.a.a($$11);
+               }
+            }
+
+            return bsj.d;
+         } else {
+            dww $$12 = $$0.a_($$5);
+            ji $$13 = $$12.b() instanceof doe && this.a == esz.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof are) {
+                  ap.z.a((are)$$1, $$13, $$3);
                }
 
-               $$0.b(kv.P, $$7.d());
-               this.a($$4);
-               return true;
+               $$1.b(awk.c.b(this));
+               cwo $$14 = cwr.a($$3, $$1, b($$3, $$1));
+               return bsj.a.a($$14);
             } else {
-               a($$0, -1);
-               return false;
+               return bsj.d;
             }
          }
       }
    }
 
-   @Override
-   public bsi a(dgg $$0, cov $$1, bsh $$2) {
-      $$1.c($$2);
-      return bsi.a;
-   }
-
-   private void a(dgg $$0, cov $$1, cwn $$2) {
-      if (this.a($$2, $$1)) {
-         a($$0, $$1);
-         $$1.b(awj.c.b(this));
-      }
+   public static cwo b(cwo $$0, cow $$1) {
+      return !$$1.fV() ? new cwo(cws.rf) : $$0;
    }
 
    @Override
-   public boolean d(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P, cyr.a);
-      return $$1.f().compareTo(Fraction.ZERO) > 0;
+   public void a(@Nullable cow $$0, dgh $$1, cwo $$2, ji $$3) {
    }
 
    @Override
-   public int e(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P, cyr.a);
-      return Math.min(1 + ayy.a($$1.f(), 12), 13);
-   }
+   public boolean a(@Nullable cow $$0, dgh $$1, ji $$2, @Nullable fav $$3) {
+      if (!(this.a instanceof esw $$4)) {
+         return false;
+      } else {
+         djl $$7;
+         boolean $$8;
+         dww $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.l() && !$$8) {
+               if ($$7 instanceof doe $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
+               }
 
-   @Override
-   public int f(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P, cyr.a);
-      return $$1.f().compareTo(Fraction.ONE) >= 0 ? m : n;
-   }
+               var10000 = false;
+               break label82;
+            }
 
-   public static void a(cwn $$0, int $$1) {
-      cyr $$2 = $$0.a(kv.P);
-      if ($$2 != null) {
-         cyr.a $$3 = new cyr.a($$2);
-         $$3.a($$1);
-         $$0.b(kv.P, $$3.d());
-      }
-   }
+            var10000 = true;
+         }
 
-   public static boolean g(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P);
-      return $$1 != null && $$1.h() != -1;
-   }
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.b().a($$3.c()), null);
+         } else if ($$1.G_().i() && this.a.a(awv.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, awa.ju, awb.e, 0.5F, 2.6F + ($$1.A.i() - $$1.A.i()) * 0.8F);
 
-   public static int h(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P, cyr.a);
-      return $$1.h();
-   }
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(lt.Z, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
 
-   public static cwn i(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P);
-      return $$1 != null && $$1.h() != -1 ? $$1.a($$1.h()) : cwn.j;
-   }
-
-   public static int j(cwn $$0) {
-      cyr $$1 = $$0.a(kv.P, cyr.a);
-      return $$1.a();
-   }
-
-   private boolean a(cwn $$0, cov $$1) {
-      cyr $$2 = $$0.a(kv.P);
-      if ($$2 != null && !$$2.g()) {
-         Optional<cwn> $$3 = a($$0, $$1, $$2);
-         if ($$3.isPresent()) {
-            $$1.a($$3.get(), true);
             return true;
          } else {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
+            if ($$7 instanceof doe $$15 && this.a == esz.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
 
-   private static Optional<cwn> a(cwn $$0, cov $$1, cyr $$2) {
-      cyr.a $$3 = new cyr.a($$2);
-      cwn $$4 = $$3.b();
-      if ($$4 != null) {
-         a((buj)$$1);
-         $$0.b(kv.P, $$3.d());
-         return Optional.of($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
+            if (!$$1.C && $$8 && !$$6.n()) {
+               $$1.b($$2, true);
+            }
 
-   @Override
-   public void a(dgg $$0, bvf $$1, cwn $$2, int $$3) {
-      if ($$1 instanceof cov $$4) {
-         int $$5 = this.a($$2, $$1);
-         boolean $$6 = $$3 == $$5;
-         if ($$6 || $$3 < $$5 - 10 && $$3 % 2 == 0) {
-            this.a($$0, $$4, $$2);
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.y().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
          }
       }
    }
 
-   @Override
-   public int a(cwn $$0, bvf $$1) {
-      return 200;
-   }
-
-   @Override
-   public cwp b(cwn $$0) {
-      return cwp.k;
-   }
-
-   @Override
-   public Optional<cuh> k(cwn $$0) {
-      return !$$0.b(kv.r) && !$$0.b(kv.q) ? Optional.ofNullable($$0.a(kv.P)).map(cug::new) : Optional.empty();
-   }
-
-   @Override
-   public void a(cla $$0) {
-      cyr $$1 = $$0.l().a(kv.P);
-      if ($$1 != null) {
-         $$0.l().b(kv.P, cyr.a);
-         cwq.a($$0, $$1.d());
-      }
-   }
-
-   public static List<cva> b() {
-      return Stream.of(cwr.rB, cwr.rC, cwr.rD, cwr.rE, cwr.rF, cwr.rG, cwr.rH, cwr.rI, cwr.rJ, cwr.rK, cwr.rL, cwr.rR, cwr.rO, cwr.rP, cwr.rQ, cwr.rN, cwr.rM)
-         .map($$0 -> (cva)$$0)
-         .toList();
-   }
-
-   public static cwj a(cvk $$0) {
-      return switch ($$0) {
-         case a -> cwr.rC;
-         case b -> cwr.rD;
-         case c -> cwr.rE;
-         case d -> cwr.rF;
-         case e -> cwr.rG;
-         case f -> cwr.rH;
-         case g -> cwr.rI;
-         case h -> cwr.rJ;
-         case i -> cwr.rK;
-         case j -> cwr.rL;
-         case l -> cwr.rN;
-         case m -> cwr.rO;
-         case n -> cwr.rP;
-         case o -> cwr.rQ;
-         case p -> cwr.rR;
-         case k -> cwr.rM;
-      };
-   }
-
-   private static void a(buj $$0) {
-      $$0.a(avz.ds, 0.8F, 0.8F + $$0.dW().H_().i() * 0.4F);
-   }
-
-   private static void b(buj $$0) {
-      $$0.a(avz.dq, 0.8F, 0.8F + $$0.dW().H_().i() * 0.4F);
-   }
-
-   private static void c(buj $$0) {
-      $$0.a(avz.dr, 1.0F, 1.0F);
-   }
-
-   private static void a(dgg $$0, buj $$1) {
-      $$0.a(null, $$1.dw(), avz.dp, awa.h, 0.8F, 0.8F + $$1.dW().H_().i() * 0.4F);
-   }
-
-   private void a(cov $$0) {
-      csa $$1 = $$0.cd;
-      if ($$1 != null) {
-         $$1.a($$0.gi());
-      }
+   protected void a(@Nullable cow $$0, dgi $$1, ji $$2) {
+      avz $$3 = this.a.a(awv.b) ? awa.dg : awa.dd;
+      $$1.a($$0, $$2, $$3, awb.e, 1.0F, 1.0F);
+      $$1.a($$0, ebs.z, $$2);
    }
 }

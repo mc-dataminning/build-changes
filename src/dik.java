@@ -1,109 +1,103 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dik extends dmh {
-   public static final MapCodec<dik> a = b(dik::new);
-   public static final dxs<jn> b = dni.aF;
-   private static final fbs c = djk.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final fbs d = djk.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final fbs e = djk.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final fbs f = djk.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final fbs g = djk.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final fbs h = djk.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final fbs i = djk.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final fbs j = fbp.a(c, d, e, f);
-   private static final fbs k = fbp.a(c, g, h, i);
-   private static final wo l = wo.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public class dik extends dij implements dqr {
+   public static final MapCodec<dik> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), t())
+            .apply($$0, dik::new)
+   );
+   public static final dxn c = dxm.J;
+   public static final dxt<jn> d = dxm.S;
+   private final float k;
+   private final float l;
+   protected final fbt e;
+   protected final fbt f;
+   protected final fbt g;
+   protected final fbt h;
+   protected final fbt i;
+   protected final fbt j;
 
    @Override
    public MapCodec<dik> a() {
-      return a;
+      return b;
    }
 
-   public dik(dwu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jn.c));
+   public dik(float $$0, float $$1, dwv.d $$2) {
+      super($$2);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, jn.b));
+      this.i = djl.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
+      this.j = djl.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
+      this.e = djl.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
+      this.f = djl.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
+      this.g = djl.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
+      this.h = djl.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
+      this.k = $$0;
+      this.l = $$1;
    }
 
    @Override
-   public dwv a(dae $$0) {
-      return this.m().b(b, $$0.g().h());
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      jn $$4 = $$0.c(d);
+      switch ($$4) {
+         case c:
+            return this.e;
+         case d:
+            return this.f;
+         case f:
+            return this.g;
+         case e:
+            return this.h;
+         case a:
+            return this.j;
+         case b:
+         default:
+            return this.i;
+      }
    }
 
    @Override
-   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awj.aC);
+   protected boolean a(dww $$0, dgk $$1, ji $$2) {
+      jn $$3 = $$0.c(d);
+      ji $$4 = $$2.a($$3.g());
+      return $$1.a_($$4).c($$1, $$4, $$3);
+   }
+
+   @Override
+   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, esz.c, esz.c.a($$1));
       }
 
-      return bsi.a;
+      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? djn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Nullable
    @Override
-   protected bsk b(dwv $$0, dgg $$1, ji $$2) {
-      return new bsq(($$2x, $$3, $$4) -> new csd($$2x, $$3, csn.a($$1, $$2)), l);
+   public dww a(daf $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == esz.c)).b(d, $$0.k());
    }
 
    @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      jn $$4 = $$0.c(b);
-      return $$4.o() == jn.a.a ? j : k;
+   protected dww a(dww $$0, dqd $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected void a(ckz $$0) {
-      $$0.b(2.0F, 40);
+   protected dww a(dww $$0, dok $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(dgg $$0, ji $$1, dwv $$2, dwv $$3, ckz $$4) {
-      if (!$$4.bb()) {
-         $$0.c(1031, $$1, 0);
-      }
+   protected esy b_(dww $$0) {
+      return $$0.c(c) ? esz.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public void a(dgg $$0, ji $$1, ckz $$2) {
-      if (!$$2.bb()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bsz a(buj $$0) {
-      return $$0.dX().b($$0);
-   }
-
-   @Nullable
-   public static dwv e(dwv $$0) {
-      if ($$0.a(djm.hp)) {
-         return djm.hq.m().b(b, $$0.c(b));
-      } else {
-         return $$0.a(djm.hq) ? djm.hr.m().b(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   protected dwv a(dwv $$0, dqc $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dwv $$0, etm $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dwv $$0, dfl $$1, ji $$2) {
-      return $$0.a($$1, $$2).ak;
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(c, d);
    }
 }

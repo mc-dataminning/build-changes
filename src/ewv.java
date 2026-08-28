@@ -1,125 +1,95 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class ewv extends exc {
-   public static final axe<enk> a = axa.l;
-   public static final jr<eum> b = eun.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<ewv> f = RecordCodecBuilder.mapCodec(
+public class ewv extends exd {
+   public static final int a = 0;
+   public static final MapCodec<ewv> b = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  axe.a(mc.aU).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  eum.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  dcy.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  ezw.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
                )
             )
             .apply($$0, ewv::new)
    );
-   private final axe<enk> h;
-   private final jr<eum> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final jr<dcy> c;
+   private final ezv d;
+   private final int e;
 
-   ewv(List<eyy> $$0, axe<enk> $$1, jr<eum> $$2, byte $$3, int $$4, boolean $$5) {
+   ewv(List<eyz> $$0, jr<dcy> $$1, ezv $$2, int $$3) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public exe<ewv> b() {
-      return exf.q;
+   public exf<ewv> b() {
+      return exg.m;
    }
 
    @Override
-   public Set<bah<?>> a() {
-      return Set.of(eyj.f);
+   public Set<bai<?>> a() {
+      return Sets.union(ImmutableSet.of(eyk.d), this.d.a());
+   }
+
+   private boolean c() {
+      return this.e > 0;
    }
 
    @Override
-   public cwn a(cwn $$0, evp $$1) {
-      if (!$$0.a(cwr.vi)) {
-         return $$0;
-      } else {
-         fay $$2 = $$1.c(eyj.f);
-         if ($$2 != null) {
-            arc $$3 = $$1.d();
-            ji $$4 = $$3.a(this.h, ji.a((kb)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cwn $$5 = cxa.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cxa.a($$3, $$5);
-               eur.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+   public cwo a(cwo $$0, evq $$1) {
+      buk $$2 = $$1.c(eyk.d);
+      if ($$2 instanceof bvg $$3) {
+         int $$4 = dda.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
          }
 
-         return $$0;
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
+
+      return $$0;
    }
 
-   public static ewv.a c() {
-      return new ewv.a();
+   public static ewv.a a(jt.a $$0, ezv $$1) {
+      jt.b<dcy> $$2 = $$0.d(mc.aO);
+      return new ewv.a($$2.b(ddd.s), $$1);
    }
 
-   public static class a extends exc.a<ewv.a> {
-      private axe<enk> a;
-      private jr<eum> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static class a extends exd.a<ewv.a> {
+      private final jr<dcy> a;
+      private final ezv b;
+      private int c = 0;
 
-      public a() {
-         this.a = ewv.a;
-         this.b = ewv.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      public a(jr<dcy> $$0, ezv $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
       protected ewv.a a() {
          return this;
       }
 
-      public ewv.a a(axe<enk> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public ewv.a a(jr<eum> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public ewv.a a(byte $$0) {
+      public ewv.a a(int $$0) {
          this.c = $$0;
          return this;
       }
 
-      public ewv.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ewv.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public exd b() {
-         return new ewv(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public exe b() {
+         return new ewv(this.g(), this.a, this.b, this.c);
       }
    }
 }

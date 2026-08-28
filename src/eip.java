@@ -1,26 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eip implements eia {
+public class eip implements eib {
    public static final Codec<eip> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dwv.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dwv.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               brn.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eip::new)
+      $$0 -> $$0.group(Codec.list(eij.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eip::new)
    );
-   public final dwv b;
-   public final dwv c;
-   private final brn d;
+   public final List<eij.a> b;
 
-   public eip(dwv $$0, dwv $$1, brn $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public eip(dww $$0, dww $$1) {
+      this(ImmutableList.of(eij.a(new eqr($$0), $$1)));
    }
 
-   public brn a() {
-      return this.d;
+   public eip(List<eij.a> $$0) {
+      this.b = $$0;
    }
 }

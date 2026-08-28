@@ -45,7 +45,7 @@ import org.slf4j.Logger;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
-public class vi extends SimpleChannelInboundHandler<yv<?>> {
+public class vi extends SimpleChannelInboundHandler<yw<?>> {
    private static final float h = 0.75F;
    private static final Logger i = LogUtils.getLogger();
    public static final Marker a = MarkerFactory.getMarker("NETWORK");
@@ -61,16 +61,16 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
    public static final Supplier<DefaultEventLoopGroup> g = Suppliers.memoize(
       () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
    );
-   private static final vw<ain> j = aim.b;
-   private final yw k;
+   private static final vx<aio> j = ain.b;
+   private final yx k;
    private volatile boolean l = true;
    private final Queue<Consumer<vi>> m = Queues.newConcurrentLinkedQueue();
    private Channel n;
    private SocketAddress o;
    @Nullable
-   private volatile vu p;
+   private volatile vv p;
    @Nullable
-   private volatile vu q;
+   private volatile vv q;
    @Nullable
    private vk r;
    private boolean s;
@@ -86,7 +86,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
    @Nullable
    vb B;
 
-   public vi(yw $$0) {
+   public vi(yx $$0) {
       this.k = $$0;
    }
 
@@ -100,11 +100,11 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
    }
 
    public void channelInactive(ChannelHandlerContext $$0) {
-      this.a(wo.c("disconnect.endOfStream"));
+      this.a(wp.c("disconnect.endOfStream"));
    }
 
    public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      if ($$1 instanceof wb) {
+      if ($$1 instanceof wc) {
          i.debug("Skipping packet due to errors", $$1.getCause());
       } else {
          boolean $$2 = !this.z;
@@ -112,10 +112,10 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
          if (this.n.isOpen()) {
             if ($$1 instanceof TimeoutException) {
                i.debug("Timeout", $$1);
-               this.a(wo.c("disconnect.timeout"));
+               this.a(wp.c("disconnect.timeout"));
             } else {
-               wo $$3 = wo.a("disconnect.genericReason", "Internal Exception: " + $$1);
-               vu $$4 = this.q;
+               wp $$3 = wp.a("disconnect.genericReason", "Internal Exception: " + $$1);
+               vv $$4 = this.q;
                vk $$5;
                if ($$4 != null) {
                   $$5 = $$4.a($$3, $$1);
@@ -125,9 +125,9 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
 
                if ($$2) {
                   i.debug("Failed to sent packet", $$1);
-                  if (this.g() == yw.b) {
-                     yv<?> $$7 = (yv<?>)(this.l ? new ait($$3) : new ze($$3));
-                     this.a($$7, vv.a(() -> this.a($$5)));
+                  if (this.g() == yx.b) {
+                     yw<?> $$7 = (yw<?>)(this.l ? new aiu($$3) : new zf($$3));
+                     this.a($$7, vw.a(() -> this.a($$5)));
                   } else {
                      this.a($$5);
                   }
@@ -142,21 +142,21 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   protected void a(ChannelHandlerContext $$0, yv<?> $$1) {
+   protected void a(ChannelHandlerContext $$0, yw<?> $$1) {
       if (this.n.isOpen()) {
-         vu $$2 = this.q;
+         vv $$2 = this.q;
          if ($$2 == null) {
             throw new IllegalStateException("Received a packet before the packet listener was initialized");
          } else {
             if ($$2.a($$1)) {
                try {
                   a($$1, $$2);
-               } catch (alg var5) {
+               } catch (alh var5) {
                } catch (RejectedExecutionException var6) {
-                  this.a(wo.c("multiplayer.disconnect.server_shutdown"));
+                  this.a(wp.c("multiplayer.disconnect.server_shutdown"));
                } catch (ClassCastException var7) {
                   i.error("Received {} that couldn't be processed", $$1.getClass(), var7);
-                  this.a(wo.c("multiplayer.disconnect.invalid_packet"));
+                  this.a(wp.c("multiplayer.disconnect.invalid_packet"));
                }
 
                this.u++;
@@ -165,13 +165,13 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   private static <T extends vu> void a(yv<T> $$0, vu $$1) {
+   private static <T extends vv> void a(yw<T> $$0, vv $$1) {
       $$0.a((T)$$1);
    }
 
-   private void b(vw<?> $$0, vu $$1) {
+   private void b(vx<?> $$0, vv $$1) {
       Validate.notNull($$1, "packetListener", new Object[0]);
-      yw $$2 = $$1.a();
+      yx $$2 = $$1.a();
       if ($$2 != this.k) {
          throw new IllegalStateException("Trying to set listener for wrong side: connection is " + this.k + ", but listener is " + $$2);
       } else {
@@ -194,17 +194,17 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   public <T extends vu> void a(vw<T> $$0, T $$1) {
+   public <T extends vv> void a(vx<T> $$0, T $$1) {
       this.b($$0, $$1);
       if ($$0.b() != this.f()) {
          throw new IllegalStateException("Invalid inbound protocol: " + $$0.a());
       } else {
          this.q = $$1;
          this.p = null;
-         wd.b $$2 = wd.a($$0);
-         yu $$3 = $$0.d();
+         we.b $$2 = we.a($$0);
+         yv $$3 = $$0.d();
          if ($$3 != null) {
-            vq $$4 = new vq($$3);
+            vr $$4 = new vr($$3);
             $$2 = $$2.andThen($$1x -> $$1x.pipeline().addAfter("decoder", "bundler", $$4));
          }
 
@@ -212,14 +212,14 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   public void a(vw<?> $$0) {
+   public void a(vx<?> $$0) {
       if ($$0.b() != this.g()) {
          throw new IllegalStateException("Invalid outbound protocol: " + $$0.a());
       } else {
-         wd.d $$1 = wd.b($$0);
-         yu $$2 = $$0.d();
+         we.d $$1 = we.b($$0);
+         yv $$2 = $$0.d();
          if ($$2 != null) {
-            vr $$3 = new vr($$2);
+            vs $$3 = new vs($$2);
             $$1 = $$1.andThen($$1x -> $$1x.pipeline().addAfter("encoder", "unbundler", $$3));
          }
 
@@ -228,50 +228,50 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   public void a(vu $$0) {
+   public void a(vv $$0) {
       if (this.q != null) {
          throw new IllegalStateException("Listener already set");
-      } else if (this.k == yw.a && $$0.a() == yw.a && $$0.b() == j.a()) {
+      } else if (this.k == yx.a && $$0.a() == yx.a && $$0.b() == j.a()) {
          this.q = $$0;
       } else {
          throw new IllegalStateException("Invalid initial listener");
       }
    }
 
-   public void a(String $$0, int $$1, ajp $$2) {
-      this.a($$0, $$1, ajv.b, ajv.d, $$2, aij.a);
+   public void a(String $$0, int $$1, ajq $$2) {
+      this.a($$0, $$1, ajw.b, ajw.d, $$2, aik.a);
    }
 
-   public void a(String $$0, int $$1, aip $$2) {
-      this.a($$0, $$1, aiw.b, aiw.d, $$2, aij.b);
+   public void a(String $$0, int $$1, aiq $$2) {
+      this.a($$0, $$1, aix.b, aix.d, $$2, aik.b);
    }
 
-   public <S extends wa, C extends vf> void a(String $$0, int $$1, vw<S> $$2, vw<C> $$3, C $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5 ? aij.c : aij.b);
+   public <S extends wb, C extends vf> void a(String $$0, int $$1, vx<S> $$2, vx<C> $$3, C $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 ? aik.c : aik.b);
    }
 
-   private <S extends wa, C extends vf> void a(String $$0, int $$1, vw<S> $$2, vw<C> $$3, C $$4, aij $$5) {
+   private <S extends wb, C extends vf> void a(String $$0, int $$1, vx<S> $$2, vx<C> $$3, C $$4, aik $$5) {
       if ($$2.a() != $$3.a()) {
          throw new IllegalStateException("Mismatched initial protocols");
       } else {
          this.p = $$4;
          this.a((Consumer<vi>)($$6 -> {
             this.a($$3, $$4);
-            $$6.b(new aik(ab.b().e(), $$0, $$1, $$5), null, true);
+            $$6.b(new ail(ab.b().e(), $$0, $$1, $$5), null, true);
             this.a($$2);
          }));
       }
    }
 
-   public void a(yv<?> $$0) {
+   public void a(yw<?> $$0) {
       this.a($$0, null);
    }
 
-   public void a(yv<?> $$0, @Nullable vv $$1) {
+   public void a(yw<?> $$0, @Nullable vw $$1) {
       this.a($$0, $$1, true);
    }
 
-   public void a(yv<?> $$0, @Nullable vv $$1, boolean $$2) {
+   public void a(yw<?> $$0, @Nullable vw $$1, boolean $$2) {
       if (this.i()) {
          this.r();
          this.b($$0, $$1, $$2);
@@ -289,7 +289,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   private void b(yv<?> $$0, @Nullable vv $$1, boolean $$2) {
+   private void b(yw<?> $$0, @Nullable vw $$1, boolean $$2) {
       this.v++;
       if (this.n.eventLoop().inEventLoop()) {
          this.c($$0, $$1, $$2);
@@ -298,14 +298,14 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   private void c(yv<?> $$0, @Nullable vv $$1, boolean $$2) {
+   private void c(yw<?> $$0, @Nullable vw $$1, boolean $$2) {
       ChannelFuture $$3 = $$2 ? this.n.writeAndFlush($$0) : this.n.write($$0);
       if ($$1 != null) {
          $$3.addListener($$1x -> {
             if ($$1x.isSuccess()) {
                $$1.a();
             } else {
-               yv<?> $$2x = $$1.b();
+               yw<?> $$2x = $$1.b();
                if ($$2x != null) {
                   ChannelFuture $$3x = this.n.writeAndFlush($$2x);
                   $$3x.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
@@ -346,7 +346,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
 
    public void b() {
       this.r();
-      if (this.q instanceof wc $$0) {
+      if (this.q instanceof wd $$0) {
          $$0.d();
       }
 
@@ -368,8 +368,8 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
    }
 
    protected void c() {
-      this.x = ayy.h(0.75F, (float)this.v, this.x);
-      this.w = ayy.h(0.75F, (float)this.u, this.w);
+      this.x = ayz.h(0.75F, (float)this.v, this.x);
+      this.w = ayz.h(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -386,7 +386,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }
    }
 
-   public void a(wo $$0) {
+   public void a(wp $$0) {
       this.a(new vk($$0));
    }
 
@@ -405,16 +405,16 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       return this.n instanceof LocalChannel || this.n instanceof LocalServerChannel;
    }
 
-   public yw f() {
+   public yx f() {
       return this.k;
    }
 
-   public yw g() {
+   public yx g() {
       return this.k.a();
    }
 
-   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bnb $$2) {
-      vi $$3 = new vi(yw.b);
+   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bnc $$2) {
+      vi $$3 = new vi(yx.b);
       if ($$2 != null) {
          $$3.a($$2);
       }
@@ -443,7 +443,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
             }
 
             ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-            vi.a($$1, yw.b, false, $$2.B);
+            vi.a($$1, yx.b, false, $$2.B);
             $$2.a($$1);
          }
       })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
@@ -465,39 +465,39 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       }).addLast("packet_handler", this);
    }
 
-   public static void a(ChannelPipeline $$0, yw $$1, boolean $$2, @Nullable vb $$3) {
-      yw $$4 = $$1.a();
-      boolean $$5 = $$1 == yw.a;
-      boolean $$6 = $$4 == yw.a;
+   public static void a(ChannelPipeline $$0, yx $$1, boolean $$2, @Nullable vb $$3) {
+      yx $$4 = $$1.a();
+      boolean $$5 = $$1 == yx.a;
+      boolean $$6 = $$4 == yx.a;
       $$0.addLast("splitter", a($$3, $$2))
          .addLast(new ChannelHandler[]{new FlowControlHandler()})
-         .addLast(c($$5), (ChannelHandler)($$5 ? new vs<ain>(j) : new wd.a()))
+         .addLast(c($$5), (ChannelHandler)($$5 ? new vt<aio>(j) : new we.a()))
          .addLast("prepender", d($$2))
-         .addLast(b($$6), (ChannelHandler)($$6 ? new vt<ain>(j) : new wd.c()));
+         .addLast(b($$6), (ChannelHandler)($$6 ? new vu<aio>(j) : new we.c()));
    }
 
    private static ChannelOutboundHandler d(boolean $$0) {
-      return (ChannelOutboundHandler)($$0 ? new vp() : new wi());
+      return (ChannelOutboundHandler)($$0 ? new vp() : new wj());
    }
 
    private static ChannelInboundHandler a(@Nullable vb $$0, boolean $$1) {
       if (!$$1) {
-         return new wh($$0);
+         return new wi($$0);
       } else {
-         return (ChannelInboundHandler)($$0 != null ? new vn($$0) : new vo());
+         return (ChannelInboundHandler)($$0 != null ? new vq($$0) : new vo());
       }
    }
 
-   public static void a(ChannelPipeline $$0, yw $$1) {
+   public static void a(ChannelPipeline $$0, yx $$1) {
       a($$0, $$1, true, null);
    }
 
    public static vi a(SocketAddress $$0) {
-      final vi $$1 = new vi(yw.b);
+      final vi $$1 = new vi(yx.b);
       ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)g.get())).handler(new ChannelInitializer<Channel>() {
          protected void initChannel(Channel $$0) {
             ChannelPipeline $$1 = $$0.pipeline();
-            vi.a($$1, yw.b);
+            vi.a($$1, yx.b);
             $$1.a($$1);
          }
       })).channel(LocalChannel.class)).connect($$0).syncUninterruptibly();
@@ -523,7 +523,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
    }
 
    @Nullable
-   public vu k() {
+   public vv k() {
       return this.q;
    }
 
@@ -568,10 +568,10 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
             i.warn("handleDisconnection() called twice");
          } else {
             this.t = true;
-            vu $$0 = this.k();
-            vu $$1 = $$0 != null ? $$0 : this.p;
+            vv $$0 = this.k();
+            vv $$1 = $$0 != null ? $$0 : this.p;
             if ($$1 != null) {
-               vk $$2 = Objects.requireNonNullElseGet(this.l(), () -> new vk(wo.c("multiplayer.disconnect.generic")));
+               vk $$2 = Objects.requireNonNullElseGet(this.l(), () -> new vk(wp.c("multiplayer.disconnect.generic")));
                $$1.a($$2);
             }
          }
@@ -586,7 +586,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       return this.x;
    }
 
-   public void a(bnb $$0) {
+   public void a(bnc $$0) {
       this.B = new vb($$0);
    }
 }

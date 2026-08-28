@@ -1,73 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cto extends bsp {
-   @Nullable
-   private duu b;
-
-   public cto() {
-      super(27);
-   }
-
-   public void a(duu $$0) {
-      this.b = $$0;
-   }
-
-   public boolean b(duu $$0) {
-      return this.b == $$0;
+public class cto extends cty {
+   public cto(bsc $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cwn.j);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tq $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cwn.a($$1, (un)$$4).orElse(cwn.j));
-         }
-      }
+   public void b(cwo $$0, cwo $$1) {
    }
 
    @Override
-   public tw a(jt.a $$0) {
-      tw $$1 = new tw();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cwn $$3 = this.a($$2);
-         if (!$$3.f()) {
-            tq $$4 = new tq();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
-      }
-
-      return $$1;
+   public boolean a(cow $$0) {
+      return false;
    }
 
    @Override
-   public boolean a(cov $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   public Optional<cwo> a(int $$0, int $$1, cow $$2) {
+      return Optional.empty();
    }
 
    @Override
-   public void c_(cov $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.c_($$0);
+   public cwo b(int $$0, int $$1, cow $$2) {
+      return cwo.j;
    }
 
    @Override
-   public void c(cov $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
+   public cwo d(cwo $$0) {
+      return $$0;
+   }
 
-      super.c($$0);
-      this.b = null;
+   @Override
+   public cwo b(cwo $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cow $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cwo $$0) {
+      return false;
+   }
+
+   @Override
+   public cwo a(int $$0) {
+      return cwo.j;
+   }
+
+   @Override
+   public void a(cow $$0, cwo $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

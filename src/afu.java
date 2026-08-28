@@ -1,29 +1,30 @@
-public record afu(float b, boolean c) implements yv<abk> {
-   public static final ym<vl, afu> a = yv.a(afu::a, afu::new);
+import java.util.Set;
 
-   private afu(vl $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
-   }
+public record afu(int b, bvt c, Set<bvu> d, boolean e) implements yw<abl> {
+   public static final yn<vl, afu> a = yn.a(yl.h, afu::b, bvt.a, afu::e, bvu.m, afu::f, yl.b, afu::g, afu::new);
 
-   public static afu a(bsr $$0) {
-      return new afu($$0.f(), $$0.l());
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public static afu a(int $$0, bvt $$1, Set<bvu> $$2, boolean $$3) {
+      return new afu($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public yx<afu> a() {
-      return agd.co;
+   public yy<afu> a() {
+      return age.bd;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public bvt e() {
       return this.c;
+   }
+
+   public Set<bvu> f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

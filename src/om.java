@@ -5,14 +5,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 public class om extends oc {
-   private static final ImmutableList<dgf> c = ImmutableList.of(cwr.am, cwr.an);
-   private static final ImmutableList<dgf> d = ImmutableList.of(cwr.ao, cwr.ap, cwr.pj);
-   private static final ImmutableList<dgf> e = ImmutableList.of(cwr.aq, cwr.ar, cwr.pl);
-   private static final ImmutableList<dgf> f = ImmutableList.of(cwr.as, cwr.at, cwr.aC, cwr.pn);
-   private static final ImmutableList<dgf> g = ImmutableList.of(cwr.aA, cwr.aB);
-   private static final ImmutableList<dgf> h = ImmutableList.of(cwr.ay, cwr.az);
-   private static final ImmutableList<dgf> i = ImmutableList.of(cwr.au, cwr.av);
-   private static final ImmutableList<dgf> j = ImmutableList.of(cwr.aw, cwr.ax);
+   private static final ImmutableList<dgg> c = ImmutableList.of(cws.am, cws.an);
+   private static final ImmutableList<dgg> d = ImmutableList.of(cws.ao, cws.ap, cws.pj);
+   private static final ImmutableList<dgg> e = ImmutableList.of(cws.aq, cws.ar, cws.pl);
+   private static final ImmutableList<dgg> f = ImmutableList.of(cws.as, cws.at, cws.aC, cws.pn);
+   private static final ImmutableList<dgg> g = ImmutableList.of(cws.aA, cws.aB);
+   private static final ImmutableList<dgg> h = ImmutableList.of(cws.ay, cws.az);
+   private static final ImmutableList<dgg> i = ImmutableList.of(cws.au, cws.av);
+   private static final ImmutableList<dgg> j = ImmutableList.of(cws.aw, cws.ax);
 
    om(jt.a $$0, ob $$1) {
       super($$0, $$1);
@@ -21,1213 +21,1213 @@ public class om extends oc {
    @Override
    protected void a() {
       this.b.b();
-      this.a(crr.a(crt.a));
-      this.a(djm.r, awx.w, 4);
-      this.b(djm.p, awx.v, 4);
-      this.b(djm.pg, awx.B, 4);
-      this.a(djm.t, awx.s, 4);
-      this.a(djm.v, awx.t, 4);
-      this.b(djm.q, awx.y, 4);
-      this.b(djm.n, awx.u, 4);
-      this.b(djm.o, awx.z, 4);
-      this.b(djm.ph, awx.C, 4);
-      this.b(djm.w, awx.A, 4);
-      this.a((dgf)djm.ax, (dgf)djm.ab);
-      this.a((dgf)djm.av, (dgf)djm.Z);
-      this.a((dgf)djm.az, (dgf)djm.ad);
-      this.a((dgf)djm.u, (dgf)djm.ae);
-      this.a((dgf)djm.aw, (dgf)djm.aa);
-      this.a((dgf)djm.at, (dgf)djm.X);
-      this.a((dgf)djm.au, (dgf)djm.Y);
-      this.a((dgf)djm.oW, (dgf)djm.oU);
-      this.a((dgf)djm.oN, (dgf)djm.oL);
-      this.a((dgf)djm.aA, (dgf)djm.af);
-      this.a((dgf)djm.aF, (dgf)djm.am);
-      this.a((dgf)djm.aD, (dgf)djm.ak);
-      this.a((dgf)djm.aH, (dgf)djm.ao);
-      this.a((dgf)djm.aI, (dgf)djm.ap);
-      this.a((dgf)djm.aE, (dgf)djm.al);
-      this.a((dgf)djm.aB, (dgf)djm.aq);
-      this.a((dgf)djm.aC, (dgf)djm.aj);
-      this.a((dgf)djm.oX, (dgf)djm.oV);
-      this.a((dgf)djm.oO, (dgf)djm.oM);
-      this.a((dgf)djm.aJ, (dgf)djm.ar);
-      this.b(cwr.oF, djm.r);
-      this.b(cwr.oB, djm.p);
-      this.b(cwr.oJ, djm.t);
-      this.b(cwr.oL, djm.v);
-      this.b(cwr.oD, djm.q);
-      this.b(cwr.ox, djm.n);
-      this.b(cwr.oz, djm.o);
-      this.b(cwr.oN, djm.w);
-      List<cwj> $$0 = List.of(cwr.su, cwr.sq, cwr.sr, cwr.so, cwr.sm, cwr.ss, cwr.si, cwr.sn, cwr.sk, cwr.sh, cwr.sg, cwr.sl, cwr.sp, cwr.st, cwr.sj, cwr.sf);
-      List<cwj> $$1 = List.of(cwr.dq, cwr.dm, cwr.dn, cwr.dk, cwr.di, cwr.do, cwr.de, cwr.dj, cwr.dg, cwr.dd, cwr.dc, cwr.dh, cwr.dl, cwr.dp, cwr.df, cwr.db);
-      List<cwj> $$2 = List.of(cwr.sO, cwr.sK, cwr.sL, cwr.sI, cwr.sG, cwr.sM, cwr.sC, cwr.sH, cwr.sE, cwr.sB, cwr.sA, cwr.sF, cwr.sJ, cwr.sN, cwr.sD, cwr.sz);
-      List<cwj> $$3 = List.of(cwr.iq, cwr.im, cwr.in, cwr.ik, cwr.ii, cwr.io, cwr.ie, cwr.ij, cwr.ig, cwr.id, cwr.ic, cwr.ih, cwr.il, cwr.ip, cwr.if, cwr.ib);
+      this.a(crs.a(cru.a));
+      this.a(djn.r, awy.w, 4);
+      this.b(djn.p, awy.v, 4);
+      this.b(djn.pg, awy.B, 4);
+      this.a(djn.t, awy.s, 4);
+      this.a(djn.v, awy.t, 4);
+      this.b(djn.q, awy.y, 4);
+      this.b(djn.n, awy.u, 4);
+      this.b(djn.o, awy.z, 4);
+      this.b(djn.ph, awy.C, 4);
+      this.b(djn.w, awy.A, 4);
+      this.a((dgg)djn.ax, (dgg)djn.ab);
+      this.a((dgg)djn.av, (dgg)djn.Z);
+      this.a((dgg)djn.az, (dgg)djn.ad);
+      this.a((dgg)djn.u, (dgg)djn.ae);
+      this.a((dgg)djn.aw, (dgg)djn.aa);
+      this.a((dgg)djn.at, (dgg)djn.X);
+      this.a((dgg)djn.au, (dgg)djn.Y);
+      this.a((dgg)djn.oW, (dgg)djn.oU);
+      this.a((dgg)djn.oN, (dgg)djn.oL);
+      this.a((dgg)djn.aA, (dgg)djn.af);
+      this.a((dgg)djn.aF, (dgg)djn.am);
+      this.a((dgg)djn.aD, (dgg)djn.ak);
+      this.a((dgg)djn.aH, (dgg)djn.ao);
+      this.a((dgg)djn.aI, (dgg)djn.ap);
+      this.a((dgg)djn.aE, (dgg)djn.al);
+      this.a((dgg)djn.aB, (dgg)djn.aq);
+      this.a((dgg)djn.aC, (dgg)djn.aj);
+      this.a((dgg)djn.oX, (dgg)djn.oV);
+      this.a((dgg)djn.oO, (dgg)djn.oM);
+      this.a((dgg)djn.aJ, (dgg)djn.ar);
+      this.b(cws.oF, djn.r);
+      this.b(cws.oB, djn.p);
+      this.b(cws.oJ, djn.t);
+      this.b(cws.oL, djn.v);
+      this.b(cws.oD, djn.q);
+      this.b(cws.ox, djn.n);
+      this.b(cws.oz, djn.o);
+      this.b(cws.oN, djn.w);
+      List<cwk> $$0 = List.of(cws.su, cws.sq, cws.sr, cws.so, cws.sm, cws.ss, cws.si, cws.sn, cws.sk, cws.sh, cws.sg, cws.sl, cws.sp, cws.st, cws.sj, cws.sf);
+      List<cwk> $$1 = List.of(cws.dq, cws.dm, cws.dn, cws.dk, cws.di, cws.do, cws.de, cws.dj, cws.dg, cws.dd, cws.dc, cws.dh, cws.dl, cws.dp, cws.df, cws.db);
+      List<cwk> $$2 = List.of(cws.sO, cws.sK, cws.sL, cws.sI, cws.sG, cws.sM, cws.sC, cws.sH, cws.sE, cws.sB, cws.sA, cws.sF, cws.sJ, cws.sN, cws.sD, cws.sz);
+      List<cwk> $$3 = List.of(cws.iq, cws.im, cws.in, cws.ik, cws.ii, cws.io, cws.ie, cws.ij, cws.ig, cws.id, cws.ic, cws.ih, cws.il, cws.ip, cws.if, cws.ib);
       this.a($$0, $$1, "wool");
       this.a($$0, $$2, "bed");
       this.a($$0, $$3, "carpet");
-      this.f(djm.iX, djm.bW);
-      this.g(cwr.sO, djm.bW);
-      this.h(cwr.we, djm.bW);
-      this.f(djm.iT, djm.bS);
-      this.g(cwr.sK, djm.bS);
-      this.h(cwr.wa, djm.bS);
-      this.f(djm.iU, djm.bT);
-      this.g(cwr.sL, djm.bT);
-      this.h(cwr.wb, djm.bT);
-      this.f(djm.iR, djm.bQ);
-      this.g(cwr.sI, djm.bQ);
-      this.h(cwr.vY, djm.bQ);
-      this.f(djm.iP, djm.bO);
-      this.g(cwr.sG, djm.bO);
-      this.h(cwr.vW, djm.bO);
-      this.f(djm.iV, djm.bU);
-      this.g(cwr.sM, djm.bU);
-      this.h(cwr.wc, djm.bU);
-      this.f(djm.iL, djm.bK);
-      this.g(cwr.sC, djm.bK);
-      this.h(cwr.vS, djm.bK);
-      this.f(djm.iQ, djm.bP);
-      this.g(cwr.sH, djm.bP);
-      this.h(cwr.vX, djm.bP);
-      this.f(djm.iN, djm.bM);
-      this.g(cwr.sE, djm.bM);
-      this.h(cwr.vU, djm.bM);
-      this.f(djm.iK, djm.bJ);
-      this.g(cwr.sB, djm.bJ);
-      this.h(cwr.vR, djm.bJ);
-      this.f(djm.iJ, djm.bI);
-      this.g(cwr.sA, djm.bI);
-      this.h(cwr.vQ, djm.bI);
-      this.f(djm.iO, djm.bN);
-      this.g(cwr.sF, djm.bN);
-      this.h(cwr.vV, djm.bN);
-      this.f(djm.iS, djm.bR);
-      this.g(cwr.sJ, djm.bR);
-      this.h(cwr.vZ, djm.bR);
-      this.f(djm.iW, djm.bV);
-      this.g(cwr.sN, djm.bV);
-      this.h(cwr.wd, djm.bV);
-      this.f(djm.iI, djm.bH);
-      this.g(cwr.sz, djm.bH);
-      this.h(cwr.vP, djm.bH);
-      this.f(djm.iM, djm.bL);
-      this.g(cwr.sD, djm.bL);
-      this.h(cwr.vT, djm.bL);
-      this.f(djm.tc, djm.te);
-      this.f(djm.tX, djm.tW);
-      this.i(djm.eK, cwr.su);
-      this.j(djm.il, djm.eK);
-      this.k(djm.il, cwr.su);
-      this.i(djm.eG, cwr.sq);
-      this.j(djm.ih, djm.eG);
-      this.k(djm.ih, cwr.sq);
-      this.i(djm.eH, cwr.sr);
-      this.j(djm.ii, djm.eH);
-      this.k(djm.ii, cwr.sr);
-      this.i(djm.eE, cwr.so);
-      this.j(djm.if, djm.eE);
-      this.k(djm.if, cwr.so);
-      this.i(djm.eC, cwr.sm);
-      this.j(djm.id, djm.eC);
-      this.k(djm.id, cwr.sm);
-      this.i(djm.eI, cwr.ss);
-      this.j(djm.ij, djm.eI);
-      this.k(djm.ij, cwr.ss);
-      this.i(djm.ey, cwr.si);
-      this.j(djm.hZ, djm.ey);
-      this.k(djm.hZ, cwr.si);
-      this.i(djm.eD, cwr.sn);
-      this.j(djm.ie, djm.eD);
-      this.k(djm.ie, cwr.sn);
-      this.i(djm.eA, cwr.sk);
-      this.j(djm.ib, djm.eA);
-      this.k(djm.ib, cwr.sk);
-      this.i(djm.ex, cwr.sh);
-      this.j(djm.hY, djm.ex);
-      this.k(djm.hY, cwr.sh);
-      this.i(djm.ew, cwr.sg);
-      this.j(djm.hX, djm.ew);
-      this.k(djm.hX, cwr.sg);
-      this.i(djm.eB, cwr.sl);
-      this.j(djm.ic, djm.eB);
-      this.k(djm.ic, cwr.sl);
-      this.i(djm.eF, cwr.sp);
-      this.j(djm.ig, djm.eF);
-      this.k(djm.ig, cwr.sp);
-      this.i(djm.eJ, cwr.st);
-      this.j(djm.ik, djm.eJ);
-      this.k(djm.ik, cwr.st);
-      this.i(djm.ev, cwr.sf);
-      this.j(djm.hW, djm.ev);
-      this.k(djm.hW, cwr.sf);
-      this.i(djm.ez, cwr.sj);
-      this.j(djm.ia, djm.ez);
-      this.k(djm.ia, cwr.sj);
-      this.l(djm.hV, cwr.su);
-      this.l(djm.hR, cwr.sq);
-      this.l(djm.hS, cwr.sr);
-      this.l(djm.hP, cwr.so);
-      this.l(djm.hN, cwr.sm);
-      this.l(djm.hT, cwr.ss);
-      this.l(djm.hJ, cwr.si);
-      this.l(djm.hO, cwr.sn);
-      this.l(djm.hL, cwr.sk);
-      this.l(djm.hI, cwr.sh);
-      this.l(djm.hH, cwr.sg);
-      this.l(djm.hM, cwr.sl);
-      this.l(djm.hQ, cwr.sp);
-      this.l(djm.hU, cwr.st);
-      this.l(djm.hG, cwr.sf);
-      this.l(djm.hK, cwr.sj);
-      this.m(djm.mD, cwr.su);
-      this.m(djm.mz, cwr.sq);
-      this.m(djm.mA, cwr.sr);
-      this.m(djm.mx, cwr.so);
-      this.m(djm.mv, cwr.sm);
-      this.m(djm.mB, cwr.ss);
-      this.m(djm.mr, cwr.si);
-      this.m(djm.mw, cwr.sn);
-      this.m(djm.mt, cwr.sk);
-      this.m(djm.mq, cwr.sh);
-      this.m(djm.mp, cwr.sg);
-      this.m(djm.mu, cwr.sl);
-      this.m(djm.my, cwr.sp);
-      this.m(djm.mC, cwr.st);
-      this.m(djm.mo, cwr.sf);
-      this.m(djm.ms, cwr.sj);
-      this.a(oa.b, cwr.xU).a('S', cwr.pX).a('H', cwr.xA).b("S").b("H").b("has_string", this.a((dgf)cwr.pX)).b("has_honeycomb", this.a((dgf)cwr.xA)).a(this.b);
-      this.n(djm.qD, cwr.su);
-      this.n(djm.qz, cwr.sq);
-      this.n(djm.qA, cwr.sr);
-      this.n(djm.qx, cwr.so);
-      this.n(djm.qv, cwr.sm);
-      this.n(djm.qB, cwr.ss);
-      this.n(djm.qr, cwr.si);
-      this.n(djm.qw, cwr.sn);
-      this.n(djm.qt, cwr.sk);
-      this.n(djm.qq, cwr.sh);
-      this.n(djm.qp, cwr.sg);
-      this.n(djm.qu, cwr.sl);
-      this.n(djm.qy, cwr.sp);
-      this.n(djm.qC, cwr.st);
-      this.n(djm.qo, cwr.sf);
-      this.n(djm.qs, cwr.sj);
-      this.b(oa.a, djm.eZ, 1).b(djm.tk).b(cwr.qb).b("has_mud", this.a(djm.tk)).a(this.b);
-      this.a(oa.a, djm.fa, 4).a('#', djm.eZ).b("##").b("##").b("has_packed_mud", this.a(djm.eZ)).a(this.b);
-      this.b(oa.a, djm.ah, 1).b(djm.tk).b(cwr.bN).b("has_mangrove_roots", this.a(djm.ag)).a(this.b);
-      this.a(oa.d, djm.hE, 6).a('#', djm.dX).a('S', cwr.pV).a('X', cwr.pk).b("XSX").b("X#X").b("XSX").b("has_rail", this.a(djm.cY)).a(this.b);
-      this.b(oa.a, djm.g, 2).b(djm.e).b(djm.m).b("has_stone", this.a(djm.e)).a(this.b);
-      this.a(oa.b, djm.hp).a('I', djm.cp).a('i', cwr.pk).b("III").b(" i ").b("iii").b("has_iron_block", this.a(djm.cp)).a(this.b);
-      this.a(oa.b, cwr.vF).a('/', cwr.pV).a('_', djm.kd).b("///").b(" / ").b("/_/").b("has_stone_slab", this.a(djm.kd)).a(this.b);
-      this.a(oa.f, cwr.pb, 4)
-         .a('#', cwr.pV)
-         .a('X', cwr.qB)
-         .a('Y', cwr.pY)
+      this.f(djn.iX, djn.bW);
+      this.g(cws.sO, djn.bW);
+      this.h(cws.we, djn.bW);
+      this.f(djn.iT, djn.bS);
+      this.g(cws.sK, djn.bS);
+      this.h(cws.wa, djn.bS);
+      this.f(djn.iU, djn.bT);
+      this.g(cws.sL, djn.bT);
+      this.h(cws.wb, djn.bT);
+      this.f(djn.iR, djn.bQ);
+      this.g(cws.sI, djn.bQ);
+      this.h(cws.vY, djn.bQ);
+      this.f(djn.iP, djn.bO);
+      this.g(cws.sG, djn.bO);
+      this.h(cws.vW, djn.bO);
+      this.f(djn.iV, djn.bU);
+      this.g(cws.sM, djn.bU);
+      this.h(cws.wc, djn.bU);
+      this.f(djn.iL, djn.bK);
+      this.g(cws.sC, djn.bK);
+      this.h(cws.vS, djn.bK);
+      this.f(djn.iQ, djn.bP);
+      this.g(cws.sH, djn.bP);
+      this.h(cws.vX, djn.bP);
+      this.f(djn.iN, djn.bM);
+      this.g(cws.sE, djn.bM);
+      this.h(cws.vU, djn.bM);
+      this.f(djn.iK, djn.bJ);
+      this.g(cws.sB, djn.bJ);
+      this.h(cws.vR, djn.bJ);
+      this.f(djn.iJ, djn.bI);
+      this.g(cws.sA, djn.bI);
+      this.h(cws.vQ, djn.bI);
+      this.f(djn.iO, djn.bN);
+      this.g(cws.sF, djn.bN);
+      this.h(cws.vV, djn.bN);
+      this.f(djn.iS, djn.bR);
+      this.g(cws.sJ, djn.bR);
+      this.h(cws.vZ, djn.bR);
+      this.f(djn.iW, djn.bV);
+      this.g(cws.sN, djn.bV);
+      this.h(cws.wd, djn.bV);
+      this.f(djn.iI, djn.bH);
+      this.g(cws.sz, djn.bH);
+      this.h(cws.vP, djn.bH);
+      this.f(djn.iM, djn.bL);
+      this.g(cws.sD, djn.bL);
+      this.h(cws.vT, djn.bL);
+      this.f(djn.tc, djn.te);
+      this.f(djn.tX, djn.tW);
+      this.i(djn.eK, cws.su);
+      this.j(djn.il, djn.eK);
+      this.k(djn.il, cws.su);
+      this.i(djn.eG, cws.sq);
+      this.j(djn.ih, djn.eG);
+      this.k(djn.ih, cws.sq);
+      this.i(djn.eH, cws.sr);
+      this.j(djn.ii, djn.eH);
+      this.k(djn.ii, cws.sr);
+      this.i(djn.eE, cws.so);
+      this.j(djn.if, djn.eE);
+      this.k(djn.if, cws.so);
+      this.i(djn.eC, cws.sm);
+      this.j(djn.id, djn.eC);
+      this.k(djn.id, cws.sm);
+      this.i(djn.eI, cws.ss);
+      this.j(djn.ij, djn.eI);
+      this.k(djn.ij, cws.ss);
+      this.i(djn.ey, cws.si);
+      this.j(djn.hZ, djn.ey);
+      this.k(djn.hZ, cws.si);
+      this.i(djn.eD, cws.sn);
+      this.j(djn.ie, djn.eD);
+      this.k(djn.ie, cws.sn);
+      this.i(djn.eA, cws.sk);
+      this.j(djn.ib, djn.eA);
+      this.k(djn.ib, cws.sk);
+      this.i(djn.ex, cws.sh);
+      this.j(djn.hY, djn.ex);
+      this.k(djn.hY, cws.sh);
+      this.i(djn.ew, cws.sg);
+      this.j(djn.hX, djn.ew);
+      this.k(djn.hX, cws.sg);
+      this.i(djn.eB, cws.sl);
+      this.j(djn.ic, djn.eB);
+      this.k(djn.ic, cws.sl);
+      this.i(djn.eF, cws.sp);
+      this.j(djn.ig, djn.eF);
+      this.k(djn.ig, cws.sp);
+      this.i(djn.eJ, cws.st);
+      this.j(djn.ik, djn.eJ);
+      this.k(djn.ik, cws.st);
+      this.i(djn.ev, cws.sf);
+      this.j(djn.hW, djn.ev);
+      this.k(djn.hW, cws.sf);
+      this.i(djn.ez, cws.sj);
+      this.j(djn.ia, djn.ez);
+      this.k(djn.ia, cws.sj);
+      this.l(djn.hV, cws.su);
+      this.l(djn.hR, cws.sq);
+      this.l(djn.hS, cws.sr);
+      this.l(djn.hP, cws.so);
+      this.l(djn.hN, cws.sm);
+      this.l(djn.hT, cws.ss);
+      this.l(djn.hJ, cws.si);
+      this.l(djn.hO, cws.sn);
+      this.l(djn.hL, cws.sk);
+      this.l(djn.hI, cws.sh);
+      this.l(djn.hH, cws.sg);
+      this.l(djn.hM, cws.sl);
+      this.l(djn.hQ, cws.sp);
+      this.l(djn.hU, cws.st);
+      this.l(djn.hG, cws.sf);
+      this.l(djn.hK, cws.sj);
+      this.m(djn.mD, cws.su);
+      this.m(djn.mz, cws.sq);
+      this.m(djn.mA, cws.sr);
+      this.m(djn.mx, cws.so);
+      this.m(djn.mv, cws.sm);
+      this.m(djn.mB, cws.ss);
+      this.m(djn.mr, cws.si);
+      this.m(djn.mw, cws.sn);
+      this.m(djn.mt, cws.sk);
+      this.m(djn.mq, cws.sh);
+      this.m(djn.mp, cws.sg);
+      this.m(djn.mu, cws.sl);
+      this.m(djn.my, cws.sp);
+      this.m(djn.mC, cws.st);
+      this.m(djn.mo, cws.sf);
+      this.m(djn.ms, cws.sj);
+      this.a(oa.b, cws.xU).a('S', cws.pX).a('H', cws.xA).b("S").b("H").b("has_string", this.a((dgg)cws.pX)).b("has_honeycomb", this.a((dgg)cws.xA)).a(this.b);
+      this.n(djn.qD, cws.su);
+      this.n(djn.qz, cws.sq);
+      this.n(djn.qA, cws.sr);
+      this.n(djn.qx, cws.so);
+      this.n(djn.qv, cws.sm);
+      this.n(djn.qB, cws.ss);
+      this.n(djn.qr, cws.si);
+      this.n(djn.qw, cws.sn);
+      this.n(djn.qt, cws.sk);
+      this.n(djn.qq, cws.sh);
+      this.n(djn.qp, cws.sg);
+      this.n(djn.qu, cws.sl);
+      this.n(djn.qy, cws.sp);
+      this.n(djn.qC, cws.st);
+      this.n(djn.qo, cws.sf);
+      this.n(djn.qs, cws.sj);
+      this.b(oa.a, djn.eZ, 1).b(djn.tk).b(cws.qb).b("has_mud", this.a(djn.tk)).a(this.b);
+      this.a(oa.a, djn.fa, 4).a('#', djn.eZ).b("##").b("##").b("has_packed_mud", this.a(djn.eZ)).a(this.b);
+      this.b(oa.a, djn.ah, 1).b(djn.tk).b(cws.bN).b("has_mangrove_roots", this.a(djn.ag)).a(this.b);
+      this.a(oa.d, djn.hE, 6).a('#', djn.dX).a('S', cws.pV).a('X', cws.pk).b("XSX").b("X#X").b("XSX").b("has_rail", this.a(djn.cY)).a(this.b);
+      this.b(oa.a, djn.g, 2).b(djn.e).b(djn.m).b("has_stone", this.a(djn.e)).a(this.b);
+      this.a(oa.b, djn.hp).a('I', djn.cp).a('i', cws.pk).b("III").b(" i ").b("iii").b("has_iron_block", this.a(djn.cp)).a(this.b);
+      this.a(oa.b, cws.vF).a('/', cws.pV).a('_', djn.kd).b("///").b(" / ").b("/_/").b("has_stone_slab", this.a(djn.kd)).a(this.b);
+      this.a(oa.f, cws.pb, 4)
+         .a('#', cws.pV)
+         .a('X', cws.qB)
+         .a('Y', cws.pY)
          .b("X")
          .b("#")
          .b("Y")
-         .b("has_feather", this.a((dgf)cwr.pY))
-         .b("has_flint", this.a((dgf)cwr.qB))
+         .b("has_feather", this.a((dgg)cws.pY))
+         .b("has_flint", this.a((dgg)cws.qB))
          .a(this.b);
-      this.a(oa.b, djm.ow, 1).a('P', awx.b).a('S', awx.j).b("PSP").b("P P").b("PSP").b("has_planks", this.a(awx.b)).b("has_wood_slab", this.a(awx.j)).a(this.b);
-      this.a(oa.i, djm.gj).a('S', cwr.vr).a('G', djm.aX).a('O', djm.cv).b("GGG").b("GSG").b("OOO").b("has_nether_star", this.a((dgf)cwr.vr)).a(this.b);
-      this.a(oa.b, djm.pH).a('P', awx.b).a('H', cwr.xA).b("PPP").b("HHH").b("PPP").b("has_honeycomb", this.a((dgf)cwr.xA)).a(this.b);
-      this.b(oa.g, cwr.wm).b(cwr.oY).a(cwr.wk, 6).b("has_beetroot", this.a((dgf)cwr.wk)).a(this.b);
-      this.b(oa.i, cwr.su).b(cwr.sc).b("black_dye").b("has_ink_sac", this.a((dgf)cwr.sc)).a(this.b);
-      this.a(cwr.su, djm.ck, "black_dye");
-      this.b(oa.h, cwr.tl, 2).b(cwr.td).b("has_blaze_rod", this.a((dgf)cwr.td)).a(this.b);
-      this.b(oa.i, cwr.sq).b(cwr.pg).b("blue_dye").b("has_lapis_lazuli", this.a((dgf)cwr.pg)).a(this.b);
-      this.a(cwr.sq, djm.cj, "blue_dye");
-      this.b(oa.a, djm.ny, djm.ja);
-      this.b(oa.i, cwr.sv, 3).b(cwr.sw).b("bonemeal").b("has_bone", this.a((dgf)cwr.sw)).a(this.b);
-      this.b(oa.i, cwr.sv, oa.a, cwr.jx, "bone_meal_from_bone_block", "bonemeal");
-      this.b(oa.i, cwr.rw).a(cwr.rv, 3).b(cwr.rk).b("has_paper", this.a((dgf)cwr.rv)).a(this.b);
-      this.a(oa.a, djm.cs).a('#', awx.b).a('X', cwr.rw).b("###").b("XXX").b("###").b("has_book", this.a((dgf)cwr.rw)).a(this.b);
-      this.a(oa.f, cwr.pa).a('#', cwr.pV).a('X', cwr.pX).b(" #X").b("# X").b(" #X").b("has_string", this.a((dgf)cwr.pX)).a(this.b);
-      this.a(oa.i, cwr.oY, 4)
-         .a('#', awx.b)
+      this.a(oa.b, djn.ow, 1).a('P', awy.b).a('S', awy.j).b("PSP").b("P P").b("PSP").b("has_planks", this.a(awy.b)).b("has_wood_slab", this.a(awy.j)).a(this.b);
+      this.a(oa.i, djn.gj).a('S', cws.vr).a('G', djn.aX).a('O', djn.cv).b("GGG").b("GSG").b("OOO").b("has_nether_star", this.a((dgg)cws.vr)).a(this.b);
+      this.a(oa.b, djn.pH).a('P', awy.b).a('H', cws.xA).b("PPP").b("HHH").b("PPP").b("has_honeycomb", this.a((dgg)cws.xA)).a(this.b);
+      this.b(oa.g, cws.wm).b(cws.oY).a(cws.wk, 6).b("has_beetroot", this.a((dgg)cws.wk)).a(this.b);
+      this.b(oa.i, cws.su).b(cws.sc).b("black_dye").b("has_ink_sac", this.a((dgg)cws.sc)).a(this.b);
+      this.a(cws.su, djn.ck, "black_dye");
+      this.b(oa.h, cws.tl, 2).b(cws.td).b("has_blaze_rod", this.a((dgg)cws.td)).a(this.b);
+      this.b(oa.i, cws.sq).b(cws.pg).b("blue_dye").b("has_lapis_lazuli", this.a((dgg)cws.pg)).a(this.b);
+      this.a(cws.sq, djn.cj, "blue_dye");
+      this.b(oa.a, djn.ny, djn.ja);
+      this.b(oa.i, cws.sv, 3).b(cws.sw).b("bonemeal").b("has_bone", this.a((dgg)cws.sw)).a(this.b);
+      this.b(oa.i, cws.sv, oa.a, cws.jx, "bone_meal_from_bone_block", "bonemeal");
+      this.b(oa.i, cws.rw).a(cws.rv, 3).b(cws.rk).b("has_paper", this.a((dgg)cws.rv)).a(this.b);
+      this.a(oa.a, djn.cs).a('#', awy.b).a('X', cws.rw).b("###").b("XXX").b("###").b("has_book", this.a((dgg)cws.rw)).a(this.b);
+      this.a(oa.f, cws.pa).a('#', cws.pV).a('X', cws.pX).b(" #X").b("# X").b(" #X").b("has_string", this.a((dgg)cws.pX)).a(this.b);
+      this.a(oa.i, cws.oY, 4)
+         .a('#', awy.b)
          .b("# #")
          .b(" # ")
-         .b("has_brown_mushroom", this.a(djm.cm))
-         .b("has_red_mushroom", this.a(djm.cn))
-         .b("has_mushroom_stew", this.a((dgf)cwr.pW))
+         .b("has_brown_mushroom", this.a(djn.cm))
+         .b("has_red_mushroom", this.a(djn.cn))
+         .b("has_mushroom_stew", this.a((dgg)cws.pW))
          .a(this.b);
-      this.a(oa.g, cwr.qc).a('#', cwr.qb).b("###").b("has_wheat", this.a((dgf)cwr.qb)).a(this.b);
-      this.a(oa.h, djm.fN).a('B', cwr.td).a('#', awx.bp).b(" B ").b("###").b("has_blaze_rod", this.a((dgf)cwr.td)).a(this.b);
-      this.a(oa.a, djm.cq).a('#', cwr.rs).b("##").b("##").b("has_brick", this.a((dgf)cwr.rs)).a(this.b);
-      this.b(oa.i, cwr.sr).b(cwr.se).b("brown_dye").b("has_cocoa_beans", this.a((dgf)cwr.se)).a(this.b);
-      this.a(oa.i, cwr.rf).a('#', cwr.pk).b("# #").b(" # ").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.g, djm.et).a('A', cwr.rl).a('B', cwr.sx).a('C', cwr.qb).a('E', cwr.ry).b("AAA").b("BEB").b("CCC").b("has_egg", this.a((dgf)cwr.ry)).a(this.b);
-      this.a(oa.b, djm.oI)
-         .a('L', awx.r)
-         .a('S', cwr.pV)
-         .a('C', awx.aW)
+      this.a(oa.g, cws.qc).a('#', cws.qb).b("###").b("has_wheat", this.a((dgg)cws.qb)).a(this.b);
+      this.a(oa.h, djn.fN).a('B', cws.td).a('#', awy.bp).b(" B ").b("###").b("has_blaze_rod", this.a((dgg)cws.td)).a(this.b);
+      this.a(oa.a, djn.cq).a('#', cws.rs).b("##").b("##").b("has_brick", this.a((dgg)cws.rs)).a(this.b);
+      this.b(oa.i, cws.sr).b(cws.se).b("brown_dye").b("has_cocoa_beans", this.a((dgg)cws.se)).a(this.b);
+      this.a(oa.i, cws.rf).a('#', cws.pk).b("# #").b(" # ").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.g, djn.et).a('A', cws.rl).a('B', cws.sx).a('C', cws.qb).a('E', cws.ry).b("AAA").b("BEB").b("CCC").b("has_egg", this.a((dgg)cws.ry)).a(this.b);
+      this.a(oa.b, djn.oI)
+         .a('L', awy.r)
+         .a('S', cws.pV)
+         .a('C', awy.aW)
          .b(" S ")
          .b("SCS")
          .b("LLL")
-         .b("has_stick", this.a((dgf)cwr.pV))
-         .b("has_coal", this.a(awx.aW))
+         .b("has_stick", this.a((dgg)cws.pV))
+         .b("has_coal", this.a(awy.aW))
          .a(this.b);
-      this.a(oa.d, cwr.ot).a('#', cwr.rS).a('X', cwr.ve).b("# ").b(" X").b("has_carrot", this.a((dgf)cwr.ve)).a(this.b);
-      this.a(oa.d, cwr.ou).a('#', cwr.rS).a('X', cwr.dM).b("# ").b(" X").b("has_warped_fungus", this.a((dgf)cwr.dM)).a(this.b);
-      this.a(oa.h, djm.fO).a('#', cwr.pk).b("# #").b("# #").b("###").b("has_water_bucket", this.a((dgf)cwr.rg)).a(this.b);
-      this.a(oa.b, djm.pE).a('#', awx.j).b("# #").b("# #").b("###").b("has_wood_slab", this.a(awx.j)).a(this.b);
-      this.a(oa.b, djm.cD)
-         .a('#', awx.b)
+      this.a(oa.d, cws.ot).a('#', cws.rS).a('X', cws.ve).b("# ").b(" X").b("has_carrot", this.a((dgg)cws.ve)).a(this.b);
+      this.a(oa.d, cws.ou).a('#', cws.rS).a('X', cws.dM).b("# ").b(" X").b("has_warped_fungus", this.a((dgg)cws.dM)).a(this.b);
+      this.a(oa.h, djn.fO).a('#', cws.pk).b("# #").b("# #").b("###").b("has_water_bucket", this.a((dgg)cws.rg)).a(this.b);
+      this.a(oa.b, djn.pE).a('#', awy.j).b("# #").b("# #").b("###").b("has_wood_slab", this.a(awy.j)).a(this.b);
+      this.a(oa.b, djn.cD)
+         .a('#', awy.b)
          .b("###")
          .b("# #")
          .b("###")
          .b("has_lots_of_items", ap.f.a(new cj.a(Optional.empty(), new cj.a.a(dk.d.b(10), dk.d.c, dk.d.c), List.of())))
          .a(this.b);
-      this.b(oa.d, cwr.op).b(djm.cD).b(cwr.oo).b("has_minecart", this.a((dgf)cwr.oo)).a(this.b);
-      this.c(cwr.oG, cwr.oF);
-      this.c(cwr.oC, cwr.oB);
-      this.c(cwr.oK, cwr.oJ);
-      this.c(cwr.oM, cwr.oL);
-      this.c(cwr.oE, cwr.oD);
-      this.c(cwr.oy, cwr.ox);
-      this.c(cwr.oA, cwr.oz);
-      this.c(cwr.oO, cwr.oN);
-      this.b(oa.a, djm.hB, day.a(djm.km))
-         .b("has_chiseled_quartz_block", this.a(djm.hB))
-         .b("has_quartz_block", this.a(djm.hA))
-         .b("has_quartz_pillar", this.a(djm.hC))
+      this.b(oa.d, cws.op).b(djn.cD).b(cws.oo).b("has_minecart", this.a((dgg)cws.oo)).a(this.b);
+      this.c(cws.oG, cws.oF);
+      this.c(cws.oC, cws.oB);
+      this.c(cws.oK, cws.oJ);
+      this.c(cws.oM, cws.oL);
+      this.c(cws.oE, cws.oD);
+      this.c(cws.oy, cws.ox);
+      this.c(cws.oA, cws.oz);
+      this.c(cws.oO, cws.oN);
+      this.b(oa.a, djn.hB, daz.a(djn.km))
+         .b("has_chiseled_quartz_block", this.a(djn.hB))
+         .b("has_quartz_block", this.a(djn.hA))
+         .b("has_quartz_pillar", this.a(djn.hC))
          .a(this.b);
-      this.b(oa.a, djm.eY, day.a(djm.kj)).b("has_tag", this.a(awx.c)).a(this.b);
-      this.a(oa.a, djm.ee, cwr.rt);
-      this.a(oa.e, cwr.rT).a('#', cwr.po).a('X', cwr.me).b(" # ").b("#X#").b(" # ").b("has_redstone", this.a((dgf)cwr.me)).a(this.b);
-      this.a(oa.i, cwr.pc, oa.a, cwr.aF);
-      this.a(oa.a, djm.k, 4).a('D', djm.j).a('G', djm.O).b("DG").b("GD").b("has_gravel", this.a(djm.O)).a(this.b);
-      this.a(oa.c, djm.hv).a('#', djm.dX).a('X', cwr.ph).a('I', djm.b).b(" # ").b("#X#").b("III").b("has_quartz", this.a((dgf)cwr.ph)).a(this.b);
-      this.a(oa.e, cwr.rz).a('#', cwr.pk).a('X', cwr.me).b(" # ").b("#X#").b(" # ").b("has_redstone", this.a((dgf)cwr.me)).a(this.b);
-      this.a(oa.g, cwr.sP, 8).a('#', cwr.qb).a('X', cwr.se).b("#X#").b("has_cocoa", this.a((dgf)cwr.se)).a(this.b);
-      this.a(oa.b, djm.cI).a('#', awx.b).b("##").b("##").b("unlock_right_away", dt.a.e()).a(false).a(this.b);
-      this.a(oa.f, cwr.wV)
-         .a('~', cwr.pX)
-         .a('#', cwr.pV)
-         .a('&', cwr.pk)
-         .a('$', djm.gc)
+      this.b(oa.a, djn.eY, daz.a(djn.kj)).b("has_tag", this.a(awy.c)).a(this.b);
+      this.a(oa.a, djn.ee, cws.rt);
+      this.a(oa.e, cws.rT).a('#', cws.po).a('X', cws.me).b(" # ").b("#X#").b(" # ").b("has_redstone", this.a((dgg)cws.me)).a(this.b);
+      this.a(oa.i, cws.pc, oa.a, cws.aF);
+      this.a(oa.a, djn.k, 4).a('D', djn.j).a('G', djn.O).b("DG").b("GD").b("has_gravel", this.a(djn.O)).a(this.b);
+      this.a(oa.c, djn.hv).a('#', djn.dX).a('X', cws.ph).a('I', djn.b).b(" # ").b("#X#").b("III").b("has_quartz", this.a((dgg)cws.ph)).a(this.b);
+      this.a(oa.e, cws.rz).a('#', cws.pk).a('X', cws.me).b(" # ").b("#X#").b(" # ").b("has_redstone", this.a((dgg)cws.me)).a(this.b);
+      this.a(oa.g, cws.sP, 8).a('#', cws.qb).a('X', cws.se).b("#X#").b("has_cocoa", this.a((dgg)cws.se)).a(this.b);
+      this.a(oa.b, djn.cI).a('#', awy.b).b("##").b("##").b("unlock_right_away", dt.a.e()).a(false).a(this.b);
+      this.a(oa.f, cws.wV)
+         .a('~', cws.pX)
+         .a('#', cws.pV)
+         .a('&', cws.pk)
+         .a('$', djn.gc)
          .b("#&#")
          .b("~$~")
          .b(" # ")
-         .b("has_string", this.a((dgf)cwr.pX))
-         .b("has_iron_ingot", this.a((dgf)cwr.pk))
-         .b("has_tripwire_hook", this.a(djm.gc))
+         .b("has_string", this.a((dgg)cws.pX))
+         .b("has_iron_ingot", this.a((dgg)cws.pk))
+         .b("has_tripwire_hook", this.a(djn.gc))
          .a(this.b);
-      this.a(oa.b, djm.ov).a('#', awx.b).a('@', cwr.pX).b("@@").b("##").b("has_string", this.a((dgf)cwr.pX)).a(this.b);
-      this.b(oa.a, djm.jO, day.a(djm.kn))
-         .b("has_red_sandstone", this.a(djm.jN))
-         .b("has_chiseled_red_sandstone", this.a(djm.jO))
-         .b("has_cut_red_sandstone", this.a(djm.jP))
+      this.a(oa.b, djn.ov).a('#', awy.b).a('@', cws.pX).b("@@").b("##").b("has_string", this.a((dgg)cws.pX)).a(this.b);
+      this.b(oa.a, djn.jO, daz.a(djn.kn))
+         .b("has_red_sandstone", this.a(djn.jN))
+         .b("has_chiseled_red_sandstone", this.a(djn.jO))
+         .b("has_cut_red_sandstone", this.a(djn.jP))
          .a(this.b);
-      this.g(oa.a, djm.bd, djm.ke);
-      this.b(oa.i, cwr.pm, oa.a, cwr.aN, d(cwr.pm), c(cwr.pm));
-      this.b(oa.i, cwr.pm, 9).b(djm.rY).b(c(cwr.pm)).b(b(djm.rY), this.a(djm.rY)).a(this.b, p(cwr.pm, djm.rY));
-      this.b(crr.a(crt.a));
-      this.b(oa.i, cwr.so, 2).b(cwr.sq).b(cwr.ss).b("cyan_dye").b("has_green_dye", this.a((dgf)cwr.ss)).b("has_blue_dye", this.a((dgf)cwr.sq)).a(this.b);
-      this.a(oa.a, djm.iz).a('S', cwr.vy).a('I', cwr.su).b("SSS").b("SIS").b("SSS").b("has_prismarine_shard", this.a((dgf)cwr.vy)).a(this.b);
-      this.a(oa.c, djm.hw).a('Q', cwr.ph).a('G', djm.aX).a('W', awx.j).b("GGG").b("QQQ").b("WWW").b("has_quartz", this.a((dgf)cwr.ph)).a(this.b);
-      this.a(oa.a, djm.ty, 4).a('S', djm.tq).b("SS").b("SS").b("has_polished_deepslate", this.a(djm.tq)).a(this.b);
-      this.a(oa.a, djm.tu, 4).a('S', djm.ty).b("SS").b("SS").b("has_deepslate_bricks", this.a(djm.ty)).a(this.b);
-      this.a(oa.d, djm.bx, 6).a('R', cwr.me).a('#', djm.dJ).a('X', cwr.pk).b("X X").b("X#X").b("XRX").b("has_rail", this.a(djm.cY)).a(this.b);
-      this.a(oa.e, cwr.pO).a('#', cwr.pV).a('X', awx.bf).b("XX").b("X#").b(" #").b("has_diamond", this.a(awx.bf)).a(this.b);
-      this.a(oa.i, cwr.pe, oa.a, cwr.aP);
-      this.a(oa.f, cwr.qs).a('X', cwr.pe).b("X X").b("X X").b("has_diamond", this.a((dgf)cwr.pe)).a(this.b);
-      this.a(oa.f, cwr.qq).a('X', cwr.pe).b("X X").b("XXX").b("XXX").b("has_diamond", this.a((dgf)cwr.pe)).a(this.b);
-      this.a(oa.f, cwr.qp).a('X', cwr.pe).b("XXX").b("X X").b("has_diamond", this.a((dgf)cwr.pe)).a(this.b);
-      this.a(oa.e, cwr.pP).a('#', cwr.pV).a('X', awx.bf).b("XX").b(" #").b(" #").b("has_diamond", this.a(awx.bf)).a(this.b);
-      this.a(oa.f, cwr.qr).a('X', cwr.pe).b("XXX").b("X X").b("X X").b("has_diamond", this.a((dgf)cwr.pe)).a(this.b);
-      this.a(oa.e, cwr.pN).a('#', cwr.pV).a('X', awx.bf).b("XXX").b(" # ").b(" # ").b("has_diamond", this.a(awx.bf)).a(this.b);
-      this.a(oa.e, cwr.pM).a('#', cwr.pV).a('X', awx.bf).b("X").b("#").b("#").b("has_diamond", this.a(awx.bf)).a(this.b);
-      this.a(oa.f, cwr.pL).a('#', cwr.pV).a('X', awx.bf).b("X").b("X").b("#").b("has_diamond", this.a(awx.bf)).a(this.b);
-      this.a(oa.a, djm.e, 2).a('Q', cwr.ph).a('C', djm.m).b("CQ").b("QC").b("has_quartz", this.a((dgf)cwr.ph)).a(this.b);
-      this.a(oa.c, djm.bb).a('R', cwr.me).a('#', djm.m).a('X', cwr.pa).b("###").b("#X#").b("#R#").b("has_bow", this.a((dgf)cwr.pa)).a(this.b);
-      this.a(oa.a, djm.sW, cwr.yp);
-      this.a(oa.c, djm.hF).a('R', cwr.me).a('#', djm.m).b("###").b("# #").b("#R#").b("has_redstone", this.a((dgf)cwr.me)).a(this.b);
-      this.a(oa.i, cwr.pf, oa.a, cwr.gO);
-      this.a(oa.b, djm.fM).a('B', cwr.rw).a('#', djm.cv).a('D', cwr.pe).b(" B ").b("D#D").b("###").b("has_obsidian", this.a(djm.cv)).a(this.b);
-      this.a(oa.b, djm.gb).a('#', djm.cv).a('E', cwr.tp).b("###").b("#E#").b("###").b("has_ender_eye", this.a((dgf)cwr.tp)).a(this.b);
-      this.b(oa.i, cwr.tp).b(cwr.tc).b(cwr.tl).b("has_blaze_powder", this.a((dgf)cwr.tl)).a(this.b);
-      this.a(oa.a, djm.lb, 4).a('#', djm.fU).b("##").b("##").b("has_end_stone", this.a(djm.fU)).a(this.b);
-      this.a(oa.b, cwr.wf).a('T', cwr.te).a('E', cwr.tp).a('G', djm.aX).b("GGG").b("GEG").b("GTG").b("has_ender_eye", this.a((dgf)cwr.tp)).a(this.b);
-      this.a(oa.b, djm.kV, 4).a('#', cwr.wh).a('/', cwr.td).b("/").b("#").b("has_chorus_fruit_popped", this.a((dgf)cwr.wh)).a(this.b);
-      this.b(oa.h, cwr.tk).b(cwr.tj).b(djm.cm).b(cwr.sx).b("has_spider_eye", this.a((dgf)cwr.tj)).a(this.b);
-      this.b(oa.i, cwr.uV, 3).b(cwr.pZ).b(cwr.tl).a(day.a(cwr.pc, cwr.pd)).b("has_blaze_powder", this.a((dgf)cwr.tl)).a(this.b);
-      this.b(oa.i, cwr.vt, 3).b(cwr.pZ).b(cwr.rv).b("has_gunpowder", this.a((dgf)cwr.pZ)).a(this.b, "firework_rocket_simple");
-      this.a(oa.e, cwr.rS).a('#', cwr.pV).a('X', cwr.pX).b("  #").b(" #X").b("# X").b("has_string", this.a((dgf)cwr.pX)).a(this.b);
-      this.b(oa.e, cwr.oX).b(cwr.pk).b(cwr.qB).b("has_flint", this.a((dgf)cwr.qB)).b("has_obsidian", this.a(djm.cv)).a(this.b);
-      this.a(oa.b, djm.gm).a('#', cwr.rs).b("# #").b(" # ").b("has_brick", this.a((dgf)cwr.rs)).a(this.b);
-      this.a(oa.b, djm.cL).a('#', awx.bp).b("###").b("# #").b("###").b("has_cobblestone", this.a(awx.bp)).a(this.b);
-      this.b(oa.d, cwr.oq).b(djm.cL).b(cwr.oo).b("has_minecart", this.a((dgf)cwr.oo)).a(this.b);
-      this.a(oa.h, cwr.th, 3).a('#', djm.aX).b("# #").b(" # ").b("has_glass", this.a(djm.aX)).a(this.b);
-      this.a(oa.b, djm.fm, 16).a('#', djm.aX).b("###").b("###").b("has_glass", this.a(djm.aX)).a(this.b);
-      this.a(oa.a, djm.ep, cwr.rV);
-      this.b(oa.b, cwr.vc).b(cwr.vb).b(cwr.sd).b("has_item_frame", this.a((dgf)cwr.vb)).b("has_glow_ink_sac", this.a((dgf)cwr.sd)).a(this.b);
-      this.a(oa.g, cwr.qF).a('#', cwr.po).a('X', cwr.oZ).b("###").b("#X#").b("###").b("has_gold_ingot", this.a((dgf)cwr.po)).a(this.b);
-      this.a(oa.e, cwr.pE).a('#', cwr.pV).a('X', awx.be).b("XX").b("X#").b(" #").b("has_gold_ingot", this.a(awx.be)).a(this.b);
-      this.a(oa.f, cwr.qw).a('X', cwr.po).b("X X").b("X X").b("has_gold_ingot", this.a((dgf)cwr.po)).a(this.b);
-      this.a(oa.h, cwr.vj).a('#', cwr.tf).a('X', cwr.ve).b("###").b("#X#").b("###").b("has_gold_nugget", this.a((dgf)cwr.tf)).a(this.b);
-      this.a(oa.f, cwr.qu).a('X', cwr.po).b("X X").b("XXX").b("XXX").b("has_gold_ingot", this.a((dgf)cwr.po)).a(this.b);
-      this.a(oa.f, cwr.qt).a('X', cwr.po).b("XXX").b("X X").b("has_gold_ingot", this.a((dgf)cwr.po)).a(this.b);
-      this.a(oa.e, cwr.pF).a('#', cwr.pV).a('X', awx.be).b("XX").b(" #").b(" #").b("has_gold_ingot", this.a(awx.be)).a(this.b);
-      this.a(oa.f, cwr.qv).a('X', cwr.po).b("XXX").b("X X").b("X X").b("has_gold_ingot", this.a((dgf)cwr.po)).a(this.b);
-      this.a(oa.e, cwr.pD).a('#', cwr.pV).a('X', awx.be).b("XXX").b(" # ").b(" # ").b("has_gold_ingot", this.a(awx.be)).a(this.b);
-      this.a(oa.d, djm.bw, 6).a('R', cwr.me).a('#', cwr.pV).a('X', cwr.po).b("X X").b("X#X").b("XRX").b("has_rail", this.a(djm.cY)).a(this.b);
-      this.a(oa.e, cwr.pC).a('#', cwr.pV).a('X', awx.be).b("X").b("#").b("#").b("has_gold_ingot", this.a(awx.be)).a(this.b);
-      this.a(oa.f, cwr.pB).a('#', cwr.pV).a('X', awx.be).b("X").b("X").b("#").b("has_gold_ingot", this.a(awx.be)).a(this.b);
-      this.b(oa.i, cwr.po, oa.a, cwr.aO, "gold_ingot_from_gold_block", "gold_ingot");
-      this.a(oa.i, cwr.tf, oa.i, cwr.po, "gold_ingot_from_nuggets", "gold_ingot");
-      this.b(oa.a, djm.c).b(djm.e).b(cwr.ph).b("has_quartz", this.a((dgf)cwr.ph)).a(this.b);
-      this.b(oa.i, cwr.sm, 2).b(cwr.su).b(cwr.sf).b("has_white_dye", this.a((dgf)cwr.sf)).b("has_black_dye", this.a((dgf)cwr.su)).a(this.b);
-      this.b(oa.a, djm.iH, cwr.qb);
-      this.d(djm.hu, cwr.pk);
-      this.b(oa.g, cwr.xD, 4).b(cwr.mm).a(cwr.th, 4).b("has_honey_block", this.a(djm.pI)).a(this.b);
-      this.a(oa.c, djm.pI, cwr.xD);
-      this.a(oa.b, djm.pJ, cwr.xA);
-      this.a(oa.c, djm.hz).a('C', djm.cD).a('I', cwr.pk).b("I I").b("ICI").b(" I ").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.b(oa.d, cwr.os).b(djm.hz).b(cwr.oo).b("has_minecart", this.a((dgf)cwr.oo)).a(this.b);
-      this.a(oa.e, cwr.pJ).a('#', cwr.pV).a('X', awx.bd).b("XX").b("X#").b(" #").b("has_iron_ingot", this.a(awx.bd)).a(this.b);
-      this.a(oa.b, djm.fk, 16).a('#', cwr.pk).b("###").b("###").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.f, cwr.qo).a('X', cwr.pk).b("X X").b("X X").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.f, cwr.qm).a('X', cwr.pk).b("X X").b("XXX").b("XXX").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(djm.dK, day.a(cwr.pk)).a(b(cwr.pk), this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.f, cwr.ql).a('X', cwr.pk).b("XXX").b("X X").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.e, cwr.pK).a('#', cwr.pV).a('X', awx.bd).b("XX").b(" #").b(" #").b("has_iron_ingot", this.a(awx.bd)).a(this.b);
-      this.b(oa.i, cwr.pk, oa.a, cwr.aM, "iron_ingot_from_iron_block", "iron_ingot");
-      this.a(oa.i, cwr.wv, oa.i, cwr.pk, "iron_ingot_from_nuggets", "iron_ingot");
-      this.a(oa.f, cwr.qn).a('X', cwr.pk).b("XXX").b("X X").b("X X").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.e, cwr.pI).a('#', cwr.pV).a('X', awx.bd).b("XXX").b(" # ").b(" # ").b("has_iron_ingot", this.a(awx.bd)).a(this.b);
-      this.a(oa.e, cwr.pH).a('#', cwr.pV).a('X', awx.bd).b("X").b("#").b("#").b("has_iron_ingot", this.a(awx.bd)).a(this.b);
-      this.a(oa.f, cwr.pG).a('#', cwr.pV).a('X', awx.bd).b("X").b("X").b("#").b("has_iron_ingot", this.a(awx.bd)).a(this.b);
-      this.a(oa.c, djm.iw, cwr.pk);
-      this.a(oa.b, cwr.vb).a('#', cwr.pV).a('X', cwr.rk).b("###").b("#X#").b("###").b("has_leather", this.a((dgf)cwr.rk)).a(this.b);
-      this.a(oa.b, djm.eg).a('#', awx.b).a('X', cwr.pe).b("###").b("#X#").b("###").b("has_diamond", this.a((dgf)cwr.pe)).a(this.b);
-      this.a(oa.b, djm.cX, 3).a('#', cwr.pV).b("# #").b("###").b("# #").b("has_stick", this.a((dgf)cwr.pV)).a(this.b);
-      this.a(oa.i, cwr.pg, oa.a, cwr.cP);
-      this.a(oa.e, cwr.vK, 2).a('~', cwr.pX).a('O', cwr.rx).b("~~ ").b("~O ").b("  ~").b("has_slime_ball", this.a((dgf)cwr.rx)).a(this.b);
-      this.a(oa.i, cwr.rk, cwr.vE);
-      this.a(oa.f, cwr.qg).a('X', cwr.rk).b("X X").b("X X").b("has_leather", this.a((dgf)cwr.rk)).a(this.b);
-      this.a(oa.f, cwr.qe).a('X', cwr.rk).b("X X").b("XXX").b("XXX").b("has_leather", this.a((dgf)cwr.rk)).a(this.b);
-      this.a(oa.f, cwr.qd).a('X', cwr.rk).b("XXX").b("X X").b("has_leather", this.a((dgf)cwr.rk)).a(this.b);
-      this.a(oa.f, cwr.qf).a('X', cwr.rk).b("XXX").b("X X").b("X X").b("has_leather", this.a((dgf)cwr.rk)).a(this.b);
-      this.a(oa.i, cwr.vJ).a('X', cwr.rk).b("X X").b("XXX").b("X X").b("has_leather", this.a((dgf)cwr.rk)).a(this.b);
-      this.a(oa.c, djm.oC).a('S', awx.j).a('B', djm.cs).b("SSS").b(" B ").b(" S ").b("has_book", this.a((dgf)cwr.rw)).a(this.b);
-      this.a(oa.c, djm.dI).a('#', djm.m).a('X', cwr.pV).b("X").b("#").b("has_cobblestone", this.a(djm.m)).a(this.b);
-      this.a(cwr.si, djm.cb, "light_blue_dye");
-      this.b(oa.i, cwr.si, 2)
-         .b(cwr.sq)
-         .b(cwr.sf)
+      this.g(oa.a, djn.bd, djn.ke);
+      this.b(oa.i, cws.pm, oa.a, cws.aN, d(cws.pm), c(cws.pm));
+      this.b(oa.i, cws.pm, 9).b(djn.rY).b(c(cws.pm)).b(b(djn.rY), this.a(djn.rY)).a(this.b, p(cws.pm, djn.rY));
+      this.b(crs.a(cru.a));
+      this.b(oa.i, cws.so, 2).b(cws.sq).b(cws.ss).b("cyan_dye").b("has_green_dye", this.a((dgg)cws.ss)).b("has_blue_dye", this.a((dgg)cws.sq)).a(this.b);
+      this.a(oa.a, djn.iz).a('S', cws.vy).a('I', cws.su).b("SSS").b("SIS").b("SSS").b("has_prismarine_shard", this.a((dgg)cws.vy)).a(this.b);
+      this.a(oa.c, djn.hw).a('Q', cws.ph).a('G', djn.aX).a('W', awy.j).b("GGG").b("QQQ").b("WWW").b("has_quartz", this.a((dgg)cws.ph)).a(this.b);
+      this.a(oa.a, djn.ty, 4).a('S', djn.tq).b("SS").b("SS").b("has_polished_deepslate", this.a(djn.tq)).a(this.b);
+      this.a(oa.a, djn.tu, 4).a('S', djn.ty).b("SS").b("SS").b("has_deepslate_bricks", this.a(djn.ty)).a(this.b);
+      this.a(oa.d, djn.bx, 6).a('R', cws.me).a('#', djn.dJ).a('X', cws.pk).b("X X").b("X#X").b("XRX").b("has_rail", this.a(djn.cY)).a(this.b);
+      this.a(oa.e, cws.pO).a('#', cws.pV).a('X', awy.bf).b("XX").b("X#").b(" #").b("has_diamond", this.a(awy.bf)).a(this.b);
+      this.a(oa.i, cws.pe, oa.a, cws.aP);
+      this.a(oa.f, cws.qs).a('X', cws.pe).b("X X").b("X X").b("has_diamond", this.a((dgg)cws.pe)).a(this.b);
+      this.a(oa.f, cws.qq).a('X', cws.pe).b("X X").b("XXX").b("XXX").b("has_diamond", this.a((dgg)cws.pe)).a(this.b);
+      this.a(oa.f, cws.qp).a('X', cws.pe).b("XXX").b("X X").b("has_diamond", this.a((dgg)cws.pe)).a(this.b);
+      this.a(oa.e, cws.pP).a('#', cws.pV).a('X', awy.bf).b("XX").b(" #").b(" #").b("has_diamond", this.a(awy.bf)).a(this.b);
+      this.a(oa.f, cws.qr).a('X', cws.pe).b("XXX").b("X X").b("X X").b("has_diamond", this.a((dgg)cws.pe)).a(this.b);
+      this.a(oa.e, cws.pN).a('#', cws.pV).a('X', awy.bf).b("XXX").b(" # ").b(" # ").b("has_diamond", this.a(awy.bf)).a(this.b);
+      this.a(oa.e, cws.pM).a('#', cws.pV).a('X', awy.bf).b("X").b("#").b("#").b("has_diamond", this.a(awy.bf)).a(this.b);
+      this.a(oa.f, cws.pL).a('#', cws.pV).a('X', awy.bf).b("X").b("X").b("#").b("has_diamond", this.a(awy.bf)).a(this.b);
+      this.a(oa.a, djn.e, 2).a('Q', cws.ph).a('C', djn.m).b("CQ").b("QC").b("has_quartz", this.a((dgg)cws.ph)).a(this.b);
+      this.a(oa.c, djn.bb).a('R', cws.me).a('#', djn.m).a('X', cws.pa).b("###").b("#X#").b("#R#").b("has_bow", this.a((dgg)cws.pa)).a(this.b);
+      this.a(oa.a, djn.sW, cws.yp);
+      this.a(oa.c, djn.hF).a('R', cws.me).a('#', djn.m).b("###").b("# #").b("#R#").b("has_redstone", this.a((dgg)cws.me)).a(this.b);
+      this.a(oa.i, cws.pf, oa.a, cws.gO);
+      this.a(oa.b, djn.fM).a('B', cws.rw).a('#', djn.cv).a('D', cws.pe).b(" B ").b("D#D").b("###").b("has_obsidian", this.a(djn.cv)).a(this.b);
+      this.a(oa.b, djn.gb).a('#', djn.cv).a('E', cws.tp).b("###").b("#E#").b("###").b("has_ender_eye", this.a((dgg)cws.tp)).a(this.b);
+      this.b(oa.i, cws.tp).b(cws.tc).b(cws.tl).b("has_blaze_powder", this.a((dgg)cws.tl)).a(this.b);
+      this.a(oa.a, djn.lb, 4).a('#', djn.fU).b("##").b("##").b("has_end_stone", this.a(djn.fU)).a(this.b);
+      this.a(oa.b, cws.wf).a('T', cws.te).a('E', cws.tp).a('G', djn.aX).b("GGG").b("GEG").b("GTG").b("has_ender_eye", this.a((dgg)cws.tp)).a(this.b);
+      this.a(oa.b, djn.kV, 4).a('#', cws.wh).a('/', cws.td).b("/").b("#").b("has_chorus_fruit_popped", this.a((dgg)cws.wh)).a(this.b);
+      this.b(oa.h, cws.tk).b(cws.tj).b(djn.cm).b(cws.sx).b("has_spider_eye", this.a((dgg)cws.tj)).a(this.b);
+      this.b(oa.i, cws.uV, 3).b(cws.pZ).b(cws.tl).a(daz.a(cws.pc, cws.pd)).b("has_blaze_powder", this.a((dgg)cws.tl)).a(this.b);
+      this.b(oa.i, cws.vt, 3).b(cws.pZ).b(cws.rv).b("has_gunpowder", this.a((dgg)cws.pZ)).a(this.b, "firework_rocket_simple");
+      this.a(oa.e, cws.rS).a('#', cws.pV).a('X', cws.pX).b("  #").b(" #X").b("# X").b("has_string", this.a((dgg)cws.pX)).a(this.b);
+      this.b(oa.e, cws.oX).b(cws.pk).b(cws.qB).b("has_flint", this.a((dgg)cws.qB)).b("has_obsidian", this.a(djn.cv)).a(this.b);
+      this.a(oa.b, djn.gm).a('#', cws.rs).b("# #").b(" # ").b("has_brick", this.a((dgg)cws.rs)).a(this.b);
+      this.a(oa.b, djn.cL).a('#', awy.bp).b("###").b("# #").b("###").b("has_cobblestone", this.a(awy.bp)).a(this.b);
+      this.b(oa.d, cws.oq).b(djn.cL).b(cws.oo).b("has_minecart", this.a((dgg)cws.oo)).a(this.b);
+      this.a(oa.h, cws.th, 3).a('#', djn.aX).b("# #").b(" # ").b("has_glass", this.a(djn.aX)).a(this.b);
+      this.a(oa.b, djn.fm, 16).a('#', djn.aX).b("###").b("###").b("has_glass", this.a(djn.aX)).a(this.b);
+      this.a(oa.a, djn.ep, cws.rV);
+      this.b(oa.b, cws.vc).b(cws.vb).b(cws.sd).b("has_item_frame", this.a((dgg)cws.vb)).b("has_glow_ink_sac", this.a((dgg)cws.sd)).a(this.b);
+      this.a(oa.g, cws.qF).a('#', cws.po).a('X', cws.oZ).b("###").b("#X#").b("###").b("has_gold_ingot", this.a((dgg)cws.po)).a(this.b);
+      this.a(oa.e, cws.pE).a('#', cws.pV).a('X', awy.be).b("XX").b("X#").b(" #").b("has_gold_ingot", this.a(awy.be)).a(this.b);
+      this.a(oa.f, cws.qw).a('X', cws.po).b("X X").b("X X").b("has_gold_ingot", this.a((dgg)cws.po)).a(this.b);
+      this.a(oa.h, cws.vj).a('#', cws.tf).a('X', cws.ve).b("###").b("#X#").b("###").b("has_gold_nugget", this.a((dgg)cws.tf)).a(this.b);
+      this.a(oa.f, cws.qu).a('X', cws.po).b("X X").b("XXX").b("XXX").b("has_gold_ingot", this.a((dgg)cws.po)).a(this.b);
+      this.a(oa.f, cws.qt).a('X', cws.po).b("XXX").b("X X").b("has_gold_ingot", this.a((dgg)cws.po)).a(this.b);
+      this.a(oa.e, cws.pF).a('#', cws.pV).a('X', awy.be).b("XX").b(" #").b(" #").b("has_gold_ingot", this.a(awy.be)).a(this.b);
+      this.a(oa.f, cws.qv).a('X', cws.po).b("XXX").b("X X").b("X X").b("has_gold_ingot", this.a((dgg)cws.po)).a(this.b);
+      this.a(oa.e, cws.pD).a('#', cws.pV).a('X', awy.be).b("XXX").b(" # ").b(" # ").b("has_gold_ingot", this.a(awy.be)).a(this.b);
+      this.a(oa.d, djn.bw, 6).a('R', cws.me).a('#', cws.pV).a('X', cws.po).b("X X").b("X#X").b("XRX").b("has_rail", this.a(djn.cY)).a(this.b);
+      this.a(oa.e, cws.pC).a('#', cws.pV).a('X', awy.be).b("X").b("#").b("#").b("has_gold_ingot", this.a(awy.be)).a(this.b);
+      this.a(oa.f, cws.pB).a('#', cws.pV).a('X', awy.be).b("X").b("X").b("#").b("has_gold_ingot", this.a(awy.be)).a(this.b);
+      this.b(oa.i, cws.po, oa.a, cws.aO, "gold_ingot_from_gold_block", "gold_ingot");
+      this.a(oa.i, cws.tf, oa.i, cws.po, "gold_ingot_from_nuggets", "gold_ingot");
+      this.b(oa.a, djn.c).b(djn.e).b(cws.ph).b("has_quartz", this.a((dgg)cws.ph)).a(this.b);
+      this.b(oa.i, cws.sm, 2).b(cws.su).b(cws.sf).b("has_white_dye", this.a((dgg)cws.sf)).b("has_black_dye", this.a((dgg)cws.su)).a(this.b);
+      this.b(oa.a, djn.iH, cws.qb);
+      this.d(djn.hu, cws.pk);
+      this.b(oa.g, cws.xD, 4).b(cws.mm).a(cws.th, 4).b("has_honey_block", this.a(djn.pI)).a(this.b);
+      this.a(oa.c, djn.pI, cws.xD);
+      this.a(oa.b, djn.pJ, cws.xA);
+      this.a(oa.c, djn.hz).a('C', djn.cD).a('I', cws.pk).b("I I").b("ICI").b(" I ").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.b(oa.d, cws.os).b(djn.hz).b(cws.oo).b("has_minecart", this.a((dgg)cws.oo)).a(this.b);
+      this.a(oa.e, cws.pJ).a('#', cws.pV).a('X', awy.bd).b("XX").b("X#").b(" #").b("has_iron_ingot", this.a(awy.bd)).a(this.b);
+      this.a(oa.b, djn.fk, 16).a('#', cws.pk).b("###").b("###").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.f, cws.qo).a('X', cws.pk).b("X X").b("X X").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.f, cws.qm).a('X', cws.pk).b("X X").b("XXX").b("XXX").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(djn.dK, daz.a(cws.pk)).a(b(cws.pk), this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.f, cws.ql).a('X', cws.pk).b("XXX").b("X X").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.e, cws.pK).a('#', cws.pV).a('X', awy.bd).b("XX").b(" #").b(" #").b("has_iron_ingot", this.a(awy.bd)).a(this.b);
+      this.b(oa.i, cws.pk, oa.a, cws.aM, "iron_ingot_from_iron_block", "iron_ingot");
+      this.a(oa.i, cws.wv, oa.i, cws.pk, "iron_ingot_from_nuggets", "iron_ingot");
+      this.a(oa.f, cws.qn).a('X', cws.pk).b("XXX").b("X X").b("X X").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.e, cws.pI).a('#', cws.pV).a('X', awy.bd).b("XXX").b(" # ").b(" # ").b("has_iron_ingot", this.a(awy.bd)).a(this.b);
+      this.a(oa.e, cws.pH).a('#', cws.pV).a('X', awy.bd).b("X").b("#").b("#").b("has_iron_ingot", this.a(awy.bd)).a(this.b);
+      this.a(oa.f, cws.pG).a('#', cws.pV).a('X', awy.bd).b("X").b("X").b("#").b("has_iron_ingot", this.a(awy.bd)).a(this.b);
+      this.a(oa.c, djn.iw, cws.pk);
+      this.a(oa.b, cws.vb).a('#', cws.pV).a('X', cws.rk).b("###").b("#X#").b("###").b("has_leather", this.a((dgg)cws.rk)).a(this.b);
+      this.a(oa.b, djn.eg).a('#', awy.b).a('X', cws.pe).b("###").b("#X#").b("###").b("has_diamond", this.a((dgg)cws.pe)).a(this.b);
+      this.a(oa.b, djn.cX, 3).a('#', cws.pV).b("# #").b("###").b("# #").b("has_stick", this.a((dgg)cws.pV)).a(this.b);
+      this.a(oa.i, cws.pg, oa.a, cws.cP);
+      this.a(oa.e, cws.vK, 2).a('~', cws.pX).a('O', cws.rx).b("~~ ").b("~O ").b("  ~").b("has_slime_ball", this.a((dgg)cws.rx)).a(this.b);
+      this.a(oa.i, cws.rk, cws.vE);
+      this.a(oa.f, cws.qg).a('X', cws.rk).b("X X").b("X X").b("has_leather", this.a((dgg)cws.rk)).a(this.b);
+      this.a(oa.f, cws.qe).a('X', cws.rk).b("X X").b("XXX").b("XXX").b("has_leather", this.a((dgg)cws.rk)).a(this.b);
+      this.a(oa.f, cws.qd).a('X', cws.rk).b("XXX").b("X X").b("has_leather", this.a((dgg)cws.rk)).a(this.b);
+      this.a(oa.f, cws.qf).a('X', cws.rk).b("XXX").b("X X").b("X X").b("has_leather", this.a((dgg)cws.rk)).a(this.b);
+      this.a(oa.i, cws.vJ).a('X', cws.rk).b("X X").b("XXX").b("X X").b("has_leather", this.a((dgg)cws.rk)).a(this.b);
+      this.a(oa.c, djn.oC).a('S', awy.j).a('B', djn.cs).b("SSS").b(" B ").b(" S ").b("has_book", this.a((dgg)cws.rw)).a(this.b);
+      this.a(oa.c, djn.dI).a('#', djn.m).a('X', cws.pV).b("X").b("#").b("has_cobblestone", this.a(djn.m)).a(this.b);
+      this.a(cws.si, djn.cb, "light_blue_dye");
+      this.b(oa.i, cws.si, 2)
+         .b(cws.sq)
+         .b(cws.sf)
          .b("light_blue_dye")
-         .b("has_blue_dye", this.a((dgf)cwr.sq))
-         .b("has_white_dye", this.a((dgf)cwr.sf))
+         .b("has_blue_dye", this.a((dgg)cws.sq))
+         .b("has_white_dye", this.a((dgg)cws.sf))
          .a(this.b, "light_blue_dye_from_blue_white_dye");
-      this.a(cwr.sn, djm.cd, "light_gray_dye");
-      this.b(oa.i, cwr.sn, 2)
-         .b(cwr.sm)
-         .b(cwr.sf)
+      this.a(cws.sn, djn.cd, "light_gray_dye");
+      this.b(oa.i, cws.sn, 2)
+         .b(cws.sm)
+         .b(cws.sf)
          .b("light_gray_dye")
-         .b("has_gray_dye", this.a((dgf)cwr.sm))
-         .b("has_white_dye", this.a((dgf)cwr.sf))
+         .b("has_gray_dye", this.a((dgg)cws.sm))
+         .b("has_white_dye", this.a((dgg)cws.sf))
          .a(this.b, "light_gray_dye_from_gray_white_dye");
-      this.b(oa.i, cwr.sn, 3)
-         .b(cwr.su)
-         .a(cwr.sf, 2)
+      this.b(oa.i, cws.sn, 3)
+         .b(cws.su)
+         .a(cws.sf, 2)
          .b("light_gray_dye")
-         .b("has_white_dye", this.a((dgf)cwr.sf))
-         .b("has_black_dye", this.a((dgf)cwr.su))
+         .b("has_white_dye", this.a((dgg)cws.sf))
+         .b("has_black_dye", this.a((dgg)cws.su))
          .a(this.b, "light_gray_dye_from_black_white_dye");
-      this.a(cwr.sn, djm.ci, "light_gray_dye");
-      this.a(cwr.sn, djm.cg, "light_gray_dye");
-      this.d(djm.ht, cwr.po);
-      this.a(oa.c, djm.sU).a('#', cwr.pm).b("#").b("#").b("#").b("has_copper_ingot", this.a((dgf)cwr.pm)).a(this.b);
-      this.b(oa.i, cwr.sk, 2).b(cwr.ss).b(cwr.sf).b("has_green_dye", this.a((dgf)cwr.ss)).b("has_white_dye", this.a((dgf)cwr.sf)).a(this.b);
-      this.a(oa.a, djm.es).a('A', djm.er).a('B', djm.cw).b("A").b("B").b("has_carved_pumpkin", this.a(djm.er)).a(this.b);
-      this.a(cwr.sh, djm.cc, "magenta_dye");
-      this.b(oa.i, cwr.sh, 4)
-         .b(cwr.sq)
-         .a(cwr.st, 2)
-         .b(cwr.sf)
+      this.a(cws.sn, djn.ci, "light_gray_dye");
+      this.a(cws.sn, djn.cg, "light_gray_dye");
+      this.d(djn.ht, cws.po);
+      this.a(oa.c, djn.sU).a('#', cws.pm).b("#").b("#").b("#").b("has_copper_ingot", this.a((dgg)cws.pm)).a(this.b);
+      this.b(oa.i, cws.sk, 2).b(cws.ss).b(cws.sf).b("has_green_dye", this.a((dgg)cws.ss)).b("has_white_dye", this.a((dgg)cws.sf)).a(this.b);
+      this.a(oa.a, djn.es).a('A', djn.er).a('B', djn.cw).b("A").b("B").b("has_carved_pumpkin", this.a(djn.er)).a(this.b);
+      this.a(cws.sh, djn.cc, "magenta_dye");
+      this.b(oa.i, cws.sh, 4)
+         .b(cws.sq)
+         .a(cws.st, 2)
+         .b(cws.sf)
          .b("magenta_dye")
-         .b("has_blue_dye", this.a((dgf)cwr.sq))
-         .b("has_rose_red", this.a((dgf)cwr.st))
-         .b("has_white_dye", this.a((dgf)cwr.sf))
+         .b("has_blue_dye", this.a((dgg)cws.sq))
+         .b("has_rose_red", this.a((dgg)cws.st))
+         .b("has_white_dye", this.a((dgg)cws.sf))
          .a(this.b, "magenta_dye_from_blue_red_white_dye");
-      this.b(oa.i, cwr.sh, 3)
-         .b(cwr.sq)
-         .b(cwr.st)
-         .b(cwr.sl)
+      this.b(oa.i, cws.sh, 3)
+         .b(cws.sq)
+         .b(cws.st)
+         .b(cws.sl)
          .b("magenta_dye")
-         .b("has_pink_dye", this.a((dgf)cwr.sl))
-         .b("has_blue_dye", this.a((dgf)cwr.sq))
-         .b("has_red_dye", this.a((dgf)cwr.st))
+         .b("has_pink_dye", this.a((dgg)cws.sl))
+         .b("has_blue_dye", this.a((dgg)cws.sq))
+         .b("has_red_dye", this.a((dgg)cws.st))
          .a(this.b, "magenta_dye_from_blue_red_pink");
-      this.a(cwr.sh, djm.jc, "magenta_dye", 2);
-      this.b(oa.i, cwr.sh, 2)
-         .b(cwr.sp)
-         .b(cwr.sl)
+      this.a(cws.sh, djn.jc, "magenta_dye", 2);
+      this.b(oa.i, cws.sh, 2)
+         .b(cws.sp)
+         .b(cws.sl)
          .b("magenta_dye")
-         .b("has_pink_dye", this.a((dgf)cwr.sl))
-         .b("has_purple_dye", this.a((dgf)cwr.sp))
+         .b("has_pink_dye", this.a((dgg)cws.sl))
+         .b("has_purple_dye", this.a((dgg)cws.sp))
          .a(this.b, "magenta_dye_from_purple_and_pink");
-      this.a(oa.a, djm.ll, cwr.tm);
-      this.b(oa.h, cwr.tm).b(cwr.tl).b(cwr.rx).b("has_blaze_powder", this.a((dgf)cwr.tl)).a(this.b);
-      this.a(oa.i, cwr.vi).a('#', cwr.rv).a('X', cwr.rz).b("###").b("#X#").b("###").b("has_compass", this.a((dgf)cwr.rz)).a(this.b);
-      this.a(oa.a, djm.fo, cwr.sT, "has_melon");
-      this.b(oa.i, cwr.sW).b(cwr.sT).b("has_melon", this.a((dgf)cwr.sT)).a(this.b);
-      this.a(oa.d, cwr.oo).a('#', cwr.pk).b("# #").b("###").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.b(oa.a, djm.cu).b(djm.m).b(djm.ft).b("mossy_cobblestone").b("has_vine", this.a(djm.ft)).a(this.b, p(djm.cu, djm.ft));
-      this.b(oa.a, djm.eW).b(djm.eV).b(djm.ft).b("mossy_stone_bricks").b("has_vine", this.a(djm.ft)).a(this.b, p(djm.eW, djm.ft));
-      this.b(oa.a, djm.cu).b(djm.m).b(djm.te).b("mossy_cobblestone").b("has_moss_block", this.a(djm.te)).a(this.b, p(djm.cu, djm.te));
-      this.b(oa.a, djm.eW).b(djm.eV).b(djm.te).b("mossy_stone_bricks").b("has_moss_block", this.a(djm.te)).a(this.b, p(djm.eW, djm.te));
-      this.b(oa.g, cwr.pW)
-         .b(djm.cm)
-         .b(djm.cn)
-         .b(cwr.oY)
-         .b("has_mushroom_stew", this.a((dgf)cwr.pW))
-         .b("has_bowl", this.a((dgf)cwr.oY))
-         .b("has_brown_mushroom", this.a(djm.cm))
-         .b("has_red_mushroom", this.a(djm.cn))
+      this.a(oa.a, djn.ll, cws.tm);
+      this.b(oa.h, cws.tm).b(cws.tl).b(cws.rx).b("has_blaze_powder", this.a((dgg)cws.tl)).a(this.b);
+      this.a(oa.i, cws.vi).a('#', cws.rv).a('X', cws.rz).b("###").b("#X#").b("###").b("has_compass", this.a((dgg)cws.rz)).a(this.b);
+      this.a(oa.a, djn.fo, cws.sT, "has_melon");
+      this.b(oa.i, cws.sW).b(cws.sT).b("has_melon", this.a((dgg)cws.sT)).a(this.b);
+      this.a(oa.d, cws.oo).a('#', cws.pk).b("# #").b("###").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.b(oa.a, djn.cu).b(djn.m).b(djn.ft).b("mossy_cobblestone").b("has_vine", this.a(djn.ft)).a(this.b, p(djn.cu, djn.ft));
+      this.b(oa.a, djn.eW).b(djn.eV).b(djn.ft).b("mossy_stone_bricks").b("has_vine", this.a(djn.ft)).a(this.b, p(djn.eW, djn.ft));
+      this.b(oa.a, djn.cu).b(djn.m).b(djn.te).b("mossy_cobblestone").b("has_moss_block", this.a(djn.te)).a(this.b, p(djn.cu, djn.te));
+      this.b(oa.a, djn.eW).b(djn.eV).b(djn.te).b("mossy_stone_bricks").b("has_moss_block", this.a(djn.te)).a(this.b, p(djn.eW, djn.te));
+      this.b(oa.g, cws.pW)
+         .b(djn.cm)
+         .b(djn.cn)
+         .b(cws.oY)
+         .b("has_mushroom_stew", this.a((dgg)cws.pW))
+         .b("has_bowl", this.a((dgg)cws.oY))
+         .b("has_brown_mushroom", this.a(djn.cm))
+         .b("has_red_mushroom", this.a(djn.cn))
          .a(this.b);
       mb.g.s().forEach($$0x -> {
-         drr $$1x = drr.a($$0x);
+         drs $$1x = drs.a($$0x);
          if ($$1x != null) {
             this.a($$0x, $$1x);
          }
       });
-      this.a(oa.a, djm.fI, cwr.vw);
-      this.a(oa.a, djm.fD, cwr.vx);
-      this.a(oa.i, cwr.gm, oa.a, cwr.gn);
-      this.a(oa.i, djm.cB).a('R', cwr.gn).a('L', djm.ae).b(" L ").b(" R ").b(" L ").b("has_resin_block", this.a((dgf)cwr.gn)).a(this.b);
-      this.b(oa.a, djm.lm, cwr.tg);
-      this.a(oa.c, djm.bf).a('#', awx.b).a('X', cwr.me).b("###").b("#X#").b("###").b("has_redstone", this.a((dgf)cwr.me)).a(this.b);
-      this.a(oa.c, djm.lq).a('Q', cwr.ph).a('R', cwr.me).a('#', djm.m).b("###").b("RRQ").b("###").b("has_quartz", this.a((dgf)cwr.ph)).a(this.b);
-      this.a(cwr.sg, djm.cf, "orange_dye");
-      this.b(oa.i, cwr.sg, 2)
-         .b(cwr.st)
-         .b(cwr.sj)
+      this.a(oa.a, djn.fI, cws.vw);
+      this.a(oa.a, djn.fD, cws.vx);
+      this.a(oa.i, cws.gm, oa.a, cws.gn);
+      this.a(oa.i, djn.cB).a('R', cws.gn).a('L', djn.ae).b(" L ").b(" R ").b(" L ").b("has_resin_block", this.a((dgg)cws.gn)).a(this.b);
+      this.b(oa.a, djn.lm, cws.tg);
+      this.a(oa.c, djn.bf).a('#', awy.b).a('X', cws.me).b("###").b("#X#").b("###").b("has_redstone", this.a((dgg)cws.me)).a(this.b);
+      this.a(oa.c, djn.lq).a('Q', cws.ph).a('R', cws.me).a('#', djn.m).b("###").b("RRQ").b("###").b("has_quartz", this.a((dgg)cws.ph)).a(this.b);
+      this.a(cws.sg, djn.cf, "orange_dye");
+      this.b(oa.i, cws.sg, 2)
+         .b(cws.st)
+         .b(cws.sj)
          .b("orange_dye")
-         .b("has_red_dye", this.a((dgf)cwr.st))
-         .b("has_yellow_dye", this.a((dgf)cwr.sj))
+         .b("has_red_dye", this.a((dgg)cws.st))
+         .b("has_yellow_dye", this.a((dgg)cws.sj))
          .a(this.b, "orange_dye_from_red_yellow");
-      this.a(oa.b, cwr.qE).a('#', cwr.pV).a('X', awx.a).b("###").b("#X#").b("###").b("has_wool", this.a(awx.a)).a(this.b);
-      this.a(oa.i, cwr.rv, 3).a('#', djm.ef).b("###").b("has_reeds", this.a(djm.ef)).a(this.b);
-      this.a(oa.a, djm.hC, 2)
-         .a('#', djm.hA)
+      this.a(oa.b, cws.qE).a('#', cws.pV).a('X', awy.a).b("###").b("#X#").b("###").b("has_wool", this.a(awy.a)).a(this.b);
+      this.a(oa.i, cws.rv, 3).a('#', djn.ef).b("###").b("has_reeds", this.a(djn.ef)).a(this.b);
+      this.a(oa.a, djn.hC, 2)
+         .a('#', djn.hA)
          .b("#")
          .b("#")
-         .b("has_chiseled_quartz_block", this.a(djm.hB))
-         .b("has_quartz_block", this.a(djm.hA))
-         .b("has_quartz_pillar", this.a(djm.hC))
+         .b("has_chiseled_quartz_block", this.a(djn.hB))
+         .b("has_quartz_block", this.a(djn.hA))
+         .b("has_quartz_pillar", this.a(djn.hC))
          .a(this.b);
-      this.b(oa.a, djm.ja, djm.eb);
-      this.a(cwr.sl, djm.je, "pink_dye", 2);
-      this.a(cwr.sl, djm.ch, "pink_dye");
-      this.b(oa.i, cwr.sl, 2)
-         .b(cwr.st)
-         .b(cwr.sf)
+      this.b(oa.a, djn.ja, djn.eb);
+      this.a(cws.sl, djn.je, "pink_dye", 2);
+      this.a(cws.sl, djn.ch, "pink_dye");
+      this.b(oa.i, cws.sl, 2)
+         .b(cws.st)
+         .b(cws.sf)
          .b("pink_dye")
-         .b("has_white_dye", this.a((dgf)cwr.sf))
-         .b("has_red_dye", this.a((dgf)cwr.st))
+         .b("has_white_dye", this.a((dgg)cws.sf))
+         .b("has_red_dye", this.a((dgg)cws.st))
          .a(this.b, "pink_dye_from_red_white_dye");
-      this.a(oa.c, djm.bF)
-         .a('R', cwr.me)
-         .a('#', djm.m)
-         .a('T', awx.b)
-         .a('X', cwr.pk)
+      this.a(oa.c, djn.bF)
+         .a('R', cws.me)
+         .a('#', djn.m)
+         .a('T', awy.b)
+         .a('X', cws.pk)
          .b("TTT")
          .b("#X#")
          .b("#R#")
-         .b("has_redstone", this.a((dgf)cwr.me))
+         .b("has_redstone", this.a((dgg)cws.me))
          .a(this.b);
-      this.e(oa.a, djm.em, djm.el);
-      this.a(oa.a, djm.ix, cwr.vy);
-      this.b(oa.a, djm.iy, cwr.vy);
-      this.b(oa.g, cwr.vs).b(djm.fn).b(cwr.sx).b(cwr.ry).b("has_carved_pumpkin", this.a(djm.er)).b("has_pumpkin", this.a(djm.fn)).a(this.b);
-      this.b(oa.i, cwr.sV, 4).b(djm.fn).b("has_pumpkin", this.a(djm.fn)).a(this.b);
-      this.b(oa.i, cwr.sp, 2).b(cwr.sq).b(cwr.st).b("has_blue_dye", this.a((dgf)cwr.sq)).b("has_red_dye", this.a((dgf)cwr.st)).a(this.b);
-      this.a(oa.b, djm.lr).a('#', djm.cD).a('-', cwr.wu).b("-").b("#").b("-").b("has_shulker_shell", this.a((dgf)cwr.wu)).a(this.b);
+      this.e(oa.a, djn.em, djn.el);
+      this.a(oa.a, djn.ix, cws.vy);
+      this.b(oa.a, djn.iy, cws.vy);
+      this.b(oa.g, cws.vs).b(djn.fn).b(cws.sx).b(cws.ry).b("has_carved_pumpkin", this.a(djn.er)).b("has_pumpkin", this.a(djn.fn)).a(this.b);
+      this.b(oa.i, cws.sV, 4).b(djn.fn).b("has_pumpkin", this.a(djn.fn)).a(this.b);
+      this.b(oa.i, cws.sp, 2).b(cws.sq).b(cws.st).b("has_blue_dye", this.a((dgg)cws.sq)).b("has_red_dye", this.a((dgg)cws.st)).a(this.b);
+      this.a(oa.b, djn.lr).a('#', djn.cD).a('-', cws.wu).b("-").b("#").b("-").b("has_shulker_shell", this.a((dgg)cws.wu)).a(this.b);
       this.c();
-      this.a(oa.a, djm.kY, 4).a('F', cwr.wh).b("FF").b("FF").b("has_chorus_fruit_popped", this.a((dgf)cwr.wh)).a(this.b);
-      this.a(oa.a, djm.kZ).a('#', djm.kp).b("#").b("#").b("has_purpur_block", this.a(djm.kY)).a(this.b);
-      this.a(oa.a, djm.kp, day.a(djm.kY, djm.kZ)).a("has_purpur_block", this.a(djm.kY)).a(this.b);
-      this.b(djm.la, day.a(djm.kY, djm.kZ)).a("has_purpur_block", this.a(djm.kY)).a(this.b);
-      this.a(oa.a, djm.hA, cwr.ph);
-      this.a(oa.a, djm.qm, 4).a('#', djm.hA).b("##").b("##").b("has_quartz_block", this.a(djm.hA)).a(this.b);
-      this.a(oa.a, djm.km, day.a(djm.hB, djm.hA, djm.hC))
-         .a("has_chiseled_quartz_block", this.a(djm.hB))
-         .a("has_quartz_block", this.a(djm.hA))
-         .a("has_quartz_pillar", this.a(djm.hC))
+      this.a(oa.a, djn.kY, 4).a('F', cws.wh).b("FF").b("FF").b("has_chorus_fruit_popped", this.a((dgg)cws.wh)).a(this.b);
+      this.a(oa.a, djn.kZ).a('#', djn.kp).b("#").b("#").b("has_purpur_block", this.a(djn.kY)).a(this.b);
+      this.a(oa.a, djn.kp, daz.a(djn.kY, djn.kZ)).a("has_purpur_block", this.a(djn.kY)).a(this.b);
+      this.b(djn.la, daz.a(djn.kY, djn.kZ)).a("has_purpur_block", this.a(djn.kY)).a(this.b);
+      this.a(oa.a, djn.hA, cws.ph);
+      this.a(oa.a, djn.qm, 4).a('#', djn.hA).b("##").b("##").b("has_quartz_block", this.a(djn.hA)).a(this.b);
+      this.a(oa.a, djn.km, daz.a(djn.hB, djn.hA, djn.hC))
+         .a("has_chiseled_quartz_block", this.a(djn.hB))
+         .a("has_quartz_block", this.a(djn.hA))
+         .a("has_quartz_pillar", this.a(djn.hC))
          .a(this.b);
-      this.b(djm.hD, day.a(djm.hB, djm.hA, djm.hC))
-         .a("has_chiseled_quartz_block", this.a(djm.hB))
-         .a("has_quartz_block", this.a(djm.hA))
-         .a("has_quartz_pillar", this.a(djm.hC))
+      this.b(djn.hD, daz.a(djn.hB, djn.hA, djn.hC))
+         .a("has_chiseled_quartz_block", this.a(djn.hB))
+         .a("has_quartz_block", this.a(djn.hA))
+         .a("has_quartz_pillar", this.a(djn.hC))
          .a(this.b);
-      this.b(oa.g, cwr.vC)
-         .b(cwr.vg)
-         .b(cwr.vB)
-         .b(cwr.oY)
-         .b(cwr.ve)
-         .b(djm.cm)
+      this.b(oa.g, cws.vC)
+         .b(cws.vg)
+         .b(cws.vB)
+         .b(cws.oY)
+         .b(cws.ve)
+         .b(djn.cm)
          .b("rabbit_stew")
-         .b("has_cooked_rabbit", this.a((dgf)cwr.vB))
-         .a(this.b, p(cwr.vC, cwr.dJ));
-      this.b(oa.g, cwr.vC)
-         .b(cwr.vg)
-         .b(cwr.vB)
-         .b(cwr.oY)
-         .b(cwr.ve)
-         .b(djm.cn)
+         .b("has_cooked_rabbit", this.a((dgg)cws.vB))
+         .a(this.b, p(cws.vC, cws.dJ));
+      this.b(oa.g, cws.vC)
+         .b(cws.vg)
+         .b(cws.vB)
+         .b(cws.oY)
+         .b(cws.ve)
+         .b(djn.cn)
          .b("rabbit_stew")
-         .b("has_cooked_rabbit", this.a((dgf)cwr.vB))
-         .a(this.b, p(cwr.vC, cwr.dK));
-      this.a(oa.d, djm.cY, 16).a('#', cwr.pV).a('X', cwr.pk).b("X X").b("X#X").b("X X").b("has_minecart", this.a((dgf)cwr.oo)).a(this.b);
-      this.a(oa.c, cwr.me, oa.c, cwr.mg);
-      this.a(oa.c, djm.fW).a('R', cwr.me).a('G', djm.ep).b(" R ").b("RGR").b(" R ").b("has_glowstone", this.a(djm.ep)).a(this.b);
-      this.a(oa.c, djm.dX).a('#', cwr.pV).a('X', cwr.me).b("X").b("#").b("has_redstone", this.a((dgf)cwr.me)).a(this.b);
-      this.a(cwr.st, cwr.wk, "red_dye");
-      this.a(cwr.st, djm.ca, "red_dye");
-      this.a(cwr.st, djm.jd, "red_dye", 2);
-      this.a(cwr.sg, djm.tZ, "orange_dye");
-      this.a(cwr.sm, djm.ua, "gray_dye");
-      this.b(oa.i, cwr.st).b(djm.ce).b("red_dye").b("has_red_flower", this.a(djm.ce)).a(this.b, "red_dye_from_tulip");
-      this.a(oa.a, djm.ln).a('W', cwr.tg).a('N', cwr.vw).b("NW").b("WN").b("has_nether_wart", this.a((dgf)cwr.tg)).a(this.b);
-      this.a(oa.a, djm.jN).a('#', djm.N).b("##").b("##").b("has_sand", this.a(djm.N)).a(this.b);
-      this.a(oa.a, djm.kn, day.a(djm.jN, djm.jO)).a("has_red_sandstone", this.a(djm.jN)).a("has_chiseled_red_sandstone", this.a(djm.jO)).a(this.b);
-      this.b(djm.jQ, day.a(djm.jN, djm.jO, djm.jP))
-         .a("has_red_sandstone", this.a(djm.jN))
-         .a("has_chiseled_red_sandstone", this.a(djm.jO))
-         .a("has_cut_red_sandstone", this.a(djm.jP))
+         .b("has_cooked_rabbit", this.a((dgg)cws.vB))
+         .a(this.b, p(cws.vC, cws.dK));
+      this.a(oa.d, djn.cY, 16).a('#', cws.pV).a('X', cws.pk).b("X X").b("X#X").b("X X").b("has_minecart", this.a((dgg)cws.oo)).a(this.b);
+      this.a(oa.c, cws.me, oa.c, cws.mg);
+      this.a(oa.c, djn.fW).a('R', cws.me).a('G', djn.ep).b(" R ").b("RGR").b(" R ").b("has_glowstone", this.a(djn.ep)).a(this.b);
+      this.a(oa.c, djn.dX).a('#', cws.pV).a('X', cws.me).b("X").b("#").b("has_redstone", this.a((dgg)cws.me)).a(this.b);
+      this.a(cws.st, cws.wk, "red_dye");
+      this.a(cws.st, djn.ca, "red_dye");
+      this.a(cws.st, djn.jd, "red_dye", 2);
+      this.a(cws.sg, djn.tZ, "orange_dye");
+      this.a(cws.sm, djn.ua, "gray_dye");
+      this.b(oa.i, cws.st).b(djn.ce).b("red_dye").b("has_red_flower", this.a(djn.ce)).a(this.b, "red_dye_from_tulip");
+      this.a(oa.a, djn.ln).a('W', cws.tg).a('N', cws.vw).b("NW").b("WN").b("has_nether_wart", this.a((dgg)cws.tg)).a(this.b);
+      this.a(oa.a, djn.jN).a('#', djn.N).b("##").b("##").b("has_sand", this.a(djn.N)).a(this.b);
+      this.a(oa.a, djn.kn, daz.a(djn.jN, djn.jO)).a("has_red_sandstone", this.a(djn.jN)).a("has_chiseled_red_sandstone", this.a(djn.jO)).a(this.b);
+      this.b(djn.jQ, daz.a(djn.jN, djn.jO, djn.jP))
+         .a("has_red_sandstone", this.a(djn.jN))
+         .a("has_chiseled_red_sandstone", this.a(djn.jO))
+         .a("has_cut_red_sandstone", this.a(djn.jP))
          .a(this.b);
-      this.a(oa.c, djm.eu).a('#', djm.dX).a('X', cwr.me).a('I', djm.b).b("#X#").b("III").b("has_redstone_torch", this.a(djm.dX)).a(this.b);
-      this.a(oa.a, djm.bc, djm.L);
-      this.a(oa.a, djm.ke, day.a(djm.bc, djm.bd)).a("has_sandstone", this.a(djm.bc)).a("has_chiseled_sandstone", this.a(djm.bd)).a(this.b);
-      this.b(djm.fY, day.a(djm.bc, djm.bd, djm.be))
-         .a("has_sandstone", this.a(djm.bc))
-         .a("has_chiseled_sandstone", this.a(djm.bd))
-         .a("has_cut_sandstone", this.a(djm.be))
+      this.a(oa.c, djn.eu).a('#', djn.dX).a('X', cws.me).a('I', djn.b).b("#X#").b("III").b("has_redstone_torch", this.a(djn.dX)).a(this.b);
+      this.a(oa.a, djn.bc, djn.L);
+      this.a(oa.a, djn.ke, daz.a(djn.bc, djn.bd)).a("has_sandstone", this.a(djn.bc)).a("has_chiseled_sandstone", this.a(djn.bd)).a(this.b);
+      this.b(djn.fY, daz.a(djn.bc, djn.bd, djn.be))
+         .a("has_sandstone", this.a(djn.bc))
+         .a("has_chiseled_sandstone", this.a(djn.bd))
+         .a("has_cut_sandstone", this.a(djn.be))
          .a(this.b);
-      this.a(oa.a, djm.iG).a('S', cwr.vy).a('C', cwr.vz).b("SCS").b("CCC").b("SCS").b("has_prismarine_crystals", this.a((dgf)cwr.vz)).a(this.b);
-      this.a(oa.e, cwr.sS).a('#', cwr.pk).b(" #").b("# ").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.f, cwr.ws).a('W', awx.bb).a('o', cwr.pk).b("WoW").b("WWW").b(" W ").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.i, cwr.rx, oa.c, cwr.ml);
-      this.f(oa.a, djm.jP, djm.jN);
-      this.f(oa.a, djm.be, djm.bc);
-      this.a(oa.a, djm.ec, cwr.rj);
-      this.a(oa.b, djm.ea, 6).a('#', djm.ec).b("###").b("has_snowball", this.a((dgf)cwr.rj)).a(this.b);
-      this.a(oa.b, djm.oJ).a('L', awx.r).a('S', cwr.pV).a('#', awx.aM).b(" S ").b("S#S").b("LLL").b("has_soul_sand", this.a(awx.aM)).a(this.b);
-      this.a(oa.h, cwr.tq).a('#', cwr.tf).a('X', cwr.sT).b("###").b("#X#").b("###").b("has_melon", this.a((dgf)cwr.sT)).a(this.b);
-      this.a(oa.f, cwr.wp, 2).a('#', cwr.rV).a('X', cwr.pb).b(" # ").b("#X#").b(" # ").b("has_glowstone_dust", this.a((dgf)cwr.rV)).a(this.b);
-      this.a(oa.e, cwr.rU).a('#', cwr.pi).a('X', cwr.pm).b(" # ").b(" X ").b(" X ").b("has_amethyst_shard", this.a((dgf)cwr.pi)).a(this.b);
-      this.a(oa.i, cwr.pV, 4).a('#', awx.b).b("#").b("#").c("sticks").b("has_planks", this.a(awx.b)).a(this.b);
-      this.a(oa.i, cwr.pV, 1).a('#', djm.nB).b("#").b("#").c("sticks").b("has_bamboo", this.a(djm.nB)).a(this.b, "stick_from_bamboo_item");
-      this.a(oa.c, djm.by).a('P', djm.bF).a('S', cwr.rx).b("S").b("P").b("has_slime_ball", this.a((dgf)cwr.rx)).a(this.b);
-      this.a(oa.a, djm.eV, 4).a('#', djm.b).b("##").b("##").b("has_stone", this.a(djm.b)).a(this.b);
-      this.a(oa.e, cwr.pz).a('#', cwr.pV).a('X', awx.bc).b("XX").b("X#").b(" #").b("has_cobblestone", this.a(awx.bc)).a(this.b);
-      this.a(oa.a, djm.kj, day.a(djm.eV)).a("has_stone_bricks", this.a(awx.c)).a(this.b);
-      this.b(djm.fy, day.a(djm.eV)).a("has_stone_bricks", this.a(awx.c)).a(this.b);
-      this.a(oa.e, cwr.pA).a('#', cwr.pV).a('X', awx.bc).b("XX").b(" #").b(" #").b("has_cobblestone", this.a(awx.bc)).a(this.b);
-      this.a(oa.e, cwr.py).a('#', cwr.pV).a('X', awx.bc).b("XXX").b(" # ").b(" # ").b("has_cobblestone", this.a(awx.bc)).a(this.b);
-      this.a(oa.e, cwr.px).a('#', cwr.pV).a('X', awx.bc).b("X").b("#").b("#").b("has_cobblestone", this.a(awx.bc)).a(this.b);
-      this.c(oa.a, djm.kd, djm.kq);
-      this.a(oa.f, cwr.pw).a('#', cwr.pV).a('X', awx.bc).b("X").b("X").b("#").b("has_cobblestone", this.a(awx.bc)).a(this.b);
-      this.a(oa.a, djm.bH).a('#', cwr.pX).b("##").b("##").b("has_string", this.a((dgf)cwr.pX)).a(this.b, p(djm.bH, cwr.pX));
-      this.a(cwr.sx, djm.ef, "sugar");
-      this.b(oa.i, cwr.sx, 3).b(cwr.xD).b("sugar").b("has_honey_bottle", this.a((dgf)cwr.xD)).a(this.b, p(cwr.sx, cwr.xD));
-      this.a(oa.c, djm.pF)
-         .a('H', cwr.ia)
-         .a('R', cwr.me)
+      this.a(oa.a, djn.iG).a('S', cws.vy).a('C', cws.vz).b("SCS").b("CCC").b("SCS").b("has_prismarine_crystals", this.a((dgg)cws.vz)).a(this.b);
+      this.a(oa.e, cws.sS).a('#', cws.pk).b(" #").b("# ").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.f, cws.ws).a('W', awy.bb).a('o', cws.pk).b("WoW").b("WWW").b(" W ").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.i, cws.rx, oa.c, cws.ml);
+      this.f(oa.a, djn.jP, djn.jN);
+      this.f(oa.a, djn.be, djn.bc);
+      this.a(oa.a, djn.ec, cws.rj);
+      this.a(oa.b, djn.ea, 6).a('#', djn.ec).b("###").b("has_snowball", this.a((dgg)cws.rj)).a(this.b);
+      this.a(oa.b, djn.oJ).a('L', awy.r).a('S', cws.pV).a('#', awy.aM).b(" S ").b("S#S").b("LLL").b("has_soul_sand", this.a(awy.aM)).a(this.b);
+      this.a(oa.h, cws.tq).a('#', cws.tf).a('X', cws.sT).b("###").b("#X#").b("###").b("has_melon", this.a((dgg)cws.sT)).a(this.b);
+      this.a(oa.f, cws.wp, 2).a('#', cws.rV).a('X', cws.pb).b(" # ").b("#X#").b(" # ").b("has_glowstone_dust", this.a((dgg)cws.rV)).a(this.b);
+      this.a(oa.e, cws.rU).a('#', cws.pi).a('X', cws.pm).b(" # ").b(" X ").b(" X ").b("has_amethyst_shard", this.a((dgg)cws.pi)).a(this.b);
+      this.a(oa.i, cws.pV, 4).a('#', awy.b).b("#").b("#").c("sticks").b("has_planks", this.a(awy.b)).a(this.b);
+      this.a(oa.i, cws.pV, 1).a('#', djn.nB).b("#").b("#").c("sticks").b("has_bamboo", this.a(djn.nB)).a(this.b, "stick_from_bamboo_item");
+      this.a(oa.c, djn.by).a('P', djn.bF).a('S', cws.rx).b("S").b("P").b("has_slime_ball", this.a((dgg)cws.rx)).a(this.b);
+      this.a(oa.a, djn.eV, 4).a('#', djn.b).b("##").b("##").b("has_stone", this.a(djn.b)).a(this.b);
+      this.a(oa.e, cws.pz).a('#', cws.pV).a('X', awy.bc).b("XX").b("X#").b(" #").b("has_cobblestone", this.a(awy.bc)).a(this.b);
+      this.a(oa.a, djn.kj, daz.a(djn.eV)).a("has_stone_bricks", this.a(awy.c)).a(this.b);
+      this.b(djn.fy, daz.a(djn.eV)).a("has_stone_bricks", this.a(awy.c)).a(this.b);
+      this.a(oa.e, cws.pA).a('#', cws.pV).a('X', awy.bc).b("XX").b(" #").b(" #").b("has_cobblestone", this.a(awy.bc)).a(this.b);
+      this.a(oa.e, cws.py).a('#', cws.pV).a('X', awy.bc).b("XXX").b(" # ").b(" # ").b("has_cobblestone", this.a(awy.bc)).a(this.b);
+      this.a(oa.e, cws.px).a('#', cws.pV).a('X', awy.bc).b("X").b("#").b("#").b("has_cobblestone", this.a(awy.bc)).a(this.b);
+      this.c(oa.a, djn.kd, djn.kq);
+      this.a(oa.f, cws.pw).a('#', cws.pV).a('X', awy.bc).b("X").b("X").b("#").b("has_cobblestone", this.a(awy.bc)).a(this.b);
+      this.a(oa.a, djn.bH).a('#', cws.pX).b("##").b("##").b("has_string", this.a((dgg)cws.pX)).a(this.b, p(djn.bH, cws.pX));
+      this.a(cws.sx, djn.ef, "sugar");
+      this.b(oa.i, cws.sx, 3).b(cws.xD).b("sugar").b("has_honey_bottle", this.a((dgg)cws.xD)).a(this.b, p(cws.sx, cws.xD));
+      this.a(oa.c, djn.pF)
+         .a('H', cws.ia)
+         .a('R', cws.me)
          .b(" R ")
          .b("RHR")
          .b(" R ")
-         .b("has_redstone", this.a((dgf)cwr.me))
-         .b("has_hay_block", this.a(djm.iH))
+         .b("has_redstone", this.a((dgg)cws.me))
+         .b("has_hay_block", this.a(djn.iH))
          .a(this.b);
-      this.a(oa.c, djm.cr).a('#', day.a(djm.L, djm.N)).a('X', cwr.pZ).b("X#X").b("#X#").b("X#X").b("has_gunpowder", this.a((dgf)cwr.pZ)).a(this.b);
-      this.b(oa.d, cwr.or).b(djm.cr).b(cwr.oo).b("has_minecart", this.a((dgf)cwr.oo)).a(this.b);
-      this.a(oa.b, djm.cw, 4).a('#', cwr.pV).a('X', day.a(cwr.pc, cwr.pd)).b("X").b("#").b("has_stone_pickaxe", this.a((dgf)cwr.py)).a(this.b);
-      this.a(oa.b, djm.en, 4).a('X', day.a(cwr.pc, cwr.pd)).a('#', cwr.pV).a('S', awx.aM).b("X").b("#").b("S").b("has_soul_sand", this.a(awx.aM)).a(this.b);
-      this.a(oa.b, djm.oG)
-         .a('#', cwr.eS)
-         .a('X', cwr.wv)
+      this.a(oa.c, djn.cr).a('#', daz.a(djn.L, djn.N)).a('X', cws.pZ).b("X#X").b("#X#").b("X#X").b("has_gunpowder", this.a((dgg)cws.pZ)).a(this.b);
+      this.b(oa.d, cws.or).b(djn.cr).b(cws.oo).b("has_minecart", this.a((dgg)cws.oo)).a(this.b);
+      this.a(oa.b, djn.cw, 4).a('#', cws.pV).a('X', daz.a(cws.pc, cws.pd)).b("X").b("#").b("has_stone_pickaxe", this.a((dgg)cws.py)).a(this.b);
+      this.a(oa.b, djn.en, 4).a('X', daz.a(cws.pc, cws.pd)).a('#', cws.pV).a('S', awy.aM).b("X").b("#").b("S").b("has_soul_sand", this.a(awy.aM)).a(this.b);
+      this.a(oa.b, djn.oG)
+         .a('#', cws.eS)
+         .a('X', cws.wv)
          .b("XXX")
          .b("X#X")
          .b("XXX")
-         .b("has_iron_nugget", this.a((dgf)cwr.wv))
-         .b("has_iron_ingot", this.a((dgf)cwr.pk))
+         .b("has_iron_nugget", this.a((dgg)cws.wv))
+         .b("has_iron_ingot", this.a((dgg)cws.pk))
          .a(this.b);
-      this.a(oa.b, djm.oH).a('#', cwr.fI).a('X', cwr.wv).b("XXX").b("X#X").b("XXX").b("has_soul_torch", this.a((dgf)cwr.fI)).a(this.b);
-      this.b(oa.c, djm.hs).b(djm.cD).b(djm.gc).b("has_tripwire_hook", this.a(djm.gc)).a(this.b);
-      this.a(oa.c, djm.gc, 2).a('#', awx.b).a('S', cwr.pV).a('I', cwr.pk).b("I").b("S").b("#").b("has_string", this.a((dgf)cwr.pX)).a(this.b);
-      this.a(oa.f, cwr.oT).a('X', cwr.oU).b("XXX").b("X X").b("has_turtle_scute", this.a((dgf)cwr.oU)).a(this.b);
-      this.a(oa.f, cwr.oW).a('X', cwr.oV).b("X  ").b("XXX").b("X X").b("has_armadillo_scute", this.a((dgf)cwr.oV)).a(this.b);
-      this.b(oa.i, cwr.qb, 9).b(djm.iH).b("has_hay_block", this.a(djm.iH)).a(this.b);
-      this.b(oa.i, cwr.sf).b(cwr.sv).b("white_dye").b("has_bone_meal", this.a((dgf)cwr.sv)).a(this.b);
-      this.a(cwr.sf, djm.cl, "white_dye");
-      this.a(oa.e, cwr.pu).a('#', cwr.pV).a('X', awx.bb).b("XX").b("X#").b(" #").b("has_stick", this.a((dgf)cwr.pV)).a(this.b);
-      this.a(oa.e, cwr.pv).a('#', cwr.pV).a('X', awx.bb).b("XX").b(" #").b(" #").b("has_stick", this.a((dgf)cwr.pV)).a(this.b);
-      this.a(oa.e, cwr.pt).a('#', cwr.pV).a('X', awx.bb).b("XXX").b(" # ").b(" # ").b("has_stick", this.a((dgf)cwr.pV)).a(this.b);
-      this.a(oa.e, cwr.ps).a('#', cwr.pV).a('X', awx.bb).b("X").b("#").b("#").b("has_stick", this.a((dgf)cwr.pV)).a(this.b);
-      this.a(oa.f, cwr.pr).a('#', cwr.pV).a('X', awx.bb).b("X").b("X").b("#").b("has_stick", this.a((dgf)cwr.pV)).a(this.b);
-      this.b(oa.i, cwr.uX).b(cwr.rw).b(cwr.sc).b(cwr.pY).b("has_book", this.a((dgf)cwr.rw)).a(this.b);
-      this.a(cwr.sj, djm.bY, "yellow_dye");
-      this.a(cwr.sj, djm.jb, "yellow_dye", 2);
-      this.a(oa.g, cwr.sU, oa.a, cwr.ru);
-      this.a(oa.i, djm.nz)
-         .a('#', cwr.wT)
-         .a('X', cwr.wU)
+      this.a(oa.b, djn.oH).a('#', cws.fI).a('X', cws.wv).b("XXX").b("X#X").b("XXX").b("has_soul_torch", this.a((dgg)cws.fI)).a(this.b);
+      this.b(oa.c, djn.hs).b(djn.cD).b(djn.gc).b("has_tripwire_hook", this.a(djn.gc)).a(this.b);
+      this.a(oa.c, djn.gc, 2).a('#', awy.b).a('S', cws.pV).a('I', cws.pk).b("I").b("S").b("#").b("has_string", this.a((dgg)cws.pX)).a(this.b);
+      this.a(oa.f, cws.oT).a('X', cws.oU).b("XXX").b("X X").b("has_turtle_scute", this.a((dgg)cws.oU)).a(this.b);
+      this.a(oa.f, cws.oW).a('X', cws.oV).b("X  ").b("XXX").b("X X").b("has_armadillo_scute", this.a((dgg)cws.oV)).a(this.b);
+      this.b(oa.i, cws.qb, 9).b(djn.iH).b("has_hay_block", this.a(djn.iH)).a(this.b);
+      this.b(oa.i, cws.sf).b(cws.sv).b("white_dye").b("has_bone_meal", this.a((dgg)cws.sv)).a(this.b);
+      this.a(cws.sf, djn.cl, "white_dye");
+      this.a(oa.e, cws.pu).a('#', cws.pV).a('X', awy.bb).b("XX").b("X#").b(" #").b("has_stick", this.a((dgg)cws.pV)).a(this.b);
+      this.a(oa.e, cws.pv).a('#', cws.pV).a('X', awy.bb).b("XX").b(" #").b(" #").b("has_stick", this.a((dgg)cws.pV)).a(this.b);
+      this.a(oa.e, cws.pt).a('#', cws.pV).a('X', awy.bb).b("XXX").b(" # ").b(" # ").b("has_stick", this.a((dgg)cws.pV)).a(this.b);
+      this.a(oa.e, cws.ps).a('#', cws.pV).a('X', awy.bb).b("X").b("#").b("#").b("has_stick", this.a((dgg)cws.pV)).a(this.b);
+      this.a(oa.f, cws.pr).a('#', cws.pV).a('X', awy.bb).b("X").b("X").b("#").b("has_stick", this.a((dgg)cws.pV)).a(this.b);
+      this.b(oa.i, cws.uX).b(cws.rw).b(cws.sc).b(cws.pY).b("has_book", this.a((dgg)cws.rw)).a(this.b);
+      this.a(cws.sj, djn.bY, "yellow_dye");
+      this.a(cws.sj, djn.jb, "yellow_dye", 2);
+      this.a(oa.g, cws.sU, oa.a, cws.ru);
+      this.a(oa.i, djn.nz)
+         .a('#', cws.wT)
+         .a('X', cws.wU)
          .b("###")
          .b("#X#")
          .b("###")
-         .b("has_nautilus_core", this.a((dgf)cwr.wU))
-         .b("has_nautilus_shell", this.a((dgf)cwr.wT))
+         .b("has_nautilus_core", this.a((dgg)cws.wU))
+         .b("has_nautilus_shell", this.a((dgg)cws.wT))
          .a(this.b);
-      this.d(oa.b, djm.oj, djm.jN);
-      this.d(oa.b, djm.om, djm.eV);
-      this.d(oa.b, djm.or, djm.bc);
-      this.b(oa.i, cwr.xg).b(cwr.rv).b(djm.cq).b("has_bricks", this.a(djm.cq)).a(this.b);
-      this.b(oa.i, cwr.xh).b(cwr.rv).b(djm.ft).b("has_vines", this.a(djm.ft)).a(this.b);
-      this.b(oa.i, cwr.wZ).b(cwr.rv).b(cwr.vo).b("has_creeper_head", this.a((dgf)cwr.vo)).a(this.b);
-      this.b(oa.i, cwr.xa).b(cwr.rv).b(cwr.vl).b("has_wither_skeleton_skull", this.a((dgf)cwr.vl)).a(this.b);
-      this.b(oa.i, cwr.wY).b(cwr.rv).b(djm.ci).b("has_oxeye_daisy", this.a(djm.ci)).a(this.b);
-      this.b(oa.i, cwr.xb).b(cwr.rv).b(cwr.qG).b("has_enchanted_golden_apple", this.a((dgf)cwr.qG)).a(this.b);
-      this.a(oa.b, djm.ou, 6).a('~', cwr.pX).a('I', djm.nB).b("I~I").b("I I").b("I I").b("has_bamboo", this.a(djm.nB)).a(this.b);
-      this.a(oa.b, djm.oB).a('I', cwr.pV).a('-', djm.kc).a('#', awx.b).b("I-I").b("# #").b("has_stone_slab", this.a(djm.kc)).a(this.b);
-      this.a(oa.b, djm.oy).a('#', djm.kq).a('X', djm.cL).a('I', cwr.pk).b("III").b("IXI").b("###").b("has_smooth_stone", this.a(djm.kq)).a(this.b);
-      this.a(oa.b, djm.ox).a('#', awx.r).a('X', djm.cL).b(" # ").b("#X#").b(" # ").b("has_furnace", this.a(djm.cL)).a(this.b);
-      this.a(oa.b, djm.oz).a('#', awx.b).a('@', cwr.rv).b("@@").b("##").b("##").b("has_paper", this.a((dgf)cwr.rv)).a(this.b);
-      this.a(oa.b, djm.oD).a('#', awx.b).a('@', cwr.pk).b("@@").b("##").b("##").b("has_iron_ingot", this.a((dgf)cwr.pk)).a(this.b);
-      this.a(oa.b, djm.oA).a('#', awx.b).a('@', cwr.qB).b("@@").b("##").b("##").b("has_flint", this.a((dgf)cwr.qB)).a(this.b);
-      this.a(oa.b, djm.oE).a('I', cwr.pk).a('#', djm.b).b(" I ").b("###").b("has_stone", this.a(djm.b)).a(this.b);
-      this.a(oa.b, djm.pS).a('S', cwr.fU).a('#', cwr.pp).b("SSS").b("S#S").b("SSS").b("has_netherite_ingot", this.a((dgf)cwr.pp)).a(this.b);
-      this.b(oa.i, cwr.pp, oa.a, cwr.aQ, "netherite_ingot_from_netherite_block", "netherite_ingot");
-      this.b(oa.i, cwr.pp).a(cwr.pq, 4).a(cwr.po, 4).b("netherite_ingot").b("has_netherite_scrap", this.a((dgf)cwr.pq)).a(this.b);
-      this.a(oa.b, djm.pN).a('O', djm.pM).a('G', djm.ep).b("OOO").b("GGG").b("OOO").b("has_obsidian", this.a(djm.pM)).a(this.b);
-      this.a(oa.b, djm.fl)
-         .a('I', cwr.pk)
-         .a('N', cwr.wv)
+      this.d(oa.b, djn.oj, djn.jN);
+      this.d(oa.b, djn.om, djn.eV);
+      this.d(oa.b, djn.or, djn.bc);
+      this.b(oa.i, cws.xg).b(cws.rv).b(djn.cq).b("has_bricks", this.a(djn.cq)).a(this.b);
+      this.b(oa.i, cws.xh).b(cws.rv).b(djn.ft).b("has_vines", this.a(djn.ft)).a(this.b);
+      this.b(oa.i, cws.wZ).b(cws.rv).b(cws.vo).b("has_creeper_head", this.a((dgg)cws.vo)).a(this.b);
+      this.b(oa.i, cws.xa).b(cws.rv).b(cws.vl).b("has_wither_skeleton_skull", this.a((dgg)cws.vl)).a(this.b);
+      this.b(oa.i, cws.wY).b(cws.rv).b(djn.ci).b("has_oxeye_daisy", this.a(djn.ci)).a(this.b);
+      this.b(oa.i, cws.xb).b(cws.rv).b(cws.qG).b("has_enchanted_golden_apple", this.a((dgg)cws.qG)).a(this.b);
+      this.a(oa.b, djn.ou, 6).a('~', cws.pX).a('I', djn.nB).b("I~I").b("I I").b("I I").b("has_bamboo", this.a(djn.nB)).a(this.b);
+      this.a(oa.b, djn.oB).a('I', cws.pV).a('-', djn.kc).a('#', awy.b).b("I-I").b("# #").b("has_stone_slab", this.a(djn.kc)).a(this.b);
+      this.a(oa.b, djn.oy).a('#', djn.kq).a('X', djn.cL).a('I', cws.pk).b("III").b("IXI").b("###").b("has_smooth_stone", this.a(djn.kq)).a(this.b);
+      this.a(oa.b, djn.ox).a('#', awy.r).a('X', djn.cL).b(" # ").b("#X#").b(" # ").b("has_furnace", this.a(djn.cL)).a(this.b);
+      this.a(oa.b, djn.oz).a('#', awy.b).a('@', cws.rv).b("@@").b("##").b("##").b("has_paper", this.a((dgg)cws.rv)).a(this.b);
+      this.a(oa.b, djn.oD).a('#', awy.b).a('@', cws.pk).b("@@").b("##").b("##").b("has_iron_ingot", this.a((dgg)cws.pk)).a(this.b);
+      this.a(oa.b, djn.oA).a('#', awy.b).a('@', cws.qB).b("@@").b("##").b("##").b("has_flint", this.a((dgg)cws.qB)).a(this.b);
+      this.a(oa.b, djn.oE).a('I', cws.pk).a('#', djn.b).b(" I ").b("###").b("has_stone", this.a(djn.b)).a(this.b);
+      this.a(oa.b, djn.pS).a('S', cws.fU).a('#', cws.pp).b("SSS").b("S#S").b("SSS").b("has_netherite_ingot", this.a((dgg)cws.pp)).a(this.b);
+      this.b(oa.i, cws.pp, oa.a, cws.aQ, "netherite_ingot_from_netherite_block", "netherite_ingot");
+      this.b(oa.i, cws.pp).a(cws.pq, 4).a(cws.po, 4).b("netherite_ingot").b("has_netherite_scrap", this.a((dgg)cws.pq)).a(this.b);
+      this.a(oa.b, djn.pN).a('O', djn.pM).a('G', djn.ep).b("OOO").b("GGG").b("OOO").b("has_obsidian", this.a(djn.pM)).a(this.b);
+      this.a(oa.b, djn.fl)
+         .a('I', cws.pk)
+         .a('N', cws.wv)
          .b("N")
          .b("I")
          .b("N")
-         .b("has_iron_nugget", this.a((dgf)cwr.wv))
-         .b("has_iron_ingot", this.a((dgf)cwr.pk))
+         .b("has_iron_nugget", this.a((dgg)cws.wv))
+         .b("has_iron_ingot", this.a((dgg)cws.pk))
          .a(this.b);
-      this.a(oa.a, djm.rq, 2).a('G', djm.aX).a('S', cwr.pi).b(" S ").b("SGS").b(" S ").b("has_amethyst_shard", this.a((dgf)cwr.pi)).a(this.b);
-      this.a(oa.a, djm.qV, cwr.pi);
-      this.a(oa.e, cwr.rA).a('C', cwr.rz).a('S', cwr.yu).b("SSS").b("SCS").b("SSS").b("has_echo_shard", this.a((dgf)cwr.yu)).a(this.b);
-      this.a(oa.c, cwr.mx).a('#', cwr.pi).a('X', cwr.mw).b(" # ").b("#X#").b("has_amethyst_shard", this.a((dgf)cwr.pi)).a(this.b);
-      this.b(oa.i, cwr.wO, cwr.wR);
-      oj.a(daj::new).a(this.b, "armor_dye");
-      oj.a(dak::new).a(this.b, "banner_duplicate");
-      oj.a(dam::new).a(this.b, "book_cloning");
-      oj.a(dav::new).a(this.b, "firework_rocket");
-      oj.a(dax::new).a(this.b, "firework_star");
-      oj.a(daw::new).a(this.b, "firework_star_fade");
-      oj.a(daz::new).a(this.b, "map_cloning");
-      oj.a(dba::new).a(this.b, "map_extending");
-      oj.a(dbo::new).a(this.b, "repair_item");
-      oj.a(dbt::new).a(this.b, "shield_decoration");
-      oj.a(dcd::new).a(this.b, "tipped_arrow");
-      of.c(day.a(cwr.vf), oa.g, cwr.vg, 0.35F, 200).b("has_potato", this.a((dgf)cwr.vf)).a(this.b);
-      of.c(day.a(cwr.rt), oa.i, cwr.rs, 0.3F, 200).b("has_clay_ball", this.a((dgf)cwr.rt)).a(this.b);
-      of.c(this.b(awx.q), oa.i, cwr.pd, 0.15F, 200).b("has_log", this.a(awx.q)).a(this.b);
-      of.c(day.a(cwr.wg), oa.i, cwr.wh, 0.1F, 200).b("has_chorus_fruit", this.a((dgf)cwr.wg)).a(this.b);
-      of.c(day.a(cwr.sX), oa.g, cwr.sY, 0.35F, 200).b("has_beef", this.a((dgf)cwr.sX)).a(this.b);
-      of.c(day.a(cwr.sZ), oa.g, cwr.ta, 0.35F, 200).b("has_chicken", this.a((dgf)cwr.sZ)).a(this.b);
-      of.c(day.a(cwr.rW), oa.g, cwr.sa, 0.35F, 200).b("has_cod", this.a((dgf)cwr.rW)).a(this.b);
-      of.c(day.a(djm.mE), oa.g, cwr.sU, 0.1F, 200).b("has_kelp", this.a(djm.mE)).a(this.b, e(cwr.sU));
-      of.c(day.a(cwr.rX), oa.g, cwr.sb, 0.35F, 200).b("has_salmon", this.a((dgf)cwr.rX)).a(this.b);
-      of.c(day.a(cwr.vN), oa.g, cwr.vO, 0.35F, 200).b("has_mutton", this.a((dgf)cwr.vN)).a(this.b);
-      of.c(day.a(cwr.qC), oa.g, cwr.qD, 0.35F, 200).b("has_porkchop", this.a((dgf)cwr.qC)).a(this.b);
-      of.c(day.a(cwr.vA), oa.g, cwr.vB, 0.35F, 200).b("has_rabbit", this.a((dgf)cwr.vA)).a(this.b);
-      this.a(c, oa.i, cwr.pc, 0.1F, 200, "coal");
-      this.a(d, oa.i, cwr.pk, 0.7F, 200, "iron_ingot");
-      this.a(e, oa.i, cwr.pm, 0.7F, 200, "copper_ingot");
-      this.a(f, oa.i, cwr.po, 1.0F, 200, "gold_ingot");
-      this.a(g, oa.i, cwr.pe, 1.0F, 200, "diamond");
-      this.a(h, oa.i, cwr.pg, 0.2F, 200, "lapis_lazuli");
-      this.a(i, oa.c, cwr.me, 0.7F, 200, "redstone");
-      this.a(j, oa.i, cwr.pf, 1.0F, 200, "emerald");
-      this.a(oa.i, cwr.pj, oa.a, cwr.aG);
-      this.a(oa.i, cwr.pl, oa.a, cwr.aH);
-      this.a(oa.i, cwr.pn, oa.a, cwr.aI);
-      of.c(this.b(awx.H), oa.a, djm.aX.j(), 0.1F, 200).b("has_smelts_to_glass", this.a(awx.H)).a(this.b);
-      of.c(day.a(djm.nx), oa.i, cwr.sk, 0.1F, 200).b("has_sea_pickle", this.a(djm.nx)).a(this.b, e(cwr.sk));
-      of.c(day.a(djm.ed.j()), oa.i, cwr.ss, 1.0F, 200).b("has_cactus", this.a(djm.ed)).a(this.b);
-      of.c(day.a(cwr.pD, cwr.pC, cwr.pE, cwr.pF, cwr.pB, cwr.qt, cwr.qu, cwr.qv, cwr.qw, cwr.vH), oa.i, cwr.tf, 0.1F, 200)
-         .b("has_golden_pickaxe", this.a((dgf)cwr.pD))
-         .b("has_golden_shovel", this.a((dgf)cwr.pC))
-         .b("has_golden_axe", this.a((dgf)cwr.pE))
-         .b("has_golden_hoe", this.a((dgf)cwr.pF))
-         .b("has_golden_sword", this.a((dgf)cwr.pB))
-         .b("has_golden_helmet", this.a((dgf)cwr.qt))
-         .b("has_golden_chestplate", this.a((dgf)cwr.qu))
-         .b("has_golden_leggings", this.a((dgf)cwr.qv))
-         .b("has_golden_boots", this.a((dgf)cwr.qw))
-         .b("has_golden_horse_armor", this.a((dgf)cwr.vH))
-         .a(this.b, e(cwr.tf));
-      of.c(day.a(cwr.pI, cwr.pH, cwr.pJ, cwr.pK, cwr.pG, cwr.ql, cwr.qm, cwr.qn, cwr.qo, cwr.vG, cwr.qh, cwr.qi, cwr.qj, cwr.qk), oa.i, cwr.wv, 0.1F, 200)
-         .b("has_iron_pickaxe", this.a((dgf)cwr.pI))
-         .b("has_iron_shovel", this.a((dgf)cwr.pH))
-         .b("has_iron_axe", this.a((dgf)cwr.pJ))
-         .b("has_iron_hoe", this.a((dgf)cwr.pK))
-         .b("has_iron_sword", this.a((dgf)cwr.pG))
-         .b("has_iron_helmet", this.a((dgf)cwr.ql))
-         .b("has_iron_chestplate", this.a((dgf)cwr.qm))
-         .b("has_iron_leggings", this.a((dgf)cwr.qn))
-         .b("has_iron_boots", this.a((dgf)cwr.qo))
-         .b("has_iron_horse_armor", this.a((dgf)cwr.vG))
-         .b("has_chainmail_helmet", this.a((dgf)cwr.qh))
-         .b("has_chainmail_chestplate", this.a((dgf)cwr.qi))
-         .b("has_chainmail_leggings", this.a((dgf)cwr.qj))
-         .b("has_chainmail_boots", this.a((dgf)cwr.qk))
-         .a(this.b, e(cwr.wv));
-      of.c(day.a(djm.ee), oa.a, djm.iY.j(), 0.35F, 200).b("has_clay_block", this.a(djm.ee)).a(this.b);
-      of.c(day.a(djm.ei), oa.i, cwr.vw, 0.1F, 200).b("has_netherrack", this.a(djm.ei)).a(this.b);
-      of.c(day.a(cwr.gm), oa.i, cwr.vx, 0.1F, 200).b("has_resin_clump", this.a(djm.fv)).a(this.b);
-      of.c(day.a(djm.hy), oa.i, cwr.ph, 0.2F, 200).b("has_nether_quartz_ore", this.a(djm.hy)).a(this.b);
-      of.c(day.a(djm.aW), oa.a, djm.aV.j(), 0.15F, 200).b("has_wet_sponge", this.a(djm.aW)).a(this.b);
-      of.c(day.a(djm.m), oa.a, djm.b.j(), 0.1F, 200).b("has_cobblestone", this.a(djm.m)).a(this.b);
-      of.c(day.a(djm.b), oa.a, djm.kq.j(), 0.1F, 200).b("has_stone", this.a(djm.b)).a(this.b);
-      of.c(day.a(djm.bc), oa.a, djm.kr.j(), 0.1F, 200).b("has_sandstone", this.a(djm.bc)).a(this.b);
-      of.c(day.a(djm.jN), oa.a, djm.kt.j(), 0.1F, 200).b("has_red_sandstone", this.a(djm.jN)).a(this.b);
-      of.c(day.a(djm.hA), oa.a, djm.ks.j(), 0.1F, 200).b("has_quartz_block", this.a(djm.hA)).a(this.b);
-      of.c(day.a(djm.eV), oa.a, djm.eX.j(), 0.1F, 200).b("has_stone_bricks", this.a(djm.eV)).a(this.b);
-      of.c(day.a(djm.hV), oa.b, djm.lX.j(), 0.1F, 200).b("has_black_terracotta", this.a(djm.hV)).a(this.b);
-      of.c(day.a(djm.hR), oa.b, djm.lT.j(), 0.1F, 200).b("has_blue_terracotta", this.a(djm.hR)).a(this.b);
-      of.c(day.a(djm.hS), oa.b, djm.lU.j(), 0.1F, 200).b("has_brown_terracotta", this.a(djm.hS)).a(this.b);
-      of.c(day.a(djm.hP), oa.b, djm.lR.j(), 0.1F, 200).b("has_cyan_terracotta", this.a(djm.hP)).a(this.b);
-      of.c(day.a(djm.hN), oa.b, djm.lP.j(), 0.1F, 200).b("has_gray_terracotta", this.a(djm.hN)).a(this.b);
-      of.c(day.a(djm.hT), oa.b, djm.lV.j(), 0.1F, 200).b("has_green_terracotta", this.a(djm.hT)).a(this.b);
-      of.c(day.a(djm.hJ), oa.b, djm.lL.j(), 0.1F, 200).b("has_light_blue_terracotta", this.a(djm.hJ)).a(this.b);
-      of.c(day.a(djm.hO), oa.b, djm.lQ.j(), 0.1F, 200).b("has_light_gray_terracotta", this.a(djm.hO)).a(this.b);
-      of.c(day.a(djm.hL), oa.b, djm.lN.j(), 0.1F, 200).b("has_lime_terracotta", this.a(djm.hL)).a(this.b);
-      of.c(day.a(djm.hI), oa.b, djm.lK.j(), 0.1F, 200).b("has_magenta_terracotta", this.a(djm.hI)).a(this.b);
-      of.c(day.a(djm.hH), oa.b, djm.lJ.j(), 0.1F, 200).b("has_orange_terracotta", this.a(djm.hH)).a(this.b);
-      of.c(day.a(djm.hM), oa.b, djm.lO.j(), 0.1F, 200).b("has_pink_terracotta", this.a(djm.hM)).a(this.b);
-      of.c(day.a(djm.hQ), oa.b, djm.lS.j(), 0.1F, 200).b("has_purple_terracotta", this.a(djm.hQ)).a(this.b);
-      of.c(day.a(djm.hU), oa.b, djm.lW.j(), 0.1F, 200).b("has_red_terracotta", this.a(djm.hU)).a(this.b);
-      of.c(day.a(djm.hG), oa.b, djm.lI.j(), 0.1F, 200).b("has_white_terracotta", this.a(djm.hG)).a(this.b);
-      of.c(day.a(djm.hK), oa.b, djm.lM.j(), 0.1F, 200).b("has_yellow_terracotta", this.a(djm.hK)).a(this.b);
-      of.c(day.a(djm.pL), oa.i, cwr.pq, 2.0F, 200).b("has_ancient_debris", this.a(djm.pL)).a(this.b);
-      of.c(day.a(djm.el), oa.a, djm.tG, 0.1F, 200).b("has_basalt", this.a(djm.el)).a(this.b);
-      of.c(day.a(djm.tm), oa.a, djm.tl, 0.1F, 200).b("has_cobbled_deepslate", this.a(djm.tm)).a(this.b);
-      this.b(c, oa.i, cwr.pc, 0.1F, 100, "coal");
-      this.b(d, oa.i, cwr.pk, 0.7F, 100, "iron_ingot");
-      this.b(e, oa.i, cwr.pm, 0.7F, 100, "copper_ingot");
-      this.b(f, oa.i, cwr.po, 1.0F, 100, "gold_ingot");
-      this.b(g, oa.i, cwr.pe, 1.0F, 100, "diamond");
-      this.b(h, oa.i, cwr.pg, 0.2F, 100, "lapis_lazuli");
-      this.b(i, oa.c, cwr.me, 0.7F, 100, "redstone");
-      this.b(j, oa.i, cwr.pf, 1.0F, 100, "emerald");
-      of.b(day.a(djm.hy), oa.i, cwr.ph, 0.2F, 100).b("has_nether_quartz_ore", this.a(djm.hy)).a(this.b, f(cwr.ph));
-      of.b(day.a(cwr.pD, cwr.pC, cwr.pE, cwr.pF, cwr.pB, cwr.qt, cwr.qu, cwr.qv, cwr.qw, cwr.vH), oa.i, cwr.tf, 0.1F, 100)
-         .b("has_golden_pickaxe", this.a((dgf)cwr.pD))
-         .b("has_golden_shovel", this.a((dgf)cwr.pC))
-         .b("has_golden_axe", this.a((dgf)cwr.pE))
-         .b("has_golden_hoe", this.a((dgf)cwr.pF))
-         .b("has_golden_sword", this.a((dgf)cwr.pB))
-         .b("has_golden_helmet", this.a((dgf)cwr.qt))
-         .b("has_golden_chestplate", this.a((dgf)cwr.qu))
-         .b("has_golden_leggings", this.a((dgf)cwr.qv))
-         .b("has_golden_boots", this.a((dgf)cwr.qw))
-         .b("has_golden_horse_armor", this.a((dgf)cwr.vH))
-         .a(this.b, f(cwr.tf));
-      of.b(day.a(cwr.pI, cwr.pH, cwr.pJ, cwr.pK, cwr.pG, cwr.ql, cwr.qm, cwr.qn, cwr.qo, cwr.vG, cwr.qh, cwr.qi, cwr.qj, cwr.qk), oa.i, cwr.wv, 0.1F, 100)
-         .b("has_iron_pickaxe", this.a((dgf)cwr.pI))
-         .b("has_iron_shovel", this.a((dgf)cwr.pH))
-         .b("has_iron_axe", this.a((dgf)cwr.pJ))
-         .b("has_iron_hoe", this.a((dgf)cwr.pK))
-         .b("has_iron_sword", this.a((dgf)cwr.pG))
-         .b("has_iron_helmet", this.a((dgf)cwr.ql))
-         .b("has_iron_chestplate", this.a((dgf)cwr.qm))
-         .b("has_iron_leggings", this.a((dgf)cwr.qn))
-         .b("has_iron_boots", this.a((dgf)cwr.qo))
-         .b("has_iron_horse_armor", this.a((dgf)cwr.vG))
-         .b("has_chainmail_helmet", this.a((dgf)cwr.qh))
-         .b("has_chainmail_chestplate", this.a((dgf)cwr.qi))
-         .b("has_chainmail_leggings", this.a((dgf)cwr.qj))
-         .b("has_chainmail_boots", this.a((dgf)cwr.qk))
-         .a(this.b, f(cwr.wv));
-      of.b(day.a(djm.pL), oa.i, cwr.pq, 2.0F, 100).b("has_ancient_debris", this.a(djm.pL)).a(this.b, f(cwr.pq));
-      this.a("smoking", dbm.q, dcb::new, 100);
-      this.a("campfire_cooking", dbm.r, dan::new, 600);
-      this.a(oa.a, djm.kc, djm.b, 2);
-      this.i(oa.a, djm.nM, djm.b);
-      this.i(oa.a, djm.eV, djm.b);
-      this.a(oa.a, djm.kj, djm.b, 2);
-      this.i(oa.a, djm.fy, djm.b);
-      og.a(day.a(djm.b), oa.a, djm.eY).b("has_stone", this.a(djm.b)).a(this.b, "chiseled_stone_bricks_stone_from_stonecutting");
-      og.a(day.a(djm.b), oa.b, djm.om).b("has_stone", this.a(djm.b)).a(this.b, "stone_brick_walls_from_stone_stonecutting");
-      this.i(oa.a, djm.be, djm.bc);
-      this.a(oa.a, djm.ke, djm.bc, 2);
-      this.a(oa.a, djm.kf, djm.bc, 2);
-      this.a(oa.a, djm.kf, djm.be, 2);
-      this.i(oa.a, djm.fY, djm.bc);
-      this.i(oa.b, djm.or, djm.bc);
-      this.i(oa.a, djm.bd, djm.bc);
-      this.i(oa.a, djm.jP, djm.jN);
-      this.a(oa.a, djm.kn, djm.jN, 2);
-      this.a(oa.a, djm.ko, djm.jN, 2);
-      this.a(oa.a, djm.ko, djm.jP, 2);
-      this.i(oa.a, djm.jQ, djm.jN);
-      this.i(oa.b, djm.oj, djm.jN);
-      this.i(oa.a, djm.jO, djm.jN);
-      og.a(day.a(djm.hA), oa.a, djm.km, 2).b("has_quartz_block", this.a(djm.hA)).a(this.b, "quartz_slab_from_stonecutting");
-      this.i(oa.a, djm.hD, djm.hA);
-      this.i(oa.a, djm.hC, djm.hA);
-      this.i(oa.a, djm.hB, djm.hA);
-      this.i(oa.a, djm.qm, djm.hA);
-      this.i(oa.a, djm.cZ, djm.m);
-      this.a(oa.a, djm.kh, djm.m, 2);
-      this.i(oa.b, djm.gk, djm.m);
-      this.a(oa.a, djm.kj, djm.eV, 2);
-      this.i(oa.a, djm.fy, djm.eV);
-      og.a(day.a(djm.eV), oa.b, djm.om).b("has_stone_bricks", this.a(djm.eV)).a(this.b, "stone_brick_wall_from_stone_bricks_stonecutting");
-      this.i(oa.a, djm.eY, djm.eV);
-      this.a(oa.a, djm.ki, djm.cq, 2);
-      this.i(oa.a, djm.fx, djm.cq);
-      this.i(oa.b, djm.oh, djm.cq);
-      this.a(oa.a, djm.kk, djm.fa, 2);
-      this.i(oa.a, djm.fz, djm.fa);
-      this.i(oa.b, djm.on, djm.fa);
-      this.a(oa.a, djm.kl, djm.fI, 2);
-      this.i(oa.a, djm.fK, djm.fI);
-      this.i(oa.b, djm.oo, djm.fI);
-      this.i(oa.a, djm.qk, djm.fI);
-      this.a(oa.a, djm.fF, djm.fD, 2);
-      this.i(oa.a, djm.fE, djm.fD);
-      this.i(oa.b, djm.fG, djm.fD);
-      this.i(oa.a, djm.fH, djm.fD);
-      this.a(oa.a, djm.oe, djm.ln, 2);
-      this.i(oa.a, djm.nR, djm.ln);
-      this.i(oa.b, djm.oq, djm.ln);
-      this.a(oa.a, djm.kp, djm.kY, 2);
-      this.i(oa.a, djm.la, djm.kY);
-      this.i(oa.a, djm.kZ, djm.kY);
-      this.a(oa.a, djm.iD, djm.ix, 2);
-      this.i(oa.a, djm.iA, djm.ix);
-      this.i(oa.b, djm.oi, djm.ix);
-      og.a(day.a(djm.iy), oa.a, djm.iE, 2).b("has_prismarine_brick", this.a(djm.iy)).a(this.b, "prismarine_brick_slab_from_prismarine_stonecutting");
-      og.a(day.a(djm.iy), oa.a, djm.iB).b("has_prismarine_brick", this.a(djm.iy)).a(this.b, "prismarine_brick_stairs_from_prismarine_stonecutting");
-      this.a(oa.a, djm.iF, djm.iz, 2);
-      this.i(oa.a, djm.iC, djm.iz);
-      this.a(oa.a, djm.od, djm.g, 2);
-      this.i(oa.a, djm.nQ, djm.g);
-      this.i(oa.b, djm.op, djm.g);
-      this.i(oa.a, djm.h, djm.g);
-      this.a(oa.a, djm.of, djm.g, 2);
-      this.i(oa.a, djm.nS, djm.g);
-      this.a(oa.a, djm.of, djm.h, 2);
-      this.i(oa.a, djm.nS, djm.h);
-      this.i(oa.a, djm.em, djm.el);
-      this.a(oa.a, djm.oc, djm.c, 2);
-      this.i(oa.a, djm.nP, djm.c);
-      this.i(oa.b, djm.ol, djm.c);
-      this.i(oa.a, djm.d, djm.c);
-      this.a(oa.a, djm.nU, djm.c, 2);
-      this.i(oa.a, djm.nG, djm.c);
-      this.a(oa.a, djm.nU, djm.d, 2);
-      this.i(oa.a, djm.nG, djm.d);
-      this.a(oa.a, djm.og, djm.e, 2);
-      this.i(oa.a, djm.nT, djm.e);
-      this.i(oa.b, djm.ot, djm.e);
-      this.i(oa.a, djm.f, djm.e);
-      this.a(oa.a, djm.nX, djm.e, 2);
-      this.i(oa.a, djm.nJ, djm.e);
-      this.a(oa.a, djm.nX, djm.f, 2);
-      this.i(oa.a, djm.nJ, djm.f);
-      og.a(day.a(djm.eW), oa.a, djm.nW, 2).b("has_mossy_stone_bricks", this.a(djm.eW)).a(this.b, "mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting");
-      og.a(day.a(djm.eW), oa.a, djm.nI).b("has_mossy_stone_bricks", this.a(djm.eW)).a(this.b, "mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting");
-      og.a(day.a(djm.eW), oa.b, djm.ok).b("has_mossy_stone_bricks", this.a(djm.eW)).a(this.b, "mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting");
-      this.a(oa.a, djm.nY, djm.cu, 2);
-      this.i(oa.a, djm.nK, djm.cu);
-      this.i(oa.b, djm.gl, djm.cu);
-      this.a(oa.a, djm.oa, djm.kr, 2);
-      this.i(oa.a, djm.nN, djm.kr);
-      this.a(oa.a, djm.nV, djm.kt, 2);
-      this.i(oa.a, djm.nH, djm.kt);
-      this.a(oa.a, djm.ob, djm.ks, 2);
-      this.i(oa.a, djm.nO, djm.ks);
-      og.a(day.a(djm.lb), oa.a, djm.nZ, 2).b("has_end_stone_brick", this.a(djm.lb)).a(this.b, "end_stone_brick_slab_from_end_stone_brick_stonecutting");
-      og.a(day.a(djm.lb), oa.a, djm.nL).b("has_end_stone_brick", this.a(djm.lb)).a(this.b, "end_stone_brick_stairs_from_end_stone_brick_stonecutting");
-      og.a(day.a(djm.lb), oa.b, djm.os).b("has_end_stone_brick", this.a(djm.lb)).a(this.b, "end_stone_brick_wall_from_end_stone_brick_stonecutting");
-      this.i(oa.a, djm.lb, djm.fU);
-      this.a(oa.a, djm.nZ, djm.fU, 2);
-      this.i(oa.a, djm.nL, djm.fU);
-      this.i(oa.b, djm.os, djm.fU);
-      this.a(oa.a, djm.kd, djm.kq, 2);
-      this.a(oa.a, djm.pW, djm.pT, 2);
-      this.i(oa.a, djm.pU, djm.pT);
-      this.i(oa.b, djm.pV, djm.pT);
-      this.i(oa.a, djm.pX, djm.pT);
-      this.i(oa.b, djm.qj, djm.pT);
-      this.a(oa.a, djm.qg, djm.pT, 2);
-      this.i(oa.a, djm.qf, djm.pT);
-      this.i(oa.a, djm.qa, djm.pT);
-      this.i(oa.a, djm.pY, djm.pT);
-      this.a(oa.a, djm.qb, djm.pT, 2);
-      this.i(oa.a, djm.qc, djm.pT);
-      this.i(oa.b, djm.qd, djm.pT);
-      this.a(oa.a, djm.qg, djm.pX, 2);
-      this.i(oa.a, djm.qf, djm.pX);
-      this.i(oa.a, djm.pY, djm.pX);
-      this.i(oa.b, djm.qj, djm.pX);
-      this.a(oa.a, djm.qb, djm.pX, 2);
-      this.i(oa.a, djm.qc, djm.pX);
-      this.i(oa.b, djm.qd, djm.pX);
-      this.i(oa.a, djm.qa, djm.pX);
-      this.a(oa.a, djm.qb, djm.pY, 2);
-      this.i(oa.a, djm.qc, djm.pY);
-      this.i(oa.b, djm.qd, djm.pY);
-      this.a(oa.a, djm.rX, djm.rH, 2);
-      this.i(oa.a, djm.rT, djm.rH);
-      this.a(oa.a, djm.rW, djm.rG, 2);
-      this.i(oa.a, djm.rS, djm.rG);
-      this.a(oa.a, djm.rV, djm.rF, 2);
-      this.i(oa.a, djm.rR, djm.rF);
-      this.a(oa.a, djm.rU, djm.rE, 2);
-      this.i(oa.a, djm.rQ, djm.rE);
-      this.a(oa.a, djm.sn, djm.sf, 2);
-      this.i(oa.a, djm.sj, djm.sf);
-      this.a(oa.a, djm.sm, djm.se, 2);
-      this.i(oa.a, djm.si, djm.se);
-      this.a(oa.a, djm.sl, djm.sd, 2);
-      this.i(oa.a, djm.sh, djm.sd);
-      this.a(oa.a, djm.sk, djm.sc, 2);
-      this.i(oa.a, djm.sg, djm.sc);
-      this.a(oa.a, djm.rH, djm.ry, 4);
-      this.a(oa.a, djm.rT, djm.ry, 4);
-      this.a(oa.a, djm.rX, djm.ry, 8);
-      this.a(oa.a, djm.rG, djm.rz, 4);
-      this.a(oa.a, djm.rS, djm.rz, 4);
-      this.a(oa.a, djm.rW, djm.rz, 8);
-      this.a(oa.a, djm.rF, djm.rA, 4);
-      this.a(oa.a, djm.rR, djm.rA, 4);
-      this.a(oa.a, djm.rV, djm.rA, 8);
-      this.a(oa.a, djm.rE, djm.rB, 4);
-      this.a(oa.a, djm.rQ, djm.rB, 4);
-      this.a(oa.a, djm.rU, djm.rB, 8);
-      this.a(oa.a, djm.sf, djm.rY, 4);
-      this.a(oa.a, djm.sj, djm.rY, 4);
-      this.a(oa.a, djm.sn, djm.rY, 8);
-      this.a(oa.a, djm.se, djm.sa, 4);
-      this.a(oa.a, djm.si, djm.sa, 4);
-      this.a(oa.a, djm.sm, djm.sa, 8);
-      this.a(oa.a, djm.sd, djm.rZ, 4);
-      this.a(oa.a, djm.sh, djm.rZ, 4);
-      this.a(oa.a, djm.sl, djm.rZ, 8);
-      this.a(oa.a, djm.sc, djm.sb, 4);
-      this.a(oa.a, djm.sg, djm.sb, 4);
-      this.a(oa.a, djm.sk, djm.sb, 8);
-      this.a(oa.a, djm.to, djm.tm, 2);
-      this.i(oa.a, djm.tn, djm.tm);
-      this.i(oa.b, djm.tp, djm.tm);
-      this.i(oa.a, djm.tC, djm.tm);
-      this.i(oa.a, djm.tq, djm.tm);
-      this.a(oa.a, djm.ts, djm.tm, 2);
-      this.i(oa.a, djm.tr, djm.tm);
-      this.i(oa.b, djm.tt, djm.tm);
-      this.i(oa.a, djm.ty, djm.tm);
-      this.a(oa.a, djm.tA, djm.tm, 2);
-      this.i(oa.a, djm.tz, djm.tm);
-      this.i(oa.b, djm.tB, djm.tm);
-      this.i(oa.a, djm.tu, djm.tm);
-      this.a(oa.a, djm.tw, djm.tm, 2);
-      this.i(oa.a, djm.tv, djm.tm);
-      this.i(oa.b, djm.tx, djm.tm);
-      this.a(oa.a, djm.ts, djm.tq, 2);
-      this.i(oa.a, djm.tr, djm.tq);
-      this.i(oa.b, djm.tt, djm.tq);
-      this.i(oa.a, djm.ty, djm.tq);
-      this.a(oa.a, djm.tA, djm.tq, 2);
-      this.i(oa.a, djm.tz, djm.tq);
-      this.i(oa.b, djm.tB, djm.tq);
-      this.i(oa.a, djm.tu, djm.tq);
-      this.a(oa.a, djm.tw, djm.tq, 2);
-      this.i(oa.a, djm.tv, djm.tq);
-      this.i(oa.b, djm.tx, djm.tq);
-      this.a(oa.a, djm.tA, djm.ty, 2);
-      this.i(oa.a, djm.tz, djm.ty);
-      this.i(oa.b, djm.tB, djm.ty);
-      this.i(oa.a, djm.tu, djm.ty);
-      this.a(oa.a, djm.tw, djm.ty, 2);
-      this.i(oa.a, djm.tv, djm.ty);
-      this.i(oa.b, djm.tx, djm.ty);
-      this.a(oa.a, djm.tw, djm.tu, 2);
-      this.i(oa.a, djm.tv, djm.tu);
-      this.i(oa.b, djm.tx, djm.tu);
+      this.a(oa.a, djn.rq, 2).a('G', djn.aX).a('S', cws.pi).b(" S ").b("SGS").b(" S ").b("has_amethyst_shard", this.a((dgg)cws.pi)).a(this.b);
+      this.a(oa.a, djn.qV, cws.pi);
+      this.a(oa.e, cws.rA).a('C', cws.rz).a('S', cws.yu).b("SSS").b("SCS").b("SSS").b("has_echo_shard", this.a((dgg)cws.yu)).a(this.b);
+      this.a(oa.c, cws.mx).a('#', cws.pi).a('X', cws.mw).b(" # ").b("#X#").b("has_amethyst_shard", this.a((dgg)cws.pi)).a(this.b);
+      this.b(oa.i, cws.wO, cws.wR);
+      oj.a(dak::new).a(this.b, "armor_dye");
+      oj.a(dal::new).a(this.b, "banner_duplicate");
+      oj.a(dan::new).a(this.b, "book_cloning");
+      oj.a(daw::new).a(this.b, "firework_rocket");
+      oj.a(day::new).a(this.b, "firework_star");
+      oj.a(dax::new).a(this.b, "firework_star_fade");
+      oj.a(dba::new).a(this.b, "map_cloning");
+      oj.a(dbb::new).a(this.b, "map_extending");
+      oj.a(dbp::new).a(this.b, "repair_item");
+      oj.a(dbu::new).a(this.b, "shield_decoration");
+      oj.a(dce::new).a(this.b, "tipped_arrow");
+      of.c(daz.a(cws.vf), oa.g, cws.vg, 0.35F, 200).b("has_potato", this.a((dgg)cws.vf)).a(this.b);
+      of.c(daz.a(cws.rt), oa.i, cws.rs, 0.3F, 200).b("has_clay_ball", this.a((dgg)cws.rt)).a(this.b);
+      of.c(this.b(awy.q), oa.i, cws.pd, 0.15F, 200).b("has_log", this.a(awy.q)).a(this.b);
+      of.c(daz.a(cws.wg), oa.i, cws.wh, 0.1F, 200).b("has_chorus_fruit", this.a((dgg)cws.wg)).a(this.b);
+      of.c(daz.a(cws.sX), oa.g, cws.sY, 0.35F, 200).b("has_beef", this.a((dgg)cws.sX)).a(this.b);
+      of.c(daz.a(cws.sZ), oa.g, cws.ta, 0.35F, 200).b("has_chicken", this.a((dgg)cws.sZ)).a(this.b);
+      of.c(daz.a(cws.rW), oa.g, cws.sa, 0.35F, 200).b("has_cod", this.a((dgg)cws.rW)).a(this.b);
+      of.c(daz.a(djn.mE), oa.g, cws.sU, 0.1F, 200).b("has_kelp", this.a(djn.mE)).a(this.b, e(cws.sU));
+      of.c(daz.a(cws.rX), oa.g, cws.sb, 0.35F, 200).b("has_salmon", this.a((dgg)cws.rX)).a(this.b);
+      of.c(daz.a(cws.vN), oa.g, cws.vO, 0.35F, 200).b("has_mutton", this.a((dgg)cws.vN)).a(this.b);
+      of.c(daz.a(cws.qC), oa.g, cws.qD, 0.35F, 200).b("has_porkchop", this.a((dgg)cws.qC)).a(this.b);
+      of.c(daz.a(cws.vA), oa.g, cws.vB, 0.35F, 200).b("has_rabbit", this.a((dgg)cws.vA)).a(this.b);
+      this.a(c, oa.i, cws.pc, 0.1F, 200, "coal");
+      this.a(d, oa.i, cws.pk, 0.7F, 200, "iron_ingot");
+      this.a(e, oa.i, cws.pm, 0.7F, 200, "copper_ingot");
+      this.a(f, oa.i, cws.po, 1.0F, 200, "gold_ingot");
+      this.a(g, oa.i, cws.pe, 1.0F, 200, "diamond");
+      this.a(h, oa.i, cws.pg, 0.2F, 200, "lapis_lazuli");
+      this.a(i, oa.c, cws.me, 0.7F, 200, "redstone");
+      this.a(j, oa.i, cws.pf, 1.0F, 200, "emerald");
+      this.a(oa.i, cws.pj, oa.a, cws.aG);
+      this.a(oa.i, cws.pl, oa.a, cws.aH);
+      this.a(oa.i, cws.pn, oa.a, cws.aI);
+      of.c(this.b(awy.H), oa.a, djn.aX.j(), 0.1F, 200).b("has_smelts_to_glass", this.a(awy.H)).a(this.b);
+      of.c(daz.a(djn.nx), oa.i, cws.sk, 0.1F, 200).b("has_sea_pickle", this.a(djn.nx)).a(this.b, e(cws.sk));
+      of.c(daz.a(djn.ed.j()), oa.i, cws.ss, 1.0F, 200).b("has_cactus", this.a(djn.ed)).a(this.b);
+      of.c(daz.a(cws.pD, cws.pC, cws.pE, cws.pF, cws.pB, cws.qt, cws.qu, cws.qv, cws.qw, cws.vH), oa.i, cws.tf, 0.1F, 200)
+         .b("has_golden_pickaxe", this.a((dgg)cws.pD))
+         .b("has_golden_shovel", this.a((dgg)cws.pC))
+         .b("has_golden_axe", this.a((dgg)cws.pE))
+         .b("has_golden_hoe", this.a((dgg)cws.pF))
+         .b("has_golden_sword", this.a((dgg)cws.pB))
+         .b("has_golden_helmet", this.a((dgg)cws.qt))
+         .b("has_golden_chestplate", this.a((dgg)cws.qu))
+         .b("has_golden_leggings", this.a((dgg)cws.qv))
+         .b("has_golden_boots", this.a((dgg)cws.qw))
+         .b("has_golden_horse_armor", this.a((dgg)cws.vH))
+         .a(this.b, e(cws.tf));
+      of.c(daz.a(cws.pI, cws.pH, cws.pJ, cws.pK, cws.pG, cws.ql, cws.qm, cws.qn, cws.qo, cws.vG, cws.qh, cws.qi, cws.qj, cws.qk), oa.i, cws.wv, 0.1F, 200)
+         .b("has_iron_pickaxe", this.a((dgg)cws.pI))
+         .b("has_iron_shovel", this.a((dgg)cws.pH))
+         .b("has_iron_axe", this.a((dgg)cws.pJ))
+         .b("has_iron_hoe", this.a((dgg)cws.pK))
+         .b("has_iron_sword", this.a((dgg)cws.pG))
+         .b("has_iron_helmet", this.a((dgg)cws.ql))
+         .b("has_iron_chestplate", this.a((dgg)cws.qm))
+         .b("has_iron_leggings", this.a((dgg)cws.qn))
+         .b("has_iron_boots", this.a((dgg)cws.qo))
+         .b("has_iron_horse_armor", this.a((dgg)cws.vG))
+         .b("has_chainmail_helmet", this.a((dgg)cws.qh))
+         .b("has_chainmail_chestplate", this.a((dgg)cws.qi))
+         .b("has_chainmail_leggings", this.a((dgg)cws.qj))
+         .b("has_chainmail_boots", this.a((dgg)cws.qk))
+         .a(this.b, e(cws.wv));
+      of.c(daz.a(djn.ee), oa.a, djn.iY.j(), 0.35F, 200).b("has_clay_block", this.a(djn.ee)).a(this.b);
+      of.c(daz.a(djn.ei), oa.i, cws.vw, 0.1F, 200).b("has_netherrack", this.a(djn.ei)).a(this.b);
+      of.c(daz.a(cws.gm), oa.i, cws.vx, 0.1F, 200).b("has_resin_clump", this.a(djn.fv)).a(this.b);
+      of.c(daz.a(djn.hy), oa.i, cws.ph, 0.2F, 200).b("has_nether_quartz_ore", this.a(djn.hy)).a(this.b);
+      of.c(daz.a(djn.aW), oa.a, djn.aV.j(), 0.15F, 200).b("has_wet_sponge", this.a(djn.aW)).a(this.b);
+      of.c(daz.a(djn.m), oa.a, djn.b.j(), 0.1F, 200).b("has_cobblestone", this.a(djn.m)).a(this.b);
+      of.c(daz.a(djn.b), oa.a, djn.kq.j(), 0.1F, 200).b("has_stone", this.a(djn.b)).a(this.b);
+      of.c(daz.a(djn.bc), oa.a, djn.kr.j(), 0.1F, 200).b("has_sandstone", this.a(djn.bc)).a(this.b);
+      of.c(daz.a(djn.jN), oa.a, djn.kt.j(), 0.1F, 200).b("has_red_sandstone", this.a(djn.jN)).a(this.b);
+      of.c(daz.a(djn.hA), oa.a, djn.ks.j(), 0.1F, 200).b("has_quartz_block", this.a(djn.hA)).a(this.b);
+      of.c(daz.a(djn.eV), oa.a, djn.eX.j(), 0.1F, 200).b("has_stone_bricks", this.a(djn.eV)).a(this.b);
+      of.c(daz.a(djn.hV), oa.b, djn.lX.j(), 0.1F, 200).b("has_black_terracotta", this.a(djn.hV)).a(this.b);
+      of.c(daz.a(djn.hR), oa.b, djn.lT.j(), 0.1F, 200).b("has_blue_terracotta", this.a(djn.hR)).a(this.b);
+      of.c(daz.a(djn.hS), oa.b, djn.lU.j(), 0.1F, 200).b("has_brown_terracotta", this.a(djn.hS)).a(this.b);
+      of.c(daz.a(djn.hP), oa.b, djn.lR.j(), 0.1F, 200).b("has_cyan_terracotta", this.a(djn.hP)).a(this.b);
+      of.c(daz.a(djn.hN), oa.b, djn.lP.j(), 0.1F, 200).b("has_gray_terracotta", this.a(djn.hN)).a(this.b);
+      of.c(daz.a(djn.hT), oa.b, djn.lV.j(), 0.1F, 200).b("has_green_terracotta", this.a(djn.hT)).a(this.b);
+      of.c(daz.a(djn.hJ), oa.b, djn.lL.j(), 0.1F, 200).b("has_light_blue_terracotta", this.a(djn.hJ)).a(this.b);
+      of.c(daz.a(djn.hO), oa.b, djn.lQ.j(), 0.1F, 200).b("has_light_gray_terracotta", this.a(djn.hO)).a(this.b);
+      of.c(daz.a(djn.hL), oa.b, djn.lN.j(), 0.1F, 200).b("has_lime_terracotta", this.a(djn.hL)).a(this.b);
+      of.c(daz.a(djn.hI), oa.b, djn.lK.j(), 0.1F, 200).b("has_magenta_terracotta", this.a(djn.hI)).a(this.b);
+      of.c(daz.a(djn.hH), oa.b, djn.lJ.j(), 0.1F, 200).b("has_orange_terracotta", this.a(djn.hH)).a(this.b);
+      of.c(daz.a(djn.hM), oa.b, djn.lO.j(), 0.1F, 200).b("has_pink_terracotta", this.a(djn.hM)).a(this.b);
+      of.c(daz.a(djn.hQ), oa.b, djn.lS.j(), 0.1F, 200).b("has_purple_terracotta", this.a(djn.hQ)).a(this.b);
+      of.c(daz.a(djn.hU), oa.b, djn.lW.j(), 0.1F, 200).b("has_red_terracotta", this.a(djn.hU)).a(this.b);
+      of.c(daz.a(djn.hG), oa.b, djn.lI.j(), 0.1F, 200).b("has_white_terracotta", this.a(djn.hG)).a(this.b);
+      of.c(daz.a(djn.hK), oa.b, djn.lM.j(), 0.1F, 200).b("has_yellow_terracotta", this.a(djn.hK)).a(this.b);
+      of.c(daz.a(djn.pL), oa.i, cws.pq, 2.0F, 200).b("has_ancient_debris", this.a(djn.pL)).a(this.b);
+      of.c(daz.a(djn.el), oa.a, djn.tG, 0.1F, 200).b("has_basalt", this.a(djn.el)).a(this.b);
+      of.c(daz.a(djn.tm), oa.a, djn.tl, 0.1F, 200).b("has_cobbled_deepslate", this.a(djn.tm)).a(this.b);
+      this.b(c, oa.i, cws.pc, 0.1F, 100, "coal");
+      this.b(d, oa.i, cws.pk, 0.7F, 100, "iron_ingot");
+      this.b(e, oa.i, cws.pm, 0.7F, 100, "copper_ingot");
+      this.b(f, oa.i, cws.po, 1.0F, 100, "gold_ingot");
+      this.b(g, oa.i, cws.pe, 1.0F, 100, "diamond");
+      this.b(h, oa.i, cws.pg, 0.2F, 100, "lapis_lazuli");
+      this.b(i, oa.c, cws.me, 0.7F, 100, "redstone");
+      this.b(j, oa.i, cws.pf, 1.0F, 100, "emerald");
+      of.b(daz.a(djn.hy), oa.i, cws.ph, 0.2F, 100).b("has_nether_quartz_ore", this.a(djn.hy)).a(this.b, f(cws.ph));
+      of.b(daz.a(cws.pD, cws.pC, cws.pE, cws.pF, cws.pB, cws.qt, cws.qu, cws.qv, cws.qw, cws.vH), oa.i, cws.tf, 0.1F, 100)
+         .b("has_golden_pickaxe", this.a((dgg)cws.pD))
+         .b("has_golden_shovel", this.a((dgg)cws.pC))
+         .b("has_golden_axe", this.a((dgg)cws.pE))
+         .b("has_golden_hoe", this.a((dgg)cws.pF))
+         .b("has_golden_sword", this.a((dgg)cws.pB))
+         .b("has_golden_helmet", this.a((dgg)cws.qt))
+         .b("has_golden_chestplate", this.a((dgg)cws.qu))
+         .b("has_golden_leggings", this.a((dgg)cws.qv))
+         .b("has_golden_boots", this.a((dgg)cws.qw))
+         .b("has_golden_horse_armor", this.a((dgg)cws.vH))
+         .a(this.b, f(cws.tf));
+      of.b(daz.a(cws.pI, cws.pH, cws.pJ, cws.pK, cws.pG, cws.ql, cws.qm, cws.qn, cws.qo, cws.vG, cws.qh, cws.qi, cws.qj, cws.qk), oa.i, cws.wv, 0.1F, 100)
+         .b("has_iron_pickaxe", this.a((dgg)cws.pI))
+         .b("has_iron_shovel", this.a((dgg)cws.pH))
+         .b("has_iron_axe", this.a((dgg)cws.pJ))
+         .b("has_iron_hoe", this.a((dgg)cws.pK))
+         .b("has_iron_sword", this.a((dgg)cws.pG))
+         .b("has_iron_helmet", this.a((dgg)cws.ql))
+         .b("has_iron_chestplate", this.a((dgg)cws.qm))
+         .b("has_iron_leggings", this.a((dgg)cws.qn))
+         .b("has_iron_boots", this.a((dgg)cws.qo))
+         .b("has_iron_horse_armor", this.a((dgg)cws.vG))
+         .b("has_chainmail_helmet", this.a((dgg)cws.qh))
+         .b("has_chainmail_chestplate", this.a((dgg)cws.qi))
+         .b("has_chainmail_leggings", this.a((dgg)cws.qj))
+         .b("has_chainmail_boots", this.a((dgg)cws.qk))
+         .a(this.b, f(cws.wv));
+      of.b(daz.a(djn.pL), oa.i, cws.pq, 2.0F, 100).b("has_ancient_debris", this.a(djn.pL)).a(this.b, f(cws.pq));
+      this.a("smoking", dbn.q, dcc::new, 100);
+      this.a("campfire_cooking", dbn.r, dao::new, 600);
+      this.a(oa.a, djn.kc, djn.b, 2);
+      this.i(oa.a, djn.nM, djn.b);
+      this.i(oa.a, djn.eV, djn.b);
+      this.a(oa.a, djn.kj, djn.b, 2);
+      this.i(oa.a, djn.fy, djn.b);
+      og.a(daz.a(djn.b), oa.a, djn.eY).b("has_stone", this.a(djn.b)).a(this.b, "chiseled_stone_bricks_stone_from_stonecutting");
+      og.a(daz.a(djn.b), oa.b, djn.om).b("has_stone", this.a(djn.b)).a(this.b, "stone_brick_walls_from_stone_stonecutting");
+      this.i(oa.a, djn.be, djn.bc);
+      this.a(oa.a, djn.ke, djn.bc, 2);
+      this.a(oa.a, djn.kf, djn.bc, 2);
+      this.a(oa.a, djn.kf, djn.be, 2);
+      this.i(oa.a, djn.fY, djn.bc);
+      this.i(oa.b, djn.or, djn.bc);
+      this.i(oa.a, djn.bd, djn.bc);
+      this.i(oa.a, djn.jP, djn.jN);
+      this.a(oa.a, djn.kn, djn.jN, 2);
+      this.a(oa.a, djn.ko, djn.jN, 2);
+      this.a(oa.a, djn.ko, djn.jP, 2);
+      this.i(oa.a, djn.jQ, djn.jN);
+      this.i(oa.b, djn.oj, djn.jN);
+      this.i(oa.a, djn.jO, djn.jN);
+      og.a(daz.a(djn.hA), oa.a, djn.km, 2).b("has_quartz_block", this.a(djn.hA)).a(this.b, "quartz_slab_from_stonecutting");
+      this.i(oa.a, djn.hD, djn.hA);
+      this.i(oa.a, djn.hC, djn.hA);
+      this.i(oa.a, djn.hB, djn.hA);
+      this.i(oa.a, djn.qm, djn.hA);
+      this.i(oa.a, djn.cZ, djn.m);
+      this.a(oa.a, djn.kh, djn.m, 2);
+      this.i(oa.b, djn.gk, djn.m);
+      this.a(oa.a, djn.kj, djn.eV, 2);
+      this.i(oa.a, djn.fy, djn.eV);
+      og.a(daz.a(djn.eV), oa.b, djn.om).b("has_stone_bricks", this.a(djn.eV)).a(this.b, "stone_brick_wall_from_stone_bricks_stonecutting");
+      this.i(oa.a, djn.eY, djn.eV);
+      this.a(oa.a, djn.ki, djn.cq, 2);
+      this.i(oa.a, djn.fx, djn.cq);
+      this.i(oa.b, djn.oh, djn.cq);
+      this.a(oa.a, djn.kk, djn.fa, 2);
+      this.i(oa.a, djn.fz, djn.fa);
+      this.i(oa.b, djn.on, djn.fa);
+      this.a(oa.a, djn.kl, djn.fI, 2);
+      this.i(oa.a, djn.fK, djn.fI);
+      this.i(oa.b, djn.oo, djn.fI);
+      this.i(oa.a, djn.qk, djn.fI);
+      this.a(oa.a, djn.fF, djn.fD, 2);
+      this.i(oa.a, djn.fE, djn.fD);
+      this.i(oa.b, djn.fG, djn.fD);
+      this.i(oa.a, djn.fH, djn.fD);
+      this.a(oa.a, djn.oe, djn.ln, 2);
+      this.i(oa.a, djn.nR, djn.ln);
+      this.i(oa.b, djn.oq, djn.ln);
+      this.a(oa.a, djn.kp, djn.kY, 2);
+      this.i(oa.a, djn.la, djn.kY);
+      this.i(oa.a, djn.kZ, djn.kY);
+      this.a(oa.a, djn.iD, djn.ix, 2);
+      this.i(oa.a, djn.iA, djn.ix);
+      this.i(oa.b, djn.oi, djn.ix);
+      og.a(daz.a(djn.iy), oa.a, djn.iE, 2).b("has_prismarine_brick", this.a(djn.iy)).a(this.b, "prismarine_brick_slab_from_prismarine_stonecutting");
+      og.a(daz.a(djn.iy), oa.a, djn.iB).b("has_prismarine_brick", this.a(djn.iy)).a(this.b, "prismarine_brick_stairs_from_prismarine_stonecutting");
+      this.a(oa.a, djn.iF, djn.iz, 2);
+      this.i(oa.a, djn.iC, djn.iz);
+      this.a(oa.a, djn.od, djn.g, 2);
+      this.i(oa.a, djn.nQ, djn.g);
+      this.i(oa.b, djn.op, djn.g);
+      this.i(oa.a, djn.h, djn.g);
+      this.a(oa.a, djn.of, djn.g, 2);
+      this.i(oa.a, djn.nS, djn.g);
+      this.a(oa.a, djn.of, djn.h, 2);
+      this.i(oa.a, djn.nS, djn.h);
+      this.i(oa.a, djn.em, djn.el);
+      this.a(oa.a, djn.oc, djn.c, 2);
+      this.i(oa.a, djn.nP, djn.c);
+      this.i(oa.b, djn.ol, djn.c);
+      this.i(oa.a, djn.d, djn.c);
+      this.a(oa.a, djn.nU, djn.c, 2);
+      this.i(oa.a, djn.nG, djn.c);
+      this.a(oa.a, djn.nU, djn.d, 2);
+      this.i(oa.a, djn.nG, djn.d);
+      this.a(oa.a, djn.og, djn.e, 2);
+      this.i(oa.a, djn.nT, djn.e);
+      this.i(oa.b, djn.ot, djn.e);
+      this.i(oa.a, djn.f, djn.e);
+      this.a(oa.a, djn.nX, djn.e, 2);
+      this.i(oa.a, djn.nJ, djn.e);
+      this.a(oa.a, djn.nX, djn.f, 2);
+      this.i(oa.a, djn.nJ, djn.f);
+      og.a(daz.a(djn.eW), oa.a, djn.nW, 2).b("has_mossy_stone_bricks", this.a(djn.eW)).a(this.b, "mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting");
+      og.a(daz.a(djn.eW), oa.a, djn.nI).b("has_mossy_stone_bricks", this.a(djn.eW)).a(this.b, "mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting");
+      og.a(daz.a(djn.eW), oa.b, djn.ok).b("has_mossy_stone_bricks", this.a(djn.eW)).a(this.b, "mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting");
+      this.a(oa.a, djn.nY, djn.cu, 2);
+      this.i(oa.a, djn.nK, djn.cu);
+      this.i(oa.b, djn.gl, djn.cu);
+      this.a(oa.a, djn.oa, djn.kr, 2);
+      this.i(oa.a, djn.nN, djn.kr);
+      this.a(oa.a, djn.nV, djn.kt, 2);
+      this.i(oa.a, djn.nH, djn.kt);
+      this.a(oa.a, djn.ob, djn.ks, 2);
+      this.i(oa.a, djn.nO, djn.ks);
+      og.a(daz.a(djn.lb), oa.a, djn.nZ, 2).b("has_end_stone_brick", this.a(djn.lb)).a(this.b, "end_stone_brick_slab_from_end_stone_brick_stonecutting");
+      og.a(daz.a(djn.lb), oa.a, djn.nL).b("has_end_stone_brick", this.a(djn.lb)).a(this.b, "end_stone_brick_stairs_from_end_stone_brick_stonecutting");
+      og.a(daz.a(djn.lb), oa.b, djn.os).b("has_end_stone_brick", this.a(djn.lb)).a(this.b, "end_stone_brick_wall_from_end_stone_brick_stonecutting");
+      this.i(oa.a, djn.lb, djn.fU);
+      this.a(oa.a, djn.nZ, djn.fU, 2);
+      this.i(oa.a, djn.nL, djn.fU);
+      this.i(oa.b, djn.os, djn.fU);
+      this.a(oa.a, djn.kd, djn.kq, 2);
+      this.a(oa.a, djn.pW, djn.pT, 2);
+      this.i(oa.a, djn.pU, djn.pT);
+      this.i(oa.b, djn.pV, djn.pT);
+      this.i(oa.a, djn.pX, djn.pT);
+      this.i(oa.b, djn.qj, djn.pT);
+      this.a(oa.a, djn.qg, djn.pT, 2);
+      this.i(oa.a, djn.qf, djn.pT);
+      this.i(oa.a, djn.qa, djn.pT);
+      this.i(oa.a, djn.pY, djn.pT);
+      this.a(oa.a, djn.qb, djn.pT, 2);
+      this.i(oa.a, djn.qc, djn.pT);
+      this.i(oa.b, djn.qd, djn.pT);
+      this.a(oa.a, djn.qg, djn.pX, 2);
+      this.i(oa.a, djn.qf, djn.pX);
+      this.i(oa.a, djn.pY, djn.pX);
+      this.i(oa.b, djn.qj, djn.pX);
+      this.a(oa.a, djn.qb, djn.pX, 2);
+      this.i(oa.a, djn.qc, djn.pX);
+      this.i(oa.b, djn.qd, djn.pX);
+      this.i(oa.a, djn.qa, djn.pX);
+      this.a(oa.a, djn.qb, djn.pY, 2);
+      this.i(oa.a, djn.qc, djn.pY);
+      this.i(oa.b, djn.qd, djn.pY);
+      this.a(oa.a, djn.rX, djn.rH, 2);
+      this.i(oa.a, djn.rT, djn.rH);
+      this.a(oa.a, djn.rW, djn.rG, 2);
+      this.i(oa.a, djn.rS, djn.rG);
+      this.a(oa.a, djn.rV, djn.rF, 2);
+      this.i(oa.a, djn.rR, djn.rF);
+      this.a(oa.a, djn.rU, djn.rE, 2);
+      this.i(oa.a, djn.rQ, djn.rE);
+      this.a(oa.a, djn.sn, djn.sf, 2);
+      this.i(oa.a, djn.sj, djn.sf);
+      this.a(oa.a, djn.sm, djn.se, 2);
+      this.i(oa.a, djn.si, djn.se);
+      this.a(oa.a, djn.sl, djn.sd, 2);
+      this.i(oa.a, djn.sh, djn.sd);
+      this.a(oa.a, djn.sk, djn.sc, 2);
+      this.i(oa.a, djn.sg, djn.sc);
+      this.a(oa.a, djn.rH, djn.ry, 4);
+      this.a(oa.a, djn.rT, djn.ry, 4);
+      this.a(oa.a, djn.rX, djn.ry, 8);
+      this.a(oa.a, djn.rG, djn.rz, 4);
+      this.a(oa.a, djn.rS, djn.rz, 4);
+      this.a(oa.a, djn.rW, djn.rz, 8);
+      this.a(oa.a, djn.rF, djn.rA, 4);
+      this.a(oa.a, djn.rR, djn.rA, 4);
+      this.a(oa.a, djn.rV, djn.rA, 8);
+      this.a(oa.a, djn.rE, djn.rB, 4);
+      this.a(oa.a, djn.rQ, djn.rB, 4);
+      this.a(oa.a, djn.rU, djn.rB, 8);
+      this.a(oa.a, djn.sf, djn.rY, 4);
+      this.a(oa.a, djn.sj, djn.rY, 4);
+      this.a(oa.a, djn.sn, djn.rY, 8);
+      this.a(oa.a, djn.se, djn.sa, 4);
+      this.a(oa.a, djn.si, djn.sa, 4);
+      this.a(oa.a, djn.sm, djn.sa, 8);
+      this.a(oa.a, djn.sd, djn.rZ, 4);
+      this.a(oa.a, djn.sh, djn.rZ, 4);
+      this.a(oa.a, djn.sl, djn.rZ, 8);
+      this.a(oa.a, djn.sc, djn.sb, 4);
+      this.a(oa.a, djn.sg, djn.sb, 4);
+      this.a(oa.a, djn.sk, djn.sb, 8);
+      this.a(oa.a, djn.to, djn.tm, 2);
+      this.i(oa.a, djn.tn, djn.tm);
+      this.i(oa.b, djn.tp, djn.tm);
+      this.i(oa.a, djn.tC, djn.tm);
+      this.i(oa.a, djn.tq, djn.tm);
+      this.a(oa.a, djn.ts, djn.tm, 2);
+      this.i(oa.a, djn.tr, djn.tm);
+      this.i(oa.b, djn.tt, djn.tm);
+      this.i(oa.a, djn.ty, djn.tm);
+      this.a(oa.a, djn.tA, djn.tm, 2);
+      this.i(oa.a, djn.tz, djn.tm);
+      this.i(oa.b, djn.tB, djn.tm);
+      this.i(oa.a, djn.tu, djn.tm);
+      this.a(oa.a, djn.tw, djn.tm, 2);
+      this.i(oa.a, djn.tv, djn.tm);
+      this.i(oa.b, djn.tx, djn.tm);
+      this.a(oa.a, djn.ts, djn.tq, 2);
+      this.i(oa.a, djn.tr, djn.tq);
+      this.i(oa.b, djn.tt, djn.tq);
+      this.i(oa.a, djn.ty, djn.tq);
+      this.a(oa.a, djn.tA, djn.tq, 2);
+      this.i(oa.a, djn.tz, djn.tq);
+      this.i(oa.b, djn.tB, djn.tq);
+      this.i(oa.a, djn.tu, djn.tq);
+      this.a(oa.a, djn.tw, djn.tq, 2);
+      this.i(oa.a, djn.tv, djn.tq);
+      this.i(oa.b, djn.tx, djn.tq);
+      this.a(oa.a, djn.tA, djn.ty, 2);
+      this.i(oa.a, djn.tz, djn.ty);
+      this.i(oa.b, djn.tB, djn.ty);
+      this.i(oa.a, djn.tu, djn.ty);
+      this.a(oa.a, djn.tw, djn.ty, 2);
+      this.i(oa.a, djn.tv, djn.ty);
+      this.i(oa.b, djn.tx, djn.ty);
+      this.a(oa.a, djn.tw, djn.tu, 2);
+      this.i(oa.a, djn.tv, djn.tu);
+      this.i(oa.b, djn.tx, djn.tu);
       b().forEach($$0x -> this.a($$0x.a(), $$0x.b()));
-      this.a(cwr.qq, oa.f, cwr.qy);
-      this.a(cwr.qr, oa.f, cwr.qz);
-      this.a(cwr.qp, oa.f, cwr.qx);
-      this.a(cwr.qs, oa.f, cwr.qA);
-      this.a(cwr.pL, oa.f, cwr.pQ);
-      this.a(cwr.pO, oa.e, cwr.pT);
-      this.a(cwr.pN, oa.e, cwr.pS);
-      this.a(cwr.pP, oa.e, cwr.pU);
-      this.a(cwr.pM, oa.e, cwr.pR);
-      this.o(cwr.yw, cwr.fC);
-      this.o(cwr.yx, cwr.J);
-      this.o(cwr.yy, cwr.cQ);
-      this.o(cwr.yz, cwr.J);
-      this.o(cwr.yA, cwr.eQ);
-      this.o(cwr.yB, cwr.j);
-      this.o(cwr.yC, cwr.gJ);
-      this.o(cwr.yD, cwr.J);
-      this.o(cwr.yE, cwr.jg);
-      this.o(cwr.yF, cwr.xH);
-      this.o(cwr.yG, cwr.fC);
-      this.o(cwr.yH, cwr.eW);
-      this.o(cwr.yK, cwr.j);
-      this.o(cwr.yI, cwr.ir);
-      this.o(cwr.yJ, cwr.ir);
-      this.o(cwr.yL, cwr.ir);
-      this.o(cwr.yM, cwr.ir);
-      this.o(cwr.yN, cwr.uZ);
-      this.d(cwr.yO, day.a(cwr.aN, cwr.bk));
-      this.b(oa.a, djm.ai, cwr.ed);
-      this.b(djm.x, awx.D, 2);
-      this.h(oa.b, djm.y, djm.ka);
-      this.b(cwr.oP, djm.x);
-      this.c(cwr.oQ, cwr.oP);
-      this.e(cwr.qT, djm.aq);
-      this.e(cwr.qU, djm.aj);
-      this.e(cwr.qV, djm.ak);
-      this.e(cwr.qW, djm.al);
-      this.e(cwr.qX, djm.am);
-      this.e(cwr.qY, djm.an);
-      this.e(cwr.qZ, djm.ao);
-      this.e(cwr.ra, djm.ap);
-      this.e(cwr.rb, djm.ar);
-      this.e(cwr.rc, cwr.co);
-      this.e(cwr.rd, djm.oV);
-      this.e(cwr.re, djm.oM);
-      this.a(oa.a, djm.ct).a('#', awx.b).a('X', awx.j).b("###").b("XXX").b("###").b("has_book", this.a((dgf)cwr.rw)).a(this.b);
-      this.a(cwr.sg, djm.bZ, "orange_dye");
-      this.a(cwr.so, djm.le, "cyan_dye", 2);
-      this.a(djm.s, awx.x, 4);
-      this.a((dgf)djm.ay, (dgf)djm.ac);
-      this.a((dgf)djm.aG, (dgf)djm.an);
-      this.b(cwr.oH, djm.s);
-      this.c(cwr.oI, cwr.oH);
-      this.a(cwr.sl, cwr.dU, "pink_dye", 1);
-      this.a(oa.e, cwr.yv).a('X', cwr.pY).a('#', cwr.pm).a('I', cwr.pV).b("X").b("#").b("I").b("has_copper_ingot", this.a((dgf)cwr.pm)).a(this.b);
-      this.a(oa.b, cwr.eP).a('#', cwr.rs).b(" # ").b("# #").b(" # ").b("has_brick", this.a(awx.bF)).a(this.b, "decorated_pot_simple");
-      oj.a(dat::new).a(this.b, "decorated_pot");
-      this.a(oa.c, djm.tS)
-         .a('#', cwr.pk)
-         .a('C', cwr.fc)
-         .a('R', cwr.me)
-         .a('D', cwr.mq)
+      this.a(cws.qq, oa.f, cws.qy);
+      this.a(cws.qr, oa.f, cws.qz);
+      this.a(cws.qp, oa.f, cws.qx);
+      this.a(cws.qs, oa.f, cws.qA);
+      this.a(cws.pL, oa.f, cws.pQ);
+      this.a(cws.pO, oa.e, cws.pT);
+      this.a(cws.pN, oa.e, cws.pS);
+      this.a(cws.pP, oa.e, cws.pU);
+      this.a(cws.pM, oa.e, cws.pR);
+      this.o(cws.yw, cws.fC);
+      this.o(cws.yx, cws.J);
+      this.o(cws.yy, cws.cQ);
+      this.o(cws.yz, cws.J);
+      this.o(cws.yA, cws.eQ);
+      this.o(cws.yB, cws.j);
+      this.o(cws.yC, cws.gJ);
+      this.o(cws.yD, cws.J);
+      this.o(cws.yE, cws.jg);
+      this.o(cws.yF, cws.xH);
+      this.o(cws.yG, cws.fC);
+      this.o(cws.yH, cws.eW);
+      this.o(cws.yK, cws.j);
+      this.o(cws.yI, cws.ir);
+      this.o(cws.yJ, cws.ir);
+      this.o(cws.yL, cws.ir);
+      this.o(cws.yM, cws.ir);
+      this.o(cws.yN, cws.uZ);
+      this.d(cws.yO, daz.a(cws.aN, cws.bk));
+      this.b(oa.a, djn.ai, cws.ed);
+      this.b(djn.x, awy.D, 2);
+      this.h(oa.b, djn.y, djn.ka);
+      this.b(cws.oP, djn.x);
+      this.c(cws.oQ, cws.oP);
+      this.e(cws.qT, djn.aq);
+      this.e(cws.qU, djn.aj);
+      this.e(cws.qV, djn.ak);
+      this.e(cws.qW, djn.al);
+      this.e(cws.qX, djn.am);
+      this.e(cws.qY, djn.an);
+      this.e(cws.qZ, djn.ao);
+      this.e(cws.ra, djn.ap);
+      this.e(cws.rb, djn.ar);
+      this.e(cws.rc, cws.co);
+      this.e(cws.rd, djn.oV);
+      this.e(cws.re, djn.oM);
+      this.a(oa.a, djn.ct).a('#', awy.b).a('X', awy.j).b("###").b("XXX").b("###").b("has_book", this.a((dgg)cws.rw)).a(this.b);
+      this.a(cws.sg, djn.bZ, "orange_dye");
+      this.a(cws.so, djn.le, "cyan_dye", 2);
+      this.a(djn.s, awy.x, 4);
+      this.a((dgg)djn.ay, (dgg)djn.ac);
+      this.a((dgg)djn.aG, (dgg)djn.an);
+      this.b(cws.oH, djn.s);
+      this.c(cws.oI, cws.oH);
+      this.a(cws.sl, cws.dU, "pink_dye", 1);
+      this.a(oa.e, cws.yv).a('X', cws.pY).a('#', cws.pm).a('I', cws.pV).b("X").b("#").b("I").b("has_copper_ingot", this.a((dgg)cws.pm)).a(this.b);
+      this.a(oa.b, cws.eP).a('#', cws.rs).b(" # ").b("# #").b(" # ").b("has_brick", this.a(awy.bF)).a(this.b, "decorated_pot_simple");
+      oj.a(dau::new).a(this.b, "decorated_pot");
+      this.a(oa.c, djn.tS)
+         .a('#', cws.pk)
+         .a('C', cws.fc)
+         .a('R', cws.me)
+         .a('D', cws.mq)
          .b("###")
          .b("#C#")
          .b("RDR")
-         .b("has_dropper", this.a((dgf)cwr.mq))
+         .b("has_dropper", this.a((dgg)cws.mq))
          .a(this.b);
-      this.a(oa.a, djm.rc, djm.rb, 2);
-      this.i(oa.a, djm.rd, djm.rb);
-      this.i(oa.b, djm.re, djm.rb);
-      this.i(oa.a, djm.rj, djm.rb);
-      this.i(oa.a, djm.rf, djm.rb);
-      this.a(oa.a, djm.rg, djm.rb, 2);
-      this.i(oa.a, djm.rh, djm.rb);
-      this.i(oa.b, djm.ri, djm.rb);
-      this.i(oa.a, djm.rk, djm.rb);
-      this.a(oa.a, djm.rl, djm.rb, 2);
-      this.i(oa.a, djm.rm, djm.rb);
-      this.i(oa.b, djm.rn, djm.rb);
-      this.i(oa.a, djm.ro, djm.rb);
-      this.a(oa.a, djm.rg, djm.rf, 2);
-      this.i(oa.a, djm.rh, djm.rf);
-      this.i(oa.b, djm.ri, djm.rf);
-      this.i(oa.a, djm.rk, djm.rf);
-      this.a(oa.a, djm.rl, djm.rf, 2);
-      this.i(oa.a, djm.rm, djm.rf);
-      this.i(oa.b, djm.rn, djm.rf);
-      this.i(oa.a, djm.ro, djm.rf);
-      this.a(oa.a, djm.rl, djm.rk, 2);
-      this.i(oa.a, djm.rm, djm.rk);
-      this.i(oa.b, djm.rn, djm.rk);
-      this.i(oa.a, djm.ro, djm.rk);
-      this.a(oa.a, djm.rL, djm.ry, 4);
-      this.a(oa.a, djm.rK, djm.rz, 4);
-      this.a(oa.a, djm.rJ, djm.rA, 4);
-      this.a(oa.a, djm.rI, djm.rB, 4);
-      this.a(oa.a, djm.rP, djm.rY, 4);
-      this.a(oa.a, djm.rO, djm.sa, 4);
-      this.a(oa.a, djm.rN, djm.rZ, 4);
-      this.a(oa.a, djm.rM, djm.sb, 4);
-      this.a(oa.a, djm.rL, djm.rH, 1);
-      this.a(oa.a, djm.rK, djm.rG, 1);
-      this.a(oa.a, djm.rJ, djm.rF, 1);
-      this.a(oa.a, djm.rI, djm.rE, 1);
-      this.a(oa.a, djm.rP, djm.sf, 1);
-      this.a(oa.a, djm.rO, djm.se, 1);
-      this.a(oa.a, djm.rN, djm.sd, 1);
-      this.a(oa.a, djm.rM, djm.sc, 1);
-      this.a(djm.sE, djm.ry);
-      this.a(djm.sF, djm.rz);
-      this.a(djm.sG, djm.rA);
-      this.a(djm.sH, djm.rB);
-      this.a(djm.sI, djm.rY);
-      this.a(djm.sJ, djm.sa);
-      this.a(djm.sK, djm.rZ);
-      this.a(djm.sL, djm.sb);
-      this.b(djm.sM, djm.ry);
-      this.b(djm.sN, djm.rz);
-      this.b(djm.sO, djm.rA);
-      this.b(djm.sP, djm.rB);
-      this.b(djm.sQ, djm.rY);
-      this.b(djm.sR, djm.sa);
-      this.b(djm.sS, djm.rZ);
-      this.b(djm.sT, djm.sb);
-      this.a(oa.a, djm.sE, djm.ry, 4);
-      this.a(oa.a, djm.sF, djm.rz, 4);
-      this.a(oa.a, djm.sG, djm.rA, 4);
-      this.a(oa.a, djm.sH, djm.rB, 4);
-      this.a(oa.a, djm.sI, djm.rY, 4);
-      this.a(oa.a, djm.sJ, djm.sa, 4);
-      this.a(oa.a, djm.sK, djm.rZ, 4);
-      this.a(oa.a, djm.sL, djm.sb, 4);
-      this.b(oa.i, cwr.uW, 4).b(cwr.uZ).b("has_breeze_rod", this.a((dgf)cwr.uZ)).a(this.b);
-      this.a(oa.f, cwr.va, 1)
-         .a('I', cwr.uZ)
-         .a('#', djm.tV)
+      this.a(oa.a, djn.rc, djn.rb, 2);
+      this.i(oa.a, djn.rd, djn.rb);
+      this.i(oa.b, djn.re, djn.rb);
+      this.i(oa.a, djn.rj, djn.rb);
+      this.i(oa.a, djn.rf, djn.rb);
+      this.a(oa.a, djn.rg, djn.rb, 2);
+      this.i(oa.a, djn.rh, djn.rb);
+      this.i(oa.b, djn.ri, djn.rb);
+      this.i(oa.a, djn.rk, djn.rb);
+      this.a(oa.a, djn.rl, djn.rb, 2);
+      this.i(oa.a, djn.rm, djn.rb);
+      this.i(oa.b, djn.rn, djn.rb);
+      this.i(oa.a, djn.ro, djn.rb);
+      this.a(oa.a, djn.rg, djn.rf, 2);
+      this.i(oa.a, djn.rh, djn.rf);
+      this.i(oa.b, djn.ri, djn.rf);
+      this.i(oa.a, djn.rk, djn.rf);
+      this.a(oa.a, djn.rl, djn.rf, 2);
+      this.i(oa.a, djn.rm, djn.rf);
+      this.i(oa.b, djn.rn, djn.rf);
+      this.i(oa.a, djn.ro, djn.rf);
+      this.a(oa.a, djn.rl, djn.rk, 2);
+      this.i(oa.a, djn.rm, djn.rk);
+      this.i(oa.b, djn.rn, djn.rk);
+      this.i(oa.a, djn.ro, djn.rk);
+      this.a(oa.a, djn.rL, djn.ry, 4);
+      this.a(oa.a, djn.rK, djn.rz, 4);
+      this.a(oa.a, djn.rJ, djn.rA, 4);
+      this.a(oa.a, djn.rI, djn.rB, 4);
+      this.a(oa.a, djn.rP, djn.rY, 4);
+      this.a(oa.a, djn.rO, djn.sa, 4);
+      this.a(oa.a, djn.rN, djn.rZ, 4);
+      this.a(oa.a, djn.rM, djn.sb, 4);
+      this.a(oa.a, djn.rL, djn.rH, 1);
+      this.a(oa.a, djn.rK, djn.rG, 1);
+      this.a(oa.a, djn.rJ, djn.rF, 1);
+      this.a(oa.a, djn.rI, djn.rE, 1);
+      this.a(oa.a, djn.rP, djn.sf, 1);
+      this.a(oa.a, djn.rO, djn.se, 1);
+      this.a(oa.a, djn.rN, djn.sd, 1);
+      this.a(oa.a, djn.rM, djn.sc, 1);
+      this.a(djn.sE, djn.ry);
+      this.a(djn.sF, djn.rz);
+      this.a(djn.sG, djn.rA);
+      this.a(djn.sH, djn.rB);
+      this.a(djn.sI, djn.rY);
+      this.a(djn.sJ, djn.sa);
+      this.a(djn.sK, djn.rZ);
+      this.a(djn.sL, djn.sb);
+      this.b(djn.sM, djn.ry);
+      this.b(djn.sN, djn.rz);
+      this.b(djn.sO, djn.rA);
+      this.b(djn.sP, djn.rB);
+      this.b(djn.sQ, djn.rY);
+      this.b(djn.sR, djn.sa);
+      this.b(djn.sS, djn.rZ);
+      this.b(djn.sT, djn.sb);
+      this.a(oa.a, djn.sE, djn.ry, 4);
+      this.a(oa.a, djn.sF, djn.rz, 4);
+      this.a(oa.a, djn.sG, djn.rA, 4);
+      this.a(oa.a, djn.sH, djn.rB, 4);
+      this.a(oa.a, djn.sI, djn.rY, 4);
+      this.a(oa.a, djn.sJ, djn.sa, 4);
+      this.a(oa.a, djn.sK, djn.rZ, 4);
+      this.a(oa.a, djn.sL, djn.sb, 4);
+      this.b(oa.i, cws.uW, 4).b(cws.uZ).b("has_breeze_rod", this.a((dgg)cws.uZ)).a(this.b);
+      this.a(oa.f, cws.va, 1)
+         .a('I', cws.uZ)
+         .a('#', djn.tV)
          .b(" # ")
          .b(" I ")
-         .b("has_breeze_rod", this.a((dgf)cwr.uZ))
-         .b("has_heavy_core", this.a(djm.tV))
+         .b("has_breeze_rod", this.a((dgg)cws.uZ))
+         .b("has_heavy_core", this.a(djn.tV))
          .a(this.b);
-      this.a(djm.so, day.a(cwr.pm)).a(b(cwr.pm), this.a((dgf)cwr.pm)).a(this.b);
-      this.c(djm.sw, day.a(cwr.pm)).a(b(cwr.pm), this.a((dgf)cwr.pm)).a(this.b);
-      this.a(oa.e, cwr.rB).a('-', cwr.pX).a('#', cwr.rk).b("-").b("#").b("has_string", this.a((dgf)cwr.pX)).a(this.b);
+      this.a(djn.so, daz.a(cws.pm)).a(b(cws.pm), this.a((dgg)cws.pm)).a(this.b);
+      this.c(djn.sw, daz.a(cws.pm)).a(b(cws.pm), this.a((dgg)cws.pm)).a(this.b);
+      this.a(oa.e, cws.rB).a('-', cws.pX).a('#', cws.rk).b("-").b("#").b("has_string", this.a((dgg)cws.pX)).a(this.b);
       this.d();
    }
 
    public static Stream<om.b> b() {
       return Stream.of(
-            cwr.yO, cwr.yz, cwr.yy, cwr.yC, cwr.yN, cwr.yM, cwr.yL, cwr.yG, cwr.yx, cwr.yJ, cwr.yK, cwr.yF, cwr.yH, cwr.yE, cwr.yD, cwr.yB, cwr.yI, cwr.yA
+            cws.yO, cws.yz, cws.yy, cws.yC, cws.yN, cws.yM, cws.yL, cws.yG, cws.yx, cws.yJ, cws.yK, cws.yF, cws.yH, cws.yE, cws.yD, cws.yB, cws.yI, cws.yA
          )
-         .map($$0 -> new om.b($$0, akt.a(mc.bk, aku.b(c($$0) + "_smithing_trim"))));
+         .map($$0 -> new om.b($$0, aku.a(mc.bk, akv.b(c($$0) + "_smithing_trim"))));
    }
 
    private void c() {
-      day $$0 = this.b(awx.Y);
+      daz $$0 = this.b(awy.Y);
 
-      for (cvk $$1 : cvk.values()) {
-         ok.a(oa.b, $$0, day.a(cvl.a($$1)), dqo.a($$1).j()).b("shulker_box_dye").b("has_shulker_box", this.a(awx.Y)).a(this.b);
+      for (cvl $$1 : cvl.values()) {
+         ok.a(oa.b, $$0, daz.a(cvm.a($$1)), dqp.a($$1).j()).b("shulker_box_dye").b("has_shulker_box", this.a(awy.Y)).a(this.b);
       }
    }
 
    private void d() {
-      day $$0 = this.b(awx.bQ);
+      daz $$0 = this.b(awy.bQ);
 
-      for (cvk $$1 : cvk.values()) {
-         cvl $$2 = cvl.a($$1);
-         ok.a(oa.e, $$0, day.a($$2), cva.a($$1)).b("bundle_dye").b(b($$2), this.a($$2)).a(this.b);
+      for (cvl $$1 : cvl.values()) {
+         cvm $$2 = cvm.a($$1);
+         ok.a(oa.e, $$0, daz.a($$2), cvb.a($$1)).b("bundle_dye").b(b($$2), this.a($$2)).a(this.b);
       }
    }
 
@@ -1247,6 +1247,6 @@ public class om extends oc {
       }
    }
 
-   public static record b(cwj a, akt<dbc<?>> b) {
+   public static record b(cwk a, aku<dbd<?>> b) {
    }
 }

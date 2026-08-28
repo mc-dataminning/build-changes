@@ -1,12 +1,16 @@
-public class fgs extends fgq {
-   final long a;
+public class fgs extends fgr {
+   private final wp a;
 
-   public fgs(long $$0) {
+   public fgs(wp $$0) {
       this.a = $$0;
    }
 
+   public fgs(String $$0) {
+      this(wp.b($$0));
+   }
+
    @Override
-   public wo[] b() {
-      return new wo[]{wo.c("mco.upload.failed.too_big.title"), wo.a("mco.upload.failed.too_big.description", fge.b(this.a, fge.a(this.a)))};
+   public wp a() {
+      return wp.a("mco.upload.failed", this.a);
    }
 }

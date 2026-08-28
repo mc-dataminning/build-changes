@@ -1,33 +1,27 @@
-public class grn<T extends cna> extends gth<T, gxz, gbp> {
-   private static final aku a = aku.b("textures/entity/creaking/creaking.png");
-   private static final aku b = aku.b("textures/entity/creaking/creaking_eyes.png");
+public class grn extends gtj<chd, gzj, gbp> {
+   private static final akv a = akv.b("textures/entity/fish/cod.png");
 
-   public grn(gsb.a $$0) {
-      super($$0, new gbp($$0.a(gez.ah)), 0.6F);
-      this.a(new gwj<>(this, b, ($$0x, $$1) -> 1.0F, gbp::b, gmf::q, true));
+   public grn(gsd.a $$0) {
+      super($$0, new gbp($$0.a(gfb.Z)), 0.3F);
    }
 
-   public aku a(gxz $$0) {
+   @Override
+   public akv b(gzj $$0) {
       return a;
    }
 
-   public gxz a() {
-      return new gxz();
+   public gzj a() {
+      return new gzj();
    }
 
-   public void a(T $$0, gxz $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b.a($$0.ca);
-      $$1.a.a($$0.cb);
-      $$1.c.a($$0.cc);
-      if ($$0.gr()) {
-         $$1.ac = 0.0F;
-         $$1.am = false;
-         $$1.d = $$0.gs();
-      } else {
-         $$1.d = $$0.gy();
+   @Override
+   protected void a(gzj $$0, fft $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * ayz.a(0.6F * $$0.u);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.ak) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
-
-      $$1.e = $$0.t();
    }
 }

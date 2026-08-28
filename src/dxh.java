@@ -1,17 +1,12 @@
-public enum dxh implements azu {
-   a("none"),
-   b("small"),
-   c("large");
+public enum dxh implements azv {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
    private dxh(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
    }
 
    @Override

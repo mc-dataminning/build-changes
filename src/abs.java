@@ -1,37 +1,32 @@
-public class abs implements yv<abk> {
-   public static final ym<vz, abs> a = yv.a(abs::a, abs::new);
+import java.util.function.BiFunction;
+
+public class abs implements yw<abl> {
+   public static final yn<wa, abs> a = yn.a(ji.b, abs::b, yl.a(mc.h), abs::e, yl.s, abs::f, abs::new);
    private final ji b;
-   private final int c;
-   private final int d;
-   private final djk e;
+   private final dua<?> c;
+   private final tq d;
 
-   public abs(ji $$0, djk $$1, int $$2, int $$3) {
+   public static abs a(dty $$0, BiFunction<dty, kf, tq> $$1) {
+      kf $$2 = $$0.i().K_();
+      return new abs($$0.aA_(), $$0.p(), $$1.apply($$0, $$2));
+   }
+
+   public static abs a(dty $$0) {
+      return a($$0, dty::a);
+   }
+
+   private abs(ji $$0, dua<?> $$1, tq $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   private abs(vz $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = yk.a(mc.f).decode($$0);
-   }
-
-   private void a(vz $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      yk.a(mc.f).encode($$0, this.e);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public yx<abs> a() {
-      return agd.j;
+   public yy<abs> a() {
+      return age.i;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
@@ -39,15 +34,11 @@ public class abs implements yv<abk> {
       return this.b;
    }
 
-   public int e() {
+   public dua<?> e() {
       return this.c;
    }
 
-   public int f() {
+   public tq f() {
       return this.d;
-   }
-
-   public djk g() {
-      return this.e;
    }
 }

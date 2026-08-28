@@ -1,21 +1,17 @@
-public record ffc(int a, int b, boolean c) implements ffd<fec> {
-   public fec a() {
-      return new fed(this.a, this.b, this.c);
-   }
+public interface ffc {
+   ffc a = new ffc() {
+      @Override
+      public <T> T a(ffe<T> $$0) {
+         return $$0.e();
+      }
 
-   public void a(fec $$0) {
-      $$0.a();
-   }
+      @Override
+      public <T> void a(ffe<T> $$0, T $$1) {
+         $$0.a($$1);
+      }
+   };
 
-   public int b() {
-      return this.a;
-   }
+   <T> T a(ffe<T> var1);
 
-   public int c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
-   }
+   <T> void a(ffe<T> var1, T var2);
 }

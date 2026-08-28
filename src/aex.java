@@ -1,59 +1,61 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
-public class aex implements yv<abk> {
-   public static final ym<vz, aex> a = yv.a(aex::a, aex::new);
-   private static final byte b = -128;
+public class aex implements yw<abl> {
+   public static final yn<vl, aex> a = yw.a(aex::a, aex::new);
+   private final int b;
    private final int c;
-   private final List<Pair<bur, cwn>> d;
+   private final int d;
+   private final int e;
 
-   public aex(int $$0, List<Pair<bur, cwn>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public aex(buk $$0) {
+      this($$0.ar(), $$0.dy());
    }
 
-   private aex(vz $$0) {
-      this.c = $$0.l();
-      this.d = Lists.newArrayList();
-
-      int $$1;
-      do {
-         $$1 = $$0.readByte();
-         bur $$2 = bur.i.get($$1 & 127);
-         cwn $$3 = cwn.g.decode($$0);
-         this.d.add(Pair.of($$2, $$3));
-      } while (($$1 & -128) != 0);
+   public aex(int $$0, faz $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = ayz.a($$1.d, -3.9, 3.9);
+      double $$4 = ayz.a($$1.e, -3.9, 3.9);
+      double $$5 = ayz.a($$1.f, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private void a(vz $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
+   private aex(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bur, cwn> $$3 = this.d.get($$2);
-         bur $$4 = (bur)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.l($$5 ? $$6 | -128 : $$6);
-         cwn.g.encode($$0, (cwn)$$3.getSecond());
-      }
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
+      $$0.m(this.e);
    }
 
    @Override
-   public yx<aex> a() {
-      return agd.aI;
+   public yy<aex> a() {
+      return age.aH;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<Pair<bur, cwn>> e() {
-      return this.d;
+   public double e() {
+      return (double)this.c / 8000.0;
+   }
+
+   public double f() {
+      return (double)this.d / 8000.0;
+   }
+
+   public double g() {
+      return (double)this.e / 8000.0;
    }
 }

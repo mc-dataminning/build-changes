@@ -1,15 +1,26 @@
-public class fkr {
-   private static volatile boolean a;
+public enum fkr {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-   public static void a() {
-      if (!a) {
-         a = true;
-         hbj.a();
-         hdr.a();
-         fms.a();
-         hdb.a();
-         hbs.a();
-         hcn.a();
-      }
+   private static final fkr[] d = values();
+   private final boolean e;
+   private final boolean f;
+
+   private fkr(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.f;
+   }
+
+   public fkr c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

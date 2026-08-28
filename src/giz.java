@@ -1,17 +1,27 @@
-public class giz extends gjs {
-   protected giz(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+public class giz extends gje {
+   giz(gfy $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
    }
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
-
-      public a(gjz $$0) {
-         this.a = $$0;
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(lt.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
       }
 
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new giz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
+   }
+
+   public static class a implements gjj<lx> {
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new giz($$1, $$2, $$3, $$4);
       }
    }
 }

@@ -1,51 +1,54 @@
-public class gwl extends gwq<gzm, gbo> {
-   private final gmz a;
+import java.util.List;
+import java.util.function.Function;
 
-   public gwl(gty<gzm, gbo> $$0, gmz $$1) {
+public class gwl<S extends gzj, M extends gca<S>> extends gws<S, M> {
+   private final akv a;
+   private final gwl.a<S> b;
+   private final gwl.b<S, M> c;
+   private final Function<akv, gmh> d;
+   private final boolean e;
+
+   public gwl(gua<S, M> $$0, akv $$1, gwl.a<S> $$2, gwl.b<S, M> $$3, Function<akv, gmh> $$4, boolean $$5) {
       super($$0);
       this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   public void a(ffs $$0, glv $$1, int $$2, gzm $$3, float $$4, float $$5) {
-      if (!$$3.aj) {
-         boolean $$6 = $$3.ao && $$3.z;
-         if (!$$3.z || $$6) {
-            dwv $$7 = $$3.a.a();
-            int $$8 = gtc.a($$3, 0.0F);
-            hgm $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().b().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
+   public void a(fft $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.z || this.e) {
+         if (this.a($$3)) {
+            ffx $$6 = $$1.getBuffer(this.d.apply(this.a));
+            float $$7 = this.b.apply($$3, $$3.u);
+            int $$8 = axk.a(ayz.d($$7 * 255.0F), 255, 255, 255);
+            this.d().a($$0, $$6, $$2, gte.a($$3, 0.0F), $$8);
+            this.a();
          }
       }
    }
 
-   private void a(ffs $$0, glv $$1, int $$2, boolean $$3, dwv $$4, int $$5, hgm $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gmf.s(hel.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+   private boolean a(S $$0) {
+      List<gfc> $$1 = this.c.getPartsToDraw(this.d(), $$0);
+      if ($$1.isEmpty()) {
+         return false;
       } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+         this.d().f().forEach($$0x -> $$0x.l = true);
+         $$1.forEach($$0x -> $$0x.l = false);
+         return true;
       }
+   }
+
+   private void a() {
+      this.d().f().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<S extends gzj> {
+      float apply(S var1, float var2);
+   }
+
+   public interface b<S extends gzj, M extends gca<S>> {
+      List<gfc> getPartsToDraw(M var1, S var2);
    }
 }

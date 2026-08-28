@@ -1,113 +1,56 @@
-public class ceq extends cer {
-   private boolean p;
-
-   public ceq(bvh $$0, dgg $$1) {
+public class ceq extends ces {
+   public ceq(bvi $$0, dgh $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected etn a(int $$0) {
-      this.o = new ett();
-      return new etn(this.o, $$0);
+   protected eto a(int $$0) {
+      this.o = new etj();
+      return new eto(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(faz $$0, faz $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
    @Override
    protected boolean a() {
-      return this.a.aJ() || this.a.bn() || this.a.bZ();
+      return this.o() && this.a.bn() || !this.a.bZ();
    }
 
    @Override
-   protected fay b() {
-      return new fay(this.a.dB(), (double)this.r(), this.a.dH());
+   protected faz b() {
+      return this.a.dt();
    }
 
    @Override
-   public etl a(ji $$0, int $$1) {
-      dza $$2 = this.b.S().a(kk.a($$0.u()), kk.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).l()) {
-            ji.a $$3 = $$0.k().c(jn.a);
+   public etm a(buk $$0, int $$1) {
+      return this.a($$0.dv(), $$1);
+   }
 
-            while ($$3.v() > this.b.L_() && $$2.a_($$3).l()) {
-               $$3.c(jn.a);
-            }
-
-            if ($$3.v() > this.b.L_()) {
-               return super.a($$3.d(), $$1);
-            }
-
-            $$3.q($$0.v() + 1);
-
-            while ($$3.v() <= this.b.an() && $$2.a_($$3).l()) {
-               $$3.c(jn.b);
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            ji.a $$4 = $$0.k().c(jn.b);
-
-            while ($$4.v() <= this.b.an() && $$2.a_($$4).e()) {
-               $$4.c(jn.b);
-            }
-
-            return super.a($$4.j(), $$1);
-         }
+   @Override
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.h();
       }
-   }
 
-   @Override
-   public etl a(buj $$0, int $$1) {
-      return this.a($$0.dw(), $$1);
-   }
-
-   private int r() {
-      if (this.a.bj() && this.o()) {
-         int $$0 = this.a.dC();
-         dwv $$1 = this.b.a_(ji.a(this.a.dB(), (double)$$0, this.a.dH()));
-         int $$2 = 0;
-
-         while ($$1.a(djm.J)) {
-            $$1 = this.b.a_(ji.a(this.a.dB(), (double)(++$$0), this.a.dH()));
-            if (++$$2 > 16) {
-               return this.a.dC();
+      if (!this.k()) {
+         if (this.a()) {
+            this.j();
+         } else if (this.c != null && !this.c.c()) {
+            faz $$0 = this.c.a(this.a);
+            if (this.a.dz() == ayz.a($$0.d) && this.a.dB() == ayz.a($$0.e) && this.a.dF() == ayz.a($$0.f)) {
+               this.c.a();
             }
          }
 
-         return $$0;
-      } else {
-         return ayy.a(this.a.dD() + 0.5);
-      }
-   }
-
-   @Override
-   protected void d() {
-      super.d();
-      if (this.p) {
-         if (this.b.h(ji.a(this.a.dB(), this.a.dD() + 0.5, this.a.dH()))) {
-            return;
+         agd.a(this.b, this.a, this.c, this.l);
+         if (!this.k()) {
+            faz $$1 = this.c.a(this.a);
+            this.a.N().a($$1.d, $$1.e, $$1.f, this.d);
          }
-
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            etj $$1 = this.c.a($$0);
-            if (this.b.h(new ji($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
-         }
-      }
-   }
-
-   protected boolean a(eto $$0) {
-      if ($$0 == eto.j) {
-         return false;
-      } else {
-         return $$0 == eto.i ? false : $$0 != eto.b;
       }
    }
 
@@ -115,11 +58,8 @@ public class ceq extends cer {
       this.o.b($$0);
    }
 
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void d(boolean $$0) {
-      this.o.d($$0);
+   @Override
+   public boolean a(ji $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

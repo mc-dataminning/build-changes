@@ -1,29 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class aof {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.save.failed"));
-
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ex)$$0x.getSource(), false)))
-            .then(ey.a("flush").executes($$0x -> a((ex)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("rotate").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ey.a("target", fk.a())
+                     .then(ey.a("rotation", gx.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), gx.a($$0x, "rotation")))))
+                  .then(
+                     ((LiteralArgumentBuilder)ey.a("facing")
+                           .then(
+                              ey.a("entity")
+                                 .then(
+                                    ((RequiredArgumentBuilder)ey.a("facingEntity", fk.a())
+                                          .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), new ano.a(fk.a($$0x, "facingEntity"), fj.a.a))))
+                                       .then(
+                                          ey.a("facingAnchor", fj.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      fk.a($$0x, "target"),
+                                                      new ano.a(fk.a($$0x, "facingEntity"), fj.a($$0x, "facingAnchor"))
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           ey.a("facingLocation", ha.a())
+                              .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), new ano.b(ha.a($$0x, "facingLocation"))))
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ex $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> wo.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
-         throw a.create();
-      } else {
-         $$0.a(() -> wo.c("commands.save.success"), true);
-         return 1;
-      }
+   private static int a(ex $$0, buk $$1, gv $$2) {
+      fay $$3 = $$2.b($$0);
+      $$1.a($$3.j, $$3.i);
+      $$0.a(() -> wp.a("commands.rotate.success", $$1.p_()), true);
+      return 1;
+   }
+
+   private static int a(ex $$0, buk $$1, ano $$2) {
+      $$2.perform($$0, $$1);
+      $$0.a(() -> wp.a("commands.rotate.success", $$1.p_()), true);
+      return 1;
    }
 }

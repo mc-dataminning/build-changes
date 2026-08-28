@@ -12,7 +12,7 @@ public record al(List<List<String>> c) {
    public static final al b = new al(List.of());
 
    public al(vl $$0) {
-      this($$0.a((yn<? super vl, List<String>>)($$0x -> $$0x.a(vl::p))));
+      this($$0.a((yo<? super vl, List<String>>)($$0x -> $$0x.a(vl::p))));
    }
 
    public void a(vl $$0) {

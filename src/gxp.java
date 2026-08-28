@@ -1,12 +1,14 @@
-public class gxp extends gzh {
-   public cii.e a;
+public class gxp extends gza {
+   public float a;
    public float b;
-   public float c;
-   public float d;
-   public float e;
-
-   public gxp() {
-      this.a = cii.e.a;
-      this.d = 1.0F;
-   }
+   public boolean c;
+   public boolean d;
+   public boolean j;
+   public boolean k = true;
+   public kj l = ckq.b;
+   public kj m = ckq.c;
+   public kj n = ckq.d;
+   public kj o = ckq.e;
+   public kj p = ckq.f;
+   public kj q = ckq.g;
 }

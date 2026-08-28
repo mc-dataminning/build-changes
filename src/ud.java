@@ -24,7 +24,7 @@ public class ud {
       tq var4;
       try (
          InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new ayi($$2);
+         InputStream $$3 = new ayj($$2);
       ) {
          var4 = a($$3, $$1);
       }
@@ -33,7 +33,7 @@ public class ud {
    }
 
    private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new ayi(new GZIPInputStream($$0)));
+      return new DataInputStream(new ayj(new GZIPInputStream($$0)));
    }
 
    private static DataOutputStream a(OutputStream $$0) throws IOException {
@@ -52,7 +52,7 @@ public class ud {
    public static void a(Path $$0, uk $$1, tz $$2) throws IOException {
       try (
          InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new ayi($$3);
+         InputStream $$4 = new ayj($$3);
       ) {
          a($$4, $$1, $$2);
       }
@@ -190,7 +190,7 @@ public class ud {
       }
    }
 
-   public static class a extends ayc {
+   public static class a extends ayd {
       public a(DataOutput $$0) {
          super($$0);
       }

@@ -1,39 +1,34 @@
-public class guo<T extends buj & cpl> extends gsa<T, hak> {
-   private final hbi a;
-   private final float b;
-   private final boolean h;
+public class guo extends gqx<cmk, hak, gee> {
+   private static final akv a = akv.b("textures/entity/strider/strider.png");
+   private static final akv b = akv.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public guo(gsb.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
+   public guo(gsd.a $$0) {
+      super($$0, new gee($$0.a(gfb.dd)), new gee($$0.a(gfb.df)), 0.5F);
+      this.a(new gwt<>(this, new gee($$0.a(gfb.de)), new gee($$0.a(gfb.dg)), akv.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   public guo(gsb.a $$0) {
-      this($$0, 1.0F, false);
+   public akv a(hak $$0) {
+      return $$0.b ? b : a;
    }
 
-   @Override
-   protected int a(T $$0, ji $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected float b(hak $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   public void a(hak $$0, ffs $$1, glv $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      $$0.a.a($$1, $$2, $$3, hec.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public hak a() {
+   public hak b() {
       return new hak();
    }
 
-   public void a(T $$0, hak $$1, float $$2) {
+   public void a(cmk $$0, hak $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.l(), cwl.h, $$0);
+      $$1.a = $$0.j();
+      $$1.b = $$0.p();
+      $$1.c = $$0.ca();
+   }
+
+   protected boolean c(hak $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

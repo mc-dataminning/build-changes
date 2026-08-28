@@ -1,75 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
 
-public class exm extends exc {
+public class exm extends exd {
    public static final MapCodec<exm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(evn.e.fieldOf("component").forGetter($$0x -> $$0x.b), ewd.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, exm::new)
+      $$0 -> a($$0).and(ks.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, exm::new)
    );
-   private final evm<?> b;
-   private final List<ewf> c;
+   private final ks b;
 
-   exm(List<eyy> $$0, evm<?> $$1, List<ewf> $$2) {
+   private exm(List<eyz> $$0, ks $$1) {
       super($$0);
       this.b = $$1;
-      this.c = List.copyOf($$2);
    }
 
    @Override
-   public exe<exm> b() {
-      return exf.t;
+   public exf<exm> b() {
+      return exg.k;
    }
 
    @Override
-   public cwn a(cwn $$0, evp $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         Builder<cwn> $$2 = Stream.builder();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(evu.a($$1.d(), $$2::add), $$1)));
-         this.b.a($$0, $$2.build());
-         return $$0;
-      }
+   public cwo a(cwo $$0, evq $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   @Override
-   public void a(evv $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
-   }
-
-   public static exm.a a(evm<?> $$0) {
-      return new exm.a($$0);
-   }
-
-   public static class a extends exc.a<exm.a> {
-      private final com.google.common.collect.ImmutableList.Builder<ewf> a = ImmutableList.builder();
-      private final evm<?> b;
-
-      public a(evm<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected exm.a a() {
-         return this;
-      }
-
-      public exm.a a(ewf.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public exd b() {
-         return new exm(this.g(), this.b, this.a.build());
-      }
+   public static <T> exd.a<?> a(ku<T> $$0, T $$1) {
+      return a($$2 -> new exm($$2, ks.a().a($$0, $$1).a()));
    }
 }

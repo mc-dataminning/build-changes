@@ -1,71 +1,69 @@
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public abstract class fpm<E extends fpm.a<E>> extends foj<E> {
-   private static final wo a = wo.c("narration.selection.usage");
+public class fpm extends fon {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final azp<fpm.a, fpl> c;
+   private boolean d = false;
 
-   public fpm(flh $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fpm(wp $$0, fob $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public fpm(flh $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public fpm(int $$0, int $$1, wp $$2, fob $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = af.a($$1x -> $$1x.c.isPresent() ? fpl.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fpl.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
    }
 
-   @Nullable
+   public fpm c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fpm d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fpm e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fpm b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
    @Override
-   public fny a(fst $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aM_() && $$0 instanceof fst.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return fny.a(this, fny.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aM_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fny.a(this, fny.a($$3));
-      } else {
-         return null;
-      }
+   public int A() {
+      return this.c.a(this.c()).b();
    }
 
    @Override
-   public void a(fsn $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
+   public int y() {
+      return this.c.a(this.c()).a() * 9;
+   }
 
-      if (this.aM_()) {
-         $$0.a(fsm.d, a);
+   @Override
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      fpl $$4 = this.c.a(this.c());
+      int $$5 = this.F();
+      int $$6 = this.G();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.A() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   public abstract static class a<E extends fpm.a<E>> extends foj.a<E> implements fso {
-      public abstract wo a();
+   private fpm.a c() {
+      return new fpm.a(this.B(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(fsn $$0) {
-         $$0.a(fsm.a, this.a());
-      }
+   static record a(wp a, int b, OptionalInt c) {
    }
 }

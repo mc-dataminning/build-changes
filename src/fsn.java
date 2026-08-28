@@ -1,19 +1,24 @@
-import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public interface fsn {
-   default void a(fsm $$0, wo $$1) {
-      this.a($$0, fsp.a($$1.getString()));
+public interface fsn extends fqc, fsq {
+   fsn.a w();
+
+   default boolean E() {
+      return true;
    }
 
-   default void a(fsm $$0, String $$1) {
-      this.a($$0, fsp.a($$1));
+   default Collection<? extends fsn> L() {
+      return List.of(this);
    }
 
-   default void a(fsm $$0, wo... $$1) {
-      this.a($$0, fsp.a(ImmutableList.copyOf($$1)));
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
    }
-
-   void a(fsm var1, fsp<?> var2);
-
-   fsn a();
 }

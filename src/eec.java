@@ -1,24 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eec extends eei {
-   final axe<djk> a;
-   public static final MapCodec<eec> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axe.a(mc.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eec::new)
+public class eec implements edy {
+   public static final MapCodec<eec> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", ji.c).forGetter($$0x -> $$0x.e)).apply($$0, eec::new)
    );
+   private final km e;
 
-   protected eec(km $$0, axe<djk> $$1) {
-      super($$0);
-      this.a = $$1;
+   public eec(km $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(dhf $$0, ji $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   protected boolean a(dwv $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public edy<?> a() {
-      return edy.b;
+   public edz<?> a() {
+      return edz.h;
    }
 }

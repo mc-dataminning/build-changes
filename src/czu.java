@@ -1,36 +1,48 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
 
-public record czu(List<aru<String>> g) implements cyq<String, czu> {
-   public static final czu a = new czu(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<aru<String>> h = aru.a(Codec.string(0, 1024));
-   public static final Codec<List<aru<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<czu> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(czu::a)).apply($$0, czu::new));
-   public static final ym<ByteBuf, czu> f = aru.a(yk.b(1024)).a(yk.c(100)).a(czu::new, czu::a);
+public record czu(cwo c) {
+   public static final Codec<czu> a = cwo.a.xmap(czu::new, czu::a);
+   public static final yn<wa, czu> b = yn.a(cwo.h, czu::a, czu::new);
 
-   public czu(List<aru<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+   public cwo a(cwo $$0, int $$1, boolean $$2, czu.a $$3) {
+      if ($$2) {
+         return $$0;
+      } else if ($$0.M() >= $$1) {
+         return $$0;
       } else {
-         this.g = g;
+         cwo $$4 = this.c.v();
+         if ($$0.f()) {
+            return $$4;
+         } else {
+            $$3.apply($$4);
+            return $$0;
+         }
       }
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
-   }
-
-   public czu b(List<aru<String>> $$0) {
-      return new czu($$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         czu $$1 = (czu)$$0;
+         return cwo.a(this.c, $$1.c);
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public List<aru<String>> a() {
-      return this.g;
+   public int hashCode() {
+      return cwo.a(this.c);
+   }
+
+   public cwo a() {
+      return this.c;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(cwo var1);
    }
 }

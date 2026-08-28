@@ -1,45 +1,37 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aet implements yw<abl> {
+   public static final yn<vl, aet> a = yw.a(aet::a, aet::new);
+   private final ji b;
+   private final float c;
 
-public class aet implements yv<abk> {
-   public static final ym<vl, aet> a = yv.a(aet::a, aet::new);
-   private final fbu b;
-   private final String c;
-
-   public aet(fbu $$0, @Nullable fbv $$1) {
+   public aet(ji $$0, float $$1) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+      this.c = $$1;
    }
 
    private aet(vl $$0) {
-      this.b = $$0.a(fbu.u);
-      this.c = $$0.p();
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
    private void a(vl $$0) {
-      $$0.a(fbu::a, this.b);
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public yx<aet> a() {
-      return agd.aE;
+   public yy<aet> a() {
+      return age.aD;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public fbu b() {
+   public ji b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public float e() {
+      return this.c;
    }
 }

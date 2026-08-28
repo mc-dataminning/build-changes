@@ -1,15 +1,23 @@
-public interface duy extends bsb {
-   fat y_ = djk.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class duy extends dvl {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default fat al_() {
-      return y_;
+   public duy(ji $$0, dww $$1) {
+      super(dua.i, $$0, $$1);
    }
 
-   double G();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double H();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double I();
-
-   boolean J();
+   @Override
+   public avz d() {
+      return awa.CO;
+   }
 }

@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record enr(enr.a b, bqu<dhu.c> c) {
+public record enr(List<enr.a> c, eoi d) {
    public static final Codec<enr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(enr.a.c.fieldOf("bounding_box").forGetter(enr::a), bqu.c(dhu.c.a).fieldOf("spawns").forGetter(enr::b)).apply($$0, enr::new)
+      $$0 -> $$0.group(enr.a.a.listOf().fieldOf("structures").forGetter(enr::a), eoi.b.fieldOf("placement").forGetter(enr::b)).apply($$0, enr::new)
    );
+   public static final Codec<jr<enr>> b = akr.a(mc.aW, a);
 
-   public enr.a a() {
-      return this.b;
+   public enr(jr<enl> $$0, eoi $$1) {
+      this(List.of(new enr.a($$0, 1)), $$1);
    }
 
-   public bqu<dhu.c> b() {
+   public static enr.a a(jr<enl> $$0, int $$1) {
+      return new enr.a($$0, $$1);
+   }
+
+   public static enr.a a(jr<enl> $$0) {
+      return new enr.a($$0, 1);
+   }
+
+   public List<enr.a> a() {
       return this.c;
    }
 
-   public static enum a implements azu {
-      a("piece"),
-      b("full");
+   public eoi b() {
+      return this.d;
+   }
 
-      public static final Codec<enr.a> c = azu.a(enr.a::values);
-      private final String d;
+   public static record a(jr<enl> b, int c) {
+      public static final Codec<enr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(enl.b.fieldOf("structure").forGetter(enr.a::a), ayi.m.fieldOf("weight").forGetter(enr.a::b)).apply($$0, enr.a::new)
+      );
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public jr<enl> a() {
+         return this.b;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public int b() {
+         return this.c;
       }
    }
 }

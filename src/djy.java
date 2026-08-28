@@ -1,61 +1,117 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djy extends dqi {
+public class djy extends djl {
    public static final MapCodec<djy> a = b(djy::new);
-   public static final dxs<jn> b = dxl.U;
+   public static final int b = 6;
+   public static final dxv c = dxm.aB;
+   public static final int d = b(0);
+   protected static final float e = 1.0F;
+   protected static final float f = 2.0F;
+   protected static final fbt[] g = new fbt[]{
+      djl.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      djl.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      djl.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      djl.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      djl.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      djl.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      djl.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
    @Override
    public MapCodec<djy> a() {
       return a;
    }
 
-   public djy(dwu.d $$0) {
+   protected djy(dwv.d $$0) {
       super($$0);
-      this.l(this.m().b(b, jn.c));
-   }
-
-   @Nullable
-   @Override
-   public dtx a(ji $$0, dwv $$1) {
-      return new duc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
-      return !$$0.C ? a($$2, dtz.K, ($$0x, $$1x, $$2x, $$3) -> eca.c.a($$0x, $$3.gq(), $$3.gr())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dwv a(dae $$0) {
-      return super.a($$0).b(b, $$0.g());
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public int a(dwv $$0, dfl $$1, ji $$2, jn $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return g[$$0.c(c)];
    }
 
    @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   protected bsj a(cwo $$0, dww $$1, dgh $$2, ji $$3, cow $$4, bsi $$5, fav $$6) {
+      cwk $$7 = $$0.h();
+      if ($$0.a(awy.aN) && $$1.c(c) == 0 && djl.a($$7) instanceof dkb $$8) {
+         $$0.a(1, $$4);
+         $$2.a(null, $$3, awa.dt, awb.e, 1.0F, 1.0F);
+         $$2.b($$3, dkc.a($$8));
+         $$2.a($$4, ebs.c, $$3);
+         $$4.b(awk.c.b($$7));
+         return bsj.a;
+      } else {
+         return bsj.f;
+      }
    }
 
    @Override
-   public dwv a(dwv $$0, dqc $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected bsj a(dww $$0, dgh $$1, ji $$2, cow $$3, fav $$4) {
+      if ($$1.C) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return bsj.a;
+         }
+
+         if ($$3.b(bsi.a).f()) {
+            return bsj.c;
+         }
+      }
+
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   protected static bsj a(dgi $$0, ji $$1, dww $$2, cow $$3) {
+      if (!$$3.u(false)) {
+         return bsj.e;
+      } else {
+         $$3.a(awk.U);
+         $$3.gt().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, ebs.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.b(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, ebs.f, $$1);
+         }
+
+         return bsj.a;
+      }
    }
 
    @Override
-   public dwv a(dwv $$0, doj $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected dww a(dww $$0, dgk $$1, dgw $$2, ji $$3, jn $$4, ji $$5, dww $$6, azh $$7) {
+      return $$4 == jn.a && !$$0.a($$1, $$3) ? djn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public int c() {
-      return 10;
+   protected boolean a(dww $$0, dgk $$1, ji $$2) {
+      return $$1.a_($$2.e()).e();
+   }
+
+   @Override
+   protected void a(dwx.a<djl, dww> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected int a(dww $$0, dgh $$1, ji $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
+   }
+
+   @Override
+   protected boolean c_(dww $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dww $$0, etn $$1) {
+      return false;
    }
 }

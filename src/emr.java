@@ -1,10 +1,10 @@
-import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class emr {
-   public static final Codec<emr> b = mb.S.q().dispatch(emr::b, ems::codec);
+public abstract class emr extends ems {
+   @Override
+   public final Stream<ji> a_(emq $$0, azh $$1, ji $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+   }
 
-   public abstract Stream<ji> a_(emp var1, azg var2, ji var3);
-
-   public abstract ems<?> b();
+   protected abstract boolean a(emq var1, azh var2, ji var3);
 }

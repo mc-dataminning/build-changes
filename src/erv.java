@@ -1,14 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface erv<P extends eru> {
-   erv<ers> a = a("clear", ers.a);
-   erv<ert> b = a("passthrough", ert.b);
-   erv<err> c = a("append_static", err.a);
-   erv<erq> d = a("append_loot", erq.a);
+public interface erv {
+   Codec<erv> c = mb.n.q().dispatch(erv::a, erw::codec);
 
-   MapCodec<P> codec();
+   @Nullable
+   tq a(azh var1, @Nullable tq var2);
 
-   private static <P extends eru> erv<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.n, $$0, () -> $$1);
-   }
+   erw<?> a();
 }

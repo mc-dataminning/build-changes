@@ -8,7 +8,7 @@ public class dt extends dz<dt.a> {
       return dt.a.a;
    }
 
-   public void a(ard $$0) {
+   public void a(are $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,7 +43,7 @@ public class dt extends dz<dt.a> {
          return ap.x.a(new dt.a(Optional.empty()));
       }
 
-      public static aq<dt.a> a(js<djk> $$0, js<cwj> $$1, djk $$2, cwj $$3) {
+      public static aq<dt.a> a(js<djl> $$0, js<cwk> $$1, djl $$2, cwk $$3) {
          return a(bx.a.a().a(bu.a.a().d(cv.a.a().a($$1, $$3))).b(di.a.a().a(ay.a.a().a($$0, $$2))));
       }
 

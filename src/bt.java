@@ -9,11 +9,11 @@ public class bt extends dz<bt.a> {
       return bt.a.a;
    }
 
-   public void a(ard $$0, dwv $$1) {
+   public void a(are $$0, dww $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bi> b, Optional<jr<djk>> c, Optional<ef> d) implements dz.a {
+   public static record a(Optional<bi> b, Optional<jr<djl>> c, Optional<ef> d) implements dz.a {
       public static final Codec<bt.a> a = RecordCodecBuilder.create(
             $$0 -> $$0.group(
                      bx.b.optionalFieldOf("player").forGetter(bt.a::a),
@@ -27,16 +27,16 @@ public class bt extends dz<bt.a> {
       private static DataResult<bt.a> a(bt.a $$0) {
          return $$0.c
             .<DataResult<bt.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((djk)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((djl)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
             )
             .orElseGet(() -> DataResult.success($$0));
       }
 
-      public static aq<bt.a> a(djk $$0) {
+      public static aq<bt.a> a(djl $$0) {
          return ap.e.a(new bt.a(Optional.empty(), Optional.of($$0.p()), Optional.empty()));
       }
 
-      public boolean a(dwv $$0) {
+      public boolean a(dww $$0) {
          return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
@@ -45,7 +45,7 @@ public class bt extends dz<bt.a> {
          return this.b;
       }
 
-      public Optional<jr<djk>> b() {
+      public Optional<jr<djl>> b() {
          return this.c;
       }
 

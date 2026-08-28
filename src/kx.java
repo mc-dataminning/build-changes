@@ -4,21 +4,21 @@ import com.mojang.serialization.DynamicOps;
 import java.util.Map.Entry;
 
 public record kx<T>(ku<T> b, T c) {
-   public static final ym<vz, kx<?>> a = new ym<vz, kx<?>>() {
-      public kx<?> a(vz $$0) {
+   public static final yn<wa, kx<?>> a = new yn<wa, kx<?>>() {
+      public kx<?> a(wa $$0) {
          ku<?> $$1 = ku.b.decode($$0);
          return a($$0, (ku<T>)$$1);
       }
 
-      private static <T> kx<T> a(vz $$0, ku<T> $$1) {
+      private static <T> kx<T> a(wa $$0, ku<T> $$1) {
          return new kx<>($$1, $$1.e().decode($$0));
       }
 
-      public void a(vz $$0, kx<?> $$1) {
+      public void a(wa $$0, kx<?> $$1) {
          b($$0, (kx<T>)$$1);
       }
 
-      private static <T> void b(vz $$0, kx<T> $$1) {
+      private static <T> void b(wa $$0, kx<T> $$1) {
          ku.b.encode($$0, $$1.a());
          $$1.a().e().encode($$0, $$1.b());
       }

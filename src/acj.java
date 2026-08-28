@@ -1,33 +1,16 @@
-import java.util.List;
-
-public record acj(acj.a b, List<String> c) implements yv<abk> {
-   public static final ym<vl, acj> a = yv.a(acj::a, acj::new);
-
-   private acj(vl $$0) {
-      this($$0.b(acj.a.class), $$0.a(vl::p));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vl::a);
-   }
+public record acj(akv b, int c) implements yw<abl> {
+   public static final yn<wa, acj> a = yn.a(akv.b, acj::b, yl.h, acj::e, acj::new);
 
    @Override
-   public yx<acj> a() {
-      return agd.y;
+   public yy<acj> a() {
+      return age.x;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

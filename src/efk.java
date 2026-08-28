@@ -1,52 +1,57 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
 
-public abstract class efk extends efw<eih> {
-   public efk(Codec<eih> $$0) {
+public class efk extends efl {
+   public efk(Codec<eii> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(efy<eih> $$0) {
-      azg $$1 = $$0.d();
-      dhe $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      Optional<djk> $$4 = mb.e.a(awo.at, $$1).map(jr::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   protected boolean a(dgi $$0, azh $$1, ji $$2, dww $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jn $$4 = jn.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jn> $$6 = af.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   protected abstract boolean a(dgh var1, azg var2, ji var3, dwv var4);
+         for (jn $$8 : $$6.subList(0, $$5)) {
+            ji.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jn $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jn.b);
+               jn[] $$13 = new jn[]{$$8, jn.b};
+               $$11 = af.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-   protected boolean b(dgh $$0, azg $$1, ji $$2, dwv $$3) {
-      ji $$4 = $$2.d();
-      dwv $$5 = $$0.a_($$2);
-      if (($$5.a(djm.J) || $$5.a(awo.aw)) && $$0.a_($$4).a(djm.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            mb.e.a(awo.aw, $$1).map(jr::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, djm.nx.m().b(dqm.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-         for (jn $$6 : jn.c.a) {
-            if ($$1.i() < 0.2F) {
-               ji $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(djm.J)) {
-                  mb.e.a(awo.au, $$1).map(jr::a).ifPresent($$3x -> {
-                     dwv $$4x = $$3x.m();
-                     if ($$4x.b(div.c)) {
-                        $$4x = $$4x.b(div.c, $$6);
-                     }
+            $$9.c($$11.g());
+            $$9.c(jn.b);
 
-                     $$0.a($$7, $$4x, 2);
-                  });
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jn.b);
                }
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 }

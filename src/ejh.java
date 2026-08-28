@@ -1,43 +1,34 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ejh extends ejm {
-   public static final MapCodec<ejh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejh::new));
-   protected final int b;
+public class ejh extends ejn {
+   public static final MapCodec<ejh> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ejh::new));
 
-   protected static <P extends ejh> P3<Mu<P>, brn, brn, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public ejh(brn $$0, brn $$1, int $$2) {
+   public ejh(bro $$0, bro $$1) {
       super($$0, $$1);
-      this.b = $$2;
    }
 
    @Override
-   protected ejn<?> a() {
-      return ejn.a;
+   protected ejo<?> a() {
+      return ejo.d;
    }
 
    @Override
-   protected void a(dgm $$0, ejm.b $$1, azg $$2, eiw $$3, int $$4, ejm.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
+   protected void a(dgn $$0, ejn.b $$1, azh $$2, eix $$3, int $$4, ejn.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      ji $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
    }
 
    @Override
-   public int a(azg $$0, int $$1, eiw $$2) {
-      return this.b;
+   public int a(azh $$0, int $$1, eix $$2) {
+      return 0;
    }
 
    @Override
-   protected boolean a(azg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

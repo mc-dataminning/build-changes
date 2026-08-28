@@ -1,45 +1,33 @@
-public class aif implements yv<agf> {
-   public static final ym<vl, aif> a = yv.a(aif::a, aif::new);
-   private final fau b;
-   private final bsh c;
-   private final int d;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aif(bsh $$0, fau $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class aif implements yw<agg> {
+   public static final yn<vl, aif> a = yw.a(aif::a, aif::new);
+   private final UUID b;
+
+   public aif(UUID $$0) {
+      this.b = $$0;
    }
 
    private aif(vl $$0) {
-      this.c = $$0.b(bsh.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+      this.b = $$0.n();
    }
 
    private void a(vl $$0) {
-      $$0.a(this.c);
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public yx<aif> a() {
-      return agd.cl;
+   public yy<aif> a() {
+      return age.ck;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public bsh b() {
-      return this.c;
-   }
-
-   public fau e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public buk a(ard $$0) {
+      return $$0.a(this.b);
    }
 }

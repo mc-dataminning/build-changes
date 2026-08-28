@@ -1,22 +1,27 @@
-public class guy extends gsu<cml, gyz> {
-   private static final aku a = aku.b("textures/entity/illager/vindicator.png");
+public class guy extends gtj<cml, has, gek> {
+   private static final akv a = akv.b("textures/entity/illager/vex.png");
+   private static final akv b = akv.b("textures/entity/illager/vex_charging.png");
 
-   public guy(gsb.a $$0) {
-      super($$0, new gcm<>($$0.a(gez.dv)), 0.5F);
-      this.a(new gwi<gyz, gcm<gyz>>(this) {
-         public void a(ffs $$0, glv $$1, int $$2, gyz $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public guy(gsd.a $$0) {
+      super($$0, new gek($$0.a(gfb.ds)), 0.3F);
+      this.a(new gwk<>(this));
    }
 
-   public aku a(gyz $$0) {
-      return a;
+   protected int a(cml $$0, ji $$1) {
+      return 15;
    }
 
-   public gyz b() {
-      return new gyz();
+   public akv a(has $$0) {
+      return $$0.a ? b : a;
+   }
+
+   public has b() {
+      return new has();
+   }
+
+   public void a(cml $$0, has $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gxo.a($$0, $$1, this.i);
+      $$1.a = $$0.gs();
    }
 }

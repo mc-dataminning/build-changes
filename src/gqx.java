@@ -1,23 +1,17 @@
-public class gqx extends gqv<cif, gxl, gar> {
-   private static final aku a = aku.b("textures/entity/armadillo.png");
+@Deprecated
+public abstract class gqx<T extends bvi, S extends gzj, M extends gca<? super S>> extends gtj<T, S, M> {
+   private final M a;
+   private final M b;
 
-   public gqx(gsb.a $$0) {
-      super($$0, new gar($$0.a(gez.d)), new gar($$0.a(gez.e)), 0.4F);
+   public gqx(gsd.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public aku a(gxl $$0) {
-      return a;
-   }
-
-   public gxl a() {
-      return new gxl();
-   }
-
-   public void a(cif $$0, gxl $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.d.a($$0.ce);
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
+   @Override
+   public void a(S $$0, fft $$1, glx $$2, int $$3) {
+      this.h = $$0.aj ? this.b : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

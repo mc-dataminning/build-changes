@@ -1,33 +1,35 @@
-public class gwp<S extends gzt, M extends gby<S> & gas & gch> extends gwi<S, M> {
-   private static final float a = (float) (-Math.PI / 6);
-   private static final float b = (float) (Math.PI / 2);
+public class gwp extends gws<gzv, gdf> {
+   private final gcy a;
+   private final gzr b = new gzr();
 
-   public gwp(gty<S, M> $$0) {
+   public gwp(gua<gzv, gdf> $$0, gey $$1) {
       super($$0);
+      this.a = new gcy($$1.a(gfb.bN));
+      this.b.c = gcy.a.e;
    }
 
-   protected void a(S $$0, hbk $$1, buz $$2, ffs $$3, glv $$4, int $$5) {
-      if (!$$1.c()) {
-         if ($$0.H < 1.0E-5F && $$0.e == $$2 && !$$0.aI.c()) {
-            this.a($$0.aI, $$2, $$3, $$4, $$5);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+   public void a(fft $$0, glx $$1, int $$2, gzv $$3, float $$4, float $$5) {
+      chn.b $$6 = $$3.aE;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
+      }
+
+      chn.b $$7 = $$3.aF;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
       }
    }
 
-   private void a(hbk $$0, buz $$1, ffs $$2, glv $$3, int $$4) {
-      $$2.a();
-      this.d().e().a($$2);
-      gfa $$5 = this.d().b();
-      float $$6 = $$5.e;
-      $$5.e = ayy.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$5.a($$2);
-      $$5.e = $$6;
-      gvu.a($$2, gvu.a.a);
-      boolean $$7 = $$1 == buz.a;
-      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      $$0.a($$2, $$3, $$4, hec.d);
-      $$2.b();
+   private void a(fft $$0, glx $$1, int $$2, gzv $$3, chn.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
+      this.b.u = $$3.u;
+      this.b.ad = $$3.ad;
+      this.b.ae = $$3.ae;
+      this.b.aa = $$5;
+      this.b.ab = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gtq.a($$4))), $$2, heh.d);
+      $$0.b();
    }
 }

@@ -1,31 +1,53 @@
-public class abt implements yv<abk> {
-   public static final ym<vz, abt> a = ym.a(ji.b, abt::e, yk.a(djk.q), abt::b, abt::new);
+public class abt implements yw<abl> {
+   public static final yn<wa, abt> a = yw.a(abt::a, abt::new);
    private final ji b;
-   private final dwv c;
+   private final int c;
+   private final int d;
+   private final djl e;
 
-   public abt(ji $$0, dwv $$1) {
+   public abt(ji $$0, djl $$1, int $$2, int $$3) {
       this.b = $$0;
-      this.c = $$1;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public abt(dfl $$0, ji $$1) {
-      this($$1, $$0.a_($$1));
+   private abt(wa $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = yl.a(mc.f).decode($$0);
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      yl.a(mc.f).encode($$0, this.e);
    }
 
    @Override
-   public yx<abt> a() {
-      return agd.k;
+   public yy<abt> a() {
+      return age.j;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public dwv b() {
+   public ji b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public ji e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public djl g() {
+      return this.e;
    }
 }

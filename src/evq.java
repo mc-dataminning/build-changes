@@ -1,11 +1,147 @@
+import com.google.common.collect.Sets;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface evq {
-   default Set<bah<?>> a() {
-      return Set.of();
+public class evq {
+   private final evt a;
+   private final azh b;
+   private final js.a c;
+   private final Set<evq.c<?>> d = Sets.newLinkedHashSet();
+
+   evq(evt $$0, azh $$1, js.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default void a(evv $$0) {
-      $$0.a(this);
+   public boolean a(bai<?> $$0) {
+      return this.a.b().a($$0);
+   }
+
+   public <T> T b(bai<T> $$0) {
+      return this.a.b().b($$0);
+   }
+
+   @Nullable
+   public <T> T c(bai<T> $$0) {
+      return this.a.b().c($$0);
+   }
+
+   public void a(akv $$0, Consumer<cwo> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public boolean a(evq.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(evq.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(evq.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public js.a a() {
+      return this.c;
+   }
+
+   public azh b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.c();
+   }
+
+   public ard d() {
+      return this.a.a();
+   }
+
+   public static evq.c<evv> a(evv $$0) {
+      return new evq.c<>(evs.c, $$0);
+   }
+
+   public static evq.c<eyz> a(eyz $$0) {
+      return new evq.c<>(evs.a, $$0);
+   }
+
+   public static evq.c<exe> a(exe $$0) {
+      return new evq.c<>(evs.b, $$0);
+   }
+
+   public static class a {
+      private final evt a;
+      @Nullable
+      private azh b;
+
+      public a(evt $$0) {
+         this.a = $$0;
+      }
+
+      public evq.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = azh.a($$0);
+         }
+
+         return this;
+      }
+
+      public evq.a a(azh $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public ard a() {
+         return this.a.a();
+      }
+
+      public evq a(Optional<akv> $$0) {
+         ard $$1 = this.a();
+         MinecraftServer $$2 = $$1.p();
+         azh $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::H_);
+         return new evq(this.a, $$3, $$2.bc().a());
+      }
+   }
+
+   public static enum b implements azv {
+      a("this", eyk.a),
+      b("attacker", eyk.d),
+      c("direct_attacker", eyk.e),
+      d("attacking_player", eyk.b);
+
+      public static final azv.a<evq.b> e = azv.a(evq.b::values);
+      private final String f;
+      private final bai<? extends buk> g;
+
+      private b(final String $$0, final bai<? extends buk> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public bai<? extends buk> a() {
+         return this.g;
+      }
+
+      public static evq.b a(String $$0) {
+         evq.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static record c<T>(evs<T> a, T b) {
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ema {
+public interface ema {
+   @Nullable
+   dww a(ecv var1, int var2, int var3, int var4);
 }

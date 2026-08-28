@@ -1,91 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class drw extends djk {
-   public static final MapCodec<drw> a = b(drw::new);
-   private static final dxu b = dxl.aW;
-   private static final int c = 20;
-   private static final int d = 8;
+public class drw extends dlu implements doe {
+   public static final MapCodec<drw> c = b(drw::new);
+   public static final dxt<dxr> d = dlu.b;
+   protected static final float e = 6.0F;
+   protected static final fbt f = djl.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<drw> a() {
-      return a;
+      return c;
    }
 
-   public drw(dwu.d $$0) {
+   public drw(dwv.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dgg $$0, dwv $$1, fau $$2, cpo $$3) {
-      int $$4 = a((dgh)$$0, $$1, $$2, (buj)$$3);
-      if ($$3.p() instanceof ard $$6) {
-         $$6.a(awj.aE);
-         ap.M.a($$6, $$3, $$2.g(), $$4);
-      }
-   }
-
-   private static int a(dgh $$0, dwv $$1, fau $$2, buj $$3) {
-      int $$4 = a($$2, $$2.g());
-      int $$5 = $$3 instanceof cpc ? 20 : 8;
-      if (!$$0.U().a($$2.b(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.b(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(fau $$0, fay $$1) {
-      jn $$2 = $$0.c();
-      double $$3 = Math.abs(ayy.e($$1.d) - 0.5);
-      double $$4 = Math.abs(ayy.e($$1.e) - 0.5);
-      double $$5 = Math.abs(ayy.e($$1.f) - 0.5);
-      jn.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == jn.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == jn.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, ayy.c(15.0 * ayy.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(dgh $$0, dwv $$1, int $$2, ji $$3, int $$4) {
-      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return f;
    }
 
    @Override
-   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
-      }
+   protected boolean b(dww $$0, dfm $$1, ji $$2) {
+      return $$0.c($$1, $$2, jn.b) && !$$0.a(djn.ll);
    }
 
    @Override
-   protected int a(dwv $$0, dfl $$1, ji $$2, jn $$3) {
-      return $$0.c(b);
+   protected cwo a(dgk $$0, ji $$1, dww $$2, boolean $$3) {
+      return new cwo(djn.bD);
    }
 
+   @Nullable
    @Override
-   protected boolean f_(dwv $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void b(dwv $$0, dgg $$1, ji $$2, dwv $$3, boolean $$4) {
-      if (!$$1.B_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.U().a($$2, this)) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
+   public dww a(daf $$0) {
+      dww $$1 = super.a($$0);
+      if ($$1 != null) {
+         esy $$2 = $$0.q().b_($$0.a().d());
+         if ($$2.a(awv.a) && $$2.e() == 8) {
+            return $$1;
          }
       }
+
+      return null;
+   }
+
+   @Override
+   protected boolean a(dww $$0, dgk $$1, ji $$2) {
+      if ($$0.c(d) == dxr.a) {
+         dww $$3 = $$1.a_($$2.e());
+         return $$3.a(this) && $$3.c(d) == dxr.b;
+      } else {
+         esy $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(awv.a) && $$4.e() == 8;
+      }
+   }
+
+   @Override
+   protected esy b_(dww $$0) {
+      return esz.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable cow $$0, dfm $$1, ji $$2, dww $$3, esx $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dgi $$0, ji $$1, dww $$2, esy $$3) {
+      return false;
    }
 }

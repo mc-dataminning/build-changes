@@ -1,47 +1,101 @@
-import java.util.List;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public enum ghd {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
+public abstract class ghd {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected ghf e;
+   protected boolean f;
 
-   private final String l;
-   private final wo m;
-   private final wo n;
-
-   private ghd(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = wo.c($$1);
-      this.n = wo.c($$1 + ".description");
+   public ghd(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.l;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public wo b() {
-      return this.m;
+   public abstract ghd b();
+
+   public abstract fuk a(fuk var1, ghh var2);
+
+   public abstract static class a<R extends ghd> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public ghf i() {
+         return this.a.e;
+      }
+
+      public void a(ghf $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public ghd.b c() {
+         return !this.e().f ? ghd.b.e : null;
+      }
+
+      public abstract Either<ghd.c, ghd.b> a(ghh var1);
    }
 
-   public wo c() {
-      return this.n;
+   public static record b(wp f) {
+      public static final ghd.b a = new ghd.b(wp.c("gui.abuseReport.send.no_reason"));
+      public static final ghd.b b = new ghd.b(wp.c("gui.chatReport.send.no_reported_messages"));
+      public static final ghd.b c = new ghd.b(wp.c("gui.chatReport.send.too_many_messages"));
+      public static final ghd.b d = new ghd.b(wp.c("gui.abuseReport.send.comment_too_long"));
+      public static final ghd.b e = new ghd.b(wp.c("gui.abuseReport.send.not_attested"));
+
+      public fqd a() {
+         return fqd.a(this.f);
+      }
+
+      public wp b() {
+         return this.f;
+      }
    }
 
-   public static List<ghd> a(ghe $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+   public static record c(UUID a, ghg b, AbuseReport c) {
    }
 }

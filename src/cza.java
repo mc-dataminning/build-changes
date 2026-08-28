@@ -1,19 +1,21 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record cza(Map<jr<djk>, dxx<?>> c) {
-   public static final cza a = new cza(Map.of());
-   public static final Codec<cza> b = Codec.dispatchedMap(mb.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dxx<?> $$2 = ((djk)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dxx::f)).xmap(cza::new, cza::a);
+public record cza(List<daa> d) {
+   public static final Codec<cza> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(daa.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(cza::a)).apply($$0, cza::new)
+   );
+   public static final yn<wa, cza> b = yn.a(daa.e.a(yl.a()), cza::a, cza::new);
+   public static final cza c = new cza(List.of(new czz(), new czy(List.of(new btp(btr.j, 900, 1), new btp(btr.v, 100, 1), new btp(btr.l, 800, 0)))));
 
-   public cza a(jr<djk> $$0, dxx<?> $$1) {
-      return new cza(af.a(this.c, $$0, $$1));
+   public void a(cwo $$0, bvg $$1) {
+      for (daa $$2 : this.d) {
+         $$2.a($$1.dV(), $$0, $$1);
+      }
    }
 
-   public Map<jr<djk>, dxx<?>> a() {
-      return this.c;
+   public List<daa> a() {
+      return this.d;
    }
 }

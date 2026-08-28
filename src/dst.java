@@ -1,43 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dst extends dsb implements dqq {
+public class dst extends djv {
    public static final MapCodec<dst> a = b(dst::new);
-   public static final dxm c = dxl.J;
+   protected static final fbt b = djl.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<? extends dst> a() {
+   public MapCodec<dst> a() {
       return a;
    }
 
-   protected dst(dwu.d $$0) {
+   protected dst(dwv.d $$0) {
       super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dwv a(dae $$0) {
-      esx $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).b(c, Boolean.valueOf($$1.b(esy.c)));
    }
 
    @Override
-   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, esy.c, esy.c.a($$1));
+   protected void a(dww $$0, dgh $$1, ji $$2, buk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof ard && $$3 instanceof cqt) {
+         $$1.a(new ji($$2), true, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected esx b_(dwv $$0) {
-      return $$0.c(c) ? esy.c.a(true) : super.b_($$0);
+   protected fbt a(dww $$0, dfm $$1, ji $$2, fbe $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dww.a<djk, dwv> $$0) {
-      $$0.a(c);
+   protected boolean b(dww $$0, dfm $$1, ji $$2) {
+      esy $$3 = $$1.b_($$2);
+      esy $$4 = $$1.b_($$2.d());
+      return ($$3.a() == esz.c || $$0.b() instanceof dnl) && $$4.a() == esz.a;
    }
 }

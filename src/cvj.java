@@ -1,14 +1,8 @@
-public class cvj extends cut {
-   public cvj(djk $$0, cwj.a $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public interface cvj {
+   default void a(@Nullable cow $$0, dgh $$1, cwo $$2, ji $$3) {
    }
 
-   @Override
-   protected boolean a(dae $$0, dwv $$1) {
-      dgg $$2 = $$0.q();
-      ji $$3 = $$0.a().d();
-      dwv $$4 = $$2.z($$3) ? djm.J.m() : djm.a.m();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
-   }
+   boolean a(@Nullable cow var1, dgh var2, ji var3, @Nullable fav var4);
 }

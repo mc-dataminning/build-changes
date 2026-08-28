@@ -1,28 +1,70 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbx extends ccd {
-   private final bvh a;
+public class cbx extends cce {
+   protected final bvo a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dgh f;
 
-   public cbx(bvh $$0) {
+   public cbx(bvo $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(ccd.a.c));
-      $$0.L().a(true);
+      this.e = $$1;
+      this.f = $$0.dV();
+      this.a(EnumSet.of(cce.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.bj() && this.a.b(awu.a) > this.a.dq() || this.a.bx();
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      if (this.a.dZ().i() < 0.8F) {
-         this.a.J().a();
+      if (this.a.O_() != null) {
+         return false;
+      } else if (!this.f.V()) {
+         return false;
+      } else if (!this.a.bY()) {
+         return false;
+      } else if (!this.f.h(this.a.dv())) {
+         return false;
+      } else {
+         return !this.a.a(bus.f).f() ? false : this.h();
       }
+   }
+
+   protected boolean h() {
+      faz $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return !this.a.P().k();
+   }
+
+   @Override
+   public void d() {
+      this.a.P().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected faz i() {
+      azh $$0 = this.a.dY();
+      ji $$1 = this.a.dv();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         ji $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return faz.c($$3);
+         }
+      }
+
+      return null;
    }
 }

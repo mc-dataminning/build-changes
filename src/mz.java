@@ -20,7 +20,7 @@ public class mz implements mi {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               aks<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               akt<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.d(mc.K)
                   .c()
                   .forEach(
@@ -29,7 +29,7 @@ public class mz implements mi {
                         $$3x.add(
                            "components",
                            (JsonElement)kr.b
-                              .encodeStart($$4, ((cwj)$$2x.a()).g())
+                              .encodeStart($$4, ((cwk)$$2x.a()).g())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

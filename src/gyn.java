@@ -1,8 +1,3 @@
-public class gyn extends gzh {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class gyn extends gyj {
+   public int a;
 }

@@ -1,3 +1,8 @@
-public interface ajj extends vu {
-   void a(ajk var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajj {
 }

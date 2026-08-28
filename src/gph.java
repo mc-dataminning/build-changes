@@ -1,57 +1,71 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gph {
-   private final Long2ObjectMap<gph.a> a = new Long2ObjectOpenHashMap();
+class gph {
+   private final Map<ji, dty> a;
+   @Nullable
+   private final List<dzj<dww>> b;
+   private final boolean c;
+   private final dzb d;
+
+   gph(dzb $$0) {
+      this.d = $$0;
+      this.c = $$0.H().aj();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof dyx) {
+         this.b = null;
+      } else {
+         dzc[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (dzc $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
+   }
 
    @Nullable
-   public gpg a(dgg $$0, kk $$1) {
-      gph.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
+   public dty a(ji $$0) {
+      return this.a.get($$0);
+   }
+
+   public dww b(ji $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dww $$4 = null;
+         if ($$2 == 60) {
+            $$4 = djn.iu.m();
+         }
+
+         if ($$2 == 70) {
+            $$4 = eci.a($$1, $$3);
+         }
+
+         return $$4 == null ? djn.a.m() : $$4;
+      } else if (this.b == null) {
+         return djn.a.m();
       } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         gpf[] $$7 = new gpf[9];
-
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = gpg.a($$3, $$4, $$9, $$8);
-               gph.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dzj<dww> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
             }
+
+            return djn.a.m();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
          }
-
-         return new gpg($$0, $$3, $$4, $$7);
-      }
-   }
-
-   private gph.a a(dgg $$0, int $$1, int $$2) {
-      return (gph.a)this.a.computeIfAbsent(dfm.c($$1, $$2), $$1x -> new gph.a($$0.d(dfm.a($$1x), dfm.b($$1x))));
-   }
-
-   static final class a {
-      private final dza a;
-      @Nullable
-      private gpf b;
-
-      a(dza $$0) {
-         this.a = $$0;
-      }
-
-      public dza a() {
-         return this.a;
-      }
-
-      public gpf b() {
-         if (this.b == null) {
-            this.b = new gpf(this.a);
-         }
-
-         return this.b;
       }
    }
 }

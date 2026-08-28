@@ -1,7 +1,6 @@
-import io.netty.handler.codec.EncoderException;
-
-public class wb extends EncoderException {
-   public wb(Throwable $$0) {
-      super($$0);
+public interface wb extends vv {
+   @Override
+   default yx a() {
+      return yx.a;
    }
 }

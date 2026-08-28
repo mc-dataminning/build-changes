@@ -1,29 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class efz extends efw<eie> {
-   public efz(Codec<eie> $$0) {
-      super($$0);
+public class efz<FC extends eib> {
+   private final Optional<efj<?, ?>> a;
+   private final dhf b;
+   private final dys c;
+   private final azh d;
+   private final ji e;
+   private final FC f;
+
+   public efz(Optional<efj<?, ?>> $$0, dhf $$1, dys $$2, azh $$3, ji $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(efy<eie> $$0) {
-      ji $$1 = $$0.e();
-      eie $$2 = $$0.f();
-      dhe $$3 = $$0.b();
-      ji.a $$4 = new ji.a();
+   public Optional<efj<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.L_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public dhf b() {
+      return this.b;
+   }
 
-      return true;
+   public dys c() {
+      return this.c;
+   }
+
+   public azh d() {
+      return this.d;
+   }
+
+   public ji e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

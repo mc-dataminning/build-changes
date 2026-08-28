@@ -1,36 +1,28 @@
-public record aed(aga e, byte f) implements yv<abk> {
-   public static final ym<vz, aed> a = yv.a(aed::a, aed::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aed(vz $$0) {
-      this(new aga($$0), $$0.readByte());
+public record aed(String b, @Nullable String c) implements yw<abl> {
+   public static final yn<vl, aed> a = yw.a(aed::a, aed::new);
+
+   private aed(vl $$0) {
+      this($$0.p(), $$0.c(vl::p));
    }
 
-   private void a(vz $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vl::a);
    }
 
    @Override
-   public yx<aed> a() {
-      return agd.ap;
+   public yy<aed> a() {
+      return age.cn;
    }
 
-   public void a(abk $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public aga b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

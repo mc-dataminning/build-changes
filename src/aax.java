@@ -1,23 +1,15 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aax(Set<aku> b) implements yv<aas> {
-   public static final ym<vl, aax> a = yv.a(aax::a, aax::new);
-
-   private aax(vl $$0) {
-      this($$0.a(HashSet::new, vl::q));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b, vl::a);
-   }
+public record aax(List<atw> b) implements yw<aat> {
+   public static final yn<ByteBuf, aax> a = yn.a(atw.a.a(yl.a()), aax::b, aax::new);
 
    @Override
-   public yx<aax> a() {
-      return aay.c;
+   public yy<aax> a() {
+      return aaz.d;
    }
 
-   public void a(aas $$0) {
+   public void a(aat $$0) {
       $$0.a(this);
    }
 }

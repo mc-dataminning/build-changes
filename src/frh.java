@@ -1,48 +1,110 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum frh implements azu {
-   a("uniform"),
-   b("jp");
+public class frh<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public static final Codec<frh> c = azu.a(frh::values);
-   private final String d;
-
-   private frh(final String $$0) {
-      this.d = $$0;
+   public frh(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public void a() {
+      Arrays.fill(this.g, this.f);
    }
 
-   public static class a {
-      private final Map<frh, Boolean> c;
-      public static final Codec<frh.a> a = Codec.unboundedMap(frh.c, Codec.BOOL).xmap(frh.a::new, $$0 -> $$0.c);
-      public static final frh.a b = new frh.a(Map.of());
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
+   }
 
-      public a(Map<frh, Boolean> $$0) {
-         this.c = $$0;
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
       }
+   }
 
-      public boolean a(Set<frh> $$0) {
-         for (Entry<frh, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
          }
 
-         return true;
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
       }
+   }
 
-      public frh.a a(frh.a $$0) {
-         Map<frh, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new frh.a(Map.copyOf($$1));
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
       }
+   }
+
+   public void a(frh.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
+         }
+      }
+   }
+
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

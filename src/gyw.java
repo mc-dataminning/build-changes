@@ -1,7 +1,19 @@
-public class gyw extends gzh {
-   public final hbk i = new hbk();
+import javax.annotation.Nullable;
 
-   public static void a(bvf $$0, gyw $$1, hbi $$2) {
-      $$2.a($$1.i, $$0.eZ(), cwl.h, false, $$0);
+public class gyw extends gzj {
+   public float a;
+   public float b;
+   public faz c;
+   @Nullable
+   public faz d;
+   @Nullable
+   public faz e;
+   @Nullable
+   public faz f;
+   public float g;
+   public float h;
+
+   public gyw() {
+      this.c = faz.c;
    }
 }

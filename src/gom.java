@@ -1,30 +1,23 @@
-public class gom implements goh<dud> {
-   private static final float a = 0.375F;
-   private final gsz b;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public gom(goi.a $$0) {
-      this.b = $$0.e();
+public class gom<S extends dty> implements dlt.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = glt.a($$0.i(), $$0.aA_());
+         int $$4 = glt.a($$1.i(), $$1.aA_());
+         int $$5 = glv.a($$3);
+         int $$6 = glv.a($$4);
+         int $$7 = glv.b($$3);
+         int $$8 = glv.b($$4);
+         return glv.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(dud $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
-      jn $$6 = $$0.m().c(djz.f);
-      ka<cwn> $$7 = $$0.b();
-      int $$8 = (int)$$0.aA_().a();
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cwn $$10 = $$7.get($$9);
-         if ($$10 != cwn.j) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            jn $$11 = jn.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cwl.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
-         }
-      }
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

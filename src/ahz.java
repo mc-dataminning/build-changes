@@ -1,20 +1,49 @@
-public record ahz(short b, cwn c) implements yv<agf> {
-   public static final ym<vz, ahz> a = ym.a(yk.e, ahz::b, cwn.a(cwn.g), ahz::e, ahz::new);
+import javax.annotation.Nullable;
 
-   public ahz(int $$0, cwn $$1) {
-      this((short)$$0, $$1);
+public class ahz implements yw<agg> {
+   public static final yn<vl, ahz> a = yw.a(ahz::a, ahz::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public ahz(int $$0, String $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   private ahz(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public yx<ahz> a() {
-      return agd.cf;
+   public yy<ahz> a() {
+      return age.ce;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public cwn e() {
+   @Nullable
+   public dfh a(dgh $$0) {
+      buk $$1 = $$0.a(this.b);
+      return $$1 instanceof crf ? ((crf)$$1).v() : null;
+   }
+
+   public String b() {
       return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
    }
 }

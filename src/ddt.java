@@ -1,12 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddt(dde c) implements ddq {
-   public static final MapCodec<ddt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dde.b.fieldOf("factor").forGetter(ddt::b)).apply($$0, ddt::new));
+public record ddt(ddf d) implements ddp {
+   public static final MapCodec<ddt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddf.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, ddt::new));
 
    @Override
-   public float a(int $$0, azg $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4) {
+      $$3.d(this.d.a($$1));
    }
 
    @Override
@@ -14,7 +14,7 @@ public record ddt(dde c) implements ddq {
       return a;
    }
 
-   public dde b() {
-      return this.c;
+   public ddf b() {
+      return this.d;
    }
 }

@@ -1,15 +1,8 @@
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fcx {
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
-
-   private fcx() {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fcx {
 }

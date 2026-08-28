@@ -19,12 +19,12 @@ public class vh extends MessageToByteEncoder<ByteBuf> {
          throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
       } else {
          if ($$3 < this.c) {
-            wf.a($$2, 0);
+            wg.a($$2, 0);
             $$2.writeBytes($$1);
          } else {
             byte[] $$4 = new byte[$$3];
             $$1.readBytes($$4);
-            wf.a($$2, $$4.length);
+            wg.a($$2, $$4.length);
             this.b.setInput($$4, 0, $$3);
             this.b.finish();
 

@@ -1,23 +1,29 @@
-import java.util.Optional;
-import java.util.UUID;
+public class zh implements yw<zc> {
+   public static final yn<vl, zh> a = yw.a(zh::a, zh::new);
+   private final int b;
 
-public record zh(Optional<UUID> b) implements yv<zb> {
-   public static final ym<vl, zh> a = yv.a(zh::a, zh::new);
+   public zh(int $$0) {
+      this.b = $$0;
+   }
 
    private zh(vl $$0) {
-      this($$0.b(kl.g));
+      this.b = $$0.readInt();
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b, kl.g);
+      $$0.q(this.b);
    }
 
    @Override
-   public yx<zh> a() {
-      return zn.f;
+   public yy<zh> a() {
+      return zo.e;
    }
 
-   public void a(zb $$0) {
+   public void a(zc $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

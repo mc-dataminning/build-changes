@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ft implements ArgumentType<ft.a> {
    private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("arguments.operation.div0"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("arguments.operation.div0"));
 
    public static ft a() {
       return new ft();
@@ -62,14 +62,14 @@ public class ft implements ArgumentType<ft.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayy.a($$0x, $$1);
+            return ayz.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayy.b($$0x, $$1);
+            return ayz.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class ft implements ArgumentType<ft.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(fcb var1, fcb var2) throws CommandSyntaxException;
+      void apply(fcc var1, fcc var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class ft implements ArgumentType<ft.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(fcb $$0, fcb $$1) throws CommandSyntaxException {
+      default void apply(fcc $$0, fcc $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

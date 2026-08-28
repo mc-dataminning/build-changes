@@ -1,7 +1,9 @@
-public class gxz extends gzh {
-   public final bub a = new bub();
-   public final bub b = new bub();
-   public final bub c = new bub();
-   public boolean d;
-   public boolean e;
+import javax.annotation.Nullable;
+
+public class gxz extends gyp {
+   private static final akv j = akv.b("textures/entity/cat/tabby.png");
+   public akv a = j;
+   public boolean b;
+   @Nullable
+   public cvl c;
 }

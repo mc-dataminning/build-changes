@@ -1,34 +1,20 @@
 public interface ebu {
-   ebu a = new ebu() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   ebw a();
 
-      @Override
-      public void a(ebt $$0) {
-      }
+   int b();
 
-      @Override
-      public void b(ebt $$0) {
-      }
+   boolean a(ard var1, jr<ebs> var2, ebs.a var3, faz var4);
 
-      @Override
-      public boolean a(jr<ebr> $$0, fay $$1, ebr.a $$2, ebu.a $$3) {
-         return false;
-      }
-   };
+   default ebu.a c() {
+      return ebu.a.a;
+   }
 
-   boolean a();
+   public static enum a {
+      a,
+      b;
+   }
 
-   void a(ebt var1);
-
-   void b(ebt var1);
-
-   boolean a(jr<ebr> var1, fay var2, ebr.a var3, ebu.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(ebt var1, fay var2);
+   public interface b<T extends ebu> {
+      T c();
    }
 }

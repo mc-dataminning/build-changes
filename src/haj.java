@@ -1,13 +1,5 @@
-import javax.annotation.Nullable;
-
-public class haj extends gyb {
-   @Nullable
-   public buh.l.e a;
-   @Nullable
-   public buh.l.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class haj extends gzj {
+   public float a;
+   public float b;
+   public float c;
 }

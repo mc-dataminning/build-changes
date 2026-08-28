@@ -1,24 +1,33 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public record ddy(aku d) implements ddo {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<ddy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("function").forGetter(ddy::b)).apply($$0, ddy::new));
+public record ddy(ddf d, ddf e, km f, Optional<edy> g, ekc h, Optional<jr<ebs>> i) implements ddp {
+   public static final MapCodec<ddy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ddf.b.fieldOf("radius").forGetter(ddy::b),
+               ddf.b.fieldOf("height").forGetter(ddy::c),
+               km.g.optionalFieldOf("offset", km.h).forGetter(ddy::d),
+               edy.b.optionalFieldOf("predicate").forGetter(ddy::e),
+               ekc.a.fieldOf("block_state").forGetter(ddy::f),
+               ebs.aj.optionalFieldOf("trigger_game_event").forGetter(ddy::g)
+            )
+            .apply($$0, ddy::new)
+   );
 
    @Override
-   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
-      MinecraftServer $$5 = $$0.p();
-      alj $$6 = $$5.aE();
-      Optional<il<ex>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         ex $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
-         $$6.a($$7.get(), $$8);
-      } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+   public void a(ard $$0, int $$1, dcx $$2, buk $$3, faz $$4) {
+      ji $$5 = ji.a((kb)$$4).a(this.f);
+      azh $$6 = $$3.dY();
+      int $$7 = (int)this.d.a($$1);
+      int $$8 = (int)this.e.a($$1);
+
+      for (ji $$9 : ji.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
+         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)ayz.h($$7)
+            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
+            && $$0.b($$9, this.h.a($$6, $$9))) {
+            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+         }
       }
    }
 
@@ -27,7 +36,27 @@ public record ddy(aku d) implements ddo {
       return a;
    }
 
-   public aku b() {
+   public ddf b() {
       return this.d;
+   }
+
+   public ddf c() {
+      return this.e;
+   }
+
+   public km d() {
+      return this.f;
+   }
+
+   public Optional<edy> e() {
+      return this.g;
+   }
+
+   public ekc f() {
+      return this.h;
+   }
+
+   public Optional<jr<ebs>> g() {
+      return this.i;
    }
 }

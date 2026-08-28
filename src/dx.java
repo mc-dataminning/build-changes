@@ -4,9 +4,9 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record dx(Optional<Boolean> c, Optional<cvk> d) implements by {
+public record dx(Optional<Boolean> c, Optional<cvl> d) implements by {
    public static final MapCodec<dx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dx::b), cvk.q.optionalFieldOf("color").forGetter(dx::c)).apply($$0, dx::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dx::b), cvl.q.optionalFieldOf("color").forGetter(dx::c)).apply($$0, dx::new)
    );
 
    @Override
@@ -15,15 +15,15 @@ public record dx(Optional<Boolean> c, Optional<cvk> d) implements by {
    }
 
    @Override
-   public boolean a(buj $$0, arc $$1, @Nullable fay $$2) {
-      if ($$0 instanceof chs $$3) {
+   public boolean a(buk $$0, ard $$1, @Nullable faz $$2) {
+      if ($$0 instanceof cht $$3) {
          return this.c.isPresent() && $$3.x() != this.c.get() ? false : !this.d.isPresent() || $$3.t() == this.d.get();
       } else {
          return false;
       }
    }
 
-   public static dx a(cvk $$0) {
+   public static dx a(cvl $$0) {
       return new dx(Optional.of(false), Optional.of($$0));
    }
 
@@ -31,7 +31,7 @@ public record dx(Optional<Boolean> c, Optional<cvk> d) implements by {
       return this.c;
    }
 
-   public Optional<cvk> c() {
+   public Optional<cvl> c() {
       return this.d;
    }
 }

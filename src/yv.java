@@ -1,19 +1,56 @@
-import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface yv<T extends vu> {
-   yx<? extends yv<T>> a();
+public interface yv {
+   int a = 4096;
 
-   void a(T var1);
+   static <T extends vv, P extends yu<? super T>> yv a(final yy<P> $$0, final Function<Iterable<yw<? super T>>, P> $$1, final yt<? super T> $$2) {
+      return new yv() {
+         @Override
+         public void a(yw<?> $$0x, Consumer<yw<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
 
-   default boolean c() {
-      return false;
+         @Nullable
+         @Override
+         public yv.a a(yw<?> $$0x) {
+            return $$0 == $$2 ? new yv.a() {
+               private final List<yw<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public yw<?> a(yw<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((yw<? super T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   default boolean d() {
-      return false;
-   }
+   void a(yw<?> var1, Consumer<yw<?>> var2);
 
-   static <B extends ByteBuf, T extends yv<?>> ym<B, T> a(yp<B, T> $$0, yn<B, T> $$1) {
-      return ym.a($$0, $$1);
+   @Nullable
+   yv.a a(yw<?> var1);
+
+   public interface a {
+      @Nullable
+      yw<?> a(yw<?> var1);
    }
 }

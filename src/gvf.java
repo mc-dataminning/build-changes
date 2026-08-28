@@ -1,46 +1,40 @@
-public class gvf extends gsa<cqc, haw> {
-   private static final aku a = aku.b("textures/entity/wither/wither_invulnerable.png");
-   private static final aku b = aku.b("textures/entity/wither/wither.png");
-   private final gdu h;
+public class gvf extends gtj<cko, hax, geq> {
+   private static final akv a = akv.b("textures/entity/wither/wither_invulnerable.png");
+   private static final akv b = akv.b("textures/entity/wither/wither.png");
 
-   public gvf(gsb.a $$0) {
-      super($$0);
-      this.h = new gdu($$0.a(gez.dG));
+   public gvf(gsd.a $$0) {
+      super($$0, new geq($$0.a(gfb.dA)), 1.0F);
+      this.a(new gxf(this, $$0.f()));
    }
 
-   public static gfg a() {
-      gfi $$0 = new gfi();
-      gfk $$1 = $$0.a();
-      $$1.a("head", gff.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfc.a);
-      return gfg.a($$0, 64, 64);
-   }
-
-   protected int a(cqc $$0, ji $$1) {
+   protected int a(cko $$0, ji $$1) {
       return 15;
    }
 
-   public void a(haw $$0, ffs $$1, glv $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      ffw $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hec.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public akv a(hax $$0) {
+      int $$1 = ayz.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
    }
 
-   private aku a(haw $$0) {
-      return $$0.a ? a : b;
+   public hax b() {
+      return new hax();
    }
 
-   public haw b() {
-      return new haw();
+   protected void a(hax $$0, fft $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
    }
 
-   public void a(cqc $$0, haw $$1, float $$2) {
+   public void a(cko $$0, hax $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.v();
-      $$1.c = $$0.k($$2);
-      $$1.b = $$0.j($$2);
+      int $$3 = $$0.gs();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.x(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.t(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.gt();
    }
 }

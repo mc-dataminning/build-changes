@@ -1,25 +1,33 @@
-public record zl(String b, int c) implements yv<zb> {
-   public static final ym<vl, zl> a = yv.a(zl::a, zl::new);
+import io.netty.buffer.ByteBuf;
+
+public record zl(akv c, byte[] d) implements yw<zc> {
+   public static final yn<vl, zl> a = yw.a(zl::a, zl::new);
+   private static final int e = 5120;
+   public static final yn<ByteBuf, byte[]> b = yl.a(5120);
 
    private zl(vl $$0) {
-      this($$0.p(), $$0.l());
+      this($$0.q(), b.decode($$0));
    }
 
    private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public yx<zl> a() {
-      return zn.j;
+   public yy<zl> a() {
+      return zo.i;
    }
 
-   public void a(zb $$0) {
+   public void a(zc $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public akv b() {
       return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

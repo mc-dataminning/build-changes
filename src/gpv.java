@@ -1,29 +1,154 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gpv implements gpw.a {
-   private final flh a;
-   private double b = Double.MIN_VALUE;
-   private List<fbs> c = Collections.emptyList();
+public class gpv implements gpy.a {
+   public static final jn[] a = jn.values();
+   private final fli b;
 
-   public gpv(flh $$0) {
-      this.a = $$0;
+   public gpv(fli $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ffs $$0, glv $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         buj $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dW().d($$6, $$6.cR().g(6.0)));
+   public void a(fft $$0, glx $$1, double $$2, double $$3, double $$4) {
+      glt $$5 = this.b.f;
+      if (this.b.C || this.b.D) {
+         gmm $$6 = $$5.x();
+         ObjectListIterator $$27 = $$5.w().iterator();
+
+         while ($$27.hasNext()) {
+            gpl.b $$7 = (gpl.b)$$27.next();
+            gmm.d $$8 = $$6.b($$7);
+            if ($$8 != null) {
+               ji $$9 = $$7.f();
+               $$0.a();
+               $$0.a((double)$$9.u() - $$2, (double)$$9.v() - $$3, (double)$$9.w() - $$4);
+               Matrix4f $$10 = $$0.c().a();
+               if (this.b.C) {
+                  ffx $$11 = $$1.getBuffer(gmh.y());
+                  int $$12 = $$8.b == 0 ? 0 : ayz.g((float)$$8.b / 50.0F, 0.9F, 0.9F);
+                  int $$13 = $$12 >> 16 & 0xFF;
+                  int $$14 = $$12 >> 8 & 0xFF;
+                  int $$15 = $$12 & 0xFF;
+
+                  for (int $$16 = 0; $$16 < a.length; $$16++) {
+                     if ($$8.a($$16)) {
+                        jn $$17 = a[$$16];
+                        $$11.a($$10, 8.0F, 8.0F, 8.0F).a($$13, $$14, $$15, 255).b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
+                        $$11.a($$10, (float)(8 - 16 * $$17.j()), (float)(8 - 16 * $$17.k()), (float)(8 - 16 * $$17.l()))
+                           .a($$13, $$14, $$15, 255)
+                           .b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
+                     }
+                  }
+               }
+
+               if (this.b.D && $$7.d().a()) {
+                  ffx $$18 = $$1.getBuffer(gmh.y());
+                  int $$19 = 0;
+
+                  for (jn $$20 : a) {
+                     for (jn $$21 : a) {
+                        boolean $$22 = $$7.d().a($$20, $$21);
+                        if (!$$22) {
+                           $$19++;
+                           $$18.a($$10, (float)(8 + 8 * $$20.j()), (float)(8 + 8 * $$20.k()), (float)(8 + 8 * $$20.l()))
+                              .a(255, 0, 0, 255)
+                              .b((float)$$20.j(), (float)$$20.k(), (float)$$20.l());
+                           $$18.a($$10, (float)(8 + 8 * $$21.j()), (float)(8 + 8 * $$21.k()), (float)(8 + 8 * $$21.l()))
+                              .a(255, 0, 0, 255)
+                              .b((float)$$21.j(), (float)$$21.k(), (float)$$21.l());
+                        }
+                     }
+                  }
+
+                  if ($$19 > 0) {
+                     ffx $$23 = $$1.getBuffer(gmh.C());
+                     float $$24 = 0.5F;
+                     float $$25 = 0.2F;
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                  }
+               }
+
+               $$0.b();
+            }
+         }
       }
 
-      ffw $$7 = $$1.getBuffer(gmf.y());
-
-      for (fbs $$8 : this.c) {
-         gpw.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      gpp $$26 = $$5.y();
+      if ($$26 != null) {
+         $$0.a();
+         $$0.a((float)($$26.b() - $$2), (float)($$26.c() - $$3), (float)($$26.d() - $$4));
+         Matrix4f $$27 = $$0.c().a();
+         Vector4f[] $$28 = $$26.a();
+         ffx $$29 = $$1.getBuffer(gmh.C());
+         this.a($$29, $$27, $$28, 0, 1, 2, 3, 0, 1, 1);
+         this.a($$29, $$27, $$28, 4, 5, 6, 7, 1, 0, 0);
+         this.a($$29, $$27, $$28, 0, 1, 5, 4, 1, 1, 0);
+         this.a($$29, $$27, $$28, 2, 3, 7, 6, 0, 0, 1);
+         this.a($$29, $$27, $$28, 0, 4, 7, 3, 0, 1, 0);
+         this.a($$29, $$27, $$28, 1, 5, 6, 2, 1, 0, 1);
+         ffx $$30 = $$1.getBuffer(gmh.y());
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[7]);
+         this.a($$30, $$27, $$28[7]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[7]);
+         $$0.b();
       }
+   }
+
+   private void a(ffx $$0, Matrix4f $$1, Vector4f $$2) {
+      $$0.a($$1, $$2.x(), $$2.y(), $$2.z()).a(-16777216).b(0.0F, 0.0F, -1.0F);
+   }
+
+   private void a(ffx $$0, Matrix4f $$1, Vector4f[] $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
+      float $$10 = 0.25F;
+      $$0.a($$1, $$2[$$3].x(), $$2[$$3].y(), $$2[$$3].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$4].x(), $$2[$$4].y(), $$2[$$4].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$5].x(), $$2[$$5].y(), $$2[$$5].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$6].x(), $$2[$$6].y(), $$2[$$6].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
    }
 }

@@ -1,26 +1,29 @@
-import java.util.Optional;
-
-public interface dbx extends dbc<dby> {
-   @Override
-   default dbn<dbx> b() {
-      return dbn.g;
+public class dbx extends daj {
+   public dbx(String $$0, dap $$1, daz $$2, cwo $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   dbm<? extends dbx> a();
-
-   default boolean a(dby $$0, dgg $$1) {
-      return day.a(this.c(), $$0.c()) && day.a(this.f(), $$0.d()) && day.a(this.k(), $$0.e());
+   protected cwk f() {
+      return cws.fe;
    }
 
-   Optional<day> c();
-
-   Optional<day> f();
-
-   Optional<day> k();
+   @Override
+   public dbn<dbx> a() {
+      return dbn.o;
+   }
 
    @Override
-   default dbf h() {
-      return dbe.l;
+   public dbo<dbx> b() {
+      return dbo.b;
+   }
+
+   @Override
+   public dbg h() {
+      return switch (this.e()) {
+         case b -> dbf.f;
+         case a -> dbf.e;
+         case c -> dbf.g;
+      };
    }
 }

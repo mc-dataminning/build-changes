@@ -1,6 +1,5 @@
-import com.google.gson.JsonElement;
-import java.util.function.Supplier;
+public interface fnb {
+   void a(cwk var1, hbk.b var2);
 
-public interface fnb extends Supplier<JsonElement> {
-   djk a();
+   void a(cwk var1, cwk var2);
 }

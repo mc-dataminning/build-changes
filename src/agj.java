@@ -1,29 +1,37 @@
-public class agj implements yv<agf> {
-   public static final ym<vl, agj> a = yv.a(agj::a, agj::new);
-   private final bsf b;
+public class agj implements yw<agg> {
+   public static final yn<vl, agj> a = yw.a(agj::a, agj::new);
+   private final int b;
+   private final ji c;
 
-   public agj(bsf $$0) {
+   public agj(int $$0, ji $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
    private agj(vl $$0) {
-      this.b = bsf.a($$0.readUnsignedByte());
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
    private void a(vl $$0) {
-      $$0.l(this.b.a());
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yx<agj> a() {
-      return agd.bn;
+   public yy<agj> a() {
+      return age.bl;
    }
 
-   public void a(agf $$0) {
+   public void a(agg $$0) {
       $$0.a(this);
    }
 
-   public bsf b() {
+   public int b() {
       return this.b;
+   }
+
+   public ji e() {
+      return this.c;
    }
 }

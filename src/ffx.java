@@ -1,211 +1,139 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryStack;
 
-public class ffx {
-   public static final int a = -1;
-   private final List<ffy> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
-   @Nullable
-   private ffv g;
+public interface ffx {
+   ffx a(float var1, float var2, float var3);
 
-   ffx(List<ffy> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(ffy::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
+   ffx a(int var1, int var2, int var3, int var4);
 
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         ffy $$5 = ffy.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
-      }
+   ffx a(float var1, float var2);
+
+   ffx a(int var1, int var2);
+
+   ffx b(int var1, int var2);
+
+   ffx b(float var1, float var2, float var3);
+
+   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a($$0, $$1, $$2);
+      this.a($$3);
+      this.a($$4, $$5);
+      this.b($$6);
+      this.c($$7);
+      this.b($$8, $$9, $$10);
    }
 
-   public static ffx.a a() {
-      return new ffx.a();
+   default ffx a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public void a(int $$0) {
-      int $$1 = 0;
-
-      for (String $$2 : this.d()) {
-         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-         $$1++;
-      }
+   default ffx a(int $$0) {
+      return this.a(axk.b($$0), axk.c($$0), axk.d($$0), axk.a($$0));
    }
 
-   @Override
-   public String toString() {
-      return "VertexFormat" + this.c;
+   default ffx d(int $$0) {
+      return this.a(axk.c($$0, -1));
    }
 
-   public int b() {
-      return this.d;
+   default ffx c(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public List<ffy> c() {
-      return this.b;
+   default ffx b(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public List<String> d() {
-      return this.c;
+   default void a(fft.a $$0, gne $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
    }
 
-   public int[] e() {
-      return this.f;
-   }
+   default void a(fft.a $$0, gne $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      int[] $$10 = $$1.b();
+      km $$11 = $$1.e().q();
+      Matrix4f $$12 = $$0.a();
+      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
+      int $$14 = 8;
+      int $$15 = $$10.length / 8;
+      int $$16 = (int)($$6 * 255.0F);
+      int $$17 = $$1.g();
+      MemoryStack $$18 = MemoryStack.stackPush();
 
-   public int a(ffy $$0) {
-      return this.f[$$0.c()];
-   }
+      try {
+         ByteBuffer $$19 = $$18.malloc(ffr.b.b());
+         IntBuffer $$20 = $$19.asIntBuffer();
 
-   public boolean b(ffy $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
+         for (int $$21 = 0; $$21 < $$15; $$21++) {
+            $$20.clear();
+            $$20.put($$10, $$21 * 8, 8);
+            float $$22 = $$19.getFloat(0);
+            float $$23 = $$19.getFloat(4);
+            float $$24 = $$19.getFloat(8);
+            float $$28;
+            float $$29;
+            float $$30;
+            if ($$9) {
+               float $$25 = (float)($$19.get(12) & 255);
+               float $$26 = (float)($$19.get(13) & 255);
+               float $$27 = (float)($$19.get(14) & 255);
+               $$28 = $$25 * $$2[$$21] * $$3;
+               $$29 = $$26 * $$2[$$21] * $$4;
+               $$30 = $$27 * $$2[$$21] * $$5;
+            } else {
+               $$28 = $$2[$$21] * $$3 * 255.0F;
+               $$29 = $$2[$$21] * $$4 * 255.0F;
+               $$30 = $$2[$$21] * $$5 * 255.0F;
+            }
 
-   public int f() {
-      return this.e;
-   }
-
-   public String c(ffy $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ffx $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
-            return true;
+            int $$34 = axk.a($$16, (int)$$28, (int)$$29, (int)$$30);
+            int $$35 = glv.b($$7[$$21], $$17);
+            float $$36 = $$19.getFloat(16);
+            float $$37 = $$19.getFloat(20);
+            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
+            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
+         }
+      } catch (Throwable var35) {
+         if ($$18 != null) {
+            try {
+               $$18.close();
+            } catch (Throwable var34) {
+               var35.addSuppressed(var34);
+            }
          }
 
-         return false;
+         throw var35;
+      }
+
+      if ($$18 != null) {
+         $$18.close();
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
+   default ffx a(Vector3f $$0) {
+      return this.a($$0.x(), $$0.y(), $$0.z());
    }
 
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         ffy $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
-      }
+   default ffx a(fft.a $$0, Vector3f $$1) {
+      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
    }
 
-   public void h() {
-      RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
-      }
+   default ffx a(fft.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
    }
 
-   public ffv i() {
-      ffv $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new ffv(fdm.a);
-      }
-
-      return $$0;
+   default ffx a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 
-   public static class a {
-      private final Builder<String, ffy> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
-
-      a() {
-      }
-
-      public ffx.a a(String $$0, ffy $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
-         return this;
-      }
-
-      public ffx.a a(int $$0) {
-         this.c += $$0;
-         return this;
-      }
-
-      public ffx a() {
-         ImmutableMap<String, ffy> $$0 = this.a.buildOrThrow();
-         ImmutableList<ffy> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new ffx($$1, $$2, this.b, this.c);
-      }
+   default ffx b(fft.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.b($$4.x(), $$4.y(), $$4.z());
    }
 
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static ffx.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
-      }
+   default ffx b(fft.a $$0, Vector3f $$1) {
+      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
    }
 }

@@ -1,57 +1,76 @@
-public class gja extends gke {
-   gja(gfw $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class gja extends gjg {
+   private static final int a = 3;
+   private final buk b;
+   private final buk D;
+   private int E;
+   private final gsb F;
+   private double G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+
+   public gja(gsb $$0, gfy $$1, buk $$2, buk $$3) {
+      this($$0, $$1, $$2, $$3, $$2.dy());
+   }
+
+   private gja(gsb $$0, gfy $$1, buk $$2, buk $$3, faz $$4) {
+      super($$1, $$2.dA(), $$2.dC(), $$2.dG(), $$4.d, $$4.e, $$4.f);
+      this.b = this.a($$2);
+      this.D = $$3;
+      this.F = $$0;
+      this.c();
+      this.d();
+   }
+
+   private buk a(buk $$0) {
+      return (buk)(!($$0 instanceof clb) ? $$0 : ((clb)$$0).z());
    }
 
    @Override
-   public gji b() {
-      return gji.b;
+   public gjk b() {
+      return gjk.d;
    }
 
    @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
+   public void a(fft $$0, glx $$1, fkq $$2, float $$3) {
+      float $$4 = ((float)this.E + $$3) / 3.0F;
+      $$4 *= $$4;
+      double $$5 = ayz.d((double)$$3, this.J, this.G);
+      double $$6 = ayz.d((double)$$3, this.K, this.H);
+      double $$7 = ayz.d((double)$$3, this.L, this.I);
+      double $$8 = ayz.d((double)$$4, this.b.dA(), $$5);
+      double $$9 = ayz.d((double)$$4, this.b.dC(), $$6);
+      double $$10 = ayz.d((double)$$4, this.b.dG(), $$7);
+      faz $$11 = $$2.b();
+      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fft(), $$1, this.F.a(this.b, $$3));
    }
 
    @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   public void a(ffx $$0, fkq $$1, float $$2) {
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(lt.ag, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
+      this.E++;
+      if (this.E == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements gjh<lx> {
-      private final gjz a;
+   private void c() {
+      this.G = this.D.dA();
+      this.H = (this.D.dC() + this.D.dE()) / 2.0;
+      this.I = this.D.dG();
+   }
 
-      public a(gjz $$0) {
-         this.a = $$0;
-      }
-
-      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gja $$8 = new gja($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private void d() {
+      this.J = this.G;
+      this.K = this.H;
+      this.L = this.I;
    }
 }

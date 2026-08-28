@@ -1,23 +1,26 @@
-import java.util.List;
-
-public record aal(List<ji> c) implements zy {
-   public static final ym<vl, aal> a = zy.a(aal::a, aal::new);
-   public static final zy.b<aal> b = zy.a("debug/raids");
+public record aal(ji c, int d) implements zz {
+   public static final yn<vl, aal> a = zz.a(aal::a, aal::new);
+   public static final zz.b<aal> b = zz.a("debug/poi_ticket_count");
 
    private aal(vl $$0) {
-      this($$0.a(ji.b));
+      this($$0.e(), $$0.readInt());
    }
 
    private void a(vl $$0) {
-      $$0.a(this.c, ji.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zy.b<aal> a() {
+   public zz.b<aal> a() {
       return b;
    }
 
-   public List<ji> b() {
+   public ji b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

@@ -1,34 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpi extends dlg {
-   public static final MapCodec<dpi> a = b(dpi::new);
-   private static final fbs[] b = new fbs[]{
-      djk.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      djk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
-
-   @Override
-   public MapCodec<dpi> a() {
-      return a;
+public interface dpi {
+   default int a(ard $$0, buk $$1) {
+      return 0;
    }
 
-   public dpi(dwu.d $$0) {
-      super($$0);
+   @Nullable
+   ety a(ard var1, buk var2, ji var3);
+
+   default dpi.a b() {
+      return dpi.a.b;
    }
 
-   @Override
-   protected dgf d() {
-      return cwr.vf;
-   }
-
-   @Override
-   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
-      return b[this.h($$0)];
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -4,87 +4,72 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dca implements dbx {
-   final Optional<day> c;
-   final Optional<day> d;
-   final Optional<day> e;
+public class dca implements dby {
+   final Optional<daz> c;
+   final Optional<daz> d;
+   final Optional<daz> e;
+   final cwo f;
    @Nullable
-   private dbb f;
+   private dbc g;
 
-   public dca(Optional<day> $$0, Optional<day> $$1, Optional<day> $$2) {
+   public dca(Optional<daz> $$0, Optional<daz> $$1, Optional<daz> $$2, cwo $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
+      this.f = $$3;
    }
 
-   public cwn a(dby $$0, jt.a $$1) {
-      return a($$1, $$0.d(), $$0.e(), $$0.c());
-   }
-
-   public static cwn a(jt.a $$0, cwn $$1, cwn $$2, cwn $$3) {
-      Optional<jr.c<dev>> $$4 = dew.a($$0, $$2);
-      Optional<jr.c<dex>> $$5 = dey.a($$0, $$3);
-      if ($$4.isPresent() && $$5.isPresent()) {
-         deu $$6 = $$1.a(kv.U);
-         if ($$6 != null && $$6.a($$5.get(), $$4.get())) {
-            return cwn.j;
-         } else {
-            cwn $$7 = $$1.c(1);
-            $$7.b(kv.U, new deu($$4.get(), $$5.get()));
-            return $$7;
-         }
-      } else {
-         return cwn.j;
-      }
+   public cwo a(dbz $$0, jt.a $$1) {
+      cwo $$2 = $$0.d().a(this.f.h(), this.f.M());
+      $$2.b(this.f.d());
+      return $$2;
    }
 
    @Override
-   public Optional<day> c() {
+   public Optional<daz> c() {
       return this.c;
    }
 
    @Override
-   public Optional<day> f() {
+   public Optional<daz> f() {
       return this.d;
    }
 
    @Override
-   public Optional<day> k() {
+   public Optional<daz> k() {
       return this.e;
    }
 
    @Override
-   public dbm<dca> a() {
-      return dbm.u;
+   public dbn<dca> a() {
+      return dbn.t;
    }
 
    @Override
-   public dbb ao_() {
-      if (this.f == null) {
-         this.f = dbb.a(List.of(this.c, this.d, this.e));
+   public dbc ao_() {
+      if (this.g == null) {
+         this.g = dbc.a(List.of(this.c, this.d, this.e));
       }
 
-      return this.f;
+      return this.g;
    }
 
    @Override
-   public List<dch> g() {
-      dcn $$0 = day.a(this.d);
-      dcn $$1 = day.a(this.e);
-      dcn $$2 = day.a(this.c);
-      return List.of(new dcq($$2, $$0, $$1, new dcn.g($$0, $$1, $$2), new dcn.d(cwr.xq)));
+   public List<dci> g() {
+      return List.of(new dcr(daz.a(this.c), daz.a(this.d), daz.a(this.e), new dco.f(this.f), new dco.d(cws.xq)));
    }
 
-   public static class a implements dbm<dca> {
+   public static class a implements dbn<dca> {
       private static final MapCodec<dca> x = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  day.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  day.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
-                  day.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e)
+                  daz.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
+                  daz.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
+                  daz.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
+                  cwo.c.fieldOf("result").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, dca::new)
       );
-      public static final ym<vz, dca> w = ym.a(day.b, $$0 -> $$0.c, day.b, $$0 -> $$0.d, day.b, $$0 -> $$0.e, dca::new);
+      public static final yn<wa, dca> w = yn.a(daz.b, $$0 -> $$0.c, daz.b, $$0 -> $$0.d, daz.b, $$0 -> $$0.e, cwo.h, $$0 -> $$0.f, dca::new);
 
       @Override
       public MapCodec<dca> a() {
@@ -92,7 +77,7 @@ public class dca implements dbx {
       }
 
       @Override
-      public ym<vz, dca> b() {
+      public yn<wa, dca> b() {
          return w;
       }
    }

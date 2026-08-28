@@ -1,79 +1,209 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
+import java.util.Locale;
+import java.util.function.Consumer;
+import java.util.function.DoubleSupplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class bqc {
-   public static final bqc a = new bqc();
-   private final WeakHashMap<bqe, Void> b = new WeakHashMap<>();
+   private final String b;
+   private final bqb c;
+   private final DoubleSupplier d;
+   private final ByteBuf e;
+   private final ByteBuf f;
+   private volatile boolean g;
+   @Nullable
+   private final Runnable h;
+   @Nullable
+   final bqc.c a;
+   private double i;
 
-   private bqc() {
+   protected bqc(String $$0, bqb $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable bqc.c $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.h = $$3;
+      this.d = $$2;
+      this.a = $$4;
+      this.f = ByteBufAllocator.DEFAULT.buffer();
+      this.e = ByteBufAllocator.DEFAULT.buffer();
+      this.g = true;
    }
 
-   public void a(bqe $$0) {
-      this.b.put($$0, null);
+   public static bqc a(String $$0, bqb $$1, DoubleSupplier $$2) {
+      return new bqc($$0, $$1, $$2, null, null);
    }
 
-   public List<bqb> a() {
-      Map<String, List<bqb>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(bqb::d));
-      return a($$0);
+   public static <T> bqc a(String $$0, bqb $$1, T $$2, ToDoubleFunction<T> $$3) {
+      return a($$0, $$1, $$3, $$2).a();
    }
 
-   private static List<bqb> a(Map<String, List<bqb>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bqb> $$2 = (List<bqb>)$$0x.getValue();
-         return (bqb)($$2.size() > 1 ? new bqc.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
+   public static <T> bqc.a<T> a(String $$0, bqb $$1, ToDoubleFunction<T> $$2, T $$3) {
+      return new bqc.a<>($$0, $$1, $$2, $$3);
    }
 
-   static class a extends bqb {
-      private final List<bqb> b;
+   public void a() {
+      if (!this.g) {
+         throw new IllegalStateException("Not running");
+      } else {
+         if (this.h != null) {
+            this.h.run();
+         }
+      }
+   }
 
-      a(String $$0, List<bqb> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+   public void a(int $$0) {
+      this.h();
+      this.i = this.d.getAsDouble();
+      this.f.writeDouble(this.i);
+      this.e.writeInt($$0);
+   }
+
+   public void b() {
+      this.h();
+      this.f.release();
+      this.e.release();
+      this.g = false;
+   }
+
+   private void h() {
+      if (!this.g) {
+         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
+      }
+   }
+
+   DoubleSupplier c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public bqb e() {
+      return this.c;
+   }
+
+   public bqc.b f() {
+      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
+      int $$1 = Integer.MIN_VALUE;
+      int $$2 = Integer.MIN_VALUE;
+
+      while (this.f.isReadable(8)) {
+         int $$3 = this.e.readInt();
+         if ($$1 == Integer.MIN_VALUE) {
+            $$1 = $$3;
+         }
+
+         $$0.put($$3, this.f.readDouble());
+         $$2 = $$3;
+      }
+
+      return new bqc.b($$1, $$2, $$0);
+   }
+
+   public boolean g() {
+      return this.a != null && this.a.test(this.i);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bqc $$1 = (bqc)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static class a<T> {
+      private final String a;
+      private final bqb b;
+      private final DoubleSupplier c;
+      private final T d;
+      @Nullable
+      private Runnable e;
+      @Nullable
+      private bqc.c f;
+
+      public a(String $$0, bqb $$1, ToDoubleFunction<T> $$2, T $$3) {
+         this.a = $$0;
          this.b = $$1;
+         this.c = () -> $$2.applyAsDouble($$3);
+         this.d = $$3;
       }
 
-      private static bqb.c a(List<bqb> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      public bqc.a<T> a(Consumer<T> $$0) {
+         this.e = () -> $$0.accept(this.d);
+         return this;
       }
 
-      private static void b(List<bqb> $$0) {
-         for (bqb $$1 : $$0) {
-            $$1.a();
-         }
+      public bqc.a<T> a(bqc.c $$0) {
+         this.f = $$0;
+         return this;
       }
 
-      private static double c(List<bqb> $$0) {
-         double $$1 = 0.0;
+      public bqc a() {
+         return new bqc(this.a, this.b, this.c, this.e, this.f);
+      }
+   }
 
-         for (bqb $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
+   public static class b {
+      private final Int2DoubleMap a;
+      private final int b;
+      private final int c;
 
-         return $$1 / (double)$$0.size();
+      public b(int $$0, int $$1, Int2DoubleMap $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
+      }
+
+      public double a(int $$0) {
+         return this.a.get($$0);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public interface c {
+      boolean test(double var1);
+   }
+
+   public static class d implements bqc.c {
+      private final float a;
+      private double b = Double.MIN_VALUE;
+
+      public d(float $$0) {
+         this.a = $$0;
       }
 
       @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
+      public boolean test(double $$0) {
+         boolean $$2;
+         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
+            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
          } else {
-            bqc.a $$1 = (bqc.a)$$0;
-            return this.b.equals($$1.b);
+            $$2 = false;
          }
-      }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+         this.b = $$0;
+         return $$2;
       }
    }
 }

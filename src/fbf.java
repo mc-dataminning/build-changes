@@ -1,18 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public final class fbf extends fbs {
-   protected fbf(fbh $$0) {
-      super($$0);
+public class fbf extends AbstractDoubleList {
+   private final int a;
+
+   public fbf(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   @Override
-   public DoubleList a(jn.a $$0) {
-      return new fbe(this.a.c($$0));
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   @Override
-   protected int a(jn.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return ayy.a(ayy.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public int size() {
+      return this.a + 1;
    }
 }

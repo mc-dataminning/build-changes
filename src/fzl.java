@@ -1,181 +1,262 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fzl extends fui {
-   private static final wo a = wo.c("selectWorld.experiments");
-   private static final wo b = wo.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private static final int d = 130;
-   private final fse s = new fse(this);
-   private final fui u;
-   private final atz v;
-   private final Consumer<atz> w;
-   private final Object2BooleanMap<atw> x = new Object2BooleanLinkedOpenHashMap();
+public class fzl extends fuk {
+   private static final wp a = wp.c("editGamerule.title");
+   private static final int b = 8;
+   final fsg c = new fsg(this);
+   private final Consumer<Optional<dgd>> d;
+   private final Set<fzl.f> s = Sets.newHashSet();
+   private final dgd u;
    @Nullable
-   private fzl.a y;
+   private fzl.g v;
+   @Nullable
+   private fos w;
 
-   public fzl(fui $$0, atz $$1, Consumer<atz> $$2) {
+   public fzl(dgd $$0, Consumer<Optional<dgd>> $$1) {
       super(a);
       this.u = $$0;
-      this.v = $$1;
-      this.w = $$2;
-
-      for (atw $$3 : $$1.d()) {
-         if ($$3.l() == aua.d) {
-            this.x.put($$3, $$1.g().contains($$3));
-         }
-      }
+      this.d = $$1;
    }
 
    @Override
    protected void aR_() {
-      this.s.a(a, this.p);
-      fsi $$0 = this.s.c(fsi.d());
-      $$0.a(new fpk(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fzq.a $$1 = fzq.a(299).a(2, true).b(4);
-      this.x.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.x.getBoolean($$1x), $$1xx -> this.x.put($$1x, $$1xx)).a($$1x.c()));
-      fsf $$2 = $$1.a().a();
-      this.y = new fzl.a($$2, 310, 130);
-      $$0.a(this.y);
-      fsi $$3 = this.s.b(fsi.e().a(8));
-      $$3.a(fop.a(wn.d, $$0x -> this.m()).a());
-      $$3.a(fop.a(wn.e, $$0x -> this.aO_()).a());
-      this.s.a($$1x -> {
-         fon var10000 = this.c($$1x);
+      this.c.a(a, this.p);
+      this.v = this.c.c(new fzl.g(this.u));
+      fsk $$0 = this.c.b(fsk.e().a(8));
+      this.w = $$0.a(fos.a(wo.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
+      $$0.a(fos.a(wo.e, $$0x -> this.aO_()).a());
+      this.c.a($$1 -> {
+         fop var10000 = this.c($$1);
       });
       this.c();
    }
 
-   private static wo a(atw $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (wo)(hfu.a($$1) ? wo.c($$1) : $$0.b());
-   }
-
    @Override
    protected void c() {
-      this.y.i(130);
-      this.s.a();
-      int $$0 = this.o - this.s.b() - this.y.J().c();
-      this.y.i(this.y.y() + $$0);
-      this.y.h();
-   }
-
-   @Override
-   public wo i() {
-      return wn.a(super.i(), b);
+      this.c.a();
+      if (this.v != null) {
+         this.v.a(this.n, this.c);
+      }
    }
 
    @Override
    public void aO_() {
-      this.m.a(this.u);
+      this.d.accept(Optional.empty());
    }
 
    private void m() {
-      List<atw> $$0 = new ArrayList<>(this.v.g());
-      List<atw> $$1 = new ArrayList<>();
-      this.x.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.v.b($$0.stream().map(atw::g).toList());
-      this.w.accept(this.v);
+      if (this.w != null) {
+         this.w.j = this.s.isEmpty();
+      }
    }
 
-   public class a extends fog {
-      private final List<fon> a = new ArrayList<>();
-      private final fsf c;
+   void a(fzl.f $$0) {
+      this.s.add($$0);
+      this.m();
+   }
 
-      public a(final fsf $$1, final int $$2, final int $$3) {
-         super(0, 0, $$2, $$3, wn.a);
-         this.c = $$1;
-         $$1.a(this::a);
-      }
+   void b(fzl.f $$0) {
+      this.s.remove($$0);
+      this.m();
+   }
 
-      public void a(fon $$0) {
-         this.a.add($$0);
-      }
+   public class a extends fzl.d {
+      private final foz<Boolean> c;
 
-      @Override
-      protected int n() {
-         return this.c.y();
-      }
-
-      @Override
-      protected double o() {
-         return 10.0;
+      public a(final wp $$1, final List<ayl> $$2, final String $$3, final dgd.a $$4) {
+         super($$2, $$1);
+         this.c = foz.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.a.add(this.c);
       }
 
       @Override
-      protected void b(fob $$0, int $$1, int $$2, float $$3) {
-         $$0.c(this.F(), this.G(), this.F() + this.g, this.G() + this.h);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.g(), 0.0);
+      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.c.j($$3 + $$4 - 45);
+         this.c.k($$2);
+         this.c.a($$0, $$6, $$7, $$9);
+      }
+   }
 
-         for (fon $$4 : this.a) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
+   public class b extends fzl.f {
+      final wp b;
 
-         $$0.c().b();
-         $$0.e();
-         this.a($$0);
+      public b(final wp $$1) {
+         super(null);
+         this.b = $$1;
       }
 
       @Override
-      protected void a(fsn $$0) {
+      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fzl.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
       }
 
       @Override
-      public fsx b(fsv $$0) {
-         return new fsx(this.F(), this.G(), this.g, this.n());
+      public List<? extends fqp> aH_() {
+         return ImmutableList.of();
       }
 
       @Override
-      public void a(@Nullable fqn $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fsx $$1 = this.J();
-            fsx $$2 = $$0.J();
-            int $$3 = (int)((double)$$2.b() - this.g() - (double)$$1.b());
-            int $$4 = (int)((double)$$2.c() - this.g() - (double)$$1.c());
-            if ($$3 < 0) {
-               this.a(this.g() + (double)$$3 - 14.0);
-            } else if ($$4 > 0) {
-               this.a(this.g() + (double)$$4 + 14.0);
+      public List<? extends fsn> b() {
+         return ImmutableList.of(new fsn() {
+            @Override
+            public fsn.a w() {
+               return fsn.a.b;
             }
+
+            @Override
+            public void b(fsp $$0) {
+               $$0.a(fso.a, b.this.b);
+            }
+         });
+      }
+   }
+
+   @FunctionalInterface
+   interface c<T extends dgd.g<T>> {
+      fzl.f create(wp var1, List<ayl> var2, String var3, T var4);
+   }
+
+   public abstract class d extends fzl.f {
+      private final List<ayl> c;
+      protected final List<fop> a = Lists.newArrayList();
+
+      public d(@Nullable final List<ayl> $$1, final wp $$2) {
+         super($$1);
+         this.c = fzl.this.m.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends fqp> aH_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fsn> b() {
+         return this.a;
+      }
+
+      protected void a(fod $$0, int $$1, int $$2) {
+         if (this.c.size() == 1) {
+            $$0.b(fzl.this.m.h, this.c.get(0), $$2, $$1 + 5, -1);
+         } else if (this.c.size() >= 2) {
+            $$0.b(fzl.this.m.h, this.c.get(0), $$2, $$1, -1);
+            $$0.b(fzl.this.m.h, this.c.get(1), $$2, $$1 + 10, -1);
          }
       }
+   }
 
-      @Override
-      public List<? extends fqn> aH_() {
-         return this.a;
+   public class e extends fzl.d {
+      private final fpb d;
+
+      public e(final wp $$1, final List<ayl> $$2, final String $$3, final dgd.d $$4) {
+         super($$2, $$1);
+         this.d = new fpb(fzl.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.m(14737632);
+               fzl.this.b(this);
+            } else {
+               this.d.m(-65536);
+               fzl.this.a(this);
+            }
+         });
+         this.a.add(this.d);
       }
 
       @Override
-      public void j(int $$0) {
-         super.j($$0);
-         this.c.j($$0);
-         this.c.a();
+      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.j($$3 + $$4 - 45);
+         this.d.k($$2);
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public abstract static class f extends foy.a<fzl.f> {
+      @Nullable
+      final List<ayl> a;
+
+      public f(@Nullable List<ayl> $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public class g extends foy<fzl.f> {
+      private static final int m = 24;
+
+      public g(final dgd $$1) {
+         super(fli.Q(), fzl.this.n, fzl.this.c.d(), fzl.this.c.c(), 24);
+         final Map<dgd.b, Map<dgd.e<?>, fzl.f>> $$2 = Maps.newHashMap();
+         $$1.a(new dgd.c() {
+            @Override
+            public void b(dgd.e<dgd.a> $$0, dgd.f<dgd.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fzl.this.new a($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            @Override
+            public void c(dgd.e<dgd.d> $$0, dgd.f<dgd.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fzl.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends dgd.g<T>> void a(dgd.e<T> $$0, fzl.c<T> $$1x) {
+               wp $$2 = wp.c($$0.b());
+               wp $$3 = wp.b($$0.a()).a(n.o);
+               T $$4 = $$1.a($$0);
+               String $$5 = $$4.b();
+               wp $$6 = wp.a("editGamerule.default", wp.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<ayl> $$10;
+               String $$11;
+               if (hfz.a($$7)) {
+                  Builder<ayl> $$8 = ImmutableList.builder().add($$3.g());
+                  wp $$9 = wp.c($$7);
+                  fzl.this.p.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(fzl.this.new b(wp.c(((dgd.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(dgd.e::a)))
+                     .forEach($$0xx -> this.b((fzl.f)$$0xx.getValue()));
+               }
+            );
       }
 
       @Override
-      public void k(int $$0) {
-         super.k($$0);
-         this.c.k($$0);
-         this.c.a();
-      }
-
-      @Override
-      public Collection<? extends fsl> L() {
-         return this.a;
+      public void b(fod $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         fzl.f $$4 = this.x();
+         if ($$4 != null && $$4.a != null) {
+            fzl.this.b($$4.a);
+         }
       }
    }
 }

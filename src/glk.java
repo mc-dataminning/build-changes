@@ -1,31 +1,132 @@
-public record glk(float b, float c, ffi d, float e, float f, float g, float h) {
-   public static final glk a = new glk(Float.MAX_VALUE, 0.0F, ffi.a, 0.0F, 0.0F, 0.0F, 0.0F);
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+
+public abstract class glk {
+   private static final Object2ObjectMap<akv, glk> a = af.a(new Object2ObjectArrayMap(), $$0 -> {
+      glk.c $$1 = new glk.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(eap.e, $$1);
+      $$0.put(eap.f, new glk.b());
+      $$0.put(eap.g, new glk.a());
+   });
+   private final float b;
+   private final boolean c;
+   private final glk.d d;
+   private final boolean e;
+   private final boolean f;
+
+   public glk(float $$0, boolean $$1, glk.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+   }
+
+   public static glk a(ear $$0) {
+      return (glk)a.get($$0.r());
+   }
+
+   public boolean a(float $$0) {
+      return false;
+   }
+
+   public int b(float $$0) {
+      return 0;
+   }
 
    public float a() {
       return this.b;
    }
 
-   public float b() {
+   public boolean b() {
       return this.c;
    }
 
-   public ffi c() {
+   public abstract faz a(faz var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public glk.d c() {
       return this.d;
    }
 
-   public float d() {
+   public boolean d() {
       return this.e;
    }
 
-   public float e() {
+   public boolean e() {
       return this.f;
    }
 
-   public float f() {
-      return this.g;
+   public static class a extends glk {
+      public a() {
+         super(Float.NaN, false, glk.d.c, true, false);
+      }
+
+      @Override
+      public faz a(faz $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
    }
 
-   public float g() {
-      return this.h;
+   public static class b extends glk {
+      public b() {
+         super(Float.NaN, true, glk.d.a, false, true);
+      }
+
+      @Override
+      public faz a(faz $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends glk {
+      public static final int a = 192;
+      private static final float b = 0.4F;
+
+      public c() {
+         super(192.0F, true, glk.d.b, false, false);
+      }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = ayz.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = ayz.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = ayz.l(1.0F - (1.0F - ayz.a($$2 * (float) Math.PI)) * 0.99F);
+         return axk.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public faz a(faz $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

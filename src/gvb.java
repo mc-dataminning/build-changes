@@ -1,26 +1,23 @@
-public class gvb extends gsa<cqe, gyh> {
-   private static final aku a = aku.b("textures/entity/projectiles/wind_charge.png");
-   private final gem b;
+public class gvb extends gtj<coo, hau, gem> {
+   private static final akv a = akv.b("textures/entity/wandering_trader.png");
 
-   public gvb(gsb.a $$0) {
-      super($$0);
-      this.b = new gem($$0.a(gez.dy));
+   public gvb(gsd.a $$0) {
+      super($$0, new gem($$0.a(gfb.dw)), 0.5F);
+      this.a(new gvw<>(this, $$0.f()));
+      this.a(new gvv<>(this));
    }
 
-   @Override
-   public void a(gyh $$0, ffs $$1, glv $$2, int $$3) {
-      ffw $$4 = $$2.getBuffer(gmf.a(a, this.a($$0.u) % 1.0F, 0.0F));
-      this.b.a($$0);
-      this.b.a($$1, $$4, $$3, hec.d);
-      super.a($$0, $$1, $$2, $$3);
+   public akv a(hau $$0) {
+      return a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public hau b() {
+      return new hau();
    }
 
-   @Override
-   public gyh d() {
-      return new gyh();
+   public void a(coo $$0, hau $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gyy.a($$0, $$1, this.i);
+      $$1.a = $$0.p() > 0;
    }
 }

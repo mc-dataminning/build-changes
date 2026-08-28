@@ -1,95 +1,41 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class evs {
-   private final arc a;
-   private final baj b;
-   private final Map<aku, evs.b> c;
-   private final float d;
+public record evs<T>(aku<ke<T>> d, Codec<T> e, evs.a<T> f) {
+   public static final evs<eyz> a = new evs<>(mc.bi, eyz.e, e());
+   public static final evs<exe> b = new evs<>(mc.bh, exg.c, e());
+   public static final evs<evv> c = new evs<>(mc.bg, evv.d, f());
 
-   public evs(arc $$0, baj $$1, Map<aku, evs.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public void a(evw $$0, aku<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   public arc a() {
-      return this.a;
+   public static Stream<evs<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public baj b() {
-      return this.b;
+   private static <T extends evr> evs.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void a(aku $$0, Consumer<cwn> $$1) {
-      evs.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   private static evs.a<evv> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public float c() {
+   public aku<ke<T>> b() {
       return this.d;
    }
 
-   public static class a {
-      private final arc a;
-      private final baj.a b = new baj.a();
-      private final Map<aku, evs.b> c = Maps.newHashMap();
-      private float d;
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      public a(arc $$0) {
-         this.a = $$0;
-      }
-
-      public arc a() {
-         return this.a;
-      }
-
-      public <T> evs.a a(bah<T> $$0, T $$1) {
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      public <T> evs.a b(bah<T> $$0, @Nullable T $$1) {
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      public <T> T a(bah<T> $$0) {
-         return this.b.a($$0);
-      }
-
-      @Nullable
-      public <T> T b(bah<T> $$0) {
-         return this.b.b($$0);
-      }
-
-      public evs.a a(aku $$0, evs.b $$1) {
-         evs.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public evs.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public evs a(bai $$0) {
-         baj $$1 = this.b.a($$0);
-         return new evs(this.a, $$1, this.c, this.d);
-      }
+   public evs.a<T> d() {
+      return this.f;
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<cwn> var1);
+   public interface a<T> {
+      void run(evw var1, aku<T> var2, T var3);
    }
 }
