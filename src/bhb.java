@@ -6,29 +6,26 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
 public class bhb extends DataFix {
-   public bhb(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bhb(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bhw.e),
+         "OptionsAmbientOcclusionFix",
+         this.getInputSchema().getType(bhv.e),
          $$0 -> $$0.update(
                DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
-                  )
+               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
             )
       );
    }
 
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
+   private static String a(String $$0) {
+      return switch ($$0) {
+         case "0" -> "false";
+         case "1", "2" -> "true";
+         default -> $$0;
+      };
    }
 }

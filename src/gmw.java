@@ -1,132 +1,180 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class gmw {
-   protected final glt a;
-   protected final dgi b;
-   protected int c;
-   protected int d;
-   protected int e;
+   private static final int a = 10;
+   private static final int b = 21;
+   private static final aku c = aku.b("textures/environment/rain.png");
+   private static final aku d = aku.b("textures/environment/snow.png");
+   private static final int e = 32;
+   private static final int f = 16;
    private int g;
-   private kk h;
-   public gpk.b[] f;
+   private final float[] h = new float[1024];
+   private final float[] i = new float[1024];
 
-   public gmw(gpk $$0, dgi $$1, int $$2, glt $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
-      this.h = kk.a(this.g + 1, 0, this.g + 1);
+   public gmw() {
+      for (int $$0 = 0; $$0 < 32; $$0++) {
+         for (int $$1 = 0; $$1 < 32; $$1++) {
+            float $$2 = (float)($$1 - 16);
+            float $$3 = (float)($$0 - 16);
+            float $$4 = ayy.f($$2, $$3);
+            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
+            this.i[$$0 * 32 + $$1] = $$2 / $$4;
+         }
+      }
    }
 
-   protected void a(gpk $$0) {
-      if (!flj.Q().bx()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new gpk.b[$$1];
+   public void a(dgg $$0, glv $$1, int $$2, float $$3, fay $$4) {
+      float $$5 = $$0.d($$3);
+      if (!($$5 <= 0.0F)) {
+         int $$6 = flh.N() ? 10 : 5;
+         List<gmw.a> $$7 = new ArrayList<>();
+         List<gmw.a> $$8 = new ArrayList<>();
+         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
+         if (!$$7.isEmpty() || !$$8.isEmpty()) {
+            this.a($$1, $$4, $$6, $$5, $$7, $$8);
+         }
+      }
+   }
 
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, kk.b($$2, $$3 + this.b.ap(), $$4));
+   private void a(dgg $$0, int $$1, float $$2, fay $$3, int $$4, List<gmw.a> $$5, List<gmw.a> $$6) {
+      int $$7 = ayy.a($$3.d);
+      int $$8 = ayy.a($$3.e);
+      int $$9 = ayy.a($$3.f);
+      ji.a $$10 = new ji.a();
+      azg $$11 = azg.a();
+
+      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
+         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
+            int $$14 = $$0.a(ecq.a.e, $$13, $$12);
+            int $$15 = Math.max($$8 - $$4, $$14);
+            int $$16 = Math.max($$8 + $$4, $$14);
+            if ($$16 - $$15 != 0) {
+               dhi.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
+               if ($$17 != dhi.c.a) {
+                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
+                  $$11.b((long)$$18);
+                  int $$19 = Math.max($$8, $$14);
+                  int $$20 = glr.a($$0, $$10.d($$13, $$19, $$12));
+                  if ($$17 == dhi.c.b) {
+                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
+                  } else if ($$17 == dhi.c.c) {
+                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
+                  }
                }
             }
          }
       }
    }
 
-   public void a() {
-      for (gpk.b $$0 : this.f) {
-         $$0.e();
+   private void a(glv $$0, fay $$1, int $$2, float $$3, List<gmw.a> $$4, List<gmw.a> $$5) {
+      if (!$$4.isEmpty()) {
+         gmf $$6 = gmf.f(c, flh.O());
+         this.a($$0.getBuffer($$6), $$4, $$1, 1.0F, $$2, $$3);
+      }
+
+      if (!$$5.isEmpty()) {
+         gmf $$7 = gmf.f(d, flh.O());
+         this.a($$0.getBuffer($$7), $$5, $$1, 0.8F, $$2, $$3);
       }
    }
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
+   private gmw.a a(azg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      int $$8 = $$1 & 131071;
+      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
+      float $$10 = 3.0F + $$0.i();
+      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
+      float $$12 = $$11 % 32.0F;
+      return new gmw.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
    }
 
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.ao();
-      this.e = $$1;
-      this.g = $$0;
+   private gmw.a b(azg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      float $$8 = (float)$$1 + $$7;
+      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
+      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
+      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
+      int $$12 = glt.a((glt.a($$6) * 3 + 15) / 4, (glt.b($$6) * 3 + 15) / 4);
+      return new gmw.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
    }
 
-   public int b() {
-      return this.g;
+   private void a(ffw $$0, List<gmw.a> $$1, fay $$2, float $$3, int $$4, float $$5) {
+      for (gmw.a $$6 : $$1) {
+         float $$7 = (float)((double)$$6.a + 0.5 - $$2.d);
+         float $$8 = (float)((double)$$6.b + 0.5 - $$2.f);
+         float $$9 = (float)ayy.e((double)$$7, (double)$$8);
+         float $$10 = ayy.h($$9 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
+         int $$11 = axj.a($$10);
+         int $$12 = ($$6.b - ayy.a($$2.f) + 16) * 32 + $$6.a - ayy.a($$2.d) + 16;
+         float $$13 = this.h[$$12] / 2.0F;
+         float $$14 = this.i[$$12] / 2.0F;
+         float $$15 = $$7 - $$13;
+         float $$16 = $$7 + $$13;
+         float $$17 = (float)((double)$$6.d - $$2.e);
+         float $$18 = (float)((double)$$6.c - $$2.e);
+         float $$19 = $$8 - $$14;
+         float $$20 = $$8 + $$14;
+         float $$21 = $$6.e + 0.0F;
+         float $$22 = $$6.e + 1.0F;
+         float $$23 = (float)$$6.c * 0.25F + $$6.f;
+         float $$24 = (float)$$6.d * 0.25F + $$6.f;
+         $$0.a($$15, $$17, $$19).a($$21, $$23).a($$11).c($$6.g);
+         $$0.a($$16, $$17, $$20).a($$22, $$23).a($$11).c($$6.g);
+         $$0.a($$16, $$18, $$20).a($$22, $$24).a($$11).c($$6.g);
+         $$0.a($$15, $$18, $$19).a($$21, $$24).a($$11).c($$6.g);
+      }
    }
 
-   public dgk c() {
-      return this.b;
-   }
+   public void a(gfw $$0, fkp $$1, int $$2, aqu $$3) {
+      float $$4 = $$0.d(1.0F) / (flh.N() ? 1.0F : 2.0F);
+      if (!($$4 <= 0.0F)) {
+         azg $$5 = azg.a((long)$$2 * 312987231L);
+         ji $$6 = ji.a((kb)$$1.b());
+         ji $$7 = null;
+         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == aqu.b ? 2 : 1);
 
-   public void a(kk $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         int $$2 = $$0.a() - this.g;
-         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
-
-         for (int $$4 = 0; $$4 < this.e; $$4++) {
-            int $$5 = $$0.c() - this.g;
-            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
-
-            for (int $$7 = 0; $$7 < this.c; $$7++) {
-               int $$8 = this.b.ap() + $$7;
-               gpk.b $$9 = this.f[this.a($$1, $$7, $$4)];
-               long $$10 = $$9.g();
-               if ($$10 != kk.b($$3, $$8, $$6)) {
-                  $$9.a(kk.b($$3, $$8, $$6));
+         for (int $$9 = 0; $$9 < $$8; $$9++) {
+            int $$10 = $$5.a(21) - 10;
+            int $$11 = $$5.a(21) - 10;
+            ji $$12 = $$0.a(ecq.a.e, $$6.b($$10, 0, $$11));
+            if ($$12.v() > $$0.L_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == dhi.c.b) {
+               $$7 = $$12.e();
+               if ($$3 == aqu.c) {
+                  break;
                }
+
+               double $$13 = $$5.j();
+               double $$14 = $$5.j();
+               dwv $$15 = $$0.a_($$7);
+               esx $$16 = $$0.b_($$7);
+               fbs $$17 = $$15.g($$0, $$7);
+               double $$18 = $$17.b(jn.a.b, $$13, $$14);
+               double $$19 = (double)$$16.a($$0, $$7);
+               double $$20 = Math.max($$18, $$19);
+               lr $$21 = !$$16.a(awu.b) && !$$15.a(djm.ll) && !djz.h($$15) ? lt.af : lt.ag;
+               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if ($$7 != null && $$5.a(3) < this.g++) {
+            this.g = 0;
+            if ($$7.v() > $$6.v() + 1 && $$0.a(ecq.a.e, $$6).v() > ayy.d((float)$$6.v())) {
+               $$0.a($$7, avz.CS, awa.d, 0.1F, 0.5F, false);
+            } else {
+               $$0.a($$7, avz.CR, awa.d, 0.2F, 1.0F, false);
             }
          }
       }
-
-      this.h = $$0;
-      this.a.x().a();
    }
 
-   public kk d() {
-      return this.h;
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      gpk.b $$4 = this.b($$0, $$1, $$2);
-      if ($$4 != null) {
-         $$4.a($$3);
-      }
-   }
-
-   @Nullable
-   protected gpk.b a(ji $$0) {
-      return this.a(kk.c($$0));
-   }
-
-   @Nullable
-   protected gpk.b a(long $$0) {
-      int $$1 = kk.b($$0);
-      int $$2 = kk.c($$0);
-      int $$3 = kk.d($$0);
-      return this.b($$1, $$2, $$3);
-   }
-
-   @Nullable
-   private gpk.b b(int $$0, int $$1, int $$2) {
-      if (!this.c($$0, $$1, $$2)) {
-         return null;
+   private dhi.c a(dgg $$0, ji $$1) {
+      if (!$$0.S().b(kk.a($$1.u()), kk.a($$1.w()))) {
+         return dhi.c.a;
       } else {
-         int $$3 = $$1 - this.b.ap();
-         int $$4 = Math.floorMod($$0, this.d);
-         int $$5 = Math.floorMod($$2, this.e);
-         return this.f[this.a($$4, $$3, $$5)];
+         dhi $$2 = $$0.t($$1).a();
+         return $$2.a($$1, $$0.P());
       }
    }
 
-   private boolean c(int $$0, int $$1, int $$2) {
-      if ($$1 >= this.b.ap() && $$1 <= this.b.aq()) {
-         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
-      } else {
-         return false;
-      }
+   static record a(int a, int b, int c, int d, float e, float f, int g) {
    }
 }

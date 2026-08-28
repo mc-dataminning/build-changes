@@ -17,12 +17,12 @@ public interface jr<T> {
 
    boolean a(Predicate<akt<T>> var1);
 
-   boolean a(axf<T> var1);
+   boolean a(axe<T> var1);
 
    @Deprecated
    boolean a(jr<T> var1);
 
-   Stream<axf<T>> c();
+   Stream<axe<T>> c();
 
    Either<akt<T>, T> d();
 
@@ -57,7 +57,7 @@ public interface jr<T> {
       }
 
       @Override
-      public boolean a(axf<T> $$0) {
+      public boolean a(axe<T> $$0) {
          return false;
       }
 
@@ -97,7 +97,7 @@ public interface jr<T> {
       }
 
       @Override
-      public Stream<axf<T>> c() {
+      public Stream<axe<T>> c() {
          return Stream.of();
       }
    }
@@ -110,7 +110,7 @@ public interface jr<T> {
    public static class c<T> implements jr<T> {
       private final ju<T> a;
       @Nullable
-      private Set<axf<T>> b;
+      private Set<axe<T>> b;
       private final jr.c.a c;
       @Nullable
       private akt<T> d;
@@ -160,7 +160,7 @@ public interface jr<T> {
          return this.h() == $$0;
       }
 
-      private Set<axf<T>> i() {
+      private Set<axe<T>> i() {
          if (this.b == null) {
             throw new IllegalStateException("Tags not bound");
          } else {
@@ -169,7 +169,7 @@ public interface jr<T> {
       }
 
       @Override
-      public boolean a(axf<T> $$0) {
+      public boolean a(axe<T> $$0) {
          return this.i().contains($$0);
       }
 
@@ -224,12 +224,12 @@ public interface jr<T> {
          }
       }
 
-      void a(Collection<axf<T>> $$0) {
+      void a(Collection<axe<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<axf<T>> c() {
+      public Stream<axe<T>> c() {
          return this.i().stream();
       }
 

@@ -1,31 +1,66 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface bnx<S, T> {
-   Optional<T> a(bnw<S> var1);
+public final class bnx {
+   private final Object2ObjectMap<bnq<?>, Object> a = new Object2ObjectArrayMap();
 
-   static <S, T> bnx<S, T> a(boa<S> $$0, bnx.a<S, T> $$1) {
-      return new bnx.c<>($$1, $$0);
+   public <T> void a(bnq<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   static <S, T> bnx<S, T> a(boa<S> $$0, bnx.b<T> $$1) {
-      return new bnx.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   @Nullable
+   public <T> T a(bnq<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bnw<S> var1, bny var2);
+   public <T> T b(bnq<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bny var1);
+   public <T> T b(bnq<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
    }
 
-   public static record c<S, T>(bnx.a<S, T> a, boa<S> b) implements bnx<S, T> {
-      @Override
-      public Optional<T> a(bnw<S> $$0) {
-         bny $$1 = new bny();
-         return this.b.a($$0, $$1, bns.a) ? this.a.run($$0, $$1) : Optional.empty();
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bnq<T>... $$0) {
+      for (bnq<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bnq<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(bnx $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof bnx $$1 ? this.a.equals($$1.a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

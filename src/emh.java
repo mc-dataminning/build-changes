@@ -1,78 +1,66 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
 
-@Deprecated
-public class emh extends emt {
-   public static final MapCodec<emh> a = bro.b(0, 256).fieldOf("count").xmap(emh::new, $$0 -> $$0.c);
-   private final bro c;
+public class emh extends emr {
+   private final jn c;
+   private final edx d;
+   private final edx e;
+   private final int f;
+   public static final MapCodec<emh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jn.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               edx.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               edx.b.optionalFieldOf("allowed_search_condition", edx.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, emh::new)
+   );
 
-   private emh(bro $$0) {
+   private emh(jn $$0, edx $$1, edx $$2, int $$3) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static emh a(bro $$0) {
-      return new emh($$0);
+   public static emh a(jn $$0, edx $$1, edx $$2, int $$3) {
+      return new emh($$0, $$1, $$2, $$3);
    }
 
-   public static emh a(int $$0) {
-      return a(brl.a($$0));
-   }
-
-   @Override
-   public Stream<ji> a_(emr $$0, azh $$1, ji $$2) {
-      Builder<ji> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(ecs.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new ji($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
+   public static emh a(jn $$0, edx $$1, int $$2) {
+      return a($$0, $$1, edx.e(), $$2);
    }
 
    @Override
-   public emu<?> b() {
-      return emu.i;
-   }
-
-   private static int a(emr $$0, int $$1, int $$2, int $$3, int $$4) {
-      ji.a $$5 = new ji.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dwx $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dwx $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(djo.I)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
+   public Stream<ji> a_(emp $$0, azg $$1, ji $$2) {
+      ji.a $$3 = $$2.k();
+      dhe $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
             }
 
-            $$6++;
+            $$3.c(this.c);
+            if ($$4.e($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
          }
 
-         $$7 = $$9;
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
       }
-
-      return Integer.MAX_VALUE;
    }
 
-   private static boolean a(dwx $$0) {
-      return $$0.l() || $$0.a(djo.J) || $$0.a(djo.K);
+   @Override
+   public ems<?> b() {
+      return ems.j;
    }
 }

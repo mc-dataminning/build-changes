@@ -1,63 +1,103 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class gml {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<gmk> b;
-   private volatile int c;
+public record gml(Map<String, String> c, Set<String> d) {
+   public static final gml a = new gml(Map.of(), Set.of());
+   public static final Codec<gml> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gml::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gml::e)
+            )
+            .apply($$0, gml::new)
+   );
 
-   private gml(List<gmk> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public static gml.a a() {
+      return new gml.a();
    }
 
-   public static gml a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gmk.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gmk> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gmk());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new gml($$3);
-   }
-
-   @Nullable
-   public gmk a() {
-      gmk $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
+   public gml a(gml $$0) {
+      if (this.c()) {
          return $$0;
+      } else if ($$0.c()) {
+         return this;
       } else {
-         return null;
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gml($$1.buildKeepingLast(), $$2.build());
       }
    }
 
-   public void a(gmk $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
    }
 
-   public int c() {
+   public Map<String, String> d() {
       return this.c;
+   }
+
+   public Set<String> e() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+
+      a() {
+      }
+
+      public gml.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
+         } else {
+            this.a.put($$0, b($$1));
+            return this;
+         }
+      }
+
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
+
+      public gml.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gml.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public gml a() {
+         return new gml(this.a.build(), this.b.build());
+      }
    }
 }

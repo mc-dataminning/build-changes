@@ -1,29 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class egb extends efy<eig> {
-   public egb(Codec<eig> $$0) {
-      super($$0);
-   }
+public class egb implements eia {
+   public static final Codec<egb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aku.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               aku.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               erl.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               erl.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, egb::new)
+   );
+   public final List<aku> b;
+   public final List<aku> c;
+   public final jr<erk> d;
+   public final jr<erk> e;
+   public final int f;
 
-   @Override
-   public boolean a(ega<eig> $$0) {
-      ji $$1 = $$0.e();
-      eig $$2 = $$0.f();
-      dhg $$3 = $$0.b();
-      ji.a $$4 = new ji.a();
-
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.L_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
+   public egb(List<aku> $$0, List<aku> $$1, jr<erk> $$2, jr<erk> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-
-      return true;
    }
 }

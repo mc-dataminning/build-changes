@@ -1,90 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class ccx extends cce {
-   public static final int b = 1;
-   protected final bvo c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<bvo, axf<btc>> a;
+public class ccx<T extends cqj> extends ccd {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public ccx(bvo $$0, double $$1) {
-      this($$0, $$1, awr.F);
-   }
-
-   public ccx(bvo $$0, double $$1, axf<btc> $$2) {
-      this($$0, $$1, $$1x -> $$2);
-   }
-
-   public ccx(bvo $$0, double $$1, Function<bvo, axf<btc>> $$2) {
+   public ccx(T $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(cce.a.a));
+      this.a(EnumSet.of(ccd.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.c.bY()) {
-            ji $$0 = this.a(this.c.dW(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.c.eG() != null && this.c.eG().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      fba $$0 = cgb.a(this.c, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.e = $$0.d;
-         this.f = $$0.e;
-         this.g = $$0.f;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.h;
-   }
-
-   @Override
-   public void d() {
-      this.c.L().a(this.e, this.f, this.g, this.d);
-      this.h = true;
-   }
-
-   @Override
-   public void e() {
-      this.h = false;
+      return this.c.O_() == null && !this.c.cY() && this.c.gF() && !this.c.gC().a() && !((arc)this.c.dW()).c(this.c.dw());
    }
 
    @Override
    public boolean c() {
-      return !this.c.L().k();
+      return this.c.gF() && !this.c.gC().a() && this.c.dW() instanceof arc && !((arc)this.c.dW()).c(this.c.dw());
    }
 
-   @Nullable
-   protected ji a(dfn $$0, buk $$1, int $$2) {
-      ji $$3 = $$1.dw();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : ji.a($$1.dw(), $$2, 1, $$1x -> $$0.b_($$1x).a(awv.a)).orElse(null);
+   @Override
+   public void a() {
+      if (this.c.gF()) {
+         cqi $$0 = this.c.gC();
+         if (this.c.af > this.d) {
+            this.d = this.c.af + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.gl()) {
+            fay $$1 = cga.a(this.c, 15, 4, fay.c($$0.s()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
+            }
+         }
+      }
+   }
+
+   private void a(cqi $$0) {
+      if ($$0.u()) {
+         Set<cqj> $$1 = Sets.newHashSet();
+         List<cqj> $$2 = this.c.dW().a(cqj.class, this.c.cR().g(16.0), $$1x -> !$$1x.gF() && cqk.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (cqj $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

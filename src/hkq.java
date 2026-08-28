@@ -1,98 +1,78 @@
 import javax.annotation.Nullable;
 
-public class hkq {
-   private final flj a;
+public class hkq implements hks {
+   private static final int a = 600;
+   private static final wo b = wo.c("tutorial.punch_tree.title");
+   private static final wo c = wo.a("tutorial.punch_tree.description", hkr.a("attack"));
+   private final hkr d;
    @Nullable
-   private hkr b;
+   private frc e;
+   private int f;
+   private int g;
 
-   public hkq(flj $$0, fln $$1) {
-      this.a = $$0;
+   public hkq(hkr $$0) {
+      this.d = $$0;
    }
 
-   public void a(gkt $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable gfy $$0, @Nullable fay $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(gfy $$0, ji $$1, dwx $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
+   @Override
    public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hkt.f);
+      } else {
+         flh $$0 = this.d.e();
+         if (this.f == 1) {
+            gkt $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gi().a(awx.r)) {
+                  this.d.a(hkt.e);
+                  return;
+               }
 
-   public void a(cwp $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
+               if (hkn.a($$1)) {
+                  this.d.a(hkt.e);
+                  return;
+               }
+            }
          }
-      } else if (this.a.s != null) {
-         this.c();
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new frc($$0.h, frc.a.c, b, c, true);
+            $$0.aA().a(this.e);
+         }
       }
    }
 
-   public void a(hks $$0) {
-      this.a.n.r = $$0;
-      this.a.n.az();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
       }
    }
 
-   public flj e() {
-      return this.a;
+   @Override
+   public void a(gfw $$0, ji $$1, dwv $$2, float $$3) {
+      boolean $$4 = $$2.a(awo.u);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(hkt.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
    }
 
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.j() == dgf.a;
-   }
-
-   public static wo a(String $$0) {
-      return wo.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cwp $$0, cwp $$1, csm $$2) {
+   @Override
+   public void a(cwn $$0) {
+      if ($$0.a(awx.r)) {
+         this.d.a(hkt.e);
+      }
    }
 }

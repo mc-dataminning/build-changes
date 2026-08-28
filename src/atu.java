@@ -1,94 +1,98 @@
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public abstract class atu implements auc {
-   private static final Logger c = LogUtils.getLogger();
-   public static final String a = "vanilla";
-   public static final atw b = atw.a("core");
+public class atu implements aub {
+   static final Logger a = LogUtils.getLogger();
+   private static final atc b = new atc(false, atw.b.a, false);
+   private final Path c;
    private final atd d;
-   private final atf e;
-   private final aku f;
-   private final faq g;
+   private final aua e;
+   private final fao f;
 
-   public atu(atd $$0, atf $$1, aku $$2, faq $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void loadPacks(Consumer<atx> $$0) {
-      atx $$1 = this.a(this.e);
-      if ($$1 != null) {
-         $$0.accept($$1);
-      }
-
-      this.a($$0);
-   }
-
-   @Nullable
-   protected abstract atx a(atb var1);
-
-   protected abstract wo a(String var1);
-
-   public atf a() {
-      return this.e;
-   }
-
-   private void a(Consumer<atx> $$0) {
-      Map<String, Function<String, atx>> $$1 = new HashMap<>();
-      this.a($$1::put);
-      $$1.forEach(($$1x, $$2) -> {
-         atx $$3 = $$2.apply($$1x);
-         if ($$3 != null) {
-            $$0.accept($$3);
-         }
-      });
-   }
-
-   protected void a(BiConsumer<String, Function<String, atx>> $$0) {
-      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
-   }
-
-   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, atx>> $$1) {
-      if ($$0 != null && Files.isDirectory($$0)) {
-         try {
-            atv.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
-         } catch (IOException var4) {
-            c.warn("Failed to discover packs in {}", $$0, var4);
-         }
-      }
+   public atu(Path $$0, atd $$1, aua $$2, fao $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    private static String a(Path $$0) {
-      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+      return $$0.getFileName().toString();
    }
 
-   @Nullable
-   protected abstract atx a(String var1, atx.c var2, wo var3);
+   @Override
+   public void loadPacks(Consumer<atw> $$0) {
+      try {
+         v.c(this.c);
+         a(this.c, this.f, ($$1, $$2) -> {
+            ata $$3 = this.b($$1);
+            atw $$4 = atw.a($$3, $$2, this.d, b);
+            if ($$4 != null) {
+               $$0.accept($$4);
+            }
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.c, var3);
+      }
+   }
 
-   protected static atx.c b(final atb $$0) {
-      return new atx.c() {
-         @Override
-         public atb a(ata $$0x) {
-            return $$0;
-         }
+   private ata b(Path $$0) {
+      String $$1 = a($$0);
+      return new ata("file/" + $$1, wo.b($$1), this.e, Optional.empty());
+   }
 
-         @Override
-         public atb a(ata $$0x, atx.a $$1) {
-            return $$0;
+   public static void a(Path $$0, fao $$1, BiConsumer<Path, atw.c> $$2) throws IOException {
+      atu.a $$3 = new atu.a($$1);
+
+      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
+         for (Path $$5 : $$4) {
+            try {
+               List<fap> $$6 = new ArrayList<>();
+               atw.c $$7 = $$3.a($$5, $$6);
+               if (!$$6.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", fan.a($$5, $$6));
+               } else if ($$7 != null) {
+                  $$2.accept($$5, $$7);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$5);
+               }
+            } catch (IOException var10) {
+               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
+            }
          }
-      };
+      }
+   }
+
+   static class a extends aty<atw.c> {
+      protected a(fao $$0) {
+         super($$0);
+      }
+
+      @Nullable
+      protected atw.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof atl)) {
+            atu.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new asy.a($$0);
+         }
+      }
+
+      protected atw.c b(Path $$0) {
+         return new ate.a($$0);
+      }
    }
 }

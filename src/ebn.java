@@ -1,29 +1,36 @@
-public enum ebn {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   private final boolean d;
-   private final boolean e;
+public class ebn implements ebv {
+   public static final MapCodec<ebn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ji.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, ebn::new));
+   public static final ym<ByteBuf, ebn> b = ym.a(ji.b, $$0 -> $$0.e, ebn::new);
+   private final ji e;
 
-   private ebn(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ebn(ji $$0) {
+      this.e = $$0;
    }
 
-   public boolean a() {
-      return this.e;
+   @Override
+   public Optional<fay> a(dgg $$0) {
+      return Optional.of(fay.b(this.e));
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public ebw<ebn> a() {
+      return ebw.a;
    }
 
-   public static ebn a(aqr $$0) {
-      if ($$0.a(aqr.d)) {
-         return c;
-      } else {
-         return $$0.a(aqr.b) ? b : a;
+   public static class a implements ebw<ebn> {
+      @Override
+      public MapCodec<ebn> a() {
+         return ebn.a;
+      }
+
+      @Override
+      public ym<ByteBuf, ebn> b() {
+         return ebn.b;
       }
    }
 }

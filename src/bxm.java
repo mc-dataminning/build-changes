@@ -1,73 +1,113 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bxm extends bwz<bvo> {
-   public static final int c = 100;
-   public static final double d = 2.5;
-   public static final double e = 3.5;
-   private final Function<bvg, Float> f;
-   private final Function<bvg, Double> g;
+public class bxm<E extends bvf> implements bwz<E> {
+   private final Map<cej<?>, cek> a;
+   private final Set<cej<?>> b;
+   private final bxm.a c;
+   private final bxm.b d;
+   private final bzh<bwz<? super E>> e = new bzh<>();
+   private bwy.a f = bwy.a.a;
 
-   public bxm(Function<bvg, Float> $$0) {
-      this($$0, $$0x -> 2.5);
-   }
-
-   public bxm(Function<bvg, Float> $$0, Function<bvg, Double> $$1) {
-      super(af.a(() -> {
-         Builder<cek<?>, cel> $$0x = ImmutableMap.builder();
-         $$0x.put(cek.n, cel.c);
-         $$0x.put(cek.m, cel.c);
-         $$0x.put(cek.P, cel.b);
-         $$0x.put(cek.R, cel.c);
-         $$0x.put(cek.O, cel.a);
-         $$0x.put(cek.r, cel.b);
-         $$0x.put(cek.Z, cel.b);
-         return $$0x.build();
-      }));
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   protected float a(bvo $$0) {
-      return this.f.apply($$0);
-   }
-
-   private Optional<cox> b(bvo $$0) {
-      return $$0.ec().c(cek.O);
+   public bxm(Map<cej<?>, cek> $$0, Set<cej<?>> $$1, bxm.a $$2, bxm.b $$3, List<Pair<? extends bwz<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bwz<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   public bwy.a a() {
+      return this.f;
    }
 
-   protected boolean a(arc $$0, bvo $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.ec().a(cek.r) && !$$1.ec().a(cek.Z);
-   }
-
-   protected void b(arc $$0, bvo $$1, long $$2) {
-      $$1.ec().a(cek.R, true);
-   }
-
-   protected void c(arc $$0, bvo $$1, long $$2) {
-      bwi<?> $$3 = $$1.ec();
-      $$3.a(cek.P, 100);
-      $$3.a(cek.R, false);
-      $$3.b(cek.m);
-      $$3.b(cek.n);
-   }
-
-   protected void d(arc $$0, bvo $$1, long $$2) {
-      cox $$3 = this.b($$1).get();
-      bwi<?> $$4 = $$1.ec();
-      $$4.a(cek.n, new bxk($$3, true));
-      double $$5 = this.g.apply($$1);
-      if ($$1.g($$3) < ayz.k($$5)) {
-         $$4.b(cek.m);
-      } else {
-         $$4.a(cek.m, new cen(new bxk($$3, false), this.a($$1), 2));
+   private boolean a(E $$0) {
+      for (Entry<cej<?>, cek> $$1 : this.a.entrySet()) {
+         cej<?> $$2 = $$1.getKey();
+         cek $$3 = $$1.getValue();
+         if (!$$0.ec().a($$2, $$3)) {
+            return false;
+         }
       }
+
+      return true;
+   }
+
+   @Override
+   public final boolean e(arc $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bwy.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(arc $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bwy.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bwy.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(arc $$0, E $$1, long $$2) {
+      this.f = bwy.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bwy.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.ec()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bwz<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bwy.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(bzh::a);
+
+      private final Consumer<bzh<?>> c;
+
+      private a(final Consumer<bzh<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(bzh<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bvf> void a(Stream<bwz<? super E>> $$0, arc $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bwy.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bvf> void a(Stream<bwz<? super E>> $$0, arc $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bwy.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bvf> void a(Stream<bwz<? super E>> var1, arc var2, E var3, long var4);
    }
 }

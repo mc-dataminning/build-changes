@@ -1,35 +1,219 @@
-public interface fdu {
-   int a();
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.Locale;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-   int b();
+public class fdu implements fdr {
+   @Nullable
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final frf<fdu.b> e = new frf<>(fdu.b[]::new, fdu.b[][]::new);
 
-   void a(int var1, int var2);
+   public fdu(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      IntSet $$7 = new IntArraySet();
+      $$6.codePoints().forEach($$7::add);
+      int $$8 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$8, $$8);
+      float $$9 = $$4 * $$3;
+      float $$10 = -$$5 * $$3;
+      MemoryStack $$11 = MemoryStack.stackPush();
 
-   boolean c();
+      try {
+         FT_Vector $$12 = frs.a(FT_Vector.malloc($$11), $$9, $$10);
+         FreeType.FT_Set_Transform($$1, null, $$12);
+         IntBuffer $$13 = $$11.mallocInt(1);
+         int $$14 = (int)FreeType.FT_Get_First_Char($$1, $$13);
 
-   float d();
+         while (true) {
+            int $$15 = $$13.get(0);
+            if ($$15 == 0) {
+               break;
+            }
 
-   default float e() {
-      return this.i();
+            if (!$$7.contains($$14)) {
+               this.e.a($$14, new fdu.b($$15));
+            }
+
+            $$14 = (int)FreeType.FT_Get_Next_Char($$1, (long)$$14, $$13);
+         }
+      } catch (Throwable var18) {
+         if ($$11 != null) {
+            try {
+               $$11.close();
+            } catch (Throwable var17) {
+               var18.addSuppressed(var17);
+            }
+         }
+
+         throw var18;
+      }
+
+      if ($$11 != null) {
+         $$11.close();
+      }
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   @Nullable
+   @Override
+   public fdq a(int $$0) {
+      fdu.b $$1 = this.e.a($$0);
+      return $$1 != null ? this.a($$0, $$1) : null;
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   private fdq a(int $$0, fdu.b $$1) {
+      fdq $$2 = $$1.b;
+      if ($$2 == null) {
+         FT_Face $$3 = this.b();
+         synchronized ($$3) {
+            $$2 = $$1.b;
+            if ($$2 == null) {
+               $$2 = this.a($$0, $$3, $$1.a);
+               $$1.b = $$2;
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
+   private fdq a(int $$0, FT_Face $$1, int $$2) {
+      int $$3 = FreeType.FT_Load_Glyph($$1, $$2, 4194312);
+      if ($$3 != 0) {
+         frs.a($$3, String.format(Locale.ROOT, "Loading glyph U+%06X", $$0));
+      }
+
+      FT_GlyphSlot $$4 = $$1.glyph();
+      if ($$4 == null) {
+         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", $$0));
+      } else {
+         float $$5 = frs.a($$4.advance());
+         FT_Bitmap $$6 = $$4.bitmap();
+         int $$7 = $$4.bitmap_left();
+         int $$8 = $$4.bitmap_top();
+         int $$9 = $$6.width();
+         int $$10 = $$6.rows();
+         return (fdq)($$9 > 0 && $$10 > 0 ? new fdu.a((float)$$7, (float)$$8, $$9, $$10, $$5, $$2) : () -> $$5 / this.d);
+      }
    }
 
-   default float i() {
-      return 0.0F;
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
    }
 
-   default float j() {
-      return 7.0F;
+   @Override
+   public void close() {
+      if (this.c != null) {
+         synchronized (frs.a) {
+            frs.b(FreeType.FT_Done_Face(this.c), "Deleting face");
+         }
+
+         this.c = null;
+      }
+
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      return this.e.b();
+   }
+
+   class a implements fdq {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / fdu.this.d;
+         this.d = $$0 / fdu.this.d;
+         this.e = $$1 / fdu.this.d;
+         this.g = $$5;
+      }
+
+      @Override
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public frm bake(Function<fds, frm> $$0) {
+         return $$0.apply(new fds() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return fdu.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = fdu.this.b();
+               fes $$3 = new fes(fes.a.d, a.this.b, a.this.c, false);
+               if ($$3.a($$2, a.this.g)) {
+                  $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+               } else {
+                  $$3.close();
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
+      }
+   }
+
+   static class b {
+      final int a;
+      @Nullable
+      volatile fdq b;
+
+      b(int $$0) {
+         this.a = $$0;
+      }
    }
 }

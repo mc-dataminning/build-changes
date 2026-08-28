@@ -26,60 +26,60 @@ public class akp {
    private static final Logger d = LogUtils.getLogger();
    private static final Comparator<akt<?>> e = Comparator.<akt<?>, aku>comparing(akt::b).thenComparing(akt::a);
    private static final kd f = new kd(Optional.empty(), Lifecycle.experimental());
-   private static final Function<Optional<atw>, kd> g = af.b($$0 -> {
-      Lifecycle $$1 = $$0.<Boolean>map(atw::a).map($$0x -> Lifecycle.stable()).orElse(Lifecycle.experimental());
+   private static final Function<Optional<atv>, kd> g = af.b($$0 -> {
+      Lifecycle $$1 = $$0.<Boolean>map(atv::a).map($$0x -> Lifecycle.stable()).orElse(Lifecycle.experimental());
       return new kd($$0, $$1);
    });
    public static final List<akp.d<?>> a = List.of(
-      new akp.d<>(mc.aN, eas.h),
-      new akp.d<>(mc.aI, dhk.a),
+      new akp.d<>(mc.aN, eaq.h),
+      new akp.d<>(mc.aI, dhi.a),
       new akp.d<>(mc.aJ, wk.a),
-      new akp.d<>(mc.aK, eew.a),
-      new akp.d<>(mc.aL, efk.a),
-      new akp.d<>(mc.aT, emq.a),
-      new akp.d<>(mc.aU, enm.a),
-      new akp.d<>(mc.aW, ens.a),
-      new akp.d<>(mc.aV, ern.c),
-      new akp.d<>(mc.aX, eow.a),
-      new akp.d<>(mc.aR, ecx.a),
-      new akp.d<>(mc.aS, esc.a.a),
-      new akp.d<>(mc.aM, ecl.b),
-      new akp.d<>(mc.bb, enb.a),
-      new akp.d<>(mc.aQ, eln.a),
-      new akp.d<>(mc.ba, dez.a),
-      new akp.d<>(mc.aZ, dex.a),
-      new akp.d<>(mc.bd, dwa.b),
-      new akp.d<>(mc.m, cib.a, true),
-      new akp.d<>(mc.X, ckx.a, true),
-      new akp.d<>(mc.s, btc.a),
-      new akp.d<>(mc.bc, dhy.a),
-      new akp.d<>(mc.d, dtp.a),
-      new akp.d<>(mc.aO, dcz.b),
-      new akp.d<>(mc.aP, deh.a),
-      new akp.d<>(mc.L, cwv.a),
-      new akp.d<>(mc.I, cwi.a)
+      new akp.d<>(mc.aK, eeu.a),
+      new akp.d<>(mc.aL, efi.a),
+      new akp.d<>(mc.aT, emo.a),
+      new akp.d<>(mc.aU, enk.a),
+      new akp.d<>(mc.aW, enq.a),
+      new akp.d<>(mc.aV, erl.c),
+      new akp.d<>(mc.aX, eou.a),
+      new akp.d<>(mc.aR, ecv.a),
+      new akp.d<>(mc.aS, esa.a.a),
+      new akp.d<>(mc.aM, ecj.b),
+      new akp.d<>(mc.bb, emz.a),
+      new akp.d<>(mc.aQ, ell.a),
+      new akp.d<>(mc.ba, dex.a),
+      new akp.d<>(mc.aZ, dev.a),
+      new akp.d<>(mc.bd, dvy.b),
+      new akp.d<>(mc.m, cia.a, true),
+      new akp.d<>(mc.X, ckw.a, true),
+      new akp.d<>(mc.s, btb.a),
+      new akp.d<>(mc.bc, dhw.a),
+      new akp.d<>(mc.d, dtn.a),
+      new akp.d<>(mc.aO, dcx.b),
+      new akp.d<>(mc.aP, def.a),
+      new akp.d<>(mc.L, cwt.a),
+      new akp.d<>(mc.I, cwg.a)
    );
-   public static final List<akp.d<?>> b = List.of(new akp.d<>(mc.bf, eat.a));
+   public static final List<akp.d<?>> b = List.of(new akp.d<>(mc.bf, ear.a));
    public static final List<akp.d<?>> c = List.of(
-      new akp.d<>(mc.aI, dhk.b),
+      new akp.d<>(mc.aI, dhi.b),
       new akp.d<>(mc.aJ, wk.a),
-      new akp.d<>(mc.ba, dez.a),
-      new akp.d<>(mc.aZ, dex.a),
-      new akp.d<>(mc.m, cib.a, true),
-      new akp.d<>(mc.X, ckx.a, true),
-      new akp.d<>(mc.aN, eas.h),
-      new akp.d<>(mc.s, btc.a),
-      new akp.d<>(mc.d, dtp.a),
-      new akp.d<>(mc.aO, dcz.b),
-      new akp.d<>(mc.L, cwv.a),
-      new akp.d<>(mc.I, cwi.a)
+      new akp.d<>(mc.ba, dex.a),
+      new akp.d<>(mc.aZ, dev.a),
+      new akp.d<>(mc.m, cia.a, true),
+      new akp.d<>(mc.X, ckw.a, true),
+      new akp.d<>(mc.aN, eaq.h),
+      new akp.d<>(mc.s, btb.a),
+      new akp.d<>(mc.d, dtn.a),
+      new akp.d<>(mc.aO, dcx.b),
+      new akp.d<>(mc.L, cwt.a),
+      new akp.d<>(mc.I, cwg.a)
    );
 
-   public static kf.b a(aup $$0, List<jt.b<?>> $$1, List<akp.d<?>> $$2) {
+   public static kf.b a(auo $$0, List<jt.b<?>> $$1, List<akp.d<?>> $$2) {
       return a(($$1x, $$2x) -> $$1x.a($$0, $$2x), $$1, $$2);
    }
 
-   public static kf.b a(Map<akt<? extends ke<?>>, akp.c> $$0, aus $$1, List<jt.b<?>> $$2, List<akp.d<?>> $$3) {
+   public static kf.b a(Map<akt<? extends ke<?>>, akp.c> $$0, aur $$1, List<jt.b<?>> $$2, List<akp.d<?>> $$3) {
       return a(($$2x, $$3x) -> $$2x.a($$0, $$1, $$3x), $$2, $$3);
    }
 
@@ -174,7 +174,7 @@ public class akp {
       return new z($$1);
    }
 
-   private static <E> void a(kn<E> $$0, Decoder<E> $$1, aks<JsonElement> $$2, akt<E> $$3, aun $$4, kd $$5) throws IOException {
+   private static <E> void a(kn<E> $$0, Decoder<E> $$1, aks<JsonElement> $$2, akt<E> $$3, aum $$4, kd $$5) throws IOException {
       try (Reader $$6 = $$4.e()) {
          JsonElement $$7 = JsonParser.parseReader($$6);
          DataResult<E> $$8 = $$1.parse($$2, $$7);
@@ -183,14 +183,14 @@ public class akp {
       }
    }
 
-   static <E> void a(aup $$0, aks.c $$1, kn<E> $$2, Decoder<E> $$3, Map<akt<?>, Exception> $$4) {
+   static <E> void a(auo $$0, aks.c $$1, kn<E> $$2, Decoder<E> $$3, Map<akt<?>, Exception> $$4) {
       akn $$5 = akn.a($$2.g());
       aks<JsonElement> $$6 = aks.a(JsonOps.INSTANCE, $$1);
 
-      for (Entry<aku, aun> $$7 : $$5.a($$0).entrySet()) {
+      for (Entry<aku, aum> $$7 : $$5.a($$0).entrySet()) {
          aku $$8 = $$7.getKey();
          akt<E> $$9 = akt.a($$2.g(), $$5.b($$8));
-         aun $$10 = $$7.getValue();
+         aum $$10 = $$7.getValue();
          kd $$11 = g.apply($$10.c());
 
          try {
@@ -200,10 +200,10 @@ public class akp {
          }
       }
 
-      axg.a($$0, $$2);
+      axf.a($$0, $$2);
    }
 
-   static <E> void a(Map<akt<? extends ke<?>>, akp.c> $$0, aus $$1, aks.c $$2, kn<E> $$3, Decoder<E> $$4, Map<akt<?>, Exception> $$5) {
+   static <E> void a(Map<akt<? extends ke<?>>, akp.c> $$0, aur $$1, aks.c $$2, kn<E> $$3, Decoder<E> $$4, Map<akt<?>, Exception> $$5) {
       akp.c $$6 = $$0.get($$3.g());
       if ($$6 != null) {
          aks<un> $$7 = aks.a(ue.a, $$2);
@@ -225,7 +225,7 @@ public class akp {
                aku $$16 = $$9.a($$10.a());
 
                try {
-                  aun $$17 = $$1.getResourceOrThrow($$16);
+                  aum $$17 = $$1.getResourceOrThrow($$16);
                   a($$3, $$4, $$8, $$11, $$17, f);
                } catch (Exception var17) {
                   $$5.put($$11, new IllegalStateException("Failed to parse local data", var17));
@@ -233,17 +233,17 @@ public class akp {
             }
          }
 
-         axg.a($$6.b, $$3);
+         axf.a($$6.b, $$3);
       }
    }
 
    static record a<T>(akp.d<T> a, kn<T> b, Map<akt<?>, Exception> c) {
 
-      public void a(aup $$0, aks.c $$1) {
+      public void a(auo $$0, aks.c $$1) {
          akp.a($$0, $$1, this.b, this.a.b, this.c);
       }
 
-      public void a(Map<akt<? extends ke<?>>, akp.c> $$0, aus $$1, aks.c $$2) {
+      public void a(Map<akt<? extends ke<?>>, akp.c> $$0, aur $$1, aks.c $$2) {
          akp.a($$0, $$1, $$2, this.b, this.a.b, this.c);
       }
    }
@@ -253,7 +253,7 @@ public class akp {
       void apply(akp.a<?> var1, aks.c var2);
    }
 
-   public static record c(List<ki.a> a, axh.a b) {
+   public static record c(List<ki.a> a, axg.a b) {
    }
 
    public static record d<T>(akt<? extends ke<T>> a, Codec<T> b, boolean c) {

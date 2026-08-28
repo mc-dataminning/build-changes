@@ -3,9 +3,9 @@ public class ach implements yv<abk> {
    private final int b;
    private final int c;
    private final int d;
-   private final cwp e;
+   private final cwn e;
 
-   public ach(int $$0, int $$1, int $$2, cwp $$3) {
+   public ach(int $$0, int $$1, int $$2, cwn $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -16,14 +16,14 @@ public class ach implements yv<abk> {
       this.b = $$0.x();
       this.c = $$0.l();
       this.d = $$0.readShort();
-      this.e = cwp.g.decode($$0);
+      this.e = cwn.g.decode($$0);
    }
 
    private void a(vz $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
       $$0.m(this.d);
-      cwp.g.encode($$0, this.e);
+      cwn.g.encode($$0, this.e);
    }
 
    @Override
@@ -43,7 +43,7 @@ public class ach implements yv<abk> {
       return this.d;
    }
 
-   public cwp f() {
+   public cwn f() {
       return this.e;
    }
 

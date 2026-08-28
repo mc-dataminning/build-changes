@@ -1,5 +1,6 @@
-public interface fnb {
-   void a(cwl var1, hbi.b var2);
+import com.google.gson.JsonElement;
+import java.util.function.Supplier;
 
-   void a(cwl var1, cwl var2);
+public interface fnb extends Supplier<JsonElement> {
+   djk a();
 }

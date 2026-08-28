@@ -1,22 +1,26 @@
+import java.util.IllegalFormatException;
+
 public class hfu {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+   private static volatile tl a = tl.a();
 
-   public hfu(int $$0) {
-      this($$0, -1);
+   private hfu() {
    }
 
-   public hfu(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   static void a(tl $$0) {
+      a = $$0;
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
    }
 
-   public int a() {
-      return this.b;
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

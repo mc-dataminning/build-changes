@@ -1,40 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejq extends ejo {
+public class ejq extends ejm {
    public static final MapCodec<ejq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ejq::new)
+      $$0 -> b($$0).and(brn.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ejq::new)
    );
-   protected final int b;
+   private final brn b;
 
-   public ejq(bro $$0, bro $$1, int $$2) {
+   public ejq(brn $$0, brn $$1, brn $$2) {
       super($$0, $$1);
       this.b = $$2;
    }
 
    @Override
-   protected ejp<?> a() {
-      return ejp.g;
+   protected ejn<?> a() {
+      return ejn.c;
    }
 
    @Override
-   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+   protected void a(dgm $$0, ejm.b $$1, azg $$2, eiw $$3, int $$4, ejm.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
       }
    }
 
    @Override
-   public int a(azh $$0, int $$1, eiy $$2) {
-      return this.b;
+   public int a(azg $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
    }
 
    @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public int a(azg $$0, int $$1, eiw $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -30,14 +30,14 @@ public class atf implements atb {
 
    @Nullable
    @Override
-   public auh<InputStream> a(String... $$0) {
+   public aug<InputStream> a(String... $$0) {
       v.a($$0);
       List<String> $$1 = List.of($$0);
 
       for (Path $$2 : this.g) {
          Path $$3 = v.a($$2, $$1);
          if (Files.exists($$3) && ate.a($$3)) {
-            return auh.create($$3);
+            return aug.create($$3);
          }
       }
 
@@ -63,7 +63,7 @@ public class atf implements atb {
          if ($$5 == 1) {
             a($$3, $$1, $$4.get(0), $$3x);
          } else if ($$5 > 1) {
-            Map<aku, auh<InputStream>> $$6 = new HashMap<>();
+            Map<aku, aug<InputStream>> $$6 = new HashMap<>();
 
             for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
                a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
@@ -87,14 +87,14 @@ public class atf implements atb {
 
    @Nullable
    @Override
-   public auh<InputStream> a(atd $$0, aku $$1) {
-      return (auh<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
+   public aug<InputStream> a(atd $$0, aku $$1) {
+      return (aug<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
          String $$3 = $$1.b();
 
          for (Path $$4 : this.h.get($$0)) {
             Path $$5 = v.a($$4.resolve($$3), $$2);
             if (Files.exists($$5) && ate.a($$5)) {
-               return auh.create($$5);
+               return aug.create($$5);
             }
          }
 
@@ -113,7 +113,7 @@ public class atf implements atb {
    @Nullable
    @Override
    public <T> T a(ato<T> $$0) {
-      auh<InputStream> $$1 = this.a("pack.mcmeta");
+      aug<InputStream> $$1 = this.a("pack.mcmeta");
       if ($$1 != null) {
          try (InputStream $$2 = $$1.get()) {
             T $$3 = ass.a($$0, $$2);
@@ -138,7 +138,7 @@ public class atf implements atb {
    public void close() {
    }
 
-   public aus d() {
-      return $$0 -> Optional.ofNullable(this.a(atd.a, $$0)).map($$0x -> new aun(this, $$0x));
+   public aur d() {
+      return $$0 -> Optional.ofNullable(this.a(atd.a, $$0)).map($$0x -> new aum(this, $$0x));
    }
 }

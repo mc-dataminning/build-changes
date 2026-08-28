@@ -1,12 +1,32 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.nio.file.Path;
+import java.util.List;
 
-public interface bop extends bos {
-   boq d();
+public interface bop {
+   char d = '\u001e';
 
-   @Nullable
-   bok.a c(String var1);
+   List<bot> a(String var1);
 
-   Set<Pair<String, bqb>> e();
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
+   }
+
+   default int f() {
+      return this.d() - this.b();
+   }
+
+   String e();
+
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
+   }
 }

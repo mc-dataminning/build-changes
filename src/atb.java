@@ -10,10 +10,10 @@ public interface atb extends AutoCloseable {
    String b = "pack.mcmeta";
 
    @Nullable
-   auh<InputStream> a(String... var1);
+   aug<InputStream> a(String... var1);
 
    @Nullable
-   auh<InputStream> a(atd var1, aku var2);
+   aug<InputStream> a(atd var1, aku var2);
 
    void a(atd var1, String var2, String var3, atb.a var4);
 
@@ -28,7 +28,7 @@ public interface atb extends AutoCloseable {
       return this.a().a();
    }
 
-   default Optional<atw> c() {
+   default Optional<atv> c() {
       return this.a().d();
    }
 
@@ -36,6 +36,6 @@ public interface atb extends AutoCloseable {
    void close();
 
    @FunctionalInterface
-   public interface a extends BiConsumer<aku, auh<InputStream>> {
+   public interface a extends BiConsumer<aku, aug<InputStream>> {
    }
 }

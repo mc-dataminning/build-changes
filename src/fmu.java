@@ -1,17 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class fmu {
-   private static final ayi.b<aku, MapCodec<? extends fmt>> b = new ayi.b<>();
-   public static final Codec<fmt> a = b.a(aku.a).dispatch(fmt::a, $$0 -> $$0);
+public record fmu(int b) implements fmr {
+   public static final MapCodec<fmu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayh.i.fieldOf("default").forGetter(fmu::b)).apply($$0, fmu::new));
 
-   public static void a() {
-      b.a(aku.b("custom_model_data"), fmp.a);
-      b.a(aku.b("constant"), fmo.a);
-      b.a(aku.b("dye"), fmq.a);
-      b.a(aku.b("grass"), fms.a);
-      b.a(aku.b("firework"), fmr.a);
-      b.a(aku.b("potion"), fmw.a);
-      b.a(aku.b("map_color"), fmv.a);
+   public fmu() {
+      this(-13083194);
+   }
+
+   @Override
+   public int a(cwn $$0) {
+      cym $$1 = $$0.a(kv.Q);
+      return $$1 != null ? axj.f($$1.a(this.b)) : axj.f(this.b);
+   }
+
+   @Override
+   public MapCodec<fmu> a() {
+      return a;
    }
 }

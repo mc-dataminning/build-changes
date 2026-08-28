@@ -1,70 +1,56 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class aum implements aup, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private auf c;
-   private final List<auj> d = Lists.newArrayList();
-   private final atd e;
+public class aum {
+   private final atb a;
+   private final aug<InputStream> b;
+   private final aug<auq> c;
+   @Nullable
+   private auq d;
 
-   public aum(atd $$0) {
-      this.e = $$0;
-      this.c = new aui($$0, List.of());
+   public aum(atb $$0, aug<InputStream> $$1, aug<auq> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void close() {
-      this.c.close();
+   public aum(atb $$0, aug<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = auq.b;
+      this.d = auq.a;
    }
 
-   public void a(auj $$0) {
-      this.d.add($$0);
+   public atb a() {
+      return this.a;
    }
 
-   public aul a(Executor $$0, Executor $$1, CompletableFuture<baf> $$2, List<atb> $$3) {
-      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(atb::b).collect(Collectors.joining(", "))));
-      this.c.close();
-      this.c = new aui(this.e, $$3);
-      return auv.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
+   public String b() {
+      return this.a.b();
    }
 
-   @Override
-   public Optional<aun> getResource(aku $$0) {
-      return this.c.getResource($$0);
+   public Optional<atv> c() {
+      return this.a.c();
    }
 
-   @Override
-   public Set<String> a() {
-      return this.c.a();
+   public InputStream d() throws IOException {
+      return this.b.get();
    }
 
-   @Override
-   public List<aun> a(aku $$0) {
-      return this.c.a($$0);
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
    }
 
-   @Override
-   public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
-      return this.c.b($$0, $$1);
-   }
+   public auq f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
 
-   @Override
-   public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
-      return this.c.c($$0, $$1);
-   }
-
-   @Override
-   public Stream<atb> b() {
-      return this.c.b();
+      return this.d;
    }
 }

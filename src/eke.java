@@ -1,24 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eke<P extends ekd> {
-   public static final eke<ekm> a = a("simple_state_provider", ekm.b);
-   public static final eke<ekn> b = a("weighted_state_provider", ekn.b);
-   public static final eke<eki> c = a("noise_threshold_provider", eki.b);
-   public static final eke<ekh> d = a("noise_provider", ekh.g);
-   public static final eke<ekf> e = a("dual_noise_provider", ekf.b);
-   public static final eke<ekk> f = a("rotated_block_provider", ekk.b);
-   public static final eke<ekj> g = a("randomized_int_state_provider", ekj.b);
-   private final MapCodec<P> h;
+public abstract class eke extends ekb {
+   protected final long c;
+   protected final esa.a d;
+   protected final float e;
+   protected final esa f;
 
-   private static <P extends ekd> eke<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.T, $$0, new eke<>($$1));
+   protected static <P extends eke> P3<Mu<P>, Long, esa.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         esa.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayh.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   private eke(MapCodec<P> $$0) {
-      this.h = $$0;
+   protected eke(long $$0, esa.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = esa.b(new edp(new ecr($$0)), $$1);
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   protected double a(ji $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

@@ -1,31 +1,41 @@
-public class ftt extends fuk {
-   private final wo a;
+import javax.annotation.Nullable;
 
-   public ftt(wo $$0, wo $$1) {
+public class ftt extends fui {
+   @Nullable
+   private fpb a;
+
+   public ftt(wo $$0) {
       super($$0);
-      this.a = $$1;
    }
 
    @Override
    protected void aR_() {
-      super.aR_();
-      this.c(fos.a(wn.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
+      this.a = this.c(new fpb(this.n, this.l, this.p, 12));
+      this.c();
    }
 
    @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
-      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
-   }
-
-   @Override
-   public void b(fod $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
+      }
    }
 
    @Override
    public boolean aG_() {
       return false;
+   }
+
+   @Override
+   protected boolean aQ_() {
+      return false;
+   }
+
+   @Override
+   public void b(fob $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.r();
+      this.a($$0);
    }
 }

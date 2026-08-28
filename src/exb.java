@@ -1,22 +1,199 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface exb<T extends exb<T>> {
-   T b(exf.a var1);
+public interface exb {
+   MapCodec<exb> a = a(Integer.MAX_VALUE);
 
-   default <E> T a(Iterable<E> $$0, Function<E, exf.a> $$1) {
-      T $$2 = this.c();
+   static MapCodec<exb> a(int $$0) {
+      return exb.f.e.dispatchMap("mode", exb::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof exb.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
+         return DataResult.success($$1);
+      });
+   }
+
+   exb.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
+   }
+
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
+
+   public static class a implements exb {
+      private static final Logger d = LogUtils.getLogger();
+      public static final exb.a b = new exb.a();
+      public static final MapCodec<exb.a> c = MapCodec.unit(() -> b);
+
+      private a() {
       }
 
-      return $$2;
+      @Override
+      public exb.f a() {
+         return exb.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
    }
 
-   default <E> T a(E[] $$0, Function<E, exf.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   public static record b(int c) implements exb {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<exb.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayh.l.optionalFieldOf("offset", 0).forGetter(exb.b::b)).apply($$0, exb.b::new)
+      );
+
+      @Override
+      public exb.f a() {
+         return exb.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 
-   T c();
+   public static class c implements exb {
+      public static final exb.c b = new exb.c();
+      public static final MapCodec<exb.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public exb.f a() {
+         return exb.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements exb {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<exb.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayh.l.optionalFieldOf("offset", 0).forGetter(exb.d::b), ayh.l.optionalFieldOf("size").forGetter(exb.d::c)).apply($$0, exb.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public exb.f a() {
+         return exb.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, exb b) {
+      public static <T> Codec<exb.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), exb.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, exb.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements azu {
+      a("replace_all", exb.c.c),
+      b("replace_section", exb.d.b),
+      c("insert", exb.b.b),
+      d("append", exb.a.c);
+
+      public static final Codec<exb.f> e = azu.a(exb.f::values);
+      private final String f;
+      final MapCodec<? extends exb> g;
+
+      private f(final String $$0, final MapCodec<? extends exb> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends exb> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
 }

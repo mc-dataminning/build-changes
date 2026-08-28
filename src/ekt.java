@@ -1,43 +1,76 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ekt extends ekw {
-   public static final MapCodec<ekt> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ekt::new, $$0 -> $$0.b);
+public class ekt extends eku {
+   public static final MapCodec<ekt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ekt::new)
+   );
    private final float b;
+   private final float c;
+   private final float d;
 
-   public ekt(float $$0) {
+   @Override
+   protected ekv<?> a() {
+      return ekv.c;
+   }
+
+   public ekt(float $$0, float $$1, float $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected ekx<?> a() {
-      return ekx.d;
-   }
-
-   @Override
-   public void a(ekw.a $$0) {
-      azh $$1 = $$0.b();
-      List<ji> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         if (!($$1.i() >= this.b)) {
-            List<ji> $$3 = new ArrayList<>($$2);
-            af.c($$3, $$1);
-            Optional<ji> $$4 = $$3.stream().filter($$1x -> {
-               for (jn $$2x : jn.values()) {
-                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(awp.u))) {
-                     return false;
-                  }
-               }
-
-               return true;
-            }).findFirst();
-            if (!$$4.isEmpty()) {
-               $$0.a($$4.get(), djo.cB.m().b(dlh.c, Boolean.valueOf(true)).b(dlh.d, Boolean.valueOf(true)));
+   public void a(eku.a $$0) {
+      azg $$1 = $$0.b();
+      dhe $$2 = (dhe)$$0.a();
+      List<ji> $$3 = af.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<ji> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((ji)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
             }
+         });
+         ji $$5 = (ji)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.K_().a(mc.aL).flatMap($$0x -> $$0x.a(rl.F)).ifPresent($$3x -> ((efi)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
+
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               ji $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               ji $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
       }
+   }
+
+   private static void a(ji $$0, eku.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, djm.tY.m().b(dnc.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
+      }
+
+      $$1.a($$0, djm.tY.m().b(dnc.b, Boolean.valueOf(true)));
    }
 }

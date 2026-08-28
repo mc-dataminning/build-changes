@@ -7,7 +7,7 @@ public class ada implements yv<abk> {
    private final int c;
    private final adb d;
 
-   public ada(dfo $$0, eso $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public ada(dfm $$0, esm $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.h;
       this.c = $$0.i;
       this.d = new adb($$0, $$1, $$2, $$3);

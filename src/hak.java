@@ -1,13 +1,3 @@
-import javax.annotation.Nullable;
-
-public class hak extends gyc {
-   @Nullable
-   public bui.l.e a;
-   @Nullable
-   public bui.l.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class hak extends gyh {
+   public final hbk a = new hbk();
 }

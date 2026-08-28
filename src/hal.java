@@ -1,3 +1,5 @@
-public class hal extends gyi {
-   public final hbl a = new hbl();
+public class hal extends gyh {
+   public float a;
+   public float b;
+   public boolean c;
 }

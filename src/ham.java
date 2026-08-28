@@ -1,5 +1,3 @@
-public class ham extends gyi {
-   public float a;
-   public float b;
-   public boolean c;
+public class ham extends gxo {
+   public boolean d;
 }

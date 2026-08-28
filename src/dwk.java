@@ -1,116 +1,151 @@
-public enum dwk implements azv {
-   a("inactive", dwk.a.a) {
-      @Override
-      protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3, boolean $$4) {
-         $$3.a(cwp.j);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
-      }
-   },
-   b("active", dwk.a.b) {
-      @Override
-      protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dwf.b.a($$0, this, $$2, $$3, $$1);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public final class dwk {
+   private static final Map<String, dwk> l = new Object2ObjectArrayMap();
+   public static final Codec<dwk> a = Codec.stringResolver($$0 -> $$0.m, l::get);
+   public static final dwk b = new dwk(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rk.g), Optional.of(rk.q), Optional.of(rk.F), Optional.of(rk.L)
+   );
+   public static final dwk c = new dwk(
+      "spruce", 0.5F, Optional.of(rk.t), Optional.of(rk.u), Optional.of(rk.n), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dwk d = new dwk(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rk.A), Optional.of(rk.B), Optional.empty(), Optional.empty()
+   );
+   public static final dwk e = new dwk("azalea", Optional.empty(), Optional.of(rk.z), Optional.empty());
+   public static final dwk f = new dwk("birch", Optional.empty(), Optional.of(rk.l), Optional.of(rk.I));
+   public static final dwk g = new dwk("jungle", Optional.of(rk.s), Optional.of(rk.r), Optional.empty());
+   public static final dwk h = new dwk("acacia", Optional.empty(), Optional.of(rk.m), Optional.empty());
+   public static final dwk i = new dwk("cherry", Optional.empty(), Optional.of(rk.C), Optional.of(rk.N));
+   public static final dwk j = new dwk("dark_oak", Optional.of(rk.h), Optional.empty(), Optional.empty());
+   public static final dwk k = new dwk("pale_oak", Optional.of(rk.j), Optional.empty(), Optional.empty());
+   private final String m;
+   private final float n;
+   private final Optional<akt<efi<?, ?>>> o;
+   private final Optional<akt<efi<?, ?>>> p;
+   private final Optional<akt<efi<?, ?>>> q;
+   private final Optional<akt<efi<?, ?>>> r;
+   private final Optional<akt<efi<?, ?>>> s;
+   private final Optional<akt<efi<?, ?>>> t;
+
+   public dwk(String $$0, Optional<akt<efi<?, ?>>> $$1, Optional<akt<efi<?, ?>>> $$2, Optional<akt<efi<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   }
+
+   public dwk(
+      String $$0,
+      float $$1,
+      Optional<akt<efi<?, ?>>> $$2,
+      Optional<akt<efi<?, ?>>> $$3,
+      Optional<akt<efi<?, ?>>> $$4,
+      Optional<akt<efi<?, ?>>> $$5,
+      Optional<akt<efi<?, ?>>> $$6,
+      Optional<akt<efi<?, ?>>> $$7
+   ) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
+      this.s = $$6;
+      this.t = $$7;
+      l.put($$0, this);
+   }
+
+   @Nullable
+   private akt<efi<?, ?>> a(azg $$0, boolean $$1) {
+      if ($$0.i() < this.n) {
+         if ($$1 && this.t.isPresent()) {
+            return this.t.get();
          }
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dwk.a.b) {
-      @Override
-      protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3, boolean $$4) {
-         $$0.a(null, $$1, awa.By, awb.e);
-      }
-   },
-   d("ejecting", dwk.a.b) {
-      @Override
-      protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3, boolean $$4) {
-         $$0.a(null, $$1, awa.BA, awb.e);
-      }
-
-      @Override
-      protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3) {
-         $$0.a(null, $$1, awa.Bs, awb.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dwk.a j;
-
-   dwk(final String $$0, final dwk.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
-
-   @Override
-   public String c() {
-      return this.i;
-   }
-
-   public int a() {
-      return this.j.c;
-   }
-
-   public dwk a(arc $$0, ji $$1, dwh $$2, dwi $$3, dwj $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.ad() + 20L);
-            yield d;
+         if (this.r.isPresent()) {
+            return this.r.get();
          }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.ad() + (long)$$7);
-               yield d;
+      }
+
+      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
+   }
+
+   @Nullable
+   private akt<efi<?, ?>> a(azg $$0) {
+      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
+   }
+
+   public boolean a(arc $$0, dyr $$1, ji $$2, dwv $$3, azg $$4) {
+      akt<efi<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         jr<efi<?, ?>> $$6 = $$0.K_().e(mc.aL).a($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     efi<?, ?> $$9 = $$6.a();
+                     dwv $$10 = djm.a.m();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
+                  }
+               }
             }
          }
-      };
-   }
-
-   private static dwk a(arc $$0, ji $$1, dwh $$2, dwi $$3, dwj $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.ad() + 20L);
-      return $$4.c() ? b : a;
-   }
-
-   public void a(arc $$0, ji $$1, dwk $$2, dwh $$3, dwj $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
-
-   protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3, boolean $$4) {
-   }
-
-   protected void a(arc $$0, ji $$1, dwh $$2, dwj $$3) {
-   }
-
-   private void a(arc $$0, ji $$1, cwp $$2, float $$3) {
-      lb.a($$0, $$2, 2, jn.b, fba.c($$1).a(jn.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, awa.Bu, awb.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
       }
+
+      akt<efi<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         jr<efi<?, ?>> $$12 = $$0.K_().e(mc.aL).a($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            efi<?, ?> $$13 = $$12.a();
+            dwv $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
+         }
+      }
+   }
+
+   private static boolean a(dwv $$0, dfl $$1, ji $$2, int $$3, int $$4) {
+      djk $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   }
+
+   private boolean a(dgh $$0, ji $$1) {
+      for (ji $$2 : ji.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
+         if ($$0.a_($$2).a(awo.V)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

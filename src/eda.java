@@ -1,70 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+public final class eda {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public record eda(int g, int h, int i, int j) {
-   public static final Codec<eda> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(eas.e, eas.d).fieldOf("min_y").forGetter(eda::c),
-                  Codec.intRange(0, eas.c).fieldOf("height").forGetter(eda::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(eda::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(eda::f)
-               )
-               .apply($$0, eda::new)
-      )
-      .comapFlatMap(eda::a, Function.identity());
-   protected static final eda b = a(-64, 384, 1, 2);
-   protected static final eda c = a(0, 128, 1, 2);
-   protected static final eda d = a(0, 128, 2, 1);
-   protected static final eda e = a(-64, 192, 1, 2);
-   protected static final eda f = a(0, 256, 2, 1);
+   private eda() {
+   }
 
-   private static DataResult<eda> a(eda $$0) {
-      if ($$0.c() + $$0.d() > eas.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (eas.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   protected static ecu.c a(ecj $$0, ecj $$1, ecj $$2, edd $$3) {
+      dwv $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         eda.a $$8 = $$6 > 0.0 ? eda.a.a : eda.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = ayy.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               azg $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = ayy.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
+   }
+
+   protected static enum a {
+      a(djm.rC.m(), djm.tI.m(), djm.c.m(), 0, 50),
+      b(djm.T.m(), djm.tH.m(), djm.rb.m(), -60, -8);
+
+      final dwv e;
+      final dwv f;
+      final dwv g;
+      protected final int c;
+      protected final int d;
+
+      private a(final dwv $$0, final dwv $$1, final dwv $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
-   }
-
-   public static eda a(int $$0, int $$1, int $$2, int $$3) {
-      eda $$4 = new eda($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
-   }
-
-   public int a() {
-      return kc.c(this.f());
-   }
-
-   public int b() {
-      return kc.c(this.e());
-   }
-
-   public eda a(dgk $$0) {
-      int $$1 = Math.max(this.g, $$0.L_());
-      int $$2 = Math.min(this.g + this.h, $$0.an() + 1) - $$1;
-      return new eda($$1, $$2, this.i, this.j);
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
    }
 }

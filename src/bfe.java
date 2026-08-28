@@ -2,29 +2,25 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bfe extends DataFix {
-   public bfe(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bfe(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhw.G);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bfe::a));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bfe::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bfe::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+      return this.fixTypeEverywhereTyped(
+         "BlockEntityLockToComponentFix", this.getInputSchema().getType(bhv.s), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Optional<? extends Dynamic<?>> $$1 = $$0x.get("lock").result();
+               if ($$1.isEmpty()) {
+                  return $$0x;
+               } else {
+                  Dynamic<?> $$2 = bff.b($$1.get());
+                  return $$2 != null ? $$0x.set("lock", $$2) : $$0x.remove("lock");
+               }
+            })
+      );
    }
 }

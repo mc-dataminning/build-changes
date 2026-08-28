@@ -12,7 +12,7 @@ public class anl {
    }
 
    private static int a(ex $$0) {
-      return a($$0, cox::p_);
+      return a($$0, cov::p_);
    }
 
    private static int b(ex $$0) {
@@ -20,7 +20,7 @@ public class anl {
    }
 
    private static int a(ex $$0, Function<ard, wo> $$1) {
-      avd $$2 = $$0.l().ag();
+      avc $$2 = $$0.l().ag();
       List<ard> $$3 = $$2.t();
       wo $$4 = wr.b($$3, $$1);
       $$0.a(() -> wo.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);

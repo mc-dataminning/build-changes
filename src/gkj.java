@@ -1,19 +1,49 @@
-public class gkj extends gkg {
-   private final fba a;
+import java.util.Optional;
+import org.joml.Quaternionf;
 
-   gkj(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fba $$7, int $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      $$8 = axk.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
-      this.v = (float)axk.b($$8) / 255.0F;
-      this.w = (float)axk.c($$8) / 255.0F;
-      this.x = (float)axk.d($$8) / 255.0F;
-      this.D = 0.26F;
-      this.a = $$7;
+public class gkj extends gke {
+   private final ebv a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
+
+   gkj(gfw $$0, double $$1, double $$2, double $$3, ebv $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<fay> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         fay $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)ayy.d($$8, $$10);
+         this.H = this.G = (float)ayy.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
    @Override
-   public gjk b() {
-      return gjk.b;
+   public void a(ffw $$0, fkp $$1, float $$2) {
+      float $$3 = ayy.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = ayy.h($$2, this.F, this.b);
+      float $$5 = ayy.h($$2, this.H, this.G) + (float) (Math.PI / 2);
+      Quaternionf $$6 = new Quaternionf();
+      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gji b() {
+      return gji.c;
    }
 
    @Override
@@ -24,30 +54,38 @@ public class gkj extends gkg {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         int $$0 = this.t - this.s;
-         double $$1 = 1.0 / (double)$$0;
-         this.g = ayz.d($$1, this.g, this.a.a());
-         this.h = ayz.d($$1, this.h, this.a.b());
-         this.i = ayz.d($$1, this.i, this.a.c());
+         Optional<fay> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            fay $$3 = $$0.get();
+            this.g = ayy.d($$2, this.g, $$3.a());
+            this.h = ayy.d($$2, this.h, $$3.b());
+            this.i = ayy.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)ayy.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)ayy.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         }
       }
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static class a implements gjh<lz> {
+      private final gjz a;
 
-   public static class a implements gjj<ly> {
-      private final gkb a;
-
-      public a(gkb $$0) {
+      public a(gjz $$0) {
          this.a = $$0;
       }
 
-      public gjg a(ly $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkj $$8 = new gkj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+      public gje a(lz $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkj $$8 = new gkj($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
          $$8.a(this.a);
-         $$8.a($$0.d());
+         $$8.e(1.0F);
          return $$8;
       }
    }

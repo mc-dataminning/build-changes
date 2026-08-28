@@ -1,157 +1,28 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.EnumMap;
 
-public class ggc implements fc {
-   private final gfz a;
-   private final flj b;
-   private int d = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> e;
-   private final Set<String> f = new HashSet<>();
+public class ggc {
+   public static final int a = 5000;
+   private final gfx b;
+   private final foy c;
+   private final EnumMap<bnc, Long> d;
 
-   public ggc(gfz $$0, flj $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ggc(gfx $$0, foy $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(bnc.class);
    }
 
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (ggk $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public Collection<String> y() {
-      if (this.f.isEmpty()) {
-         return this.q();
-      } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.f);
-         return $$0;
+   public void a() {
+      if (this.c.g()) {
+         this.a(bnc.a);
       }
    }
 
-   @Override
-   public Collection<String> z() {
-      return (Collection<String>)(this.b.w != null && this.b.w.d() == fay.a.c ? Collections.singleton(((fax)this.b.w).a().cH()) : Collections.emptyList());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.a.z().f();
-   }
-
-   @Override
-   public Stream<aku> s() {
-      return this.b.ak().d().stream();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      gkv $$1 = this.b.t;
-      return $$1 != null ? $$1.s($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(akt<? extends ke<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.u().a($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.e != null) {
-         this.e.cancel(false);
-      }
-
-      this.e = new CompletableFuture<>();
-      int $$1 = ++this.d;
-      this.a.b(new ags($$1, $$0.getInput()));
-      return this.e;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<fc.b> A() {
-      fay $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == fay.a.b) {
-         ji $$1 = ((faw)$$0).b();
-         return Collections.singleton(new fc.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return fc.super.A();
-      }
-   }
-
-   @Override
-   public Collection<fc.b> B() {
-      fay $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == fay.a.b) {
-         fba $$1 = $$0.g();
-         return Collections.singleton(new fc.b(a($$1.d), a($$1.e), a($$1.f)));
-      } else {
-         return fc.super.B();
-      }
-   }
-
-   @Override
-   public Set<akt<dgi>> t() {
-      return this.a.u();
-   }
-
-   @Override
-   public kf u() {
-      return this.a.v();
-   }
-
-   @Override
-   public crt v() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.d) {
-         this.e.complete($$1);
-         this.e = null;
-         this.d = -1;
-      }
-   }
-
-   public void a(acj.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.f.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.f::remove);
-            break;
-         case c:
-            this.f.clear();
-            this.f.addAll($$1);
+   private void a(bnc $$0) {
+      long $$1 = af.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new agy($$0));
+         this.d.put($$0, $$1);
       }
    }
 }

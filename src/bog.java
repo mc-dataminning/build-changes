@@ -1,50 +1,22 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public interface bog {
-   static boa<StringReader> a(String $$0) {
-      return new bog.b($$0);
+public class bog implements bnw<StringReader, un> {
+   public static final bnw<StringReader, un> a = new bog();
+
+   private bog() {
    }
 
-   static boa<StringReader> a(char $$0) {
-      return new bog.a($$0);
-   }
+   @Override
+   public Optional<un> a(bnv<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
 
-   public static record a(char a) implements boa<StringReader> {
-      @Override
-      public boolean a(bnw<StringReader> $$0, bny $$1, bns $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         }
-      }
-
-      public char c() {
-         return this.a;
-      }
-   }
-
-   public static record b(String a) implements boa<StringReader> {
-      @Override
-      public boolean a(bnw<StringReader> $$0, bny $$1, bns $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      public String c() {
-         return this.a;
+      try {
+         return Optional.of(new uo($$0.b()).d());
+      } catch (Exception var4) {
+         $$0.a().a($$1, var4);
+         return Optional.empty();
       }
    }
 }

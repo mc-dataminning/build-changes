@@ -1,18 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public enum fyn implements daw {
-   a(dbg.c, dbg.a, dbg.d, dbg.b),
-   b(dbg.e, dbg.f, dbg.g),
-   c(dbg.h, dbg.i),
-   d(dbg.j);
-
-   private final List<dbh> e;
-
-   private fyn(final dbh... $$0) {
-      this.e = List.of($$0);
-   }
-
-   public List<dbh> a() {
-      return this.e;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fyn {
 }

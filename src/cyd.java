@@ -1,20 +1,28 @@
-public class cyd extends cwl {
-   public cyd(cyg $$0, float $$1, float $$2, cwl.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+import java.util.List;
+
+public class cyd extends cuo {
+   public cyd(cwj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dwx $$0, dgi $$1, ji $$2, cox $$3) {
-      return !$$3.b();
+   public cwn n() {
+      cwn $$0 = super.n();
+      $$0.b(kv.Q, new cym(cyn.C));
+      return $$0;
    }
 
    @Override
-   public boolean a(cwp $$0, bvg $$1, bvg $$2) {
-      return true;
+   public void a(cwn $$0, cwj.b $$1, List<wo> $$2, cyf $$3) {
+      cym $$4 = $$0.a(kv.Q);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1.b());
+      }
    }
 
    @Override
-   public void b(cwp $$0, bvg $$1, bvg $$2) {
-      $$0.a(1, $$2, bus.a);
+   public wo a(cwn $$0) {
+      cym $$1 = $$0.a(kv.Q);
+      return $$1 != null ? $$1.a(this.l + ".effect.") : super.a($$0);
    }
 }

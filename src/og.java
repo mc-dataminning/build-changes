@@ -5,15 +5,15 @@ import javax.annotation.Nullable;
 
 public class og implements nz {
    private final oa b;
-   private final cwl c;
-   private final dba d;
+   private final cwj c;
+   private final day d;
    private final int e;
    private final Map<String, aq<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final dbw.a<?> h;
+   private final dbu.a<?> h;
 
-   public og(oa $$0, dbw.a<?> $$1, dba $$2, dgh $$3, int $$4) {
+   public og(oa $$0, dbu.a<?> $$1, day $$2, dgf $$3, int $$4) {
       this.b = $$0;
       this.h = $$1;
       this.c = $$3.j();
@@ -21,12 +21,12 @@ public class og implements nz {
       this.e = $$4;
    }
 
-   public static og a(dba $$0, oa $$1, dgh $$2) {
-      return new og($$1, dce::new, $$0, $$2, 1);
+   public static og a(day $$0, oa $$1, dgf $$2) {
+      return new og($$1, dcc::new, $$0, $$2, 1);
    }
 
-   public static og a(dba $$0, oa $$1, dgh $$2, int $$3) {
-      return new og($$1, dce::new, $$0, $$2, $$3);
+   public static og a(day $$0, oa $$1, dgf $$2, int $$3) {
+      return new og($$1, dcc::new, $$0, $$2, $$3);
    }
 
    public og b(String $$0, aq<?> $$1) {
@@ -40,20 +40,20 @@ public class og implements nz {
    }
 
    @Override
-   public cwl a() {
+   public cwj a() {
       return this.c;
    }
 
    @Override
-   public void a(ob $$0, akt<dbe<?>> $$1) {
+   public void a(ob $$0, akt<dbc<?>> $$1) {
       this.a($$1);
       ah.a $$2 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
       this.f.forEach($$2::a);
-      dbw $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cwp(this.c, this.e));
+      dbu $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cwn(this.c, this.e));
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(akt<dbe<?>> $$0) {
+   private void a(akt<dbc<?>> $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

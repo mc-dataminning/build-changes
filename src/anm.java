@@ -30,17 +30,17 @@ public class anm {
       );
    }
 
-   private static Optional<? extends jv.b<enm>> a(gb.c<enm> $$0, ke<enm> $$1) {
-      return (Optional<? extends jv.b<enm>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> jv.a($$0xx)), $$1::a);
+   private static Optional<? extends jv.b<enk>> a(gb.c<enk> $$0, ke<enk> $$1) {
+      return (Optional<? extends jv.b<enk>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> jv.a($$0xx)), $$1::a);
    }
 
-   private static int a(ex $$0, gb.c<enm> $$1) throws CommandSyntaxException {
-      ke<enm> $$2 = $$0.e().K_().e(mc.aU);
-      jv<enm> $$3 = (jv<enm>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(ex $$0, gb.c<enk> $$1) throws CommandSyntaxException {
+      ke<enk> $$2 = $$0.e().K_().e(mc.aU);
+      jv<enk> $$3 = (jv<enk>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       ji $$4 = ji.a((kb)$$0.d());
       arc $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(af.d);
-      Pair<ji, jr<enm>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
+      Pair<ji, jr<enk>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class anm {
       }
    }
 
-   private static int a(ex $$0, ga.c<dhk> $$1) throws CommandSyntaxException {
+   private static int a(ex $$0, ga.c<dhi> $$1) throws CommandSyntaxException {
       ji $$2 = ji.a((kb)$$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(af.d);
-      Pair<ji, jr<dhk>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<ji, jr<dhi>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class anm {
       }
    }
 
-   private static int b(ex $$0, ga.c<cgn> $$1) throws CommandSyntaxException {
+   private static int b(ex $$0, ga.c<cgm> $$1) throws CommandSyntaxException {
       ji $$2 = ji.a((kb)$$0.d());
       arc $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(af.d);
-      Optional<Pair<jr<cgn>, ji>> $$5 = $$3.A().e($$1, $$2, 256, cgk.b.c);
+      Optional<Pair<jr<cgm>, ji>> $$5 = $$3.A().e($$1, $$2, 256, cgj.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());
@@ -86,7 +86,7 @@ public class anm {
 
    private static int a(ex $$0, ji $$1, Pair<ji, ? extends jr<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
       ji $$7 = (ji)$$2.getFirst();
-      int $$8 = $$4 ? ayz.d(ayz.c((float)$$1.j($$7))) : ayz.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
+      int $$8 = $$4 ? ayy.d(ayy.c((float)$$1.j($$7))) : ayy.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
       String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
       wo $$10 = wr.a((wo)wo.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
          .a($$2x -> $$2x.a(n.k).a(new wm(wm.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new wu(wu.a.a, wo.c("chat.coordinates.tooltip"))));
@@ -98,6 +98,6 @@ public class anm {
    private static float a(int $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$2 - $$0;
       int $$5 = $$3 - $$1;
-      return ayz.c((float)($$4 * $$4 + $$5 * $$5));
+      return ayy.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

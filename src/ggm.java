@@ -1,144 +1,167 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import java.util.Objects;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ggm {
-   @Nullable
-   private ggm.a a;
-   @Nullable
-   private ggm.b b;
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqy b = new bqy(af.g(), "server-list-io");
+   private static final int c = 16;
+   private final flh d;
+   private final List<ggl> e = Lists.newArrayList();
+   private final List<ggl> f = Lists.newArrayList();
 
-   public void a(akt<? extends ke<?>> $$0, List<ki.a> $$1) {
-      if (this.a == null) {
-         this.a = new ggm.a();
-      }
-
-      this.a.a($$0, $$1);
+   public ggm(flh $$0) {
+      this.d = $$0;
    }
 
-   public void a(Map<akt<? extends ke<?>>, axh.a> $$0) {
-      if (this.b == null) {
-         this.b = new ggm.b();
-      }
-
-      $$0.forEach(this.b::a);
-   }
-
-   private static <T> ke.a<T> a(kf.b $$0, akt<? extends ke<? extends T>> $$1, axh.a $$2) {
-      ke<T> $$3 = $$0.e($$1);
-      return $$3.a($$2.a($$3));
-   }
-
-   private kf a(aus $$0, ggm.a $$1, boolean $$2) {
-      jy<ggb> $$3 = ggb.a();
-      kf.b $$4 = $$3.b(ggb.b);
-      Map<akt<? extends ke<?>>, akp.c> $$5 = new HashMap<>();
-      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new akp.c($$2x, axh.a.a)));
-      List<ke.a<?>> $$6 = new ArrayList<>();
-      if (this.b != null) {
-         this.b.a(($$4x, $$5x) -> {
-            if (!$$5x.a()) {
-               if (ki.a($$4x)) {
-                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
-                     List<ki.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
-                     return new akp.c($$3xx, $$5x);
-                  });
-               } else if (!$$2) {
-                  $$6.add(a($$4, $$4x, $$5x));
-               }
-            }
-         });
-      }
-
-      List<jt.b<?>> $$7 = axg.a($$4, $$6);
-
-      kf.b $$8;
+   public void a() {
       try {
-         $$8 = akp.a($$5, $$0, $$7, akp.c).e();
-      } catch (Exception var13) {
-         o $$10 = o.a(var13, "Network Registry Load");
-         a($$10, $$5, $$6);
-         throw new z($$10);
+         this.e.clear();
+         this.f.clear();
+         tq $$0 = ud.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         tw $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            tq $$3 = $$1.a($$2);
+            ggl $$4 = ggl.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
+   }
+
+   public void b() {
+      try {
+         tw $$0 = new tw();
+
+         for (ggl $$1 : this.e) {
+            tq $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (ggl $$3 : this.f) {
+            tq $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         tq $$5 = new tq();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         ud.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         af.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
+   }
+
+   public ggl a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Nullable
+   public ggl a(String $$0) {
+      for (ggl $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
       }
 
-      kf $$12 = $$3.a(ggb.b, $$8).a();
-      $$6.forEach(ke.a::d);
-      return $$12;
-   }
-
-   private static void a(o $$0, Map<akt<? extends ke<?>>, akp.c> $$1, List<ke.a<?>> $$2) {
-      p $$3 = $$0.a("Received Elements and Tags");
-      $$3.a(
-         "Dynamic Registries",
-         () -> $$1.entrySet()
-               .stream()
-               .sorted(Comparator.comparing($$0xx -> ((akt)$$0xx.getKey()).a()))
-               .map(
-                  $$0xx -> String.format(
-                        Locale.ROOT,
-                        "\n\t\t%s: elements=%d tags=%d",
-                        ((akt)$$0xx.getKey()).a(),
-                        ((akp.c)$$0xx.getValue()).a().size(),
-                        ((akp.c)$$0xx.getValue()).b().b()
-                     )
-               )
-               .collect(Collectors.joining())
-      );
-      $$3.a(
-         "Static Registries",
-         () -> $$2.stream()
-               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
-               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
-               .collect(Collectors.joining())
-      );
-   }
-
-   private void a(ggm.b $$0, kf.b $$1, boolean $$2) {
-      $$0.a(($$2x, $$3) -> {
-         if ($$2 || ki.a($$2x)) {
-            a($$1, $$2x, $$3).d();
+      for (ggl $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
          }
-      });
+      }
+
+      return null;
    }
 
-   public kf.b a(aus $$0, kf.b $$1, boolean $$2) {
-      kf $$3;
-      if (this.a != null) {
-         $$3 = this.a($$0, this.a, $$2);
+   @Nullable
+   public ggl b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         ggl $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(ggl $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(ggl $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
       } else {
-         if (this.b != null) {
-            this.a(this.b, $$1, !$$2);
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      ggl $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, ggl $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(ggl $$0, List<ggl> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ggl $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(ggl $$0) {
+      b.a_(() -> {
+         ggm $$1 = new ggm(flh.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
          }
 
-         $$3 = $$1;
-      }
-
-      return $$3.e();
-   }
-
-   static class a {
-      final Map<akt<? extends ke<?>>, List<ki.a>> a = new HashMap<>();
-
-      public void a(akt<? extends ke<?>> $$0, List<ki.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
-   }
-
-   static class b {
-      private final Map<akt<? extends ke<?>>, axh.a> a = new HashMap<>();
-
-      public void a(akt<? extends ke<?>> $$0, axh.a $$1) {
-         this.a.put($$0, $$1);
-      }
-
-      public void a(BiConsumer<? super akt<? extends ke<?>>, ? super axh.a> $$0) {
-         this.a.forEach($$0);
-      }
+         $$1.b();
+      });
    }
 }

@@ -1,52 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
 
-public abstract class efm extends efy<eij> {
-   public efm(Codec<eij> $$0) {
+public class efm extends efk {
+   public efm(Codec<eih> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eij> $$0) {
-      azh $$1 = $$0.d();
-      dhg $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      Optional<djm> $$4 = mb.e.a(awp.at, $$1).map(jr::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   protected boolean a(dgh $$0, azg $$1, ji $$2, dwv $$3) {
+      ji.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
 
-   protected abstract boolean a(dgj var1, azh var2, ji var3, dwx var4);
-
-   protected boolean b(dgj $$0, azh $$1, ji $$2, dwx $$3) {
-      ji $$4 = $$2.d();
-      dwx $$5 = $$0.a_($$2);
-      if (($$5.a(djo.J) || $$5.a(awp.aw)) && $$0.a_($$4).a(djo.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            mb.e.a(awp.aw, $$1).map(jr::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, djo.nx.m().b(dqo.c, Integer.valueOf($$1.a(4) + 1)), 2);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
          }
 
-         for (jn $$6 : jn.c.a) {
-            if ($$1.i() < 0.2F) {
-               ji $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(djo.J)) {
-                  mb.e.a(awp.au, $$1).map(jr::a).ifPresent($$3x -> {
-                     dwx $$4x = $$3x.m();
-                     if ($$4x.b(dix.c)) {
-                        $$4x = $$4x.b(dix.c, $$6);
-                     }
+         $$4.c(jn.b);
+      }
 
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
+      ji $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<jn> $$9 = jn.c.a.c($$1);
+
+      for (jn $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(jn.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

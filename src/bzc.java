@@ -1,26 +1,48 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bzc {
-   public static bxa<bvg> a() {
-      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.a((cap<bvg>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bwi<?> $$3 = $$1.ec();
-               cqk $$4 = $$0x.d($$1.dw());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cqo.h);
-                     $$3.a(cqo.h);
-                  } else {
-                     $$3.b(cqo.i);
-                     $$3.a(cqo.i);
-                  }
-               }
+   public static bwz<bvn> a(cej<ji> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, fay::c);
+   }
 
-               return true;
-            }
-         }))));
+   public static byj<bvn> b(cej<? extends buj> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, buj::du);
+   }
+
+   private static <T> byj<bvn> a(cej<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fay> $$4) {
+      return cal.a(
+         (Function<cal.b<bvn>, ? extends App<cal.c<bvn>, cao<bvn>>>)($$5 -> $$5.group($$5.a(cej.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cem> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     fay $$11 = $$8.du();
+                     fay $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((kb)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           fay $$13 = $$10.get().a().a().d($$11);
+                           fay $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           fay $$16 = cgd.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cem($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
+                  }
+               }))
+      );
    }
 }

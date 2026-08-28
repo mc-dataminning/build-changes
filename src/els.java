@@ -1,34 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class els extends elt {
-   public static final els a = new els(edm.a(0));
-   public static final MapCodec<els> b = edm.a.fieldOf("value").xmap(els::new, els::b);
-   private final edm d;
+public interface els<P extends elr> {
+   els<elq> a = a("constant", elq.b);
+   els<elu> b = a("uniform", elu.a);
+   els<elp> c = a("biased_to_bottom", elp.a);
+   els<elv> d = a("very_biased_to_bottom", elv.a);
+   els<elt> e = a("trapezoid", elt.a);
+   els<elw> f = a("weighted_list", elw.a);
 
-   public static els a(edm $$0) {
-      return new els($$0);
-   }
+   MapCodec<P> codec();
 
-   private els(edm $$0) {
-      this.d = $$0;
-   }
-
-   public edm b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(azh $$0, edp $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public elu<?> a() {
-      return elu.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
+   private static <P extends elr> els<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.L, $$0, () -> $$1);
    }
 }

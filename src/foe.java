@@ -1,22 +1,38 @@
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public class foe extends hfn {
-   private static final Set<ato<?>> a = Set.of(hfv.a, hgb.c);
+public class foe {
+   public static final float a = 200.0F;
+   private final List<foe.a> b = new ArrayList<>();
 
-   public foe(hek $$0) {
-      super($$0, aku.b("textures/atlas/gui.png"), aku.b("gui"), a);
+   public foe a(foe.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   @Override
-   public hej a(aku $$0) {
-      return super.a($$0);
+   public foe a(foe $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   public hgc a(hej $$0) {
-      return this.b($$0).a();
+   public void a(fob $$0, fkx $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   private hgb b(hej $$0) {
-      return $$0.e().f().a(hgb.c).orElse(hgb.a);
+   private void b(fob $$0, fkx $$1) {
+      for (foe.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
+   }
+
+   public interface a {
+      void render(fob var1, fkx var2);
    }
 }

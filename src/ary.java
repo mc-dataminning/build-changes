@@ -32,18 +32,18 @@ public class ary extends ask {
    @Nullable
    public static ask a(String $$0) {
       try {
-         JsonObject $$1 = ayp.a($$0);
-         URI $$2 = new URI(ayp.i($$1, "apiServer"));
-         String $$3 = ayp.i($$1, "apiKey");
+         JsonObject $$1 = ayo.a($$0);
+         URI $$2 = new URI(ayo.i($$1, "apiServer"));
+         String $$3 = ayo.i($$1, "apiKey");
          if ($$3.isEmpty()) {
             throw new IllegalArgumentException("Missing API key");
          } else {
-            int $$4 = ayp.a($$1, "ruleId", 1);
-            String $$5 = ayp.a($$1, "serverId", "");
-            String $$6 = ayp.a($$1, "roomId", "Java:Chat");
-            int $$7 = ayp.a($$1, "hashesToDrop", -1);
-            int $$8 = ayp.a($$1, "maxConcurrentRequests", 7);
-            JsonObject $$9 = ayp.a($$1, "endpoints", null);
+            int $$4 = ayo.a($$1, "ruleId", 1);
+            String $$5 = ayo.a($$1, "serverId", "");
+            String $$6 = ayo.a($$1, "roomId", "Java:Chat");
+            int $$7 = ayo.a($$1, "hashesToDrop", -1);
+            int $$8 = ayo.a($$1, "maxConcurrentRequests", 7);
+            JsonObject $$9 = ayo.a($$1, "endpoints", null);
             String $$10 = a($$9, "chat", "v1/chat");
             boolean $$11 = $$10.equals("v1/chat");
             URL $$12 = $$2.resolve("/" + $$10).toURL();
@@ -138,15 +138,15 @@ public class ary extends ask {
 
    @Override
    protected arv a(String $$0, ask.a $$1, JsonObject $$2) {
-      boolean $$3 = ayp.a($$2, "response", false);
+      boolean $$3 = ayo.a($$2, "response", false);
       if ($$3) {
          return arv.a($$0);
       } else {
-         String $$4 = ayp.a($$2, "hashed", null);
+         String $$4 = ayo.a($$2, "hashed", null);
          if ($$4 == null) {
             return arv.b($$0);
          } else {
-            JsonArray $$5 = ayp.v($$2, "hashes");
+            JsonArray $$5 = ayo.v($$2, "hashes");
             ws $$6 = this.a($$0, $$5, $$1);
             return new arv($$0, $$6);
          }

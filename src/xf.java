@@ -2,7 +2,7 @@ import com.mojang.authlib.GameProfile;
 import java.time.Duration;
 import java.util.UUID;
 
-public record xf(UUID a, cpa b) {
+public record xf(UUID a, coy b) {
    public xk a(Duration $$0) {
       return new xk.a(this.b.a(), () -> this.b.b().a($$0));
    }
@@ -23,13 +23,13 @@ public record xf(UUID a, cpa b) {
       return this.a;
    }
 
-   public cpa d() {
+   public coy d() {
       return this.b;
    }
 
-   public static record a(UUID a, cpa.a b) {
+   public static record a(UUID a, coy.a b) {
       public static xf.a a(vl $$0) {
-         return new xf.a($$0.n(), new cpa.a($$0));
+         return new xf.a($$0.n(), new coy.a($$0));
       }
 
       public static void a(vl $$0, xf.a $$1) {
@@ -37,8 +37,8 @@ public record xf(UUID a, cpa b) {
          $$1.b.a($$0);
       }
 
-      public xf a(GameProfile $$0, azm $$1) throws cpa.b {
-         return new xf(this.a, cpa.a($$1, $$0.getId(), this.b));
+      public xf a(GameProfile $$0, azl $$1) throws coy.b {
+         return new xf(this.a, coy.a($$1, $$0.getId(), this.b));
       }
    }
 }

@@ -1,71 +1,49 @@
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class cuw extends cwl {
-   private final bur<? extends cqu> a;
-
-   public cuw(bur<? extends cqu> $$0, cwl.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cuw extends cwj {
+   public cuw(cwj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsj a(dgi $$0, cox $$1, bsi $$2) {
-      cwp $$3 = $$1.b($$2);
-      fay $$4 = a($$0, $$1, dfq.b.c);
-      if ($$4.d() == fay.a.a) {
-         return bsj.e;
-      } else {
-         fba $$5 = $$1.g(1.0F);
-         double $$6 = 5.0;
-         List<buk> $$7 = $$0.a($$1, $$1.cR().b($$5.c(5.0)).g(1.0), bup.h);
-         if (!$$7.isEmpty()) {
-            fba $$8 = $$1.bF();
-
-            for (buk $$9 : $$7) {
-               fav $$10 = $$9.cR().g((double)$$9.bS());
-               if ($$10.d($$8)) {
-                  return bsj.e;
-               }
-            }
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      List<buc> $$3 = $$0.a(buc.class, $$1.cR().g(2.0), $$0x -> $$0x != null && $$0x.bL() && $$0x.n() instanceof cjt);
+      cwn $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         buc $$5 = $$3.get(0);
+         $$5.a($$5.c() - 0.5F);
+         $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), avz.cD, awa.g, 1.0F, 1.0F);
+         $$0.a($$1, ebr.y, $$1.du());
+         if ($$1 instanceof ard $$6) {
+            ap.T.a($$6, $$4, $$5);
          }
 
-         if ($$4.d() == fay.a.b) {
-            cqu $$11 = this.a($$0, $$4, $$3, $$1);
-            if ($$11 == null) {
-               return bsj.d;
-            } else {
-               $$11.v($$1.dM());
-               if (!$$0.a($$11, $$11.cR())) {
-                  return bsj.d;
-               } else {
-                  if (!$$0.C) {
-                     $$0.b($$11);
-                     $$0.a($$1, ebt.t, $$4.g());
-                     $$3.a(1, $$1);
-                  }
+         return bsi.a.a(this.a($$4, $$1, new cwn(cwr.wn)));
+      } else {
+         fau $$7 = a($$0, $$1, dfo.b.b);
+         if ($$7.d() == faw.a.a) {
+            return bsi.e;
+         } else {
+            if ($$7.d() == faw.a.b) {
+               ji $$8 = $$7.b();
+               if (!$$0.a($$1, $$8)) {
+                  return bsi.e;
+               }
 
-                  $$1.b(awk.c.b(this));
-                  return bsj.a;
+               if ($$0.b_($$8).a(awu.a)) {
+                  $$0.a($$1, $$1.dB(), $$1.dD(), $$1.dH(), avz.cC, awa.g, 1.0F, 1.0F);
+                  $$0.a($$1, ebr.y, $$8);
+                  return bsi.a.a(this.a($$4, $$1, cym.a(cwr.ti, cyn.a)));
                }
             }
-         } else {
-            return bsj.e;
+
+            return bsi.e;
          }
       }
    }
 
-   @Nullable
-   private cqu a(dgi $$0, fay $$1, cwp $$2, cox $$3) {
-      cqu $$4 = this.a.a($$0, buq.m);
-      if ($$4 != null) {
-         fba $$5 = $$1.g();
-         $$4.p($$5.d, $$5.e, $$5.f);
-         if ($$0 instanceof arc $$6) {
-            bur.<cqu>a($$6, $$2, $$3).accept($$4);
-         }
-      }
-
-      return $$4;
+   protected cwn a(cwn $$0, cov $$1, cwn $$2) {
+      $$1.b(awj.c.b(this));
+      return cwq.a($$0, $$1, $$2);
    }
 }

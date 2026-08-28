@@ -1,197 +1,136 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-public class fcg extends eul {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final fcf c;
+public class fcg {
+   private static final Map<String, fcg> a = Maps.newHashMap();
+   private static final Map<String, fcg> o = Maps.newHashMap();
+   public static final fcg b = b("dummy");
+   public static final fcg c = b("trigger");
+   public static final fcg d = b("deathCount");
+   public static final fcg e = b("playerKillCount");
+   public static final fcg f = b("totalKillCount");
+   public static final fcg g = a("health", true, fcg.a.b);
+   public static final fcg h = a("food", true, fcg.a.a);
+   public static final fcg i = a("air", true, fcg.a.a);
+   public static final fcg j = a("armor", true, fcg.a.a);
+   public static final fcg k = a("xp", true, fcg.a.a);
+   public static final fcg l = a("level", true, fcg.a.a);
+   public static final fcg[] m = new fcg[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final fcg[] n = new fcg[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final fcg.a r;
 
-   public fcg(fcf $$0) {
-      this.c = $$0;
+   private static fcg a(String $$0, boolean $$1, fcg.a $$2) {
+      fcg $$3 = new fcg($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
    }
 
-   public fcg b(tq $$0, jt.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
+   private static fcg b(String $$0) {
+      return a($$0, false, fcg.a.a);
    }
 
-   private void a(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         tq $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         fca $$5 = this.c.c($$4);
-         wo $$6 = wo.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
-
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            wo $$7 = wo.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
-            }
-         }
-
-         if ($$3.b("MemberNameSuffix", 8)) {
-            wo $$8 = wo.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
-            }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            fch.b $$9 = fch.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            fch.b $$10 = fch.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            fch.a $$11 = fch.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
-      }
+   protected fcg(String $$0) {
+      this($$0, false, fcg.a.a);
    }
 
-   private void a(fca $$0, tw $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
+   protected fcg(String $$0, boolean $$1, fcg.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
    }
 
-   private void a(tq $$0) {
-      for (String $$1 : $$0.e()) {
-         fbw $$2 = fbw.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            fbx $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
-         }
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<fcg> a(String $$0) {
+      fcg $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : mb.v.b(aku.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, aku.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   private void b(tw $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         tq $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         fci $$5 = fci.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, fci.b.d());
-            return fci.b;
-         });
-         String $$6 = $$3.l("Name");
-         wo $$7 = wo.a.a($$3.l("DisplayName"), $$1);
-         fci.a $$8 = fci.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         ye $$10 = (ye)yg.b.parse($$1.a(ue.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
+   private static <T> Optional<fcg> a(awi<T> $$0, aku $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   @Override
-   public tq a(tq $$0, jt.a $$1) {
-      $$0.a("Objectives", this.c($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.b($$1));
-      this.b($$0);
-      return $$0;
+   public String d() {
+      return this.p;
    }
 
-   private tw b(jt.a $$0) {
-      tw $$1 = new tw();
-
-      for (fca $$3 : this.c.g()) {
-         tq $$4 = new tq();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", wo.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", wo.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", wo.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         tw $$5 = new tw();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(ul.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
+   public boolean e() {
+      return this.q;
    }
 
-   private void b(tq $$0) {
-      tq $$1 = new tq();
-
-      for (fbw $$2 : fbw.values()) {
-         fbx $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
+   public fcg.a f() {
+      return this.r;
    }
 
-   private tw c(jt.a $$0) {
-      tw $$1 = new tw();
+   public static enum a implements azu {
+      a("integer"),
+      b("hearts");
 
-      for (fbx $$3 : this.c.c()) {
-         tq $$4 = new tq();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", wo.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         ye $$5 = $$3.f();
-         if ($$5 != null) {
-            yg.b.encodeStart($$0.a(ue.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
-         }
+      private final String d;
+      public static final azu.a<fcg.a> c = azu.a(fcg.a::values);
 
-         $$1.add($$4);
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
-      return $$1;
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public static fcg.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

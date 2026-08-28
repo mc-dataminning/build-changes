@@ -1,22 +1,40 @@
-import java.io.File;
-import java.time.Duration;
+import com.mojang.blaze3d.platform.GLX;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import javax.annotation.Nullable;
+import org.lwjgl.system.Pointer;
 
 public class feh {
-   private static final Duration a = Duration.ofSeconds(15L);
+   @Nullable
+   private static final MethodHandle a = GLX.make(() -> {
+      try {
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
+      }
+   });
 
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
+   public static void a(long $$0) {
+      if (a != null) {
          try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
          }
+      }
+   }
 
-         o $$3 = apw.a("Client shutdown", $$1);
-         flj.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

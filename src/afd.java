@@ -1,5 +1,5 @@
-public record afd(int b, cwp c) implements yv<abk> {
-   public static final ym<vz, afd> a = ym.a(yk.h, afd::b, cwp.g, afd::e, afd::new);
+public record afd(int b, cwn c) implements yv<abk> {
+   public static final ym<vz, afd> a = ym.a(yk.h, afd::b, cwn.g, afd::e, afd::new);
 
    @Override
    public yx<afd> a() {
@@ -10,7 +10,7 @@ public record afd(int b, cwp c) implements yv<abk> {
       $$0.a(this);
    }
 
-   public cwp e() {
+   public cwn e() {
       return this.c;
    }
 }

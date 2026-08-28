@@ -1,21 +1,18 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eej extends eek {
-   public static final MapCodec<eej> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eej::new));
+class eej implements edx {
+   public static eej a = new eej();
+   public static final MapCodec<eej> e = MapCodec.unit(() -> a);
 
-   public eej(km $$0) {
-      super($$0);
+   private eej() {
+   }
+
+   public boolean a(dhe $$0, ji $$1) {
+      return true;
    }
 
    @Override
-   protected boolean a(dwx $$0) {
-      return $$0.e();
-   }
-
-   @Override
-   public eea<?> a() {
-      return eea.e;
+   public edy<?> a() {
+      return edy.l;
    }
 }

@@ -27,7 +27,7 @@ public class aml {
                                              (ex)$$0x.getSource(),
                                              fk.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bta(fw.a($$0x, "damageType", mc.s))
+                                             new bsz(fw.a($$0x, "damageType", mc.s))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class aml {
                                                       (ex)$$0x.getSource(),
                                                       fk.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bta(fw.a($$0x, "damageType", mc.s), ha.a($$0x, "location"))
+                                                      new bsz(fw.a($$0x, "damageType", mc.s), ha.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class aml {
                                                       (ex)$$0x.getSource(),
                                                       fk.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bta(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"))
+                                                      new bsz(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class aml {
                                                                (ex)$$0x.getSource(),
                                                                fk.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bta(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"), fk.a($$0x, "cause"))
+                                                               new bsz(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"), fk.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class aml {
       );
    }
 
-   private static int a(ex $$0, buk $$1, float $$2, bta $$3) throws CommandSyntaxException {
+   private static int a(ex $$0, buj $$1, float $$2, bsz $$3) throws CommandSyntaxException {
       if ($$1.a($$0.e(), $$3, $$2)) {
          $$0.a(() -> wo.a("commands.damage.success", $$2, $$1.p_()), true);
          return 1;

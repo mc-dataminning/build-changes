@@ -1,18 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class ekb<P extends eka> {
-   public static final ekb<ejz> a = a("mangrove_root_placer", ejz.c);
-   private final MapCodec<P> b;
+public abstract class ekb {
+   public static final Codec<ekb> a = mb.T.q().dispatch(ekb::a, ekc::a);
 
-   private static <P extends eka> ekb<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.W, $$0, new ekb<>($$1));
+   public static ekk a(dwv $$0) {
+      return new ekk($$0);
    }
 
-   private ekb(MapCodec<P> $$0) {
-      this.b = $$0;
+   public static ekk a(djk $$0) {
+      return new ekk($$0.m());
    }
 
-   public MapCodec<P> a() {
-      return this.b;
-   }
+   protected abstract ekc<?> a();
+
+   public abstract dwv a(azg var1, ji var2);
 }

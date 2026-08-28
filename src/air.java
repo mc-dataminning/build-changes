@@ -41,8 +41,8 @@ public class air implements yv<aip> {
       return this.b;
    }
 
-   public PublicKey e() throws axy {
-      return axx.a(this.c);
+   public PublicKey e() throws axx {
+      return axw.a(this.c);
    }
 
    public byte[] f() {

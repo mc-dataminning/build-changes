@@ -1,44 +1,29 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class cyc extends cxh implements cxi {
+   public static float a = 0.5F;
 
-public class cyc extends cuv {
-   protected final djm b;
-   private final jn c;
-
-   public cyc(djm $$0, djm $$1, jn $$2, cwl.a $$3) {
-      super($$0, $$3);
-      this.b = $$1;
-      this.c = $$2;
+   public cyc(cwj.a $$0) {
+      super($$0);
    }
 
-   protected boolean a(dgl $$0, dwx $$1, ji $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
    @Override
-   protected dwx c(dag $$0) {
-      dwx $$1 = this.b.a($$0);
-      dwx $$2 = null;
-      dgl $$3 = $$0.q();
-      ji $$4 = $$0.a();
-
-      for (jn $$5 : $$0.f()) {
-         if ($$5 != this.c.g()) {
-            dwx $$6 = $$5 == this.c ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      cwn $$3 = $$1.b($$2);
+      if ($$0 instanceof arc $$4) {
+         cpo.a(cqa::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
       }
 
-      return $$2 != null && $$3.a($$2, $$4, fbf.a()) ? $$2 : null;
+      $$1.b(awj.c.b(this));
+      $$3.a(1, $$1);
+      return bsi.a;
    }
 
    @Override
-   public void a(Map<djm, cwl> $$0, cwl $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.b, $$1);
+   public cpo a(dgg $$0, kb $$1, cwn $$2, jn $$3) {
+      return new cqa($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   }
+
+   @Override
+   public cxi.a b() {
+      return cxi.a.a().a(cxi.a.a.c() * 0.5F).b(cxi.a.a.d() * 1.25F).a();
    }
 }

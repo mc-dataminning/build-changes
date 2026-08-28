@@ -34,7 +34,7 @@ public interface ke<T> extends Keyable, jt.b<T>, jw<T> {
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.g() + ": " + $$0x)),
             $$0x -> $$0x.h().a()
          );
-      return ayi.a($$0, (Function<jr.c<T>, Lifecycle>)($$0x -> this.d($$0x.h()).map(kd::b).orElse(Lifecycle.experimental())));
+      return ayh.a($$0, (Function<jr.c<T>, Lifecycle>)($$0x -> this.d($$0x.h()).map(kd::b).orElse(Lifecycle.experimental())));
    }
 
    private DataResult<jr.c<T>> a(jr<T> $$0) {
@@ -86,7 +86,7 @@ public interface ke<T> extends Keyable, jt.b<T>, jw<T> {
 
    Set<akt<T>> j();
 
-   Optional<jr.c<T>> a(azh var1);
+   Optional<jr.c<T>> a(azg var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
@@ -127,11 +127,11 @@ public interface ke<T> extends Keyable, jt.b<T>, jw<T> {
 
    jr<T> e(T var1);
 
-   default Iterable<jr<T>> c(axf<T> $$0) {
+   default Iterable<jr<T>> c(axe<T> $$0) {
       return (Iterable<jr<T>>)DataFixUtils.orElse(this.a($$0), List.of());
    }
 
-   default Optional<jr<T>> a(axf<T> $$0, azh $$1) {
+   default Optional<jr<T>> a(axe<T> $$0, azg $$1) {
       return this.a($$0).flatMap($$1x -> $$1x.a($$1));
    }
 
@@ -160,7 +160,7 @@ public interface ke<T> extends Keyable, jt.b<T>, jw<T> {
       };
    }
 
-   ke.a<T> a(axg.c<T> var1);
+   ke.a<T> a(axf.c<T> var1);
 
    public interface a<T> {
       akt<? extends ke<? extends T>> a();

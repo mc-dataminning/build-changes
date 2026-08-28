@@ -17,9 +17,9 @@ public interface jv<T> extends Iterable<jr<T>> {
 
    boolean c();
 
-   Either<axf<T>, List<jr<T>>> d();
+   Either<axe<T>, List<jr<T>>> d();
 
-   Optional<jr<T>> a(azh var1);
+   Optional<jr<T>> a(azg var1);
 
    jr<T> a(int var1);
 
@@ -27,11 +27,11 @@ public interface jv<T> extends Iterable<jr<T>> {
 
    boolean a(ju<T> var1);
 
-   Optional<axf<T>> e();
+   Optional<axe<T>> e();
 
    @Deprecated
    @VisibleForTesting
-   static <T> jv.c<T> a(ju<T> $$0, axf<T> $$1) {
+   static <T> jv.c<T> a(ju<T> $$0, axe<T> $$1) {
       return new jv.c<T>($$0, $$1) {
          @Override
          protected List<jr<T>> g() {
@@ -83,12 +83,12 @@ public interface jv<T> extends Iterable<jr<T>> {
       }
 
       @Override
-      public Either<axf<T>, List<jr<T>>> d() {
+      public Either<axe<T>, List<jr<T>>> d() {
          return Either.right(this.b);
       }
 
       @Override
-      public Optional<axf<T>> e() {
+      public Optional<axe<T>> e() {
          return Optional.empty();
       }
 
@@ -149,7 +149,7 @@ public interface jv<T> extends Iterable<jr<T>> {
       }
 
       @Override
-      public Optional<jr<T>> a(azh $$0) {
+      public Optional<jr<T>> a(azg $$0) {
          return af.b(this.g(), $$0);
       }
 
@@ -166,11 +166,11 @@ public interface jv<T> extends Iterable<jr<T>> {
 
    public static class c<T> extends jv.b<T> {
       private final ju<T> a;
-      private final axf<T> b;
+      private final axe<T> b;
       @Nullable
       private List<jr<T>> c;
 
-      c(ju<T> $$0, axf<T> $$1) {
+      c(ju<T> $$0, axe<T> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -179,7 +179,7 @@ public interface jv<T> extends Iterable<jr<T>> {
          this.c = List.copyOf($$0);
       }
 
-      public axf<T> h() {
+      public axe<T> h() {
          return this.b;
       }
 
@@ -198,12 +198,12 @@ public interface jv<T> extends Iterable<jr<T>> {
       }
 
       @Override
-      public Either<axf<T>, List<jr<T>>> d() {
+      public Either<axe<T>, List<jr<T>>> d() {
          return Either.left(this.b);
       }
 
       @Override
-      public Optional<axf<T>> e() {
+      public Optional<axe<T>> e() {
          return Optional.of(this.b);
       }
 

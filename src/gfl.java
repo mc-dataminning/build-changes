@@ -1,9 +1,22 @@
-@FunctionalInterface
-public interface gfl {
-   static gfl scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
+public class gfl {
+   private final float a;
+   private final float b;
+
+   public gfl(float $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   gfk apply(gfk var1);
+   public float a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
+   }
 }

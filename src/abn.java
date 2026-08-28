@@ -8,7 +8,7 @@ public class abn implements yv<abk> {
    private final int g;
    private final int h;
 
-   public abn(buk $$0, int $$1) {
+   public abn(buj $$0, int $$1) {
       this.g = $$0.ar();
       this.h = $$1;
    }

@@ -1,16 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eig implements eic {
-   public static final Codec<eig> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, eas.c).fieldOf("height").forGetter($$0x -> $$0x.b), dwx.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+public class eig extends ehs {
+   public static final Codec<eig> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ekb.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               ayh.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               ayh.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
             .apply($$0, eig::new)
    );
-   public final int b;
-   public final dwx c;
+   public final int d;
+   public final int e;
 
-   public eig(int $$0, dwx $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eig(ekb $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

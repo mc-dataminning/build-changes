@@ -1,14 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eqz extends erl {
-   public static final MapCodec<eqz> a = MapCodec.unit(() -> eqz.b);
-   public static final eqz b = new eqz();
+public abstract class eqz {
+   public static final Codec<eqz> c = mb.o.q().dispatch("predicate_type", eqz::a, era::codec);
 
-   private eqz() {
-   }
+   public abstract boolean a(ji var1, ji var2, ji var3, azg var4);
 
-   @Override
-   protected ern<?> a() {
-      return ern.j;
-   }
+   protected abstract era<?> a();
 }

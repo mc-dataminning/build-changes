@@ -3,7 +3,7 @@ public class ahk implements yv<agf> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahk(cot $$0) {
+   public ahk(cor $$0) {
       this.c = $$0.b;
    }
 

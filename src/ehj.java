@@ -1,75 +1,79 @@
 import com.mojang.serialization.Codec;
 
-public class ehj extends efy<eix> {
+public class ehj extends efw<eix> {
    public ehj(Codec<eix> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eix> $$0) {
-      eix $$1 = $$0.f();
-      dhg $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+   public boolean a(efy<eix> $$0) {
+      dhe $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      if (a($$1, $$2)) {
          return false;
       } else {
-         dwx $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
+         azg $$3 = $$0.d();
+         eix $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         ji.a $$8 = new ji.a();
 
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayy.a($$3, -$$5, $$5), ayy.a($$3, -$$6, $$6), ayy.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (ji)$$8)) {
+               int $$10 = ayy.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
 
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
 
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
             }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
+
+         return true;
+      }
+   }
+
+   private static boolean a(dgh $$0, ji.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).l());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dgh $$0, azg $$1, ji.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, djm.pd.m().b(dna.e, Integer.valueOf(ayy.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, djm.pe.m(), 2);
+         }
+
+         $$2.c(jn.b);
+      }
+   }
+
+   private static boolean a(dgh $$0, ji $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dwv $$2 = $$0.a_($$1.e());
+         return !$$2.a(djm.ei) && !$$2.a(djm.oP) && !$$2.a(djm.oR);
       }
    }
 }

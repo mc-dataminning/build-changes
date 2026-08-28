@@ -1,11 +1,26 @@
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public interface ezo {
-   @Nullable
-   un a(evr var1);
+public record ezo(aku b) implements ezm {
+   public static final MapCodec<ezo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("source").forGetter(ezo::c)).apply($$0, ezo::new));
 
-   Set<bai<?>> b();
+   @Override
+   public ezl a() {
+      return ezn.b;
+   }
 
-   ezn a();
+   @Override
+   public un a(evp $$0) {
+      return $$0.d().p().aK().a(this.b);
+   }
+
+   @Override
+   public Set<bah<?>> b() {
+      return Set.of();
+   }
+
+   public aku c() {
+      return this.b;
+   }
 }

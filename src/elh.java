@@ -1,29 +1,26 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class elh extends eli {
-   public static final MapCodec<elh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elh::new));
+public class elh<P extends elg> {
+   public static final elh<elf> a = a("straight_trunk_placer", elf.a);
+   public static final elh<elc> b = a("forking_trunk_placer", elc.a);
+   public static final elh<eld> c = a("giant_trunk_placer", eld.a);
+   public static final elh<ele> d = a("mega_jungle_trunk_placer", ele.b);
+   public static final elh<ela> e = a("dark_oak_trunk_placer", ela.a);
+   public static final elh<elb> f = a("fancy_trunk_placer", elb.a);
+   public static final elh<eky> g = a("bending_trunk_placer", eky.a);
+   public static final elh<eli> h = a("upwards_branching_trunk_placer", eli.a);
+   public static final elh<ekz> i = a("cherry_trunk_placer", ekz.a);
+   private final MapCodec<P> j;
 
-   public elh(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends elg> elh<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.V, $$0, new elh<>($$1));
    }
 
-   @Override
-   protected elj<?> a() {
-      return elj.a;
+   private elh(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public List<ejo.a> a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, int $$3, ji $$4, eiy $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
-
-      return ImmutableList.of(new ejo.a($$4.b($$3), 0, false));
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

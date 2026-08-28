@@ -1,7 +1,11 @@
 public interface bnf {
-   void a(long[] var1);
+   int c();
 
-   void a(long var1);
+   int d();
 
-   void a(long var1, int var3);
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

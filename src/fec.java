@@ -1,134 +1,221 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
 import java.util.Objects;
 
-public class fec extends fee {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final fec.b l = new fec.b(854, 480);
+public abstract class fec {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int l = 2;
+   private static final int m = 3;
+   public int c;
+   public int d;
+   public int e;
+   public int f;
+   public final boolean g;
+   public int h;
+   protected int i;
+   protected int j;
+   private final float[] n = af.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
+   public int k;
 
-   public fec(int $$0, int $$1) {
-      super(true);
-      this.e($$0, $$1);
+   public fec(boolean $$0) {
+      this.g = $$0;
+      this.h = -1;
+      this.i = -1;
+      this.j = -1;
    }
 
-   private void e(int $$0, int $$1) {
-      fec.b $$2 = this.f($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
+   public void a(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._enableDepthTest();
+      if (this.h >= 0) {
+         this.a();
+      }
+
+      this.b($$0, $$1);
       GlStateManager._glBindFramebuffer(36160, 0);
    }
 
-   private fec.b f(int $$0, int $$1) {
+   public void a() {
       RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      fec.a $$2 = fec.a.a;
+      this.d();
+      this.e();
+      if (this.j > -1) {
+         TextureUtil.releaseTextureId(this.j);
+         this.j = -1;
+      }
 
-      for (fec.b $$3 : fec.b.a($$0, $$1)) {
-         $$2 = fec.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(fec.a.b);
+      if (this.i > -1) {
+         TextureUtil.releaseTextureId(this.i);
+         this.i = -1;
+      }
+
+      if (this.h > -1) {
+         GlStateManager._glBindFramebuffer(36160, 0);
+         GlStateManager._glDeleteFramebuffers(this.h);
+         this.h = -1;
+      }
+   }
+
+   public void a(fec $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36008, $$0.h);
+      GlStateManager._glBindFramebuffer(36009, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2 = RenderSystem.maxSupportedTextureSize();
+      if ($$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.c = $$0;
+         this.d = $$1;
+         this.h = GlStateManager.glGenFramebuffers();
+         this.i = TextureUtil.generateTextureId();
+         if (this.g) {
+            this.j = TextureUtil.generateTextureId();
+            GlStateManager._bindTexture(this.j);
+            GlStateManager._texParameter(3553, 10241, 9728);
+            GlStateManager._texParameter(3553, 10240, 9728);
+            GlStateManager._texParameter(3553, 34892, 0);
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
          }
 
-         if (this.b($$3)) {
-            $$2 = $$2.a(fec.a.c);
+         this.a(9728, true);
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10242, 33071);
+         GlStateManager._texParameter(3553, 10243, 33071);
+         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
+         GlStateManager._glBindFramebuffer(36160, this.h);
+         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+         if (this.g) {
+            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
          }
 
-         if ($$2 == fec.a.d) {
-            return $$3;
-         }
+         this.b();
+         this.f();
+         this.d();
+      } else {
+         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$2 + ")");
       }
-
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
    }
 
-   private boolean a(fec.b $$0) {
+   public void a(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
       RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
+      if ($$1 || $$0 != this.k) {
+         this.k = $$0;
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10241, $$0);
+         GlStateManager._texParameter(3553, 10240, $$0);
+         GlStateManager._bindTexture(0);
+      }
    }
 
-   private boolean b(fec.b $$0) {
+   public void b() {
       RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final fec.a[] e = values();
-
-      fec.a a(fec.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final int b;
-
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      static List<fec.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new fec.b($$0, $$1), fec.l) : ImmutableList.of(fec.l);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fec.b $$1 = (fec.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
+      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
+      if ($$0 != 36053) {
+         if ($$0 == 36054) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+         } else if ($$0 == 36055) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+         } else if ($$0 == 36059) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
+         } else if ($$0 == 36060) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
+         } else if ($$0 == 36061) {
+            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
+         } else if ($$0 == 1285) {
+            throw new RuntimeException("GL_OUT_OF_MEMORY");
          } else {
-            return false;
+            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
          }
       }
+   }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
+   public void c() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._bindTexture(this.i);
+   }
+
+   public void d() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture(0);
+   }
+
+   public void a(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      if ($$0) {
+         GlStateManager._viewport(0, 0, this.e, this.f);
+      }
+   }
+
+   public void e() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.n[0] = $$0;
+      this.n[1] = $$1;
+      this.n[2] = $$2;
+      this.n[3] = $$3;
+   }
+
+   public void c(int $$0, int $$1) {
+      GlStateManager._glBindFramebuffer(36008, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, this.c, this.d, 0, 0, $$0, $$1, 16384, 9728);
+      GlStateManager._glBindFramebuffer(36008, 0);
+   }
+
+   public void d(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._colorMask(true, true, true, false);
+      GlStateManager._disableDepthTest();
+      GlStateManager._depthMask(false);
+      GlStateManager._viewport(0, 0, $$0, $$1);
+      glf $$2 = Objects.requireNonNull(RenderSystem.setShader(glg.a), "Blit shader not loaded");
+      $$2.a("InSampler", this.i);
+      ffn $$3 = RenderSystem.renderThreadTesselator().a(ffx.c.h, ffq.a);
+      $$3.a(0.0F, 0.0F, 0.0F);
+      $$3.a(1.0F, 0.0F, 0.0F);
+      $$3.a(1.0F, 1.0F, 0.0F);
+      $$3.a(0.0F, 1.0F, 0.0F);
+      ffo.a($$3.b());
+      GlStateManager._depthMask(true);
+      GlStateManager._colorMask(true, true, true, true);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a(true);
+      GlStateManager._clearColor(this.n[0], this.n[1], this.n[2], this.n[3]);
+      int $$0 = 16384;
+      if (this.g) {
+         GlStateManager._clearDepth(1.0);
+         $$0 |= 256;
       }
 
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
-      }
+      GlStateManager._clear($$0);
+      this.e();
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public int h() {
+      return this.j;
    }
 }

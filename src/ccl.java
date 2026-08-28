@@ -1,119 +1,89 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ccl extends cce {
-   public final cje a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class ccl extends ccd {
+   public static final float a = 0.02F;
+   protected final bvh b;
+   @Nullable
+   protected buj c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends bvf> f;
+   protected final cfw g;
 
-   public ccl(cje $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cce.a.a));
+   public ccl(bvh $$0, Class<? extends bvf> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
+   }
+
+   public ccl(bvh $$0, Class<? extends bvf> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public ccl(bvh $$0, Class<? extends bvf> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(ccd.a.b));
+      if ($$1 == cov.class) {
+         Predicate<buj> $$5 = buo.b($$0);
+         this.g = cfw.b().a((double)$$2).a(($$1x, $$2x) -> $$5.test($$1x));
+      } else {
+         this.g = cfw.b().a((double)$$2);
+      }
    }
 
    @Override
    public boolean b() {
-      if (!this.a.P_() && !this.a.hb()) {
-         List<buk> $$0 = this.a.dW().a(this.a, this.a.cR().c(9.0, 4.0, 9.0), $$0x -> {
-            bur<?> $$1x = $$0x.aq();
-            return $$1x == bur.ay || $$1x == bur.by;
-         });
-         cje $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (buk $$3 : $$0) {
-            cje $$4 = (cje)$$3;
-            if ($$4.hb() && !$$4.gF()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (buk $$6 : $$0) {
-               cje $$7 = (cje)$$6;
-               if ($$7.P_() && !$$7.gF()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.P_() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
+      if (this.b.dZ().i() >= this.e) {
          return false;
+      } else {
+         if (this.b.O_() != null) {
+            this.c = this.b.O_();
+         }
+
+         arc $$0 = a(this.b);
+         if (this.f == cov.class) {
+            this.c = $$0.a(this.g, this.b, this.b.dB(), this.b.dF(), this.b.dH());
+         } else {
+            this.c = $$0.a(
+               this.b.dW().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dB(), this.b.dF(), this.b.dH()
+            );
+         }
+
+         return this.c != null;
       }
    }
 
    @Override
    public boolean c() {
-      if (this.a.hb() && this.a.hc().bL() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.hc());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
+      if (!this.c.bL()) {
          return false;
+      } else {
+         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
       }
+   }
+
+   @Override
+   public void d() {
+      this.h = this.a(40 + this.b.dZ().a(40));
    }
 
    @Override
    public void e() {
-      this.a.gE();
-      this.b = 2.1;
+      this.c = null;
    }
 
    @Override
    public void a() {
-      if (this.a.hb()) {
-         if (!(this.a.A() instanceof ckv)) {
-            cje $$0 = this.a.hc();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            fba $$3 = new fba($$0.dB() - this.a.dB(), $$0.dD() - this.a.dD(), $$0.dH() - this.a.dH()).d().c(Math.max($$1 - 2.0, 0.0));
-            this.a.L().a(this.a.dB() + $$3.d, this.a.dD() + $$3.e, this.a.dH() + $$3.f, this.b);
-         }
-      }
-   }
-
-   private boolean a(cje $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.hb()) {
-         return $$0.hc().P_() ? true : this.a($$0.hc(), ++$$1);
-      } else {
-         return false;
+      if (this.c.bL()) {
+         double $$0 = this.i ? this.b.dF() : this.c.dF();
+         this.b.H().a(this.c.dB(), $$0, this.c.dH());
+         this.h--;
       }
    }
 }

@@ -1,26 +1,25 @@
 import javax.annotation.Nullable;
 
-public class eud {
-   @Nullable
-   public static euh a(dgi $$0, @Nullable jn $$1, @Nullable jn $$2) {
-      if ($$0.K().b(crv.c)) {
-         euh $$3 = euh.a($$0.A).a(euh.a.a);
-         if ($$2 != null) {
-            $$3 = $$3.a($$2);
-         }
+public class eud implements eue {
+   private final dgg b;
 
-         if ($$1 != null) {
-            $$3 = $$3.b($$1);
-         }
-
-         return $$3;
-      } else {
-         return null;
-      }
+   public eud(dgg $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public static euh a(@Nullable euh $$0, jn $$1) {
-      return $$0 == null ? null : $$0.b($$1);
+   @Override
+   public void a(jn $$0, dwv $$1, ji $$2, ji $$3, int $$4, int $$5) {
+      eue.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
+   }
+
+   @Override
+   public void a(ji $$0, djk $$1, @Nullable euf $$2) {
+      dwv $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(dwv $$0, ji $$1, djk $$2, @Nullable euf $$3, boolean $$4) {
+      eue.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

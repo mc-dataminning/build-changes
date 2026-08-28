@@ -5,7 +5,7 @@ public class aev implements yv<abk> {
    private final int b;
    private final int c;
 
-   public aev(buk $$0, @Nullable buk $$1) {
+   public aev(buj $$0, @Nullable buj $$1) {
       this.b = $$0.ar();
       this.c = $$1 != null ? $$1.ar() : 0;
    }

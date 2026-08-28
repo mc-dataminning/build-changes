@@ -1,2 +1,2 @@
-public record atc(boolean a, atx.b b, boolean c) {
+public record atc(boolean a, atw.b b, boolean c) {
 }

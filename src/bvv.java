@@ -1,3 +1,13 @@
+import javax.annotation.Nullable;
+
 public interface bvv {
-   void a(cgh var1, buk var2);
+   boolean f();
+
+   void a(cwn var1, @Nullable awa var2);
+
+   default avy ab_() {
+      return avz.no;
+   }
+
+   boolean j();
 }

@@ -1,24 +1,14 @@
-public class azz {
-   private final int a;
-   private final int b;
-   private int c;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
-   public azz(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+@FunctionalInterface
+public interface azz {
+   long get(TimeUnit var1);
 
-   public void a() {
-      this.c = this.c + this.a;
-   }
-
-   public void b() {
-      if (this.c > 0) {
-         this.c--;
+   public interface a extends azz, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
       }
-   }
-
-   public boolean c() {
-      return this.c < this.b;
    }
 }

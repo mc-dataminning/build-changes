@@ -1,99 +1,208 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dor extends djw implements djp {
-   public static final MapCodec<dor> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akt.a(mc.aL).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dor::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final fbu c = djm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final akt<efk<?, ?>> d;
+public class dor extends djk implements dph {
+   public static final MapCodec<dor> a = b(dor::new);
+   public static final dxs<jn.a> b = dxl.K;
+   private static final Logger f = LogUtils.getLogger();
+   protected static final int c = 2;
+   protected static final fbs d = djk.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final fbs e = djk.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dor> a() {
       return a;
    }
 
-   public dor(akt<efk<?, ?>> $$0, dww.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dor(dwu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jn.a.a));
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return c;
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      switch ((jn.a)$$0.c(b)) {
+         case c:
+            return e;
+         case a:
+         default:
+            return d;
+      }
    }
 
    @Override
-   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
+   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if ($$1.G_().j() && $$1.O().b(dgc.e) && $$3.a(2000) < $$1.am().a()) {
+         while ($$1.a_($$2).a(this)) {
+            $$2 = $$2.e();
+         }
 
-         for (ji $$6 : ji.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
+         if ($$1.a_($$2).a($$1, $$2, buq.bQ)) {
+            buj $$4 = buq.bQ.a($$1, $$2.d(), bup.d);
+            if ($$4 != null) {
+               $$4.aB();
+               buj $$5 = $$4.dl();
+               if ($$5 != null) {
+                  $$5.aB();
                }
             }
          }
-
-         ji $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
       }
    }
 
    @Override
-   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
-      return $$0.s();
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      jn.a $$8 = $$4.o();
+      jn.a $$9 = $$0.c(b);
+      boolean $$10 = $$9 != $$8 && $$8.d();
+      return !$$10 && !$$6.a(this) && !etw.a($$1, $$3, $$9).b() ? djm.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      ji $$3 = $$2.e();
-      dwx $$4 = $$1.a_($$3);
-      return $$4.a(awp.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   protected void a(dwv $$0, dgg $$1, ji $$2, buj $$3) {
+      if ($$3.o(false)) {
+         $$3.a(this, $$2);
+      }
    }
 
-   public boolean a(arc $$0, ji $$1, dwx $$2, azh $$3) {
-      Optional<? extends jr<efk<?, ?>>> $$4 = $$0.K_().e(mc.aL).a(this.d);
-      if ($$4.isEmpty()) {
-         return false;
+   @Override
+   public int a(arc $$0, buj $$1) {
+      return $$1 instanceof cov $$2 ? Math.max(0, $$0.O().c($$2.gj().a ? dgc.G : dgc.F)) : 0;
+   }
+
+   @Nullable
+   @Override
+   public etx a(arc $$0, buj $$1, ji $$2) {
+      akt<dgg> $$3 = $$0.ai() == dgg.j ? dgg.i : dgg.j;
+      arc $$4 = $$0.p().a($$3);
+      if ($$4 == null) {
+         return null;
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
+         boolean $$5 = $$4.ai() == dgg.j;
+         dyl $$6 = $$4.F_();
+         double $$7 = eaq.a($$0.G_(), $$4.G_());
+         ji $$8 = $$6.b($$1.dB() * $$7, $$1.dD(), $$1.dH() * $$7);
+         return this.a($$4, $$1, $$2, $$8, $$5, $$6);
+      }
+   }
+
+   @Nullable
+   private etx a(arc $$0, buj $$1, ji $$2, ji $$3, boolean $$4, dyl $$5) {
+      Optional<ji> $$6 = $$0.q().a($$3, $$4, $$5);
+      l.a $$9;
+      etx.a $$10;
+      if ($$6.isPresent()) {
+         ji $$7 = $$6.get();
+         dwv $$8 = $$0.a_($$7);
+         $$9 = l.a($$7, $$8.c(dxl.K), 21, jn.a.b, 21, $$2x -> $$0.a_($$2x) == $$8);
+         $$10 = etx.b.then($$1x -> $$1x.f($$7));
+      } else {
+         jn.a $$11 = $$1.dW().a_($$2).d(b).orElse(jn.a.a);
+         Optional<l.a> $$12 = $$0.q().a($$3, $$11);
+         if ($$12.isEmpty()) {
+            f.error("Unable to create a portal, likely target out of worldborder");
+            return null;
          }
+
+         $$9 = $$12.get();
+         $$10 = etx.b.then(etx.c);
+      }
+
+      return a($$1, $$2, $$9, $$0, $$10);
+   }
+
+   private static etx a(buj $$0, ji $$1, l.a $$2, arc $$3, etx.a $$4) {
+      dwv $$5 = $$0.dW().a_($$1);
+      jn.a $$6;
+      fay $$8;
+      if ($$5.b(dxl.K)) {
+         $$6 = $$5.c(dxl.K);
+         l.a $$7 = l.a($$1, $$6, 21, jn.a.b, 21, $$2x -> $$0.dW().a_($$2x) == $$5);
+         $$8 = $$0.a($$6, $$7);
+      } else {
+         $$6 = jn.a.a;
+         $$8 = new fay(0.5, 0.0, 0.0);
+      }
+
+      return a($$3, $$2, $$6, $$8, $$0, $$4);
+   }
+
+   private static etx a(arc $$0, l.a $$1, jn.a $$2, fay $$3, buj $$4, etx.a $$5) {
+      ji $$6 = $$1.a;
+      dwv $$7 = $$0.a_($$6);
+      jn.a $$8 = $$7.d(dxl.K).orElse(jn.a.a);
+      double $$9 = (double)$$1.b;
+      double $$10 = (double)$$1.c;
+      bum $$11 = $$4.a($$4.aw());
+      int $$12 = $$2 == $$8 ? 0 : 90;
+      double $$13 = (double)$$11.a() / 2.0 + ($$9 - (double)$$11.a()) * $$3.a();
+      double $$14 = ($$10 - (double)$$11.b()) * $$3.b();
+      double $$15 = 0.5 + $$3.c();
+      boolean $$16 = $$8 == jn.a.a;
+      fay $$17 = new fay((double)$$6.u() + ($$16 ? $$13 : $$15), (double)$$6.v() + $$14, (double)$$6.w() + ($$16 ? $$15 : $$13));
+      fay $$18 = etw.a($$17, $$0, $$4, $$11);
+      return new etx($$0, $$18, fay.c, (float)$$12, 0.0F, bvt.a(bvt.l, bvt.k), $$5);
+   }
+
+   @Override
+   public dph.a b() {
+      return dph.a.a;
+   }
+
+   @Override
+   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
+      if ($$3.a(100) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avz.vh, awa.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      }
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         double $$5 = (double)$$2.u() + $$3.j();
+         double $$6 = (double)$$2.v() + $$3.j();
+         double $$7 = (double)$$2.w() + $$3.j();
+         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
+         int $$11 = $$3.a(2) * 2 - 1;
+         if (!$$1.a_($$2.h()).a(this) && !$$1.a_($$2.i()).a(this)) {
+            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
+            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+         } else {
+            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
+            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+         }
+
+         $$1.a(lt.ae, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
    @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return true;
+   protected cwn a(dgj $$0, ji $$1, dwv $$2, boolean $$3) {
+      return cwn.j;
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
-      return (double)$$1.i() < 0.4;
+   protected dwv a(dwv $$0, dqc $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jn.a)$$0.c(b)) {
+               case c:
+                  return $$0.b(b, jn.a.a);
+               case a:
+                  return $$0.b(b, jn.a.c);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(b);
    }
 }

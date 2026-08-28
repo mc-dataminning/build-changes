@@ -55,11 +55,11 @@ public class wu {
       return this.b.hashCode();
    }
 
-   public static class a<T> implements azv {
+   public static class a<T> implements azu {
       public static final wu.a<wo> a = new wu.a<>("show_text", true, wq.a, ($$0, $$1) -> DataResult.success($$0));
       public static final wu.a<wu.c> b = new wu.a<>("show_item", true, wu.c.b, wu.c::a);
       public static final wu.a<wu.b> c = new wu.a<>("show_entity", true, wu.b.a, wu.b::a);
-      public static final Codec<wu.a<?>> d = azv.b(() -> new wu.a[]{a, b, c});
+      public static final Codec<wu.a<?>> d = azu.b(() -> new wu.a[]{a, b, c});
       public static final Codec<wu.a<?>> e = d.validate(wu.a::a);
       private final String f;
       private final boolean g;
@@ -126,17 +126,17 @@ public class wu {
                )
                .apply($$0, wu.b::new)
       );
-      public final bur<?> b;
+      public final buq<?> b;
       public final UUID c;
       public final Optional<wo> d;
       @Nullable
       private List<wo> e;
 
-      public b(bur<?> $$0, UUID $$1, @Nullable wo $$2) {
+      public b(buq<?> $$0, UUID $$1, @Nullable wo $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bur<?> $$0, UUID $$1, Optional<wo> $$2) {
+      public b(buq<?> $$0, UUID $$1, Optional<wo> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -147,7 +147,7 @@ public class wu {
             tq $$2 = uo.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<wo> $$4 = wq.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bur<?> $$5 = mb.f.a(aku.a($$2.l("type")));
+            buq<?> $$5 = mb.f.a(aku.a($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new wu.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class wu {
    }
 
    public static class c {
-      public static final Codec<wu.c> a = cwp.a.xmap(wu.c::new, wu.c::a);
-      private static final Codec<wu.c> c = cwp.f.xmap(wu.c::new, wu.c::a);
+      public static final Codec<wu.c> a = cwn.a.xmap(wu.c::new, wu.c::a);
+      private static final Codec<wu.c> c = cwn.f.xmap(wu.c::new, wu.c::a);
       public static final Codec<wu.c> b = Codec.withAlternative(a, c);
-      private final jr<cwl> d;
+      private final jr<cwj> d;
       private final int e;
       private final ks f;
       @Nullable
-      private cwp g;
+      private cwn g;
 
-      c(jr<cwl> $$0, int $$1, ks $$2) {
+      c(jr<cwj> $$0, int $$1, ks $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cwp $$0) {
+      public c(cwn $$0) {
          this($$0.i(), $$0.M(), $$0.d());
       }
 
@@ -225,9 +225,9 @@ public class wu {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cwp a() {
+      public cwn a() {
          if (this.g == null) {
-            this.g = new cwp(this.d, this.e, this.f);
+            this.g = new cwn(this.d, this.e, this.f);
          }
 
          return this.g;
@@ -237,7 +237,7 @@ public class wu {
          try {
             tq $$2 = uo.a($$0.getString());
             DynamicOps<un> $$3 = (DynamicOps<un>)($$1 != null ? $$1.a(ue.a) : ue.a);
-            return cwp.a.parse($$3, $$2).map(wu.c::new);
+            return cwn.a.parse($$3, $$2).map(wu.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

@@ -1,263 +1,377 @@
 public class fmc {
-   public static final flx a = flx.a.a(2.0F)
+   public static final flv a = flv.a.a(1.125F)
       .a()
       .a(
-         "wind_top",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.a(0.5F, 0.0F, -0.5F), flw.b.a),
-            new fly(0.75F, flz.a(-0.5F, 0.0F, -0.5F), flw.b.a),
-            new fly(1.25F, flz.a(-0.5F, 0.0F, 0.5F), flw.b.a),
-            new fly(1.75F, flz.a(0.5F, 0.0F, 0.5F), flw.b.a),
-            new fly(2.0F, flz.a(0.5F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.5F, 0.0F, -0.5F), flw.b.a),
-            new fly(0.5F, flz.a(-0.5F, 0.0F, -0.5F), flw.b.a),
-            new fly(1.0F, flz.a(-0.5F, 0.0F, 0.5F), flw.b.a),
-            new fly(1.5F, flz.a(0.5F, 0.0F, 0.5F), flw.b.a),
-            new fly(2.0F, flz.a(0.5F, 0.0F, -0.5F), flw.b.a)
+         "upper_body",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(26.8802F, -23.399F, -9.0616F), flu.b.a),
+            new flw(0.125F, flx.b(-2.2093F, 5.9119F, 0.0675F), flu.b.a),
+            new flw(0.5417F, flx.b(23.0778F, 14.2906F, 4.6066F), flu.b.a),
+            new flw(0.7083F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.875F, flx.b(7.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.125F, flx.b(26.8802F, -23.399F, -9.0616F), flu.b.a)
          )
       )
       .a(
          "head",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.b),
-            new fly(1.0F, flz.a(0.0F, 1.0F, 0.0F), flw.b.b),
-            new fly(2.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.b)
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0417F, flx.b(-17.5F, -62.5F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.4167F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.4583F, flx.b(0.0F, 15.0F, 0.0F), flu.b.a),
+            new flw(0.5F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0417F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0833F, flx.b(-37.1532F, 81.1131F, -28.3621F), flu.b.a),
+            new flw(1.125F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
          )
       )
-      .a("rods", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(2.0F, flz.b(0.0F, 1080.0F, 0.0F), flw.b.a)))
       .a(
-         "rods",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(1.0F, flz.a(0.0F, -1.0F, 0.0F), flw.b.a),
-            new fly(2.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         "right_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(12.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(-32.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.875F, flx.b(12.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.125F, flx.b(-15.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(-15.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.125F, flx.b(10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5417F, flx.b(-25.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.75F, flx.b(-9.0923F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7917F, flx.b(-15.137F, -66.7758F, 13.9603F), flu.b.a),
+            new flw(0.8333F, flx.b(-9.0923F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0F, flx.b(10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.125F, flx.b(-15.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(30.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.375F, flx.b(49.8924F, -3.8282F, 3.2187F), flu.b.a),
+            new flw(0.5F, flx.b(17.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.b(-56.5613F, -12.2403F, -8.7374F), flu.b.a),
+            new flw(0.9167F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.125F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 2.0F), flu.b.a),
+            new flw(0.25F, flx.a(0.0F, 0.1846F, 0.5979F), flu.b.a),
+            new flw(0.375F, flx.a(0.0F, -0.0665F, -2.2177F), flu.b.a),
+            new flw(0.5F, flx.a(0.0F, 1.3563F, -4.3474F), flu.b.a),
+            new flw(0.625F, flx.a(0.0F, 0.1047F, -1.6556F), flu.b.a),
+            new flw(0.9167F, flx.a(0.0F, 0.0F, -1.0F), flu.b.a),
+            new flw(1.125F, flx.a(0.0F, 0.0F, 2.0F), flu.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(25.5305F, 11.3125F, 5.3525F), flu.b.a),
+            new flw(0.125F, flx.b(-49.5628F, 7.3556F, 6.7933F), flu.b.a),
+            new flw(0.25F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.4583F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.9167F, flx.b(30.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0417F, flx.b(55.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.125F, flx.b(25.5305F, 11.3125F, 5.3525F), flu.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.9674F, -3.6578F), flu.b.a),
+            new flw(0.125F, flx.a(0.0F, -0.2979F, -0.9411F), flu.b.a),
+            new flw(0.25F, flx.a(0.0F, -0.3F, -0.94F), flu.b.a),
+            new flw(0.4583F, flx.a(0.0F, -0.3F, 1.06F), flu.b.a),
+            new flw(1.125F, flx.a(0.0F, 0.9674F, -3.6578F), flu.b.a)
          )
       )
       .b();
-   public static final flx b = flx.a.a(1.125F)
+   public static final flv b = flv.a.a(0.7083F)
+      .a()
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(0.0F, 45.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(-115.0F, 67.5F, -90.0F), flu.b.a),
+            new flw(0.375F, flx.b(67.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5417F, flx.b(0.0F, 45.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.2917F, flx.a(0.0F, -2.7716F, -1.1481F), flu.b.a),
+            new flw(0.375F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5417F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("upper_body", new flu(flu.d.c, new flw(0.0F, flx.a(1.0, 1.0, 1.0), flu.b.a), new flw(0.7083F, flx.a(1.0, 1.0, 1.0), flu.b.a)))
       .a(
          "head",
-         new flw(
-            flw.d.b,
-            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.b(-12.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.75F, flz.b(-12.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.9167F, flz.b(5.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(1.125F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.a(0.0F, -2.0F, 0.0F), flw.b.a),
-            new fly(0.7917F, flz.a(0.0F, -1.0F, 2.0F), flw.b.a),
-            new fly(0.9583F, flz.a(0.0F, -1.0F, 0.0F), flw.b.a),
-            new fly(1.125F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a("wind_bottom", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)))
-      .a(
-         "wind_mid",
-         new flw(
-            flw.d.b,
-            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.b(12.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.75F, flz.b(12.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.9167F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(1.125F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.a(0.0F, 0.0F, 5.0F), flw.b.a),
-            new fly(0.75F, flz.a(0.0F, 0.0F, 6.0F), flw.b.a),
-            new fly(0.9167F, flz.a(0.0F, 0.0F, -2.0F), flw.b.a),
-            new fly(1.125F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new flw(
-            flw.d.b,
-            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.b(15.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.75F, flz.b(15.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.9167F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(1.125F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.a(0.0F, 0.0F, 3.0F), flw.b.a),
-            new fly(0.8333F, flz.a(0.0F, 0.0F, 4.0F), flw.b.a),
-            new fly(0.9583F, flz.a(0.0F, 0.0F, -2.0F), flw.b.a),
-            new fly(1.125F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "body",
-         new flw(
-            flw.d.b,
-            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.b(12.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.75F, flz.b(12.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.9167F, flz.b(-2.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(1.125F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "body",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.25F, flz.a(0.0F, 3.0F, 5.0F), flw.b.a),
-            new fly(0.8333F, flz.a(0.0F, 3.0F, 6.0F), flw.b.a),
-            new fly(0.9583F, flz.a(0.0F, 3.0F, -1.0F), flw.b.a),
-            new fly(1.125F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a("rods", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(1.0F, flz.b(0.0F, 360.0F, 0.0F), flw.b.a)))
-      .b();
-   public static final flx c = flx.a.a(0.5F)
-      .a(
-         "body",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, -10.0F, 0.0F), flw.b.a),
-            new fly(0.125F, flz.a(0.0F, 11.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new flw(
-            flw.d.b,
-            new fly(0.0F, flz.b(22.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.2083F, flz.b(-19.25F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new flw(
-            flw.d.c,
-            new fly(0.0F, flz.a(1.0, 1.0, 1.0), flw.b.a),
-            new fly(0.125F, flz.a(1.0, 1.3F, 1.0), flw.b.a),
-            new fly(0.5F, flz.a(1.0, 1.0, 1.0), flw.b.a)
-         )
-      )
-      .a("wind_bottom", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 90.0F, 0.0F), flw.b.a), new fly(0.5F, flz.b(0.0F, 360.0F, 0.0F), flw.b.a)))
-      .a(
-         "wind_bottom",
-         new flw(
-            flw.d.c,
-            new fly(0.0F, flz.a(1.0, 1.0, 1.0), flw.b.a),
-            new fly(0.125F, flz.a(1.0, 1.1F, 1.0), flw.b.a),
-            new fly(0.5F, flz.a(1.0, 1.0, 1.0), flw.b.a)
-         )
-      )
-      .a("wind_mid", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.5F, flz.b(0.0F, 180.0F, 0.0F), flw.b.a)))
-      .a(
-         "wind_mid",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, -6.0F, 0.0F), flw.b.a),
-            new fly(0.125F, flz.a(0.0F, 2.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a("wind_top", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.5F, flz.b(0.0F, 90.0F, 0.0F), flw.b.a)))
-      .a(
-         "wind_top",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, -5.0F, 0.0F), flw.b.a),
-            new fly(0.125F, flz.a(0.0F, 2.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
-         )
-      )
-      .a("rods", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.5F, flz.b(0.0F, 360.0F, 0.0F), flw.b.a)))
-      .b();
-   public static final flx d = flx.a.a(2.0F)
-      .a(
-         "body",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.a(0.0F, -10.0F, 0.0F), flw.b.a),
-            new fly(0.625F, flz.a(0.0F, -10.0F, 0.0F), flw.b.a)
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(0.0F, -45.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(-11.25F, -45.0F, 0.0F), flu.b.a),
+            new flw(0.2917F, flx.b(-117.3939F, 76.6331F, -130.1483F), flu.b.a),
+            new flw(0.4167F, flx.b(-45.0F, -45.0F, 0.0F), flu.b.a),
+            new flw(0.5F, flx.b(60.0F, -45.0F, 0.0F), flu.b.a),
+            new flw(0.5833F, flx.b(60.0F, -45.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.b(0.0F, -45.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
          )
       )
       .a(
          "head",
-         new flw(
-            flw.d.b,
-            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.b(22.5F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.625F, flz.b(22.5F, 0.0F, 0.0F), flw.b.a)
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.4167F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5F, flx.a(0.3827F, 0.5133F, -0.7682F), flu.b.a),
+            new flw(0.5833F, flx.a(0.3827F, 0.5133F, -0.7682F), flu.b.a),
+            new flw(0.625F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
          )
       )
       .a(
-         "wind_body",
-         new flw(
-            flw.d.c, new fly(0.0F, flz.a(1.0, 1.0, 1.0), flw.b.a), new fly(0.5F, flz.a(1.0, 1.0, 1.0), flw.b.a), new fly(0.625F, flz.a(1.0, 1.0, 1.0), flw.b.a)
+         "head",
+         new flu(
+            flu.d.c,
+            new flw(0.1667F, flx.a(1.0, 1.0, 1.0), flu.b.a),
+            new flw(0.4167F, flx.a(1.0, 1.0, 1.0), flu.b.a),
+            new flw(0.5F, flx.a(1.0, 1.3F, 1.0), flu.b.a),
+            new flw(0.625F, flx.a(1.0, 1.0, 1.0), flu.b.a)
          )
       )
-      .a("wind_bottom", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.625F, flz.b(0.0F, 90.0F, 0.0F), flw.b.a)))
       .a(
-         "wind_bottom",
-         new flw(
-            flw.d.c, new fly(0.0F, flz.a(1.0, 1.0, 1.0), flw.b.a), new fly(0.5F, flz.a(1.0, 1.0, 1.0), flw.b.a), new fly(0.625F, flz.a(1.0, 1.0, 1.0), flw.b.a)
+         "right_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(7.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.4583F, flx.b(55.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
          )
       )
-      .a("wind_mid", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.625F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)))
       .a(
-         "wind_mid",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.a(0.0F, -6.0F, 0.0F), flw.b.a),
-            new fly(0.625F, flz.a(0.0F, -6.0F, 0.0F), flw.b.a)
+         "right_arm",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
          )
       )
-      .a("wind_top", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.625F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)))
       .a(
-         "wind_top",
-         new flw(
-            flw.d.a,
-            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
-            new fly(0.5F, flz.a(0.0F, -5.0F, 0.0F), flw.b.a),
-            new fly(0.625F, flz.a(0.0F, -5.0F, 0.0F), flw.b.a)
+         "left_leg",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
          )
       )
-      .a("rods", new flw(flw.d.b, new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.625F, flz.b(0.0F, 360.0F, 0.0F), flw.b.a)))
+      .a(
+         "left_leg",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.a(0.0F, 0.0F, -2.0F), flu.b.a),
+            new flw(0.625F, flx.a(0.0F, 0.0F, -2.0F), flu.b.a),
+            new flw(0.7083F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(0.0F, 45.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.b(0.0F, 45.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.a(0.7071F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.a(0.7071F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(10.3453F, 14.7669F, 2.664F), flu.b.a),
+            new flw(0.4583F, flx.b(57.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.625F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.7083F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("left_arm", new flu(flu.d.a, new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a), new flw(0.7083F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)))
       .b();
-   public static final flx e = flx.a.a(0.2F)
-      .a("body", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.2F, flz.a(0.0F, 0.0F, -6.0F), flw.b.a)))
-      .a("wind_mid", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.2F, flz.a(0.0F, 0.0F, -3.0F), flw.b.a)))
-      .a("wind_top", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.2F, flz.a(0.0F, 0.0F, -2.0F), flw.b.a)))
+   public static final flv c = flv.a.a(0.2917F)
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(-5.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(5.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(17.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(-15.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("right_arm", new flu(flu.d.a, new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a), new flw(0.25F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)))
+      .a(
+         "left_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(20.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(-15.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.25F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("left_arm", new flu(flu.d.a, new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a), new flw(0.25F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)))
       .b();
-   public static final flx f = flx.a.a(0.1F)
-      .a("body", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, -6.0F), flw.b.a), new fly(0.1F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
-      .a("wind_mid", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, -3.0F), flw.b.a), new fly(0.1F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
-      .a("wind_top", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, -2.0F), flw.b.a), new fly(0.1F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+   public static final flv d = flv.a.a(2.25F)
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(-40.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.1667F, flx.b(-5.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.2917F, flx.b(7.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5833F, flx.b(16.25F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.6667F, flx.b(29.0814F, 62.5516F, 26.5771F), flu.b.a),
+            new flw(0.75F, flx.b(12.2115F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0F, flx.b(10.25F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0417F, flx.b(-47.64F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.125F, flx.b(21.96F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.25F, flx.b(12.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(2.25F, flx.b(17.3266F, 7.9022F, -0.1381F), flu.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.a,
+            new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.a(0.0F, 0.557F, 1.2659F), flu.b.a),
+            new flw(0.1667F, flx.a(0.0F, -2.0889F, -0.3493F), flu.b.a),
+            new flw(0.2917F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flu(
+            flu.d.c,
+            new flw(0.0F, flx.a(1.0, 1.0, 1.0), flu.b.a),
+            new flw(0.0833F, flx.a(1.0, 1.1F, 1.0), flu.b.a),
+            new flw(0.1667F, flx.a(1.0, 0.9F, 1.0), flu.b.a),
+            new flw(0.2917F, flx.a(1.0, 1.0, 1.0), flu.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.2917F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.25F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.5417F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.5833F, flx.b(-12.1479F, -34.3927F, 6.9326F), flu.b.a),
+            new flw(1.6667F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("right_arm", new flu(flu.d.a, new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a), new flw(0.2917F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)))
+      .a(
+         "left_arm",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.2917F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.8333F, flx.b(-4.4444F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.875F, flx.b(-26.7402F, -78.831F, 26.3025F), flu.b.a),
+            new flw(0.9583F, flx.b(-5.5556F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.25F, flx.b(-10.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("left_arm", new flu(flu.d.a, new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a), new flw(0.2917F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)))
+      .a(
+         "head",
+         new flu(
+            flu.d.b,
+            new flw(0.0F, flx.b(0.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.0833F, flx.b(-5.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.2917F, flx.b(10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5F, flx.b(2.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5417F, flx.b(5.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(0.5833F, flx.b(-67.4168F, -12.9552F, -8.0231F), flu.b.a),
+            new flw(0.6667F, flx.b(8.5F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.0F, flx.b(10.773F, -29.5608F, -5.3627F), flu.b.a),
+            new flw(1.25F, flx.b(10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.7917F, flx.b(10.0F, 0.0F, 0.0F), flu.b.a),
+            new flw(1.8333F, flx.b(12.9625F, 39.2735F, 8.2901F), flu.b.a),
+            new flw(1.9167F, flx.b(10.0F, 0.0F, 0.0F), flu.b.a)
+         )
+      )
+      .a("head", new flu(flu.d.a, new flw(0.0F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a), new flw(0.2917F, flx.a(0.0F, 0.0F, 0.0F), flu.b.a)))
       .b();
 }

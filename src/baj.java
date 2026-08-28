@@ -1,53 +1,86 @@
-import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
 public class baj {
-   private final Set<bai<?>> a;
-   private final Set<bai<?>> b;
+   private final Map<bah<?>, Object> a;
 
-   baj(Set<bai<?>> $$0, Set<bai<?>> $$1) {
-      this.a = Set.copyOf($$0);
-      this.b = Set.copyOf(Sets.union($$0, $$1));
+   baj(Map<bah<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public Set<bai<?>> a() {
-      return this.a;
+   public boolean a(bah<?> $$0) {
+      return this.a.containsKey($$0);
    }
 
-   public Set<bai<?>> b() {
-      return this.b;
+   public <T> T b(bah<T> $$0) {
+      T $$1 = (T)this.a.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   @Nullable
+   public <T> T c(bah<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null; _,_->_")
+   public <T> T a(bah<T> $$0, @Nullable T $$1) {
+      return (T)this.a.getOrDefault($$0, $$1);
    }
 
    public static class a {
-      private final Set<bai<?>> a = Sets.newIdentityHashSet();
-      private final Set<bai<?>> b = Sets.newIdentityHashSet();
+      private final Map<bah<?>, Object> a = new IdentityHashMap<>();
 
-      public baj.a a(bai<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+      public <T> baj.a a(bah<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> baj.a b(bah<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.a.remove($$0);
          } else {
-            this.a.add($$0);
-            return this;
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(bah<T> $$0) {
+         T $$1 = (T)this.a.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
          }
       }
 
-      public baj.a b(bai<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      @Nullable
+      public <T> T b(bah<T> $$0) {
+         return (T)this.a.get($$0);
       }
 
-      public baj a() {
-         return new baj(this.a, this.b);
+      public baj a(bai $$0) {
+         Set<bah<?>> $$1 = Sets.difference(this.a.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<bah<?>> $$2 = Sets.difference($$0.a(), this.a.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new baj(this.a);
+            }
+         }
       }
    }
 }

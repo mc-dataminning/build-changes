@@ -1,29 +1,18 @@
-public class gup<T extends buk & cpn> extends gsb<T, hal> {
-   private final hbj a;
-   private final float b;
-   private final boolean h;
+public class gup extends gsa<cqb, hal> {
+   public static final aku a = aku.b("textures/entity/trident.png");
+   private final gee b;
 
-   public gup(gsc.a $$0, float $$1, boolean $$2) {
+   public gup(gsb.a $$0) {
       super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
+      this.b = new gee($$0.a(gez.dl));
    }
 
-   public gup(gsc.a $$0) {
-      this($$0, 1.0F, false);
-   }
-
-   @Override
-   protected int a(T $$0, ji $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
-   }
-
-   public void a(hal $$0, ffu $$1, glx $$2, int $$3) {
+   public void a(hal $$0, ffs $$1, glv $$2, int $$3) {
       $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      $$0.a.a($$1, $$2, $$3, hea.d);
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      ffw $$4 = gsz.a($$2, this.b.a(a), false, $$0.c);
+      this.b.a($$1, $$4, $$3, hec.d);
       $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
@@ -32,8 +21,10 @@ public class gup<T extends buk & cpn> extends gsb<T, hal> {
       return new hal();
    }
 
-   public void a(T $$0, hal $$1, float $$2) {
+   public void a(cqb $$0, hal $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.l(), cwn.h, $$0);
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
+      $$1.c = $$0.D();
    }
 }

@@ -1,52 +1,19 @@
-import javax.annotation.Nullable;
+public class dga {
+   public static final int a = -10380959;
+   public static final int b = -8345771;
+   public static final int c = -12012264;
+   public static final int d = -7158200;
+   private static int[] e = new int[65536];
 
-public interface dga {
-   static bta a(dgi $$0, @Nullable buk $$1) {
-      return $$0.ak().d($$1, a($$1));
+   public static void a(int[] $$0) {
+      e = $$0;
    }
 
-   @Nullable
-   static bvg a(@Nullable buk $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case clc $$1 -> $$1.l();
-         case bvg $$2 -> $$2;
-         case cpq $$3 when $$3.p() instanceof bvg $$4 -> $$4;
-      };
-   }
-
-   arc a();
-
-   dga.a b();
-
-   @Nullable
-   bvg c();
-
-   @Nullable
-   buk d();
-
-   float e();
-
-   fba f();
-
-   boolean g();
-
-   boolean h();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= e.length ? -12012264 : e[$$4];
    }
 }

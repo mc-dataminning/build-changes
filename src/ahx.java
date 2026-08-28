@@ -8,9 +8,9 @@ public class ahx implements yv<agf> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final duj.a j;
+   private final duh.a j;
 
-   public ahx(ji $$0, String $$1, duj.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public ahx(ji $$0, String $$1, duh.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class ahx implements yv<agf> {
    private ahx(vl $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(duj.a.class);
+      this.j = $$0.b(duh.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class ahx implements yv<agf> {
       return this.i;
    }
 
-   public duj.a i() {
+   public duh.a i() {
       return this.j;
    }
 }

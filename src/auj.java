@@ -1,14 +1,59 @@
+import com.google.common.base.Stopwatch;
+import com.mojang.logging.LogUtils;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
 
-public interface auj {
-   CompletableFuture<Void> a(auj.a var1, aup var2, Executor var3, Executor var4);
+public class auj extends auu<auj.a> {
+   private static final Logger c = LogUtils.getLogger();
+   private final Stopwatch d = Stopwatch.createUnstarted();
 
-   default String c() {
-      return this.getClass().getSimpleName();
+   public auj(auo $$0, List<aui> $$1, Executor $$2, Executor $$3, CompletableFuture<bae> $$4) {
+      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
+         AtomicLong $$6 = new AtomicLong();
+         AtomicLong $$7 = new AtomicLong();
+         CompletableFuture<Void> $$8 = $$3x.a($$1x, $$2x, a($$4x, $$6, $$3x.c()), a($$5, $$7, $$3x.c()));
+         return $$8.thenApplyAsync($$3xx -> {
+            c.debug("Finished reloading {}", $$3x.c());
+            return new auj.a($$3x.c(), $$6, $$7);
+         }, $$3);
+      }, $$4);
+      this.d.start();
+      this.b = this.b.thenApplyAsync(this::a, $$3);
    }
 
-   public interface a {
-      <T> CompletableFuture<T> a(T var1);
+   private static Executor a(Executor $$0, AtomicLong $$1, String $$2) {
+      return $$3 -> $$0.execute(() -> {
+            bor $$3x = boq.a();
+            $$3x.a($$2);
+            long $$4 = af.d();
+            $$3.run();
+            $$1.addAndGet(af.d() - $$4);
+            $$3x.c();
+         });
+   }
+
+   private List<auj.a> a(List<auj.a> $$0) {
+      this.d.stop();
+      long $$1 = 0L;
+      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
+
+      for (auj.a $$2 : $$0) {
+         long $$3 = TimeUnit.NANOSECONDS.toMillis($$2.b.get());
+         long $$4 = TimeUnit.NANOSECONDS.toMillis($$2.c.get());
+         long $$5 = $$3 + $$4;
+         String $$6 = $$2.a;
+         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$6, $$5, $$3, $$4});
+         $$1 += $$4;
+      }
+
+      c.info("Total blocking time: {} ms", $$1);
+      return $$0;
+   }
+
+   public static record a(String a, AtomicLong b, AtomicLong c) {
    }
 }

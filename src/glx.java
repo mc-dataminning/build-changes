@@ -1,97 +1,81 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SequencedMap;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface glx {
-   static glx.a a(ffr $$0) {
-      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
+public class glx implements glv {
+   private final glv.a a;
+   private final glv.a b = glv.a(new ffp(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public glx(glv.a $$0) {
+      this.a = $$0;
    }
 
-   static glx.a a(SequencedMap<gmh, ffr> $$0, ffr $$1) {
-      return new glx.a($$1, $$0);
+   @Override
+   public ffw getBuffer(gmf $$0) {
+      if ($$0.V()) {
+         ffw $$1 = this.b.getBuffer($$0);
+         return new glx.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         ffw $$2 = this.a.getBuffer($$0);
+         Optional<gmf> $$3 = $$0.U();
+         if ($$3.isPresent()) {
+            ffw $$4 = this.b.getBuffer($$3.get());
+            glx.a $$5 = new glx.a($$4, this.c, this.d, this.e, this.f);
+            return ffz.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   ffy getBuffer(gmh var1);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-   public static class a implements glx {
-      protected final ffr a;
-      protected final SequencedMap<gmh, ffr> b;
-      protected final Map<gmh, ffp> c = new HashMap<>();
-      @Nullable
-      protected gmh d;
+   public void a() {
+      this.b.b();
+   }
 
-      protected a(ffr $$0, SequencedMap<gmh, ffr> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   static record a(ffw a, int b) implements ffw {
+      public a(ffw $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axj.a($$4, $$1, $$2, $$3));
       }
 
       @Override
-      public ffy getBuffer(gmh $$0) {
-         ffp $$1 = this.c.get($$0);
-         if ($$1 != null && !$$0.X()) {
-            this.a($$0, $$1);
-            $$1 = null;
-         }
-
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            ffr $$2 = this.b.get($$0);
-            if ($$2 != null) {
-               $$1 = new ffp($$2, $$0.T(), $$0.S());
-            } else {
-               if (this.d != null) {
-                  this.a(this.d);
-               }
-
-               $$1 = new ffp(this.a, $$0.T(), $$0.S());
-               this.d = $$0;
-            }
-
-            this.c.put($$0, $$1);
-            return $$1;
-         }
+      public ffw a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
       }
 
-      public void a() {
-         if (this.d != null) {
-            this.a(this.d);
-            this.d = null;
-         }
+      @Override
+      public ffw a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
       }
 
-      public void b() {
-         this.a();
-
-         for (gmh $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
+      @Override
+      public ffw a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
       }
 
-      public void a(gmh $$0) {
-         ffp $$1 = this.c.remove($$0);
-         if ($$1 != null) {
-            this.a($$0, $$1);
-         }
+      @Override
+      public ffw a(int $$0, int $$1) {
+         return this;
       }
 
-      private void a(gmh $$0, ffp $$1) {
-         fft $$2 = $$1.a();
-         if ($$2 != null) {
-            if ($$0.Y()) {
-               ffr $$3 = this.b.getOrDefault($$0, this.a);
-               $$2.a($$3, RenderSystem.getProjectionType().a());
-            }
+      @Override
+      public ffw b(int $$0, int $$1) {
+         return this;
+      }
 
-            $$0.a($$2);
-         }
-
-         if ($$0.equals(this.d)) {
-            this.d = null;
-         }
+      @Override
+      public ffw b(float $$0, float $$1, float $$2) {
+         return this;
       }
    }
 }

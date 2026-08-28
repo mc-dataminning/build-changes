@@ -1,218 +1,424 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.JsonArray;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.Duration;
+import com.mojang.util.UndashedUuid;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.Args;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 
 public class fgi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private static final String c = "/upload";
-   private final File d;
-   private final long e;
-   private final int f;
-   private final fhy g;
-   private final String h;
-   private final String i;
-   private final String j;
-   private final String k;
-   private final fgo l;
-   final AtomicBoolean m = new AtomicBoolean(false);
+   public static final fgi.b a = Optional.ofNullable(System.getenv("realms.environment"))
+      .or(() -> Optional.ofNullable(System.getProperty("realms.environment")))
+      .flatMap(fgi.b::a)
+      .orElse(fgi.b.a);
+   private static final Logger b = LogUtils.getLogger();
+   private final String c;
+   private final String d;
+   private final flh e;
+   private static final String f = "worlds";
+   private static final String g = "invites";
+   private static final String h = "mco";
+   private static final String i = "subscriptions";
+   private static final String j = "activities";
+   private static final String k = "ops";
+   private static final String l = "regions/ping/stat";
+   private static final String m = "trial";
+   private static final String n = "notifications";
+   private static final String o = "/listUserWorldsOfType/any";
+   private static final String p = "/$PARENT_WORLD_ID/createPrereleaseRealm";
+   private static final String q = "/listPrereleaseEligibleWorlds";
+   private static final String r = "/$WORLD_ID/initialize";
+   private static final String s = "/$WORLD_ID";
+   private static final String t = "/liveplayerlist";
+   private static final String u = "/$WORLD_ID";
+   private static final String v = "/$WORLD_ID/$PROFILE_UUID";
+   private static final String w = "/minigames/$MINIGAME_ID/$WORLD_ID";
+   private static final String x = "/available";
+   private static final String y = "/templates/$WORLD_TYPE";
+   private static final String z = "/v1/$ID/join/pc";
+   private static final String A = "/$ID";
+   private static final String B = "/$WORLD_ID";
+   private static final String C = "/$WORLD_ID/invite/$UUID";
+   private static final String D = "/count/pending";
+   private static final String E = "/pending";
+   private static final String F = "/accept/$INVITATION_ID";
+   private static final String G = "/reject/$INVITATION_ID";
+   private static final String H = "/$WORLD_ID";
+   private static final String I = "/$WORLD_ID";
+   private static final String J = "/$WORLD_ID/slot/$SLOT_ID";
+   private static final String K = "/$WORLD_ID/open";
+   private static final String L = "/$WORLD_ID/close";
+   private static final String M = "/$WORLD_ID/reset";
+   private static final String N = "/$WORLD_ID";
+   private static final String O = "/$WORLD_ID/backups";
+   private static final String P = "/$WORLD_ID/slot/$SLOT_ID/download";
+   private static final String Q = "/$WORLD_ID/backups/upload";
+   private static final String R = "/client/compatible";
+   private static final String S = "/tos/agreed";
+   private static final String T = "/v1/news";
+   private static final String U = "/seen";
+   private static final String V = "/dismiss";
+   private static final fha W = new fha();
+
+   public static fgi a() {
+      flh $$0 = flh.Q();
+      return a($$0);
+   }
+
+   public static fgi a(flh $$0) {
+      String $$1 = $$0.X().c();
+      String $$2 = $$0.X().a();
+      return new fgi($$2, $$1, $$0);
+   }
+
+   public fgi(String $$0, String $$1, flh $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      fgj.a($$2.Z());
+   }
+
+   public fhl b() throws fie {
+      String $$0 = this.c("worlds");
+      if (fgd.b()) {
+         $$0 = $$0 + "/listUserWorldsOfType/any";
+      }
+
+      String $$1 = this.a(fgl.a($$0));
+      return fhl.a($$1);
+   }
+
+   public List<fhj> c() throws fie {
+      String $$0 = this.c("worlds/listPrereleaseEligibleWorlds");
+      String $$1 = this.a(fgl.a($$0));
+      return fhl.a($$1).a;
+   }
+
+   public fhj a(Long $$0) throws fie {
+      String $$1 = String.valueOf($$0);
+      String $$2 = this.c("worlds" + "/$PARENT_WORLD_ID/createPrereleaseRealm".replace("$PARENT_WORLD_ID", $$1));
+      return fhj.c(this.a(fgl.b($$2, $$1)));
+   }
+
+   public List<fhi> d() throws fie {
+      String $$0 = this.c("notifications");
+      String $$1 = this.a(fgl.a($$0));
+      return fhi.a($$1);
+   }
+
+   private static JsonArray c(List<UUID> $$0) {
+      JsonArray $$1 = new JsonArray();
+
+      for (UUID $$2 : $$0) {
+         if ($$2 != null) {
+            $$1.add($$2.toString());
+         }
+      }
+
+      return $$1;
+   }
+
+   public void a(List<UUID> $$0) throws fie {
+      String $$1 = this.c("notifications/seen");
+      this.a(fgl.b($$1, W.a(c($$0))));
+   }
+
+   public void b(List<UUID> $$0) throws fie {
+      String $$1 = this.c("notifications/dismiss");
+      this.a(fgl.b($$1, W.a(c($$0))));
+   }
+
+   public fhj a(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/$ID".replace("$ID", String.valueOf($$0)));
+      String $$2 = this.a(fgl.a($$1));
+      return fhj.c($$2);
+   }
+
+   public fhu b(long $$0) throws fie {
+      String $$1 = this.c("activities" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgl.a($$1));
+      return fhu.a($$2);
+   }
+
+   public fhm e() throws fie {
+      String $$0 = this.c("activities/liveplayerlist");
+      String $$1 = this.a(fgl.a($$0));
+      return fhm.a($$1);
+   }
+
+   public fhk c(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/v1/$ID/join/pc".replace("$ID", $$0 + ""));
+      String $$2 = this.a(fgl.a($$1, 5000, 30000));
+      return fhk.a($$2);
+   }
+
+   public void a(long $$0, String $$1, String $$2) throws fie {
+      fhg $$3 = new fhg($$1, $$2);
+      String $$4 = this.c("worlds" + "/$WORLD_ID/initialize".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$5 = W.a($$3);
+      this.a(fgl.a($$4, $$5, 5000, 10000));
+   }
+
+   public boolean f() throws fie {
+      String $$0 = this.c("mco/available");
+      String $$1 = this.a(fgl.a($$0));
+      return Boolean.parseBoolean($$1);
+   }
+
+   public fgi.a g() throws fie {
+      String $$0 = this.c("mco/client/compatible");
+      String $$1 = this.a(fgl.a($$0));
+
+      try {
+         return fgi.a.valueOf($$1);
+      } catch (IllegalArgumentException var5) {
+         throw new fie(fgk.b.a($$1));
+      }
+   }
+
+   public void a(long $$0, UUID $$1) throws fie {
+      String $$2 = this.c("invites" + "/$WORLD_ID/invite/$UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$UUID", UndashedUuid.toString($$1)));
+      this.a(fgl.b($$2));
+   }
+
+   public void d(long $$0) throws fie {
+      String $$1 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      this.a(fgl.b($$1));
+   }
+
+   public fhj a(long $$0, String $$1) throws fie {
+      fhf $$2 = new fhf();
+      $$2.a($$1);
+      String $$3 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$4 = this.a(fgl.b($$3, W.a($$2)));
+      return fhj.c($$4);
+   }
+
+   public fgz e(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgl.a($$1));
+      return fgz.a($$2);
+   }
+
+   public void b(long $$0, String $$1, String $$2) throws fie {
+      fhg $$3 = new fhg($$1, $$2);
+      String $$4 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      this.a(fgl.b($$4, W.a($$3)));
+   }
+
+   public void a(long $$0, int $$1, fhp $$2) throws fie {
+      String $$3 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
+      String $$4 = $$2.c();
+      this.a(fgl.b($$3, $$4));
+   }
+
+   public boolean a(long $$0, int $$1) throws fie {
+      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
+      String $$3 = this.a(fgl.c($$2, ""));
+      return Boolean.valueOf($$3);
+   }
+
+   public void b(long $$0, String $$1) throws fie {
+      String $$2 = this.a("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)), "backupId=" + $$1);
+      this.a(fgl.b($$2, "", 40000, 600000));
+   }
+
+   public fia a(int $$0, int $$1, fhj.d $$2) throws fie {
+      String $$3 = this.a(
+         "worlds" + "/templates/$WORLD_TYPE".replace("$WORLD_TYPE", $$2.toString()), String.format(Locale.ROOT, "page=%d&pageSize=%d", $$0, $$1)
+      );
+      String $$4 = this.a(fgl.a($$3));
+      return fia.a($$4);
+   }
+
+   public Boolean c(long $$0, String $$1) throws fie {
+      String $$2 = "/minigames/$MINIGAME_ID/$WORLD_ID".replace("$MINIGAME_ID", $$1).replace("$WORLD_ID", String.valueOf($$0));
+      String $$3 = this.c("worlds" + $$2);
+      return Boolean.valueOf(this.a(fgl.c($$3, "")));
+   }
+
+   public fhb b(long $$0, UUID $$1) throws fie {
+      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
+      String $$3 = this.c("ops" + $$2);
+      return fhb.a(this.a(fgl.b($$3, "")));
+   }
+
+   public fhb c(long $$0, UUID $$1) throws fie {
+      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
+      String $$3 = this.c("ops" + $$2);
+      return fhb.a(this.a(fgl.b($$3)));
+   }
+
+   public Boolean f(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/open".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgl.c($$1, ""));
+      return Boolean.valueOf($$2);
+   }
+
+   public Boolean g(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/close".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgl.c($$1, ""));
+      return Boolean.valueOf($$2);
+   }
+
+   public Boolean d(long $$0, String $$1) throws fie {
+      fhq $$2 = new fhq(null, Long.valueOf($$1), -1, false, Set.of());
+      String $$3 = this.c("worlds" + "/$WORLD_ID/reset".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$4 = this.a(fgl.a($$3, W.a($$2), 30000, 80000));
+      return Boolean.valueOf($$4);
+   }
+
+   public fhv h(long $$0) throws fie {
+      String $$1 = this.c("subscriptions" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgl.a($$1));
+      return fhv.a($$2);
+   }
+
+   public int h() throws fie {
+      return this.i().a.size();
+   }
+
+   public fhd i() throws fie {
+      String $$0 = this.c("invites/pending");
+      String $$1 = this.a(fgl.a($$0));
+      fhd $$2 = fhd.a($$1);
+      $$2.a.removeIf(this::a);
+      return $$2;
+   }
+
+   private boolean a(fhc $$0) {
+      return this.e.aN().e($$0.d);
+   }
+
+   public void a(String $$0) throws fie {
+      String $$1 = this.c("invites" + "/accept/$INVITATION_ID".replace("$INVITATION_ID", $$0));
+      this.a(fgl.c($$1, ""));
+   }
+
+   public fhy b(long $$0, int $$1) throws fie {
+      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID/download".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
+      String $$3 = this.a(fgl.a($$2));
+      return fhy.a($$3);
+   }
+
    @Nullable
-   private CompletableFuture<fjp> n;
-   private final RequestConfig o = RequestConfig.custom()
-      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
-      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
-      .build();
+   public fhw i(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/backups/upload".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = fjz.a($$0);
+      fhw $$3 = fhw.a(this.a(fgl.c($$1, fhw.b($$2))));
+      if ($$3 != null) {
+         fjz.a($$0, $$3.a());
+      }
 
-   public fgi(File $$0, long $$1, int $$2, fhy $$3, flv $$4, String $$5, String $$6, fgo $$7) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4.a();
-      this.i = $$4.c();
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
+      return $$3;
    }
 
-   public fjp a() {
-      if (this.n != null) {
-         return new fjp.a().a();
-      } else {
-         this.n = CompletableFuture.supplyAsync(() -> this.a(0), af.g());
-         if (this.m.get()) {
-            this.b();
-            return new fjp.a().a();
-         } else {
-            return this.n.join();
-         }
+   public void b(String $$0) throws fie {
+      String $$1 = this.c("invites" + "/reject/$INVITATION_ID".replace("$INVITATION_ID", $$0));
+      this.a(fgl.c($$1, ""));
+   }
+
+   public void j() throws fie {
+      String $$0 = this.c("mco/tos/agreed");
+      this.a(fgl.b($$0, ""));
+   }
+
+   public fhh k() throws fie {
+      String $$0 = this.c("mco/v1/news");
+      String $$1 = this.a(fgl.a($$0, 5000, 10000));
+      return fhh.a($$1);
+   }
+
+   public void a(fhe $$0) throws fie {
+      String $$1 = this.c("regions/ping/stat");
+      this.a(fgl.b($$1, W.a($$0)));
+   }
+
+   public Boolean l() throws fie {
+      String $$0 = this.c("trial");
+      String $$1 = this.a(fgl.a($$0));
+      return Boolean.valueOf($$1);
+   }
+
+   public void j(long $$0) throws fie {
+      String $$1 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      this.a(fgl.b($$1));
+   }
+
+   private String c(String $$0) {
+      return this.a($$0, null);
+   }
+
+   private String a(String $$0, @Nullable String $$1) {
+      try {
+         return new URI(a.e, a.d, "/" + $$0, $$1, null).toASCIIString();
+      } catch (URISyntaxException var4) {
+         throw new IllegalArgumentException($$0, var4);
       }
    }
 
-   public void b() {
-      this.m.set(true);
-   }
+   private String a(fgl<?> $$0) throws fie {
+      $$0.a("sid", this.c);
+      $$0.a("user", this.d);
+      $$0.a("version", ab.b().c());
+      $$0.a(fgd.b());
 
-   private fjp a(int $$0) {
-      fjp.a $$1 = new fjp.a();
-      if (this.m.get()) {
-         return $$1.a();
-      } else {
-         this.l.a(this.d.length());
-         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
-         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
-
-         fjp var8;
-         try {
-            this.a($$2);
-            HttpResponse $$4 = $$3.execute($$2);
-            long $$5 = this.a($$4);
-            if (!this.a($$5, $$0)) {
-               this.a($$4, $$1);
-               return $$1.a();
-            }
-
-            var8 = this.b($$5, $$0);
-         } catch (Exception var12) {
-            if (!this.m.get()) {
-               a.error("Caught exception while uploading: ", var12);
-               return $$1.a();
-            }
-
-            throw new fgr();
-         } finally {
-            this.a($$2, $$3);
-         }
-
-         return var8;
-      }
-   }
-
-   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
-      $$0.releaseConnection();
-      if ($$1 != null) {
-         try {
-            $$1.close();
-         } catch (IOException var4) {
-            a.error("Failed to close Realms upload client");
-         }
-      }
-   }
-
-   private void a(HttpPost $$0) throws FileNotFoundException {
-      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
-      fgi.a $$1 = new fgi.a(new FileInputStream(this.d), this.d.length(), this.l);
-      $$1.setContentType("application/octet-stream");
-      $$0.setEntity($$1);
-   }
-
-   private void a(HttpResponse $$0, fjp.a $$1) throws IOException {
-      int $$2 = $$0.getStatusLine().getStatusCode();
-      if ($$2 == 401) {
-         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
-      }
-
-      $$1.a($$2);
-      if ($$0.getEntity() != null) {
-         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
-         if ($$3 != null) {
-            try {
-               JsonParser $$4 = new JsonParser();
-               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
-               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
-               $$1.a($$6.orElse(null));
-            } catch (Exception var8) {
-            }
-         }
-      }
-   }
-
-   private boolean a(long $$0, int $$1) {
-      return $$0 > 0L && $$1 + 1 < 5;
-   }
-
-   private fjp b(long $$0, int $$1) throws InterruptedException {
-      Thread.sleep(Duration.ofSeconds($$0).toMillis());
-      return this.a($$1 + 1);
-   }
-
-   private long a(HttpResponse $$0) {
-      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
-   }
-
-   public boolean c() {
-      return this.n.isDone() || this.n.isCancelled();
-   }
-
-   class a extends InputStreamEntity {
-      private final long b;
-      private final InputStream c;
-      private final fgo d;
-
-      public a(final InputStream $$0, final long $$1, final fgo $$2) {
-         super($$0);
-         this.c = $$0;
-         this.b = $$1;
-         this.d = $$2;
-      }
-
-      public void writeTo(OutputStream $$0) throws IOException {
-         Args.notNull($$0, "Output stream");
-
-         try (InputStream $$1 = this.c) {
-            byte[] $$2 = new byte[4096];
-            int $$3;
-            if (this.b < 0L) {
-               while (($$3 = $$1.read($$2)) != -1) {
-                  if (fgi.this.m.get()) {
-                     throw new fgr();
-                  }
-
-                  $$0.write($$2, 0, $$3);
-                  this.d.b((long)$$3);
-               }
+      try {
+         int $$1 = $$0.b();
+         if ($$1 != 503 && $$1 != 277) {
+            String $$3 = $$0.c();
+            if ($$1 >= 200 && $$1 < 300) {
+               return $$3;
+            } else if ($$1 == 401) {
+               String $$4 = $$0.c("WWW-Authenticate");
+               b.info("Could not authorize you against Realms server: {}", $$4);
+               throw new fie(new fgk.a($$4));
             } else {
-               long $$4 = this.b;
-
-               while ($$4 > 0L) {
-                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
-                  if ($$3 == -1) {
-                     break;
-                  }
-
-                  if (fgi.this.m.get()) {
-                     throw new fgr();
-                  }
-
-                  $$0.write($$2, 0, $$3);
-                  this.d.b((long)$$3);
-                  $$4 -= (long)$$3;
-                  $$0.flush();
-               }
+               fgk $$5 = fgk.a($$1, $$3);
+               throw new fie($$5);
             }
+         } else {
+            int $$2 = $$0.a();
+            throw new fif($$2, $$1);
          }
+      } catch (fid var5) {
+         throw new fie(fgk.b.a(var5));
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static enum b {
+      a("pc.realms.minecraft.net", "https"),
+      b("pc-stage.realms.minecraft.net", "https"),
+      c("localhost:8080", "http");
+
+      public final String d;
+      public final String e;
+
+      private b(final String $$0, final String $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      public static Optional<fgi.b> a(String $$0) {
+         String var1 = $$0.toLowerCase(Locale.ROOT);
+
+         return switch (var1) {
+            case "production" -> Optional.of(a);
+            case "local" -> Optional.of(c);
+            case "stage", "staging" -> Optional.of(b);
+            default -> Optional.empty();
+         };
       }
    }
 }

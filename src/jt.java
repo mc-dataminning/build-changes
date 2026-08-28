@@ -15,7 +15,7 @@ public interface jt<T> extends js<T> {
 
    Stream<jv.c<T>> e();
 
-   default Stream<axf<T>> f() {
+   default Stream<axe<T>> f() {
       return this.e().map(jv.c::h);
    }
 
@@ -62,8 +62,8 @@ public interface jt<T> extends js<T> {
 
       Lifecycle h();
 
-      default jt.b<T> a(crt $$0) {
-         return crq.bU.contains(this.g()) ? this.a($$1 -> ((crq)$$1).a($$0)) : this;
+      default jt.b<T> a(crr $$0) {
+         return cro.bT.contains(this.g()) ? this.a($$1 -> ((cro)$$1).a($$0)) : this;
       }
 
       default jt.b<T> a(final Predicate<T> $$0) {
@@ -109,7 +109,7 @@ public interface jt<T> extends js<T> {
          }
 
          @Override
-         default Optional<jv.c<T>> a(axf<T> $$0) {
+         default Optional<jv.c<T>> a(axe<T> $$0) {
             return this.a().a($$0);
          }
 

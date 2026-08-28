@@ -1,17 +1,22 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class cnr {
-   public static bxa<bvg> a(int $$0) {
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$1 -> $$1.group($$1.b(cek.L), $$1.c(cek.ad), $$1.c(cek.ag), $$1.c(cek.af))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
-                     clb $$7 = $$1.b($$2);
-                     if (!cnm.a($$7.l())) {
+public class cnr<E extends cnj> {
+   public static bwz<bvf> a(int $$0) {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$1 -> $$1.group($$1.b(cej.ad), $$1.a(cej.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.fa().f()) {
                         return false;
                      } else {
-                        $$3.a(true, (long)$$0);
-                        return true;
+                        Optional<cla> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
                      }
                   }))
       );

@@ -1,7 +1,8 @@
-public enum ete {
-   a,
-   b,
-   c,
-   d,
-   e;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ete {
 }

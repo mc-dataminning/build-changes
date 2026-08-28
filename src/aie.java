@@ -27,7 +27,7 @@ public class aie implements yv<agf> {
    }
 
    @Nullable
-   public buk a(arc $$0) {
+   public buj a(arc $$0) {
       return $$0.a(this.b);
    }
 }

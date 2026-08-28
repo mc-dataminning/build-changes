@@ -36,7 +36,7 @@ public class ash implements aix, wc {
    public ash(MinecraftServer $$0, vi $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1;
-      this.e = Ints.toByteArray(azh.a().f());
+      this.e = Ints.toByteArray(azg.a().f());
       this.m = $$2;
    }
 
@@ -88,7 +88,7 @@ public class ash implements aix, wc {
    @Override
    public void a(aiz $$0) {
       Validate.validState(this.h == ash.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(azw.f($$0.b()), "Invalid characters in username", new Object[0]);
+      Validate.validState(azv.f($$0.b()), "Invalid characters in username", new Object[0]);
       this.j = $$0.b();
       GameProfile $$1 = this.f.T();
       if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {
@@ -109,7 +109,7 @@ public class ash implements aix, wc {
    }
 
    private void c(GameProfile $$0) {
-      avd $$1 = this.f.ag();
+      avc $$1 = this.f.ag();
       wo $$2 = $$1.a(this.g.d(), $$0);
       if ($$2 != null) {
          this.a($$2);
@@ -144,12 +144,12 @@ public class ash implements aix, wc {
          }
 
          SecretKey $$2 = $$0.a($$1);
-         Cipher $$3 = axx.a(2, $$2);
-         Cipher $$4 = axx.a(1, $$2);
-         $$5 = new BigInteger(axx.a("", this.f.R().getPublic(), $$2)).toString(16);
+         Cipher $$3 = axw.a(2, $$2);
+         Cipher $$4 = axw.a(1, $$2);
+         $$5 = new BigInteger(axw.a("", this.f.R().getPublic(), $$2)).toString(16);
          this.h = ash.a.c;
          this.g.a($$3, $$4);
-      } catch (axy var7) {
+      } catch (axx var7) {
          throw new IllegalStateException("Protocol error", var7);
       }
 

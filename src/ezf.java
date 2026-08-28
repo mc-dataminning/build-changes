@@ -1,28 +1,31 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record ezf(ezw b) implements eza {
-   public static final MapCodec<ezf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezx.a.fieldOf("chance").forGetter(ezf::c)).apply($$0, ezf::new));
+public record ezf(Optional<cv> b) implements eyy {
+   public static final MapCodec<ezf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.a.optionalFieldOf("predicate").forGetter(ezf::c)).apply($$0, ezf::new));
 
    @Override
-   public ezb b() {
-      return ezc.d;
+   public eyz b() {
+      return eza.j;
    }
 
-   public boolean a(evr $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<bah<?>> a() {
+      return Set.of(eyj.i);
    }
 
-   public static eza.a a(float $$0) {
-      return () -> new ezf(ezt.a($$0));
+   public boolean a(evp $$0) {
+      cwn $$1 = $$0.c(eyj.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   public static eza.a a(ezw $$0) {
-      return () -> new ezf($$0);
+   public static eyy.a a(cv.a $$0) {
+      return () -> new ezf(Optional.of($$0.b()));
    }
 
-   public ezw c() {
+   public Optional<cv> c() {
       return this.b;
    }
 }

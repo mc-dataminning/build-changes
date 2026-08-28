@@ -1,44 +1,20 @@
-public class gmv implements ffy {
-   private final ffy a;
-   private final hej b;
+import javax.annotation.Nullable;
 
-   public gmv(ffy $$0, hej $$1) {
+public final class gmv implements AutoCloseable {
+   private final flh a;
+   private final fet b;
+
+   public gmv(flh $$0) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = new fet(feq::new);
+   }
+
+   public fev a(fei $$0, @Nullable String $$1, String $$2) {
+      return new fev(this.a, this.b, $$0, $$1, $$2);
    }
 
    @Override
-   public ffy a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public ffy a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public ffy a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
-
-   @Override
-   public ffy a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public ffy b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public ffy b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   public void close() {
+      this.b.a();
    }
 }

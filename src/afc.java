@@ -5,9 +5,9 @@ public class afc implements yv<abk> {
    private final int b;
    private final int[] c;
 
-   public afc(buk $$0) {
+   public afc(buj $$0) {
       this.b = $$0.ar();
-      List<buk> $$1 = $$0.cZ();
+      List<buj> $$1 = $$0.cZ();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

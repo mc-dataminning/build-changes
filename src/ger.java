@@ -1,111 +1,50 @@
-import java.util.Set;
+public class ger<S extends haz> extends gcl<S> implements gej {
+   private final gfa a = this.p.b("hat_rim");
 
-public class ger extends gca<hay> {
-   public static final gfl a = new gaz(Set.of("head"));
-   private static final String b = "real_head";
-   private static final String c = "upper_body";
-   private static final String d = "real_tail";
-   private final gfc e;
-   private final gfc f;
-   private final gfc g;
-   private final gfc i;
-   private final gfc j;
-   private final gfc k;
-   private final gfc l;
-   private final gfc m;
-   private final gfc n;
-   private final gfc o;
-   private static final int p = 8;
-
-   public ger(gfc $$0) {
+   public ger(gfa $$0) {
       super($$0);
-      this.e = $$0.b("head");
-      this.f = this.e.b("real_head");
-      this.g = $$0.b("body");
-      this.o = $$0.b("upper_body");
-      this.i = $$0.b("right_hind_leg");
-      this.j = $$0.b("left_hind_leg");
-      this.k = $$0.b("right_front_leg");
-      this.l = $$0.b("left_front_leg");
-      this.m = $$0.b("tail");
-      this.n = this.m.b("real_tail");
    }
 
-   public static gfk a(gfg $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      float $$3 = 13.5F;
-      gfm $$4 = $$2.a("head", gfh.c(), gfe.a(-1.0F, 13.5F, -7.0F));
-      $$4.a(
-         "real_head",
-         gfh.c()
-            .a(0, 0)
-            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, $$0)
-            .a(16, 14)
-            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
-            .a(16, 14)
-            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
-            .a(0, 10)
-            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, $$0),
-         gfe.a
-      );
-      $$2.a("body", gfh.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, $$0), gfe.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("upper_body", gfh.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, $$0), gfe.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gfh $$5 = gfh.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0);
-      $$2.a("right_hind_leg", $$5, gfe.a(-2.5F, 16.0F, 7.0F));
-      $$2.a("left_hind_leg", $$5, gfe.a(0.5F, 16.0F, 7.0F));
-      $$2.a("right_front_leg", $$5, gfe.a(-2.5F, 16.0F, -4.0F));
-      $$2.a("left_front_leg", $$5, gfe.a(0.5F, 16.0F, -4.0F));
-      gfm $$6 = $$2.a("tail", gfh.c(), gfe.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
-      $$6.a("real_tail", gfh.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0), gfe.a);
-      return $$1;
+   public static gfg a() {
+      gfi $$0 = gcl.a(gfe.a, 0.0F);
+      gfk $$1 = $$0.a();
+      gfk $$2 = $$1.a("head", new gff().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), gfc.a);
+      gfk $$3 = $$2.a("hat", gff.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new gfe(0.5F)), gfc.a);
+      $$3.a("hat_rim", gff.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), gfc.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", gff.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gfe(0.05F)), gfc.a);
+      $$1.a("right_arm", gff.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfc.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", gff.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfc.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", gff.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfc.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", gff.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfc.a(2.0F, 12.0F, 0.0F));
+      return gfg.a($$0, 64, 64);
    }
 
-   public void a(hay $$0) {
+   public static gfg a(gfe $$0) {
+      gfi $$1 = gcl.a($$0, 0.0F);
+      gfk $$2 = $$1.a();
+      gfk $$3 = $$2.a("head", gff.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gfc.a);
+      $$2.a("body", gff.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), gfc.a);
+      $$2.a("right_leg", gff.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gfc.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", gff.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gfc.a(2.0F, 12.0F, 0.0F));
+      $$3.b("hat").a("hat_rim", gff.c(), gfc.a);
+      return gfg.a($$1, 64, 32);
+   }
+
+   public void a(S $$0) {
       super.a($$0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      if ($$0.a) {
-         this.m.f = 0.0F;
-      } else {
-         this.m.f = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
+      float $$1 = $$0.H;
+      gaq.a(this.s, this.r, $$0.a, $$1, $$0.u);
+   }
 
-      if ($$0.b) {
-         float $$3 = $$0.ag;
-         this.o.c += 2.0F * $$3;
-         this.o.e = (float) (Math.PI * 2.0 / 5.0);
-         this.o.f = 0.0F;
-         this.g.c += 4.0F * $$3;
-         this.g.d -= 2.0F * $$3;
-         this.g.e = (float) (Math.PI / 4);
-         this.m.c += 9.0F * $$3;
-         this.m.d -= 2.0F * $$3;
-         this.i.c += 6.7F * $$3;
-         this.i.d -= 5.0F * $$3;
-         this.i.e = (float) (Math.PI * 3.0 / 2.0);
-         this.j.c += 6.7F * $$3;
-         this.j.d -= 5.0F * $$3;
-         this.j.e = (float) (Math.PI * 3.0 / 2.0);
-         this.k.e = 5.811947F;
-         this.k.b += 0.01F * $$3;
-         this.k.c += 1.0F * $$3;
-         this.l.e = 5.811947F;
-         this.l.b -= 0.01F * $$3;
-         this.l.c += 1.0F * $$3;
-      } else {
-         this.i.e = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
-         this.j.e = ayz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.k.e = ayz.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.l.e = ayz.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
+   @Override
+   public void a(boolean $$0) {
+      this.o.k = $$0;
+      this.p.k = $$0;
+      this.a.k = $$0;
+   }
 
-      this.f.g = $$0.d + $$0.a(0.0F);
-      this.o.g = $$0.a(-0.08F);
-      this.g.g = $$0.a(-0.16F);
-      this.n.g = $$0.a(-0.2F);
-      this.e.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.e.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.m.e = $$0.c;
+   @Override
+   public void a(ffs $$0) {
+      this.a(buz.b, $$0);
    }
 }

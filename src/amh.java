@@ -54,21 +54,21 @@ public class amh {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a(
                                                                      "color"
                                                                   )
-                                                                  .then(ey.a("pink").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.a))))
-                                                               .then(ey.a("blue").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.b))))
-                                                            .then(ey.a("red").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.c))))
-                                                         .then(ey.a("green").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.d))))
-                                                      .then(ey.a("yellow").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.e))))
-                                                   .then(ey.a("purple").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.f))))
-                                                .then(ey.a("white").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.a.g)))
+                                                                  .then(ey.a("pink").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.a))))
+                                                               .then(ey.a("blue").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.b))))
+                                                            .then(ey.a("red").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.c))))
+                                                         .then(ey.a("green").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.d))))
+                                                      .then(ey.a("yellow").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.e))))
+                                                   .then(ey.a("purple").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.f))))
+                                                .then(ey.a("white").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("style")
-                                                         .then(ey.a("progress").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.b.a))))
-                                                      .then(ey.a("notched_6").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.b.b))))
-                                                   .then(ey.a("notched_10").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.b.c))))
-                                                .then(ey.a("notched_12").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.b.d))))
-                                             .then(ey.a("notched_20").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), brz.b.e)))
+                                                         .then(ey.a("progress").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.b.a))))
+                                                      .then(ey.a("notched_6").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.b.b))))
+                                                   .then(ey.a("notched_10").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.b.c))))
+                                                .then(ey.a("notched_12").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.b.d))))
+                                             .then(ey.a("notched_20").executes($$0x -> a((ex)$$0x.getSource(), a($$0x), bry.b.e)))
                                        ))
                                     .then(
                                        ey.a("value")
@@ -135,7 +135,7 @@ public class amh {
       if ($$1.g().isEmpty()) {
          $$0.a(() -> wo.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> wo.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wr.b($$1.g(), cox::p_)), true);
+         $$0.a(() -> wo.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wr.b($$1.g(), cov::p_)), true);
       }
 
       return $$1.g().size();
@@ -180,7 +180,7 @@ public class amh {
       }
    }
 
-   private static int a(ex $$0, alw $$1, brz.a $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, alw $$1, bry.a $$2) throws CommandSyntaxException {
       if ($$1.k().equals($$2)) {
          throw f.create();
       } else {
@@ -190,7 +190,7 @@ public class amh {
       }
    }
 
-   private static int a(ex $$0, alw $$1, brz.b $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, alw $$1, bry.b $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw g.create();
       } else {
@@ -219,7 +219,7 @@ public class amh {
          if ($$1.g().isEmpty()) {
             $$0.a(() -> wo.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> wo.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wr.b($$2, cox::p_)), true);
+            $$0.a(() -> wo.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wr.b($$2, cov::p_)), true);
          }
 
          return $$1.g().size();

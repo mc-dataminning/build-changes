@@ -1,25 +1,50 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-public interface dgq {
-   boolean a(ji var1, dwx var2, int var3, int var4);
+public class dgq {
+   private final Long2ObjectMap<List<ard>> a = new Long2ObjectOpenHashMap();
+   private final Map<ard, dgq.a> b = Maps.newHashMap();
+   private final aqh c;
 
-   default boolean a(ji $$0, dwx $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public dgq(aqh $$0) {
+      this.c = $$0;
    }
 
-   boolean a(ji var1, boolean var2);
-
-   default boolean b(ji $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   private List<ard> a(dfm $$0) {
+      return (List<ard>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
    }
 
-   default boolean a(ji $$0, boolean $$1, @Nullable buk $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public void a(dfm $$0, bvi $$1) {
+      for (ard $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dgq.a()).a($$1);
+      }
    }
 
-   boolean a(ji var1, boolean var2, @Nullable buk var3, int var4);
+   public boolean a(bvi $$0, dfm $$1) {
+      for (ard $$2 : this.a($$1)) {
+         dgq.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
 
-   default boolean b(buk $$0) {
       return false;
+   }
+
+   static class a {
+      private final Object2IntMap<bvi> a = new Object2IntOpenHashMap(bvi.values().length);
+
+      public void a(bvi $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bvi $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

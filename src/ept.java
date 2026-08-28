@@ -1,42 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class ept extends enm {
-   public static final bqv<dhw.c> d = bqv.a(
-      new dhw.c(bur.o, 10, 2, 3), new dhw.c(bur.bR, 5, 4, 4), new dhw.c(bur.bK, 8, 5, 5), new dhw.c(bur.bf, 2, 5, 5), new dhw.c(bur.aA, 3, 4, 4)
+public class ept extends enk {
+   public static final MapCodec<ept> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), elr.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ept::new)
    );
-   public static final MapCodec<ept> e = a(ept::new);
+   public final elr e;
 
-   public ept(enm.c $$0) {
+   public ept(enk.c $$0, elr $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<enm.b> a(enm.a $$0) {
-      dfo $$1 = $$0.h();
-      ji $$2 = new ji($$1.d(), 64, $$1.e());
-      return Optional.of(new enm.b($$2, (Consumer<eoe>)($$1x -> a($$1x, $$0))));
-   }
+   public Optional<enk.b> a(enk.a $$0) {
+      edp $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      edn $$5 = new edn($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dgs $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      ji.a $$8 = new ji.a($$2, $$6, $$3);
 
-   private static void a(eoe $$0, enm.a $$1) {
-      eps.q $$2 = new eps.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<enq> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         enq $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
+      while ($$6 > $$4) {
+         dwv $$9 = $$7.a($$6);
+         dwv $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(djm.ej) || $$10.c(dfv.a, $$8.q($$6), jn.b))) {
+            break;
+         }
       }
 
-      $$0.a($$1.f(), 48, 70);
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         ji $$11 = new ji($$2, $$6, $$3);
+         return Optional.of(new enk.b($$11, (Consumer<eoc>)($$3x -> eps.a($$0.e(), $$3x, $$1, $$11))));
+      }
    }
 
    @Override
-   public env<?> e() {
-      return env.d;
+   public ent<?> e() {
+      return ent.i;
    }
 }

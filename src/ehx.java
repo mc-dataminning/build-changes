@@ -1,18 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehx implements eic {
-   public static final Codec<ehx> a = bro.b(0, 256).fieldOf("count").xmap(ehx::new, ehx::a).codec();
-   private final bro b;
+public record ehx(ekj b, edx c, brn d, int e) implements eia {
+   public static final Codec<ehx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ekj.a.fieldOf("state_provider").forGetter(ehx::a),
+               edx.b.fieldOf("target").forGetter(ehx::b),
+               brn.b(0, 8).fieldOf("radius").forGetter(ehx::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ehx::d)
+            )
+            .apply($$0, ehx::new)
+   );
 
-   public ehx(int $$0) {
-      this.b = brl.a($$0);
-   }
-
-   public ehx(bro $$0) {
-      this.b = $$0;
-   }
-
-   public bro a() {
+   public ekj a() {
       return this.b;
+   }
+
+   public edx b() {
+      return this.c;
+   }
+
+   public brn c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

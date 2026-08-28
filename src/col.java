@@ -1,68 +1,61 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record col(String q, Predicate<jr<cgn>> r, Predicate<jr<cgn>> s, ImmutableSet<cwl> t, ImmutableSet<djm> u, @Nullable avz v) {
-   public static final Predicate<jr<cgn>> a = $$0 -> $$0.a(axa.a);
-   public static final col b = a("none", cgn.a, a, null);
-   public static final col c = a("armorer", cgo.a, awa.BO);
-   public static final col d = a("butcher", cgo.b, awa.BP);
-   public static final col e = a("cartographer", cgo.c, awa.BQ);
-   public static final col f = a("cleric", cgo.d, awa.BR);
-   public static final col g = a("farmer", cgo.e, ImmutableSet.of(cwt.qb, cwt.qa, cwt.wl, cwt.sv), ImmutableSet.of(djo.cK), awa.BS);
-   public static final col h = a("fisherman", cgo.f, awa.BT);
-   public static final col i = a("fletcher", cgo.g, awa.BU);
-   public static final col j = a("leatherworker", cgo.h, awa.BV);
-   public static final col k = a("librarian", cgo.i, awa.BW);
-   public static final col l = a("mason", cgo.j, awa.BX);
-   public static final col m = a("nitwit", cgn.a, cgn.a, null);
-   public static final col n = a("shepherd", cgo.k, awa.BY);
-   public static final col o = a("toolsmith", cgo.l, awa.BZ);
-   public static final col p = a("weaponsmith", cgo.m, awa.Ca);
+public final class col {
+   public static final col a = a("desert");
+   public static final col b = a("jungle");
+   public static final col c = a("plains");
+   public static final col d = a("savanna");
+   public static final col e = a("snow");
+   public static final col f = a("swamp");
+   public static final col g = a("taiga");
+   private final String h;
+   private static final Map<akt<dhi>, col> i = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dhp.B, a);
+      $$0.put(dhp.f, a);
+      $$0.put(dhp.C, a);
+      $$0.put(dhp.D, a);
+      $$0.put(dhp.A, b);
+      $$0.put(dhp.y, b);
+      $$0.put(dhp.z, b);
+      $$0.put(dhp.t, d);
+      $$0.put(dhp.s, d);
+      $$0.put(dhp.x, d);
+      $$0.put(dhp.Y, e);
+      $$0.put(dhp.X, e);
+      $$0.put(dhp.M, e);
+      $$0.put(dhp.e, e);
+      $$0.put(dhp.O, e);
+      $$0.put(dhp.r, e);
+      $$0.put(dhp.d, e);
+      $$0.put(dhp.G, e);
+      $$0.put(dhp.H, e);
+      $$0.put(dhp.I, e);
+      $$0.put(dhp.J, e);
+      $$0.put(dhp.g, f);
+      $$0.put(dhp.h, f);
+      $$0.put(dhp.p, g);
+      $$0.put(dhp.o, g);
+      $$0.put(dhp.v, g);
+      $$0.put(dhp.u, g);
+      $$0.put(dhp.q, g);
+      $$0.put(dhp.w, g);
+   });
+
+   private col(String $$0) {
+      this.h = $$0;
+   }
 
    @Override
    public String toString() {
-      return this.q;
+      return this.h;
    }
 
-   private static col a(String $$0, akt<cgn> $$1, @Nullable avz $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   private static col a(String $$0) {
+      return ke.a(mb.w, aku.b($$0), new col($$0));
    }
 
-   private static col a(String $$0, Predicate<jr<cgn>> $$1, Predicate<jr<cgn>> $$2, @Nullable avz $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
-   }
-
-   private static col a(String $$0, akt<cgn> $$1, ImmutableSet<cwl> $$2, ImmutableSet<djm> $$3, @Nullable avz $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
-   }
-
-   private static col a(String $$0, Predicate<jr<cgn>> $$1, Predicate<jr<cgn>> $$2, ImmutableSet<cwl> $$3, ImmutableSet<djm> $$4, @Nullable avz $$5) {
-      return ke.a(mb.x, aku.b($$0), new col($$0, $$1, $$2, $$3, $$4, $$5));
-   }
-
-   public String a() {
-      return this.q;
-   }
-
-   public Predicate<jr<cgn>> b() {
-      return this.r;
-   }
-
-   public Predicate<jr<cgn>> c() {
-      return this.s;
-   }
-
-   public ImmutableSet<cwl> d() {
-      return this.t;
-   }
-
-   public ImmutableSet<djm> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public avz f() {
-      return this.v;
+   public static col a(jr<dhi> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

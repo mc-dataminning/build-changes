@@ -1,49 +1,61 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record ezg(float b, ddg c, jr<dcz> g) implements eza {
+public record ezg(Optional<Long> b, evo c) implements eyy {
    public static final MapCodec<ezg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(ezg::c),
-               ddg.b.fieldOf("enchanted_chance").forGetter(ezg::d),
-               dcz.c.fieldOf("enchantment").forGetter(ezg::e)
-            )
-            .apply($$0, ezg::new)
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(ezg::c), evo.a.fieldOf("value").forGetter(ezg::d)).apply($$0, ezg::new)
    );
 
    @Override
-   public ezb b() {
-      return ezc.e;
+   public eyz b() {
+      return eza.q;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(eyl.d);
+   public Set<bah<?>> a() {
+      return this.c.a();
    }
 
-   public boolean a(evr $$0) {
-      buk $$1 = $$0.c(eyl.d);
-      int $$3 = $$1 instanceof bvg $$2 ? ddb.a(this.g, $$2) : 0;
-      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
-      return $$0.b().i() < $$4;
+   public boolean a(evp $$0) {
+      arc $$1 = $$0.d();
+      long $$2 = $$1.ae();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   public static eza.a a(jt.a $$0, float $$1, float $$2) {
-      jt.b<dcz> $$3 = $$0.d(mc.aO);
-      return () -> new ezg($$1, new ddg.e($$1 + $$2, $$2), $$3.b(dde.s));
+   public static ezg.a a(evo $$0) {
+      return new ezg.a($$0);
    }
 
-   public float c() {
+   public Optional<Long> c() {
       return this.b;
    }
 
-   public ddg d() {
+   public evo d() {
       return this.c;
    }
 
-   public jr<dcz> e() {
-      return this.g;
+   public static class a implements eyy.a {
+      private Optional<Long> a = Optional.empty();
+      private final evo b;
+
+      public a(evo $$0) {
+         this.b = $$0;
+      }
+
+      public ezg.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ezg a() {
+         return new ezg(this.a, this.b);
+      }
    }
 }

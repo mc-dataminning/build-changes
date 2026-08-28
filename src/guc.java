@@ -1,42 +1,60 @@
-public class guc extends gsb<cpt, hac> {
-   private static final aku a = aku.b("textures/entity/shulker/spark.png");
-   private static final gmh b = gmh.j(a);
-   private final gds h;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-   public guc(gsc.a $$0) {
-      super($$0);
-      this.h = new gds($$0.a(gfb.cG));
+public class guc extends gth<cmc, hac, gdr> {
+   private static final aku a = gmq.i.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
+   private static final aku[] b = gmq.j.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(aku[]::new);
+
+   public guc(gsb.a $$0) {
+      super($$0, new gdr($$0.a(gez.cE)), 0.0F);
    }
 
-   protected int a(cpt $$0, ji $$1) {
-      return 15;
+   public fay a(hac $$0) {
+      return $$0.a;
    }
 
-   public void a(hac $$0, ffu $$1, glx $$2, int $$3) {
-      $$1.a();
-      float $$4 = $$0.u;
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees(ayz.a($$4 * 0.1F) * 180.0F));
-      $$1.a(a.b.rotationDegrees(ayz.b($$4 * 0.1F) * 180.0F));
-      $$1.a(a.f.rotationDegrees(ayz.a($$4 * 0.15F) * 360.0F));
-      $$1.b(-0.5F, -0.5F, 0.5F);
-      this.h.a($$0);
-      ffy $$5 = $$2.getBuffer(this.h.a(a));
-      this.h.a($$1, $$5, $$3, hea.d);
-      $$1.b(1.5F, 1.5F, 1.5F);
-      ffy $$6 = $$2.getBuffer(b);
-      this.h.a($$1, $$6, $$3, hea.d, 654311423);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public boolean a(cmc $$0, gpn $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         fay $$5 = $$0.K(0.0F);
+         if ($$5 == null) {
+            return false;
+         } else {
+            buq<?> $$6 = $$0.aq();
+            float $$7 = $$6.m() / 2.0F;
+            float $$8 = $$6.l() / 2.0F;
+            fay $$9 = fay.c($$0.dw());
+            return $$1.a(new fat($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
+         }
+      }
    }
 
-   public hac a() {
+   public aku b(hac $$0) {
+      return a($$0.b);
+   }
+
+   public hac b() {
       return new hac();
    }
 
-   public void a(cpt $$0, hac $$1, float $$2) {
+   public void a(cmc $$0, hac $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
+      $$1.a = Objects.requireNonNullElse($$0.K($$2), fay.c);
+      $$1.b = $$0.gp();
+      $$1.c = $$0.J($$2);
+      $$1.d = $$0.aZ;
+      $$1.e = $$0.aX;
+      $$1.f = $$0.t();
+   }
+
+   public static aku a(@Nullable cvk $$0) {
+      return $$0 == null ? a : b[$$0.a()];
+   }
+
+   protected void a(hac $$0, ffs $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2 + 180.0F, $$3);
+      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
    }
 }

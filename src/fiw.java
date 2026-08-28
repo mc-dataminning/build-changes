@@ -1,104 +1,62 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
+public class fiw extends hky {
+   private final fui a;
+   private final fiw.a b;
+   private fpj c = fpj.a;
 
-public class fiw extends hkx {
-   private static final wo a = wo.c("mco.selectServer.create");
-   private static final wo b = wo.c("mco.configure.world.name");
-   private static final wo c = wo.c("mco.configure.world.description");
-   private static final int C = 10;
-   private static final int D = 210;
-   private final fgf E;
-   private final fsg F = new fsg(this);
-   private fpb G;
-   private fpb H;
-   private final Runnable I;
+   public fiw(fie $$0, fui $$1) {
+      super(fky.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public fiw(fgf $$0, fhl $$1, boolean $$2) {
-      super(a);
-      this.E = $$0;
-      this.I = () -> this.a($$1, $$2);
+   public fiw(wo $$0, fui $$1) {
+      super(fky.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public fiw(wo $$0, wo $$1, fui $$2) {
+      super(fky.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static fiw.a a(fie $$0) {
+      fgk $$1 = $$0.a;
+      return a(wo.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static fiw.a a(wo $$0) {
+      return a(wo.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static fiw.a a(wo $$0, wo $$1) {
+      return new fiw.a($$0, $$1);
    }
 
    @Override
    public void aR_() {
-      this.F.a(this.l, this.p);
-      fsk $$0 = this.F.c(fsk.d()).a(10);
-      fos $$1 = fos.a(wn.j, $$0x -> this.I.run()).a();
-      $$1.j = false;
-      this.G = new fpb(this.p, 210, 20, b);
-      this.G.b($$1x -> $$1.j = !azw.h($$1x));
-      this.H = new fpb(this.p, 210, 20, c);
-      $$0.a(fsc.a(this.p, this.G, b));
-      $$0.a(fsc.a(this.p, this.H, c));
-      fsk $$2 = this.F.b(fsk.e().a(10));
-      $$2.a($$1);
-      $$2.a(fos.a(wn.k, $$0x -> this.aO_()).a());
-      this.F.a($$1x -> {
-         fop var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void aF_() {
-      this.b(this.G);
-   }
-
-   @Override
-   protected void c() {
-      this.F.a();
-   }
-
-   private void a(fhl $$0, boolean $$1) {
-      if (!$$0.h() && $$1) {
-         AtomicBoolean $$2 = new AtomicBoolean();
-         this.m.a(new ftd(() -> {
-            $$2.set(true);
-            this.E.h();
-            this.m.a(this.E);
-         }, wo.c("mco.upload.preparing"), wo.i()));
-         CompletableFuture.<fhl>supplyAsync(() -> a($$0), af.g()).thenAcceptAsync($$1x -> {
-            if (!$$2.get()) {
-               this.b($$1x);
-            }
-         }, this.m).exceptionallyAsync($$0x -> {
-            this.E.h();
-            wo $$3;
-            if ($$0x.getCause() instanceof fig $$2x) {
-               $$3 = $$2x.a.b();
-            } else {
-               $$3 = wo.c("mco.errorMessage.initialize.failed");
-            }
-
-            this.m.a(new fiy($$3, this.E));
-            return null;
-         }, this.m);
-      } else {
-         this.b($$0);
-      }
-   }
-
-   private static fhl a(fhl $$0) {
-      fgk $$1 = fgk.a();
-
-      try {
-         return $$1.a(Long.valueOf($$0.a));
-      } catch (fig var3) {
-         throw new RuntimeException(var3);
-      }
-   }
-
-   private void b(fhl $$0) {
-      fkj $$1 = new fkj($$0.a, this.G.a(), this.H.a());
-      fjh $$2 = fjh.a(this, $$0, $$1, () -> this.m.execute(() -> {
-            fgf.g();
-            this.m.a(this.E);
-         }));
-      this.m.a($$2);
+      this.c(fop.a(wn.h, $$0 -> this.aO_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = fpj.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
    @Override
    public void aO_() {
-      this.m.a(this.E);
+      this.m.a(this.a);
+   }
+
+   @Override
+   public wo i() {
+      return wo.i().b(this.b.a).f(": ").b(this.b.b);
+   }
+
+   @Override
+   public void a(fob $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   }
+
+   static record a(wo a, wo b) {
    }
 }

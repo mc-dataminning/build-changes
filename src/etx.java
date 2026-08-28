@@ -1,154 +1,98 @@
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.Set;
 
-public class etx {
-   public static final int a = 3;
-   private static final int b = 16;
-   private static final int c = 128;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final arc n;
+public record etx(arc d, fay e, fay f, float g, float h, boolean i, boolean j, Set<bvt> k, etx.a l) {
+   public static final etx.a a = $$0 -> {
+   };
+   public static final etx.a b = etx::a;
+   public static final etx.a c = etx::b;
 
-   public etx(arc $$0) {
-      this.n = $$0;
+   public etx(arc $$0, fay $$1, fay $$2, float $$3, float $$4, etx.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   public Optional<ji> a(ji $$0, boolean $$1, dyn $$2) {
-      cgk $$3 = this.n.A();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      return $$3.b($$0x -> $$0x.a(cgo.r), $$0, $$4, cgk.b.c)
-         .map(cgl::g)
-         .filter($$2::a)
-         .filter($$0x -> this.n.a_($$0x).b(dxn.K))
-         .min(Comparator.<ji>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(km::v));
+   public etx(arc $$0, fay $$1, fay $$2, float $$3, float $$4, Set<bvt> $$5, etx.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   public Optional<l.a> a(ji $$0, jn.a $$1) {
-      jn $$2 = jn.a(jn.b.a, $$1);
-      double $$3 = -1.0;
-      ji $$4 = null;
-      double $$5 = -1.0;
-      ji $$6 = null;
-      dyn $$7 = this.n.F_();
-      int $$8 = Math.min(this.n.an(), this.n.L_() + this.n.l() - 1);
-      int $$9 = 1;
-      ji.a $$10 = $$0.k();
-
-      for (ji.a $$11 : ji.a($$0, 16, jn.f, jn.d)) {
-         int $$12 = Math.min($$8, this.n.a(ecs.a.e, $$11.u(), $$11.w()));
-         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
-            $$11.c($$2.g(), 1);
-
-            for (int $$13 = $$12; $$13 >= this.n.L_(); $$13--) {
-               $$11.q($$13);
-               if (this.a($$11)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.L_() && this.a($$11.c(jn.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$11.q($$13);
-                        if (this.a($$11, $$10, $$2, 0)) {
-                           double $$16 = $$0.j($$11);
-                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$11.j();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$11.j();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.L_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new ji($$0.u() - $$2.j() * 1, ayz.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
-         $$4 = $$7.b($$4);
-         jn $$19 = $$2.h();
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dwx $$23 = $$22 < 0 ? djo.cv.m() : djo.a.m();
-                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$10, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$10, djo.cv.m(), 3);
-            }
-         }
-      }
-
-      dwx $$26 = djo.eq.m().b(dot.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$10, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.j(), 2, 3));
+   public etx(arc $$0, buj $$1, etx.a $$2) {
+      this($$0, a($$0, $$1), fay.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   private boolean a(ji.a $$0) {
-      dwx $$1 = this.n.a_($$0);
-      return $$1.v() && $$1.y().c();
+   private static void a(buj $$0) {
+      if ($$0 instanceof ard $$1) {
+         $$1.f.b(new acy(1032, ji.c, 0, false));
+      }
    }
 
-   private boolean a(ji $$0, ji.a $$1, jn $$2, int $$3) {
-      jn $$4 = $$2.h();
+   private static void b(buj $$0) {
+      $$0.f(ji.a((kb)$$0.du()));
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
+   public static etx a(arc $$0, buj $$1, etx.a $$2) {
+      return new etx($$0, a($$0, $$1), fay.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   }
 
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
-         }
+   private static fay a(arc $$0, buj $$1) {
+      return $$1.a($$0, $$0.Z()).c();
+   }
+
+   public etx a(float $$0, float $$1) {
+      return new etx(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   }
+
+   public etx a(fay $$0) {
+      return new etx(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public etx a() {
+      return new etx(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public arc b() {
+      return this.d;
+   }
+
+   public fay c() {
+      return this.e;
+   }
+
+   public fay d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<bvt> i() {
+      return this.k;
+   }
+
+   public etx.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(buj var1);
+
+      default etx.a then(etx.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
-
-      return true;
    }
 }

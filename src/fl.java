@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class fl implements ArgumentType<dgf> {
-   private static final Collection<String> a = Stream.of(dgf.a, dgf.b).map(dgf::b).collect(Collectors.toList());
-   private static final dgf[] b = dgf.values();
+public class fl implements ArgumentType<dgd> {
+   private static final Collection<String> a = Stream.of(dgd.a, dgd.b).map(dgd::b).collect(Collectors.toList());
+   private static final dgd[] b = dgd.values();
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wo.b("argument.gamemode.invalid", $$0));
 
-   public dgf a(StringReader $$0) throws CommandSyntaxException {
+   public dgd a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      dgf $$2 = dgf.a($$1, null);
+      dgd $$2 = dgd.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class fl implements ArgumentType<dgf> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof fc ? fc.b(Arrays.stream(b).map(dgf::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof fc ? fc.b(Arrays.stream(b).map(dgd::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class fl implements ArgumentType<dgf> {
       return new fl();
    }
 
-   public static dgf a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return (dgf)$$0.getArgument($$1, dgf.class);
+   public static dgd a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return (dgd)$$0.getArgument($$1, dgd.class);
    }
 }

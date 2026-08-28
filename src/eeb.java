@@ -1,16 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
 
-abstract class eeb implements edz {
-   protected final List<edz> e;
+public class eeb implements edx {
+   public static final MapCodec<eeb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", ji.c).forGetter($$0x -> $$0x.e)).apply($$0, eeb::new)
+   );
+   private final km e;
 
-   protected eeb(List<edz> $$0) {
+   public eeb(km $$0) {
       this.e = $$0;
    }
 
-   public static <T extends eeb> MapCodec<T> a(Function<List<edz>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(edz.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   public boolean a(dhe $$0, ji $$1) {
+      return !$$0.s($$1.a(this.e));
+   }
+
+   @Override
+   public edy<?> a() {
+      return edy.h;
    }
 }

@@ -37,14 +37,14 @@ public class aoe {
       );
    }
 
-   private static int a(ex $$0, buk $$1, gv $$2) {
-      faz $$3 = $$2.b($$0);
+   private static int a(ex $$0, buj $$1, gv $$2) {
+      fax $$3 = $$2.b($$0);
       $$1.a($$3.j, $$3.i);
       $$0.a(() -> wo.a("commands.rotate.success", $$1.p_()), true);
       return 1;
    }
 
-   private static int a(ex $$0, buk $$1, ann $$2) {
+   private static int a(ex $$0, buj $$1, ann $$2) {
       $$2.perform($$0, $$1);
       $$0.a(() -> wo.a("commands.rotate.success", $$1.p_()), true);
       return 1;

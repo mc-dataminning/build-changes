@@ -42,7 +42,7 @@ public class ala {
          try (OutputStream $$0 = Files.newOutputStream(this.b)) {
             Properties $$1 = new Properties();
             $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + axv.b + ").");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + axu.b + ").");
          } catch (Exception var6) {
             a.warn("Failed to save {}", this.b, var6);
          }

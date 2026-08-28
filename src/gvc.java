@@ -1,26 +1,25 @@
-public class gvc extends gsb<cqg, gyi> {
-   private static final aku a = aku.b("textures/entity/projectiles/wind_charge.png");
-   private final geo b;
+public class gvc extends gth<cmm, hau, gen> {
+   private static final aku a = aku.b("textures/entity/witch.png");
 
-   public gvc(gsc.a $$0) {
-      super($$0);
-      this.b = new geo($$0.a(gfb.dy));
+   public gvc(gsb.a $$0) {
+      super($$0, new gen($$0.a(gez.dz)), 0.5F);
+      this.a(new gxc(this));
    }
 
-   @Override
-   public void a(gyi $$0, ffu $$1, glx $$2, int $$3) {
-      ffy $$4 = $$2.getBuffer(gmh.a(a, this.a($$0.u) % 1.0F, 0.0F));
-      this.b.a($$0);
-      this.b.a($$1, $$4, $$3, hea.d);
-      super.a($$0, $$1, $$2, $$3);
+   public aku a(hau $$0) {
+      return a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public hau b() {
+      return new hau();
    }
 
-   @Override
-   public gyi d() {
-      return new gyi();
+   public void a(cmm $$0, hau $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gyw.a($$0, $$1, this.i);
+      $$1.a = $$0.ar();
+      cwn $$3 = $$0.eZ();
+      $$1.b = !$$3.f();
+      $$1.c = $$3.a(cwr.ti);
    }
 }

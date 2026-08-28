@@ -1,26 +1,35 @@
-import java.util.function.Function;
-
 public interface fds {
-   float getAdvance();
+   int a();
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   int b();
+
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
    }
 
-   default float a() {
-      return 1.0F;
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   default float b() {
-      return 1.0F;
+   default float g() {
+      return 7.0F - this.j();
    }
 
-   fro bake(Function<fdu, fro> var1);
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
 
-   public interface a extends fds {
-      @Override
-      default fro bake(Function<fdu, fro> $$0) {
-         return frp.b;
-      }
+   default float i() {
+      return 0.0F;
+   }
+
+   default float j() {
+      return 7.0F;
    }
 }

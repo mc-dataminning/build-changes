@@ -1,25 +1,62 @@
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class cqv extends cqu implements buz, crb {
-   private static final int h = 27;
-   private ka<cwp> i = ka.a(27, cwp.j);
+public abstract class cqv extends cqu implements cqz {
+   private ka<cwn> b = ka.a(36, cwn.j);
    @Nullable
-   private akt<evw> j;
-   private long k;
+   private akt<evu> c;
+   private long d;
 
-   public cqv(bur<? extends cqv> $$0, dgi $$1, Supplier<cwl> $$2) {
-      super($$0, $$1, $$2);
+   protected cqv(buq<?> $$0, dgg $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected float s() {
-      return 0.15F;
+   public void a(arc $$0, bsz $$1) {
+      super.a($$0, $$1);
+      this.a($$1, $$0, this);
    }
 
    @Override
-   protected int t() {
-      return 1;
+   public cwn a(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public cwn a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cwn b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cwn $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bvx a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cov $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(buj.d $$0) {
+      if (!this.dW().C && $$0.a()) {
+         bse.a(this.dW(), this, this);
+      }
+
+      super.a($$0);
    }
 
    @Override
@@ -35,49 +72,23 @@ public abstract class cqv extends cqu implements buz, crb {
    }
 
    @Override
-   public void a(arc $$0, bta $$1) {
-      this.a($$0, this.u());
-      this.a($$1, $$0, this);
+   public bsi a(cov $$0, bsh $$1) {
+      return this.b_($$0);
    }
 
    @Override
-   public void a(buk.d $$0) {
-      if (!this.dW().C && $$0.a()) {
-         bsf.a(this.dW(), this, this);
+   protected fay a(fay $$0) {
+      float $$1 = 0.98F;
+      if (this.c == null) {
+         int $$2 = 15 - csa.b(this);
+         $$1 += (float)$$2 * 0.001F;
       }
 
-      super.a($$0);
-   }
-
-   @Override
-   public bsj a(cox $$0, bsi $$1) {
-      if (!$$0.fY()) {
-         bsj $$2 = super.a($$0, $$1);
-         if ($$2 != bsj.e) {
-            return $$2;
-         }
+      if (this.bj()) {
+         $$1 *= 0.95F;
       }
 
-      if (this.r($$0) && !$$0.fY()) {
-         return bsj.e;
-      } else {
-         bsj $$3 = this.b_($$0);
-         if ($$3.a() && $$0.dW() instanceof arc $$4) {
-            this.a(ebt.k, $$0);
-            cnm.a($$4, $$0, true);
-         }
-
-         return $$3;
-      }
-   }
-
-   @Override
-   public void b(cox $$0) {
-      $$0.a(this);
-      if ($$0.dW() instanceof arc $$1) {
-         this.a(ebt.k, $$0);
-         cnm.a($$1, $$0, true);
-      }
+      return $$0.d((double)$$1, 0.0, (double)$$1);
    }
 
    @Override
@@ -85,93 +96,52 @@ public abstract class cqv extends cqu implements buz, crb {
       this.f();
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cwp a(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public cwp a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cwp b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cwp $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bvy a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cox $$0) {
-      return this.g($$0);
+   public void a(akt<evu> $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Nullable
    @Override
-   public csc createMenu(int $$0, cow $$1, cox $$2) {
-      if (this.j != null && $$2.Z_()) {
+   public csa createMenu(int $$0, cou $$1, cov $$2) {
+      if (this.c != null && $$2.Z_()) {
          return null;
       } else {
-         this.e($$1.k);
-         return csl.a($$0, $$1, this);
+         this.f($$1.k);
+         return this.a($$0, $$1);
       }
    }
 
-   public void e(@Nullable cox $$0) {
-      this.f($$0);
-   }
+   protected abstract csa a(int var1, cou var2);
 
    @Nullable
    @Override
-   public akt<evw> v() {
-      return this.j;
+   public akt<evu> v() {
+      return this.c;
    }
 
    @Override
-   public void a(@Nullable akt<evw> $$0) {
-      this.j = $$0;
+   public void a(@Nullable akt<evu> $$0) {
+      this.c = $$0;
    }
 
    @Override
    public long x() {
-      return this.k;
+      return this.d;
    }
 
    @Override
    public void a(long $$0) {
-      this.k = $$0;
+      this.d = $$0;
    }
 
    @Override
-   public ka<cwp> B() {
-      return this.i;
+   public ka<cwn> B() {
+      return this.b;
    }
 
    @Override
    public void C() {
-      this.i = ka.a(this.b(), cwp.j);
-   }
-
-   @Override
-   public void c(cox $$0) {
-      this.dW().a(ebt.j, this.du(), ebt.a.a($$0));
+      this.b = ka.a(this.b(), cwn.j);
    }
 }

@@ -10,17 +10,17 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class arf extends eso implements AutoCloseable {
+public class arf extends esm implements AutoCloseable {
    public static final int a = 1000;
    private static final Logger e = LogUtils.getLogger();
-   private final bqz f;
+   private final bqy f;
    private final ObjectList<Pair<arf.a, Runnable>> g = new ObjectArrayList();
    private final aqh h;
    private final aqj i;
    private final int j = 1000;
    private final AtomicBoolean k = new AtomicBoolean();
 
-   public arf(dzf $$0, aqh $$1, boolean $$2, bqz $$3, aqj $$4) {
+   public arf(dzd $$0, aqh $$1, boolean $$2, bqy $$3, aqj $$4) {
       super($$0, true, $$2);
       this.h = $$1;
       this.i = $$4;
@@ -42,14 +42,14 @@ public class arf extends eso implements AutoCloseable {
       this.a(kk.a($$0.u()), kk.a($$0.w()), arf.a.a, af.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   protected void a(dfo $$0) {
+   protected void a(dfm $$0) {
       this.a($$0.h, $$0.i, () -> 0, arf.a.a, af.a((Runnable)(() -> {
          super.b($$0, false);
          super.a($$0, false);
 
          for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(dgr.b, kk.a($$0, $$1), null);
-            super.a(dgr.a, kk.a($$0, $$1), null);
+            super.a(dgp.b, kk.a($$0, $$1), null);
+            super.a(dgp.a, kk.a($$0, $$1), null);
          }
 
          for (int $$2 = this.d.ap(); $$2 <= this.d.aq(); $$2++) {
@@ -64,22 +64,22 @@ public class arf extends eso implements AutoCloseable {
    }
 
    @Override
-   public void b(dfo $$0) {
+   public void b(dfm $$0) {
       this.a($$0.h, $$0.i, arf.a.a, af.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
    @Override
-   public void a(dfo $$0, boolean $$1) {
+   public void a(dfm $$0, boolean $$1) {
       this.a($$0.h, $$0.i, arf.a.a, af.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
    }
 
    @Override
-   public void a(dgr $$0, kk $$1, @Nullable dyx $$2) {
+   public void a(dgp $$0, kk $$1, @Nullable dyv $$2) {
       this.a($$1.a(), $$1.c(), () -> 0, arf.a.a, af.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
    }
 
    private void a(int $$0, int $$1, arf.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.h.c(dfo.c($$0, $$1)), $$2, $$3);
+      this.a($$0, $$1, this.h.c(dfm.c($$0, $$1)), $$2, $$3);
    }
 
    private void a(int $$0, int $$1, IntSupplier $$2, arf.a $$3, Runnable $$4) {
@@ -88,21 +88,21 @@ public class arf extends eso implements AutoCloseable {
          if (this.g.size() >= 1000) {
             this.f();
          }
-      }, dfo.c($$0, $$1), $$2);
+      }, dfm.c($$0, $$1), $$2);
    }
 
    @Override
-   public void b(dfo $$0, boolean $$1) {
+   public void b(dfm $$0, boolean $$1) {
       this.a($$0.h, $$0.i, () -> 0, arf.a.a, af.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
    }
 
-   public CompletableFuture<dys> a(dys $$0, boolean $$1) {
-      dfo $$2 = $$0.f();
+   public CompletableFuture<dyq> a(dyq $$0, boolean $$1) {
+      dfm $$2 = $$0.f();
       this.a($$2.h, $$2.i, arf.a.a, af.a((Runnable)(() -> {
-         dzd[] $$2x = $$0.d();
+         dzb[] $$2x = $$0.d();
 
          for (int $$3 = 0; $$3 < $$0.ao(); $$3++) {
-            dzd $$4 = $$2x[$$3];
+            dzb $$4 = $$2x[$$3];
             if (!$$4.c()) {
                int $$5 = this.d.h($$3);
                super.a(kk.a($$2, $$5), false);
@@ -116,8 +116,8 @@ public class arf extends eso implements AutoCloseable {
       }, $$1x -> this.a($$2.h, $$2.i, arf.a.b, $$1x));
    }
 
-   public CompletableFuture<dys> b(dys $$0, boolean $$1) {
-      dfo $$2 = $$0.f();
+   public CompletableFuture<dyq> b(dyq $$0, boolean $$1) {
+      dfm $$2 = $$0.f();
       $$0.a(false);
       this.a($$2.h, $$2.i, arf.a.a, af.a((Runnable)(() -> {
          if (!$$1) {

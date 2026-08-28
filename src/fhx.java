@@ -1,40 +1,32 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-public class fhx extends fhz {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public fhx.a c = fhx.a.a;
+public abstract class fhx {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
 
-   public static fhx a(String $$0) {
-      fhx $$1 = new fhx();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fjv.a("startDate", $$3, 0L);
-         $$1.b = fjv.a("daysLeft", $$3, 0);
-         $$1.c = b(fjv.b("subscriptionType", $$3, fhx.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
       }
 
-      return $$1;
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   private static fhx.a b(String $$0) {
-      try {
-         return fhx.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fhx.a.a;
-      }
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
    }
 
-   public static enum a {
-      a,
-      b;
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

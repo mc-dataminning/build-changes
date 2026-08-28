@@ -1,61 +1,77 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dti extends djm {
-   public static final MapCodec<dti> a = b(dti::new);
+public class dti extends dqr {
+   public static final MapCodec<dti> b = b(dti::new);
+   @Nullable
+   private static dxa h;
+   @Nullable
+   private static dxa i;
 
    @Override
    public MapCodec<dti> a() {
-      return a;
+      return b;
    }
 
-   protected dti(dww.d $$0) {
-      super($$0);
+   protected dti(dwu.d $$0) {
+      super(dqr.b.d, $$0);
    }
 
    @Override
-   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      if ($$1.G_().i()) {
-         $$1.a($$2, djo.aV.m(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, awa.Da, awb.e, 1.0F, (1.0F + $$1.H_().i() * 0.2F) * 0.7F);
+   public void a(dgg $$0, ji $$1, dwv $$2, @Nullable bvf $$3, cwn $$4) {
+      a($$0, $$1);
+   }
+
+   public static void a(dgg $$0, ji $$1) {
+      if ($$0.c_($$1) instanceof dvm $$2) {
+         a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      jn $$4 = jn.b($$3);
-      if ($$4 != jn.b) {
-         ji $$5 = $$2.a($$4);
-         dwx $$6 = $$1.a_($$5);
-         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == jn.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == jn.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == jn.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
+   public static void a(dgg $$0, ji $$1, dvm $$2) {
+      if (!$$0.C) {
+         dwv $$3 = $$2.m();
+         boolean $$4 = $$3.a(djm.hd) || $$3.a(djm.he);
+         if ($$4 && $$1.v() >= $$0.L_() && $$0.am() != bsf.a) {
+            dxa.b $$5 = q().a($$0, $$1);
+            if ($$5 != null) {
+               ckn $$6 = buq.bI.a($$0, bup.k);
+               if ($$6 != null) {
+                  dkf.a($$0, $$5);
+                  ji $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jn.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aX = $$5.b().o() == jn.a.a ? 0.0F : 90.0F;
+                  $$6.m();
+
+                  for (ard $$8 : $$0.a(ard.class, $$6.cR().g(50.0))) {
+                     ap.o.a($$8, $$6);
                   }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == jn.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
+
+                  $$0.b($$6);
+                  dkf.b($$0, $$5);
                }
             }
-
-            $$1.a(lt.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
       }
+   }
+
+   public static boolean b(dgg $$0, ji $$1, cwn $$2) {
+      return $$2.a(cwr.vl) && $$1.v() >= $$0.L_() + 2 && $$0.am() != bsf.a && !$$0.C ? r().a($$0, $$1) != null : false;
+   }
+
+   private static dxa q() {
+      if (h == null) {
+         h = dxb.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(awo.aI)).a('^', dwz.a(dxe.a(djm.hd).or(dxe.a(djm.he)))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return h;
+   }
+
+   private static dxa r() {
+      if (i == null) {
+         i = dxb.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(awo.aI)).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return i;
    }
 }

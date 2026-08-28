@@ -1,40 +1,42 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.stream.Stream;
 
-public class bas extends DataFix {
-   public bas(Schema $$0) {
+public abstract class bas extends DataFix {
+   private final String a;
+
+   public bas(Schema $$0, String $$1) {
       super($$0, false);
+      this.a = $$1;
    }
 
    protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bhw.B), this::a);
-   }
-
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", bas::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", bas::a);
-      return this.a($$0, "minecraft:trident", bas::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bhv.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bhv.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
       } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
       }
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bhw.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bhw.B, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
    }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("Records", this::c);
+   }
+
+   private <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   }
+
+   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

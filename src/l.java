@@ -103,10 +103,10 @@ public class l {
       return new Pair(new l.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<ji> a(dfn $$0, ji $$1, djm $$2, jn $$3, djm $$4) {
+   public static Optional<ji> a(dfl $$0, ji $$1, djk $$2, jn $$3, djk $$4) {
       ji.a $$5 = $$1.k();
 
-      dwx $$6;
+      dwv $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);

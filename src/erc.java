@@ -1,13 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface erc<P extends erb> {
-   erc<era> a = a("always_true", era.a);
-   erc<eqx> b = a("linear_pos", eqx.a);
-   erc<eqm> c = a("axis_aligned_linear_pos", eqm.a);
+public class erc extends erj {
+   public final axe<djk> a;
+   public static final MapCodec<erc> b = axe.b(mc.f).xmap(erc::new, $$0 -> $$0.a).fieldOf("value");
 
-   MapCodec<P> codec();
+   public erc(axe<djk> $$0) {
+      this.a = $$0;
+   }
 
-   static <P extends erb> erc<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.o, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public erm.d a(dgj $$0, ji $$1, ji $$2, erm.d $$3, erm.d $$4, eri $$5) {
+      return efw.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
+
+   @Override
+   protected erl<?> a() {
+      return erl.n;
    }
 }

@@ -1,96 +1,53 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ehr extends efy<eij> {
-   private static final jn[] a = jn.values();
+public record ehr(List<ehr.a> b, jn c, edx d, boolean e) implements eia {
+   public static final Codec<ehr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehr.a.a.listOf().fieldOf("layers").forGetter(ehr::a),
+               jn.g.fieldOf("direction").forGetter(ehr::b),
+               edx.b.fieldOf("allowed_placement").forGetter(ehr::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ehr::d)
+            )
+            .apply($$0, ehr::new)
+   );
 
-   public ehr(Codec<eij> $$0) {
-      super($$0);
+   public static ehr.a a(brn $$0, ekb $$1) {
+      return new ehr.a($$0, $$1);
    }
 
-   @Override
-   public boolean a(ega<eij> $$0) {
-      dhg $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      azh $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dwx $$4 = $$1.a_($$2.d());
-         if (!$$4.a(djo.ei) && !$$4.a(djo.lm)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
+   public static ehr b(brn $$0, ekb $$1) {
+      return new ehr(List.of(a($$0, $$1)), jn.b, edx.c, false);
+   }
+
+   public List<ehr.a> a() {
+      return this.b;
+   }
+
+   public jn b() {
+      return this.c;
+   }
+
+   public edx c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(brn b, ekb c) {
+      public static final Codec<ehr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(brn.d.fieldOf("height").forGetter(ehr.a::a), ekb.a.fieldOf("provider").forGetter(ehr.a::b)).apply($$0, ehr.a::new)
+      );
+
+      public brn a() {
+         return this.b;
       }
-   }
 
-   private void a(dgj $$0, azh $$1, ji $$2) {
-      $$0.a($$2, djo.lm.m(), 2);
-      ji.a $$3 = new ji.a();
-      ji.a $$4 = new ji.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.u($$3)) {
-            int $$6 = 0;
-
-            for (jn $$7 : a) {
-               dwx $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(djo.ei) || $$8.a(djo.lm)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, djo.lm.m(), 2);
-            }
-         }
-      }
-   }
-
-   private void b(dgj $$0, azh $$1, ji $$2) {
-      ji.a $$3 = new ji.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.u($$3)) {
-            dwx $$5 = $$0.a_($$3.d());
-            if ($$5.a(djo.ei) || $$5.a(djo.lm)) {
-               int $$6 = ayz.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(dgj $$0, azh $$1, ji.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.e())) {
-               $$0.a($$2, djo.pb.m().b(dnc.e, Integer.valueOf(ayz.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, djo.pc.m(), 2);
-         }
-
-         $$2.c(jn.a);
+      public ekb b() {
+         return this.c;
       }
    }
 }

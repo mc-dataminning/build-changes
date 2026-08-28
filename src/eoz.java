@@ -1,15 +1,25 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eoz {
-   public static MapCodec<? extends eoy> a(ke<MapCodec<? extends eoy>> $$0) {
-      ke.a($$0, "random", epb.a);
-      ke.a($$0, "random_group", epc.a);
-      return ke.a($$0, "direct", eox.a);
+record eoz(akt<eou> c, bqq<akt<eou>> d) implements eow {
+   static MapCodec<eoz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akt.a(mc.aX).fieldOf("alias").forGetter(eoz::c), bqq.b(akt.a(mc.aX)).fieldOf("targets").forGetter(eoz::d)).apply($$0, eoz::new)
+   );
+
+   @Override
+   public void a(azg $$0, BiConsumer<akt<eou>, akt<eou>> $$1) {
+      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (akt<eou>)$$1x.b()));
    }
 
-   public static void a(qe<eow> $$0, jr<eow> $$1, List<eoy> $$2) {
-      $$2.stream().flatMap(eoy::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ql.a($$0, $$2x, new eow($$1, List.of(Pair.of(eou.b($$2x), 1)), eow.a.b)));
+   @Override
+   public Stream<akt<eou>> a() {
+      return this.d.e().stream().map(bqs.b::b);
+   }
+
+   @Override
+   public MapCodec<eoz> b() {
+      return a;
    }
 }

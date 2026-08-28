@@ -11,7 +11,7 @@ public class adm implements yv<abk> {
    private final float j;
    private final float k;
 
-   public adm(cot $$0) {
+   public adm(cor $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

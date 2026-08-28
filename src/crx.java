@@ -1,31 +1,62 @@
-public class crx {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static float a(int $$0, float $$1) {
-      return (float)$$0 * $$1 * 2.0F;
+public record crx(int c, float d, boolean e) implements cyu {
+   public static final Codec<crx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayh.l.fieldOf("nutrition").forGetter(crx::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(crx::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(crx::c)
+            )
+            .apply($$0, crx::new)
+   );
+   public static final ym<vz, crx> b = ym.a(yk.h, crx::a, yk.l, crx::b, yk.b, crx::c, crx::new);
+
+   @Override
+   public void a(dgg $$0, bvf $$1, cwn $$2, cyt $$3) {
+      azg $$4 = $$1.dZ();
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), $$3.e().a(), awa.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cov $$5) {
+         $$5.gt().a(this);
+         $$0.a(null, $$5.dB(), $$5.dD(), $$5.dH(), avz.uJ, awa.h, 0.5F, ayy.b($$4, 0.9F, 1.0F));
+      }
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public crx.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public crx.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public crx.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public crx b() {
+         float $$0 = crv.a(this.a, this.b);
+         return new crx(this.a, $$0, this.c);
+      }
    }
 }

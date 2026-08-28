@@ -1,35 +1,30 @@
-public class gmi {
-   private final long[] a;
-   private int b;
-   private int c;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
 
-   public gmi(int $$0) {
-      this.a = new long[$$0];
+public class gmi implements AutoCloseable {
+   private static final List<gmf> b = gmf.Q();
+   public static final int a = b.stream().mapToInt(gmf::R).sum();
+   private final Map<gmf, ffp> c = af.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
+      for (gmf $$1 : b) {
+         $$0.put($$1, new ffp($$1.R()));
+      }
+   });
+
+   public ffp a(gmf $$0) {
+      return this.c.get($$0);
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
+   public void a() {
+      this.c.values().forEach(ffp::b);
+   }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
+   public void b() {
+      this.c.values().forEach(ffp::c);
+   }
 
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
-      }
+   @Override
+   public void close() {
+      this.c.values().forEach(ffp::close);
    }
 }

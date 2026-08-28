@@ -1,20 +1,11 @@
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+
 public interface ebv {
-   ebx a();
+   Codec<ebv> c = mb.t.q().dispatch(ebv::a, ebw::a);
+   ym<vz, ebv> d = yk.a(mc.ab).b(ebv::a, ebw::b);
 
-   int b();
+   Optional<fay> a(dgg var1);
 
-   boolean a(arc var1, jr<ebt> var2, ebt.a var3, fba var4);
-
-   default ebv.a c() {
-      return ebv.a.a;
-   }
-
-   public static enum a {
-      a,
-      b;
-   }
-
-   public interface b<T extends ebv> {
-      T c();
-   }
+   ebw<? extends ebv> a();
 }

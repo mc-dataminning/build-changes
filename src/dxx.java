@@ -1,62 +1,112 @@
-public enum dxx implements azv {
-   a("harp", awa.sw, dxx.a.a),
-   b("basedrum", awa.sq, dxx.a.a),
-   c("snare", awa.sz, dxx.a.a),
-   d("hat", awa.sx, dxx.a.a),
-   e("bass", awa.sr, dxx.a.a),
-   f("flute", awa.su, dxx.a.a),
-   g("bell", awa.ss, dxx.a.a),
-   h("guitar", awa.sv, dxx.a.a),
-   i("chime", awa.st, dxx.a.a),
-   j("xylophone", awa.sA, dxx.a.a),
-   k("iron_xylophone", awa.sB, dxx.a.a),
-   l("cow_bell", awa.sC, dxx.a.a),
-   m("didgeridoo", awa.sD, dxx.a.a),
-   n("bit", awa.sE, dxx.a.a),
-   o("banjo", awa.sF, dxx.a.a),
-   p("pling", awa.sy, dxx.a.a),
-   q("zombie", awa.sG, dxx.a.b),
-   r("skeleton", awa.sH, dxx.a.b),
-   s("creeper", awa.sI, dxx.a.b),
-   t("dragon", awa.sJ, dxx.a.b),
-   u("wither_skeleton", awa.sK, dxx.a.b),
-   v("piglin", awa.sL, dxx.a.b),
-   w("custom_head", awa.Bg, dxx.a.c);
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   private final String x;
-   private final jr<avz> y;
-   private final dxx.a z;
+public abstract class dxx<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::b
+      );
+   private final Codec<dxx.a<T>> e = this.d.xmap(this::c, dxx.a::b);
 
-   private dxx(final String $$0, final jr<avz> $$1, final dxx.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dxx(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
+   }
+
+   public dxx.a<T> c(T $$0) {
+      return new dxx.a<>(this, $$0);
+   }
+
+   public dxx.a<T> a(dwx<?, ?> $$0) {
+      return new dxx.a<>(this, $$0.c(this));
+   }
+
+   public Stream<dxx.a<T>> c() {
+      return this.a().stream().map(this::c);
+   }
+
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<dxx.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract List<T> a();
+
+   public abstract String b(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   public abstract int a(T var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dxx<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
    }
 
-   public jr<avz> a() {
-      return this.y;
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
    }
 
-   public boolean b() {
-      return this.z == dxx.a.a;
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dxx.a.c;
+   public <U, S extends dwx<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
    }
 
-   public boolean e() {
-      return this.z != dxx.a.a;
-   }
+   public static record a<T extends Comparable<T>>(dxx<T> a, T b) {
+      public a(dxx<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
 
-   static enum a {
-      a,
-      b,
-      c;
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.b(this.b);
+      }
    }
 }

@@ -1,50 +1,38 @@
-public class get<S extends hba> extends gcn<S> implements gel {
-   private final gfc a = this.p.b("hat_rim");
+public class get extends gdv {
+   private final gfa a;
+   private final gfa b;
 
-   public get(gfc $$0) {
+   public get(gfa $$0) {
       super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
    }
 
-   public static gfi a() {
-      gfk $$0 = gcn.a(gfg.a, 0.0F);
-      gfm $$1 = $$0.a();
-      gfm $$2 = $$1.a("head", new gfh().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), gfe.a);
-      gfm $$3 = $$2.a("hat", gfh.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new gfg(0.5F)), gfe.a);
-      $$3.a("hat_rim", gfh.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), gfe.b((float) (-Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("body", gfh.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gfg(0.05F)), gfe.a);
-      $$1.a("right_arm", gfh.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfe.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", gfh.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfe.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", gfh.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfe.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", gfh.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gfe.a(2.0F, 12.0F, 0.0F));
-      return gfi.a($$0, 64, 64);
-   }
-
-   public static gfi a(gfg $$0) {
-      gfk $$1 = gcn.a($$0, 0.0F);
-      gfm $$2 = $$1.a();
-      gfm $$3 = $$2.a("head", gfh.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gfe.a);
-      $$2.a("body", gfh.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), gfe.a);
-      $$2.a("right_leg", gfh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gfe.a(-2.0F, 12.0F, 0.0F));
-      $$2.a("left_leg", gfh.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gfe.a(2.0F, 12.0F, 0.0F));
-      $$3.b("hat").a("hat_rim", gfh.c(), gfe.a);
-      return gfi.a($$1, 64, 32);
-   }
-
-   public void a(S $$0) {
-      super.a($$0);
-      float $$1 = $$0.H;
-      gas.a(this.s, this.r, $$0.a, $$1, $$0.u);
+   public static gfg a() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      float $$2 = -16.0F;
+      gfk $$3 = $$1.a(
+         "head",
+         gff.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         gfc.a(0.0F, -7.986666F, 0.0F).b(0.75F)
+      );
+      $$3.a("jaw", gff.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), gfc.a(0.0F, 4.0F, -8.0F));
+      return gfg.a($$0, 256, 256);
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.o.k = $$0;
-      this.p.k = $$0;
-      this.a.k = $$0;
-   }
-
-   @Override
-   public void a(ffu $$0) {
-      this.a(bva.b, $$0);
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

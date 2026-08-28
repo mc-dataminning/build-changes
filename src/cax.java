@@ -1,20 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cax {
-   public static bxa<bvg> a() {
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.group($$0.a(cek.n), $$0.a(cek.az), $$0.a(cek.ay), $$0.c(cek.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<ji> $$7 = $$0.<bvg>a($$3).map(buk::dw).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new bxc($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class cax<E extends cnx> extends bwy<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public cax(int $$0) {
+      super(ImmutableMap.of(cej.aB, cek.a, cej.o, cek.b, cej.m, cek.b, cej.n, cek.c, cej.B, cek.c, cej.az, cek.c, cej.aG, cek.c), $$0);
+   }
+
+   protected boolean a(arc $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(arc $$0, E $$1, long $$2) {
+      $$1.a(avz.CJ, 5.0F, 1.0F);
+   }
+
+   protected void c(arc $$0, E $$1, long $$2) {
+      if ($$1.c(bvr.m)) {
+         $$1.b(bvr.a);
+      }
+
+      $$1.ec().b(cej.aB);
+      $$1.ec().c(cej.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
+         }
+
+         if (!$$1.ec().a(cej.az)) {
+            cny.a($$1, $$1x.dw());
+         }
+      });
    }
 }

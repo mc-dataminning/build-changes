@@ -1,110 +1,70 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public record ecy(ecl b, ecl c, ecl d, ecl e, ecl f, ecl g, ecl h, ecl i, ecl j, ecl k, ecl l, ecl m, ecl n, ecl o, ecl p) {
+public record ecy(int g, int h, int i, int j) {
    public static final Codec<ecy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", ecy::a),
-               a("fluid_level_floodedness", ecy::b),
-               a("fluid_level_spread", ecy::c),
-               a("lava", ecy::d),
-               a("temperature", ecy::e),
-               a("vegetation", ecy::f),
-               a("continents", ecy::g),
-               a("erosion", ecy::h),
-               a("depth", ecy::i),
-               a("ridges", ecy::j),
-               a("initial_density_without_jaggedness", ecy::k),
-               a("final_density", ecy::l),
-               a("vein_toggle", ecy::m),
-               a("vein_ridged", ecy::n),
-               a("vein_gap", ecy::o)
-            )
-            .apply($$0, ecy::new)
-   );
+         $$0 -> $$0.group(
+                  Codec.intRange(eaq.e, eaq.d).fieldOf("min_y").forGetter(ecy::c),
+                  Codec.intRange(0, eaq.c).fieldOf("height").forGetter(ecy::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(ecy::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(ecy::f)
+               )
+               .apply($$0, ecy::new)
+      )
+      .comapFlatMap(ecy::a, Function.identity());
+   protected static final ecy b = a(-64, 384, 1, 2);
+   protected static final ecy c = a(0, 128, 1, 2);
+   protected static final ecy d = a(0, 128, 2, 1);
+   protected static final ecy e = a(-64, 192, 1, 2);
+   protected static final ecy f = a(0, 256, 2, 1);
 
-   private static RecordCodecBuilder<ecy, ecl> a(String $$0, Function<ecy, ecl> $$1) {
-      return ecl.d.fieldOf($$0).forGetter($$1);
+   private static DataResult<ecy> a(ecy $$0) {
+      if ($$0.c() + $$0.d() > eaq.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (eaq.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public ecy a(ecl.f $$0) {
-      return new ecy(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public static ecy a(int $$0, int $$1, int $$2, int $$3) {
+      ecy $$4 = new ecy($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
    }
 
-   public ecl a() {
-      return this.b;
+   public int a() {
+      return kc.c(this.f());
    }
 
-   public ecl b() {
-      return this.c;
+   public int b() {
+      return kc.c(this.e());
    }
 
-   public ecl c() {
-      return this.d;
+   public ecy a(dgi $$0) {
+      int $$1 = Math.max(this.g, $$0.L_());
+      int $$2 = Math.min(this.g + this.h, $$0.an() + 1) - $$1;
+      return new ecy($$1, $$2, this.i, this.j);
    }
 
-   public ecl d() {
-      return this.e;
-   }
-
-   public ecl e() {
-      return this.f;
-   }
-
-   public ecl f() {
+   public int c() {
       return this.g;
    }
 
-   public ecl g() {
+   public int d() {
       return this.h;
    }
 
-   public ecl h() {
+   public int e() {
       return this.i;
    }
 
-   public ecl i() {
+   public int f() {
       return this.j;
-   }
-
-   public ecl j() {
-      return this.k;
-   }
-
-   public ecl k() {
-      return this.l;
-   }
-
-   public ecl l() {
-      return this.m;
-   }
-
-   public ecl m() {
-      return this.n;
-   }
-
-   public ecl n() {
-      return this.o;
-   }
-
-   public ecl o() {
-      return this.p;
    }
 }

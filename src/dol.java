@@ -1,57 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum dol implements azv {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dol extends djk {
+   public static final MapCodec<dol> a = b(dol::new);
+   protected static final fbs b = djk.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
-   public static final Codec<dol> d = azv.a(dol::values);
-   private final String e;
-   private final wo f;
-   private final h g;
-
-   private dol(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = wo.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dol> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dqe a(jn $$0) {
-      jn.a $$1 = $$0.o();
-      return (this != b || $$1 != jn.a.c) && (this != c || $$1 != jn.a.a) ? dqe.a : dqe.c;
-   }
-
-   public jn b(jn $$0) {
-      if (this == c && $$0.o() == jn.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == jn.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public wo b() {
-      return this.f;
+   public dol(dwu.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected fbs b(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return b;
+   }
+
+   @Override
+   protected fbs b_(dwv $$0, dfl $$1, ji $$2) {
+      return fbp.b();
+   }
+
+   @Override
+   protected fbs c(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return fbp.b();
+   }
+
+   @Override
+   protected boolean a(dwv $$0, etm $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(dwv $$0, dfl $$1, ji $$2) {
+      return 0.2F;
    }
 }

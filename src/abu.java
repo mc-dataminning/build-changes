@@ -34,7 +34,7 @@ public class abu implements yv<abk> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static abu a(brz $$0) {
+   public static abu a(bry $$0) {
       return new abu($$0.h(), new abu.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class abu implements yv<abk> {
       return new abu($$0, g);
    }
 
-   public static abu b(brz $$0) {
+   public static abu b(bry $$0) {
       return new abu($$0.h(), new abu.f($$0.j()));
    }
 
-   public static abu c(brz $$0) {
+   public static abu c(bry $$0) {
       return new abu($$0.h(), new abu.e($$0.i()));
    }
 
-   public static abu d(brz $$0) {
+   public static abu d(bry $$0) {
       return new abu($$0.h(), new abu.h($$0.k(), $$0.l()));
    }
 
-   public static abu e(brz $$0) {
+   public static abu e(bry $$0) {
       return new abu($$0.h(), new abu.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class abu implements yv<abk> {
    static class a implements abu.c {
       private final wo a;
       private final float b;
-      private final brz.a c;
-      private final brz.b d;
+      private final bry.a c;
+      private final bry.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(brz $$0) {
+      a(bry $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class abu implements yv<abk> {
       private a(vz $$0) {
          this.a = wq.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(brz.a.class);
-         this.d = $$0.b(brz.b.class);
+         this.c = $$0.b(bry.a.class);
+         this.d = $$0.b(bry.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class abu implements yv<abk> {
    }
 
    public interface b {
-      default void a(UUID $$0, wo $$1, float $$2, brz.a $$3, brz.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, wo $$1, float $$2, bry.a $$3, bry.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class abu implements yv<abk> {
       default void a(UUID $$0, wo $$1) {
       }
 
-      default void a(UUID $$0, brz.a $$1, brz.b $$2) {
+      default void a(UUID $$0, bry.a $$1, bry.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class abu implements yv<abk> {
    }
 
    static class h implements abu.c {
-      private final brz.a a;
-      private final brz.b b;
+      private final bry.a a;
+      private final bry.b b;
 
-      h(brz.a $$0, brz.b $$1) {
+      h(bry.a $$0, bry.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(vz $$0) {
-         this.a = $$0.b(brz.a.class);
-         this.b = $$0.b(brz.b.class);
+         this.a = $$0.b(bry.a.class);
+         this.b = $$0.b(bry.b.class);
       }
 
       @Override

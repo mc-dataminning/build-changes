@@ -1,42 +1,10 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class emr extends edp {
-   private final dhg a;
-   private final dyt b;
-   private final Optional<emq> c;
+public abstract class emr {
+   public static final Codec<emr> b = mb.S.q().dispatch(emr::b, ems::codec);
 
-   public emr(dhg $$0, dyt $$1, Optional<emq> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   public abstract Stream<ji> a_(emp var1, azg var2, ji var3);
 
-   public int a(ecs.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   public dyr a(dfo $$0) {
-      return ((dzm)this.a.a($$0.h, $$0.i)).F();
-   }
-
-   public dwx a(ji $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.L_();
-   }
-
-   public dhg d() {
-      return this.a;
-   }
-
-   public Optional<emq> e() {
-      return this.c;
-   }
-
-   public dyt f() {
-      return this.b;
-   }
+   public abstract ems<?> b();
 }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ard extends cox {
+public class ard extends cov {
    private static final Logger cC = LogUtils.getLogger();
    private static final int cD = 32;
    private static final int cE = 10;
@@ -26,13 +26,13 @@ public class ard extends cox {
    public static final int c = 2;
    public static final String d = "ender_pearls";
    public static final String e = "ender_pearl_dimension";
-   private static final bwm cG = new bwm(aku.b("creative_mode_block_range"), 0.5, bwm.a.a);
-   private static final bwm cH = new bwm(aku.b("creative_mode_entity_range"), 2.0, bwm.a.a);
+   private static final bwl cG = new bwl(aku.b("creative_mode_block_range"), 0.5, bwl.a.a);
+   private static final bwl cH = new bwl(aku.b("creative_mode_entity_range"), 2.0, bwl.a.a);
    public asf f;
    public final MinecraftServer g;
    public final are h;
    private final alc cI;
-   private final awg cJ;
+   private final awf cJ;
    private float cK = Float.MIN_VALUE;
    private int cL = Integer.MIN_VALUE;
    private int cM = Integer.MIN_VALUE;
@@ -43,30 +43,30 @@ public class ard extends cox {
    private int cR = -99999999;
    private boolean cS = true;
    private int cT = -99999999;
-   private cou cU = cou.a;
+   private cos cU = cos.a;
    private aqu cV = aqu.a;
    private boolean cW = true;
    private long cX = af.c();
    @Nullable
-   private buk cY;
+   private buj cY;
    private boolean cZ;
    public boolean i;
-   private final awf da;
+   private final awe da;
    @Nullable
-   private fba db;
+   private fay db;
    private int dc;
    private boolean dd;
    private int de = 2;
    private String df = "en_us";
    @Nullable
-   private fba dg;
+   private fay dg;
    @Nullable
-   private fba dh;
+   private fay dh;
    @Nullable
-   private fba di;
+   private fay di;
    private kk dj = kk.a(0, 0, 0);
    private aqm dk = aqm.a;
-   private akt<dgi> dl = dgi.i;
+   private akt<dgg> dl = dgg.i;
    @Nullable
    private ji dm;
    private boolean dn;
@@ -75,15 +75,15 @@ public class ard extends cox {
    private boolean dq;
    private boolean dr;
    private boolean ds;
-   private cob dt = new cob(0, 0, 0);
+   private cnz dt = new cnz(0, 0, 0);
    @Nullable
    private ji du;
-   private fba dv = fba.c;
-   private cov dw = cov.b;
-   private final Set<cqa> dx = new HashSet<>();
-   private final csr dy = new csr() {
+   private fay dv = fay.c;
+   private cot dw = cot.b;
+   private final Set<cpy> dx = new HashSet<>();
+   private final csp dy = new csp() {
       @Override
-      public void a(csc $$0, ka<cwp> $$1, cwp $$2, int[] $$3) {
+      public void a(csa $$0, ka<cwn> $$1, cwn $$2, int[] $$3) {
          ard.this.f.b(new acf($$0.l, $$0.k(), $$1, $$2));
 
          for (int $$4 = 0; $$4 < $$3.length; $$4++) {
@@ -92,29 +92,29 @@ public class ard extends cox {
       }
 
       @Override
-      public void a(csc $$0, int $$1, cwp $$2) {
+      public void a(csa $$0, int $$1, cwn $$2) {
          ard.this.f.b(new ach($$0.l, $$0.k(), $$1, $$2));
       }
 
       @Override
-      public void a(csc $$0, cwp $$1) {
+      public void a(csa $$0, cwn $$1) {
          ard.this.f.b(new aer($$1.v()));
       }
 
       @Override
-      public void a(csc $$0, int $$1, int $$2) {
+      public void a(csa $$0, int $$1, int $$2) {
          this.b($$0, $$1, $$2);
       }
 
-      private void b(csc $$0, int $$1, int $$2) {
+      private void b(csa $$0, int $$1, int $$2) {
          ard.this.f.b(new acg($$0.l, $$1, $$2));
       }
    };
-   private final csq dz = new csq() {
+   private final cso dz = new cso() {
       @Override
-      public void a(csc $$0, int $$1, cwp $$2) {
-         ctz $$3 = $$0.b($$1);
-         if (!($$3 instanceof ctv)) {
+      public void a(csa $$0, int $$1, cwn $$2) {
+         ctx $$3 = $$0.b($$1);
+         if (!($$3 instanceof ctt)) {
             if ($$3.c == ard.this.gi()) {
                ap.f.a(ard.this, ard.this.gi(), $$2);
             }
@@ -122,7 +122,7 @@ public class ard extends cox {
       }
 
       @Override
-      public void a(csc $$0, int $$1, int $$2) {
+      public void a(csa $$0, int $$1, int $$2) {
       }
    };
    @Nullable
@@ -132,7 +132,7 @@ public class ard extends cox {
    private final ew dB = new ew() {
       @Override
       public boolean y_() {
-         return ard.this.y().O().b(dge.p);
+         return ard.this.y().O().b(dgc.p);
       }
 
       @Override
@@ -157,9 +157,9 @@ public class ard extends cox {
       super($$1, $$1.Z(), $$1.aa(), $$2);
       this.dp = $$0.a(this);
       this.h = $$0.b(this);
-      this.da = new awf(($$1x, $$2x) -> $$0.aI().a($$1x, $$2x));
+      this.da = new awe(($$1x, $$2x) -> $$0.aI().a($$1x, $$2x));
       this.g = $$0;
-      this.cJ = $$0.ag().a((cox)this);
+      this.cJ = $$0.ag().a((cov)this);
       this.cI = $$0.ag().g(this);
       this.b(this.a($$1, $$1.Z()).c(), 0.0F, 0.0F);
       this.a($$3);
@@ -168,11 +168,11 @@ public class ard extends cox {
 
    @Override
    public ji a(arc $$0, ji $$1) {
-      fav $$2 = this.a(bvs.a).a(fba.c);
+      fat $$2 = this.a(bvr.a).a(fay.c);
       ji $$3 = $$1;
-      if ($$0.G_().g() && $$0.p().aZ().k() != dgf.c) {
+      if ($$0.G_().g() && $$0.p().aZ().k() != dgd.c) {
          int $$4 = Math.max(0, this.g.a($$0));
-         int $$5 = ayz.a($$0.F_().b((double)$$1.u(), (double)$$1.w()));
+         int $$5 = ayy.a($$0.F_().b((double)$$1.u(), (double)$$1.w()));
          if ($$5 < $$4) {
             $$4 = $$5;
          }
@@ -185,7 +185,7 @@ public class ard extends cox {
          long $$7 = $$6 * $$6;
          int $$8 = $$7 > 2147483647L ? Integer.MAX_VALUE : (int)$$7;
          int $$9 = this.t($$8);
-         int $$10 = azh.a().a($$8);
+         int $$10 = azg.a().a($$8);
 
          for (int $$11 = 0; $$11 < $$8; $$11++) {
             int $$12 = ($$10 + $$9 * $$11) % $$8;
@@ -226,7 +226,7 @@ public class ard extends cox {
       return $$3;
    }
 
-   private boolean a(arc $$0, fav $$1) {
+   private boolean a(arc $$0, fat $$1) {
       return $$0.a(this, $$1, true);
    }
 
@@ -238,12 +238,12 @@ public class ard extends cox {
    public void a(tq $$0) {
       super.a($$0);
       if ($$0.b("warden_spawn_tracker", 10)) {
-         cob.a.parse(new Dynamic(ue.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(cC::error).ifPresent($$0x -> this.dt = $$0x);
+         cnz.a.parse(new Dynamic(ue.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(cC::error).ifPresent($$0x -> this.dt = $$0x);
       }
 
       if ($$0.b("enteredNetherPosition", 10)) {
          tq $$1 = $$0.p("enteredNetherPosition");
-         this.dh = new fba($$1.k("x"), $$1.k("y"), $$1.k("z"));
+         this.dh = new fay($$1.k("x"), $$1.k("y"), $$1.k("z"));
       }
 
       this.i = $$0.q("seenCredits");
@@ -260,7 +260,7 @@ public class ard extends cox {
          this.dn = $$0.q("SpawnForced");
          this.do = $$0.j("SpawnAngle");
          if ($$0.e("SpawnDimension")) {
-            this.dl = dgi.h.parse(ue.a, $$0.c("SpawnDimension")).resultOrPartial(cC::error).orElse(dgi.i);
+            this.dl = dgg.h.parse(ue.a, $$0.c("SpawnDimension")).resultOrPartial(cC::error).orElse(dgg.i);
          }
       }
 
@@ -274,7 +274,7 @@ public class ard extends cox {
    @Override
    public void b(tq $$0) {
       super.b($$0);
-      cob.a.encodeStart(ue.a, this.dt).resultOrPartial(cC::error).ifPresent($$1x -> $$0.a("warden_spawn_tracker", $$1x));
+      cnz.a.encodeStart(ue.a, this.dt).resultOrPartial(cC::error).ifPresent($$1x -> $$0.a("warden_spawn_tracker", $$1x));
       this.m($$0);
       $$0.a("seenCredits", this.i);
       if (this.dh != null) {
@@ -306,8 +306,8 @@ public class ard extends cox {
    }
 
    private void k(tq $$0) {
-      buk $$1 = this.dg();
-      buk $$2 = this.dl();
+      buj $$1 = this.dg();
+      buj $$2 = this.dl();
       if ($$2 != null && $$1 != this && $$1.df()) {
          tq $$3 = new tq();
          tq $$4 = new tq();
@@ -321,7 +321,7 @@ public class ard extends cox {
    public void a(Optional<tq> $$0) {
       if ($$0.isPresent() && $$0.get().b("RootVehicle", 10) && this.dW() instanceof arc $$1) {
          tq $$2 = $$0.get().p("RootVehicle");
-         buk $$3 = bur.a($$2.p("Entity"), $$1, buq.r, $$1x -> !$$1.c($$1x) ? null : $$1x);
+         buj $$3 = buq.a($$2.p("Entity"), $$1, bup.r, $$1x -> !$$1.c($$1x) ? null : $$1x);
          if ($$3 == null) {
             return;
          }
@@ -336,7 +336,7 @@ public class ard extends cox {
          if ($$3.cG().equals($$4)) {
             this.a($$3, true);
          } else {
-            for (buk $$6 : $$3.dd()) {
+            for (buj $$6 : $$3.dd()) {
                if ($$6.cG().equals($$4)) {
                   this.a($$6, true);
                   break;
@@ -348,7 +348,7 @@ public class ard extends cox {
             cC.warn("Couldn't reattach entity to player");
             $$3.at();
 
-            for (buk $$7 : $$3.dd()) {
+            for (buj $$7 : $$3.dd()) {
                $$7.at();
             }
          }
@@ -359,7 +359,7 @@ public class ard extends cox {
       if (!this.dx.isEmpty()) {
          tw $$1 = new tw();
 
-         for (cqa $$2 : this.dx) {
+         for (cpy $$2 : this.dx) {
             if ($$2.dR()) {
                cC.warn("Trying to save removed ender pearl, skipping");
             } else {
@@ -378,7 +378,7 @@ public class ard extends cox {
       if ($$0.isPresent() && $$0.get().b("ender_pearls", 9) && $$0.get().c("ender_pearls") instanceof tw $$2) {
          $$2.forEach($$0x -> {
             if ($$0x instanceof tq $$1 && $$1.e("ender_pearl_dimension")) {
-               Optional<akt<dgi>> $$2x = dgi.h.parse(ue.a, $$1.c("ender_pearl_dimension")).resultOrPartial(cC::error);
+               Optional<akt<dgg>> $$2x = dgg.h.parse(ue.a, $$1.c("ender_pearl_dimension")).resultOrPartial(cC::error);
                if ($$2x.isEmpty()) {
                   cC.warn("No dimension defined for ender pearl, skipping");
                   return;
@@ -386,7 +386,7 @@ public class ard extends cox {
 
                arc $$3 = this.dW().p().a($$2x.get());
                if ($$3 != null) {
-                  buk $$4 = bur.a($$1, $$3, buq.r, $$1x -> !$$3.c($$1x) ? null : $$1x);
+                  buj $$4 = buq.a($$1, $$3, bup.r, $$1x -> !$$3.c($$1x) ? null : $$1x);
                   if ($$4 != null) {
                      a($$3, $$4.dy());
                   } else {
@@ -403,7 +403,7 @@ public class ard extends cox {
    public void a(int $$0) {
       float $$1 = (float)this.gs();
       float $$2 = ($$1 - 1.0F) / $$1;
-      this.ct = ayz.a((float)$$0 / $$1, 0.0F, $$2);
+      this.ct = ayy.a((float)$$0 / $$1, 0.0F, $$2);
       this.cT = -1;
    }
 
@@ -419,12 +419,12 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(cwp $$0, int $$1) {
+   public void a(cwn $$0, int $$1) {
       super.a($$0, $$1);
       this.cT = -1;
    }
 
-   private void a(csc $$0) {
+   private void a(csa $$0) {
       $$0.a(this.dz);
       $$0.a(this.dy);
    }
@@ -446,13 +446,13 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(dwx $$0) {
+   public void a(dwv $$0) {
       ap.e.a(this, $$0);
    }
 
    @Override
-   protected cwm g() {
-      return new cxp(this);
+   protected cwk g() {
+      return new cxn(this);
    }
 
    @Override
@@ -470,7 +470,7 @@ public class ard extends cox {
          this.cd = this.cc;
       }
 
-      buk $$0 = this.L();
+      buj $$0 = this.L();
       if ($$0 != this) {
          if ($$0.bL()) {
             this.a($$0.dB(), $$0.dD(), $$0.dH(), $$0.dM(), $$0.dO());
@@ -495,7 +495,7 @@ public class ard extends cox {
    }
 
    private void gR() {
-      bwk $$0 = this.g(bwo.g);
+      bwj $$0 = this.g(bwn.g);
       if ($$0 != null) {
          if (this.b()) {
             $$0.a(cG);
@@ -504,7 +504,7 @@ public class ard extends cox {
          }
       }
 
-      bwk $$1 = this.g(bwo.j);
+      bwj $$1 = this.g(bwn.j);
       if ($$1 != null) {
          if (this.b()) {
             $$1.a(cH);
@@ -521,7 +521,7 @@ public class ard extends cox {
          }
 
          for (int $$0 = 0; $$0 < this.gi().b(); $$0++) {
-            cwp $$1 = this.gi().a($$0);
+            cwn $$1 = this.gi().a($$0);
             if (!$$1.f()) {
                this.j($$1);
             }
@@ -536,32 +536,32 @@ public class ard extends cox {
 
          if (this.eE() + this.fw() != this.cK) {
             this.cK = this.eE() + this.fw();
-            this.a(fci.g, ayz.f(this.cK));
+            this.a(fcg.g, ayy.f(this.cK));
          }
 
          if (this.ce.a() != this.cL) {
             this.cL = this.ce.a();
-            this.a(fci.h, ayz.f((float)this.cL));
+            this.a(fcg.h, ayy.f((float)this.cL));
          }
 
          if (this.ct() != this.cM) {
             this.cM = this.ct();
-            this.a(fci.i, ayz.f((float)this.cM));
+            this.a(fcg.i, ayy.f((float)this.cM));
          }
 
          if (this.eP() != this.cN) {
             this.cN = this.eP();
-            this.a(fci.j, ayz.f((float)this.cN));
+            this.a(fcg.j, ayy.f((float)this.cN));
          }
 
          if (this.cs != this.cP) {
             this.cP = this.cs;
-            this.a(fci.k, ayz.f((float)this.cP));
+            this.a(fcg.k, ayy.f((float)this.cP));
          }
 
          if (this.cr != this.cO) {
             this.cO = this.cr;
-            this.a(fci.l, ayz.f((float)this.cO));
+            this.a(fcg.l, ayy.f((float)this.cO));
          }
 
          if (this.cs != this.cT) {
@@ -580,9 +580,9 @@ public class ard extends cox {
       }
    }
 
-   private void j(cwp $$0) {
-      eur $$1 = $$0.a(kv.L);
-      eut $$2 = cxc.a($$1, this.dW());
+   private void j(cwn $$0) {
+      eup $$1 = $$0.a(kv.L);
+      eur $$2 = cxa.a($$1, this.dW());
       if ($$2 != null) {
          yv<?> $$3 = $$2.a($$1, this);
          if ($$3 != null) {
@@ -593,7 +593,7 @@ public class ard extends cox {
 
    @Override
    protected void j() {
-      if (this.dW().am() == bsg.a && this.y().O().b(dge.k)) {
+      if (this.dW().am() == bsf.a && this.y().O().b(dgc.k)) {
          if (this.af % 20 == 0) {
             if (this.eE() < this.eS()) {
                this.c(1.0F);
@@ -645,14 +645,14 @@ public class ard extends cox {
       }
    }
 
-   private void a(fci $$0, int $$1) {
+   private void a(fcg $$0, int $$1) {
       this.gy().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
-   public void a(bta $$0) {
-      this.a(ebt.p);
-      boolean $$1 = this.y().O().b(dge.n);
+   public void a(bsz $$0) {
+      this.a(ebr.p);
+      boolean $$1 = this.y().O().b(dgc.n);
       if ($$1) {
          wo $$2 = this.eQ().a();
          this.f.a(new adq(this.ar(), $$2), vv.a(() -> {
@@ -662,12 +662,12 @@ public class ard extends cox {
             wo $$4x = wo.a("death.attack.even_more_magic", this.p_()).a($$1xx -> $$1xx.a(new wu(wu.a.a, $$3x)));
             return new adq(this.ar(), $$4x);
          }));
-         fch $$3 = this.cr();
-         if ($$3 == null || $$3.k() == fch.b.a) {
+         fcf $$3 = this.cr();
+         if ($$3 == null || $$3.k() == fcf.b.a) {
             this.g.ag().a($$2, false);
-         } else if ($$3.k() == fch.b.c) {
+         } else if ($$3.k() == fcf.b.c) {
             this.g.ag().a(this, $$2);
-         } else if ($$3.k() == fch.b.d) {
+         } else if ($$3.k() == fcf.b.d) {
             this.g.ag().b(this, $$2);
          }
       } else {
@@ -675,7 +675,7 @@ public class ard extends cox {
       }
 
       this.gx();
-      if (this.y().O().b(dge.O)) {
+      if (this.y().O().b(dgc.O)) {
          this.gS();
       }
 
@@ -683,18 +683,18 @@ public class ard extends cox {
          this.b(this.y(), $$0);
       }
 
-      this.gy().a(fci.d, this, fcd::b);
-      bvg $$4 = this.eR();
+      this.gy().a(fcg.d, this, fcb::b);
+      bvf $$4 = this.eR();
       if ($$4 != null) {
-         this.b(awk.h.b($$4.aq()));
+         this.b(awj.h.b($$4.aq()));
          $$4.a(this, $$0);
          this.f($$4);
       }
 
       this.dW().a(this, (byte)3);
-      this.a(awk.N);
-      this.a(awk.i.b(awk.m));
-      this.a(awk.i.b(awk.n));
+      this.a(awj.N);
+      this.a(awj.i.b(awj.m));
+      this.a(awj.i.b(awj.n));
       this.aH();
       this.k(0);
       this.c(false);
@@ -704,49 +704,49 @@ public class ard extends cox {
    }
 
    private void gS() {
-      fav $$0 = new fav(this.dw()).c(32.0, 10.0, 32.0);
-      this.dW().a(bvi.class, $$0, bup.f).stream().filter($$0x -> $$0x instanceof bvl).forEach($$0x -> ((bvl)$$0x).a_(this.y(), this));
+      fat $$0 = new fat(this.dw()).c(32.0, 10.0, 32.0);
+      this.dW().a(bvh.class, $$0, buo.f).stream().filter($$0x -> $$0x instanceof bvk).forEach($$0x -> ((bvk)$$0x).a_(this.y(), this));
    }
 
    @Override
-   public void a(buk $$0, bta $$1) {
+   public void a(buj $$0, bsz $$1) {
       if ($$0 != this) {
          super.a($$0, $$1);
-         this.gy().a(fci.f, this, fcd::b);
-         if ($$0 instanceof cox) {
-            this.a(awk.Q);
-            this.gy().a(fci.e, this, fcd::b);
+         this.gy().a(fcg.f, this, fcb::b);
+         if ($$0 instanceof cov) {
+            this.a(awj.Q);
+            this.gy().a(fcg.e, this, fcb::b);
          } else {
-            this.a(awk.O);
+            this.a(awj.O);
          }
 
-         this.a(this, $$0, fci.m);
-         this.a($$0, this, fci.n);
+         this.a(this, $$0, fcg.m);
+         this.a($$0, this, fcg.n);
          ap.c.a(this, $$0, $$1);
       }
    }
 
-   private void a(fce $$0, fce $$1, fci[] $$2) {
-      fca $$3 = this.gy().e($$1.cI());
+   private void a(fcc $$0, fcc $$1, fcg[] $$2) {
+      fby $$3 = this.gy().e($$1.cI());
       if ($$3 != null) {
          int $$4 = $$3.n().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.gy().a($$2[$$4], $$0, fcd::b);
+            this.gy().a($$2[$$4], $$0, fcb::b);
          }
       }
    }
 
    @Override
-   public boolean a(arc $$0, bta $$1, float $$2) {
+   public boolean a(arc $$0, bsz $$1, float $$2) {
       if (this.a($$0, $$1)) {
          return false;
       } else {
-         buk $$3 = $$1.d();
-         if ($$3 instanceof cox $$4 && !this.a($$4)) {
+         buj $$3 = $$1.d();
+         if ($$3 instanceof cov $$4 && !this.a($$4)) {
             return false;
          }
 
-         if ($$3 instanceof cpe $$5 && $$5.p() instanceof cox $$7 && !this.a($$7)) {
+         if ($$3 instanceof cpc $$5 && $$5.p() instanceof cov $$7 && !this.a($$7)) {
             return false;
          }
 
@@ -755,7 +755,7 @@ public class ard extends cox {
    }
 
    @Override
-   public boolean a(cox $$0) {
+   public boolean a(cov $$0) {
       return !this.gT() ? false : super.a($$0);
    }
 
@@ -763,7 +763,7 @@ public class ard extends cox {
       return this.g.ac();
    }
 
-   public etz a(boolean $$0, etz.a $$1) {
+   public etx a(boolean $$0, etx.a $$1) {
       ji $$2 = this.T();
       float $$3 = this.U();
       boolean $$4 = this.W();
@@ -772,40 +772,40 @@ public class ard extends cox {
          Optional<ard.a> $$6 = a($$5, $$2, $$3, $$4, $$0);
          if ($$6.isPresent()) {
             ard.a $$7 = $$6.get();
-            return new etz($$5, $$7.a(), fba.c, $$7.b(), 0.0F, $$1);
+            return new etx($$5, $$7.a(), fay.c, $$7.b(), 0.0F, $$1);
          } else {
-            return etz.a(this.g.J(), this, $$1);
+            return etx.a(this.g.J(), this, $$1);
          }
       } else {
-         return new etz(this.g.J(), this, $$1);
+         return new etx(this.g.J(), this, $$1);
       }
    }
 
    private static Optional<ard.a> a(arc $$0, ji $$1, float $$2, boolean $$3, boolean $$4) {
-      dwx $$5 = $$0.a_($$1);
-      djm $$6 = $$5.b();
-      if ($$6 instanceof dpz && ($$3 || $$5.c(dpz.d) > 0) && dpz.a($$0)) {
-         Optional<fba> $$7 = dpz.a(bur.bS, $$0, $$1);
+      dwv $$5 = $$0.a_($$1);
+      djk $$6 = $$5.b();
+      if ($$6 instanceof dpx && ($$3 || $$5.c(dpx.d) > 0) && dpx.a($$0)) {
+         Optional<fay> $$7 = dpx.a(buq.bR, $$0, $$1);
          if (!$$3 && $$4 && $$7.isPresent()) {
-            $$0.a($$1, $$5.b(dpz.d, Integer.valueOf($$5.c(dpz.d) - 1)), 3);
+            $$0.a($$1, $$5.b(dpx.d, Integer.valueOf($$5.c(dpx.d) - 1)), 3);
          }
 
          return $$7.map($$1x -> ard.a.a($$1x, $$1));
-      } else if ($$6 instanceof djf && djf.a($$0)) {
-         return djf.a(bur.bS, $$0, $$1, $$5.c(djf.aF), $$2).map($$1x -> ard.a.a($$1x, $$1));
+      } else if ($$6 instanceof djd && djd.a($$0)) {
+         return djd.a(buq.bR, $$0, $$1, $$5.c(djd.aF), $$2).map($$1x -> ard.a.a($$1x, $$1));
       } else if (!$$3) {
          return Optional.empty();
       } else {
          boolean $$8 = $$6.a($$5);
-         dwx $$9 = $$0.a_($$1.d());
+         dwv $$9 = $$0.a_($$1.d());
          boolean $$10 = $$9.b().a($$9);
-         return $$8 && $$10 ? Optional.of(new ard.a(new fba((double)$$1.u() + 0.5, (double)$$1.v() + 0.1, (double)$$1.w() + 0.5), $$2)) : Optional.empty();
+         return $$8 && $$10 ? Optional.of(new ard.a(new fay((double)$$1.u() + 0.5, (double)$$1.v() + 0.1, (double)$$1.w() + 0.5), $$2)) : Optional.empty();
       }
    }
 
    public void n() {
       this.ao();
-      this.y().a(this, buk.d.e);
+      this.y().a(this, buj.d.e);
       if (!this.k) {
          this.k = true;
          this.f.b(new acs(acs.f, 0.0F));
@@ -814,7 +814,7 @@ public class ard extends cox {
    }
 
    @Nullable
-   public ard a(etz $$0) {
+   public ard a(etx $$0) {
       if (this.dR()) {
          return null;
       } else {
@@ -824,35 +824,35 @@ public class ard extends cox {
 
          arc $$1 = $$0.b();
          arc $$2 = this.y();
-         akt<dgi> $$3 = $$2.ai();
+         akt<dgg> $$3 = $$2.ai();
          if (!$$0.h()) {
             this.ae();
          }
 
          if ($$1.ai() == $$3) {
-            this.f.a(bvt.a($$0), $$0.i());
+            this.f.a(bvs.a($$0), $$0.i());
             this.f.l();
             $$0.j().onTransition(this);
             return this;
          } else {
             this.cZ = true;
-            evb $$4 = $$1.D_();
+            euz $$4 = $$1.D_();
             this.f.b(new aed(this.b($$1), (byte)3));
             this.f.b(new abx($$4.q(), $$4.r()));
-            avd $$5 = this.g.ag();
+            avc $$5 = this.g.ag();
             $$5.e(this);
-            $$2.a(this, buk.d.e);
+            $$2.a(this, buj.d.e);
             this.dT();
-            bos $$6 = bor.a();
+            bor $$6 = boq.a();
             $$6.a("moving");
-            if ($$3 == dgi.i && $$1.ai() == dgi.j) {
+            if ($$3 == dgg.i && $$1.ai() == dgg.j) {
                this.dh = this.du();
             }
 
             $$6.c();
             $$6.a("placing");
             this.a($$1);
-            this.f.a(bvt.a($$0), $$0.i());
+            this.f.a(bvs.a($$0), $$0.i());
             this.f.l();
             $$1.d(this);
             $$6.c();
@@ -877,14 +877,14 @@ public class ard extends cox {
    }
 
    private void g(arc $$0) {
-      akt<dgi> $$1 = $$0.ai();
-      akt<dgi> $$2 = this.dW().ai();
+      akt<dgg> $$1 = $$0.ai();
+      akt<dgg> $$2 = this.dW().ai();
       ap.w.a(this, $$1, $$2);
-      if ($$1 == dgi.j && $$2 == dgi.i && this.dh != null) {
+      if ($$1 == dgg.j && $$2 == dgg.i && this.dh != null) {
          ap.D.a(this, this.dh);
       }
 
-      if ($$2 != dgi.j) {
+      if ($$2 != dgg.j) {
          this.dh = null;
       }
    }
@@ -899,44 +899,44 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(buk $$0, int $$1) {
+   public void a(buj $$0, int $$1) {
       super.a($$0, $$1);
       this.cd.d();
    }
 
    @Override
-   public Either<cox.a, baf> a(ji $$0) {
-      jn $$1 = this.dW().a_($$0).c(dnk.aF);
+   public Either<cov.a, bae> a(ji $$0) {
+      jn $$1 = this.dW().a_($$0).c(dni.aF);
       if (this.fR() || !this.bL()) {
-         return Either.left(cox.a.e);
+         return Either.left(cov.a.e);
       } else if (!this.dW().G_().j()) {
-         return Either.left(cox.a.a);
+         return Either.left(cov.a.a);
       } else if (!this.a($$0, $$1)) {
-         return Either.left(cox.a.c);
+         return Either.left(cov.a.c);
       } else if (this.b($$0, $$1)) {
-         return Either.left(cox.a.d);
+         return Either.left(cov.a.d);
       } else {
          this.a(this.dW().ai(), $$0, this.dM(), false, true);
          if (this.dW().V()) {
-            return Either.left(cox.a.b);
+            return Either.left(cov.a.b);
          } else {
             if (!this.b()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
-               fba $$4 = fba.c($$0);
-               List<clx> $$5 = this.dW()
+               fay $$4 = fay.c($$0);
+               List<clw> $$5 = this.dW()
                   .a(
-                     clx.class,
-                     new fav($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0),
+                     clw.class,
+                     new fat($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0),
                      $$0x -> $$0x.a(this.y(), this)
                   );
                if (!$$5.isEmpty()) {
-                  return Either.left(cox.a.f);
+                  return Either.left(cov.a.f);
                }
             }
 
-            Either<cox.a, baf> $$6 = super.a($$0).ifRight($$0x -> {
-               this.a(awk.ap);
+            Either<cov.a, bae> $$6 = super.a($$0).ifRight($$0x -> {
+               this.a(awj.ap);
                ap.r.a(this);
             });
             if (!this.y().e()) {
@@ -951,7 +951,7 @@ public class ard extends cox {
 
    @Override
    public void b(ji $$0) {
-      this.a(awk.i.b(awk.n));
+      this.a(awj.i.b(awj.n));
       super.b($$0);
    }
 
@@ -960,7 +960,7 @@ public class ard extends cox {
    }
 
    private boolean i(ji $$0) {
-      fba $$1 = fba.c($$0);
+      fay $$1 = fay.c($$0);
       return Math.abs(this.dB() - $$1.a()) <= 3.0 && Math.abs(this.dD() - $$1.b()) <= 2.0 && Math.abs(this.dH() - $$1.c()) <= 3.0;
    }
 
@@ -988,12 +988,12 @@ public class ard extends cox {
    }
 
    @Override
-   public boolean a(arc $$0, bta $$1) {
-      return super.a($$0, $$1) || this.Q() && !$$1.a(btd.m) || !this.gJ();
+   public boolean a(arc $$0, bsz $$1) {
+      return super.a($$0, $$1) || this.Q() && !$$1.a(btc.m) || !this.gJ();
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dwx $$2, ji $$3) {
+   protected void a(double $$0, boolean $$1, dwv $$2, ji $$3) {
    }
 
    @Override
@@ -1005,12 +1005,12 @@ public class ard extends cox {
 
    public void a(double $$0, double $$1, double $$2, boolean $$3) {
       if (!this.dp()) {
-         this.b($$3, new fba($$0, $$1, $$2));
+         this.b($$3, new fay($$0, $$1, $$2));
          ji $$4 = this.aP();
-         dwx $$5 = this.dW().a_($$4);
+         dwv $$5 = this.dW().a_($$4);
          if (this.ds && $$3 && this.Z > 0.0F) {
-            fba $$6 = $$4.b().b(0.0, 0.5, 0.0);
-            int $$7 = (int)ayz.a(50.0F * this.Z, 0.0F, 200.0F);
+            fay $$6 = $$4.b().b(0.0, 0.5, 0.0);
+            int $$7 = (int)ayy.a(50.0F * this.Z, 0.0F, 200.0F);
             this.y().a(new ll(lt.b, $$5), $$6.d, $$6.e, $$6.f, $$7, 0.3F, 0.3F, 0.3F, 0.15F);
             this.ds = false;
          }
@@ -1020,11 +1020,11 @@ public class ard extends cox {
    }
 
    @Override
-   public void b_(@Nullable buk $$0) {
+   public void b_(@Nullable buj $$0) {
       super.b_($$0);
       this.cy = this.du();
       this.cz = $$0;
-      this.x($$0 != null && $$0.aq() == bur.bH);
+      this.x($$0 != null && $$0.aq() == buq.bG);
    }
 
    @Override
@@ -1035,7 +1035,7 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(dvm $$0, boolean $$1) {
+   public void a(dvk $$0, boolean $$1) {
       this.f.b(new abt(this.dW(), $$0.aA_()));
       this.f.b(new adk($$0.aA_(), $$1));
    }
@@ -1045,7 +1045,7 @@ public class ard extends cox {
    }
 
    @Override
-   public OptionalInt a(@Nullable bsl $$0) {
+   public OptionalInt a(@Nullable bsk $$0) {
       if ($$0 == null) {
          return OptionalInt.empty();
       } else {
@@ -1054,7 +1054,7 @@ public class ard extends cox {
          }
 
          this.gU();
-         csc $$1 = $$0.createMenu(this.dC, this.gi(), this);
+         csa $$1 = $$0.createMenu(this.dC, this.gi(), this);
          if ($$1 == null) {
             if (this.Z_()) {
                this.a(wo.c("container.spectatorCantOpen").a(n.m), true);
@@ -1071,12 +1071,12 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(int $$0, dfg $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public void a(int $$0, dfe $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.f.b(new ade($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public void a(cjb $$0, bsc $$1) {
+   public void a(cja $$0, bsb $$1) {
       if (this.cd != this.cc) {
          this.p();
       }
@@ -1084,14 +1084,14 @@ public class ard extends cox {
       this.gU();
       int $$2 = $$0.af_();
       this.f.b(new act(this.dC, $$2, $$0.ar()));
-      this.cd = new cte(this.dC, this.gi(), $$1, $$0, $$2);
+      this.cd = new ctc(this.dC, this.gi(), $$1, $$0, $$2);
       this.a(this.cd);
    }
 
    @Override
-   public void a(cwp $$0, bsi $$1) {
+   public void a(cwn $$0, bsh $$1) {
       if ($$0.b(kv.T)) {
-         if (cyl.a($$0, this.A(), this)) {
+         if (cyj.a($$0, this.A(), this)) {
             this.cd.d();
          }
 
@@ -1100,8 +1100,8 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(duj $$0) {
-      this.f.b(abr.a($$0, dtz::e));
+   public void a(duh $$0) {
+      this.f.b(abr.a($$0, dtx::e));
    }
 
    @Override
@@ -1131,46 +1131,46 @@ public class ard extends cox {
          if (this.ck()) {
             int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
             if ($$3 > 0) {
-               this.a(awk.C, $$3);
+               this.a(awj.C, $$3);
                this.G(0.01F * (float)$$3 * 0.01F);
             }
-         } else if (this.a(awv.a)) {
+         } else if (this.a(awu.a)) {
             int $$4 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
             if ($$4 > 0) {
-               this.a(awk.w, $$4);
+               this.a(awj.w, $$4);
                this.G(0.01F * (float)$$4 * 0.01F);
             }
          } else if (this.bj()) {
             int $$5 = Math.round((float)Math.sqrt($$0 * $$0 + $$2 * $$2) * 100.0F);
             if ($$5 > 0) {
-               this.a(awk.s, $$5);
+               this.a(awj.s, $$5);
                this.G(0.01F * (float)$$5 * 0.01F);
             }
          } else if (this.q_()) {
             if ($$1 > 0.0) {
-               this.a(awk.u, (int)Math.round($$1 * 100.0));
+               this.a(awj.u, (int)Math.round($$1 * 100.0));
             }
          } else if (this.aJ()) {
             int $$6 = Math.round((float)Math.sqrt($$0 * $$0 + $$2 * $$2) * 100.0F);
             if ($$6 > 0) {
                if (this.cj()) {
-                  this.a(awk.r, $$6);
+                  this.a(awj.r, $$6);
                   this.G(0.1F * (float)$$6 * 0.01F);
                } else if (this.ci()) {
-                  this.a(awk.q, $$6);
+                  this.a(awj.q, $$6);
                   this.G(0.0F * (float)$$6 * 0.01F);
                } else {
-                  this.a(awk.p, $$6);
+                  this.a(awj.p, $$6);
                   this.G(0.0F * (float)$$6 * 0.01F);
                }
             }
          } else if (this.fJ()) {
             int $$7 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-            this.a(awk.B, $$7);
+            this.a(awj.B, $$7);
          } else {
             int $$8 = Math.round((float)Math.sqrt($$0 * $$0 + $$2 * $$2) * 100.0F);
             if ($$8 > 25) {
-               this.a(awk.v, $$8);
+               this.a(awj.v, $$8);
             }
          }
       }
@@ -1179,17 +1179,17 @@ public class ard extends cox {
    private void q(double $$0, double $$1, double $$2) {
       if (this.bZ() && !r($$0, $$1, $$2)) {
          int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-         buk $$4 = this.dl();
-         if ($$4 instanceof cqw) {
-            this.a(awk.x, $$3);
-         } else if ($$4 instanceof cqu) {
-            this.a(awk.y, $$3);
-         } else if ($$4 instanceof cho) {
-            this.a(awk.z, $$3);
-         } else if ($$4 instanceof cjb) {
-            this.a(awk.A, $$3);
-         } else if ($$4 instanceof cmk) {
-            this.a(awk.D, $$3);
+         buj $$4 = this.dl();
+         if ($$4 instanceof cqu) {
+            this.a(awj.x, $$3);
+         } else if ($$4 instanceof cqs) {
+            this.a(awj.y, $$3);
+         } else if ($$4 instanceof chn) {
+            this.a(awj.z, $$3);
+         } else if ($$4 instanceof cja) {
+            this.a(awj.A, $$3);
+         } else if ($$4 instanceof cmj) {
+            this.a(awj.D, $$3);
          }
       }
    }
@@ -1199,42 +1199,42 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(awh<?> $$0, int $$1) {
+   public void a(awg<?> $$0, int $$1) {
       this.cJ.b(this, $$0, $$1);
       this.gy().a($$0, this, $$1x -> $$1x.b($$1));
    }
 
    @Override
-   public void a(awh<?> $$0) {
+   public void a(awg<?> $$0) {
       this.cJ.a(this, $$0, 0);
-      this.gy().a($$0, this, fcd::c);
+      this.gy().a($$0, this, fcb::c);
    }
 
    @Override
-   public int a(Collection<dbj<?>> $$0) {
+   public int a(Collection<dbh<?>> $$0) {
       return this.da.a($$0, this);
    }
 
    @Override
-   public void a(dbj<?> $$0, List<cwp> $$1) {
+   public void a(dbh<?> $$0, List<cwn> $$1) {
       ap.ac.a(this, $$0.a(), $$1);
    }
 
    @Override
-   public void b(List<akt<dbe<?>>> $$0) {
-      List<dbj<?>> $$1 = $$0.stream().flatMap($$0x -> this.g.aI().b($$0x).stream()).collect(Collectors.toList());
+   public void b(List<akt<dbc<?>>> $$0) {
+      List<dbh<?>> $$1 = $$0.stream().flatMap($$0x -> this.g.aI().b($$0x).stream()).collect(Collectors.toList());
       this.a($$1);
    }
 
    @Override
-   public int b(Collection<dbj<?>> $$0) {
+   public int b(Collection<dbh<?>> $$0) {
       return this.da.b($$0, this);
    }
 
    @Override
    public void s() {
       super.s();
-      this.a(awk.E);
+      this.a(awj.E);
       if (this.cj()) {
          this.G(0.2F);
       } else {
@@ -1280,13 +1280,13 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(fj.a $$0, fba $$1) {
+   public void a(fj.a $$0, fay $$1) {
       super.a($$0, $$1);
       this.f.b(new adt($$0, $$1.d, $$1.e, $$1.f));
    }
 
-   public void a(fj.a $$0, buk $$1, fj.a $$2) {
-      fba $$3 = $$2.a($$1);
+   public void a(fj.a $$0, buj $$1, fj.a $$2) {
+      fay $$3 = $$2.a($$1);
       super.a($$0, $$3);
       this.f.b(new adt($$0, $$1, $$2));
    }
@@ -1302,8 +1302,8 @@ public class ard extends cox {
          this.x($$0.eE());
          this.ce = $$0.ce;
 
-         for (btp $$2 : $$0.eB()) {
-            this.a(new btp($$2));
+         for (bto $$2 : $$0.eB()) {
+            this.a(new bto($$2));
          }
 
          this.gi().a($$0.gi());
@@ -1315,7 +1315,7 @@ public class ard extends cox {
       } else {
          this.eY().b($$0.eY());
          this.x(this.eS());
-         if (this.y().O().b(dge.d) || $$0.Z_()) {
+         if (this.y().O().b(dgc.d) || $$0.Z_()) {
             this.gi().a($$0.gi());
             this.cr = $$0.cr;
             this.cs = $$0.cs;
@@ -1340,10 +1340,10 @@ public class ard extends cox {
    }
 
    @Override
-   protected void a(btp $$0, @Nullable buk $$1) {
+   protected void a(bto $$0, @Nullable buj $$1) {
       super.a($$0, $$1);
       this.f.b(new afy(this.ar(), $$0, true));
-      if ($$0.a(btr.y)) {
+      if ($$0.a(btq.y)) {
          this.dc = this.af;
          this.db = this.du();
       }
@@ -1352,19 +1352,19 @@ public class ard extends cox {
    }
 
    @Override
-   protected void a(btp $$0, boolean $$1, @Nullable buk $$2) {
+   protected void a(bto $$0, boolean $$1, @Nullable buj $$2) {
       super.a($$0, $$1, $$2);
       this.f.b(new afy(this.ar(), $$0, false));
       ap.B.a(this, $$2);
    }
 
    @Override
-   protected void c(Collection<btp> $$0) {
+   protected void c(Collection<bto> $$0) {
       super.c($$0);
 
-      for (btp $$1 : $$0) {
+      for (bto $$1 : $$0) {
          this.f.b(new aeb(this.ar(), $$1.c()));
-         if ($$1.a(btr.y)) {
+         if ($$1.a(btq.y)) {
             this.db = null;
          }
       }
@@ -1374,16 +1374,16 @@ public class ard extends cox {
 
    @Override
    public void c(double $$0, double $$1, double $$2) {
-      this.f.a(new bvt(new fba($$0, $$1, $$2), fba.c, 0.0F, 0.0F), bvu.a(bvu.l, bvu.k));
+      this.f.a(new bvs(new fay($$0, $$1, $$2), fay.c, 0.0F, 0.0F), bvt.a(bvt.l, bvt.k));
    }
 
    @Override
    public void d(double $$0, double $$1, double $$2) {
-      this.f.a(new bvt(new fba($$0, $$1, $$2), fba.c, 0.0F, 0.0F), bvu.j);
+      this.f.a(new bvs(new fay($$0, $$1, $$2), fay.c, 0.0F, 0.0F), bvt.j);
    }
 
    @Override
-   public boolean a(arc $$0, double $$1, double $$2, double $$3, Set<bvu> $$4, float $$5, float $$6, boolean $$7) {
+   public boolean a(arc $$0, double $$1, double $$2, double $$3, Set<bvt> $$4, float $$5, float $$6, boolean $$7) {
       if (this.fR()) {
          this.a(true, true);
       }
@@ -1394,7 +1394,7 @@ public class ard extends cox {
 
       boolean $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       if ($$8) {
-         this.q($$4.contains(bvu.d) ? this.cA() + $$5 : $$5);
+         this.q($$4.contains(bvt.d) ? this.cA() + $$5 : $$5);
       }
 
       return $$8;
@@ -1407,12 +1407,12 @@ public class ard extends cox {
    }
 
    @Override
-   public void b(buk $$0) {
+   public void b(buj $$0) {
       this.y().m().a(this, new abn($$0, 4));
    }
 
    @Override
-   public void c(buk $$0) {
+   public void c(buj $$0) {
       this.y().m().a(this, new abn($$0, 5));
    }
 
@@ -1428,20 +1428,20 @@ public class ard extends cox {
       return (arc)this.dW();
    }
 
-   public boolean a(dgf $$0) {
+   public boolean a(dgd $$0) {
       boolean $$1 = this.Z_();
       if (!this.h.a($$0)) {
          return false;
       } else {
          this.f.b(new acs(acs.e, (float)$$0.a()));
-         if ($$0 == dgf.d) {
+         if ($$0 == dgd.d) {
             this.gx();
             this.ae();
-            ddb.a(this);
+            dcz.a(this);
          } else {
             this.d(this);
             if ($$1) {
-               ddb.a(this.y(), this);
+               dcz.a(this.y(), this);
             }
          }
 
@@ -1453,12 +1453,12 @@ public class ard extends cox {
 
    @Override
    public boolean Z_() {
-      return this.h.b() == dgf.d;
+      return this.h.b() == dgd.d;
    }
 
    @Override
    public boolean b() {
-      return this.h.b() == dgf.b;
+      return this.h.b() == dgd.b;
    }
 
    public ew z() {
@@ -1512,7 +1512,7 @@ public class ard extends cox {
 
    public aqn C() {
       int $$0 = this.au().a(bW);
-      bva $$1 = bva.d.apply(this.au().a(bX));
+      buz $$1 = buz.d.apply(this.au().a(bX));
       return new aqn(this.df, this.de, this.cU, this.cW, $$0, $$1, this.dq, this.dr, this.cV);
    }
 
@@ -1520,16 +1520,16 @@ public class ard extends cox {
       return this.cW;
    }
 
-   public cou E() {
+   public cos E() {
       return this.cU;
    }
 
    private boolean y(boolean $$0) {
-      return this.cU == cou.c ? $$0 : true;
+      return this.cU == cos.c ? $$0 : true;
    }
 
    private boolean gV() {
-      return this.cU == cou.a;
+      return this.cU == cos.a;
    }
 
    public int F() {
@@ -1550,11 +1550,11 @@ public class ard extends cox {
       this.cX = af.c();
    }
 
-   public awg I() {
+   public awf I() {
       return this.cJ;
    }
 
-   public awf J() {
+   public awe J() {
       return this.da;
    }
 
@@ -1568,14 +1568,14 @@ public class ard extends cox {
       }
    }
 
-   public buk L() {
-      return (buk)(this.cY == null ? this : this.cY);
+   public buj L() {
+      return (buj)(this.cY == null ? this : this.cY);
    }
 
    @Override
-   public void d(@Nullable buk $$0) {
-      buk $$1 = this.L();
-      this.cY = (buk)($$0 == null ? this : $$0);
+   public void d(@Nullable buj $$0) {
+      buj $$1 = this.L();
+      this.cY = (buj)($$0 == null ? this : $$0);
       if ($$1 != this.cY) {
          if (this.cY.dW() instanceof arc $$2) {
             this.a($$2, this.cY.dB(), this.cY.dD(), this.cY.dH(), Set.of(), this.dM(), this.dO(), false);
@@ -1598,8 +1598,8 @@ public class ard extends cox {
    }
 
    @Override
-   public void e(buk $$0) {
-      if (this.h.b() == dgf.d) {
+   public void e(buj $$0) {
+      if (this.h.b() == dgd.d) {
          this.d($$0);
       } else {
          super.e($$0);
@@ -1620,7 +1620,7 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(bsi $$0) {
+   public void a(bsh $$0) {
       super.a($$0);
       this.gD();
    }
@@ -1646,7 +1646,7 @@ public class ard extends cox {
       return this.do;
    }
 
-   public akt<dgi> V() {
+   public akt<dgg> V() {
       return this.dl;
    }
 
@@ -1658,7 +1658,7 @@ public class ard extends cox {
       this.a($$0.V(), $$0.T(), $$0.U(), $$0.W(), false);
    }
 
-   public void a(akt<dgi> $$0, @Nullable ji $$1, float $$2, boolean $$3, boolean $$4) {
+   public void a(akt<dgg> $$0, @Nullable ji $$1, float $$2, boolean $$3, boolean $$4) {
       if ($$1 != null) {
          boolean $$5 = $$1.equals(this.dm) && $$0.equals(this.dl);
          if ($$4 && !$$5) {
@@ -1671,7 +1671,7 @@ public class ard extends cox {
          this.dn = $$3;
       } else {
          this.dm = null;
-         this.dl = dgi.i;
+         this.dl = dgg.i;
          this.do = 0.0F;
          this.dn = false;
       }
@@ -1694,24 +1694,24 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(avz $$0, awb $$1, float $$2, float $$3) {
+   public void a(avy $$0, awa $$1, float $$2, float $$3) {
       this.f.b(new afm(mb.b.e($$0), $$1, this.dB(), this.dD(), this.dH(), $$2, $$3, this.ae.g()));
    }
 
    @Override
-   public clb a(cwp $$0, boolean $$1, boolean $$2) {
-      clb $$3 = this.b($$0, $$1, $$2);
+   public cla a(cwn $$0, boolean $$1, boolean $$2) {
+      cla $$3 = this.b($$0, $$1, $$2);
       if ($$3 == null) {
          return null;
       } else {
          this.dW().b($$3);
-         cwp $$4 = $$3.l();
+         cwn $$4 = $$3.l();
          if ($$2) {
             if (!$$4.f()) {
-               this.a(awk.f.b($$4.h()), $$0.M());
+               this.a(awj.f.b($$4.h()), $$0.M());
             }
 
-            this.a(awk.F);
+            this.a(awj.F);
          }
 
          return $$3;
@@ -1719,12 +1719,12 @@ public class ard extends cox {
    }
 
    @Nullable
-   private clb b(cwp $$0, boolean $$1, boolean $$2) {
+   private cla b(cwn $$0, boolean $$1, boolean $$2) {
       if ($$0.f()) {
          return null;
       } else {
          double $$3 = this.dF() - 0.3F;
-         clb $$4 = new clb(this.dW(), this.dB(), $$3, this.dH(), $$0);
+         cla $$4 = new cla(this.dW(), this.dB(), $$3, this.dH(), $$0);
          $$4.b(40);
          if ($$2) {
             $$4.b(this);
@@ -1733,13 +1733,13 @@ public class ard extends cox {
          if ($$1) {
             float $$5 = this.ae.i() * 0.5F;
             float $$6 = this.ae.i() * (float) (Math.PI * 2);
-            $$4.n((double)(-ayz.a($$6) * $$5), 0.2F, (double)(ayz.b($$6) * $$5));
+            $$4.n((double)(-ayy.a($$6) * $$5), 0.2F, (double)(ayy.b($$6) * $$5));
          } else {
             float $$7 = 0.3F;
-            float $$8 = ayz.a(this.dO() * (float) (Math.PI / 180.0));
-            float $$9 = ayz.b(this.dO() * (float) (Math.PI / 180.0));
-            float $$10 = ayz.a(this.dM() * (float) (Math.PI / 180.0));
-            float $$11 = ayz.b(this.dM() * (float) (Math.PI / 180.0));
+            float $$8 = ayy.a(this.dO() * (float) (Math.PI / 180.0));
+            float $$9 = ayy.b(this.dO() * (float) (Math.PI / 180.0));
+            float $$10 = ayy.a(this.dM() * (float) (Math.PI / 180.0));
+            float $$11 = ayy.b(this.dM() * (float) (Math.PI / 180.0));
             float $$12 = this.ae.i() * (float) (Math.PI * 2);
             float $$13 = 0.02F * this.ae.i();
             $$4.n(
@@ -1758,17 +1758,17 @@ public class ard extends cox {
    }
 
    public void a(arc $$0) {
-      this.a((dgi)$$0);
+      this.a((dgg)$$0);
       this.h.a($$0);
    }
 
    @Nullable
-   private static dgf a(@Nullable tq $$0, String $$1) {
-      return $$0 != null && $$0.b($$1, 99) ? dgf.a($$0.h($$1)) : null;
+   private static dgd a(@Nullable tq $$0, String $$1) {
+      return $$0 != null && $$0.b($$1, 99) ? dgd.a($$0.h($$1)) : null;
    }
 
-   private dgf b(@Nullable dgf $$0) {
-      dgf $$1 = this.g.bd();
+   private dgd b(@Nullable dgd $$0) {
+      dgd $$1 = this.g.bd();
       if ($$1 != null) {
          return $$1;
       } else {
@@ -1783,7 +1783,7 @@ public class ard extends cox {
 
    private void m(tq $$0) {
       $$0.a("playerGameType", this.h.b().a());
-      dgf $$1 = this.h.c();
+      dgd $$1 = this.h.c();
       if ($$1 != null) {
          $$0.a("previousPlayerGameType", $$1.a());
       }
@@ -1804,20 +1804,20 @@ public class ard extends cox {
    }
 
    @Override
-   protected void a(cwp $$0) {
+   protected void a(cwn $$0) {
       ap.W.a(this, $$0);
       super.a($$0);
    }
 
    public boolean a(boolean $$0) {
-      cow $$1 = this.gi();
-      cwp $$2 = $$1.a($$0);
+      cou $$1 = this.gi();
+      cwn $$2 = $$1.a($$0);
       this.cd.b($$1, $$1.j).ifPresent($$1x -> this.cd.a($$1x, $$1.f()));
       return this.a($$2, false, true) != null;
    }
 
    @Override
-   public void b(cwp $$0) {
+   public void b(cwn $$0) {
       if (!this.gi().f($$0)) {
          this.a($$0, false);
       }
@@ -1828,7 +1828,7 @@ public class ard extends cox {
    }
 
    @Override
-   public Optional<cob> ac() {
+   public Optional<cnz> ac() {
       return Optional.of(this.dt);
    }
 
@@ -1837,9 +1837,9 @@ public class ard extends cox {
    }
 
    @Override
-   public void a(clb $$0) {
+   public void a(cla $$0) {
       super.a($$0);
-      buk $$1 = $$0.p();
+      buj $$1 = $$0.p();
       if ($$1 != null) {
          ap.S.a(this, $$0.l(), $$1);
       }
@@ -1856,16 +1856,16 @@ public class ard extends cox {
 
    @Override
    public void a(double $$0, double $$1) {
-      this.cx = (float)(ayz.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dM());
+      this.cx = (float)(ayy.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dM());
       this.f.b(new acu(this));
    }
 
    @Override
-   public boolean a(buk $$0, boolean $$1) {
+   public boolean a(buj $$0, boolean $$1) {
       if (super.a($$0, $$1)) {
          $$0.j(this);
-         this.f.a(new bvt(this.du(), fba.c, 0.0F, 0.0F), bvu.k);
-         if ($$0 instanceof bvg $$2) {
+         this.f.a(new bvs(this.du(), fay.c, 0.0F, 0.0F), bvt.k);
+         if ($$0 instanceof bvf $$2) {
             this.g.ag().a($$2, this.f);
          }
 
@@ -1877,17 +1877,17 @@ public class ard extends cox {
 
    @Override
    public void ae() {
-      buk $$0 = this.dl();
+      buj $$0 = this.dl();
       super.ae();
-      if ($$0 instanceof bvg $$1) {
-         for (btp $$2 : $$1.eB()) {
+      if ($$0 instanceof bvf $$1) {
+         for (bto $$2 : $$1.eB()) {
             this.f.b(new aeb($$0.ar(), $$2.c()));
          }
       }
    }
 
    public aga b(arc $$0) {
-      return new aga($$0.ah(), $$0.ai(), dhm.a($$0.E()), this.h.b(), this.h.c(), $$0.aj(), $$0.D(), this.gI(), this.aC(), $$0.P());
+      return new aga($$0.ah(), $$0.ai(), dhk.a($$0.E()), this.h.b(), this.h.c(), $$0.aj(), $$0.D(), this.gI(), this.aC(), $$0.P());
    }
 
    @Override
@@ -1905,55 +1905,55 @@ public class ard extends cox {
    }
 
    @Override
-   public fba ah() {
-      buk $$0 = this.dl();
+   public fay ah() {
+      buj $$0 = this.dl();
       return $$0 != null && $$0.cX() != this ? $$0.ah() : this.dv;
    }
 
-   public void a(fba $$0) {
+   public void a(fay $$0) {
       this.dv = $$0;
    }
 
    @Override
-   protected float a(buk $$0, float $$1, bta $$2) {
-      return ddb.a(this.y(), this.ea(), $$0, $$2, $$1);
+   protected float a(buj $$0, float $$1, bsz $$2) {
+      return dcz.a(this.y(), this.ea(), $$0, $$2, $$1);
    }
 
    @Override
-   public void a(cwl $$0, bus $$1) {
+   public void a(cwj $$0, bur $$1) {
       super.a($$0, $$1);
-      this.b(awk.d.b($$0));
+      this.b(awj.d.b($$0));
    }
 
-   public cov ai() {
+   public cot ai() {
       return this.dw;
    }
 
-   public void a(cov $$0) {
+   public void a(cot $$0) {
       this.dw = $$0;
    }
 
-   public fba aj() {
+   public fay aj() {
       float $$0 = this.dw.c() == this.dw.d() ? 0.0F : (this.dw.c() ? 1.0F : -1.0F);
       float $$1 = this.dw.a() == this.dw.b() ? 0.0F : (this.dw.a() ? 1.0F : -1.0F);
-      return a(new fba((double)$$0, 0.0, (double)$$1), 1.0F, this.dM());
+      return a(new fay((double)$$0, 0.0, (double)$$1), 1.0F, this.dM());
    }
 
-   public void a(cqa $$0) {
+   public void a(cpy $$0) {
       this.dx.add($$0);
    }
 
-   public void b(cqa $$0) {
+   public void b(cpy $$0) {
       this.dx.remove($$0);
    }
 
-   public Set<cqa> ak() {
+   public Set<cpy> ak() {
       return this.dx;
    }
 
-   public long c(cqa $$0) {
+   public long c(cpy $$0) {
       if ($$0.dW() instanceof arc $$1) {
-         dfo $$2 = $$0.dy();
+         dfm $$2 = $$0.dy();
          this.a($$0);
          $$1.i();
          return a($$1, $$2) - 1L;
@@ -1962,19 +1962,19 @@ public class ard extends cox {
       }
    }
 
-   public static long a(arc $$0, dfo $$1) {
+   public static long a(arc $$0, dfm $$1) {
       $$0.m().a(ari.f, $$1, 2, $$1);
       return ari.f.b();
    }
 
-   static record a(fba a, float b) {
-      public static ard.a a(fba $$0, ji $$1) {
+   static record a(fay a, float b) {
+      public static ard.a a(fay $$0, ji $$1) {
          return new ard.a($$0, b($$0, $$1));
       }
 
-      private static float b(fba $$0, ji $$1) {
-         fba $$2 = fba.c($$1).d($$0).d();
-         return (float)ayz.d(ayz.d($$2.f, $$2.d) * 180.0F / (float)Math.PI - 90.0);
+      private static float b(fay $$0, ji $$1) {
+         fay $$2 = fay.c($$1).d($$0).d();
+         return (float)ayy.d(ayy.d($$2.f, $$2.d) * 180.0F / (float)Math.PI - 90.0);
       }
    }
 }

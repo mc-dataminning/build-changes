@@ -1,56 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cfh extends cfq<bvi> {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final Long2LongMap d = new Long2LongOpenHashMap();
-   private int e;
-   private long f;
-
-   public cfh() {
-      super(20);
-   }
+public class cfh extends cfp<bvh> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   public Set<cek<?>> a() {
-      return ImmutableSet.of(cek.w);
+   public Set<cej<?>> a() {
+      return ImmutableSet.of(cej.L);
    }
 
-   protected void a(arc $$0, bvi $$1) {
-      if ($$1.e_()) {
-         this.e = 0;
-         this.f = $$0.ad() + (long)$$0.H_().a(20);
-         cgk $$2 = $$0.A();
-         Predicate<ji> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.d.containsKey($$1x)) {
-               return false;
-            } else if (++this.e >= 5) {
-               return false;
-            } else {
-               this.d.put($$1x, this.f + 40L);
-               return true;
-            }
-         };
-         Set<Pair<jr<cgn>, ji>> $$4 = $$2.b($$0x -> $$0x.a(cgo.n), $$3, $$1.dw(), 48, cgk.b.c).collect(Collectors.toSet());
-         etn $$5 = bws.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ji $$6 = $$5.l();
-            Optional<jr<cgn>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.ec().a(cek.w, $$6);
-            }
-         } else if (this.e < 5) {
-            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
-         }
-      }
+   protected void a(arc $$0, bvh $$1) {
+      bwh<?> $$2 = $$1.ec();
+      List<cla> $$3 = $$0.a(cla.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cla> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cej.L, $$4);
    }
 }

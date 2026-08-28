@@ -1,9 +1,9 @@
-public record aah(int c, etn d, float e) implements zy {
+public record aah(int c, etl d, float e) implements zy {
    public static final ym<vl, aah> a = zy.a(aah::a, aah::new);
    public static final zy.b<aah> b = zy.a("debug/path");
 
    private aah(vl $$0) {
-      this($$0.readInt(), etn.b($$0), $$0.readFloat());
+      this($$0.readInt(), etl.b($$0), $$0.readFloat());
    }
 
    private void a(vl $$0) {
@@ -21,7 +21,7 @@ public record aah(int c, etn d, float e) implements zy {
       return this.c;
    }
 
-   public etn c() {
+   public etl c() {
       return this.d;
    }
 

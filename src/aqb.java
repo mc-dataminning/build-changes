@@ -31,7 +31,7 @@ public class aqb extends JComponent {
    private void b() {
       long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
       this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
-      this.d[1] = "Avg tick: " + a.format((double)this.e.aQ() / (double)bab.b) + " ms";
+      this.d[1] = "Avg tick: " + a.format((double)this.e.aQ() / (double)baa.b) + " ms";
       this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
       this.repaint();
    }

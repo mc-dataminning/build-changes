@@ -1,99 +1,376 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.TracyClient;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.nio.IntBuffer;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.OptionalLong;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALC10;
+import org.lwjgl.openal.ALC11;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
+import org.lwjgl.openal.ALUtil;
+import org.lwjgl.openal.SOFTHRTF;
+import org.lwjgl.system.MemoryStack;
+import org.slf4j.Logger;
 
-public class fdf implements AutoCloseable {
-   private static final int a = 320;
-   private static final int b = 180;
-   private static final int c = 4;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private final fee h = new fef(320, 180, false);
-   private final fdp i = new fdp(fdn.c, fdo.f, 0);
+public class fdf {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 0;
+   private static final int c = 30;
+   private long d;
+   private long e;
+   private boolean f;
    @Nullable
-   private fdq j;
-   private int k;
-   private boolean l;
-
-   private void a(int $$0, int $$1) {
-      float $$2 = (float)$$0 / (float)$$1;
-      if ($$0 > 320) {
-         $$0 = 320;
-         $$1 = (int)(320.0F / $$2);
+   private String g;
+   private static final fdf.a h = new fdf.a() {
+      @Nullable
+      @Override
+      public fde a() {
+         return null;
       }
 
-      if ($$1 > 180) {
-         $$0 = (int)(180.0F * $$2);
-         $$1 = 180;
+      @Override
+      public boolean a(fde $$0) {
+         return false;
       }
 
-      $$0 = $$0 / 4 * 4;
-      $$1 = $$1 / 4 * 4;
-      if (this.f != $$0 || this.g != $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h.a($$0, $$1);
-         this.i.a($$0 * $$1 * 4);
-         if (this.j != null) {
-            this.j.close();
-            this.j = null;
-         }
+      @Override
+      public void b() {
       }
+
+      @Override
+      public int c() {
+         return 0;
+      }
+
+      @Override
+      public int d() {
+         return 0;
+      }
+   };
+   private fdf.a i = h;
+   private fdf.a j = h;
+   private final fdg k = new fdg();
+
+   public fdf() {
+      this.g = a();
    }
 
-   public void a(fee $$0) {
-      if (this.j == null && !this.l) {
-         this.l = true;
-         if ($$0.c != this.d || $$0.d != this.e) {
-            this.d = $$0.c;
-            this.e = $$0.d;
-            this.a(this.d, this.e);
+   public void a(@Nullable String $$0, boolean $$1) {
+      this.d = a($$0);
+      this.f = false;
+      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
+      if (fdi.a(this.d, "Get capabilities")) {
+         throw new IllegalStateException("Failed to get OpenAL capabilities");
+      } else if (!$$2.OpenALC11) {
+         throw new IllegalStateException("OpenAL 1.1 not supported");
+      } else {
+         this.a($$2.ALC_SOFT_HRTF && $$1);
+         MemoryStack $$3 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
+            this.e = ALC10.alcCreateContext(this.d, $$4);
+         } catch (Throwable var9) {
+            if ($$3 != null) {
+               try {
+                  $$3.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
          }
 
-         GlStateManager._glBindFramebuffer(36009, this.h.h);
-         GlStateManager._glBindFramebuffer(36008, $$0.h);
-         GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.f, this.g, 16384, 9729);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         GlStateManager._glBindFramebuffer(36009, 0);
-         this.i.b();
-         GlStateManager._glBindFramebuffer(36008, this.h.h);
-         GlStateManager._readPixels(0, 0, this.f, this.g, 6408, 5121, 0L);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         this.j = new fdq();
-         this.k = 0;
-      }
-   }
+         if ($$3 != null) {
+            $$3.close();
+         }
 
-   public void a() {
-      if (this.j != null) {
-         if (this.j.a(0L)) {
-            this.j = null;
-
-            try (fdp.a $$0 = this.i.a()) {
-               if ($$0 != null) {
-                  TracyClient.frameImage($$0.a(), this.f, this.g, this.k, true);
+         if (fdi.a(this.d, "Create context")) {
+            throw new IllegalStateException("Unable to create OpenAL context");
+         } else {
+            ALC10.alcMakeContextCurrent(this.e);
+            int $$5 = this.i();
+            int $$6 = ayy.a((int)ayy.c((float)$$5), 2, 8);
+            int $$7 = ayy.a($$5 - $$6, 8, 255);
+            this.i = new fdf.b($$7);
+            this.j = new fdf.b($$6);
+            ALCapabilities $$8 = AL.createCapabilities($$2);
+            fdi.a("Initialization");
+            if (!$$8.AL_EXT_source_distance_model) {
+               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+            } else {
+               AL10.alEnable(512);
+               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
+                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
+               } else {
+                  fdi.a("Enable per-source distance models");
+                  a.info("OpenAL initialized on device {}", this.b());
+                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
                }
             }
          }
       }
    }
 
-   public void b() {
-      this.k++;
-      this.l = false;
-      TracyClient.markFrame();
+   private void a(boolean $$0) {
+      int $$1 = ALC10.alcGetInteger(this.d, 6548);
+      if ($$1 > 0) {
+         MemoryStack $$2 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
+            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
+               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
+            }
+         } catch (Throwable var7) {
+            if ($$2 != null) {
+               try {
+                  $$2.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+            }
+
+            throw var7;
+         }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+      }
    }
 
-   @Override
-   public void close() {
-      if (this.j != null) {
-         this.j.close();
-         this.j = null;
+   private int i() {
+      MemoryStack $$0 = MemoryStack.stackPush();
+
+      int var7;
+      label58: {
+         try {
+            int $$1 = ALC10.alcGetInteger(this.d, 4098);
+            if (fdi.a(this.d, "Get attributes size")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            IntBuffer $$2 = $$0.mallocInt($$1);
+            ALC10.alcGetIntegerv(this.d, 4099, $$2);
+            if (fdi.a(this.d, "Get attributes")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            int $$3 = 0;
+
+            while ($$3 < $$1) {
+               int $$4 = $$2.get($$3++);
+               if ($$4 == 0) {
+                  break;
+               }
+
+               int $$5 = $$2.get($$3++);
+               if ($$4 == 4112) {
+                  var7 = $$5;
+                  break label58;
+               }
+            }
+         } catch (Throwable var9) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return 30;
       }
 
-      this.i.close();
-      this.h.a();
+      if ($$0 != null) {
+         $$0.close();
+      }
+
+      return var7;
+   }
+
+   @Nullable
+   public static String a() {
+      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
+         return null;
+      } else {
+         ALUtil.getStringList(0L, 4115);
+         return ALC10.alcGetString(0L, 4114);
+      }
+   }
+
+   public String b() {
+      String $$0 = ALC10.alcGetString(this.d, 4115);
+      if ($$0 == null) {
+         $$0 = ALC10.alcGetString(this.d, 4101);
+      }
+
+      if ($$0 == null) {
+         $$0 = "Unknown";
+      }
+
+      return $$0;
+   }
+
+   public synchronized boolean c() {
+      String $$0 = a();
+      if (Objects.equals(this.g, $$0)) {
+         return false;
+      } else {
+         this.g = $$0;
+         return true;
+      }
+   }
+
+   private static long a(@Nullable String $$0) {
+      OptionalLong $$1 = OptionalLong.empty();
+      if ($$0 != null) {
+         $$1 = b($$0);
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(a());
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(null);
+      }
+
+      if ($$1.isEmpty()) {
+         throw new IllegalStateException("Failed to open OpenAL device");
+      } else {
+         return $$1.getAsLong();
+      }
+   }
+
+   private static OptionalLong b(@Nullable String $$0) {
+      long $$1 = ALC10.alcOpenDevice($$0);
+      return $$1 != 0L && !fdi.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
+   }
+
+   public void d() {
+      this.i.b();
+      this.j.b();
+      ALC10.alcDestroyContext(this.e);
+      if (this.d != 0L) {
+         ALC10.alcCloseDevice(this.d);
+      }
+   }
+
+   public fdg e() {
+      return this.k;
+   }
+
+   @Nullable
+   public fde a(fdf.c $$0) {
+      return ($$0 == fdf.c.b ? this.j : this.i).a();
+   }
+
+   public void a(fde $$0) {
+      if (!this.i.a($$0) && !this.j.a($$0)) {
+         throw new IllegalStateException("Tried to release unknown channel");
+      }
+   }
+
+   public String f() {
+      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
+   }
+
+   public List<String> g() {
+      List<String> $$0 = ALUtil.getStringList(0L, 4115);
+      return $$0 == null ? Collections.emptyList() : $$0;
+   }
+
+   public boolean h() {
+      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
+   }
+
+   interface a {
+      @Nullable
+      fde a();
+
+      boolean a(fde var1);
+
+      void b();
+
+      int c();
+
+      int d();
+   }
+
+   static class b implements fdf.a {
+      private final int a;
+      private final Set<fde> b = Sets.newIdentityHashSet();
+
+      public b(int $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public fde a() {
+         if (this.b.size() >= this.a) {
+            if (ab.aU) {
+               fdf.a.warn("Maximum sound pool size {} reached", this.a);
+            }
+
+            return null;
+         } else {
+            fde $$0 = fde.a();
+            if ($$0 != null) {
+               this.b.add($$0);
+            }
+
+            return $$0;
+         }
+      }
+
+      @Override
+      public boolean a(fde $$0) {
+         if (!this.b.remove($$0)) {
+            return false;
+         } else {
+            $$0.b();
+            return true;
+         }
+      }
+
+      @Override
+      public void b() {
+         this.b.forEach(fde::b);
+         this.b.clear();
+      }
+
+      @Override
+      public int c() {
+         return this.a;
+      }
+
+      @Override
+      public int d() {
+         return this.b.size();
+      }
+   }
+
+   public static enum c {
+      a,
+      b;
    }
 }

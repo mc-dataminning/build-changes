@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum ao implements azv {
+public enum ao implements azu {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<ao> d = azv.a(ao::values);
+   public static final Codec<ao> d = azu.a(ao::values);
    private final String e;
    private final n f;
    private final wo g;

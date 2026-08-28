@@ -1,23 +1,31 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class fhu extends fhz implements fht {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class fhu extends fhx {
+   public long a;
+   public List<fht> b = Lists.newArrayList();
 
-   public fhu(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static fhu a(String $$0) {
+      fhu $$1 = new fhu();
+      JsonParser $$2 = new JsonParser();
 
-   public int a() {
-      return this.b;
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fjt.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fht $$8 = fht.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+      return $$1;
    }
 }

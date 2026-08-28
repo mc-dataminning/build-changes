@@ -1,19 +1,53 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fkb {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public class fkb extends fkf {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wo c = wo.c("mco.configure.world.closing");
+   private final fhj d;
+   private final fis e;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   public fkb(fhj $$0, fis $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   @Override
+   public void run() {
+      fgi $$0 = fgi.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fhj.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fif var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
-   public static void a(long $$0, @Nullable String $$1) {
-      a.put($$0, $$1);
+   @Override
+   public wo a() {
+      return c;
    }
 }

@@ -1,120 +1,39 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import java.util.function.IntFunction;
 
-public interface fkz {
-   fkz a = new fkz.a(0.0F);
-   fkz b = new fkz.a(1.0F);
+public enum fkz implements azb {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   float a();
+   private static final IntFunction<fkz> d = axp.a(fkz::b, values(), axp.a.b);
+   private final int e;
+   private final String f;
 
-   float a(boolean var1);
-
-   float b();
-
-   public static class a implements fkz {
-      private final float c;
-
-      a(float $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         return this.c;
-      }
-
-      @Override
-      public float b() {
-         return this.c;
-      }
+   private fkz(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static class b implements fkz {
-      private float c;
-      private float d;
-      private float e;
-      private float f;
-      private long g;
-      private long h;
-      private final float i;
-      private final FloatUnaryOperator j;
-      private boolean k;
-      private boolean l;
+   @Override
+   public int b() {
+      return this.e;
+   }
 
-      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
-         this.i = 1000.0F / $$0;
-         this.h = this.g = $$1;
-         this.j = $$2;
-      }
+   @Override
+   public String a() {
+      return this.f;
+   }
 
-      public int a(long $$0, boolean $$1) {
-         this.b($$0);
-         return $$1 ? this.a($$0) : 0;
-      }
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
 
-      private int a(long $$0) {
-         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
-         this.g = $$0;
-         this.d = this.d + this.c;
-         int $$1 = (int)this.d;
-         this.d -= (float)$$1;
-         return $$1;
-      }
-
-      private void b(long $$0) {
-         this.e = (float)($$0 - this.h) / this.i;
-         this.h = $$0;
-      }
-
-      public void b(boolean $$0) {
-         if ($$0) {
-            this.c();
-         } else {
-            this.d();
-         }
-      }
-
-      private void c() {
-         if (!this.k) {
-            this.f = this.d;
-         }
-
-         this.k = true;
-      }
-
-      private void d() {
-         if (this.k) {
-            this.d = this.f;
-         }
-
-         this.k = false;
-      }
-
-      public void c(boolean $$0) {
-         this.l = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         if (!$$0 && this.l) {
-            return 1.0F;
-         } else {
-            return this.k ? this.f : this.d;
-         }
-      }
-
-      @Override
-      public float b() {
-         return this.e > 7.0F ? 0.5F : this.e;
-      }
+   public static fkz a(int $$0) {
+      return d.apply($$0);
    }
 }

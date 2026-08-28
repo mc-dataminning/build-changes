@@ -19,8 +19,8 @@ public record dg(dk.d c, Optional<bx> d) implements by {
    }
 
    @Override
-   public boolean a(buk $$0, arc $$1, @Nullable fba $$2) {
-      return !($$0 instanceof bvf $$3) ? false : this.c.d($$3.m()) && (this.d.isEmpty() || $$3.p().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(buj $$0, arc $$1, @Nullable fay $$2) {
+      return !($$0 instanceof bve $$3) ? false : this.c.d($$3.m()) && (this.d.isEmpty() || $$3.p().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public dk.d b() {

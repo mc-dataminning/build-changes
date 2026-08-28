@@ -8,7 +8,7 @@ public class en extends dz<en.a> {
       return en.a.a;
    }
 
-   public void a(ard $$0, cwp $$1) {
+   public void a(ard $$0, cwn $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class en extends dz<en.a> {
          return ap.W.a(new en.a(Optional.of(bx.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(cwp $$0) {
+      public boolean a(cwn $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

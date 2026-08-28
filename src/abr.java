@@ -3,19 +3,19 @@ import java.util.function.BiFunction;
 public class abr implements yv<abk> {
    public static final ym<vz, abr> a = ym.a(ji.b, abr::b, yk.a(mc.h), abr::e, yk.s, abr::f, abr::new);
    private final ji b;
-   private final dub<?> c;
+   private final dtz<?> c;
    private final tq d;
 
-   public static abr a(dtz $$0, BiFunction<dtz, kf, tq> $$1) {
+   public static abr a(dtx $$0, BiFunction<dtx, kf, tq> $$1) {
       kf $$2 = $$0.i().K_();
       return new abr($$0.aA_(), $$0.p(), $$1.apply($$0, $$2));
    }
 
-   public static abr a(dtz $$0) {
-      return a($$0, dtz::a);
+   public static abr a(dtx $$0) {
+      return a($$0, dtx::a);
    }
 
-   private abr(ji $$0, dub<?> $$1, tq $$2) {
+   private abr(ji $$0, dtz<?> $$1, tq $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -34,7 +34,7 @@ public class abr implements yv<abk> {
       return this.b;
    }
 
-   public dub<?> e() {
+   public dtz<?> e() {
       return this.c;
    }
 

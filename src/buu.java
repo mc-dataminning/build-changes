@@ -1,46 +1,61 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record buu(akt<evw> c, Map<bus, Float> d) {
-   public static final Codec<Map<bus, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bus.k, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(buu::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(bus.i);
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<buu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akt.a(mc.bg).fieldOf("loot_table").forGetter(buu::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(buu::b))
-            .apply($$0, buu::new)
-   );
+public interface buu {
+   void a(bur var1, cwn var2);
 
-   public buu(akt<evw> $$0, float $$1) {
-      this($$0, a($$1));
+   cwn a(bur var1);
+
+   void a(bur var1, float var2);
+
+   default void a(but $$0, evs $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   private static Map<bus, Float> a(float $$0) {
-      return a(List.of(bus.values()), $$0);
+   default void a(akt<evu> $$0, evs $$1, Map<bur, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   private static Map<bus, Float> a(List<bus> $$0, float $$1) {
-      Map<bus, Float> $$2 = Maps.newHashMap();
+   default void a(akt<evu> $$0, evs $$1, long $$2, Map<bur, Float> $$3) {
+      evu $$4 = $$1.a().p().bc().b($$0);
+      if ($$4 != evu.a) {
+         List<cwn> $$5 = $$4.a($$1, $$2);
+         List<bur> $$6 = new ArrayList<>();
 
-      for (bus $$3 : $$0) {
-         $$2.put($$3, $$1);
+         for (cwn $$7 : $$5) {
+            bur $$8 = this.a($$7, $$6);
+            if ($$8 != null) {
+               cwn $$9 = $$8.a($$7);
+               this.a($$8, $$9);
+               Float $$10 = $$3.get($$8);
+               if ($$10 != null) {
+                  this.a($$8, $$10);
+               }
+
+               $$6.add($$8);
+            }
+         }
       }
-
-      return $$2;
    }
 
-   public akt<evw> a() {
-      return this.c;
-   }
+   @Nullable
+   default bur a(cwn $$0, List<bur> $$1) {
+      if ($$0.f()) {
+         return null;
+      } else {
+         des $$2 = $$0.a(kv.D);
+         if ($$2 != null) {
+            bur $$3 = $$2.a();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(bur.a)) {
+            return bur.a;
+         }
 
-   public Map<bus, Float> b() {
-      return this.d;
+         return null;
+      }
    }
 }

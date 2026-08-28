@@ -19,7 +19,7 @@ public class vs<T extends vu> extends ByteToMessageDecoder implements vx {
       if ($$3 != 0) {
          yv<? super T> $$4 = this.b.c().decode($$1);
          yx<? extends yv<? super T>> $$5 = $$4.a();
-         bpa.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         boz.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
          if ($$1.readableBytes() > 0) {
             throw new IOException(
                "Packet "

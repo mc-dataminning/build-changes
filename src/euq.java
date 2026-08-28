@@ -1,54 +1,48 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class euq {
-   private final ji a;
-   private final int b;
-   private final int c;
+public class euq extends euj {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public euq(ji $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static euj.a<euq> a() {
+      return new euj.a<>(euq::new, euq::b, bam.k);
    }
 
-   @Nullable
-   public static euq a(tq $$0) {
-      Optional<ji> $$1 = uf.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new euq($$1.get(), $$2, $$3);
+   public euq() {
+      this.b.defaultReturnValue(-1);
+   }
+
+   public static euq b(tq $$0, jt.a $$1) {
+      euq $$2 = new euq();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
       }
+
+      return $$2;
    }
 
-   public tq a() {
-      tq $$0 = new tq();
-      $$0.a("pos", uf.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
+   @Override
+   public tq a(tq $$0, jt.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
       return $$0;
    }
 
-   public ji b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(ji $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public eup b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new eup($$0);
    }
 }

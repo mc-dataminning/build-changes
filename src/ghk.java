@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ghk {
+@FunctionalInterface
+public interface ghk {
+   yv<agf> predict(int var1);
 }

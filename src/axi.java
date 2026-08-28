@@ -1,11 +1,8 @@
-public class axi {
-   public static final axf<enb> a = a("normal");
-   public static final axf<enb> b = a("extended");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private axi() {
-   }
-
-   private static axf<enb> a(String $$0) {
-      return axf.a(mc.bb, aku.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface axi {
 }

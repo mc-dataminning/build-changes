@@ -97,7 +97,7 @@ public class ey {
       apg.a(this.h);
       api.a(this.h);
       apk.a(this.h);
-      if (bpa.f.d()) {
+      if (boz.f.d()) {
          ani.a(this.h);
       }
 
@@ -152,7 +152,7 @@ public class ey {
 
    public void a(ParseResults<ex> $$0, String $$1) {
       ex $$2 = (ex)$$0.getContext().getSource();
-      bor.a().a(() -> "/" + $$1);
+      boq.a().a(() -> "/" + $$1);
       ContextChain<ex> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -176,7 +176,7 @@ public class ey {
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         bor.a().c();
+         boq.a().c();
       }
    }
 
@@ -214,10 +214,10 @@ public class ey {
       hx<ex> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().c(dge.y));
-         int $$6 = $$2.aL().c(dge.z);
+         int $$5 = Math.max(1, $$2.aL().c(dgc.y));
+         int $$6 = $$2.aL().c(dgc.z);
 
-         try (hx<ex> $$7 = new hx<>($$5, $$6, bor.a())) {
+         try (hx<ex> $$7 = new hx<>($$5, $$6, boq.a())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -313,8 +313,8 @@ public class ey {
    public static et a(final jt.a $$0) {
       return new et() {
          @Override
-         public crt a() {
-            return crv.e.a();
+         public crr a() {
+            return crt.e.a();
          }
 
          @Override
@@ -335,12 +335,12 @@ public class ey {
                }
 
                @Override
-               public Optional<jv.c<T>> a(axf<T> $$0xx) {
+               public Optional<jv.c<T>> a(axe<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jv.c<T> b(axf<T> $$0xx) {
+               public jv.c<T> b(axe<T> $$0xx) {
                   Optional<jv.c<T>> $$1 = this.a().a($$0);
                   return $$1.orElseGet(() -> jv.a(this.a(), $$0));
                }

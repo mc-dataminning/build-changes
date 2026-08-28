@@ -1,48 +1,44 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.List;
 
-public record cvp<T>(Optional<jr<T>> a, akt<T> b) {
-   public cvp(jr<T> $$0) {
-      this(Optional.of($$0), $$0.e().orElseThrow());
+public class cvp extends cwj {
+   public cvp(cwj.a $$0) {
+      super($$0);
    }
 
-   public cvp(akt<T> $$0) {
-      this(Optional.empty(), $$0);
-   }
+   @Override
+   public bsi a(dag $$0) {
+      dgg $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwv $$3 = $$1.a_($$2);
+      if (!$$3.a(djm.cv) && !$$3.a(djm.I)) {
+         return bsi.d;
+      } else {
+         ji $$4 = $$2.d();
+         if (!$$1.u($$4)) {
+            return bsi.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<buj> $$8 = $$1.a_(null, new fat($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bsi.d;
+            } else {
+               if ($$1 instanceof arc) {
+                  cjs $$9 = new cjs($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), ebr.t, $$4);
+                  eat $$10 = ((arc)$$1).F();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   public static <T> Codec<cvp<T>> a(akt<ke<T>> $$0, Codec<jr<T>> $$1) {
-      return Codec.either($$1, akt.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cvp::a, cvp::a);
-   }
-
-   public static <T> ym<vz, cvp<T>> a(akt<ke<T>> $$0, ym<vz, jr<T>> $$1) {
-      return ym.a(yk.a($$1, akt.b($$0)), cvp::a, cvp::a);
-   }
-
-   public Either<jr<T>, akt<T>> a() {
-      return this.a.<Either<jr<T>, akt<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
-   }
-
-   public static <T> cvp<T> a(Either<jr<T>, akt<T>> $$0) {
-      return (cvp<T>)$$0.map(cvp::new, cvp::new);
-   }
-
-   public Optional<T> a(ke<T> $$0) {
-      return this.a.<T>map(jr::a).or(() -> $$0.f(this.b));
-   }
-
-   public Optional<jr<T>> a(jt.a $$0) {
-      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
-   }
-
-   public Optional<jr<T>> b() {
-      return this.a;
-   }
-
-   public akt<T> c() {
-      return this.b;
+               $$0.n().h(1);
+               return bsi.a;
+            }
+         }
+      }
    }
 }

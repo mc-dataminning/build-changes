@@ -5,7 +5,7 @@ public record afu(float b, boolean c) implements yv<abk> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static afu a(bss $$0) {
+   public static afu a(bsr $$0) {
       return new afu($$0.f(), $$0.l());
    }
 

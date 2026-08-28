@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum aqu implements azc {
+public enum aqu implements azb {
    a(0, "options.particles.all"),
    b(1, "options.particles.decreased"),
    c(2, "options.particles.minimal");
 
-   private static final IntFunction<aqu> d = axq.a(aqu::b, values(), axq.a.b);
+   private static final IntFunction<aqu> d = axp.a(aqu::b, values(), axp.a.b);
    private final int e;
    private final String f;
 

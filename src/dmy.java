@@ -1,78 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dmy extends dri implements djp {
-   public static final MapCodec<dmy> a = b(dmy::new);
+public abstract class dmy extends djk {
+   protected final jn a;
+   protected final boolean b;
+   protected final fbs d;
 
-   @Override
-   public MapCodec<dmy> a() {
-      return a;
-   }
-
-   public dmy(dww.d $$0) {
+   protected dmy(dwu.d $$0, jn $$1, fbs $$2, boolean $$3) {
       super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return $$0.a_($$1.d()).l();
+   protected abstract MapCodec<? extends dmy> a();
+
+   @Nullable
+   @Override
+   public dwv a(dae $$0) {
+      dwv $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public dwv b(azg $$0) {
+      return this.m();
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
+      ji $$3 = $$2.a(this.a.g());
+      dwv $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   protected boolean o(dwv $$0) {
       return true;
    }
 
    @Override
-   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
-      ji $$4 = $$2.d();
-      dwx $$5 = djo.bA.m();
-      Optional<jr.c<emq>> $$6 = $$0.K_().e(mc.aT).a(rw.n);
-
-      label51:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         ji $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label51;
-            }
-         }
-
-         dwx $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            djp $$11 = (djp)$$5.b();
-            if ($$11.a($$0, $$8, $$10)) {
-               $$11.a($$0, $$1, $$8, $$10);
-            }
-         }
-
-         if ($$10.l()) {
-            jr<emq> $$13;
-            if ($$1.a(8) == 0) {
-               List<efk<?, ?>> $$12 = $$0.t($$8).a().d().b();
-               if ($$12.isEmpty()) {
-                  continue;
-               }
-
-               $$13 = ((eip)$$12.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$13 = $$6.get();
-            }
-
-            $$13.a().a($$0, $$0.m().g(), $$1, $$8);
-         }
-      }
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return this.d;
    }
 
-   @Override
-   public djp.a aq_() {
-      return djp.a.a;
-   }
+   protected abstract dna c();
+
+   protected abstract djk b();
 }

@@ -1,21 +1,19 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eek implements edz {
-   protected final km f;
+record eek(km e) implements edx {
+   public static MapCodec<eek> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(km.g.optionalFieldOf("offset", km.h).forGetter(eek::g)).apply($$0, eek::new));
 
-   protected static <P extends eek> P1<Mu<P>, km> a(Instance<P> $$0) {
-      return $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.f));
+   @Override
+   public edy<?> a() {
+      return edy.m;
    }
 
-   protected eek(km $$0) {
-      this.f = $$0;
+   public boolean a(dhe $$0, ji $$1) {
+      return $$0.a(null, fbp.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   public final boolean a(dhg $$0, ji $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   public km g() {
+      return this.e;
    }
-
-   protected abstract boolean a(dwx var1);
 }

@@ -1,8 +1,17 @@
-import javax.annotation.Nullable;
+public class gzo extends gyw {
+   public chl.a a;
+   public boolean b;
+   public boolean c;
+   public int d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public float h;
+   public float j;
+   public float k;
+   public float l;
 
-public class gzo extends gyi {
-   public jn a = jn.c;
-   @Nullable
-   public ckx b;
-   public int[] c = new int[0];
+   public gzo() {
+      this.a = chl.a.a;
+   }
 }

@@ -1,26 +1,11 @@
-public class gug extends gti<cmg, haf, gdy> {
-   public static final aku a = aku.b("textures/entity/slime/slime.png");
+public class gug extends gqv<cjn, haf, gdx> {
+   private static final aku a = aku.b("textures/entity/sniffer/sniffer.png");
 
-   public gug(gsc.a $$0) {
-      super($$0, new gdy($$0.a(gfb.cO)), 0.25F);
-      this.a(new gwv(this, $$0.f()));
+   public gug(gsb.a $$0) {
+      super($$0, new gdx($$0.a(gez.cQ)), new gdx($$0.a(gez.cR)), 1.1F);
    }
 
-   protected float a(haf $$0) {
-      return (float)$$0.b * 0.25F;
-   }
-
-   protected void a(haf $$0, ffu $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
-   }
-
-   public aku b(haf $$0) {
+   public aku a(haf $$0) {
       return a;
    }
 
@@ -28,9 +13,17 @@ public class gug extends gti<cmg, haf, gdy> {
       return new haf();
    }
 
-   public void a(cmg $$0, haf $$1, float $$2) {
+   public void a(cjn $$0, haf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gp();
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.ca);
+      $$1.d.a($$0.cd);
+      $$1.e.a($$0.bY);
+      $$1.f.a($$0.bZ);
+   }
+
+   protected fat a(cjn $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

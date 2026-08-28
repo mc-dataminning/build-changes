@@ -2,24 +2,39 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import java.util.SequencedMap;
 import java.util.function.Supplier;
 
-public class bmm extends bjk {
+public class bmm extends bjj {
    public bmm(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public static SequencedMap<String, Supplier<TypeTemplate>> a(Schema $$0) {
-      SequencedMap<String, Supplier<TypeTemplate>> $$1 = bmh.a($$0);
-      $$1.remove("minecraft:food");
-      $$1.put("minecraft:use_remainder", () -> bhw.t.in($$0));
-      $$1.put("minecraft:equippable", () -> DSL.optionalFields("allowed_entities", DSL.or(bhw.z.in($$0), DSL.list(bhw.z.in($$0)))));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("minecraft:boat");
+      $$1.remove("minecraft:chest_boat");
+      this.registerSimple($$1, "minecraft:oak_boat");
+      this.registerSimple($$1, "minecraft:spruce_boat");
+      this.registerSimple($$1, "minecraft:birch_boat");
+      this.registerSimple($$1, "minecraft:jungle_boat");
+      this.registerSimple($$1, "minecraft:acacia_boat");
+      this.registerSimple($$1, "minecraft:cherry_boat");
+      this.registerSimple($$1, "minecraft:dark_oak_boat");
+      this.registerSimple($$1, "minecraft:mangrove_boat");
+      this.registerSimple($$1, "minecraft:bamboo_raft");
+      this.a($$1, "minecraft:oak_chest_boat");
+      this.a($$1, "minecraft:spruce_chest_boat");
+      this.a($$1, "minecraft:birch_chest_boat");
+      this.a($$1, "minecraft:jungle_chest_boat");
+      this.a($$1, "minecraft:acacia_chest_boat");
+      this.a($$1, "minecraft:cherry_chest_boat");
+      this.a($$1, "minecraft:dark_oak_chest_boat");
+      this.a($$1, "minecraft:mangrove_chest_boat");
+      this.a($$1, "minecraft:bamboo_chest_raft");
       return $$1;
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bhw.w, () -> DSL.optionalFieldsLazy(a($$0)));
+   private void a(Map<String, Supplier<TypeTemplate>> $$0, String $$1) {
+      this.register($$0, $$1, $$0x -> DSL.optionalFields("Items", DSL.list(bhv.t.in(this))));
    }
 }

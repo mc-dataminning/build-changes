@@ -1,25 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class een implements edz {
-   public static final MapCodec<een> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.e), dwx.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+public class een extends eep {
+   public static final Codec<een> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eep.d.forGetter($$0x -> $$0x), brl.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), een.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
             .apply($$0, een::new)
    );
-   private final km e;
-   private final dwx f;
+   public final brl b;
+   public final een.a c;
 
-   protected een(km $$0, dwx $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public een(float $$0, elr $$1, brl $$2, edk $$3, eeq $$4, jv<djk> $$5, brl $$6, een.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   public boolean a(dhg $$0, ji $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public een(eep $$0, brl $$1, een.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   @Override
-   public eea<?> a() {
-      return eea.g;
+   public static class a {
+      public static final Codec<een.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  brl.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  brl.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ayh.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  brl.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, een.a::new)
+      );
+      public final brl b;
+      public final brl c;
+      public final int d;
+      public final brl e;
+      public final float f;
+      public final float g;
+
+      public a(brl $$0, brl $$1, int $$2, brl $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

@@ -6,9 +6,9 @@ public class aex implements yv<abk> {
    public static final ym<vz, aex> a = yv.a(aex::a, aex::new);
    private static final byte b = -128;
    private final int c;
-   private final List<Pair<bus, cwp>> d;
+   private final List<Pair<bur, cwn>> d;
 
-   public aex(int $$0, List<Pair<bus, cwp>> $$1) {
+   public aex(int $$0, List<Pair<bur, cwn>> $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -20,8 +20,8 @@ public class aex implements yv<abk> {
       int $$1;
       do {
          $$1 = $$0.readByte();
-         bus $$2 = bus.i.get($$1 & 127);
-         cwp $$3 = cwp.g.decode($$0);
+         bur $$2 = bur.i.get($$1 & 127);
+         cwn $$3 = cwn.g.decode($$0);
          this.d.add(Pair.of($$2, $$3));
       } while (($$1 & -128) != 0);
    }
@@ -31,12 +31,12 @@ public class aex implements yv<abk> {
       int $$1 = this.d.size();
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bus, cwp> $$3 = this.d.get($$2);
-         bus $$4 = (bus)$$3.getFirst();
+         Pair<bur, cwn> $$3 = this.d.get($$2);
+         bur $$4 = (bur)$$3.getFirst();
          boolean $$5 = $$2 != $$1 - 1;
          int $$6 = $$4.ordinal();
          $$0.l($$5 ? $$6 | -128 : $$6);
-         cwp.g.encode($$0, (cwp)$$3.getSecond());
+         cwn.g.encode($$0, (cwn)$$3.getSecond());
       }
    }
 
@@ -53,7 +53,7 @@ public class aex implements yv<abk> {
       return this.c;
    }
 
-   public List<Pair<bus, cwp>> e() {
+   public List<Pair<bur, cwn>> e() {
       return this.d;
    }
 }

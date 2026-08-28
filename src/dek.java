@@ -1,41 +1,78 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dek {
+   akt<def> a = del.a("trades/desert_armorer_boots_4");
+   akt<def> b = del.a("trades/desert_armorer_leggings_4");
+   akt<def> c = del.a("trades/desert_armorer_chestplate_4");
+   akt<def> d = del.a("trades/desert_armorer_helmet_4");
+   akt<def> e = del.a("trades/desert_armorer_leggings_5");
+   akt<def> f = del.a("trades/desert_armorer_chestplate_5");
+   akt<def> g = del.a("trades/plains_armorer_boots_4");
+   akt<def> h = del.a("trades/plains_armorer_leggings_4");
+   akt<def> i = del.a("trades/plains_armorer_chestplate_4");
+   akt<def> j = del.a("trades/plains_armorer_helmet_4");
+   akt<def> k = del.a("trades/plains_armorer_boots_5");
+   akt<def> l = del.a("trades/plains_armorer_leggings_5");
+   akt<def> m = del.a("trades/savanna_armorer_boots_4");
+   akt<def> n = del.a("trades/savanna_armorer_leggings_4");
+   akt<def> o = del.a("trades/savanna_armorer_chestplate_4");
+   akt<def> p = del.a("trades/savanna_armorer_helmet_4");
+   akt<def> q = del.a("trades/savanna_armorer_chestplate_5");
+   akt<def> r = del.a("trades/savanna_armorer_helmet_5");
+   akt<def> s = del.a("trades/snow_armorer_boots_4");
+   akt<def> t = del.a("trades/snow_armorer_helmet_4");
+   akt<def> u = del.a("trades/snow_armorer_boots_5");
+   akt<def> v = del.a("trades/snow_armorer_helmet_5");
+   akt<def> w = del.a("trades/jungle_armorer_boots_4");
+   akt<def> x = del.a("trades/jungle_armorer_leggings_4");
+   akt<def> y = del.a("trades/jungle_armorer_chestplate_4");
+   akt<def> z = del.a("trades/jungle_armorer_helmet_4");
+   akt<def> A = del.a("trades/jungle_armorer_boots_5");
+   akt<def> B = del.a("trades/jungle_armorer_helmet_5");
+   akt<def> C = del.a("trades/swamp_armorer_boots_4");
+   akt<def> D = del.a("trades/swamp_armorer_leggings_4");
+   akt<def> E = del.a("trades/swamp_armorer_chestplate_4");
+   akt<def> F = del.a("trades/swamp_armorer_helmet_4");
+   akt<def> G = del.a("trades/swamp_armorer_boots_5");
+   akt<def> H = del.a("trades/swamp_armorer_helmet_5");
+   akt<def> I = del.a("trades/taiga_armorer_leggings_5");
+   akt<def> J = del.a("trades/taiga_armorer_chestplate_5");
 
-public record dek(jv<dcz> d, int e, int f) implements deh {
-   public static final int b = 10000;
-   public static final MapCodec<dek> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kg.a(mc.aO).fieldOf("enchantments").forGetter(dek::b),
-               ayi.a(1, 10000).fieldOf("min_cost").forGetter(dek::c),
-               ayi.a(0, 10000).fieldOf("max_cost_span").forGetter(dek::d)
-            )
-            .apply($$0, dek::new)
-   );
-
-   @Override
-   public void a(cwp $$0, ddf.a $$1, azh $$2, bsh $$3) {
-      float $$4 = $$3.d();
-      int $$5 = ayz.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
-
-      for (ddc $$7 : ddb.b($$2, $$0, $$5, this.d.a())) {
-         $$1.b($$7.a, $$7.b);
-      }
-   }
-
-   @Override
-   public MapCodec<dek> a() {
-      return c;
-   }
-
-   public jv<dcz> b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.f;
+   static void a(qe<def> $$0) {
+      js<dcx> $$1 = $$0.a(mc.aO);
+      $$0.a(a, new dej($$1.b(ddc.h), brk.a(1)));
+      $$0.a(b, new dej($$1.b(ddc.h), brk.a(1)));
+      $$0.a(c, new dej($$1.b(ddc.h), brk.a(1)));
+      $$0.a(d, new dej($$1.b(ddc.h), brk.a(1)));
+      $$0.a(e, new dej($$1.b(ddc.h), brk.a(1)));
+      $$0.a(f, new dej($$1.b(ddc.h), brk.a(1)));
+      $$0.a(g, new dej($$1.b(ddc.a), brk.a(1)));
+      $$0.a(h, new dej($$1.b(ddc.a), brk.a(1)));
+      $$0.a(i, new dej($$1.b(ddc.a), brk.a(1)));
+      $$0.a(j, new dej($$1.b(ddc.a), brk.a(1)));
+      $$0.a(k, new dej($$1.b(ddc.a), brk.a(1)));
+      $$0.a(l, new dej($$1.b(ddc.a), brk.a(1)));
+      $$0.a(m, new dej($$1.b(ddc.k), brk.a(1)));
+      $$0.a(n, new dej($$1.b(ddc.k), brk.a(1)));
+      $$0.a(o, new dej($$1.b(ddc.k), brk.a(1)));
+      $$0.a(p, new dej($$1.b(ddc.k), brk.a(1)));
+      $$0.a(q, new dej($$1.b(ddc.k), brk.a(1)));
+      $$0.a(r, new dej($$1.b(ddc.k), brk.a(1)));
+      $$0.a(s, new dej($$1.b(ddc.j), brk.a(1)));
+      $$0.a(t, new dej($$1.b(ddc.g), brk.a(1)));
+      $$0.a(u, new dej($$1.b(ddc.j), brk.a(1)));
+      $$0.a(v, new dej($$1.b(ddc.g), brk.a(1)));
+      $$0.a(w, new dej($$1.b(ddc.w), brk.a(1)));
+      $$0.a(x, new dej($$1.b(ddc.w), brk.a(1)));
+      $$0.a(y, new dej($$1.b(ddc.w), brk.a(1)));
+      $$0.a(z, new dej($$1.b(ddc.w), brk.a(1)));
+      $$0.a(A, new dej($$1.b(ddc.c), brk.a(1)));
+      $$0.a(B, new dej($$1.b(ddc.e), brk.a(1)));
+      $$0.a(C, new dej($$1.b(ddc.O), brk.a(1)));
+      $$0.a(D, new dej($$1.b(ddc.O), brk.a(1)));
+      $$0.a(E, new dej($$1.b(ddc.O), brk.a(1)));
+      $$0.a(F, new dej($$1.b(ddc.O), brk.a(1)));
+      $$0.a(G, new dej($$1.b(ddc.i), brk.a(1)));
+      $$0.a(H, new dej($$1.b(ddc.f), brk.a(1)));
+      $$0.a(I, new dej($$1.b(ddc.d), brk.a(1)));
+      $$0.a(J, new dej($$1.b(ddc.d), brk.a(1)));
    }
 }

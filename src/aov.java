@@ -10,7 +10,7 @@ public class aov {
             .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), null, null)))
          .then(ey.a("*").then(ey.a("sound", fy.a()).suggests(ix.b).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), null, fy.a($$0x, "sound")))));
 
-      for (awb $$2 : awb.values()) {
+      for (awa $$2 : awa.values()) {
          $$1.then(
             ((LiteralArgumentBuilder)ey.a($$2.a()).executes($$1x -> a((ex)$$1x.getSource(), fk.f($$1x, "targets"), $$2, null)))
                .then(ey.a("sound", fy.a()).suggests(ix.b).executes($$1x -> a((ex)$$1x.getSource(), fk.f($$1x, "targets"), $$2, fy.a($$1x, "sound"))))
@@ -20,7 +20,7 @@ public class aov {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(ex $$0, Collection<ard> $$1, @Nullable awb $$2, @Nullable aku $$3) {
+   private static int a(ex $$0, Collection<ard> $$1, @Nullable awa $$2, @Nullable aku $$3) {
       afo $$4 = new afo($$3, $$2);
 
       for (ard $$5 : $$1) {

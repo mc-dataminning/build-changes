@@ -1,59 +1,83 @@
 import com.mojang.serialization.Codec;
 
-public class efb extends efy<eim> {
-   private static final dwx a = djo.nB.m().b(diq.h, Integer.valueOf(1)).b(diq.i, dxj.a).b(diq.j, Integer.valueOf(0));
-   private static final dwx b = a.b(diq.i, dxj.c).b(diq.j, Integer.valueOf(1));
-   private static final dwx c = a.b(diq.i, dxj.c);
-   private static final dwx d = a.b(diq.i, dxj.b);
-
-   public efb(Codec<eim> $$0) {
+public class efb extends efw<eih> {
+   public efb(Codec<eih> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eim> $$0) {
-      int $$1 = 0;
-      ji $$2 = $$0.e();
-      dhg $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      eim $$5 = $$0.f();
-      ji.a $$6 = $$2.k();
-      ji.a $$7 = $$2.k();
-      if ($$3.u($$6)) {
-         if (djo.nB.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public boolean a(efy<eih> $$0) {
+      ji $$1 = $$0.e();
+      dhe $$2 = $$0.b();
+      azg $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.d())) {
+         ji.a $$4 = $$1.k();
+         ji.a $$5 = $$1.k();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(ecs.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, djo.l.m(), 2);
-                        }
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
+            }
+
+            $$2.a($$4, djm.el.m(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jn.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jn.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jn.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jn.f));
+            $$4.c(jn.a);
+         }
+
+         $$4.c(jn.b);
+         this.a($$2, $$3, $$5.a($$4, jn.c));
+         this.a($$2, $$3, $$5.a($$4, jn.d));
+         this.a($$2, $$3, $$5.a($$4, jn.e));
+         this.a($$2, $$3, $$5.a($$4, jn.f));
+         $$4.c(jn.a);
+         ji.a $$10 = new ji.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = ayy.a($$11) * ayy.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.u($$5.a($$10, jn.a))) {
+                     $$10.c(jn.a);
+                     if (--$$14 <= 0) {
+                        break;
                      }
+                  }
+
+                  if (!$$2.u($$5.a($$10, jn.a))) {
+                     $$2.a($$10, djm.el.m(), 2);
                   }
                }
             }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jn.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jn.a, 1), c, 2);
-               $$3.a($$6.c(jn.a, 1), d, 2);
-            }
          }
 
-         $$1++;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      return $$1 > 0;
+   private void a(dgh $$0, azg $$1, ji $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, djm.el.m(), 2);
+      }
+   }
+
+   private boolean b(dgh $$0, azg $$1, ji $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, djm.el.m(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

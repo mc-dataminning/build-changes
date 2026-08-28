@@ -1,57 +1,32 @@
-import java.util.OptionalInt;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public interface cxk {
-   cpq a(dgi var1, kb var2, cwp var3, jn var4);
+public enum cxk implements azu {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
 
-   default cxk.a b() {
-      return cxk.a.a;
+   public static final Codec<cxk> e = azu.b(cxk::values);
+   public static final IntFunction<cxk> f = axp.a($$0 -> $$0.h, values(), axp.a.a);
+   public static final ym<ByteBuf, cxk> g = yk.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cxk(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   default void a(cpq $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
+   public n a() {
+      return this.j;
    }
 
-   public static record a(cxk.b b, float c, float d, OptionalInt e) {
-      public static final cxk.a a = a().a();
-
-      public static cxk.a.a a() {
-         return new cxk.a.a();
-      }
-
-      public static class a {
-         private cxk.b a = ($$0, $$1) -> dls.a($$0, 0.7, new fba(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cxk.a.a a(cxk.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public cxk.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cxk.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cxk.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cxk.a a() {
-            return new cxk.a(this.a, this.b, this.c, this.d);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      kb getDispensePosition(kz var1, jn var2);
+   @Override
+   public String c() {
+      return this.i;
    }
 }

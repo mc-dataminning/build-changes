@@ -1,37 +1,20 @@
-import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public enum der implements azv {
-   a(bus.f, 11, "helmet"),
-   b(bus.e, 16, "chestplate"),
-   c(bus.d, 15, "leggings"),
-   d(bus.c, 13, "boots"),
-   e(bus.g, 16, "body");
+public interface der {
+   akt<? extends ke<deq>> a = akt.a(aku.b("equipment_asset"));
+   akt<deq> b = a("leather");
+   akt<deq> c = a("chainmail");
+   akt<deq> d = a("iron");
+   akt<deq> e = a("gold");
+   akt<deq> f = a("diamond");
+   akt<deq> g = a("turtle_scute");
+   akt<deq> h = a("netherite");
+   akt<deq> i = a("armadillo_scute");
+   akt<deq> j = a("elytra");
+   Map<cvk, akt<deq>> k = af.a(cvk.class, $$0 -> a($$0.c() + "_carpet"));
+   akt<deq> l = a("trader_llama");
 
-   public static final Codec<der> f = azv.b(der::values);
-   private final bus g;
-   private final String h;
-   private final int i;
-
-   private der(final bus $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public bus a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   static akt<deq> a(String $$0) {
+      return akt.a(a, aku.b($$0));
    }
 }

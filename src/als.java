@@ -12,16 +12,16 @@ public class als {
 
    public static <D, R> CompletableFuture<R> a(als.c $$0, als.f<D> $$1, als.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<dhf, auf> $$5 = $$0.a.a();
-         auf $$6 = (auf)$$5.getSecond();
+         Pair<dhd, aue> $$5 = $$0.a.a();
+         aue $$6 = (aue)$$5.getSecond();
          jy<ald> $$7 = ald.a();
-         List<ke.a<?>> $$8 = axg.a($$6, $$7.a(ald.a));
+         List<ke.a<?>> $$8 = axf.a($$6, $$7.a(ald.a));
          kf.b $$9 = $$7.b(ald.b);
-         List<jt.b<?>> $$10 = axg.a($$9, $$8);
+         List<jt.b<?>> $$10 = axf.a($$9, $$8);
          kf.b $$11 = akp.a($$6, $$10, akp.a);
          List<jt.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
          kf.b $$13 = akp.a($$6, $$12, akp.b);
-         dhf $$14 = (dhf)$$5.getFirst();
+         dhd $$14 = (dhd)$$5.getFirst();
          jt.a $$15 = jt.a.a($$12.stream());
          als.b<D> $$16 = $$1.get(new als.a($$6, $$14, $$15, $$13));
          jy<ald> $$17 = $$7.a(ald.b, $$11, $$16.b);
@@ -38,7 +38,7 @@ public class als {
       }
    }
 
-   public static record a(aup a, dhf b, jt.a c, kf.b d) {
+   public static record a(auo a, dhd b, jt.a c, kf.b d) {
    }
 
    public static record b<D>(D a, kf.b b) {
@@ -47,19 +47,19 @@ public class als {
    public static record c(als.d a, ey.a b, int c) {
    }
 
-   public static record d(aua a, dhf b, boolean c, boolean d) {
-      public Pair<dhf, auf> a() {
-         dhf $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(atz a, dhd b, boolean c, boolean d) {
+      public Pair<dhd, aue> a() {
+         dhd $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<atb> $$1 = this.a.h();
-         auf $$2 = new aui(atd.b, $$1);
+         aue $$2 = new auh(atd.b, $$1);
          return Pair.of($$0, $$2);
       }
 
-      public aua b() {
+      public atz b() {
          return this.a;
       }
 
-      public dhf c() {
+      public dhd c() {
          return this.b;
       }
 
@@ -74,7 +74,7 @@ public class als {
 
    @FunctionalInterface
    public interface e<D, R> {
-      R create(auf var1, alf var2, jy<ald> var3, D var4);
+      R create(aue var1, alf var2, jy<ald> var3, D var4);
    }
 
    @FunctionalInterface

@@ -1,57 +1,29 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.ints.IntImmutableList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public final class dxu<T extends Enum<T> & azv> extends dxz<T> {
-   private final List<T> a;
-   private final Map<String, T> b;
-   private final int[] c;
+public final class dxu extends dxx<Integer> {
+   private final IntImmutableList a;
+   private final int b;
+   private final int c;
 
-   private dxu(String $$0, Class<T> $$1, List<T> $$2) {
-      super($$0, $$1);
-      if ($$2.isEmpty()) {
-         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
+   private dxu(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
       } else {
-         this.a = List.copyOf($$2);
-         T[] $$3 = $$1.getEnumConstants();
-         this.c = new int[$$3.length];
-
-         for (T $$4 : $$3) {
-            this.c[$$4.ordinal()] = $$2.indexOf($$4);
-         }
-
-         Builder<String, T> $$5 = ImmutableMap.builder();
-
-         for (T $$6 : $$2) {
-            String $$7 = $$6.c();
-            $$5.put($$7, $$6);
-         }
-
-         this.b = $$5.buildOrThrow();
+         this.b = $$1;
+         this.c = $$2;
+         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
       }
    }
 
    @Override
-   public List<T> a() {
+   public List<Integer> a() {
       return this.a;
-   }
-
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
-   }
-
-   public int b(T $$0) {
-      return this.c[$$0.ordinal()];
    }
 
    @Override
@@ -59,7 +31,7 @@ public final class dxu<T extends Enum<T> & azv> extends dxz<T> {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof dxu<?> $$1 && super.equals($$0)) {
+         if ($$0 instanceof dxu $$1 && super.equals($$0)) {
             return this.a.equals($$1.a);
          }
 
@@ -69,24 +41,28 @@ public final class dxu<T extends Enum<T> & azv> extends dxz<T> {
 
    @Override
    public int b() {
-      int $$0 = super.b();
-      return 31 * $$0 + this.a.hashCode();
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
+   public static dxu a(String $$0, int $$1, int $$2) {
+      return new dxu($$0, $$1, $$2);
    }
 
-   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         int $$1 = Integer.parseInt($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   @SafeVarargs
-   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, List.of($$2));
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 
-   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1, List<T> $$2) {
-      return new dxu<>($$0, $$1, $$2);
+   public int b(Integer $$0) {
+      return $$0 <= this.c ? $$0 - this.b : -1;
    }
 }

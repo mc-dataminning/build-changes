@@ -1,261 +1,157 @@
-import java.nio.ByteOrder;
-import java.util.stream.Collectors;
+import com.mojang.jtracy.MemoryPool;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogUtils;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
 import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import org.slf4j.Logger;
 
-public class ffp implements ffy {
-   private static final long a = -1L;
-   private static final long b = -1L;
-   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
-   private final ffr d;
-   private long e = -1L;
-   private int f;
-   private final ffz g;
-   private final ffz.c h;
-   private final boolean i;
-   private final boolean j;
-   private final int k;
-   private final int l;
-   private final int[] m;
-   private int n;
-   private boolean o = true;
+public class ffp implements AutoCloseable {
+   private static final MemoryPool a = TracyClient.createMemoryPool("ByteBufferBuilder");
+   private static final Logger b = LogUtils.getLogger();
+   private static final MemoryAllocator c = MemoryUtil.getAllocator(false);
+   private static final int d = 2097152;
+   private static final int e = -1;
+   long f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
+   private int k;
 
-   public ffp(ffr $$0, ffz.c $$1, ffz $$2) {
-      if (!$$2.b(fga.b)) {
-         throw new IllegalArgumentException("Cannot build mesh with no position element");
+   public ffp(int $$0) {
+      this.g = $$0;
+      this.f = c.malloc((long)$$0);
+      a.malloc(this.f, $$0);
+      if (this.f == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+      }
+   }
+
+   public long a(int $$0) {
+      int $$1 = this.h;
+      int $$2 = $$1 + $$0;
+      this.b($$2);
+      this.h = $$2;
+      return this.f + (long)$$1;
+   }
+
+   private void b(int $$0) {
+      if ($$0 > this.g) {
+         int $$1 = Math.min(this.g, 2097152);
+         int $$2 = Math.max(this.g + $$1, $$0);
+         this.c($$2);
+      }
+   }
+
+   private void c(int $$0) {
+      a.free(this.f);
+      this.f = c.realloc(this.f, (long)$$0);
+      a.malloc(this.f, $$0);
+      b.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.g, $$0);
+      if (this.f == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + this.g + " bytes to " + $$0 + " bytes");
       } else {
-         this.d = $$0;
-         this.h = $$1;
-         this.g = $$2;
-         this.k = $$2.b();
-         this.l = $$2.f() & ~fga.b.a();
-         this.m = $$2.e();
-         boolean $$3 = $$2 == ffs.c;
-         boolean $$4 = $$2 == ffs.b;
-         this.i = $$3 || $$4;
-         this.j = $$3;
+         this.g = $$0;
       }
    }
 
    @Nullable
-   public fft a() {
-      this.c();
+   public ffp.a a() {
       this.f();
-      fft $$0 = this.d();
-      this.o = false;
-      this.e = -1L;
-      return $$0;
-   }
-
-   public fft b() {
-      fft $$0 = this.a();
-      if ($$0 == null) {
-         throw new IllegalStateException("BufferBuilder was empty");
-      } else {
-         return $$0;
-      }
-   }
-
-   private void c() {
-      if (!this.o) {
-         throw new IllegalStateException("Not building!");
-      }
-   }
-
-   @Nullable
-   private fft d() {
-      if (this.f == 0) {
+      int $$0 = this.i;
+      int $$1 = this.h - $$0;
+      if ($$1 == 0) {
          return null;
       } else {
-         ffr.a $$0 = this.d.a();
-         if ($$0 == null) {
-            return null;
-         } else {
-            int $$1 = this.h.a(this.f);
-            ffz.b $$2 = ffz.b.a(this.f);
-            return new fft($$0, new fft.a(this.g, this.f, $$1, this.h, $$2));
-         }
+         this.i = this.h;
+         this.j++;
+         return new ffp.a($$0, $$1, this.k);
       }
    }
 
-   private long e() {
+   public void b() {
+      if (this.j > 0) {
+         b.warn("Clearing BufferBuilder with unused batches");
+      }
+
       this.c();
-      this.f();
-      this.f++;
-      long $$0 = this.d.a(this.k);
-      this.e = $$0;
-      return $$0;
    }
 
-   private long a(fga $$0) {
-      int $$1 = this.n;
-      int $$2 = $$1 & ~$$0.a();
-      if ($$2 == $$1) {
-         return -1L;
-      } else {
-         this.n = $$2;
-         long $$3 = this.e;
-         if ($$3 == -1L) {
-            throw new IllegalArgumentException("Not currently building vertex");
-         } else {
-            return $$3 + (long)this.m[$$0.c()];
-         }
+   public void c() {
+      this.f();
+      if (this.j > 0) {
+         this.e();
+         this.j = 0;
+      }
+   }
+
+   boolean d(int $$0) {
+      return $$0 == this.k;
+   }
+
+   void d() {
+      if (--this.j <= 0) {
+         this.e();
+      }
+   }
+
+   private void e() {
+      int $$0 = this.h - this.i;
+      if ($$0 > 0) {
+         MemoryUtil.memCopy(this.f + (long)this.i, this.f, (long)$$0);
+      }
+
+      this.h = $$0;
+      this.i = 0;
+      this.k++;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != 0L) {
+         a.free(this.f);
+         c.free(this.f);
+         this.f = 0L;
+         this.k = -1;
       }
    }
 
    private void f() {
-      if (this.f != 0) {
-         if (this.n != 0) {
-            String $$0 = fga.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
-            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+      if (this.f == 0L) {
+         throw new IllegalStateException("Buffer has been freed");
+      }
+   }
+
+   public class a implements AutoCloseable {
+      private final int b;
+      private final int c;
+      private final int d;
+      private boolean e;
+
+      a(final int $$1, final int $$2, final int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public ByteBuffer a() {
+         if (!ffp.this.d(this.d)) {
+            throw new IllegalStateException("Buffer is no longer valid");
          } else {
-            if (this.h == ffz.c.a || this.h == ffz.c.b) {
-               long $$1 = this.d.a(this.k);
-               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
-               this.f++;
+            return MemoryUtil.memByteBuffer(ffp.this.f + (long)this.b, this.c);
+         }
+      }
+
+      @Override
+      public void close() {
+         if (!this.e) {
+            this.e = true;
+            if (ffp.this.d(this.d)) {
+               ffp.this.d();
             }
          }
-      }
-   }
-
-   private static void a(long $$0, int $$1) {
-      int $$2 = axk.m($$1);
-      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
-   }
-
-   private static void b(long $$0, int $$1) {
-      if (c) {
-         MemoryUtil.memPutInt($$0, $$1);
-      } else {
-         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
-         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
-      }
-   }
-
-   @Override
-   public ffy a(float $$0, float $$1, float $$2) {
-      long $$3 = this.e() + (long)this.m[fga.b.c()];
-      this.n = this.l;
-      MemoryUtil.memPutFloat($$3, $$0);
-      MemoryUtil.memPutFloat($$3 + 4L, $$1);
-      MemoryUtil.memPutFloat($$3 + 8L, $$2);
-      return this;
-   }
-
-   @Override
-   public ffy a(int $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.a(fga.c);
-      if ($$4 != -1L) {
-         MemoryUtil.memPutByte($$4, (byte)$$0);
-         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
-         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
-         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
-      }
-
-      return this;
-   }
-
-   @Override
-   public ffy a(int $$0) {
-      long $$1 = this.a(fga.c);
-      if ($$1 != -1L) {
-         a($$1, $$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public ffy a(float $$0, float $$1) {
-      long $$2 = this.a(fga.d);
-      if ($$2 != -1L) {
-         MemoryUtil.memPutFloat($$2, $$0);
-         MemoryUtil.memPutFloat($$2 + 4L, $$1);
-      }
-
-      return this;
-   }
-
-   @Override
-   public ffy a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, fga.f);
-   }
-
-   @Override
-   public ffy b(int $$0) {
-      long $$1 = this.a(fga.f);
-      if ($$1 != -1L) {
-         b($$1, $$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public ffy b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, fga.g);
-   }
-
-   @Override
-   public ffy c(int $$0) {
-      long $$1 = this.a(fga.g);
-      if ($$1 != -1L) {
-         b($$1, $$0);
-      }
-
-      return this;
-   }
-
-   private ffy a(short $$0, short $$1, fga $$2) {
-      long $$3 = this.a($$2);
-      if ($$3 != -1L) {
-         MemoryUtil.memPutShort($$3, $$0);
-         MemoryUtil.memPutShort($$3 + 2L, $$1);
-      }
-
-      return this;
-   }
-
-   @Override
-   public ffy b(float $$0, float $$1, float $$2) {
-      long $$3 = this.a(fga.h);
-      if ($$3 != -1L) {
-         MemoryUtil.memPutByte($$3, a($$0));
-         MemoryUtil.memPutByte($$3 + 1L, a($$1));
-         MemoryUtil.memPutByte($$3 + 2L, a($$2));
-      }
-
-      return this;
-   }
-
-   private static byte a(float $$0) {
-      return (byte)((int)(ayz.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      if (this.i) {
-         long $$11 = this.e();
-         MemoryUtil.memPutFloat($$11 + 0L, $$0);
-         MemoryUtil.memPutFloat($$11 + 4L, $$1);
-         MemoryUtil.memPutFloat($$11 + 8L, $$2);
-         a($$11 + 12L, $$3);
-         MemoryUtil.memPutFloat($$11 + 16L, $$4);
-         MemoryUtil.memPutFloat($$11 + 20L, $$5);
-         long $$12;
-         if (this.j) {
-            b($$11 + 24L, $$6);
-            $$12 = $$11 + 28L;
-         } else {
-            $$12 = $$11 + 24L;
-         }
-
-         b($$12 + 0L, $$7);
-         MemoryUtil.memPutByte($$12 + 4L, a($$8));
-         MemoryUtil.memPutByte($$12 + 5L, a($$9));
-         MemoryUtil.memPutByte($$12 + 6L, a($$10));
-      } else {
-         ffy.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

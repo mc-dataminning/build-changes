@@ -1,51 +1,16 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public enum dxg implements azu {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-public class dxg implements Predicate<dwx> {
-   public static final Predicate<dwx> a = $$0 -> true;
-   private final dwy<djm, dwx> b;
-   private final Map<dxz<?>, Predicate<Object>> c = Maps.newHashMap();
+   private final String d;
 
-   private dxg(dwy<djm, dwx> $$0) {
-      this.b = $$0;
+   private dxg(final String $$0) {
+      this.d = $$0;
    }
 
-   public static dxg a(djm $$0) {
-      return new dxg($$0.l());
-   }
-
-   public boolean a(@Nullable dwx $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dxz<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   protected <T extends Comparable<T>> boolean a(dwx $$0, dxz<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> dxg a(dxz<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
-      }
+   @Override
+   public String c() {
+      return this.d;
    }
 }

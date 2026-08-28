@@ -1,81 +1,90 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class eos extends eou {
-   public static final MapCodec<eos> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eou.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, eos::new)
-   );
-   private final List<eou> b;
+public abstract class eos {
+   public static final Codec<eos> f = mb.ag.q().dispatch("element_type", eos::a, eot::codec);
+   private static final jr<erk> a = jr.a(new erk(List.of()));
+   @Nullable
+   private volatile eou.a b;
 
-   public eos(List<eou> $$0, eow.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   protected static <E extends eos> RecordCodecBuilder<E, eou.a> e() {
+      return eou.a.c.fieldOf("projection").forGetter(eos::f);
    }
 
-   @Override
-   public km a(erp $$0, dqe $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (eou $$5 : this.b) {
-         km $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new km($$2, $$3, $$4);
+   protected eos(eou.a $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public List<ero.a> a(erp $$0, ji $$1, dqe $$2, azh $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   public abstract km a(ern var1, dqc var2);
+
+   public abstract List<erm.a> a(ern var1, ji var2, dqc var3, azg var4);
+
+   public abstract enc a(ern var1, ji var2, dqc var3);
+
+   public abstract boolean a(ern var1, dhe var2, dhc var3, dyr var4, ji var5, ji var6, dqc var7, enc var8, azg var9, eqw var10, boolean var11);
+
+   public abstract eot<?> a();
+
+   public void a(dgh $$0, erm.d $$1, ji $$2, dqc $$3, azg $$4, enc $$5) {
    }
 
-   @Override
-   public ene a(erp $$0, ji $$1, dqe $$2) {
-      Stream<ene> $$3 = this.b.stream().filter($$0x -> $$0x != eon.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return ene.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(erp $$0, dhg $$1, dhe $$2, dyt $$3, ji $$4, ji $$5, dqe $$6, ene $$7, azh $$8, eqy $$9, boolean $$10) {
-      for (eou $$11 : this.b) {
-         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public eov<?> a() {
-      return eov.b;
-   }
-
-   @Override
-   public eou a(eow.a $$0) {
-      super.a($$0);
-      this.b($$0);
+   public eos a(eou.a $$0) {
+      this.b = $$0;
       return this;
    }
 
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   public eou.a f() {
+      eou.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
    }
 
-   private void b(eow.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   public int g() {
+      return 1;
+   }
+
+   public static Function<eou.a, eol> h() {
+      return $$0 -> eol.b;
+   }
+
+   public static Function<eou.a, eop> a(String $$0) {
+      return $$1 -> new eop(Either.left(aku.a($$0)), a, $$1, Optional.empty());
+   }
+
+   public static Function<eou.a, eop> a(String $$0, jr<erk> $$1) {
+      return $$2 -> new eop(Either.left(aku.a($$0)), $$1, $$2, Optional.empty());
+   }
+
+   public static Function<eou.a, eor> b(String $$0) {
+      return $$1 -> new eor(Either.left(aku.a($$0)), a, $$1, Optional.empty());
+   }
+
+   public static Function<eou.a, eor> b(String $$0, jr<erk> $$1) {
+      return $$2 -> new eor(Either.left(aku.a($$0)), $$1, $$2, Optional.empty());
+   }
+
+   public static Function<eou.a, eor> a(String $$0, eqw $$1) {
+      return $$2 -> new eor(Either.left(aku.a($$0)), a, $$2, Optional.of($$1));
+   }
+
+   public static Function<eou.a, eor> a(String $$0, jr<erk> $$1, eqw $$2) {
+      return $$3 -> new eor(Either.left(aku.a($$0)), $$1, $$3, Optional.of($$2));
+   }
+
+   public static Function<eou.a, eom> a(jr<emo> $$0) {
+      return $$1 -> new eom($$0, $$1);
+   }
+
+   public static Function<eou.a, eoq> b(List<Function<eou.a, ? extends eos>> $$0) {
+      return $$1 -> new eoq($$0.stream().map($$1x -> (eos)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

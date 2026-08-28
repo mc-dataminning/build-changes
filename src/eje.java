@@ -1,19 +1,40 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class eje<P extends ejd> {
-   public static final eje<ejg> a = a("two_layers_feature_size", ejg.d);
-   public static final eje<ejf> b = a("three_layers_feature_size", ejf.d);
-   private final MapCodec<P> c;
+public class eje extends ejb {
+   public static final MapCodec<eje> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, eje::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   private static <P extends ejd> eje<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.Y, $$0, new eje<>($$1));
+   public eje(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   private eje(MapCodec<P> $$0) {
-      this.c = $$0;
+   public eje(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public MapCodec<P> a() {
-      return this.c;
+   @Override
+   protected ejc<?> b() {
+      return ejc.a;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

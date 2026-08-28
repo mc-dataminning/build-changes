@@ -1,24 +1,17 @@
-public class cxf extends cwl {
-   public cxf(cwl.a $$0) {
-      super($$0);
+public class cxf extends cut {
+   public cxf(djk $$0, cwj.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bsj a(cwp $$0, cox $$1, bvg $$2, bsi $$3) {
-      wo $$4 = $$0.a(kv.g);
-      if ($$4 != null && $$2.aq().b()) {
-         if (!$$1.dW().C && $$2.bL()) {
-            $$2.b($$4);
-            if ($$2 instanceof bvi $$5) {
-               $$5.aj();
-            }
+   public bsi a(dag $$0) {
+      return bsi.e;
+   }
 
-            $$0.h(1);
-         }
-
-         return bsj.a;
-      } else {
-         return bsj.e;
-      }
+   @Override
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      fau $$3 = a($$0, $$1, dfo.b.b);
+      fau $$4 = $$3.a($$3.b().d());
+      return super.a(new dag($$1, $$2, $$4));
    }
 }

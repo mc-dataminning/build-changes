@@ -1,8 +1,54 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fny {
+public interface fny {
+   static fny a(fqn $$0) {
+      return new fny.a($$0);
+   }
+
+   @Nullable
+   static fny a(fqm $$0, @Nullable fny $$1) {
+      return $$1 == null ? null : new fny.b($$0, $$1);
+   }
+
+   static fny a(fqn $$0, fqm... $$1) {
+      fny $$2 = a($$0);
+
+      for (fqm $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
+   }
+
+   fqn a();
+
+   void a(boolean var1);
+
+   public static record a(fqn a) implements fny {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(fqm a, fny b) implements fny {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public fqm b() {
+         return this.a;
+      }
+
+      public fny c() {
+         return this.b;
+      }
+   }
 }

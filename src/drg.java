@@ -1,74 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drg extends djm {
-   public static final MapCodec<drg> a = b(drg::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final jn[] d = jn.values();
-
-   @Override
-   public MapCodec<drg> a() {
-      return a;
-   }
-
-   protected drg(dww.d $$0) {
+public abstract class drg extends dqz {
+   protected drg(dwu.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   private static boolean b(dwv $$0, dgj $$1, ji $$2) {
+      ji $$3 = $$2.d();
+      dwv $$4 = $$1.a_($$3);
+      if ($$4.a(djm.ea) && $$4.c(dqy.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
+      } else {
+         int $$5 = eso.a($$0, $$4, jn.b, $$4.g());
+         return $$5 < 15;
       }
    }
 
    @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected abstract MapCodec<? extends drg> a();
+
+   private static boolean c(dwv $$0, dgj $$1, ji $$2) {
+      ji $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awu.a);
    }
 
-   protected void a(dgi $$0, ji $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, djo.aW.m(), 2);
-         $$0.a(null, $$1, awa.zL, awb.e, 1.0F, 1.0F);
-      }
-   }
+   @Override
+   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, djm.j.m());
+      } else {
+         if ($$1.A($$2.d()) >= 9) {
+            dwv $$4 = this.m();
 
-   private boolean b(dgi $$0, ji $$1) {
-      return ji.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (jn $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return ji.b.a;
-         } else {
-            dwx $$3 = $$0.a_($$2);
-            esz $$4 = $$0.b_($$2);
-            if (!$$4.a(awv.a)) {
-               return ji.b.b;
-            } else {
-               if ($$3.b() instanceof dju $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
-                  return ji.b.a;
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               ji $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(djm.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf(o($$1.a_($$6.d())))));
                }
-
-               if ($$3.b() instanceof doe) {
-                  $$0.a($$2, djo.a.m(), 3);
-               } else {
-                  if (!$$3.a(djo.mE) && !$$3.a(djo.mF) && !$$3.a(djo.bD) && !$$3.a(djo.bE)) {
-                     return ji.b.b;
-                  }
-
-                  dtz $$7 = $$3.x() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, djo.a.m(), 3);
-               }
-
-               return ji.b.a;
             }
          }
-      }) > 1;
+      }
    }
 }

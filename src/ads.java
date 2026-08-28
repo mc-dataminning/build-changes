@@ -89,7 +89,7 @@ public class ads implements yv<abk> {
          yk.x.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.i = $$1.c(xf.a::a), ($$0, $$1) -> $$0.a($$1.i, xf.a::a)),
-      c(($$0, $$1) -> $$0.e = dgf.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dgd.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = vl.a($$1, wq.d), ($$0, $$1) -> vl.a($$0, $$1.f(), wq.d)),
@@ -113,10 +113,10 @@ public class ads implements yv<abk> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dgf e, @Nullable wo f, boolean g, int h, @Nullable xf.a i) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dgd e, @Nullable wo f, boolean g, int h, @Nullable xf.a i) {
 
       b(ard $$0) {
-         this($$0.cG(), $$0.gh(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.a(coy.g), $$0.P(), x.a($$0.ad(), xf::a));
+         this($$0.cG(), $$0.gh(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.a(cow.g), $$0.P(), x.a($$0.ad(), xf::a));
       }
    }
 
@@ -126,7 +126,7 @@ public class ads implements yv<abk> {
       GameProfile b;
       boolean c;
       int d;
-      dgf e;
+      dgd e;
       @Nullable
       wo f;
       boolean g;
@@ -135,7 +135,7 @@ public class ads implements yv<abk> {
       xf.a i;
 
       c(UUID $$0) {
-         this.e = dgf.e;
+         this.e = dgd.e;
          this.a = $$0;
       }
 

@@ -1,38 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class emp extends emx {
-   public static final MapCodec<emp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, emp::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class emp extends edn {
+   private final dhe a;
+   private final dyr b;
+   private final Optional<emo> c;
 
-   private emp(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public emp(dhe $$0, dyr $$1, Optional<emo> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static emp a(double $$0, int $$1, int $$2) {
-      return new emp($$0, $$1, $$2);
+   public int a(ecq.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected int a(azh $$0, ji $$1) {
-      double $$2 = dhk.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public dyp a(dfm $$0) {
+      return ((dzk)this.a.a($$0.h, $$0.i)).F();
    }
 
-   @Override
-   public emu<?> b() {
-      return emu.h;
+   public dwv a(ji $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.L_();
+   }
+
+   public dhe d() {
+      return this.a;
+   }
+
+   public Optional<emo> e() {
+      return this.c;
+   }
+
+   public dyr f() {
+      return this.b;
    }
 }

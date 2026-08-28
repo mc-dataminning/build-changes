@@ -1,40 +1,33 @@
 import com.mojang.serialization.Codec;
 
-public class efu extends efy<eib> {
-   public efu(Codec<eib> $$0) {
+public class efu extends efw<eih> {
+   public efu(Codec<eih> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eib> $$0) {
-      ji $$1 = $$0.e();
-      dhg $$2 = $$0.b();
-      eib $$3 = $$0.f();
+   public boolean a(efy<eih> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
 
-      for (ji $$4 : ji.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            ji $$9 = $$4.j();
-            this.a($$2, $$9, djo.lh.m());
-            $$3.b().ifPresent($$3x -> {
-               if ($$2.c_($$9) instanceof dvs $$5x) {
-                  $$5x.a($$3x, $$3.c());
+   public static void a(dgx $$0, ji $$1, boolean $$2) {
+      ji.a $$3 = $$1.k();
+
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               ji $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               djk $$8 = $$6 == -1 ? djm.cv : djm.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
+
+                  $$0.a($$7, $$8.m(), 3);
                }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, djo.a.m());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, djo.I.m());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, djo.I.m());
-         } else {
-            this.a($$2, $$4, djo.a.m());
+            }
          }
       }
-
-      return true;
    }
 }

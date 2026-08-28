@@ -1,87 +1,49 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 
-public class dqt extends dii {
-   public static final MapCodec<dqt> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqt.a.b.fieldOf("kind").forGetter(dii::b), t()).apply($$0, dqt::new));
-   public static final int d = dyc.a();
-   private static final int b = d + 1;
-   public static final dxw e = dxn.bd;
-   protected static final fbu f = djm.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final fbu g = djm.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class dqt extends dnb {
+   public static final MapCodec<dqt> a = b(dqt::new);
 
    @Override
-   public MapCodec<? extends dqt> a() {
-      return c;
+   public MapCodec<dqt> a() {
+      return a;
    }
 
-   protected dqt(dqt.a $$0, dww.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   public dqt(dwu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return this.b() == dqt.b.h ? g : f;
+   public void a(dgg $$0, dwv $$1, ji $$2, buj $$3, float $$4) {
+      if (!$$3.cf()) {
+         $$3.a($$4, 0.0F, $$0.ak().l());
+      }
    }
 
    @Override
-   protected fbu d_(dwx $$0) {
-      return fbr.a();
+   public void a(dfl $$0, buj $$1) {
+      if ($$1.cf()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(buj $$0) {
+      fay $$1 = $$0.dz();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bvf ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return super.a($$0).b(e, Integer.valueOf(dyc.a($$0.i())));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.b;
-   }
-
-   public interface a extends azv {
-      Map<String, dqt.a> a = new Object2ObjectArrayMap();
-      Codec<dqt.a> b = Codec.stringResolver(azv::c, a::get);
-   }
-
-   public static enum b implements dqt.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public void a(dgg $$0, ji $$1, dwv $$2, buj $$3) {
+      double $$4 = Math.abs($$3.dz().e);
+      if ($$4 < 0.1 && !$$3.ce()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.h($$3.dz().d($$5, 1.0, $$5));
       }
 
-      @Override
-      public String c() {
-         return this.j;
-      }
+      super.a($$0, $$1, $$2, $$3);
    }
 }

@@ -15,12 +15,12 @@ import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class ali implements auj {
+public class ali implements aui {
    private static final Logger b = LogUtils.getLogger();
    public static final akt<ke<il<ex>>> a = akt.a(aku.b("function"));
    private static final akn c = new akn(mc.c(a), ".mcfunction");
    private volatile Map<aku, il<ex>> d = ImmutableMap.of();
-   private final axg<il<ex>> e = new axg<>(($$0x, $$1x) -> this.a($$0x), mc.d(a));
+   private final axf<il<ex>> e = new axf<>(($$0x, $$1x) -> this.a($$0x), mc.d(a));
    private volatile Map<aku, List<il<ex>>> f = Map.of();
    private final int g;
    private final CommandDispatcher<ex> h;
@@ -47,13 +47,13 @@ public class ali implements auj {
    }
 
    @Override
-   public CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
-      CompletableFuture<Map<aku, List<axg.b>>> $$4 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$2);
-      CompletableFuture<Map<aku, CompletableFuture<il<ex>>>> $$5 = CompletableFuture.<Map<aku, aun>>supplyAsync(() -> c.a($$1), $$2).thenCompose($$1x -> {
+   public CompletableFuture<Void> a(aui.a $$0, auo $$1, Executor $$2, Executor $$3) {
+      CompletableFuture<Map<aku, List<axf.b>>> $$4 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$2);
+      CompletableFuture<Map<aku, CompletableFuture<il<ex>>>> $$5 = CompletableFuture.<Map<aku, aum>>supplyAsync(() -> c.a($$1), $$2).thenCompose($$1x -> {
          Map<aku, CompletableFuture<il<ex>>> $$2x = Maps.newHashMap();
-         ex $$3x = new ex(ew.a, fba.c, faz.a, null, this.g, "", wn.a, null, null);
+         ex $$3x = new ex(ew.a, fay.c, fax.a, null, this.g, "", wn.a, null, null);
 
-         for (Entry<aku, aun> $$4x : $$1x.entrySet()) {
+         for (Entry<aku, aum> $$4x : $$1x.entrySet()) {
             aku $$5x = $$4x.getKey();
             aku $$6 = c.b($$5x);
             $$2x.put($$6, CompletableFuture.supplyAsync(() -> {
@@ -78,11 +78,11 @@ public class ali implements auj {
                return null;
             }).join());
          this.d = $$2x.build();
-         this.f = this.e.a((Map<aku, List<axg.b>>)$$0x.getFirst());
+         this.f = this.e.a((Map<aku, List<axf.b>>)$$0x.getFirst());
       }, $$3);
    }
 
-   private static List<String> a(aun $$0) {
+   private static List<String> a(aum $$0) {
       try {
          List var2;
          try (BufferedReader $$1 = $$0.e()) {

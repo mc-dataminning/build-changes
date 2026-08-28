@@ -1,11 +1,11 @@
 public class aig implements yv<agf> {
    public static final ym<vl, aig> a = yv.a(aig::a, aig::new);
-   private final bsi b;
+   private final bsh b;
    private final int c;
    private final float d;
    private final float e;
 
-   public aig(bsi $$0, int $$1, float $$2, float $$3) {
+   public aig(bsh $$0, int $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -13,7 +13,7 @@ public class aig implements yv<agf> {
    }
 
    private aig(vl $$0) {
-      this.b = $$0.b(bsi.class);
+      this.b = $$0.b(bsh.class);
       this.c = $$0.l();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
@@ -35,7 +35,7 @@ public class aig implements yv<agf> {
       $$0.a(this);
    }
 
-   public bsi b() {
+   public bsh b() {
       return this.b;
    }
 

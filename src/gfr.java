@@ -1,138 +1,103 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gfr implements ggl {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<coz>> g = CompletableFuture.completedFuture(Optional.empty());
-   private Instant h = Instant.EPOCH;
+public class gfr {
+   private static final Logger a = LogUtils.getLogger();
+   private final flh b;
+   private final hkc c;
+   private final an d = new an();
+   private final Map<ai, ak> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private gfr.a f;
+   @Nullable
+   private ai g;
 
-   public gfr(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
+   public gfr(flh $$0, hkc $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public CompletableFuture<Optional<coz>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(coz::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<coz>> a(Optional<coz> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!ab.aU) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               coz $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.ofNullable($$1);
-            } catch (axy | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, af.i());
-   }
-
-   private Optional<coz> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = coz.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private void a(@Nullable coz $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
+   public void a(afw $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      if ($$0 != null) {
-         if (ab.aU) {
-            coz.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<aku, ak> $$1 : $$0.f().entrySet()) {
+         aj $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ak $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
                }
-            });
+
+               Optional<au> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fqx($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
+      }
+   }
+
+   public an a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ai $$0, boolean $$1) {
+      gfx $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahs.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable gfr.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            aj $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
       }
    }
 
    @Nullable
-   private coz a(UserApiService $$0) throws axy, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cpa.a $$2 = a($$1);
-         return new coz(axx.a($$1.keyPair().privateKey()), new cpa($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         return null;
-      }
+   public ai a(aku $$0) {
+      aj $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   private static cpa.a a(KeyPairResponse $$0) throws axy {
-      KeyPair $$1 = $$0.keyPair();
-      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = axx.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cpa.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new axy(var5);
-         }
-      } else {
-         throw new axy(new MissingException("Missing public key"));
-      }
+   public interface a extends an.a {
+      void a(aj var1, ak var2);
+
+      void a(@Nullable ai var1);
    }
 }

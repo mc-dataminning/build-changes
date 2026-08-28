@@ -1,24 +1,85 @@
-public abstract class gwa<S extends gyi, M extends gca<S>> extends gwr<S, M> {
-   public gwa(gtz<S, M> $$0) {
-      super($$0);
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+
+public class gwa {
+   private static final int a = 0;
+   private final hgq b;
+   private final Function<gwa.a, aku> c;
+   private final Function<gwa.b, hem> d;
+
+   public gwa(hgq $$0, hel $$1) {
+      this.b = $$0;
+      this.c = af.b($$0x -> $$0x.b.a($$0x.a));
+      this.d = af.b($$1x -> $$1.a($$1x.a()));
    }
 
-   @Override
-   public void a(ffu $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         ffy $$8 = $$1.getBuffer(gmh.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hea.d, -8355712);
+   public void a(hgr.d $$0, akt<deq> $$1, gct $$2, cwn $$3, ffs $$4, glv $$5, int $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, null);
+   }
+
+   public void a(hgr.d $$0, akt<deq> $$1, gct $$2, cwn $$3, ffs $$4, glv $$5, int $$6, @Nullable aku $$7) {
+      List<hgr.c> $$8 = this.b.a($$1).a($$0);
+      if (!$$8.isEmpty()) {
+         int $$9 = $$3.a(awx.bO) ? czb.a($$3, 0) : 0;
+         boolean $$10 = $$3.C();
+
+         for (hgr.c $$11 : $$8) {
+            int $$12 = a($$11, $$9);
+            if ($$12 != 0) {
+               aku $$13 = $$11.c() && $$7 != null ? $$7 : this.c.apply(new gwa.a($$0, $$11));
+               ffw $$14 = gsz.a($$5, gmf.a($$13), $$10);
+               $$2.a($$4, $$14, $$6, hec.d, $$12);
+               $$10 = false;
+            }
+         }
+
+         deu $$15 = $$3.a(kv.U);
+         if ($$15 != null) {
+            hem $$16 = this.d.apply(new gwa.b($$15, $$0, $$1));
+            ffw $$17 = $$16.a($$5.getBuffer(gmq.a($$15.b().a().d())));
+            $$2.a($$4, $$17, $$6, hec.d);
+         }
       }
    }
 
-   protected abstract boolean a(S var1);
+   private static int a(hgr.c $$0, int $$1) {
+      Optional<hgr.b> $$2 = $$0.b();
+      if ($$2.isPresent()) {
+         int $$3 = $$2.get().a().map(axj::f).orElse(0);
+         return $$1 != 0 ? $$1 : $$3;
+      } else {
+         return -1;
+      }
+   }
 
-   protected abstract float a(float var1);
+   static record a(hgr.d a, hgr.c b) {
+   }
 
-   protected abstract aku a();
+   static record b(deu a, hgr.d b, akt<deq> c) {
+      private static String a(jr<dev> $$0, akt<deq> $$1) {
+         String $$2 = $$0.a().c().get($$1);
+         return $$2 != null ? $$2 : $$0.a().a();
+      }
 
-   protected abstract M c();
+      public aku a() {
+         aku $$0 = this.a.b().a().a();
+         String $$1 = a(this.a.a(), this.c);
+         return $$0.a((UnaryOperator<String>)($$1x -> "trims/entity/" + this.b.c() + "/" + $$1x + "_" + $$1));
+      }
+
+      public deu b() {
+         return this.a;
+      }
+
+      public hgr.d c() {
+         return this.b;
+      }
+
+      public akt<deq> d() {
+         return this.c;
+      }
+   }
 }

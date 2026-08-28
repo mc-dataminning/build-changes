@@ -1,28 +1,25 @@
-public class dan extends dak {
-   public dan(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
+public class dan extends dai {
+   public dan(String $$0, dao $$1, day $$2, cwn $$3, float $$4, int $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected cwl f() {
-      return cwt.xm;
+   protected cwj f() {
+      return cwr.xx;
    }
 
    @Override
-   public dbo<dan> a() {
-      return dbo.p;
+   public dbm<dan> a() {
+      return dbm.r;
    }
 
    @Override
-   public dbp<dan> b() {
-      return dbp.c;
+   public dbn<dan> b() {
+      return dbn.e;
    }
 
    @Override
-   public dbh h() {
-      return switch (this.e()) {
-         case b -> dbg.h;
-         case a, c -> dbg.i;
-      };
+   public dbf h() {
+      return dbe.m;
    }
 }

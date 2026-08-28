@@ -1,32 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkg extends djm {
-   public static final MapCodec<dkg> a = b(dkg::new);
-   private static final wo b = wo.c("container.cartography_table");
+public class dkg extends did {
+   public static final MapCodec<dkg> d = b(dkg::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dkg> a() {
-      return a;
+      return d;
    }
 
-   protected dkg(dww.d $$0) {
-      super($$0);
+   public dkg(dwu.d $$0) {
+      super($$0, ko.c);
    }
 
    @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.aw);
+   public boolean d(dwv $$0) {
+      return false;
+   }
+
+   protected static boolean a(dgg $$0, dhi.c $$1) {
+      if ($$1 == dhi.c.b) {
+         return $$0.H_().i() < 0.05F;
+      } else {
+         return $$1 == dhi.c.c ? $$0.H_().i() < 0.1F : false;
       }
-
-      return bsj.a;
    }
 
-   @Nullable
    @Override
-   protected bsl b(dwx $$0, dgi $$1, ji $$2) {
-      return new bsr(($$2x, $$3, $$4) -> new csk($$2x, $$3, csp.a($$1, $$2)), b);
+   public void a(dwv $$0, dgg $$1, ji $$2, dhi.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dhi.c.b) {
+            $$1.b($$2, djm.fP.m());
+            $$1.a(null, ebr.c, $$2);
+         } else if ($$3 == dhi.c.c) {
+            $$1.b($$2, djm.fR.m());
+            $$1.a(null, ebr.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(esw $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dwv $$0, dgg $$1, ji $$2, esw $$3) {
+      if ($$3 == esy.c) {
+         dwv $$4 = djm.fP.m();
+         $$1.b($$2, $$4);
+         $$1.a(ebr.c, $$2, ebr.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == esy.e) {
+         dwv $$5 = djm.fQ.m();
+         $$1.b($$2, $$5);
+         $$1.a(ebr.c, $$2, ebr.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

@@ -1,17 +1,26 @@
-public class ggj {
-   private final gfz a;
-   private final bnc b;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-   public ggj(gfz $$0, bnc $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface ggj {
+   ggj a = new ggj() {
+      @Override
+      public CompletableFuture<Optional<cox>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
+      }
+
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static ggj a(UserApiService $$0, flt $$1, Path $$2) {
+      return (ggj)($$1.g() == flt.a.c ? new gfp($$0, $$1.b(), $$2) : a);
    }
 
-   public void a() {
-      this.a.b(new ajn(af.c()));
-   }
+   CompletableFuture<Optional<cox>> a();
 
-   public void a(ajk $$0) {
-      this.b.a(af.c() - $$0.b());
-   }
+   boolean b();
 }

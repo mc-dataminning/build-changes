@@ -1,41 +1,76 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class elg extends elf {
-   public static final MapCodec<elg> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elg::new));
+public abstract class elg {
+   public static final Codec<elg> c = mb.V.q().dispatch(elg::a, elh::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
+
+   protected static <P extends elg> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
+   }
 
    public elg(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   protected elj<?> a() {
-      return elj.d;
+   protected abstract elh<?> a();
+
+   public abstract List<ejm.a> a(dgm var1, BiConsumer<ji, dwv> var2, azg var3, int var4, ji var5, eiw var6);
+
+   public int a(azg $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   @Override
-   public List<ejo.a> a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, int $$3, ji $$4, eiy $$5) {
-      List<ejo.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   private static boolean c(dgm $$0, ji $$1) {
+      return $$0.a($$1, $$0x -> efw.b($$0x) && !$$0x.a(djm.i) && !$$0x.a(djm.fA));
+   }
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + ayz.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + ayz.a($$8) * (float)$$11);
-            ji $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new ejo.a($$4.b($$9, $$7, $$10), -2, false));
+   protected static void a(dgm $$0, BiConsumer<ji, dwv> $$1, azg $$2, ji $$3, eiw $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
+   }
 
-      return $$6;
+   protected boolean b(dgm $$0, BiConsumer<ji, dwv> $$1, azg $$2, ji $$3, eiw $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(dgm $$0, BiConsumer<ji, dwv> $$1, azg $$2, ji $$3, eiw $$4, Function<dwv, dwv> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dgm $$0, BiConsumer<ji, dwv> $$1, azg $$2, ji.a $$3, eiw $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dgm $$0, ji $$1) {
+      return ehi.c($$0, $$1);
+   }
+
+   public boolean b(dgm $$0, ji $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awo.u));
    }
 }

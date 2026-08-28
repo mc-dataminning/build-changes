@@ -1,54 +1,50 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dth extends dja {
-   public static final MapCodec<dth> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dxm.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dth::new)
-   );
-   public static final dxw f = dxn.aW;
-   private final int g;
+public class dth extends dmn {
+   public static final MapCodec<dth> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dmn::c), t()).apply($$0, dth::new));
 
    @Override
    public MapCodec<dth> a() {
-      return e;
+      return a;
    }
 
-   protected dth(int $$0, dxm $$1, dww.d $$2) {
-      super($$2, $$1);
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
-      this.g = $$0;
+   public dth(jr<btm> $$0, float $$1, dwu.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dth(czo $$0, dwu.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected int b(dgi $$0, ji $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), buk.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return ayz.f($$3 * 15.0F);
-      } else {
-         return 0;
+   protected boolean b(dwv $$0, dfl $$1, ji $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(djm.ei) || $$0.a(djm.ej) || $$0.a(djm.ek);
+   }
+
+   @Override
+   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
+      fbs $$4 = this.a($$0, $$1, $$2, fbd.a());
+      fay $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.d;
+      double $$7 = (double)$$2.w() + $$5.f;
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(lt.ag, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected int h(dwx $$0) {
-      return $$0.c(f);
+   protected void a(dwv $$0, dgg $$1, ji $$2, buj $$3) {
+      if ($$1 instanceof arc $$4 && $$1.am() != bsf.a && $$3 instanceof bvf $$5 && !$$5.a($$4, $$1.ak().r())) {
+         $$5.a(this.b());
+      }
    }
 
    @Override
-   protected dwx a(dwx $$0, int $$1) {
-      return $$0.b(f, Integer.valueOf($$1));
-   }
-
-   @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(f);
+   public bto b() {
+      return new bto(btq.t, 40);
    }
 }

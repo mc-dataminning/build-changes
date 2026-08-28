@@ -1,40 +1,69 @@
-import com.mojang.datafixers.Products.P4;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ekh extends ekg {
-   public static final MapCodec<ekh> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekh::new));
-   protected final List<dwx> h;
+public class ekh extends ekb {
+   public static final MapCodec<ekh> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ekb.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               brn.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ekh::new)
+   );
+   private final ekb c;
+   private final String d;
+   @Nullable
+   private dxu e;
+   private final brn f;
 
-   protected static <P extends ekh> P4<Mu<P>, Long, esc.a, Float, List<dwx>> b(Instance<P> $$0) {
-      return a($$0).and(ayi.b(dwx.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   public ekh(ekb $$0, dxu $$1, brn $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
+
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
+      }
    }
 
-   public ekh(long $$0, esc.a $$1, float $$2, List<dwx> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public ekh(ekb $$0, String $$1, brn $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected eke<?> a() {
-      return eke.d;
+   protected ekc<?> a() {
+      return ekc.g;
    }
 
    @Override
-   public dwx a(azh $$0, ji $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   public dwv a(azg $$0, ji $$1) {
+      dwv $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         dxu $$3 = a($$2, this.d);
+         if ($$3 == null) {
+            return $$2;
+         }
+
+         this.e = $$3;
+      }
+
+      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
    }
 
-   protected dwx a(List<dwx> $$0, ji $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected dwx a(List<dwx> $$0, double $$1) {
-      double $$2 = ayz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Nullable
+   private static dxu a(dwv $$0, String $$1) {
+      Collection<dxx<?>> $$2 = $$0.F();
+      Optional<dxu> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dxu).map($$0x -> (dxu)$$0x).findAny();
+      return $$3.orElse(null);
    }
 }

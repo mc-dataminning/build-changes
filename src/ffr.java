@@ -1,157 +1,111 @@
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Vector3f;
 import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
-import org.slf4j.Logger;
 
 public class ffr implements AutoCloseable {
-   private static final MemoryPool a = TracyClient.createMemoryPool("ByteBufferBuilder");
-   private static final Logger b = LogUtils.getLogger();
-   private static final MemoryAllocator c = MemoryUtil.getAllocator(false);
-   private static final int d = 2097152;
-   private static final int e = -1;
-   long f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
-   private int k;
+   private final ffp.a a;
+   @Nullable
+   private ffp.a b;
+   private final ffr.a c;
 
-   public ffr(int $$0) {
-      this.g = $$0;
-      this.f = c.malloc((long)$$0);
-      a.malloc(this.f, $$0);
-      if (this.f == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      }
+   public ffr(ffp.a $$0, ffr.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public long a(int $$0) {
-      int $$1 = this.h;
-      int $$2 = $$1 + $$0;
-      this.b($$2);
-      this.h = $$2;
-      return this.f + (long)$$1;
-   }
-
-   private void b(int $$0) {
-      if ($$0 > this.g) {
-         int $$1 = Math.min(this.g, 2097152);
-         int $$2 = Math.max(this.g + $$1, $$0);
-         this.c($$2);
-      }
-   }
-
-   private void c(int $$0) {
-      a.free(this.f);
-      this.f = c.realloc(this.f, (long)$$0);
-      a.malloc(this.f, $$0);
-      b.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.g, $$0);
-      if (this.f == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.g + " bytes to " + $$0 + " bytes");
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, ffx $$2) {
+      int $$3 = $$2.a(ffy.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
       } else {
-         this.g = $$0;
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
+
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+         }
+
+         return $$8;
       }
+   }
+
+   public ByteBuffer a() {
+      return this.a.a();
    }
 
    @Nullable
-   public ffr.a a() {
-      this.f();
-      int $$0 = this.i;
-      int $$1 = this.h - $$0;
-      if ($$1 == 0) {
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
+   }
+
+   public ffr.a c() {
+      return this.c;
+   }
+
+   @Nullable
+   public ffr.b a(ffp $$0, fga $$1) {
+      if (this.c.d() != ffx.c.h) {
          return null;
       } else {
-         this.i = this.h;
-         this.j++;
-         return new ffr.a($$0, $$1, this.k);
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         ffr.b $$3 = new ffr.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
       }
-   }
-
-   public void b() {
-      if (this.j > 0) {
-         b.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.c();
-   }
-
-   public void c() {
-      this.f();
-      if (this.j > 0) {
-         this.e();
-         this.j = 0;
-      }
-   }
-
-   boolean d(int $$0) {
-      return $$0 == this.k;
-   }
-
-   void d() {
-      if (--this.j <= 0) {
-         this.e();
-      }
-   }
-
-   private void e() {
-      int $$0 = this.h - this.i;
-      if ($$0 > 0) {
-         MemoryUtil.memCopy(this.f + (long)this.i, this.f, (long)$$0);
-      }
-
-      this.h = $$0;
-      this.i = 0;
-      this.k++;
    }
 
    @Override
    public void close() {
-      if (this.f != 0L) {
-         a.free(this.f);
-         c.free(this.f);
-         this.f = 0L;
-         this.k = -1;
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
       }
    }
 
-   private void f() {
-      if (this.f == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
-      }
+   public static record a(ffx a, int b, int c, ffx.c d, ffx.b e) {
    }
 
-   public class a implements AutoCloseable {
-      private final int b;
-      private final int c;
-      private final int d;
-      private boolean e;
+   public static record b(Vector3f[] a, ffx.b b) {
+      @Nullable
+      public ffp.a a(ffp $$0, fga $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
 
-      a(final int $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
+         }
+
+         return $$0.a();
       }
 
-      public ByteBuffer a() {
-         if (!ffr.this.d(this.d)) {
-            throw new IllegalStateException("Buffer is no longer valid");
-         } else {
-            return MemoryUtil.memByteBuffer(ffr.this.f + (long)this.b, this.c);
-         }
-      }
+      private IntConsumer a(long $$0, ffx.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
 
-      @Override
-      public void close() {
-         if (!this.e) {
-            this.e = true;
-            if (ffr.this.d(this.d)) {
-               ffr.this.d();
-            }
-         }
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
       }
    }
 }

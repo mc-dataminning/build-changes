@@ -1,48 +1,35 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dbm {
-   public static final dbm a = new dbm(ImmutableMultimap.of(), Map.of());
-   private final Multimap<dbp<?>, dbj<?>> b;
-   private final Map<akt<dbe<?>>, dbj<?>> c;
+public interface dbm<T extends dbc<?>> {
+   dbm<dbq> a = a("crafting_shaped", new dbq.a());
+   dbm<dbs> b = a("crafting_shapeless", new dbs.a());
+   dbm<daj> c = a("crafting_special_armordye", new das.a<>(daj::new));
+   dbm<dam> d = a("crafting_special_bookcloning", new das.a<>(dam::new));
+   dbm<daz> e = a("crafting_special_mapcloning", new das.a<>(daz::new));
+   dbm<dba> f = a("crafting_special_mapextending", new das.a<>(dba::new));
+   dbm<dav> g = a("crafting_special_firework_rocket", new das.a<>(dav::new));
+   dbm<dax> h = a("crafting_special_firework_star", new das.a<>(dax::new));
+   dbm<daw> i = a("crafting_special_firework_star_fade", new das.a<>(daw::new));
+   dbm<dcd> j = a("crafting_special_tippedarrow", new das.a<>(dcd::new));
+   dbm<dak> k = a("crafting_special_bannerduplicate", new das.a<>(dak::new));
+   dbm<dbt> l = a("crafting_special_shielddecoration", new das.a<>(dbt::new));
+   dbm<dce> m = a("crafting_transmute", new dce.a());
+   dbm<dbo> n = a("crafting_special_repairitem", new das.a<>(dbo::new));
+   dbm<dbw> o = a("smelting", new dai.b<>(dbw::new, 200));
+   dbm<dal> p = a("blasting", new dai.b<>(dal::new, 100));
+   dbm<dcb> q = a("smoking", new dai.b<>(dcb::new, 100));
+   dbm<dan> r = a("campfire_cooking", new dai.b<>(dan::new, 100));
+   dbm<dcc> s = a("stonecutting", new dbu.b<>(dcc::new));
+   dbm<dbz> t = a("smithing_transform", new dbz.a());
+   dbm<dca> u = a("smithing_trim", new dca.a());
+   dbm<dat> v = a("crafting_decorated_pot", new das.a<>(dat::new));
 
-   private dbm(Multimap<dbp<?>, dbj<?>> $$0, Map<akt<dbe<?>>, dbj<?>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   MapCodec<T> a();
 
-   public static dbm a(Iterable<dbj<?>> $$0) {
-      Builder<dbp<?>, dbj<?>> $$1 = ImmutableMultimap.builder();
-      com.google.common.collect.ImmutableMap.Builder<akt<dbe<?>>, dbj<?>> $$2 = ImmutableMap.builder();
+   @Deprecated
+   ym<vz, T> b();
 
-      for (dbj<?> $$3 : $$0) {
-         $$1.put($$3.b().b(), $$3);
-         $$2.put($$3.a(), $$3);
-      }
-
-      return new dbm($$1.build(), $$2.build());
-   }
-
-   public <I extends dbk, T extends dbe<I>> Collection<dbj<T>> a(dbp<T> $$0) {
-      return this.b.get($$0);
-   }
-
-   public Collection<dbj<?>> a() {
-      return this.c.values();
-   }
-
-   @Nullable
-   public dbj<?> a(akt<dbe<?>> $$0) {
-      return this.c.get($$0);
-   }
-
-   public <I extends dbk, T extends dbe<I>> Stream<dbj<T>> a(dbp<T> $$0, I $$1, dgi $$2) {
-      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
+   static <S extends dbm<T>, T extends dbc<?>> S a(String $$0, S $$1) {
+      return ke.a(mb.r, $$0, $$1);
    }
 }

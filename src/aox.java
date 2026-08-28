@@ -37,20 +37,20 @@ public class aox {
       );
    }
 
-   private static Collection<String> a(Collection<? extends buk> $$0) {
+   private static Collection<String> a(Collection<? extends buj> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (buk $$2 : $$0) {
+      for (buj $$2 : $$0) {
          $$1.addAll($$2.as());
       }
 
       return $$1;
    }
 
-   private static int a(ex $$0, Collection<? extends buk> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<? extends buj> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (buk $$4 : $$1) {
+      for (buj $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class aox {
       }
    }
 
-   private static int b(ex $$0, Collection<? extends buk> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(ex $$0, Collection<? extends buj> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (buk $$4 : $$1) {
+      for (buj $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class aox {
       }
    }
 
-   private static int a(ex $$0, Collection<? extends buk> $$1) {
+   private static int a(ex $$0, Collection<? extends buj> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (buk $$3 : $$1) {
+      for (buj $$3 : $$1) {
          $$2.addAll($$3.as());
       }
 
       if ($$1.size() == 1) {
-         buk $$4 = $$1.iterator().next();
+         buj $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> wo.a("commands.tag.list.single.empty", $$4.p_()), false);
          } else {

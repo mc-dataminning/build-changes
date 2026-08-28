@@ -1,227 +1,127 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dvl extends dvh implements bst {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private ka<cwp> n = ka.a(27, cwp.j);
-   private int r;
-   private dvl.a s = dvl.a.a;
-   private float t;
-   private float u;
+public class dvl {
+   private static final Codec<wo[]> c = wq.g
+      .listOf()
+      .comapFlatMap(
+         $$0 -> af.a($$0, 4).map($$0x -> new wo[]{(wo)$$0x.get(0), (wo)$$0x.get(1), (wo)$$0x.get(2), (wo)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dvl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dvl::d),
+               cvk.q.fieldOf("color").orElse(cvk.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dvl::a)
+   );
+   public static final int b = 4;
+   private final wo[] d;
+   private final wo[] e;
+   private final cvk f;
+   private final boolean g;
    @Nullable
-   private final cvm v;
+   private ayk[] h;
+   private boolean i;
 
-   public dvl(@Nullable cvm $$0, ji $$1, dwx $$2) {
-      super(dub.y, $$1, $$2);
-      this.v = $$0;
+   public dvl() {
+      this(c(), c(), cvk.p, false);
    }
 
-   public dvl(ji $$0, dwx $$1) {
-      super(dub.y, $$0, $$1);
-      this.v = $$1.b() instanceof dqq $$2 ? $$2.b() : null;
+   public dvl(wo[] $$0, wo[] $$1, cvk $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public static void a(dgi $$0, ji $$1, dwx $$2, dvl $$3) {
-      $$3.b($$0, $$1, $$2);
+   private static wo[] c() {
+      return new wo[]{wn.a, wn.a, wn.a, wn.a};
    }
 
-   private void b(dgi $$0, ji $$1, dwx $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t >= 1.0F) {
-               this.s = dvl.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t <= 0.0F) {
-               this.s = dvl.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
-      }
+   private static dvl a(wo[] $$0, Optional<wo[]> $$1, cvk $$2, boolean $$3) {
+      return new dvl($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   public dvl.a k() {
-      return this.s;
+   public boolean a() {
+      return this.g;
    }
 
-   public fav a(dwx $$0) {
-      return cmd.a(1.0F, $$0.c(dqq.b), 0.5F * this.a(1.0F));
+   public dvl a(boolean $$0) {
+      return $$0 == this.g ? this : new dvl(this.d, this.e, this.f, $$0);
    }
 
-   private void c(dgi $$0, ji $$1, dwx $$2) {
-      if ($$2.b() instanceof dqq) {
-         jn $$3 = $$2.c(dqq.b);
-         fav $$4 = cmd.a(1.0F, $$3, this.u, this.t).a($$1);
-         List<buk> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (buk $$6 : $$5) {
-               if ($$6.n_() != ete.d) {
-                  $$6.a(bvk.d, new fba(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
+   public cvk b() {
+      return this.f;
+   }
+
+   public dvl a(cvk $$0) {
+      return $$0 == this.b() ? this : new dvl(this.d, this.e, $$0, this.g);
+   }
+
+   public wo a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public dvl a(int $$0, wo $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dvl a(int $$0, wo $$1, wo $$2) {
+      wo[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wo[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dvl($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(cov $$0) {
+      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public wo[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public ayk[] a(boolean $$0, Function<wo, ayk> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayk[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
       }
+
+      return this.h;
    }
 
-   @Override
-   public int b() {
-      return this.n.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = dvl.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.s = dvl.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(dgi $$0, ji $$1, dwx $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void c_(cox $$0) {
-      if (!this.q && !$$0.Z_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r == 1) {
-            this.o.a($$0, ebt.k, this.p);
-            this.o.a(null, this.p, awa.xn, awb.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+   private Optional<wo[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
          }
       }
+
+      return Optional.empty();
    }
 
-   @Override
-   public void c(cox $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.r--;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.o.a($$0, ebt.j, this.p);
-            this.o.a(null, this.p, awa.xm, awb.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+   public boolean b(cov $$0) {
+      for (wo $$1 : this.b($$0.aa())) {
+         xl $$2 = $$1.a();
+         wm $$3 = $$2.i();
+         if ($$3 != null && $$3.a() == wm.a.c) {
+            return true;
          }
       }
-   }
 
-   @Override
-   protected wo j() {
-      return wo.c("container.shulkerBox");
-   }
-
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.e($$0, $$1);
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsd.a($$0, this.n, false, $$1);
-      }
-   }
-
-   public void e(tq $$0, jt.a $$1) {
-      this.n = ka.a(this.b(), cwp.j);
-      if (!this.b_($$0) && $$0.b("Items", 9)) {
-         bsd.b($$0, this.n, $$1);
-      }
-   }
-
-   @Override
-   protected ka<cwp> f() {
-      return this.n;
-   }
-
-   @Override
-   protected void a(ka<cwp> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public int[] a(jn $$0) {
-      return k;
-   }
-
-   @Override
-   public boolean a(int $$0, cwp $$1, @Nullable jn $$2) {
-      return !(djm.a($$1.h()) instanceof dqq);
-   }
-
-   @Override
-   public boolean b(int $$0, cwp $$1, jn $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return ayz.h($$0, this.u, this.t);
-   }
-
-   @Nullable
-   public cvm s() {
-      return this.v;
-   }
-
-   @Override
-   protected csc a(int $$0, cow $$1) {
-      return new ctw($$0, $$1, this);
-   }
-
-   public boolean t() {
-      return this.s == dvl.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      return false;
    }
 }

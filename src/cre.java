@@ -1,116 +1,114 @@
-public abstract class cre {
-   protected final cqw a;
+public class cre extends cqu {
+   static final ajx<String> b = akb.a(cre.class, ajz.e);
+   static final ajx<wo> c = akb.a(cre.class, ajz.f);
+   private final dfg d = new cre.a();
+   private static final int h = 4;
+   private int i;
 
-   protected cre(cqw $$0) {
-      this.a = $$0;
+   public cre(buq<? extends cre> $$0, dgg $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
+   @Override
+   protected cwj u() {
+      return cwr.oo;
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.c($$0, $$1, $$2);
-      this.b($$3 % 360.0F);
-      this.a($$4 % 360.0F);
+   @Override
+   public cwn dJ() {
+      return new cwn(cwr.vM);
    }
 
-   public double b() {
-      return this.l();
+   @Override
+   protected void a(akb.a $$0) {
+      super.a($$0);
+      $$0.a(b, "");
+      $$0.a(c, wn.a);
    }
 
-   public double c() {
-      return this.m();
+   @Override
+   protected void a(tq $$0) {
+      super.a($$0);
+      this.d.b($$0, this.dY());
+      this.au().a(b, this.v().m());
+      this.au().a(c, this.v().l());
    }
 
-   public double d() {
-      return this.n();
+   @Override
+   protected void b(tq $$0) {
+      super.b($$0);
+      this.d.a($$0, this.dY());
    }
 
-   public float e() {
-      return this.o();
+   @Override
+   public dwv w() {
+      return djm.gi.m();
    }
 
-   public float f() {
-      return this.p();
+   public dfg v() {
+      return this.d;
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.af - this.i >= 4) {
+         this.v().a(this.dW());
+         this.i = this.af;
+      }
    }
 
-   public abstract void g();
-
-   public dgi h() {
-      return this.a.dW();
+   @Override
+   public bsi a(cov $$0, bsh $$1) {
+      return this.d.a($$0);
    }
 
-   public abstract void a(arc var1);
-
-   public abstract double a(ji var1, dya var2, double var3);
-
-   public abstract boolean i();
-
-   public fba j() {
-      return this.a.dz();
+   @Override
+   public void a(ajx<?> $$0) {
+      super.a($$0);
+      if (c.equals($$0)) {
+         try {
+            this.d.c(this.au().a(c));
+         } catch (Throwable var3) {
+         }
+      } else if (b.equals($$0)) {
+         this.d.a(this.au().a(b));
+      }
    }
 
-   public void a(fba $$0) {
-      this.a.h($$0);
+   @Override
+   public boolean cW() {
+      return true;
    }
 
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
+   public class a extends dfg {
+      @Override
+      public arc e() {
+         return (arc)cre.this.dW();
+      }
+
+      @Override
+      public void f() {
+         cre.this.au().a(cre.b, this.m());
+         cre.this.au().a(cre.c, this.l());
+      }
+
+      @Override
+      public fay g() {
+         return cre.this.du();
+      }
+
+      public cre h() {
+         return cre.this;
+      }
+
+      @Override
+      public ex i() {
+         return new ex(this, cre.this.du(), cre.this.bU(), this.e(), 2, this.n().getString(), cre.this.p_(), this.e().p(), cre.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cre.this.dR();
+      }
    }
-
-   public fba k() {
-      return this.a.du();
-   }
-
-   public double l() {
-      return this.a.dB();
-   }
-
-   public double m() {
-      return this.a.dD();
-   }
-
-   public double n() {
-      return this.a.dH();
-   }
-
-   public void b(fba $$0) {
-      this.a.b($$0);
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
-   }
-
-   public float o() {
-      return this.a.dO();
-   }
-
-   public void a(float $$0) {
-      this.a.w($$0);
-   }
-
-   public float p() {
-      return this.a.dM();
-   }
-
-   public void b(float $$0) {
-      this.a.v($$0);
-   }
-
-   public jn q() {
-      return this.a.cO();
-   }
-
-   public fba c(fba $$0) {
-      return $$0;
-   }
-
-   public abstract double b(arc var1);
-
-   public abstract double r();
 }

@@ -1,61 +1,72 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public class ebc<T extends eba> {
+public class ebc<T extends eay> {
    private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+   private final axq<T> b;
+   private ebl c;
 
-   public <U extends T> void a(ebh<T, U> $$0, axl<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
-
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
-         }
-      }
-   }
-
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
+   public ebc(Class<T> $$0, ebl $$1) {
+      this.c = $$1;
+      this.b = new axq<>($$0);
    }
 
    public void a(T $$0) {
-      UUID $$1 = $$0.cG();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      this.b.add($$0);
+   }
+
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
+
+   public axk.a a(fat $$0, axk<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cR().c($$0) && $$1.accept($$2).a()) {
+            return axk.a.b;
+         }
+      }
+
+      return axk.a.a;
+   }
+
+   public <U extends T> axk.a a(ebf<T, U> $$0, fat $$1, axk<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return axk.a.a;
       } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ar(), $$0);
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cR().c($$1) && $$2.accept($$5).a()) {
+               return axk.a.b;
+            }
+         }
+
+         return axk.a.a;
       }
    }
 
-   public void b(T $$0) {
-      this.c.remove($$0.cG());
-      this.b.remove($$0.ar());
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
+   public ebl c() {
+      return this.c;
    }
 
-   public int b() {
-      return this.c.size();
+   public ebl a(ebl $$0) {
+      ebl $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @baf
+   public int d() {
+      return this.b.size();
    }
 }

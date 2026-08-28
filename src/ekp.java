@@ -1,74 +1,46 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ekp extends ekw {
-   public static final MapCodec<ekp> a = ekd.a.fieldOf("provider").xmap(ekp::new, $$0 -> $$0.b);
-   private final ekd b;
+public class ekp extends eku {
+   public static final MapCodec<ekp> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ekp::new, $$0 -> $$0.d);
+   private static final jn b = jn.d;
+   private static final jn[] c = jn.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jn[]::new);
+   private final float d;
 
-   public ekp(ekd $$0) {
-      this.b = $$0;
+   public ekp(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected ekx<?> a() {
-      return ekx.g;
+   protected ekv<?> a() {
+      return ekv.f;
    }
 
    @Override
-   public void a(ekw.a $$0) {
-      List<ji> $$1 = Lists.newArrayList();
-      List<ji> $$2 = $$0.e();
-      List<ji> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
+   public void a(eku.a $$0) {
+      azg $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ji> $$2 = $$0.d();
+         List<ji> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<ji> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            af.c($$5, $$1);
+            Optional<ji> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), djm.pG.m().b(dje.b, b));
+               $$0.a().a($$6.get(), dtz.I).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dtu.c.a($$1.a(599)));
+                  }
+               });
             }
-         });
-      }
-   }
-
-   private void a(ekw.a $$0, ji $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(ekw.a $$0, ji $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         ji $$3 = $$1.b($$2);
-         if (efy.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
          }
       }
    }

@@ -1,131 +1,143 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dme extends dig<duw> implements dqs {
-   public static final MapCodec<dme> b = b(dme::new);
-   public static final dxu<jn> c = dnk.aF;
-   public static final dxo d = dxn.J;
-   protected static final fbu e = djm.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final wo f = wo.c("container.enderchest");
-
-   @Override
-   public MapCodec<dme> a() {
-      return b;
-   }
-
-   protected dme(dww.d $$0) {
-      super($$0, () -> dub.d);
-      this.l(this.F.b().b(c, jn.c).b(d, Boolean.valueOf(false)));
-   }
+public class dme extends dmn {
+   public static final MapCodec<dme> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("open").forGetter($$0x -> $$0x.h.c), t()).apply($$0, dme::new)
+   );
+   private static final int f = 3;
+   private static final int g = 2;
+   private final dme.a h;
 
    @Override
-   public dlu.c<? extends dug> a(dwx $$0, dgi $$1, ji $$2, boolean $$3) {
-      return dlu.b::b;
+   public MapCodec<? extends dme> a() {
+      return a;
    }
 
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return e;
+   public dme(dme.a $$0, dwu.d $$1) {
+      super($$0.d, $$0.e, $$1);
+      this.h = $$0;
+   }
+
+   public dme(boolean $$0, dwu.d $$1) {
+      super(dme.a.a($$0).d, dme.a.a($$0).e, $$1);
+      this.h = dme.a.a($$0);
    }
 
    @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.b;
-   }
-
-   @Override
-   public dwx a(dag $$0) {
-      esz $$1 = $$0.q().b_($$0.a());
-      return this.m().b(c, $$0.g().g()).b(d, Boolean.valueOf($$1.a() == eta.c));
-   }
-
-   @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      ctq $$5 = $$3.gw();
-      if ($$5 != null && $$1.c_($$2) instanceof duw $$7) {
-         ji $$9 = $$2.d();
-         if ($$1.a_($$9).d($$1, $$9)) {
-            return bsj.a;
-         } else {
-            if ($$1 instanceof arc $$10) {
-               $$5.a($$7);
-               $$3.a(new bsr(($$1x, $$2x, $$3x) -> csl.a($$1x, $$2x, $$5), f));
-               $$3.a(awk.aj);
-               cnm.a($$10, $$3, true);
-            }
-
-            return bsj.a;
+   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
+      if (this.h.d() && $$3.a(700) == 0) {
+         dwv $$4 = $$1.a_($$2.e());
+         if ($$4.a(djm.tW)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), avz.jh, awa.e, 1.0F, 1.0F, false);
          }
+      }
+   }
+
+   @Override
+   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.h.c().f, awa.e, 1.0F, 1.0F);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.h.c().g, awa.e, 1.0F, 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean c(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (!$$1.G_().j()) {
+         return false;
+      } else if ($$1.V() != this.h.c) {
+         return false;
       } else {
-         return bsj.a;
+         dme.a $$4 = this.h.c();
+         $$1.a($$2, $$4.b(), 3);
+         $$1.a(ebr.c, $$2, ebr.a.a($$0));
+         $$4.a($$1, $$2, $$3);
+         ji.c($$2.b(-3, -2, -3), $$2.b(3, 2, 3)).forEach($$4x -> {
+            dwv $$5 = $$1.a_($$4x);
+            if ($$5 == $$0) {
+               double $$6 = Math.sqrt($$2.j($$4x));
+               int $$7 = $$3.a((int)($$6 * 5.0), (int)($$6 * 10.0));
+               $$1.a($$4x, $$0.b(), $$7);
+            }
+         });
+         return true;
       }
    }
 
    @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new duw($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return $$0.C ? a($$2, dub.d, duw::a) : null;
-   }
-
-   @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
+   protected void a(dwv $$0, dgg $$1, ji $$2, buj $$3) {
+      if (!$$1.B_() && $$1.am() != bsf.a && $$3 instanceof cgx $$4 && cgx.c($$0) && !$$4.b(btq.s)) {
+         $$4.a(this.b());
       }
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
+   public bto b() {
+      return new bto(btq.s, 25);
    }
 
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
+   public static enum a {
+      a(true, btq.o, 11.0F, avz.jd, avz.je, 16545810),
+      b(false, btq.i, 7.0F, avz.jf, avz.jg, 6250335);
 
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c, d);
-   }
+      final boolean c;
+      final jr<btm> d;
+      final float e;
+      final avy f;
+      final avy g;
+      private final int h;
 
-   @Override
-   protected esz b_(dwx $$0) {
-      return $$0.c(d) ? eta.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, eta.c, eta.c.a($$1));
+      private a(final boolean $$0, final jr<btm> $$1, final float $$2, final avy $$3, final avy $$4, final int $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+      public djk a() {
+         return this.c ? djm.tZ : djm.ua;
+      }
 
-   @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
-   }
+      public dwv b() {
+         return this.a().m();
+      }
 
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      dtz $$4 = $$1.c_($$2);
-      if ($$4 instanceof duw) {
-         ((duw)$$4).b();
+      public dme.a c() {
+         return a(!this.c);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public static dme.a a(boolean $$0) {
+         return $$0 ? a : b;
+      }
+
+      public void a(arc $$0, ji $$1, azg $$2) {
+         fay $$3 = $$1.b();
+         double $$4 = 0.5 + $$2.j();
+         fay $$5 = new fay($$2.j() - 0.5, $$2.j() + 1.0, $$2.j() - 0.5);
+         fay $$6 = $$3.e($$5.c($$4));
+         ly $$7 = new ly($$6, this.h, (int)(20.0 * $$4));
+         $$0.a($$7, $$3.d, $$3.e, $$3.f, 1, 0.0, 0.0, 0.0, 0.0);
+      }
+
+      public avy e() {
+         return this.f;
       }
    }
 }

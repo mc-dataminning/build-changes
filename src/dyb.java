@@ -1,7 +1,7 @@
-public enum dyb implements azv {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dyb implements azu {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 
@@ -11,15 +11,11 @@ public enum dyb implements azv {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override
    public String c() {
       return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
    }
 }

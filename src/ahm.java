@@ -4,11 +4,11 @@ public class ahm implements yv<agf> {
    private final ahm.a c;
    private final int d;
 
-   public ahm(buk $$0, ahm.a $$1) {
+   public ahm(buj $$0, ahm.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public ahm(buk $$0, ahm.a $$1, int $$2) {
+   public ahm(buj $$0, ahm.a $$1, int $$2) {
       this.b = $$0.ar();
       this.c = $$1;
       this.d = $$2;

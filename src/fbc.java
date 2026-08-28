@@ -1,46 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+public interface fbc {
+   fbc a = ($$0, $$1) -> false;
+   fbc b = ($$0, $$1) -> !$$0 && !$$1;
+   fbc c = ($$0, $$1) -> $$1 && !$$0;
+   fbc d = ($$0, $$1) -> !$$0;
+   fbc e = ($$0, $$1) -> $$0 && !$$1;
+   fbc f = ($$0, $$1) -> !$$1;
+   fbc g = ($$0, $$1) -> $$0 != $$1;
+   fbc h = ($$0, $$1) -> !$$0 || !$$1;
+   fbc i = ($$0, $$1) -> $$0 && $$1;
+   fbc j = ($$0, $$1) -> $$0 == $$1;
+   fbc k = ($$0, $$1) -> $$1;
+   fbc l = ($$0, $$1) -> !$$0 || $$1;
+   fbc m = ($$0, $$1) -> $$0;
+   fbc n = ($$0, $$1) -> $$0 || !$$1;
+   fbc o = ($$0, $$1) -> $$0 || $$1;
+   fbc p = ($$0, $$1) -> true;
 
-public class fbc extends fbu {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
-
-   protected fbc(fbj $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   fbc(fbj $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
-   }
-
-   @Override
-   public DoubleList a(jn.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
-   }
+   boolean apply(boolean var1, boolean var2);
 }

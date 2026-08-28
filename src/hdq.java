@@ -1,32 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hdq implements hdk {
-   private final geg a;
+public interface hdq<T> {
+   void a(@Nullable T var1, cwl var2, ffs var3, glv var4, int var5, int var6, boolean var7);
 
-   public hdq(geg $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   T b(cwn var1);
 
-   @Override
-   public void a(cwn $$0, ffu $$1, glx $$2, int $$3, int $$4, boolean $$5) {
-      $$1.a();
-      $$1.b(1.0F, -1.0F, -1.0F);
-      ffy $$6 = gta.a($$2, this.a.a(geg.a), false, $$5);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
-   }
+   public interface a {
+      @Nullable
+      hdq<?> a(gew var1);
 
-   public static record a() implements hdo.a {
-      public static final MapCodec<hdq.a> a = MapCodec.unit(new hdq.a());
-
-      @Override
-      public MapCodec<hdq.a> a() {
-         return a;
-      }
-
-      @Override
-      public hdo<?> a(gey $$0) {
-         return new hdq(new geg($$0.a(gfb.dl)));
-      }
+      MapCodec<? extends hdq.a> a();
    }
 }

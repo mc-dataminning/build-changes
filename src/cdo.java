@@ -1,30 +1,41 @@
-public class cdo extends cce {
-   private final bvo a;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public cdo(bvo $$0) {
+public class cdo<T extends bvh> extends ccd {
+   private final T a;
+   private final cwn b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final avy d;
+
+   public cdo(T $$0, cwn $$1, @Nullable avy $$2, Predicate<? super T> $$3) {
       this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dW().b_(this.a.dw()).a(awv.a);
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.fz();
    }
 
    @Override
    public void d() {
-      ji $$0 = null;
+      this.a.a(bur.a, this.b.v());
+      this.a.c(bsh.a);
+   }
 
-      for (ji $$2 : ji.b(
-         ayz.a(this.a.dB() - 2.0), ayz.a(this.a.dD() - 2.0), ayz.a(this.a.dH() - 2.0), ayz.a(this.a.dB() + 2.0), this.a.dC(), ayz.a(this.a.dH() + 2.0)
-      )) {
-         if (this.a.dW().b_($$2).a(awv.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public void e() {
+      this.a.a(bur.a, cwn.j);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dZ().i() * 0.2F + 0.9F);
       }
    }
 }

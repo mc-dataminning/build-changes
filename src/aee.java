@@ -3,7 +3,7 @@ public class aee implements yv<abk> {
    private final int b;
    private final byte c;
 
-   public aee(buk $$0, byte $$1) {
+   public aee(buj $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -27,11 +27,11 @@ public class aee implements yv<abk> {
       $$0.a(this);
    }
 
-   public buk a(dgi $$0) {
+   public buj a(dgg $$0) {
       return $$0.a(this.b);
    }
 
    public float b() {
-      return ayz.a(this.c);
+      return ayy.a(this.c);
    }
 }

@@ -1,19 +1,41 @@
-import javax.annotation.Nullable;
+public class cxz extends cwj {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cxz extends cuq {
-   public cxz(cwl.a $$0) {
+   public cxz(cwj.a $$0) {
       super($$0);
    }
 
    @Override
-   public cpe a(dgi $$0, cwp $$1, bvg $$2, @Nullable cwp $$3) {
-      return new cpw($$0, $$2, $$1.c(1), $$3);
+   public int a(cwn $$0, bvf $$1) {
+      return 1200;
    }
 
    @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      cpw $$4 = new cpw($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.b = cpe.a.b;
-      return $$4;
+   public cwp b(cwn $$0) {
+      return cwp.h;
+   }
+
+   @Override
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      $$1.a(avz.zL, 1.0F, 1.0F);
+      $$1.b(awj.c.b(this));
+      return cwq.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cwn a(cwn $$0, dgg $$1, bvf $$2) {
+      this.b($$2);
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cwn $$0, dgg $$1, bvf $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
+
+   private void b(bvf $$0) {
+      $$0.a(avz.zM, 1.0F, 1.0F);
    }
 }

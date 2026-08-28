@@ -9,7 +9,7 @@ public class yy {
       a($$0, $$1, $$2.p());
    }
 
-   public static <T extends vu> void a(yv<T> $$0, T $$1, bqy<?> $$2) throws alg {
+   public static <T extends vu> void a(yv<T> $$0, T $$1, bqx<?> $$2) throws alg {
       if (!$$2.bx()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {

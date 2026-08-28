@@ -1,97 +1,40 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class cag extends bwz<coi> {
-   private long c;
-
+public class cag extends bwy<cog> {
    public cag() {
-      super(ImmutableMap.of(cek.r, cel.a, cek.h, cel.a), 350, 350);
+      super(ImmutableMap.of());
    }
 
-   protected boolean a(arc $$0, coi $$1) {
-      return this.a($$1);
+   protected boolean a(arc $$0, cog $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   protected boolean a(arc $$0, coi $$1, long $$2) {
-      return $$2 <= this.c && this.a($$1);
-   }
-
-   protected void b(arc $$0, coi $$1, long $$2) {
-      bub $$3 = $$1.ec().c(cek.r).get();
-      bxb.a($$1, $$3, 0.5F, 2);
-      $$0.a($$3, (byte)18);
-      $$0.a($$1, (byte)18);
-      int $$4 = 275 + $$1.dZ().a(50);
-      this.c = $$2 + (long)$$4;
-   }
-
-   protected void c(arc $$0, coi $$1, long $$2) {
-      coi $$3 = (coi)$$1.ec().c(cek.r).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bxb.a($$1, $$3, 0.5F, 2);
-         if ($$2 >= this.c) {
-            $$1.gF();
-            $$3.gF();
-            this.a($$0, $$1, $$3);
-         } else if ($$1.dZ().a(35) == 0) {
-            $$0.a($$3, (byte)12);
-            $$0.a($$1, (byte)12);
+   protected void b(arc $$0, cog $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bwh<?> $$3 = $$1.ec();
+         if (!$$3.c(cqm.g)) {
+            $$3.b(cej.t);
+            $$3.b(cej.m);
+            $$3.b(cej.n);
+            $$3.b(cej.r);
+            $$3.b(cej.q);
          }
+
+         $$3.a(cqm.g);
       }
    }
 
-   private void a(arc $$0, coi $$1, coi $$2) {
-      Optional<ji> $$3 = this.b($$0, $$1);
-      if ($$3.isEmpty()) {
-         $$0.a($$2, (byte)13);
-         $$0.a($$1, (byte)13);
-      } else {
-         Optional<coi> $$4 = this.b($$0, $$1, $$2);
-         if ($$4.isPresent()) {
-            this.a($$0, $$4.get(), $$3.get());
-         } else {
-            $$0.A().b($$3.get());
-            agc.c($$0, $$3.get());
-         }
+   protected void c(arc $$0, cog $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   protected void d(arc $$0, coi $$1, long $$2) {
-      $$1.ec().b(cek.r);
+   public static boolean b(bvf $$0) {
+      return $$0.ec().a(cej.A);
    }
 
-   private boolean a(coi $$0) {
-      bwi<coi> $$1 = $$0.ec();
-      Optional<bub> $$2 = $$1.c(cek.r).filter($$0x -> $$0x.aq() == bur.bD);
-      return $$2.isEmpty() ? false : bxb.a($$1, cek.r, bur.bD) && $$0.X_() && $$2.get().X_();
-   }
-
-   private Optional<ji> b(arc $$0, coi $$1) {
-      return $$0.A().a($$0x -> $$0x.a(cgo.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dw(), 48);
-   }
-
-   private boolean a(coi $$0, ji $$1, jr<cgn> $$2) {
-      etn $$3 = $$0.L().a($$1, $$2.a().c());
-      return $$3 != null && $$3.j();
-   }
-
-   private Optional<coi> b(arc $$0, coi $$1, coi $$2) {
-      coi $$3 = $$1.b($$0, $$2);
-      if ($$3 == null) {
-         return Optional.empty();
-      } else {
-         $$1.c_(6000);
-         $$2.c_(6000);
-         $$3.c_(-24000);
-         $$3.b($$1.dB(), $$1.dD(), $$1.dH(), 0.0F, 0.0F);
-         $$0.a_($$3);
-         $$0.a($$3, (byte)12);
-         return Optional.of($$3);
-      }
-   }
-
-   private void a(arc $$0, coi $$1, ji $$2) {
-      jq $$3 = jq.a($$0.ai(), $$2);
-      $$1.ec().a(cek.b, $$3);
+   public static boolean c(bvf $$0) {
+      return $$0.ec().a(cej.x);
    }
 }

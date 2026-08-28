@@ -8,8 +8,8 @@ public class eg extends dz<eg.a> {
       return eg.a.a;
    }
 
-   public void a(ard $$0, buk $$1) {
-      evr $$2 = bx.b($$0, $$1);
+   public void a(ard $$0, buj $$1) {
+      evp $$2 = bx.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -22,7 +22,7 @@ public class eg extends dz<eg.a> {
          return ap.o.a(new eg.a(Optional.empty(), Optional.of(bx.a($$0))));
       }
 
-      public boolean a(evr $$0) {
+      public boolean a(evp $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

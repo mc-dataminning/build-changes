@@ -1,50 +1,20 @@
-import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fha extends fhz {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public class fha {
+   private final Gson a = new Gson();
 
-   public static fha a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fha $$2 = new fha();
-
-      try {
-         $$2.a = fjv.b("backupId", $$1, "");
-         $$2.b = fjv.b("lastModifiedDate", $$1);
-         $$2.c = fjv.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
-
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
-         }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
-      }
-
-      return $$2;
+   public String a(fhr $$0) {
+      return this.a.toJson($$0);
    }
 
-   public boolean a() {
-      return this.g;
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   @Nullable
+   public <T extends fhr> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

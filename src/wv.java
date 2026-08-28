@@ -11,7 +11,7 @@ public record wv(List<xa> d) {
    public static wv b = new wv(List.of());
    public static final int c = 20;
 
-   public void a(azl.a $$0) throws SignatureException {
+   public void a(azk.a $$0) throws SignatureException {
       $$0.update(Ints.toByteArray(this.d.size()));
 
       for (xa $$1 : this.d) {

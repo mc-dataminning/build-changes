@@ -7,7 +7,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record xa(byte[] c) {
-   public static final Codec<xa> a = ayi.r.xmap(xa::new, xa::b);
+   public static final Codec<xa> a = ayh.r.xmap(xa::new, xa::b);
    public static final int b = 256;
 
    public xa(byte[] c) {
@@ -25,7 +25,7 @@ public record xa(byte[] c) {
       $$0.c($$1.c);
    }
 
-   public boolean a(azm $$0, azl $$1) {
+   public boolean a(azl $$0, azk $$1) {
       return $$0.validate($$1, this.c);
    }
 

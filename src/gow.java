@@ -1,161 +1,76 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.google.common.collect.Maps;
 import java.util.Map;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gow implements goi<dvm> {
-   private static final int a = -988212;
-   private static final int b = ayz.h(16);
-   private static final float c = 0.6666667F;
-   private static final fba d = new fba(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dyj, gow.a> e;
-   private final fob f;
+public class gow implements goh<dvm> {
+   private final Function<dqr.a, gdv> a;
+   private static final Map<dqr.a, aku> b = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dqr.b.c, aku.b("textures/entity/skeleton/skeleton.png"));
+      $$0.put(dqr.b.d, aku.b("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(dqr.b.f, aku.b("textures/entity/zombie/zombie.png"));
+      $$0.put(dqr.b.g, aku.b("textures/entity/creeper/creeper.png"));
+      $$0.put(dqr.b.i, aku.b("textures/entity/enderdragon/dragon.png"));
+      $$0.put(dqr.b.h, aku.b("textures/entity/piglin/piglin.png"));
+      $$0.put(dqr.b.e, hff.a());
+   });
 
-   public gow(goj.a $$0) {
-      this.e = dyj.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gow.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
-      this.f = $$0.g();
-   }
-
-   public void a(dvm $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
-      dwx $$6 = $$0.m();
-      dqr $$7 = (dqr)$$6.b();
-      dyj $$8 = dqr.a($$7);
-      gow.a $$9 = this.e.get($$8);
-      gcv $$10 = $$6.b() instanceof drm ? $$9.a() : $$9.b();
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10);
-   }
-
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(dvm $$0, ffu $$1, glx $$2, int $$3, int $$4, dwx $$5, dqr $$6, dyj $$7, gcv $$8) {
-      $$1.a();
-      this.a($$1, -$$6.h($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aA_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
-      this.a($$0.aA_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
-      $$1.b();
-   }
-
-   void a(ffu $$0, float $$1, dwx $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof drm)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   void a(ffu $$0, glx $$1, int $$2, int $$3, dyj $$4, gcv $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      hgs $$7 = this.a($$4);
-      ffy $$8 = $$7.a($$1, $$5::a);
-      $$5.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   hgs a(dyj $$0) {
-      return gms.a($$0);
-   }
-
-   void a(ji $$0, dvn $$1, ffu $$2, glx $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      ayl[] $$10 = $$1.a(flj.Q().aT(), $$1x -> {
-         List<ayl> $$2x = this.f.c($$1x, $$6);
-         return $$2x.isEmpty() ? ayl.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
+   @Nullable
+   public static gdv a(gew $$0, dqr.a $$1) {
+      if ($$1 instanceof dqr.b $$2) {
+         return (gdv)(switch ($$2) {
+            case c -> new gdu($$0.a(gez.cN));
+            case d -> new gdu($$0.a(gez.dF));
+            case e -> new gdu($$0.a(gez.ch));
+            case f -> new gdu($$0.a(gez.dR));
+            case g -> new gdu($$0.a(gez.ak));
+            case i -> new get($$0.a(gez.av));
+            case h -> new gcz($$0.a(gez.bX));
+         });
       } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
+         return null;
       }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         ayl $$18 = $$10[$$17];
-         float $$19 = (float)(-this.f.a($$18) / 2);
-         if ($$12) {
-            this.f.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.f.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fob.a.c, 0, $$13);
-         }
-      }
-
-      $$2.b();
    }
 
-   private void a(ffu $$0, boolean $$1, fba $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2);
-      $$0.b($$3, -$$3, $$3);
+   public gow(goi.a $$0) {
+      gew $$1 = $$0.f();
+      this.a = af.b($$1x -> a($$1, $$1x));
    }
 
-   fba d() {
-      return d;
+   public void a(dvm $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dwv $$7 = $$0.m();
+      boolean $$8 = $$7.b() instanceof dsq;
+      jn $$9 = $$8 ? $$7.c(dsq.d) : null;
+      int $$10 = $$8 ? dya.a($$9.g()) : $$7.c(dqr.e);
+      float $$11 = dya.b($$10);
+      dqr.a $$12 = ((dig)$$7.b()).b();
+      gdv $$13 = this.a.apply($$12);
+      gmf $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
    }
 
-   static boolean a(ji $$0, int $$1) {
-      if ($$1 == cvm.p.g()) {
-         return true;
+   public static void a(@Nullable jn $$0, float $$1, float $$2, ffs $$3, glv $$4, int $$5, gdv $$6, gmf $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
       } else {
-         flj $$2 = flj.Q();
-         gkv $$3 = $$2.t;
-         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
-            return true;
-         } else {
-            buk $$4 = $$2.ao();
-            return $$4 != null && $$4.f(fba.b($$0)) < (double)b;
-         }
-      }
-   }
-
-   public static int a(dvn $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == cvm.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axk.b($$1) * 0.4);
-         int $$4 = (int)((double)axk.c($$1) * 0.4);
-         int $$5 = (int)((double)axk.d($$1) * 0.4);
-         return axk.a(0, $$3, $$4, $$5);
-      }
-   }
-
-   public static gcv a(gey $$0, dyj $$1, boolean $$2) {
-      gfa $$3 = $$2 ? gfb.a($$1) : gfb.b($$1);
-      return new gcv.a($$0.a($$3), gmh::g);
-   }
-
-   public static gfi a(boolean $$0) {
-      gfk $$1 = new gfk();
-      gfm $$2 = $$1.a();
-      $$2.a("sign", gfh.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gfe.a);
-      if ($$0) {
-         $$2.a("stick", gfh.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gfe.a);
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
       }
 
-      return gfi.a($$1, 64, 32);
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      ffw $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, hec.d);
+      $$3.b();
    }
 
-   static record a(gcv a, gcv b) {
+   public static gmf a(dqr.a $$0, @Nullable czm $$1) {
+      return a($$0, $$1, null);
+   }
+
+   public static gmf a(dqr.a $$0, @Nullable czm $$1, @Nullable aku $$2) {
+      return $$0 == dqr.b.e && $$1 != null ? gmf.j($$2 != null ? $$2 : flh.Q().an().b($$1.f()).a()) : gmf.h($$2 != null ? $$2 : b.get($$0));
    }
 }

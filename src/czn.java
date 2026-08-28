@@ -1,26 +1,16 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record czn(int f) implements cyw, czs {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<czn> d = ayi.a(0, 4).xmap(czn::new, czn::a);
-   public static final ym<vz, czn> e = ym.a(yk.h, czn::a, czn::new);
+public record czn(akt<evu> b, long c) {
+   public static final Codec<czn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akt.a(mc.bg).fieldOf("loot_table").forGetter(czn::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(czn::b)).apply($$0, czn::new)
+   );
 
-   @Override
-   public void a(dgi $$0, bvg $$1, cwp $$2, cyv $$3) {
-      $$1.a(new btp(btr.E, 120000, this.f, false, false, true));
+   public akt<evu> a() {
+      return this.b;
    }
 
-   @Override
-   public void a(cwl.b $$0, Consumer<wo> $$1, cyh $$2) {
-      List<btp> $$3 = List.of(new btp(btr.E, 120000, this.f, false, false, true));
-      cyo.a($$3, $$1, 1.0F, $$0.b());
-   }
-
-   public int a() {
-      return this.f;
+   public long b() {
+      return this.c;
    }
 }

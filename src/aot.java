@@ -81,13 +81,13 @@ public class aot {
       );
    }
 
-   private static int a(ex $$0, faz $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends buk> $$6) throws CommandSyntaxException {
+   private static int a(ex $$0, fax $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends buj> $$6) throws CommandSyntaxException {
       arc $$7 = $$0.e();
       int $$8 = $$7.L_();
       if ($$4 < $$8) {
          throw d.create($$4, $$8);
       } else {
-         azh $$9 = azh.a();
+         azg $$9 = azg.a();
          double $$10 = (double)($$1.i - $$3);
          double $$11 = (double)($$1.j - $$3);
          double $$12 = (double)($$1.i + $$3);
@@ -103,11 +103,11 @@ public class aot {
       }
    }
 
-   private static int a(Collection<? extends buk> $$0) {
-      Set<fch> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends buj> $$0) {
+      Set<fcf> $$1 = Sets.newHashSet();
 
-      for (buk $$2 : $$0) {
-         if ($$2 instanceof cox) {
+      for (buj $$2 : $$0) {
+         if ($$2 instanceof cov) {
             $$1.add($$2.cr());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class aot {
       return $$1.size();
    }
 
-   private static void a(faz $$0, double $$1, arc $$2, azh $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aot.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(fax $$0, double $$1, arc $$2, azg $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aot.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class aot {
       }
    }
 
-   private static double a(Collection<? extends buk> $$0, arc $$1, aot.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends buj> $$0, arc $$1, aot.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<fch, aot.a> $$7 = Maps.newHashMap();
+      Map<fcf, aot.a> $$7 = Maps.newHashMap();
 
-      for (buk $$8 : $$0) {
+      for (buj $$8 : $$0) {
          aot.a $$10;
          if ($$4) {
-            fch $$9 = $$8 instanceof cox ? $$8.cr() : null;
+            fcf $$9 = $$8 instanceof cov ? $$8.cr() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -204,7 +204,7 @@ public class aot {
             $$10 = $$2[$$6++];
          }
 
-         $$8.a($$1, (double)ayz.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayz.a($$10.b) + 0.5, Set.of(), $$8.dM(), $$8.dO(), true);
+         $$8.a($$1, (double)ayy.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayy.a($$10.b) + 0.5, Set.of(), $$8.dM(), $$8.dO(), true);
          double $$12 = Double.MAX_VALUE;
 
          for (aot.a $$13 : $$2) {
@@ -220,7 +220,7 @@ public class aot {
       return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
    }
 
-   private static aot.a[] a(azh $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+   private static aot.a[] a(azg $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
       aot.a[] $$6 = new aot.a[$$1];
 
       for (int $$7 = 0; $$7 < $$6.length; $$7++) {
@@ -278,7 +278,7 @@ public class aot {
          return $$4;
       }
 
-      public int a(dfn $$0, int $$1) {
+      public int a(dfl $$0, int $$1) {
          ji.a $$2 = new ji.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).l();
          $$2.c(jn.a);
@@ -298,15 +298,15 @@ public class aot {
          return $$1 + 1;
       }
 
-      public boolean b(dfn $$0, int $$1) {
+      public boolean b(dfl $$0, int $$1) {
          ji $$2 = ji.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dwx $$3 = $$0.a_($$2);
-         return $$2.v() < $$1 && !$$3.n() && !$$3.a(awp.aN);
+         dwv $$3 = $$0.a_($$2);
+         return $$2.v() < $$1 && !$$3.n() && !$$3.a(awo.aN);
       }
 
-      public void a(azh $$0, double $$1, double $$2, double $$3, double $$4) {
-         this.a = ayz.a($$0, $$1, $$3);
-         this.b = ayz.a($$0, $$2, $$4);
+      public void a(azg $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = ayy.a($$0, $$1, $$3);
+         this.b = ayy.a($$0, $$2, $$4);
       }
    }
 }

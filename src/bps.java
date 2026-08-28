@@ -1,59 +1,56 @@
+import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
-import java.time.Instant;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
 
-public record bps(Instant a, long b, bps.b c) {
-   public static bps a(RecordedEvent $$0) {
-      return new bps($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bps.b.a : bps.b.b);
+public final class bps<T> {
+   private final bps.a a;
+   private final List<Pair<T, bps.a>> b;
+   private final Duration c;
+
+   public bps(Duration $$0, List<Pair<T, bps.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bps.a>map(Pair::getSecond).reduce(new bps.a(0L, 0L), bps.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bps.a.c)).limit(10L).toList();
    }
 
-   public static bps.a a(Duration $$0, List<bps> $$1, Duration $$2, int $$3) {
-      return new bps.a($$0, $$2, $$3, a($$1));
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
    }
 
-   private static double a(List<bps> $$0) {
-      long $$1 = 0L;
-      Map<bps.b, List<bps>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
-      List<bps> $$3 = $$2.get(bps.b.a);
-      List<bps> $$4 = $$2.get(bps.b.b);
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
+   }
 
-      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-         bps $$6 = $$3.get($$5);
-         bps $$7 = $$4.get($$5 - 1);
-         $$1 += $$6.b - $$7.b;
+   public long c() {
+      return this.a.a;
+   }
+
+   public long d() {
+      return this.a.b;
+   }
+
+   public List<Pair<T, bps.a>> e() {
+      return this.b;
+   }
+
+   public static record a(long a, long b) {
+      static final Comparator<bps.a> c = Comparator.comparing(bps.a::c).thenComparing(bps.a::b).reversed();
+
+      bps.a a(bps.a $$0) {
+         return new bps.a(this.a + $$0.a, this.b + $$0.b);
       }
 
-      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
-      return (double)$$1 / (double)$$8.getSeconds();
-   }
-
-   public static record a(Duration a, Duration b, int c, double d) {
       public float a() {
-         return (float)this.b.toMillis() / (float)this.a.toMillis();
+         return (float)this.b / (float)this.a;
       }
 
-      public Duration b() {
+      public long b() {
          return this.a;
       }
 
-      public Duration c() {
+      public long c() {
          return this.b;
       }
-
-      public int d() {
-         return this.c;
-      }
-
-      public double e() {
-         return this.d;
-      }
-   }
-
-   static enum b {
-      a,
-      b;
    }
 }

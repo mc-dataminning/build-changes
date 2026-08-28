@@ -1,14 +1,31 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hgb(hgc d) {
-   public static final hgb a = new hgb(hgc.b);
-   public static final Codec<hgb> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hgc.a.optionalFieldOf("scaling", hgc.b).forGetter(hgb::a)).apply($$0, hgb::new)
+public record hgb(hgb.a c) {
+   public static final Codec<hgb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hgb.a.d.optionalFieldOf("hat", hgb.a.a).forGetter(hgb::a)).apply($$0, hgb::new)
    );
-   public static final atp<hgb> c = atp.a("gui", b);
+   public static final ato<hgb> b = new ato<>("villager", a);
 
-   public hgc a() {
-      return this.d;
+   public hgb.a a() {
+      return this.c;
+   }
+
+   public static enum a implements azu {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      public static final Codec<hgb.a> d = azu.a(hgb.a::values);
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

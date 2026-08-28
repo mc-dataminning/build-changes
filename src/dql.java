@@ -1,117 +1,167 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Collection;
 
-public class dql extends diy implements dqs {
-   public static final MapCodec<dql> a = b(dql::new);
-   public static final dxo b = dxn.D;
-   public static final dxo c = dxn.J;
-   public static final dxo d = dxn.f;
-   protected static final fbu e = djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final double f = e.c(jn.a.b);
+public class dql extends don implements dqf {
+   public static final MapCodec<dql> e = b(dql::new);
+   private final doo f = new doo(new dql.a(doo.a));
+   private final doo g = new doo(new dql.a(doo.e.a));
 
    @Override
    public MapCodec<dql> a() {
-      return a;
+      return e;
    }
 
-   public dql(dww.d $$0) {
+   public dql(dwu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b);
-      $$0.a(c);
-      $$0.a(d);
+   public doo c() {
+      return this.f;
    }
 
-   @Override
-   public void a(dgi $$0, ji $$1, dwx $$2, buk $$3) {
-      if ($$0 instanceof arc $$4) {
-         ard $$5 = dvk.a($$3);
-         if ($$5 != null) {
-            $$4.a($$1, dub.M).ifPresent($$2x -> $$2x.a($$4, $$5));
+   public doo q() {
+      return this.g;
+   }
+
+   public static boolean a(dgh $$0, ji $$1, dwv $$2, Collection<jn> $$3) {
+      boolean $$4 = false;
+      dwv $$5 = djm.rv.m();
+
+      for (jn $$6 : $$3) {
+         if (a($$0, $$1, $$6)) {
+            $$5 = $$5.b(b($$6), Boolean.valueOf(true));
+            $$4 = true;
          }
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
+      if (!$$4) {
+         return false;
+      } else {
+         if (!$$2.y().c()) {
+            $$5 = $$5.b(dom.c, Boolean.valueOf(true));
+         }
 
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      if ($$1 instanceof arc $$5 && $$0.c(b) && !$$0.a($$3.b())) {
-         $$5.a($$2, dub.M).ifPresent($$1x -> $$1x.a($$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
-         $$1.a($$2, dub.M).ifPresent($$1x -> $$1x.a($$1));
+         $$0.a($$1, $$5, 3);
+         return true;
       }
    }
 
    @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.c;
-   }
+   public void a(dgh $$0, dwv $$1, ji $$2, azg $$3) {
+      if ($$1.a(this)) {
+         for (jn $$4 : d) {
+            dxm $$5 = b($$4);
+            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(djm.ru)) {
+               $$1 = $$1.b($$5, Boolean.valueOf(false));
+            }
+         }
 
-   @Override
-   protected fbu b(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return e;
-   }
+         if (!q($$1)) {
+            esx $$6 = $$0.b_($$2);
+            $$1 = ($$6.c() ? djm.a : djm.J).m();
+         }
 
-   @Override
-   protected fbu d_(dwx $$0) {
-      return e;
-   }
-
-   @Override
-   protected boolean g_(dwx $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dvk($$0, $$1);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, eta.c, eta.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Nullable
-   @Override
-   public dwx a(dag $$0) {
-      return this.m().b(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == eta.c));
-   }
-
-   @Override
-   protected esz b_(dwx $$0) {
-      return $$0.c(c) ? eta.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, cwp $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, brl.a(5));
+         $$0.a($$2, $$1, 3);
+         dqf.super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   @Nullable
    @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return !$$0.C ? diy.a($$2, dub.M, ($$0x, $$1x, $$2x, $$3) -> ecc.c.a($$0x, $$3.gq(), $$3.gr())) : null;
+   public int a(dqk.a $$0, dgh $$1, ji $$2, azg $$3, dqk $$4, boolean $$5) {
+      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
+         return $$0.b() - 1;
+      } else {
+         return $$3.a($$4.f()) == 0 ? ayy.d((float)$$0.b() * 0.5F) : $$0.b();
+      }
+   }
+
+   private boolean a(dqk $$0, dgh $$1, ji $$2, azg $$3) {
+      dwv $$4 = $$1.a_($$2);
+      axe<djk> $$5 = $$0.c();
+
+      for (jn $$6 : jn.a($$3)) {
+         if (a($$4, $$6)) {
+            ji $$7 = $$2.a($$6);
+            dwv $$8 = $$1.a_($$7);
+            if ($$8.a($$5)) {
+               dwv $$9 = djm.ru.m();
+               $$1.a($$7, $$9, 3);
+               djk.a($$8, $$9, $$1, $$7);
+               $$1.a(null, $$7, avz.wt, awa.e, 1.0F, 1.0F);
+               this.f.a($$9, $$1, $$7, $$0.h());
+               jn $$10 = $$6.g();
+
+               for (jn $$11 : d) {
+                  if ($$11 != $$10) {
+                     ji $$12 = $$7.a($$11);
+                     dwv $$13 = $$1.a_($$12);
+                     if ($$13.a(this)) {
+                        this.a($$1, $$13, $$12, $$3);
+                     }
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(dgh $$0, dwv $$1, ji $$2) {
+      if (!$$1.a(djm.rv)) {
+         return false;
+      } else {
+         for (jn $$3 : d) {
+            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(awo.bU)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   class a extends doo.a {
+      private final doo.e[] b;
+
+      public a(final doo.e... $$0) {
+         super(dql.this);
+         this.b = $$0;
+      }
+
+      @Override
+      public boolean a(dfl $$0, ji $$1, ji $$2, jn $$3, dwv $$4) {
+         dwv $$5 = $$0.a_($$2.a($$3));
+         if (!$$5.a(djm.ru) && !$$5.a(djm.rw) && !$$5.a(djm.bX)) {
+            if ($$1.k($$2) == 2) {
+               ji $$6 = $$1.a($$3.g());
+               if ($$0.a_($$6).c($$0, $$6, $$3)) {
+                  return false;
+               }
+            }
+
+            esx $$7 = $$4.y();
+            if (!$$7.c() && !$$7.b(esy.c)) {
+               return false;
+            } else {
+               return $$4.a(awo.aN) ? false : $$4.v() || super.a($$0, $$1, $$2, $$3, $$4);
+            }
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public doo.e[] a() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(dwv $$0) {
+         return !$$0.a(djm.rv);
+      }
    }
 }

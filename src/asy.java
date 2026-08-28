@@ -33,12 +33,12 @@ public class asy extends ass {
 
    @Nullable
    @Override
-   public auh<InputStream> a(String... $$0) {
+   public aug<InputStream> a(String... $$0) {
       return this.b(String.join("/", $$0));
    }
 
    @Override
-   public auh<InputStream> a(atd $$0, aku $$1) {
+   public aug<InputStream> a(atd $$0, aku $$1) {
       return this.b(b($$0, $$1));
    }
 
@@ -47,13 +47,13 @@ public class asy extends ass {
    }
 
    @Nullable
-   private auh<InputStream> b(String $$0) {
+   private aug<InputStream> b(String $$0) {
       ZipFile $$1 = this.d.a();
       if ($$1 == null) {
          return null;
       } else {
          ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : auh.create($$1, $$2);
+         return $$2 == null ? null : aug.create($$1, $$2);
       }
    }
 
@@ -116,7 +116,7 @@ public class asy extends ass {
                   String $$10 = $$9.substring($$6.length());
                   aku $$11 = aku.b($$1, $$10);
                   if ($$11 != null) {
-                     $$3.accept($$11, auh.create($$4, $$8));
+                     $$3.accept($$11, aug.create($$4, $$8));
                   } else {
                      c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
                   }
@@ -126,7 +126,7 @@ public class asy extends ass {
       }
    }
 
-   public static class a implements atx.c {
+   public static class a implements atw.c {
       private final File a;
 
       public a(Path $$0) {
@@ -144,7 +144,7 @@ public class asy extends ass {
       }
 
       @Override
-      public atb a(ata $$0, atx.a $$1) {
+      public atb a(ata $$0, atw.a $$1) {
          asy.b $$2 = new asy.b(this.a);
          atb $$3 = new asy($$0, $$2, "");
          List<String> $$4 = $$1.d();

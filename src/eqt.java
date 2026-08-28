@@ -1,64 +1,46 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqt extends erl {
-   public static final MapCodec<eqt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ern.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bro.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, eqt::new)
-   );
-   private final erl b;
-   private final bro c;
+public class eqt extends erj {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<eqt> a = MapCodec.unit(() -> eqt.b);
+   public static final eqt b = new eqt();
 
-   public eqt(erl $$0, bro $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private eqt() {
    }
 
+   @Nullable
    @Override
-   protected ern<?> a() {
-      return ern.o;
-   }
-
-   @Override
-   public final List<ero.d> a(dgz $$0, ji $$1, ji $$2, List<ero.d> $$3, List<ero.d> $$4, erk $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            af.b(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
+   public erm.d a(dgj $$0, ji $$1, ji $$2, erm.d $$3, erm.d $$4, eri $$5) {
+      dwv $$6 = $$4.b();
+      if ($$6.a(djm.pD)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
             return $$4;
          } else {
-            azh $$6 = azh.a($$0.a().E()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = af.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
+            String $$7 = $$4.c().l("final_state");
 
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ero.d $$12 = $$3.get($$11);
-                  ero.d $$13 = $$4.get($$11);
-                  ero.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
+            dwv $$9;
+            try {
+               gr.a $$8 = gr.a($$0.a(mc.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
             }
+
+            return $$9.a(djm.lp) ? null : new erm.d($$4.a(), $$9, null);
          }
       } else {
          return $$4;
       }
+   }
+
+   @Override
+   protected erl<?> a() {
+      return erl.h;
    }
 }

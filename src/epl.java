@@ -1,80 +1,84 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class epl {
-   public static final int a = 90;
-   static final aku b = aku.b("igloo/top");
-   private static final aku c = aku.b("igloo/middle");
-   private static final aku d = aku.b("igloo/bottom");
-   static final Map<aku, ji> e = ImmutableMap.of(b, new ji(3, 5, 5), c, new ji(1, 3, 1), d, new ji(3, 6, 7));
-   static final Map<aku, ji> f = ImmutableMap.of(b, ji.c, c, new ji(2, -3, 4), d, new ji(0, -3, -2));
+public final class epl extends enk {
+   public static final eok d = eok.b;
+   public static final eqw e = eqw.b;
+   public static final int f = 128;
+   public static final int g = 0;
+   public static final int h = 20;
+   public static final MapCodec<epl> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  a($$0),
+                  eou.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
+                  aku.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
+                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
+                  elr.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
+                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
+                  ecq.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
+                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
+                  Codec.list(eow.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
+                  eok.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
+                  eqw.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
+               )
+               .apply($$0, epl::new)
+      )
+      .validate(epl::a);
+   private final jr<eou> j;
+   private final Optional<aku> k;
+   private final int l;
+   private final elr m;
+   private final boolean n;
+   private final Optional<ecq.a> o;
+   private final int p;
+   private final List<eow> q;
+   private final eok r;
+   private final eqw s;
 
-   public static void a(erp $$0, ji $$1, dqe $$2, enr $$3, azh $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new epl.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new epl.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new epl.a($$0, b, $$1, $$2, 0));
+   private static DataResult<epl> a(epl $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d, e -> 12;
+      };
+      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
    }
 
-   public static class a extends enw {
-      public a(erp $$0, aku $$1, ji $$2, dqe $$3, int $$4) {
-         super(eod.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   public epl(enk.c $$0, jr<eou> $$1, Optional<aku> $$2, int $$3, elr $$4, boolean $$5, Optional<ecq.a> $$6, int $$7, List<eow> $$8, eok $$9, eqw $$10) {
+      super($$0);
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+      this.q = $$8;
+      this.r = $$9;
+      this.s = $$10;
+   }
 
-      public a(erp $$0, tq $$1) {
-         super(eod.I, $$1, $$0, $$1x -> a(dqe.valueOf($$1.l("Rot")), $$1x));
-      }
+   public epl(enk.c $$0, jr<eou> $$1, int $$2, elr $$3, boolean $$4, ecq.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
+   }
 
-      private static erk a(dqe $$0, aku $$1) {
-         return new erk().a($$0).a(dol.a).a(epl.e.get($$1)).a(eqp.b).a(eqy.a);
-      }
+   public epl(enk.c $$0, jr<eou> $$1, int $$2, elr $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
+   }
 
-      private static ji a(aku $$0, ji $$1, int $$2) {
-         return $$1.a(epl.f.get($$0)).c($$2);
-      }
+   @Override
+   public Optional<enk.b> a(enk.a $$0) {
+      dfm $$1 = $$0.h();
+      int $$2 = this.m.a($$0.f(), new edn($$0.b(), $$0.i()));
+      ji $$3 = new ji($$1.d(), $$2, $$1.e());
+      return eoo.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, eoy.create(this.q, $$3, $$0.g()), this.r, this.s);
+   }
 
-      @Override
-      protected void a(eoc $$0, tq $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, ji $$1, dgz $$2, azh $$3, ene $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, djo.a.m(), 3);
-            dtz $$5 = $$2.c_($$1.e());
-            if ($$5 instanceof dug) {
-               ((dug)$$5).a(evn.B, $$3.g());
-            }
-         }
-      }
-
-      @Override
-      public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5, ji $$6) {
-         aku $$7 = aku.a(this.a);
-         erk $$8 = a(this.c.d(), $$7);
-         ji $$9 = epl.f.get($$7);
-         ji $$10 = this.d.a((km)ero.a($$8, new ji(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(ecs.a.a, $$10.u(), $$10.w());
-         ji $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(epl.b)) {
-            ji $$13 = this.d.a((km)ero.a($$8, new ji(3, 0, 5)));
-            dwx $$14 = $$0.a_($$13.e());
-            if (!$$14.l() && !$$14.a(djo.cX)) {
-               $$0.a($$13, djo.ec.m(), 3);
-            }
-         }
-
-         this.d = $$12;
-      }
+   @Override
+   public ent<?> e() {
+      return ent.f;
    }
 }

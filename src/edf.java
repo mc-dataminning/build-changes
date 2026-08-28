@@ -1,20 +1,63 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface edf {
-   default azh a(ji $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
-
-   default azh a(aku $$0) {
-      return this.a($$0.toString());
-   }
-
-   azh a(String var1);
-
-   azh a(long var1);
-
-   azh a(int var1, int var2, int var3);
+public final class edf {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
    @VisibleForTesting
-   void a(StringBuilder var1);
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
+   }
+
+   public static edf.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new edf.a($$1, $$2);
+   }
+
+   public static edf.a c(long $$0) {
+      return b($$0).a();
+   }
+
+   public static edf.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new edf.a($$2, $$3);
+   }
+
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   }
+
+   public static record a(long a, long b) {
+      public edf.a a(long $$0, long $$1) {
+         return new edf.a(this.a ^ $$0, this.b ^ $$1);
+      }
+
+      public edf.a a(edf.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public edf.a a() {
+         return new edf.a(edf.a(this.a), edf.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
+   }
 }

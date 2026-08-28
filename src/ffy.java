@@ -1,139 +1,158 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryStack;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface ffy {
-   ffy a(float var1, float var2, float var3);
+public record ffy(int i, int j, ffy.a k, ffy.b l, int m) {
+   public static final int a = 32;
+   private static final ffy[] n = new ffy[32];
+   private static final List<ffy> o = new ArrayList<>(32);
+   public static final ffy b = a(0, 0, ffy.a.a, ffy.b.a, 3);
+   public static final ffy c = a(1, 0, ffy.a.b, ffy.b.c, 4);
+   public static final ffy d = a(2, 0, ffy.a.a, ffy.b.d, 2);
+   public static final ffy e = d;
+   public static final ffy f = a(3, 1, ffy.a.e, ffy.b.d, 2);
+   public static final ffy g = a(4, 2, ffy.a.e, ffy.b.d, 2);
+   public static final ffy h = a(5, 0, ffy.a.c, ffy.b.b, 3);
 
-   ffy a(int var1, int var2, int var3, int var4);
-
-   ffy a(float var1, float var2);
-
-   ffy a(int var1, int var2);
-
-   ffy b(int var1, int var2);
-
-   ffy b(float var1, float var2, float var3);
-
-   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a($$0, $$1, $$2);
-      this.a($$3);
-      this.a($$4, $$5);
-      this.b($$6);
-      this.c($$7);
-      this.b($$8, $$9, $$10);
-   }
-
-   default ffy a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default ffy a(int $$0) {
-      return this.a(axk.b($$0), axk.c($$0), axk.d($$0), axk.a($$0));
-   }
-
-   default ffy d(int $$0) {
-      return this.a(axk.c($$0, -1));
-   }
-
-   default ffy c(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default ffy b(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(ffu.a $$0, gne $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(ffu.a $$0, gne $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      int[] $$10 = $$1.b();
-      km $$11 = $$1.e().q();
-      Matrix4f $$12 = $$0.a();
-      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
-      int $$14 = 8;
-      int $$15 = $$10.length / 8;
-      int $$16 = (int)($$6 * 255.0F);
-      int $$17 = $$1.g();
-      MemoryStack $$18 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$19 = $$18.malloc(ffs.b.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$15; $$21++) {
-            $$20.clear();
-            $$20.put($$10, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255);
-               float $$26 = (float)($$19.get(13) & 255);
-               float $$27 = (float)($$19.get(14) & 255);
-               $$28 = $$25 * $$2[$$21] * $$3;
-               $$29 = $$26 * $$2[$$21] * $$4;
-               $$30 = $$27 * $$2[$$21] * $$5;
-            } else {
-               $$28 = $$2[$$21] * $$3 * 255.0F;
-               $$29 = $$2[$$21] * $$4 * 255.0F;
-               $$30 = $$2[$$21] * $$5 * 255.0F;
-            }
-
-            int $$34 = axk.a($$16, (int)$$28, (int)$$29, (int)$$30);
-            int $$35 = glv.b($$7[$$21], $$17);
-            float $$36 = $$19.getFloat(16);
-            float $$37 = $$19.getFloat(20);
-            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
-            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
-         }
-      } catch (Throwable var35) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var34) {
-               var35.addSuppressed(var34);
-            }
-         }
-
-         throw var35;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
+   public ffy(int i, int j, ffy.a k, ffy.b l, int m) {
+      if (i < 0 || i >= n.length) {
+         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
+      } else if (!this.a(j, l)) {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      } else {
+         this.i = i;
+         this.j = j;
+         this.k = k;
+         this.l = l;
+         this.m = m;
       }
    }
 
-   default ffy a(Vector3f $$0) {
-      return this.a($$0.x(), $$0.y(), $$0.z());
+   public static ffy a(int $$0, int $$1, ffy.a $$2, ffy.b $$3, int $$4) {
+      ffy $$5 = new ffy($$0, $$1, $$2, $$3, $$4);
+      if (n[$$0] != null) {
+         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
+      } else {
+         n[$$0] = $$5;
+         o.add($$5);
+         return $$5;
+      }
    }
 
-   default ffy a(ffu.a $$0, Vector3f $$1) {
-      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   private boolean a(int $$0, ffy.b $$1) {
+      return $$0 == 0 || $$1 == ffy.b.d;
    }
 
-   default ffy a(ffu.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   @Override
+   public String toString() {
+      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
    }
 
-   default ffy a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public int a() {
+      return 1 << this.i;
    }
 
-   default ffy b(ffu.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.b($$4.x(), $$4.y(), $$4.z());
+   public int b() {
+      return this.k.a() * this.m;
    }
 
-   default ffy b(ffu.a $$0, Vector3f $$1) {
-      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
+   public void a(int $$0, long $$1, int $$2) {
+      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   }
+
+   @Nullable
+   public static ffy a(int $$0) {
+      return n[$$0];
+   }
+
+   public static Stream<ffy> b(int $$0) {
+      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   }
+
+   public int c() {
+      return this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public ffy.a e() {
+      return this.k;
+   }
+
+   public ffy.b f() {
+      return this.l;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(final int $$0, final String $$1, final int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public int b() {
+         return this.j;
+      }
+
+      @Override
+      public String toString() {
+         return this.i;
+      }
+   }
+
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
+         }
+      }),
+      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
+
+      private final String f;
+      final ffy.b.a g;
+
+      private b(final String $$0, final ffy.b.a $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.f;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
+      }
    }
 }

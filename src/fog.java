@@ -1,38 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class fog {
-   public static final float a = 200.0F;
-   private final List<fog.a> b = new ArrayList<>();
+public abstract class fog extends foi implements fqm {
+   @Nullable
+   private fqn a;
+   private boolean c;
 
-   public fog a(fog.a $$0) {
-      this.b.add($$0);
-      return this;
+   public fog(int $$0, int $$1, int $$2, int $$3, wo $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public fog a(fog $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
+   @Override
+   public final boolean aK_() {
+      return this.c;
    }
 
-   public void a(fod $$0, fkz $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
+   @Override
+   public final void b_(boolean $$0) {
+      this.c = $$0;
    }
 
-   private void b(fod $$0, fkz $$1) {
-      for (fog.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
+   @Nullable
+   @Override
+   public fqn aL_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fqn $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
    }
 
-   public interface a {
-      void render(fod var1, fkz var2);
+   @Nullable
+   @Override
+   public fny a(fst $$0) {
+      return fqm.super.a($$0);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return fqm.super.a($$0, $$1, $$2) || $$3;
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      return fqm.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      return fqm.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aM_() {
+      return fqm.super.aM_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      fqm.super.a($$0);
    }
 }

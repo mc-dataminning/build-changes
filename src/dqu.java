@@ -1,111 +1,113 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqu extends djm implements dqs {
-   public static final MapCodec<dqu> a = b(dqu::new);
-   public static final dxu<dye> b = dxn.bk;
-   public static final dxo c = dxn.J;
-   protected static final fbu d = djm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final fbu e = djm.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class dqu extends dlt implements djn, dqq {
+   public static final MapCodec<dqu> c = b(dqu::new);
+   private static final dxm g = dxl.J;
+   public static final dxs<jn> d = dxl.U;
+   protected static final float e = 6.0F;
+   protected static final fbs f = djk.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends dqu> a() {
-      return a;
+   public MapCodec<dqu> a() {
+      return c;
    }
 
-   public dqu(dww.d $$0) {
+   public dqu(dwu.d $$0) {
       super($$0);
-      this.l(this.m().b(b, dye.b).b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, dxq.b).b(g, Boolean.valueOf(false)).b(d, jn.c));
    }
 
    @Override
-   protected boolean g_(dwx $$0) {
-      return $$0.c(b) != dye.c;
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return f;
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      dye $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return fbr.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
+   protected boolean b(dwv $$0, dfl $$1, ji $$2) {
+      return $$0.a(awo.bz) || $$1.b_($$2.d()).a(esy.c) && super.b($$0, $$1, $$2);
    }
 
    @Nullable
    @Override
-   public dwx a(dag $$0) {
-      ji $$1 = $$0.a();
-      dwx $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dye.c).b(c, Boolean.valueOf(false));
-      } else {
-         esz $$3 = $$0.q().b_($$1);
-         dwx $$4 = this.m().b(b, dye.b).b(c, Boolean.valueOf($$3.a() == eta.c));
-         jn $$5 = $$0.k();
-         return $$5 != jn.a && ($$5 == jn.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dye.a);
+   public dwv a(dae $$0) {
+      dwv $$1 = super.a($$0);
+      return $$1 != null ? b($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
+   }
+
+   @Override
+   public void a(dgg $$0, ji $$1, dwv $$2, bvf $$3, cwn $$4) {
+      if (!$$0.B_()) {
+         ji $$5 = $$1.d();
+         dwv $$6 = dlt.b($$0, $$5, this.m().b(b, dxq.a).b(d, $$2.c(d)));
+         $$0.a($$5, $$6, 3);
       }
    }
 
    @Override
-   protected boolean a(dwx $$0, dag $$1) {
-      cwp $$2 = $$1.n();
-      dye $$3 = $$0.c(b);
-      if ($$3 == dye.c || !$$2.a(this.j())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jn $$5 = $$1.k();
-         return $$3 == dye.b ? $$5 == jn.b || $$4 && $$5.o().d() : $$5 == jn.a || !$$4 && $$5.o().d();
+   protected esx b_(dwv $$0) {
+      return $$0.c(g) ? esy.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
+      if ($$0.c(b) == dxq.a) {
+         return super.a($$0, $$1, $$2);
       } else {
-         return true;
+         ji $$3 = $$2.e();
+         dwv $$4 = $$1.a_($$3);
+         return this.b($$4, $$1, $$3);
       }
    }
 
    @Override
-   protected esz b_(dwx $$0) {
-      return $$0.c(c) ? eta.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public boolean a(dgj $$0, ji $$1, dwx $$2, esz $$3) {
-      return $$2.c(b) != dye.c ? dqs.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cox $$0, dfn $$1, ji $$2, dwx $$3, esy $$4) {
-      return $$3.c(b) != dye.c ? dqs.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, eta.c, eta.c.a($$1));
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if ($$0.c(g)) {
+         $$2.a($$3, esy.c, esy.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(awv.a);
-         case c:
-            return false;
-         default:
-            return false;
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(b, g, d);
+   }
+
+   @Override
+   public boolean a(dgj $$0, ji $$1, dwv $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
+      if ($$3.c(dlt.b) == dxq.b) {
+         ji $$4 = $$2.d();
+         $$0.a($$4, $$0.b_($$4).g(), 18);
+         djh.a($$0, $$1, $$2, $$3.c(d));
+      } else {
+         ji $$5 = $$2.e();
+         this.a($$0, $$1, $$5, $$0.a_($$5));
       }
+   }
+
+   @Override
+   protected dwv a(dwv $$0, dqc $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected dwv a(dwv $$0, doj $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected float at_() {
+      return 0.1F;
    }
 }

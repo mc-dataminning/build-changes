@@ -1,15 +1,56 @@
-public interface goi<T extends dtz> {
-   void a(T var1, float var2, ffu var3, glx var4, int var5, int var6);
+@FunctionalInterface
+public interface goi<T extends dtx> {
+   goh<T> create(goi.a var1);
 
-   default boolean a(T $$0) {
-      return false;
-   }
+   public static class a {
+      private final gog a;
+      private final gmz b;
+      private final hbi c;
+      private final gsz d;
+      private final grz e;
+      private final gew f;
+      private final fnz g;
 
-   default int a() {
-      return 64;
-   }
+      public a(gog $$0, gmz $$1, hbi $$2, gsz $$3, grz $$4, gew $$5, fnz $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   default boolean a(T $$0, fba $$1) {
-      return fba.b($$0.aA_()).a((kb)$$1, (double)this.a());
+      public gog a() {
+         return this.a;
+      }
+
+      public gmz b() {
+         return this.b;
+      }
+
+      public grz c() {
+         return this.e;
+      }
+
+      public hbi d() {
+         return this.c;
+      }
+
+      public gsz e() {
+         return this.d;
+      }
+
+      public gew f() {
+         return this.f;
+      }
+
+      public gfa a(gey $$0) {
+         return this.f.a($$0);
+      }
+
+      public fnz g() {
+         return this.g;
+      }
    }
 }

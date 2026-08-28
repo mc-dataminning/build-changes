@@ -1,86 +1,61 @@
+import com.mojang.datafixers.DataFixUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cbz extends cce {
-   private int a;
-   private final bvo b;
-   @Nullable
-   private cox c;
-   private cbn d;
+public class cbz extends ccd {
+   private static final int a = 200;
+   private final cgu b;
+   private int c;
+   private int d;
 
-   public cbz(bvo $$0) {
+   public cbz(cgu $$0) {
       this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(cgu $$0) {
+      return b(200 + $$0.dZ().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      List<cqu> $$0 = this.b.dW().a(cqu.class, this.b.cR().g(5.0));
-      boolean $$1 = false;
-
-      for (cqu $$2 : $$0) {
-         buk $$3 = $$2.cX();
-         if ($$3 instanceof cox && (ayz.e(((cox)$$3).bn) > 0.0F || ayz.e(((cox)$$3).bp) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.b.gu()) {
+         return false;
+      } else if (this.b.gr()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<cgu> $$0 = $$0x -> $$0x.gt() || !$$0x.gr();
+         List<? extends cgu> $$1 = this.b.dW().a((Class<? extends cgu>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
+         cgu $$2 = (cgu)DataFixUtils.orElse($$1.stream().filter(cgu::gt).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gr()));
+         return this.b.gr();
       }
-
-      return this.c != null && (ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean U_() {
-      return true;
    }
 
    @Override
    public boolean c() {
-      return this.c != null && this.c.bZ() && (ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F);
+      return this.b.gr() && this.b.gv();
    }
 
    @Override
    public void d() {
-      for (cqu $$1 : this.b.dW().a(cqu.class, this.b.cR().g(5.0))) {
-         if ($$1.cX() instanceof cox $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = cbn.a;
+      this.c = 0;
    }
 
    @Override
    public void e() {
-      this.c = null;
+      this.b.gs();
    }
 
    @Override
    public void a() {
-      boolean $$0 = ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F;
-      float $$1 = this.d == cbn.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new fba((double)this.b.bn, (double)this.b.bo, (double)this.b.bp));
-      this.b.a(bvk.a, this.b.dz());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == cbn.a) {
-            ji $$2 = this.c.dw().a(this.c.cO().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = cbn.b;
-            }
-         } else if (this.d == cbn.b) {
-            jn $$3 = this.c.cP();
-            ji $$4 = this.c.dw().a($$3, 10);
-            this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = cbn.a;
-            }
-         }
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gw();
       }
    }
 }

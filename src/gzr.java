@@ -1,4 +1,8 @@
-public class gzr extends gzi {
-   public float a;
-   public int b;
+public class gzr extends gzh implements gzy {
+   public boolean a;
+
+   @Override
+   public boolean a() {
+      return this.a;
+   }
 }

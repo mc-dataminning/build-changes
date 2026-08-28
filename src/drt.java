@@ -1,25 +1,29 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface drt {
-   czq c();
+public class drt extends dlt implements djn {
+   public static final MapCodec<drt> c = b(drt::new);
 
-   static List<drt> d() {
-      return mb.g.s().map(drt::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<drt> a() {
+      return c;
    }
 
-   @Nullable
-   static drt a(dgh $$0) {
-      if ($$0.j() instanceof cuv $$1) {
-         djm var6 = $$1.d();
-         if (var6 instanceof drt) {
-            return (drt)var6;
-         }
-      }
+   public drt(dwu.d $$0) {
+      super($$0);
+   }
 
-      cwl $$2 = $$0.j();
-      return $$2 instanceof drt ? (drt)$$2 : null;
+   @Override
+   public boolean a(dgj $$0, ji $$1, dwv $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
+      a($$0, $$2, new cwn(this));
    }
 }

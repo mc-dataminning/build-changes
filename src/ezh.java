@@ -1,31 +1,36 @@
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record ezh(Optional<cv> b) implements eza {
-   public static final MapCodec<ezh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.a.optionalFieldOf("predicate").forGetter(ezh::c)).apply($$0, ezh::new));
+public record ezh(ezu b, evo c) implements eyy {
+   public static final MapCodec<ezh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ezv.a.fieldOf("value").forGetter(ezh::c), evo.a.fieldOf("range").forGetter(ezh::d)).apply($$0, ezh::new)
+   );
 
    @Override
-   public ezb b() {
-      return ezc.j;
+   public eyz b() {
+      return eza.r;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(eyl.i);
+   public Set<bah<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public boolean a(evr $$0) {
-      cwp $$1 = $$0.c(eyl.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public boolean a(evp $$0) {
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   public static eza.a a(cv.a $$0) {
-      return () -> new ezh(Optional.of($$0.b()));
+   public static eyy.a a(ezu $$0, evo $$1) {
+      return () -> new ezh($$0, $$1);
    }
 
-   public Optional<cv> c() {
+   public ezu c() {
       return this.b;
+   }
+
+   public evo d() {
+      return this.c;
    }
 }

@@ -1,54 +1,35 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dbc extends dbs {
-   public dbc(dar $$0) {
-      super("", $$0, dbt.a(Map.of('#', dba.a(cwt.rv), 'x', dba.a(cwt.sR)), "###", "#x#", "###"), new cwp(cwt.vi));
+public interface dbc<T extends dbi> {
+   Codec<dbc<?>> a = mb.r.q().dispatch(dbc::a, dbm::a);
+   ym<vz, dbc<?>> b = yk.a(mc.ae).b(dbc::a, dbm::b);
+
+   boolean a(T var1, dgg var2);
+
+   cwn a(T var1, jt.a var2);
+
+   default boolean ap_() {
+      return false;
    }
 
-   @Override
-   public boolean a(das $$0, dgi $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         cwp $$2 = c($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            eut $$3 = cxc.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.g() ? false : $$3.f < 4;
-            }
-         }
-      }
-   }
-
-   @Override
-   public cwp a(das $$0, jt.a $$1) {
-      cwp $$2 = c($$0).c(1);
-      $$2.b(kv.N, czm.b);
-      return $$2;
-   }
-
-   private static cwp c(das $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         cwp $$2 = $$0.a($$1);
-         if ($$2.b(kv.L)) {
-            return $$2;
-         }
-      }
-
-      return cwp.j;
-   }
-
-   @Override
-   public boolean ap_() {
+   default boolean i() {
       return true;
    }
 
-   @Override
-   public dbo<dbc> a() {
-      return dbo.f;
+   default String j() {
+      return "";
    }
+
+   dbm<? extends dbc<T>> a();
+
+   dbn<? extends dbc<T>> b();
+
+   dbb ao_();
+
+   default List<dch> g() {
+      return List.of();
+   }
+
+   dbf h();
 }

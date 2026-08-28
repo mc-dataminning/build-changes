@@ -31,7 +31,7 @@ public record wk(wl l, wl m) {
       $$0.a(k, new wk(wl.a("chat.type.emote"), wl.a("chat.type.emote")));
    }
 
-   public static wk.a a(akt<wk> $$0, buk $$1) {
+   public static wk.a a(akt<wk> $$0, buj $$1) {
       return a($$0, $$1.dW().K_(), $$1.p_());
    }
 

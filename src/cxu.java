@@ -1,21 +1,25 @@
-import javax.annotation.Nullable;
+public class cxu extends cwj implements cxi {
+   public static float a = 1.5F;
 
-public class cxu extends cyc {
-   public cxu(djm $$0, djm $$1, cwl.a $$2) {
-      super($$0, $$1, jn.a, $$2);
-   }
-
-   public cxu(cwl.a $$0, djm $$1, djm $$2, jn $$3) {
-      super($$1, $$2, $$3, $$0);
+   public cxu(cwj.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(ji $$0, dgi $$1, @Nullable cox $$2, cwp $$3, dwx $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dvm $$6 && $$1.a_($$0).b() instanceof dqr $$7) {
-         $$7.a($$2, $$6, true);
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      cwn $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), avz.zo, awa.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arc $$4) {
+         cpo.a(cpt::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
 
-      return $$5;
+      $$1.b(awj.c.b(this));
+      $$3.a(1, $$1);
+      return bsi.a;
+   }
+
+   @Override
+   public cpo a(dgg $$0, kb $$1, cwn $$2, jn $$3) {
+      return new cpt($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

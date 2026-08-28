@@ -3,46 +3,35 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class brs extends brm {
+public class brs extends brl {
    public static final MapCodec<brs> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
-               )
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
                .apply($$0, brs::new)
       )
       .validate(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         }
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
       );
    private final float b;
    private final float d;
-   private final float e;
 
-   public static brs a(float $$0, float $$1, float $$2) {
-      return new brs($$0, $$1, $$2);
-   }
-
-   private brs(float $$0, float $$1, float $$2) {
+   private brs(float $$0, float $$1) {
       this.b = $$0;
       this.d = $$1;
-      this.e = $$2;
+   }
+
+   public static brs b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new brs($$0, $$1);
+      }
    }
 
    @Override
-   public float a(azh $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   public float a(azg $$0) {
+      return ayy.b($$0, this.b, this.d);
    }
 
    @Override
@@ -56,12 +45,12 @@ public class brs extends brm {
    }
 
    @Override
-   public brn<?> c() {
-      return brn.d;
+   public brm<?> c() {
+      return brm.b;
    }
 
    @Override
    public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

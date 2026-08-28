@@ -1,128 +1,101 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public final class enu {
-   public static final String a = "INVALID";
-   public static final enu b = new enu(null, new dfo(0, 0), 0, new eob(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final enm d;
-   private final eob e;
-   private final dfo f;
-   private int g;
-   @Nullable
-   private volatile ene h;
+public abstract class enu extends eno {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected erm b;
+   protected eri c;
+   protected ji d;
 
-   public enu(enm $$0, dfo $$1, int $$2, eob $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public enu(eob $$0, int $$1, ern $$2, aku $$3, String $$4, eri $$5, ji $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(jn.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   @Nullable
-   public static enu a(eoc $$0, tq $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
-      } else {
-         ke<enm> $$4 = $$0.b().e(mc.aU);
-         enm $$5 = $$4.a(aku.a($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
-            return null;
-         } else {
-            dfo $$6 = new dfo($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            tw $$8 = $$1.c("Children", 10);
+   public enu(eob $$0, tq $$1, ern $$2, Function<aku, eri> $$3) {
+      super($$0, $$1);
+      this.a(jn.c);
+      this.a = $$1.l("Template");
+      this.d = new ji($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      aku $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
 
-            try {
-               eob $$9 = eob.a($$8, $$0);
-               if ($$5 instanceof epx) {
-                  $$9 = epx.a($$6, $$2, $$9);
+   protected aku b() {
+      return aku.a(this.a);
+   }
+
+   @Override
+   protected void a(eoa $$0, tq $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(dhe $$0, dhc $$1, dyr $$2, azg $$3, enc $$4, dfm $$5, ji $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (erm.d $$8 : this.b.a(this.d, this.c, djm.pC)) {
+            if ($$8.c() != null) {
+               dye $$9 = dye.valueOf($$8.c().l("mode"));
+               if ($$9 == dye.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (erm.d $$11 : this.b.a(this.d, this.c, djm.pD)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dwv $$13 = djm.a.m();
+
+               try {
+                  $$13 = gr.a($$0.a(mc.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
                }
 
-               return new enu($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
+               $$0.a($$11.a(), $$13, 3);
             }
          }
       }
    }
 
-   public ene a() {
-      ene $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
+   protected abstract void a(String var1, ji var2, dgx var3, azg var4, enc var5);
 
-      return $$0;
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
-   public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5) {
-      List<enq> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         ene $$7 = $$6.get(0).f;
-         ji $$8 = $$7.g();
-         ji $$9 = new ji($$8.u(), $$7.i(), $$8.w());
-
-         for (enq $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
-         }
-
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
+   @Override
+   public dqc a() {
+      return this.c.d();
    }
 
-   public tq a(eoc $$0, dfo $$1) {
-      tq $$2 = new tq();
-      if (this.b()) {
-         $$2.a("id", $$0.b().e(mc.aU).b(this.d).toString());
-         $$2.a("ChunkX", $$1.h);
-         $$2.a("ChunkZ", $$1.i);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
-         return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
+   public erm c() {
+      return this.b;
    }
 
-   public boolean b() {
-      return !this.e.a();
-   }
-
-   public dfo c() {
-      return this.f;
-   }
-
-   public boolean d() {
-      return this.g < this.g();
-   }
-
-   public void e() {
-      this.g++;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   protected int g() {
-      return 1;
-   }
-
-   public enm h() {
+   public ji d() {
       return this.d;
    }
 
-   public List<enq> i() {
-      return this.e.c();
+   public eri e() {
+      return this.c;
    }
 }

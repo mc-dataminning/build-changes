@@ -1,176 +1,104 @@
-import java.util.Optional;
+public class csj extends csa {
+   private final bsb m;
+   private final int n;
 
-public class csj extends csc {
-   static final aku m = aku.b("container/slot/brewing_fuel");
-   static final aku n = aku.b("container/slot/potion");
-   private static final int o = 0;
-   private static final int p = 2;
-   private static final int q = 3;
-   private static final int r = 4;
-   private static final int s = 5;
-   private static final int t = 2;
-   private static final int u = 5;
-   private static final int v = 32;
-   private static final int w = 32;
-   private static final int x = 41;
-   private final bsc y;
-   private final cso z;
-   private final ctz A;
-
-   public csj(int $$0, cow $$1) {
-      this($$0, $$1, new bsq(5), new cty(2));
+   private csj(ctj<?> $$0, int $$1, cou $$2, int $$3) {
+      this($$0, $$1, $$2, new bsp(9 * $$3), $$3);
    }
 
-   public csj(int $$0, cow $$1, bsc $$2, cso $$3) {
-      super(ctl.l, $$0);
-      a($$2, 5);
-      a($$3, 2);
-      this.y = $$2;
-      this.z = $$3;
-      cyn $$4 = $$1.k.dW().L();
-      this.a(new csj.c($$2, 0, 56, 51));
-      this.a(new csj.c($$2, 1, 79, 58));
-      this.a(new csj.c($$2, 2, 102, 51));
-      this.A = this.a(new csj.b($$4, $$2, 3, 79, 17));
-      this.a(new csj.a($$2, 4, 17, 17));
-      this.a($$3);
-      this.c($$1, 8, 84);
+   public static csj a(int $$0, cou $$1) {
+      return new csj(ctj.a, $$0, $$1, 1);
+   }
+
+   public static csj b(int $$0, cou $$1) {
+      return new csj(ctj.b, $$0, $$1, 2);
+   }
+
+   public static csj c(int $$0, cou $$1) {
+      return new csj(ctj.c, $$0, $$1, 3);
+   }
+
+   public static csj d(int $$0, cou $$1) {
+      return new csj(ctj.d, $$0, $$1, 4);
+   }
+
+   public static csj e(int $$0, cou $$1) {
+      return new csj(ctj.e, $$0, $$1, 5);
+   }
+
+   public static csj f(int $$0, cou $$1) {
+      return new csj(ctj.f, $$0, $$1, 6);
+   }
+
+   public static csj a(int $$0, cou $$1, bsb $$2) {
+      return new csj(ctj.c, $$0, $$1, $$2, 3);
+   }
+
+   public static csj b(int $$0, cou $$1, bsb $$2) {
+      return new csj(ctj.f, $$0, $$1, $$2, 6);
+   }
+
+   public csj(ctj<?> $$0, int $$1, cou $$2, bsb $$3, int $$4) {
+      super($$0, $$1);
+      a($$3, $$4 * 9);
+      this.m = $$3;
+      this.n = $$4;
+      $$3.c_($$2.k);
+      int $$5 = 18;
+      this.d($$3, 8, 18);
+      int $$6 = 18 + this.n * 18 + 13;
+      this.c($$2, 8, $$6);
+   }
+
+   private void d(bsb $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.n; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new ctx($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
+         }
+      }
    }
 
    @Override
-   public boolean b(cox $$0) {
-      return this.y.a($$0);
+   public boolean b(cov $$0) {
+      return this.m.a($$0);
    }
 
    @Override
-   public cwp b(cox $$0, int $$1) {
-      cwp $$2 = cwp.j;
-      ctz $$3 = this.k.get($$1);
+   public cwn b(cov $$0, int $$1) {
+      cwn $$2 = cwn.j;
+      ctx $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwp $$4 = $$3.g();
+         cwn $$4 = $$3.g();
          $$2 = $$4.v();
-         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
-            if (csj.a.b($$2)) {
-               if (this.a($$4, 4, 5, false) || this.A.a($$4) && !this.a($$4, 3, 4, false)) {
-                  return cwp.j;
-               }
-            } else if (this.A.a($$4)) {
-               if (!this.a($$4, 3, 4, false)) {
-                  return cwp.j;
-               }
-            } else if (csj.c.b($$2)) {
-               if (!this.a($$4, 0, 3, false)) {
-                  return cwp.j;
-               }
-            } else if ($$1 >= 5 && $$1 < 32) {
-               if (!this.a($$4, 32, 41, false)) {
-                  return cwp.j;
-               }
-            } else if ($$1 >= 32 && $$1 < 41) {
-               if (!this.a($$4, 5, 32, false)) {
-                  return cwp.j;
-               }
-            } else if (!this.a($$4, 5, 41, false)) {
-               return cwp.j;
+         if ($$1 < this.n * 9) {
+            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
+               return cwn.j;
             }
-         } else {
-            if (!this.a($$4, 5, 41, true)) {
-               return cwp.j;
-            }
-
-            $$3.b($$4, $$2);
+         } else if (!this.a($$4, 0, this.n * 9, false)) {
+            return cwn.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cwp.j);
+            $$3.e(cwn.j);
          } else {
             $$3.c();
          }
-
-         if ($$4.M() == $$2.M()) {
-            return cwp.j;
-         }
-
-         $$3.a($$0, $$2);
       }
 
       return $$2;
    }
 
-   public int l() {
-      return this.z.a(1);
+   @Override
+   public void a(cov $$0) {
+      super.a($$0);
+      this.m.c($$0);
+   }
+
+   public bsb l() {
+      return this.m;
    }
 
    public int m() {
-      return this.z.a(0);
-   }
-
-   static class a extends ctz {
-      public a(bsc $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cwp $$0) {
-         return b($$0);
-      }
-
-      public static boolean b(cwp $$0) {
-         return $$0.a(awy.X);
-      }
-
-      @Override
-      public aku b() {
-         return csj.m;
-      }
-   }
-
-   static class b extends ctz {
-      private final cyn a;
-
-      public b(cyn $$0, bsc $$1, int $$2, int $$3, int $$4) {
-         super($$1, $$2, $$3, $$4);
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean a(cwp $$0) {
-         return this.a.a($$0);
-      }
-   }
-
-   static class c extends ctz {
-      public c(bsc $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cwp $$0) {
-         return b($$0);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-
-      @Override
-      public void a(cox $$0, cwp $$1) {
-         Optional<jr<cym>> $$2 = $$1.a(kv.Q, cyo.a).e();
-         if ($$2.isPresent() && $$0 instanceof ard $$3) {
-            ap.l.a($$3, $$2.get());
-         }
-
-         super.a($$0, $$1);
-      }
-
-      public static boolean b(cwp $$0) {
-         return $$0.a(cwt.ti) || $$0.a(cwt.wo) || $$0.a(cwt.wr) || $$0.a(cwt.th);
-      }
-
-      @Override
-      public aku b() {
-         return csj.n;
-      }
+      return this.n;
    }
 }

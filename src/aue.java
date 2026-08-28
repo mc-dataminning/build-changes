@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aue {
+public interface aue extends auo, AutoCloseable {
+   @Override
+   void close();
 }

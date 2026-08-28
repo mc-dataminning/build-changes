@@ -1,24 +1,20 @@
-class btu extends btn {
-   protected btu(bto $$0, int $$1, lr $$2) {
-      super($$0, $$1, $$2);
+class btu extends btm {
+   protected btu(btn $$0, int $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(arc $$0, bvf $$1, int $$2) {
+      if ($$1.eE() < $$1.eS()) {
+         $$1.c(1.0F);
+      }
+
+      return true;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 == 1;
-   }
-
-   @Override
-   public boolean a(arc $$0, bvg $$1, int $$2) {
-      if ($$1 instanceof ard $$3 && !$$1.Z_()) {
-         ji $$4 = $$3.ag();
-         if ($$4 != null) {
-            $$0.B().a($$3, $$4);
-            $$3.af();
-            return false;
-         }
-      }
-
-      return true;
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

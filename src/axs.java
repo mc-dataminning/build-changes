@@ -1,36 +1,32 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-public class axs {
-   public static final int a = -1;
-   private final Object2IntMap<Class<?>> b = af.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
-
-   public int a(Class<?> $$0) {
-      int $$1 = this.b.getInt($$0);
-      if ($$1 != -1) {
-         return $$1;
+public record axs(int b) {
+   private static final String c = "#";
+   public static final Codec<axs> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
       } else {
-         Class<?> $$2 = $$0;
-
-         while (($$2 = $$2.getSuperclass()) != Object.class) {
-            int $$3 = this.b.getInt($$2);
-            if ($$3 != -1) {
-               return $$3;
-            }
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new axs($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
          }
-
-         return -1;
       }
+   }, axs::b);
+
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   public int b(Class<?> $$0) {
-      return this.a($$0) + 1;
+   @Override
+   public String toString() {
+      return this.b();
    }
 
-   public int c(Class<?> $$0) {
-      int $$1 = this.a($$0);
-      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
-      this.b.put($$0, $$2);
-      return $$2;
+   public int a() {
+      return this.b;
    }
 }

@@ -1,8 +1,4 @@
-public class gyo extends gzi {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class gyo extends gyh {
+   public boolean a;
+   public final hbk b = new hbk();
 }

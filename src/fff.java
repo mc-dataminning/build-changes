@@ -1,5 +1,8 @@
-public interface fff<T> {
-   T e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(T var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fda
+@fcz
+interface fff {
 }

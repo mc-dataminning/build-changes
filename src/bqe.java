@@ -1,6 +1,5 @@
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.List;
 
 public interface bqe {
-   Set<bqc> a(Supplier<bop> var1);
+   List<bqb> bw();
 }

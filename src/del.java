@@ -1,26 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface del {
+   akt<def> a = a("mob_spawn_equipment");
+   akt<def> b = a("pillager_spawn_crossbow");
+   akt<def> c = a("raid/pillager_post_wave_3");
+   akt<def> d = a("raid/pillager_post_wave_5");
+   akt<def> e = a("raid/vindicator");
+   akt<def> f = a("raid/vindicator_post_wave_5");
+   akt<def> g = a("enderman_loot_drop");
 
-public record del(jr<dcz> c, bro d) implements deh {
-   public static final MapCodec<del> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcz.c.fieldOf("enchantment").forGetter(del::b), bro.c.fieldOf("level").forGetter(del::c)).apply($$0, del::new)
-   );
-
-   @Override
-   public void a(cwp $$0, ddf.a $$1, azh $$2, bsh $$3) {
-      $$1.b(this.c, ayz.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   static void a(qe<def> $$0) {
+      js<dcx> $$1 = $$0.a(mc.aO);
+      $$0.a(a, new dei($$1.b(awr.l), 5, 17));
+      $$0.a(b, new dej($$1.b(ddc.K), brk.a(1)));
+      $$0.a(c, new dej($$1.b(ddc.J), brk.a(1)));
+      $$0.a(d, new dej($$1.b(ddc.J), brk.a(2)));
+      $$0.a(e, new dej($$1.b(ddc.n), brk.a(1)));
+      $$0.a(f, new dej($$1.b(ddc.n), brk.a(2)));
+      $$0.a(g, new dej($$1.b(ddc.v), brk.a(1)));
    }
 
-   @Override
-   public MapCodec<del> a() {
-      return b;
-   }
-
-   public jr<dcz> b() {
-      return this.c;
-   }
-
-   public bro c() {
-      return this.d;
+   static akt<def> a(String $$0) {
+      return akt.a(mc.aP, aku.b($$0));
    }
 }

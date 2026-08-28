@@ -1,19 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cex extends cfj {
+   public static final float a = 8.0F;
 
-public class cex extends cfq<bub> {
    @Override
-   public Set<cek<?>> a() {
-      return ImmutableSet.of(cek.K, cek.h);
+   protected boolean a(arc $$0, bvf $$1, bvf $$2) {
+      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cfp.c($$0, $$1, $$2);
    }
 
-   protected void a(arc $$0, bub $$1) {
-      $$1.ec().c(cek.h).ifPresent($$1x -> this.a($$1, $$1x));
+   private boolean a(bvf $$0, bvf $$1) {
+      return !$$0.ec().a(cej.U) && $$1.aq().a(aws.j);
    }
 
-   private void a(bub $$0, cem $$1) {
-      Optional<bub> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(bub.class::cast);
-      $$0.ec().a(cek.K, $$2);
+   private boolean b(bvf $$0) {
+      return $$0.aq().a(aws.i);
+   }
+
+   private boolean b(bvf $$0, bvf $$1) {
+      return $$1.g((buj)$$0) <= 64.0;
+   }
+
+   @Override
+   protected cej<bvf> b() {
+      return cej.B;
    }
 }

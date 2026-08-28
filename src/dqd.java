@@ -1,48 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqd extends djm {
-   public static final MapCodec<dqd> h = b(dqd::new);
-   public static final dxu<jn.a> i = dxn.L;
+public class dqd extends dju implements djn {
+   public static final MapCodec<dqd> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwk.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dqd::new)
+   );
+   public static final dxu f = dxl.aX;
+   protected static final float g = 6.0F;
+   protected static final fbs h = djk.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dwk i;
 
    @Override
    public MapCodec<? extends dqd> a() {
-      return h;
+      return e;
    }
 
-   public dqd(dww.d $$0) {
-      super($$0);
-      this.l(this.m().b(i, jn.a.b));
+   protected dqd(dwk $$0, dwu.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return b($$0, $$1);
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return h;
    }
 
-   public static dwx b(dwx $$0, dqe $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jn.a)$$0.c(i)) {
-               case a:
-                  return $$0.b(i, jn.a.c);
-               case c:
-                  return $$0.b(i, jn.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
+   @Override
+   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
+   }
+
+   public void a(arc $$0, ji $$1, dwv $$2, azg $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
+      } else {
+         this.i.a($$0, $$0.m().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(i);
+   public boolean a(dgj $$0, ji $$1, dwv $$2) {
+      return true;
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return this.m().b(i, $$0.k().o());
+   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+      return (double)$$0.A.i() < 0.45;
+   }
+
+   @Override
+   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(f);
    }
 }

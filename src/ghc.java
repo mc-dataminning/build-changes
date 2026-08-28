@@ -1,66 +1,67 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class ghc extends ghd {
-   private final String g;
-
-   ghc(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+public record ghc(String a, @Nullable ghc.a b) {
+   public static ghc a() {
+      return a(null);
    }
 
-   public String a() {
-      return this.g;
+   public static ghc a(String $$0) {
+      return a(new ghc.a.b($$0));
    }
 
-   public ghc c() {
-      ghc $$0 = new ghc(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.f = this.f;
-      return $$0;
+   public static ghc a(fhj $$0) {
+      return a(new ghc.a.a($$0));
    }
 
-   @Override
-   public fuk a(fuk $$0, ghh $$1) {
-      return new fyu($$0, $$1, this);
+   public static ghc a(@Nullable ghc.a $$0) {
+      return new ghc(g(), $$0);
    }
 
-   public static class a extends ghd.a<ghc> {
-      public a(ghc $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof ghc.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof ghc.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w45a");
+      if (flh.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new ghc(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+      return $$0.toString();
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
+   public String e() {
+      return this.a;
+   }
 
-      @Nullable
-      @Override
-      public ghd.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ghd.b.d : super.c();
-      }
+   @Nullable
+   public ghc.a f() {
+      return this.b;
+   }
 
-      @Override
-      public Either<ghd.c, ghd.b> a(ghh $$0) {
-         ghd.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new ghd.c(this.a.a, ghg.c, $$3));
+   public interface a {
+      public static record a(long a, int b) implements ghc.a {
+         public a(fhj $$0) {
+            this($$0.a, $$0.p);
          }
+      }
+
+      public static record b(String a) implements ghc.a {
       }
    }
 }

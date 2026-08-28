@@ -27,7 +27,7 @@ public class anf {
    }
 
    private static int a(ex $$0, hh $$1, Collection<ard> $$2, int $$3) throws CommandSyntaxException {
-      cwp $$4 = $$1.a(1, false);
+      cwn $$4 = $$1.a(1, false);
       int $$5 = $$4.k();
       int $$6 = $$5 * 100;
       if ($$3 > $$6) {
@@ -40,18 +40,18 @@ public class anf {
             while ($$8 > 0) {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
-               cwp $$10 = $$1.a($$9, false);
+               cwn $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.gi().f($$10);
                if ($$11 && $$10.f()) {
-                  clb $$13 = $$7.a($$4, false);
+                  cla $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.y();
                   }
 
-                  $$7.dW().a(null, $$7.dB(), $$7.dD(), $$7.dH(), awa.oa, awb.h, 0.2F, (($$7.dZ().i() - $$7.dZ().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.dW().a(null, $$7.dB(), $$7.dD(), $$7.dH(), avz.oa, awa.h, 0.2F, (($$7.dZ().i() - $$7.dZ().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.cd.d();
                } else {
-                  clb $$12 = $$7.a($$10, false);
+                  cla $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.t();
                      $$12.b($$7.cG());

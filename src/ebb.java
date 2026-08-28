@@ -1,15 +1,14 @@
-public interface ebb {
-   ebb a = new ebb() {
-      @Override
-      public void a() {
-      }
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-      @Override
-      public void a(buk.d $$0) {
-      }
-   };
+public interface ebb<T> extends AutoCloseable {
+   CompletableFuture<eaw<T>> a(dfm var1);
 
-   void a();
+   void a(eaw<T> var1);
 
-   void a(buk.d var1);
+   void a(boolean var1);
+
+   @Override
+   default void close() throws IOException {
+   }
 }

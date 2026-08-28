@@ -1,145 +1,93 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ewo extends exe {
-   private static final Map<aku, ewo.c> b = Stream.of(ewo.a.a, ewo.d.b, ewo.e.b).collect(Collectors.toMap(ewo.c::a, Function.identity()));
-   private static final Codec<ewo.c> c = aku.a.comapFlatMap($$0 -> {
-      ewo.c $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
-   }, ewo.c::a);
-   private static final MapCodec<ewo.b> d = ayi.a("formula", "parameters", c, ewo.b::a, ewo.c::b);
+public class ewo extends exc {
    public static final MapCodec<ewo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(dcz.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, ewo::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  mb.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dxx::f).toList())
+               )
+            )
+            .apply($$0, ewo::new)
    );
-   private final jr<dcz> e;
-   private final ewo.b f;
+   private final jr<djk> b;
+   private final Set<dxx<?>> c;
 
-   private ewo(List<eza> $$0, jr<dcz> $$1, ewo.b $$2) {
+   ewo(List<eyy> $$0, jr<djk> $$1, Set<dxx<?>> $$2) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private ewo(List<eyy> $$0, jr<djk> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public exg<ewo> b() {
-      return exh.x;
+   public exe<ewo> b() {
+      return exf.D;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(eyl.i);
+   public Set<bah<?>> a() {
+      return Set.of(eyj.g);
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      cwp $$2 = $$1.c(eyl.i);
+   protected cwn a(cwn $$0, evp $$1) {
+      dwv $$2 = $$1.c(eyj.g);
       if ($$2 != null) {
-         int $$3 = ddb.a(this.e, $$2);
-         int $$4 = this.f.a($$1.b(), $$0.M(), $$3);
-         $$0.e($$4);
+         $$0.a(kv.am, cyp.a, $$1x -> {
+            for (dxx<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
       }
 
       return $$0;
    }
 
-   public static exe.a<?> a(jr<dcz> $$0, float $$1, int $$2) {
-      return a($$3 -> new ewo($$3, $$0, new ewo.a($$2, $$1)));
+   public static ewo.a a(djk $$0) {
+      return new ewo.a($$0);
    }
 
-   public static exe.a<?> a(jr<dcz> $$0) {
-      return a($$1 -> new ewo($$1, $$0, new ewo.d()));
-   }
+   public static class a extends exc.a<ewo.a> {
+      private final jr<djk> a;
+      private final Builder<dxx<?>> b = ImmutableSet.builder();
 
-   public static exe.a<?> b(jr<dcz> $$0) {
-      return a($$1 -> new ewo($$1, $$0, new ewo.e(1)));
-   }
-
-   public static exe.a<?> a(jr<dcz> $$0, int $$1) {
-      return a($$2 -> new ewo($$2, $$0, new ewo.e($$1)));
-   }
-
-   static record a(int b, float c) implements ewo.b {
-      private static final Codec<ewo.a> d = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(ewo.a::b), Codec.FLOAT.fieldOf("probability").forGetter(ewo.a::c)).apply($$0, ewo.a::new)
-      );
-      public static final ewo.c a = new ewo.c(aku.b("binomial_with_bonus_count"), d);
-
-      @Override
-      public int a(azh $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
-         }
-
-         return $$1;
+      a(djk $$0) {
+         this.a = $$0.p();
       }
 
-      @Override
-      public ewo.c a() {
-         return a;
-      }
-   }
-
-   interface b {
-      int a(azh var1, int var2, int var3);
-
-      ewo.c a();
-   }
-
-   static record c(aku a, Codec<? extends ewo.b> b) {
-   }
-
-   static record d() implements ewo.b {
-      public static final Codec<ewo.d> a = Codec.unit(ewo.d::new);
-      public static final ewo.c b = new ewo.c(aku.b("ore_drops"), a);
-
-      @Override
-      public int a(azh $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
-
-            return $$1 * ($$3 + 1);
+      public ewo.a a(dxx<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
          } else {
-            return $$1;
+            this.b.add($$0);
+            return this;
          }
       }
 
-      @Override
-      public ewo.c a() {
-         return b;
-      }
-   }
-
-   static record e(int c) implements ewo.b {
-      public static final Codec<ewo.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(ewo.e::b)).apply($$0, ewo.e::new)
-      );
-      public static final ewo.c b = new ewo.c(aku.b("uniform_bonus_count"), a);
-
-      @Override
-      public int a(azh $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.c * $$2 + 1);
+      protected ewo.a a() {
+         return this;
       }
 
       @Override
-      public ewo.c a() {
-         return b;
-      }
-
-      public int b() {
-         return this.c;
+      public exd b() {
+         return new ewo(this.g(), this.a, this.b.build());
       }
    }
 }

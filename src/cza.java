@@ -1,15 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public record cza(axf<btc> c) {
-   public static final Codec<cza> a = RecordCodecBuilder.create($$0 -> $$0.group(axf.b(mc.s).fieldOf("types").forGetter(cza::a)).apply($$0, cza::new));
-   public static final ym<vz, cza> b = ym.a(axf.c(mc.s), cza::a, cza::new);
+public record cza(Map<jr<djk>, dxx<?>> c) {
+   public static final cza a = new cza(Map.of());
+   public static final Codec<cza> b = Codec.dispatchedMap(mb.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dxx<?> $$2 = ((djk)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dxx::f)).xmap(cza::new, cza::a);
 
-   public boolean a(bta $$0) {
-      return $$0.a(this.c);
+   public cza a(jr<djk> $$0, dxx<?> $$1) {
+      return new cza(af.a(this.c, $$0, $$1));
    }
 
-   public axf<btc> a() {
+   public Map<jr<djk>, dxx<?>> a() {
       return this.c;
    }
 }

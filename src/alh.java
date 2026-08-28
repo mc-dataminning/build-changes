@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class alh extends aut<ah> {
+public class alh extends aus<ah> {
    private static final Logger a = LogUtils.getLogger();
    private Map<aku, ai> b = Map.of();
    private an c = new an();
@@ -17,7 +17,7 @@ public class alh extends aut<ah> {
       this.d = $$0;
    }
 
-   protected void a(Map<aku, ah> $$0, aup $$1, bos $$2) {
+   protected void a(Map<aku, ah> $$0, auo $$1, bor $$2) {
       Builder<aku, ai> $$3 = ImmutableMap.builder();
       $$0.forEach(($$1x, $$2x) -> {
          this.a($$1x, $$2x);
@@ -37,7 +37,7 @@ public class alh extends aut<ah> {
    }
 
    private void a(aku $$0, ah $$1) {
-      azf.a $$2 = new azf.a();
+      aze.a $$2 = new aze.a();
       $$1.a($$2, this.d);
       $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }

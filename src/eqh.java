@@ -1,24 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eqh extends enm {
+public class eqh extends enk {
    public static final MapCodec<eqh> d = a(eqh::new);
 
-   public eqh(enm.c $$0) {
+   public eqh(enk.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<enm.b> a(enm.a $$0) {
-      return a($$0, ecs.a.a, $$1 -> a($$1, $$0));
+   public Optional<enk.b> a(enk.a $$0) {
+      dqc $$1 = dqc.a($$0.f());
+      ji $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new enk.b($$2, (Consumer<eoc>)($$3 -> this.a($$3, $$0, $$2, $$1))));
    }
 
-   private static void a(eoe $$0, enm.a $$1) {
-      $$0.a(new eqg($$1.f(), $$1.h().d(), $$1.h().e()));
+   private void a(eoc $$0, enk.a $$1, ji $$2, dqc $$3) {
+      List<eqg.i> $$4 = Lists.newLinkedList();
+      eqg.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public env<?> e() {
-      return env.o;
+   public void a(dhe $$0, dhc $$1, dyr $$2, azg $$3, enc $$4, dfm $$5, enz $$6) {
+      ji.a $$7 = new ji.a();
+      int $$8 = $$0.L_();
+      enc $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.u($$7) && !$$0.a_($$7).n()) {
+                     break;
+                  }
+
+                  $$0.a($$7, djm.m.m(), 2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public ent<?> e() {
+      return ent.p;
    }
 }

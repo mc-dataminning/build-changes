@@ -1,24 +1,21 @@
 public class gfg {
-   public static final gfg a = new gfg(0.0F);
-   final float b;
-   final float c;
-   final float d;
+   private final gfi a;
+   private final gfh b;
 
-   public gfg(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private gfg(gfi $$0, gfh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public gfg(float $$0) {
-      this($$0, $$0, $$0);
+   public gfg a(gfj $$0) {
+      return new gfg($$0.apply(this.a), this.b);
    }
 
-   public gfg a(float $$0) {
-      return new gfg(this.b + $$0, this.c + $$0, this.d + $$0);
+   public gfa a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public gfg a(float $$0, float $$1, float $$2) {
-      return new gfg(this.b + $$0, this.c + $$1, this.d + $$2);
+   public static gfg a(gfi $$0, int $$1, int $$2) {
+      return new gfg($$0, new gfh($$1, $$2));
    }
 }

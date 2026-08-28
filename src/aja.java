@@ -8,9 +8,9 @@ public class aja implements yv<aix> {
    private final byte[] b;
    private final byte[] c;
 
-   public aja(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axy {
-      this.b = axx.a($$1, $$0.getEncoded());
-      this.c = axx.a($$1, $$2);
+   public aja(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axx {
+      this.b = axw.a($$1, $$0.getEncoded());
+      this.c = axw.a($$1, $$2);
    }
 
    private aja(vl $$0) {
@@ -32,14 +32,14 @@ public class aja implements yv<aix> {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws axy {
-      return axx.a($$0, this.b);
+   public SecretKey a(PrivateKey $$0) throws axx {
+      return axw.a($$0, this.b);
    }
 
    public boolean a(byte[] $$0, PrivateKey $$1) {
       try {
-         return Arrays.equals($$0, axx.b($$1, this.c));
-      } catch (axy var4) {
+         return Arrays.equals($$0, axw.b($$1, this.c));
+      } catch (axx var4) {
          return false;
       }
    }

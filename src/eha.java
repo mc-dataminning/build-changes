@@ -1,109 +1,60 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
 
-public class eha extends efy<eis> {
-   public eha(Codec<eis> $$0) {
+public class eha extends efw<eir> {
+   public eha(Codec<eir> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eis> $$0) {
-      dhg $$1 = $$0.b();
+   public boolean a(efy<eir> $$0) {
+      dhe $$1 = $$0.b();
       ji $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+      if (!this.a($$1, $$2)) {
          return false;
       } else {
-         azh $$3 = $$0.d();
-         ji $$4 = $$0.e();
-         eis $$5 = $$0.f();
-         ji.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
+         eir $$3 = $$0.f();
+         azg $$4 = $$0.d();
+         dqk $$5 = dqk.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         ji $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
+            $$1.a($$2, djm.rw.m(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            ji $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jn.b)) {
+               $$1.a($$14, djm.rx.m().b(dqj.d, Boolean.valueOf(true)), 3);
+            }
          }
 
          return true;
       }
    }
 
-   private static boolean a(dhg $$0, eis $$1, ji $$2) {
-      ji.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jn.b);
-         dwx $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dwx $$0, int $$1, int $$2) {
-      if ($$0.l()) {
+   private boolean a(dgh $$0, ji $$1) {
+      dwv $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dqf) {
          return true;
       } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(awv.a);
-      }
-   }
-
-   private static boolean a(dhg $$0, dyt $$1, eis $$2, azh $$3, ji.a $$4, ji $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jn.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            ji $$7 = $$4.e();
-            if ($$0.b_($$7).a(awv.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(ji $$0, int $$1, dhg $$2, eis $$3, azh $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      ji.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dhg $$0, eis $$1, azh $$2, int $$3, int $$4, ji.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dwx> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dhg $$0, eis $$1, azh $$2, ji $$3, ji.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dwx $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jn.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
+         return !$$2.l() && (!$$2.a(djm.J) || !$$2.y().b()) ? false : jn.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
       }
    }
 }

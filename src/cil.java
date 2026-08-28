@@ -1,22 +1,21 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cil extends bwz<cij> {
-   public cil() {
-      super(ImmutableMap.of(cek.N, cel.a, cek.y, cel.a), 200);
-   }
+public class cil {
+   public static bwz<bvf> a() {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$0 -> $$0.group($$0.b(cej.N), $$0.a(cej.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.ec().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   protected boolean a(arc $$0, cij $$1) {
-      return $$1.bm();
-   }
-
-   protected boolean a(arc $$0, cij $$1, long $$2) {
-      return $$1.bm() && $$1.ec().a(cek.N);
-   }
-
-   protected void b(arc $$0, cij $$1, long $$2) {
-      bwi<cij> $$3 = $$1.ec();
-      $$3.b(cek.m);
-      $$3.b(cek.n);
-      $$1.a(new btp(btr.j, 200, 0));
+                  return true;
+               }))
+      );
    }
 }

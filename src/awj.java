@@ -1,45 +1,98 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+public class awj {
+   public static final awi<djk> a = a("mined", mb.e);
+   public static final awi<cwj> b = a("crafted", mb.g);
+   public static final awi<cwj> c = a("used", mb.g);
+   public static final awi<cwj> d = a("broken", mb.g);
+   public static final awi<cwj> e = a("picked_up", mb.g);
+   public static final awi<cwj> f = a("dropped", mb.g);
+   public static final awi<buq<?>> g = a("killed", mb.f);
+   public static final awi<buq<?>> h = a("killed_by", mb.f);
+   public static final awi<aku> i = a("custom", mb.k);
+   public static final aku j = a("leave_game", awh.b);
+   public static final aku k = a("play_time", awh.e);
+   public static final aku l = a("total_world_time", awh.e);
+   public static final aku m = a("time_since_death", awh.e);
+   public static final aku n = a("time_since_rest", awh.e);
+   public static final aku o = a("sneak_time", awh.e);
+   public static final aku p = a("walk_one_cm", awh.d);
+   public static final aku q = a("crouch_one_cm", awh.d);
+   public static final aku r = a("sprint_one_cm", awh.d);
+   public static final aku s = a("walk_on_water_one_cm", awh.d);
+   public static final aku t = a("fall_one_cm", awh.d);
+   public static final aku u = a("climb_one_cm", awh.d);
+   public static final aku v = a("fly_one_cm", awh.d);
+   public static final aku w = a("walk_under_water_one_cm", awh.d);
+   public static final aku x = a("minecart_one_cm", awh.d);
+   public static final aku y = a("boat_one_cm", awh.d);
+   public static final aku z = a("pig_one_cm", awh.d);
+   public static final aku A = a("horse_one_cm", awh.d);
+   public static final aku B = a("aviate_one_cm", awh.d);
+   public static final aku C = a("swim_one_cm", awh.d);
+   public static final aku D = a("strider_one_cm", awh.d);
+   public static final aku E = a("jump", awh.b);
+   public static final aku F = a("drop", awh.b);
+   public static final aku G = a("damage_dealt", awh.c);
+   public static final aku H = a("damage_dealt_absorbed", awh.c);
+   public static final aku I = a("damage_dealt_resisted", awh.c);
+   public static final aku J = a("damage_taken", awh.c);
+   public static final aku K = a("damage_blocked_by_shield", awh.c);
+   public static final aku L = a("damage_absorbed", awh.c);
+   public static final aku M = a("damage_resisted", awh.c);
+   public static final aku N = a("deaths", awh.b);
+   public static final aku O = a("mob_kills", awh.b);
+   public static final aku P = a("animals_bred", awh.b);
+   public static final aku Q = a("player_kills", awh.b);
+   public static final aku R = a("fish_caught", awh.b);
+   public static final aku S = a("talked_to_villager", awh.b);
+   public static final aku T = a("traded_with_villager", awh.b);
+   public static final aku U = a("eat_cake_slice", awh.b);
+   public static final aku V = a("fill_cauldron", awh.b);
+   public static final aku W = a("use_cauldron", awh.b);
+   public static final aku X = a("clean_armor", awh.b);
+   public static final aku Y = a("clean_banner", awh.b);
+   public static final aku Z = a("clean_shulker_box", awh.b);
+   public static final aku aa = a("interact_with_brewingstand", awh.b);
+   public static final aku ab = a("interact_with_beacon", awh.b);
+   public static final aku ac = a("inspect_dropper", awh.b);
+   public static final aku ad = a("inspect_hopper", awh.b);
+   public static final aku ae = a("inspect_dispenser", awh.b);
+   public static final aku af = a("play_noteblock", awh.b);
+   public static final aku ag = a("tune_noteblock", awh.b);
+   public static final aku ah = a("pot_flower", awh.b);
+   public static final aku ai = a("trigger_trapped_chest", awh.b);
+   public static final aku aj = a("open_enderchest", awh.b);
+   public static final aku ak = a("enchant_item", awh.b);
+   public static final aku al = a("play_record", awh.b);
+   public static final aku am = a("interact_with_furnace", awh.b);
+   public static final aku an = a("interact_with_crafting_table", awh.b);
+   public static final aku ao = a("open_chest", awh.b);
+   public static final aku ap = a("sleep_in_bed", awh.b);
+   public static final aku aq = a("open_shulker_box", awh.b);
+   public static final aku ar = a("open_barrel", awh.b);
+   public static final aku as = a("interact_with_blast_furnace", awh.b);
+   public static final aku at = a("interact_with_smoker", awh.b);
+   public static final aku au = a("interact_with_lectern", awh.b);
+   public static final aku av = a("interact_with_campfire", awh.b);
+   public static final aku aw = a("interact_with_cartography_table", awh.b);
+   public static final aku ax = a("interact_with_loom", awh.b);
+   public static final aku ay = a("interact_with_stonecutter", awh.b);
+   public static final aku az = a("bell_ring", awh.b);
+   public static final aku aA = a("raid_trigger", awh.b);
+   public static final aku aB = a("raid_win", awh.b);
+   public static final aku aC = a("interact_with_anvil", awh.b);
+   public static final aku aD = a("interact_with_grindstone", awh.b);
+   public static final aku aE = a("target_hit", awh.b);
+   public static final aku aF = a("interact_with_smithing_table", awh.b);
 
-public class awj<T> implements Iterable<awh<T>> {
-   private final ke<T> a;
-   private final Map<T, awh<T>> b = new IdentityHashMap<>();
-   private final wo c;
-   private final ym<vz, awh<T>> d;
-
-   public awj(ke<T> $$0, wo $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = yk.a($$0.g()).a(this::b, awh::b);
+   private static aku a(String $$0, awh $$1) {
+      aku $$2 = aku.b($$0);
+      ke.a(mb.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   public ym<vz, awh<T>> a() {
-      return this.d;
-   }
-
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public awh<T> a(T $$0, awi $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new awh<>(this, (T)$$1x, $$1));
-   }
-
-   public ke<T> b() {
-      return this.a;
-   }
-
-   @Override
-   public Iterator<awh<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public awh<T> b(T $$0) {
-      return this.a($$0, awi.b);
-   }
-
-   public wo c() {
-      return this.c;
+   private static <T> awi<T> a(String $$0, ke<T> $$1) {
+      wo $$2 = wo.c("stat_type.minecraft." + $$0);
+      return ke.a(mb.v, $$0, new awi<>($$1, $$2));
    }
 }

@@ -1,36 +1,56 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class exv extends exe {
+public class exv extends exc {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<exv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axf.b(mc.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, exv::new)
+      $$0 -> a($$0)
+            .and($$0.group(ezv.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, exv::new)
    );
-   private final axf<cwi> b;
+   private final ezu c;
+   private final boolean d;
 
-   private exv(List<eza> $$0, axf<cwi> $$1) {
+   private exv(List<eyy> $$0, ezu $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public exg<exv> b() {
-      return exh.G;
+   public exe<exv> b() {
+      return exf.n;
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      ke<cwi> $$2 = $$1.d().K_().e(mc.I);
-      Optional<jr<cwi>> $$3 = $$2.a(this.b, $$1.b());
-      if ($$3.isPresent()) {
-         $$0.b(kv.Z, $$3.get());
+   public Set<bah<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public cwn a(cwn $$0, evp $$1) {
+      if ($$0.m()) {
+         int $$2 = $$0.p();
+         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - ayy.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(ayy.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
 
       return $$0;
    }
 
-   public static exe.a<?> a(axf<cwi> $$0) {
-      return a($$1 -> new exv($$1, $$0));
+   public static exc.a<?> a(ezu $$0) {
+      return a($$1 -> new exv($$1, $$0, false));
+   }
+
+   public static exc.a<?> a(ezu $$0, boolean $$1) {
+      return a($$2 -> new exv($$2, $$0, $$1));
    }
 }

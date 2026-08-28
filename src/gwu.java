@@ -1,14 +1,23 @@
-public class gwu<S extends hae, M extends gca<S>> extends gwr<S, M> {
-   private final gdv<S> a;
-   private final aku b;
+public class gwu extends gwq<hae, gdw> {
+   private final gdw a;
 
-   public gwu(gtz<S, M> $$0, gey $$1, gfa $$2, aku $$3) {
+   public gwu(gty<hae, gdw> $$0, gew $$1) {
       super($$0);
-      this.b = $$3;
-      this.a = new gdv<>($$1.a($$2));
+      this.a = new gdw($$1.a(gez.cP));
    }
 
-   public void a(ffu $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(ffs $$0, glv $$1, int $$2, hae $$3, float $$4, float $$5) {
+      boolean $$6 = $$3.ao && $$3.z;
+      if (!$$3.z || $$6) {
+         ffw $$7;
+         if ($$6) {
+            $$7 = $$1.getBuffer(gmf.s(guf.a));
+         } else {
+            $$7 = $$1.getBuffer(gmf.j(guf.a));
+         }
+
+         this.a.a($$3);
+         this.a.a($$0, $$7, $$2, gtc.a($$3, 0.0F));
+      }
    }
 }

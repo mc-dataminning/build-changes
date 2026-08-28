@@ -1,42 +1,22 @@
-public class gwd extends gwr<gyr, gcd> {
-   public gwd(gtz<gyr, gcd> $$0) {
+public class gwd extends gwq<gyx, gcj> {
+   private final gcj a;
+   private final gcj b;
+   private final gwa c;
+
+   public gwd(gty<gyx, gcj> $$0, gew $$1, gwa $$2) {
       super($$0);
+      this.c = $$2;
+      this.a = new gcj($$1.a(gez.be));
+      this.b = new gcj($$1.a(gez.bg));
    }
 
-   public void a(ffu $$0, glx $$1, int $$2, gyr $$3, float $$4, float $$5) {
-      hbl $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
-
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
-
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         $$6.a($$0, $$1, $$2, hea.d);
-         $$0.b();
+   public void a(ffs $$0, glv $$1, int $$2, gyx $$3, float $$4, float $$5) {
+      cwn $$6 = $$3.i;
+      des $$7 = $$6.a(kv.D);
+      if ($$7 != null && !$$7.c().isEmpty()) {
+         gcj $$8 = $$3.aj ? this.b : this.a;
+         $$8.a($$3);
+         this.c.a(hgr.d.e, $$7.c().get(), $$8, $$6, $$0, $$1, $$2);
       }
    }
 }

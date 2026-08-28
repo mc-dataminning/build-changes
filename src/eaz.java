@@ -1,4 +1,15 @@
-@FunctionalInterface
 public interface eaz {
-   void onChunkStatusChange(dfo var1, aqr var2);
+   eaz a = new eaz() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public void a(buj.d $$0) {
+      }
+   };
+
+   void a();
+
+   void a(buj.d var1);
 }

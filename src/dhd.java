@@ -1,34 +1,25 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhd {
-   void a(bur<?> var1, azh var2);
+public record dhd(dft d, crr e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dhd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dft.b.lenientOptionalFieldOf("DataPacks", dft.a).forGetter(dhd::a), crt.f.lenientOptionalFieldOf("enabled_features", crt.h).forGetter(dhd::b)
+            )
+            .apply($$0, dhd::new)
+   );
+   public static final dhd c = new dhd(dft.a, crt.h);
 
-   static void a(cwp $$0, List<wo> $$1, String $$2) {
-      wo $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(wn.a);
-         $$1.add(wo.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(wn.a().b(wo.c("block.minecraft.spawner.desc2").a(n.j)));
-      }
+   public dhd a(crr $$0) {
+      return new dhd(this.d, this.e.c($$0));
    }
 
-   @Nullable
-   static wo a(cwp $$0, String $$1) {
-      tq $$2 = $$0.a(kv.Y, cyy.a).e();
-      aku $$3 = a($$2, $$1);
-      return $$3 != null ? mb.f.b($$3).map($$0x -> wo.c($$0x.g()).a(n.h)).orElse(null) : null;
+   public dft a() {
+      return this.d;
    }
 
-   @Nullable
-   private static aku a(tq $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return aku.c($$2);
-      } else {
-         return null;
-      }
+   public crr b() {
+      return this.e;
    }
 }

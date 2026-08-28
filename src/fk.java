@@ -32,7 +32,7 @@ public class fk implements ArgumentType<hm> {
       return new fk(true, false);
    }
 
-   public static buk a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static buj a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((hm)$$0.getArgument($$1, hm.class)).a((ex)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class fk implements ArgumentType<hm> {
       return new fk(false, false);
    }
 
-   public static Collection<? extends buk> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends buk> $$2 = c($$0, $$1);
+   public static Collection<? extends buj> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends buj> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class fk implements ArgumentType<hm> {
       }
    }
 
-   public static Collection<? extends buk> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends buj> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((hm)$$0.getArgument($$1, hm.class)).b((ex)$$0.getSource());
    }
 

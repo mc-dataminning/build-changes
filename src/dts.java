@@ -1,108 +1,344 @@
-public class dts extends dvh {
-   private ka<cwp> d = ka.a(27, cwp.j);
-   private final dum e = new dum() {
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+
+public class dts extends dtx implements bsk, bsl {
+   private static final int f = 4;
+   public static final List<List<jr<btm>>> a = List.of(List.of(btq.a, btq.c), List.of(btq.k, btq.h), List.of(btq.e), List.of(btq.j));
+   private static final Set<jr<btm>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   public static final int e = 3;
+   private static final int h = 10;
+   private static final wo i = wo.c("container.beacon");
+   private static final String j = "primary_effect";
+   private static final String k = "secondary_effect";
+   List<dts.a> l = Lists.newArrayList();
+   private List<dts.a> m = Lists.newArrayList();
+   int n;
+   private int r;
+   @Nullable
+   jr<btm> s;
+   @Nullable
+   jr<btm> t;
+   @Nullable
+   private wo u;
+   private bsj v = bsj.a;
+   private final csm w = new csm() {
       @Override
-      protected void a(dgi $$0, ji $$1, dwx $$2) {
-         dts.this.a($$2, awa.bz);
-         dts.this.a($$2, true);
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dts.this.n;
+            case 1 -> csf.a(dts.this.s);
+            case 2 -> csf.a(dts.this.t);
+            default -> 0;
+         };
       }
 
       @Override
-      protected void b(dgi $$0, ji $$1, dwx $$2) {
-         dts.this.a($$2, awa.by);
-         dts.this.a($$2, false);
-      }
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dts.this.n = $$1;
+               break;
+            case 1:
+               if (!dts.this.o.C && !dts.this.l.isEmpty()) {
+                  dts.a(dts.this.o, dts.this.p, avz.bN);
+               }
 
-      @Override
-      protected void a(dgi $$0, ji $$1, dwx $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(cox $$0) {
-         if ($$0.cd instanceof csl) {
-            bsc $$1 = ((csl)$$0.cd).l();
-            return $$1 == dts.this;
-         } else {
-            return false;
+               dts.this.s = dts.a(csf.e($$1));
+               break;
+            case 2:
+               dts.this.t = dts.a(csf.e($$1));
          }
+      }
+
+      @Override
+      public int a() {
+         return 3;
       }
    };
 
-   public dts(ji $$0, dwx $$1) {
-      super(dub.B, $$0, $$1);
+   @Nullable
+   static jr<btm> a(@Nullable jr<btm> $$0) {
+      return g.contains($$0) ? $$0 : null;
+   }
+
+   public dts(ji $$0, dwv $$1) {
+      super(dtz.p, $$0, $$1);
+   }
+
+   public static void a(dgg $$0, ji $$1, dwv $$2, dts $$3) {
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      ji $$7;
+      if ($$3.r < $$5) {
+         $$7 = $$1;
+         $$3.m = Lists.newArrayList();
+         $$3.r = $$1.v() - 1;
+      } else {
+         $$7 = new ji($$4, $$3.r + 1, $$6);
+      }
+
+      dts.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
+      int $$10 = $$0.a(ecq.a.b, $$4, $$6);
+
+      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
+         dwv $$12 = $$0.a_($$7);
+         if ($$12.b() instanceof djb $$14) {
+            int $$15 = $$14.b().d();
+            if ($$3.m.size() <= 1) {
+               $$9 = new dts.a($$15);
+               $$3.m.add($$9);
+            } else if ($$9 != null) {
+               if ($$15 == $$9.a) {
+                  $$9.a();
+               } else {
+                  $$9 = new dts.a(axj.d($$9.a, $$15));
+                  $$3.m.add($$9);
+               }
+            }
+         } else {
+            if ($$9 == null || $$12.g() >= 15 && !$$12.a(djm.I)) {
+               $$3.m.clear();
+               $$3.r = $$10;
+               break;
+            }
+
+            $$9.a();
+         }
+
+         $$7 = $$7.d();
+         $$3.r++;
+      }
+
+      int $$16 = $$3.n;
+      if ($$0.ad() % 80L == 0L) {
+         if (!$$3.l.isEmpty()) {
+            $$3.n = a($$0, $$4, $$5, $$6);
+         }
+
+         if ($$3.n > 0 && !$$3.l.isEmpty()) {
+            a($$0, $$1, $$3.n, $$3.s, $$3.t);
+            a($$0, $$1, avz.bL);
+         }
+      }
+
+      if ($$3.r >= $$10) {
+         $$3.r = $$0.L_() - 1;
+         boolean $$17 = $$16 > 0;
+         $$3.l = $$3.m;
+         if (!$$0.C) {
+            boolean $$18 = $$3.n > 0;
+            if (!$$17 && $$18) {
+               a($$0, $$1, avz.bK);
+
+               for (ard $$19 : $$0.a(ard.class, new fat((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
+                  ap.m.a($$19, $$3.n);
+               }
+            } else if ($$17 && !$$18) {
+               a($$0, $$1, avz.bM);
+            }
+         }
+      }
+   }
+
+   private static int a(dgg $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
+         int $$6 = $$2 - $$5;
+         if ($$6 < $$0.L_()) {
+            break;
+         }
+
+         boolean $$7 = true;
+
+         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
+            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
+               if (!$$0.a_(new ji($$8, $$6, $$9)).a(awo.aP)) {
+                  $$7 = false;
+                  break;
+               }
+            }
+         }
+
+         if (!$$7) {
+            break;
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsd.a($$0, this.d, $$1);
+   public void av_() {
+      a(this.o, this.p, avz.bM);
+      super.av_();
+   }
+
+   private static void a(dgg $$0, ji $$1, int $$2, @Nullable jr<btm> $$3, @Nullable jr<btm> $$4) {
+      if (!$$0.C && $$3 != null) {
+         double $$5 = (double)($$2 * 10 + 10);
+         int $$6 = 0;
+         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
+            $$6 = 1;
+         }
+
+         int $$7 = (9 + $$2 * 2) * 20;
+         fat $$8 = new fat($$1).g($$5).b(0.0, (double)$$0.M_(), 0.0);
+         List<cov> $$9 = $$0.a(cov.class, $$8);
+
+         for (cov $$10 : $$9) {
+            $$10.a(new bto($$3, $$7, $$6, true, true));
+         }
+
+         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
+            for (cov $$11 : $$9) {
+               $$11.a(new bto($$4, $$7, 0, true, true));
+            }
+         }
+      }
+   }
+
+   public static void a(dgg $$0, ji $$1, avy $$2) {
+      $$0.a(null, $$1, $$2, awa.e, 1.0F, 1.0F);
+   }
+
+   public List<dts.a> b() {
+      return (List<dts.a>)(this.n == 0 ? ImmutableList.of() : this.l);
+   }
+
+   public abr c() {
+      return abr.a(this);
+   }
+
+   @Override
+   public tq a(jt.a $$0) {
+      return this.e($$0);
+   }
+
+   private static void a(tq $$0, String $$1, @Nullable jr<btm> $$2) {
+      if ($$2 != null) {
+         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
+      }
+   }
+
+   @Nullable
+   private static jr<btm> a(tq $$0, String $$1) {
+      if ($$0.b($$1, 8)) {
+         aku $$2 = aku.c($$0.l($$1));
+         return $$2 == null ? null : mb.d.c($$2).map(dts::a).orElse(null);
+      } else {
+         return null;
       }
    }
 
    @Override
    protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      this.d = ka.a(this.b(), cwp.j);
-      if (!this.b_($$0)) {
-         bsd.b($$0, this.d, $$1);
+      this.s = a($$0, "primary_effect");
+      this.t = a($$0, "secondary_effect");
+      if ($$0.b("CustomName", 8)) {
+         this.u = a($$0.l("CustomName"), $$1);
+      }
+
+      this.v = bsj.b($$0, $$1);
+   }
+
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      a($$0, "primary_effect", this.s);
+      a($$0, "secondary_effect", this.t);
+      $$0.a("Levels", this.n);
+      if (this.u != null) {
+         $$0.a("CustomName", wo.a.a(this.u, $$1));
+      }
+
+      this.v.a($$0, $$1);
+   }
+
+   public void a(@Nullable wo $$0) {
+      this.u = $$0;
+   }
+
+   @Nullable
+   @Override
+   public wo an() {
+      return this.u;
+   }
+
+   @Nullable
+   @Override
+   public csa createMenu(int $$0, cou $$1, cov $$2) {
+      return dtr.a($$2, this.v, this.p_()) ? new csf($$0, $$1, this.w, csn.a(this.o, this.aA_())) : null;
+   }
+
+   @Override
+   public wo p_() {
+      return this.al();
+   }
+
+   @Override
+   public wo al() {
+      return this.u != null ? this.u : i;
+   }
+
+   @Override
+   protected void a(dtx.b $$0) {
+      super.a($$0);
+      this.u = $$0.a(kv.g);
+      this.v = $$0.a(kv.ao, bsj.a);
+   }
+
+   @Override
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.g, this.u);
+      if (!this.v.equals(bsj.a)) {
+         $$0.a(kv.ao, this.v);
       }
    }
 
    @Override
-   public int b() {
-      return 27;
+   public void a(tq $$0) {
+      $$0.r("CustomName");
+      $$0.r("lock");
    }
 
    @Override
-   protected ka<cwp> f() {
-      return this.d;
+   public void a(dgg $$0) {
+      super.a($$0);
+      this.r = $$0.L_() - 1;
    }
 
-   @Override
-   protected void a(ka<cwp> $$0) {
-      this.d = $$0;
-   }
+   public static class a {
+      final int a;
+      private int b;
 
-   @Override
-   protected wo j() {
-      return wo.c("container.barrel");
-   }
-
-   @Override
-   protected csc a(int $$0, cow $$1) {
-      return csl.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c_(cox $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.e.a($$0, this.i(), this.aA_(), this.m());
+      public a(int $$0) {
+         this.a = $$0;
+         this.b = 1;
       }
-   }
 
-   @Override
-   public void c(cox $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.e.b($$0, this.i(), this.aA_(), this.m());
+      protected void a() {
+         this.b++;
       }
-   }
 
-   public void k() {
-      if (!this.q) {
-         this.e.c(this.i(), this.aA_(), this.m());
+      public int b() {
+         return this.a;
       }
-   }
 
-   void a(dwx $$0, boolean $$1) {
-      this.o.a(this.aA_(), $$0.b(dis.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dwx $$0, avz $$1) {
-      km $$2 = $$0.c(dis.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, awb.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+      public int c() {
+         return this.b;
+      }
    }
 }

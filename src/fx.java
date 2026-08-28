@@ -43,21 +43,21 @@ public class fx<T> implements ArgumentType<akt<T>> {
       return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jr.c<efk<?, ?>> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<efi<?, ?>> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, mc.aL, b);
    }
 
-   public static jr.c<enm> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<enk> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, mc.aU, c);
    }
 
-   public static jr.c<eow> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr.c<eou> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, mc.aX, d);
    }
 
-   public static dbj<?> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      dbl $$2 = ((ex)$$0.getSource()).l().aI();
-      akt<dbe<?>> $$3 = a($$0, $$1, mc.bk, e);
+   public static dbh<?> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      dbj $$2 = ((ex)$$0.getSource()).l().aI();
+      akt<dbc<?>> $$3 = a($$0, $$1, mc.bk, e);
       return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
    }
 

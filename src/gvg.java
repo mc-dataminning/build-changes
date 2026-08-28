@@ -1,46 +1,33 @@
-public class gvg extends gsb<cqe, hax> {
-   private static final aku a = aku.b("textures/entity/wither/wither_invulnerable.png");
-   private static final aku b = aku.b("textures/entity/wither/wither.png");
-   private final gdw h;
-
-   public gvg(gsc.a $$0) {
-      super($$0);
-      this.h = new gdw($$0.a(gfb.dG));
+public class gvg extends gqv<chz, hax, gep> {
+   public gvg(gsb.a $$0) {
+      super($$0, new gep($$0.a(gez.dH)), new gep($$0.a(gez.dJ)), 0.5F);
+      this.a(new gxe(this, $$0.f(), $$0.h()));
+      this.a(new gxf(this));
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("head", gfh.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfe.a);
-      return gfi.a($$0, 64, 64);
+   protected int a(hax $$0) {
+      float $$1 = $$0.f;
+      return $$1 == 1.0F ? -1 : axj.a(1.0F, $$1, $$1, $$1);
    }
 
-   protected int a(cqe $$0, ji $$1) {
-      return 15;
-   }
-
-   public void a(hax $$0, ffu $$1, glx $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      ffy $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hea.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private aku a(hax $$0) {
-      return $$0.a ? a : b;
+   public aku b(hax $$0) {
+      return $$0.g;
    }
 
    public hax b() {
       return new hax();
    }
 
-   public void a(cqe $$0, hax $$1, float $$2) {
+   public void a(chz $$0, hax $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.v();
-      $$1.c = $$0.k($$2);
-      $$1.b = $$0.j($$2);
+      $$1.a = $$0.ac_();
+      $$1.b = $$0.x();
+      $$1.c = $$0.gE();
+      $$1.d = $$0.L($$2);
+      $$1.e = $$0.K($$2);
+      $$1.g = $$0.gB();
+      $$1.f = $$0.J($$2);
+      $$1.h = $$0.p() ? $$0.gF() : null;
+      $$1.i = $$0.ag().v();
    }
 }

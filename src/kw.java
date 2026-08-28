@@ -64,6 +64,10 @@ public final class kw implements kr {
       return (T)($$1 != null ? $$1.orElse(null) : this.c.a($$0));
    }
 
+   public boolean d(ku<?> $$0) {
+      return this.d.containsKey($$0);
+   }
+
    @Nullable
    public <T> T b(ku<? super T> $$0, @Nullable T $$1) {
       this.j();
@@ -79,7 +83,7 @@ public final class kw implements kr {
    }
 
    @Nullable
-   public <T> T d(ku<? extends T> $$0) {
+   public <T> T e(ku<? extends T> $$0) {
       this.j();
       T $$1 = this.c.a($$0);
       Optional<? extends T> $$2;

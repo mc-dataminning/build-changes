@@ -1,36 +1,39 @@
 import com.mojang.serialization.Codec;
 
-public class ehf extends efy<eiu> {
-   public ehf(Codec<eiu> $$0) {
+public class ehf extends efw<eih> {
+   public ehf(Codec<eih> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eiu> $$0) {
-      eiu $$1 = $$0.f();
-      dhg $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      dwx $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dlv) {
-            if (!$$2.u($$3.d())) {
-               return false;
+   public boolean a(efy<eih> $$0) {
+      dhe $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      ji.a $$3 = new ji.a();
+      ji.a $$4 = new ji.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(ecq.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(jn.a, 1);
+            dhi $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, djm.eb.m(), 2);
             }
 
-            dlv.a($$2, $$4, $$3, 2);
-         } else if ($$4.b() instanceof dom) {
-            dom.a($$2, $$3, $$2.H_(), 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, djm.ea.m(), 2);
+               dwv $$11 = $$1.a_($$4);
+               if ($$11.b(dqz.c)) {
+                  $$1.a($$4, $$11.b(dqz.c, Boolean.valueOf(true)), 2);
+               }
+            }
          }
-
-         if ($$1.b()) {
-            $$2.a($$3, $$2.a_($$3).b(), 1);
-         }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

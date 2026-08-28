@@ -3,28 +3,46 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
 public class bbg extends DataFix {
-   public bbg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bbg(Schema $$0) {
+      super($$0, true);
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.remove("Bees");
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.remove("EntityData");
+      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
+      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bhw.D.typeName(), bjk.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bhw.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
-         }
-
-         return $$1;
-      });
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bhv.s, "minecraft:beehive");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
+      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
+      Type<?> $$3 = $$2.getElement();
+      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
+      OpticFinder<?> $$5 = DSL.typeFinder($$3);
+      Type<?> $$6 = this.getInputSchema().getType(bhv.s);
+      Type<?> $$7 = this.getOutputSchema().getType(bhv.s);
+      return this.fixTypeEverywhereTyped(
+         "BeehiveFieldRenameFix",
+         $$6,
+         $$7,
+         $$4x -> bao.a(
+               $$7,
+               $$4x.updateTyped(
+                  $$1,
+                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
+                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
+               )
+            )
+      );
    }
 }

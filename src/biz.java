@@ -1,21 +1,30 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class biz extends bgr {
-   private static final String a = "CanPickUpLoot";
-
+public class biz extends DataFix {
    public biz(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", bhw.B, "Villager");
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), biz::a);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhv.x);
+      OpticFinder<?> $$1 = $$0.findField("buy");
+      OpticFinder<?> $$2 = $$0.findField("buyB");
+      OpticFinder<?> $$3 = $$0.findField("sell");
+      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bhv.D.typeName(), bjj.a()));
+      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
+      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
+   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
+      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
    }
 }

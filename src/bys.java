@@ -2,14 +2,16 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bys {
-   public static bxa<bvg> a() {
-      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.group($$0.b(cek.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               cqk $$3 = $$0xx.d($$1.dw());
-               if ($$3 == null) {
-                  $$1.ec().a(cqo.j);
+   public static bwz<cog> a() {
+      return cal.a((Function<cal.b<cog>, ? extends App<cal.c<cog>, cao<cog>>>)($$0 -> $$0.group($$0.c(cej.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               coh $$3 = $$1.gz();
+               if ($$3.b() != coj.b && $$3.b() != coj.m && $$1.x() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gz().a(coj.b));
+                  $$1.g($$0xx);
+                  return true;
+               } else {
+                  return false;
                }
-
-               return true;
             })));
    }
 }

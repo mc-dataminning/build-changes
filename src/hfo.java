@@ -1,69 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class hfo extends tl {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public record hfo(aku a, @Nullable String b, @Nullable aku c, @Nullable aku d, hfo.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   private hfo(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+      private final String c;
 
-   public static hfo a(aup $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
+      private a(final String $$0) {
+         this.c = $$0;
+      }
 
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               aku $$7 = aku.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+      public static hfo.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
             }
          }
       }
 
-      tk.a().a($$3);
-      return new hfo(Map.copyOf($$3), $$2);
-   }
-
-   private static void a(String $$0, List<aun> $$1, Map<String, String> $$2) {
-      for (aun $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tl.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
+      public String a() {
+         return this.c;
       }
-   }
-
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public ayl a(wt $$0) {
-      return hfp.a($$0, this.d);
    }
 }

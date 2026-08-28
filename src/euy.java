@@ -1,184 +1,22 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.SignStyle;
+import java.time.temporal.ChronoField;
 
-public class euy implements evk {
-   private final evl a;
-   private final evk b;
-
-   public euy(evl $$0, evk $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public ji a() {
-      return this.b.a();
-   }
-
-   @Override
-   public float b() {
-      return this.b.b();
-   }
-
-   @Override
-   public long c() {
-      return this.b.c();
-   }
-
-   @Override
-   public long d() {
-      return this.b.d();
-   }
-
-   @Override
-   public String e() {
-      return this.a.e();
-   }
-
-   @Override
-   public int f() {
-      return this.b.f();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public dgf k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(ji $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(dgf $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public dge o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dyn.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dyn.c $$0) {
-   }
-
-   @Override
-   public bsg q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public fan<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, dgk $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+public class euy {
+   public static DateTimeFormatter a() {
+      return new DateTimeFormatterBuilder()
+         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.DAY_OF_MONTH, 2)
+         .appendLiteral('_')
+         .appendValue(ChronoField.HOUR_OF_DAY, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+         .toFormatter();
    }
 }

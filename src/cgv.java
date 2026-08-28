@@ -1,110 +1,56 @@
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public abstract class cgv extends cgt {
-   @Nullable
-   private cgv a;
-   private int b = 1;
-
-   public cgv(bur<? extends cgv> $$0, dgi $$1) {
+public abstract class cgv extends bua {
+   protected cgv(buq<? extends cgv> $$0, dgg $$1) {
       super($$0, $$1);
+      this.a(eto.j, 0.0F);
    }
 
    @Override
-   protected void B() {
-      super.B();
-      this.bS.a(5, new cca(this));
+   public boolean a(dgj $$0) {
+      return $$0.f(this);
    }
 
    @Override
-   public int af() {
-      return this.gq();
-   }
-
-   public int gq() {
-      return super.af();
+   public int Q() {
+      return 120;
    }
 
    @Override
-   protected boolean x() {
-      return !this.gr();
+   public int e(arc $$0) {
+      return 1 + this.ae.a(3);
    }
 
-   public boolean gr() {
-      return this.a != null && this.a.bL();
-   }
-
-   public cgv a(cgv $$0) {
-      this.a = $$0;
-      $$0.gx();
-      return $$0;
-   }
-
-   public void gs() {
-      this.a.gy();
-      this.a = null;
-   }
-
-   private void gx() {
-      this.b++;
-   }
-
-   private void gy() {
-      this.b--;
-   }
-
-   public boolean gt() {
-      return this.gu() && this.b < this.gq();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.gu() && this.dW().A.a(200) == 1) {
-         List<? extends cgt> $$0 = this.dW().a((Class<? extends cgt>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.b = 1;
+   protected void r(int $$0) {
+      if (this.bL() && !this.bm()) {
+         this.j($$0 - 1);
+         if (this.ct() == -20) {
+            this.j(0);
+            this.a(this.dX().i(), 2.0F);
          }
-      }
-   }
-
-   public boolean gu() {
-      return this.b > 1;
-   }
-
-   public boolean gv() {
-      return this.g(this.a) <= 121.0;
-   }
-
-   public void gw() {
-      if (this.gr()) {
-         this.L().a(this.a, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cgv> $$0) {
-      $$0.limit((long)(this.gq() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public bvz a(dgz $$0, bsh $$1, buq $$2, @Nullable bvz $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cgv.a(this);
       } else {
-         this.a(((cgv.a)$$3).a);
+         this.j(300);
       }
-
-      return $$3;
    }
 
-   public static class a implements bvz {
-      public final cgv a;
+   @Override
+   public void az() {
+      int $$0 = this.ct();
+      super.az();
+      this.r($$0);
+   }
 
-      public a(cgv $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public boolean cJ() {
+      return false;
+   }
+
+   @Override
+   public boolean y() {
+      return false;
+   }
+
+   public static boolean b(buq<? extends cgv> $$0, dgh $$1, bup $$2, ji $$3, azg $$4) {
+      int $$5 = $$1.P();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(awu.a) && $$1.a_($$3.d()).a(djm.J);
    }
 }

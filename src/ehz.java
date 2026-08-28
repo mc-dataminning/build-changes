@@ -1,30 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ehz(ekl b, edz c, bro d, int e) implements eic {
+public class ehz implements eia {
    public static final Codec<ehz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ekl.a.fieldOf("state_provider").forGetter(ehz::a),
-               edz.b.fieldOf("target").forGetter(ehz::b),
-               bro.b(0, 8).fieldOf("radius").forGetter(ehz::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ehz::d)
-            )
-            .apply($$0, ehz::new)
+      $$0 -> $$0.group(ji.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ehz::new)
    );
+   private final Optional<ji> b;
+   private final boolean c;
 
-   public ekl a() {
+   private ehz(Optional<ji> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static ehz a(ji $$0, boolean $$1) {
+      return new ehz(Optional.of($$0), $$1);
+   }
+
+   public static ehz a() {
+      return new ehz(Optional.empty(), false);
+   }
+
+   public Optional<ji> b() {
       return this.b;
    }
 
-   public edz b() {
+   public boolean c() {
       return this.c;
-   }
-
-   public bro c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

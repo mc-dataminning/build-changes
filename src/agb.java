@@ -69,8 +69,8 @@ public class agb {
       "Fist"
    };
 
-   public static String a(buk $$0) {
-      if ($$0 instanceof cox) {
+   public static String a(buj $$0) {
+      if ($$0 instanceof cov) {
          return $$0.al().getString();
       } else {
          wo $$1 = $$0.an();
@@ -79,15 +79,15 @@ public class agb {
    }
 
    public static String a(UUID $$0) {
-      azh $$1 = b($$0);
+      azg $$1 = b($$0);
       return a($$1, a) + a($$1, b);
    }
 
-   private static String a(azh $$0, String[] $$1) {
+   private static String a(azg $$0, String[] $$1) {
       return af.a($$1, $$0);
    }
 
-   private static azh b(UUID $$0) {
-      return azh.a((long)($$0.hashCode() >> 2));
+   private static azg b(UUID $$0) {
+      return azg.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,29 +1,26 @@
-import net.minecraft.server.MinecraftServer;
+@FunctionalInterface
+public interface faj<T> {
+   void handle(T var1, fal<T> var2, long var3);
 
-public class faj implements fal<MinecraftServer> {
-   final aku a;
+   public abstract static class a<T, C extends faj<T>> {
+      private final aku a;
+      private final Class<?> b;
 
-   public faj(aku $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, fan<MinecraftServer> $$1, long $$2) {
-      alj $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
-   }
-
-   public static class a extends fal.a<MinecraftServer, faj> {
-      public a() {
-         super(aku.b("function"), faj.class);
+      public a(aku $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public void a(tq $$0, faj $$1) {
-         $$0.a("Name", $$1.a.toString());
+      public aku a() {
+         return this.a;
       }
 
-      public faj a(tq $$0) {
-         aku $$1 = aku.a($$0.l("Name"));
-         return new faj($$1);
+      public Class<?> b() {
+         return this.b;
       }
+
+      public abstract void a(tq var1, C var2);
+
+      public abstract C b(tq var1);
    }
 }

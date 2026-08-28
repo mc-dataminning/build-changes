@@ -5,7 +5,7 @@ public record afv(int b) implements yv<abk> {
       this($$0.l());
    }
 
-   public static afv a(bss $$0) {
+   public static afv a(bsr $$0) {
       return new afv($$0.k());
    }
 

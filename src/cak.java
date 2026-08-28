@@ -1,48 +1,67 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class cak extends bwz<coi> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
-   public cak() {
-      super(ImmutableMap.of(cek.c, cel.a, cek.n, cel.c));
+public class cak {
+   public static bwz<cog> a(float $$0) {
+      return cal.a(
+         (Function<cal.b<cog>, ? extends App<cal.c<cog>, cao<cog>>>)($$1 -> $$1.group($$1.b(cej.d), $$1.c(cej.c), $$1.b(cej.g), $$1.a(cej.m), $$1.a(cej.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.e_()) {
+                           return false;
+                        } else if ($$7.gz().b() != coj.b) {
+                           return false;
+                        } else {
+                           ji $$9 = $$1.<jq>b($$2).b();
+                           Optional<jr<cgm>> $$10 = $$6x.A().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bvf>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cog && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cog)$$0xxxx)
+                                 .filter(bvf::bL)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.ec().c(cej.c).isEmpty()) {
+                                       bxa.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.ec().a(cej.d, jq.a($$6x.ai(), $$9));
+                                       agc.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 
-   protected boolean b(arc $$0, coi $$1) {
-      if ($$0.ad() - this.e < 300L) {
-         return false;
-      } else if ($$0.A.a(2) != 0) {
+   private static boolean a(jr<cgm> $$0, cog $$1, ji $$2) {
+      boolean $$3 = $$1.ec().c(cej.d).isPresent();
+      if ($$3) {
          return false;
       } else {
-         this.e = $$0.ad();
-         jq $$2 = $$1.ec().c(cek.c).get();
-         return $$2.a() == $$0.ai() && $$2.b().a($$1.du(), 1.73);
+         Optional<jq> $$4 = $$1.ec().c(cej.c);
+         coj $$5 = $$1.gz().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
+         }
       }
    }
 
-   protected void a(arc $$0, coi $$1, long $$2) {
-      bwi<coi> $$3 = $$1.ec();
-      $$3.a(cek.J, $$2);
-      $$3.c(cek.c).ifPresent($$1x -> $$3.a(cek.n, new bxc($$1x.b())));
-      $$1.gE();
-      this.a($$0, $$1);
-      if ($$1.gD()) {
-         $$1.gC();
-      }
-   }
-
-   protected void a(arc $$0, coi $$1) {
-   }
-
-   protected boolean b(arc $$0, coi $$1, long $$2) {
-      Optional<jq> $$3 = $$1.ec().c(cek.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jq $$4 = $$3.get();
-         return $$4.a() == $$0.ai() && $$4.b().a($$1.du(), 1.73);
-      }
+   private static boolean a(bvn $$0, ji $$1, cgm $$2) {
+      etl $$3 = $$0.L().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

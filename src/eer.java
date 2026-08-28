@@ -1,31 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class eer extends eim {
-   public static final MapCodec<eer> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               elt.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               brm.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               edm.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               ees.b.optionalFieldOf("debug_settings", ees.a).forGetter($$0x -> $$0x.h),
-               kg.a(mc.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, eer::new)
-   );
-   public final elt e;
-   public final brm f;
-   public final edm g;
-   public final ees h;
-   public final jv<djm> i;
+public class eer extends edn {
+   private final kf a;
+   private final ecu b;
+   private final ede c;
+   private final edh.o d;
 
-   public eer(float $$0, elt $$1, brm $$2, edm $$3, ees $$4, jv<djm> $$5) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   public eer(ect $$0, kf $$1, dgi $$2, ecu $$3, ede $$4, edh.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
+   }
+
+   @Deprecated
+   public Optional<dwv> a(Function<ji, jr<dhi>> $$0, dyq $$1, ji $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
+
+   @Deprecated
+   public kf c() {
+      return this.a;
+   }
+
+   public ede d() {
+      return this.c;
    }
 }

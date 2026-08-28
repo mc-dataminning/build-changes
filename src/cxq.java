@@ -1,59 +1,59 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class cxq extends cwl {
-   public cxq(cwl.a $$0) {
-      super($$0);
-   }
+public class cxq extends cvg {
+   protected static final Map<djk, dwv> a = Maps.newHashMap(
+      new Builder()
+         .put(djm.i, djm.lg.m())
+         .put(djm.j, djm.lg.m())
+         .put(djm.l, djm.lg.m())
+         .put(djm.k, djm.lg.m())
+         .put(djm.fA, djm.lg.m())
+         .put(djm.tj, djm.lg.m())
+         .build()
+   );
 
-   public static czr b() {
-      js<djm> $$0 = mb.a(mb.e);
-      return new czr(
-         List.of(czr.a.a(jv.a(djo.bz.p()), 15.0F), czr.a.b($$0.b(awp.Q), 15.0F), czr.a.b($$0.b(awp.a), 5.0F), czr.a.b(jv.a(djo.ft.p(), djo.fu.p()), 2.0F)),
-         1.0F,
-         1
-      );
-   }
-
-   @Override
-   public boolean a(cwp $$0, dgi $$1, dwx $$2, ji $$3, bvg $$4) {
-      if (!$$1.C && !$$2.a(awp.aN)) {
-         $$0.a(1, $$4, bus.a);
-      }
-
-      return $$2.a(awp.Q)
-         || $$2.a(djo.bz)
-         || $$2.a(djo.bA)
-         || $$2.a(djo.bB)
-         || $$2.a(djo.bC)
-         || $$2.a(djo.ti)
-         || $$2.a(djo.ft)
-         || $$2.a(djo.gd)
-         || $$2.a(awp.a);
+   public cxq(cye $$0, float $$1, float $$2, cwj.a $$3) {
+      super($$0, awo.bF, $$1, $$2, $$3);
    }
 
    @Override
-   public bsj a(dai $$0) {
-      dgi $$1 = $$0.q();
+   public bsi a(dag $$0) {
+      dgg $$1 = $$0.q();
       ji $$2 = $$0.a();
-      dwx $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dnc $$5 && !$$5.q($$3)) {
-         cox $$6 = $$0.o();
-         cwp $$7 = $$0.n();
-         if ($$6 instanceof ard) {
-            ap.N.a((ard)$$6, $$2, $$7);
+      dwv $$3 = $$1.a_($$2);
+      if ($$0.k() == jn.a) {
+         return bsi.e;
+      } else {
+         cov $$4 = $$0.o();
+         dwv $$5 = a.get($$3.b());
+         dwv $$6 = null;
+         if ($$5 != null && $$1.a_($$2.d()).l()) {
+            $$1.a($$4, $$2, avz.xk, awa.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof djz && $$3.c(djz.c)) {
+            if (!$$1.B_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
+
+            djz.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.b(djz.c, Boolean.valueOf(false));
          }
 
-         $$1.a($$6, $$2, awa.lN, awb.e, 1.0F, 1.0F);
-         dwx $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(ebt.c, $$2, ebt.a.a($$0.o(), $$8));
          if ($$6 != null) {
-            $$7.a(1, $$6, bvg.d($$0.p()));
+            if (!$$1.C) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(ebr.c, $$2, ebr.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, bvf.d($$0.p()));
+               }
+            }
+
+            return bsi.a;
+         } else {
+            return bsi.e;
          }
-
-         return bsj.a;
       }
-
-      return super.a($$0);
    }
 }

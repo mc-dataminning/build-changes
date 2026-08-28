@@ -1,15 +1,45 @@
-public interface ebi<T> {
-   void g(T var1);
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   void f(T var1);
+public class ebi<T extends eay> implements ebh<T> {
+   private final eba<T> a;
+   private final ebd<T> b;
 
-   void e(T var1);
+   public ebi(eba<T> $$0, ebd<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void d(T var1);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
 
-   void c(T var1);
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
+   }
 
-   void b(T var1);
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
+   }
 
-   void a(T var1);
+   @Override
+   public <U extends T> void a(ebf<T, U> $$0, axk<U> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void a(fat $$0, Consumer<T> $$1) {
+      this.b.b($$0, axk.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(ebf<T, U> $$0, fat $$1, axk<U> $$2) {
+      this.b.a($$0, $$1, $$2);
+   }
 }

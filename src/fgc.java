@@ -1,36 +1,71 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface fgc {
-   fgc a = a(0.0F, 0.0F, 0.0F);
-   fgc b = a((fgc.a)($$0 -> -$$0.z()));
+public class fgc {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<fgc.a> b;
 
-   static fgc a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+   public static CompletableFuture<fgc.a> a() {
+      if (b == null || a(b)) {
+         b = b();
+      }
+
+      return b;
    }
 
-   static fgc a(Vector3f $$0) {
-      return a($$0::distanceSquared);
+   private static boolean a(CompletableFuture<fgc.a> $$0) {
+      fgc.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
    }
 
-   static fgc a(fgc.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
+   private static CompletableFuture<fgc.a> b() {
+      flt $$0 = flh.Q().X();
+      return $$0.g() != flt.a.c ? CompletableFuture.completedFuture(new fgc.a(fgc.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fgi $$0x = fgi.a();
 
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
+         try {
+            if ($$0x.g() != fgi.a.a) {
+               return new fgc.a(fgc.b.b);
+            } else {
+               return !$$0x.f() ? new fgc.a(fgc.b.c) : new fgc.a(fgc.b.a);
+            }
+         } catch (fie var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fgc.a(fgc.b.d) : new fgc.a(var2);
          }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
+      }, af.h());
    }
 
-   int[] sort(Vector3f[] var1);
+   public static record a(fgc.b a, @Nullable fie b) {
+      public a(fgc.b $$0) {
+         this($$0, null);
+      }
 
-   public interface a {
-      float apply(Vector3f var1);
+      public a(fie $$0) {
+         this(fgc.b.e, $$0);
+      }
+
+      @Nullable
+      public fui a(fui $$0) {
+         return (fui)(switch (this.a) {
+            case a -> null;
+            case b -> new fir($$0);
+            case c -> new fjb($$0);
+            case d -> new fiw(wo.c("mco.error.invalid.session.title"), wo.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fiw(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

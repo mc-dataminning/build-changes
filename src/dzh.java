@@ -1,5 +1,3 @@
-public class dzh extends RuntimeException {
-   public dzh(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
-   }
+interface dzh<T> {
+   int onResize(int var1, T var2);
 }

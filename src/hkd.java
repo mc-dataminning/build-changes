@@ -1,74 +1,51 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public class hkd {
-   public static final hkd a = new hkd(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hjz<hkd.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public abstract class hkd {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   protected hkd(Ticker $$0) {
-      this.c = $$0;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public synchronized void a(hjz<hkd.a> $$0) {
-      this.a($$0, (Function<hjz<hkd.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
+   public void a(hjx $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
 
-   public synchronized void a(hjz<hkd.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hjz<hkd.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(hjz<hkd.a> $$0, Function<hjz<hkd.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hjz<hkd.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   public void a(hjw $$0) {
-      $$0.send(hjx.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hjz<hkd.a>)$$1, new hkd.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hjx.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hjz.B, new hkd.a((int)$$1)));
-            this.d.clear();
-         }
-      });
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   public boolean c() {
+      return this.c >= 10;
    }
 
-   public static record a(int b) {
-      public static final Codec<hkd.a> a = Codec.INT.xmap(hkd.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
-      }
+   public void d() {
+      this.d = false;
    }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(hjx var1);
 }

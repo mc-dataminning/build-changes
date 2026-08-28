@@ -28,15 +28,15 @@ public class ahb implements yv<agf> {
       this.d = $$1;
    }
 
-   public static ahb a(buk $$0, boolean $$1) {
+   public static ahb a(buj $$0, boolean $$1) {
       return new ahb($$0.ar(), $$1, e);
    }
 
-   public static ahb a(buk $$0, boolean $$1, bsi $$2) {
+   public static ahb a(buj $$0, boolean $$1, bsh $$2) {
       return new ahb($$0.ar(), $$1, new ahb.d($$2));
    }
 
-   public static ahb a(buk $$0, boolean $$1, bsi $$2, fba $$3) {
+   public static ahb a(buj $$0, boolean $$1, bsh $$2, fay $$3) {
       return new ahb($$0.ar(), $$1, new ahb.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class ahb implements yv<agf> {
    }
 
    @Nullable
-   public buk a(arc $$0) {
+   public buj a(arc $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahb implements yv<agf> {
    }
 
    public interface c {
-      void a(bsi var1);
+      void a(bsh var1);
 
-      void a(bsi var1, fba var2);
+      void a(bsh var1, fay var2);
 
       void a();
    }
 
    static class d implements ahb.a {
-      private final bsi a;
+      private final bsh a;
 
-      d(bsi $$0) {
+      d(bsh $$0) {
          this.a = $$0;
       }
 
       private d(vl $$0) {
-         this.a = $$0.b(bsi.class);
+         this.a = $$0.b(bsh.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahb implements yv<agf> {
    }
 
    static class e implements ahb.a {
-      private final bsi a;
-      private final fba b;
+      private final bsh a;
+      private final fay b;
 
-      e(bsi $$0, fba $$1) {
+      e(bsh $$0, fay $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vl $$0) {
-         this.b = new fba((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bsi.class);
+         this.b = new fay((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bsh.class);
       }
 
       @Override

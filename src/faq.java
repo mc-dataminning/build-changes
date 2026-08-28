@@ -1,79 +1,103 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-public class faq {
-   private final PathMatcher a;
+public class faq implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<faq.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
 
-   public faq(PathMatcher $$0) {
-      this.a = $$0;
+   public faq(List<faq.a> $$0) {
+      this.c = $$0;
    }
 
-   public void a(Path $$0, List<far> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new far($$0, $$2));
-      }
-   }
-
-   public List<far> a(Path $$0) throws IOException {
-      List<far> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   public List<far> a(Path $$0, boolean $$1) throws IOException {
-      List<far> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
-      } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
             }
 
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
-      }
-   }
-
-   public void b(Path $$0, final List<far> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               faq.this.a($$0, $$1);
-            }
-         }
-
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
-
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
+            return false;
+         };
+         };
       });
+   }
+
+   @Override
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
+   }
+
+   public static faq a(BufferedReader $$0) {
+      return new faq($$0.lines().flatMap($$0x -> faq.a.a($$0x).stream()).toList());
+   }
+
+   public static record a(faq.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<faq.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new faq.a(faq.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new faq.a(faq.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new faq.a(faq.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
+
+      static faq.a b(String $$0) {
+         return new faq.a(faq.b.a, "glob:" + $$0);
+      }
+
+      static faq.a c(String $$0) {
+         return new faq.a(faq.b.a, "regex:" + $$0);
+      }
+
+      static faq.a d(String $$0) {
+         return new faq.a(faq.b.b, $$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      faq.b a = FileSystem::getPathMatcher;
+      faq.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

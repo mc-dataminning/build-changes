@@ -1,14 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dph extends dss {
-   public static final MapCodec<dph> b = b(dph::new);
-
-   @Override
-   public MapCodec<dph> a() {
-      return b;
+public interface dph {
+   default int a(arc $$0, buj $$1) {
+      return 0;
    }
 
-   protected dph(dww.d $$0) {
-      super(dqt.b.e, $$0);
+   @Nullable
+   etx a(arc var1, buj var2, ji var3);
+
+   default dph.a b() {
+      return dph.a.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

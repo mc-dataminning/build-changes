@@ -1,67 +1,54 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class efp extends efy<ehy> {
-   private static final ImmutableList<djm> a = ImmutableList.of(djo.I, djo.fI, djo.fJ, djo.fK, djo.fL, djo.cD, djo.cA);
-   private static final jn[] b = jn.values();
-   private static final double c = 0.9;
-
-   public efp(Codec<ehy> $$0) {
+public class efp extends efw<ehx> {
+   public efp(Codec<ehx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<ehy> $$0) {
-      boolean $$1 = false;
-      azh $$2 = $$0.d();
-      dhg $$3 = $$0.b();
-      ehy $$4 = $$0.f();
-      ji $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(efy<ehx> $$0) {
+      ehx $$1 = $$0.f();
+      ji $$2 = $$0.e();
+      dhe $$3 = $$0.b();
+      azg $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      ji.a $$10 = new ji.a();
 
-      for (ji $$13 : ji.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ji $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
+      for (ji $$11 : ji.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      return $$1;
+      return $$5;
    }
 
-   private static boolean a(dgj $$0, ji $$1, ehy $$2) {
-      dwx $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (jn $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != jn.b || !$$5 && $$4 == jn.b) {
-               return false;
-            }
-         }
+   protected boolean a(ehx $$0, dhe $$1, azg $$2, int $$3, int $$4, ji.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
 
-         return true;
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            dwv $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
+            }
+
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
+         }
       }
+
+      return $$6;
    }
 }

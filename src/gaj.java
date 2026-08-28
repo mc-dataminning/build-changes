@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gaj extends RuntimeException {
+   public gaj(String $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gaj {
+   public gaj(String $$0, Throwable $$1) {
+      super($$0, $$1);
+   }
 }

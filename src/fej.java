@@ -1,40 +1,46 @@
-import com.mojang.blaze3d.platform.GLX;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import javax.annotation.Nullable;
-import org.lwjgl.system.Pointer;
-
 public class fej {
-   @Nullable
-   private static final MethodHandle a = GLX.make(() -> {
-      try {
-         Lookup $$0 = MethodHandles.lookup();
-         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
-         $$2.setAccessible(true);
-         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-         $$3.setAccessible(true);
-         Object $$4 = $$3.get(null);
-         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
-      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
-         throw new RuntimeException(var5);
-      }
-   });
+   private static final int a = 60;
+   private static final int b = 10;
+   private static final int c = 30;
+   private static final int d = 10;
+   private static final long e = 60000L;
+   private static final long f = 600000L;
+   private final fll g;
+   private final flh h;
+   private int i;
+   private long j;
 
-   public static void a(long $$0) {
-      if (a != null) {
-         try {
-            a.invoke((long)$$0);
-         } catch (Throwable var3) {
-            throw new RuntimeException(var3);
+   public fej(fll $$0, flh $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$0.h().c();
+   }
+
+   public int a() {
+      fld $$0 = this.g.i().c();
+      if (this.h.aO().j()) {
+         return 10;
+      } else {
+         if ($$0 == fld.b) {
+            long $$1 = af.c() - this.j;
+            if ($$1 > 600000L) {
+               return 10;
+            }
+
+            if ($$1 > 60000L) {
+               return Math.min(this.i, 30);
+            }
          }
+
+         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
       }
    }
 
-   public static void a(Pointer $$0) {
-      a($$0.address());
+   public void a(int $$0) {
+      this.i = $$0;
+   }
+
+   public void b() {
+      this.j = af.c();
    }
 }

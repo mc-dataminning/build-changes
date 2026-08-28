@@ -1,36 +1,16 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class erh extends erl {
-   public static final MapCodec<erh> a = erd.b.listOf().fieldOf("rules").xmap(erh::new, $$0 -> $$0.b);
-   private final ImmutableList<erd> b;
+public interface erh<P extends erg> {
+   erh<eqj> a = a("always_true", eqj.a);
+   erh<eqo> b = a("block_match", eqo.a);
+   erh<eqq> c = a("blockstate_match", eqq.a);
+   erh<ero> d = a("tag_match", ero.a);
+   erh<erd> e = a("random_block_match", erd.a);
+   erh<ere> f = a("random_blockstate_match", ere.a);
 
-   public erh(List<? extends erd> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-   }
+   MapCodec<P> codec();
 
-   @Nullable
-   @Override
-   public ero.d a(dgl $$0, ji $$1, ji $$2, ero.d $$3, ero.d $$4, erk $$5) {
-      azh $$6 = azh.a(ayz.a($$4.a()));
-      dwx $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         erd $$8 = (erd)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new ero.d($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   protected ern<?> a() {
-      return ern.i;
+   static <P extends erg> erh<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.m, $$0, () -> $$1);
    }
 }

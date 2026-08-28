@@ -1,17 +1,10 @@
-public class gzp extends gyx {
-   public chm.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float j;
-   public float k;
-   public float l;
+public class gzp extends gzh {
+   public chm.b a;
+   public float b;
+   public gcw.a c;
 
    public gzp() {
-      this.a = chm.a.a;
+      this.a = chm.b.a;
+      this.c = gcw.a.a;
    }
 }

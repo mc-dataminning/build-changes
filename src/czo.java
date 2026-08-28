@@ -1,53 +1,60 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record czo(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<czo> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.y.optionalFieldOf("name").forGetter(czo::c),
-               kl.a.optionalFieldOf("id").forGetter(czo::d),
-               ayi.x.optionalFieldOf("properties", new PropertyMap()).forGetter(czo::e)
-            )
-            .apply($$0, czo::new)
-   );
-   public static final Codec<czo> a = Codec.withAlternative(g, ayi.y, $$0 -> new czo(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final ym<ByteBuf, czo> b = ym.a(yk.b(16).a(yk::a), czo::c, kl.g.a(yk::a), czo::d, yk.x, czo::e, czo::new);
+public record czo(List<czo.a> e) implements cyu, czq {
+   public static final czo a = new czo(List.of());
+   public static final int b = 160;
+   public static final Codec<czo> c = czo.a.a.listOf().xmap(czo::new, czo::a);
+   public static final ym<vz, czo> d = czo.a.b.a(yk.a()).a(czo::new, czo::a);
 
-   public czo(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public czo a(czo.a $$0) {
+      return new czo(af.a(this.e, $$0));
    }
 
-   public czo(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
-   }
-
-   public CompletableFuture<czo> a() {
-      if (this.b()) {
-         return CompletableFuture.completedFuture(this);
-      } else {
-         return this.d.isPresent() ? dvo.a(this.d.get()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
-            return new czo($$1);
-         }) : dvo.a(this.c.orElseThrow()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(af.e, this.c.get()));
-            return new czo($$1);
-         });
+   @Override
+   public void a(dgg $$0, bvf $$1, cwn $$2, cyt $$3) {
+      for (czo.a $$4 : this.e) {
+         $$1.a($$4.a());
       }
    }
 
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(af.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
+   @Override
+   public void a(cwj.b $$0, Consumer<wo> $$1, cyf $$2) {
+      if ($$2.b()) {
+         List<bto> $$3 = new ArrayList<>();
+
+         for (czo.a $$4 : this.e) {
+            $$3.add($$4.a());
+         }
+
+         cym.a($$3, $$1, 1.0F, $$0.b());
+      }
    }
 
-   public boolean b() {
-      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
+   public List<czo.a> a() {
+      return this.e;
+   }
+
+   public static record a(jr<btm> c, int d) {
+      public static final Codec<czo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(btm.a.fieldOf("id").forGetter(czo.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(czo.a::c))
+               .apply($$0, czo.a::new)
+      );
+      public static final ym<vz, czo.a> b = ym.a(btm.b, czo.a::b, yk.h, czo.a::c, czo.a::new);
+
+      public bto a() {
+         return new bto(this.c, this.d);
+      }
+
+      public jr<btm> b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

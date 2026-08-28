@@ -1,3 +1,5 @@
-public class hah extends gzi {
-   public boolean a;
+public class hah extends gzh {
+   public float a;
+   public float b;
+   public float c;
 }

@@ -1,7 +1,4 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.MapCodec;
 
-public interface ewg {
-   int a(float var1);
-
-   void a(Consumer<cwp> var1, evr var2);
+public record ewg(MapCodec<? extends ewf> a) {
 }

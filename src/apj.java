@@ -21,7 +21,7 @@ public class apj {
                         .then(ey.a("off").executes($$0x -> c((ex)$$0x.getSource()))))
                      .then(ey.a("list").executes($$0x -> d((ex)$$0x.getSource()))))
                   .then(ey.a("add").then(ey.a("targets", fm.a()).suggests(($$0x, $$1) -> {
-                     avd $$2 = ((ex)$$0x.getSource()).l().ag();
+                     avc $$2 = ((ex)$$0x.getSource()).l().ag();
                      return fc.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
                   }).executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets"))))))
                .then(
@@ -44,12 +44,12 @@ public class apj {
    }
 
    private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avl $$2 = $$0.l().ag().i();
+      avk $$2 = $$0.l().ag().i();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {
          if (!$$2.a($$4)) {
-            avm $$5 = new avm($$4);
+            avl $$5 = new avl($$4);
             $$2.a($$5);
             $$0.a(() -> wo.a("commands.whitelist.add.success", wo.b($$4.getName())), true);
             $$3++;
@@ -64,12 +64,12 @@ public class apj {
    }
 
    private static int b(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avl $$2 = $$0.l().ag().i();
+      avk $$2 = $$0.l().ag().i();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {
          if ($$2.a($$4)) {
-            avm $$5 = new avm($$4);
+            avl $$5 = new avl($$4);
             $$2.b($$5);
             $$0.a(() -> wo.a("commands.whitelist.remove.success", wo.b($$4.getName())), true);
             $$3++;
@@ -85,7 +85,7 @@ public class apj {
    }
 
    private static int b(ex $$0) throws CommandSyntaxException {
-      avd $$1 = $$0.l().ag();
+      avc $$1 = $$0.l().ag();
       if ($$1.o()) {
          throw a.create();
       } else {
@@ -97,7 +97,7 @@ public class apj {
    }
 
    private static int c(ex $$0) throws CommandSyntaxException {
-      avd $$1 = $$0.l().ag();
+      avc $$1 = $$0.l().ag();
       if (!$$1.o()) {
          throw b.create();
       } else {

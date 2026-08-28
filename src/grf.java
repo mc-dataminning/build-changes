@@ -1,31 +1,22 @@
-import java.util.function.UnaryOperator;
+public class grf extends gqt<clg, gxu> {
+   private static final aku a = aku.b("textures/entity/skeleton/bogged.png");
+   private static final aku b = aku.b("textures/entity/skeleton/bogged_overlay.png");
 
-public class grf extends gqq {
-   private final gcv a;
-   private final aku b;
-   private final gca<gxu> h;
-
-   public grf(gsc.a $$0, gfa $$1) {
-      super($$0);
-      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new gcv.a($$0.a(gfb.E), $$0x -> gmh.i());
-      this.h = new gbh($$0.a($$1));
+   public grf(gsb.a $$0) {
+      super($$0, gez.G, gez.H, new gbg($$0.a(gez.F)));
+      this.a(new gwt<>(this, $$0.f(), gez.I, b));
    }
 
-   @Override
-   protected gca<gxu> a() {
-      return this.h;
+   public aku a(gxu $$0) {
+      return a;
    }
 
-   @Override
-   protected gmh b() {
-      return this.h.a(this.b);
+   public gxu a() {
+      return new gxu();
    }
 
-   @Override
-   protected void b(gxu $$0, ffu $$1, glx $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hea.d);
-      }
+   public void a(clg $$0, gxu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gs();
    }
 }

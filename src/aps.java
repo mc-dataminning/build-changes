@@ -3,10 +3,10 @@ import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import org.slf4j.Logger;
 
-public class aps extends avd {
+public class aps extends avc {
    private static final Logger h = LogUtils.getLogger();
 
-   public aps(apt $$0, jy<ald> $$1, evi $$2) {
+   public aps(apt $$0, jy<ald> $$1, evg $$2) {
       super($$0, $$1, $$2, $$0.a().G);
       apu $$3 = $$0.a();
       this.a($$3.E);

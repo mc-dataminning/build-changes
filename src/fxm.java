@@ -1,58 +1,67 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fxm extends fxo {
-   private static final wo a = wo.c("options.online.title");
+public abstract class fxm extends fui {
+   protected final fui b;
+   protected final fll c;
    @Nullable
-   private flm<Unit> u;
+   protected fpn d;
+   public final fse s = new fse(this);
 
-   public fxm(fuk $$0, fln $$1) {
-      super($$0, $$1, a);
+   public fxm(fui $$0, fll $$1, wo $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aR_() {
-      super.aR_();
-      if (this.u != null) {
-         fop $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
+      this.G();
+      this.F();
+      this.E();
+      this.s.a($$1 -> {
+         fon var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   protected void G() {
+      this.s.a(this.l, this.p);
+   }
+
+   protected void F() {
+      this.d = this.s.c(new fpn(this.m, this.n, this));
+      this.m();
+      if (this.d.b(this.c.av()) instanceof fox $$0) {
+         this.q = $$0;
+         this.q.j = this.m.aY().a();
       }
    }
 
-   private flm<?>[] a(fln $$0, flj $$1) {
-      List<flm<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      flm<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bsg $$1x = $$0x.am();
-            return new flm<>(
-               "options.difficulty.online",
-               flm.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new flm.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
+   protected abstract void m();
 
-      return $$2.toArray(new flm[0]);
+   protected void E() {
+      this.s.b(fop.a(wn.d, $$0 -> this.aO_()).a(200).a());
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+   protected void c() {
+      this.s.a();
+      if (this.d != null) {
+         this.d.a(this.n, this.s);
+      }
+   }
+
+   @Override
+   public void aI_() {
+      this.m.n.az();
+   }
+
+   @Override
+   public void aO_() {
+      if (this.d != null) {
+         this.d.b();
+      }
+
+      this.m.a(this.b);
    }
 }

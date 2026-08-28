@@ -1,103 +1,40 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnr extends diy {
-   public static final MapCodec<dnr> a = b(dnr::new);
-   public static final dxo b = dxn.r;
+public class dnr extends dmz implements dod {
+   public static final MapCodec<dnr> c = b(dnr::new);
 
    @Override
    public MapCodec<dnr> a() {
-      return a;
+      return c;
    }
 
-   protected dnr(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public void a(dgi $$0, ji $$1, dwx $$2, @Nullable bvg $$3, cwp $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cyy $$5 = $$4.a(kv.Y, cyy.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
+   protected dnr(dwu.d $$0) {
+      super($$0, jn.b, fbp.b(), true);
    }
 
    @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dvd $$5) {
-         $$5.s();
-         return bsj.a;
-      } else {
-         return bsj.e;
-      }
+   protected dna c() {
+      return (dna)djm.mE;
    }
 
    @Override
-   protected bsj a(cwp $$0, dwx $$1, dgi $$2, ji $$3, cox $$4, bsi $$5, faw $$6) {
-      if ($$1.c(b)) {
-         return bsj.f;
-      } else {
-         cwp $$7 = $$4.b($$5);
-         bsj $$8 = cwu.a($$2, $$3, $$7, $$4);
-         return (bsj)(!$$8.a() ? bsj.f : $$8);
-      }
+   protected esx b_(dwv $$0) {
+      return esy.c.a(false);
    }
 
    @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dvd $$5) {
-            $$5.s();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   protected boolean o(dwv $$0) {
+      return this.c().o($$0);
    }
 
    @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dvd($$0, $$1);
+   public boolean a(@Nullable cov $$0, dfl $$1, ji $$2, dwv $$3, esw $$4) {
+      return false;
    }
 
    @Override
-   public boolean f_(dwx $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
-      if ($$1.c_($$2) instanceof dvd $$4 && $$4.j().a()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(dwx $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dwx $$0, dgi $$1, ji $$2) {
-      return $$1.c_($$2) instanceof dvd $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.c;
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return $$1.c(b) ? a($$2, dub.e, dvd::a) : null;
+   public boolean a(dgh $$0, ji $$1, dwv $$2, esx $$3) {
+      return false;
    }
 }

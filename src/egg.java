@@ -1,46 +1,167 @@
 import com.mojang.serialization.Codec;
 
-public class egg extends efa {
-   public egg(Codec<eie> $$0) {
+public class egg extends efw<egf> {
+   private static final float a = 0.06F;
+
+   public egg(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dgj $$0, azh $$1, ji $$2, int $$3, ji.a $$4, eie $$5) {
-      int $$6 = $$5.d;
+   public boolean a(efy<egf> $$0) {
+      dhe $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azg $$3 = $$0.d();
+      dyr $$4 = $$0.c();
+      egf $$5 = $$0.f();
+      djk $$6 = $$5.b.b();
+      ji $$7 = null;
+      dwv $$8 = $$1.a_($$2.e());
+      if ($$8.a($$6)) {
+         $$7 = $$2;
+      }
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).s()) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dwx $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dnl.e) && $$19.b(dnl.c) && $$19.b(dnl.b) && $$19.b(dnl.d)) {
-                     $$19 = $$19.b(dnl.e, Boolean.valueOf($$15))
-                        .b(dnl.c, Boolean.valueOf($$16))
-                        .b(dnl.b, Boolean.valueOf($$17))
-                        .b(dnl.d, Boolean.valueOf($$18));
+      if ($$7 == null) {
+         return false;
+      } else {
+         int $$9 = ayy.a($$3, 4, 13);
+         if ($$3.a(12) == 0) {
+            $$9 *= 2;
+         }
+
+         if (!$$5.g) {
+            int $$10 = $$4.e();
+            if ($$7.v() + $$9 + 1 >= $$10) {
+               return false;
+            }
+         }
+
+         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
+         $$1.a($$2, djm.a.m(), 4);
+         this.a($$1, $$3, $$5, $$7, $$9, $$11);
+         this.b($$1, $$3, $$5, $$7, $$9, $$11);
+         return true;
+      }
+   }
+
+   private static boolean a(dhe $$0, ji $$1, egf $$2, boolean $$3) {
+      if ($$0.a($$1, dwu.a::v)) {
+         return true;
+      } else {
+         return $$3 ? $$2.f.test($$0, $$1) : false;
+      }
+   }
+
+   private void a(dhe $$0, azg $$1, egf $$2, ji $$3, int $$4, boolean $$5) {
+      ji.a $$6 = new ji.a();
+      dwv $$7 = $$2.c;
+      int $$8 = $$5 ? 1 : 0;
+
+      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            boolean $$11 = $$5 && ayy.a($$9) == $$8 && ayy.a($$10) == $$8;
+
+            for (int $$12 = 0; $$12 < $$4; $$12++) {
+               $$6.a($$3, $$9, $$12, $$10);
+               if (a($$0, $$6, $$2, true)) {
+                  if ($$2.g) {
+                     if (!$$0.a_($$6.e()).l()) {
+                        $$0.b($$6, true);
+                     }
+
+                     $$0.a($$6, $$7, 3);
+                  } else if ($$11) {
+                     if ($$1.i() < 0.1F) {
+                        this.a($$0, $$6, $$7);
+                     }
+                  } else {
+                     this.a($$0, $$6, $$7);
                   }
-
-                  this.a($$0, $$4, $$19);
                }
             }
          }
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   private void b(dhe $$0, azg $$1, egf $$2, ji $$3, int $$4, boolean $$5) {
+      ji.a $$6 = new ji.a();
+      boolean $$7 = $$2.d.a(djm.lm);
+      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
+      int $$9 = $$4 - $$8;
+
+      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
+         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
+         if ($$8 > 8 && $$10 < $$9 + 4) {
+            $$11 = 3;
+         }
+
+         if ($$5) {
+            $$11++;
+         }
+
+         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
+            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
+               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
+               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
+               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
+               boolean $$17 = $$14 && $$15;
+               boolean $$18 = $$10 < $$9 + 3;
+               $$6.a($$3, $$12, $$10, $$13);
+               if (a($$0, $$6, $$2, false)) {
+                  if ($$2.g && !$$0.a_($$6.e()).l()) {
+                     $$0.b($$6, true);
+                  }
+
+                  if ($$18) {
+                     if (!$$16) {
+                        this.a($$0, $$1, $$6, $$2.d, $$7);
+                     }
+                  } else if ($$16) {
+                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
+                  } else if ($$17) {
+                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
+                  } else {
+                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(dgh $$0, azg $$1, egf $$2, ji.a $$3, float $$4, float $$5, float $$6) {
+      if ($$1.i() < $$4) {
+         this.a($$0, $$3, $$2.e);
+      } else if ($$1.i() < $$5) {
+         this.a($$0, $$3, $$2.d);
+         if ($$1.i() < $$6) {
+            a($$3, $$0, $$1);
+         }
+      }
+   }
+
+   private void a(dgh $$0, azg $$1, ji $$2, dwv $$3, boolean $$4) {
+      if ($$0.a_($$2.e()).a($$3.b())) {
+         this.a($$0, $$2, $$3);
+      } else if ((double)$$1.i() < 0.15) {
+         this.a($$0, $$2, $$3);
+         if ($$4 && $$1.a(11) == 0) {
+            a($$2, $$0, $$1);
+         }
+      }
+   }
+
+   private static void a(ji $$0, dgh $$1, azg $$2) {
+      ji.a $$3 = $$0.k().c(jn.a);
+      if ($$1.u($$3)) {
+         int $$4 = ayy.a($$2, 1, 5);
+         if ($$2.a(7) == 0) {
+            $$4 *= 2;
+         }
+
+         int $$5 = 23;
+         int $$6 = 25;
+         ehp.a($$1, $$2, $$3, $$4, 23, 25);
+      }
    }
 }

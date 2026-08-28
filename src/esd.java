@@ -1,217 +1,189 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-
 public class esd {
-   private static final int a = 33554432;
-   private final esa[] b;
-   private final int c;
-   private final DoubleList d;
-   private final double e;
-   private final double f;
-   private final double g;
+   protected static final int[][] a = new int[][]{
+      {1, 1, 0},
+      {-1, 1, 0},
+      {1, -1, 0},
+      {-1, -1, 0},
+      {1, 0, 1},
+      {-1, 0, 1},
+      {1, 0, -1},
+      {-1, 0, -1},
+      {0, 1, 1},
+      {0, -1, 1},
+      {0, 1, -1},
+      {0, -1, -1},
+      {1, 1, 0},
+      {0, -1, 1},
+      {-1, 1, 0},
+      {0, -1, -1}
+   };
+   private static final double e = Math.sqrt(3.0);
+   private static final double f = 0.5 * (e - 1.0);
+   private static final double g = (3.0 - e) / 6.0;
+   private final int[] h = new int[512];
+   public final double b;
+   public final double c;
+   public final double d;
 
-   @Deprecated
-   public static esd a(azh $$0, IntStream $$1) {
-      return new esd($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
-   }
+   public esd(azg $$0) {
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.d = $$0.j() * 256.0;
+      int $$1 = 0;
 
-   @Deprecated
-   public static esd a(azh $$0, int $$1, DoubleList $$2) {
-      return new esd($$0, Pair.of($$1, $$2), false);
-   }
+      while ($$1 < 256) {
+         this.h[$$1] = $$1++;
+      }
 
-   public static esd b(azh $$0, IntStream $$1) {
-      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
-   }
-
-   public static esd a(azh $$0, List<Integer> $$1) {
-      return new esd($$0, a(new IntRBTreeSet($$1)), true);
-   }
-
-   public static esd a(azh $$0, int $$1, double $$2, double... $$3) {
-      DoubleArrayList $$4 = new DoubleArrayList($$3);
-      $$4.add(0, $$2);
-      return new esd($$0, Pair.of($$1, $$4), true);
-   }
-
-   public static esd b(azh $$0, int $$1, DoubleList $$2) {
-      return new esd($$0, Pair.of($$1, $$2), true);
-   }
-
-   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      } else {
-         int $$1 = -$$0.firstInt();
-         int $$2 = $$0.lastInt();
-         int $$3 = $$1 + $$2 + 1;
-         if ($$3 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
-            IntBidirectionalIterator $$5 = $$0.iterator();
-
-            while ($$5.hasNext()) {
-               int $$6 = $$5.nextInt();
-               $$4.set($$6 + $$1, 1.0);
-            }
-
-            return Pair.of(-$$1, $$4);
-         }
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         int $$4 = this.h[$$2];
+         this.h[$$2] = this.h[$$3 + $$2];
+         this.h[$$3 + $$2] = $$4;
       }
    }
 
-   protected esd(azh $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
-      this.c = (Integer)$$1.getFirst();
-      this.d = (DoubleList)$$1.getSecond();
-      int $$3 = this.d.size();
-      int $$4 = -this.c;
-      this.b = new esa[$$3];
-      if ($$2) {
-         edf $$5 = $$0.e();
+   private int a(int $$0) {
+      return this.h[$$0 & 0xFF];
+   }
 
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            if (this.d.getDouble($$6) != 0.0) {
-               int $$7 = this.c + $$6;
-               this.b[$$6] = new esa($$5.a("octave_" + $$7));
-            }
-         }
+   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
+      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
+   }
+
+   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
+      double $$6;
+      if ($$5 < 0.0) {
+         $$6 = 0.0;
       } else {
-         esa $$8 = new esa($$0);
-         if ($$4 >= 0 && $$4 < $$3) {
-            double $$9 = this.d.getDouble($$4);
-            if ($$9 != 0.0) {
-               this.b[$$4] = $$8;
-            }
-         }
-
-         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
-            if ($$10 < $$3) {
-               double $$11 = this.d.getDouble($$10);
-               if ($$11 != 0.0) {
-                  this.b[$$10] = new esa($$0);
-               } else {
-                  a($$0);
-               }
-            } else {
-               a($$0);
-            }
-         }
-
-         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
-            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
-         }
-
-         if ($$4 < $$3 - 1) {
-            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
-         }
-      }
-
-      this.f = Math.pow(2.0, (double)(-$$4));
-      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
-      this.g = this.c(2.0);
-   }
-
-   protected double a() {
-      return this.g;
-   }
-
-   private static void a(azh $$0) {
-      $$0.b(262);
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
-   }
-
-   @Deprecated
-   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
-      double $$6 = 0.0;
-      double $$7 = this.f;
-      double $$8 = this.e;
-
-      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-         esa $$10 = this.b[$$9];
-         if ($$10 != null) {
-            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
-            $$6 += this.d.getDouble($$9) * $$11 * $$8;
-         }
-
-         $$7 *= 2.0;
-         $$8 /= 2.0;
+         $$5 *= $$5;
+         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
       }
 
       return $$6;
    }
 
-   public double a(double $$0) {
-      return this.c($$0 + 2.0);
-   }
-
-   private double c(double $$0) {
-      double $$1 = 0.0;
-      double $$2 = this.e;
-
-      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
-         esa $$4 = this.b[$$3];
-         if ($$4 != null) {
-            $$1 += this.d.getDouble($$3) * $$0 * $$2;
-         }
-
-         $$2 /= 2.0;
+   public double a(double $$0, double $$1) {
+      double $$2 = ($$0 + $$1) * f;
+      int $$3 = ayy.a($$0 + $$2);
+      int $$4 = ayy.a($$1 + $$2);
+      double $$5 = (double)($$3 + $$4) * g;
+      double $$6 = (double)$$3 - $$5;
+      double $$7 = (double)$$4 - $$5;
+      double $$8 = $$0 - $$6;
+      double $$9 = $$1 - $$7;
+      int $$10;
+      int $$11;
+      if ($$8 > $$9) {
+         $$10 = 1;
+         $$11 = 0;
+      } else {
+         $$10 = 0;
+         $$11 = 1;
       }
 
-      return $$1;
+      double $$14 = $$8 - (double)$$10 + g;
+      double $$15 = $$9 - (double)$$11 + g;
+      double $$16 = $$8 - 1.0 + 2.0 * g;
+      double $$17 = $$9 - 1.0 + 2.0 * g;
+      int $$18 = $$3 & 0xFF;
+      int $$19 = $$4 & 0xFF;
+      int $$20 = this.a($$18 + this.a($$19)) % 12;
+      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
+      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
+      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
+      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
+      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
+      return 70.0 * ($$23 + $$24 + $$25);
    }
 
-   @Nullable
-   public esa a(int $$0) {
-      return this.b[this.b.length - 1 - $$0];
-   }
-
-   public static double b(double $$0) {
-      return $$0 - (double)ayz.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
-   }
-
-   protected int b() {
-      return this.c;
-   }
-
-   protected DoubleList c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("PerlinNoise{");
-      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
-      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         $$0.append($$2).append(": ");
-         esa $$3 = this.b[$$2];
-         if ($$3 == null) {
-            $$0.append("null");
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = 0.3333333333333333;
+      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
+      int $$5 = ayy.a($$0 + $$4);
+      int $$6 = ayy.a($$1 + $$4);
+      int $$7 = ayy.a($$2 + $$4);
+      double $$8 = 0.16666666666666666;
+      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
+      double $$10 = (double)$$5 - $$9;
+      double $$11 = (double)$$6 - $$9;
+      double $$12 = (double)$$7 - $$9;
+      double $$13 = $$0 - $$10;
+      double $$14 = $$1 - $$11;
+      double $$15 = $$2 - $$12;
+      int $$16;
+      int $$17;
+      int $$18;
+      int $$19;
+      int $$20;
+      int $$21;
+      if ($$13 >= $$14) {
+         if ($$14 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 1;
+            $$21 = 0;
+         } else if ($$13 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          } else {
-            $$3.a($$0);
+            $$16 = 0;
+            $$17 = 0;
+            $$18 = 1;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          }
-
-         $$0.append(", ");
+      } else if ($$14 < $$15) {
+         $$16 = 0;
+         $$17 = 0;
+         $$18 = 1;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else if ($$13 < $$15) {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 1;
+         $$20 = 1;
+         $$21 = 0;
       }
 
-      $$0.append("]");
-      $$0.append("}");
+      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
+      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
+      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
+      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
+      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
+      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
+      double $$58 = $$13 - 1.0 + 0.5;
+      double $$59 = $$14 - 1.0 + 0.5;
+      double $$60 = $$15 - 1.0 + 0.5;
+      int $$61 = $$5 & 0xFF;
+      int $$62 = $$6 & 0xFF;
+      int $$63 = $$7 & 0xFF;
+      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
+      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
+      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
+      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
+      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
+      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
+      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
+      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
+      return 32.0 * ($$68 + $$69 + $$70 + $$71);
    }
 }

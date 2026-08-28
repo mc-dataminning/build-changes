@@ -1,56 +1,123 @@
 import java.util.List;
 
-public record cyg(axf<djm> g, int h, float i, float j, int k, axf<cwl> l) {
-   public static final cyg a = new cyg(awp.bP, 59, 2.0F, 0.0F, 15, awy.bb);
-   public static final cyg b = new cyg(awp.bN, 131, 4.0F, 1.0F, 5, awy.bc);
-   public static final cyg c = new cyg(awp.bM, 250, 6.0F, 2.0F, 14, awy.bd);
-   public static final cyg d = new cyg(awp.bL, 1561, 8.0F, 3.0F, 10, awy.bf);
-   public static final cyg e = new cyg(awp.bO, 32, 12.0F, 0.0F, 22, awy.be);
-   public static final cyg f = new cyg(awp.bK, 2031, 9.0F, 4.0F, 15, awy.bg);
+public class cyg extends cwj implements cxi {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
 
-   private cwl.a a(cwl.a $$0) {
-      return $$0.b(this.h).a(this.l).c(this.k);
+   public cyg(cwj.a $$0) {
+      super($$0);
    }
 
-   public cwl.a a(cwl.a $$0, axf<djm> $$1, float $$2, float $$3) {
-      js<djm> $$4 = mb.a(mb.e);
-      return this.a($$0).a(kv.B, new czr(List.of(czr.a.a($$4.b(this.g)), czr.a.a($$4.b($$1), this.i)), 1.0F, 1)).a(this.a($$2, $$3));
+   public static cze c() {
+      return cze.a().a(bwn.c, new bwl(g, 8.0, bwl.a.a), bus.b).a(bwn.e, new bwl(h, -2.9F, bwl.a.a), bus.b).a();
    }
 
-   private czg a(float $$0, float $$1) {
-      return czg.a().a(bwo.c, new bwm(cwl.g, (double)($$0 + this.j), bwm.a.a), but.b).a(bwo.e, new bwm(cwl.h, (double)$$1, bwm.a.a), but.b).a();
+   public static czp d() {
+      return new czp(List.of(), 1.0F, 2);
    }
 
-   public cwl.a a(cwl.a $$0, float $$1, float $$2) {
-      js<djm> $$3 = mb.a(mb.e);
-      return this.a($$0).a(kv.B, new czr(List.of(czr.a.a(jv.a(djo.bz.p()), 15.0F), czr.a.b($$3.b(awp.bG), 1.5F)), 1.0F, 2)).a(this.b($$1, $$2));
+   @Override
+   public boolean a(dwv $$0, dgg $$1, ji $$2, cov $$3) {
+      return !$$3.b();
    }
 
-   private czg b(float $$0, float $$1) {
-      return czg.a().a(bwo.c, new bwm(cwl.g, (double)($$0 + this.j), bwm.a.a), but.b).a(bwo.e, new bwm(cwl.h, (double)$$1, bwm.a.a), but.b).a();
+   @Override
+   public cwp b(cwn $$0) {
+      return cwp.f;
    }
 
-   public axf<djm> a() {
-      return this.g;
+   @Override
+   public int a(cwn $$0, bvf $$1) {
+      return 72000;
    }
 
-   public int b() {
-      return this.h;
+   @Override
+   public boolean a(cwn $$0, dgg $$1, bvf $$2, int $$3) {
+      if ($$2 instanceof cov $$4) {
+         int $$6 = this.a($$0, $$2) - $$3;
+         if ($$6 < 10) {
+            return false;
+         } else {
+            float $$7 = dcz.a($$0, $$4);
+            if ($$7 > 0.0F && !$$4.bk()) {
+               return false;
+            } else if ($$0.r()) {
+               return false;
+            } else {
+               jr<avy> $$8 = dcz.b($$0, dcy.C).orElse(avz.Au);
+               $$4.b(awj.c.b(this));
+               if ($$1 instanceof arc $$9) {
+                  $$0.a(1, $$4);
+                  if ($$7 == 0.0F) {
+                     cqb $$10 = cpo.a(cqb::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
+                     if ($$4.fV()) {
+                        $$10.b = cpc.a.c;
+                     } else {
+                        $$4.gi().h($$0);
+                     }
+
+                     $$1.a(null, $$10, $$8.a(), awa.h, 1.0F, 1.0F);
+                     return true;
+                  }
+               }
+
+               if ($$7 > 0.0F) {
+                  float $$11 = $$4.dM();
+                  float $$12 = $$4.dO();
+                  float $$13 = -ayy.a($$11 * (float) (Math.PI / 180.0)) * ayy.b($$12 * (float) (Math.PI / 180.0));
+                  float $$14 = -ayy.a($$12 * (float) (Math.PI / 180.0));
+                  float $$15 = ayy.b($$11 * (float) (Math.PI / 180.0)) * ayy.b($$12 * (float) (Math.PI / 180.0));
+                  float $$16 = ayy.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
+                  $$13 *= $$7 / $$16;
+                  $$14 *= $$7 / $$16;
+                  $$15 *= $$7 / $$16;
+                  $$4.j((double)$$13, (double)$$14, (double)$$15);
+                  $$4.a(20, 8.0F, $$0);
+                  if ($$4.aJ()) {
+                     float $$17 = 1.1999999F;
+                     $$4.a(bvj.a, new fay(0.0, 1.1999999F, 0.0));
+                  }
+
+                  $$1.a(null, $$4, $$8.a(), awa.h, 1.0F, 1.0F);
+                  return true;
+               } else {
+                  return false;
+               }
+            }
+         }
+      } else {
+         return false;
+      }
    }
 
-   public float c() {
-      return this.i;
+   @Override
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      cwn $$3 = $$1.b($$2);
+      if ($$3.r()) {
+         return bsi.d;
+      } else if (dcz.a($$3, $$1) > 0.0F && !$$1.bk()) {
+         return bsi.d;
+      } else {
+         $$1.c($$2);
+         return bsi.c;
+      }
    }
 
-   public float d() {
-      return this.j;
+   @Override
+   public boolean a(cwn $$0, bvf $$1, bvf $$2) {
+      return true;
    }
 
-   public int e() {
-      return this.k;
+   @Override
+   public void b(cwn $$0, bvf $$1, bvf $$2) {
+      $$0.a(1, $$2, bur.a);
    }
 
-   public axf<cwl> f() {
-      return this.l;
+   @Override
+   public cpo a(dgg $$0, kb $$1, cwn $$2, jn $$3) {
+      cqb $$4 = new cqb($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.b = cpc.a.b;
+      return $$4;
    }
 }

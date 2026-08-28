@@ -1,15 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddh(jv<cwl> c) {
-   public static final Codec<ddh> a = RecordCodecBuilder.create($$0 -> $$0.group(kg.a(mc.K).fieldOf("items").forGetter(ddh::a)).apply($$0, ddh::new));
-   public static final ym<vz, ddh> b = ym.a(yk.c(mc.K), ddh::a, ddh::new);
+public record ddh(dde c) implements ddq {
+   public static final MapCodec<ddh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dde.b.fieldOf("value").forGetter(ddh::b)).apply($$0, ddh::new));
 
-   public boolean a(cwp $$0) {
-      return $$0.a(this.c);
+   @Override
+   public float a(int $$0, azg $$1, float $$2) {
+      return $$2 + this.c.a($$0);
    }
 
-   public jv<cwl> a() {
+   @Override
+   public MapCodec<ddh> a() {
+      return a;
+   }
+
+   public dde b() {
       return this.c;
    }
 }

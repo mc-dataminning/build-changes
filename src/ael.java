@@ -2,7 +2,7 @@ public class ael implements yv<abk> {
    public static final ym<vl, ael> a = yv.a(ael::a, ael::new);
    private final double b;
 
-   public ael(dyn $$0) {
+   public ael(dyl $$0) {
       this.b = $$0.k();
    }
 

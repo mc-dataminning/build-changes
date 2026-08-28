@@ -1,19 +1,60 @@
-public final class bsr implements bsl {
-   private final wo a;
-   private final ctk b;
+public class bsr {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = baa.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-   public bsr(ctk $$0, wo $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)baa.a / (double)this.b);
    }
 
-   @Override
-   public wo p_() {
-      return this.a;
+   public float f() {
+      return this.b;
    }
 
-   @Override
-   public csc createMenu(int $$0, cow $$1, cox $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public float g() {
+      return (float)this.c / (float)baa.b;
+   }
+
+   public long h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(buj $$0) {
+      return !this.i() && !($$0 instanceof cov) && $$0.de() <= 0;
    }
 }

@@ -1,18 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxe {
-   public static <E extends bvg, T> bxa<E> a(Predicate<E> $$0, cek<? extends T> $$1, cek<T> $$2, bru $$3) {
-      return cam.a(
-         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
-                     return true;
-                  }
-               }))
-      );
+public class bxe extends bwy<bvf> {
+   private final cej<Integer> c;
+
+   public bxe(cej<Integer> $$0) {
+      super(ImmutableMap.of($$0, cek.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bvf $$0) {
+      return $$0.ec().c(this.c);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean a(arc $$0, bvf $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(arc $$0, bvf $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.ec().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(arc $$0, bvf $$1, long $$2) {
+      $$1.ec().b(this.c);
    }
 }

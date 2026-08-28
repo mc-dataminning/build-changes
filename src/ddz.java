@@ -2,32 +2,27 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ddz(ddg d, ddg e, km f, Optional<edz> g, ekd h, Optional<jr<ebt>> i) implements ddq {
+public record ddz(cyp d, km e, Optional<jr<ebr>> f) implements ddo {
    public static final MapCodec<ddz> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ddg.b.fieldOf("radius").forGetter(ddz::b),
-               ddg.b.fieldOf("height").forGetter(ddz::c),
-               km.g.optionalFieldOf("offset", km.h).forGetter(ddz::d),
-               edz.b.optionalFieldOf("predicate").forGetter(ddz::e),
-               ekd.a.fieldOf("block_state").forGetter(ddz::f),
-               ebt.aj.optionalFieldOf("trigger_game_event").forGetter(ddz::g)
+               cyp.b.fieldOf("properties").forGetter(ddz::b),
+               km.g.optionalFieldOf("offset", km.h).forGetter(ddz::c),
+               ebr.aj.optionalFieldOf("trigger_game_event").forGetter(ddz::d)
             )
             .apply($$0, ddz::new)
    );
 
-   @Override
-   public void a(arc $$0, int $$1, dcy $$2, buk $$3, fba $$4) {
-      ji $$5 = ji.a((kb)$$4).a(this.f);
-      azh $$6 = $$3.dZ();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
+   public ddz(cyp $$0) {
+      this($$0, km.h, Optional.of(ebr.c));
+   }
 
-      for (ji $$9 : ji.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)ayz.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
+   @Override
+   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
+      ji $$5 = ji.a((kb)$$4).a(this.e);
+      dwv $$6 = $$3.dW().a_($$5);
+      dwv $$7 = this.d.a($$6);
+      if (!$$6.equals($$7) && $$3.dW().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -36,27 +31,15 @@ public record ddz(ddg d, ddg e, km f, Optional<edz> g, ekd h, Optional<jr<ebt>> 
       return a;
    }
 
-   public ddg b() {
+   public cyp b() {
       return this.d;
    }
 
-   public ddg c() {
+   public km c() {
       return this.e;
    }
 
-   public km d() {
+   public Optional<jr<ebr>> d() {
       return this.f;
-   }
-
-   public Optional<edz> e() {
-      return this.g;
-   }
-
-   public ekd f() {
-      return this.h;
-   }
-
-   public Optional<jr<ebt>> g() {
-      return this.i;
    }
 }

@@ -21,7 +21,7 @@ public class aop {
    }
 
    private static int a(ex $$0, Collection<ard> $$1, ji $$2, float $$3) {
-      akt<dgi> $$4 = $$0.e().ai();
+      akt<dgg> $$4 = $$0.e().ai();
 
       for (ard $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

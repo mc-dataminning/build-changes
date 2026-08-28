@@ -1,82 +1,126 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dmc extends djm {
-   public static final MapCodec<dmc> a = b(dmc::new);
-   public static final dxu<jn> b = dnk.aF;
-   public static final dxo c = dxn.l;
-   protected static final fbu d = djm.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final fbu e = djm.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final fbu f = fbr.a(d, e);
-   private static dxc g;
+public class dmc extends die<duu> implements dqq {
+   public static final MapCodec<dmc> b = b(dmc::new);
+   public static final dxs<jn> c = dni.aF;
+   public static final dxm d = dxl.J;
+   protected static final fbs e = djk.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   private static final wo f = wo.c("container.enderchest");
 
    @Override
    public MapCodec<dmc> a() {
-      return a;
+      return b;
    }
 
-   public dmc(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean g_(dwx $$0) {
-      return true;
+   protected dmc(dwu.d $$0) {
+      super($$0, () -> dtz.d);
+      this.l(this.F.b().b(c, jn.c).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return $$0.c(c) ? f : d;
+   public dls.c<? extends due> a(dwv $$0, dgg $$1, ji $$2, boolean $$3) {
+      return dls.b::b;
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return e;
    }
 
    @Override
-   protected boolean c_(dwx $$0) {
-      return true;
+   public dwv a(dae $$0) {
+      esx $$1 = $$0.q().b_($$0.a());
+      return this.m().b(c, $$0.g().g()).b(d, Boolean.valueOf($$1.a() == esy.c));
    }
 
    @Override
-   protected int a(dwx $$0, dgi $$1, ji $$2) {
-      return $$0.c(c) ? 15 : 0;
+   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
+      cto $$5 = $$3.gw();
+      if ($$5 != null && $$1.c_($$2) instanceof duu $$7) {
+         ji $$9 = $$2.d();
+         if ($$1.a_($$9).d($$1, $$9)) {
+            return bsi.a;
+         } else {
+            if ($$1 instanceof arc $$10) {
+               $$5.a($$7);
+               $$3.a(new bsq(($$1x, $$2x, $$3x) -> csj.a($$1x, $$2x, $$5), f));
+               $$3.a(awj.aj);
+               cnk.a($$10, $$3, true);
+            }
+
+            return bsi.a;
+         }
+      } else {
+         return bsi.a;
+      }
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public dtx a(ji $$0, dwv $$1) {
+      return new duu($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
+      return $$0.C ? a($$2, dtz.d, duu::a) : null;
    }
 
    @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         int $$5 = $$3.a(2) * 2 - 1;
+         int $$6 = $$3.a(2) * 2 - 1;
+         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
+         double $$8 = (double)((float)$$2.v() + $$3.i());
+         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
+         double $$10 = (double)($$3.i() * (float)$$5);
+         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
+         double $$12 = (double)($$3.i() * (float)$$6);
+         $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
+      }
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b, c);
+   protected dwv a(dwv $$0, dqc $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
-   public static dxc b() {
-      if (g == null) {
-         g = dxd.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dxb.a(dxg.a))
-            .a('^', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.d))))
-            .a('>', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.e))))
-            .a('v', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.c))))
-            .a('<', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.f))))
-            .b();
+   @Override
+   protected dwv a(dwv $$0, doj $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected esx b_(dwv $$0) {
+      return $$0.c(d) ? esy.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, esy.c, esy.c.a($$1));
       }
 
-      return g;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dwx $$0, eto $$1) {
+   protected boolean a(dwv $$0, etm $$1) {
       return false;
+   }
+
+   @Override
+   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      dtx $$4 = $$1.c_($$2);
+      if ($$4 instanceof duu) {
+         ((duu)$$4).b();
+      }
    }
 }

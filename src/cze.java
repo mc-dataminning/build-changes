@@ -1,131 +1,123 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-public record cze(cze.a e, IntList f, IntList g, boolean h, boolean i) implements czs {
-   public static final cze a = new cze(cze.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<cze> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cze.a.g.fieldOf("shape").forGetter(cze::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(cze::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(cze::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(cze::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(cze::e)
-            )
+public record cze(List<cze.b> e, boolean f) {
+   public static final cze a = new cze(List.of(), true);
+   private static final Codec<cze> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cze.b.a.listOf().fieldOf("modifiers").forGetter(cze::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cze::c))
             .apply($$0, cze::new)
    );
-   private static final ym<ByteBuf, IntList> j = yk.g.a(yk.a()).a(IntArrayList::new, ArrayList::new);
-   public static final ym<ByteBuf, cze> d = ym.a(cze.a.f, cze::a, j, cze::b, j, cze::c, yk.b, cze::d, yk.b, cze::e, cze::new);
-   private static final wo k = wo.c("item.minecraft.firework_star.custom_color");
+   public static final Codec<cze> b = Codec.withAlternative(g, cze.b.a.listOf(), $$0 -> new cze($$0, true));
+   public static final ym<vz, cze> c = ym.a(cze.b.b.a(yk.a()), cze::b, yk.b, cze::c, cze::new);
+   public static final DecimalFormat d = af.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-   @Override
-   public void a(cwl.b $$0, Consumer<wo> $$1, cyh $$2) {
-      this.a($$1);
-      this.b($$1);
+   public cze a(boolean $$0) {
+      return new cze(this.e, $$0);
    }
 
-   public void a(Consumer<wo> $$0) {
-      $$0.accept(this.e.a().a(n.h));
+   public static cze.a a() {
+      return new cze.a();
    }
 
-   public void b(Consumer<wo> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(wo.i().a(n.h), this.f));
-      }
+   public cze a(jr<bwi> $$0, bwl $$1, bus $$2) {
+      Builder<cze.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
 
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(wo.c("item.minecraft.firework_star.fade_to").b(wn.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(wo.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(wo.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static wo a(xc $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+      for (cze.b $$4 : this.e) {
+         if (!$$4.a($$0, $$1.b())) {
+            $$3.add($$4);
          }
-
-         $$0.b(a($$1.getInt($$2)));
       }
 
-      return $$0;
+      $$3.add(new cze.b($$0, $$1, $$2));
+      return new cze($$3.build(), this.f);
    }
 
-   private static wo a(int $$0) {
-      cvm $$1 = cvm.b($$0);
-      return (wo)($$1 == null ? k : wo.c("item.minecraft.firework_star." + $$1.b()));
+   public void a(bus $$0, BiConsumer<jr<bwi>, bwl> $$1) {
+      for (cze.b $$2 : this.e) {
+         if ($$2.e.equals($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
    }
 
-   public cze a(IntList $$0) {
-      return new cze(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   public void a(bur $$0, BiConsumer<jr<bwi>, bwl> $$1) {
+      for (cze.b $$2 : this.e) {
+         if ($$2.e.b($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
    }
 
-   public cze.a a() {
+   public double a(double $$0, bur $$1) {
+      double $$2 = $$0;
+
+      for (cze.b $$3 : this.e) {
+         if ($$3.e.b($$1)) {
+            double $$4 = $$3.d.c();
+
+            $$2 += switch ($$3.d.d()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
+         }
+      }
+
+      return $$2;
+   }
+
+   public List<cze.b> b() {
       return this.e;
    }
 
-   public IntList b() {
+   public boolean c() {
       return this.f;
    }
 
-   public IntList c() {
-      return this.g;
+   public static class a {
+      private final Builder<cze.b> a = ImmutableList.builder();
+
+      a() {
+      }
+
+      public cze.a a(jr<bwi> $$0, bwl $$1, bus $$2) {
+         this.a.add(new cze.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public cze a() {
+         return new cze(this.a.build(), true);
+      }
    }
 
-   public boolean d() {
-      return this.h;
-   }
+   public static record b(jr<bwi> c, bwl d, bus e) {
+      public static final Codec<cze.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bwi.a.fieldOf("type").forGetter(cze.b::a), bwl.a.forGetter(cze.b::b), bus.l.optionalFieldOf("slot", bus.a).forGetter(cze.b::c))
+               .apply($$0, cze.b::new)
+      );
+      public static final ym<vz, cze.b> b = ym.a(bwi.b, cze.b::a, bwl.c, cze.b::b, bus.m, cze.b::c, cze.b::new);
 
-   public boolean e() {
-      return this.i;
-   }
-
-   public static enum a implements azv {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cze.a> h = axq.a(cze.a::b, values(), axq.a.a);
-      public static final ym<ByteBuf, cze.a> f = yk.a(h, cze.a::b);
-      public static final Codec<cze.a> g = azv.b(cze.a::values);
-      private final int i;
-      private final String j;
-
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      public boolean a(jr<bwi> $$0, aku $$1) {
+         return $$0.equals(this.c) && this.d.a($$1);
       }
 
-      public xc a() {
-         return wo.c("item.minecraft.firework_star.shape." + this.j);
+      public jr<bwi> a() {
+         return this.c;
       }
 
-      public int b() {
-         return this.i;
+      public bwl b() {
+         return this.d;
       }
 
-      public static cze.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
+      public bus c() {
+         return this.e;
       }
    }
 }

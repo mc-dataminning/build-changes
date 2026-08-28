@@ -6,7 +6,7 @@ public class abl implements yv<abk> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bur<?> f;
+   private final buq<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,32 +18,32 @@ public class abl implements yv<abk> {
    private final byte o;
    private final int p;
 
-   public abl(buk $$0, ara $$1) {
+   public abl(buj $$0, ara $$1) {
       this($$0, $$1, 0);
    }
 
-   public abl(buk $$0, ara $$1, int $$2) {
+   public abl(buj $$0, ara $$1, int $$2) {
       this($$0.ar(), $$0.cG(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.aq(), $$2, $$1.c(), (double)$$1.f());
    }
 
-   public abl(buk $$0, int $$1, ji $$2) {
+   public abl(buj $$0, int $$1, ji $$2) {
       this($$0.ar(), $$0.cG(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dO(), $$0.dM(), $$0.aq(), $$1, $$0.dz(), (double)$$0.cA());
    }
 
-   public abl(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bur<?> $$7, int $$8, fba $$9, double $$10) {
+   public abl(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, buq<?> $$7, int $$8, fay $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
       this.h = $$3;
       this.i = $$4;
-      this.m = ayz.g($$5);
-      this.n = ayz.g($$6);
-      this.o = ayz.g((float)$$10);
+      this.m = ayy.g($$5);
+      this.n = ayy.g($$6);
+      this.o = ayy.g((float)$$10);
       this.f = $$7;
       this.p = $$8;
-      this.j = (int)(ayz.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.k = (int)(ayz.a($$9.e, -3.9, 3.9) * 8000.0);
-      this.l = (int)(ayz.a($$9.f, -3.9, 3.9) * 8000.0);
+      this.j = (int)(ayy.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.k = (int)(ayy.a($$9.e, -3.9, 3.9) * 8000.0);
+      this.l = (int)(ayy.a($$9.f, -3.9, 3.9) * 8000.0);
    }
 
    private abl(vz $$0) {
@@ -95,7 +95,7 @@ public class abl implements yv<abk> {
       return this.e;
    }
 
-   public bur<?> f() {
+   public buq<?> f() {
       return this.f;
    }
 
@@ -124,15 +124,15 @@ public class abl implements yv<abk> {
    }
 
    public float m() {
-      return ayz.a(this.m);
+      return ayy.a(this.m);
    }
 
    public float n() {
-      return ayz.a(this.n);
+      return ayy.a(this.n);
    }
 
    public float o() {
-      return ayz.a(this.o);
+      return ayy.a(this.o);
    }
 
    public int p() {

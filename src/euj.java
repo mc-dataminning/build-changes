@@ -1,39 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public abstract class euj {
-   protected final dpt a;
+   private boolean a;
 
-   protected euj(dpt $$0) {
+   public abstract tq a(tq var1, jt.a var2);
+
+   public void c() {
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
       this.a = $$0;
    }
 
-   public abstract void a(dgi var1, ji var2, dwx var3, @Nullable euh var4, boolean var5);
-
-   protected int a(dgi $$0, ji $$1) {
-      return this.a.a($$0, $$1);
+   public boolean d() {
+      return this.a;
    }
 
-   protected int a(ji $$0, dwx $$1) {
-      return $$1.a(this.a) ? $$1.c(dpt.f) : 0;
+   public tq a(jt.a $$0) {
+      tq $$1 = new tq();
+      $$1.a("data", this.a(new tq(), $$0));
+      uf.e($$1);
+      this.a(false);
+      return $$1;
    }
 
-   protected int b(dgi $$0, ji $$1) {
-      int $$2 = 0;
-
-      for (jn $$3 : jn.c.a) {
-         ji $$4 = $$1.a($$3);
-         dwx $$5 = $$0.a_($$4);
-         $$2 = Math.max($$2, this.a($$4, $$5));
-         ji $$6 = $$1.d();
-         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
-            ji $$7 = $$4.d();
-            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
-         } else if (!$$5.d($$0, $$4)) {
-            ji $$8 = $$4.e();
-            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
-         }
-      }
-
-      return Math.max(0, $$2 - 1);
+   public static record a<T extends euj>(Supplier<T> a, BiFunction<tq, jt.a, T> b, bam c) {
    }
 }

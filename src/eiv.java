@@ -1,16 +1,28 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiv implements eic {
-   public static final Codec<eiv> a = ayi.c(emq.c).fieldOf("features").xmap(eiv::new, $$0 -> $$0.b).codec();
-   public final jv<emq> b;
+public class eiv implements eia {
+   public static final Codec<eiv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               esx.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               kg.a(mc.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eiv::new)
+   );
+   public final esx b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final jv<djk> f;
 
-   public eiv(jv<emq> $$0) {
+   public eiv(esx $$0, boolean $$1, int $$2, int $$3, jv<djk> $$4) {
       this.b = $$0;
-   }
-
-   @Override
-   public Stream<efk<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

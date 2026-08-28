@@ -1,43 +1,47 @@
-import org.joml.Quaternionf;
+public class gbx extends gby<gyh> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final gfa[] d = new gfa[4];
 
-public class gbx extends gca<gyf> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final gfc a;
-   public final gfc b;
-   public final gfc c;
-   public final gfc d;
-
-   public gbx(gfc $$0) {
+   public gbx(gfa $$0) {
       super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      float $$2 = 0.875F;
-      gfh $$3 = gfh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      gfm $$4 = $$1.a("outer_glass", $$3, gfe.a(0.0F, 24.0F, 0.0F));
-      gfm $$5 = $$4.a("inner_glass", $$3, gfe.a.a(0.875F));
-      $$5.a("cube", gfh.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfe.a.a(0.765625F));
-      $$1.a("base", gfh.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gfe.a);
-      return gfi.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "segment" + $$0;
    }
 
-   public void a(gyf $$0) {
+   public static gfg a() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      float $$2 = -3.5F;
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            gff.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            gfc.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
+      }
+
+      return gfg.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(gyh $$0) {
       super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.u * 3.0F;
-      float $$2 = grw.a($$0.u) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         this.d[$$1].f = ayy.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
+         this.d[$$1].b = ayy.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
+      }
    }
 }

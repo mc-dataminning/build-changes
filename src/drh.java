@@ -1,53 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drh extends djm {
-   public static final MapCodec<drh> a = b(drh::new);
-   private static final fbu b = djm.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+public class drh extends dsb implements djb {
+   public static final MapCodec<drh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvk.q.fieldOf("color").forGetter(drh::b), t()).apply($$0, drh::new));
+   private final cvk c;
 
    @Override
    public MapCodec<drh> a() {
       return a;
    }
 
-   public drh(dww.d $$0) {
-      super($$0);
+   public drh(cvk $$0, dwu.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return djm.a($$1, $$2.d(), jn.a) && !$$1.z($$2);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return $$4 == jn.b && !this.a($$0, $$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(lt.aB, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ji.a $$10 = new ji.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + ayz.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ayz.a($$3, -10, 10));
-         dwx $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(lt.aF, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b;
+   public cvk b() {
+      return this.c;
    }
 }

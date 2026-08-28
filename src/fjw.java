@@ -1,22 +1,57 @@
-public enum fjw {
-   a(0, enc.a),
-   b(1, enc.b),
-   c(2, enc.c),
-   d(3, enc.d);
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-   private final int e;
-   private final wo f;
+public class fjw {
+   private static final Map<String, fjw.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final aku c = aku.b("textures/gui/presets/isles.png");
 
-   private fjw(final int $$0, final akt<enb> $$1) {
-      this.e = $$0;
-      this.f = wo.c($$1.a().h("generator"));
+   public static aku a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   public wo a() {
-      return this.f;
+   private static aku b(String $$0, String $$1) {
+      fjw.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         fes $$3 = a($$1);
+         if ($$3 == null) {
+            aku $$4 = heb.c();
+            a.put($$0, new fjw.a($$1, $$4));
+            return $$4;
+         } else {
+            aku $$5 = aku.a("realms", "dynamic/" + $$0);
+            flh.Q().aa().a($$5, new hdz($$3));
+            a.put($$0, new fjw.a($$1, $$5));
+            return $$5;
+         }
+      }
    }
 
-   public int b() {
-      return this.e;
+   @Nullable
+   private static fes a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return fes.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
+   }
+
+   public static record a(String a, aku b) {
    }
 }

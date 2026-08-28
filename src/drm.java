@@ -1,53 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class drm extends dqr {
-   public static final MapCodec<drm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dyj.a.fieldOf("wood_type").forGetter(dqr::d), t()).apply($$0, drm::new));
-   public static final dxw b = dxn.bd;
+public class drm extends djk {
+   public static final MapCodec<drm> a = b(drm::new);
+   private static final wo d = wo.c("container.stonecutter");
+   public static final dxs<jn> b = dni.aF;
+   protected static final fbs c = djk.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<drm> a() {
       return a;
    }
 
-   public drm(dyj $$0, dww.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.l(this.F.b().b(b, Integer.valueOf(0)).b(f, Boolean.valueOf(false)));
+   public drm(dwu.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jn.c));
    }
 
    @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return $$1.a_($$2.e()).e();
+   public dwv a(dae $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   public dwx a(dag $$0) {
-      esz $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Integer.valueOf(dyc.a($$0.i() + 180.0F))).b(f, Boolean.valueOf($$1.a() == eta.c));
+   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awj.ay);
+      }
+
+      return bsi.a;
+   }
+
+   @Nullable
+   @Override
+   protected bsk b(dwv $$0, dgg $$1, ji $$2) {
+      return new bsq(($$2x, $$3, $$4) -> new cud($$2x, $$3, csn.a($$1, $$2)), d);
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return $$4 == jn.a && !this.a($$0, $$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return c;
    }
 
    @Override
-   public float h(dwx $$0) {
-      return dyc.b($$0.c(b));
+   protected boolean g_(dwv $$0) {
+      return true;
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected dwv a(dwv $$0, dqc $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected dwv a(dwv $$0, doj $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b, f);
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dwv $$0, etm $$1) {
+      return false;
    }
 }

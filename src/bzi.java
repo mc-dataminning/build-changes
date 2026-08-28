@@ -1,98 +1,81 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.Set;
 
-public class bzi<U> implements Iterable<U> {
-   protected final List<bzi.a<U>> a;
-   private final azh b = azh.a();
+public class bzi extends bwy<bvf> {
+   public static final int c = 100;
+   private long d;
 
    public bzi() {
-      this.a = Lists.newArrayList();
-   }
-
-   private bzi(List<bzi.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
-
-   public static <U> Codec<bzi<U>> a(Codec<U> $$0) {
-      return bzi.a.a($$0).listOf().xmap(bzi::new, $$0x -> $$0x.a);
-   }
-
-   public bzi<U> a(U $$0, int $$1) {
-      this.a.add(new bzi.a<>($$0, $$1));
-      return this;
-   }
-
-   public bzi<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bzi.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bzi.a::a);
+      super(ImmutableMap.of(cej.b, cek.a, cej.I, cek.c));
    }
 
    @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bzi.a::a);
+   protected boolean a(arc $$0, bvf $$1) {
+      if ($$1.bZ()) {
+         return false;
+      } else {
+         bwh<?> $$2 = $$1.ec();
+         jq $$3 = $$2.c(cej.b).get();
+         if ($$0.ai() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cej.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ad() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dwv $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.du(), 2.0) && $$6.a(awo.T) && !$$6.c(djd.c);
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
+   protected boolean a(arc $$0, bvf $$1, long $$2) {
+      Optional<jq> $$3 = $$1.ec().c(cej.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ji $$4 = $$3.get().b();
+         return $$1.ec().c(cqm.e) && $$1.dD() > (double)$$4.v() + 0.4 && $$4.a($$1.du(), 1.14);
+      }
    }
 
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bzi.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bzi.a<E>>() {
-            public <T> DataResult<Pair<bzi.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bzi.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+   @Override
+   protected void d(arc $$0, bvf $$1, long $$2) {
+      if ($$2 > this.d) {
+         bwh<?> $$3 = $$1.ec();
+         if ($$3.a(cej.v)) {
+            Set<jq> $$4 = $$3.c(cej.v).get();
+            Optional<List<bvf>> $$5;
+            if ($$3.a(cej.g)) {
+               $$5 = $$3.c(cej.g);
+            } else {
+               $$5 = Optional.empty();
             }
 
-            public <T> DataResult<T> a(bzi.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
+            bxw.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.ec().c(cej.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(arc $$0, bvf $$1, long $$2) {
+      if ($$1.fR()) {
+         $$1.fS();
+         this.d = $$2 + 40L;
       }
    }
 }

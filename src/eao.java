@@ -1,49 +1,13 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+public class eao {
+   public static final akt<eaq> a = a("overworld");
+   public static final akt<eaq> b = a("the_nether");
+   public static final akt<eaq> c = a("the_end");
+   public static final akt<eaq> d = a("overworld_caves");
+   public static final aku e = aku.b("overworld");
+   public static final aku f = aku.b("the_nether");
+   public static final aku g = aku.b("the_end");
 
-public class eao implements AutoCloseable {
-   private final eae a;
-   private final DataFixer b;
-   private final ban c;
-
-   public eao(eal $$0, Path $$1, DataFixer $$2, boolean $$3, ban $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new eae($$0, $$1, $$3);
-   }
-
-   public CompletableFuture<Optional<tq>> a(dfo $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(dfo $$0, @Nullable tq $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public tq a(tq $$0, int $$1) {
-      int $$2 = uf.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
-   }
-
-   public Dynamic<un> a(Dynamic<un> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public eal a() {
-      return this.a.a();
+   private static akt<eaq> a(String $$0) {
+      return akt.a(mc.aN, aku.b($$0));
    }
 }

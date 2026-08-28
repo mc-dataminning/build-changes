@@ -1,43 +1,19 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class cwy extends cwl {
-   private static final Logger a = LogUtils.getLogger();
-
-   public cwy(cwl.a $$0) {
+public class cwy extends cyc {
+   public cwy(cwj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsj a(dgi $$0, cox $$1, bsi $$2) {
-      cwp $$3 = $$1.b($$2);
-      List<akt<dbe<?>>> $$4 = $$3.a(kv.ac, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return bsj.d;
-      } else {
-         if (!$$0.C) {
-            dbl $$5 = $$0.p().aI();
-            List<dbj<?>> $$6 = new ArrayList<>($$4.size());
+   public void a(cwn $$0, cwj.b $$1, List<wo> $$2, cyf $$3) {
+      cym $$4 = $$0.a(kv.Q, cym.a);
+      $$4.a($$2::add, 0.25F, $$1.b());
+   }
 
-            for (akt<dbe<?>> $$7 : $$4) {
-               Optional<dbj<?>> $$8 = $$5.b($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bsj.d;
-               }
-
-               $$6.add($$8.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(awk.c.b(this));
-         }
-
-         return bsj.a;
-      }
+   @Override
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), avz.ov, awa.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

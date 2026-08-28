@@ -1,58 +1,67 @@
+import io.netty.buffer.ByteBuf;
+import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Set;
 
-public record bvt(fba b, fba c, float d, float e) {
-   public static final ym<vl, bvt> a = ym.a(fba.b, bvt::a, fba.b, bvt::b, yk.l, bvt::c, yk.l, bvt::d, bvt::new);
+public enum bvt {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8);
 
-   public static bvt a(buk $$0) {
-      return new bvt($$0.du(), $$0.ah(), $$0.dM(), $$0.dO());
-   }
+   public static final Set<bvt> j = Set.of(values());
+   public static final Set<bvt> k = Set.of(e, d);
+   public static final Set<bvt> l = Set.of(f, g, h, i);
+   public static final ym<ByteBuf, Set<bvt>> m = yk.g.a(bvt::a, bvt::a);
+   private final int n;
 
-   public static bvt b(buk $$0) {
-      return new bvt(new fba($$0.R_(), $$0.S_(), $$0.g_()), $$0.ah(), $$0.dM(), $$0.dO());
-   }
+   @SafeVarargs
+   public static Set<bvt> a(Set<bvt>... $$0) {
+      HashSet<bvt> $$1 = new HashSet<>();
 
-   public static bvt a(etz $$0) {
-      return new bvt($$0.c(), $$0.d(), $$0.e(), $$0.f());
-   }
-
-   public static bvt a(bvt $$0, bvt $$1, Set<bvu> $$2) {
-      double $$3 = $$2.contains(bvu.a) ? $$0.b.d : 0.0;
-      double $$4 = $$2.contains(bvu.b) ? $$0.b.e : 0.0;
-      double $$5 = $$2.contains(bvu.c) ? $$0.b.f : 0.0;
-      float $$6 = $$2.contains(bvu.d) ? $$0.d : 0.0F;
-      float $$7 = $$2.contains(bvu.e) ? $$0.e : 0.0F;
-      fba $$8 = new fba($$3 + $$1.b.d, $$4 + $$1.b.e, $$5 + $$1.b.f);
-      float $$9 = $$6 + $$1.d;
-      float $$10 = $$7 + $$1.e;
-      fba $$11 = $$0.c;
-      if ($$2.contains(bvu.i)) {
-         float $$12 = $$0.d - $$9;
-         float $$13 = $$0.e - $$10;
-         $$11 = $$11.a((float)Math.toRadians((double)$$13));
-         $$11 = $$11.b((float)Math.toRadians((double)$$12));
+      for (Set<bvt> $$2 : $$0) {
+         $$1.addAll($$2);
       }
 
-      fba $$14 = new fba(a($$11.d, $$1.c.d, $$2, bvu.f), a($$11.e, $$1.c.e, $$2, bvu.g), a($$11.f, $$1.c.f, $$2, bvu.h));
-      return new bvt($$8, $$14, $$9, $$10);
+      return $$1;
    }
 
-   private static double a(double $$0, double $$1, Set<bvu> $$2, bvu $$3) {
-      return $$2.contains($$3) ? $$0 + $$1 : $$1;
+   private bvt(final int $$0) {
+      this.n = $$0;
    }
 
-   public fba a() {
-      return this.b;
+   private int a() {
+      return 1 << this.n;
    }
 
-   public fba b() {
-      return this.c;
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
    }
 
-   public float c() {
-      return this.d;
+   public static Set<bvt> a(int $$0) {
+      Set<bvt> $$1 = EnumSet.noneOf(bvt.class);
+
+      for (bvt $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
    }
 
-   public float d() {
-      return this.e;
+   public static int a(Set<bvt> $$0) {
+      int $$1 = 0;
+
+      for (bvt $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
    }
 }

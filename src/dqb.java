@@ -1,34 +1,48 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqb extends djm implements djp {
-   public static final MapCodec<dqb> a = b(dqb::new);
+public class dqb extends djk {
+   public static final MapCodec<dqb> h = b(dqb::new);
+   public static final dxs<jn.a> i = dxl.L;
 
    @Override
-   public MapCodec<dqb> a() {
-      return a;
+   public MapCodec<? extends dqb> a() {
+      return h;
    }
 
-   public dqb(dww.d $$0) {
+   public dqb(dwu.d $$0) {
       super($$0);
+      this.l(this.m().b(i, jn.a.b));
    }
 
    @Override
-   public boolean a(dgl $$0, ji $$1, dwx $$2) {
-      return $$0.a_($$1.e()).l();
+   protected dwv a(dwv $$0, dqc $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dwv b(dwv $$0, dqc $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jn.a)$$0.c(i)) {
+               case a:
+                  return $$0.b(i, jn.a.c);
+               case c:
+                  return $$0.b(i, jn.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
-      return true;
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
-      $$0.b($$2.e(), djo.ti.m());
-   }
-
-   @Override
-   public ji a(ji $$0) {
-      return $$0.e();
+   public dwv a(dae $$0) {
+      return this.m().b(i, $$0.k().o());
    }
 }

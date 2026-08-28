@@ -84,7 +84,7 @@ public abstract class asc implements zo {
    }
 
    protected void e() {
-      bor.a().a("keepAlive");
+      boq.a().a("keepAlive");
       long $$0 = af.c();
       if (!this.h() && $$0 - this.j >= 15000L) {
          if (this.k) {
@@ -97,7 +97,7 @@ public abstract class asc implements zo {
          }
       }
 
-      bor.a().c();
+      boq.a().c();
    }
 
    private boolean a(long $$0) {
@@ -158,7 +158,7 @@ public abstract class asc implements zo {
 
    protected abstract GameProfile i();
 
-   @bag
+   @baf
    public GameProfile j() {
       return this.i();
    }

@@ -1,54 +1,31 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record czz(List<btp> c, float f) implements dab {
-   public static final MapCodec<czz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(btp.d.listOf().fieldOf("effects").forGetter(czz::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(czz::c))
-            .apply($$0, czz::new)
-   );
-   public static final ym<vz, czz> b = ym.a(btp.e.a(yk.a()), czz::b, yk.l, czz::c, czz::new);
+public interface czz {
+   Codec<czz> d = mb.ay.q().dispatch(czz::a, czz.a::a);
+   ym<vz, czz> e = yk.a(mc.aE).b(czz::a, czz.a::b);
 
-   public czz(btp $$0, float $$1) {
-      this(List.of($$0), $$1);
-   }
+   czz.a<? extends czz> a();
 
-   public czz(List<btp> $$0) {
-      this($$0, 1.0F);
-   }
+   boolean a(dgg var1, cwn var2, bvf var3);
 
-   public czz(btp $$0) {
-      this($$0, 1.0F);
-   }
+   public static record a<T extends czz>(MapCodec<T> f, ym<vz, T> g) {
+      public static final czz.a<czx> a = a("apply_effects", czx.a, czx.b);
+      public static final czz.a<dab> b = a("remove_effects", dab.a, dab.b);
+      public static final czz.a<czy> c = a("clear_all_effects", czy.b, czy.c);
+      public static final czz.a<dac> d = a("teleport_randomly", dac.a, dac.b);
+      public static final czz.a<daa> e = a("play_sound", daa.a, daa.b);
 
-   @Override
-   public dab.a<czz> a() {
-      return dab.a.a;
-   }
-
-   @Override
-   public boolean a(dgi $$0, cwp $$1, bvg $$2) {
-      if ($$2.dZ().i() >= this.f) {
-         return false;
-      } else {
-         boolean $$3 = false;
-
-         for (btp $$4 : this.c) {
-            if ($$2.a(new btp($$4))) {
-               $$3 = true;
-            }
-         }
-
-         return $$3;
+      private static <T extends czz> czz.a<T> a(String $$0, MapCodec<T> $$1, ym<vz, T> $$2) {
+         return ke.a(mb.ay, $$0, new czz.a<>($$1, $$2));
       }
-   }
 
-   public List<btp> b() {
-      return this.c;
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   public float c() {
-      return this.f;
+      public ym<vz, T> b() {
+         return this.g;
+      }
    }
 }

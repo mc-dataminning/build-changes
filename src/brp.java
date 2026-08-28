@@ -1,16 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 
-public interface brp<P extends bro> {
-   brp<brl> a = a("constant", brl.b);
-   brp<bru> b = a("uniform", bru.a);
-   brp<brg> c = a("biased_to_bottom", brg.a);
-   brp<brh> d = a("clamped", brh.a);
-   brp<brv> e = a("weighted_list", brv.a);
-   brp<brj> f = a("clamped_normal", brj.a);
+public class brp implements brq {
+   private final brq[] a;
 
-   MapCodec<P> codec();
+   public brp(brq... $$0) {
+      this.a = $$0;
+   }
 
-   static <P extends bro> brp<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.K, $$0, () -> $$1);
+   @Override
+   public float a(azg $$0) {
+      float $$1 = 1.0F;
+
+      for (brq $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

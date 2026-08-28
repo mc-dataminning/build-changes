@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gkr {
+   public cot a = cot.b;
+   public float b;
+   public float c;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gkr {
+   public void a() {
+   }
+
+   public fax b() {
+      return new fax(this.b, this.c);
+   }
+
+   public boolean c() {
+      return this.c > 1.0E-5F;
+   }
+
+   public void d() {
+      this.a = new cot(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+   }
 }

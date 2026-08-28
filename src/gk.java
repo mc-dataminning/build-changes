@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gk extends gh<dol> {
+public class gk extends gh<doj> {
    private gk() {
-      super(dol.d, dol::values);
+      super(doj.d, doj::values);
    }
 
-   public static gh<dol> a() {
+   public static gh<doj> a() {
       return new gk();
    }
 
-   public static dol a(CommandContext<ex> $$0, String $$1) {
-      return (dol)$$0.getArgument($$1, dol.class);
+   public static doj a(CommandContext<ex> $$0, String $$1) {
+      return (doj)$$0.getArgument($$1, doj.class);
    }
 }

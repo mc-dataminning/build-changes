@@ -16,7 +16,7 @@ public class ami {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, akt<dgi>> a = ImmutableBiMap.of("o", dgi.i, "n", dgi.j, "e", dgi.k);
+   public static BiMap<String, akt<dgg>> a = ImmutableBiMap.of("o", dgg.i, "n", dgg.j, "e", dgg.k);
    @Nullable
    private static ama g;
    @Nullable

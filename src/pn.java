@@ -16,7 +16,7 @@ public abstract class pn<T> implements mi {
    private final CompletableFuture<Void> g = new CompletableFuture<>();
    private final CompletableFuture<pn.c<T>> h;
    protected final akt<? extends ke<T>> f;
-   private final Map<aku, axc> i = Maps.newLinkedHashMap();
+   private final Map<aku, axb> i = Maps.newLinkedHashMap();
 
    protected pn(mk $$0, akt<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(pn.c.empty()));
@@ -51,7 +51,7 @@ public abstract class pn<T> implements mi {
             $$1 -> {
                jt.b<T> $$2 = $$1.a.d(this.f);
                Predicate<aku> $$3 = $$1x -> $$2.a(akt.a(this.f, $$1x)).isPresent();
-               Predicate<aku> $$4 = $$1x -> this.i.containsKey($$1x) || $$1.b.contains(axf.a(this.f, $$1x));
+               Predicate<aku> $$4 = $$1x -> this.i.containsKey($$1x) || $$1.b.contains(axe.a(this.f, $$1x));
                return CompletableFuture.allOf(
                   this.i
                      .entrySet()
@@ -59,9 +59,9 @@ public abstract class pn<T> implements mi {
                      .map(
                         $$4x -> {
                            aku $$5 = (aku)$$4x.getKey();
-                           axc $$6 = (axc)$$4x.getValue();
-                           List<axd> $$7 = $$6.b();
-                           List<axd> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           axb $$6 = (axb)$$4x.getValue();
+                           List<axc> $$7 = $$6.b();
+                           List<axc> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$8.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -73,7 +73,7 @@ public abstract class pn<T> implements mi {
                               );
                            } else {
                               Path $$9 = this.e.a($$5);
-                              return mi.a($$0, $$1.a, axe.a, new axe($$7, false), $$9);
+                              return mi.a($$0, $$1.a, axd.a, new axd($$7, false), $$9);
                            }
                         }
                      )
@@ -83,13 +83,13 @@ public abstract class pn<T> implements mi {
          );
    }
 
-   protected pn.b<T> b(axf<T> $$0) {
-      axc $$1 = this.c($$0);
+   protected pn.b<T> b(axe<T> $$0) {
+      axb $$1 = this.c($$0);
       return new pn.b<>($$1);
    }
 
-   protected axc c(axf<T> $$0) {
-      return this.i.computeIfAbsent($$0.b(), $$0x -> axc.a());
+   protected axb c(axe<T> $$0) {
+      return this.i.computeIfAbsent($$0.b(), $$0x -> axb.a());
    }
 
    public CompletableFuture<pn.c<T>> c() {
@@ -105,9 +105,9 @@ public abstract class pn<T> implements mi {
    }
 
    protected static class b<T> {
-      private final axc a;
+      private final axb a;
 
-      protected b(axc $$0) {
+      protected b(axb $$0) {
          this.a = $$0;
       }
 
@@ -138,7 +138,7 @@ public abstract class pn<T> implements mi {
          return this;
       }
 
-      public pn.b<T> b(axf<T> $$0) {
+      public pn.b<T> b(axe<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
@@ -150,12 +150,12 @@ public abstract class pn<T> implements mi {
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<axf<T>, Optional<axc>> {
+   public interface c<T> extends Function<axe<T>, Optional<axb>> {
       static <T> pn.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(axf<T> $$0) {
+      default boolean contains(axe<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

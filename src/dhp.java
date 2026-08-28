@@ -1,10 +1,71 @@
-import com.mojang.serialization.MapCodec;
+public abstract class dhp {
+   public static final akt<dhi> a = a("the_void");
+   public static final akt<dhi> b = a("plains");
+   public static final akt<dhi> c = a("sunflower_plains");
+   public static final akt<dhi> d = a("snowy_plains");
+   public static final akt<dhi> e = a("ice_spikes");
+   public static final akt<dhi> f = a("desert");
+   public static final akt<dhi> g = a("swamp");
+   public static final akt<dhi> h = a("mangrove_swamp");
+   public static final akt<dhi> i = a("forest");
+   public static final akt<dhi> j = a("flower_forest");
+   public static final akt<dhi> k = a("birch_forest");
+   public static final akt<dhi> l = a("dark_forest");
+   public static final akt<dhi> m = a("pale_garden");
+   public static final akt<dhi> n = a("old_growth_birch_forest");
+   public static final akt<dhi> o = a("old_growth_pine_taiga");
+   public static final akt<dhi> p = a("old_growth_spruce_taiga");
+   public static final akt<dhi> q = a("taiga");
+   public static final akt<dhi> r = a("snowy_taiga");
+   public static final akt<dhi> s = a("savanna");
+   public static final akt<dhi> t = a("savanna_plateau");
+   public static final akt<dhi> u = a("windswept_hills");
+   public static final akt<dhi> v = a("windswept_gravelly_hills");
+   public static final akt<dhi> w = a("windswept_forest");
+   public static final akt<dhi> x = a("windswept_savanna");
+   public static final akt<dhi> y = a("jungle");
+   public static final akt<dhi> z = a("sparse_jungle");
+   public static final akt<dhi> A = a("bamboo_jungle");
+   public static final akt<dhi> B = a("badlands");
+   public static final akt<dhi> C = a("eroded_badlands");
+   public static final akt<dhi> D = a("wooded_badlands");
+   public static final akt<dhi> E = a("meadow");
+   public static final akt<dhi> F = a("cherry_grove");
+   public static final akt<dhi> G = a("grove");
+   public static final akt<dhi> H = a("snowy_slopes");
+   public static final akt<dhi> I = a("frozen_peaks");
+   public static final akt<dhi> J = a("jagged_peaks");
+   public static final akt<dhi> K = a("stony_peaks");
+   public static final akt<dhi> L = a("river");
+   public static final akt<dhi> M = a("frozen_river");
+   public static final akt<dhi> N = a("beach");
+   public static final akt<dhi> O = a("snowy_beach");
+   public static final akt<dhi> P = a("stony_shore");
+   public static final akt<dhi> Q = a("warm_ocean");
+   public static final akt<dhi> R = a("lukewarm_ocean");
+   public static final akt<dhi> S = a("deep_lukewarm_ocean");
+   public static final akt<dhi> T = a("ocean");
+   public static final akt<dhi> U = a("deep_ocean");
+   public static final akt<dhi> V = a("cold_ocean");
+   public static final akt<dhi> W = a("deep_cold_ocean");
+   public static final akt<dhi> X = a("frozen_ocean");
+   public static final akt<dhi> Y = a("deep_frozen_ocean");
+   public static final akt<dhi> Z = a("mushroom_fields");
+   public static final akt<dhi> aa = a("dripstone_caves");
+   public static final akt<dhi> ab = a("lush_caves");
+   public static final akt<dhi> ac = a("deep_dark");
+   public static final akt<dhi> ad = a("nether_wastes");
+   public static final akt<dhi> ae = a("warped_forest");
+   public static final akt<dhi> af = a("crimson_forest");
+   public static final akt<dhi> ag = a("soul_sand_valley");
+   public static final akt<dhi> ah = a("basalt_deltas");
+   public static final akt<dhi> ai = a("the_end");
+   public static final akt<dhi> aj = a("end_highlands");
+   public static final akt<dhi> ak = a("end_midlands");
+   public static final akt<dhi> al = a("small_end_islands");
+   public static final akt<dhi> am = a("end_barrens");
 
-public class dhp {
-   public static MapCodec<? extends dho> a(ke<MapCodec<? extends dho>> $$0) {
-      ke.a($$0, "fixed", dhv.b);
-      ke.a($$0, "multi_noise", dhx.c);
-      ke.a($$0, "checkerboard", dhs.b);
-      return ke.a($$0, "the_end", dib.b);
+   private static akt<dhi> a(String $$0) {
+      return akt.a(mc.aI, aku.b($$0));
    }
 }

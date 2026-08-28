@@ -1,32 +1,69 @@
-public interface cwk {
-   int a = 256;
-   float b = 7.0F;
-   akt<cwi> c = a("ponder_goat_horn");
-   akt<cwi> d = a("sing_goat_horn");
-   akt<cwi> e = a("seek_goat_horn");
-   akt<cwi> f = a("feel_goat_horn");
-   akt<cwi> g = a("admire_goat_horn");
-   akt<cwi> h = a("call_goat_horn");
-   akt<cwi> i = a("yearn_goat_horn");
-   akt<cwi> j = a("dream_goat_horn");
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-   private static akt<cwi> a(String $$0) {
-      return akt.a(mc.I, aku.b($$0));
+public class cwk {
+   private final Map<aku, cwk.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cwn $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   static void a(qe<cwi> $$0) {
-      a($$0, c, (jr<avz>)awa.nd.get(0), 7.0F, 256.0F);
-      a($$0, d, (jr<avz>)awa.nd.get(1), 7.0F, 256.0F);
-      a($$0, e, (jr<avz>)awa.nd.get(2), 7.0F, 256.0F);
-      a($$0, f, (jr<avz>)awa.nd.get(3), 7.0F, 256.0F);
-      a($$0, g, (jr<avz>)awa.nd.get(4), 7.0F, 256.0F);
-      a($$0, h, (jr<avz>)awa.nd.get(5), 7.0F, 256.0F);
-      a($$0, i, (jr<avz>)awa.nd.get(6), 7.0F, 256.0F);
-      a($$0, j, (jr<avz>)awa.nd.get(7), 7.0F, 256.0F);
+   public float a(cwn $$0, float $$1) {
+      aku $$2 = this.b($$0);
+      cwk.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return ayy.a($$5 / $$4, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
    }
 
-   static void a(qe<cwi> $$0, akt<cwi> $$1, jr<avz> $$2, float $$3, float $$4) {
-      xc $$5 = wo.c(af.a("instrument", $$1.a()));
-      $$0.a($$1, new cwi($$2, $$3, $$4, $$5));
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<aku, cwk.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<aku, cwk.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public aku b(cwn $$0) {
+      czs $$1 = $$0.a(kv.z);
+      aku $$2 = mb.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   }
+
+   public void a(cwn $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(aku $$0, int $$1) {
+      this.a.put($$0, new cwk.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(aku $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(aku $$0, int $$1) {
+   }
+
+   protected void b(aku $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

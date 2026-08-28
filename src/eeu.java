@@ -1,32 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class eeu extends eer {
-   public static final Codec<eeu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eer.d.forGetter($$0x -> $$0x),
-               brm.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               brm.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               brm.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eeu::new)
-   );
-   public final brm b;
-   public final brm c;
-   final brm j;
+public record eeu<WC extends eep>(eew<WC> d, WC e) {
+   public static final Codec<eeu<?>> a = mb.N.q().dispatch($$0 -> $$0.d, eew::c);
+   public static final Codec<jr<eeu<?>>> b = akq.a(mc.aK, a);
+   public static final Codec<jv<eeu<?>>> c = kg.a(mc.aK, a);
 
-   public eeu(float $$0, elt $$1, brm $$2, edm $$3, ees $$4, jv<djm> $$5, brm $$6, brm $$7, brm $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public boolean a(azg $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   public eeu(float $$0, elt $$1, brm $$2, edm $$3, jv<djm> $$4, brm $$5, brm $$6, brm $$7) {
-      this($$0, $$1, $$2, $$3, ees.a, $$4, $$5, $$6, $$7);
+   public boolean a(eer $$0, dyq $$1, Function<ji, jr<dhi>> $$2, azg $$3, ecc $$4, dfm $$5, dyp $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public eeu(eer $$0, brm $$1, brm $$2, brm $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   public eew<WC> a() {
+      return this.d;
+   }
+
+   public WC b() {
+      return this.e;
    }
 }

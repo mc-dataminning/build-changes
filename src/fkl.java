@@ -1,59 +1,52 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fkl extends fkh {
+public class fkl extends fkf {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wo d;
-   private final Runnable e;
+   private static final wo c = wo.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final fhz e;
+   private final fis f;
 
-   public fkl(long $$0, wo $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fkl(long $$0, fhz $$1, fis $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
-
-   protected abstract void a(fgk var1, long var2) throws fig;
 
    @Override
    public void run() {
-      fgk $$0 = fgk.a();
-      int $$1 = 0;
+      fgi $$0 = fgi.a();
 
-      while ($$1 < 25) {
+      for (int $$1 = 0; $$1 < 25; $$1++) {
          try {
             if (this.d()) {
                return;
             }
 
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
             }
-
-            this.e.run();
-            return;
-         } catch (fih var4) {
+         } catch (fif var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't reset world");
+            b.error("Couldn't start mini game!");
             this.a(var5);
-            return;
          }
       }
    }
 
    @Override
    public wo a() {
-      return this.d;
+      return c;
    }
 }

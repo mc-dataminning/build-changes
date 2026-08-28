@@ -16,12 +16,12 @@ public record adx(List<adx.a> b, boolean c) implements yv<abk> {
       return this.c;
    }
 
-   public static record a(dck d, byte e) {
+   public static record a(dci d, byte e) {
       public static final byte a = 1;
       public static final byte b = 2;
-      public static final ym<vz, adx.a> c = ym.a(dck.a, adx.a::c, yk.c, adx.a::d, adx.a::new);
+      public static final ym<vz, adx.a> c = ym.a(dci.a, adx.a::c, yk.c, adx.a::d, adx.a::new);
 
-      public a(dck $$0, boolean $$1, boolean $$2) {
+      public a(dci $$0, boolean $$1, boolean $$2) {
          this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
       }
 
@@ -33,7 +33,7 @@ public record adx(List<adx.a> b, boolean c) implements yv<abk> {
          return (this.e & 2) != 0;
       }
 
-      public dck c() {
+      public dci c() {
          return this.d;
       }
 

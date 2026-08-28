@@ -1,31 +1,101 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ddr {
-   Codec<ddr> c = mb.av.q().dispatch(ddr::a, Function.identity());
+public record ddr(boolean d, Optional<jr<btb>> e, Optional<dde> f, Optional<jv<djk>> g, fay h, dde i, boolean j, dgg.a k, lr l, lr m, jr<avy> n) implements ddo {
+   public static final MapCodec<ddr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(ddr::b),
+               btb.b.optionalFieldOf("damage_type").forGetter(ddr::c),
+               dde.b.optionalFieldOf("knockback_multiplier").forGetter(ddr::d),
+               kg.a(mc.f).optionalFieldOf("immune_blocks").forGetter(ddr::e),
+               fay.a.optionalFieldOf("offset", fay.c).forGetter(ddr::f),
+               dde.b.fieldOf("radius").forGetter(ddr::g),
+               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(ddr::h),
+               dgg.a.f.fieldOf("block_interaction").forGetter(ddr::i),
+               lt.bi.fieldOf("small_particle").forGetter(ddr::j),
+               lt.bi.fieldOf("large_particle").forGetter(ddr::k),
+               avy.b.fieldOf("sound").forGetter(ddr::l)
+            )
+            .apply($$0, ddr::new)
+   );
 
-   static MapCodec<? extends ddr> b(ke<MapCodec<? extends ddr>> $$0) {
-      ke.a($$0, "all_of", ddk.b.a);
-      ke.a($$0, "apply_mob_effect", ddl.a);
-      ke.a($$0, "attribute", ddp.a);
-      ke.a($$0, "change_item_damage", ddm.a);
-      ke.a($$0, "damage_entity", ddn.a);
-      ke.a($$0, "explode", ddt.a);
-      ke.a($$0, "ignite", ddu.a);
-      ke.a($$0, "play_sound", ddw.a);
-      ke.a($$0, "replace_block", ddy.a);
-      ke.a($$0, "replace_disk", ddz.a);
-      ke.a($$0, "run_function", dea.a);
-      ke.a($$0, "set_block_properties", deb.a);
-      ke.a($$0, "spawn_particles", ded.a);
-      return ke.a($$0, "summon_entity", dee.a);
+   @Override
+   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
+      fay $$5 = $$4.e(this.h);
+      $$0.a(
+         this.d ? $$3 : null,
+         this.a($$3, $$5),
+         new dgz(this.k != dgg.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
+         $$5.a(),
+         $$5.b(),
+         $$5.c(),
+         Math.max(this.i.a($$1), 0.0F),
+         this.j,
+         this.k,
+         this.l,
+         this.m,
+         this.n
+      );
    }
 
-   void a(arc var1, int var2, dcy var3, buk var4, fba var5, boolean var6);
-
-   default void a(dcy $$0, buk $$1, fba $$2, int $$3) {
+   @Nullable
+   private bsz a(buj $$0, fay $$1) {
+      if (this.e.isEmpty()) {
+         return null;
+      } else {
+         return this.d ? new bsz(this.e.get(), $$0) : new bsz(this.e.get(), $$1);
+      }
    }
 
-   MapCodec<? extends ddr> a();
+   @Override
+   public MapCodec<ddr> a() {
+      return a;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public Optional<jr<btb>> c() {
+      return this.e;
+   }
+
+   public Optional<dde> d() {
+      return this.f;
+   }
+
+   public Optional<jv<djk>> e() {
+      return this.g;
+   }
+
+   public fay f() {
+      return this.h;
+   }
+
+   public dde g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public dgg.a i() {
+      return this.k;
+   }
+
+   public lr j() {
+      return this.l;
+   }
+
+   public lr k() {
+      return this.m;
+   }
+
+   public jr<avy> l() {
+      return this.n;
+   }
 }

@@ -1,25 +1,12 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eoi implements azv {
-   a("linear"),
-   b("triangular");
+public interface eoi<SP extends eoh> {
+   eoi<eof> a = a("random_spread", eof.a);
+   eoi<eoe> b = a("concentric_rings", eoe.a);
 
-   public static final Codec<eoi> c = azv.a(eoi::values);
-   private final String d;
+   MapCodec<SP> codec();
 
-   private eoi(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public int a(azh $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   private static <SP extends eoh> eoi<SP> a(String $$0, MapCodec<SP> $$1) {
+      return ke.a(mb.P, $$0, () -> $$1);
    }
 }

@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record aan(akt<dgi> c, ene d, List<aan.a> e) implements zy {
+public record aan(akt<dgg> c, enc d, List<aan.a> e) implements zy {
    public static final ym<vl, aan> a = zy.a(aan::a, aan::new);
    public static final zy.b<aan> b = zy.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record aan(akt<dgi> c, ene d, List<aan.a> e) implements zy {
       return b;
    }
 
-   static ene b(vl $$0) {
-      return new ene($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static enc b(vl $$0) {
+      return new enc($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(vl $$0, ene $$1) {
+   static void a(vl $$0, enc $$1) {
       $$0.q($$1.h());
       $$0.q($$1.i());
       $$0.q($$1.j());
@@ -32,11 +32,11 @@ public record aan(akt<dgi> c, ene d, List<aan.a> e) implements zy {
       $$0.q($$1.m());
    }
 
-   public akt<dgi> b() {
+   public akt<dgg> b() {
       return this.c;
    }
 
-   public ene c() {
+   public enc c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record aan(akt<dgi> c, ene d, List<aan.a> e) implements zy {
       return this.e;
    }
 
-   public static record a(ene a, boolean b) {
+   public static record a(enc a, boolean b) {
       public a(vl $$0) {
          this(aan.b($$0), $$0.readBoolean());
       }

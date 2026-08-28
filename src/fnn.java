@@ -1,16 +1,5 @@
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-public class fnn implements fnp {
-   private final aku a;
-
-   public fnn(aku $$0) {
-      this.a = $$0;
-   }
-
-   public JsonElement a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("parent", this.a.toString());
-      return $$0;
-   }
+public interface fnn extends Supplier<JsonElement> {
 }

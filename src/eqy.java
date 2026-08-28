@@ -1,18 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eqy implements azv {
-   a("ignore_waterlogging"),
-   b("apply_waterlogging");
+public class eqy extends eqz {
+   public static final MapCodec<eqy> a = MapCodec.unit(() -> eqy.b);
+   public static final eqy b = new eqy();
 
-   public static Codec<eqy> c = azv.b(eqy::values);
-   private final String d;
-
-   private eqy(final String $$0) {
-      this.d = $$0;
+   private eqy() {
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public boolean a(ji $$0, ji $$1, ji $$2, azg $$3) {
+      return true;
+   }
+
+   @Override
+   protected era<?> a() {
+      return era.a;
    }
 }

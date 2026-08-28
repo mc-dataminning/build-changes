@@ -47,7 +47,7 @@ public class apc {
    }
 
    private static String a(long $$0) {
-      return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)bab.b);
+      return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)baa.b);
    }
 
    private static int a(ex $$0, float $$1) {

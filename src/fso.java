@@ -1,6 +1,3 @@
-public enum fso {
-   a,
-   b,
-   c,
-   d;
+public interface fso {
+   void b(fsn var1);
 }

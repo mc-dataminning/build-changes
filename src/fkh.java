@@ -1,56 +1,36 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fkh implements Runnable {
-   protected static final int a = 25;
+public class fkh extends fkf {
    private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+   private static final wo c = wo.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   protected static void a(long $$0) {
+   public fkh(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public void run() {
+      fgi $$0 = fgi.a();
+
       try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+         $$0.a(this.f, this.d, this.e);
+      } catch (fie var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 
-   public static void a(fuk $$0) {
-      flj $$1 = flj.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(wo $$0) {
-      this.b();
-      flj $$1 = flj.Q();
-      $$1.execute(() -> $$1.a(new fiy($$0, new fgf(new fum()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fig $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wo.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(fig $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract wo a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   @Override
+   public wo a() {
+      return c;
    }
 }

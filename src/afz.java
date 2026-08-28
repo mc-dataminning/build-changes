@@ -1,8 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public record afz(Map<akt<dbn>, dbn> b, dbr.b<dce> c) implements yv<abk> {
-   public static final ym<vz, afz> a = ym.a(yk.a(HashMap::new, akt.b(dbn.a), dbn.i), afz::b, dbr.b.b(), afz::e, afz::new);
+public record afz(Map<akt<dbl>, dbl> b, dbp.b<dcc> c) implements yv<abk> {
+   public static final ym<vz, afz> a = ym.a(yk.a(HashMap::new, akt.b(dbl.a), dbl.i), afz::b, dbp.b.b(), afz::e, afz::new);
 
    @Override
    public yx<afz> a() {
@@ -13,7 +13,7 @@ public record afz(Map<akt<dbn>, dbn> b, dbr.b<dce> c) implements yv<abk> {
       $$0.a(this);
    }
 
-   public dbr.b<dce> e() {
+   public dbp.b<dcc> e() {
       return this.c;
    }
 }

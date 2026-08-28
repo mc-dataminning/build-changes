@@ -1,124 +1,98 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class bzh extends bwz<coi> {
-   private static final int c = 900;
-   private static final int d = 40;
-   @Nullable
-   private cwp e;
-   private final List<cwp> f = Lists.newArrayList();
-   private int g;
-   private int h;
-   private int i;
+public class bzh<U> implements Iterable<U> {
+   protected final List<bzh.a<U>> a;
+   private final azg b = azg.a();
 
-   public bzh(int $$0, int $$1) {
-      super(ImmutableMap.of(cek.q, cel.a), $$0, $$1);
+   public bzh() {
+      this.a = Lists.newArrayList();
    }
 
-   public boolean a(arc $$0, coi $$1) {
-      bwi<?> $$2 = $$1.ec();
-      if ($$2.c(cek.q).isEmpty()) {
-         return false;
-      } else {
-         bvg $$3 = $$2.c(cek.q).get();
-         return $$3.aq() == bur.bS && $$1.bL() && $$3.bL() && !$$1.e_() && $$1.g($$3) <= 17.0;
-      }
+   private bzh(List<bzh.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public boolean a(arc $$0, coi $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.ec().c(cek.q).isPresent();
+   public static <U> Codec<bzh<U>> a(Codec<U> $$0) {
+      return bzh.a.a($$0).listOf().xmap(bzh::new, $$0x -> $$0x.a);
    }
 
-   public void b(arc $$0, coi $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.d($$1);
-      this.g = 0;
-      this.h = 0;
-      this.i = 40;
+   public bzh<U> a(U $$0, int $$1) {
+      this.a.add(new bzh.a<>($$0, $$1));
+      return this;
    }
 
-   public void c(arc $$0, coi $$1, long $$2) {
-      bvg $$3 = this.d($$1);
-      this.a($$3, $$1);
-      if (!this.f.isEmpty()) {
-         this.e($$1);
-      } else {
-         c($$1);
-         this.i = Math.min(this.i, 40);
-      }
-
-      this.i--;
+   public bzh<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bzh.a::c));
+      return this;
    }
 
-   public void d(arc $$0, coi $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      $$1.ec().b(cek.q);
-      c($$1);
-      this.e = null;
+   public Stream<U> b() {
+      return this.a.stream().map(bzh.a::a);
    }
 
-   private void a(bvg $$0, coi $$1) {
-      boolean $$2 = false;
-      cwp $$3 = $$0.eZ();
-      if (this.e == null || !cwp.b(this.e, $$3)) {
-         this.e = $$3;
-         $$2 = true;
-         this.f.clear();
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bzh.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
       }
 
-      if ($$2 && !this.e.f()) {
-         this.b($$1);
-         if (!this.f.isEmpty()) {
-            this.i = 900;
-            this.a($$1);
-         }
+      private double c() {
+         return this.c;
       }
-   }
 
-   private void a(coi $$0) {
-      a($$0, this.f.get(0));
-   }
-
-   private void b(coi $$0) {
-      for (dff $$1 : $$0.gr()) {
-         if (!$$1.r() && this.a($$1)) {
-            this.f.add($$1.h());
-         }
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
       }
-   }
 
-   private boolean a(dff $$0) {
-      return cwp.b(this.e, $$0.b()) || cwp.b(this.e, $$0.c());
-   }
+      public T a() {
+         return this.a;
+      }
 
-   private static void c(coi $$0) {
-      $$0.a(bus.a, cwp.j);
-      $$0.a(bus.a, 0.085F);
-   }
+      public int b() {
+         return this.b;
+      }
 
-   private static void a(coi $$0, cwp $$1) {
-      $$0.a(bus.a, $$1);
-      $$0.a(bus.a, 0.0F);
-   }
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
 
-   private bvg d(coi $$0) {
-      bwi<?> $$1 = $$0.ec();
-      bvg $$2 = $$1.c(cek.q).get();
-      $$1.a(cek.n, new bxk($$2, true));
-      return $$2;
-   }
+      public static <E> Codec<bzh.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bzh.a<E>>() {
+            public <T> DataResult<Pair<bzh.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bzh.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
 
-   private void e(coi $$0) {
-      if (this.f.size() >= 2 && ++this.g >= 40) {
-         this.h++;
-         this.g = 0;
-         if (this.h > this.f.size() - 1) {
-            this.h = 0;
-         }
-
-         a($$0, this.f.get(this.h));
+            public <T> DataResult<T> a(bzh.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
       }
    }
 }

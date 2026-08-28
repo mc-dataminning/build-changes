@@ -1,8 +1,8 @@
-public record acp(int b, bvt c, boolean d) implements yv<abk> {
-   public static final ym<vl, acp> a = ym.a(yk.h, acp::b, bvt.a, acp::e, yk.b, acp::f, acp::new);
+public record acp(int b, bvs c, boolean d) implements yv<abk> {
+   public static final ym<vl, acp> a = ym.a(yk.h, acp::b, bvs.a, acp::e, yk.b, acp::f, acp::new);
 
-   public static acp a(buk $$0) {
-      return new acp($$0.ar(), new bvt($$0.dv(), $$0.dz(), $$0.dM(), $$0.dO()), $$0.aJ());
+   public static acp a(buj $$0) {
+      return new acp($$0.ar(), new bvs($$0.dv(), $$0.dz(), $$0.dM(), $$0.dO()), $$0.aJ());
    }
 
    @Override
@@ -14,7 +14,7 @@ public record acp(int b, bvt c, boolean d) implements yv<abk> {
       $$0.a(this);
    }
 
-   public bvt e() {
+   public bvs e() {
       return this.c;
    }
 

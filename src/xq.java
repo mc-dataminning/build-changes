@@ -9,7 +9,7 @@ public interface xq {
 
    xq.a<?> a();
 
-   public static record a<T extends xq>(MapCodec<T> a, String b) implements azv {
+   public static record a<T extends xq>(MapCodec<T> a, String b) implements azu {
       @Override
       public String c() {
          return this.b;

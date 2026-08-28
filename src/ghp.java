@@ -1,35 +1,22 @@
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
+@FunctionalInterface
 public interface ghp {
-   String a();
+   Logger a = LogUtils.getLogger();
+   ghp b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(ghn.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
+      }
+   };
 
-   String b();
-
-   int c();
-
-   InetSocketAddress d();
-
-   static ghp a(final InetSocketAddress $$0) {
-      return new ghp() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
-   }
+   Optional<ghn> resolve(gho var1);
 }

@@ -1,201 +1,138 @@
-import java.util.HashSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class etn {
-   private final List<etl> a;
-   @Nullable
-   private etn.a b;
+   private static final float a = 1.5F;
+   private final etj[] b = new etj[32];
    private int c;
-   private final ji d;
-   private final float e;
-   private final boolean f;
+   private final etk d;
+   private static final boolean e = false;
+   private final eth f = new eth();
 
-   public etn(List<etl> $$0, ji $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
+   public etn(etk $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
-      this.c++;
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public etl d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public etl a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, etl $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
+   public void a(int $$0) {
       this.c = $$0;
    }
 
-   public fba a(buk $$0, int $$1) {
-      etl $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dr() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dr() + 1.0F)) * 0.5;
-      return new fba($$3, $$4, $$5);
-   }
-
-   public ji d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public fba a(buk $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public ji g() {
-      return this.a.get(this.c).a();
-   }
-
-   public etl h() {
-      return this.a.get(this.c);
+   @Nullable
+   public etl a(dgt $$0, bvh $$1, Set<ji> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      etj $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<ets, ji> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         etl $$8 = this.a($$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
    }
 
    @Nullable
-   public etl i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
+   private etl a(etj $$0, Map<ets, ji> $$1, float $$2, int $$3, float $$4) {
+      bor $$5 = boq.a();
+      $$5.a("find_path");
+      $$5.a(bqa.a);
+      Set<ets> $$6 = $$1.keySet();
+      $$0.e = 0.0F;
+      $$0.f = this.a($$0, $$6);
+      $$0.g = $$0.f;
+      this.f.a();
+      this.f.a($$0);
+      Set<etj> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<ets> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$4);
 
-   public boolean a(@Nullable etn $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            etl $$2 = this.a.get($$1);
-            etl $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         etj $$11 = this.f.c();
+         $$11.i = true;
+
+         for (ets $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$3) {
+               $$12.e();
+               $$9.add($$12);
             }
          }
 
-         return true;
-      }
-   }
+         if (!$$9.isEmpty()) {
+            break;
+         }
 
-   public boolean j() {
-      return this.f;
-   }
+         if (!($$11.a($$0) >= $$2)) {
+            int $$13 = this.d.a(this.b, $$11);
 
-   @bag
-   void a(etl[] $$0, etl[] $$1, Set<etu> $$2) {
-      this.b = new etn.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public etn.a k() {
-      return this.b;
-   }
-
-   public void a(vl $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.q(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static etn b(vl $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      ji $$3 = $$0.e();
-      List<etl> $$4 = $$0.a(etl::b);
-      etn.a $$5 = etn.a.b($$0);
-      etn $$6 = new etn($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
-   }
-
-   public ji l() {
-      return this.d;
-   }
-
-   public float m() {
-      return this.e;
-   }
-
-   static etl[] c(vl $$0) {
-      etl[] $$1 = new etl[$$0.l()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = etl.b($$0);
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               etj $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
+         }
       }
 
-      return $$1;
+      Optional<etl> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(etl::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(etl::m).thenComparingInt(etl::e));
+      $$5.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   static void a(vl $$0, etl[] $$1) {
-      $$0.c($$1.length);
-
-      for (etl $$2 : $$1) {
-         $$2.a($$0);
-      }
+   protected float a(etj $$0, etj $$1) {
+      return $$0.a($$1);
    }
 
-   public etn n() {
-      etn $$0 = new etn(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
+   private float a(etj $$0, Set<ets> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (ets $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
+      }
+
+      return $$2;
    }
 
-   public static record a(etl[] a, etl[] b, Set<etu> c) {
+   private etl a(etj $$0, ji $$1, boolean $$2) {
+      List<etj> $$3 = Lists.newArrayList();
+      etj $$4 = $$0;
+      $$3.add(0, $$0);
 
-      public void a(vl $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         etn.a($$0, this.a);
-         etn.a($$0, this.b);
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
       }
 
-      public static etn.a b(vl $$0) {
-         HashSet<etu> $$1 = $$0.a(HashSet::new, etu::c);
-         etl[] $$2 = etn.c($$0);
-         etl[] $$3 = etn.c($$0);
-         return new etn.a($$2, $$3, $$1);
-      }
+      return new etl($$3, $$1, $$2);
    }
 }

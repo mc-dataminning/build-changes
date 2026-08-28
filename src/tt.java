@@ -96,17 +96,17 @@ public class tt extends ug {
 
    @Override
    public int g() {
-      return ayz.d(this.w);
+      return ayy.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(ayz.d(this.w) & 65535);
+      return (short)(ayy.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(ayz.d(this.w) & 0xFF);
+      return (byte)(ayy.d(this.w) & 0xFF);
    }
 
    @Override

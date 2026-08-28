@@ -1,32 +1,49 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class fak implements fal<MinecraftServer> {
-   final aku a;
+public class fak<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final fak<MinecraftServer> a = new fak<MinecraftServer>().a(new fah.a()).a(new fai.a());
+   private final Map<aku, faj.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, faj.a<C, ?>> d = Maps.newHashMap();
 
-   public fak(aku $$0) {
-      this.a = $$0;
+   public fak<C> a(faj.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   public void a(MinecraftServer $$0, fan<MinecraftServer> $$1, long $$2) {
-      alj $$3 = $$0.aE();
-
-      for (il<ex> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   private <T extends faj<C>> faj.a<C, T> a(Class<?> $$0) {
+      return (faj.a<C, T>)this.d.get($$0);
    }
 
-   public static class a extends fal.a<MinecraftServer, fak> {
-      public a() {
-         super(aku.b("function_tag"), fak.class);
-      }
+   public <T extends faj<C>> tq a(T $$0) {
+      faj.a<C, T> $$1 = this.a($$0.getClass());
+      tq $$2 = new tq();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
+   }
 
-      public void a(tq $$0, fak $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public fak a(tq $$0) {
-         aku $$1 = aku.a($$0.l("Name"));
-         return new fak($$1);
+   @Nullable
+   public faj<C> a(tq $$0) {
+      aku $$1 = aku.c($$0.l("Type"));
+      faj.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
+         }
       }
    }
 }

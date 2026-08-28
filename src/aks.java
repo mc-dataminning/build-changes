@@ -58,7 +58,7 @@ public class aks<T> extends akl<T> {
    }
 
    public static <E, O> RecordCodecBuilder<O, js<E>> c(akt<? extends ke<? extends E>> $$0) {
-      return ayi.a(
+      return ayh.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aks<?> $$2
                   ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
                   : DataResult.error(() -> "Not a registry ops"))
@@ -68,7 +68,7 @@ public class aks<T> extends akl<T> {
 
    public static <E, O> RecordCodecBuilder<O, jr.c<E>> d(akt<E> $$0) {
       akt<? extends ke<E>> $$1 = akt.a($$0.b());
-      return ayi.a(
+      return ayh.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aks<?> $$3
                   ? $$3.b
                      .a($$1)

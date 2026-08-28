@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class aet implements yv<abk> {
    public static final ym<vl, aet> a = yv.a(aet::a, aet::new);
-   private final fbw b;
+   private final fbu b;
    private final String c;
 
-   public aet(fbw $$0, @Nullable fbx $$1) {
+   public aet(fbu $$0, @Nullable fbv $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class aet implements yv<abk> {
    }
 
    private aet(vl $$0) {
-      this.b = $$0.a(fbw.u);
+      this.b = $$0.a(fbu.u);
       this.c = $$0.p();
    }
 
    private void a(vl $$0) {
-      $$0.a(fbw::a, this.b);
+      $$0.a(fbu::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class aet implements yv<abk> {
       $$0.a(this);
    }
 
-   public fbw b() {
+   public fbu b() {
       return this.b;
    }
 

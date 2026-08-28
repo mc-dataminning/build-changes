@@ -1,66 +1,67 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dir extends did {
-   public static final MapCodec<dir> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvm.q.fieldOf("color").forGetter(did::b), t()).apply($$0, dir::new));
-   public static final dxw b = dxn.bd;
-   private static final Map<cvm, djm> c = Maps.newHashMap();
-   private static final fbu d = djm.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class dir extends djk implements dqq {
+   public static final MapCodec<dir> a = b(dir::new);
+   public static final dxm b = dxl.J;
 
    @Override
    public MapCodec<dir> a() {
       return a;
    }
 
-   public dir(cvm $$0, dww.d $$1) {
-      super($$0, $$1);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   protected dir(dwu.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return $$1.a_($$2.e()).e();
+   protected boolean e_(dwv $$0) {
+      return $$0.y().c();
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return d;
+   protected dpv a_(dwv $$0) {
+      return dpv.a;
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return this.m().b(b, Integer.valueOf(dyc.a($$0.i() + 180.0F)));
+   protected float c(dwv $$0, dfl $$1, ji $$2) {
+      return 1.0F;
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return $$4 == jn.a && !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, esy.c, esy.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected esx b_(dwv $$0) {
+      return $$0.c(b) ? esy.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dwv a(dae $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == esy.c));
    }
 
    @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
+   protected void a(dww.a<djk, dwv> $$0) {
       $$0.a(b);
    }
 
-   public static djm a(cvm $$0) {
-      return c.getOrDefault($$0, djo.jh);
+   @Override
+   public cwn a(@Nullable cov $$0, dgh $$1, ji $$2, dwv $$3) {
+      return $$0 != null && $$0.b() ? dqq.super.a($$0, $$1, $$2, $$3) : cwn.j;
    }
 
    @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.b;
+   public boolean a(@Nullable cov $$0, dfl $$1, ji $$2, dwv $$3, esw $$4) {
+      return $$0 != null && $$0.b() ? dqq.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

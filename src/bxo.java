@@ -1,111 +1,79 @@
-import com.google.common.collect.ImmutableMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class bxo extends bwz<coi> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<col, akt<evw>> g = ImmutableMap.builder()
-      .put(col.c, evn.ar)
-      .put(col.d, evn.as)
-      .put(col.e, evn.at)
-      .put(col.f, evn.au)
-      .put(col.g, evn.av)
-      .put(col.h, evn.aw)
-      .put(col.i, evn.ax)
-      .put(col.j, evn.ay)
-      .put(col.k, evn.az)
-      .put(col.l, evn.aA)
-      .put(col.n, evn.aB)
-      .put(col.o, evn.aC)
-      .put(col.p, evn.aD)
-      .build();
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class bxo<E extends bvf & coe> extends bwy<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<bvf, Optional<bym>> e;
+   private final float f;
 
-   public bxo(int $$0) {
-      super(ImmutableMap.of(cek.m, cel.c, cek.n, cel.c, cek.q, cel.c, cek.k, cel.a), $$0);
+   public bxo(Function<bvf, Optional<bym>> $$0, float $$1, int $$2) {
+      super(Map.of(cej.n, cek.c, cej.m, cek.c, cej.aP, cek.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected boolean a(arc $$0, coi $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
-         return true;
-      }
+   @Override
+   protected boolean a(arc $$0, E $$1) {
+      return this.b($$1);
    }
 
-   protected void a(arc $$0, coi $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      cox $$3 = this.c($$1).get();
-      $$1.ec().a(cek.q, $$3);
-      bxb.a($$1, $$3);
+   @Override
+   protected boolean a(arc $$0, E $$1, long $$2) {
+      return this.b($$1);
    }
 
-   protected boolean b(arc $$0, coi $$1, long $$2) {
-      return this.b($$1) && !this.j;
+   @Override
+   protected void d(arc $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> bxa.a($$1, $$1x, this.f, 3));
    }
 
-   protected void c(arc $$0, coi $$1, long $$2) {
-      cox $$3 = this.c($$1).get();
-      bxb.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$0, $$1, $$3);
-            this.j = true;
+   @Override
+   protected void c(arc $$0, E $$1, long $$2) {
+      Optional<bym> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bym $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bF());
+         if ($$5 < 3.0) {
+            cwn $$6 = $$1.t().a(0, 1);
+            if (!$$6.f()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof cic $$7) {
+                  cid.a((bvf)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.ec().a(cej.aP, 60);
+            }
          }
-      } else {
-         bxb.a($$1, $$3, 0.5F, 5);
       }
    }
 
-   protected void d(arc $$0, coi $$1, long $$2) {
-      this.i = a($$0);
-      $$1.ec().b(cek.q);
-      $$1.ec().b(cek.m);
-      $$1.ec().b(cek.n);
+   private void a(bym $$0, cwn $$1, ard $$2) {
+      ji $$3 = $$0.b().e();
+      ap.aa.a($$2, $$3, $$1);
    }
 
-   private void a(arc $$0, coi $$1, bvg $$2) {
-      $$1.a($$0, a($$1), ($$2x, $$3) -> bxb.a($$1, $$3, $$2.du()));
-   }
-
-   private static akt<evw> a(coi $$0) {
-      if ($$0.e_()) {
-         return evn.aF;
+   private boolean b(E $$0) {
+      if ($$0.t().c()) {
+         return false;
       } else {
-         col $$1 = $$0.gz().b();
-         return g.getOrDefault($$1, evn.aE);
+         Optional<bym> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
       }
    }
 
-   private boolean b(coi $$0) {
-      return this.c($$0).isPresent();
+   private static fay a(bym $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
    }
 
-   private Optional<cox> c(coi $$0) {
-      return $$0.ec().c(cek.k).filter(this::a);
-   }
-
-   private boolean a(cox $$0) {
-      return $$0.b(btr.F);
-   }
-
-   private boolean a(coi $$0, cox $$1) {
-      ji $$2 = $$1.dw();
-      ji $$3 = $$0.dw();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(arc $$0) {
-      return 600 + $$0.A.a(6001);
+   public static void a(bvf $$0, cwn $$1, fay $$2) {
+      fay $$3 = new fay(0.2F, 0.3F, 0.2F);
+      bxa.a($$0, $$1, $$2, $$3, 0.2F);
+      dgg $$4 = $$0.dW();
+      if ($$4.ad() % 7L == 0L && $$4.A.j() < 0.9) {
+         float $$5 = af.<Float>a(cic.d, $$4.H_());
+         $$4.a(null, $$0, avz.g, awa.g, 1.0F, $$5);
+      }
    }
 }

@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eie implements eic {
+public class eie implements eia {
    public static final Codec<eie> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ekd.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               ekd.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, eaq.c).fieldOf("height").forGetter($$0x -> $$0x.b), dwv.a.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, eie::new)
    );
-   public final ekd b;
-   public final ekd c;
-   public final int d;
+   public final int b;
+   public final dwv c;
 
-   public eie(ekd $$0, ekd $$1, int $$2) {
+   public eie(int $$0, dwv $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 }

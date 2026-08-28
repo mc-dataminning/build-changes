@@ -92,7 +92,7 @@ public class amd {
                                                                            fw.a($$0x, "attribute"),
                                                                            fy.a($$0x, "id"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bwm.a.a
+                                                                           bwl.a.a
                                                                         )
                                                                   )
                                                             ))
@@ -105,7 +105,7 @@ public class amd {
                                                                         fw.a($$0x, "attribute"),
                                                                         fy.a($$0x, "id"),
                                                                         DoubleArgumentType.getDouble($$0x, "value"),
-                                                                        bwm.a.b
+                                                                        bwl.a.b
                                                                      )
                                                                )
                                                          ))
@@ -118,7 +118,7 @@ public class amd {
                                                                      fw.a($$0x, "attribute"),
                                                                      fy.a($$0x, "id"),
                                                                      DoubleArgumentType.getDouble($$0x, "value"),
-                                                                     bwm.a.c
+                                                                     bwl.a.c
                                                                   )
                                                             )
                                                       )
@@ -164,8 +164,8 @@ public class amd {
       );
    }
 
-   private static bwk a(buk $$0, jr<bwj> $$1) throws CommandSyntaxException {
-      bwk $$2 = a($$0).eY().a($$1);
+   private static bwj a(buj $$0, jr<bwi> $$1) throws CommandSyntaxException {
+      bwj $$2 = a($$0).eY().a($$1);
       if ($$2 == null) {
          throw b.create($$0.al(), a($$1));
       } else {
@@ -173,16 +173,16 @@ public class amd {
       }
    }
 
-   private static bvg a(buk $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bvg)) {
+   private static bvf a(buj $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bvf)) {
          throw a.create($$0.al());
       } else {
-         return (bvg)$$0;
+         return (bvf)$$0;
       }
    }
 
-   private static bvg b(buk $$0, jr<bwj> $$1) throws CommandSyntaxException {
-      bvg $$2 = a($$0);
+   private static bvf b(buj $$0, jr<bwi> $$1) throws CommandSyntaxException {
+      bvf $$2 = a($$0);
       if (!$$2.eY().b($$1)) {
          throw b.create($$0.al(), a($$1));
       } else {
@@ -190,23 +190,23 @@ public class amd {
       }
    }
 
-   private static int a(ex $$0, buk $$1, jr<bwj> $$2, double $$3) throws CommandSyntaxException {
-      bvg $$4 = b($$1, $$2);
+   private static int a(ex $$0, buj $$1, jr<bwi> $$2, double $$3) throws CommandSyntaxException {
+      bvf $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
       $$0.a(() -> wo.a("commands.attribute.value.get.success", a($$2), $$1.al(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(ex $$0, buk $$1, jr<bwj> $$2, double $$3) throws CommandSyntaxException {
-      bvg $$4 = b($$1, $$2);
+   private static int b(ex $$0, buj $$1, jr<bwi> $$2, double $$3) throws CommandSyntaxException {
+      bvf $$4 = b($$1, $$2);
       double $$5 = $$4.i($$2);
       $$0.a(() -> wo.a("commands.attribute.base_value.get.success", a($$2), $$1.al(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(ex $$0, buk $$1, jr<bwj> $$2, aku $$3, double $$4) throws CommandSyntaxException {
-      bvg $$5 = b($$1, $$2);
-      bwl $$6 = $$5.eY();
+   private static int a(ex $$0, buj $$1, jr<bwi> $$2, aku $$3, double $$4) throws CommandSyntaxException {
+      bvf $$5 = b($$1, $$2);
+      bwk $$6 = $$5.eY();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.al(), a($$2), $$3);
       } else {
@@ -216,19 +216,19 @@ public class amd {
       }
    }
 
-   private static Stream<aku> c(buk $$0, jr<bwj> $$1) throws CommandSyntaxException {
-      bwk $$2 = a($$0, $$1);
-      return $$2.c().stream().map(bwm::b);
+   private static Stream<aku> c(buj $$0, jr<bwi> $$1) throws CommandSyntaxException {
+      bwj $$2 = a($$0, $$1);
+      return $$2.c().stream().map(bwl::b);
    }
 
-   private static int c(ex $$0, buk $$1, jr<bwj> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(ex $$0, buj $$1, jr<bwi> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> wo.a("commands.attribute.base_value.set.success", a($$2), $$1.al(), $$3), false);
       return 1;
    }
 
-   private static int a(ex $$0, buk $$1, jr<bwj> $$2) throws CommandSyntaxException {
-      bvg $$3 = a($$1);
+   private static int a(ex $$0, buj $$1, jr<bwi> $$2) throws CommandSyntaxException {
+      bvf $$3 = a($$1);
       if (!$$3.eY().e($$2)) {
          throw b.create($$1.al(), a($$2));
       } else {
@@ -238,9 +238,9 @@ public class amd {
       }
    }
 
-   private static int a(ex $$0, buk $$1, jr<bwj> $$2, aku $$3, double $$4, bwm.a $$5) throws CommandSyntaxException {
-      bwk $$6 = a($$1, $$2);
-      bwm $$7 = new bwm($$3, $$4, $$5);
+   private static int a(ex $$0, buj $$1, jr<bwi> $$2, aku $$3, double $$4, bwl.a $$5) throws CommandSyntaxException {
+      bwj $$6 = a($$1, $$2);
+      bwl $$7 = new bwl($$3, $$4, $$5);
       if ($$6.b($$3)) {
          throw d.create($$1.al(), a($$2), $$3);
       } else {
@@ -250,8 +250,8 @@ public class amd {
       }
    }
 
-   private static int a(ex $$0, buk $$1, jr<bwj> $$2, aku $$3) throws CommandSyntaxException {
-      bwk $$4 = a($$1, $$2);
+   private static int a(ex $$0, buj $$1, jr<bwi> $$2, aku $$3) throws CommandSyntaxException {
+      bwj $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> wo.a("commands.attribute.modifier.remove.success", wo.a($$3), a($$2), $$1.al()), false);
          return 1;
@@ -260,7 +260,7 @@ public class amd {
       }
    }
 
-   private static wo a(jr<bwj> $$0) {
+   private static wo a(jr<bwi> $$0) {
       return wo.c($$0.a().c());
    }
 }

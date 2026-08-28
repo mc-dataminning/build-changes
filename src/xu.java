@@ -94,7 +94,7 @@ public class xu implements wp {
    }
 
    @Override
-   public xc a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
+   public xc a(@Nullable ex $$0, @Nullable buj $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

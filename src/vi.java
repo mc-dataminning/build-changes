@@ -368,8 +368,8 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
    }
 
    protected void c() {
-      this.x = ayz.h(0.75F, (float)this.v, this.x);
-      this.w = ayz.h(0.75F, (float)this.u, this.w);
+      this.x = ayy.h(0.75F, (float)this.v, this.x);
+      this.w = ayy.h(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -413,7 +413,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       return this.k.a();
    }
 
-   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bnc $$2) {
+   public static vi a(InetSocketAddress $$0, boolean $$1, @Nullable bnb $$2) {
       vi $$3 = new vi(yw.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -586,7 +586,7 @@ public class vi extends SimpleChannelInboundHandler<yv<?>> {
       return this.x;
    }
 
-   public void a(bnc $$0) {
+   public void a(bnb $$0) {
       this.B = new vb($$0);
    }
 }

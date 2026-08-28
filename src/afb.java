@@ -7,11 +7,11 @@ public class afb implements yv<abk> {
    public static final int d = 2;
    private final String e;
    private final wo f;
-   private final fci.a g;
+   private final fcg.a g;
    private final Optional<ye> h;
    private final int i;
 
-   public afb(fbx $$0, int $$1) {
+   public afb(fbv $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class afb implements yv<abk> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = wn.a;
-         this.g = fci.a.a;
+         this.g = fcg.a.a;
          this.h = Optional.empty();
       } else {
          this.f = wq.d.decode($$0);
-         this.g = $$0.b(fci.a.class);
+         this.g = $$0.b(fcg.a.class);
          this.h = yg.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class afb implements yv<abk> {
       return this.i;
    }
 
-   public fci.a g() {
+   public fcg.a g() {
       return this.g;
    }
 

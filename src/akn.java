@@ -27,11 +27,11 @@ public class akn {
       return $$0.e($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   public Map<aku, aun> a(aup $$0) {
+   public Map<aku, aum> a(auo $$0) {
       return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 
-   public Map<aku, List<aun>> b(aup $$0) {
+   public Map<aku, List<aum>> b(auo $$0) {
       return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

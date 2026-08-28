@@ -56,12 +56,12 @@ public class amz {
       return new ji(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static dhn a(MutableInt $$0, dys $$1, ene $$2, jr<dhk> $$3, Predicate<jr<dhk>> $$4) {
+   private static dhl a(MutableInt $$0, dyq $$1, enc $$2, jr<dhi> $$3, Predicate<jr<dhi>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
          int $$9 = kc.c($$5);
          int $$10 = kc.c($$6);
          int $$11 = kc.c($$7);
-         jr<dhk> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         jr<dhi> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
          if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
             $$0.increment();
             return $$3;
@@ -71,25 +71,25 @@ public class amz {
       };
    }
 
-   public static Either<Integer, CommandSyntaxException> a(arc $$0, ji $$1, ji $$2, jr<dhk> $$3) {
+   public static Either<Integer, CommandSyntaxException> a(arc $$0, ji $$1, ji $$2, jr<dhi> $$3) {
       return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
       });
    }
 
-   public static Either<Integer, CommandSyntaxException> a(arc $$0, ji $$1, ji $$2, jr<dhk> $$3, Predicate<jr<dhk>> $$4, Consumer<Supplier<wo>> $$5) {
+   public static Either<Integer, CommandSyntaxException> a(arc $$0, ji $$1, ji $$2, jr<dhi> $$3, Predicate<jr<dhi>> $$4, Consumer<Supplier<wo>> $$5) {
       ji $$6 = a($$1);
       ji $$7 = a($$2);
-      ene $$8 = ene.a($$6, $$7);
+      enc $$8 = enc.a($$6, $$7);
       int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.O().c(dge.A);
+      int $$10 = $$0.O().c(dgc.A);
       if ($$9 > $$10) {
          return Either.right(b.create($$10, $$9));
       } else {
-         List<dys> $$11 = new ArrayList<>();
+         List<dyq> $$11 = new ArrayList<>();
 
          for (int $$12 = kk.a($$8.j()); $$12 <= kk.a($$8.m()); $$12++) {
             for (int $$13 = kk.a($$8.h()); $$13 <= kk.a($$8.k()); $$13++) {
-               dys $$14 = $$0.a($$13, $$12, dzt.n, false);
+               dyq $$14 = $$0.a($$13, $$12, dzr.n, false);
                if ($$14 == null) {
                   return Either.right(a.create());
                }
@@ -100,7 +100,7 @@ public class amz {
 
          MutableInt $$15 = new MutableInt(0);
 
-         for (dys $$16 : $$11) {
+         for (dyq $$16 : $$11) {
             $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
             $$16.i();
          }
@@ -111,7 +111,7 @@ public class amz {
       }
    }
 
-   private static int a(ex $$0, ji $$1, ji $$2, jr.c<dhk> $$3, Predicate<jr<dhk>> $$4) throws CommandSyntaxException {
+   private static int a(ex $$0, ji $$1, ji $$2, jr.c<dhi> $$3, Predicate<jr<dhi>> $$4) throws CommandSyntaxException {
       Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
       Optional<CommandSyntaxException> $$6 = $$5.right();
       if ($$6.isPresent()) {

@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cyq {
+public interface cyq<T, C> {
+   List<aru<T>> a();
+
+   C a(List<aru<T>> var1);
 }

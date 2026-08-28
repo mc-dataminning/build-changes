@@ -1,14 +1,23 @@
-public class fxj extends fxo {
-   private static flm<?>[] a(fln $$0) {
-      return new flm[]{$$0.S(), $$0.T()};
+import java.util.Arrays;
+import java.util.stream.Stream;
+
+public class fxj extends fxm {
+   private static final wo a = wo.c("options.mouse_settings.title");
+
+   private static flk<?>[] a(fll $$0) {
+      return new flk[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
    }
 
-   public fxj(fuk $$0, fln $$1) {
-      super($$0, $$1, wo.c("options.font.title"));
+   public fxj(fui $$0, fll $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      this.d.a(a(this.c));
+      if (fen.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(flk[]::new));
+      } else {
+         this.d.a(a(this.c));
+      }
    }
 }

@@ -1,9 +1,8 @@
-public class gqx extends gti<cid, gxl, gar> {
-   private static final aku a = aku.b("textures/entity/allay/allay.png");
+public class gqx extends gqv<cif, gxl, gar> {
+   private static final aku a = aku.b("textures/entity/armadillo.png");
 
-   public gqx(gsc.a $$0) {
-      super($$0, new gar($$0.a(gfb.c)), 0.4F);
-      this.a(new gwj<>(this));
+   public gqx(gsb.a $$0) {
+      super($$0, new gar($$0.a(gez.d)), new gar($$0.a(gez.e)), 0.4F);
    }
 
    public aku a(gxl $$0) {
@@ -14,16 +13,11 @@ public class gqx extends gti<cid, gxl, gar> {
       return new gxl();
    }
 
-   public void a(cid $$0, gxl $$1, float $$2) {
+   public void a(cif $$0, gxl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gxn.a($$0, $$1, this.i);
       $$1.a = $$0.x();
-      $$1.b = $$0.gp();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(cid $$0, ji $$1) {
-      return 15;
+      $$1.d.a($$0.ce);
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.cd);
    }
 }

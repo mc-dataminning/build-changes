@@ -37,12 +37,12 @@ public class ame {
    }
 
    private static int b(ex $$0, String $$1, @Nullable wo $$2) throws CommandSyntaxException {
-      ava $$3 = $$0.l().ag().g();
+      auz $$3 = $$0.l().ag().g();
       if ($$3.a($$1)) {
          throw b.create();
       } else {
          List<ard> $$4 = $$0.l().ag().b($$1);
-         avb $$5 = new avb($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         ava $$5 = new ava($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
          $$3.a($$5);
          $$0.a(() -> wo.a("commands.banip.success", $$1, $$5.d()), true);
          if (!$$4.isEmpty()) {

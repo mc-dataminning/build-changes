@@ -1,85 +1,86 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dbu implements dat {
-   final String c;
-   final dar d;
-   final cwp e;
-   final List<dba> f;
+public abstract class dbu implements dbc<dbv> {
+   private final day c;
+   private final cwn d;
+   private final String e;
    @Nullable
-   private dbd g;
+   private dbb f;
 
-   public dbu(String $$0, dar $$1, cwp $$2, List<dba> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public dbu(String $$0, day $$1, cwn $$2) {
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public dbo<dbu> a() {
-      return dbo.b;
+   public abstract dbm<? extends dbu> a();
+
+   @Override
+   public abstract dbn<? extends dbu> b();
+
+   public boolean a(dbv $$0, dgg $$1) {
+      return this.c.a($$0.c());
    }
 
    @Override
    public String j() {
+      return this.e;
+   }
+
+   public day k() {
       return this.c;
    }
 
-   @Override
-   public dar c() {
+   protected cwn l() {
       return this.d;
    }
 
    @Override
-   public dbd ao_() {
-      if (this.g == null) {
-         this.g = dbd.b(this.f);
+   public dbb ao_() {
+      if (this.f == null) {
+         this.f = dbb.a(this.c);
       }
 
-      return this.g;
+      return this.f;
    }
 
-   public boolean a(das $$0, dgi $$1) {
-      if ($$0.e() != this.f.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.f.size() == 1 ? this.f.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
-      }
+   public cwn a(dbv $$0, jt.a $$1) {
+      return this.d.v();
    }
 
-   public cwp a(das $$0, jt.a $$1) {
-      return this.e.v();
+   @FunctionalInterface
+   public interface a<T extends dbu> {
+      T create(String var1, day var2, cwn var3);
    }
 
-   @Override
-   public List<dcj> g() {
-      return List.of(new dco(this.f.stream().map(dba::b).toList(), new dcp.f(this.e), new dcp.d(cwt.fc)));
-   }
+   public static class b<T extends dbu> implements dbm<T> {
+      private final MapCodec<T> w;
+      private final ym<vz, T> x;
 
-   public static class a implements dbo<dbu> {
-      private static final MapCodec<dbu> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dar.e.fieldOf("category").orElse(dar.d).forGetter($$0x -> $$0x.d),
-                  cwp.c.fieldOf("result").forGetter($$0x -> $$0x.e),
-                  dba.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, dbu::new)
-      );
-      public static final ym<vz, dbu> w = ym.a(yk.o, $$0 -> $$0.c, dar.g, $$0 -> $$0.d, cwp.h, $$0 -> $$0.e, dba.a.a(yk.a()), $$0 -> $$0.f, dbu::new);
-
-      @Override
-      public MapCodec<dbu> a() {
-         return x;
+      protected b(dbu.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dbu::j),
+                     day.d.fieldOf("ingredient").forGetter(dbu::k),
+                     cwn.c.fieldOf("result").forGetter(dbu::l)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.x = ym.a(yk.o, dbu::j, day.a, dbu::k, cwn.h, dbu::l, $$0::create);
       }
 
       @Override
-      public ym<vz, dbu> b() {
-         return w;
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public ym<vz, T> b() {
+         return this.x;
       }
    }
 }

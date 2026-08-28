@@ -21,12 +21,12 @@ public class amg {
    }
 
    private static int a(ex $$0, Collection<GameProfile> $$1, @Nullable wo $$2) throws CommandSyntaxException {
-      avj $$3 = $$0.l().ag().f();
+      avi $$3 = $$0.l().ag().f();
       int $$4 = 0;
 
       for (GameProfile $$5 : $$1) {
          if (!$$3.a($$5)) {
-            avk $$6 = new avk($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            avj $$6 = new avj($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
             $$3.a($$6);
             $$4++;
             $$0.a(() -> wo.a("commands.ban.success", wo.b($$5.getName()), $$6.d()), true);

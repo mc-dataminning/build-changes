@@ -1,81 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import java.util.Collection;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.Consumer;
 
-public class evy extends ewa {
-   public static final MapCodec<evy> a = a(evy::new);
+public abstract class evy extends ewf {
+   protected final List<ewf> d;
+   private final evx a;
 
-   evy(List<ewh> $$0, List<eza> $$1) {
-      super($$0, $$1);
+   protected evy(List<ewf> $$0, List<eyy> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public ewi a() {
-      return ewf.g;
-   }
-
-   @Override
-   protected evz a(List<? extends evz> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (evz)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (evz $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
-   }
-
-   @Override
-   public void a(evx $$0) {
+   public void a(evv $$0) {
       super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
 
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   public static evy.a a(ewh.a<?>... $$0) {
-      return new evy.a($$0);
+   protected abstract evx a(List<? extends evx> var1);
+
+   @Override
+   public final boolean expand(evp $$0, Consumer<ewe> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static <E> evy.a a(Collection<E> $$0, Function<E, ewh.a<?>> $$1) {
-      return new evy.a($$0.stream().map($$1::apply).toArray(ewh.a[]::new));
+   public static <T extends evy> MapCodec<T> a(evy.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(ewd.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static class a extends ewh.a<evy.a> {
-      private final Builder<ewh> a = ImmutableList.builder();
-
-      public a(ewh.a<?>... $$0) {
-         for (ewh.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected evy.a a() {
-         return this;
-      }
-
-      @Override
-      public evy.a a(ewh.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ewh b() {
-         return new evy(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface a<T extends evy> {
+      T create(List<ewf> var1, List<eyy> var2);
    }
 }

@@ -1,72 +1,151 @@
+import com.mojang.datafixers.Products.P5;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.Optional;
 
-public class eoh extends eoj {
-   public static final MapCodec<eoh> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(eoh::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(eoh::b),
-                     eoi.c.optionalFieldOf("spread_type", eoi.a).forGetter(eoh::c)
-                  )
-               )
-               .apply($$0, eoh::new)
-      )
-      .validate(eoh::a);
-   private final int c;
-   private final int d;
-   private final eoi e;
+public abstract class eoh {
+   public static final Codec<eoh> b = mb.P.q().dispatch(eoh::e, eoi::codec);
+   private static final int a = 10387320;
+   private final km c;
+   private final eoh.c d;
+   private final float e;
+   private final int f;
+   private final Optional<eoh.a> g;
 
-   private static DataResult<eoh> a(eoh $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   protected static <S extends eoh> P5<Mu<S>, km, eoh.c, Float, Integer, Optional<eoh.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         km.v(16).optionalFieldOf("locate_offset", km.h).forGetter(eoh::f),
+         eoh.c.e.optionalFieldOf("frequency_reduction_method", eoh.c.a).forGetter(eoh::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(eoh::h),
+         ayh.l.fieldOf("salt").forGetter(eoh::i),
+         eoh.a.a.optionalFieldOf("exclusion_zone").forGetter(eoh::j)
+      );
    }
 
-   public eoh(km $$0, eoj.c $$1, float $$2, int $$3, Optional<eoj.a> $$4, int $$5, int $$6, eoi $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   protected eoh(km $$0, eoh.c $$1, float $$2, int $$3, Optional<eoh.a> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public eoh(int $$0, int $$1, eoi $$2, int $$3) {
-      this(km.h, eoj.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
+   protected km f() {
       return this.c;
    }
 
-   public int b() {
+   protected eoh.c g() {
       return this.d;
    }
 
-   public eoi c() {
+   protected float h() {
       return this.e;
    }
 
-   public dfo a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      edr $$5 = new edr(new ect(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dfo($$3 * this.c + $$7, $$4 * this.c + $$8);
+   protected int i() {
+      return this.f;
    }
 
-   @Override
-   protected boolean a(dyu $$0, int $$1, int $$2) {
-      dfo $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.h == $$1 && $$3.i == $$2;
+   protected Optional<eoh.a> j() {
+      return this.g;
    }
 
-   @Override
-   public eok<?> e() {
-      return eok.a;
+   public boolean b(dys $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   }
+
+   public boolean a(int $$0, int $$1, long $$2) {
+      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   }
+
+   public boolean c(dys $$0, int $$1, int $$2) {
+      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   }
+
+   protected abstract boolean a(dys var1, int var2, int var3);
+
+   public ji a(dfm $$0) {
+      return new ji($$0.d(), 0, $$0.e()).a(this.f());
+   }
+
+   public abstract eoi<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      edp $$5 = new edp(new ecr(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      edp $$5 = new edp(new ecr(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
+
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      edp $$5 = new edp(new ecr(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      edp $$7 = new edp(new ecr(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(jr<enq> b, int c) {
+      public static final Codec<eoh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(akq.a(mc.aW, enq.a, false).fieldOf("other_set").forGetter(eoh.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(eoh.a::b))
+               .apply($$0, eoh.a::new)
+      );
+
+      boolean a(dys $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
+      }
+
+      public jr<enq> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   }
+
+   public static enum c implements azu {
+      a("default", eoh::a),
+      b("legacy_type_1", eoh::d),
+      c("legacy_type_2", eoh::c),
+      d("legacy_type_3", eoh::b);
+
+      public static final Codec<eoh.c> e = azu.a(eoh.c::values);
+      private final String f;
+      private final eoh.b g;
+
+      private c(final String $$0, final eoh.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

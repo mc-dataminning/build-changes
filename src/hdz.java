@@ -1,49 +1,72 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class hdz {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final aku d = aku.b("missingno");
-   private static final aur e = new aur.a().a(hfv.a, new hfv(ImmutableList.of(new hfu(0, -1)), 16, 16, 1, false)).a();
+public class hdz extends hdx implements hdy {
+   private static final Logger d = LogUtils.getLogger();
    @Nullable
-   private static hdw f;
+   private fes e;
 
-   private static feu a(int $$0, int $$1) {
-      feu $$2 = new feu($$0, $$1, false);
-      int $$3 = -524040;
+   public hdz(fes $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.e();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.e();
+      }
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.a($$5, $$4, -524040);
-            } else {
-               $$2.a($$5, $$4, -16777216);
-            }
-         }
+   public hdz(int $$0, int $$1, boolean $$2) {
+      this.e = new fes($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         this.d();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public fes f() {
+      return this.e;
+   }
+
+   public void a(fes $$0) {
+      if (this.e != null) {
+         this.e.close();
       }
 
-      return $$2;
+      this.e = $$0;
    }
 
-   public static hed a() {
-      feu $$0 = a(16, 16);
-      return new hed(d, new hfx(16, 16), $$0, e);
-   }
-
-   public static aku b() {
-      return d;
-   }
-
-   public static hdw c() {
-      if (f == null) {
-         feu $$0 = a(16, 16);
-         $$0.i();
-         f = new hdw($$0);
-         flj.Q().aa().a(d, f);
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
       }
+   }
 
-      return f;
+   @Override
+   public void a(aku $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
+      }
    }
 }

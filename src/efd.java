@@ -1,83 +1,66 @@
 import com.mojang.serialization.Codec;
 
-public class efd extends efy<eij> {
-   public efd(Codec<eij> $$0) {
+public class efd extends efw<ehr> {
+   public efd(Codec<ehr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eij> $$0) {
-      ji $$1 = $$0.e();
-      dhg $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      if ($$2.u($$1) && !$$2.u($$1.d())) {
-         ji.a $$4 = $$1.k();
-         ji.a $$5 = $$1.k();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
+   public boolean a(efy<ehr> $$0) {
+      dhe $$1 = $$0.b();
+      ehr $$2 = $$0.f();
+      azg $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-         while ($$2.u($$4)) {
-            if ($$2.s($$4)) {
-               return true;
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
+         return false;
+      } else {
+         ji.a $$8 = $$0.e().k();
+         ji.a $$9 = $$8.k().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
             }
 
-            $$2.a($$4, djo.el.m(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jn.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jn.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jn.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jn.f));
-            $$4.c(jn.a);
+            $$9.c($$2.b());
          }
 
-         $$4.c(jn.b);
-         this.a($$2, $$3, $$5.a($$4, jn.c));
-         this.a($$2, $$3, $$5.a($$4, jn.d));
-         this.a($$2, $$3, $$5.a($$4, jn.e));
-         this.a($$2, $$3, $$5.a($$4, jn.f));
-         $$4.c(jn.a);
-         ji.a $$10 = new ji.a();
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               ehr.a $$13 = $$2.a().get($$11);
 
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = ayz.a($$11) * ayz.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.u($$5.a($$10, jn.a))) {
-                     $$10.c(jn.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
-
-                  if (!$$2.u($$5.a($$10, jn.a))) {
-                     $$2.a($$10, djo.el.m(), 2);
-                  }
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
                }
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 
-   private void a(dgj $$0, azh $$1, ji $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, djo.el.m(), 2);
-      }
-   }
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
 
-   private boolean b(dgj $$0, azh $$1, ji $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, djo.el.m(), 2);
-         return true;
-      } else {
-         return false;
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

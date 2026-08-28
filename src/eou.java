@@ -1,90 +1,112 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public abstract class eou {
-   public static final Codec<eou> f = mb.ag.q().dispatch("element_type", eou::a, eov::codec);
-   private static final jr<erm> a = jr.a(new erm(List.of()));
-   @Nullable
-   private volatile eow.a b;
+public class eou {
+   private static final int c = Integer.MIN_VALUE;
+   private static final MutableObject<Codec<jr<eou>>> d = new MutableObject();
+   public static final Codec<eou> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(eou::a),
+               Codec.mapPair(eos.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eou::new)
+   );
+   public static final Codec<jr<eou>> b = af.a(akq.a(mc.aX, a), d::setValue);
+   private final List<Pair<eos, Integer>> e;
+   private final ObjectArrayList<eos> f;
+   private final jr<eou> g;
+   private int h = Integer.MIN_VALUE;
 
-   protected static <E extends eou> RecordCodecBuilder<E, eow.a> e() {
-      return eow.a.c.fieldOf("projection").forGetter(eou::f);
-   }
+   public eou(jr<eou> $$0, List<Pair<eos, Integer>> $$1) {
+      this.e = $$1;
+      this.f = new ObjectArrayList();
 
-   protected eou(eow.a $$0) {
-      this.b = $$0;
-   }
+      for (Pair<eos, Integer> $$2 : $$1) {
+         eos $$3 = (eos)$$2.getFirst();
 
-   public abstract km a(erp var1, dqe var2);
-
-   public abstract List<ero.a> a(erp var1, ji var2, dqe var3, azh var4);
-
-   public abstract ene a(erp var1, ji var2, dqe var3);
-
-   public abstract boolean a(erp var1, dhg var2, dhe var3, dyt var4, ji var5, ji var6, dqe var7, ene var8, azh var9, eqy var10, boolean var11);
-
-   public abstract eov<?> a();
-
-   public void a(dgj $$0, ero.d $$1, ji $$2, dqe $$3, azh $$4, ene $$5) {
-   }
-
-   public eou a(eow.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public eow.a f() {
-      eow.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
+         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
+            this.f.add($$3);
+         }
       }
+
+      this.g = $$0;
    }
 
-   public int g() {
-      return 1;
+   public eou(jr<eou> $$0, List<Pair<Function<eou.a, ? extends eos>, Integer>> $$1, eou.a $$2) {
+      this.e = Lists.newArrayList();
+      this.f = new ObjectArrayList();
+
+      for (Pair<Function<eou.a, ? extends eos>, Integer> $$3 : $$1) {
+         eos $$4 = (eos)((Function)$$3.getFirst()).apply($$2);
+         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+
+         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
+            this.f.add($$4);
+         }
+      }
+
+      this.g = $$0;
    }
 
-   public static Function<eow.a, eon> h() {
-      return $$0 -> eon.b;
+   public int a(ern $$0) {
+      if (this.h == Integer.MIN_VALUE) {
+         this.h = this.f.stream().filter($$0x -> $$0x != eol.b).mapToInt($$1 -> $$1.a($$0, ji.c, dqc.a).e()).max().orElse(0);
+      }
+
+      return this.h;
    }
 
-   public static Function<eow.a, eor> a(String $$0) {
-      return $$1 -> new eor(Either.left(aku.a($$0)), a, $$1, Optional.empty());
+   public jr<eou> a() {
+      return this.g;
    }
 
-   public static Function<eow.a, eor> a(String $$0, jr<erm> $$1) {
-      return $$2 -> new eor(Either.left(aku.a($$0)), $$1, $$2, Optional.empty());
+   public eos a(azg $$0) {
+      return (eos)(this.f.isEmpty() ? eol.b : (eos)this.f.get($$0.a(this.f.size())));
    }
 
-   public static Function<eow.a, eot> b(String $$0) {
-      return $$1 -> new eot(Either.left(aku.a($$0)), a, $$1, Optional.empty());
+   public List<eos> b(azg $$0) {
+      return af.a(this.f, $$0);
    }
 
-   public static Function<eow.a, eot> b(String $$0, jr<erm> $$1) {
-      return $$2 -> new eot(Either.left(aku.a($$0)), $$1, $$2, Optional.empty());
+   public int b() {
+      return this.f.size();
    }
 
-   public static Function<eow.a, eot> a(String $$0, eqy $$1) {
-      return $$2 -> new eot(Either.left(aku.a($$0)), a, $$2, Optional.of($$1));
-   }
+   public static enum a implements azu {
+      a("terrain_matching", ImmutableList.of(new eqs(ecq.a.a, -1))),
+      b("rigid", ImmutableList.of());
 
-   public static Function<eow.a, eot> a(String $$0, jr<erm> $$1, eqy $$2) {
-      return $$3 -> new eot(Either.left(aku.a($$0)), $$1, $$3, Optional.of($$2));
-   }
+      public static final azu.a<eou.a> c = azu.a(eou.a::values);
+      private final String d;
+      private final ImmutableList<erj> e;
 
-   public static Function<eow.a, eoo> a(jr<emq> $$0) {
-      return $$1 -> new eoo($$0, $$1);
-   }
+      private a(final String $$0, final ImmutableList<erj> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
 
-   public static Function<eow.a, eos> b(List<Function<eow.a, ? extends eou>> $$0) {
-      return $$1 -> new eos($$0.stream().map($$1x -> (eou)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+      public String a() {
+         return this.d;
+      }
+
+      public static eou.a a(String $$0) {
+         return c.a($$0);
+      }
+
+      public ImmutableList<erj> b() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

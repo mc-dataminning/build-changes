@@ -1,23 +1,26 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eea<P extends edz> {
-   eea<eef> a = a("matching_blocks", eef.a);
-   eea<eee> b = a("matching_block_tag", eee.e);
-   eea<eeg> c = a("matching_fluids", eeg.a);
-   eea<eec> d = a("has_sturdy_face", eec.a);
-   eea<eej> e = a("solid", eej.a);
-   eea<eei> f = a("replaceable", eei.a);
-   eea<een> g = a("would_survive", een.a);
-   eea<eed> h = a("inside_world_bounds", eed.a);
-   eea<edy> i = a("any_of", edy.a);
-   eea<edx> j = a("all_of", edx.a);
-   eea<eeh> k = a("not", eeh.a);
-   eea<eel> l = a("true", eel.e);
-   eea<eem> m = a("unobstructed", eem.a);
+public class eea implements edx {
+   private final km e;
+   private final jn f;
+   public static final MapCodec<eea> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.e), jn.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, eea::new)
+   );
 
-   MapCodec<P> codec();
+   public eea(km $$0, jn $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
 
-   private static <P extends edz> eea<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.M, $$0, () -> $$1);
+   public boolean a(dhe $$0, ji $$1) {
+      ji $$2 = $$1.a(this.e);
+      return $$0.a_($$2).c($$0, $$2, this.f);
+   }
+
+   @Override
+   public edy<?> a() {
+      return edy.d;
    }
 }

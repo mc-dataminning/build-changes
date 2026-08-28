@@ -11,14 +11,14 @@ public class anq {
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("op").requires($$0x -> $$0x.c(3))).then(ey.a("targets", fm.a()).suggests(($$0x, $$1) -> {
-            avd $$2 = ((ex)$$0x.getSource()).l().ag();
+            avc $$2 = ((ex)$$0x.getSource()).l().ag();
             return fc.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
          }).executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets"))))
       );
    }
 
    private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avd $$2 = $$0.l().ag();
+      avc $$2 = $$0.l().ag();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

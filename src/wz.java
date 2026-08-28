@@ -1,12 +1,12 @@
 import java.util.UUID;
 
-public record wz(UUID a, coz b) {
-   public static wz a(coz $$0) {
+public record wz(UUID a, cox b) {
+   public static wz a(cox $$0) {
       return new wz(UUID.randomUUID(), $$0);
    }
 
    public xi.c a(UUID $$0) {
-      return new xi($$0, this.a).a(azn.a(this.b.b(), "SHA256withRSA"));
+      return new xi($$0, this.a).a(azm.a(this.b.b(), "SHA256withRSA"));
    }
 
    public xf a() {
@@ -17,7 +17,7 @@ public record wz(UUID a, coz b) {
       return this.a;
    }
 
-   public coz c() {
+   public cox c() {
       return this.b;
    }
 }

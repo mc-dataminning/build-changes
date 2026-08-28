@@ -1,35 +1,47 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class egd implements eic {
-   public static final Codec<egd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aku.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               aku.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               ern.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               ern.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, egd::new)
-   );
-   public final List<aku> b;
-   public final List<aku> c;
-   public final jr<erm> d;
-   public final jr<erm> e;
-   public final int f;
+public class egd extends efw<eih> {
+   public egd(Codec<eih> $$0) {
+      super($$0);
+   }
 
-   public egd(List<aku> $$0, List<aku> $$1, jr<erm> $$2, jr<erm> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+   @Override
+   public boolean a(efy<eih> $$0) {
+      dhe $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azg $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
       } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+         dwv $$4 = $$1.a_($$2.d());
+         if (!$$4.a(djm.ei) && !$$4.a(djm.el) && !$$4.a(djm.pT)) {
+            return false;
+         } else {
+            $$1.a($$2, djm.ep.m(), 2);
+
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               ji $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).l()) {
+                  int $$7 = 0;
+
+                  for (jn $$8 : jn.values()) {
+                     if ($$1.a_($$6.a($$8)).a(djm.ep)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, djm.ep.m(), 2);
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

@@ -26,11 +26,11 @@ public class wr {
       }
    }
 
-   public static Optional<xc> a(@Nullable ex $$0, Optional<wo> $$1, @Nullable buk $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<xc> a(@Nullable ex $$0, Optional<wo> $$1, @Nullable buj $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static xc a(@Nullable ex $$0, wo $$1, @Nullable buk $$2, int $$3) throws CommandSyntaxException {
+   public static xc a(@Nullable ex $$0, wo $$1, @Nullable buj $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class wr {
       }
    }
 
-   private static xl a(@Nullable ex $$0, xl $$1, @Nullable buk $$2, int $$3) throws CommandSyntaxException {
+   private static xl a(@Nullable ex $$0, xl $$1, @Nullable buj $$2, int $$3) throws CommandSyntaxException {
       wu $$4 = $$1.j();
       if ($$4 != null) {
          wo $$5 = $$4.a(wu.a.a);

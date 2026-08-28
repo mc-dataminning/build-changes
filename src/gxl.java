@@ -1,6 +1,6 @@
-public class gxl extends gxn {
+public class gxl extends gzh {
    public boolean a;
-   public boolean b;
-   public float c;
-   public float d;
+   public final bub b = new bub();
+   public final bub c = new bub();
+   public final bub d = new bub();
 }

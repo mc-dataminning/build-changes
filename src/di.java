@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record di(
    Optional<di.b> b,
-   Optional<jv<dhk>> c,
-   Optional<jv<enm>> d,
-   Optional<akt<dgi>> e,
+   Optional<jv<dhi>> c,
+   Optional<jv<enk>> d,
+   Optional<akt<dgg>> e,
    Optional<Boolean> f,
    Optional<df> g,
    Optional<ay> h,
@@ -38,7 +38,7 @@ public record di(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dkb.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == djz.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record di(
       return this.b;
    }
 
-   public Optional<jv<dhk>> b() {
+   public Optional<jv<dhi>> b() {
       return this.c;
    }
 
-   public Optional<jv<enm>> c() {
+   public Optional<jv<enk>> c() {
       return this.d;
    }
 
-   public Optional<akt<dgi>> d() {
+   public Optional<akt<dgg>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record di(
       private dk.c a;
       private dk.c b;
       private dk.c c;
-      private Optional<jv<dhk>> d;
-      private Optional<jv<enm>> e;
-      private Optional<akt<dgi>> f;
+      private Optional<jv<dhi>> d;
+      private Optional<jv<enk>> e;
+      private Optional<akt<dgg>> f;
       private Optional<Boolean> g;
       private Optional<df> h;
       private Optional<ay> i;
@@ -125,15 +125,15 @@ public record di(
          return new di.a();
       }
 
-      public static di.a a(jr<dhk> $$0) {
+      public static di.a a(jr<dhi> $$0) {
          return a().a(jv.a($$0));
       }
 
-      public static di.a a(akt<dgi> $$0) {
+      public static di.a a(akt<dgg> $$0) {
          return a().b($$0);
       }
 
-      public static di.a b(jr<enm> $$0) {
+      public static di.a b(jr<enk> $$0) {
          return a().b(jv.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record di(
          return this;
       }
 
-      public di.a a(jv<dhk> $$0) {
+      public di.a a(jv<dhi> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public di.a b(jv<enm> $$0) {
+      public di.a b(jv<enk> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public di.a b(akt<dgi> $$0) {
+      public di.a b(akt<dgg> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

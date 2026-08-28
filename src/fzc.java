@@ -1,257 +1,149 @@
-import java.util.Collection;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-public class fzc extends fuk {
-   private static final wo c = wo.c("gui.socialInteractions.title");
-   private static final aku d = aku.b("social_interactions/background");
-   private static final aku s = aku.b("icon/search");
-   private static final wo u = wo.c("gui.socialInteractions.tab_all");
-   private static final wo v = wo.c("gui.socialInteractions.tab_hidden");
-   private static final wo w = wo.c("gui.socialInteractions.tab_blocked");
-   private static final wo x = u.e().a(n.t);
-   private static final wo y = v.e().a(n.t);
-   private static final wo z = w.e().a(n.t);
-   private static final wo A = wo.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
-   static final wo B = wo.c("gui.socialInteractions.search_empty").a(n.h);
-   private static final wo C = wo.c("gui.socialInteractions.empty_hidden").a(n.h);
-   private static final wo D = wo.c("gui.socialInteractions.empty_blocked").a(n.h);
-   private static final wo E = wo.c("gui.socialInteractions.blocking_hint");
-   private static final int F = 8;
-   private static final int G = 236;
-   private static final int H = 16;
-   private static final int I = 64;
-   public static final int a = 72;
-   public static final int b = 88;
-   private static final int J = 238;
-   private static final int K = 20;
-   private static final int L = 36;
-   private final fsg M = new fsg(this);
+public class fzc extends fom {
+   private static final int a = 32;
+   private static final String c = "telemetry.event.required";
+   private static final String d = "telemetry.event.optional";
+   private static final String e = "telemetry.event.optional.disabled";
+   private static final wo f = wo.c("telemetry_info.property_title").a(n.t);
+   private final fnz m;
+   private fzc.a n;
    @Nullable
-   private final fuk N;
-   fzb O;
-   fpb P;
-   private String Q = "";
-   private fzc.a R = fzc.a.a;
-   private fos S;
-   private fos T;
-   private fos U;
-   private fos V;
-   @Nullable
-   private wo W;
-   private int X;
+   private DoubleConsumer o;
 
-   public fzc() {
-      this(null);
+   public fzc(int $$0, int $$1, int $$2, int $$3, fnz $$4) {
+      super($$0, $$1, $$2, $$3, wo.i());
+      this.m = $$4;
+      this.n = this.c(flh.Q().C());
    }
 
-   public fzc(@Nullable fuk $$0) {
-      super(c);
-      this.N = $$0;
-      this.a(flj.Q());
+   public void b(boolean $$0) {
+      this.n = this.c($$0);
+      this.h();
    }
 
-   private int m() {
-      return Math.max(52, this.o - 128 - 16);
+   public void q() {
+      this.n = this.c(flh.Q().C());
+      this.h();
    }
 
-   private int E() {
-      return 80 + this.m() - 8;
-   }
+   private fzc.a c(boolean $$0) {
+      fzc.b $$1 = new fzc.b(this.r());
+      List<hjy> $$2 = new ArrayList<>(hjy.g());
+      $$2.sort(Comparator.comparing(hjy::d));
 
-   private int F() {
-      return (this.n - 238) / 2;
-   }
-
-   @Override
-   public wo i() {
-      return (wo)(this.W != null ? wn.a(super.i(), this.W) : super.i());
-   }
-
-   @Override
-   protected void aR_() {
-      this.M.a(c, this.p);
-      this.O = new fzb(this, this.m, this.n, this.E() - 88, 88, 36);
-      int $$0 = this.O.a() / 3;
-      int $$1 = this.O.u();
-      int $$2 = this.O.v();
-      this.S = this.c(fos.a(u, $$0x -> this.a(fzc.a.a)).a($$1, 45, $$0, 20).a());
-      this.T = this.c(fos.a(v, $$0x -> this.a(fzc.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
-      this.U = this.c(fos.a(w, $$0x -> this.a(fzc.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
-      String $$3 = this.P != null ? this.P.a() : "";
-      this.P = new fpb(this.p, this.F() + 28, 74, 200, 15, A) {
-         @Override
-         protected xc d() {
-            return !fzc.this.P.a().isEmpty() && fzc.this.O.b() ? super.d().f(", ").b(fzc.B) : super.d();
-         }
-      };
-      this.P.f(16);
-      this.P.g(true);
-      this.P.m(-1);
-      this.P.a($$3);
-      this.P.c(A);
-      this.P.b(this::a);
-      this.c(this.P);
-      this.d(this.O);
-      this.V = this.c(fos.a(E, fth.b(this, axv.o)).a(this.n / 2 - 100, 64 + this.m(), 200, 20).a());
-      this.a(this.R);
-      this.M.b(fos.a(wn.d, $$0x -> this.aO_()).a(200).a());
-      this.M.a($$1x -> {
-         fop var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.M.a();
-      this.O.b(this.n, this.E() - 88, 88);
-      this.P.c(this.F() + 28, 74);
-      int $$0 = this.O.u();
-      int $$1 = this.O.v();
-      int $$2 = this.O.a() / 3;
-      this.S.c($$0, 45);
-      this.T.c(($$0 + $$1 - $$2) / 2 + 1, 45);
-      this.U.c($$1 - $$2 + 1, 45);
-      this.V.c(this.n / 2 - 100, 64 + this.m());
-   }
-
-   @Override
-   protected void aF_() {
-      this.b(this.P);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.N);
-   }
-
-   private void a(fzc.a $$0) {
-      this.R = $$0;
-      this.S.b(u);
-      this.T.b(v);
-      this.U.b(w);
-      boolean $$1 = false;
-      switch ($$0) {
-         case a:
-            this.S.b(x);
-            Collection<UUID> $$2 = this.m.t.j.n();
-            this.O.a($$2, this.O.g(), true);
-            break;
-         case b:
-            this.T.b(y);
-            Set<UUID> $$3 = this.m.aN().c();
-            $$1 = $$3.isEmpty();
-            this.O.a($$3, this.O.g(), false);
-            break;
-         case c:
-            this.U.b(z);
-            fza $$4 = this.m.aN();
-            Set<UUID> $$5 = this.m.t.j.n().stream().filter($$4::e).collect(Collectors.toSet());
-            $$1 = $$5.isEmpty();
-            this.O.a($$5, this.O.g(), false);
-      }
-
-      fla $$6 = this.m.aY();
-      if (!this.P.a().isEmpty() && this.O.b() && !this.P.aM_()) {
-         $$6.c(B);
-      } else if ($$1) {
-         if ($$0 == fzc.a.b) {
-            $$6.c(C);
-         } else if ($$0 == fzc.a.c) {
-            $$6.c(D);
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         hjy $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
          }
       }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.o = $$0;
    }
 
    @Override
-   public void b(fod $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = this.F() + 3;
-      $$0.a(gmh::H, d, $$4, 64, 236, this.m() + 16);
-      $$0.a(gmh::H, s, $$4 + 10, 76, 12, 12);
-   }
-
-   @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a(this.m);
-      if (this.W != null) {
-         $$0.b(this.m.h, this.W, this.F() + 8, 35, -1);
-      }
-
-      if (!this.O.b()) {
-         this.O.a($$0, $$1, $$2, $$3);
-      } else if (!this.P.a().isEmpty()) {
-         $$0.a(this.m.h, B, this.n / 2, (72 + this.E()) / 2, -1);
-      } else if (this.R == fzc.a.b) {
-         $$0.a(this.m.h, C, this.n / 2, (72 + this.E()) / 2, -1);
-      } else if (this.R == fzc.a.c) {
-         $$0.a(this.m.h, D, this.n / 2, (72 + this.E()) / 2, -1);
-      }
-
-      this.V.k = this.R == fzc.a.c;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.P.aM_() && this.m.n.L.a($$0, $$1)) {
-         this.aO_();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void a(double $$0) {
+      super.a($$0);
+      if (this.o != null) {
+         this.o.accept(this.g());
       }
    }
 
    @Override
-   public boolean k() {
-      return false;
+   protected int c() {
+      return this.n.a().y();
    }
 
-   private void a(String $$0) {
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-      if (!$$0.equals(this.Q)) {
-         this.O.a($$0);
-         this.Q = $$0;
-         this.a(this.R);
+   @Override
+   protected double o() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fob $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.p();
+      int $$5 = this.e();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.n.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fsn $$0) {
+      $$0.a(fsm.a, this.n.b());
+   }
+
+   private wo a(wo $$0, boolean $$1) {
+      return (wo)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fzc.b $$0, hjy $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.m, this.a(wo.a($$3, $$1.e()), $$2));
+      $$0.b(this.m, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.m, this.a(f, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(hjy $$0, fzc.b $$1, boolean $$2) {
+      for (hka<?> $$3 : $$0.b()) {
+         $$1.a(this.m, this.a($$3.a(), $$2));
       }
    }
 
-   private void a(flj $$0) {
-      int $$1 = $$0.L().m().size();
-      if (this.X != $$1) {
-         String $$2 = "";
-         ggn $$3 = $$0.S();
-         if ($$0.T()) {
-            $$2 = $$0.V().ae();
-         } else if ($$3 != null) {
-            $$2 = $$3.a;
-         }
+   private int r() {
+      return this.g - this.b();
+   }
 
-         if ($$1 > 1) {
-            this.W = wo.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
-         } else {
-            this.W = wo.a("gui.socialInteractions.server_label.single", $$2, $$1);
-         }
+   static record a(fsf a, wo b) {
+   }
 
-         this.X = $$1;
+   static class b {
+      private final int a;
+      private final fsi b;
+      private final xc c = wo.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fsi.d();
+         this.b.c().a();
+         this.b.a(fsj.a($$0));
       }
-   }
 
-   public void a(ggk $$0) {
-      this.O.a($$0, this.R);
-   }
+      public void a(fnz $$0, wo $$1) {
+         this.a($$0, $$1, 0);
+      }
 
-   public void a(UUID $$0) {
-      this.O.a($$0);
-   }
+      public void a(fnz $$0, wo $$1, int $$2) {
+         this.b.a(new fpk($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
 
-   public static enum a {
-      a,
-      b,
-      c;
+      public void b(fnz $$0, wo $$1) {
+         this.b.a(new fpk($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fsj.b($$0));
+      }
+
+      public fzc.a a() {
+         this.b.a();
+         return new fzc.a(this.b, this.c);
+      }
    }
 }

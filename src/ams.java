@@ -10,11 +10,11 @@ public class ams {
       );
    }
 
-   private static int a(ex $$0, dgf $$1) {
+   private static int a(ex $$0, dgd $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dgf $$4 = $$3.bd();
+      dgd $$4 = $$3.bd();
       if ($$4 != null) {
          for (ard $$5 : $$3.ag().t()) {
             if ($$5.a($$4)) {

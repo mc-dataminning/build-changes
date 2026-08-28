@@ -1,62 +1,77 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dae(float c) implements dab {
-   private static final float f = 16.0F;
-   public static final MapCodec<dae> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayi.o.optionalFieldOf("diameter", 16.0F).forGetter(dae::b)).apply($$0, dae::new)
-   );
-   public static final ym<vz, dae> b = ym.a(yk.l, dae::b, dae::new);
+public class dae extends dag {
+   private final ji b;
+   protected boolean a = true;
 
-   public dae() {
-      this(16.0F);
+   public dae(cov $$0, bsh $$1, cwn $$2, fau $$3) {
+      this($$0.dW(), $$0, $$1, $$2, $$3);
+   }
+
+   public dae(dag $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected dae(dgg $$0, @Nullable cov $$1, bsh $$2, cwn $$3, fau $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
+   }
+
+   public static dae a(dae $$0, ji $$1, jn $$2) {
+      return new dae(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new fau(
+            new fay((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public dab.a<dae> a() {
-      return dab.a.d;
+   public ji a() {
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
-   public boolean a(dgi $$0, cwp $$1, bvg $$2) {
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dB() + ($$2.dZ().j() - 0.5) * (double)this.c;
-         double $$6 = ayz.a($$2.dD() + ($$2.dZ().j() - 0.5) * (double)this.c, (double)$$0.L_(), (double)($$0.L_() + ((arc)$$0).l() - 1));
-         double $$7 = $$2.dH() + ($$2.dZ().j() - 0.5) * (double)this.c;
-         if ($$2.bZ()) {
-            $$2.ae();
-         }
-
-         fba $$8 = $$2.du();
-         if ($$2.b($$5, $$6, $$7, true)) {
-            $$0.a(ebt.R, $$8, ebt.a.a($$2));
-            awb $$10;
-            avz $$9;
-            if ($$2 instanceof chh) {
-               $$9 = awa.jP;
-               $$10 = awb.g;
-            } else {
-               $$9 = awa.fj;
-               $$10 = awb.h;
-            }
-
-            $$0.a(null, $$2.dB(), $$2.dD(), $$2.dH(), $$9, $$10);
-            $$2.k();
-            $$3 = true;
-            break;
-         }
-      }
-
-      if ($$3 && $$2 instanceof cox $$13) {
-         $$13.gP();
-      }
-
-      return $$3;
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   public float b() {
-      return this.c;
+   public boolean c() {
+      return this.a;
+   }
+
+   public jn d() {
+      return jn.a(this.o())[0];
+   }
+
+   public jn e() {
+      return jn.a(this.o(), jn.a.b);
+   }
+
+   public jn[] f() {
+      jn[] $$0 = jn.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jn $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

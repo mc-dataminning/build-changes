@@ -1,61 +1,26 @@
-public class faw extends fay {
-   private final jn b;
-   private final ji c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
+public abstract class faw {
+   protected final fay a;
 
-   public static faw a(fba $$0, jn $$1, ji $$2) {
-      return new faw(true, $$0, $$1, $$2, false, false);
+   protected faw(fay $$0) {
+      this.a = $$0;
    }
 
-   public faw(fba $$0, jn $$1, ji $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3, false);
+   public double a(buj $$0) {
+      double $$1 = this.a.d - $$0.dB();
+      double $$2 = this.a.e - $$0.dD();
+      double $$3 = this.a.f - $$0.dH();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public faw(fba $$0, jn $$1, ji $$2, boolean $$3, boolean $$4) {
-      this(false, $$0, $$1, $$2, $$3, $$4);
+   public abstract faw.a d();
+
+   public fay g() {
+      return this.a;
    }
 
-   private faw(boolean $$0, fba $$1, jn $$2, ji $$3, boolean $$4, boolean $$5) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public faw a(jn $$0) {
-      return new faw(this.d, this.a, $$0, this.c, this.e, this.f);
-   }
-
-   public faw a(ji $$0) {
-      return new faw(this.d, this.a, this.b, $$0, this.e, this.f);
-   }
-
-   public faw a() {
-      return new faw(this.d, this.a, this.b, this.c, this.e, true);
-   }
-
-   public ji b() {
-      return this.c;
-   }
-
-   public jn c() {
-      return this.b;
-   }
-
-   @Override
-   public fay.a d() {
-      return this.d ? fay.a.a : fay.a.b;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

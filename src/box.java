@@ -1,51 +1,20 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class box implements AutoCloseable {
-   public static final box a = new box(null);
-   @Nullable
-   private final bos b;
+public enum box {
+   a("client"),
+   b("server");
 
-   box(@Nullable bos $$0) {
-      this.b = $$0;
+   private final String c;
+
+   private box(final String $$0) {
+      this.c = $$0;
    }
 
-   public box a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
+   public static box a(MinecraftServer $$0) {
+      return $$0.n() ? b : a;
    }
 
-   public box a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public box a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public box a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+   public String a() {
+      return this.c;
    }
 }

@@ -1,4 +1,4 @@
-public enum jp implements azv {
+public enum jp implements azu {
    a("down_east", jn.a, jn.f),
    b("down_north", jn.a, jn.c),
    c("down_south", jn.a, jn.d),

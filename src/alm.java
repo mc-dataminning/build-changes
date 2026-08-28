@@ -61,7 +61,7 @@ public record alm(List<alm.a> d) {
       i(8, "news"),
       j(9, "announcements");
 
-      private static final IntFunction<alm.b> l = axq.a($$0 -> $$0.m, values(), axq.a.a);
+      private static final IntFunction<alm.b> l = axp.a($$0 -> $$0.m, values(), axp.a.a);
       public static final ym<ByteBuf, alm.b> k = yk.a(l, $$0 -> $$0.m);
       private final int m;
       private final String n;

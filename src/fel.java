@@ -1,46 +1,31 @@
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
+
 public class fel {
-   private static final int a = 60;
-   private static final int b = 10;
-   private static final int c = 30;
-   private static final int d = 10;
-   private static final long e = 60000L;
-   private static final long f = 600000L;
-   private final fln g;
-   private final flj h;
-   private int i;
-   private long j;
-
-   public fel(fln $$0, flj $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$0.h().c();
+   public static ByteBuffer a(int $$0) {
+      return MemoryUtil.memAlloc($$0);
    }
 
-   public int a() {
-      flf $$0 = this.g.i().c();
-      if (this.h.aO().j()) {
-         return 10;
-      } else {
-         if ($$0 == flf.b) {
-            long $$1 = af.c() - this.j;
-            if ($$1 > 600000L) {
-               return 10;
-            }
-
-            if ($$1 > 60000L) {
-               return Math.min(this.i, 30);
-            }
-         }
-
-         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
-      }
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
    }
 
-   public void a(int $$0) {
-      this.i = $$0;
+   public static String a() {
+      return GlStateManager._getString(7936);
    }
 
-   public void b() {
-      this.j = af.c();
+   public static String b() {
+      return GLX._getCpuInfo();
+   }
+
+   public static String c() {
+      return GlStateManager._getString(7937);
+   }
+
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

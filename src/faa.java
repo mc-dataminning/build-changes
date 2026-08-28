@@ -1,42 +1,30 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record faa(ezw b, ezw c) implements ezw {
-   public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ezx.a.fieldOf("min").forGetter(faa::c), ezx.a.fieldOf("max").forGetter(faa::d)).apply($$0, faa::new)
-   );
+public record faa(evp.b c) implements fad {
+   public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(evp.b.e.fieldOf("target").forGetter(faa::c)).apply($$0, faa::new));
+   public static final Codec<faa> b = evp.b.e.xmap(faa::new, faa::c);
 
-   @Override
-   public ezv b() {
-      return ezx.c;
-   }
-
-   public static faa a(float $$0, float $$1) {
-      return new faa(ezt.a($$0), ezt.a($$1));
+   public static fad a(evp.b $$0) {
+      return new faa($$0);
    }
 
    @Override
-   public int a(evr $$0) {
-      return ayz.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public fac a() {
+      return fae.c;
+   }
+
+   @Nullable
+   @Override
+   public fcc a(evp $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
-   public float b(evr $$0) {
-      return ayz.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<bai<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public ezw c() {
-      return this.b;
-   }
-
-   public ezw d() {
-      return this.c;
+   public Set<bah<?>> b() {
+      return Set.of(this.c.a());
    }
 }

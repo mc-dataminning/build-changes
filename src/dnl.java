@@ -1,75 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
+import java.util.function.Supplier;
 
-public class dnl extends djm {
-   public static final MapCodec<dnl> a = b(dnl::new);
-   public static final dxo b = dpe.b;
-   public static final dxo c = dpe.c;
-   public static final dxo d = dpe.d;
-   public static final dxo e = dpe.e;
-   public static final dxo f = dpe.f;
-   public static final dxo g = dpe.g;
-   private static final Map<jn, dxo> h = dpe.h;
+public class dnl extends djk {
+   public static final MapCodec<dnl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mb.e.q().fieldOf("host").forGetter(dnl::b), t()).apply($$0, dnl::new));
+   private final djk b;
+   private static final Map<djk, djk> c = Maps.newIdentityHashMap();
+   private static final Map<dwv, dwv> d = Maps.newIdentityHashMap();
+   private static final Map<dwv, dwv> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dnl> a() {
+   public MapCodec<? extends dnl> a() {
       return a;
    }
 
-   public dnl(dww.d $$0) {
-      super($$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(true))
-            .b(c, Boolean.valueOf(true))
-            .b(d, Boolean.valueOf(true))
-            .b(e, Boolean.valueOf(true))
-            .b(f, Boolean.valueOf(true))
-            .b(g, Boolean.valueOf(true))
-      );
+   public dnl(djk $$0, dwu.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public djk b() {
+      return this.b;
+   }
+
+   public static boolean o(dwv $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(arc $$0, ji $$1) {
+      cmd $$2 = buq.bd.a($$0, bup.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.S();
+      }
    }
 
    @Override
-   public dwx a(dag $$0) {
-      dfn $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      return this.m()
-         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
-         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
-         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   protected void a(dwv $$0, arc $$1, ji $$2, cwn $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().b(dgc.h) && !dcz.a($$3, awr.t)) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static dwv p(dwv $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
    }
 
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(h.get($$1.a(jn.c)), $$0.c(b))
-         .b(h.get($$1.a(jn.d)), $$0.c(d))
-         .b(h.get($$1.a(jn.f)), $$0.c(c))
-         .b(h.get($$1.a(jn.e)), $$0.c(e))
-         .b(h.get($$1.a(jn.b)), $$0.c(f))
-         .b(h.get($$1.a(jn.a)), $$0.c(g));
+   public dwv q(dwv $$0) {
+      return a(e, $$0, () -> this.b().m());
    }
 
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(h.get($$1.b(jn.c)), $$0.c(b))
-         .b(h.get($$1.b(jn.d)), $$0.c(d))
-         .b(h.get($$1.b(jn.f)), $$0.c(c))
-         .b(h.get($$1.b(jn.e)), $$0.c(e))
-         .b(h.get($$1.b(jn.b)), $$0.c(f))
-         .b(h.get($$1.b(jn.a)), $$0.c(g));
-   }
+   private static dwv a(Map<dwv, dwv> $$0, dwv $$1, Supplier<dwv> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dwv $$2x = $$2.get();
 
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(f, g, b, c, d, e);
+         for (dxx $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

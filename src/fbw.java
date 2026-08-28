@@ -1,66 +1,34 @@
-import java.util.function.IntFunction;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public enum fbw implements azv {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
-
-   public static final azv.a<fbw> t = azv.a(fbw::values);
-   public static final IntFunction<fbw> u = axq.a(fbw::a, values(), axq.a.a);
-   private final int v;
-   private final String w;
-
-   private fbw(final int $$0, final String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+public record fbw(String a, int b, @Nullable wo c, @Nullable ye d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   public int a() {
-      return this.v;
+   public wo b() {
+      return (wo)(this.c != null ? this.c : wo.b(this.c()));
    }
 
-   @Override
+   public xc a(ye $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
    public String c() {
-      return this.w;
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 
    @Nullable
-   public static fbw a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public wo e() {
+      return this.c;
+   }
+
+   @Nullable
+   public ye f() {
+      return this.d;
    }
 }

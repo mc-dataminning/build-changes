@@ -1,269 +1,160 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class doo extends djm {
-   public static final MapCodec<doo> b = b(doo::new);
-   private static final float a = 1.0F;
-   private static final fbu d = djm.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final fbu e = djm.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final fbu f = djm.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final fbu g = djm.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final fbu h = djm.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final fbu i = djm.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<jn, dxo> j = dpe.h;
-   private static final Map<jn, fbu> k = af.a(Maps.newEnumMap(jn.class), $$0 -> {
-      $$0.put(jn.c, h);
-      $$0.put(jn.f, g);
-      $$0.put(jn.d, i);
-      $$0.put(jn.e, f);
-      $$0.put(jn.b, d);
-      $$0.put(jn.a, e);
-   });
-   protected static final jn[] c = jn.values();
-   private final ImmutableMap<dwx, fbu> l;
-   private final boolean m;
-   private final boolean n;
-   private final boolean o;
+public class doo {
+   public static final doo.e[] a = new doo.e[]{doo.e.a, doo.e.b, doo.e.c};
+   private final doo.b b;
 
-   @Override
-   protected MapCodec<? extends doo> a() {
-      return b;
+   public doo(dom $$0) {
+      this(new doo.a($$0));
    }
 
-   public doo(dww.d $$0) {
-      super($$0);
-      this.l(a(this.F));
-      this.l = this.a(doo::r);
-      this.m = jn.c.a.a().allMatch(this::a);
-      this.n = jn.c.a.a().filter(jn.a.a).filter(this::a).count() % 2L == 0L;
-      this.o = jn.c.a.a().filter(jn.a.c).filter(this::a).count() % 2L == 0L;
+   public doo(doo.b $$0) {
+      this.b = $$0;
    }
 
-   public static Set<jn> o(dwx $$0) {
-      if (!($$0.b() instanceof doo)) {
-         return Set.of();
-      } else {
-         Set<jn> $$1 = EnumSet.noneOf(jn.class);
+   public boolean a(dwv $$0, dfl $$1, ji $$2, jn $$3) {
+      return jn.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   }
 
-         for (jn $$2 : jn.values()) {
-            if (a($$0, $$2)) {
-               $$1.add($$2);
+   public Optional<doo.c> a(dwv $$0, dgh $$1, ji $$2, azg $$3) {
+      return jn.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
+
+   public long a(dwv $$0, dgh $$1, ji $$2, boolean $$3) {
+      return jn.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<doo.c> a(dwv $$0, dgh $$1, ji $$2, jn $$3, azg $$4, boolean $$5) {
+      return jn.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dwv $$0, dgh $$1, ji $$2, jn $$3, boolean $$4) {
+      return jn.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<doo.c> a(dwv $$0, dgh $$1, ji $$2, jn $$3, jn $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<doo.c> a(dwv $$0, dfl $$1, ji $$2, jn $$3, jn $$4, doo.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (doo.e $$6 : this.b.a()) {
+            doo.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         return $$1;
-      }
-   }
-
-   public static Set<jn> a(byte $$0) {
-      Set<jn> $$1 = EnumSet.noneOf(jn.class);
-
-      for (jn $$2 : jn.values()) {
-         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static byte a(Collection<jn> $$0) {
-      byte $$1 = 0;
-
-      for (jn $$2 : $$0) {
-         $$1 = (byte)($$1 | 1 << $$2.ordinal());
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(jn $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      for (jn $$1 : c) {
-         if (this.a($$1)) {
-            $$0.a(b($$1));
-         }
-      }
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if (!q($$0)) {
-         return djo.a.m();
+         return Optional.empty();
       } else {
-         return a($$0, $$4) && !a($$1, $$4, $$5, $$6) ? a($$0, b($$4)) : $$0;
+         return Optional.empty();
       }
    }
 
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return (fbu)this.l.get($$0);
+   public Optional<doo.c> a(dgh $$0, doo.c $$1, boolean $$2) {
+      dwv $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      boolean $$3 = false;
+   public static class a implements doo.b {
+      protected dom a;
 
-      for (jn $$4 : c) {
-         if (a($$0, $$4)) {
-            if (!a($$1, $$2, $$4)) {
-               return false;
-            }
-
-            $$3 = true;
-         }
+      public a(dom $$0) {
+         this.a = $$0;
       }
 
-      return $$3;
+      @Nullable
+      @Override
+      public dwv a(dwv $$0, dfl $$1, ji $$2, jn $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(dfl $$0, ji $$1, ji $$2, jn $$3, dwv $$4) {
+         return $$4.l() || $$4.a(this.a) || $$4.a(djm.J) && $$4.y().b();
+      }
+
+      @Override
+      public boolean a(dfl $$0, ji $$1, doo.c $$2) {
+         dwv $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
    }
 
-   @Override
-   protected boolean a(dwx $$0, dag $$1) {
-      return s($$0);
-   }
+   public interface b {
+      @Nullable
+      dwv a(dwv var1, dfl var2, ji var3, jn var4);
 
-   @Nullable
-   @Override
-   public dwx a(dag $$0) {
-      dgi $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwx $$3 = $$1.a_($$2);
-      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
-   }
+      boolean a(dfl var1, ji var2, doo.c var3);
 
-   public boolean a(dfn $$0, dwx $$1, ji $$2, jn $$3) {
-      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
-         ji $$4 = $$2.a($$3);
-         return a($$0, $$3, $$4, $$0.a_($$4));
-      } else {
+      default doo.e[] a() {
+         return doo.a;
+      }
+
+      default boolean a(dwv $$0, jn $$1) {
+         return dom.a($$0, $$1);
+      }
+
+      default boolean a(dwv $$0) {
          return false;
       }
-   }
 
-   @Nullable
-   public dwx c(dwx $$0, dfn $$1, ji $$2, jn $$3) {
-      if (!this.a($$1, $$0, $$2, $$3)) {
-         return null;
-      } else {
-         dwx $$4;
-         if ($$0.a(this)) {
-            $$4 = $$0;
-         } else if (this.q() && $$0.y().a(eta.c)) {
-            $$4 = this.m().b(dxn.J, Boolean.valueOf(true));
+      default boolean b(dwv $$0, jn $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(dgh $$0, doo.c $$1, dwv $$2, boolean $$3) {
+         dwv $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
-            $$4 = this.m();
-         }
-
-         return $$4.b(b($$3), Boolean.valueOf(true));
-      }
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return !this.m ? $$0 : this.a($$0, $$1::a);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      if ($$1 == dol.c && !this.n) {
-         return $$0;
-      } else {
-         return $$1 == dol.b && !this.o ? $$0 : this.a($$0, $$1::b);
-      }
-   }
-
-   private dwx a(dwx $$0, Function<jn, jn> $$1) {
-      dwx $$2 = $$0;
-
-      for (jn $$3 : c) {
-         if (this.a($$3)) {
-            $$2 = $$2.b(b($$1.apply($$3)), $$0.c(b($$3)));
+            return false;
          }
       }
-
-      return $$2;
    }
 
-   public static boolean a(dwx $$0, jn $$1) {
-      dxo $$2 = b($$1);
-      return $$0.a($$2, Boolean.valueOf(false));
+   public static record c(ji a, jn b) {
    }
 
-   public static boolean a(dfn $$0, ji $$1, jn $$2) {
-      ji $$3 = $$1.a($$2);
-      dwx $$4 = $$0.a_($$3);
-      return a($$0, $$2, $$3, $$4);
+   @FunctionalInterface
+   public interface d {
+      boolean test(dfl var1, ji var2, doo.c var3);
    }
 
-   public static boolean a(dfn $$0, jn $$1, ji $$2, dwx $$3) {
-      return djm.a($$3.h($$0, $$2), $$1.g()) || djm.a($$3.g($$0, $$2), $$1.g());
-   }
-
-   private boolean q() {
-      return this.F.d().contains(dxn.J);
-   }
-
-   private static dwx a(dwx $$0, dxo $$1) {
-      dwx $$2 = $$0.b($$1, Boolean.valueOf(false));
-      return q($$2) ? $$2 : djo.a.m();
-   }
-
-   public static dxo b(jn $$0) {
-      return j.get($$0);
-   }
-
-   private static dwx a(dwy<djm, dwx> $$0) {
-      dwx $$1 = $$0.b();
-
-      for (dxo $$2 : j.values()) {
-         $$1 = $$1.c($$2, Boolean.valueOf(false));
-      }
-
-      return $$1;
-   }
-
-   private static fbu r(dwx $$0) {
-      fbu $$1 = fbr.a();
-
-      for (jn $$2 : c) {
-         if (a($$0, $$2)) {
-            $$1 = fbr.a($$1, k.get($$2));
+   public static enum e {
+      a {
+         @Override
+         public doo.c a(ji $$0, jn $$1, jn $$2) {
+            return new doo.c($$0, $$1);
          }
-      }
-
-      return $$1.c() ? fbr.b() : $$1;
-   }
-
-   protected static boolean q(dwx $$0) {
-      for (jn $$1 : c) {
-         if (a($$0, $$1)) {
-            return true;
+      },
+      b {
+         @Override
+         public doo.c a(ji $$0, jn $$1, jn $$2) {
+            return new doo.c($$0.a($$1), $$2);
          }
-      }
-
-      return false;
-   }
-
-   private static boolean s(dwx $$0) {
-      for (jn $$1 : c) {
-         if (!a($$0, $$1)) {
-            return true;
+      },
+      c {
+         @Override
+         public doo.c a(ji $$0, jn $$1, jn $$2) {
+            return new doo.c($$0.a($$1).a($$2), $$1.g());
          }
-      }
+      };
 
-      return false;
+      public abstract doo.c a(ji var1, jn var2, jn var3);
    }
 }

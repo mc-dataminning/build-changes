@@ -1,32 +1,172 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum flf implements azc, azv {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class flf implements Comparable<flf> {
+   private static final Map<String, flf> h = Maps.newHashMap();
+   private static final Map<fen.a, flf> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final fen.a m;
+   private final String n;
+   private fen.a o;
+   private boolean p;
+   private int q;
 
-   public static final Codec<flf> c = azv.a(flf::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private flf(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static void a(fen.a $$0) {
+      flf $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
+      }
    }
 
-   @Override
-   public int b() {
-      return this.d;
+   public static void a(fen.a $$0, boolean $$1) {
+      flf $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   public static void a() {
+      for (flf $$0 : h.values()) {
+         if ($$0.o.a() == fen.b.a && $$0.o.b() != fen.bv.b()) {
+            $$0.a(fen.a(flh.Q().aO().h(), $$0.o.b()));
+         }
+      }
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static void b() {
+      for (flf $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (flf $$0 : h.values()) {
+         if ($$0 instanceof fls $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (flf $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public flf(String $$0, int $$1, String $$2) {
+      this($$0, fen.b.a, $$1, $$2);
+   }
+
+   public flf(String $$0, fen.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public fen.a i() {
+      return this.m;
+   }
+
+   public void b(fen.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(flf $$0) {
+      return this.n.equals($$0.n) ? hfu.a(this.l).compareTo(hfu.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<wo> a(String $$0) {
+      flf $$1 = h.get($$0);
+      return $$1 == null ? () -> wo.c($$0) : $$1::k;
+   }
+
+   public boolean b(flf $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(fen.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == fen.bv.b() ? this.o.a() == fen.b.b && this.o.b() == $$1 : this.o.a() == fen.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == fen.b.c && this.o.b() == $$0;
+   }
+
+   public wo k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
+   }
+
+   @Nullable
+   public static flf b(String $$0) {
+      return h.get($$0);
    }
 }

@@ -1,49 +1,32 @@
-import java.util.EnumSet;
+public class ccv extends cbu {
+   private final boolean a;
+   private int b;
 
-public class ccv extends cce {
-   private static final cfx b = cfx.b().a(6.0);
-   public static final int a = 400;
-   private final chj c;
-   private coi d;
-   private int e;
-
-   public ccv(chj $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cce.a.a, cce.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.c.dW().V()) {
-         return false;
-      } else if (this.c.dZ().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = a(this.c).a(coi.class, b, this.c, this.c.dB(), this.c.dD(), this.c.dH(), this.c.cR().c(6.0, 2.0, 6.0));
-         return this.d != null;
-      }
+   public ccv(bvh $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
+      return this.a && this.b > 0 && super.c();
    }
 
    @Override
    public void d() {
-      this.e = this.a(400);
-      this.c.x(true);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void e() {
-      this.c.x(false);
-      this.d = null;
+      this.a(false);
    }
 
    @Override
    public void a() {
-      this.c.H().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.b--;
+      super.a();
    }
 }

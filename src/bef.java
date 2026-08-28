@@ -2,14 +2,21 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 
-public class bef extends bgr {
-   public bef(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", bhw.B, "minecraft:shulker");
+public class bef extends bgq {
+   public bef(Schema $$0) {
+      super($$0, false, "EntityShulkerRotationFix", bhv.B, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
+      } else {
+         return $$0;
+      }
    }
 
    @Override

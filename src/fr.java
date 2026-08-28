@@ -18,10 +18,10 @@ public class fr implements ArgumentType<String> {
       return new fr();
    }
 
-   public static fbx a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static fbv a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fcf $$3 = ((ex)$$0.getSource()).l().aJ();
-      fbx $$4 = $$3.a($$2);
+      fcd $$3 = ((ex)$$0.getSource()).l().aJ();
+      fbv $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fr implements ArgumentType<String> {
       }
    }
 
-   public static fbx b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      fbx $$2 = a($$0, $$1);
+   public static fbv b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      fbv $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

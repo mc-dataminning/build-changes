@@ -1,12 +1,8 @@
-public class fig extends Exception {
-   public final fgm a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fig(fgm $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fig {
 }

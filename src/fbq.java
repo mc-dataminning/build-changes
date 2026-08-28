@@ -1,20 +1,24 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class fbq extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
+public class fbq extends fbs {
+   private final fbs b;
+   private final jn.a c;
+   private static final DoubleList d = new fbe(1);
 
-   public fbq(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fbq(fbs $$0, jn.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+   private static fbh a(fbh $$0, jn.a $$1, int $$2) {
+      return new fbr(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   public int size() {
-      return this.a.size();
+   @Override
+   public DoubleList a(jn.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

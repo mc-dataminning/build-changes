@@ -1,21 +1,22 @@
-public class gsm extends gti<clr, gyt, gcf> {
-   private static final aku a = aku.b("textures/entity/ghast/ghast.png");
-   private static final aku b = aku.b("textures/entity/ghast/ghast_shooting.png");
+public class gsm extends gth<clr, hay, gcl<hay>> {
+   private static final aku a = aku.b("textures/entity/zombie/zombie.png");
 
-   public gsm(gsc.a $$0) {
-      super($$0, new gcf($$0.a(gfb.aR)), 1.5F);
+   public gsm(gsb.a $$0, float $$1) {
+      super($$0, new gce($$0.a(gez.aS)), 0.5F * $$1);
+      this.a(new gwi<>(this));
+      this.a(new gwf<>(this, new gce($$0.a(gez.aT)), new gce($$0.a(gez.aU)), $$0.h()));
    }
 
-   public aku a(gyt $$0) {
-      return $$0.a ? b : a;
+   public aku a(hay $$0) {
+      return a;
    }
 
-   public gyt b() {
-      return new gyt();
+   public hay b() {
+      return new hay();
    }
 
-   public void a(clr $$0, gyt $$1, float $$2) {
+   public void a(clr $$0, hay $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      gss.a($$0, $$1, $$2, this.i);
    }
 }

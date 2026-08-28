@@ -90,11 +90,11 @@ public class my implements mi {
       }
    }
 
-   static enum c implements azv {
+   static enum c implements azu {
       a("structure"),
       b("mcfunction");
 
-      public static final Codec<my.c> c = azv.a(my.c::values);
+      public static final Codec<my.c> c = azu.a(my.c::values);
       private final String d;
 
       private c(final String $$0) {

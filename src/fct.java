@@ -1,5 +1,2 @@
-import java.util.List;
-
-public interface fct<T> {
-   List<fcr<T>> a(long var1);
+public interface fct<T> extends fcs<T> {
 }

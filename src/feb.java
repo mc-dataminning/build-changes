@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fdc
-@fdb
-interface feb {
+public interface feb {
+   void execute();
 }

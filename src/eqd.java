@@ -1,45 +1,45 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eqd extends enm {
-   public static final MapCodec<eqd> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, eqd::new)
-   );
-   public final boolean e;
+public class eqd extends enk {
+   public static final MapCodec<eqd> d = a(eqd::new);
 
-   public eqd(enm.c $$0, boolean $$1) {
+   public eqd(enk.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<enm.b> a(enm.a $$0) {
-      ecs.a $$1 = this.e ? ecs.a.a : ecs.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   public Optional<enk.b> a(enk.a $$0) {
+      return Optional.of(new enk.b($$0.h().l(), (Consumer<eoc>)($$1 -> a($$1, $$0))));
    }
 
-   private void a(eoe $$0, enm.a $$1) {
-      dqe $$2 = dqe.a($$1.f());
-      ji $$3 = new ji($$1.h().d(), 90, $$1.h().e());
-      eqc.a $$4 = eqc.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-      if ($$4.l()) {
-         ene $$5 = $$4.f();
-         int $$7;
-         if (this.e) {
-            int $$6 = enm.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-            $$7 = $$4.a($$6, $$1.f());
-         } else {
-            $$7 = enm.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+   private static void a(eoc $$0, enk.a $$1) {
+      int $$2 = 0;
+
+      eqc.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().h, $$1.h().i);
+         eqc.a();
+         $$3 = new eqc.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<eno> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            eno $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
          }
 
-         $$4.c($$7);
-      }
+         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   public env<?> e() {
-      return env.m;
+   public ent<?> e() {
+      return ent.n;
    }
 }

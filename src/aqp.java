@@ -64,20 +64,20 @@ public class aqp extends are {
    }
 
    @Override
-   public bsj a(ard $$0, dgi $$1, cwp $$2, bsi $$3) {
+   public bsi a(ard $$0, dgg $$1, cwn $$2, bsh $$3) {
       if (this.f) {
          this.f();
-         return bsj.e;
+         return bsi.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bsj a(ard $$0, dgi $$1, cwp $$2, bsi $$3, faw $$4) {
+   public bsi a(ard $$0, dgg $$1, cwn $$2, bsh $$3, fau $$4) {
       if (this.f) {
          this.f();
-         return bsj.e;
+         return bsi.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

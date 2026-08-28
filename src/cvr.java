@@ -1,44 +1,20 @@
-import java.util.List;
+public class cvr extends cwj {
+   public static float a = 1.5F;
 
-public class cvr extends cwl {
-   public cvr(cwl.a $$0) {
+   public cvr(cwj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsj a(dai $$0) {
-      dgi $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      dwx $$3 = $$1.a_($$2);
-      if (!$$3.a(djo.cv) && !$$3.a(djo.I)) {
-         return bsj.d;
-      } else {
-         ji $$4 = $$2.d();
-         if (!$$1.u($$4)) {
-            return bsj.d;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<buk> $$8 = $$1.a_(null, new fav($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bsj.d;
-            } else {
-               if ($$1 instanceof arc) {
-                  cjt $$9 = new cjt($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), ebt.t, $$4);
-                  eav $$10 = ((arc)$$1).F();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bsj.a;
-            }
-         }
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      cwn $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), avz.iO, awa.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arc $$4) {
+         cpo.a(cpy::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
+
+      $$1.b(awj.c.b(this));
+      $$3.a(1, $$1);
+      return bsi.a;
    }
 }

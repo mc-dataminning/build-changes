@@ -1,28 +1,32 @@
-import java.util.List;
+public interface cyf {
+   cyf.a a = new cyf.a(false, false);
+   cyf.a b = new cyf.a(true, false);
 
-public class cyf extends cuq {
-   public cyf(cwl.a $$0) {
-      super($$0);
-   }
+   boolean a();
 
-   @Override
-   public cwp n() {
-      cwp $$0 = super.n();
-      $$0.b(kv.Q, new cyo(cyp.C));
-      return $$0;
-   }
+   boolean b();
 
-   @Override
-   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
-      cyo $$4 = $$0.a(kv.Q);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1.b());
+   public static record a(boolean c, boolean d) implements cyf {
+      @Override
+      public boolean a() {
+         return this.c;
       }
-   }
 
-   @Override
-   public wo a(cwp $$0) {
-      cyo $$1 = $$0.a(kv.Q);
-      return $$1 != null ? $$1.a(this.l + ".effect.") : super.a($$0);
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public cyf.a c() {
+         return new cyf.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

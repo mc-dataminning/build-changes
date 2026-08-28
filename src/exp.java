@@ -2,62 +2,64 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class exp extends exe {
+public class exp extends exc {
+   private static final Codec<ezu> b = Codec.withAlternative(ezv.a, ayh.i, ezr::new);
    public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  akt.a(mc.bg).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  mb.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+                  exb.e.a(ezv.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
+                  exb.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
+                  exb.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
+                  exb.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
                )
             )
             .apply($$0, exp::new)
    );
-   private final akt<evw> b;
-   private final long c;
-   private final jr<dub<?>> d;
+   private final Optional<exb.e<ezu>> c;
+   private final Optional<exb.e<Boolean>> d;
+   private final Optional<exb.e<String>> e;
+   private final Optional<exb.e<ezu>> f;
 
-   private exp(List<eza> $$0, akt<evw> $$1, long $$2, jr<dub<?>> $$3) {
+   public exp(List<eyy> $$0, Optional<exb.e<ezu>> $$1, Optional<exb.e<Boolean>> $$2, Optional<exb.e<String>> $$3, Optional<exb.e<ezu>> $$4) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
    @Override
-   public exg<exp> b() {
-      return exh.y;
+   public Set<bah<?>> a() {
+      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         $$0.b(kv.ap, new czp(this.b, this.c));
-         return $$0;
-      }
+   public exe<exp> b() {
+      return exf.R;
+   }
+
+   private static <T> List<T> a(Optional<exb.e<T>> $$0, List<T> $$1) {
+      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
+   }
+
+   private static <T, E> List<E> a(Optional<exb.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
+      return $$0.<List<E>>map($$2x -> {
+         List<E> $$3 = $$2x.a().stream().map($$2).toList();
+         return $$2x.b().a($$1, $$3);
+      }).orElse($$1);
    }
 
    @Override
-   public void a(evx $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
-      }
-   }
-
-   public static exe.a<?> a(dub<?> $$0, akt<evw> $$1) {
-      return a($$2 -> new exp($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static exe.a<?> a(dub<?> $$0, akt<evw> $$1, long $$2) {
-      return a($$3 -> new exp($$3, $$1, $$2, $$0.a()));
+   public cwn a(cwn $$0, evp $$1) {
+      cyx $$2 = $$0.a(kv.p, cyx.a);
+      $$0.b(kv.p, new cyx(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
+      return $$0;
    }
 }

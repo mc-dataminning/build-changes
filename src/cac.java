@@ -1,33 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cac {
-   private static final int a = 16;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static bxa<bvg> a(Predicate<jr<cgn>> $$0, cek<jq> $$1) {
-      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               jq $$6 = $$2.b($$2x);
-               ji $$7 = $$6.b();
-               if ($$3.ai() == $$6.a() && $$7.a($$4.du(), 16.0)) {
-                  arc $$8 = $$3.p().a($$6.a());
-                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.A().b($$7);
-                     agc.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static byj<bvn> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   private static boolean a(arc $$0, ji $$1, bvg $$2) {
-      dwx $$3 = $$0.a_($$1);
-      return $$3.a(awp.T) && $$3.c(djf.c) && !$$2.fR();
+   public static byj<bvn> a(float $$0, int $$1, int $$2) {
+      return cal.a((Function<cal.b<bvn>, ? extends App<cal.c<bvn>, cao<bvn>>>)($$3 -> $$3.group($$3.c(cej.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               ji $$7 = $$5.dw();
+               fay $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cgd.a($$5, $$1, $$2);
+               } else {
+                  kk $$9 = kk.a($$7);
+                  kk $$10 = bxa.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cga.a($$5, $$1, $$2, fay.c($$10.k()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cgd.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cem($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

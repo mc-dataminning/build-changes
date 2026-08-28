@@ -1,55 +1,63 @@
-public class cot {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
-
-   public void a(tq $$0) {
-      tq $$1 = new tq();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
-   }
-
-   public void b(tq $$0) {
-      if ($$0.b("abilities", 10)) {
-         tq $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
-         }
+public record cot(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
+   private static final byte j = 1;
+   private static final byte k = 2;
+   private static final byte l = 4;
+   private static final byte m = 8;
+   private static final byte n = 16;
+   private static final byte o = 32;
+   private static final byte p = 64;
+   public static final ym<vl, cot> a = new ym<vl, cot>() {
+      public void a(vl $$0, cot $$1) {
+         byte $$2 = 0;
+         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
+         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
+         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
+         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
+         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
+         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
+         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
+         $$0.l($$2);
       }
+
+      public cot a(vl $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         boolean $$3 = ($$1 & 2) != 0;
+         boolean $$4 = ($$1 & 4) != 0;
+         boolean $$5 = ($$1 & 8) != 0;
+         boolean $$6 = ($$1 & 16) != 0;
+         boolean $$7 = ($$1 & 32) != 0;
+         boolean $$8 = ($$1 & 64) != 0;
+         return new cot($$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      }
+   };
+   public static cot b = new cot(false, false, false, false, false, false, false);
+
+   public boolean a() {
+      return this.c;
    }
 
-   public float a() {
+   public boolean b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public boolean d() {
       return this.f;
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
-   }
-
-   public float b() {
+   public boolean e() {
       return this.g;
    }
 
-   public void b(float $$0) {
-      this.g = $$0;
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
    }
 }

@@ -1,41 +1,46 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class exu extends exe {
+public class exu extends exc {
    public static final MapCodec<exu> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  exd.e.a(cze.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  ayi.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(ezv.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, exu::new)
    );
-   public static final czf b = new czf(0, List.of());
-   private final Optional<exd.e<cze>> c;
-   private final Optional<Integer> d;
+   private final ezu b;
+   private final boolean c;
 
-   protected exu(List<eza> $$0, Optional<exd.e<cze>> $$1, Optional<Integer> $$2) {
+   private exu(List<eyy> $$0, ezu $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cwp a(cwp $$0, evr $$1) {
-      $$0.a(kv.af, b, this::a);
+   public exe<exu> b() {
+      return exf.e;
+   }
+
+   @Override
+   public Set<bah<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cwn a(cwn $$0, evp $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.e($$2 + this.b.a($$1));
       return $$0;
    }
 
-   private czf a(czf $$0) {
-      return new czf(this.d.orElseGet($$0::a), this.c.<List<cze>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+   public static exc.a<?> a(ezu $$0) {
+      return a($$1 -> new exu($$1, $$0, false));
    }
 
-   @Override
-   public exg<exu> b() {
-      return exh.K;
+   public static exc.a<?> a(ezu $$0, boolean $$1) {
+      return a($$2 -> new exu($$2, $$0, $$1));
    }
 }

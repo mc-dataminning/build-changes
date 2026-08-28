@@ -10,7 +10,7 @@ public class bmq extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "PolarBear", () -> bjl.a($$0));
+      $$0.register($$1, "ElderGuardian", () -> bjk.a($$0));
       return $$1;
    }
 }

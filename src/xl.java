@@ -403,7 +403,7 @@ public class xl {
       public static final MapCodec<xl> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
                   xn.a.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-                  ayi.j.optionalFieldOf("shadow_color").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+                  ayh.j.optionalFieldOf("shadow_color").forGetter($$0x -> Optional.ofNullable($$0x.d)),
                   Codec.BOOL.optionalFieldOf("bold").forGetter($$0x -> Optional.ofNullable($$0x.e)),
                   Codec.BOOL.optionalFieldOf("italic").forGetter($$0x -> Optional.ofNullable($$0x.f)),
                   Codec.BOOL.optionalFieldOf("underlined").forGetter($$0x -> Optional.ofNullable($$0x.g)),

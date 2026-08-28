@@ -1,17 +1,34 @@
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public interface eys<T extends eys<T>> {
-   T b(eza.a var1);
+public record eys(boolean b) implements eyy {
+   public static final MapCodec<eys> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(eys::e)).apply($$0, eys::new));
 
-   default <E> T a_(Iterable<E> $$0, Function<E, eza.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   public boolean a(evp $$0) {
+      return $$0.b(eyj.l) == this.b;
    }
 
-   T d();
+   @Override
+   public eyz b() {
+      return eza.s;
+   }
+
+   @Override
+   public Set<bah<?>> a() {
+      return Set.of(eyj.l);
+   }
+
+   public static eyy.a c() {
+      return () -> new eys(true);
+   }
+
+   public static eyy.a d() {
+      return () -> new eys(false);
+   }
+
+   public boolean e() {
+      return this.b;
+   }
 }

@@ -1,63 +1,16 @@
-public class gcp extends gca<gzc> {
-   private final gfc a;
-   private final gfc b;
-   private final gfc c;
-   private final gfc d;
-   private final gfc e;
+public class gcp extends gby<gyh> {
+   private static final String a = "knot";
+   private final gfa b;
 
-   public gcp(gfc $$0) {
+   public gcp(gfa $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = $$0.b("right_arm");
-      this.c = $$0.b("left_arm");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
+      this.b = $$0.b("knot");
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("head", gfh.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gfe.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         gfh.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new gfg(0.5F)),
-         gfe.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", gfh.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gfe.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", gfh.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gfe.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", gfh.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gfe.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", gfh.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gfe.a(5.0F, 11.0F, 0.0F));
-      return gfi.a($$0, 128, 128);
-   }
-
-   public void a(gzc $$0) {
-      super.a($$0);
-      float $$1 = $$0.a;
-      float $$2 = $$0.ae;
-      float $$3 = $$0.ad;
-      if ($$1 > 0.0F) {
-         this.b.e = -2.0F + 1.5F * ayz.e($$1, 10.0F);
-         this.c.e = -2.0F + 1.5F * ayz.e($$1, 10.0F);
-      } else {
-         int $$4 = $$0.b;
-         if ($$4 > 0) {
-            this.b.e = -0.8F + 0.025F * ayz.e((float)$$4, 70.0F);
-            this.c.e = 0.0F;
-         } else {
-            this.b.e = (-0.2F + 1.5F * ayz.e($$3, 13.0F)) * $$2;
-            this.c.e = (-0.2F - 1.5F * ayz.e($$3, 13.0F)) * $$2;
-         }
-      }
-
-      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.e = -1.5F * ayz.e($$3, 13.0F) * $$2;
-      this.e.e = 1.5F * ayz.e($$3, 13.0F) * $$2;
-      this.d.f = 0.0F;
-      this.e.f = 0.0F;
-   }
-
-   public gfc b() {
-      return this.b;
+   public static gfg a() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      $$1.a("knot", gff.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), gfc.a);
+      return gfg.a($$0, 32, 32);
    }
 }

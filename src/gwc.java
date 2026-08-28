@@ -1,13 +1,42 @@
-public abstract class gwc<S extends gyi, M extends gca<S>> extends gwr<S, M> {
-   public gwc(gtz<S, M> $$0) {
+public class gwc extends gwq<gyq, gcb> {
+   public gwc(gty<gyq, gcb> $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(ffu $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
-      ffy $$6 = $$1.getBuffer(this.a());
-      this.d().a($$0, $$6, $$2, hea.d);
-   }
+   public void a(ffs $$0, glv $$1, int $$2, gyq $$3, float $$4, float $$5) {
+      hbk $$6 = $$3.i;
+      if (!$$6.c()) {
+         boolean $$7 = $$3.d;
+         boolean $$8 = $$3.aj;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$8) {
+            float $$9 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
 
-   public abstract gmh a();
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.aj) {
+            if ($$7) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$7) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$7) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         $$6.a($$0, $$1, $$2, hec.d);
+         $$0.b();
+      }
+   }
 }

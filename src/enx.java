@@ -1,21 +1,7 @@
-import com.mojang.serialization.Codec;
+@FunctionalInterface
+public interface enx<C extends eia> {
+   void generatePieces(eoc var1, enx.a<C> var2);
 
-public enum enx implements azv {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box"),
-   e("encapsulate");
-
-   public static final Codec<enx> f = azv.a(enx::values);
-   private final String g;
-
-   private enx(final String $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.g;
+   public static record a<C extends eia>(C a, dyr b, ern c, dfm d, dgi e, edp f, long g) {
    }
 }

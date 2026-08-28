@@ -1,76 +1,95 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnv extends djm implements dqs {
-   public static final MapCodec<dnv> a = b(dnv::new);
-   public static final dxo b = dxn.n;
-   public static final dxo c = dxn.J;
-   protected static final fbu d = fbr.a(djm.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), djm.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final fbu e = fbr.a(djm.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), djm.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+public class dnv extends did {
+   public static final MapCodec<dnv> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dhi.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), ko.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
+            .apply($$0, dnv::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dxu g = dxl.aN;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final dhi.c j;
 
    @Override
    public MapCodec<dnv> a() {
-      return a;
+      return d;
    }
 
-   public dnv(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
+   public dnv(dhi.c $$0, ko.a $$1, dwu.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.l(this.F.b().b(g, Integer.valueOf(1)));
    }
 
-   @Nullable
    @Override
-   public dwx a(dag $$0) {
-      esz $$1 = $$0.q().b_($$0.a());
+   public boolean d(dwv $$0) {
+      return $$0.c(g) == 3;
+   }
 
-      for (jn $$2 : $$0.f()) {
-         if ($$2.o() == jn.a.b) {
-            dwx $$3 = this.m().b(b, Boolean.valueOf($$2 == jn.b));
-            if ($$3.a((dgl)$$0.q(), $$0.a())) {
-               return $$3.b(c, Boolean.valueOf($$1.a() == eta.c));
-            }
+   @Override
+   protected boolean a(esw $$0) {
+      return $$0 == esy.c && this.j == dhi.c.b;
+   }
+
+   @Override
+   protected double b(dwv $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   protected void a(dwv $$0, dgg $$1, ji $$2, buj $$3) {
+      if ($$1 instanceof arc $$4 && $$3.bY() && this.a($$0, $$2, $$3)) {
+         $$3.aH();
+         if ($$3.c($$4, $$2)) {
+            this.f($$0, $$1, $$2);
          }
       }
-
-      return null;
    }
 
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return $$0.c(b) ? e : d;
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      jn $$3 = o($$0).g();
-      return djm.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static jn o(dwx $$0) {
-      return $$0.c(b) ? jn.a : jn.b;
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, eta.c, eta.c.a($$1));
+   private void f(dwv $$0, dgg $$1, ji $$2) {
+      if (this.j == dhi.c.c) {
+         e(djm.fP.m().b(g, $$0.c(g)), $$1, $$2);
+      } else {
+         e($$0, $$1, $$2);
       }
+   }
 
-      return o($$0).g() == $$4 && !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static void e(dwv $$0, dgg $$1, ji $$2) {
+      int $$3 = $$0.c(g) - 1;
+      dwv $$4 = $$3 == 0 ? djm.fO.m() : $$0.b(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(ebr.c, $$2, ebr.a.a($$4));
    }
 
    @Override
-   protected esz b_(dwx $$0) {
-      return $$0.c(c) ? eta.c.a(false) : super.b_($$0);
+   public void a(dwv $$0, dgg $$1, ji $$2, dhi.c $$3) {
+      if (dkg.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         dwv $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(ebr.c, $$2, ebr.a.a($$4));
+      }
    }
 
    @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
+   protected int a(dwv $$0, dgg $$1, ji $$2) {
+      return $$0.c(g);
+   }
+
+   @Override
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(g);
+   }
+
+   @Override
+   protected void a(dwv $$0, dgg $$1, ji $$2, esw $$3) {
+      if (!this.d($$0)) {
+         dwv $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(ebr.c, $$2, ebr.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      }
    }
 }

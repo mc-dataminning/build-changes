@@ -1,43 +1,34 @@
 import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
+import java.util.Date;
 import javax.annotation.Nullable;
 
-public class ava extends avi<String, avb> {
-   public ava(File $$0) {
-      super($$0);
+public class ava extends auw<String> {
+   public ava(String $$0) {
+      this($$0, null, null, null, null);
+   }
+
+   public ava(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected avh<String> a(JsonObject $$0) {
-      return new avb($$0);
+   public wo e() {
+      return wo.b(String.valueOf(this.g()));
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
+   public ava(JsonObject $$0) {
+      super(b($$0), $$0);
    }
 
-   public boolean a(String $$0) {
-      return this.d($$0);
+   private static String b(JsonObject $$0) {
+      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
    }
 
-   @Nullable
-   public avb b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("ip", this.g());
+         super.a($$0);
       }
-
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
    }
 }

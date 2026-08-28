@@ -1,40 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dog extends dnk {
-   public static final MapCodec<dog> a = b(dog::new);
-   private static final wo b = wo.c("container.loom");
+public class dog extends dnw implements djn {
+   public static final MapCodec<dog> f = b(dog::new);
 
    @Override
    public MapCodec<dog> a() {
-      return a;
+      return f;
    }
 
-   protected dog(dww.d $$0) {
+   public dog(dwu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.ax);
-      }
-
-      return bsj.a;
+   public boolean a(dgj $$0, ji $$1, dwv $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   protected bsl b(dwx $$0, dgi $$1, ji $$2) {
-      return new bsr(($$2x, $$3, $$4) -> new ctj($$2x, $$3, csp.a($$1, $$2)), b);
+   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+      return true;
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return this.m().b(aF, $$0.g().g());
+   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
+      $$0.a($$2.e(), doh.c(), 2);
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(aF);
+   public ji a(ji $$0) {
+      return $$0.e();
    }
 }

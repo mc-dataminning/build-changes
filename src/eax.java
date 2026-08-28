@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eax {
+@FunctionalInterface
+public interface eax {
+   void onChunkStatusChange(dfm var1, aqr var2);
 }

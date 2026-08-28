@@ -1,481 +1,185 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fuo extends fuk {
-   private static final wo b = wo.c("gui.stats");
-   static final aku c = aku.b("container/slot");
-   static final aku d = aku.b("statistics/header");
-   static final aku s = aku.b("statistics/sort_up");
-   static final aku u = aku.b("statistics/sort_down");
-   private static final wo v = wo.c("multiplayer.downloadingStats");
-   static final wo w = wo.c("stats.none");
-   private static final wo x = wo.c("stat.generalButton");
-   private static final wo y = wo.c("stat.itemsButton");
-   private static final wo z = wo.c("stat.mobsButton");
-   protected final fuk a;
-   private static final int A = 280;
-   private static final int B = 5;
-   private static final int C = 58;
-   private fsg D = new fsg(this, 33, 58);
-   @Nullable
-   private fuo.a E;
-   @Nullable
-   fuo.b F;
-   @Nullable
-   private fuo.c G;
-   final awl H;
-   @Nullable
-   private fpo<?> I;
-   private boolean J = true;
+public class fuo {
+   private final flh a;
+   private final fus b;
+   private final fup c;
+   private final int d;
+   private final aj e;
+   private final au f;
+   private final cwn g;
+   private final wo h;
+   private final fuq i;
+   private final Map<ai, fuq> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   public fuo(fuk $$0, awl $$1) {
-      super(b);
+   public fuo(flh $$0, fus $$1, fup $$2, int $$3, aj $$4, au $$5) {
       this.a = $$0;
-      this.H = $$1;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fuq(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   @Override
-   protected void aR_() {
-      this.D.c(new fph(this.p, v));
-      this.m.L().b(new agq(agq.a.b));
+   public fup a() {
+      return this.c;
    }
 
-   public void m() {
-      this.E = new fuo.a(this.m);
-      this.F = new fuo.b(this.m);
-      this.G = new fuo.c(this.m);
+   public int b() {
+      return this.d;
    }
 
-   public void E() {
-      fsg $$0 = new fsg(this, 33, 58);
-      $$0.a(b, this.p);
-      fsk $$1 = $$0.b(fsk.d()).a(5);
-      $$1.c().b();
-      fsk $$2 = $$1.a(fsk.e()).a(5);
-      $$2.a(fos.a(x, $$0x -> this.a(this.E)).a(120).a());
-      fos $$3 = $$2.a(fos.a(y, $$0x -> this.a(this.F)).a(120).a());
-      fos $$4 = $$2.a(fos.a(z, $$0x -> this.a(this.G)).a(120).a());
-      $$1.a(fos.a(wn.d, $$0x -> this.aO_()).a(200).a());
-      if (this.F != null && this.F.aH_().isEmpty()) {
-         $$3.j = false;
-      }
-
-      if (this.G != null && this.G.aH_().isEmpty()) {
-         $$4.j = false;
-      }
-
-      this.D = $$0;
-      this.D.a($$1x -> {
-         fop var10000 = this.c($$1x);
-      });
-      this.c();
+   public aj c() {
+      return this.e;
    }
 
-   @Override
-   protected void c() {
-      this.D.a();
-      if (this.I != null) {
-         this.I.a(this.n, this.D);
-      }
+   public wo d() {
+      return this.h;
    }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.a);
+   public au e() {
+      return this.f;
    }
 
-   public void F() {
-      if (this.J) {
-         this.m();
-         this.a(this.E);
-         this.E();
-         this.aF_();
-         this.J = false;
-      }
+   public void a(fob $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
    }
 
-   @Override
-   public boolean k() {
-      return !this.J;
+   public void a(fob $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
    }
 
-   public void a(@Nullable fpo<?> $$0) {
-      if (this.I != null) {
-         this.e(this.I);
+   public void b(fob $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
       }
 
-      if ($$0 != null) {
-         this.c($$0);
-         this.I = $$0;
-         this.c();
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      aku $$3 = this.f.d().orElse(heo.a);
+      int $$4 = ayy.a(this.k);
+      int $$5 = ayy.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a(gmf::H, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
       }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.e();
    }
 
-   static String a(awh<aku> $$0) {
-      return "stat." + $$0.b().toString().replace(':', '.');
-   }
-
-   class a extends fpo<fuo.a.a> {
-      public a(final flj $$0) {
-         super($$0, fuo.this.n, fuo.this.o - 33 - 58, 33, 14);
-         ObjectArrayList<awh<aku>> $$1 = new ObjectArrayList(awk.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> hfq.a(fuo.a($$0x))));
-         ObjectListIterator var4 = $$1.iterator();
-
-         while (var4.hasNext()) {
-            awh<aku> $$2 = (awh<aku>)var4.next();
-            this.b(new fuo.a.a($$2));
-         }
-      }
-
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      class a extends fpo.a<fuo.a.a> {
-         private final awh<aku> b;
-         private final wo c;
-
-         a(final awh<aku> $$0) {
-            this.b = $$0;
-            this.c = wo.c(fuo.a($$0));
-         }
-
-         private String b() {
-            return this.b.a(fuo.this.H.a(this.b));
-         }
-
-         @Override
-         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$2 + $$5 / 2 - 9 / 2;
-            int $$11 = $$1 % 2 == 0 ? -1 : -4539718;
-            $$0.b(fuo.this.p, this.c, $$3 + 2, $$10, $$11);
-            String $$12 = this.b();
-            $$0.b(fuo.this.p, $$12, $$3 + $$4 - fuo.this.p.b($$12) - 4, $$10, $$11);
-         }
-
-         @Override
-         public wo a() {
-            return wo.a("narrator.select", wo.i().b(this.c).b(wn.v).f(this.b()));
-         }
-      }
-   }
-
-   class b extends fpo<fuo.b.a> {
-      private static final int s = 18;
-      private static final int u = 22;
-      private static final int v = 1;
-      private static final int w = 0;
-      private static final int x = -1;
-      private static final int y = 1;
-      private final aku[] z = new aku[]{
-         aku.b("statistics/block_mined"),
-         aku.b("statistics/item_broken"),
-         aku.b("statistics/item_crafted"),
-         aku.b("statistics/item_used"),
-         aku.b("statistics/item_picked_up"),
-         aku.b("statistics/item_dropped")
-      };
-      protected final List<awj<djm>> a;
-      protected final List<awj<cwl>> m;
-      protected final Comparator<fuo.b.a> n = new fuo.b.b();
-      @Nullable
-      protected awj<?> o;
-      protected int p = -1;
-      protected int q;
-
-      public b(final flj $$0) {
-         super($$0, fuo.this.n, fuo.this.o - 33 - 58, 33, 22, 22);
-         this.a = Lists.newArrayList();
-         this.a.add(awk.a);
-         this.m = Lists.newArrayList(new awj[]{awk.d, awk.b, awk.c, awk.e, awk.f});
-         Set<cwl> $$1 = Sets.newIdentityHashSet();
-
-         for (cwl $$2 : mb.g) {
-            boolean $$3 = false;
-
-            for (awj<cwl> $$4 : this.m) {
-               if ($$4.a($$2) && fuo.this.H.a($$4.b($$2)) > 0) {
-                  $$3 = true;
-               }
-            }
-
-            if ($$3) {
-               $$1.add($$2);
-            }
-         }
-
-         for (djm $$5 : mb.e) {
-            boolean $$6 = false;
-
-            for (awj<djm> $$7 : this.a) {
-               if ($$7.a($$5) && fuo.this.H.a($$7.b($$5)) > 0) {
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               $$1.add($$5.j());
-            }
-         }
-
-         $$1.remove(cwt.a);
-
-         for (cwl $$8 : $$1) {
-            this.b(new fuo.b.a($$8));
-         }
-      }
-
-      int m(int $$0) {
-         return 75 + 40 * $$0;
-      }
-
-      @Override
-      protected void a(fod $$0, int $$1, int $$2) {
-         if (!this.c.o.b()) {
-            this.p = -1;
-         }
-
-         for (int $$3 = 0; $$3 < this.z.length; $$3++) {
-            aku $$4 = this.p == $$3 ? fuo.c : fuo.d;
-            $$0.a(gmh::H, $$4, $$1 + this.m($$3) - 18, $$2 + 1, 18, 18);
-         }
-
-         if (this.o != null) {
-            int $$5 = this.m(this.b(this.o)) - 36;
-            aku $$6 = this.q == 1 ? fuo.s : fuo.u;
-            $$0.a(gmh::H, $$6, $$1 + $$5, $$2 + 1, 18, 18);
-         }
-
-         for (int $$7 = 0; $$7 < this.z.length; $$7++) {
-            int $$8 = this.p == $$7 ? 1 : 0;
-            $$0.a(gmh::H, this.z[$$7], $$1 + this.m($$7) - 18 + $$8, $$2 + 1 + $$8, 18, 18);
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         boolean $$3 = super.a($$0, $$1, $$2);
-         return !$$3
-               && this.a((int)($$0 - ((double)this.F() + (double)this.g / 2.0 - (double)this.a() / 2.0)), (int)($$1 - (double)this.G()) + (int)this.g() - 4)
-            ? true
-            : $$3;
-      }
-
-      protected boolean a(int $$0, int $$1) {
-         this.p = -1;
-
-         for (int $$2 = 0; $$2 < this.z.length; $$2++) {
-            int $$3 = $$0 - this.m($$2);
-            if ($$3 >= -36 && $$3 <= 0) {
-               this.p = $$2;
+   public void a(fob $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ayy.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ayy.a(this.k);
+      int $$7 = ayy.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fuq $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
                break;
             }
          }
-
-         if (this.p >= 0) {
-            this.a(this.n(this.p));
-            this.c.ak().a(hid.a(awa.Bg, 1.0F));
-            return true;
-         } else {
-            return false;
-         }
       }
 
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      private awj<?> n(int $$0) {
-         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
-      }
-
-      private int b(awj<?> $$0) {
-         int $$1 = this.a.indexOf($$0);
-         if ($$1 >= 0) {
-            return $$1;
-         } else {
-            int $$2 = this.m.indexOf($$0);
-            return $$2 >= 0 ? $$2 + this.a.size() : -1;
-         }
-      }
-
-      @Override
-      protected void b(fod $$0, int $$1, int $$2) {
-         if ($$2 >= this.G() && $$2 <= this.I()) {
-            fuo.b.a $$3 = this.x();
-            int $$4 = this.u();
-            if ($$3 != null) {
-               if ($$1 < $$4 || $$1 > $$4 + 18) {
-                  return;
-               }
-
-               cwl $$5 = $$3.b();
-               $$0.a(fuo.this.p, $$5.m(), $$1, $$2, $$5.g().a(kv.G));
-            } else {
-               wo $$6 = null;
-               int $$7 = $$1 - $$4;
-
-               for (int $$8 = 0; $$8 < this.z.length; $$8++) {
-                  int $$9 = this.m($$8);
-                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
-                     $$6 = this.n($$8).c();
-                     break;
-                  }
-               }
-
-               if ($$6 != null) {
-                  $$0.a(fuo.this.p, $$6, $$1, $$2);
-               }
-            }
-         }
-      }
-
-      protected void a(awj<?> $$0) {
-         if ($$0 != this.o) {
-            this.o = $$0;
-            this.q = -1;
-         } else if (this.q == -1) {
-            this.q = 1;
-         } else {
-            this.o = null;
-            this.q = 0;
-         }
-
-         this.aH_().sort(this.n);
-      }
-
-      class a extends fpo.a<fuo.b.a> {
-         private final cwl b;
-
-         a(final cwl $$0) {
-            this.b = $$0;
-         }
-
-         public cwl b() {
-            return this.b;
-         }
-
-         @Override
-         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(gmh::H, fuo.c, $$3, $$2, 18, 18);
-            $$0.b(this.b.n(), $$3 + 1, $$2 + 1);
-            if (fuo.this.F != null) {
-               for (int $$10 = 0; $$10 < fuo.this.F.a.size(); $$10++) {
-                  awh<djm> $$12;
-                  if (this.b instanceof cuv $$11) {
-                     $$12 = fuo.this.F.a.get($$10).b($$11.d());
-                  } else {
-                     $$12 = null;
-                  }
-
-                  this.a($$0, $$12, $$3 + b.this.m($$10), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-
-               for (int $$14 = 0; $$14 < fuo.this.F.m.size(); $$14++) {
-                  this.a($$0, fuo.this.F.m.get($$14).b(this.b), $$3 + b.this.m($$14 + fuo.this.F.a.size()), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-            }
-         }
-
-         protected void a(fod $$0, @Nullable awh<?> $$1, int $$2, int $$3, boolean $$4) {
-            wo $$5 = (wo)($$1 == null ? fuo.w : wo.b($$1.a(fuo.this.H.a($$1))));
-            $$0.b(fuo.this.p, $$5, $$2 - fuo.this.p.a($$5), $$3, $$4 ? -1 : -4539718);
-         }
-
-         @Override
-         public wo a() {
-            return wo.a("narrator.select", this.b.m());
-         }
-      }
-
-      class b implements Comparator<fuo.b.a> {
-         public int a(fuo.b.a $$0, fuo.b.a $$1) {
-            cwl $$2 = $$0.b();
-            cwl $$3 = $$1.b();
-            int $$4;
-            int $$5;
-            if (b.this.o == null) {
-               $$4 = 0;
-               $$5 = 0;
-            } else if (b.this.a.contains(b.this.o)) {
-               awj<djm> $$6 = (awj<djm>)b.this.o;
-               $$4 = $$2 instanceof cuv ? fuo.this.H.a($$6, ((cuv)$$2).d()) : -1;
-               $$5 = $$3 instanceof cuv ? fuo.this.H.a($$6, ((cuv)$$3).d()) : -1;
-            } else {
-               awj<cwl> $$9 = (awj<cwl>)b.this.o;
-               $$4 = fuo.this.H.a($$9, $$2);
-               $$5 = fuo.this.H.a($$9, $$3);
-            }
-
-            return $$4 == $$5 ? b.this.q * Integer.compare(cwl.a($$2), cwl.a($$3)) : b.this.q * Integer.compare($$4, $$5);
-         }
+      $$0.c().b();
+      if ($$5) {
+         this.q = ayy.a(this.q + 0.02F, 0.0F, 0.3F);
+      } else {
+         this.q = ayy.a(this.q - 0.04F, 0.0F, 1.0F);
       }
    }
 
-   class c extends fpo<fuo.c.a> {
-      public c(final flj $$0) {
-         super($$0, fuo.this.n, fuo.this.o - 33 - 58, 33, 9 * 4);
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
 
-         for (bur<?> $$1 : mb.f) {
-            if (fuo.this.H.a(awk.g.b($$1)) > 0 || fuo.this.H.a(awk.h.b($$1)) > 0) {
-               this.b(new fuo.c.a($$1));
-            }
-         }
-      }
-
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      class a extends fpo.a<fuo.c.a> {
-         private final wo b;
-         private final wo c;
-         private final wo d;
-         private final boolean e;
-         private final boolean f;
-
-         public a(final bur<?> $$0) {
-            this.b = $$0.h();
-            int $$1 = fuo.this.H.a(awk.g.b($$0));
-            if ($$1 == 0) {
-               this.c = wo.a("stat_type.minecraft.killed.none", this.b);
-               this.e = false;
-            } else {
-               this.c = wo.a("stat_type.minecraft.killed", $$1, this.b);
-               this.e = true;
+   @Nullable
+   public static fuo a(flh $$0, fus $$1, int $$2, aj $$3) {
+      Optional<au> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
+      } else {
+         for (fup $$5 : fup.values()) {
+            if ($$2 < $$5.a()) {
+               return new fuo($$0, $$1, $$5, $$2, $$3, $$4.get());
             }
 
-            int $$2 = fuo.this.H.a(awk.h.b($$0));
-            if ($$2 == 0) {
-               this.d = wo.a("stat_type.minecraft.killed_by.none", this.b);
-               this.f = false;
-            } else {
-               this.d = wo.a("stat_type.minecraft.killed_by", this.b, $$2);
-               this.f = true;
-            }
+            $$2 -= $$5.a();
          }
 
-         @Override
-         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fuo.this.p, this.b, $$3 + 2, $$2 + 1, -1);
-            $$0.b(fuo.this.p, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.e ? -4539718 : -8355712);
-            $$0.b(fuo.this.p, this.d, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? -4539718 : -8355712);
-         }
-
-         @Override
-         public wo a() {
-            return wo.a("narrator.select", wn.a(this.c, this.d));
-         }
+         return null;
       }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ayy.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
+
+      if (this.p - this.n > 113) {
+         this.l = ayy.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
+   }
+
+   public void a(aj $$0) {
+      Optional<au> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         fuq $$2 = new fuq(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
+      }
+   }
+
+   private void a(fuq $$0, ai $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (fuq $$6 : this.j.values()) {
+         $$6.b();
+      }
+   }
+
+   @Nullable
+   public fuq a(ai $$0) {
+      return this.j.get($$0);
+   }
+
+   public fus f() {
+      return this.b;
    }
 }

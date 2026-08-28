@@ -26,25 +26,25 @@ public class apt extends MinecraftServer implements all {
    private static final int n = 2;
    private final List<aky> o = Collections.synchronizedList(Lists.newArrayList());
    @Nullable
-   private avt p;
-   private final avq q;
+   private avs p;
+   private final avp q;
    @Nullable
-   private avv r;
+   private avu r;
    private final apv s;
    @Nullable
    private apz t;
    @Nullable
    private final ask u;
    @Nullable
-   private bne v;
+   private bnd v;
    @Nullable
-   private bnb w;
+   private bna w;
    private final alm x;
 
-   public apt(Thread $$0, evf.c $$1, aua $$2, alt $$3, apv $$4, DataFixer $$5, alp $$6, arn $$7) {
+   public apt(Thread $$0, evd.c $$1, atz $$2, alt $$3, apv $$4, DataFixer $$5, alp $$6, arn $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
-      this.q = new avq(this);
+      this.q = new avp(this);
       this.u = ask.a($$4.a());
       this.x = a($$4);
    }
@@ -125,32 +125,32 @@ public class apt extends MinecraftServer implements all {
          this.at().c();
       }
 
-      if (!avc.e(this)) {
+      if (!avb.e(this)) {
          return false;
       } else {
          this.a(new aps(this, this.bb(), this.g));
-         this.w = new bnb(this.bs());
-         this.v = new bne(bnh.values().length, this.w, bnd.a);
+         this.w = new bna(this.bs());
+         this.v = new bnd(bng.values().length, this.w, bnc.a);
          long $$4 = af.d();
-         dvo.a(this.i, this);
-         auz.a(this.aa());
+         dvm.a(this.i, this);
+         auy.a(this.aa());
          l.info("Preparing level \"{}\"", this.j());
          this.v_();
          long $$5 = af.d() - $$4;
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.n != null) {
-            this.aL().a(dge.B).a($$1.n, this);
+            this.aL().a(dgc.B).a($$1.n, this);
          }
 
          if ($$1.o) {
             l.info("Starting GS4 status listener");
-            this.p = avt.a(this);
+            this.p = avs.a(this);
          }
 
          if ($$1.q) {
             l.info("Starting remote control listener");
-            this.r = avv.a(this);
+            this.r = avu.a(this);
          }
 
          if (this.bv() > 0L) {
@@ -162,7 +162,7 @@ public class apt extends MinecraftServer implements all {
          }
 
          if ($$1.N) {
-            bnn.a(this);
+            bnm.a(this);
             l.info("JMX monitoring enabled");
          }
 
@@ -236,8 +236,8 @@ public class apt extends MinecraftServer implements all {
    }
 
    @Override
-   public boolean a(dgi $$0) {
-      return $$0.ai() == dgi.j ? this.a().u : true;
+   public boolean a(dgg $$0) {
+      return $$0.ai() == dgg.j ? this.a().u : true;
    }
 
    public void a(String $$0, ex $$1) {
@@ -314,8 +314,8 @@ public class apt extends MinecraftServer implements all {
    }
 
    @Override
-   public boolean a(arc $$0, ji $$1, cox $$2) {
-      if ($$0.ai() != dgi.i) {
+   public boolean a(arc $$0, ji $$1, cov $$2) {
+      if ($$0.ai() != dgg.i) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
@@ -325,8 +325,8 @@ public class apt extends MinecraftServer implements all {
          return false;
       } else {
          ji $$3 = $$0.Z();
-         int $$4 = ayz.a($$1.u() - $$3.u());
-         int $$5 = ayz.a($$1.w() - $$3.w());
+         int $$4 = ayy.a($$1.u() - $$3.u());
+         int $$5 = ayy.a($$1.w() - $$3.w());
          int $$6 = Math.max($$4, $$5);
          return $$6 <= this.al();
       }
@@ -399,7 +399,7 @@ public class apt extends MinecraftServer implements all {
             this.bC();
          }
 
-         $$0 = avc.a((MinecraftServer)this);
+         $$0 = avb.a((MinecraftServer)this);
       }
 
       boolean $$2 = false;
@@ -410,7 +410,7 @@ public class apt extends MinecraftServer implements all {
             this.bC();
          }
 
-         $$2 = avc.b(this);
+         $$2 = avb.b(this);
       }
 
       boolean $$3 = false;
@@ -421,7 +421,7 @@ public class apt extends MinecraftServer implements all {
             this.bC();
          }
 
-         $$3 = avc.c(this);
+         $$3 = avb.c(this);
       }
 
       boolean $$4 = false;
@@ -432,7 +432,7 @@ public class apt extends MinecraftServer implements all {
             this.bC();
          }
 
-         $$4 = avc.d(this);
+         $$4 = avb.d(this);
       }
 
       boolean $$5 = false;
@@ -443,7 +443,7 @@ public class apt extends MinecraftServer implements all {
             this.bC();
          }
 
-         $$5 = avc.a(this);
+         $$5 = avb.a(this);
       }
 
       return $$0 || $$2 || $$3 || $$4 || $$5;
@@ -485,7 +485,7 @@ public class apt extends MinecraftServer implements all {
    public void v() {
       super.v();
       af.j();
-      dvo.b();
+      dvm.b();
    }
 
    @Override
@@ -515,7 +515,7 @@ public class apt extends MinecraftServer implements all {
 
    @Nullable
    @Override
-   public dgf bd() {
+   public dgd bd() {
       return this.s.a().h ? this.j.k() : null;
    }
 
@@ -531,17 +531,17 @@ public class apt extends MinecraftServer implements all {
    }
 
    @Override
-   public bnf f() {
+   public bne f() {
       return this.v;
    }
 
    @Override
    public boolean g() {
-      return this.w.a(bnd.a);
+      return this.w.a(bnc.a);
    }
 
    @Override
-   public void a(ard $$0, bnd $$1) {
+   public void a(ard $$0, bnc $$1) {
       this.w.a($$0, $$1);
    }
 

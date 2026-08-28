@@ -1,45 +1,57 @@
-public class ctb extends ctz {
-   private final cox a;
-   private int b;
+public class ctb extends csa {
+   public static final int m = 5;
+   private final bsb n;
 
-   public ctb(cox $$0, bsc $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public ctb(int $$0, cou $$1) {
+      this($$0, $$1, new bsp(5));
    }
 
-   @Override
-   public boolean a(cwp $$0) {
-      return false;
-   }
+   public ctb(int $$0, cou $$1, bsb $$2) {
+      super(ctj.q, $$0);
+      this.n = $$2;
+      a($$2, 5);
+      $$2.c_($$1.k);
 
-   @Override
-   public cwp a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().M());
+      for (int $$3 = 0; $$3 < 5; $$3++) {
+         this.a(new ctx($$2, $$3, 44 + $$3 * 18, 20));
       }
 
-      return super.a($$0);
+      this.c($$1, 8, 51);
    }
 
    @Override
-   public void a(cox $$0, cwp $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
+   public boolean b(cov $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   protected void a(cwp $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
+   public cwn b(cov $$0, int $$1) {
+      cwn $$2 = cwn.j;
+      ctx $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cwn $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return cwn.j;
+            }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return cwn.j;
+         }
 
-   @Override
-   protected void b_(cwp $$0) {
-      $$0.a(this.a.dW(), this.a, this.b);
-      if (this.a instanceof ard $$1 && this.c instanceof dtn $$2) {
-         $$2.a($$1);
+         if ($$4.f()) {
+            $$3.e(cwn.j);
+         } else {
+            $$3.c();
+         }
       }
 
-      this.b = 0;
+      return $$2;
+   }
+
+   @Override
+   public void a(cov $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

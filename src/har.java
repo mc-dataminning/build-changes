@@ -1,3 +1,3 @@
-public class har extends gxn {
-   public boolean a;
+public interface har {
+   coh a();
 }

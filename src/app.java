@@ -17,14 +17,14 @@ public class app implements apm {
             return $$0.then(ey.a("storage").then($$1.apply(ey.a($$0, fy.a()).suggests(app.b))));
          }
       };
-   private final euw c;
+   private final euu c;
    private final aku d;
 
-   static euw a(CommandContext<ex> $$0) {
+   static euu a(CommandContext<ex> $$0) {
       return ((ex)$$0.getSource()).l().aK();
    }
 
-   app(euw $$0, aku $$1) {
+   app(euu $$0, aku $$1) {
       this.c = $$0;
       this.d = $$1;
    }

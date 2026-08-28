@@ -3,7 +3,7 @@ public class aej implements yv<abk> {
    private final double b;
    private final double c;
 
-   public aej(dyn $$0) {
+   public aej(dyl $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

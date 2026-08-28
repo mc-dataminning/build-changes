@@ -1,69 +1,37 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-public interface azh {
-   @Deprecated
-   double a = 2.297;
+public class azh {
+   public static final Codec<azh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayh.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ayh.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, azh::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<aku> f;
 
-   static azh a() {
-      return a(edh.a());
+   private azh(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   @Deprecated
-   static azh b() {
-      return new edl(edh.a());
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   static azh a(long $$0) {
-      return new ect($$0);
+   public Predicate<String> b() {
+      return this.e;
    }
 
-   static azh c() {
-      return new edi(ThreadLocalRandom.current().nextLong());
-   }
-
-   azh d();
-
-   edf e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default float a(float $$0, float $$1) {
-      return $$0 + $$1 * (this.i() - this.i());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
-      }
-   }
-
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
-      }
+   public Predicate<aku> c() {
+      return this.f;
    }
 }

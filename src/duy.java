@@ -1,15 +1,15 @@
-public class duy extends dtn {
-   public duy(ji $$0, dwx $$1) {
-      super(dub.a, $$0, $$1, dbp.b);
+public interface duy extends bsb {
+   fat y_ = djk.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+
+   default fat al_() {
+      return y_;
    }
 
-   @Override
-   protected wo j() {
-      return wo.c("container.furnace");
-   }
+   double G();
 
-   @Override
-   protected csc a(int $$0, cow $$1) {
-      return new cta($$0, $$1, this, this.n);
-   }
+   double H();
+
+   double I();
+
+   boolean J();
 }

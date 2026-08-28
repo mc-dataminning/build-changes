@@ -1,14 +1,14 @@
-public record aqn(String b, int c, cou d, boolean e, int f, bva g, boolean h, boolean i, aqu j) {
+public record aqn(String b, int c, cos d, boolean e, int f, buz g, boolean h, boolean i, aqu j) {
    public static final int a = 16;
 
    public aqn(vl $$0) {
       this(
          $$0.d(16),
          $$0.readByte(),
-         $$0.b(cou.class),
+         $$0.b(cos.class),
          $$0.readBoolean(),
          $$0.readUnsignedByte(),
-         $$0.b(bva.class),
+         $$0.b(buz.class),
          $$0.readBoolean(),
          $$0.readBoolean(),
          $$0.b(aqu.class)
@@ -28,6 +28,6 @@ public record aqn(String b, int c, cou d, boolean e, int f, bva g, boolean h, bo
    }
 
    public static aqn a() {
-      return new aqn("en_us", 2, cou.a, true, 0, cox.bG, false, false, aqu.a);
+      return new aqn("en_us", 2, cos.a, true, 0, cov.bG, false, false, aqu.a);
    }
 }

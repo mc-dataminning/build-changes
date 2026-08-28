@@ -1,23 +1,16 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ely extends elt {
-   public static final MapCodec<ely> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqr.b(elt.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ely::new)
-   );
-   private final bqr<elt> b;
-
-   public ely(bqr<elt> $$0) {
-      this.b = $$0;
-   }
-
+public record ely(ecu.c[] a) implements ecu.c {
+   @Nullable
    @Override
-   public int a(azh $$0, edp $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
+   public dwv calculate(ecj.b $$0) {
+      for (ecu.c $$1 : this.a) {
+         dwv $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public elu<?> a() {
-      return elu.f;
+      return null;
    }
 }

@@ -1,71 +1,41 @@
-import java.util.function.Predicate;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class fys {
-   private final ggt a;
-   private final ghb b;
-   private final Predicate<ggw.a> c;
+public class fys extends fyo<gha.a> {
+   private static final wo C = wo.c("gui.abuseReport.name.title");
+   private static final wo D = wo.c("gui.abuseReport.name.comment_box_label");
    @Nullable
-   private xj d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xe g;
+   private fpi E;
 
-   public fys(ghh $$0, Predicate<ggw.a> $$1) {
-      this.a = $$0.b();
-      this.b = new ghb($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   private fys(fui $$0, ghf $$1, gha.a $$2) {
+      super(C, $$0, $$1, $$2);
    }
 
-   public void a(int $$0, fys.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         ggv $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof ggw.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(wo.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
-      }
+   public fys(fui $$0, ghf $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new gha.a($$2, $$3, $$1.a().b()));
    }
 
-   private boolean a(fys.a $$0, ggw.a $$1) {
-      xe $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(wo.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
+   public fys(fui $$0, ghf $$1, gha $$2) {
+      this($$0, $$1, new gha.a($$2, $$1.a().b()));
+   }
 
-         this.d = $$2.k();
+   @Override
+   protected void E() {
+      wo $$0 = wo.b(this.A.e().a()).a(n.o);
+      this.z.a(new fpx(wo.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
+      this.E = this.a(280, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      this.z.a(fsa.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (super.b($$0, $$1, $$2)) {
          return true;
       } else {
-         return $$3;
+         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
       }
-   }
-
-   public interface a {
-      void a(int var1, ggw.a var2);
-
-      void a(wo var1);
    }
 }

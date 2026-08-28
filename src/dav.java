@@ -1,35 +1,70 @@
-public class dav extends dau {
-   public dav(dar $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class dav extends das {
+   private static final day c = day.a(cwr.rv);
+   private static final day d = day.a(cwr.pZ);
+   private static final day e = day.a(cwr.vu);
+
+   public dav(dap $$0) {
       super($$0);
    }
 
-   private static cwp c(das $$0) {
-      return $$0.a(1, 0);
+   public boolean a(daq $$0, dgg $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwn $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
+                     return false;
+                  }
+               } else if (!e.a($$5)) {
+                  return false;
+               }
+            }
+         }
+
+         return $$2 && $$3 >= 1;
+      }
    }
 
-   private static cwp d(das $$0) {
-      return $$0.a(0, 1);
-   }
+   public cwn a(daq $$0, jt.a $$1) {
+      List<czc> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
-   private static cwp e(das $$0) {
-      return $$0.a(2, 1);
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwn $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               czc $$6 = $$5.a(kv.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
+      }
 
-   private static cwp f(das $$0) {
-      return $$0.a(1, 2);
-   }
-
-   public boolean a(das $$0, dgi $$1) {
-      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(awy.bG) && d($$0).a(awy.bG) && e($$0).a(awy.bG) && f($$0).a(awy.bG) : false;
-   }
-
-   public cwp a(das $$0, jt.a $$1) {
-      dvg $$2 = new dvg(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
-      return duq.a($$2);
+      cwn $$7 = new cwn(cwr.vt, 3);
+      $$7.b(kv.af, new czd($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public dbo<dav> a() {
-      return dbo.v;
+   public dbm<dav> a() {
+      return dbm.g;
    }
 }

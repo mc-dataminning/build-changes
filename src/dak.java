@@ -1,77 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class dak extends das {
+   public dak(dap $$0) {
+      super($$0);
+   }
 
-public abstract class dak extends dbw {
-   private final daq c;
-   private final float d;
-   private final int e;
+   public boolean a(daq $$0, dgg $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         cvk $$2 = null;
+         boolean $$3 = false;
+         boolean $$4 = false;
 
-   public dak(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
-      super($$0, $$2, $$3);
-      this.c = $$1;
-      this.d = $$4;
-      this.e = $$5;
+         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+            cwn $$6 = $$0.a($$5);
+            if (!$$6.f()) {
+               cwj $$7 = $$6.h();
+               if (!($$7 instanceof cuq)) {
+                  return false;
+               }
+
+               cuq $$8 = (cuq)$$7;
+               if ($$2 == null) {
+                  $$2 = $$8.b();
+               } else if ($$2 != $$8.b()) {
+                  return false;
+               }
+
+               int $$10 = $$6.a(kv.ai, dto.a).b().size();
+               if ($$10 > 6) {
+                  return false;
+               }
+
+               if ($$10 > 0) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$4 && $$3;
+      }
+   }
+
+   public cwn a(daq $$0, jt.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         cwn $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            int $$4 = $$3.a(kv.ai, dto.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
+         }
+      }
+
+      return cwn.j;
    }
 
    @Override
-   public abstract dbo<? extends dak> a();
+   public ka<cwn> a(daq $$0) {
+      ka<cwn> $$1 = ka.a($$0.a(), cwn.j);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwn $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            cwn $$4 = $$3.h().k();
+            if (!$$4.f()) {
+               $$1.set($$2, $$4);
+            } else if (!$$3.a(kv.ai, dto.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
 
    @Override
-   public abstract dbp<? extends dak> b();
-
-   public float c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public daq e() {
-      return this.c;
-   }
-
-   protected abstract cwl f();
-
-   @Override
-   public List<dcj> g() {
-      return List.of(new dci(this.k().b(), dcp.a.c, new dcp.f(this.l()), new dcp.d(this.f()), this.e, this.d));
-   }
-
-   @FunctionalInterface
-   public interface a<T extends dak> {
-      T create(String var1, daq var2, dba var3, cwp var4, float var5, int var6);
-   }
-
-   public static class b<T extends dak> implements dbo<T> {
-      private final MapCodec<T> w;
-      private final ym<vz, T> x;
-
-      public b(dak.a<T> $$0, int $$1) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$2 -> $$2.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dbw::j),
-                     daq.d.fieldOf("category").orElse(daq.c).forGetter(dak::e),
-                     dba.d.fieldOf("ingredient").forGetter(dbw::k),
-                     cwp.d.fieldOf("result").forGetter(dbw::l),
-                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(dak::c),
-                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(dak::d)
-                  )
-                  .apply($$2, $$0::create)
-         );
-         this.x = ym.a(yk.o, dbw::j, daq.e, dak::e, dba.a, dbw::k, cwp.h, dbw::l, yk.l, dak::c, yk.g, dak::d, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public ym<vz, T> b() {
-         return this.x;
-      }
+   public dbm<dak> a() {
+      return dbm.k;
    }
 }

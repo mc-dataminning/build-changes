@@ -1,41 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehy implements eic {
+public class ehy implements eia {
    public static final Codec<ehy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dwx.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dwx.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bro.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bro.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               brn.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               brn.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               brn.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               brl.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               brl.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
             )
             .apply($$0, ehy::new)
    );
-   private final dwx b;
-   private final dwx c;
-   private final bro d;
-   private final bro e;
+   public final int b;
+   public final brn c;
+   public final brn d;
+   public final int e;
+   public final int f;
+   public final brn g;
+   public final brl h;
+   public final brl i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   public ehy(dwx $$0, dwx $$1, bro $$2, bro $$3) {
+   public ehy(int $$0, brn $$1, brn $$2, int $$3, int $$4, brn $$5, brl $$6, brl $$7, float $$8, int $$9, int $$10) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
-   }
-
-   public dwx a() {
-      return this.b;
-   }
-
-   public dwx b() {
-      return this.c;
-   }
-
-   public bro c() {
-      return this.d;
-   }
-
-   public bro d() {
-      return this.e;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

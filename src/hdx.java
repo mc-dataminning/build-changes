@@ -1,204 +1,65 @@
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
 
-public class hdx extends hec {
-   private static final Logger e = LogUtils.getLogger();
-   private static final int f = 64;
-   private static final int g = 64;
-   private static final int h = 32;
-   @Nullable
-   private final File i;
-   private final String j;
-   private final boolean k;
-   @Nullable
-   private final Runnable l;
-   @Nullable
-   private CompletableFuture<?> m;
-   private boolean n;
+public abstract class hdx implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
 
-   public hdx(@Nullable File $$0, String $$1, aku $$2, boolean $$3, @Nullable Runnable $$4) {
-      super($$2);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$3;
-      this.l = $$4;
-   }
-
-   private void a(feu $$0) {
-      if (this.l != null) {
-         this.l.run();
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
       }
 
-      flj.Q().execute(() -> {
-         this.n = true;
-         if (!RenderSystem.isOnRenderThread()) {
-            RenderSystem.recordRenderCall(() -> this.b($$0));
-         } else {
-            this.b($$0);
-         }
-      });
+      this.d();
+      GlStateManager._texParameter(3553, 10241, $$2);
+      GlStateManager._texParameter(3553, 10240, $$3);
    }
 
-   private void b(feu $$0) {
-      TextureUtil.prepareImage(this.a(), $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, true);
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
+
+      return this.b;
+   }
+
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
+      }
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void d() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
    }
 
    @Override
-   public void a(aup $$0) throws IOException {
-      flj.Q().execute(() -> {
-         if (!this.n) {
-            try {
-               super.a($$0);
-            } catch (IOException var3x) {
-               e.warn("Failed to load texture: {}", this.d, var3x);
-            }
-
-            this.n = true;
-         }
-      });
-      if (this.m == null) {
-         feu $$2;
-         if (this.i != null && this.i.isFile()) {
-            e.debug("Loading http texture from local cache ({})", this.i);
-            FileInputStream $$1 = new FileInputStream(this.i);
-            $$2 = this.a($$1);
-         } else {
-            $$2 = null;
-         }
-
-         if ($$2 != null) {
-            this.a($$2);
-         } else {
-            this.m = CompletableFuture.runAsync(() -> {
-               HttpURLConnection $$0x = null;
-               e.debug("Downloading http texture from {} to {}", this.j, this.i);
-
-               try {
-                  $$0x = (HttpURLConnection)new URL(this.j).openConnection(flj.Q().Z());
-                  $$0x.setDoInput(true);
-                  $$0x.setDoOutput(false);
-                  $$0x.connect();
-                  if ($$0x.getResponseCode() / 100 == 2) {
-                     InputStream $$1x;
-                     if (this.i != null) {
-                        FileUtils.copyInputStreamToFile($$0x.getInputStream(), this.i);
-                        $$1x = new FileInputStream(this.i);
-                     } else {
-                        $$1x = $$0x.getInputStream();
-                     }
-
-                     flj.Q().execute(() -> {
-                        feu $$1xx = this.a($$1x);
-                        if ($$1xx != null) {
-                           this.a($$1xx);
-                        }
-                     });
-                     return;
-                  }
-               } catch (Exception var6) {
-                  e.error("Couldn't download http texture", var6);
-                  return;
-               } finally {
-                  if ($$0x != null) {
-                     $$0x.disconnect();
-                  }
-               }
-            }, af.g().a("downloadTexture"));
-         }
-      }
-   }
-
-   @Nullable
-   private feu a(InputStream $$0) {
-      feu $$1 = null;
-
-      try {
-         $$1 = feu.a($$0);
-         if (this.k) {
-            $$1 = this.c($$1);
-         }
-      } catch (Exception var4) {
-         e.warn("Error while loading the skin texture", var4);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   private feu c(feu $$0) {
-      int $$1 = $$0.b();
-      int $$2 = $$0.a();
-      if ($$2 == 64 && ($$1 == 32 || $$1 == 64)) {
-         boolean $$3 = $$1 == 32;
-         if ($$3) {
-            feu $$4 = new feu(64, 64, true);
-            $$4.a($$0);
-            $$0.close();
-            $$0 = $$4;
-            $$4.a(0, 32, 64, 32, 0);
-            $$4.a(4, 16, 16, 32, 4, 4, true, false);
-            $$4.a(8, 16, 16, 32, 4, 4, true, false);
-            $$4.a(0, 20, 24, 32, 4, 12, true, false);
-            $$4.a(4, 20, 16, 32, 4, 12, true, false);
-            $$4.a(8, 20, 8, 32, 4, 12, true, false);
-            $$4.a(12, 20, 16, 32, 4, 12, true, false);
-            $$4.a(44, 16, -8, 32, 4, 4, true, false);
-            $$4.a(48, 16, -8, 32, 4, 4, true, false);
-            $$4.a(40, 20, 0, 32, 4, 12, true, false);
-            $$4.a(44, 20, -8, 32, 4, 12, true, false);
-            $$4.a(48, 20, -16, 32, 4, 12, true, false);
-            $$4.a(52, 20, -8, 32, 4, 12, true, false);
-         }
-
-         b($$0, 0, 0, 32, 16);
-         if ($$3) {
-            a($$0, 32, 0, 64, 32);
-         }
-
-         b($$0, 0, 16, 64, 32);
-         b($$0, 16, 48, 48, 64);
-         return $$0;
-      } else {
-         $$0.close();
-         e.warn("Discarding incorrectly sized ({}x{}) skin texture from {}", new Object[]{$$2, $$1, this.j});
-         return null;
-      }
-   }
-
-   private static void a(feu $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            int $$7 = $$0.a($$5, $$6);
-            if (axk.a($$7) < 128) {
-               return;
-            }
-         }
-      }
-
-      for (int $$8 = $$1; $$8 < $$3; $$8++) {
-         for (int $$9 = $$2; $$9 < $$4; $$9++) {
-            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
-         }
-      }
-   }
-
-   private static void b(feu $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            $$0.a($$5, $$6, axk.f($$0.a($$5, $$6)));
-         }
-      }
+   public void close() {
    }
 }

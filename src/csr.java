@@ -1,9 +1,19 @@
-public interface csr {
-   void a(csc var1, ka<cwp> var2, cwp var3, int[] var4);
+public class csr extends ctx {
+   private final csq a;
 
-   void a(csc var1, int var2, cwp var3);
+   public csr(bsb $$0, int $$1, int $$2, int $$3, csq $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+   }
 
-   void a(csc var1, cwp var2);
+   @Override
+   public boolean a(cwn $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
 
-   void a(csc var1, int var2, int var3);
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
+   }
 }

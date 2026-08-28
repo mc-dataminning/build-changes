@@ -1,23 +1,21 @@
-public enum dyg implements azv {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dyg implements azu {
+   a("none"),
+   b("low"),
+   c("tall");
 
-   private final String e;
-   private final wo f;
+   private final String d;
 
    private dyg(final String $$0) {
-      this.e = $$0;
-      this.f = wo.c("structure_block.mode_info." + $$0);
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public wo a() {
-      return this.f;
+      return this.d;
    }
 }

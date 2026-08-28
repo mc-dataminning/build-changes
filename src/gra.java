@@ -1,28 +1,32 @@
-public abstract class gra<T extends cpe, S extends gxp> extends gsb<T, S> {
-   private final gax a;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public gra(gsc.a $$0) {
-      super($$0);
-      this.a = new gax($$0.a(gfb.l));
+public class gra extends gqv<cii, gxp, gaw> {
+   private static final Map<cii.e, aku> a = af.a(Maps.newHashMap(), $$0 -> {
+      for (cii.e $$1 : cii.e.values()) {
+         $$0.put($$1, aku.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public gra(gsb.a $$0) {
+      super($$0, new gaw($$0.a(gez.m)), new gaw($$0.a(gez.n)), 0.5F);
    }
 
-   public void a(S $$0, ffu $$1, glx $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      ffy $$4 = $$2.getBuffer(gmh.f(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, hea.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public aku a(gxp $$0) {
+      return a.get($$0.a);
    }
 
-   protected abstract aku a(S var1);
+   public gxp a() {
+      return new gxp();
+   }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public void a(cii $$0, gxp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j($$2);
-      $$1.b = $$0.k($$2);
-      $$1.c = (float)$$0.c - $$2;
+      $$1.a = $$0.gp();
+      $$1.b = $$0.cf.a($$2);
+      $$1.d = $$0.cg.a($$2);
+      $$1.e = $$0.ch.a($$2);
+      $$1.c = $$0.ci.a($$2);
    }
 }

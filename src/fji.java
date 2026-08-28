@@ -1,167 +1,64 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class fji extends hkx {
-   private static final Logger b = LogUtils.getLogger();
-   public static final wo a = wo.c("mco.upload.select.world.title");
-   private static final wo c = wo.c("selectWorld.unable_to_load");
-   static final wo C = wo.c("selectWorld.world");
-   private static final wo D = wo.c("mco.upload.hardcore").b(-65536);
-   private static final wo E = wo.c("selectWorld.commands");
-   private static final DateFormat F = new SimpleDateFormat();
-   @Nullable
-   private final fkj G;
-   private final fjh H;
-   private final long I;
-   private final int J;
-   fos K;
-   List<evg> L = Lists.newArrayList();
-   int M = -1;
-   fji.b N;
+public class fji extends hky {
+   private static final int a = 212;
+   private static final wo b = wo.c("mco.configure.world.name");
+   private static final wo c = wo.c("mco.configure.world.description");
+   private final fis C;
+   private final fhj D;
+   private foz E;
+   private foz F;
 
-   public fji(@Nullable fkj $$0, long $$1, int $$2, fjh $$3) {
-      super(a);
-      this.G = $$0;
-      this.H = $$3;
-      this.I = $$1;
-      this.J = $$2;
-   }
-
-   private void E() {
-      evf.a $$0 = this.m.m().b();
-      this.L = this.m.m().a($$0).join().stream().filter(evg::v).collect(Collectors.toList());
-
-      for (evg $$1 : this.L) {
-         this.N.a($$1);
-      }
+   public fji(fis $$0, fhj $$1) {
+      super(wo.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
    @Override
    public void aR_() {
-      this.N = this.c(new fji.b());
-
-      try {
-         this.E();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.m.a(new fiy(c, wo.a(var2.getMessage()), this.H));
-         return;
-      }
-
-      this.K = this.c(fos.a(wo.c("mco.upload.button.name"), $$0 -> this.F()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
-      this.K.j = this.M >= 0 && this.M < this.L.size();
-      this.c(fos.a(wn.k, $$0 -> this.m.a(this.H)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
-      this.a(new hkw(wo.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
-      if (this.L.isEmpty()) {
-         this.a(new hkw(wo.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
-      }
-   }
-
-   @Override
-   public wo i() {
-      return wn.a(this.n(), this.m());
-   }
-
-   private void F() {
-      if (this.M != -1 && !this.L.get(this.M).i()) {
-         evg $$0 = this.L.get(this.M);
-         this.m.a(new fjo(this.G, this.I, this.J, this.H, $$0));
-      }
-   }
-
-   @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 13, -1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.H);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   static wo a(evg $$0) {
-      return $$0.h().d();
-   }
-
-   static String b(evg $$0) {
-      return F.format(new Date($$0.f()));
-   }
-
-   class a extends fpo.a<fji.a> {
-      private final evg b;
-      private final String c;
-      private final wo d;
-      private final wo e;
-
-      public a(final evg $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = wo.a("mco.upload.entry.id", $$0.a(), fji.b($$0));
-         this.e = $$0.s();
-      }
-
-      @Override
-      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fji.this.N.a(fji.this.L.indexOf(this.b));
-         return super.a($$0, $$1, $$2);
-      }
-
-      protected void a(fod $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = fji.C + " " + ($$1 + 1);
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fhj.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fop $$2 = fop.a(wo.c($$1), $$0x -> {
+         if (this.D.e == fhj.c.b) {
+            this.m.a(fje.a(this, wo.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
          } else {
-            $$4 = this.c;
+            this.C.b(false);
          }
-
-         $$0.b(fji.this.p, $$4, $$2 + 2, $$3 + 1, -1);
-         $$0.b(fji.this.p, this.d, $$2 + 2, $$3 + 12, -8355712);
-         $$0.b(fji.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712);
-      }
-
-      @Override
-      public wo a() {
-         wo $$0 = wn.b(wo.b(this.b.b()), wo.b(fji.b(this.b)), fji.a(this.b));
-         return wo.a("narrator.select", $$0);
-      }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new foz(this.m.h, $$0, g(4), 212, 20, wo.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new foz(this.m.h, $$0, g(8), 212, 20, wo.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      fop $$3 = this.c(fop.a(wo.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !azv.h($$1x));
+      this.c(fop.a(wn.e, $$0x -> this.aO_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
-   class b extends fpo<fji.a> {
-      public b() {
-         super(flj.Q(), fji.this.n, fji.this.o - 40 - fji.g(0), fji.g(0), 36);
-      }
+   @Override
+   protected void aF_() {
+      this.b(this.F);
+   }
 
-      public void a(evg $$0) {
-         this.b(fji.this.new a($$0));
-      }
+   @Override
+   public void aO_() {
+      this.m.a(this.C);
+   }
 
-      public void a(@Nullable fji.a $$0) {
-         super.a($$0);
-         fji.this.M = this.aH_().indexOf($$0);
-         fji.this.K.j = fji.this.M >= 0 && fji.this.M < this.t() && !fji.this.L.get(fji.this.M).i();
-      }
+   @Override
+   public void a(fob $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
+   }
 
-      @Override
-      public int a() {
-         return (int)((double)this.g * 0.6);
-      }
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }

@@ -1,14 +1,34 @@
+import com.mojang.serialization.MapCodec;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface hdk extends hdo<Void> {
+public class hdk implements hdq<dve> {
+   private final gop a;
+
+   public hdk(gop $$0) {
+      this.a = $$0;
+   }
+
    @Nullable
-   default Void a(cwp $$0) {
-      return null;
+   public dve a(cwn $$0) {
+      return $$0.a(kv.ak);
    }
 
-   default void a(@Nullable Void $$0, cwn $$1, ffu $$2, glx $$3, int $$4, int $$5, boolean $$6) {
-      this.a($$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(@Nullable dve $$0, cwl $$1, ffs $$2, glv $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dve.a));
    }
 
-   void a(cwn var1, ffu var2, glx var3, int var4, int var5, boolean var6);
+   public static record a() implements hdq.a {
+      public static final MapCodec<hdk.a> a = MapCodec.unit(new hdk.a());
+
+      @Override
+      public MapCodec<hdk.a> a() {
+         return a;
+      }
+
+      @Override
+      public hdq<?> a(gew $$0) {
+         return new hdk(new gop($$0));
+      }
+   }
 }

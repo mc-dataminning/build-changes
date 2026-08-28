@@ -1,98 +1,154 @@
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record etz(arc d, fba e, fba f, float g, float h, boolean i, boolean j, Set<bvu> k, etz.a l) {
-   public static final etz.a a = $$0 -> {
-   };
-   public static final etz.a b = etz::a;
-   public static final etz.a c = etz::b;
+public class etz implements eue {
+   private static final Logger b = LogUtils.getLogger();
+   private final dgg c;
+   private final int d;
+   private final ArrayDeque<etz.c> e = new ArrayDeque<>();
+   private final List<etz.c> f = new ArrayList<>();
+   private int g = 0;
 
-   public etz(arc $$0, fba $$1, fba $$2, float $$3, float $$4, etz.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   public etz(dgg $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public etz(arc $$0, fba $$1, fba $$2, float $$3, float $$4, Set<bvu> $$5, etz.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   @Override
+   public void a(jn $$0, dwv $$1, ji $$2, ji $$3, int $$4, int $$5) {
+      this.a($$2, new etz.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
    }
 
-   public etz(arc $$0, buk $$1, etz.a $$2) {
-      this($$0, a($$0, $$1), fba.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
+   @Override
+   public void a(ji $$0, djk $$1, @Nullable euf $$2) {
+      this.a($$0, new etz.e($$0, $$1, $$2));
    }
 
-   private static void a(buk $$0) {
-      if ($$0 instanceof ard $$1) {
-         $$1.f.b(new acy(1032, ji.c, 0, false));
+   @Override
+   public void a(dwv $$0, ji $$1, djk $$2, @Nullable euf $$3, boolean $$4) {
+      this.a($$1, new etz.a($$0, $$1.j(), $$2, $$3, $$4));
+   }
+
+   @Override
+   public void a(ji $$0, djk $$1, @Nullable jn $$2, @Nullable euf $$3) {
+      this.a($$0, new etz.b($$0.j(), $$1, $$3, $$2));
+   }
+
+   private void a(ji $$0, etz.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
+         } else {
+            this.e.push($$1);
+         }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
+
+      if (!$$2) {
+         this.a();
       }
    }
 
-   private static void b(buk $$0) {
-      $$0.f(ji.a((kb)$$0.du()));
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
+
+            this.f.clear();
+            etz.c $$1 = this.e.peek();
+
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
+      }
    }
 
-   public static etz a(arc $$0, buk $$1, etz.a $$2) {
-      return new etz($$0, a($$0, $$1), fba.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   static record a(dwv a, ji b, djk c, @Nullable euf d, boolean e) implements etz.c {
+      @Override
+      public boolean a(dgg $$0) {
+         eue.a($$0, this.a, this.b, this.c, this.d, this.e);
+         return false;
+      }
    }
 
-   private static fba a(arc $$0, buk $$1) {
-      return $$1.a($$0, $$0.Z()).c();
+   static final class b implements etz.c {
+      private final ji a;
+      private final djk b;
+      @Nullable
+      private euf c;
+      @Nullable
+      private final jn d;
+      private int e = 0;
+
+      b(ji $$0, djk $$1, @Nullable euf $$2, @Nullable jn $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         if (eue.a[this.e] == $$3) {
+            this.e++;
+         }
+      }
+
+      @Override
+      public boolean a(dgg $$0) {
+         jn $$1 = eue.a[this.e++];
+         ji $$2 = this.a.a($$1);
+         dwv $$3 = $$0.a_($$2);
+         euf $$4 = null;
+         if ($$0.K().b(crt.c)) {
+            if (this.c == null) {
+               this.c = eub.a($$0, this.d == null ? null : this.d.g(), null);
+            }
+
+            $$4 = this.c.b($$1);
+         }
+
+         eue.a($$0, $$3, $$2, this.b, $$4, false);
+         if (this.e < eue.a.length && eue.a[this.e] == this.d) {
+            this.e++;
+         }
+
+         return this.e < eue.a.length;
+      }
    }
 
-   public etz a(float $$0, float $$1) {
-      return new etz(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   interface c {
+      boolean a(dgg var1);
    }
 
-   public etz a(fba $$0) {
-      return new etz(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   static record d(jn a, dwv b, ji c, ji d, int e, int f) implements etz.c {
+      @Override
+      public boolean a(dgg $$0) {
+         eue.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
+         return false;
+      }
    }
 
-   public etz a() {
-      return new etz(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
-   }
-
-   public arc b() {
-      return this.d;
-   }
-
-   public fba c() {
-      return this.e;
-   }
-
-   public fba d() {
-      return this.f;
-   }
-
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public Set<bvu> i() {
-      return this.k;
-   }
-
-   public etz.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(buk var1);
-
-      default etz.a then(etz.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
+   static record e(ji a, djk b, @Nullable euf c) implements etz.c {
+      @Override
+      public boolean a(dgg $$0) {
+         dwv $$1 = $$0.a_(this.a);
+         eue.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
       }
    }
 }

@@ -1,28 +1,41 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class djc extends djm {
-   protected static final int a = 2;
-   protected static final fbu b = djm.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
+public class djc extends diw implements djb {
+   public static final MapCodec<djc> a = b(djc::new);
 
-   protected djc(dww.d $$0) {
+   @Override
+   public MapCodec<djc> a() {
+      return a;
+   }
+
+   public djc(dwu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends djc> a();
-
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b;
+   public cvk b() {
+      return cvk.a;
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return $$4 == jn.a && !this.a($$0, $$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public dtx a(ji $$0, dwv $$1) {
+      return new dts($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
+      return a($$2, dtz.p, dts::a);
    }
 
    @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return a($$1, $$2.e(), jn.b);
+   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dts $$5) {
+         $$3.a($$5);
+         $$3.a(awj.ab);
+      }
+
+      return bsi.a;
    }
 }

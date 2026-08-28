@@ -1,11 +1,8 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface erw {
-   Codec<erw> c = mb.n.q().dispatch(erw::a, erx::codec);
-
-   @Nullable
-   tq a(azh var1, @Nullable tq var2);
-
-   erx<?> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface erw {
 }

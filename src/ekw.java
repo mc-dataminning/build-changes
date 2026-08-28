@@ -1,71 +1,45 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ekw {
-   public static final Codec<ekw> h = mb.X.q().dispatch(ekw::a, ekx::a);
+public class ekw extends eku {
+   public static final MapCodec<ekw> a = MapCodec.unit(() -> ekw.b);
+   public static final ekw b = new ekw();
 
-   protected abstract ekx<?> a();
+   @Override
+   protected ekv<?> a() {
+      return ekv.a;
+   }
 
-   public abstract void a(ekw.a var1);
+   @Override
+   public void a(eku.a $$0) {
+      azg $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            ji $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dsl.d);
+            }
+         }
 
-   public static final class a {
-      private final dgo a;
-      private final BiConsumer<ji, dwx> b;
-      private final azh c;
-      private final ObjectArrayList<ji> d;
-      private final ObjectArrayList<ji> e;
-      private final ObjectArrayList<ji> f;
+         if ($$1.a(3) > 0) {
+            ji $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dsl.f);
+            }
+         }
 
-      public a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, Set<ji> $$3, Set<ji> $$4, Set<ji> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(km::v));
-         this.e.sort(Comparator.comparingInt(km::v));
-         this.f.sort(Comparator.comparingInt(km::v));
-      }
+         if ($$1.a(3) > 0) {
+            ji $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dsl.e);
+            }
+         }
 
-      public void a(ji $$0, dxo $$1) {
-         this.a($$0, djo.ft.m().b($$1, Boolean.valueOf(true)));
-      }
-
-      public void a(ji $$0, dwx $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(ji $$0) {
-         return this.a.a($$0, dww.a::l);
-      }
-
-      public boolean a(ji $$0, Predicate<dwx> $$1) {
-         return this.a.a($$0, $$1);
-      }
-
-      public dgo a() {
-         return this.a;
-      }
-
-      public azh b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<ji> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<ji> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<ji> e() {
-         return this.f;
-      }
+         if ($$1.a(3) > 0) {
+            ji $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dsl.c);
+            }
+         }
+      });
    }
 }

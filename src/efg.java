@@ -1,45 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class efg extends efy<ehu> {
-   public efg(Codec<ehu> $$0) {
+public class efg extends efw<eih> {
+   public efg(Codec<eih> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<ehu> $$0) {
-      ji $$1 = $$0.e();
-      dhg $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      ehu $$4 = $$0.f();
-      if ($$1.v() < $$2.L_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+   public boolean a(efy<eih> $$0) {
+      azg $$1 = $$0.d();
+      dhe $$2 = $$0.b();
+      dfm $$3 = new dfm($$0.e());
+      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ji.a $$6 = new ji.a();
+      IntListIterator var8 = $$4.iterator();
 
-         for (ji $$7 : ji.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ji $$9 = $$2.a(ecq.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, djm.cD.m(), 2);
+               bso.a($$2, $$1, $$9, evl.a);
+               dwv $$10 = djm.cw.m();
+
+               for (jn $$11 : jn.c.a) {
+                  ji $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
             }
          }
-
-         return true;
       }
-   }
 
-   private boolean a(dgj $$0, ji $$1, azh $$2) {
-      ji $$3 = $$1.e();
-      dwx $$4 = $$0.a_($$3);
-      return $$4.a(djo.lg) ? $$2.h() : $$4.c($$0, $$3, jn.b);
-   }
-
-   private void a(dgj $$0, ji $$1, azh $$2, ehu $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
+      return false;
    }
 }

@@ -1,16 +1,20 @@
-public enum dxi implements azv {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+public enum dxi implements azu {
+   a("head"),
+   b("foot");
 
-   private final String d;
+   private final String c;
 
    private dxi(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

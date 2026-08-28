@@ -5,7 +5,7 @@ public class aco implements yv<abk> {
    private final int b;
    private final byte c;
 
-   public aco(buk $$0, byte $$1) {
+   public aco(buj $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -30,7 +30,7 @@ public class aco implements yv<abk> {
    }
 
    @Nullable
-   public buk a(dgi $$0) {
+   public buj a(dgg $$0) {
       return $$0.a(this.b);
    }
 

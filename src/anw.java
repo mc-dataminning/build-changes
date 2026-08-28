@@ -14,16 +14,16 @@ public class anw {
    public static void a(CommandDispatcher<ex> $$0) {
       RequiredArgumentBuilder<ex, aku> $$1 = (RequiredArgumentBuilder<ex, aku>)ey.a("sound", fy.a())
          .suggests(ix.b)
-         .executes($$0x -> a((ex)$$0x.getSource(), a(((ex)$$0x.getSource()).i()), fy.a($$0x, "sound"), awb.a, ((ex)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+         .executes($$0x -> a((ex)$$0x.getSource(), a(((ex)$$0x.getSource()).i()), fy.a($$0x, "sound"), awa.a, ((ex)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
 
-      for (awb $$2 : awb.values()) {
+      for (awa $$2 : awa.values()) {
          $$1.then(a($$2));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static LiteralArgumentBuilder<ex> a(awb $$0) {
+   private static LiteralArgumentBuilder<ex> a(awa $$0) {
       return (LiteralArgumentBuilder<ex>)((LiteralArgumentBuilder)ey.a($$0.a())
             .executes($$1 -> a((ex)$$1.getSource(), a(((ex)$$1.getSource()).i()), fy.a($$1, "sound"), $$0, ((ex)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
          .then(
@@ -85,9 +85,9 @@ public class anw {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ex $$0, Collection<ard> $$1, aku $$2, awb $$3, fba $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      jr<avz> $$8 = jr.a(avz.a($$2));
-      double $$9 = (double)ayz.l($$8.a().a($$5));
+   private static int a(ex $$0, Collection<ard> $$1, aku $$2, awa $$3, fay $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      jr<avy> $$8 = jr.a(avy.a($$2));
+      double $$9 = (double)ayy.l($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().H_().g();
 
@@ -96,7 +96,7 @@ public class anw {
          double $$14 = $$4.e - $$12.dD();
          double $$15 = $$4.f - $$12.dH();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         fba $$17 = $$4;
+         fay $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class anw {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new fba($$12.dB() + $$13 / $$19 * 2.0, $$12.dD() + $$14 / $$19 * 2.0, $$12.dH() + $$15 / $$19 * 2.0);
+            $$17 = new fay($$12.dB() + $$13 / $$19 * 2.0, $$12.dD() + $$14 / $$19 * 2.0, $$12.dH() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

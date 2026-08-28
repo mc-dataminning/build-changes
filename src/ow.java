@@ -11,14 +11,14 @@ public class ow implements ov.a {
    }
 
    public static tq a(String $$0, tq $$1) {
-      ero $$2 = new ero();
+      erm $$2 = new erm();
       int $$3 = uf.b($$1, 500);
       int $$4 = 4173;
       if ($$3 < 4173) {
          a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4173, $$0});
       }
 
-      tq $$5 = ban.f.a(bao.a(), $$1, $$3);
+      tq $$5 = bam.f.a(ban.a(), $$1, $$3);
       $$2.a(mb.e, $$5);
       return $$2.a(new tq());
    }

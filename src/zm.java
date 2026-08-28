@@ -2,14 +2,14 @@ import java.util.Map;
 
 public class zm implements yv<zb> {
    public static final ym<vl, zm> a = yv.a(zm::a, zm::new);
-   private final Map<akt<? extends ke<?>>, axh.a> b;
+   private final Map<akt<? extends ke<?>>, axg.a> b;
 
-   public zm(Map<akt<? extends ke<?>>, axh.a> $$0) {
+   public zm(Map<akt<? extends ke<?>>, axg.a> $$0) {
       this.b = $$0;
    }
 
    private zm(vl $$0) {
-      this.b = $$0.a(vl::r, axh.a::b);
+      this.b = $$0.a(vl::r, axg.a::b);
    }
 
    private void a(vl $$0) {
@@ -25,7 +25,7 @@ public class zm implements yv<zb> {
       $$0.a(this);
    }
 
-   public Map<akt<? extends ke<?>>, axh.a> b() {
+   public Map<akt<? extends ke<?>>, axg.a> b() {
       return this.b;
    }
 }

@@ -34,9 +34,9 @@ public class ahy implements yv<agf> {
    }
 
    @Nullable
-   public dfi a(dgi $$0) {
-      buk $$1 = $$0.a(this.b);
-      return $$1 instanceof crg ? ((crg)$$1).v() : null;
+   public dfg a(dgg $$0) {
+      buj $$1 = $$0.a(this.b);
+      return $$1 instanceof cre ? ((cre)$$1).v() : null;
    }
 
    public String b() {

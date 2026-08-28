@@ -1,56 +1,51 @@
-@FunctionalInterface
-public interface goj<T extends dtz> {
-   goi<T> create(goj.a var1);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public static class a {
-      private final goh a;
-      private final gnb b;
-      private final hbj c;
-      private final gta d;
-      private final gsa e;
-      private final gey f;
-      private final fob g;
+public class goj {
+   private static final Map<dtz<?>, goi<?>> a = Maps.newHashMap();
 
-      public a(goh $$0, gnb $$1, hbj $$2, gta $$3, gsa $$4, gey $$5, fob $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   private static <T extends dtx> void a(dtz<? extends T> $$0, goi<T> $$1) {
+      a.put($$0, $$1);
+   }
 
-      public goh a() {
-         return this.a;
-      }
+   public static Map<dtz<?>, goh<?>> a(goi.a $$0) {
+      Builder<dtz<?>, goh<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + mb.j.b((dtz<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
+   }
 
-      public gnb b() {
-         return this.b;
-      }
-
-      public gsa c() {
-         return this.e;
-      }
-
-      public hbj d() {
-         return this.c;
-      }
-
-      public gta e() {
-         return this.d;
-      }
-
-      public gey f() {
-         return this.f;
-      }
-
-      public gfc a(gfa $$0) {
-         return this.f.a($$0);
-      }
-
-      public fob g() {
-         return this.g;
-      }
+   static {
+      a(dtz.h, gov::new);
+      a(dtz.i, gor::new);
+      a(dtz.j, gox::new);
+      a(dtz.l, got::new);
+      a(dtz.b, gon::new);
+      a(dtz.d, gon::new);
+      a(dtz.c, gon::new);
+      a(dtz.n, goq::new);
+      a(dtz.E, gos::new);
+      a(dtz.o, gpa::new);
+      a(dtz.w, goz::new);
+      a(dtz.p, god::new);
+      a(dtz.q, gow::new);
+      a(dtz.u, goc::new);
+      a(dtz.v, goy::new);
+      a(dtz.y, gou::new);
+      a(dtz.z, goe::new);
+      a(dtz.A, goo::new);
+      a(dtz.F, gof::new);
+      a(dtz.H, gom::new);
+      a(dtz.O, gol::new);
+      a(dtz.P, gop::new);
+      a(dtz.R, gpb::new);
+      a(dtz.S, gpc::new);
    }
 }

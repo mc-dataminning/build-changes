@@ -1,75 +1,64 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dvw extends dtz implements dhd, dvz.b {
-   private static final Logger a = LogUtils.getLogger();
-   private dvz b;
+public interface dvw {
+   dvw a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.b() && !$$2x.Z_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
+         .map(buj::cG)
+         .toList();
+   dvw b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.Z_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
+         .map(buj::cG)
+         .toList();
+   dvw c = ($$0, $$1, $$2, $$3, $$4) -> {
+      fat $$5 = new fat($$2).g($$3);
+      return $$1.a($$0, buq.ba, $$5, bvf::bL).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF())).map(buj::cG).toList();
+   };
 
-   public dvw(ji $$0, dwx $$1) {
-      super(dub.R, $$0, $$1);
-      dvy $$2 = dvy.a;
-      dvy.a $$3 = dvy.a.a;
-      this.b = new dvz(this, $$2, $$3);
+   List<UUID> detect(arc var1, dvw.a var2, ji var3, double var4, boolean var6);
+
+   private static boolean a(dgg $$0, fay $$1, fay $$2) {
+      fau $$3 = $$0.a(new dfo($$2, $$1, dfo.a.c, dfo.b.a, fbd.a()));
+      return $$3.b().equals(ji.a((kb)$$1)) || $$3.d() == faw.a.a;
    }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.b.a().parse($$1.a(ue.a), $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.o != null) {
-         this.f();
+   public interface a {
+      dvw.a a = new dvw.a() {
+         @Override
+         public List<ard> a(arc $$0, Predicate<? super cov> $$1) {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public <T extends buj> List<T> a(arc $$0, ebf<buj, T> $$1, fat $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends cov> a(arc var1, Predicate<? super cov> var2);
+
+      <T extends buj> List<T> a(arc var1, ebf<buj, T> var2, fat var3, Predicate<? super T> var4);
+
+      static dvw.a a(cov $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      this.b
-         .a()
-         .encodeStart($$1.a(ue.a), this.b)
-         .ifSuccess($$1x -> $$0.a((tq)$$1x))
-         .ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
-   }
+      static dvw.a a(final List<cov> $$0) {
+         return new dvw.a() {
+            @Override
+            public List<cov> a(arc $$0x, Predicate<? super cov> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   public abr b() {
-      return abr.a(this);
-   }
-
-   @Override
-   public tq a(jt.a $$0) {
-      return this.b.f().a(this.m().c(dsg.b));
-   }
-
-   @Override
-   public void a(bur<?> $$0, azh $$1) {
-      if (this.o == null) {
-         af.b("Expected non-null level");
-      } else {
-         this.b.a($$0, this.o);
-         this.e();
-      }
-   }
-
-   public dvz c() {
-      return this.b;
-   }
-
-   @Override
-   public dwd d() {
-      return !this.m().b(dxn.bB) ? dwd.a : this.m().c(dxn.bB);
-   }
-
-   @Override
-   public void a(dgi $$0, dwd $$1) {
-      this.e();
-      $$0.b(this.p, this.m().b(dxn.bB, $$1));
-   }
-
-   @Override
-   public void f() {
-      this.e();
-      if (this.o != null) {
-         this.o.a(this.p, this.m(), this.m(), 3);
+            @Override
+            public <T extends buj> List<T> a(arc $$0x, ebf<buj, T> $$1, fat $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
    }
 }

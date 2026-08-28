@@ -1,76 +1,108 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class dtq extends dvf {
+   private ka<cwn> d = ka.a(27, cwn.j);
+   private final duk e = new duk() {
+      @Override
+      protected void a(dgg $$0, ji $$1, dwv $$2) {
+         dtq.this.a($$2, avz.bz);
+         dtq.this.a($$2, true);
+      }
 
-public record dtq(List<dtq.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dtq a = new dtq(List.of());
-   public static final Codec<dtq> b = dtq.b.a.listOf().xmap(dtq::new, dtq::b);
-   public static final ym<vz, dtq> c = dtq.b.b.a(yk.a()).a(dtq::new, dtq::b);
+      @Override
+      protected void b(dgg $$0, ji $$1, dwv $$2) {
+         dtq.this.a($$2, avz.by);
+         dtq.this.a($$2, false);
+      }
 
-   public dtq a() {
-      return new dtq(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+      @Override
+      protected void a(dgg $$0, ji $$1, dwv $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(cov $$0) {
+         if ($$0.cd instanceof csj) {
+            bsb $$1 = ((csj)$$0.cd).l();
+            return $$1 == dtq.this;
+         } else {
+            return false;
+         }
+      }
+   };
+
+   public dtq(ji $$0, dwv $$1) {
+      super(dtz.B, $$0, $$1);
    }
 
-   public List<dtq.b> b() {
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bsc.a($$0, this.d, $$1);
+      }
+   }
+
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.d = ka.a(this.b(), cwn.j);
+      if (!this.b_($$0)) {
+         bsc.b($$0, this.d, $$1);
+      }
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected ka<cwn> f() {
       return this.d;
    }
 
-   public static class a {
-      private final Builder<dtq.b> a = ImmutableList.builder();
+   @Override
+   protected void a(ka<cwn> $$0) {
+      this.d = $$0;
+   }
 
-      @Deprecated
-      public dtq.a a(js<dtp> $$0, akt<dtp> $$1, cvm $$2) {
-         Optional<jr.c<dtp>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dtq.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
-         }
-      }
+   @Override
+   protected wo j() {
+      return wo.c("container.barrel");
+   }
 
-      public dtq.a a(jr<dtp> $$0, cvm $$1) {
-         return this.a(new dtq.b($$0, $$1));
-      }
+   @Override
+   protected csa a(int $$0, cou $$1) {
+      return csj.a($$0, $$1, this);
+   }
 
-      public dtq.a a(dtq.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dtq.a a(dtq $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dtq a() {
-         return new dtq(this.a.build());
+   @Override
+   public void c_(cov $$0) {
+      if (!this.q && !$$0.Z_()) {
+         this.e.a($$0, this.i(), this.aA_(), this.m());
       }
    }
 
-   public static record b(jr<dtp> c, cvm d) {
-      public static final Codec<dtq.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dtp.c.fieldOf("pattern").forGetter(dtq.b::b), cvm.q.fieldOf("color").forGetter(dtq.b::c)).apply($$0, dtq.b::new)
-      );
-      public static final ym<vz, dtq.b> b = ym.a(dtp.d, dtq.b::b, cvm.r, dtq.b::c, dtq.b::new);
-
-      public xc a() {
-         String $$0 = this.c.a().b();
-         return wo.c($$0 + "." + this.d.b());
+   @Override
+   public void c(cov $$0) {
+      if (!this.q && !$$0.Z_()) {
+         this.e.b($$0, this.i(), this.aA_(), this.m());
       }
+   }
 
-      public jr<dtp> b() {
-         return this.c;
+   public void k() {
+      if (!this.q) {
+         this.e.c(this.i(), this.aA_(), this.m());
       }
+   }
 
-      public cvm c() {
-         return this.d;
-      }
+   void a(dwv $$0, boolean $$1) {
+      this.o.a(this.aA_(), $$0.b(diq.c, Boolean.valueOf($$1)), 3);
+   }
+
+   void a(dwv $$0, avy $$1) {
+      km $$2 = $$0.c(diq.b).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, awa.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
    }
 }

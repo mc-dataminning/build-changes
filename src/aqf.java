@@ -10,12 +10,12 @@ import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 
 public class aqf extends aqt {
-   public static final aqi<dzc> a = aqi.a("Unloaded level chunk");
-   private static final CompletableFuture<aqi<dzc>> e = CompletableFuture.completedFuture(a);
-   private final dgk f;
-   private volatile CompletableFuture<aqi<dzc>> g = e;
-   private volatile CompletableFuture<aqi<dzc>> h = e;
-   private volatile CompletableFuture<aqi<dzc>> i = e;
+   public static final aqi<dza> a = aqi.a("Unloaded level chunk");
+   private static final CompletableFuture<aqi<dza>> e = CompletableFuture.completedFuture(a);
+   private final dgi f;
+   private volatile CompletableFuture<aqi<dza>> g = e;
+   private volatile CompletableFuture<aqi<dza>> h = e;
+   private volatile CompletableFuture<aqi<dza>> i = e;
    private int j;
    private int k;
    private int l;
@@ -23,7 +23,7 @@ public class aqf extends aqt {
    private final ShortSet[] n;
    private final BitSet o = new BitSet();
    private final BitSet p = new BitSet();
-   private final eso q;
+   private final esm q;
    private final aqf.a r;
    private final aqf.b s;
    private boolean t;
@@ -31,7 +31,7 @@ public class aqf extends aqt {
    private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
    private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
 
-   public aqf(dfo $$0, int $$1, dgk $$2, eso $$3, aqf.a $$4, aqf.b $$5) {
+   public aqf(dfm $$0, int $$1, dgi $$2, esm $$3, aqf.a $$4, aqf.b $$5) {
       super($$0);
       this.f = $$2;
       this.q = $$3;
@@ -44,25 +44,25 @@ public class aqf extends aqt {
       this.n = new ShortSet[$$2.ao()];
    }
 
-   public CompletableFuture<aqi<dzc>> a() {
+   public CompletableFuture<aqi<dza>> a() {
       return this.h;
    }
 
-   public CompletableFuture<aqi<dzc>> b() {
+   public CompletableFuture<aqi<dza>> b() {
       return this.i;
    }
 
-   public CompletableFuture<aqi<dzc>> c() {
+   public CompletableFuture<aqi<dza>> c() {
       return this.g;
    }
 
    @Nullable
-   public dzc d() {
+   public dza d() {
       return this.a().getNow(a).b(null);
    }
 
    @Nullable
-   public dzc e() {
+   public dza e() {
       return !this.v.isDone() ? null : this.d();
    }
 
@@ -96,7 +96,7 @@ public class aqf extends aqt {
    }
 
    public boolean a(ji $$0) {
-      dzc $$1 = this.d();
+      dza $$1 = this.d();
       if ($$1 == null) {
          return false;
       } else {
@@ -112,20 +112,20 @@ public class aqf extends aqt {
       }
    }
 
-   public boolean a(dgr $$0, int $$1) {
-      dys $$2 = this.b(dzt.k);
+   public boolean a(dgp $$0, int $$1) {
+      dyq $$2 = this.b(dzr.k);
       if ($$2 == null) {
          return false;
       } else {
          $$2.i();
-         dzc $$3 = this.d();
+         dza $$3 = this.d();
          if ($$3 == null) {
             return false;
          } else {
             int $$4 = this.q.d();
             int $$5 = this.q.e();
             if ($$1 >= $$4 && $$1 <= $$5) {
-               BitSet $$6 = $$0 == dgr.a ? this.p : this.o;
+               BitSet $$6 = $$0 == dgp.a ? this.p : this.o;
                int $$7 = $$1 - $$4;
                if (!$$6.get($$7)) {
                   $$6.set($$7);
@@ -144,9 +144,9 @@ public class aqf extends aqt {
       return this.m || !this.p.isEmpty() || !this.o.isEmpty();
    }
 
-   public void a(dzc $$0) {
+   public void a(dza $$0) {
       if (this.i()) {
-         dgi $$1 = $$0.H();
+         dgg $$1 = $$0.H();
          if (!this.p.isEmpty() || !this.o.isEmpty()) {
             List<ard> $$2 = this.s.a(this.d, true);
             if (!$$2.isEmpty()) {
@@ -170,11 +170,11 @@ public class aqf extends aqt {
                      kk $$8 = kk.a($$0.f(), $$7);
                      if ($$6.size() == 1) {
                         ji $$9 = $$8.g($$6.iterator().nextShort());
-                        dwx $$10 = $$1.a_($$9);
+                        dwv $$10 = $$1.a_($$9);
                         this.a($$4, new abt($$9, $$10));
                         this.a($$4, $$1, $$9, $$10);
                      } else {
-                        dzd $$11 = $$0.b($$5);
+                        dzb $$11 = $$0.b($$5);
                         aef $$12 = new aef($$8, $$6, $$11);
                         this.a($$4, $$12);
                         $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
@@ -188,14 +188,14 @@ public class aqf extends aqt {
       }
    }
 
-   private void a(List<ard> $$0, dgi $$1, ji $$2, dwx $$3) {
+   private void a(List<ard> $$0, dgg $$1, ji $$2, dwv $$3) {
       if ($$3.x()) {
          this.a($$0, $$1, $$2);
       }
    }
 
-   private void a(List<ard> $$0, dgi $$1, ji $$2) {
-      dtz $$3 = $$1.c_($$2);
+   private void a(List<ard> $$0, dgg $$1, ji $$2) {
+      dtx $$3 = $$1.c_($$2);
       if ($$3 != null) {
          yv<?> $$4 = $$3.ax_();
          if ($$4 != null) {
@@ -226,7 +226,7 @@ public class aqf extends aqt {
       this.k = $$0;
    }
 
-   private void a(aqh $$0, CompletableFuture<aqi<dzc>> $$1, Executor $$2, aqr $$3) {
+   private void a(aqh $$0, CompletableFuture<aqi<dza>> $$1, Executor $$2, aqr $$3) {
       this.u.cancel(false);
       CompletableFuture<Void> $$4 = new CompletableFuture<>();
       $$4.thenRunAsync(() -> $$0.a(this.d, $$3), $$2);
@@ -304,10 +304,10 @@ public class aqf extends aqt {
 
    @FunctionalInterface
    public interface a {
-      void onLevelChange(dfo var1, IntSupplier var2, int var3, IntConsumer var4);
+      void onLevelChange(dfm var1, IntSupplier var2, int var3, IntConsumer var4);
    }
 
    public interface b {
-      List<ard> a(dfo var1, boolean var2);
+      List<ard> a(dfm var1, boolean var2);
    }
 }

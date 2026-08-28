@@ -6,13 +6,13 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class ws {
-   public static final Codec<ws> a = azv.a(ws.a::values).dispatch(ws::c, ws.a::a);
+   public static final Codec<ws> a = azu.a(ws.a::values).dispatch(ws::c, ws.a::a);
    public static final ws b = new ws(new BitSet(0), ws.a.b);
    public static final ws c = new ws(new BitSet(0), ws.a.a);
    public static final xl d = xl.a.a(n.i).a(new wu(wu.a.a, wo.c("chat.filtered")));
    static final MapCodec<ws> e = MapCodec.unit(c);
    static final MapCodec<ws> f = MapCodec.unit(b);
-   static final MapCodec<ws> g = ayi.w.xmap(ws::new, ws::d).fieldOf("value");
+   static final MapCodec<ws> g = ayh.w.xmap(ws::new, ws::d).fieldOf("value");
    private static final char h = '#';
    private final BitSet i;
    private final ws.a j;
@@ -135,7 +135,7 @@ public class ws {
       return 31 * $$0 + this.j.hashCode();
    }
 
-   static enum a implements azv {
+   static enum a implements azu {
       a("pass_through", () -> ws.e),
       b("fully_filtered", () -> ws.f),
       c("partially_filtered", () -> ws.g);

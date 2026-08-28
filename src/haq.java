@@ -1,5 +1,3 @@
-public class haq extends gzi {
+public class haq extends gxm {
    public boolean a;
-   public boolean b;
-   public boolean c;
 }

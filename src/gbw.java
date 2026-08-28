@@ -1,40 +1,45 @@
-public class gbw extends gca<gyz> {
-   public static final gfl a = gfl.scaling(0.5F);
-   private final gfc b;
-   private final gfc c;
-
-   public gbw(gfc $$0) {
+public class gbw<T extends gyg> extends gcl<T> {
+   public gbw(gfa $$0) {
       super($$0);
-      this.c = $$0.b("left_wing");
-      this.b = $$0.b("right_wing");
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      gfg $$2 = new gfg(1.0F);
-      $$1.a(
-         "left_wing",
-         gfh.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gfe.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-      $$1.a(
-         "right_wing",
-         gfh.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gfe.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      return gfi.a($$0, 64, 32);
+   public static gfg a() {
+      float $$0 = -14.0F;
+      gfi $$1 = gcl.a(gfe.a, -14.0F);
+      gfk $$2 = $$1.a();
+      gfk $$3 = $$2.a("head", gff.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfc.a(0.0F, -13.0F, 0.0F));
+      $$3.a("hat", gff.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gfe(-0.5F)), gfc.a);
+      $$2.a("body", gff.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), gfc.a(0.0F, -14.0F, 0.0F));
+      $$2.a("right_arm", gff.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gfc.a(-5.0F, -12.0F, 0.0F));
+      $$2.a("left_arm", gff.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gfc.a(5.0F, -12.0F, 0.0F));
+      $$2.a("right_leg", gff.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gfc.a(-2.0F, -5.0F, 0.0F));
+      $$2.a("left_leg", gff.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gfc.a(2.0F, -5.0F, 0.0F));
+      return gfg.a($$1, 64, 32);
    }
 
-   public void a(gyz $$0) {
+   public void a(T $$0) {
       super.a($$0);
-      this.c.c = $$0.N ? 3.0F : 0.0F;
-      this.c.e = $$0.S;
-      this.c.g = $$0.U;
-      this.c.f = $$0.T;
-      this.b.f = -this.c.f;
-      this.b.c = this.c.c;
-      this.b.e = this.c.e;
-      this.b.g = -this.c.g;
+      this.o.k = true;
+      this.r.e *= 0.5F;
+      this.s.e *= 0.5F;
+      this.t.e *= 0.5F;
+      this.u.e *= 0.5F;
+      float $$1 = 0.4F;
+      this.r.e = ayy.a(this.r.e, -0.4F, 0.4F);
+      this.s.e = ayy.a(this.s.e, -0.4F, 0.4F);
+      this.t.e = ayy.a(this.t.e, -0.4F, 0.4F);
+      this.u.e = ayy.a(this.u.e, -0.4F, 0.4F);
+      if ($$0.b != null) {
+         this.r.e = -0.5F;
+         this.s.e = -0.5F;
+         this.r.g = 0.05F;
+         this.s.g = -0.05F;
+      }
+
+      if ($$0.a) {
+         float $$2 = 5.0F;
+         this.o.c -= 5.0F;
+         this.p.c += 5.0F;
+      }
    }
 }

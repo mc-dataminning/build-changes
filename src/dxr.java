@@ -1,14 +1,23 @@
-public enum dxr implements azv {
-   a,
-   b;
+public enum dxr implements azu {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
+
+   private final String f;
+
+   private dxr(final String $$0) {
+      this.f = $$0;
+   }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.f;
    }
 }

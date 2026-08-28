@@ -1,42 +1,11 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class emv extends emt {
-   public static final MapCodec<emv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bro.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bro.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, emv::new)
-   );
-   private final bro c;
-   private final bro d;
-
-   public static emv a(bro $$0, bro $$1) {
-      return new emv($$0, $$1);
-   }
-
-   public static emv a(bro $$0) {
-      return new emv(brl.a(0), $$0);
-   }
-
-   public static emv b(bro $$0) {
-      return new emv($$0, brl.a(0));
-   }
-
-   private emv(bro $$0, bro $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+public abstract class emv extends emr {
+   protected abstract int a(azg var1, ji var2);
 
    @Override
-   public Stream<ji> a_(emr $$0, azh $$1, ji $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new ji($$3, $$4, $$5));
-   }
-
-   @Override
-   public emu<?> b() {
-      return emu.n;
+   public Stream<ji> a_(emp $$0, azg $$1, ji $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

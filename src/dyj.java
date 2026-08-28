@@ -1,58 +1,58 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+public interface dyj {
+   void a(dyl var1, double var2);
 
-public record dyj(String n, dxm o, dre p, dre q, avz r, avz s) {
-   private static final Map<String, dyj> t = new Object2ObjectArrayMap();
-   public static final Codec<dyj> a = Codec.stringResolver(dyj::b, t::get);
-   public static final dyj b = a(new dyj("oak", dxm.g));
-   public static final dyj c = a(new dyj("spruce", dxm.h));
-   public static final dyj d = a(new dyj("birch", dxm.i));
-   public static final dyj e = a(new dyj("acacia", dxm.j));
-   public static final dyj f = a(new dyj("cherry", dxm.k, dre.aU, dre.aX, awa.eO, awa.eP));
-   public static final dyj g = a(new dyj("jungle", dxm.l));
-   public static final dyj h = a(new dyj("dark_oak", dxm.m));
-   public static final dyj i = a(new dyj("pale_oak", dxm.n));
-   public static final dyj j = a(new dyj("crimson", dxm.o, dre.aT, dre.aQ, awa.ru, awa.rv));
-   public static final dyj k = a(new dyj("warped", dxm.p, dre.aT, dre.aQ, awa.ru, awa.rv));
-   public static final dyj l = a(new dyj("mangrove", dxm.q));
-   public static final dyj m = a(new dyj("bamboo", dxm.r, dre.aS, dre.aR, awa.bw, awa.bx));
+   void a(dyl var1, double var2, double var4, long var6);
 
-   public dyj(String $$0, dxm $$1) {
-      this($$0, $$1, dre.b, dre.aP, awa.ji, awa.jj);
-   }
+   void a(dyl var1, double var2, double var4);
 
-   private static dyj a(dyj $$0) {
-      t.put($$0.b(), $$0);
-      return $$0;
-   }
+   void a(dyl var1, int var2);
 
-   public static Stream<dyj> a() {
-      return t.values().stream();
-   }
+   void b(dyl var1, int var2);
 
-   public String b() {
-      return this.n;
-   }
+   void b(dyl var1, double var2);
 
-   public dxm c() {
-      return this.o;
-   }
+   void c(dyl var1, double var2);
 
-   public dre d() {
-      return this.p;
-   }
+   public static class a implements dyj {
+      private final dyl a;
 
-   public dre e() {
-      return this.q;
-   }
+      public a(dyl $$0) {
+         this.a = $$0;
+      }
 
-   public avz f() {
-      return this.r;
-   }
+      @Override
+      public void a(dyl $$0, double $$1) {
+         this.a.a($$1);
+      }
 
-   public avz g() {
-      return this.s;
+      @Override
+      public void a(dyl $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dyl $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dyl $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dyl $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dyl $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dyl $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

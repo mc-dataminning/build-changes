@@ -1,21 +1,60 @@
-public class fax extends fay {
-   private final buk b;
+public class fax {
+   public static final fax a = new fax(0.0F, 0.0F);
+   public static final fax b = new fax(1.0F, 1.0F);
+   public static final fax c = new fax(1.0F, 0.0F);
+   public static final fax d = new fax(-1.0F, 0.0F);
+   public static final fax e = new fax(0.0F, 1.0F);
+   public static final fax f = new fax(0.0F, -1.0F);
+   public static final fax g = new fax(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final fax h = new fax(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-   public fax(buk $$0) {
-      this($$0, $$0.du());
+   public fax(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public fax(buk $$0, fba $$1) {
-      super($$1);
-      this.b = $$0;
+   public fax a(float $$0) {
+      return new fax(this.i * $$0, this.j * $$0);
    }
 
-   public buk a() {
-      return this.b;
+   public float a(fax $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   @Override
-   public fay.a d() {
-      return fay.a.c;
+   public fax b(fax $$0) {
+      return new fax(this.i + $$0.i, this.j + $$0.j);
+   }
+
+   public fax b(float $$0) {
+      return new fax(this.i + $$0, this.j + $$0);
+   }
+
+   public boolean c(fax $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public fax a() {
+      float $$0 = ayy.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new fax(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return ayy.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(fax $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public fax d() {
+      return new fax(-this.i, -this.j);
    }
 }

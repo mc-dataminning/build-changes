@@ -1,107 +1,66 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+public class ftc extends fui {
+   private static final wo s = wo.c("selectWorld.backupJoinSkipButton");
+   public static final wo a = wo.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final ftc.a b;
+   private final wo v;
+   private final boolean w;
+   private fpj x = fpj.a;
+   final wo c;
+   protected int d;
+   private fos y;
 
-public class ftc extends fuk {
-   private static final wo a = wo.c("accessibility.onboarding.screen.title");
-   private static final wo b = wo.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fpj s;
-   private final fln u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private fpd z;
-   private final fsg A = new fsg(this, this.m(), 33);
+   public ftc(Runnable $$0, ftc.a $$1, wo $$2, wo $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
+   }
 
-   public ftc(fln $$0, Runnable $$1) {
-      super(a);
+   public ftc(Runnable $$0, ftc.a $$1, wo $$2, wo $$3, wo $$4, boolean $$5) {
+      super($$2);
       this.u = $$0;
-      this.y = $$1;
-      this.s = new fpj(true);
-      this.v = flj.Q().aY().a();
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
    }
 
    @Override
-   public void aR_() {
-      fsk $$0 = this.A.c(fsk.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fpd(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.av().a(this.u) instanceof foz $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
+   protected void aR_() {
+      super.aR_();
+      this.x = fpj.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = fos.a(wo.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
       }
 
-      $$0.a(fow.b(150, $$0x -> this.a(new fxh(this, this.m.n)), false));
-      $$0.a(fow.a(150, $$0x -> this.a(new fxk(this, this.m.n, this.m.ah())), false));
-      this.A.b(fos.a(wn.j, $$0x -> this.aO_()).a());
-      this.A.a(this::c);
-      this.c();
+      this.c(fop.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fop.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fop.a(wn.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
    }
 
    @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
-      }
-
-      this.A.a();
-   }
-
-   @Override
-   protected void aF_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
-      } else {
-         super.aF_();
-      }
-   }
-
-   private int m() {
-      return 90;
-   }
-
-   @Override
-   public void aO_() {
-      this.a(true, this.y);
-   }
-
-   private void a(fuk $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.ax();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
-
-   @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
+   public void a(fob $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.E();
-      this.s.a($$0, this.n, 1.0F);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
    }
 
    @Override
-   protected void a(fod $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   public boolean aG_() {
+      return false;
    }
 
-   private void E() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.w = true;
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

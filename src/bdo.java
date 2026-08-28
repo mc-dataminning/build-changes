@@ -1,28 +1,14 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Map.Entry;
 
-public class bdo extends bgr {
-   private final Map<String, String> a;
-
-   public bdo(Schema $$0, String $$1, String $$2, Map<String, String> $$3) {
-      super($$0, false, $$1, bhw.B, $$2);
-      this.a = $$3;
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      for (Entry<String, String> $$1 : this.a.entrySet()) {
-         $$0 = $$0.renameField($$1.getKey(), $$1.getValue());
-      }
-
-      return $$0;
+public class bdo extends bgq {
+   public bdo(Schema $$0) {
+      super($$0, false, "EntityGoatMissingStateFix", bhv.B, "minecraft:goat");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
    }
 }

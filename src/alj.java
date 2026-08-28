@@ -39,17 +39,17 @@ public class alj {
    }
 
    private void a(Collection<il<ex>> $$0, aku $$1) {
-      bor.a().a($$1::toString);
+      boq.a().a($$1::toString);
 
       for (il<ex> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      bor.a().c();
+      boq.a().c();
    }
 
    public void a(il<ex> $$0, ex $$1) {
-      bos $$2 = bor.a();
+      bor $$2 = boq.a();
       $$2.a(() -> "function " + $$0.a());
 
       try {

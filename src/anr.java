@@ -20,7 +20,7 @@ public class anr {
    }
 
    private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avj $$2 = $$0.l().ag().f();
+      avi $$2 = $$0.l().ag().f();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

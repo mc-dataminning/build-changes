@@ -1,115 +1,77 @@
 import javax.annotation.Nullable;
 
-public class hkn implements hkr {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final wo f = wo.a("tutorial.move.title", hkq.a("forward"), hkq.a("left"), hkq.a("back"), hkq.a("right"));
-   private static final wo g = wo.a("tutorial.move.description", hkq.a("jump"));
-   private static final wo h = wo.c("tutorial.look.title");
-   private static final wo i = wo.c("tutorial.look.description");
-   private final hkq j;
+public class hkn implements hks {
+   private static final int a = 6000;
+   private static final wo b = wo.c("tutorial.find_tree.title");
+   private static final wo c = wo.c("tutorial.find_tree.description");
+   private final hkr d;
    @Nullable
-   private fre k;
-   @Nullable
-   private fre l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+   private frc e;
+   private int f;
 
-   public hkn(hkq $$0) {
-      this.j = $$0;
+   public hkn(hkr $$0) {
+      this.d = $$0;
    }
 
    @Override
    public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.d();
-            this.k = null;
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hkt.f);
+      } else {
+         flh $$0 = this.d.e();
+         if (this.f == 1) {
+            gkt $$1 = $$0.t;
+            if ($$1 != null && (b($$1) || a($$1))) {
+               this.d.a(hkt.e);
+               return;
+            }
          }
 
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.d();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(hks.b);
-         } else {
-            this.j.a(hks.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         flj $$0 = this.j.e();
-         if (this.r == -1 && this.k == null) {
-            this.k = new fre($$0.h, fre.a.a, f, g, true);
-            $$0.aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fre($$0.h, fre.a.b, h, i, true);
-            $$0.aA().a(this.l);
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new frc($$0.h, frc.a.c, b, c, false);
+            $$0.aA().a(this.e);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.k != null) {
-         this.k.d();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.d();
-         this.l = null;
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
       }
    }
 
    @Override
-   public void a(gkt $$0) {
-      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
-         this.p = true;
+   public void a(gfw $$0, faw $$1) {
+      if ($$1.d() == faw.a.b) {
+         dwv $$2 = $$0.a_(((fau)$$1).b());
+         if ($$2.a(awo.al)) {
+            this.d.a(hkt.c);
+         }
       }
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public void a(cwn $$0) {
+      if ($$0.a(awx.aQ)) {
+         this.d.a(hkt.e);
       }
+   }
+
+   private static boolean b(gkt $$0) {
+      return $$0.gi().a_($$0x -> $$0x.a(awx.aQ));
+   }
+
+   public static boolean a(gkt $$0) {
+      for (jr<djk> $$1 : mb.e.c(awo.al)) {
+         djk $$2 = $$1.a();
+         if ($$0.m().a(awj.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

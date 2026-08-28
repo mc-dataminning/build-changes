@@ -1,75 +1,82 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dsm extends diy {
-   public static final MapCodec<dsm> a = b(dsm::new);
-   public static final dxz<dwk> b = dxn.bC;
-   public static final dxu<jn> c = dnk.aF;
-   public static final dxo d = dxn.bD;
+public class dsm extends dib {
+   public static final MapCodec<dsm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvk.q.fieldOf("color").forGetter(dib::b), t()).apply($$0, dsm::new));
+   public static final dxs<jn> b = dni.aF;
+   private static final Map<jn, fbs> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         jn.c,
+         djk.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         jn.d,
+         djk.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         jn.e,
+         djk.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         jn.f,
+         djk.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
+      )
+   );
 
    @Override
    public MapCodec<dsm> a() {
       return a;
    }
 
-   public dsm(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, jn.c).b(b, dwk.a).b(d, Boolean.valueOf(false)));
+   public dsm(cvk $$0, dwu.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(b, jn.c));
    }
 
    @Override
-   public bsj a(cwp $$0, dwx $$1, dgi $$2, ji $$3, cox $$4, bsi $$5, faw $$6) {
-      if (!$$0.f() && $$1.c(b) == dwk.b) {
-         if ($$2 instanceof arc $$7) {
-            if (!($$7.c_($$3) instanceof dwf $$8)) {
-               return bsj.f;
+   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Override
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      return $$4 == $$0.c(b).g() && !$$0.a($$1, $$3) ? djm.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dwv a(dae $$0) {
+      dwv $$1 = this.m();
+      dgj $$2 = $$0.q();
+      ji $$3 = $$0.a();
+      jn[] $$4 = $$0.f();
+
+      for (jn $$5 : $$4) {
+         if ($$5.o().d()) {
+            jn $$6 = $$5.g();
+            $$1 = $$1.b(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
-
-            dwf.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
          }
-
-         return bsj.b;
-      } else {
-         return bsj.f;
       }
-   }
 
-   @Nullable
-   @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dwf($$0, $$1);
+      return null;
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return $$0 instanceof arc $$3
-         ? a($$2, dub.S, ($$1x, $$2x, $$3x, $$4) -> dwf.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, dub.S, ($$0x, $$1x, $$2x, $$3x) -> dwf.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   protected dwv a(dwv $$0, dqc $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public dwx a(dag $$0) {
-      return this.m().b(c, $$0.g().g());
+   protected dwv a(dwv $$0, doj $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dpx a_(dwx $$0) {
-      return dpx.c;
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(b);
    }
 }

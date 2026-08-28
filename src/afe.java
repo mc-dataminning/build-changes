@@ -24,15 +24,15 @@ public class afe implements yv<abk> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afe a(fca $$0, boolean $$1) {
+   public static afe a(fby $$0, boolean $$1) {
       return new afe($$0.b(), $$1 ? 0 : 2, Optional.of(new afe.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static afe a(fca $$0) {
+   public static afe a(fby $$0) {
       return new afe($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afe a(fca $$0, String $$1, afe.a $$2) {
+   public static afe a(fby $$0, String $$1, afe.a $$2) {
       return new afe($$0.b(), $$2 == afe.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class afe implements yv<abk> {
       private final n f;
       private final int g;
 
-      public b(fca $$0) {
+      public b(fby $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

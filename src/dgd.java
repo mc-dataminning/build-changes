@@ -1,34 +1,108 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class dgd extends eul {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum dgd implements azu {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public static eul.a<dgd> a() {
-      return new eul.a<>(dgd::new, dgd::b, ban.i);
+   public static final dgd e = a;
+   public static final azu.a<dgd> f = azu.a(dgd::values);
+   private static final IntFunction<dgd> g = axp.a(dgd::a, values(), axp.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final wo k;
+   private final wo l;
+
+   private dgd(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = wo.c("selectWorld.gameMode." + $$1);
+      this.l = wo.c("gameMode." + $$1);
    }
 
-   private dgd(LongSet $$0) {
-      this.c = $$0;
+   public int a() {
+      return this.i;
    }
 
-   public dgd() {
-      this(new LongOpenHashSet());
-   }
-
-   public static dgd b(tq $$0, jt.a $$1) {
-      return new dgd(new LongOpenHashSet($$0.o("Forced")));
+   public String b() {
+      return this.j;
    }
 
    @Override
-   public tq a(tq $$0, jt.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public String c() {
+      return this.j;
    }
 
-   public LongSet b() {
-      return this.c;
+   public wo d() {
+      return this.l;
+   }
+
+   public wo e() {
+      return this.k;
+   }
+
+   public void a(cor $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
+   }
+
+   public boolean f() {
+      return this == c || this == d;
+   }
+
+   public boolean g() {
+      return this == b;
+   }
+
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static dgd a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static dgd a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static dgd a(String $$0, @Nullable dgd $$1) {
+      dgd $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable dgd $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static dgd b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
+   }
+
+   public static boolean c(int $$0) {
+      return Arrays.stream(values()).anyMatch($$1 -> $$1.i == $$0);
    }
 }

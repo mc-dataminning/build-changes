@@ -1,86 +1,86 @@
-public class bsb implements bsc {
-   private final bsc b;
-   private final bsc c;
+import java.util.Set;
+import java.util.function.Predicate;
 
-   public bsb(bsc $$0, bsc $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public interface bsb extends brz {
+   float r_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   cwn a(int var1);
+
+   cwn a(int var1, int var2);
+
+   cwn b(int var1);
+
+   void a(int var1, cwn var2);
+
+   default int an_() {
+      return 99;
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
+   default int e_(cwn $$0) {
+      return Math.min(this.an_(), $$0.k());
    }
 
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
+   void e();
+
+   boolean a(cov var1);
+
+   default void c_(cov $$0) {
    }
 
-   public boolean a(bsc $$0) {
-      return this.b == $$0 || this.c == $$0;
+   default void c(cov $$0) {
    }
 
-   @Override
-   public cwp a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   default boolean b(int $$0, cwn $$1) {
+      return true;
    }
 
-   @Override
-   public cwp a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   default boolean a(bsb $$0, int $$1, cwn $$2) {
+      return true;
    }
 
-   @Override
-   public cwp b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
+   default int a_(cwj $$0) {
+      int $$1 = 0;
 
-   @Override
-   public void a(int $$0, cwp $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cwn $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.M();
+         }
       }
+
+      return $$1;
    }
 
-   @Override
-   public int an_() {
-      return this.b.an_();
+   default boolean a(Set<cwj> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
    }
 
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
+   default boolean a_(Predicate<cwn> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cwn $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public boolean a(cox $$0) {
-      return this.b.a($$0) && this.c.a($$0);
+   static boolean a(dtx $$0, cov $$1) {
+      return a($$0, $$1, 4.0F);
    }
 
-   @Override
-   public void c_(cox $$0) {
-      this.b.c_($$0);
-      this.c.c_($$0);
-   }
-
-   @Override
-   public void c(cox $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cwp $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   static boolean a(dtx $$0, cov $$1, float $$2) {
+      dgg $$3 = $$0.i();
+      ji $$4 = $$0.aA_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      }
    }
 }

@@ -1,76 +1,69 @@
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import java.util.List;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fyd extends fyh<csd> {
-   private static final fqf h = new fqf(
-      aku.b("recipe_book/filter_enabled"),
-      aku.b("recipe_book/filter_disabled"),
-      aku.b("recipe_book/filter_enabled_highlighted"),
-      aku.b("recipe_book/filter_disabled_highlighted")
-   );
-   private static final wo i = wo.c("gui.recipebook.toggleRecipes.craftable");
-   private static final List<fyh.a> j = List.of(
-      new fyh.a(fyn.a), new fyh.a(cwt.pJ, cwt.pB, dbg.c), new fyh.a(cwt.eM, dbg.a), new fyh.a(cwt.rh, cwt.oZ, dbg.d), new fyh.a(cwt.me, dbg.b)
-   );
+public class fyd {
+   private final Reference2ObjectMap<ctx, fyd.a> a = new Reference2ObjectArrayMap();
+   private final fym b;
 
-   public fyd(csd $$0) {
-      super($$0, j);
+   public fyd(fym $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected boolean a(ctz $$0) {
-      return this.f.m() == $$0 || this.f.n().contains($$0);
+   public void a() {
+      this.a.clear();
    }
 
-   private boolean b(dcj $$0) {
-      int $$1 = this.f.o();
-      int $$2 = this.f.p();
-      Objects.requireNonNull($$0);
-
-      return switch ($$0) {
-         case dcn $$3 -> $$1 >= $$3.b() && $$2 >= $$3.c();
-         case dco $$4 -> $$1 * $$2 >= $$4.b().size();
-         default -> false;
-      };
-   }
-
-   @Override
-   protected void a(fyf $$0, dcj $$1, bak $$2) {
-      $$0.b(this.f.m(), $$2, $$1.d());
-      Objects.requireNonNull($$1);
-      switch ($$1) {
-         case dcn $$3:
-            List<ctz> $$4 = this.f.n();
-            akf.a(this.f.o(), this.f.p(), $$3.b(), $$3.c(), $$3.f(), ($$3x, $$4x, $$5x, $$6x) -> {
-               ctz $$7x = $$4.get($$4x);
-               $$0.a($$7x, $$2, $$3x);
-            });
-            break;
-         case dco $$5:
-            label15: {
-               List<ctz> $$6 = this.f.n();
-               int $$7 = Math.min($$5.b().size(), $$6.size());
-
-               for (int $$8 = 0; $$8 < $$7; $$8++) {
-                  $$0.a($$6.get($$8), $$2, $$5.b().get($$8));
-               }
-               break label15;
-            }
+   private void a(ctx $$0, baj $$1, dcn $$2, boolean $$3) {
+      List<cwn> $$4 = $$2.a($$1);
+      if (!$$4.isEmpty()) {
+         this.a.put($$0, new fyd.a($$4, $$3));
       }
    }
 
-   @Override
-   protected void a() {
-      this.e.a(h);
+   protected void a(ctx $$0, baj $$1, dcn $$2) {
+      this.a($$0, $$1, $$2, false);
    }
 
-   @Override
-   protected wo b() {
-      return i;
+   protected void b(ctx $$0, baj $$1, dcn $$2) {
+      this.a($$0, $$1, $$2, true);
    }
 
-   @Override
-   protected void a(fyl $$0, cpc $$1) {
-      $$0.a($$1, this::b);
+   public void a(fob $$0, flh $$1, boolean $$2) {
+      this.a.forEach(($$3, $$4) -> {
+         int $$5 = $$3.e;
+         int $$6 = $$3.f;
+         if ($$4.b && $$2) {
+            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
+         } else {
+            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
+         }
+
+         cwn $$7 = $$4.a(this.b.currentIndex());
+         $$0.b($$7, $$5, $$6);
+         $$0.a(gmf.O(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
+         if ($$4.b) {
+            $$0.a($$1.h, $$7, $$5, $$6);
+         }
+      });
+   }
+
+   public void a(fob $$0, flh $$1, int $$2, int $$3, @Nullable ctx $$4) {
+      if ($$4 != null) {
+         fyd.a $$5 = (fyd.a)this.a.get($$4);
+         if ($$5 != null) {
+            cwn $$6 = $$5.a(this.b.currentIndex());
+            $$0.a($$1.h, fui.a($$1, $$6), $$2, $$3, $$6.a(kv.G));
+         }
+      }
+   }
+
+   static record a(List<cwn> a, boolean b) {
+
+      public cwn a(int $$0) {
+         int $$1 = this.a.size();
+         return $$1 == 0 ? cwn.j : this.a.get($$0 % $$1);
+      }
    }
 }

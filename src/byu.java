@@ -2,20 +2,25 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class byu {
-   public static bxa<bvg> a() {
-      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.a((cap<bvg>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bwi<?> $$3 = $$1.ec();
-               cqk $$4 = $$0x.d($$1.dw());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(cqo.b);
-                  $$3.a($$0x.ae(), $$0x.ad());
-               }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-               return true;
-            }
-         }))));
+   public static bwz<bvf> a() {
+      return cal.a((Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$0 -> $$0.group($$0.b(cej.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  ji $$5 = $$0.<jq>b($$1).b();
+                  if ($$5.a($$3.dw(), 3.0)) {
+                     dwv $$6 = $$2.a_($$5);
+                     if ($$6.a(djm.oF)) {
+                        djg $$7 = (djg)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
+                     }
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

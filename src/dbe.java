@@ -1,35 +1,23 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class dbe {
+   public static final dbf a = a("crafting_building_blocks");
+   public static final dbf b = a("crafting_redstone");
+   public static final dbf c = a("crafting_equipment");
+   public static final dbf d = a("crafting_misc");
+   public static final dbf e = a("furnace_food");
+   public static final dbf f = a("furnace_blocks");
+   public static final dbf g = a("furnace_misc");
+   public static final dbf h = a("blast_furnace_blocks");
+   public static final dbf i = a("blast_furnace_misc");
+   public static final dbf j = a("smoker_food");
+   public static final dbf k = a("stonecutter");
+   public static final dbf l = a("smithing");
+   public static final dbf m = a("campfire");
 
-public interface dbe<T extends dbk> {
-   Codec<dbe<?>> a = mb.r.q().dispatch(dbe::a, dbo::a);
-   ym<vz, dbe<?>> b = yk.a(mc.ae).b(dbe::a, dbo::b);
-
-   boolean a(T var1, dgi var2);
-
-   cwp a(T var1, jt.a var2);
-
-   default boolean ap_() {
-      return false;
+   private static dbf a(String $$0) {
+      return ke.a(mb.aB, $$0, new dbf());
    }
 
-   default boolean i() {
-      return true;
+   public static dbf a(ke<dbf> $$0) {
+      return m;
    }
-
-   default String j() {
-      return "";
-   }
-
-   dbo<? extends dbe<T>> a();
-
-   dbp<? extends dbe<T>> b();
-
-   dbd ao_();
-
-   default List<dcj> g() {
-      return List.of();
-   }
-
-   dbh h();
 }

@@ -1,113 +1,170 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dmk extends djm {
-   public static final MapCodec<dmk> a = b(dmk::new);
-   public static final dxw b = dxn.aT;
-   protected static final fbu c = djm.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-   public static final int d = 7;
+public class dmk extends dni {
+   public static final MapCodec<dmk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dyh.a.fieldOf("wood_type").forGetter($$0x -> $$0x.H), t()).apply($$0, dmk::new)
+   );
+   public static final dxm b = dxl.z;
+   public static final dxm c = dxl.B;
+   public static final dxm d = dxl.u;
+   protected static final fbs e = djk.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final fbs f = djk.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+   protected static final fbs g = djk.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
+   protected static final fbs h = djk.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
+   protected static final fbs i = djk.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final fbs j = djk.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final fbs k = djk.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
+   protected static final fbs l = djk.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
+   protected static final fbs m = fbp.a(djk.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), djk.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
+   protected static final fbs n = fbp.a(djk.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), djk.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
+   protected static final fbs o = fbp.a(djk.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), djk.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
+   protected static final fbs G = fbp.a(djk.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), djk.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
+   private final dyh H;
 
    @Override
    public MapCodec<dmk> a() {
       return a;
    }
 
-   protected dmk(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
+   public dmk(dyh $$0, dwu.d $$1) {
+      super($$1.a($$0.d()));
+      this.H = $$0;
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$4 == jn.b && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      dwx $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dmm || $$3.b() instanceof dwp;
-   }
-
-   @Override
-   public dwx a(dag $$0) {
-      return !this.m().a((dgl)$$0.q(), $$0.a()) ? djo.j.m() : super.a($$0);
-   }
-
-   @Override
-   protected boolean g_(dwx $$0) {
-      return true;
-   }
-
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return c;
-   }
-
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      if ($$0.c(d)) {
+         return $$0.c(aF).o() == jn.a.a ? h : g;
+      } else {
+         return $$0.c(aF).o() == jn.a.a ? f : e;
       }
    }
 
    @Override
-   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      int $$4 = $$0.c(b);
-      if (!a((dgl)$$1, $$2) && !$$1.r($$2.d())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((dfn)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      jn.a $$8 = $$4.o();
+      if ($$0.c(aF).h().o() != $$8) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         boolean $$9 = this.o($$6) || this.o($$1.a_($$3.a($$4.g())));
+         return $$0.b(d, Boolean.valueOf($$9));
+      }
+   }
+
+   @Override
+   protected fbs b_(dwv $$0, dfl $$1, ji $$2) {
+      if ($$0.c(b)) {
+         return fbp.a();
+      } else {
+         return $$0.c(aF).o() == jn.a.c ? k : l;
+      }
+   }
+
+   @Override
+   protected fbs b(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      if ($$0.c(b)) {
+         return fbp.a();
+      } else {
+         return $$0.c(aF).o() == jn.a.c ? i : j;
+      }
+   }
+
+   @Override
+   protected fbs d_(dwv $$0) {
+      if ($$0.c(d)) {
+         return $$0.c(aF).o() == jn.a.a ? G : o;
+      } else {
+         return $$0.c(aF).o() == jn.a.a ? n : m;
+      }
+   }
+
+   @Override
+   protected boolean a(dwv $$0, etm $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(b);
+         case b:
+            return false;
+         case c:
+            return $$0.c(b);
+         default:
+            return false;
+      }
+   }
+
+   @Override
+   public dwv a(dae $$0) {
+      dgg $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      boolean $$3 = $$1.C($$2);
+      jn $$4 = $$0.g();
+      jn.a $$5 = $$4.o();
+      boolean $$6 = $$5 == jn.a.c && (this.o($$1.a_($$2.h())) || this.o($$1.a_($$2.i())))
+         || $$5 == jn.a.a && (this.o($$1.a_($$2.f())) || this.o($$1.a_($$2.g())));
+      return this.m().b(aF, $$4).b(b, Boolean.valueOf($$3)).b(c, Boolean.valueOf($$3)).b(d, Boolean.valueOf($$6));
+   }
+
+   private boolean o(dwv $$0) {
+      return $$0.a(awo.N);
+   }
+
+   @Override
+   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
+      if ($$0.c(b)) {
+         $$0 = $$0.b(b, Boolean.valueOf(false));
+         $$1.a($$2, $$0, 10);
+      } else {
+         jn $$5 = $$3.cO();
+         if ($$0.c(aF) == $$5.g()) {
+            $$0 = $$0.b(aF, $$5);
          }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
+
+         $$0 = $$0.b(b, Boolean.valueOf(true));
+         $$1.a($$2, $$0, 10);
       }
+
+      boolean $$6 = $$0.c(b);
+      $$1.a($$3, $$2, $$6 ? this.H.g() : this.H.f(), awa.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
+      $$1.a($$3, $$6 ? ebr.h : ebr.d, $$2);
+      return bsi.a;
    }
 
    @Override
-   public void a(dgi $$0, dwx $$1, ji $$2, buk $$3, float $$4) {
-      if ($$0 instanceof arc $$5
-         && $$0.A.i() < $$4 - 0.5F
-         && $$3 instanceof bvg
-         && ($$3 instanceof cox || $$5.O().b(dge.c))
-         && $$3.dr() * $$3.dr() * $$3.ds() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
+   protected void a(dwv $$0, arc $$1, ji $$2, dfy $$3, BiConsumer<cwn, ji> $$4) {
+      if ($$3.g() && !$$0.c(c)) {
+         boolean $$5 = $$0.c(b);
+         $$1.b($$2, $$0.b(b, Boolean.valueOf(!$$5)));
+         $$1.a(null, $$2, $$5 ? this.H.f() : this.H.g(), awa.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
+         $$1.a($$5 ? ebr.d : ebr.h, $$2, ebr.a.a($$0));
       }
 
       super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static void a(@Nullable buk $$0, dwx $$1, dgi $$2, ji $$3) {
-      dwx $$4 = a($$1, djo.j.m(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(ebt.c, $$3, ebt.a.a($$0, $$4));
-   }
-
-   private static boolean a(dfn $$0, ji $$1) {
-      return $$0.a_($$1.d()).a(awp.cA);
-   }
-
-   private static boolean a(dgl $$0, ji $$1) {
-      for (ji $$2 : ji.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(awv.a)) {
-            return true;
+   @Override
+   protected void a(dwv $$0, dgg $$1, ji $$2, djk $$3, @Nullable euf $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.C($$2);
+         if ($$0.c(c) != $$6) {
+            $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)).b(b, Boolean.valueOf($$6)), 2);
+            if ($$0.c(b) != $$6) {
+               $$1.a(null, $$2, $$6 ? this.H.g() : this.H.f(), awa.e, 1.0F, $$1.H_().i() * 0.1F + 0.9F);
+               $$1.a(null, $$6 ? ebr.h : ebr.d, $$2);
+            }
          }
       }
-
-      return false;
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b);
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(aF, b, c, d);
    }
 
-   @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
+   public static boolean a(dwv $$0, jn $$1) {
+      return $$0.c(aF).o() == $$1.h().o();
    }
 }

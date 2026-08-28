@@ -20,7 +20,7 @@ public class agc {
       a($$0, (zy)(new aad()));
    }
 
-   public static void a(arc $$0, dfo $$1) {
+   public static void a(arc $$0, dfm $$1) {
    }
 
    public static void a(arc $$0, ji $$1) {
@@ -38,57 +38,57 @@ public class agc {
    private static void d(arc $$0, ji $$1) {
    }
 
-   public static void a(dgi $$0, bvi $$1, @Nullable etn $$2, float $$3) {
+   public static void a(dgg $$0, bvh $$1, @Nullable etl $$2, float $$3) {
    }
 
-   public static void a(dgi $$0, ji $$1) {
+   public static void a(dgg $$0, ji $$1) {
    }
 
-   public static void a(dgi $$0, aam $$1) {
+   public static void a(dgg $$0, aam $$1) {
       if ($$0 instanceof arc $$2) {
          a($$2, (zy)$$1);
       }
    }
 
-   public static void a(dhg $$0, enu $$1) {
+   public static void a(dhe $$0, ens $$1) {
    }
 
-   public static void a(dgi $$0, bvi $$1, ccf $$2) {
+   public static void a(dgg $$0, bvh $$1, cce $$2) {
    }
 
-   public static void a(arc $$0, Collection<cqk> $$1) {
+   public static void a(arc $$0, Collection<cqi> $$1) {
    }
 
-   public static void a(bvg $$0) {
+   public static void a(bvf $$0) {
    }
 
-   public static void a(cgy $$0) {
+   public static void a(cgx $$0) {
    }
 
-   public static void a(cmt $$0) {
+   public static void a(cms $$0) {
    }
 
-   public static void a(dgi $$0, jr<ebt> $$1, fba $$2) {
+   public static void a(dgg $$0, jr<ebr> $$1, fay $$2) {
    }
 
-   public static void a(dgi $$0, ebv $$1) {
+   public static void a(dgg $$0, ebt $$1) {
    }
 
-   public static void a(dgi $$0, ji $$1, dwx $$2, dtw $$3) {
+   public static void a(dgg $$0, ji $$1, dwv $$2, dtu $$3) {
    }
 
-   private static List<String> a(bvg $$0, long $$1) {
-      Map<cek<?>, Optional<? extends cej<?>>> $$2 = $$0.ec().b();
+   private static List<String> a(bvf $$0, long $$1) {
+      Map<cej<?>, Optional<? extends cei<?>>> $$2 = $$0.ec().b();
       List<String> $$3 = Lists.newArrayList();
 
-      for (Entry<cek<?>, Optional<? extends cej<?>>> $$4 : $$2.entrySet()) {
-         cek<?> $$5 = $$4.getKey();
-         Optional<? extends cej<?>> $$6 = $$4.getValue();
+      for (Entry<cej<?>, Optional<? extends cei<?>>> $$4 : $$2.entrySet()) {
+         cej<?> $$5 = $$4.getKey();
+         Optional<? extends cei<?>> $$6 = $$4.getValue();
          String $$10;
          if ($$6.isPresent()) {
-            cej<?> $$7 = (cej<?>)$$6.get();
+            cei<?> $$7 = (cei<?>)$$6.get();
             Object $$8 = $$7.c();
-            if ($$5 == cek.D) {
+            if ($$5 == cej.D) {
                long $$9 = $$1 - (Long)$$8;
                $$10 = $$9 + " ticks ago";
             } else if ($$7.e()) {
@@ -112,21 +112,21 @@ public class agc {
          return "-";
       } else if ($$1 instanceof UUID) {
          return a($$0, $$0.a((UUID)$$1));
-      } else if ($$1 instanceof bvg) {
-         buk $$2 = (buk)$$1;
+      } else if ($$1 instanceof bvf) {
+         buj $$2 = (buj)$$1;
          return agb.a($$2);
-      } else if ($$1 instanceof bsm) {
-         return ((bsm)$$1).al().getString();
-      } else if ($$1 instanceof cen) {
-         return a($$0, ((cen)$$1).a());
-      } else if ($$1 instanceof bxk) {
-         return a($$0, ((bxk)$$1).c());
+      } else if ($$1 instanceof bsl) {
+         return ((bsl)$$1).al().getString();
+      } else if ($$1 instanceof cem) {
+         return a($$0, ((cem)$$1).a());
+      } else if ($$1 instanceof bxj) {
+         return a($$0, ((bxj)$$1).c());
       } else if ($$1 instanceof jq) {
          return a($$0, ((jq)$$1).b());
-      } else if ($$1 instanceof bxc) {
-         return a($$0, ((bxc)$$1).b());
-      } else if ($$1 instanceof bta) {
-         buk $$3 = ((bta)$$1).d();
+      } else if ($$1 instanceof bxb) {
+         return a($$0, ((bxb)$$1).b());
+      } else if ($$1 instanceof bsz) {
+         buj $$3 = ((bsz)$$1).d();
          return $$3 == null ? $$1.toString() : a($$0, $$3);
       } else if (!($$1 instanceof Collection)) {
          return $$1.toString();

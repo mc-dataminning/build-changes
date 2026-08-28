@@ -1,38 +1,37 @@
-public enum etq {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import javax.annotation.Nullable;
 
-   private final float A;
+public class etq {
+   private final dfp a;
+   @Nullable
+   private final etp b;
+   private final ji c;
+   private final ji.a d = new ji.a();
 
-   private etq(final float $$0) {
-      this.A = $$0;
+   public etq(dfp $$0, bvh $$1) {
+      this.a = $$0;
+      if ($$1.dW() instanceof arc $$2) {
+         this.b = $$2.I();
+      } else {
+         this.b = null;
+      }
+
+      this.c = $$1.dw();
    }
 
-   public float a() {
-      return this.A;
+   public eto a(int $$0, int $$1, int $$2) {
+      ji $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? ett.b(this.a, $$3) : this.b.a(this.a, $$3);
+   }
+
+   public dwv a(ji $$0) {
+      return this.a.a_($$0);
+   }
+
+   public dfp a() {
+      return this.a;
+   }
+
+   public ji b() {
+      return this.c;
    }
 }

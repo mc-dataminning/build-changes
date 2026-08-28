@@ -1,7 +1,4 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
 
-public interface ato<T> {
-   String a();
-
-   T a(JsonObject var1);
+public record ato<T>(String a, Codec<T> b) {
 }

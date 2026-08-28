@@ -1,60 +1,59 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cxo extends cuv {
-   public cxo(djm $$0, cwl.a $$1) {
-      super($$0, $$1);
+public class cxo extends cwj {
+   public cxo(cwj.a $$0) {
+      super($$0);
    }
 
-   @Nullable
+   public static czp b() {
+      js<djk> $$0 = mb.a(mb.e);
+      return new czp(
+         List.of(czp.a.a(jv.a(djm.bz.p()), 15.0F), czp.a.b($$0.b(awo.Q), 15.0F), czp.a.b($$0.b(awo.a), 5.0F), czp.a.b(jv.a(djm.ft.p(), djm.fu.p()), 2.0F)),
+         1.0F,
+         1
+      );
+   }
+
    @Override
-   public dag b(dag $$0) {
-      ji $$1 = $$0.a();
-      dgi $$2 = $$0.q();
-      dwx $$3 = $$2.a_($$1);
-      djm $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dqg.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         jn $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jn.b ? $$0.g() : jn.b;
-         }
-
-         int $$7 = 0;
-         ji.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               cox $$9 = $$0.o();
-               int $$10 = $$2.an();
-               if ($$9 instanceof ard && $$8.v() > $$10) {
-                  ((ard)$$9).b(wo.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return dag.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+   public boolean a(cwn $$0, dgg $$1, dwv $$2, ji $$3, bvf $$4) {
+      if (!$$1.C && !$$2.a(awo.aN)) {
+         $$0.a(1, $$4, bur.a);
       }
+
+      return $$2.a(awo.Q)
+         || $$2.a(djm.bz)
+         || $$2.a(djm.bA)
+         || $$2.a(djm.bB)
+         || $$2.a(djm.bC)
+         || $$2.a(djm.ti)
+         || $$2.a(djm.ft)
+         || $$2.a(djm.gd)
+         || $$2.a(awo.a);
    }
 
    @Override
-   protected boolean c() {
-      return false;
+   public bsi a(dag $$0) {
+      dgg $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwv $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dna $$5 && !$$5.q($$3)) {
+         cov $$6 = $$0.o();
+         cwn $$7 = $$0.n();
+         if ($$6 instanceof ard) {
+            ap.N.a((ard)$$6, $$2, $$7);
+         }
+
+         $$1.a($$6, $$2, avz.lN, awa.e, 1.0F, 1.0F);
+         dwv $$8 = $$5.p($$3);
+         $$1.b($$2, $$8);
+         $$1.a(ebr.c, $$2, ebr.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bvf.d($$0.p()));
+         }
+
+         return bsi.a;
+      }
+
+      return super.a($$0);
    }
 }

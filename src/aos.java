@@ -21,10 +21,10 @@ public class aos {
       );
    }
 
-   private static int a(ex $$0, @Nullable buk $$1, ard $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, @Nullable buj $$1, ard $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.h.b() != dgf.d) {
+      } else if ($$2.h.b() != dgd.d) {
          throw b.create($$2.p_());
       } else {
          $$2.d($$1);

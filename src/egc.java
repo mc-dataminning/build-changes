@@ -1,58 +1,149 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class egc extends efy<egd> {
-   public egc(Codec<egd> $$0) {
+public class egc extends efw<eib> {
+   private static final jn[] a = jn.values();
+
+   public egc(Codec<eib> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<egd> $$0) {
-      azh $$1 = $$0.d();
-      dhg $$2 = $$0.b();
+   public boolean a(efy<eib> $$0) {
+      eib $$1 = $$0.f();
+      azg $$2 = $$0.d();
       ji $$3 = $$0.e();
-      dqe $$4 = dqe.a($$1);
-      egd $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      erp $$7 = $$2.a().p().aY();
-      ero $$8 = $$7.a($$5.b.get($$6));
-      ero $$9 = $$7.a($$5.c.get($$6));
-      dfo $$10 = new dfo($$3);
-      ene $$11 = new ene($$10.d() - 16, $$2.L_(), $$10.e() - 16, $$10.f() + 16, $$2.an(), $$10.g() + 16);
-      erk $$12 = new erk().a($$4).a($$11).a($$1);
-      km $$13 = $$8.a($$4);
-      ji $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+      dhe $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<ji, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      edp $$9 = new edp(new ecr($$4.E()));
+      esa $$10 = esa.a($$9, -4, 1.0);
+      List<ji> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      ecp $$13 = $$1.d;
+      ecn $$14 = $$1.c;
+      eco $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(ecs.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         ji $$27 = $$3.b($$24, $$25, $$26);
+         dwv $$28 = $$4.a_($$27);
+         if ($$28.l() || $$28.a($$14.h)) {
+            if (++$$22 > $$1.p) {
+               return false;
+            }
+         }
+
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+      }
+
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
+         } else {
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
          }
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.L_() + 10);
-      ji $$19 = $$8.a($$14.h($$18), dol.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
-   }
+      List<ji> $$31 = Lists.newArrayList();
+      Predicate<dwv> $$32 = a($$1.c.g);
 
-   private static int a(dhg $$0, ene $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dwx $$3 = $$0.a_($$2x);
-         if ($$3.l() || $$3.a(djo.K) || $$3.a(djo.J)) {
-            $$2.add(1);
+      for (ji $$33 : ji.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
+
+         for (Pair<ji, Integer> $$37 : $$7) {
+            $$35 += ayy.f($$33.j((km)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
          }
-      });
-      return $$2.getValue();
+
+         for (ji $$38 : $$11) {
+            $$36 += ayy.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
+
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, djm.a.m(), $$32);
+
+               for (jn $$39 : a) {
+                  ji $$40 = $$33.a($$39);
+                  esx $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
+                  }
+               }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+               }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.j());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
+            }
+         }
+      }
+
+      List<dwv> $$43 = $$14.f;
+
+      for (ji $$44 : $$31) {
+         dwv $$45 = af.a($$43, $$2);
+
+         for (jn $$46 : a) {
+            if ($$45.b(dxl.S)) {
+               $$45 = $$45.b(dxl.S, $$46);
+            }
+
+            ji $$47 = $$44.a($$46);
+            dwv $$48 = $$4.a_($$47);
+            if ($$45.b(dxl.J)) {
+               $$45 = $$45.b(dxl.J, Boolean.valueOf($$48.y().b()));
+            }
+
+            if (djt.h($$48)) {
+               this.a($$4, $$47, $$45, $$32);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 }

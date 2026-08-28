@@ -1,5 +1,6 @@
-public class hav extends gyx {
-   public int a;
-   public boolean b;
-   public boolean c;
+public class hav extends gzh {
+   public float[] a = new float[2];
+   public float[] b = new float[2];
+   public float c;
+   public boolean d;
 }

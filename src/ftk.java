@@ -1,109 +1,42 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class ftk extends fui {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final wo c = wo.c("credits_and_attribution.screen.title");
+   private static final wo d = wo.c("credits_and_attribution.button.credits");
+   private static final wo s = wo.c("credits_and_attribution.button.attribution");
+   private static final wo u = wo.c("credits_and_attribution.button.licenses");
+   private final fui v;
+   private final fse w = new fse(this);
 
-public class ftk extends fuk {
-   private static final wo a = wo.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final fsg c = new fsg(this);
-   private final fuk d;
-   private final Consumer<jr<dhk>> s;
-   final ke<dhk> u;
-   private ftk.a v;
-   jr<dhk> w;
-   private fos x;
-
-   public ftk(fuk $$0, fzt $$1, Consumer<jr<dhk>> $$2) {
-      super(wo.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.s = $$2;
-      this.u = $$1.a().e(mc.aI);
-      jr<dhk> $$3 = this.u.a(dhr.b).or(() -> this.u.c().findAny()).orElseThrow();
-      this.w = $$1.e().a().d().c().stream().findFirst().orElse($$3);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.d);
+   public ftk(fui $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
    protected void aR_() {
-      fsk $$0 = this.c.a(fsk.d().a(8));
+      this.w.a(c, this.p);
+      fsi $$0 = this.w.c(fsi.d()).a(8);
       $$0.c().b();
-      $$0.a(new fpz(this.n(), this.p));
-      $$0.a(new fpz(a, this.p));
-      this.v = this.c.c(new ftk.a());
-      fsk $$1 = this.c.b(fsk.e().a(8));
-      this.x = $$1.a(fos.a(wn.d, $$0x -> {
-         this.s.accept(this.w);
-         this.aO_();
-      }).a());
-      $$1.a(fos.a(wn.e, $$0x -> this.aO_()).a());
-      this.v.a(this.v.aH_().stream().filter($$0x -> Objects.equals($$0x.b, this.w)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
+      $$0.a(fop.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fop.a(s, ftf.b(this, axu.d)).a(210).a());
+      $$0.a(fop.a(u, ftf.b(this, axu.e)).a(210).a());
+      this.w.b(fop.a(wn.d, $$0x -> this.aO_()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
    @Override
    protected void c() {
-      this.c.a();
-      this.v.a(this.n, this.c);
+      this.w.a();
    }
 
-   void m() {
-      this.x.j = this.v.p() != null;
+   private void m() {
+      this.m.a(new ful(false, () -> this.m.a(this)));
    }
 
-   class a extends fpo<ftk.a.a> {
-      a() {
-         super(ftk.this.m, ftk.this.n, ftk.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         ftk.this.u.c().map($$0x -> new ftk.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
-
-      public void a(@Nullable ftk.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            ftk.this.w = $$0.b;
-         }
-
-         ftk.this.m();
-      }
-
-      class a extends fpo.a<ftk.a.a> {
-         final jr.c<dhk> b;
-         final wo c;
-
-         public a(final jr.c<dhk> $$0) {
-            this.b = $$0;
-            aku $$1 = $$0.h().a();
-            String $$2 = $$1.h("biome");
-            if (tl.a().b($$2)) {
-               this.c = wo.c($$2);
-            } else {
-               this.c = wo.b($$1.toString());
-            }
-         }
-
-         @Override
-         public wo a() {
-            return wo.a("narrator.select", this.c);
-         }
-
-         @Override
-         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(ftk.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-      }
+   @Override
+   public void aO_() {
+      this.m.a(this.v);
    }
 }

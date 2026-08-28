@@ -1,61 +1,98 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public record dvg(Optional<cwl> d, Optional<cwl> e, Optional<cwl> f, Optional<cwl> g) {
-   public static final dvg a = new dvg(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dvg> b = mb.g.q().sizeLimitedListOf(4).xmap(dvg::new, dvg::a);
-   public static final ym<vz, dvg> c = yk.a(mc.K).a(yk.c(4)).a(dvg::new, dvg::a);
+public class dvg extends dtx implements ebt.b<dvg.a> {
+   private final dvg.a a;
 
-   private dvg(List<cwl> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   public dvg(ji $$0, dwv $$1) {
+      super(dtz.L, $$0, $$1);
+      this.a = new dvg.a($$1, new ebn($$0));
    }
 
-   public dvg(cwl $$0, cwl $$1, cwl $$2, cwl $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
+   public static void a(dgg $$0, ji $$1, dwv $$2, dvg $$3) {
+      $$3.a.d().a($$0, $$1, $$0.H_(), true);
    }
 
-   private static Optional<cwl> a(List<cwl> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         cwl $$2 = $$0.get($$1);
-         return $$2 == cwt.rs ? Optional.empty() : Optional.of($$2);
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.a.b.a($$0);
+   }
+
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
+   }
+
+   public dvg.a b() {
+      return this.a;
+   }
+
+   public static class a implements ebt {
+      public static final int a = 8;
+      final dqk b;
+      private final dwv c;
+      private final ebv d;
+
+      public a(dwv $$0, ebv $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dqk.a();
       }
-   }
 
-   public tq a(tq $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", (un)b.encodeStart(ue.a, this).getOrThrow());
-         return $$0;
+      @Override
+      public ebv a() {
+         return this.d;
       }
-   }
 
-   public List<cwl> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cwt.rs)).toList();
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   public static dvg b(@Nullable tq $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(ue.a, $$0.c("sherds")).result().orElse(a) : a;
-   }
+      @Override
+      public ebt.a c() {
+         return ebt.a.b;
+      }
 
-   public Optional<cwl> b() {
-      return this.d;
-   }
+      @Override
+      public boolean a(arc $$0, jr<ebr> $$1, ebr.a $$2, fay $$3) {
+         if ($$1.a(ebr.p) && $$2.a() instanceof bvf $$4) {
+            if (!$$4.eJ()) {
+               bsz $$5 = $$4.eG();
+               int $$6 = $$4.a($$0, x.a($$5, bsz::d));
+               if ($$4.en() && $$6 > 0) {
+                  this.b.a(ji.a((kb)$$3.a(jn.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
 
-   public Optional<cwl> c() {
-      return this.e;
-   }
+               $$4.eI();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, ji.a((kb)$$1x), this.c, $$0.H_()));
+            }
 
-   public Optional<cwl> d() {
-      return this.f;
-   }
+            return true;
+         } else {
+            return false;
+         }
+      }
 
-   public Optional<cwl> e() {
-      return this.g;
+      @VisibleForTesting
+      public dqk d() {
+         return this.b;
+      }
+
+      private void a(arc $$0, ji $$1, dwv $$2, azg $$3) {
+         $$0.a($$1, $$2.b(dqh.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lt.J, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, avz.wA, awa.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(dgg $$0, bvf $$1) {
+         if ($$1.eq() instanceof ard $$3) {
+            bsz $$4 = $$1.eG() == null ? $$0.ak().a((cov)$$3) : $$1.eG();
+            ap.Z.a($$3, $$1, $$4);
+         }
+      }
    }
 }

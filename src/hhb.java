@@ -1,9 +1,30 @@
-public interface hhb {
-   default j a() {
-      return j.a();
+import java.util.Locale;
+
+public record hhb(aku a, String b) {
+   public hhb(aku a, String b) {
+      b = a(b);
+      this.a = a;
+      this.b = b;
    }
 
-   default boolean b() {
-      return false;
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
+   }
+
+   public aku b() {
+      return this.a;
+   }
+
+   public String c() {
+      return this.b;
    }
 }

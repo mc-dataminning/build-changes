@@ -1,5 +1,6 @@
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +20,7 @@ public abstract class ass implements atb {
    @Nullable
    @Override
    public <T> T a(ato<T> $$0) throws IOException {
-      auh<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      aug<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
       if ($$1 == null) {
          return null;
       } else {
@@ -36,22 +37,15 @@ public abstract class ass implements atb {
    public static <T> T a(ato<T> $$0, InputStream $$1) {
       JsonObject $$3;
       try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
-         $$3 = ayp.a($$2);
-      } catch (Exception var9) {
-         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         $$3 = ayo.a($$2);
+      } catch (Exception var8) {
+         c.error("Couldn't load {} metadata", $$0.a(), var8);
          return null;
       }
 
-      if (!$$3.has($$0.a())) {
-         return null;
-      } else {
-         try {
-            return $$0.a(ayp.u($$3, $$0.a()));
-         } catch (Exception var7) {
-            c.error("Couldn't load {} metadata", $$0.a(), var7);
-            return null;
-         }
-      }
+      return (T)(!$$3.has($$0.a())
+         ? null
+         : $$0.b().parse(JsonOps.INSTANCE, $$3.get($$0.a())).ifError($$1x -> c.error("Couldn't load {} metadata: {}", $$0.a(), $$1x)).result().orElse(null));
    }
 
    @Override

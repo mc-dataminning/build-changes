@@ -260,7 +260,7 @@ public final class aku implements Comparable<aku> {
 
    public static class a implements JsonDeserializer<aku>, JsonSerializer<aku> {
       public aku a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return aku.a(ayp.a($$0, "location"));
+         return aku.a(ayo.a($$0, "location"));
       }
 
       public JsonElement a(aku $$0, Type $$1, JsonSerializationContext $$2) {

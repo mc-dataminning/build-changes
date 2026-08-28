@@ -1,40 +1,65 @@
-public class cep extends ces {
-   public cep(bvi $$0, dgi $$1) {
+public class cep extends cer {
+   public cep(bvh $$0, dgg $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected etp a(int $$0) {
-      this.o = new eti(false);
-      return new etp(this.o, $$0);
+   protected etn a(int $$0) {
+      this.o = new eti();
+      return new etn(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(fay $$0, fay $$1) {
+      return a(this.a, $$0, $$1, true);
    }
 
    @Override
    protected boolean a() {
-      return true;
+      return this.o() && this.a.bn() || !this.a.bZ();
    }
 
    @Override
-   protected fba b() {
-      return new fba(this.a.dB(), this.a.e(0.5), this.a.dH());
+   protected fay b() {
+      return this.a.du();
    }
 
    @Override
-   protected double a(fba $$0) {
-      return $$0.e;
+   public etl a(buj $$0, int $$1) {
+      return this.a($$0.dw(), $$1);
    }
 
    @Override
-   protected boolean a(fba $$0, fba $$1) {
-      return this.a.bn() ? a(this.a, $$0, $$1, false) : false;
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.h();
+      }
+
+      if (!this.k()) {
+         if (this.a()) {
+            this.j();
+         } else if (this.c != null && !this.c.c()) {
+            fay $$0 = this.c.a(this.a);
+            if (this.a.dA() == ayy.a($$0.d) && this.a.dC() == ayy.a($$0.e) && this.a.dG() == ayy.a($$0.f)) {
+               this.c.a();
+            }
+         }
+
+         agc.a(this.b, this.a, this.c, this.l);
+         if (!this.k()) {
+            fay $$1 = this.c.a(this.a);
+            this.a.I().a($$1.d, $$1.e, $$1.f, this.d);
+         }
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o.b($$0);
    }
 
    @Override
    public boolean a(ji $$0) {
-      return !this.b.a_($$0.e()).l();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

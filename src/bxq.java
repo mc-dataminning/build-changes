@@ -1,37 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxq {
-   public static bxa<coi> a(float $$0, int $$1) {
-      return cam.a((Function<cam.b<coi>, ? extends App<cam.c<coi>, cap<coi>>>)($$2 -> $$2.group($$2.c(cek.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dw())) {
-                  return false;
-               } else {
-                  cgk $$6 = $$3.A();
-                  int $$7 = $$6.a(kk.a($$4.dw()));
-                  fba $$8 = null;
+public class bxq extends bwy<cog> {
+   private static final int d = 1200;
+   final float c;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     fba $$10 = cge.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kk.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(kk.a(ji.a((kb)$$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public bxq(float $$0) {
+      super(ImmutableMap.of(cej.d, cek.a), 1200);
+      this.c = $$0;
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   protected boolean a(arc $$0, cog $$1) {
+      return $$1.ec().g().map($$0x -> $$0x == cqm.b || $$0x == cqm.c || $$0x == cqm.d).orElse(true);
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new cen($$8, $$0, $$1));
-                  }
+   protected boolean a(arc $$0, cog $$1, long $$2) {
+      return $$1.ec().a(cej.d);
+   }
 
-                  return true;
-               }
-            })));
+   protected void b(arc $$0, cog $$1, long $$2) {
+      bxa.a($$1, $$1.ec().c(cej.d).get().b(), this.c, 1);
+   }
+
+   protected void c(arc $$0, cog $$1, long $$2) {
+      Optional<jq> $$3 = $$1.ec().c(cej.d);
+      $$3.ifPresent($$1x -> {
+         ji $$2x = $$1x.b();
+         arc $$3x = $$0.p().a($$1x.a());
+         if ($$3x != null) {
+            cgj $$4 = $$3x.A();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agc.c($$0, $$2x);
+         }
+      });
+      $$1.ec().b(cej.d);
    }
 }

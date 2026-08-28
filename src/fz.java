@@ -28,7 +28,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.c($$0);
    }
 
-   public static jr<evw> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static jr<evu> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.a($$0);
    }
 
-   public static jr<exf> b(CommandContext<ex> $$0, String $$1) {
+   public static jr<exd> b(CommandContext<ex> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.b($$0);
    }
 
-   public static jr<eza> c(CommandContext<ex> $$0, String $$1) {
+   public static jr<eyy> c(CommandContext<ex> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -89,21 +89,21 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return b;
    }
 
-   public static class a extends fz<exf> {
+   public static class a extends fz<exd> {
       protected a(et $$0) {
-         super($$0, mc.bh, exh.d);
+         super($$0, mc.bh, exf.d);
       }
    }
 
-   public static class b extends fz<eza> {
+   public static class b extends fz<eyy> {
       protected b(et $$0) {
-         super($$0, mc.bi, eza.f);
+         super($$0, mc.bi, eyy.f);
       }
    }
 
-   public static class c extends fz<evw> {
+   public static class c extends fz<evu> {
       protected c(et $$0) {
-         super($$0, mc.bg, evw.e);
+         super($$0, mc.bg, evu.e);
       }
    }
 }

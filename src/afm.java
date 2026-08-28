@@ -1,8 +1,8 @@
 public class afm implements yv<abk> {
    public static final ym<vz, afm> a = yv.a(afm::a, afm::new);
    public static final float b = 8.0F;
-   private final jr<avz> c;
-   private final awb d;
+   private final jr<avy> c;
+   private final awa d;
    private final int e;
    private final int f;
    private final int g;
@@ -10,7 +10,7 @@ public class afm implements yv<abk> {
    private final float i;
    private final long j;
 
-   public afm(jr<avz> $$0, awb $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+   public afm(jr<avy> $$0, awa $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
       this.c = $$0;
       this.d = $$1;
       this.e = (int)($$2 * 8.0);
@@ -22,8 +22,8 @@ public class afm implements yv<abk> {
    }
 
    private afm(vz $$0) {
-      this.c = avz.d.decode($$0);
-      this.d = $$0.b(awb.class);
+      this.c = avy.d.decode($$0);
+      this.d = $$0.b(awa.class);
       this.e = $$0.readInt();
       this.f = $$0.readInt();
       this.g = $$0.readInt();
@@ -33,7 +33,7 @@ public class afm implements yv<abk> {
    }
 
    private void a(vz $$0) {
-      avz.d.encode($$0, this.c);
+      avy.d.encode($$0, this.c);
       $$0.a(this.d);
       $$0.q(this.e);
       $$0.q(this.f);
@@ -52,11 +52,11 @@ public class afm implements yv<abk> {
       $$0.a(this);
    }
 
-   public jr<avz> b() {
+   public jr<avy> b() {
       return this.c;
    }
 
-   public awb e() {
+   public awa e() {
       return this.d;
    }
 

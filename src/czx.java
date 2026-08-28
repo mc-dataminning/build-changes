@@ -1,123 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record czx(aru<String> k, String l, int m, List<aru<wo>> n, boolean o) implements cys<wo, czx> {
-   public static final czx a = new czx(aru.a(""), "", 0, List.of(), true);
-   public static final int b = 32767;
-   public static final int c = 16;
-   public static final int d = 32;
-   public static final int e = 3;
-   public static final int f = 2;
-   public static final Codec<wo> g = wq.a(32767);
-   public static final Codec<List<aru<wo>>> h = a(g);
-   public static final Codec<czx> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aru.a(Codec.string(0, 32)).fieldOf("title").forGetter(czx::d),
-               Codec.STRING.fieldOf("author").forGetter(czx::e),
-               ayi.a(0, 3).optionalFieldOf("generation", 0).forGetter(czx::f),
-               h.optionalFieldOf("pages", List.of()).forGetter(czx::a),
-               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(czx::g)
-            )
+public record czx(List<bto> c, float f) implements czz {
+   public static final MapCodec<czx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bto.d.listOf().fieldOf("effects").forGetter(czx::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(czx::c))
             .apply($$0, czx::new)
    );
-   public static final ym<vz, czx> j = ym.a(aru.a(yk.b(32)), czx::d, yk.o, czx::e, yk.h, czx::f, aru.a(wq.b).a(yk.a()), czx::a, yk.b, czx::g, czx::new);
+   public static final ym<vz, czx> b = ym.a(bto.e.a(yk.a()), czx::b, yk.l, czx::c, czx::new);
 
-   public czx(aru<String> k, String l, int m, List<aru<wo>> n, boolean o) {
-      if (m >= 0 && m <= 3) {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-      } else {
-         throw new IllegalArgumentException("Generation was " + m + ", but must be between 0 and 3");
-      }
+   public czx(bto $$0, float $$1) {
+      this(List.of($$0), $$1);
    }
 
-   private static Codec<aru<wo>> b(Codec<wo> $$0) {
-      return aru.a($$0);
+   public czx(List<bto> $$0) {
+      this($$0, 1.0F);
    }
 
-   public static Codec<List<aru<wo>>> a(Codec<wo> $$0) {
-      return b($$0).listOf();
-   }
-
-   @Nullable
-   public czx b() {
-      return this.m >= 2 ? null : new czx(this.k, this.l, this.m + 1, this.n, this.o);
-   }
-
-   @Nullable
-   public czx a(ex $$0, @Nullable cox $$1) {
-      if (this.o) {
-         return null;
-      } else {
-         Builder<aru<wo>> $$2 = ImmutableList.builderWithExpectedSize(this.n.size());
-
-         for (aru<wo> $$3 : this.n) {
-            Optional<aru<wo>> $$4 = a($$0, $$1, $$3);
-            if ($$4.isEmpty()) {
-               return null;
-            }
-
-            $$2.add($$4.get());
-         }
-
-         return new czx(this.k, this.l, this.m, $$2.build(), true);
-      }
-   }
-
-   public czx c() {
-      return new czx(this.k, this.l, this.m, this.n, true);
-   }
-
-   private static Optional<aru<wo>> a(ex $$0, @Nullable cox $$1, aru<wo> $$2) {
-      return $$2.b($$2x -> {
-         try {
-            wo $$3 = wr.a($$0, $$2x, $$1, 0);
-            return a($$3, $$0.u()) ? Optional.empty() : Optional.of($$3);
-         } catch (Exception var4) {
-            return Optional.of($$2x);
-         }
-      });
-   }
-
-   private static boolean a(wo $$0, jt.a $$1) {
-      return wo.a.a($$0, $$1).length() > 32767;
-   }
-
-   public List<wo> a(boolean $$0) {
-      return Lists.transform(this.n, $$1 -> (wo)$$1.a($$0));
-   }
-
-   public czx b(List<aru<wo>> $$0) {
-      return new czx(this.k, this.l, this.m, $$0, false);
-   }
-
-   public aru<String> d() {
-      return this.k;
-   }
-
-   public String e() {
-      return this.l;
-   }
-
-   public int f() {
-      return this.m;
+   public czx(bto $$0) {
+      this($$0, 1.0F);
    }
 
    @Override
-   public List<aru<wo>> a() {
-      return this.n;
+   public czz.a<czx> a() {
+      return czz.a.a;
    }
 
-   public boolean g() {
-      return this.o;
+   @Override
+   public boolean a(dgg $$0, cwn $$1, bvf $$2) {
+      if ($$2.dZ().i() >= this.f) {
+         return false;
+      } else {
+         boolean $$3 = false;
+
+         for (bto $$4 : this.c) {
+            if ($$2.a(new bto($$4))) {
+               $$3 = true;
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   public List<bto> b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.f;
    }
 }

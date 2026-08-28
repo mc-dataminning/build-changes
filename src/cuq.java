@@ -1,18 +1,29 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import org.apache.commons.lang3.Validate;
 
-public class cuq extends cwl implements cxk {
-   public cuq(cwl.a $$0) {
-      super($$0);
+public class cuq extends cya {
+   public cuq(djk $$0, djk $$1, cwj.a $$2) {
+      super($$0, $$1, jn.a, $$2);
+      Validate.isInstanceOf(dib.class, $$0);
+      Validate.isInstanceOf(dib.class, $$1);
    }
 
-   public cpe a(dgi $$0, cwp $$1, bvg $$2, @Nullable cwp $$3) {
-      return new cpg($$0, $$2, $$1.c(1), $$3);
+   public static void a(cwn $$0, List<wo> $$1) {
+      dto $$2 = $$0.a(kv.ai);
+      if ($$2 != null) {
+         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
+            dto.b $$4 = $$2.b().get($$3);
+            $$1.add($$4.a().a(n.h));
+         }
+      }
+   }
+
+   public cvk b() {
+      return ((dib)this.d()).b();
    }
 
    @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      cpg $$4 = new cpg($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.b = cpe.a.b;
-      return $$4;
+   public void a(cwn $$0, cwj.b $$1, List<wo> $$2, cyf $$3) {
+      a($$0, $$2);
    }
 }

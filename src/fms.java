@@ -1,23 +1,17 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fms(float b, float c) implements fmt {
-   public static final MapCodec<fms> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayi.a(0.0F, 1.0F).fieldOf("temperature").forGetter(fms::b), ayi.a(0.0F, 1.0F).fieldOf("downfall").forGetter(fms::c))
-            .apply($$0, fms::new)
-   );
+public class fms {
+   private static final ayh.b<aku, MapCodec<? extends fmr>> b = new ayh.b<>();
+   public static final Codec<fmr> a = b.a(aku.a).dispatch(fmr::a, $$0 -> $$0);
 
-   public fms() {
-      this(0.5F, 1.0F);
-   }
-
-   @Override
-   public int a(cwp $$0) {
-      return dgg.a((double)this.b, (double)this.c);
-   }
-
-   @Override
-   public MapCodec<fms> a() {
-      return a;
+   public static void a() {
+      b.a(aku.b("custom_model_data"), fmn.a);
+      b.a(aku.b("constant"), fmm.a);
+      b.a(aku.b("dye"), fmo.a);
+      b.a(aku.b("grass"), fmq.a);
+      b.a(aku.b("firework"), fmp.a);
+      b.a(aku.b("potion"), fmu.a);
+      b.a(aku.b("map_color"), fmt.a);
    }
 }

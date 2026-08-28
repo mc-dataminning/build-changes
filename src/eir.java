@@ -1,26 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eir implements eic {
+public record eir(int b, int c, int d, int e, int f, brn g, float h) implements eia {
    public static final Codec<eir> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dwx.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dwx.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bro.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eir::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eir::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eir::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eir::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eir::f),
+               brn.c.fieldOf("extra_rare_growths").forGetter(eir::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eir::h)
             )
             .apply($$0, eir::new)
    );
-   public final dwx b;
-   public final dwx c;
-   private final bro d;
 
-   public eir(dwx $$0, dwx $$1, bro $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
    }
 
-   public bro a() {
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
       return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

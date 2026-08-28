@@ -1,28 +1,27 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface atp<T> extends ato<T> {
-   JsonObject a(T var1);
+public record atp(wo c, int d, Optional<ayq<Integer>> e) {
+   public static final Codec<atp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               wq.a.fieldOf("description").forGetter(atp::a),
+               Codec.INT.fieldOf("pack_format").forGetter(atp::b),
+               ayq.a(Codec.INT).lenientOptionalFieldOf("supported_formats").forGetter(atp::c)
+            )
+            .apply($$0, atp::new)
+   );
+   public static final ato<atp> b = new ato<>("pack", a);
 
-   static <T> atp<T> a(final String $$0, final Codec<T> $$1) {
-      return new atp<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   public wo a() {
+      return this.c;
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
-         }
+   public int b() {
+      return this.d;
+   }
 
-         @Override
-         public JsonObject a(T $$0x) {
-            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
-         }
-      };
+   public Optional<ayq<Integer>> c() {
+      return this.e;
    }
 }

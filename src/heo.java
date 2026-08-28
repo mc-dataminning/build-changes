@@ -1,75 +1,174 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class heo {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akn b = new akn("atlases", ".json");
-   private final List<hen> c;
+public class heo implements aui, hep, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   public static final aku a = aku.b("");
+   private final Map<aku, hdx> c = new HashMap<>();
+   private final Set<hep> d = new HashSet<>();
+   private final auo e;
 
-   private heo(List<hen> $$0) {
-      this.c = $$0;
+   public heo(auo $$0) {
+      this.e = $$0;
+      fes $$1 = heb.a();
+      this.a(heb.c(), new hdz($$1));
    }
 
-   public List<Function<hem, hed>> a(aup $$0) {
-      final Map<aku, hen.b> $$1 = new HashMap<>();
-      hen.a $$2 = new hen.a() {
-         @Override
-         public void a(aku $$0, hen.b $$1x) {
-            hen.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
-
-         @Override
-         public void a(Predicate<aku> $$0) {
-            Iterator<Entry<aku, hen.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<aku, hen.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<hem, hed>> $$3 = ImmutableList.builder();
-      $$3.add((Function<hem, hed>)$$0x -> hdz.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static heo a(aup $$0, aku $$1) {
-      aku $$2 = b.a($$1);
-      List<hen> $$3 = new ArrayList<>();
-
-      for (aun $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends hen>)heq.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+   public void a(aku $$0, hed $$1) {
+      try {
+         $$1.a(a(this.e, $$0, $$1));
+      } catch (Throwable var6) {
+         o $$3 = o.a(var6, "Registering texture");
+         p $$4 = $$3.a("Resource location being registered");
+         $$4.a("Resource location", $$1.e());
+         $$4.a("Texture id", $$0);
+         throw new z($$3);
       }
 
-      return new heo($$3);
+      this.a($$0, (hdx)$$1);
+   }
+
+   public void a(aku $$0) {
+      this.a($$0, (hdx)(new hee($$0)));
+   }
+
+   public void a(aku $$0, hdx $$1) {
+      hdx $$2 = this.c.put($$0, $$1);
+      if ($$2 != $$1) {
+         if ($$2 != null) {
+            this.b($$0, $$2);
+         }
+
+         if ($$1 instanceof hep $$3) {
+            this.d.add($$3);
+         }
+      }
+   }
+
+   private void b(aku $$0, hdx $$1) {
+      this.d.remove($$1);
+
+      try {
+         $$1.close();
+      } catch (Exception var4) {
+         b.warn("Failed to close texture {}", $$0, var4);
+      }
+
+      $$1.b();
+   }
+
+   public hdx b(aku $$0) {
+      hdx $$1 = this.c.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         hee $$2 = new hee($$0);
+         this.a($$0, (hed)$$2);
+         return $$2;
+      }
+   }
+
+   @Override
+   public void f() {
+      for (hep $$0 : this.d) {
+         $$0.f();
+      }
+   }
+
+   public void c(aku $$0) {
+      hdx $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.b($$0, $$1);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.c.forEach(this::b);
+      this.c.clear();
+      this.d.clear();
+   }
+
+   @Override
+   public CompletableFuture<Void> a(aui.a $$0, auo $$1, Executor $$2, Executor $$3) {
+      List<heo.a> $$4 = new ArrayList<>();
+      this.c.forEach(($$3x, $$4x) -> {
+         if ($$4x instanceof hed $$5) {
+            $$4.add(a($$1, $$3x, $$5, $$2));
+         }
+      });
+      return CompletableFuture.allOf($$4.stream().map(heo.a::b).toArray(CompletableFuture[]::new)).thenCompose($$0::a).thenAcceptAsync($$1x -> {
+         fin.a(this.e);
+
+         for (heo.a $$2x : $$4) {
+            $$2x.a.a($$2x.b.join());
+         }
+      }, $$3);
+   }
+
+   public void a(Path $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0));
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private void b(Path $$0) {
+      try {
+         Files.createDirectories($$0);
+      } catch (IOException var3) {
+         b.error("Failed to create directory {}", $$0, var3);
+         return;
+      }
+
+      this.c.forEach(($$1, $$2) -> {
+         if ($$2 instanceof hdy $$3) {
+            try {
+               $$3.a($$1, $$0);
+            } catch (IOException var5) {
+               b.error("Failed to dump texture {}", $$1, var5);
+            }
+         }
+      });
+   }
+
+   private static hen a(auo $$0, aku $$1, hed $$2) throws IOException {
+      try {
+         return $$2.a($$0);
+      } catch (FileNotFoundException var4) {
+         if ($$1 != a) {
+            b.warn("Missing resource {} referenced from {}", $$2.e(), $$1);
+         }
+
+         return hen.a();
+      }
+   }
+
+   private static heo.a a(auo $$0, aku $$1, hed $$2, Executor $$3) {
+      return new heo.a($$2, CompletableFuture.supplyAsync(() -> {
+         try {
+            return a($$0, $$1, $$2);
+         } catch (IOException var4) {
+            throw new UncheckedIOException(var4);
+         }
+      }, $$3));
+   }
+
+   static record a(hed a, CompletableFuture<hen> b) {
    }
 }

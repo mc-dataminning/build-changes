@@ -1,49 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Optional;
 
-public record dew(jr<dex> c, jr<dez> d, boolean e) implements czs {
-   public static final Codec<dew> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dex.c.fieldOf("material").forGetter(dew::a),
-               dez.c.fieldOf("pattern").forGetter(dew::b),
-               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dew::new)
-   );
-   public static final ym<vz, dew> b = ym.a(dex.d, dew::a, dez.d, dew::b, yk.b, $$0 -> $$0.e, dew::new);
-   private static final wo f = wo.c(af.a("item", aku.b("smithing_template.upgrade"))).a(n.h);
+public class dew {
+   public static final akt<dev> a = a("quartz");
+   public static final akt<dev> b = a("iron");
+   public static final akt<dev> c = a("netherite");
+   public static final akt<dev> d = a("redstone");
+   public static final akt<dev> e = a("copper");
+   public static final akt<dev> f = a("gold");
+   public static final akt<dev> g = a("emerald");
+   public static final akt<dev> h = a("diamond");
+   public static final akt<dev> i = a("lapis");
+   public static final akt<dev> j = a("amethyst");
+   public static final akt<dev> k = a("resin");
 
-   public dew(jr<dex> $$0, jr<dez> $$1) {
-      this($$0, $$1, true);
+   public static void a(qe<dev> $$0) {
+      a($$0, a, cwr.ph, xl.a.a(14931140));
+      a($$0, b, cwr.pk, xl.a.a(15527148), Map.of(der.d, "iron_darker"));
+      a($$0, c, cwr.pp, xl.a.a(6445145), Map.of(der.h, "netherite_darker"));
+      a($$0, d, cwr.me, xl.a.a(9901575));
+      a($$0, e, cwr.pm, xl.a.a(11823181));
+      a($$0, f, cwr.po, xl.a.a(14594349), Map.of(der.e, "gold_darker"));
+      a($$0, g, cwr.pf, xl.a.a(1155126));
+      a($$0, h, cwr.pe, xl.a.a(7269586), Map.of(der.f, "diamond_darker"));
+      a($$0, i, cwr.pg, xl.a.a(4288151));
+      a($$0, j, cwr.pi, xl.a.a(10116294));
+      a($$0, k, cwr.vx, xl.a.a(16545810));
    }
 
-   public boolean a(jr<dez> $$0, jr<dex> $$1) {
-      return $$0.equals(this.d) && $$1.equals(this.c);
+   public static Optional<jr.c<dev>> a(jt.a $$0, cwn $$1) {
+      return $$0.d(mc.aZ).c().filter($$1x -> $$1.a(((dev)$$1x.a()).b())).findFirst();
    }
 
-   @Override
-   public void a(cwl.b $$0, Consumer<wo> $$1, cyh $$2) {
-      if (this.e) {
-         $$1.accept(f);
-         $$1.accept(wn.a().b(this.d.a().a(this.c)));
-         $$1.accept(wn.a().b(this.c.a().d()));
-      }
+   private static void a(qe<dev> $$0, akt<dev> $$1, cwj $$2, xl $$3) {
+      a($$0, $$1, $$2, $$3, Map.of());
    }
 
-   public dew a(boolean $$0) {
-      return new dew(this.c, this.d, $$0);
+   private static void a(qe<dev> $$0, akt<dev> $$1, cwj $$2, xl $$3, Map<akt<deq>, String> $$4) {
+      dev $$5 = dev.a($$1.a().a(), $$2, wo.c(af.a("trim_material", $$1.a())).c($$3), $$4);
+      $$0.a($$1, $$5);
    }
 
-   public jr<dex> a() {
-      return this.c;
-   }
-
-   public jr<dez> b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
+   private static akt<dev> a(String $$0) {
+      return akt.a(mc.aZ, aku.b($$0));
    }
 }

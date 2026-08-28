@@ -1,5 +1,5 @@
-public record aer(cwp b) implements yv<abk> {
-   public static final ym<vz, aer> a = ym.a(cwp.g, aer::b, aer::new);
+public record aer(cwn b) implements yv<abk> {
+   public static final ym<vz, aer> a = ym.a(cwn.g, aer::b, aer::new);
 
    @Override
    public yx<aer> a() {

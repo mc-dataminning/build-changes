@@ -1,4 +1,8 @@
-public class haz extends gyz {
-   public boolean a;
-   public boolean b;
+public class haz extends hay implements har {
+   public coh c = new coh(col.c, coj.b, 1);
+
+   @Override
+   public coh a() {
+      return this.c;
+   }
 }

@@ -1,34 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eji extends ejo {
-   public static final MapCodec<eji> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eji::new));
+public class eji extends ejh {
+   public static final MapCodec<eji> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eji::new));
 
-   public eji(bro $$0, bro $$1) {
-      super($$0, $$1);
+   public eji(brn $$0, brn $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected ejp<?> a() {
-      return ejp.d;
+   protected ejn<?> a() {
+      return ejn.e;
    }
 
    @Override
-   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ji $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   protected void a(dgm $$0, ejm.b $$1, azg $$2, eiw $$3, int $$4, ejm.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
    @Override
-   public int a(azh $$0, int $$1, eiy $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected boolean a(azg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

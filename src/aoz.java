@@ -11,8 +11,8 @@ public class aoz {
    public static void a(CommandDispatcher<ex> $$0) {
       LiteralCommandNode<ex> $$1 = $$0.register((LiteralArgumentBuilder)ey.a("teammsg").then(ey.a("message", fo.a()).executes($$0x -> {
          ex $$1x = (ex)$$0x.getSource();
-         buk $$2 = $$1x.g();
-         fca $$3 = $$2.cr();
+         buj $$2 = $$1x.g();
+         fby $$3 = $$2.cr();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class aoz {
       $$0.register((LiteralArgumentBuilder)ey.a("tm").redirect($$1));
    }
 
-   private static void a(ex $$0, buk $$1, fca $$2, List<ard> $$3, xe $$4) {
+   private static void a(ex $$0, buj $$1, fby $$2, List<ard> $$3, xe $$4) {
       wo $$5 = $$2.d().c(a);
       wk.a $$6 = wk.a(wk.i, $$0).c($$5);
       wk.a $$7 = wk.a(wk.j, $$0).c($$5);
@@ -42,7 +42,7 @@ public class aoz {
       }
 
       if ($$9) {
-         $$0.a(avd.e);
+         $$0.a(avc.e);
       }
    }
 }

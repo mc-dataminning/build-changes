@@ -1,103 +1,19 @@
-public interface btd {
-   akt<btc> a = akt.a(mc.s, aku.b("in_fire"));
-   akt<btc> b = akt.a(mc.s, aku.b("campfire"));
-   akt<btc> c = akt.a(mc.s, aku.b("lightning_bolt"));
-   akt<btc> d = akt.a(mc.s, aku.b("on_fire"));
-   akt<btc> e = akt.a(mc.s, aku.b("lava"));
-   akt<btc> f = akt.a(mc.s, aku.b("hot_floor"));
-   akt<btc> g = akt.a(mc.s, aku.b("in_wall"));
-   akt<btc> h = akt.a(mc.s, aku.b("cramming"));
-   akt<btc> i = akt.a(mc.s, aku.b("drown"));
-   akt<btc> j = akt.a(mc.s, aku.b("starve"));
-   akt<btc> k = akt.a(mc.s, aku.b("cactus"));
-   akt<btc> l = akt.a(mc.s, aku.b("fall"));
-   akt<btc> m = akt.a(mc.s, aku.b("ender_pearl"));
-   akt<btc> n = akt.a(mc.s, aku.b("fly_into_wall"));
-   akt<btc> o = akt.a(mc.s, aku.b("out_of_world"));
-   akt<btc> p = akt.a(mc.s, aku.b("generic"));
-   akt<btc> q = akt.a(mc.s, aku.b("magic"));
-   akt<btc> r = akt.a(mc.s, aku.b("wither"));
-   akt<btc> s = akt.a(mc.s, aku.b("dragon_breath"));
-   akt<btc> t = akt.a(mc.s, aku.b("dry_out"));
-   akt<btc> u = akt.a(mc.s, aku.b("sweet_berry_bush"));
-   akt<btc> v = akt.a(mc.s, aku.b("freeze"));
-   akt<btc> w = akt.a(mc.s, aku.b("stalagmite"));
-   akt<btc> x = akt.a(mc.s, aku.b("falling_block"));
-   akt<btc> y = akt.a(mc.s, aku.b("falling_anvil"));
-   akt<btc> z = akt.a(mc.s, aku.b("falling_stalactite"));
-   akt<btc> A = akt.a(mc.s, aku.b("sting"));
-   akt<btc> B = akt.a(mc.s, aku.b("mob_attack"));
-   akt<btc> C = akt.a(mc.s, aku.b("mob_attack_no_aggro"));
-   akt<btc> D = akt.a(mc.s, aku.b("player_attack"));
-   akt<btc> E = akt.a(mc.s, aku.b("arrow"));
-   akt<btc> F = akt.a(mc.s, aku.b("trident"));
-   akt<btc> G = akt.a(mc.s, aku.b("mob_projectile"));
-   akt<btc> H = akt.a(mc.s, aku.b("spit"));
-   akt<btc> I = akt.a(mc.s, aku.b("wind_charge"));
-   akt<btc> J = akt.a(mc.s, aku.b("fireworks"));
-   akt<btc> K = akt.a(mc.s, aku.b("fireball"));
-   akt<btc> L = akt.a(mc.s, aku.b("unattributed_fireball"));
-   akt<btc> M = akt.a(mc.s, aku.b("wither_skull"));
-   akt<btc> N = akt.a(mc.s, aku.b("thrown"));
-   akt<btc> O = akt.a(mc.s, aku.b("indirect_magic"));
-   akt<btc> P = akt.a(mc.s, aku.b("thorns"));
-   akt<btc> Q = akt.a(mc.s, aku.b("explosion"));
-   akt<btc> R = akt.a(mc.s, aku.b("player_explosion"));
-   akt<btc> S = akt.a(mc.s, aku.b("sonic_boom"));
-   akt<btc> T = akt.a(mc.s, aku.b("bad_respawn_point"));
-   akt<btc> U = akt.a(mc.s, aku.b("outside_border"));
-   akt<btc> V = akt.a(mc.s, aku.b("generic_kill"));
-   akt<btc> W = akt.a(mc.s, aku.b("mace_smash"));
+import com.mojang.serialization.Codec;
 
-   static void a(qe<btc> $$0) {
-      $$0.a(a, new btc("inFire", 0.1F, bsy.d));
-      $$0.a(b, new btc("inFire", 0.1F, bsy.d));
-      $$0.a(c, new btc("lightningBolt", 0.1F));
-      $$0.a(d, new btc("onFire", 0.0F, bsy.d));
-      $$0.a(e, new btc("lava", 0.1F, bsy.d));
-      $$0.a(f, new btc("hotFloor", 0.1F, bsy.d));
-      $$0.a(g, new btc("inWall", 0.0F));
-      $$0.a(h, new btc("cramming", 0.0F));
-      $$0.a(i, new btc("drown", 0.0F, bsy.c));
-      $$0.a(j, new btc("starve", 0.0F));
-      $$0.a(k, new btc("cactus", 0.1F));
-      $$0.a(l, new btc("fall", bsz.b, 0.0F, bsy.a, bte.b));
-      $$0.a(m, new btc("fall", bsz.b, 0.0F, bsy.a, bte.b));
-      $$0.a(n, new btc("flyIntoWall", 0.0F));
-      $$0.a(o, new btc("outOfWorld", 0.0F));
-      $$0.a(p, new btc("generic", 0.0F));
-      $$0.a(q, new btc("magic", 0.0F));
-      $$0.a(r, new btc("wither", 0.0F));
-      $$0.a(s, new btc("dragonBreath", 0.0F));
-      $$0.a(t, new btc("dryout", 0.1F));
-      $$0.a(u, new btc("sweetBerryBush", 0.1F, bsy.e));
-      $$0.a(v, new btc("freeze", 0.0F, bsy.f));
-      $$0.a(w, new btc("stalagmite", 0.0F));
-      $$0.a(x, new btc("fallingBlock", 0.1F));
-      $$0.a(y, new btc("anvil", 0.1F));
-      $$0.a(z, new btc("fallingStalactite", 0.1F));
-      $$0.a(A, new btc("sting", 0.1F));
-      $$0.a(B, new btc("mob", 0.1F));
-      $$0.a(C, new btc("mob", 0.1F));
-      $$0.a(D, new btc("player", 0.1F));
-      $$0.a(E, new btc("arrow", 0.1F));
-      $$0.a(F, new btc("trident", 0.1F));
-      $$0.a(G, new btc("mob", 0.1F));
-      $$0.a(H, new btc("mob", 0.1F));
-      $$0.a(J, new btc("fireworks", 0.1F));
-      $$0.a(L, new btc("onFire", 0.1F, bsy.d));
-      $$0.a(K, new btc("fireball", 0.1F, bsy.d));
-      $$0.a(M, new btc("witherSkull", 0.1F));
-      $$0.a(N, new btc("thrown", 0.1F));
-      $$0.a(O, new btc("indirectMagic", 0.0F));
-      $$0.a(P, new btc("thorns", 0.1F, bsy.b));
-      $$0.a(Q, new btc("explosion", bsz.c, 0.1F));
-      $$0.a(R, new btc("explosion.player", bsz.c, 0.1F));
-      $$0.a(S, new btc("sonic_boom", bsz.c, 0.0F));
-      $$0.a(T, new btc("badRespawnPoint", bsz.c, 0.1F, bsy.a, bte.c));
-      $$0.a(U, new btc("outsideBorder", 0.0F));
-      $$0.a(V, new btc("genericKill", 0.0F));
-      $$0.a(I, new btc("mob", 0.1F));
-      $$0.a(W, new btc("mace_smash", 0.1F));
+public enum btd implements azu {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<btd> d = azu.a(btd::values);
+   private final String e;
+
+   private btd(final String $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

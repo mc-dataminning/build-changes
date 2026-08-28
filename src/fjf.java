@@ -1,227 +1,182 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fjf extends hkx {
-   static final Logger a = LogUtils.getLogger();
-   private static final wo b = wo.c("mco.configure.world.players.title");
-   static final wo c = wo.c("mco.question");
-   private static final int C = 8;
-   final fsg D = new fsg(this);
-   private final fiu E;
-   final fhl F;
+public class fjf extends hky {
+   static final Logger c = LogUtils.getLogger();
+   private static final wo C = wo.c("mco.selectServer.create");
+   private static final wo D = wo.c("mco.selectServer.create.subtitle");
+   private static final wo E = wo.c("mco.configure.world.switch.slot");
+   private static final wo F = wo.c("mco.configure.world.switch.slot.subtitle");
+   private static final wo G = wo.c("mco.reset.world.generate");
+   private static final wo H = wo.c("mco.reset.world.title");
+   private static final wo I = wo.c("mco.reset.world.warning");
+   public static final wo a = wo.c("mco.create.world.reset.title");
+   private static final wo J = wo.c("mco.reset.world.resetting.screen.title");
+   private static final wo K = wo.c("mco.reset.world.template");
+   private static final wo L = wo.c("mco.reset.world.adventure");
+   private static final wo M = wo.c("mco.reset.world.experience");
+   private static final wo N = wo.c("mco.reset.world.inspiration");
+   private final fui O;
+   private final fhj P;
+   private final wo Q;
+   private final int R;
+   private final wo S;
+   private static final aku T = aku.b("textures/gui/realms/upload.png");
+   private static final aku U = aku.b("textures/gui/realms/adventure.png");
+   private static final aku V = aku.b("textures/gui/realms/survival_spawn.png");
+   private static final aku W = aku.b("textures/gui/realms/new_world.png");
+   private static final aku X = aku.b("textures/gui/realms/experience.png");
+   private static final aku Y = aku.b("textures/gui/realms/inspiration.png");
+   fia Z;
+   fia aa;
+   fia ab;
+   fia ac;
+   public final int b;
    @Nullable
-   private fjf.b G;
-   boolean H;
+   private final fkh ad;
+   private final Runnable ae;
+   private final fse af = new fse(this);
 
-   public fjf(fiu $$0, fhl $$1) {
-      super(b);
-      this.E = $$0;
-      this.F = $$1;
+   private fjf(fui $$0, fhj $$1, int $$2, wo $$3, wo $$4, int $$5, wo $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   }
+
+   public fjf(fui $$0, fhj $$1, int $$2, wo $$3, wo $$4, int $$5, wo $$6, @Nullable fkh $$7, Runnable $$8) {
+      super($$3);
+      this.O = $$0;
+      this.P = $$1;
+      this.b = $$2;
+      this.Q = $$4;
+      this.R = $$5;
+      this.S = $$6;
+      this.ad = $$7;
+      this.ae = $$8;
+   }
+
+   public static fjf a(fui $$0, fhj $$1, fkh $$2, Runnable $$3) {
+      return new fjf($$0, $$1, $$1.p, C, D, -6250336, a, $$2, $$3);
+   }
+
+   public static fjf a(fui $$0, int $$1, fhj $$2, Runnable $$3) {
+      return new fjf($$0, $$2, $$1, E, F, -6250336, a, $$3);
+   }
+
+   public static fjf a(fui $$0, fhj $$1, Runnable $$2) {
+      return new fjf($$0, $$1, $$1.p, H, I, -65536, J, $$2);
    }
 
    @Override
    public void aR_() {
-      this.D.a(b, this.p);
-      this.G = this.D.c(new fjf.b());
-      this.E();
-      fsk $$0 = this.D.b(fsk.e().a(8));
-      $$0.a(fos.a(wo.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fiz(this.E, this, this.F))).a());
-      $$0.a(fos.a(wn.k, $$0x -> this.aO_()).a());
-      this.D.a($$1 -> {
-         fop var10000 = this.c($$1);
+      fsi $$0 = this.af.a(fsi.d());
+      $$0.c().a(9 / 3);
+      $$0.a(new fpx(this.l, this.p), fsh::b);
+      $$0.a(new fpx(this.Q, this.p).b(this.R), fsh::b);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            fgi $$0 = fgi.a();
+
+            try {
+               fia $$1 = $$0.a(1, 10, fhj.d.a);
+               fia $$2 = $$0.a(1, 10, fhj.d.c);
+               fia $$3 = $$0.a(1, 10, fhj.d.d);
+               fia $$4 = $$0.a(1, 10, fhj.d.e);
+               fjf.this.m.execute(() -> {
+                  fjf.this.Z = $$1;
+                  fjf.this.aa = $$2;
+                  fjf.this.ab = $$3;
+                  fjf.this.ac = $$4;
+               });
+            } catch (fie var6) {
+               fjf.c.error("Couldn't fetch templates in reset world", var6);
+            }
+         }
+      }).start();
+      fsd $$1 = this.af.c(new fsd());
+      fsd.b $$2 = $$1.d(3);
+      $$2.c().f(16);
+      $$2.a(new fjf.a(this.m.h, G, W, $$0x -> fgo.a(this.m, this.O, this, this.b, this.P, this.ad)));
+      $$2.a(new fjf.a(this.m.h, fjg.a, T, $$0x -> this.m.a(new fjg(this.ad, this.P.a, this.b, this))));
+      $$2.a(new fjf.a(this.m.h, K, V, $$0x -> this.m.a(new fjh(K, this::a, fhj.d.a, this.Z))));
+      $$2.a(fsj.b(16), 3);
+      $$2.a(new fjf.a(this.m.h, L, U, $$0x -> this.m.a(new fjh(L, this::a, fhj.d.c, this.aa))));
+      $$2.a(new fjf.a(this.m.h, M, X, $$0x -> this.m.a(new fjh(M, this::a, fhj.d.d, this.ab))));
+      $$2.a(new fjf.a(this.m.h, N, Y, $$0x -> this.m.a(new fjh(N, this::a, fhj.d.e, this.ac))));
+      this.af.b(fop.a(wn.k, $$0x -> this.aO_()).a());
+      this.af.a($$1x -> {
+         fon var10000 = this.c($$1x);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.D.a();
-      if (this.G != null) {
-         this.G.a(this.n, this.D);
-      }
+      this.af.a();
    }
 
-   void E() {
-      if (this.G != null) {
-         this.G.aH_().clear();
-
-         for (fhh $$0 : this.F.h) {
-            this.G.aH_().add(new fjf.a($$0));
-         }
-      }
+   @Override
+   public wo i() {
+      return wn.a(this.n(), this.Q);
    }
 
    @Override
    public void aO_() {
-      this.F();
+      this.m.a(this.O);
    }
 
-   private void F() {
-      if (this.H) {
-         this.m.a(this.E.g());
-      } else {
-         this.m.a(this.E);
+   private void a(@Nullable fhz $$0) {
+      this.m.a(this);
+      if ($$0 != null) {
+         this.a(new fki($$0, this.P.a, this.S, this.ae));
       }
+
+      fgd.g();
    }
 
-   class a extends foy.a<fjf.a> {
-      private static final wo b = wo.c("mco.configure.world.invites.normal.tooltip");
-      private static final wo c = wo.c("mco.configure.world.invites.ops.tooltip");
-      private static final wo d = wo.c("mco.configure.world.invites.remove.tooltip");
-      private static final aku e = aku.b("player_list/make_operator");
-      private static final aku f = aku.b("player_list/remove_operator");
-      private static final aku g = aku.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fhh j;
-      private final fos k;
-      private final fos l;
-      private final fos m;
-
-      public a(final fhh $$0) {
-         this.j = $$0;
-         int $$1 = fjf.this.F.h.indexOf(this.j);
-         this.l = fpx.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fjf.this.p.a(b))
-            .a($$1x -> wn.a(wo.a("mco.invited.player.narration", $$0.a()), (wo)$$1x.get(), wo.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fpx.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fjf.this.p.a(c))
-            .a($$1x -> wn.a(wo.a("mco.invited.player.narration", $$0.a()), (wo)$$1x.get(), wo.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fpx.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fjf.this.p.a(d))
-            .a($$1x -> wn.a(wo.a("mco.invited.player.narration", $$0.a()), (wo)$$1x.get()))
-            .a();
-         this.c();
+   private void a(fkf $$0) {
+      List<fkf> $$1 = new ArrayList<>();
+      if (this.ad != null) {
+         $$1.add(this.ad);
       }
 
-      private void a(int $$0) {
-         fgk $$1 = fgk.a();
-         UUID $$2 = fjf.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fjf.this.F.a, $$2));
-         } catch (fig var5) {
-            fjf.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
+      if (this.b != this.P.p) {
+         $$1.add(new fkm(this.P.a, this.b, () -> {
+         }));
       }
 
-      private void b(int $$0) {
-         fgk $$1 = fgk.a();
-         UUID $$2 = fjf.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fjf.this.F.a, $$2));
-         } catch (fig var5) {
-            fjf.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fjf.this.F.h.size()) {
-            fhh $$1 = fjf.this.F.h.get($$0);
-            fiv $$2 = new fiv($$2x -> {
-               if ($$2x) {
-                  fgk $$3 = fgk.a();
-
-                  try {
-                     $$3.a(fjf.this.F.a, $$1.b());
-                  } catch (fig var6) {
-                     fjf.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fjf.this.F.h.remove($$0);
-                  fjf.this.E();
-               }
-
-               fjf.this.H = true;
-               fjf.this.m.a(fjf.this);
-            }, fjf.c, wo.a("mco.configure.world.uninvite.player", $$1.a()));
-            fjf.this.m.a($$2);
-         }
-      }
-
-      private void a(fhd $$0) {
-         for (fhh $$1 : fjf.this.F.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fos g() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fqp> aH_() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public List<? extends fsn> b() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fjz.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.b(fjf.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.A();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.g().A() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
-      }
+      $$1.add($$0);
+      this.m.a(new fiy(this.O, $$1.toArray(new fkf[0])));
    }
 
-   class b extends foy<fjf.a> {
-      private static final int m = 36;
+   class a extends fop {
+      private static final aku b = aku.b("widget/slot_frame");
+      private static final int c = 60;
+      private static final int d = 2;
+      private static final int u = 56;
+      private final aku v;
 
-      public b() {
-         super(flj.Q(), fjf.this.n, fjf.this.D.d(), fjf.this.D.c(), 36, (int)(9.0F * 1.5F));
+      a(final fnz $$0, final wo $$1, final aku $$2, final fop.c $$3) {
+         super(0, 0, 60, 60 + 9, $$1, $$3, q);
+         this.v = $$2;
       }
 
       @Override
-      protected void a(fod $$0, int $$1, int $$2) {
-         String $$3 = fjf.this.F.h != null ? Integer.toString(fjf.this.F.h.size()) : "0";
-         wo $$4 = wo.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.b(fjf.this.p, $$4, $$1 + this.a() / 2 - fjf.this.p.a($$4) / 2, $$2, -1);
-      }
+      public void b(fob $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.D();
+         int $$5 = -1;
+         if ($$4) {
+            $$5 = axj.a(1.0F, 0.56F, 0.56F, 0.56F);
+         }
 
-      @Override
-      public int a() {
-         return 300;
+         int $$6 = this.F();
+         int $$7 = this.G();
+         $$0.a(gmf::H, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
+         $$0.a(gmf::H, b, $$6, $$7, 60, 60, $$5);
+         int $$8 = $$4 ? -6250336 : -1;
+         $$0.a(fjf.this.p, this.B(), $$6 + 28, $$7 - 14, $$8);
       }
    }
 }

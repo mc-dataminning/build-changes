@@ -1,13 +1,13 @@
 import java.util.function.Function;
 
 public class oj {
-   private final Function<dar, dbe<?>> a;
+   private final Function<dap, dbc<?>> a;
 
-   public oj(Function<dar, dbe<?>> $$0) {
+   public oj(Function<dap, dbc<?>> $$0) {
       this.a = $$0;
    }
 
-   public static oj a(Function<dar, dbe<?>> $$0) {
+   public static oj a(Function<dap, dbc<?>> $$0) {
       return new oj($$0);
    }
 
@@ -15,7 +15,7 @@ public class oj {
       this.a($$0, akt.a(mc.bk, aku.a($$1)));
    }
 
-   public void a(ob $$0, akt<dbe<?>> $$1) {
-      $$0.a($$1, this.a.apply(dar.d), null);
+   public void a(ob $$0, akt<dbc<?>> $$1) {
+      $$0.a($$1, this.a.apply(dap.d), null);
    }
 }

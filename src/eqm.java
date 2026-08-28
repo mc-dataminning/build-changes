@@ -1,49 +1,93 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class eqm extends erb {
-   public static final MapCodec<eqm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               jn.a.e.fieldOf("axis").orElse(jn.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eqm::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final jn.a g;
+public class eqm extends erj {
+   public static final MapCodec<eqm> a = Codec.FLOAT.fieldOf("mossiness").xmap(eqm::new, $$0 -> $$0.f);
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dwv[] e = new dwv[]{djm.kc.m(), djm.kj.m()};
+   private final float f;
 
-   public eqm(float $$0, float $$1, int $$2, int $$3, jn.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   public eqm(float $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   @Override
+   public erm.d a(dgj $$0, ji $$1, ji $$2, erm.d $$3, erm.d $$4, eri $$5) {
+      azg $$6 = $$5.b($$4.a());
+      dwv $$7 = $$4.b();
+      ji $$8 = $$4.a();
+      dwv $$9 = null;
+      if ($$7.a(djm.eV) || $$7.a(djm.b) || $$7.a(djm.eY)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(awo.L)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(awo.M)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(awo.N)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(djm.cv)) {
+         $$9 = this.d($$6);
+      }
+
+      return $$9 != null ? new erm.d($$8, $$9, $$4.c()) : $$4;
+   }
+
+   @Nullable
+   private dwv a(azg $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+         dwv[] $$1 = new dwv[]{djm.eX.m(), a($$0, djm.fy)};
+         dwv[] $$2 = new dwv[]{djm.eW.m(), a($$0, djm.nI)};
+         return this.a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public boolean a(ji $$0, ji $$1, ji $$2, azh $$3) {
-      jn $$4 = jn.a(jn.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= ayz.b(this.b, this.d, ayz.f((float)$$8, (float)this.e, (float)this.f));
+   @Nullable
+   private dwv a(azg $$0, dwv $$1) {
+      jn $$2 = $$1.c(drj.b);
+      dxt $$3 = $$1.c(drj.c);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dwv[] $$4 = new dwv[]{djm.nI.m().b(drj.b, $$2).b(drj.c, $$3), djm.nW.m()};
+         return this.a($$0, e, $$4);
+      }
+   }
+
+   @Nullable
+   private dwv b(azg $$0) {
+      return $$0.i() < this.f ? djm.nW.m() : null;
+   }
+
+   @Nullable
+   private dwv c(azg $$0) {
+      return $$0.i() < this.f ? djm.ok.m() : null;
+   }
+
+   @Nullable
+   private dwv d(azg $$0) {
+      return $$0.i() < 0.15F ? djm.pM.m() : null;
+   }
+
+   private static dwv a(azg $$0, djk $$1) {
+      return $$1.m().b(drj.b, jn.c.a.a($$0)).b(drj.c, af.a(dxt.values(), $$0));
+   }
+
+   private dwv a(azg $$0, dwv[] $$1, dwv[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static dwv a(azg $$0, dwv[] $$1) {
+      return $$1[$$0.a($$1.length)];
    }
 
    @Override
-   protected erc<?> a() {
-      return erc.c;
+   protected erl<?> a() {
+      return erl.k;
    }
 }

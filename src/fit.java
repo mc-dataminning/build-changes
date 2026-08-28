@@ -1,38 +1,27 @@
-public class fit extends hkx {
-   private static final wo a = wo.c("mco.client.incompatible.title").b(-65536);
-   private static final wo b = wo.b(ab.b().c()).b(-65536);
-   private static final wo c = wo.a("mco.client.unsupported.snapshot.version", b);
-   private static final wo C = wo.a("mco.client.outdated.stable.version", b);
-   private final fuk D;
-   private final fsg E = new fsg(this);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fit(fuk $$0) {
-      super(a);
-      this.D = $$0;
+public class fit extends hky {
+   protected BooleanConsumer a;
+   private final wo b;
+   private final wo c;
+
+   public fit(BooleanConsumer $$0, wo $$1, wo $$2) {
+      super(fky.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
    public void aR_() {
-      this.E.a(a, this.p);
-      this.E.c(new fpm(this.E(), this.p).b(true));
-      this.E.b(fos.a(wn.k, $$0 -> this.aO_()).a(200).a());
-      this.E.a($$1 -> {
-         fop var10000 = this.c($$1);
-      });
-      this.c();
+      this.c(fop.a(wn.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fop.a(wn.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.D);
-   }
-
-   private wo E() {
-      return ab.b().g() ? C : c;
+   public void a(fob $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

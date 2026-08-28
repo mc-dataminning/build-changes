@@ -47,7 +47,7 @@ public class wm {
       return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a implements azv {
+   public static enum a implements azu {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -55,7 +55,7 @@ public class wm {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      public static final MapCodec<wm.a> g = azv.a(wm.a::values).fieldOf("action");
+      public static final MapCodec<wm.a> g = azu.a(wm.a::values).fieldOf("action");
       public static final MapCodec<wm.a> h = g.validate(wm.a::a);
       private final boolean i;
       private final String j;

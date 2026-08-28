@@ -1,16 +1,30 @@
-public abstract class ctr extends csc {
-   public ctr(ctl<?> $$0, int $$1) {
-      super($$0, $$1);
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public interface ctr {
+   void a(@Nullable dbh<?> var1);
+
+   @Nullable
+   dbh<?> d();
+
+   default void a(cov $$0, List<cwn> $$1) {
+      dbh<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().ap_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
+         }
+      }
    }
 
-   public abstract ctr.a a(boolean var1, boolean var2, dbj<?> var3, arc var4, cow var5);
-
-   public abstract void a(cpc var1);
-
-   public abstract cts am_();
-
-   public static enum a {
-      a,
-      b;
+   default boolean a(ard $$0, dbh<?> $$1) {
+      if (!$$1.b().ap_() && $$0.y().O().b(dgc.x) && !$$0.J().b($$1.a())) {
+         return false;
+      } else {
+         this.a($$1);
+         return true;
+      }
    }
 }

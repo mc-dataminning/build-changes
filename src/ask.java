@@ -55,13 +55,13 @@ public abstract class ask implements AutoCloseable {
    }
 
    protected static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
-      return $$0 != null ? ayp.a($$0, $$1, $$2) : $$2;
+      return $$0 != null ? ayo.a($$0, $$1, $$2) : $$2;
    }
 
    @Nullable
    public static ask a(apu $$0) {
       String $$1 = $$0.R;
-      if (azw.h($$1)) {
+      if (azv.h($$1)) {
          return null;
       } else {
          return switch ($$0.S) {
@@ -233,7 +233,7 @@ public abstract class ask implements AutoCloseable {
 
       protected c(final GameProfile $$1) {
          this.b = $$1;
-         bqz $$2 = new bqz(ask.this.g, "chat stream for " + $$1.getName());
+         bqy $$2 = new bqy(ask.this.g, "chat stream for " + $$1.getName());
          this.c = $$2::a_;
       }
 

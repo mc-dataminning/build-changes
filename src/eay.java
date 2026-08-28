@@ -1,24 +1,24 @@
-import java.util.List;
+import java.util.UUID;
 import java.util.stream.Stream;
 
-public class eay<T> {
-   private final dfo a;
-   private final List<T> b;
+public interface eay {
+   int ar();
 
-   public eay(dfo $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   UUID cG();
 
-   public dfo a() {
-      return this.a;
-   }
+   ji dw();
 
-   public Stream<T> b() {
-      return this.b.stream();
-   }
+   fat cR();
 
-   public boolean c() {
-      return this.b.isEmpty();
-   }
+   void a(eaz var1);
+
+   Stream<? extends eay> db();
+
+   Stream<? extends eay> dc();
+
+   void c(buj.d var1);
+
+   boolean dU();
+
+   boolean dV();
 }

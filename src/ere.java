@@ -1,22 +1,27 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ere extends erl {
-   public final axf<djm> a;
-   public static final MapCodec<ere> b = axf.b(mc.f).xmap(ere::new, $$0 -> $$0.a).fieldOf("value");
+public class ere extends erg {
+   public static final MapCodec<ere> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwv.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, ere::new)
+   );
+   private final dwv b;
+   private final float d;
 
-   public ere(axf<djm> $$0) {
-      this.a = $$0;
+   public ere(dwv $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   @Nullable
    @Override
-   public ero.d a(dgl $$0, ji $$1, ji $$2, ero.d $$3, ero.d $$4, erk $$5) {
-      return efy.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public boolean a(dwv $$0, azg $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
    @Override
-   protected ern<?> a() {
-      return ern.n;
+   protected erh<?> a() {
+      return erh.f;
    }
 }

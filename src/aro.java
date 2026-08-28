@@ -27,21 +27,21 @@ public class aro implements arm {
    }
 
    @Override
-   public void a(dfo $$0) {
+   public void a(dfm $$0) {
       this.e = af.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dfo $$0, @Nullable dzt $$1) {
-      if ($$1 == dzt.n) {
+   public void a(dfm $$0, @Nullable dzr $$1) {
+      if ($$1 == dzr.n) {
          this.c++;
       }
 
       int $$2 = this.d();
       if (af.c() > this.e) {
          this.e += 500L;
-         a.info(wo.a("menu.preparingSpawn", ayz.a($$2, 0, 100)).getString());
+         a.info(wo.a("menu.preparingSpawn", ayy.a($$2, 0, 100)).getString());
       }
    }
 
@@ -56,6 +56,6 @@ public class aro implements arm {
    }
 
    public int d() {
-      return this.b == 0 ? 100 : ayz.d((float)this.c * 100.0F / (float)this.b);
+      return this.b == 0 ? 100 : ayy.d((float)this.c * 100.0F / (float)this.b);
    }
 }

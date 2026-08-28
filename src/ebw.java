@@ -1,34 +1,14 @@
-public interface ebw {
-   ebw a = new ebw() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public void a(ebv $$0) {
-      }
+public interface ebw<T extends ebv> {
+   ebw<ebn> a = a("block", new ebn.a());
+   ebw<ebp> b = a("entity", new ebp.a());
 
-      @Override
-      public void b(ebv $$0) {
-      }
+   MapCodec<T> a();
 
-      @Override
-      public boolean a(jr<ebt> $$0, fba $$1, ebt.a $$2, ebw.a $$3) {
-         return false;
-      }
-   };
+   ym<? super vz, T> b();
 
-   boolean a();
-
-   void a(ebv var1);
-
-   void b(ebv var1);
-
-   boolean a(jr<ebt> var1, fba var2, ebt.a var3, ebw.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(ebv var1, fba var2);
+   static <S extends ebw<T>, T extends ebv> S a(String $$0, S $$1) {
+      return ke.a(mb.t, $$0, $$1);
    }
 }

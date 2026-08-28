@@ -1,68 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class dlw extends dmj {
-   public static final MapCodec<dlw> a = b(dlw::new);
-   protected static final fbu b = djm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dlw extends dlq {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dlw> e = b(dlw::new);
+   private static final lc g = new lb();
 
    @Override
    public MapCodec<dlw> a() {
-      return a;
+      return e;
    }
 
-   public dlw(dww.d $$0) {
+   public dlw(dwu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b;
+   protected lc a(dgg $$0, cwn $$1) {
+      return g;
    }
 
    @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      this.e($$0, $$1, $$2);
-      return bsj.a;
+   public dtx a(ji $$0, dwv $$1) {
+      return new dus($$0, $$1);
    }
 
    @Override
-   protected void a_(dwx $$0, dgi $$1, ji $$2, cox $$3) {
-      this.e($$0, $$1, $$2);
-   }
-
-   private void e(dwx $$0, dgi $$1, ji $$2) {
-      dyn $$3 = $$1.F_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         ji $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
-         if ($$1.a_($$5).l() && $$3.a($$5)) {
-            if ($$1.C) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.A.j();
-                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
-                  double $$11 = ayz.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
-                  double $$12 = ayz.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
-                  double $$13 = ayz.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
-                  $$1.a(lt.ae, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+   protected void a(arc $$0, dwv $$1, ji $$2) {
+      dur $$3 = $$0.a($$2, dtz.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         kz $$4 = new kz($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cwn $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jn $$7 = $$0.a_($$2).c(b);
+               bsb $$8 = duz.a($$0, $$2.a($$7));
+               cwn $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = duz.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
                }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
-            }
 
-            return;
+               $$3.a($$5, $$9);
+            }
          }
       }
-   }
-
-   @Override
-   protected int b() {
-      return 5;
-   }
-
-   @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
    }
 }

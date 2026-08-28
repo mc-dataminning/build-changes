@@ -1,37 +1,9 @@
-import javax.annotation.Nullable;
+public class hfk extends hfr {
+   public hfk(heo $$0) {
+      super($$0, aku.b("textures/atlas/map_decorations.png"), aku.b("map_decorations"));
+   }
 
-public record hfk(aku a, @Nullable String b, @Nullable aku c, @Nullable aku d, hfk.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static hfk.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   public hem a(eul $$0) {
+      return this.a($$0.a());
    }
 }

@@ -1,135 +1,56 @@
-public class git extends gkg {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gjg.a H;
+public class git extends gke {
+   private final gjz a;
 
-   git(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gjg.a.a);
-   }
-
-   git(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gjg.a $$8) {
+   protected git(gfw $$0, double $$1, double $$2, double $$3, gjz $$4) {
       super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gjk b() {
-      return this.H.a() ? gjk.b : gjk.c;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public gji b() {
+      return gji.b;
    }
 
    @Override
    public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+      return 15728880;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+         this.b(this.a);
       }
    }
 
-   @Override
-   public void a(ffy $$0, fkr $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
-   }
+   public static class a implements gjh<lx> {
+      private final gjz a;
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
-
-      public a(gkb $$0) {
+      public a(gjz $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         git $$8 = new git($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new git($$1, $$2, $$3, $$4, this.a);
       }
    }
 
-   public static class b implements gjj<lx> {
-      private final gkb a;
+   public static class b implements gjh<lx> {
+      private final gjz a;
 
-      public b(gkb $$0) {
+      public b(gjz $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         git $$8 = new git($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements gjj<lx> {
-      private final gkb a;
-
-      public c(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         git $$8 = new git($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gjg.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
+      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gje $$8 = new git($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
          return $$8;
       }
    }

@@ -1,30 +1,36 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum dar implements azv {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
-
-   public static final Codec<dar> e = azv.a(dar::values);
-   public static final IntFunction<dar> f = axq.a(dar::a, values(), axq.a.a);
-   public static final ym<ByteBuf, dar> g = yk.a(f, dar::a);
-   private final String h;
-   private final int i;
-
-   private dar(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+public interface dar extends dbc<daq> {
+   @Override
+   default dbn<dar> b() {
+      return dbn.a;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   dbm<? extends dar> a();
+
+   dap c();
+
+   default ka<cwn> a(daq $$0) {
+      return b($$0);
    }
 
-   private int a() {
-      return this.i;
+   static ka<cwn> b(daq $$0) {
+      ka<cwn> $$1 = ka.a($$0.a(), cwn.j);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwj $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.k());
+      }
+
+      return $$1;
+   }
+
+   @Override
+   default dbf h() {
+      return switch (this.c()) {
+         case a -> dbe.a;
+         case c -> dbe.c;
+         case b -> dbe.b;
+         case d -> dbe.d;
+      };
    }
 }

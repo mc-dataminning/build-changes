@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class alo extends bss {
+public class alo extends bsr {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;
@@ -71,8 +71,8 @@ public class alo extends bss {
 
    private void p() {
       long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)bab.b;
-      int $$2 = (int)((double)(bab.c * $$0) / $$1);
+      double $$1 = Math.max(1.0, (double)this.i) / (double)baa.b;
+      int $$2 = (int)((double)(baa.c * $$0) / $$1);
       String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
       this.j = 0L;
       this.i = 0L;

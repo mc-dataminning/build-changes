@@ -1,11 +1,11 @@
-public final class awv {
-   public static final axf<esy> a = a("water");
-   public static final axf<esy> b = a("lava");
+public class awv {
+   public static final axe<ebr> a = a("vibrations");
+   public static final axe<ebr> b = a("warden_can_listen");
+   public static final axe<ebr> c = a("shrieker_can_listen");
+   public static final axe<ebr> d = a("ignore_vibrations_sneaking");
+   public static final axe<ebr> e = a("allay_can_listen");
 
-   private awv() {
-   }
-
-   private static axf<esy> a(String $$0) {
-      return axf.a(mc.D, aku.b($$0));
+   private static axe<ebr> a(String $$0) {
+      return axe.a(mc.G, aku.b($$0));
    }
 }

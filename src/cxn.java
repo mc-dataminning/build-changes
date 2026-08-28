@@ -1,19 +1,19 @@
-public class cxn extends cwl {
-   public cxn(cwl.a $$0) {
-      super($$0);
+public class cxn extends cwk {
+   private final ard a;
+
+   public cxn(ard $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public bsj a(cwp $$0, cox $$1, bvg $$2, bsi $$3) {
-      if ($$2 instanceof bvw $$4 && $$2.bL() && !$$4.j() && $$4.f()) {
-         if (!$$1.dW().C) {
-            $$4.a($$0.a(1), awb.g);
-            $$2.dW().a($$2, ebt.v, $$2.du());
-         }
+   protected void b(aku $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.f.b(new aci($$0, $$1));
+   }
 
-         return bsj.a;
-      }
-
-      return bsj.e;
+   @Override
+   protected void b(aku $$0) {
+      super.b($$0);
+      this.a.f.b(new aci($$0, 0));
    }
 }

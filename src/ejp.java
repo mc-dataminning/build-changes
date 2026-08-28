@@ -1,28 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejp<P extends ejo> {
-   public static final ejp<ejj> a = a("blob_foliage_placer", ejj.a);
-   public static final ejp<eju> b = a("spruce_foliage_placer", eju.a);
-   public static final ejp<ejs> c = a("pine_foliage_placer", ejs.a);
-   public static final ejp<eji> d = a("acacia_foliage_placer", eji.a);
-   public static final ejp<ejk> e = a("bush_foliage_placer", ejk.c);
-   public static final ejp<ejn> f = a("fancy_foliage_placer", ejn.c);
-   public static final ejp<ejq> g = a("jungle_foliage_placer", ejq.a);
-   public static final ejp<ejr> h = a("mega_pine_foliage_placer", ejr.a);
-   public static final ejp<ejm> i = a("dark_oak_foliage_placer", ejm.a);
-   public static final ejp<ejt> j = a("random_spread_foliage_placer", ejt.a);
-   public static final ejp<ejl> k = a("cherry_foliage_placer", ejl.a);
-   private final MapCodec<P> l;
+public class ejp extends ejm {
+   public static final MapCodec<ejp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(brn.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, ejp::new)
+   );
+   private final brn b;
 
-   private static <P extends ejo> ejp<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.U, $$0, new ejp<>($$1));
+   public ejp(brn $$0, brn $$1, brn $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private ejp(MapCodec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected ejn<?> a() {
+      return ejn.h;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   protected void a(dgm $$0, ejm.b $$1, azg $$2, eiw $$3, int $$4, ejm.a $$5, int $$6, int $$7, int $$8) {
+      ji $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + ayy.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new ji($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
+   }
+
+   @Override
+   public int a(azg $$0, int $$1, eiw $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azg $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

@@ -1,52 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
 
-public class ext extends exe {
+public class ext extends exc {
    public static final MapCodec<ext> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cze.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cze.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cze.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, ext::new)
+      $$0 -> a($$0).and(axe.b(mc.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, ext::new)
    );
-   public static final cze b = new cze(cze.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cze.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final axe<cwg> b;
 
-   public ext(List<eza> $$0, Optional<cze.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private ext(List<eyy> $$0, axe<cwg> $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
    }
 
    @Override
-   protected cwp a(cwp $$0, evr $$1) {
-      $$0.a(kv.ae, b, this::a);
+   public exe<ext> b() {
+      return exf.G;
+   }
+
+   @Override
+   public cwn a(cwn $$0, evp $$1) {
+      ke<cwg> $$2 = $$1.d().K_().e(mc.I);
+      Optional<jr<cwg>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(kv.Z, $$3.get());
+      }
+
       return $$0;
    }
 
-   private cze a(cze $$0) {
-      return new cze(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
-
-   @Override
-   public exg<ext> b() {
-      return exh.L;
+   public static exc.a<?> a(axe<cwg> $$0) {
+      return a($$1 -> new ext($$1, $$0));
    }
 }

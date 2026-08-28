@@ -115,14 +115,14 @@ public class amy {
    }
 
    static enum a {
-      a("points", cox::d, ($$0, $$1) -> {
+      a("points", cov::d, ($$0, $$1) -> {
          if ($$1 >= $$0.gs()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> ayz.d($$0.ct * (float)$$0.gs())),
+      }, $$0 -> ayy.d($$0.ct * (float)$$0.gs())),
       b("levels", ard::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;

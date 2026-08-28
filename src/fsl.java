@@ -1,61 +1,24 @@
-import java.util.function.Consumer;
+import java.util.Collection;
+import java.util.List;
 
-public class fsl implements fsi {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public interface fsl extends fqa, fso {
+   fsl.a w();
 
-   public fsl(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   default boolean E() {
+      return true;
    }
 
-   public fsl(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   default Collection<? extends fsl> L() {
+      return List.of(this);
    }
 
-   public static fsl a(int $$0) {
-      return new fsl($$0, 0);
-   }
+   public static enum a {
+      a,
+      b,
+      c;
 
-   public static fsl b(int $$0) {
-      return new fsl(0, $$0);
-   }
-
-   @Override
-   public void j(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int F() {
-      return this.a;
-   }
-
-   @Override
-   public int G() {
-      return this.b;
-   }
-
-   @Override
-   public int A() {
-      return this.c;
-   }
-
-   @Override
-   public int y() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<fop> $$0) {
+      public boolean a() {
+         return this == c;
+      }
    }
 }

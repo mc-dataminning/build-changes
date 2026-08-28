@@ -1,16 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface erj<P extends eri> {
-   erj<eql> a = a("always_true", eql.a);
-   erj<eqq> b = a("block_match", eqq.a);
-   erj<eqs> c = a("blockstate_match", eqs.a);
-   erj<erq> d = a("tag_match", erq.a);
-   erj<erf> e = a("random_block_match", erf.a);
-   erj<erg> f = a("random_blockstate_match", erg.a);
+public abstract class erj {
+   @Nullable
+   public erm.d a(dgj $$0, ji $$1, ji $$2, erm.d $$3, erm.d $$4, eri $$5) {
+      return $$4;
+   }
 
-   MapCodec<P> codec();
+   protected abstract erl<?> a();
 
-   static <P extends eri> erj<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.m, $$0, () -> $$1);
+   public List<erm.d> a(dgx $$0, ji $$1, ji $$2, List<erm.d> $$3, List<erm.d> $$4, eri $$5) {
+      return $$4;
    }
 }

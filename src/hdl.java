@@ -1,49 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class hdl implements hdo<kr> {
-   private final gdr a;
+public class hdl implements hdm {
+   private final gct a;
+   private final hgt b;
 
-   public hdl(gdr $$0) {
+   public hdl(gct $$0, hgt $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   public kr a(cwp $$0) {
-      return $$0.e();
+   @Override
+   public void a(cwl $$0, ffs $$1, glv $$2, int $$3, int $$4, boolean $$5) {
+      gor.a($$1, $$2, $$3, $$4, this.a, this.b);
    }
 
-   public void a(@Nullable kr $$0, cwn $$1, ffu $$2, glx $$3, int $$4, int $$5, boolean $$6) {
-      dtq $$7 = $$0 != null ? $$0.a(kv.ai, dtq.a) : dtq.a;
-      cvm $$8 = $$0 != null ? $$0.a(kv.aj) : null;
-      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
-      $$2.a();
-      $$2.b(1.0F, -1.0F, -1.0F);
-      hgs $$10 = $$9 ? hgv.g : hgv.h;
-      ffy $$11 = $$10.c().a(gta.a($$3, this.a.a($$10.a()), $$1 == cwn.g, $$6));
-      this.a.c().a($$2, $$11, $$4, $$5);
-      if ($$9) {
-         god.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cvm.a), $$7, $$6, false);
-      } else {
-         this.a.b().a($$2, $$11, $$4, $$5);
+   public static record a(dyh b, Optional<aku> c) implements hdq.a {
+      public static final MapCodec<hdl.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dyh.a.fieldOf("wood_type").forGetter(hdl.a::b), aku.a.optionalFieldOf("texture").forGetter(hdl.a::c)).apply($$0, hdl.a::new)
+      );
+
+      public a(dyh $$0) {
+         this($$0, Optional.empty());
       }
-
-      $$2.b();
-   }
-
-   public static record a() implements hdo.a {
-      public static final hdl.a a = new hdl.a();
-      public static final MapCodec<hdl.a> b = MapCodec.unit(a);
 
       @Override
       public MapCodec<hdl.a> a() {
-         return b;
+         return a;
       }
 
       @Override
-      public hdo<?> a(gey $$0) {
-         return new hdl(new gdr($$0.a(gfb.cD)));
+      public hdq<?> a(gew $$0) {
+         gct $$1 = gor.a($$0, this.b, gor.a.c);
+         hgt $$2 = this.c.<hgt>map(gmq::d).orElseGet(() -> gmq.b(this.b));
+         return new hdl($$1, $$2);
       }
    }
 }

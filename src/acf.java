@@ -4,13 +4,13 @@ public class acf implements yv<abk> {
    public static final ym<vz, acf> a = yv.a(acf::a, acf::new);
    private final int b;
    private final int c;
-   private final List<cwp> d;
-   private final cwp e;
+   private final List<cwn> d;
+   private final cwn e;
 
-   public acf(int $$0, int $$1, ka<cwp> $$2, cwp $$3) {
+   public acf(int $$0, int $$1, ka<cwn> $$2, cwn $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = ka.a($$2.size(), cwp.j);
+      this.d = ka.a($$2.size(), cwn.j);
 
       for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
          this.d.set($$4, $$2.get($$4).v());
@@ -22,15 +22,15 @@ public class acf implements yv<abk> {
    private acf(vz $$0) {
       this.b = $$0.x();
       this.c = $$0.l();
-      this.d = cwp.i.decode($$0);
-      this.e = cwp.g.decode($$0);
+      this.d = cwn.i.decode($$0);
+      this.e = cwn.g.decode($$0);
    }
 
    private void a(vz $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
-      cwp.i.encode($$0, this.d);
-      cwp.g.encode($$0, this.e);
+      cwn.i.encode($$0, this.d);
+      cwn.g.encode($$0, this.e);
    }
 
    @Override
@@ -46,11 +46,11 @@ public class acf implements yv<abk> {
       return this.b;
    }
 
-   public List<cwp> e() {
+   public List<cwn> e() {
       return this.d;
    }
 
-   public cwp f() {
+   public cwn f() {
       return this.e;
    }
 

@@ -1,17 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fmo(int b) implements fmt {
-   public static final MapCodec<fmo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("value").forGetter(fmo::b)).apply($$0, fmo::new));
-
-   public fmo(int b) {
-      b = axk.f(b);
-      this.b = b;
-   }
+public record fmo(int b) implements fmr {
+   public static final MapCodec<fmo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayh.i.fieldOf("default").forGetter(fmo::b)).apply($$0, fmo::new));
 
    @Override
-   public int a(cwp $$0) {
-      return this.b;
+   public int a(cwn $$0) {
+      return czb.a($$0, this.b);
    }
 
    @Override

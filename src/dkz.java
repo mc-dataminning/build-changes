@@ -1,71 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dkz extends diy implements dqs {
-   public static final MapCodec<dkz> a = b(dkz::new);
-   public static final dxo b = dxn.J;
-   private static final int d = 3;
-   protected static final fbu c = djm.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dkz extends djk {
+   public static final MapCodec<djk> a = mb.e.q().fieldOf("dead");
+   public static final MapCodec<dkz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dkz::new));
+   private final djk c;
+
+   public dkz(djk $$0, dwu.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<dkz> a() {
-      return a;
-   }
-
-   public dkz(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
+      return b;
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b);
+   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.m(), 2);
+      }
    }
 
    @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dul($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return a($$2, dub.A, $$0.C ? dul::a : dul::b);
-   }
-
-   @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.b;
-   }
-
-   @Override
-   protected esz b_(dwx $$0) {
-      return $$0.c(b) ? eta.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, eta.c, eta.c.a($$1));
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if (!this.a($$1, $$3)) {
+         $$2.a($$3, this, 60 + $$7.a(40));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return c;
+   protected boolean a(dfl $$0, ji $$1) {
+      for (jn $$2 : jn.values()) {
+         esx $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(awu.a)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Nullable
    @Override
-   public dwx a(dag $$0) {
-      esz $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(awv.a) && $$1.e() == 8));
-   }
+   public dwv a(dae $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().H_().a(40));
+      }
 
-   @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
+      return this.m();
    }
 }

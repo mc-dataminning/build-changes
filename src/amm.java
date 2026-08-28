@@ -24,11 +24,11 @@ public class amm {
          ((ex)$$0.getSource()).l().aF().e().stream().map(StringArgumentType::escapeIfRequired), $$1
       );
    private static final SuggestionProvider<ex> g = ($$0, $$1) -> {
-      aua $$2 = ((ex)$$0.getSource()).l().aF();
+      atz $$2 = ((ex)$$0.getSource()).l().aF();
       Collection<String> $$3 = $$2.e();
-      crt $$4 = ((ex)$$0.getSource()).v();
+      crr $$4 = ((ex)$$0.getSource()).v();
       return fc.b(
-         $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(atx::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+         $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(atw::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
    };
 
@@ -43,7 +43,7 @@ public class amm {
                                           )
                                           .suggests(g)
                                           .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, atx::h, false))
+                                             $$0x -> a((ex)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, atw::h, false))
                                           ))
                                        .then(
                                           ey.a("after")
@@ -88,21 +88,21 @@ public class amm {
       );
    }
 
-   private static int a(ex $$0, atx $$1, amm.a $$2) throws CommandSyntaxException {
-      aua $$3 = $$0.l().aF();
-      List<atx> $$4 = Lists.newArrayList($$3.g());
+   private static int a(ex $$0, atw $$1, amm.a $$2) throws CommandSyntaxException {
+      atz $$3 = $$0.l().aF();
+      List<atw> $$4 = Lists.newArrayList($$3.g());
       $$2.apply($$4, $$1);
       $$0.a(() -> wo.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      aob.a($$4.stream().map(atx::g).collect(Collectors.toList()), $$0);
+      aob.a($$4.stream().map(atw::g).collect(Collectors.toList()), $$0);
       return $$4.size();
    }
 
-   private static int a(ex $$0, atx $$1) {
-      aua $$2 = $$0.l().aF();
-      List<atx> $$3 = Lists.newArrayList($$2.g());
+   private static int a(ex $$0, atw $$1) {
+      atz $$2 = $$0.l().aF();
+      List<atw> $$3 = Lists.newArrayList($$2.g());
       $$3.remove($$1);
       $$0.a(() -> wo.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      aob.a($$3.stream().map(atx::g).collect(Collectors.toList()), $$0);
+      aob.a($$3.stream().map(atw::g).collect(Collectors.toList()), $$0);
       return $$3.size();
    }
 
@@ -111,12 +111,12 @@ public class amm {
    }
 
    private static int b(ex $$0) {
-      aua $$1 = $$0.l().aF();
+      atz $$1 = $$0.l().aF();
       $$1.a();
-      Collection<atx> $$2 = $$1.g();
-      Collection<atx> $$3 = $$1.d();
-      crt $$4 = $$0.v();
-      List<atx> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
+      Collection<atw> $$2 = $$1.g();
+      Collection<atw> $$3 = $$1.d();
+      crr $$4 = $$0.v();
+      List<atw> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> wo.c("commands.datapack.list.available.none"), false);
       } else {
@@ -127,9 +127,9 @@ public class amm {
    }
 
    private static int c(ex $$0) {
-      aua $$1 = $$0.l().aF();
+      atz $$1 = $$0.l().aF();
       $$1.a();
-      Collection<? extends atx> $$2 = $$1.g();
+      Collection<? extends atw> $$2 = $$1.g();
       if ($$2.isEmpty()) {
          $$0.a(() -> wo.c("commands.datapack.list.enabled.none"), false);
       } else {
@@ -139,10 +139,10 @@ public class amm {
       return $$2.size();
    }
 
-   private static atx a(CommandContext<ex> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   private static atw a(CommandContext<ex> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       String $$3 = StringArgumentType.getString($$0, $$1);
-      aua $$4 = ((ex)$$0.getSource()).l().aF();
-      atx $$5 = $$4.c($$3);
+      atz $$4 = ((ex)$$0.getSource()).l().aF();
+      atw $$5 = $$4.c($$3);
       if ($$5 == null) {
          throw a.create($$3);
       } else {
@@ -152,12 +152,12 @@ public class amm {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            crt $$7 = ((ex)$$0.getSource()).v();
-            crt $$8 = $$5.e();
-            if (!$$2 && !$$8.b() && $$5.l() == aub.d) {
+            crr $$7 = ((ex)$$0.getSource()).v();
+            crr $$8 = $$5.e();
+            if (!$$2 && !$$8.b() && $$5.l() == aua.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, crv.a($$7, $$8));
+               throw e.create($$3, crt.a($$7, $$8));
             } else {
                return $$5;
             }
@@ -166,6 +166,6 @@ public class amm {
    }
 
    interface a {
-      void apply(List<atx> var1, atx var2) throws CommandSyntaxException;
+      void apply(List<atw> var1, atw var2) throws CommandSyntaxException;
    }
 }

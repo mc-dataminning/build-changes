@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface arm {
-   void a(dfo var1);
+   void a(dfm var1);
 
-   void a(dfo var1, @Nullable dzt var2);
+   void a(dfm var1, @Nullable dzr var2);
 
    void a();
 

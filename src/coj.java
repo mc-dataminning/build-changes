@@ -1,62 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class coj {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<coj> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               mb.w.q().fieldOf("type").orElseGet(() -> coo.c).forGetter($$0x -> $$0x.f),
-               mb.x.q().fieldOf("profession").orElseGet(() -> col.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, coj::new)
-   );
-   public static final ym<vz, coj> d = ym.a(yk.a(mc.aw), $$0 -> $$0.f, yk.a(mc.av), $$0 -> $$0.g, yk.h, $$0 -> $$0.h, coj::new);
-   private final coo f;
-   private final col g;
-   private final int h;
+public record coj(String q, Predicate<jr<cgm>> r, Predicate<jr<cgm>> s, ImmutableSet<cwj> t, ImmutableSet<djk> u, @Nullable avy v) {
+   public static final Predicate<jr<cgm>> a = $$0 -> $$0.a(awz.a);
+   public static final coj b = a("none", cgm.a, a, null);
+   public static final coj c = a("armorer", cgn.a, avz.BN);
+   public static final coj d = a("butcher", cgn.b, avz.BO);
+   public static final coj e = a("cartographer", cgn.c, avz.BP);
+   public static final coj f = a("cleric", cgn.d, avz.BQ);
+   public static final coj g = a("farmer", cgn.e, ImmutableSet.of(cwr.qb, cwr.qa, cwr.wl, cwr.sv), ImmutableSet.of(djm.cK), avz.BR);
+   public static final coj h = a("fisherman", cgn.f, avz.BS);
+   public static final coj i = a("fletcher", cgn.g, avz.BT);
+   public static final coj j = a("leatherworker", cgn.h, avz.BU);
+   public static final coj k = a("librarian", cgn.i, avz.BV);
+   public static final coj l = a("mason", cgn.j, avz.BW);
+   public static final coj m = a("nitwit", cgm.a, cgm.a, null);
+   public static final coj n = a("shepherd", cgn.k, avz.BX);
+   public static final coj o = a("toolsmith", cgn.l, avz.BY);
+   public static final coj p = a("weaponsmith", cgn.m, avz.BZ);
 
-   public coj(coo $$0, col $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+   @Override
+   public String toString() {
+      return this.q;
    }
 
-   public coo a() {
-      return this.f;
+   private static coj a(String $$0, akt<cgm> $$1, @Nullable avy $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   public col b() {
-      return this.g;
+   private static coj a(String $$0, Predicate<jr<cgm>> $$1, Predicate<jr<cgm>> $$2, @Nullable avy $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
    }
 
-   public int c() {
-      return this.h;
+   private static coj a(String $$0, akt<cgm> $$1, ImmutableSet<cwj> $$2, ImmutableSet<djk> $$3, @Nullable avy $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
    }
 
-   public coj a(coo $$0) {
-      return new coj($$0, this.g, this.h);
+   private static coj a(String $$0, Predicate<jr<cgm>> $$1, Predicate<jr<cgm>> $$2, ImmutableSet<cwj> $$3, ImmutableSet<djk> $$4, @Nullable avy $$5) {
+      return ke.a(mb.x, aku.b($$0), new coj($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public coj a(col $$0) {
-      return new coj(this.f, $$0, this.h);
+   public String a() {
+      return this.q;
    }
 
-   public coj a(int $$0) {
-      return new coj(this.f, this.g, $$0);
+   public Predicate<jr<cgm>> b() {
+      return this.r;
    }
 
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
+   public Predicate<jr<cgm>> c() {
+      return this.s;
    }
 
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
+   public ImmutableSet<cwj> d() {
+      return this.t;
    }
 
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   public ImmutableSet<djk> e() {
+      return this.u;
+   }
+
+   @Nullable
+   public avy f() {
+      return this.v;
    }
 }

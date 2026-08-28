@@ -1,20 +1,31 @@
-public class gre extends gti<clg, gzi, gbg> {
-   private static final aku a = aku.b("textures/entity/blaze.png");
+import java.util.function.UnaryOperator;
 
-   public gre(gsc.a $$0) {
-      super($$0, new gbg($$0.a(gfb.D)), 0.5F);
-   }
+public class gre extends gqp {
+   private final gct a;
+   private final aku b;
+   private final gby<gxt> h;
 
-   protected int a(clg $$0, ji $$1) {
-      return 15;
+   public gre(gsb.a $$0, gey $$1) {
+      super($$0);
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gct.a($$0.a(gez.E), $$0x -> gmf.i());
+      this.h = new gbf($$0.a($$1));
    }
 
    @Override
-   public aku b(gzi $$0) {
-      return a;
+   protected gby<gxt> a() {
+      return this.h;
    }
 
-   public gzi a() {
-      return new gzi();
+   @Override
+   protected gmf b() {
+      return this.h.a(this.b);
+   }
+
+   @Override
+   protected void b(gxt $$0, ffs $$1, glv $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hec.d);
+      }
    }
 }

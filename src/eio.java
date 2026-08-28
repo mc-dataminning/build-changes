@@ -1,22 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
 
-public class eio implements eic {
+public class eio implements eia {
    public static final Codec<eio> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(eio::new, ehs.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), emq.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(Codec.list(eii.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eio::new)
    );
-   public final List<ehs> b;
-   public final jr<emq> c;
+   public final List<eii.a> b;
 
-   public eio(List<ehs> $$0, jr<emq> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eio(dwv $$0, dwv $$1) {
+      this(ImmutableList.of(eii.a(new eqq($$0), $$1)));
    }
 
-   @Override
-   public Stream<efk<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public eio(List<eii.a> $$0) {
+      this.b = $$0;
    }
 }

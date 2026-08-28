@@ -1,6 +1,20 @@
-import java.io.IOException;
-import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface hdv {
-   void a(aku var1, Path var2) throws IOException;
+public class hdv {
+   @Nullable
+   public aku a;
+   public final List<hdv.a> b = new ArrayList<>();
+
+   public static class a {
+      @Nullable
+      public hem a;
+      public byte b;
+      public byte c;
+      public byte d;
+      public boolean e;
+      @Nullable
+      public wo f;
+   }
 }

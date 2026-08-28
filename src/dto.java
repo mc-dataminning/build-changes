@@ -1,103 +1,76 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 
-public class dto extends dtz implements bsm {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
-   @Nullable
-   private wo d;
-   private final cvm e;
-   private dtq f = dtq.a;
+public record dto(List<dto.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dto a = new dto(List.of());
+   public static final Codec<dto> b = dto.b.a.listOf().xmap(dto::new, dto::b);
+   public static final ym<vz, dto> c = dto.b.b.a(yk.a()).a(dto::new, dto::b);
 
-   public dto(ji $$0, dwx $$1) {
-      this($$0, $$1, ((did)$$1.b()).b());
+   public dto a() {
+      return new dto(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public dto(ji $$0, dwx $$1, cvm $$2) {
-      super(dub.u, $$0, $$1);
-      this.e = $$2;
-   }
-
-   @Override
-   public wo al() {
-      return (wo)(this.d != null ? this.d : wo.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public wo an() {
+   public List<dto.b> b() {
       return this.d;
    }
 
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dtq.a)) {
-         $$0.a("patterns", (un)dtq.b.encodeStart($$1.a(ue.a), this.f).getOrThrow());
+   public static class a {
+      private final Builder<dto.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public dto.a a(js<dtn> $$0, akt<dtn> $$1, cvk $$2) {
+         Optional<jr.c<dtn>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dto.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
       }
 
-      if (this.d != null) {
-         $$0.a("CustomName", wo.a.a(this.d, $$1));
+      public dto.a a(jr<dtn> $$0, cvk $$1) {
+         return this.a(new dto.b($$0, $$1));
+      }
+
+      public dto.a a(dto.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dto.a a(dto $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dto a() {
+         return new dto(this.a.build());
       }
    }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
+   public static record b(jr<dtn> c, cvk d) {
+      public static final Codec<dto.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dtn.c.fieldOf("pattern").forGetter(dto.b::b), cvk.q.fieldOf("color").forGetter(dto.b::c)).apply($$0, dto.b::new)
+      );
+      public static final ym<vz, dto.b> b = ym.a(dtn.d, dto.b::b, cvk.r, dto.b::c, dto.b::new);
+
+      public xc a() {
+         String $$0 = this.c.a().b();
+         return wo.c($$0 + "." + this.d.b());
       }
 
-      if ($$0.e("patterns")) {
-         dtq.b
-            .parse($$1.a(ue.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
+      public jr<dtn> b() {
+         return this.c;
       }
-   }
 
-   public abr a() {
-      return abr.a(this);
-   }
-
-   @Override
-   public tq a(jt.a $$0) {
-      return this.d($$0);
-   }
-
-   public dtq b() {
-      return this.f;
-   }
-
-   public cwp c() {
-      cwp $$0 = new cwp(dir.a(this.e));
-      $$0.b(this.q());
-      return $$0;
-   }
-
-   public cvm f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dtz.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(kv.ai, dtq.a);
-      this.d = $$0.a(kv.g);
-   }
-
-   @Override
-   protected void a(kr.a $$0) {
-      super.a($$0);
-      $$0.a(kv.ai, this.f);
-      $$0.a(kv.g, this.d);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+      public cvk c() {
+         return this.d;
+      }
    }
 }

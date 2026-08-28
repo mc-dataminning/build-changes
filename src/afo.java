@@ -7,9 +7,9 @@ public class afo implements yv<abk> {
    @Nullable
    private final aku d;
    @Nullable
-   private final awb e;
+   private final awa e;
 
-   public afo(@Nullable aku $$0, @Nullable awb $$1) {
+   public afo(@Nullable aku $$0, @Nullable awa $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -17,7 +17,7 @@ public class afo implements yv<abk> {
    private afo(vl $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
-         this.e = $$0.b(awb.class);
+         this.e = $$0.b(awa.class);
       } else {
          this.e = null;
       }
@@ -62,7 +62,7 @@ public class afo implements yv<abk> {
    }
 
    @Nullable
-   public awb e() {
+   public awa e() {
       return this.e;
    }
 }

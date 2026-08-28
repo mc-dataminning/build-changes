@@ -1,47 +1,64 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fkd extends fkh {
+public class fkd extends fkf {
    private static final Logger b = LogUtils.getLogger();
-   private static final wo c = wo.c("mco.configure.world.closing");
-   private final fhl d;
-   private final fiu e;
+   private static final wo c = wo.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fui f;
+   private final String g;
 
-   public fkd(fhl $$0, fiu $$1) {
+   public fkd(long $$0, int $$1, String $$2, fui $$3) {
       this.d = $$0;
       this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
    public void run() {
-      fgk $$0 = fgk.a();
+      fgi $$0 = fgi.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
+      while ($$1 < 25) {
          try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = fhl.c.a;
-               a(this.e);
-               break;
+            if (this.d()) {
+               return;
             }
-         } catch (fih var4) {
+
+            fhy $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new fiv(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fif var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (fie var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Failed to close server", var5);
-            this.a(var5);
+            b.error("Couldn't download world data", var5);
+            a(new fiw(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
          }
       }
    }

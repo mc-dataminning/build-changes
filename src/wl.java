@@ -61,13 +61,13 @@ public record wl(String c, List<wl.a> d, xl e) {
       return this.e;
    }
 
-   public static enum a implements azv {
+   public static enum a implements azu {
       a(0, "sender", ($$0, $$1) -> $$1.b()),
       b(1, "target", ($$0, $$1) -> $$1.c().orElse(wn.a)),
       c(2, "content", ($$0, $$1) -> $$0);
 
-      private static final IntFunction<wl.a> f = axq.a($$0 -> $$0.g, values(), axq.a.a);
-      public static final Codec<wl.a> d = azv.a(wl.a::values);
+      private static final IntFunction<wl.a> f = axp.a($$0 -> $$0.g, values(), axp.a.a);
+      public static final Codec<wl.a> d = azu.a(wl.a::values);
       public static final ym<ByteBuf, wl.a> e = yk.a(f, $$0 -> $$0.g);
       private final int g;
       private final String h;

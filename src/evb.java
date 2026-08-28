@@ -1,28 +1,28 @@
-import java.util.Locale;
+public class evb {
+   public static final evb a = new evb("advancements");
+   public static final evb b = new evb("stats");
+   public static final evb c = new evb("playerdata");
+   public static final evb d = new evb("players");
+   public static final evb e = new evb("level.dat");
+   public static final evb f = new evb("level.dat_old");
+   public static final evb g = new evb("icon.png");
+   public static final evb h = new evb("session.lock");
+   public static final evb i = new evb("generated");
+   public static final evb j = new evb("datapacks");
+   public static final evb k = new evb("resources.zip");
+   public static final evb l = new evb(".");
+   private final String m;
 
-public interface evb {
-   ji a();
+   private evb(String $$0) {
+      this.m = $$0;
+   }
 
-   float b();
+   public String a() {
+      return this.m;
+   }
 
-   long c();
-
-   long d();
-
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   bsg q();
-
-   boolean r();
-
-   default void a(p $$0, dgk $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

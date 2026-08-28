@@ -1,39 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hdn implements hdo<czo> {
-   private final dqt.a a;
-   private final gdx b;
+public class hdn implements hdq<kr> {
+   private final gdp a;
 
-   public hdn(dqt.a $$0, gdx $$1) {
+   public hdn(gdp $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
    @Nullable
-   public czo a(cwp $$0) {
-      return $$0.a(kv.ag);
+   public kr a(cwn $$0) {
+      return $$0.e();
    }
 
-   public void a(@Nullable czo $$0, cwn $$1, ffu $$2, glx $$3, int $$4, int $$5, boolean $$6) {
-      gmh $$7 = gox.a(this.a, $$0);
-      gox.a(null, 180.0F, 0.0F, $$2, $$3, $$4, this.b, $$7);
+   public void a(@Nullable kr $$0, cwl $$1, ffs $$2, glv $$3, int $$4, int $$5, boolean $$6) {
+      dto $$7 = $$0 != null ? $$0.a(kv.ai, dto.a) : dto.a;
+      cvk $$8 = $$0 != null ? $$0.a(kv.aj) : null;
+      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
+      $$2.a();
+      $$2.b(1.0F, -1.0F, -1.0F);
+      hgt $$10 = $$9 ? hgw.g : hgw.h;
+      ffw $$11 = $$10.c().a(gsz.a($$3, this.a.a($$10.a()), $$1 == cwl.g, $$6));
+      this.a.c().a($$2, $$11, $$4, $$5);
+      if ($$9) {
+         goc.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cvk.a), $$7, $$6, false);
+      } else {
+         this.a.b().a($$2, $$11, $$4, $$5);
+      }
+
+      $$2.b();
    }
 
-   public static record a(dqt.a b) implements hdo.a {
-      public static final MapCodec<hdn.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dqt.a.b.fieldOf("kind").forGetter(hdn.a::b)).apply($$0, hdn.a::new));
+   public static record a() implements hdq.a {
+      public static final hdn.a a = new hdn.a();
+      public static final MapCodec<hdn.a> b = MapCodec.unit(a);
 
       @Override
       public MapCodec<hdn.a> a() {
-         return a;
+         return b;
       }
 
-      @Nullable
       @Override
-      public hdo<?> a(gey $$0) {
-         gdx $$1 = gox.a($$0, this.b);
-         return $$1 != null ? new hdn(this.b, $$1) : null;
+      public hdq<?> a(gew $$0) {
+         return new hdn(new gdp($$0.a(gez.cD)));
       }
    }
 }

@@ -1,23 +1,24 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record ddy(km d, Optional<edz> e, ekd f, Optional<jr<ebt>> g) implements ddq {
-   public static final MapCodec<ddy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               km.g.optionalFieldOf("offset", km.h).forGetter(ddy::b),
-               edz.b.optionalFieldOf("predicate").forGetter(ddy::c),
-               ekd.a.fieldOf("block_state").forGetter(ddy::d),
-               ebt.aj.optionalFieldOf("trigger_game_event").forGetter(ddy::e)
-            )
-            .apply($$0, ddy::new)
-   );
+public record ddy(aku d) implements ddo {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<ddy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("function").forGetter(ddy::b)).apply($$0, ddy::new));
 
    @Override
-   public void a(arc $$0, int $$1, dcy $$2, buk $$3, fba $$4) {
-      ji $$5 = ji.a((kb)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dZ(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
+      MinecraftServer $$5 = $$0.p();
+      alj $$6 = $$5.aE();
+      Optional<il<ex>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ex $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
       }
    }
 
@@ -26,19 +27,7 @@ public record ddy(km d, Optional<edz> e, ekd f, Optional<jr<ebt>> g) implements 
       return a;
    }
 
-   public km b() {
+   public aku b() {
       return this.d;
-   }
-
-   public Optional<edz> c() {
-      return this.e;
-   }
-
-   public ekd d() {
-      return this.f;
-   }
-
-   public Optional<jr<ebt>> e() {
-      return this.g;
    }
 }

@@ -24,11 +24,11 @@ public class asa {
       this.g = $$0;
    }
 
-   public void a(dzc $$0) {
+   public void a(dza $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(ard $$0, dfo $$1) {
+   public void a(ard $$0, dfm $$1) {
       if (!this.f.remove($$1.a()) && $$0.bL()) {
          $$0.f.b(new acr($$1));
       }
@@ -42,13 +42,13 @@ public class asa {
             if (!this.f.isEmpty()) {
                arc $$2 = $$0.y();
                aqh $$3 = $$2.m().a;
-               List<dzc> $$4 = this.a($$3, $$0.dy());
+               List<dza> $$4 = this.a($$3, $$0.dy());
                if (!$$4.isEmpty()) {
                   asf $$5 = $$0.f;
                   this.j++;
                   $$5.b(abz.a);
 
-                  for (dzc $$6 : $$4) {
+                  for (dza $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class asa {
       }
    }
 
-   private static void a(asf $$0, arc $$1, dzc $$2) {
+   private static void a(asf $$0, arc $$1, dza $$2) {
       $$0.b(new acx($$2, $$1.C_(), null, null));
-      dfo $$3 = $$2.f();
+      dfm $$3 = $$2.f();
       agc.a($$1, $$3);
    }
 
-   private List<dzc> a(aqh $$0, dfo $$1) {
-      int $$2 = ayz.d(this.i);
-      List<dzc> $$4;
+   private List<dza> a(aqh $$0, dfm $$1) {
+      int $$2 = ayy.d(this.i);
+      List<dza> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()
@@ -82,7 +82,7 @@ public class asa {
          $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      for (dzc $$5 : $$4) {
+      for (dza $$5 : $$4) {
          this.f.remove($$5.f().a());
       }
 
@@ -91,7 +91,7 @@ public class asa {
 
    public void a(float $$0) {
       this.j--;
-      this.h = Double.isNaN((double)$$0) ? 0.01F : ayz.a($$0, 0.01F, 64.0F);
+      this.h = Double.isNaN((double)$$0) ? 0.01F : ayy.a($$0, 0.01F, 64.0F);
       if (this.j == 0) {
          this.i = 1.0F;
       }

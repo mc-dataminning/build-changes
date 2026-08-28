@@ -1,15 +1,19 @@
-public class ear {
-   public static final int a = -64;
-   public static final int b = 384;
-   public static final int c = 384;
-   public static final int d = 384;
-   public static final int e = 0;
-   public static final int f = 256;
-   public static final int g = 128;
-   public static final int h = 128;
-   public static final int i = 0;
-   public static final int j = 256;
-   public static final int k = 128;
-   public static final int l = 256;
-   public static final int m = 63;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record ear(jr<eaq> e, dyr f) {
+   public static final Codec<ear> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eaq.k.fieldOf("type").forGetter(ear::a), dyr.a.fieldOf("generator").forGetter(ear::b)).apply($$0, $$0.stable(ear::new))
+   );
+   public static final akt<ear> b = akt.a(mc.bf, aku.b("overworld"));
+   public static final akt<ear> c = akt.a(mc.bf, aku.b("the_nether"));
+   public static final akt<ear> d = akt.a(mc.bf, aku.b("the_end"));
+
+   public jr<eaq> a() {
+      return this.e;
+   }
+
+   public dyr b() {
+      return this.f;
+   }
 }

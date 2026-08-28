@@ -1,33 +1,37 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public record dep(int a, Map<der, Integer> b, int c, jr<avz> d, float e, float f, axf<cwl> g, akt<des> h) {
-   public cwl.a a(cwl.a $$0, der $$1) {
-      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(kv.D, deu.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
+public enum dep implements azu {
+   a(bur.f, 11, "helmet"),
+   b(bur.e, 16, "chestplate"),
+   c(bur.d, 15, "leggings"),
+   d(bur.c, 13, "boots"),
+   e(bur.g, 16, "body");
+
+   public static final Codec<dep> f = azu.b(dep::values);
+   private final bur g;
+   private final String h;
+   private final int i;
+
+   private dep(final bur $$0, final int $$1, final String $$2) {
+      this.g = $$0;
+      this.h = $$2;
+      this.i = $$1;
    }
 
-   public cwl.a a(cwl.a $$0, jv<bur<?>> $$1) {
-      return $$0.b(der.e.a(this.a)).a(this.a(der.e)).a(this.g).a(kv.D, deu.a(bus.g).a(this.d).a(this.h).a($$1).a());
+   public int a(int $$0) {
+      return this.i * $$0;
    }
 
-   public cwl.a a(cwl.a $$0, jr<avz> $$1, boolean $$2, jv<bur<?>> $$3) {
-      if ($$2) {
-         $$0 = $$0.b(der.e.a(this.a)).a(this.g);
-      }
-
-      return $$0.a(this.a(der.e)).a(kv.D, deu.a(bus.g).a($$1).a(this.h).a($$3).c($$2).a());
+   public bur a() {
+      return this.g;
    }
 
-   private czg a(der $$0) {
-      int $$1 = this.b.getOrDefault($$0, 0);
-      czg.a $$2 = czg.a();
-      but $$3 = but.a($$0.a());
-      aku $$4 = aku.b("armor." + $$0.b());
-      $$2.a(bwo.a, new bwm($$4, (double)$$1, bwm.a.a), $$3);
-      $$2.a(bwo.b, new bwm($$4, (double)this.e, bwm.a.a), $$3);
-      if (this.f > 0.0F) {
-         $$2.a(bwo.p, new bwm($$4, (double)this.f, bwm.a.a), $$3);
-      }
+   public String b() {
+      return this.h;
+   }
 
-      return $$2.a();
+   @Override
+   public String c() {
+      return this.h;
    }
 }

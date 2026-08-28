@@ -1,23 +1,28 @@
-public class gwv extends gwr<haf, gdy> {
-   private final gdy a;
+public class gwv extends gwq<hag, gdy> {
+   private final gmz a;
 
-   public gwv(gtz<haf, gdy> $$0, gey $$1) {
+   public gwv(gty<hag, gdy> $$0, gmz $$1) {
       super($$0);
-      this.a = new gdy($$1.a(gfb.cP));
+      this.a = $$1;
    }
 
-   public void a(ffu $$0, glx $$1, int $$2, haf $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.ao && $$3.z;
-      if (!$$3.z || $$6) {
-         ffy $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(gmh.s(gug.a));
-         } else {
-            $$7 = $$1.getBuffer(gmh.j(gug.a));
+   public void a(ffs $$0, glv $$1, int $$2, hag $$3, float $$4, float $$5) {
+      if ($$3.a) {
+         if (!$$3.z || $$3.ao) {
+            $$0.a();
+            this.d().b().a($$0);
+            float $$6 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            dwv $$7 = djm.er.m();
+            hgm $$8 = this.a.a($$7);
+            int $$9 = gtc.a($$3, 0.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            ffw $$10 = $$3.ao && $$3.z ? $$1.getBuffer(gmf.s(hel.d)) : $$1.getBuffer(glo.c($$7));
+            this.a.b().a($$0.c(), $$10, $$7, $$8, 0.0F, 0.0F, 0.0F, $$2, $$9);
+            $$0.b();
          }
-
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gtd.a($$3, 0.0F));
       }
    }
 }

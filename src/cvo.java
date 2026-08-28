@@ -1,25 +1,27 @@
-public class cvo extends cwl implements cxk {
-   public static float a = 1.5F;
-
-   public cvo(cwl.a $$0) {
+public class cvo extends cwj {
+   public cvo(cwj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsj a(dgi $$0, cox $$1, bsi $$2) {
-      cwp $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awa.ii, awb.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arc $$4) {
-         cpq.a(cpz::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      cwn $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bsi.a;
+      } else {
+         $$3.a(1, $$1);
+         $$1.b(awj.c.b(this));
+         $$1.dW().a(null, $$1, avz.Bi, $$1.dn(), 1.0F, 1.0F);
+         cwn $$4 = cxa.a($$0, $$1.dA(), $$1.dG(), (byte)0, true, false);
+         if ($$3.f()) {
+            return bsi.a.a($$4);
+         } else {
+            if (!$$1.gi().f($$4.v())) {
+               $$1.a($$4, false);
+            }
+
+            return bsi.a;
+         }
       }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsj.a;
-   }
-
-   @Override
-   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
-      return new cpz($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

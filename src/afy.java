@@ -5,12 +5,12 @@ public class afy implements yv<abk> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final jr<btn> g;
+   private final jr<btm> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public afy(int $$0, btp $$1, boolean $$2) {
+   public afy(int $$0, bto $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -37,7 +37,7 @@ public class afy implements yv<abk> {
 
    private afy(vz $$0) {
       this.f = $$0.l();
-      this.g = btn.b.decode($$0);
+      this.g = btm.b.decode($$0);
       this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
@@ -45,7 +45,7 @@ public class afy implements yv<abk> {
 
    private void a(vz $$0) {
       $$0.c(this.f);
-      btn.b.encode($$0, this.g);
+      btm.b.encode($$0, this.g);
       $$0.c(this.h);
       $$0.c(this.i);
       $$0.l(this.j);
@@ -64,7 +64,7 @@ public class afy implements yv<abk> {
       return this.f;
    }
 
-   public jr<btn> e() {
+   public jr<btm> e() {
       return this.g;
    }
 

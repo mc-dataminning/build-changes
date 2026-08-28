@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record bnq<T>(String a) {
+   @Override
+   public String toString() {
+      return "<" + this.a + ">";
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bnq {
+   public static <T> bnq<T> a(String $$0) {
+      return new bnq<>($$0);
+   }
 }

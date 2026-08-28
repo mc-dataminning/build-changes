@@ -1,17 +1,22 @@
-public class gso extends gul<buy> {
-   private static final aku a = aku.b("textures/entity/squid/glow_squid.png");
+public class gso extends gqv<ciw, gyt, gcf> {
+   private static final aku a = aku.b("textures/entity/goat/goat.png");
 
-   public gso(gsc.a $$0, ged $$1, ged $$2) {
-      super($$0, $$1, $$2);
+   public gso(gsb.a $$0) {
+      super($$0, new gcf($$0.a(gez.aX)), new gcf($$0.a(gez.aY)), 0.7F);
    }
 
-   @Override
-   public aku a(hai $$0) {
+   public aku a(gyt $$0) {
       return a;
    }
 
-   protected int a(buy $$0, ji $$1) {
-      int $$2 = (int)ayz.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public gyt b() {
+      return new gyt();
+   }
+
+   public void a(ciw $$0, gyt $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gp();
+      $$1.b = $$0.gq();
+      $$1.c = $$0.gC();
    }
 }

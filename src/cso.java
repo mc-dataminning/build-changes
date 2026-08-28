@@ -1,7 +1,5 @@
 public interface cso {
-   int a(int var1);
+   void a(csa var1, int var2, cwn var3);
 
-   void a(int var1, int var2);
-
-   int a();
+   void a(csa var1, int var2, int var3);
 }

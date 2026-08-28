@@ -1,10 +1,5 @@
-public class hau extends gzi {
-   public float a;
-   public float b;
-   public final buc c = new buc();
-   public final buc d = new buc();
-   public final buc e = new buc();
-   public final buc f = new buc();
-   public final buc g = new buc();
-   public final buc h = new buc();
+public class hau extends gyw {
+   public int a;
+   public boolean b;
+   public boolean c;
 }

@@ -1,12 +1,13 @@
-public class gvn<M extends gdf> extends gwz<M> {
-   private static final aku a = aku.b("textures/entity/bee/bee_stinger.png");
+public class gvn extends gwq<gxv, gbi> {
+   private static final gmf a = gmf.r(aku.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gvn(gtd<?, gzu, M> $$0, gsc.a $$1) {
-      super($$0, new gbe($$1.a(gfb.z)), a, gwz.a.b);
+   public gvn(gty<gxv, gbi> $$0) {
+      super($$0);
    }
 
-   @Override
-   protected int a(gzu $$0) {
-      return $$0.k;
+   public void a(ffs $$0, glv $$1, int $$2, gxv $$3, float $$4, float $$5) {
+      ffw $$6 = $$1.getBuffer(a);
+      gbi $$7 = this.d();
+      grg.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hec.d);
    }
 }

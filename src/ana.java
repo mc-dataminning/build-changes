@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 public class ana {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("commands.fill.toobig", $$0, $$1));
-   static final go b = new go(djo.a.m(), Collections.emptySet(), null);
+   static final go b = new go(djm.a.m(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<ex> $$0, et $$1) {
@@ -27,14 +27,14 @@ public class ana {
                                                 "block", gq.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.a, null)
+                                                $$0x -> a((ex)$$0x.getSource(), enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)ey.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (ex)$$0x.getSource(),
-                                                            ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                                            enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
                                                             gq.a($$0x, "block"),
                                                             ana.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class ana {
                                                       .executes(
                                                          $$0x -> a(
                                                                (ex)$$0x.getSource(),
-                                                               ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                                               enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
                                                                gq.a($$0x, "block"),
                                                                ana.a.a,
                                                                gp.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class ana {
                                              .executes(
                                                 $$0x -> a(
                                                       (ex)$$0x.getSource(),
-                                                      ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                                      enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
                                                       gq.a($$0x, "block"),
                                                       ana.a.a,
                                                       $$0xx -> $$0xx.c().u($$0xx.d())
@@ -68,18 +68,18 @@ public class ana {
                                     .then(
                                        ey.a("outline")
                                           .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.b, null)
+                                             $$0x -> a((ex)$$0x.getSource(), enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.b, null)
                                           )
                                     ))
                                  .then(
                                     ey.a("hollow")
                                        .executes(
-                                          $$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.c, null)
+                                          $$0x -> a((ex)$$0x.getSource(), enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.c, null)
                                        )
                                  ))
                               .then(
                                  ey.a("destroy")
-                                    .executes($$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.d, null))
+                                    .executes($$0x -> a((ex)$$0x.getSource(), enc.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.d, null))
                               )
                         )
                   )
@@ -87,9 +87,9 @@ public class ana {
       );
    }
 
-   private static int a(ex $$0, ene $$1, go $$2, ana.a $$3, @Nullable Predicate<dxb> $$4) throws CommandSyntaxException {
+   private static int a(ex $$0, enc $$1, go $$2, ana.a $$3, @Nullable Predicate<dwz> $$4) throws CommandSyntaxException {
       int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().O().c(dge.A);
+      int $$6 = $$0.e().O().c(dgc.A);
       if ($$5 > $$6) {
          throw a.create($$6, $$5);
       } else {
@@ -98,11 +98,11 @@ public class ana {
          int $$9 = 0;
 
          for (ji $$10 : ji.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new dxb($$8, $$10, true))) {
+            if ($$4 == null || $$4.test(new dwz($$8, $$10, true))) {
                go $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
                if ($$11 != null) {
-                  dtz $$12 = $$8.c_($$10);
-                  bsa.a($$12);
+                  dtx $$12 = $$8.c_($$10);
+                  brz.a($$12);
                   if ($$11.a($$8, $$10, 2)) {
                      $$7.add($$10.j());
                      $$9++;
@@ -112,7 +112,7 @@ public class ana {
          }
 
          for (ji $$13 : $$7) {
-            djm $$14 = $$8.a_($$13).b();
+            djk $$14 = $$8.a_($$13).b();
             $$8.b($$13, $$14);
          }
 

@@ -1,13 +1,13 @@
 public class afl implements yv<abk> {
    public static final ym<vz, afl> a = yv.a(afl::a, afl::new);
-   private final jr<avz> b;
-   private final awb c;
+   private final jr<avy> b;
+   private final awa c;
    private final int d;
    private final float e;
    private final float f;
    private final long g;
 
-   public afl(jr<avz> $$0, awb $$1, buk $$2, float $$3, float $$4, long $$5) {
+   public afl(jr<avy> $$0, awa $$1, buj $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.ar();
@@ -17,8 +17,8 @@ public class afl implements yv<abk> {
    }
 
    private afl(vz $$0) {
-      this.b = avz.d.decode($$0);
-      this.c = $$0.b(awb.class);
+      this.b = avy.d.decode($$0);
+      this.c = $$0.b(awa.class);
       this.d = $$0.l();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
@@ -26,7 +26,7 @@ public class afl implements yv<abk> {
    }
 
    private void a(vz $$0) {
-      avz.d.encode($$0, this.b);
+      avy.d.encode($$0, this.b);
       $$0.a(this.c);
       $$0.c(this.d);
       $$0.a(this.e);
@@ -43,11 +43,11 @@ public class afl implements yv<abk> {
       $$0.a(this);
    }
 
-   public jr<avz> b() {
+   public jr<avy> b() {
       return this.b;
    }
 
-   public awb e() {
+   public awa e() {
       return this.c;
    }
 

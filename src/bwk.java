@@ -1,213 +1,157 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bwk {
-   private static final String b = "base";
-   private static final String c = "modifiers";
-   public static final String a = "id";
-   private final jr<bwj> d;
-   private final Map<bwm.a, Map<aku, bwm>> e = Maps.newEnumMap(bwm.a.class);
-   private final Map<aku, bwm> f = new Object2ObjectArrayMap();
-   private final Map<aku, bwm> g = new Object2ObjectArrayMap();
-   private double h;
-   private boolean i = true;
-   private double j;
-   private final Consumer<bwk> k;
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jr<bwi>, bwj> b = new Object2ObjectOpenHashMap();
+   private final Set<bwj> c = new ObjectOpenHashSet();
+   private final Set<bwj> d = new ObjectOpenHashSet();
+   private final bwm e;
 
-   public bwk(jr<bwj> $$0, Consumer<bwk> $$1) {
-      this.d = $$0;
-      this.k = $$1;
-      this.h = $$0.a().a();
+   public bwk(bwm $$0) {
+      this.e = $$0;
    }
 
-   public jr<bwj> a() {
+   private void a(bwj $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
+   }
+
+   public Set<bwj> a() {
+      return this.c;
+   }
+
+   public Set<bwj> b() {
       return this.d;
    }
 
-   public double b() {
-      return this.h;
-   }
-
-   public void a(double $$0) {
-      if ($$0 != this.h) {
-         this.h = $$0;
-         this.e();
-      }
-   }
-
-   @VisibleForTesting
-   Map<aku, bwm> a(bwm.a $$0) {
-      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
-   }
-
-   public Set<bwm> c() {
-      return ImmutableSet.copyOf(this.f.values());
-   }
-
-   public Set<bwm> d() {
-      return ImmutableSet.copyOf(this.g.values());
+   public Collection<bwj> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public bwm a(aku $$0) {
-      return this.f.get($$0);
+   public bwj a(jr<bwi> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
    }
 
-   public boolean b(aku $$0) {
-      return this.f.get($$0) != null;
+   public boolean b(jr<bwi> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
    }
 
-   private void f(bwm $$0) {
-      bwm $$1 = this.f.putIfAbsent($$0.b(), $$0);
-      if ($$1 != null) {
-         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
-      } else {
-         this.a($$0.d()).put($$0.b(), $$0);
-         this.e();
-      }
+   public boolean a(jr<bwi> $$0, aku $$1) {
+      bwj $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
    }
 
-   public void a(bwm $$0) {
-      bwm $$1 = this.f.put($$0.b(), $$0);
-      if ($$0 != $$1) {
-         this.a($$0.d()).put($$0.b(), $$0);
-         this.e();
-      }
+   public double c(jr<bwi> $$0) {
+      bwj $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.g() : this.e.a($$0);
    }
 
-   public void b(bwm $$0) {
-      this.f($$0);
+   public double d(jr<bwi> $$0) {
+      bwj $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
    }
 
-   public void c(bwm $$0) {
-      this.c($$0.b());
-      this.f($$0);
-      this.g.put($$0.b(), $$0);
+   public double b(jr<bwi> $$0, aku $$1) {
+      bwj $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
    }
 
-   public void d(bwm $$0) {
-      this.f($$0);
-      this.g.put($$0.b(), $$0);
+   public void a(Multimap<jr<bwi>, bwl> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bwj $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
    }
 
-   public void a(Collection<bwm> $$0) {
-      for (bwm $$1 : $$0) {
-         this.d($$1);
-      }
+   public void b(Multimap<jr<bwi>, bwl> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bwj $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
    }
 
-   protected void e() {
-      this.i = true;
-      this.k.accept(this);
+   public void a(bwk $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwj $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
    }
 
-   public void e(bwm $$0) {
-      this.c($$0.b());
+   public void b(bwk $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwj $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
    }
 
-   public boolean c(aku $$0) {
-      bwm $$1 = this.f.remove($$0);
-      if ($$1 == null) {
+   public void c(bwk $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bwj $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public boolean e(jr<bwi> $$0) {
+      if (!this.e.c($$0)) {
          return false;
       } else {
-         this.a($$1.d()).remove($$0);
-         this.g.remove($$0);
-         this.e();
+         bwj $$1 = this.b.get($$0);
+         if ($$1 != null) {
+            $$1.a(this.e.b($$0));
+         }
+
          return true;
       }
    }
 
-   public void f() {
-      for (bwm $$0 : this.c()) {
-         this.e($$0);
-      }
-   }
+   public tw d() {
+      tw $$0 = new tw();
 
-   public double g() {
-      if (this.i) {
-         this.j = this.i();
-         this.i = false;
-      }
-
-      return this.j;
-   }
-
-   private double i() {
-      double $$0 = this.b();
-
-      for (bwm $$1 : this.b(bwm.a.a)) {
-         $$0 += $$1.c();
-      }
-
-      double $$2 = $$0;
-
-      for (bwm $$3 : this.b(bwm.a.b)) {
-         $$2 += $$0 * $$3.c();
-      }
-
-      for (bwm $$4 : this.b(bwm.a.c)) {
-         $$2 *= 1.0 + $$4.c();
-      }
-
-      return this.d.a().a($$2);
-   }
-
-   private Collection<bwm> b(bwm.a $$0) {
-      return this.e.getOrDefault($$0, Map.of()).values();
-   }
-
-   public void a(bwk $$0) {
-      this.h = $$0.h;
-      this.f.clear();
-      this.f.putAll($$0.f);
-      this.g.clear();
-      this.g.putAll($$0.g);
-      this.e.clear();
-      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends aku, ? extends bwm>)$$1));
-      this.e();
-   }
-
-   public tq h() {
-      tq $$0 = new tq();
-      akt<bwj> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
-      $$0.a("id", $$1.a().toString());
-      $$0.a("base", this.h);
-      if (!this.g.isEmpty()) {
-         tw $$2 = new tw();
-
-         for (bwm $$3 : this.g.values()) {
-            $$2.add($$3.a());
-         }
-
-         $$0.a("modifiers", $$2);
+      for (bwj $$1 : this.b.values()) {
+         $$0.add($$1.h());
       }
 
       return $$0;
    }
 
-   public void a(tq $$0) {
-      this.h = $$0.k("base");
-      if ($$0.b("modifiers", 9)) {
-         tw $$1 = $$0.c("modifiers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            bwm $$3 = bwm.a($$1.a($$2));
-            if ($$3 != null) {
-               this.f.put($$3.b(), $$3);
-               this.a($$3.d()).put($$3.b(), $$3);
-               this.g.put($$3.b(), $$3);
-            }
+   public void a(tw $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         tq $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         aku $$4 = aku.c($$3);
+         if ($$4 != null) {
+            af.a(mb.s.c($$4), $$1x -> {
+               bwj $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
          }
       }
-
-      this.e();
    }
 }

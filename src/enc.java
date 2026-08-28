@@ -1,113 +1,258 @@
-import java.util.Map;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class enc {
-   public static final akt<enb> a = a("normal");
-   public static final akt<enb> b = a("flat");
-   public static final akt<enb> c = a("large_biomes");
-   public static final akt<enb> d = a("amplified");
-   public static final akt<enb> e = a("single_biome_surface");
-   public static final akt<enb> f = a("debug_all_block_states");
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<enc> a = Codec.INT_STREAM
+      .comapFlatMap(
+         $$0 -> af.a($$0, 6).map($$0x -> new enc($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
+         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
+      )
+      .stable();
+   private int c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public static void a(qe<enb> $$0) {
-      new enc.a($$0).a();
+   public enc(ji $$0) {
+      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
    }
 
-   private static akt<enb> a(String $$0) {
-      return akt.a(mc.bb, aku.b($$0));
+   public enc(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
+         af.b("Invalid bounding box data, inverted bounds for: " + this);
+         this.c = Math.min($$0, $$3);
+         this.d = Math.min($$1, $$4);
+         this.e = Math.min($$2, $$5);
+         this.f = Math.max($$0, $$3);
+         this.g = Math.max($$1, $$4);
+         this.h = Math.max($$2, $$5);
+      }
    }
 
-   public static Optional<akt<enb>> a(edn $$0) {
-      return $$0.a(eat.b).flatMap($$0x -> {
-         Object var10000;
-         Objects.requireNonNull(var10000);
-         dyt $$1 = (dyt)var10000;
-
-         $$0x.b();
-         return switch ($$1) {
-            case ecn $$3 -> Optional.of(b);
-            case ecj $$4 -> Optional.of(f);
-            case ecv $$5 -> Optional.of(a);
-            default -> Optional.empty();
-         };
-      });
+   public static enc a(km $$0, km $$1) {
+      return new enc(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
    }
 
-   public static edn a(jt.a $$0) {
-      return $$0.d(mc.bb).b(a).a().a();
+   public static enc a() {
+      return new enc(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
    }
 
-   public static eat b(jt.a $$0) {
-      return $$0.d(mc.bb).b(a).a().b().orElseThrow();
+   public static enc a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, jn $$9) {
+      switch ($$9) {
+         case d:
+         default:
+            return new enc($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
+         case c:
+            return new enc($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
+         case e:
+            return new enc($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+         case f:
+            return new enc($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      }
    }
 
-   public static edn c(jt.a $$0) {
-      return $$0.d(mc.bb).b(b).a().a();
+   public Stream<dfm> b() {
+      int $$0 = kk.a(this.h());
+      int $$1 = kk.a(this.j());
+      int $$2 = kk.a(this.k());
+      int $$3 = kk.a(this.m());
+      return dfm.a(new dfm($$0, $$1), new dfm($$2, $$3));
    }
 
-   static class a {
-      private final qe<enb> a;
-      private final js<ecx> b;
-      private final js<dhk> c;
-      private final js<emq> d;
-      private final js<ens> e;
-      private final js<dhy> f;
-      private final jr<eas> g;
-      private final eat h;
-      private final eat i;
+   public boolean a(enc $$0) {
+      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
+   }
 
-      a(qe<enb> $$0) {
-         this.a = $$0;
-         js<eas> $$1 = $$0.a(mc.aN);
-         this.b = $$0.a(mc.aR);
-         this.c = $$0.a(mc.aI);
-         this.d = $$0.a(mc.aT);
-         this.e = $$0.a(mc.aW);
-         this.f = $$0.a(mc.bc);
-         this.g = $$1.b(eaq.a);
-         jr<eas> $$2 = $$1.b(eaq.b);
-         jr<ecx> $$3 = this.b.b(ecx.f);
-         jr.c<dhy> $$4 = this.f.b(dhz.a);
-         this.h = new eat($$2, new ecv(dhx.a($$4), $$3));
-         jr<eas> $$5 = $$1.b(eaq.c);
-         jr<ecx> $$6 = this.b.b(ecx.g);
-         this.i = new eat($$5, new ecv(dib.a(this.c), $$6));
-      }
+   public boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
+   }
 
-      private eat a(dyt $$0) {
-         return new eat(this.g, $$0);
+   public static Optional<enc> a(Iterable<ji> $$0) {
+      Iterator<ji> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
+      } else {
+         enc $$2 = new enc($$1.next());
+         $$1.forEachRemaining($$2::a);
+         return Optional.of($$2);
       }
+   }
 
-      private eat a(dho $$0, jr<ecx> $$1) {
-         return this.a(new ecv($$0, $$1));
+   public static Optional<enc> b(Iterable<enc> $$0) {
+      Iterator<enc> $$1 = $$0.iterator();
+      if (!$$1.hasNext()) {
+         return Optional.empty();
+      } else {
+         enc $$2 = $$1.next();
+         enc $$3 = new enc($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
+         $$1.forEachRemaining($$3::b);
+         return Optional.of($$3);
       }
+   }
 
-      private enb a(eat $$0) {
-         return new enb(Map.of(eat.b, $$0, eat.c, this.h, eat.d, this.i));
-      }
+   @Deprecated
+   public enc b(enc $$0) {
+      this.c = Math.min(this.c, $$0.c);
+      this.d = Math.min(this.d, $$0.d);
+      this.e = Math.min(this.e, $$0.e);
+      this.f = Math.max(this.f, $$0.f);
+      this.g = Math.max(this.g, $$0.g);
+      this.h = Math.max(this.h, $$0.h);
+      return this;
+   }
 
-      private void a(akt<enb> $$0, eat $$1) {
-         this.a.a($$0, this.a($$1));
-      }
+   @Deprecated
+   public enc a(ji $$0) {
+      this.c = Math.min(this.c, $$0.u());
+      this.d = Math.min(this.d, $$0.v());
+      this.e = Math.min(this.e, $$0.w());
+      this.f = Math.max(this.f, $$0.u());
+      this.g = Math.max(this.g, $$0.v());
+      this.h = Math.max(this.h, $$0.w());
+      return this;
+   }
 
-      private void a(dho $$0) {
-         jr<ecx> $$1 = this.b.b(ecx.c);
-         this.a(enc.a, this.a($$0, $$1));
-         jr<ecx> $$2 = this.b.b(ecx.d);
-         this.a(enc.c, this.a($$0, $$2));
-         jr<ecx> $$3 = this.b.b(ecx.e);
-         this.a(enc.d, this.a($$0, $$3));
-      }
+   @Deprecated
+   public enc a(int $$0, int $$1, int $$2) {
+      this.c += $$0;
+      this.d += $$1;
+      this.e += $$2;
+      this.f += $$0;
+      this.g += $$1;
+      this.h += $$2;
+      return this;
+   }
 
-      public void a() {
-         jr.c<dhy> $$0 = this.f.b(dhz.b);
-         this.a(dhx.a($$0));
-         jr<ecx> $$1 = this.b.b(ecx.c);
-         jr.c<dhk> $$2 = this.c.b(dhr.b);
-         this.a(enc.e, this.a(new dhv($$2), $$1));
-         this.a(enc.b, this.a(new ecn(elp.a(this.c, this.e, this.d))));
-         this.a(enc.f, this.a(new ecj($$2)));
+   @Deprecated
+   public enc a(km $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public enc b(int $$0, int $$1, int $$2) {
+      return new enc(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
+   }
+
+   public enc a(int $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public enc c(int $$0, int $$1, int $$2) {
+      return new enc(this.h() - $$0, this.i() - $$1, this.j() - $$2, this.k() + $$0, this.l() + $$1, this.m() + $$2);
+   }
+
+   public boolean b(km $$0) {
+      return this.d($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public boolean d(int $$0, int $$1, int $$2) {
+      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
+   }
+
+   public km c() {
+      return new km(this.f - this.c, this.g - this.d, this.h - this.e);
+   }
+
+   public int d() {
+      return this.f - this.c + 1;
+   }
+
+   public int e() {
+      return this.g - this.d + 1;
+   }
+
+   public int f() {
+      return this.h - this.e + 1;
+   }
+
+   public ji g() {
+      return new ji(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
+   }
+
+   public void a(Consumer<ji> $$0) {
+      ji.a $$1 = new ji.a();
+      $$0.accept($$1.d(this.f, this.g, this.h));
+      $$0.accept($$1.d(this.c, this.g, this.h));
+      $$0.accept($$1.d(this.f, this.d, this.h));
+      $$0.accept($$1.d(this.c, this.d, this.h));
+      $$0.accept($$1.d(this.f, this.g, this.e));
+      $$0.accept($$1.d(this.c, this.g, this.e));
+      $$0.accept($$1.d(this.f, this.d, this.e));
+      $$0.accept($$1.d(this.c, this.d, this.e));
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("minX", this.c)
+         .add("minY", this.d)
+         .add("minZ", this.e)
+         .add("maxX", this.f)
+         .add("maxY", this.g)
+         .add("maxZ", this.h)
+         .toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof enc $$1)
+            ? false
+            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
+   }
+
+   public int h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.d;
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   public int k() {
+      return this.f;
+   }
+
+   public int l() {
+      return this.g;
+   }
+
+   public int m() {
+      return this.h;
    }
 }

@@ -1,60 +1,71 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class eku extends ekw {
-   public static final MapCodec<eku> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eku::new, $$0 -> $$0.b);
-   private final float b;
+public abstract class eku {
+   public static final Codec<eku> h = mb.X.q().dispatch(eku::a, ekv::a);
 
-   @Override
-   protected ekx<?> a() {
-      return ekx.b;
-   }
+   protected abstract ekv<?> a();
 
-   public eku(float $$0) {
-      this.b = $$0;
-   }
+   public abstract void a(eku.a var1);
 
-   @Override
-   public void a(ekw.a $$0) {
-      azh $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            ji $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dsn.d, $$0);
-            }
-         }
+   public static final class a {
+      private final dgm a;
+      private final BiConsumer<ji, dwv> b;
+      private final azg c;
+      private final ObjectArrayList<ji> d;
+      private final ObjectArrayList<ji> e;
+      private final ObjectArrayList<ji> f;
 
-         if ($$1.i() < this.b) {
-            ji $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dsn.f, $$0);
-            }
-         }
+      public a(dgm $$0, BiConsumer<ji, dwv> $$1, azg $$2, Set<ji> $$3, Set<ji> $$4, Set<ji> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(km::v));
+         this.e.sort(Comparator.comparingInt(km::v));
+         this.f.sort(Comparator.comparingInt(km::v));
+      }
 
-         if ($$1.i() < this.b) {
-            ji $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dsn.e, $$0);
-            }
-         }
+      public void a(ji $$0, dxm $$1) {
+         this.a($$0, djm.ft.m().b($$1, Boolean.valueOf(true)));
+      }
 
-         if ($$1.i() < this.b) {
-            ji $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dsn.c, $$0);
-            }
-         }
-      });
-   }
+      public void a(ji $$0, dwv $$1) {
+         this.b.accept($$0, $$1);
+      }
 
-   private static void a(ji $$0, dxo $$1, ekw.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+      public boolean a(ji $$0) {
+         return this.a.a($$0, dwu.a::l);
+      }
 
-      for (ji var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
+      public boolean a(ji $$0, Predicate<dwv> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dgm a() {
+         return this.a;
+      }
+
+      public azg b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ji> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ji> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ji> e() {
+         return this.f;
       }
    }
 }

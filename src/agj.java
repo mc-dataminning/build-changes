@@ -1,13 +1,13 @@
 public class agj implements yv<agf> {
    public static final ym<vl, agj> a = yv.a(agj::a, agj::new);
-   private final bsg b;
+   private final bsf b;
 
-   public agj(bsg $$0) {
+   public agj(bsf $$0) {
       this.b = $$0;
    }
 
    private agj(vl $$0) {
-      this.b = bsg.a($$0.readUnsignedByte());
+      this.b = bsf.a($$0.readUnsignedByte());
    }
 
    private void a(vl $$0) {
@@ -23,7 +23,7 @@ public class agj implements yv<agf> {
       $$0.a(this);
    }
 
-   public bsg b() {
+   public bsf b() {
       return this.b;
    }
 }

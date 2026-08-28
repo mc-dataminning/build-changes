@@ -1,18 +1,30 @@
-public class gie extends gkg {
-   gie(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+public class gie extends gke {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final gjz M;
 
-      this.u = 3.0E-6F;
+   gie(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjz $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
       this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.k = $$5;
       this.l = $$6;
+      this.v = ayy.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = ayy.a(this.r, 0.0F, 0.0F);
+      this.x = ayy.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
@@ -20,51 +32,52 @@ public class gie extends gkg {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
-         }
-      } else {
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
       }
    }
 
    @Override
-   public gjk b() {
-      return gjk.c;
+   public gji b() {
+      return gji.b;
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
+   @Override
+   public float b(float $$0) {
+      return this.D * ayy.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(gkb $$0) {
+   public static class a implements gjh<lx> {
+      private final gjz a;
+
+      public a(gjz $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gjj<lx> {
-      private final gkb a;
-
-      public b(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gie $$8 = new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
+      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gie($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

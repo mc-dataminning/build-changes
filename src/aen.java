@@ -2,7 +2,7 @@ public class aen implements yv<abk> {
    public static final ym<vl, aen> a = yv.a(aen::a, aen::new);
    private final int b;
 
-   public aen(dyn $$0) {
+   public aen(dyl $$0) {
       this.b = $$0.r();
    }
 

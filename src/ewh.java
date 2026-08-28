@@ -1,66 +1,117 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
+import com.mojang.datafixers.Products.P4;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public abstract class ewh implements evz {
-   protected final List<eza> e;
-   private final Predicate<evr> a;
+public abstract class ewh extends ewf {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<exd> i;
+   final BiFunction<cwn, evp, cwn> a;
+   private final ewe j = new ewh.c() {
+      @Override
+      public void a(Consumer<cwn> $$0, evp $$1) {
+         ewh.this.a(exd.a(ewh.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   protected ewh(List<eza> $$0) {
-      this.e = $$0;
-      this.a = af.a($$0);
+   protected ewh(int $$0, int $$1, List<eyy> $$2, List<exd> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = exf.a($$3);
    }
 
-   protected static <T extends ewh> P1<Mu<T>, List<eza>> a(Instance<T> $$0) {
-      return $$0.group(eza.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   protected static <T extends ewh> P4<Mu<T>, Integer, Integer, List<eyy>, List<exd>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(exf.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
-   public void a(evx $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   @Override
+   public void a(evv $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
       }
    }
 
-   protected final boolean a(evr $$0) {
-      return this.a.test($$0);
+   protected abstract void a(Consumer<cwn> var1, evp var2);
+
+   @Override
+   public boolean expand(evp $$0, Consumer<ewe> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public abstract ewi a();
+   public static ewh.a<?> a(ewh.d $$0) {
+      return new ewh.b($$0);
+   }
 
-   public abstract static class a<T extends ewh.a<T>> implements eys<T> {
-      private final Builder<eza> a = ImmutableList.builder();
+   public abstract static class a<T extends ewh.a<T>> extends ewf.a<T> implements ewz<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<exd> c = ImmutableList.builder();
 
-      protected abstract T aE_();
-
-      public T a(eza.a $$0) {
-         this.a.add($$0.build());
+      public T a(exd.a $$0) {
+         this.c.add($$0.b());
          return this.aE_();
       }
 
-      public final T e() {
+      protected List<exd> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
          return this.aE_();
       }
 
-      protected List<eza> f() {
-         return this.a.build();
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aE_();
+      }
+   }
+
+   static class b extends ewh.a<ewh.b> {
+      private final ewh.d c;
+
+      public b(ewh.d $$0) {
+         this.c = $$0;
       }
 
-      public evy.a a(ewh.a<?> $$0) {
-         return new evy.a(this, $$0);
+      protected ewh.b g() {
+         return this;
       }
 
-      public ewd.a b(ewh.a<?> $$0) {
-         return new ewd.a(this, $$0);
+      @Override
+      public ewf b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
+   }
 
-      public ewl.a c(ewh.a<?> $$0) {
-         return new ewl.a(this, $$0);
+   protected abstract class c implements ewe {
+      @Override
+      public int a(float $$0) {
+         return Math.max(ayy.d((float)ewh.this.g + (float)ewh.this.h * $$0), 0);
       }
+   }
 
-      public abstract ewh b();
+   @FunctionalInterface
+   protected interface d {
+      ewh build(int var1, int var2, List<eyy> var3, List<exd> var4);
    }
 }

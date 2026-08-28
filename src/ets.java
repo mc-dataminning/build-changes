@@ -1,37 +1,38 @@
-import javax.annotation.Nullable;
+public class ets extends etj {
+   private float m = Float.MAX_VALUE;
+   private etj n;
+   private boolean o;
 
-public class ets {
-   private final dfr a;
-   @Nullable
-   private final etr b;
-   private final ji c;
-   private final ji.a d = new ji.a();
+   public ets(etj $$0) {
+      super($$0.a, $$0.b, $$0.c);
+   }
 
-   public ets(dfr $$0, bvi $$1) {
-      this.a = $$0;
-      if ($$1.dW() instanceof arc $$2) {
-         this.b = $$2.I();
-      } else {
-         this.b = null;
+   public ets(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public void a(float $$0, etj $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
       }
-
-      this.c = $$1.dw();
    }
 
-   public etq a(int $$0, int $$1, int $$2) {
-      ji $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? etv.b(this.a, $$3) : this.b.a(this.a, $$3);
+   public etj d() {
+      return this.n;
    }
 
-   public dwx a(ji $$0) {
-      return this.a.a_($$0);
+   public void e() {
+      this.o = true;
    }
 
-   public dfr a() {
-      return this.a;
+   public boolean f() {
+      return this.o;
    }
 
-   public ji b() {
-      return this.c;
+   public static ets c(vl $$0) {
+      ets $$1 = new ets($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

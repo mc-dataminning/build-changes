@@ -10,7 +10,7 @@ public class alw extends aqy {
    private int k = 100;
 
    public alw(aku $$0, wo $$1) {
-      super($$1, brz.a.g, brz.b.a);
+      super($$1, bry.a.g, bry.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -51,12 +51,12 @@ public class alw extends aqy {
 
    public void a(int $$0) {
       this.j = $$0;
-      this.a(ayz.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+      this.a(ayy.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
    }
 
    public void b(int $$0) {
       this.k = $$0;
-      this.a(ayz.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+      this.a(ayy.a((float)this.j / (float)$$0, 0.0F, 1.0F));
    }
 
    public final wo e() {
@@ -141,8 +141,8 @@ public class alw extends aqy {
       $$3.d($$0.q("Visible"));
       $$3.a($$0.h("Value"));
       $$3.b($$0.h("Max"));
-      $$3.a(brz.a.a($$0.l("Color")));
-      $$3.a(brz.b.a($$0.l("Overlay")));
+      $$3.a(bry.a.a($$0.l("Color")));
+      $$3.a(bry.b.a($$0.l("Overlay")));
       $$3.a($$0.q("DarkenScreen"));
       $$3.b($$0.q("PlayBossMusic"));
       $$3.c($$0.q("CreateWorldFog"));

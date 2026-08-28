@@ -1,26 +1,15 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class byv {
-   private static final float b = 0.95F;
-   public static final int a = 3;
+public class byv<E extends bvf> extends bxm<E> {
+   public byv(List<Pair<? extends bwz<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
+   }
 
-   public static bxa<bvg> a() {
-      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.group($$0.b(cek.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.A.i() <= 0.95F) {
-                  return false;
-               } else {
-                  ji $$5 = $$0.<jq>b($$1).b();
-                  if ($$5.a($$3.dw(), 3.0)) {
-                     dwx $$6 = $$2.a_($$5);
-                     if ($$6.a(djo.oF)) {
-                        dji $$7 = (dji)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
-                  return true;
-               }
-            })));
+   public byv(Map<cej<?>, cek> $$0, List<Pair<? extends bwz<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), bxm.a.b, bxm.b.a, $$1);
    }
 }

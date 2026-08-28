@@ -1,96 +1,43 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ehn extends efy<ejb> {
-   public ehn(Codec<ejb> $$0) {
+public class ehn extends efw<eih> {
+   private static final ji a = new ji(8, 3, 8);
+   private static final dfm b = new dfm(a);
+   private static final int c = 16;
+   private static final int d = 1;
+
+   public ehn(Codec<eih> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(ega<ejb> $$0) {
-      dhg $$1 = $$0.b();
-      ejb $$2 = $$0.f();
-      azh $$3 = $$0.d();
-      ji $$4 = $$0.e();
-      Predicate<dwx> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<ji> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
-   protected Set<ji> a(dhg $$0, ejb $$1, azh $$2, ji $$3, Predicate<dwx> $$4, int $$5, int $$6) {
-      ji.a $$7 = $$3.k();
-      ji.a $$8 = $$7.k();
-      jn $$9 = $$1.e.a();
-      jn $$10 = $$9.g();
-      Set<ji> $$11 = new HashSet<>();
+   @Override
+   public boolean a(efy<eih> $$0) {
+      dhe $$1 = $$0.b();
+      dfm $$2 = new dfm($$0.e());
+      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
+         return true;
+      } else {
+         ji $$3 = a.h($$0.e().v() + a.v());
+         ji.a $$4 = new ji.a();
 
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
-
-               for (int $$19 = 0; $$0.a($$7, dww.a::l) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
-               }
-
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.l()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
-
-               $$8.a($$7, $$1.e.a());
-               dwx $$20 = $$0.a_($$8);
-               if ($$0.u($$7) && $$20.c($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  ji $$22 = $$8.j();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, djm.m.m(), 2);
+                  } else {
+                     $$1.a($$4, djm.b.m(), 2);
                   }
                }
             }
          }
+
+         return true;
       }
-
-      return $$11;
-   }
-
-   protected void a(ega<ejb> $$0, dhg $$1, ejb $$2, azh $$3, Set<ji> $$4, int $$5, int $$6) {
-      for (ji $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
-      }
-   }
-
-   protected boolean a(dhg $$0, ejb $$1, dyt $$2, azh $$3, ji $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
-
-   protected boolean a(dhg $$0, ejb $$1, Predicate<dwx> $$2, azh $$3, ji.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         dwx $$7 = $$1.c.a($$3, $$4);
-         dwx $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
-            }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
-         }
-      }
-
-      return true;
    }
 }

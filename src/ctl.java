@@ -1,55 +1,214 @@
-public class ctl<T extends csc> implements crq {
-   public static final ctl<csl> a = a("generic_9x1", csl::a);
-   public static final ctl<csl> b = a("generic_9x2", csl::b);
-   public static final ctl<csl> c = a("generic_9x3", csl::c);
-   public static final ctl<csl> d = a("generic_9x4", csl::d);
-   public static final ctl<csl> e = a("generic_9x5", csl::e);
-   public static final ctl<csl> f = a("generic_9x6", csl::f);
-   public static final ctl<csx> g = a("generic_3x3", csx::new);
-   public static final ctl<css> h = a("crafter_3x3", css::new);
-   public static final ctl<csf> i = a("anvil", csf::new);
-   public static final ctl<csh> j = a("beacon", csh::new);
-   public static final ctl<csi> k = a("blast_furnace", csi::new);
-   public static final ctl<csj> l = a("brewing_stand", csj::new);
-   public static final ctl<csv> m = a("crafting", csv::new);
-   public static final ctl<csy> n = a("enchantment", csy::new);
-   public static final ctl<cta> o = a("furnace", cta::new);
-   public static final ctl<ctc> p = a("grindstone", ctc::new);
-   public static final ctl<ctd> q = a("hopper", ctd::new);
-   public static final ctl<cti> r = a("lectern", ($$0, $$1) -> new cti($$0));
-   public static final ctl<ctj> s = a("loom", ctj::new);
-   public static final ctl<ctn> t = a("merchant", ctn::new);
-   public static final ctl<ctw> u = a("shulker_box", ctw::new);
-   public static final ctl<cuc> v = a("smithing", cuc::new);
-   public static final ctl<cud> w = a("smoker", cud::new);
-   public static final ctl<csk> x = a("cartography_table", csk::new);
-   public static final ctl<cuf> y = a("stonecutter", cuf::new);
-   private final crt z;
-   private final ctl.a<T> A;
+public class ctl extends csa {
+   protected static final int m = 0;
+   protected static final int n = 1;
+   protected static final int o = 2;
+   private static final int p = 3;
+   private static final int q = 30;
+   private static final int r = 30;
+   private static final int s = 39;
+   private static final int t = 136;
+   private static final int u = 162;
+   private static final int v = 220;
+   private static final int w = 37;
+   private final dfc x;
+   private final ctk y;
+   private int z;
+   private boolean A;
+   private boolean B;
 
-   private static <T extends csc> ctl<T> a(String $$0, ctl.a<T> $$1) {
-      return ke.a(mb.p, $$0, new ctl<>($$1, crv.g));
+   public ctl(int $$0, cou $$1) {
+      this($$0, $$1, new cod($$1.k));
    }
 
-   private static <T extends csc> ctl<T> a(String $$0, ctl.a<T> $$1, crr... $$2) {
-      return ke.a(mb.p, $$0, new ctl<>($$1, crv.e.a($$2)));
+   public ctl(int $$0, cou $$1, dfc $$2) {
+      super(ctj.t, $$0);
+      this.x = $$2;
+      this.y = new ctk($$2);
+      this.a(new ctx(this.y, 0, 136, 37));
+      this.a(new ctx(this.y, 1, 162, 37));
+      this.a(new ctm($$1.k, $$2, this.y, 2, 220, 37));
+      this.c($$1, 108, 84);
    }
 
-   private ctl(ctl.a<T> $$0, crt $$1) {
+   public void a(boolean $$0) {
       this.A = $$0;
-      this.z = $$1;
-   }
-
-   public T a(int $$0, cow $$1) {
-      return this.A.create($$0, $$1);
    }
 
    @Override
-   public crt i() {
+   public void a(bsb $$0) {
+      this.y.f();
+      super.a($$0);
+   }
+
+   public void e(int $$0) {
+      this.y.c($$0);
+   }
+
+   @Override
+   public boolean b(cov $$0) {
+      return this.x.f($$0);
+   }
+
+   public int l() {
+      return this.x.x();
+   }
+
+   public int m() {
+      return this.y.h();
+   }
+
+   public void f(int $$0) {
+      this.x.s($$0);
+   }
+
+   public int n() {
       return this.z;
    }
 
-   interface a<T extends csc> {
-      T create(int var1, cow var2);
+   public void g(int $$0) {
+      this.z = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.B = $$0;
+   }
+
+   public boolean o() {
+      return this.B;
+   }
+
+   @Override
+   public boolean a(cwn $$0, ctx $$1) {
+      return false;
+   }
+
+   @Override
+   public cwn b(cov $$0, int $$1) {
+      cwn $$2 = cwn.j;
+      ctx $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cwn $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cwn.j;
+            }
+
+            $$3.b($$4, $$2);
+            this.r();
+         } else if ($$1 != 0 && $$1 != 1) {
+            if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return cwn.j;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return cwn.j;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cwn.j;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cwn.j);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cwn.j;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   private void r() {
+      if (!this.x.gx()) {
+         buj $$0 = (buj)this.x;
+         $$0.dW().a($$0.dB(), $$0.dD(), $$0.dH(), this.x.gt(), awa.g, 1.0F, 1.0F, false);
+      }
+   }
+
+   @Override
+   public void a(cov $$0) {
+      super.a($$0);
+      this.x.a(null);
+      if (!this.x.gx()) {
+         if (!$$0.bL() || $$0 instanceof ard && ((ard)$$0).u()) {
+            cwn $$1 = this.y.b(0);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+
+            $$1 = this.y.b(1);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+         } else if ($$0 instanceof ard) {
+            $$0.gi().g(this.y.b(0));
+            $$0.gi().g(this.y.b(1));
+         }
+      }
+   }
+
+   public void h(int $$0) {
+      if ($$0 >= 0 && this.p().size() > $$0) {
+         cwn $$1 = this.y.a(0);
+         if (!$$1.f()) {
+            if (!this.a($$1, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(0, $$1);
+         }
+
+         cwn $$2 = this.y.a(1);
+         if (!$$2.f()) {
+            if (!this.a($$2, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(1, $$2);
+         }
+
+         if (this.y.a(0).f() && this.y.a(1).f()) {
+            dfd $$3 = this.p().get($$0);
+            this.a(0, $$3.d());
+            $$3.e().ifPresent($$0x -> this.a(1, $$0x));
+         }
+      }
+   }
+
+   private void a(int $$0, dfb $$1) {
+      for (int $$2 = 3; $$2 < 39; $$2++) {
+         cwn $$3 = this.k.get($$2).g();
+         if (!$$3.f() && $$1.a($$3)) {
+            cwn $$4 = this.y.a($$0);
+            if ($$4.f() || cwn.c($$3, $$4)) {
+               int $$5 = $$3.k();
+               int $$6 = Math.min($$5 - $$4.M(), $$3.M());
+               cwn $$7 = $$3.c($$4.M() + $$6);
+               $$3.h($$6);
+               this.y.a($$0, $$7);
+               if ($$7.M() >= $$5) {
+                  break;
+               }
+            }
+         }
+      }
+   }
+
+   public void a(dfe $$0) {
+      this.x.a($$0);
+   }
+
+   public dfe p() {
+      return this.x.gr();
+   }
+
+   public boolean q() {
+      return this.A;
    }
 }

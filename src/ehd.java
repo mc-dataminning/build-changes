@@ -1,30 +1,36 @@
 import com.mojang.serialization.Codec;
 
-public class ehd extends efy<ehx> {
-   public ehd(Codec<ehx> $$0) {
+public class ehd extends efw<eis> {
+   public ehd(Codec<eis> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<ehx> $$0) {
-      int $$1 = 0;
-      azh $$2 = $$0.d();
-      dhg $$3 = $$0.b();
-      ji $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(efy<eis> $$0) {
+      eis $$1 = $$0.f();
+      dhe $$2 = $$0.b();
+      ji $$3 = $$0.e();
+      dwv $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dlt) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(ecs.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ji $$10 = new ji($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dwx $$11 = djo.nx.m().b(dqo.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(djo.J) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+            dlt.a($$2, $$4, $$3, 2);
+         } else if ($$4.b() instanceof dok) {
+            dok.a($$2, $$3, $$2.H_(), 2);
+         } else {
+            $$2.a($$3, $$4, 2);
          }
-      }
 
-      return $$1 > 0;
+         if ($$1.b()) {
+            $$2.a($$3, $$2.a_($$3).b(), 1);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

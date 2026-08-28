@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class cq implements ea<ddf> {
+public abstract class cq implements ea<ddd> {
    private final List<bs> a;
 
    protected cq(List<bs> $$0) {
@@ -17,7 +17,7 @@ public abstract class cq implements ea<ddf> {
       return this.a;
    }
 
-   public boolean a(cwp $$0, ddf $$1) {
+   public boolean a(cwn $$0, ddd $$1) {
       for (bs $$2 : this.a) {
          if (!$$2.a($$1)) {
             return false;
@@ -43,7 +43,7 @@ public abstract class cq implements ea<ddf> {
       }
 
       @Override
-      public ku<ddf> a() {
+      public ku<ddd> a() {
          return kv.l;
       }
    }
@@ -56,7 +56,7 @@ public abstract class cq implements ea<ddf> {
       }
 
       @Override
-      public ku<ddf> a() {
+      public ku<ddd> a() {
          return kv.I;
       }
    }

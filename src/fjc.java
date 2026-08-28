@@ -1,167 +1,211 @@
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fjc extends hkx {
-   private static final aku a = aku.b("icon/unseen_notification");
-   private static final aku b = aku.b("icon/news");
-   private static final aku c = aku.b("icon/invite");
-   private static final aku C = aku.b("icon/trial_available");
-   private final CompletableFuture<Boolean> D = fge.a().thenApply($$0 -> $$0.a() == fge.b.a);
+public class fjc extends hky {
+   static final aku a = aku.b("pending_invite/accept_highlighted");
+   static final aku b = aku.b("pending_invite/accept");
+   static final aku c = aku.b("pending_invite/reject_highlighted");
+   static final aku C = aku.b("pending_invite/reject");
+   private static final Logger D = LogUtils.getLogger();
+   private static final wo E = wo.c("mco.invites.nopending");
+   static final wo F = wo.c("mco.invites.button.accept");
+   static final wo G = wo.c("mco.invites.button.reject");
+   private final fui H;
+   private final CompletableFuture<List<fhc>> I = CompletableFuture.supplyAsync(() -> {
+      try {
+         return fgi.a().i().a;
+      } catch (fie var1x) {
+         D.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, af.h());
    @Nullable
-   private fjr.c E;
-   @Nullable
-   private fjc.a F;
-   private volatile int G;
-   private static boolean H;
-   private static boolean I;
-   private static boolean J;
-   private final fjc.a K = new fjc.a() {
-      @Override
-      public fjr.c a(fij $$0) {
-         fjr.c $$1 = $$0.a.a();
-         fjc.this.a($$0, $$1);
-         fjc.this.b($$0, $$1);
-         return $$1;
-      }
+   wo J;
+   fjc.b K;
+   private fop L;
+   private fop M;
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final fjc.a L = new fjc.a() {
-      @Override
-      public fjr.c a(fij $$0) {
-         fjr.c $$1 = $$0.a.a();
-         fjc.this.b($$0, $$1);
-         return $$1;
-      }
-
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
-
-   public fjc() {
-      super(fla.a);
+   public fjc(fui $$0, wo $$1) {
+      super($$1);
+      this.H = $$0;
    }
 
    @Override
    public void aR_() {
-      if (this.E != null) {
-         this.E.a();
-      }
-   }
-
-   @Override
-   public void aJ_() {
-      super.aJ_();
-      this.m.bb().b.a();
-   }
-
-   @Nullable
-   private fjc.a E() {
-      boolean $$0 = this.G() && this.D.getNow(false);
-      if (!$$0) {
-         return null;
-      } else {
-         return this.F() ? this.K : this.L;
-      }
-   }
-
-   @Override
-   public void e() {
-      fjc.a $$0 = this.E();
-      if (!Objects.equals(this.F, $$0)) {
-         this.F = $$0;
-         if (this.F != null) {
-            this.E = this.F.a(this.m.bb());
-         } else {
-            this.E = null;
+      fgd.f();
+      this.K = new fjc.b();
+      this.I.thenAcceptAsync($$0 -> {
+         List<fjc.a> $$1 = $$0.stream().map($$0x -> new fjc.a($$0x)).toList();
+         this.K.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aY().b(E);
          }
-      }
-
-      if (this.E != null) {
-         this.E.b();
-      }
-   }
-
-   private boolean F() {
-      return this.m.n.W().c();
-   }
-
-   private boolean G() {
-      return this.m.z instanceof fum;
+      }, this.r);
+      this.c(this.K);
+      this.L = this.c((fop)fop.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fop)fop.a(wn.d, $$0 -> this.aO_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fop)fop.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.E();
    }
 
    @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
+   public void aO_() {
+      this.m.a(this.H);
+   }
+
+   @Override
+   void c(boolean $$0) {
+      if (this.K.p() instanceof fjc.a $$1) {
+         String $$2 = $$1.c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               fgi $$2x = fgi.a();
+               if ($$0) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (fie var3) {
+               D.error("Couldn't handle invite", var3);
+               return false;
+            }
+         }, af.h()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.K.a($$1);
+               this.E();
+               fih $$3 = this.m.bb();
+               if ($$0) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.r);
+      }
+   }
+
+   @Override
+   public void a(fob $$0, int $$1, int $$2, float $$3) {
+      this.J = null;
       super.a($$0, $$1, $$2, $$3);
-      if (this.D.getNow(false)) {
-         this.c($$0);
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, $$1, $$2);
+      }
+
+      if (this.I.isDone() && this.K.b()) {
+         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
       }
    }
 
-   @Override
-   public void b(fod $$0, int $$1, int $$2, float $$3) {
+   void E() {
+      fjc.a $$0 = this.K.p();
+      this.L.k = $$0 != null;
+      this.M.k = $$0 != null;
    }
 
-   private void c(fod $$0) {
-      int $$1 = this.G;
-      int $$2 = 24;
-      int $$3 = this.o / 4 + 48;
-      int $$4 = this.n / 2 + 100;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = $$4 - 3;
-      if (J) {
-         $$0.a(gmh::H, a, $$6 - 12, $$5 + 3, 10, 10);
-         $$6 -= 16;
+   class a extends fpm.a<fjc.a> {
+      private static final int b = 38;
+      final fhc c;
+      private final List<fil> d;
+
+      a(final fhc $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fjc.a.a(), new fjc.a.b());
       }
 
-      if (this.F != null && this.F.a()) {
-         if (I) {
-            $$0.a(gmh::H, b, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(gmh::H, c, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if (H) {
-            $$0.a(gmh::H, C, $$6 - 10, $$5 + 4, 8, 8);
-         }
+      @Override
+      public void a(fob $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
       }
-   }
 
-   void a(fij $$0, fjr.c $$1) {
-      $$1.a($$0.d, $$0x -> this.G = $$0x);
-      $$1.a($$0.e, $$0x -> H = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.h.a($$1x);
-         I = $$0.h.a();
-      });
-   }
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fil.a(fjc.this.K, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
 
-   void b(fij $$0, fjr.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         J = false;
+      private void a(fob $$0, fhc $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.b(fjc.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
+         $$0.b(fjc.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
+         $$0.b(fjc.this.p, fjx.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
+         fil.a($$0, this.d, fjc.this.K, $$2, $$3, $$4, $$5);
+         fjx.a($$0, $$2, $$3, 32, $$1.d);
+      }
 
-         for (fhk $$1x : $$0x) {
-            if (!$$1x.a()) {
-               J = true;
-               break;
+      @Override
+      public wo a() {
+         wo $$0 = wn.b(wo.b(this.c.b), wo.b(this.c.c), fjx.a(this.c.e));
+         return wo.a("narrator.select", $$0);
+      }
+
+      class a extends fil {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(fob $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gmf::H, $$3 ? fjc.a : fjc.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fjc.this.J = fjc.F;
             }
          }
-      });
+
+         @Override
+         public void a(int $$0) {
+            fjc.this.c(true);
+         }
+      }
+
+      class b extends fil {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(fob $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gmf::H, $$3 ? fjc.c : fjc.C, $$1, $$2, 18, 18);
+            if ($$3) {
+               fjc.this.J = fjc.G;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fjc.this.c(false);
+         }
+      }
    }
 
-   interface a {
-      fjr.c a(fij var1);
+   class b extends fpm<fjc.a> {
+      public b() {
+         super(flh.Q(), fjc.this.n, fjc.this.o - 72, 32, 36);
+      }
 
-      boolean a();
+      @Override
+      public int a() {
+         return 260;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         fjc.this.E();
+      }
+
+      public boolean b() {
+         return this.t() == 0;
+      }
+
+      public void a(fjc.a $$0) {
+         this.g($$0);
+      }
    }
 }

@@ -1,8 +1,6 @@
-public class gzs extends gzi implements gzz {
+public class gzs extends gyy {
    public boolean a;
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
+   public boolean b;
+   public float c;
+   public cnl d = cnl.f;
 }

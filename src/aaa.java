@@ -1,4 +1,4 @@
-public record aaa(akt<ebt> c, fba d) implements zy {
+public record aaa(akt<ebr> c, fay d) implements zy {
    public static final ym<vl, aaa> a = zy.a(aaa::a, aaa::new);
    public static final zy.b<aaa> b = zy.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aaa(akt<ebt> c, fba d) implements zy {
       return b;
    }
 
-   public akt<ebt> b() {
+   public akt<ebr> b() {
       return this.c;
    }
 
-   public fba c() {
+   public fay c() {
       return this.d;
    }
 }

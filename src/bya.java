@@ -1,34 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bya extends bwz<bvi> {
-   public static final int c = 100;
-   private final bru d;
-   private final avz e;
+public class bya<E extends bvh> extends byb<E> {
+   private final axe<djk> m;
+   private final float n;
+   private final List<byb.a> o = new ArrayList<>();
+   private boolean p;
 
-   public bya(bru $$0, avz $$1) {
-      super(ImmutableMap.of(cek.n, cel.c, cek.T, cel.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public bya(brt $$0, int $$1, int $$2, float $$3, Function<E, avy> $$4, axe<djk> $$5, float $$6, BiPredicate<E, ji> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   protected boolean a(arc $$0, bvi $$1, long $$2) {
-      return !$$1.aJ();
+   @Override
+   protected void a(arc $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dZ().i() < this.n;
    }
 
-   protected void b(arc $$0, bvi $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(bvs.g);
-   }
+   @Override
+   protected Optional<byb.a> a(arc $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         ji.a $$1 = new ji.a();
 
-   protected void c(arc $$0, bvi $$1, long $$2) {
-      if ($$1.aJ()) {
-         $$1.h($$1.dz().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awb.g, 2.0F, 1.0F);
+         while (!this.h.isEmpty()) {
+            Optional<byb.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               byb.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jn.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-
-      $$1.r(false);
-      $$1.b(bvs.a);
-      $$1.ec().b(cek.T);
-      $$1.ec().a(cek.S, this.d.a($$0.A));
    }
 }

@@ -1,39 +1,59 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 public class cqq {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cqq c = a("empty").a(0, cqo.b).a();
-   public static final cqq d = a("simple").a(5000, cqo.c).a(11000, cqo.e).a();
-   public static final cqq e = a("villager_baby").a(10, cqo.b).a(3000, cqo.d).a(6000, cqo.b).a(10000, cqo.d).a(12000, cqo.e).a();
-   public static final cqq f = a("villager_default").a(10, cqo.b).a(2000, cqo.c).a(9000, cqo.f).a(11000, cqo.b).a(12000, cqo.e).a();
-   private final Map<cqo, cqs> g = Maps.newHashMap();
+   private final List<cqn> a = Lists.newArrayList();
+   private int b;
 
-   protected static cqr a(String $$0) {
-      cqq $$1 = ke.a(mb.B, $$0, new cqq());
-      return new cqr($$1);
+   public ImmutableList<cqn> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   protected void a(cqo $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cqs());
+   public cqq a(int $$0, float $$1) {
+      this.a.add(new cqn($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cqq a(Collection<cqn> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cqn> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cqn $$1 = this.a.get(this.b);
+         cqn $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cqn $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
       }
-   }
-
-   protected cqs b(cqo $$0) {
-      return this.g.get($$0);
-   }
-
-   protected List<cqs> c(cqo $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
-
-   public cqo a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cqo.b);
    }
 }

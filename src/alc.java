@@ -27,7 +27,7 @@ import org.slf4j.Logger;
 public class alc {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final avd c;
+   private final avc c;
    private final Path d;
    private an e;
    private final Map<ai, ak> f = new LinkedHashMap<>();
@@ -40,13 +40,13 @@ public class alc {
    private boolean l = true;
    private final Codec<alc.a> m;
 
-   public alc(DataFixer $$0, avd $$1, alh $$2, Path $$3, ard $$4) {
+   public alc(DataFixer $$0, avc $$1, alh $$2, Path $$3, ard $$4) {
       this.c = $$1;
       this.d = $$3;
       this.j = $$4;
       this.e = $$2.a();
       int $$5 = 1343;
-      this.m = ban.p.a(alc.a.a, $$0, 1343);
+      this.m = bam.p.a(alc.a.a, $$0, 1343);
       this.d($$2);
    }
 
@@ -168,7 +168,7 @@ public class alc {
          if (!$$4 && $$3.a()) {
             $$0.b().d().a(this.j);
             $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.y().O().b(dge.B)) {
+               if ($$1x.i() && this.j.y().O().b(dgc.B)) {
                   this.c.a($$1x.e().a($$0, this.j), false);
                }
             });

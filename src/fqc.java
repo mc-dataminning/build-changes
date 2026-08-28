@@ -1,5 +1,5 @@
-public interface fqc {
-   default int K() {
-      return 0;
-   }
+public enum fqc {
+   a,
+   b,
+   c;
 }

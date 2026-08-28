@@ -16,12 +16,12 @@ public record xx(ho c, Optional<wo> d) implements wp {
    }
 
    @Override
-   public xc a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
+   public xc a(@Nullable ex $$0, @Nullable buj $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wo.i();
       } else {
          Optional<? extends wo> $$3 = wr.a($$0, this.d, $$1, $$2);
-         return wr.a(this.c.b().b($$0), $$3, buk::p_);
+         return wr.a(this.c.b().b($$0), $$3, buj::p_);
       }
    }
 

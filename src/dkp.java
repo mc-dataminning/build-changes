@@ -1,313 +1,223 @@
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dkp extends dig<dug> implements dqs {
-   public static final MapCodec<dkp> b = b($$0 -> new dkp(() -> dub.b, $$0));
-   public static final dxu<jn> c = dnk.aF;
-   public static final dxu<dxp> d = dxn.bf;
-   public static final dxo e = dxn.J;
-   public static final int f = 1;
-   protected static final int g = 1;
-   protected static final int h = 14;
-   protected static final fbu i = djm.a(1.0, 0.0, 0.0, 15.0, 14.0, 15.0);
-   protected static final fbu j = djm.a(1.0, 0.0, 1.0, 15.0, 14.0, 16.0);
-   protected static final fbu k = djm.a(0.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   protected static final fbu l = djm.a(1.0, 0.0, 1.0, 16.0, 14.0, 15.0);
-   protected static final fbu m = djm.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final dlu.b<dug, Optional<bsc>> n = new dlu.b<dug, Optional<bsc>>() {
-      public Optional<bsc> a(dug $$0, dug $$1) {
-         return Optional.of(new bsb($$0, $$1));
-      }
+public class dkp extends djk {
+   public static final MapCodec<dkp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mb.e.q().fieldOf("plant").forGetter($$0x -> $$0x.e), t()).apply($$0, dkp::new)
+   );
+   public static final int b = 5;
+   public static final dxu c = dxl.ax;
+   protected static final fbs d = djk.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   private final djk e;
 
-      public Optional<bsc> a(dug $$0) {
-         return Optional.of($$0);
-      }
+   @Override
+   public MapCodec<dkp> a() {
+      return a;
+   }
 
-      public Optional<bsc> a() {
-         return Optional.empty();
+   protected dkp(djk $$0, dwu.d $$1) {
+      super($$1);
+      this.e = $$0;
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
-   };
-   private static final dlu.b<dug, Optional<bsl>> o = new dlu.b<dug, Optional<bsl>>() {
-      public Optional<bsl> a(final dug $$0, final dug $$1) {
-         final bsc $$2 = new bsb($$0, $$1);
-         return Optional.of(new bsl() {
-            @Nullable
-            @Override
-            public csc createMenu(int $$0x, cow $$1x, cox $$2x) {
-               if ($$0.d($$2) && $$1.d($$2)) {
-                  $$0.d_($$1.k);
-                  $$1.d_($$1.k);
-                  return csl.b($$0, $$1, $$2);
-               } else {
-                  return null;
+   }
+
+   @Override
+   protected boolean f(dwv $$0) {
+      return $$0.c(c) < 5;
+   }
+
+   @Override
+   public fbs b_(dwv $$0, dfl $$1, ji $$2) {
+      return d;
+   }
+
+   @Override
+   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      ji $$4 = $$2.d();
+      if ($$1.u($$4) && $$4.v() <= $$1.an()) {
+         int $$5 = $$0.c(c);
+         if ($$5 < 5) {
+            boolean $$6 = false;
+            boolean $$7 = false;
+            dwv $$8 = $$1.a_($$2.e());
+            if ($$8.a(djm.fU)) {
+               $$6 = true;
+            } else if ($$8.a(this.e)) {
+               int $$9 = 1;
+
+               for (int $$10 = 0; $$10 < 4; $$10++) {
+                  dwv $$11 = $$1.a_($$2.c($$9 + 1));
+                  if (!$$11.a(this.e)) {
+                     if ($$11.a(djm.fU)) {
+                        $$7 = true;
+                     }
+                     break;
+                  }
+
+                  $$9++;
                }
+
+               if ($$9 < 2 || $$9 <= $$3.a($$7 ? 5 : 4)) {
+                  $$6 = true;
+               }
+            } else if ($$8.l()) {
+               $$6 = true;
             }
 
-            @Override
-            public wo p_() {
-               if ($$0.l_()) {
-                  return $$0.p_();
-               } else {
-                  return (wo)($$1.l_() ? $$1.p_() : wo.c("container.chestDouble"));
+            if ($$6 && b($$1, $$4, null) && $$1.u($$2.b(2))) {
+               $$1.a($$2, dkq.a($$1, $$2, this.e.m()), 2);
+               this.a($$1, $$4, $$5);
+            } else if ($$5 < 4) {
+               int $$12 = $$3.a(4);
+               if ($$7) {
+                  $$12++;
                }
+
+               boolean $$13 = false;
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  jn $$15 = jn.c.a.a($$3);
+                  ji $$16 = $$2.a($$15);
+                  if ($$1.u($$16) && $$1.u($$16.e()) && b($$1, $$16, $$15.g())) {
+                     this.a($$1, $$16, $$5 + 1);
+                     $$13 = true;
+                  }
+               }
+
+               if ($$13) {
+                  $$1.a($$2, dkq.a($$1, $$2, this.e.m()), 2);
+               } else {
+                  this.a($$1, $$2);
+               }
+            } else {
+               this.a($$1, $$2);
             }
-         });
-      }
-
-      public Optional<bsl> a(dug $$0) {
-         return Optional.of($$0);
-      }
-
-      public Optional<bsl> a() {
-         return Optional.empty();
-      }
-   };
-
-   @Override
-   public MapCodec<? extends dkp> a() {
-      return b;
-   }
-
-   protected dkp(Supplier<dub<? extends dug>> $$0, dww.d $$1) {
-      super($$1, $$0);
-      this.l(this.F.b().b(c, jn.c).b(d, dxp.a).b(e, Boolean.valueOf(false)));
-   }
-
-   public static dlu.a h(dwx $$0) {
-      dxp $$1 = $$0.c(d);
-      if ($$1 == dxp.a) {
-         return dlu.a.a;
-      } else {
-         return $$1 == dxp.c ? dlu.a.b : dlu.a.c;
-      }
-   }
-
-   @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.b;
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, eta.c, eta.c.a($$1));
-      }
-
-      if ($$6.a(this) && $$4.o().d()) {
-         dxp $$8 = $$6.c(d);
-         if ($$0.c(d) == dxp.a && $$8 != dxp.a && $$0.c(c) == $$6.c(c) && i($$6) == $$4.g()) {
-            return $$0.b(d, $$8.a());
          }
-      } else if (i($$0) == $$4) {
-         return $$0.b(d, dxp.a);
+      }
+   }
+
+   private void a(dgg $$0, ji $$1, int $$2) {
+      $$0.a($$1, this.m().b(c, Integer.valueOf($$2)), 2);
+      $$0.c(1033, $$1, 0);
+   }
+
+   private void a(dgg $$0, ji $$1) {
+      $$0.a($$1, this.m().b(c, Integer.valueOf(5)), 2);
+      $$0.c(1034, $$1, 0);
+   }
+
+   private static boolean b(dgj $$0, ji $$1, @Nullable jn $$2) {
+      for (jn $$3 : jn.c.a) {
+         if ($$3 != $$2 && !$$0.u($$1.a($$3))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if ($$4 != jn.b && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      if ($$0.c(d) == dxp.a) {
-         return m;
+   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
+      dwv $$3 = $$1.a_($$2.e());
+      if (!$$3.a(this.e) && !$$3.a(djm.fU)) {
+         if (!$$3.l()) {
+            return false;
+         } else {
+            boolean $$4 = false;
+
+            for (jn $$5 : jn.c.a) {
+               dwv $$6 = $$1.a_($$2.a($$5));
+               if ($$6.a(this.e)) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else if (!$$6.l()) {
+                  return false;
+               }
+            }
+
+            return $$4;
+         }
       } else {
-         switch (i($$0)) {
-            case c:
-            default:
-               return i;
-            case d:
-               return j;
-            case e:
-               return k;
-            case f:
-               return l;
-         }
+         return true;
       }
    }
 
-   public static jn i(dwx $$0) {
-      jn $$1 = $$0.c(c);
-      return $$0.c(d) == dxp.b ? $$1.h() : $$1.i();
+   @Override
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(c);
    }
 
-   @Override
-   public dwx a(dag $$0) {
-      dxp $$1 = dxp.a;
-      jn $$2 = $$0.g().g();
-      esz $$3 = $$0.q().b_($$0.a());
-      boolean $$4 = $$0.h();
-      jn $$5 = $$0.k();
-      if ($$5.o().d() && $$4) {
-         jn $$6 = this.a($$0, $$5.g());
-         if ($$6 != null && $$6.o() != $$5.o()) {
-            $$2 = $$6;
-            $$1 = $$6.i() == $$5.g() ? dxp.c : dxp.b;
-         }
+   public static void a(dgh $$0, ji $$1, azg $$2, int $$3) {
+      $$0.a($$1, dkq.a($$0, $$1, djm.kW.m()), 2);
+      a($$0, $$1, $$2, $$1, $$3, 0);
+   }
+
+   private static void a(dgh $$0, ji $$1, azg $$2, ji $$3, int $$4, int $$5) {
+      djk $$6 = djm.kW;
+      int $$7 = $$2.a(4) + 1;
+      if ($$5 == 0) {
+         $$7++;
       }
 
-      if ($$1 == dxp.a && !$$4) {
-         if ($$2 == this.a($$0, $$2.h())) {
-            $$1 = dxp.b;
-         } else if ($$2 == this.a($$0, $$2.i())) {
-            $$1 = dxp.c;
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         ji $$9 = $$1.b($$8 + 1);
+         if (!b($$0, $$9, null)) {
+            return;
          }
+
+         $$0.a($$9, dkq.a($$0, $$9, $$6.m()), 2);
+         $$0.a($$9.e(), dkq.a($$0, $$9.e(), $$6.m()), 2);
       }
 
-      return this.m().b(c, $$2).b(d, $$1).b(e, Boolean.valueOf($$3.a() == eta.c));
-   }
-
-   @Override
-   protected esz b_(dwx $$0) {
-      return $$0.c(e) ? eta.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   private jn a(dag $$0, jn $$1) {
-      dwx $$2 = $$0.q().a_($$0.a().a($$1));
-      return $$2.a(this) && $$2.c(d) == dxp.a ? $$2.c(c) : null;
-   }
-
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      bsf.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      if ($$1 instanceof arc $$5) {
-         bsl $$6 = this.b($$0, $$1, $$2);
-         if ($$6 != null) {
-            $$3.a($$6);
-            $$3.b(this.c());
-            cnm.a($$5, $$3, true);
-         }
-      }
-
-      return bsj.a;
-   }
-
-   protected awh<aku> c() {
-      return awk.i.b(awk.ao);
-   }
-
-   public dub<? extends dug> d() {
-      return this.a.get();
-   }
-
-   @Nullable
-   public static bsc a(dkp $$0, dwx $$1, dgi $$2, ji $$3, boolean $$4) {
-      return $$0.a($$1, $$2, $$3, $$4).apply(n).orElse(null);
-   }
-
-   @Override
-   public dlu.c<? extends dug> a(dwx $$0, dgi $$1, ji $$2, boolean $$3) {
-      BiPredicate<dgj, ji> $$4;
-      if ($$3) {
-         $$4 = ($$0x, $$1x) -> false;
-      } else {
-         $$4 = dkp::a;
-      }
-
-      return dlu.a(this.a.get(), dkp::h, dkp::i, c, $$0, $$1, $$2, $$4);
-   }
-
-   @Nullable
-   @Override
-   protected bsl b(dwx $$0, dgi $$1, ji $$2) {
-      return this.a($$0, $$1, $$2, false).apply(o).orElse(null);
-   }
-
-   public static dlu.b<dug, Float2FloatFunction> a(final dvf $$0) {
-      return new dlu.b<dug, Float2FloatFunction>() {
-         public Float2FloatFunction a(dug $$0x, dug $$1) {
-            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
+      boolean $$10 = false;
+      if ($$5 < 4) {
+         int $$11 = $$2.a(4);
+         if ($$5 == 0) {
+            $$11++;
          }
 
-         public Float2FloatFunction a(dug $$0x) {
-            return $$0::a;
-         }
-
-         public Float2FloatFunction a() {
-            return $$0::a;
-         }
-      };
-   }
-
-   @Override
-   public dtz a(ji $$0, dwx $$1) {
-      return new dug($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return $$0.C ? a($$2, this.d(), dug::a) : null;
-   }
-
-   public static boolean a(dgj $$0, ji $$1) {
-      return a((dfn)$$0, $$1) || b($$0, $$1);
-   }
-
-   private static boolean a(dfn $$0, ji $$1) {
-      ji $$2 = $$1.d();
-      return $$0.a_($$2).d($$0, $$2);
-   }
-
-   private static boolean b(dgj $$0, ji $$1) {
-      List<cha> $$2 = $$0.a(
-         cha.class, new fav((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
-      );
-      if (!$$2.isEmpty()) {
-         for (cha $$3 : $$2) {
-            if ($$3.x()) {
-               return true;
+         for (int $$12 = 0; $$12 < $$11; $$12++) {
+            jn $$13 = jn.c.a.a($$2);
+            ji $$14 = $$1.b($$7).a($$13);
+            if (Math.abs($$14.u() - $$3.u()) < $$4 && Math.abs($$14.w() - $$3.w()) < $$4 && $$0.u($$14) && $$0.u($$14.e()) && b($$0, $$14, $$13.g())) {
+               $$10 = true;
+               $$0.a($$14, dkq.a($$0, $$14, $$6.m()), 2);
+               $$0.a($$14.a($$13.g()), dkq.a($$0, $$14.a($$13.g()), $$6.m()), 2);
+               a($$0, $$14, $$2, $$3, $$4, $$5 + 1);
             }
          }
       }
 
-      return false;
+      if (!$$10) {
+         $$0.a($$1.b($$7), djm.kX.m().b(c, Integer.valueOf(5)), 2);
+      }
    }
 
    @Override
-   protected boolean c_(dwx $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dwx $$0, dgi $$1, ji $$2) {
-      return csc.b(a(this, $$0, $$1, $$2, false));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c, d, e);
-   }
-
-   @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      dtz $$4 = $$1.c_($$2);
-      if ($$4 instanceof dug) {
-         ((dug)$$4).k();
+   protected void a(dgg $$0, dwv $$1, fau $$2, cpo $$3) {
+      ji $$4 = $$2.b();
+      if ($$0 instanceof arc $$5 && $$3.c($$5, $$4) && $$3.a($$5)) {
+         $$0.a($$4, true, $$3);
       }
    }
 }

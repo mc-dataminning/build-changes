@@ -1,29 +1,54 @@
-public class gkh extends gjs {
-   gkh(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+public class gkh extends gke {
+   private final fay a;
+
+   gkh(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fay $$7, int $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      $$8 = axj.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
+      this.v = (float)axj.b($$8) / 255.0F;
+      this.w = (float)axj.c($$8) / 255.0F;
+      this.x = (float)axj.d($$8) / 255.0F;
+      this.D = 0.26F;
+      this.a = $$7;
+   }
+
+   @Override
+   public gji b() {
+      return gji.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+         int $$0 = this.t - this.s;
+         double $$1 = 1.0 / (double)$$0;
+         this.g = ayy.d($$1, this.g, this.a.a());
+         this.h = ayy.d($$1, this.h, this.a.b());
+         this.i = ayy.d($$1, this.i, this.a.c());
       }
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
 
-      public a(gkb $$0) {
+   public static class a implements gjh<ly> {
+      private final gjz a;
+
+      public a(gjz $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gje a(ly $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkh $$8 = new gkh($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.a($$0.d());
+         return $$8;
       }
    }
 }

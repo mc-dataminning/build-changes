@@ -1,51 +1,47 @@
-public class gdt extends gca<had> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final gfc c;
-   private final gfc d;
-
-   public gdt(gfc $$0) {
-      super($$0, gmh::h);
-      this.c = $$0.b("lid");
-      this.d = $$0.b("head");
+public class gdt<S extends had> extends gcl<S> {
+   public gdt(gfa $$0) {
+      super($$0);
    }
 
-   private static gfk c() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("lid", gfh.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gfe.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", gfh.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gfe.a(0.0F, 24.0F, 0.0F));
-      return $$0;
+   public static gfg c() {
+      gfi $$0 = gcl.a(gfe.a, 0.0F);
+      gfk $$1 = $$0.a();
+      a($$1);
+      return gfg.a($$0, 64, 32);
    }
 
-   public static gfi a() {
-      gfk $$0 = c();
-      $$0.a().a("head", gfh.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfe.a(0.0F, 12.0F, 0.0F));
-      return gfi.a($$0, 64, 64);
+   protected static void a(gfk $$0) {
+      $$0.a("right_arm", gff.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfc.a(-5.0F, 2.0F, 0.0F));
+      $$0.a("left_arm", gff.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfc.a(5.0F, 2.0F, 0.0F));
+      $$0.a("right_leg", gff.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfc.a(-2.0F, 12.0F, 0.0F));
+      $$0.a("left_leg", gff.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gfc.a(2.0F, 12.0F, 0.0F));
    }
 
-   public static gfi b() {
-      gfk $$0 = c();
-      return gfi.a($$0, 64, 64);
-   }
-
-   public void a(had $$0) {
+   public void a(S $$0) {
       super.a($$0);
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + ayz.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = ayz.a($$0.u * 0.1F) * 0.7F;
+      if ($$0.b && !$$0.d) {
+         float $$1 = $$0.H;
+         float $$2 = ayy.a($$1 * (float) Math.PI);
+         float $$3 = ayy.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
+         this.r.g = 0.0F;
+         this.s.g = 0.0F;
+         this.r.f = -(0.1F - $$2 * 0.6F);
+         this.s.f = 0.1F - $$2 * 0.6F;
+         this.r.e = (float) (-Math.PI / 2);
+         this.s.e = (float) (-Math.PI / 2);
+         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
+         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
+         gaq.a(this.r, this.s, $$0.u);
       }
+   }
 
-      this.c.a(0.0F, 16.0F + ayz.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.c.f = 0.0F;
-      }
-
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
+   @Override
+   public void a(buz $$0, ffs $$1) {
+      this.e().a($$1);
+      float $$2 = $$0 == buz.b ? 1.0F : -1.0F;
+      gfa $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

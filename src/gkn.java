@@ -1,56 +1,26 @@
-public class gkn extends gkg {
-   private float a;
+public class gkn extends ghw {
+   private static final int a = 12235202;
 
-   gkn(gfy $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   protected gkn(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gjz $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axj.b(12235202) / 255.0F;
+      this.w = (float)axj.c(12235202) / 255.0F;
+      this.x = (float)axj.d(12235202) / 255.0F;
    }
 
-   @Override
-   public gjk b() {
-      return gjk.b;
-   }
+   public static class a implements gjh<lx> {
+      private final gjz a;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * ayz.b(this.a));
-         this.l = this.l + (double)(0.6F * ayz.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
-   }
-
-   public static class a implements gjj<lx> {
-      private final gkb a;
-
-      public a(gkb $$0) {
+      public a(gjz $$0) {
          this.a = $$0;
       }
 
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkn $$8 = new gkn($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gje a(lx $$0, gfw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azg $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gkn($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

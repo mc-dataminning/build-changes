@@ -1,8 +1,8 @@
-public record acl(long[] b, bnd c) implements yv<abk> {
+public record acl(long[] b, bnc c) implements yv<abk> {
    public static final ym<vl, acl> a = yv.a(acl::a, acl::new);
 
    private acl(vl $$0) {
-      this($$0.d(), $$0.b(bnd.class));
+      this($$0.d(), $$0.b(bnc.class));
    }
 
    private void a(vl $$0) {
@@ -19,7 +19,7 @@ public record acl(long[] b, bnd c) implements yv<abk> {
       $$0.a(this);
    }
 
-   public bnd e() {
+   public bnc e() {
       return this.c;
    }
 }

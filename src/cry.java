@@ -1,101 +1,46 @@
 public class cry {
-   private int a = 20;
-   private float b = 5.0F;
-   private float c;
-   private int d;
+   public static final crx a = new crx.a().a(4).a(0.3F).b();
+   public static final crx b = new crx.a().a(5).a(0.6F).b();
+   public static final crx c = new crx.a().a(3).a(0.3F).b();
+   public static final crx d = new crx.a().a(1).a(0.6F).b();
+   public static final crx e = a(6).b();
+   public static final crx f = new crx.a().a(5).a(0.6F).b();
+   public static final crx g = new crx.a().a(3).a(0.6F).b();
+   public static final crx h = new crx.a().a(2).a(0.3F).b();
+   public static final crx i = new crx.a().a(4).a(0.3F).a().b();
+   public static final crx j = new crx.a().a(2).a(0.1F).b();
+   public static final crx k = new crx.a().a(8).a(0.8F).b();
+   public static final crx l = new crx.a().a(6).a(0.6F).b();
+   public static final crx m = new crx.a().a(5).a(0.6F).b();
+   public static final crx n = new crx.a().a(6).a(0.8F).b();
+   public static final crx o = new crx.a().a(8).a(0.8F).b();
+   public static final crx p = new crx.a().a(5).a(0.6F).b();
+   public static final crx q = new crx.a().a(6).a(0.8F).b();
+   public static final crx r = new crx.a().a(2).a(0.1F).b();
+   public static final crx s = new crx.a().a(1).a(0.3F).b();
+   public static final crx t = new crx.a().a(4).a(1.2F).a().b();
+   public static final crx u = new crx.a().a(4).a(1.2F).a().b();
+   public static final crx v = new crx.a().a(6).a(1.2F).b();
+   public static final crx w = new crx.a().a(6).a(0.1F).a().b();
+   public static final crx x = new crx.a().a(2).a(0.3F).b();
+   public static final crx y = a(6).b();
+   public static final crx z = new crx.a().a(2).a(0.3F).b();
+   public static final crx A = new crx.a().a(2).a(0.3F).b();
+   public static final crx B = new crx.a().a(3).a(0.3F).b();
+   public static final crx C = new crx.a().a(1).a(0.3F).b();
+   public static final crx D = new crx.a().a(1).a(0.1F).b();
+   public static final crx E = new crx.a().a(8).a(0.3F).b();
+   public static final crx F = new crx.a().a(3).a(0.3F).b();
+   public static final crx G = a(10).b();
+   public static final crx H = new crx.a().a(4).a(0.1F).b();
+   public static final crx I = new crx.a().a(2).a(0.1F).b();
+   public static final crx J = new crx.a().a(2).a(0.8F).b();
+   public static final crx K = a(6).a().b();
+   public static final crx L = new crx.a().a(2).a(0.1F).b();
+   public static final crx M = new crx.a().a(2).a(0.1F).b();
+   public static final crx N = new crx.a().a(1).a(0.1F).b();
 
-   private void b(int $$0, float $$1) {
-      this.a = ayz.a($$0 + this.a, 0, 20);
-      this.b = ayz.a($$1 + this.b, 0.0F, (float)this.a);
-   }
-
-   public void a(int $$0, float $$1) {
-      this.b($$0, crx.a($$0, $$1));
-   }
-
-   public void a(crz $$0) {
-      this.b($$0.a(), $$0.b());
-   }
-
-   public void a(ard $$0) {
-      arc $$1 = $$0.y();
-      bsg $$2 = $$1.am();
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$2 != bsg.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$3 = $$1.O().b(dge.k);
-      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$4 = Math.min(this.b, 6.0F);
-            $$0.c($$4 / 6.0F);
-            this.a($$4);
-            this.d = 0;
-         }
-      } else if ($$3 && this.a >= 18 && $$0.gu()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eE() > 10.0F || $$2 == bsg.d || $$0.eE() > 1.0F && $$2 == bsg.c) {
-               $$0.a($$1, $$0.dX().j(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
-   }
-
-   public void a(tq $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(tq $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
-      this.b = $$0;
+   private static crx.a a(int $$0) {
+      return new crx.a().a($$0).a(0.6F);
    }
 }

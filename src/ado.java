@@ -2,7 +2,7 @@ public class ado implements yv<abk> {
    public static final ym<vl, ado> a = yv.a(ado::a, ado::new);
    private final int b;
 
-   public ado(bsx $$0) {
+   public ado(bsw $$0) {
       this($$0.b());
    }
 

@@ -9,9 +9,9 @@ public class cb extends dz<cb.a> {
       return cb.a.a;
    }
 
-   public void a(ard $$0, fba $$1, @Nullable buk $$2) {
-      fba $$3 = $$0.du();
-      evr $$4 = $$2 != null ? bx.b($$0, $$2) : null;
+   public void a(ard $$0, fay $$1, @Nullable buj $$2) {
+      fay $$3 = $$0.du();
+      evp $$4 = $$2 != null ? bx.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.y(), $$1, $$3, $$4));
    }
 
@@ -36,7 +36,7 @@ public class cb extends dz<cb.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arc $$0, fba $$1, fba $$2, @Nullable evr $$3) {
+      public boolean a(arc $$0, fay $$1, fay $$2, @Nullable evp $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

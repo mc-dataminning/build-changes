@@ -1,38 +1,19 @@
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface ebh<B, T extends B> {
-   static <B, T extends B> ebh<B, T> a(final Class<T> $$0) {
-      return new ebh<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   static <B, T extends B> ebh<B, T> b(final Class<T> $$0) {
-      return new ebh<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+public interface ebh<T extends eay> {
+   @Nullable
+   T a(int var1);
 
    @Nullable
-   T a(B var1);
+   T a(UUID var1);
 
-   Class<? extends B> a();
+   Iterable<T> a();
+
+   <U extends T> void a(ebf<T, U> var1, axk<U> var2);
+
+   void a(fat var1, Consumer<T> var2);
+
+   <U extends T> void a(ebf<T, U> var1, fat var2, axk<U> var3);
 }

@@ -1,36 +1,62 @@
 import javax.annotation.Nullable;
 
-public abstract class fqn implements fqo {
+public interface fqn extends fqa {
+   long t = 250L;
+
+   default void f(double $$0, double $$1) {
+   }
+
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
    @Nullable
-   private fqp a;
-   private boolean b;
-
-   @Override
-   public final boolean aK_() {
-      return this.b;
+   default fny a(fst $$0) {
+      return null;
    }
 
-   @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
+   default boolean a_(double $$0, double $$1) {
+      return false;
    }
+
+   void a(boolean var1);
+
+   boolean aM_();
 
    @Nullable
-   @Override
-   public fqp aL_() {
-      return this.a;
+   default fny aN_() {
+      return this.aM_() ? fny.a(this) : null;
    }
 
-   @Override
-   public void a(@Nullable fqp $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
+   default fsx J() {
+      return fsx.a();
+   }
 
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
+   default fsx b(fsv $$0) {
+      return this.J().c($$0);
    }
 }

@@ -4,7 +4,7 @@ public record cn(dn c) implements cw {
    public static final Codec<cn> a = dn.a.xmap(cn::new, cn::a);
 
    @Override
-   public boolean a(cwp $$0) {
+   public boolean a(cwn $$0) {
       return this.c.a($$0);
    }
 

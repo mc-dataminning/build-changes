@@ -1,75 +1,70 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fzr extends fuk {
-   private static final Logger d = LogUtils.getLogger();
-   public static final edq a = new edq((long)"test1".hashCode(), true, false);
-   protected final fuk b;
-   private fos s;
-   private fos u;
-   private fos v;
-   private fos w;
-   protected fpb c;
-   private fzx x;
-
-   public fzr(fuk $$0) {
-      super(wo.c("selectWorld.title"));
-      this.b = $$0;
+public record fzr(edo a, ke<ear> b, edl c, jy<ald> d, alf e, dhd f, fzm g) {
+   public fzr(edm $$0, jy<ald> $$1, alf $$2, dhd $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3, new fzm(fzt.a.a, Set.of(), null));
    }
 
-   @Override
-   protected void aR_() {
-      this.c = new fpb(this.p, this.n / 2 - 100, 22, 200, 20, this.c, wo.c("selectWorld.search"));
-      this.c.b($$0 -> this.x.a($$0));
-      this.d(this.c);
-      this.x = this.c(new fzx(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
-      this.u = this.c(fos.a(evg.a, $$0 -> this.x.b().ifPresent(fzx.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(fos.a(wo.c("selectWorld.create"), $$0 -> fzj.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.v = this.c(fos.a(wo.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(fzx.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.s = this.c(fos.a(wo.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(fzx.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.w = this.c(fos.a(wo.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(fzx.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(fos.a(wn.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
+   public fzr(edo $$0, edl $$1, jy<ald> $$2, alf $$3, dhd $$4, fzm $$5) {
+      this($$0, $$2.a(ald.c).e(mc.bf), $$1, $$2.a(ald.c), $$3, $$4, $$5);
    }
 
-   @Override
-   protected void aF_() {
-      this.b(this.c);
+   public fzr a(edo $$0, edl $$1) {
+      return new fzr($$0, this.b, $$1, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.b);
+   public fzr a(fzr.b $$0) {
+      return new fzr($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   public fzr a(fzr.a $$0) {
+      return new fzr(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
    }
 
-   public void a(@Nullable evg $$0) {
-      if ($$0 == null) {
-         this.u.b(evg.a);
-         this.u.j = false;
-         this.v.j = false;
-         this.w.j = false;
-         this.s.j = false;
-      } else {
-         this.u.b($$0.t());
-         this.u.j = $$0.u();
-         this.v.j = $$0.w();
-         this.w.j = $$0.x();
-         this.s.j = $$0.y();
+   public kf.b a() {
+      return this.d.a();
+   }
+
+   public void b() {
+      for (ear $$0 : this.d()) {
+         $$0.b().a();
       }
    }
 
-   @Override
-   public void aI_() {
-      if (this.x != null) {
-         this.x.aH_().forEach(fzx.a::close);
-      }
+   public edo c() {
+      return this.a;
+   }
+
+   public ke<ear> d() {
+      return this.b;
+   }
+
+   public edl e() {
+      return this.c;
+   }
+
+   public jy<ald> f() {
+      return this.d;
+   }
+
+   public alf g() {
+      return this.e;
+   }
+
+   public dhd h() {
+      return this.f;
+   }
+
+   public fzm i() {
+      return this.g;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<kf.b, edl, edl> {
+   }
+
+   public interface b extends UnaryOperator<edo> {
    }
 }

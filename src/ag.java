@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public interface ag {
-   eux d();
+   euv d();
 
    String b();
 

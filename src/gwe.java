@@ -1,22 +1,24 @@
-public class gwe extends gwr<gyy, gcl> {
-   private final gcl a;
-   private final gcl b;
-   private final gwb c;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gwe(gtz<gyy, gcl> $$0, gey $$1, gwb $$2) {
+public class gwe extends gwq<gyx, gcj> {
+   private static final Map<cje, aku> a = af.a(Maps.newEnumMap(cje.class), $$0 -> {
+      $$0.put(cje.a, null);
+      $$0.put(cje.b, aku.b("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cje.c, aku.b("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cje.d, aku.b("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cje.e, aku.b("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gwe(gty<gyx, gcj> $$0) {
       super($$0);
-      this.c = $$2;
-      this.a = new gcl($$1.a(gfb.be));
-      this.b = new gcl($$1.a(gfb.bg));
    }
 
-   public void a(ffu $$0, glx $$1, int $$2, gyy $$3, float $$4, float $$5) {
-      cwp $$6 = $$3.i;
-      deu $$7 = $$6.a(kv.D);
-      if ($$7 != null && !$$7.c().isEmpty()) {
-         gcl $$8 = $$3.aj ? this.b : this.a;
-         $$8.a($$3);
-         this.c.a(hgq.d.e, $$7.c().get(), $$8, $$6, $$0, $$1, $$2);
+   public void a(ffs $$0, glv $$1, int $$2, gyx $$3, float $$4, float $$5) {
+      aku $$6 = a.get($$3.h);
+      if ($$6 != null && !$$3.z) {
+         ffw $$7 = $$1.getBuffer(gmf.j($$6));
+         this.d().a($$0, $$7, $$2, gtc.a($$3, 0.0F));
       }
    }
 }

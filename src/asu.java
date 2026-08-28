@@ -23,15 +23,15 @@ public class asu implements atb {
 
    @Nullable
    @Override
-   public auh<InputStream> a(String... $$0) {
+   public aug<InputStream> a(String... $$0) {
       return this.c.a($$0);
    }
 
    @Nullable
    @Override
-   public auh<InputStream> a(atd $$0, aku $$1) {
+   public aug<InputStream> a(atd $$0, aku $$1) {
       for (atb $$2 : this.d) {
-         auh<InputStream> $$3 = $$2.a($$0, $$1);
+         aug<InputStream> $$3 = $$2.a($$0, $$1);
          if ($$3 != null) {
             return $$3;
          }
@@ -42,7 +42,7 @@ public class asu implements atb {
 
    @Override
    public void a(atd $$0, String $$1, String $$2, atb.a $$3) {
-      Map<aku, auh<InputStream>> $$4 = new HashMap<>();
+      Map<aku, aug<InputStream>> $$4 = new HashMap<>();
 
       for (atb $$5 : this.d) {
          $$5.a($$0, $$1, $$2, $$4::putIfAbsent);

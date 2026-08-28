@@ -1,7 +1,7 @@
 public record acu(int b, float c) implements yv<abk> {
    public static final ym<vl, acu> a = yv.a(acu::a, acu::new);
 
-   public acu(bvg $$0) {
+   public acu(bvf $$0) {
       this($$0.ar(), $$0.eK());
    }
 

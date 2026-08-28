@@ -1,27 +1,34 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class dgb {
-   public Optional<Float> a(dga $$0, dfn $$1, ji $$2, dwx $$3, esz $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public class dgb extends euj {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
+
+   public static euj.a<dgb> a() {
+      return new euj.a<>(dgb::new, dgb::b, bam.i);
    }
 
-   public boolean a(dga $$0, dfn $$1, ji $$2, dwx $$3, float $$4) {
-      return true;
+   private dgb(LongSet $$0) {
+      this.c = $$0;
    }
 
-   public boolean a(dga $$0, buk $$1) {
-      return true;
+   public dgb() {
+      this(new LongOpenHashSet());
    }
 
-   public float a(buk $$0) {
-      return 1.0F;
+   public static dgb b(tq $$0, jt.a $$1) {
+      return new dgb(new LongOpenHashSet($$0.o("Forced")));
    }
 
-   public float a(dga $$0, buk $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fba $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   @Override
+   public tq a(tq $$0, jt.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

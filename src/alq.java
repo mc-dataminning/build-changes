@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class alq {
    private static final int a = 8;
-   private final Queue<alq.a> b = new axm<>();
+   private final Queue<alq.a> b = new axl<>();
    private final Object2IntLinkedOpenHashMap<alq.b> c = new Object2IntLinkedOpenHashMap();
 
    private static long b() {

@@ -1,13 +1,13 @@
 public class adi implements yv<abk> {
    public static final ym<vl, adi> a = yv.a(adi::a, adi::new);
-   private final bsi b;
+   private final bsh b;
 
-   public adi(bsi $$0) {
+   public adi(bsh $$0) {
       this.b = $$0;
    }
 
    private adi(vl $$0) {
-      this.b = $$0.b(bsi.class);
+      this.b = $$0.b(bsh.class);
    }
 
    private void a(vl $$0) {
@@ -23,7 +23,7 @@ public class adi implements yv<abk> {
       $$0.a(this);
    }
 
-   public bsi b() {
+   public bsh b() {
       return this.b;
    }
 }

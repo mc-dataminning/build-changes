@@ -1,59 +1,32 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
 
-public record eyr(akt<eza> b) implements eza {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akt.a(mc.bi).fieldOf("name").forGetter(eyr::c)).apply($$0, eyr::new));
-
-   @Override
-   public ezb b() {
-      return ezc.p;
-   }
+public record eyr(Optional<bm> b) implements eyy {
+   public static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(eyr::c)).apply($$0, eyr::new));
 
    @Override
-   public void a(evx $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         eza.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
+   public eyz b() {
+      return eza.m;
    }
 
-   public boolean a(evr $$0) {
-      eza $$1 = $$0.a().c(this.b).map(jr.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         evr.c<?> $$2 = evr.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   @Override
+   public Set<bah<?>> a() {
+      return Set.of(eyj.f, eyj.c);
    }
 
-   public static eza.a a(akt<eza> $$0) {
-      return () -> new eyr($$0);
+   public boolean a(evp $$0) {
+      bsz $$1 = $$0.c(eyj.c);
+      fay $$2 = $$0.c(eyj.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public akt<eza> c() {
+   public static eyy.a a(bm.a $$0) {
+      return () -> new eyr(Optional.of($$0.b()));
+   }
+
+   public Optional<bm> c() {
       return this.b;
    }
 }

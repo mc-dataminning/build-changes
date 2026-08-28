@@ -1,31 +1,54 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record euo(aku d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<jr<euo>> b = mb.ar.r();
-   public static final ym<vz, jr<euo>> c = yk.b(mc.aC);
+public class euo {
+   private final ji a;
+   private final int b;
+   private final int c;
 
-   public boolean a() {
-      return this.f != -1;
+   public euo(ji $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public aku b() {
-      return this.d;
+   @Nullable
+   public static euo a(tq $$0) {
+      Optional<ji> $$1 = uf.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new euo($$1.get(), $$2, $$3);
+      }
    }
 
-   public boolean c() {
-      return this.e;
+   public tq a() {
+      tq $$0 = new tq();
+      $$0.a("pos", uf.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
+
+   public ji b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
    }
 
    public int d() {
-      return this.f;
+      return this.c;
    }
 
-   public boolean e() {
-      return this.g;
+   public String e() {
+      return a(this.a);
    }
 
-   public boolean f() {
-      return this.h;
+   public static String a(ji $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

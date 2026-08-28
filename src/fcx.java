@@ -1,29 +1,15 @@
-import java.util.function.Function;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-public class fcx<T> implements fco<T> {
-   private final Function<ji, fcv<T>> a;
-
-   public fcx(Function<ji, fcv<T>> $$0) {
-      this.a = $$0;
+public class fcx {
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   @Override
-   public boolean a(ji $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 
-   @Override
-   public void a(fcs<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(ji $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   private fcx() {
    }
 }

@@ -17,7 +17,7 @@ public class aob {
       });
    }
 
-   private static Collection<String> a(aua $$0, evl $$1, Collection<String> $$2) {
+   private static Collection<String> a(atz $$0, evj $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -35,8 +35,8 @@ public class aob {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
          ex $$1 = (ex)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
-         aua $$3 = $$2.aF();
-         evl $$4 = $$2.aZ();
+         atz $$3 = $$2.aF();
+         evj $$4 = $$2.aZ();
          Collection<String> $$5 = $$3.e();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> wo.c("commands.reload.success"), true);

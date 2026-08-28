@@ -1,55 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public record dci(dcp f, dcp g, dcp h, dcp i, int j, float k) implements dcj {
-   public static final MapCodec<dci> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dcp.a.fieldOf("ingredient").forGetter(dci::b),
-               dcp.a.fieldOf("fuel").forGetter(dci::c),
-               dcp.a.fieldOf("result").forGetter(dci::d),
-               dcp.a.fieldOf("crafting_station").forGetter(dci::e),
-               Codec.INT.fieldOf("duration").forGetter(dci::f),
-               Codec.FLOAT.fieldOf("experience").forGetter(dci::g)
-            )
-            .apply($$0, dci::new)
-   );
-   public static final ym<vz, dci> b = ym.a(dcp.b, dci::b, dcp.b, dci::c, dcp.b, dci::d, dcp.b, dci::e, yk.h, dci::f, yk.l, dci::g, dci::new);
-   public static final dcj.a<dci> c = new dcj.a<>(a, b);
+public record dci(dcj b, dch c, OptionalInt d, dbf e, Optional<List<day>> f) {
+   public static final ym<vz, dci> a = ym.a(dcj.a, dci::a, dch.e, dci::b, yk.i, dci::c, yk.a(mc.aH), dci::d, day.a.a(yk.a()).a(yk::a), dci::e, dci::new);
 
-   @Override
-   public dcj.a<dci> a() {
-      return c;
+   public List<cwn> a(baj $$0) {
+      return this.c.d().a($$0);
    }
 
-   @Override
-   public boolean a(crt $$0) {
-      return this.f.a($$0) && this.c().a($$0) && dcj.super.a($$0);
+   public boolean a(cpa $$0) {
+      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
    }
 
-   public dcp b() {
+   public dcj a() {
+      return this.b;
+   }
+
+   public dch b() {
+      return this.c;
+   }
+
+   public OptionalInt c() {
+      return this.d;
+   }
+
+   public dbf d() {
+      return this.e;
+   }
+
+   public Optional<List<day>> e() {
       return this.f;
-   }
-
-   public dcp c() {
-      return this.g;
-   }
-
-   @Override
-   public dcp d() {
-      return this.h;
-   }
-
-   @Override
-   public dcp e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
-   }
-
-   public float g() {
-      return this.k;
    }
 }

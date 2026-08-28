@@ -1,45 +1,75 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class hfe {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class hfe extends att {
+   private static final atp d = new atp(wo.c("resourcePack.vanilla.description"), ab.b().a(atd.a), Optional.empty());
+   private static final ast e = ast.a(atp.b, d);
+   public static final String c = "high_contrast";
+   private static final Map<String, wo> f = Map.of(
+      "programmer_art", wo.c("resourcePack.programmer_art.name"), "high_contrast", wo.c("resourcePack.high_contrast.name")
+   );
+   private static final ata g = new ata("vanilla", wo.c("resourcePack.vanilla.name"), aua.c, Optional.of(b));
+   private static final atc h = new atc(true, atw.b.b, false);
+   private static final atc i = new atc(false, atw.b.a, false);
+   private static final aku j = aku.b("resourcepacks");
+   @Nullable
+   private final Path k;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      atl.a $$3 = atl.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public hfe(Path $$0, fao $$1) {
+      super(atd.a, b($$0), j, $$1);
+      this.k = this.a($$0);
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = ayp.a($$5);
-         JsonObject $$7 = ayp.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = ayp.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
+   private static ata a(String $$0, wo $$1) {
+      return new ata($$0, $$1, aua.c, Optional.of(atv.a($$0)));
+   }
+
+   @Nullable
+   private Path a(Path $$0) {
+      if (ab.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      return $$3.a("index-" + $$1).getPath("/");
+      return null;
+   }
+
+   private static atf b(Path $$0) {
+      atg $$1 = new atg().a(e).a("minecraft", "realms");
+      return $$1.b().a().a(atd.a, $$0).a(g);
+   }
+
+   @Override
+   protected wo a(String $$0) {
+      wo $$1 = f.get($$0);
+      return (wo)($$1 != null ? $$1 : wo.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected atw a(atb $$0) {
+      return atw.a(g, b($$0), atd.a, h);
+   }
+
+   @Nullable
+   @Override
+   protected atw a(String $$0, atw.c $$1, wo $$2) {
+      return atw.a(a($$0, $$2), $$1, atd.a, i);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, atw>> $$0) {
+      super.a($$0);
+      if (this.k != null) {
+         this.a(this.k, $$0);
+      }
    }
 }

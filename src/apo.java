@@ -19,15 +19,15 @@ public class apo implements apm {
             return $$0.then(ey.a("entity").then($$1.apply(ey.a($$0, fk.a()))));
          }
       };
-   private final buk c;
+   private final buj c;
 
-   public apo(buk $$0) {
+   public apo(buj $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(tq $$0) throws CommandSyntaxException {
-      if (this.c instanceof cox) {
+      if (this.c instanceof cov) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cG();

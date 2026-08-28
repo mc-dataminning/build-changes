@@ -1,7 +1,8 @@
-public class gzn extends gzi {
-   public chk.a a;
+import javax.annotation.Nullable;
 
-   public gzn() {
-      this.a = chk.a.a;
-   }
+public class gzn extends gyh {
+   public jn a = jn.c;
+   @Nullable
+   public ckw b;
+   public int[] c = new int[0];
 }

@@ -1,49 +1,74 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public abstract class dyw implements dzf, AutoCloseable {
-   @Nullable
-   public dzc a(int $$0, int $$1, boolean $$2) {
-      return (dzc)this.a($$0, $$1, dzt.n, $$2);
+public class dyw extends dza {
+   private final jr<dhi> n;
+
+   public dyw(dgg $$0, dfm $$1, jr<dhi> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
-   @Nullable
-   public dzc a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   @Override
+   public dwv a_(ji $$0) {
+      return djm.nD.m();
    }
 
    @Nullable
    @Override
-   public dze c(int $$0, int $$1) {
-      return this.a($$0, $$1, dzt.c, false);
+   public dwv a(ji $$0, dwv $$1, boolean $$2) {
+      return null;
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dzt.n, false) != null;
+   @Override
+   public esx b_(ji $$0) {
+      return esy.a.g();
+   }
+
+   @Override
+   public int i(ji $$0) {
+      return 0;
    }
 
    @Nullable
-   public abstract dys a(int var1, int var2, dzt var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+   @Override
+   public dtx a(ji $$0, dza.b $$1) {
+      return null;
    }
-
-   public abstract String e();
-
-   public abstract int j();
 
    @Override
-   public void close() throws IOException {
+   public void b(dtx $$0) {
    }
 
-   public abstract eso p();
-
-   public void b(boolean $$0) {
+   @Override
+   public void a(dtx $$0) {
    }
 
-   public void a(dfo $$0, boolean $$1) {
+   @Override
+   public void d(ji $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      return true;
+   }
+
+   @Override
+   public aqr F() {
+      return aqr.b;
+   }
+
+   @Override
+   public jr<dhi> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

@@ -1,26 +1,48 @@
+import java.util.Objects;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fqu implements fqv {
-   private final wo b;
-   protected final fsf a = new fsf();
+public class fqu {
+   private final Consumer<fon> a;
+   private final Consumer<fon> b;
+   @Nullable
+   private fqt c;
+   @Nullable
+   private fsx d;
 
-   public fqu(wo $$0) {
-      this.b = $$0;
+   public fqu(Consumer<fon> $$0, Consumer<fon> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public wo a() {
-      return this.b;
+   public void a(fsx $$0) {
+      this.d = $$0;
+      fqt $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
    }
 
-   @Override
-   public void a(Consumer<fop> $$0) {
-      this.a.a($$0);
+   public void a(fqt $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            flh.Q().ak().a(hie.a(avz.Bf, 1.0F));
+         }
+      }
    }
 
-   @Override
-   public void a(fsz $$0) {
-      this.a.a();
-      fse.a(this.a, $$0, 0.5F, 0.16666667F);
+   @Nullable
+   public fqt a() {
+      return this.c;
    }
 }

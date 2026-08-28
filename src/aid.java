@@ -1,13 +1,13 @@
 public class aid implements yv<agf> {
    public static final ym<vl, aid> a = yv.a(aid::a, aid::new);
-   private final bsi b;
+   private final bsh b;
 
-   public aid(bsi $$0) {
+   public aid(bsh $$0) {
       this.b = $$0;
    }
 
    private aid(vl $$0) {
-      this.b = $$0.b(bsi.class);
+      this.b = $$0.b(bsh.class);
    }
 
    private void a(vl $$0) {
@@ -23,7 +23,7 @@ public class aid implements yv<agf> {
       $$0.a(this);
    }
 
-   public bsi b() {
+   public bsh b() {
       return this.b;
    }
 }

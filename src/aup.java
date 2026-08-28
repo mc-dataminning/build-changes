@@ -1,52 +1,16 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public interface aup extends aus {
-   Set<String> a();
-
-   List<aun> a(aku var1);
-
-   Map<aku, aun> b(String var1, Predicate<aku> var2);
-
-   Map<aku, List<aun>> c(String var1, Predicate<aku> var2);
-
-   Stream<atb> b();
-
-   public static enum a implements aup {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<aun> getResource(aku $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<aun> a(aku $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<atb> b() {
-         return Stream.of();
-      }
+public interface aup extends aui {
+   @Override
+   default CompletableFuture<Void> a(aui.a $$0, auo $$1, Executor $$2, Executor $$3) {
+      return $$0.a(bae.a).thenRunAsync(() -> {
+         bor $$1x = boq.a();
+         $$1x.a("listener");
+         this.a($$1);
+         $$1x.c();
+      }, $$3);
    }
+
+   void a(auo var1);
 }

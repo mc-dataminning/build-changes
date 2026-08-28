@@ -12,13 +12,13 @@ public interface wp {
       return Optional.empty();
    }
 
-   default xc a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
+   default xc a(@Nullable ex $$0, @Nullable buj $$1, int $$2) throws CommandSyntaxException {
       return xc.a(this);
    }
 
    wp.a<?> a();
 
-   public static record a<T extends wp>(MapCodec<T> a, String b) implements azv {
+   public static record a<T extends wp>(MapCodec<T> a, String b) implements azu {
       @Override
       public String c() {
          return this.b;

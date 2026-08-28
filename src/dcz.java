@@ -1,139 +1,332 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableFloat;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public record dcz(wo e, dcz.c f, jv<dcz> g, kr h) {
-   public static final int a = 255;
-   public static final Codec<dcz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               wq.a.fieldOf("description").forGetter(dcz::f),
-               dcz.c.a.forGetter(dcz::g),
-               kg.a(mc.aO).optionalFieldOf("exclusive_set", jv.a()).forGetter(dcz::h),
-               dda.b.optionalFieldOf("effects", kr.a).forGetter(dcz::i)
-            )
-            .apply($$0, dcz::new)
-   );
-   public static final Codec<jr<dcz>> c = akr.a(mc.aO);
-   public static final ym<vz, jr<dcz>> d = yk.b(mc.aO);
-
-   public static dcz.b a(int $$0) {
-      return new dcz.b($$0, 0);
+public class dcz {
+   public static int a(jr<dcx> $$0, cwn $$1) {
+      ddd $$2 = $$1.a(kv.l, ddd.a);
+      return $$2.a($$0);
    }
 
-   public static dcz.b a(int $$0, int $$1) {
-      return new dcz.b($$0, $$1);
-   }
-
-   public static dcz.c a(jv<cwl> $$0, jv<cwl> $$1, int $$2, int $$3, dcz.b $$4, dcz.b $$5, int $$6, but... $$7) {
-      return new dcz.c($$0, Optional.of($$1), $$2, $$3, $$4, $$5, $$6, List.of($$7));
-   }
-
-   public static dcz.c a(jv<cwl> $$0, int $$1, int $$2, dcz.b $$3, dcz.b $$4, int $$5, but... $$6) {
-      return new dcz.c($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, List.of($$6));
-   }
-
-   public Map<bus, cwp> a(bvg $$0) {
-      Map<bus, cwp> $$1 = Maps.newEnumMap(bus.class);
-
-      for (bus $$2 : bus.i) {
-         if (this.a($$2)) {
-            cwp $$3 = $$0.a($$2);
-            if (!$$3.f()) {
-               $$1.put($$2, $$3);
-            }
-         }
+   public static ddd a(cwn $$0, Consumer<ddd.a> $$1) {
+      ku<ddd> $$2 = d($$0);
+      ddd $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         return ddd.a;
+      } else {
+         ddd.a $$4 = new ddd.a($$3);
+         $$1.accept($$4);
+         ddd $$5 = $$4.b();
+         $$0.b($$2, $$5);
+         return $$5;
       }
+   }
 
+   public static boolean a(cwn $$0) {
+      return $$0.b(d($$0));
+   }
+
+   public static void a(cwn $$0, ddd $$1) {
+      $$0.b(d($$0), $$1);
+   }
+
+   public static ddd b(cwn $$0) {
+      return $$0.a(d($$0), ddd.a);
+   }
+
+   private static ku<ddd> d(cwn $$0) {
+      return $$0.a(cwr.vv) ? kv.I : kv.l;
+   }
+
+   public static boolean c(cwn $$0) {
+      return !$$0.a(kv.l, ddd.a).d() || !$$0.a(kv.I, ddd.a).d();
+   }
+
+   public static int a(arc $$0, cwn $$1, int $$2) {
+      MutableFloat $$3 = new MutableFloat((float)$$2);
+      a($$1, ($$3x, $$4) -> ((dcx)$$3x.a()).a($$0, $$4, $$1, $$3));
+      return $$3.intValue();
+   }
+
+   public static int a(arc $$0, cwn $$1, cwn $$2, int $$3) {
+      MutableFloat $$4 = new MutableFloat((float)$$3);
+      a($$1, ($$3x, $$4x) -> ((dcx)$$3x.a()).b($$0, $$4x, $$2, $$4));
+      return $$4.intValue();
+   }
+
+   public static int b(arc $$0, cwn $$1, int $$2) {
+      MutableFloat $$3 = new MutableFloat((float)$$2);
+      a($$1, ($$3x, $$4) -> ((dcx)$$3x.a()).d($$0, $$4, $$1, $$3));
+      return $$3.intValue();
+   }
+
+   public static int a(arc $$0, @Nullable buj $$1, buj $$2, int $$3) {
+      if ($$1 instanceof bvf $$4) {
+         MutableFloat $$5 = new MutableFloat((float)$$3);
+         a($$4, ($$3x, $$4x, $$5x) -> ((dcx)$$3x.a()).a($$0, $$4x, $$5x.a(), $$2, $$5));
+         return $$5.intValue();
+      } else {
+         return $$3;
+      }
+   }
+
+   public static cwn a(dda $$0) {
+      cwn $$1 = new cwn(cwr.vv);
+      $$1.a($$0.a, $$0.b);
       return $$1;
    }
 
-   public jv<cwl> a() {
-      return this.f.a();
+   private static void a(cwn $$0, dcz.b $$1) {
+      ddd $$2 = $$0.a(kv.l, ddd.a);
+
+      for (Entry<jr<dcx>> $$3 : $$2.b()) {
+         $$1.accept((jr<dcx>)$$3.getKey(), $$3.getIntValue());
+      }
    }
 
-   public boolean a(bus $$0) {
-      return this.f.h().stream().anyMatch($$1 -> $$1.b($$0));
+   private static void a(cwn $$0, bur $$1, bvf $$2, dcz.a $$3) {
+      if (!$$0.f()) {
+         ddd $$4 = $$0.a(kv.l);
+         if ($$4 != null && !$$4.d()) {
+            dcw $$5 = new dcw($$0, $$1, $$2);
+
+            for (Entry<jr<dcx>> $$6 : $$4.b()) {
+               jr<dcx> $$7 = (jr<dcx>)$$6.getKey();
+               if ($$7.a().a($$1)) {
+                  $$3.accept($$7, $$6.getIntValue(), $$5);
+               }
+            }
+         }
+      }
    }
 
-   public boolean a(cwp $$0) {
-      return this.b($$0) && (this.f.c.isEmpty() || $$0.a(this.f.c.get()));
+   private static void a(bvf $$0, dcz.a $$1) {
+      for (bur $$2 : bur.i) {
+         a($$0.a($$2), $$2, $$0, $$1);
+      }
    }
 
-   public boolean b(cwp $$0) {
-      return $$0.a(this.f.b);
+   public static boolean a(arc $$0, bvf $$1, bsz $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      a($$1, ($$4, $$5, $$6) -> $$3.setValue($$3.isTrue() || $$4.a().a($$0, $$5, $$1, $$2)));
+      return $$3.isTrue();
    }
 
-   public int b() {
-      return this.f.c();
+   public static float b(arc $$0, bvf $$1, bsz $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5, $$6) -> $$4.a().a($$0, $$5, $$6.a(), $$1, $$2, $$3));
+      return $$3.floatValue();
    }
 
-   public int c() {
-      return this.f.g();
+   public static float a(arc $$0, cwn $$1, buj $$2, bsz $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dcx)$$5x.a()).b($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
    }
 
-   public int d() {
-      return 1;
+   public static float b(arc $$0, cwn $$1, buj $$2, bsz $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dcx)$$5x.a()).c($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
    }
 
-   public int e() {
-      return this.f.d();
+   public static float c(arc $$0, cwn $$1, buj $$2, bsz $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dcx)$$5x.a()).e($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
    }
 
-   public int b(int $$0) {
-      return this.f.e().a($$0);
+   public static float d(arc $$0, cwn $$1, buj $$2, bsz $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dcx)$$5x.a()).d($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
    }
 
-   public int c(int $$0) {
-      return this.f.f().a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return "Enchantment " + this.e.getString();
-   }
-
-   public static boolean a(jr<dcz> $$0, jr<dcz> $$1) {
-      return !$$0.equals($$1) && !$$0.a().g.a($$1) && !$$1.a().g.a($$0);
-   }
-
-   public static wo a(jr<dcz> $$0, int $$1) {
-      xc $$2 = $$0.a().e.f();
-      if ($$0.a(aws.o)) {
-         wr.a($$2, xl.a.a(n.m));
+   public static void a(arc $$0, buj $$1, bsz $$2) {
+      if ($$2.d() instanceof bvf $$3) {
+         a($$0, $$1, $$2, $$3.ea());
       } else {
-         wr.a($$2, xl.a.a(n.h));
+         a($$0, $$1, $$2, null);
+      }
+   }
+
+   public static void a(arc $$0, buj $$1, bsz $$2, @Nullable cwn $$3) {
+      a($$0, $$1, $$2, $$3, null);
+   }
+
+   public static void a(arc $$0, buj $$1, bsz $$2, @Nullable cwn $$3, @Nullable Consumer<cwj> $$4) {
+      if ($$1 instanceof bvf $$5) {
+         a($$5, ($$3x, $$4x, $$5x) -> ((dcx)$$3x.a()).a($$0, $$4x, $$5x, ddb.c, $$1, $$2));
       }
 
-      if ($$1 != 1 || $$0.a().e() != 1) {
-         $$2.b(wn.v).b(wo.c("enchantment.level." + $$1));
+      if ($$3 != null) {
+         if ($$2.d() instanceof bvf $$6) {
+            a($$3, bur.a, $$6, ($$3x, $$4x, $$5) -> ((dcx)$$3x.a()).a($$0, $$4x, $$5, ddb.a, $$1, $$2));
+         } else if ($$4 != null) {
+            dcw $$7 = new dcw($$3, null, null, $$4);
+            a($$3, ($$4x, $$5) -> ((dcx)$$4x.a()).a($$0, $$5, $$7, ddb.a, $$1, $$2));
+         }
+      }
+   }
+
+   public static void a(arc $$0, bvf $$1) {
+      a($$1, ($$2, $$3, $$4) -> $$2.a().a($$0, $$3, $$4, $$1));
+   }
+
+   public static void a(arc $$0, cwn $$1, bvf $$2, bur $$3) {
+      a($$1, $$3, $$2, ($$2x, $$3x, $$4) -> ((dcx)$$2x.a()).a($$0, $$3x, $$4, $$2));
+   }
+
+   public static void a(bvf $$0) {
+      a($$0, ($$1, $$2, $$3) -> $$1.a().a($$2, $$3, $$0));
+   }
+
+   public static void a(cwn $$0, bvf $$1, bur $$2) {
+      a($$0, $$2, $$1, ($$1x, $$2x, $$3) -> ((dcx)$$1x.a()).a($$2x, $$3, $$1));
+   }
+
+   public static void b(arc $$0, bvf $$1) {
+      a($$1, ($$2, $$3, $$4) -> $$2.a().a($$0, $$3, $$4, (buj)$$1));
+   }
+
+   public static int a(jr<dcx> $$0, bvf $$1) {
+      Iterable<cwn> $$2 = $$0.a().a($$1).values();
+      int $$3 = 0;
+
+      for (cwn $$4 : $$2) {
+         int $$5 = a($$0, $$4);
+         if ($$5 > $$3) {
+            $$3 = $$5;
+         }
       }
 
-      return $$2;
+      return $$3;
    }
 
-   public boolean c(cwp $$0) {
-      return this.f.a().a($$0.i());
+   public static int a(arc $$0, cwn $$1, buj $$2, int $$3) {
+      MutableFloat $$4 = new MutableFloat((float)$$3);
+      a($$1, ($$4x, $$5) -> ((dcx)$$4x.a()).e($$0, $$5, $$1, $$2, $$4));
+      return Math.max(0, $$4.intValue());
    }
 
-   public <T> List<T> a(ku<List<T>> $$0) {
-      return this.h.a($$0, List.of());
+   public static float a(arc $$0, cwn $$1, buj $$2, float $$3) {
+      MutableFloat $$4 = new MutableFloat($$3);
+      a($$1, ($$4x, $$5) -> ((dcx)$$4x.a()).f($$0, $$5, $$1, $$2, $$4));
+      return Math.max(0.0F, $$4.floatValue());
    }
 
-   public boolean a(arc $$0, int $$1, buk $$2, bta $$3) {
-      evr $$4 = b($$0, $$1, $$2, $$3);
+   public static int a(arc $$0, cwn $$1, cwn $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$3x, $$4) -> ((dcx)$$3x.a()).c($$0, $$4, $$2, $$3));
+      return Math.max(0, $$3.intValue());
+   }
 
-      for (dcw<ddo> $$5 : this.a(dda.d)) {
-         if ($$5.a($$4)) {
+   public static void a(arc $$0, cwn $$1, cpo $$2, Consumer<cwj> $$3) {
+      bvf $$5 = $$2.p() instanceof bvf $$4 ? $$4 : null;
+      dcw $$6 = new dcw($$1, null, $$5, $$3);
+      a($$1, ($$3x, $$4x) -> ((dcx)$$3x.a()).b($$0, $$4x, $$6, $$2));
+   }
+
+   public static void a(arc $$0, cwn $$1, @Nullable bvf $$2, buj $$3, @Nullable bur $$4, fay $$5, dwv $$6, Consumer<cwj> $$7) {
+      dcw $$8 = new dcw($$1, $$4, $$2, $$7);
+      a($$1, ($$5x, $$6x) -> ((dcx)$$5x.a()).a($$0, $$6x, $$8, $$3, $$5, $$6));
+   }
+
+   public static int c(arc $$0, cwn $$1, int $$2) {
+      MutableFloat $$3 = new MutableFloat((float)$$2);
+      a($$1, ($$3x, $$4) -> ((dcx)$$3x.a()).e($$0, $$4, $$1, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static float a(arc $$0, bvf $$1, bsz $$2, float $$3) {
+      MutableFloat $$4 = new MutableFloat($$3);
+      azg $$5 = $$1.dZ();
+      a($$1, ($$5x, $$6, $$7x) -> {
+         evp $$8 = dcx.b($$0, $$6, $$1, $$2);
+         ((dcx)$$5x.a()).a(dcy.m).forEach($$4xx -> {
+            if ($$4xx.a() == ddb.c && $$4xx.b() == ddb.c && $$4xx.a($$8)) {
+               $$4.setValue(((ddq)$$4xx.c()).a($$6, $$5, $$4.floatValue()));
+            }
+         });
+      });
+      if ($$2.d() instanceof bvf $$7) {
+         a($$7, ($$5x, $$6, $$7x) -> {
+            evp $$8 = dcx.b($$0, $$6, $$1, $$2);
+            ((dcx)$$5x.a()).a(dcy.m).forEach($$4xx -> {
+               if ($$4xx.a() == ddb.a && $$4xx.b() == ddb.c && $$4xx.a($$8)) {
+                  $$4.setValue(((ddq)$$4xx.c()).a($$6, $$5, $$4.floatValue()));
+               }
+            });
+         });
+      }
+
+      return $$4.floatValue();
+   }
+
+   public static void a(cwn $$0, bus $$1, BiConsumer<jr<bwi>, bwl> $$2) {
+      a($$0, ($$2x, $$3) -> ((dcx)$$2x.a()).a(dcy.l).forEach($$4 -> {
+            if (((dcx)$$2x.a()).g().h().contains($$1)) {
+               $$2.accept($$4.c(), $$4.a($$3, $$1));
+            }
+         }));
+   }
+
+   public static void a(cwn $$0, bur $$1, BiConsumer<jr<bwi>, bwl> $$2) {
+      a($$0, ($$2x, $$3) -> ((dcx)$$2x.a()).a(dcy.l).forEach($$4 -> {
+            if (((dcx)$$2x.a()).a($$1)) {
+               $$2.accept($$4.c(), $$4.a($$3, $$1));
+            }
+         }));
+   }
+
+   public static int a(arc $$0, cwn $$1, buj $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5) -> $$4.a().d($$0, $$5, $$1, $$2, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static float b(arc $$0, cwn $$1, buj $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5) -> $$4.a().c($$0, $$5, $$1, $$2, $$3));
+      return Math.max(0.0F, $$3.floatValue());
+   }
+
+   public static int c(arc $$0, cwn $$1, buj $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5) -> $$4.a().b($$0, $$5, $$1, $$2, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static float a(cwn $$0, bvf $$1, float $$2) {
+      MutableFloat $$3 = new MutableFloat($$2);
+      a($$0, ($$2x, $$3x) -> ((dcx)$$2x.a()).b($$1.dZ(), $$3x, $$3));
+      return Math.max(0.0F, $$3.floatValue());
+   }
+
+   public static float a(cwn $$0, bvf $$1) {
+      MutableFloat $$2 = new MutableFloat(0.0F);
+      a($$0, ($$2x, $$3) -> ((dcx)$$2x.a()).a($$1.dZ(), $$3, $$2));
+      return $$2.floatValue();
+   }
+
+   public static boolean a(cwn $$0, axe<dcx> $$1) {
+      ddd $$2 = $$0.a(kv.l, ddd.a);
+
+      for (Entry<jr<dcx>> $$3 : $$2.b()) {
+         jr<dcx> $$4 = (jr<dcx>)$$3.getKey();
+         if ($$4.a($$1)) {
             return true;
          }
       }
@@ -141,365 +334,171 @@ public record dcz(wo e, dcz.c f, jv<dcz> g, kr h) {
       return false;
    }
 
-   public void a(arc $$0, int $$1, cwp $$2, buk $$3, bta $$4, MutableFloat $$5) {
-      evr $$6 = b($$0, $$1, $$3, $$4);
-
-      for (dcw<dds> $$7 : this.a(dda.c)) {
-         if ($$7.a($$6)) {
-            $$5.setValue($$7.a().a($$1, $$3.dZ(), $$5.floatValue()));
+   public static boolean a(cwn $$0, ku<?> $$1) {
+      MutableBoolean $$2 = new MutableBoolean(false);
+      a($$0, ($$2x, $$3) -> {
+         if (((dcx)$$2x.a()).i().b($$1)) {
+            $$2.setTrue();
          }
+      });
+      return $$2.booleanValue();
+   }
+
+   public static <T> Optional<T> b(cwn $$0, ku<List<T>> $$1) {
+      Pair<List<T>, Integer> $$2 = c($$0, $$1);
+      if ($$2 != null) {
+         List<T> $$3 = (List<T>)$$2.getFirst();
+         int $$4 = (Integer)$$2.getSecond();
+         return Optional.of($$3.get(Math.min($$4, $$3.size()) - 1));
+      } else {
+         return Optional.empty();
       }
    }
 
-   public void a(arc $$0, int $$1, cwp $$2, MutableFloat $$3) {
-      this.a(dda.k, $$0, $$1, $$2, $$3);
-   }
-
-   public void b(arc $$0, int $$1, cwp $$2, MutableFloat $$3) {
-      this.a(dda.p, $$0, $$1, $$2, $$3);
-   }
-
-   public void c(arc $$0, int $$1, cwp $$2, MutableFloat $$3) {
-      this.a(dda.q, $$0, $$1, $$2, $$3);
-   }
-
-   public void d(arc $$0, int $$1, cwp $$2, MutableFloat $$3) {
-      this.a(dda.x, $$0, $$1, $$2, $$3);
-   }
-
-   public void a(arc $$0, int $$1, cwp $$2, buk $$3, MutableFloat $$4) {
-      this.a(dda.y, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void e(arc $$0, int $$1, cwp $$2, MutableFloat $$3) {
-      this.a(dda.z, $$0, $$1, $$2, $$3);
-   }
-
-   public void b(arc $$0, int $$1, cwp $$2, buk $$3, MutableFloat $$4) {
-      this.a(dda.u, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void a(azh $$0, int $$1, MutableFloat $$2) {
-      this.a(dda.F, $$0, $$1, $$2);
-   }
-
-   public void c(arc $$0, int $$1, cwp $$2, buk $$3, MutableFloat $$4) {
-      this.a(dda.v, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void d(arc $$0, int $$1, cwp $$2, buk $$3, MutableFloat $$4) {
-      this.a(dda.w, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void b(arc $$0, int $$1, cwp $$2, buk $$3, bta $$4, MutableFloat $$5) {
-      this.a(dda.e, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void c(arc $$0, int $$1, cwp $$2, buk $$3, bta $$4, MutableFloat $$5) {
-      this.a(dda.f, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void d(arc $$0, int $$1, cwp $$2, buk $$3, bta $$4, MutableFloat $$5) {
-      this.a(dda.g, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void e(arc $$0, int $$1, cwp $$2, buk $$3, bta $$4, MutableFloat $$5) {
-      this.a(dda.h, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(arc $$0, int $$1, dcy $$2, ddd $$3, buk $$4, bta $$5) {
-      for (ddi<ddq> $$6 : this.a(dda.i)) {
-         if ($$3 == $$6.a()) {
-            a($$6, $$0, $$1, $$2, $$4, $$5);
-         }
-      }
-   }
-
-   public static void a(ddi<ddq> $$0, arc $$1, int $$2, dcy $$3, buk $$4, bta $$5) {
-      if ($$0.a(b($$1, $$2, $$4, $$5))) {
-         buk $$6 = switch ($$0.b()) {
-            case a -> $$5.d();
-            case b -> $$5.c();
-            case c -> $$4;
-         };
-         if ($$6 != null) {
-            $$0.c().a($$1, $$2, $$3, $$6, $$6.du());
-         }
-      }
-   }
-
-   public void e(arc $$0, int $$1, cwp $$2, buk $$3, MutableFloat $$4) {
-      this.a(dda.t, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void f(arc $$0, int $$1, cwp $$2, buk $$3, MutableFloat $$4) {
-      this.a(dda.s, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void b(azh $$0, int $$1, MutableFloat $$2) {
-      this.a(dda.A, $$0, $$1, $$2);
-   }
-
-   public void a(ku<dds> $$0, azh $$1, int $$2, MutableFloat $$3) {
-      dds $$4 = this.h.a($$0);
-      if ($$4 != null) {
-         $$3.setValue($$4.a($$2, $$1, $$3.floatValue()));
-      }
-   }
-
-   public void a(arc $$0, int $$1, dcy $$2, buk $$3) {
-      a(this.a(dda.o), a($$0, $$1, $$3, $$3.du()), $$4 -> $$4.a($$0, $$1, $$2, $$3, $$3.du()));
-   }
-
-   public void b(arc $$0, int $$1, dcy $$2, buk $$3) {
-      a(this.a(dda.r), a($$0, $$1, $$3, $$3.du()), $$4 -> $$4.a($$0, $$1, $$2, $$3, $$3.du()));
-   }
-
-   public void a(arc $$0, int $$1, dcy $$2, buk $$3, fba $$4, dwx $$5) {
-      a(this.a(dda.j), a($$0, $$1, $$3, $$4, $$5), $$5x -> $$5x.a($$0, $$1, $$2, $$3, $$4));
-   }
-
-   private void a(ku<List<dcw<dds>>> $$0, arc $$1, int $$2, cwp $$3, MutableFloat $$4) {
-      a(this.a($$0), a($$1, $$2, $$3), $$3x -> $$4.setValue($$3x.a($$2, $$1.H_(), $$4.getValue())));
-   }
-
-   private void a(ku<List<dcw<dds>>> $$0, arc $$1, int $$2, cwp $$3, buk $$4, MutableFloat $$5) {
-      a(this.a($$0), a($$1, $$2, $$4, $$4.du()), $$3x -> $$5.setValue($$3x.a($$2, $$4.dZ(), $$5.floatValue())));
-   }
-
-   private void a(ku<List<dcw<dds>>> $$0, arc $$1, int $$2, cwp $$3, buk $$4, bta $$5, MutableFloat $$6) {
-      a(this.a($$0), b($$1, $$2, $$4, $$5), $$3x -> $$6.setValue($$3x.a($$2, $$4.dZ(), $$6.floatValue())));
-   }
-
-   public static evr b(arc $$0, int $$1, buk $$2, bta $$3) {
-      evu $$4 = new evu.a($$0).a(eyl.a, $$2).a(eyl.k, $$1).a(eyl.f, $$2.du()).a(eyl.c, $$3).b(eyl.d, $$3.d()).b(eyl.e, $$3.c()).a(eyk.t);
-      return new evr.a($$4).a(Optional.empty());
-   }
-
-   private static evr a(arc $$0, int $$1, cwp $$2) {
-      evu $$3 = new evu.a($$0).a(eyl.i, $$2).a(eyl.k, $$1).a(eyk.u);
-      return new evr.a($$3).a(Optional.empty());
-   }
-
-   private static evr a(arc $$0, int $$1, buk $$2, boolean $$3) {
-      evu $$4 = new evu.a($$0).a(eyl.a, $$2).a(eyl.k, $$1).a(eyl.f, $$2.du()).a(eyl.l, $$3).a(eyk.v);
-      return new evr.a($$4).a(Optional.empty());
-   }
-
-   private static evr a(arc $$0, int $$1, buk $$2, fba $$3) {
-      evu $$4 = new evu.a($$0).a(eyl.a, $$2).a(eyl.k, $$1).a(eyl.f, $$3).a(eyk.w);
-      return new evr.a($$4).a(Optional.empty());
-   }
-
-   private static evr a(arc $$0, int $$1, buk $$2, fba $$3, dwx $$4) {
-      evu $$5 = new evu.a($$0).a(eyl.a, $$2).a(eyl.k, $$1).a(eyl.f, $$3).a(eyl.g, $$4).a(eyk.x);
-      return new evr.a($$5).a(Optional.empty());
-   }
-
-   private static <T> void a(List<dcw<T>> $$0, evr $$1, Consumer<T> $$2) {
-      for (dcw<T> $$3 : $$0) {
-         if ($$3.a($$1)) {
-            $$2.accept($$3.a());
-         }
-      }
-   }
-
-   public void a(arc $$0, int $$1, dcy $$2, bvg $$3) {
-      bus $$4 = $$2.b();
-      if ($$4 != null) {
-         Map<dcz, Set<ddr>> $$5 = $$3.c($$4);
-         if (!this.a($$4)) {
-            Set<ddr> $$6 = $$5.remove(this);
-            if ($$6 != null) {
-               $$6.forEach($$3x -> $$3x.a($$2, $$3, $$3.du(), $$1));
+   @Nullable
+   public static <T> Pair<T, Integer> c(cwn $$0, ku<T> $$1) {
+      MutableObject<Pair<T, Integer>> $$2 = new MutableObject();
+      a($$0, ($$2x, $$3) -> {
+         if ($$2.getValue() == null || (Integer)((Pair)$$2.getValue()).getSecond() < $$3) {
+            T $$4 = ((dcx)$$2x.a()).i().a($$1);
+            if ($$4 != null) {
+               $$2.setValue(Pair.of($$4, $$3));
             }
-         } else {
-            Set<ddr> $$7 = $$5.get(this);
+         }
+      });
+      return (Pair<T, Integer>)$$2.getValue();
+   }
 
-            for (dcw<ddr> $$8 : this.a(dda.n)) {
-               ddr $$9 = $$8.a();
-               boolean $$10 = $$7 != null && $$7.contains($$9);
-               if ($$8.a(a($$0, $$1, $$3, $$10))) {
-                  if (!$$10) {
-                     if ($$7 == null) {
-                        $$7 = new ObjectArraySet();
-                        $$5.put(this, $$7);
-                     }
+   public static Optional<dcw> a(ku<?> $$0, bvf $$1, Predicate<cwn> $$2) {
+      List<dcw> $$3 = new ArrayList<>();
 
-                     $$7.add($$9);
-                  }
+      for (bur $$4 : bur.i) {
+         cwn $$5 = $$1.a($$4);
+         if ($$2.test($$5)) {
+            ddd $$6 = $$5.a(kv.l, ddd.a);
 
-                  $$9.a($$0, $$1, $$2, $$3, $$3.du(), !$$10);
-               } else if ($$7 != null && $$7.remove($$9)) {
-                  $$9.a($$2, $$3, $$3.du(), $$1);
+            for (Entry<jr<dcx>> $$7 : $$6.b()) {
+               jr<dcx> $$8 = (jr<dcx>)$$7.getKey();
+               if ($$8.a().i().b($$0) && $$8.a().a($$4)) {
+                  $$3.add(new dcw($$5, $$4, $$1));
                }
             }
+         }
+      }
 
-            if ($$7 != null && $$7.isEmpty()) {
-               $$5.remove(this);
-            }
+      return af.b($$3, $$1.dZ());
+   }
+
+   public static int a(azg $$0, int $$1, int $$2, cwn $$3) {
+      dcv $$4 = $$3.a(kv.C);
+      if ($$4 == null) {
+         return 0;
+      } else {
+         if ($$2 > 15) {
+            $$2 = 15;
+         }
+
+         int $$5 = $$0.a(8) + 1 + ($$2 >> 1) + $$0.a($$2 + 1);
+         if ($$1 == 0) {
+            return Math.max($$5 / 3, 1);
+         } else {
+            return $$1 == 1 ? $$5 * 2 / 3 + 1 : Math.max($$5, $$2 * 2);
          }
       }
    }
 
-   public void a(int $$0, dcy $$1, bvg $$2) {
-      bus $$3 = $$1.b();
-      if ($$3 != null) {
-         Set<ddr> $$4 = $$2.c($$3).remove(this);
-         if ($$4 != null) {
-            for (ddr $$5 : $$4) {
-               $$5.a($$1, $$2, $$2.du(), $$0);
+   public static cwn a(azg $$0, cwn $$1, int $$2, kf $$3, Optional<? extends jv<dcx>> $$4) {
+      return a($$0, $$1, $$2, $$4.<Stream<jr<dcx>>>map(jv::a).orElseGet(() -> $$3.e(mc.aO).c().map($$0xx -> $$0xx)));
+   }
+
+   public static cwn a(azg $$0, cwn $$1, int $$2, Stream<jr<dcx>> $$3) {
+      List<dda> $$4 = b($$0, $$1, $$2, $$3);
+      if ($$1.a(cwr.rw)) {
+         $$1 = new cwn(cwr.vv);
+      }
+
+      for (dda $$5 : $$4) {
+         $$1.a($$5.a, $$5.b);
+      }
+
+      return $$1;
+   }
+
+   public static List<dda> b(azg $$0, cwn $$1, int $$2, Stream<jr<dcx>> $$3) {
+      List<dda> $$4 = Lists.newArrayList();
+      dcv $$5 = $$1.a(kv.C);
+      if ($$5 == null) {
+         return $$4;
+      } else {
+         $$2 += 1 + $$0.a($$5.a() / 4 + 1) + $$0.a($$5.a() / 4 + 1);
+         float $$6 = ($$0.i() + $$0.i() - 1.0F) * 0.15F;
+         $$2 = ayy.a(Math.round((float)$$2 + (float)$$2 * $$6), 1, Integer.MAX_VALUE);
+         List<dda> $$7 = a($$2, $$1, $$3);
+         if (!$$7.isEmpty()) {
+            bqt.a($$0, $$7).ifPresent($$4::add);
+
+            while ($$0.a(50) <= $$2) {
+               if (!$$4.isEmpty()) {
+                  a($$7, af.c($$4));
+               }
+
+               if ($$7.isEmpty()) {
+                  break;
+               }
+
+               bqt.a($$0, $$7).ifPresent($$4::add);
+               $$2 /= 2;
             }
          }
+
+         return $$4;
       }
    }
 
-   public static dcz.a a(dcz.c $$0) {
-      return new dcz.a($$0);
+   public static void a(List<dda> $$0, dda $$1) {
+      $$0.removeIf($$1x -> !dcx.a($$1.a, $$1x.a));
    }
 
-   public wo f() {
-      return this.e;
+   public static boolean a(Collection<jr<dcx>> $$0, jr<dcx> $$1) {
+      for (jr<dcx> $$2 : $$0) {
+         if (!dcx.a($$2, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public dcz.c g() {
-      return this.f;
+   public static List<dda> a(int $$0, cwn $$1, Stream<jr<dcx>> $$2) {
+      List<dda> $$3 = Lists.newArrayList();
+      boolean $$4 = $$1.a(cwr.rw);
+      $$2.filter($$2x -> ((dcx)$$2x.a()).a($$1) || $$4).forEach($$2x -> {
+         dcx $$3x = (dcx)$$2x.a();
+
+         for (int $$4x = $$3x.e(); $$4x >= $$3x.d(); $$4x--) {
+            if ($$0 >= $$3x.b($$4x) && $$0 <= $$3x.c($$4x)) {
+               $$3.add(new dda($$2x, $$4x));
+               break;
+            }
+         }
+      });
+      return $$3;
    }
 
-   public jv<dcz> h() {
-      return this.g;
-   }
-
-   public kr i() {
-      return this.h;
-   }
-
-   public static class a {
-      private final dcz.c a;
-      private jv<dcz> b = jv.a();
-      private final Map<ku<?>, List<?>> c = new HashMap<>();
-      private final kr.a d = kr.a();
-
-      public a(dcz.c $$0) {
-         this.a = $$0;
-      }
-
-      public dcz.a a(jv<dcz> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public <E> dcz.a a(ku<List<dcw<E>>> $$0, E $$1, eza.a $$2) {
-         this.b($$0).add(new dcw<>($$1, Optional.of($$2.build())));
-         return this;
-      }
-
-      public <E> dcz.a a(ku<List<dcw<E>>> $$0, E $$1) {
-         this.b($$0).add(new dcw<>($$1, Optional.empty()));
-         return this;
-      }
-
-      public <E> dcz.a a(ku<List<ddi<E>>> $$0, ddd $$1, ddd $$2, E $$3, eza.a $$4) {
-         this.b($$0).add(new ddi<>($$1, $$2, $$3, Optional.of($$4.build())));
-         return this;
-      }
-
-      public <E> dcz.a a(ku<List<ddi<E>>> $$0, ddd $$1, ddd $$2, E $$3) {
-         this.b($$0).add(new ddi<>($$1, $$2, $$3, Optional.empty()));
-         return this;
-      }
-
-      public dcz.a a(ku<List<ddp>> $$0, ddp $$1) {
-         this.b($$0).add($$1);
-         return this;
-      }
-
-      public <E> dcz.a b(ku<E> $$0, E $$1) {
-         this.d.a($$0, $$1);
-         return this;
-      }
-
-      public dcz.a a(ku<baf> $$0) {
-         this.d.a($$0, baf.a);
-         return this;
-      }
-
-      private <E> List<E> b(ku<List<E>> $$0) {
-         return (List<E>)this.c.computeIfAbsent($$0, $$1 -> {
-            ArrayList<E> $$2 = new ArrayList<>();
-            this.d.a($$0, $$2);
-            return $$2;
-         });
-      }
-
-      public dcz a(aku $$0) {
-         return new dcz(wo.c(af.a("enchantment", $$0)), this.a, this.b, this.d.a());
+   public static void a(cwn $$0, kf $$1, akt<def> $$2, bsg $$3, azg $$4) {
+      def $$5 = $$1.e(mc.aP).c($$2);
+      if ($$5 != null) {
+         a($$0, $$4x -> $$5.a($$0, $$4x, $$4, $$3));
       }
    }
 
-   public static record b(int b, int c) {
-      public static final Codec<dcz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("base").forGetter(dcz.b::a), Codec.INT.fieldOf("per_level_above_first").forGetter(dcz.b::b)).apply($$0, dcz.b::new)
-      );
-
-      public int a(int $$0) {
-         return this.b + this.c * ($$0 - 1);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   interface a {
+      void accept(jr<dcx> var1, int var2, dcw var3);
    }
 
-   public static record c(jv<cwl> b, Optional<jv<cwl>> c, int d, int e, dcz.b f, dcz.b g, int h, List<but> i) {
-      public static final MapCodec<dcz.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  kg.a(mc.K).fieldOf("supported_items").forGetter(dcz.c::a),
-                  kg.a(mc.K).optionalFieldOf("primary_items").forGetter(dcz.c::b),
-                  ayi.a(1, 1024).fieldOf("weight").forGetter(dcz.c::c),
-                  ayi.a(1, 255).fieldOf("max_level").forGetter(dcz.c::d),
-                  dcz.b.a.fieldOf("min_cost").forGetter(dcz.c::e),
-                  dcz.b.a.fieldOf("max_cost").forGetter(dcz.c::f),
-                  ayi.l.fieldOf("anvil_cost").forGetter(dcz.c::g),
-                  but.l.listOf().fieldOf("slots").forGetter(dcz.c::h)
-               )
-               .apply($$0, dcz.c::new)
-      );
-
-      public jv<cwl> a() {
-         return this.b;
-      }
-
-      public Optional<jv<cwl>> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public dcz.b e() {
-         return this.f;
-      }
-
-      public dcz.b f() {
-         return this.g;
-      }
-
-      public int g() {
-         return this.h;
-      }
-
-      public List<but> h() {
-         return this.i;
-      }
+   @FunctionalInterface
+   interface b {
+      void accept(jr<dcx> var1, int var2);
    }
 }

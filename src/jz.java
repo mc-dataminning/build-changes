@@ -31,7 +31,7 @@ public class jz<T> implements kn<T> {
    private final Map<T, jr.c<T>> g = new IdentityHashMap<>();
    private final Map<akt<T>, kd> h = new IdentityHashMap<>();
    private Lifecycle i;
-   private final Map<axf<T>, jv.c<T>> j = new IdentityHashMap<>();
+   private final Map<axe<T>, jv.c<T>> j = new IdentityHashMap<>();
    jz.a<T> k = jz.a.a();
    private boolean l;
    @Nullable
@@ -233,11 +233,11 @@ public class jz<T> implements kn<T> {
       return this.k.c();
    }
 
-   jv.c<T> d(axf<T> $$0) {
+   jv.c<T> d(axe<T> $$0) {
       return this.j.computeIfAbsent($$0, this::e);
    }
 
-   private jv.c<T> e(axf<T> $$0) {
+   private jv.c<T> e(axe<T> $$0) {
       return new jv.c<>(this, $$0);
    }
 
@@ -247,7 +247,7 @@ public class jz<T> implements kn<T> {
    }
 
    @Override
-   public Optional<jr.c<T>> a(azh $$0) {
+   public Optional<jr.c<T>> a(azg $$0) {
       return af.b(this.c, $$0);
    }
 
@@ -283,7 +283,7 @@ public class jz<T> implements kn<T> {
             if (this.k.b()) {
                throw new IllegalStateException("Tags already present before freezing");
             } else {
-               List<aku> $$1 = this.j.entrySet().stream().filter($$0x -> !((jv.c)$$0x.getValue()).c()).map($$0x -> ((axf)$$0x.getKey()).b()).sorted().toList();
+               List<aku> $$1 = this.j.entrySet().stream().filter($$0x -> !((jv.c)$$0x.getValue()).c()).map($$0x -> ((axe)$$0x.getKey()).b()).sorted().toList();
                if (!$$1.isEmpty()) {
                   throw new IllegalStateException("Unbound tags in registry " + this.g() + ": " + $$1);
                } else {
@@ -307,11 +307,11 @@ public class jz<T> implements kn<T> {
    }
 
    @Override
-   public Optional<jv.c<T>> a(axf<T> $$0) {
+   public Optional<jv.c<T>> a(axe<T> $$0) {
       return this.k.a($$0);
    }
 
-   private jr.c<T> a(axf<T> $$0, jr<T> $$1) {
+   private jr.c<T> a(axe<T> $$0, jr<T> $$1) {
       if (!$$1.a(this)) {
          throw new IllegalStateException("Can't create named set " + $$0 + " containing value " + $$1 + " from outside registry " + this);
       } else if ($$1 instanceof jr.c) {
@@ -322,18 +322,18 @@ public class jz<T> implements kn<T> {
    }
 
    @Override
-   public void a(axf<T> $$0, List<jr<T>> $$1) {
+   public void a(axe<T> $$0, List<jr<T>> $$1) {
       this.b();
       this.d($$0).b($$1);
    }
 
    void u() {
-      Map<jr.c<T>, List<axf<T>>> $$0 = new IdentityHashMap<>();
+      Map<jr.c<T>, List<axe<T>>> $$0 = new IdentityHashMap<>();
       this.f.values().forEach($$1 -> $$0.put((jr.c<T>)$$1, new ArrayList<>()));
       this.k.a(($$1, $$2) -> {
          for (jr<T> $$3 : $$2) {
-            jr.c<T> $$4 = this.a((axf<T>)$$1, $$3);
-            $$0.get($$4).add((axf<T>)$$1);
+            jr.c<T> $$4 = this.a((axe<T>)$$1, $$3);
+            $$0.get($$4).add((axe<T>)$$1);
          }
       });
       $$0.forEach(jr.c::a);
@@ -359,24 +359,24 @@ public class jz<T> implements kn<T> {
          }
 
          @Override
-         public Optional<jv.c<T>> a(axf<T> $$0) {
+         public Optional<jv.c<T>> a(axe<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public jv.c<T> b(axf<T> $$0) {
+         public jv.c<T> b(axe<T> $$0) {
             return jz.this.d($$0);
          }
       };
    }
 
    @Override
-   public ke.a<T> a(axg.c<T> $$0) {
+   public ke.a<T> a(axf.c<T> $$0) {
       if (!this.l) {
          throw new IllegalStateException("Invalid method used for tag loading");
       } else {
-         Builder<axf<T>, jv.c<T>> $$1 = ImmutableMap.builder();
-         final Map<axf<T>, List<jr<T>>> $$2 = new HashMap<>();
+         Builder<axe<T>, jv.c<T>> $$1 = ImmutableMap.builder();
+         final Map<axe<T>, List<jr<T>>> $$2 = new HashMap<>();
          $$0.b().forEach(($$2x, $$3x) -> {
             jv.c<T> $$4x = this.j.get($$2x);
             if ($$4x == null) {
@@ -386,7 +386,7 @@ public class jz<T> implements kn<T> {
             $$1.put($$2x, $$4x);
             $$2.put($$2x, List.copyOf($$3x));
          });
-         final ImmutableMap<axf<T>, jv.c<T>> $$3 = $$1.build();
+         final ImmutableMap<axe<T>, jv.c<T>> $$3 = $$1.build();
          final jt.b<T> $$4 = new jt.b.a<T>() {
             @Override
             public jt.b<T> a() {
@@ -394,7 +394,7 @@ public class jz<T> implements kn<T> {
             }
 
             @Override
-            public Optional<jv.c<T>> a(axf<T> $$0) {
+            public Optional<jv.c<T>> a(axe<T> $$0) {
                return Optional.ofNullable((jv.c<T>)$$3.get($$0));
             }
 
@@ -441,12 +441,12 @@ public class jz<T> implements kn<T> {
             }
 
             @Override
-            public Optional<jv.c<T>> a(axf<T> $$0) {
+            public Optional<jv.c<T>> a(axe<T> $$0) {
                throw new IllegalStateException("Tags not bound, trying to access " + $$0);
             }
 
             @Override
-            public void a(BiConsumer<? super axf<T>, ? super jv.c<T>> $$0) {
+            public void a(BiConsumer<? super axe<T>, ? super jv.c<T>> $$0) {
                throw new IllegalStateException("Tags not bound");
             }
 
@@ -457,7 +457,7 @@ public class jz<T> implements kn<T> {
          };
       }
 
-      static <T> jz.a<T> a(final Map<axf<T>, jv.c<T>> $$0) {
+      static <T> jz.a<T> a(final Map<axe<T>, jv.c<T>> $$0) {
          return new jz.a<T>() {
             @Override
             public boolean b() {
@@ -465,12 +465,12 @@ public class jz<T> implements kn<T> {
             }
 
             @Override
-            public Optional<jv.c<T>> a(axf<T> $$0x) {
+            public Optional<jv.c<T>> a(axe<T> $$0x) {
                return Optional.ofNullable($$0.get($$0));
             }
 
             @Override
-            public void a(BiConsumer<? super axf<T>, ? super jv.c<T>> $$0x) {
+            public void a(BiConsumer<? super axe<T>, ? super jv.c<T>> $$0x) {
                $$0.forEach($$0);
             }
 
@@ -483,9 +483,9 @@ public class jz<T> implements kn<T> {
 
       boolean b();
 
-      Optional<jv.c<T>> a(axf<T> var1);
+      Optional<jv.c<T>> a(axe<T> var1);
 
-      void a(BiConsumer<? super axf<T>, ? super jv.c<T>> var1);
+      void a(BiConsumer<? super axe<T>, ? super jv.c<T>> var1);
 
       Stream<jv.c<T>> c();
    }

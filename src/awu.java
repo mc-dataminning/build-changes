@@ -1,10 +1,11 @@
-public class awu {
-   public static final axf<eln> a = a("visible");
+public final class awu {
+   public static final axe<esw> a = a("water");
+   public static final axe<esw> b = a("lava");
 
    private awu() {
    }
 
-   private static axf<eln> a(String $$0) {
-      return axf.a(mc.aQ, aku.b($$0));
+   private static axe<esw> a(String $$0) {
+      return axe.a(mc.D, aku.b($$0));
    }
 }

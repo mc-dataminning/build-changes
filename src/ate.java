@@ -28,10 +28,10 @@ public class ate extends ass {
 
    @Nullable
    @Override
-   public auh<InputStream> a(String... $$0) {
+   public aug<InputStream> a(String... $$0) {
       v.a($$0);
       Path $$1 = v.a(this.e, List.of($$0));
-      return Files.exists($$1) ? auh.create($$1) : null;
+      return Files.exists($$1) ? aug.create($$1) : null;
    }
 
    public static boolean a(Path $$0) {
@@ -40,14 +40,14 @@ public class ate extends ass {
 
    @Nullable
    @Override
-   public auh<InputStream> a(atd $$0, aku $$1) {
+   public aug<InputStream> a(atd $$0, aku $$1) {
       Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
       return a($$1, $$2);
    }
 
    @Nullable
-   public static auh<InputStream> a(aku $$0, Path $$1) {
-      return (auh<InputStream>)v.d($$0.a()).mapOrElse($$1x -> {
+   public static aug<InputStream> a(aku $$0, Path $$1) {
+      return (aug<InputStream>)v.d($$0.a()).mapOrElse($$1x -> {
          Path $$2 = v.a($$1, $$1x);
          return b($$2);
       }, $$1x -> {
@@ -57,8 +57,8 @@ public class ate extends ass {
    }
 
    @Nullable
-   private static auh<InputStream> b(Path $$0) {
-      return Files.exists($$0) && a($$0) ? auh.create($$0) : null;
+   private static aug<InputStream> b(Path $$0) {
+      return Files.exists($$0) && a($$0) ? aug.create($$0) : null;
    }
 
    @Override
@@ -79,7 +79,7 @@ public class ate extends ass {
             if ($$5x == null) {
                af.b(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
             } else {
-               $$3.accept($$5x, auh.create($$3x));
+               $$3.accept($$5x, aug.create($$3x));
             }
          });
       } catch (NotDirectoryException | NoSuchFileException var10) {
@@ -114,7 +114,7 @@ public class ate extends ass {
    public void close() {
    }
 
-   public static class a implements atx.c {
+   public static class a implements atw.c {
       private final Path a;
 
       public a(Path $$0) {
@@ -127,7 +127,7 @@ public class ate extends ass {
       }
 
       @Override
-      public atb a(ata $$0, atx.a $$1) {
+      public atb a(ata $$0, atw.a $$1) {
          atb $$2 = this.a($$0);
          List<String> $$3 = $$1.d();
          if ($$3.isEmpty()) {

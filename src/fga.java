@@ -1,158 +1,36 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public record fga(int i, int j, fga.a k, fga.b l, int m) {
-   public static final int a = 32;
-   private static final fga[] n = new fga[32];
-   private static final List<fga> o = new ArrayList<>(32);
-   public static final fga b = a(0, 0, fga.a.a, fga.b.a, 3);
-   public static final fga c = a(1, 0, fga.a.b, fga.b.c, 4);
-   public static final fga d = a(2, 0, fga.a.a, fga.b.d, 2);
-   public static final fga e = d;
-   public static final fga f = a(3, 1, fga.a.e, fga.b.d, 2);
-   public static final fga g = a(4, 2, fga.a.e, fga.b.d, 2);
-   public static final fga h = a(5, 0, fga.a.c, fga.b.b, 3);
+public interface fga {
+   fga a = a(0.0F, 0.0F, 0.0F);
+   fga b = a((fga.a)($$0 -> -$$0.z()));
 
-   public fga(int i, int j, fga.a k, fga.b l, int m) {
-      if (i < 0 || i >= n.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
-      } else if (!this.a(j, l)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      } else {
-         this.i = i;
-         this.j = j;
-         this.k = k;
-         this.l = l;
-         this.m = m;
-      }
+   static fga a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   public static fga a(int $$0, int $$1, fga.a $$2, fga.b $$3, int $$4) {
-      fga $$5 = new fga($$0, $$1, $$2, $$3, $$4);
-      if (n[$$0] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
-      } else {
-         n[$$0] = $$5;
-         o.add($$5);
-         return $$5;
-      }
+   static fga a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   private boolean a(int $$0, fga.b $$1) {
-      return $$0 == 0 || $$1 == fga.b.d;
-   }
+   static fga a(fga.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-   @Override
-   public String toString() {
-      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
-   }
-
-   public int a() {
-      return 1 << this.i;
-   }
-
-   public int b() {
-      return this.k.a() * this.m;
-   }
-
-   public void a(int $$0, long $$1, int $$2) {
-      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
-   }
-
-   @Nullable
-   public static fga a(int $$0) {
-      return n[$$0];
-   }
-
-   public static Stream<fga> b(int $$0) {
-      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
-   }
-
-   public int c() {
-      return this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public fga.a e() {
-      return this.k;
-   }
-
-   public fga.b f() {
-      return this.l;
-   }
-
-   public int g() {
-      return this.m;
-   }
-
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public int b() {
-         return this.j;
-      }
-
-      @Override
-      public String toString() {
-         return this.i;
-      }
-   }
-
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }),
-      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
 
-      private final String f;
-      final fga.b.a g;
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
 
-      private b(final String $$0, final fga.b.a $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
+   int[] sort(Vector3f[] var1);
 
-      @Override
-      public String toString() {
-         return this.f;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
-      }
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

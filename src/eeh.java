@@ -1,22 +1,21 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eeh implements edz {
-   public static final MapCodec<eeh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(edz.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, eeh::new)
-   );
-   private final edz e;
+@Deprecated
+public class eeh extends eei {
+   public static final MapCodec<eeh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eeh::new));
 
-   public eeh(edz $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(dhg $$0, ji $$1) {
-      return !this.e.test($$0, $$1);
+   public eeh(km $$0) {
+      super($$0);
    }
 
    @Override
-   public eea<?> a() {
-      return eea.k;
+   protected boolean a(dwv $$0) {
+      return $$0.e();
+   }
+
+   @Override
+   public edy<?> a() {
+      return edy.e;
    }
 }

@@ -1,43 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bzl {
-   public static <E extends bvi> bxa<E> a(bzl.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
-   }
-
-   public static <E extends bvi> bxa<E> a(bzl.a<E> $$0, bzl.b<E> $$1) {
-      return cam.a(
-         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$2 -> $$2.group($$2.c(cek.o), $$2.a(cek.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bvg> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
+   public static bwz<bvf> a(int $$0, BiPredicate<bvf, bvf> $$1) {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$2 -> $$2.group($$2.b(cej.o), $$2.a(cej.ab), $$2.c(cej.ai), $$2.a(cej.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bvf $$10 = $$2.b($$3);
+                     if (!$$10.eF()) {
                         return false;
                      } else {
-                        bvg $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
                         }
+
+                        $$5.a($$10.dw(), (long)$$0);
+                        if ($$10.aq() != buq.bR || $$7.O().b(dgc.O)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
-   }
-
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(arc var1, E var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bvg> get(arc var1, E var2);
    }
 }

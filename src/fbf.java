@@ -1,30 +1,18 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface fbf {
-   static fbf a() {
-      return fbk.a;
+public final class fbf extends fbs {
+   protected fbf(fbh $$0) {
+      super($$0);
    }
 
-   static fbf a(buk $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fbf)(switch ($$0) {
-         case cqw $$1 -> cqw.b($$1.dW()) ? new fbo($$1, false) : new fbk($$0, false);
-         default -> new fbk($$0, false);
-      });
+   @Override
+   public DoubleList a(jn.a $$0) {
+      return new fbe(this.a.c($$0));
    }
 
-   static fbf a(buk $$0, boolean $$1) {
-      return new fbk($$0, $$1);
+   @Override
+   protected int a(jn.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return ayy.a(ayy.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
-
-   boolean b();
-
-   boolean a(fbu var1, ji var2, boolean var3);
-
-   boolean a(cwl var1);
-
-   boolean a(esz var1, esz var2);
-
-   fbu a(dwx var1, dfr var2, ji var3);
 }

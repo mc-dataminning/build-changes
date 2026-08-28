@@ -1,19 +1,131 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public record czc(Map<jr<djm>, dxz<?>> c) {
-   public static final czc a = new czc(Map.of());
-   public static final Codec<czc> b = Codec.dispatchedMap(mb.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dxz<?> $$2 = ((djm)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dxz::f)).xmap(czc::new, czc::a);
+public record czc(czc.a e, IntList f, IntList g, boolean h, boolean i) implements czq {
+   public static final czc a = new czc(czc.a.a, IntList.of(), IntList.of(), false, false);
+   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
+   public static final Codec<czc> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               czc.a.g.fieldOf("shape").forGetter(czc::a),
+               b.optionalFieldOf("colors", IntList.of()).forGetter(czc::b),
+               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(czc::c),
+               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(czc::d),
+               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(czc::e)
+            )
+            .apply($$0, czc::new)
+   );
+   private static final ym<ByteBuf, IntList> j = yk.g.a(yk.a()).a(IntArrayList::new, ArrayList::new);
+   public static final ym<ByteBuf, czc> d = ym.a(czc.a.f, czc::a, j, czc::b, j, czc::c, yk.b, czc::d, yk.b, czc::e, czc::new);
+   private static final wo k = wo.c("item.minecraft.firework_star.custom_color");
 
-   public czc a(jr<djm> $$0, dxz<?> $$1) {
-      return new czc(af.a(this.c, $$0, $$1));
+   @Override
+   public void a(cwj.b $$0, Consumer<wo> $$1, cyf $$2) {
+      this.a($$1);
+      this.b($$1);
    }
 
-   public Map<jr<djm>, dxz<?>> a() {
-      return this.c;
+   public void a(Consumer<wo> $$0) {
+      $$0.accept(this.e.a().a(n.h));
+   }
+
+   public void b(Consumer<wo> $$0) {
+      if (!this.f.isEmpty()) {
+         $$0.accept(a(wo.i().a(n.h), this.f));
+      }
+
+      if (!this.g.isEmpty()) {
+         $$0.accept(a(wo.c("item.minecraft.firework_star.fade_to").b(wn.v).a(n.h), this.g));
+      }
+
+      if (this.h) {
+         $$0.accept(wo.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if (this.i) {
+         $$0.accept(wo.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static wo a(xc $$0, IntList $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1.getInt($$2)));
+      }
+
+      return $$0;
+   }
+
+   private static wo a(int $$0) {
+      cvk $$1 = cvk.b($$0);
+      return (wo)($$1 == null ? k : wo.c("item.minecraft.firework_star." + $$1.b()));
+   }
+
+   public czc a(IntList $$0) {
+      return new czc(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   }
+
+   public czc.a a() {
+      return this.e;
+   }
+
+   public IntList b() {
+      return this.f;
+   }
+
+   public IntList c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
+   }
+
+   public boolean e() {
+      return this.i;
+   }
+
+   public static enum a implements azu {
+      a(0, "small_ball"),
+      b(1, "large_ball"),
+      c(2, "star"),
+      d(3, "creeper"),
+      e(4, "burst");
+
+      private static final IntFunction<czc.a> h = axp.a(czc.a::b, values(), axp.a.a);
+      public static final ym<ByteBuf, czc.a> f = yk.a(h, czc.a::b);
+      public static final Codec<czc.a> g = azu.b(czc.a::values);
+      private final int i;
+      private final String j;
+
+      private a(final int $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
+
+      public xc a() {
+         return wo.c("item.minecraft.firework_star.shape." + this.j);
+      }
+
+      public int b() {
+         return this.i;
+      }
+
+      public static czc.a a(int $$0) {
+         return h.apply($$0);
+      }
+
+      @Override
+      public String c() {
+         return this.j;
+      }
    }
 }

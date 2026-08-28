@@ -1,11 +1,4 @@
-public class gzj extends gzi {
-   public cje.d a;
-   public boolean b;
-   public cwp c;
-   public boolean d;
-
-   public gzj() {
-      this.a = cje.d.a;
-      this.c = cwp.j;
-   }
+public class gzj extends gyh {
+   public float a;
+   public float b;
 }

@@ -5,16 +5,16 @@ public class aew implements yv<abk> {
    private final int d;
    private final int e;
 
-   public aew(buk $$0) {
+   public aew(buj $$0) {
       this($$0.ar(), $$0.dz());
    }
 
-   public aew(int $$0, fba $$1) {
+   public aew(int $$0, fay $$1) {
       this.b = $$0;
       double $$2 = 3.9;
-      double $$3 = ayz.a($$1.d, -3.9, 3.9);
-      double $$4 = ayz.a($$1.e, -3.9, 3.9);
-      double $$5 = ayz.a($$1.f, -3.9, 3.9);
+      double $$3 = ayy.a($$1.d, -3.9, 3.9);
+      double $$4 = ayy.a($$1.e, -3.9, 3.9);
+      double $$5 = ayy.a($$1.f, -3.9, 3.9);
       this.c = (int)($$3 * 8000.0);
       this.d = (int)($$4 * 8000.0);
       this.e = (int)($$5 * 8000.0);

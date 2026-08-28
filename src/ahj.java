@@ -1,5 +1,5 @@
-public record ahj(int b, dcl c, boolean d) implements yv<agf> {
-   public static final ym<vl, ahj> a = ym.a(yk.w, ahj::b, dcl.a, ahj::e, yk.b, ahj::f, ahj::new);
+public record ahj(int b, dcj c, boolean d) implements yv<agf> {
+   public static final ym<vl, ahj> a = ym.a(yk.w, ahj::b, dcj.a, ahj::e, yk.b, ahj::f, ahj::new);
 
    @Override
    public yx<ahj> a() {
@@ -10,7 +10,7 @@ public record ahj(int b, dcl c, boolean d) implements yv<agf> {
       $$0.a(this);
    }
 
-   public dcl e() {
+   public dcj e() {
       return this.c;
    }
 

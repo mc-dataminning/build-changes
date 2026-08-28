@@ -1,37 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
-
 public class azi {
-   public static final Codec<azi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ayi.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, azi::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<aku> f;
+   private final int a;
+   private final int b;
+   private final float c;
+   private final float d;
 
-   private azi(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   public azi(int $$0) {
+      if ($$0 < 2) {
+         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
+      } else if ($$0 > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+      } else {
+         int $$1 = 1 << $$0;
+         this.a = $$1 - 1;
+         this.b = $$0;
+         this.c = (float)$$1 / 360.0F;
+         this.d = 360.0F / (float)$$1;
+      }
    }
 
-   public Predicate<String> a() {
-      return this.c;
+   public boolean a(int $$0, int $$1) {
+      int $$2 = this.a() >> 1;
+      return ($$0 & $$2) == ($$1 & $$2);
    }
 
-   public Predicate<String> b() {
-      return this.e;
+   public int a(jn $$0) {
+      if ($$0.o().b()) {
+         return 0;
+      } else {
+         int $$1 = $$0.e();
+         return $$1 << this.b - 2;
+      }
    }
 
-   public Predicate<aku> c() {
-      return this.f;
+   public int a(float $$0) {
+      return Math.round($$0 * this.c);
+   }
+
+   public int b(float $$0) {
+      return this.c(this.a($$0));
+   }
+
+   public float a(int $$0) {
+      return (float)$$0 * this.d;
+   }
+
+   public float b(int $$0) {
+      float $$1 = this.a(this.c($$0));
+      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   }
+
+   public int c(int $$0) {
+      return $$0 & this.a;
+   }
+
+   public int a() {
+      return this.a;
    }
 }

@@ -1,26 +1,31 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class fhd extends fhz {
-   public Set<String> a = Sets.newHashSet();
+public class fhd extends fhx {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fhc> a = Lists.newArrayList();
 
    public static fhd a(String $$0) {
       fhd $$1 = new fhd();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(fhc.a($$4.next().getAsJsonObject()));
             }
          }
-      } catch (Exception var8) {
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
 
       return $$1;

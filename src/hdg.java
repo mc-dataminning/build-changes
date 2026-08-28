@@ -1,26 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hdg implements hdk {
-   private final gof a;
-   private final hgs b;
+public class hdg implements hdq<dto> {
+   private final goc a;
+   private final cvk b;
 
-   public hdg(gof $$0, hgs $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public hdg(cvk $$0, goc $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   @Override
-   public void a(cwn $$0, ffu $$1, glx $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.b);
+   @Nullable
+   public dto a(cwn $$0) {
+      return $$0.a(kv.ai);
    }
 
-   public static record a(aku b) implements hdo.a {
-      public static final MapCodec<hdg.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("texture").forGetter(hdg.a::b)).apply($$0, hdg.a::new));
+   public void a(@Nullable dto $$0, cwl $$1, ffs $$2, glv $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dto.a));
+   }
 
-      public a(cvm $$0) {
-         this(gms.b($$0));
-      }
+   public static record a(cvk b) implements hdq.a {
+      public static final MapCodec<hdg.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvk.q.fieldOf("color").forGetter(hdg.a::b)).apply($$0, hdg.a::new));
 
       @Override
       public MapCodec<hdg.a> a() {
@@ -28,8 +30,8 @@ public class hdg implements hdk {
       }
 
       @Override
-      public hdo<?> a(gey $$0) {
-         return new hdg(new gof($$0), gms.a(this.b));
+      public hdq<?> a(gew $$0) {
+         return new hdg(this.b, new goc($$0));
       }
    }
 }

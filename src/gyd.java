@@ -1,3 +1,3 @@
-public class gyd extends gyx {
+public class gyd extends gyi {
    public boolean a;
 }

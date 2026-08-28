@@ -1,62 +1,77 @@
 import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cbp extends cce {
-   private final bvo a;
+public class cbp extends ccd {
+   private static final cfw d = cfw.b().a(8.0).d();
+   protected final cgw a;
+   private final Class<? extends cgw> e;
+   protected final arc b;
+   @Nullable
+   protected cgw c;
+   private int f;
+   private final double g;
 
-   public cbp(bvo $$0) {
+   public cbp(cgw $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cgw>)$$0.getClass());
+   }
+
+   public cbp(cgw $$0, double $$1, Class<? extends cgw> $$2) {
       this.a = $$0;
-      this.a(EnumSet.of(cce.a.a, cce.a.b));
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(ccd.a.a, ccd.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.ct() < 140;
+      if (!this.a.gz()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.b();
+      return this.c.bL() && this.c.gz() && this.f < 60 && !this.c.gm();
    }
 
    @Override
-   public boolean U_() {
-      return false;
-   }
-
-   @Override
-   public void d() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<ji> $$0 = ji.b(
-         ayz.a(this.a.dB() - 1.0), this.a.dC(), ayz.a(this.a.dH() - 1.0), ayz.a(this.a.dB() + 1.0), ayz.a(this.a.dD() + 8.0), ayz.a(this.a.dH() + 1.0)
-      );
-      ji $$1 = null;
-
-      for (ji $$2 : $$0) {
-         if (this.a(this.a.dW(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = ji.a(this.a.dB(), this.a.dD() + 8.0, this.a.dH());
-      }
-
-      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   public void e() {
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      this.h();
-      this.a.a(0.02F, new fba((double)this.a.bn, (double)this.a.bo, (double)this.a.bp));
-      this.a.a(bvk.a, this.a.dz());
+      this.a.H().a(this.c, 10.0F, (float)this.a.aa());
+      this.a.L().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
    }
 
-   private boolean a(dgl $$0, ji $$1) {
-      dwx $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(djo.nF)) && $$2.a(eto.a);
+   @Nullable
+   private cgw h() {
+      List<? extends cgw> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cgw $$2 = null;
+
+      for (cgw $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gm() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

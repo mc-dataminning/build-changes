@@ -18,14 +18,14 @@ public class ama {
    private static final Logger a = LogUtils.getLogger();
    private final String b;
    private final int c;
-   private final avd d;
+   private final avc d;
    private final int e;
    private volatile boolean f;
    @Nullable
    private ServerSocket g;
    private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public ama(String $$0, int $$1, avd $$2, int $$3) {
+   public ama(String $$0, int $$1, avc $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;

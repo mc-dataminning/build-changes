@@ -1,34 +1,17 @@
 import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
 
-public interface frv {
-   MapCodec<frv> b = frw.f.dispatchMap(frv::a, frw::a);
+public record frv(aku c) implements frt {
+   public static final MapCodec<frv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("id").forGetter(frv::c)).apply($$0, frv::new));
 
-   frw a();
-
-   Either<frv.b, frv.c> b();
-
-   public static record a(frv b, frj.a c) {
-      public static final Codec<frv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(frv.b.forGetter(frv.a::a), frj.a.a.optionalFieldOf("filter", frj.a.b).forGetter(frv.a::b)).apply($$0, frv.a::new)
-      );
-
-      public frv a() {
-         return this.b;
-      }
-
-      public frj.a b() {
-         return this.c;
-      }
+   @Override
+   public fru a() {
+      return fru.e;
    }
 
-   public interface b {
-      fdt load(aup var1) throws IOException;
-   }
-
-   public static record c(aku a) {
+   @Override
+   public Either<frt.b, frt.c> b() {
+      return Either.right(new frt.c(this.c));
    }
 }

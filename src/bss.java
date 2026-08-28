@@ -1,60 +1,9 @@
-public class bss {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = bab.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)bab.a / (double)this.b);
-   }
+public interface bss extends bsb {
+   int[] a(jn var1);
 
-   public float f() {
-      return this.b;
-   }
+   boolean a(int var1, cwn var2, @Nullable jn var3);
 
-   public float g() {
-      return (float)this.c / (float)bab.b;
-   }
-
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
-      }
-   }
-
-   public boolean a(buk $$0) {
-      return !this.i() && !($$0 instanceof cox) && $$0.de() <= 0;
-   }
+   boolean b(int var1, cwn var2, jn var3);
 }

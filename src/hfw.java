@@ -1,71 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-public class hfw implements ato<hfv> {
-   public hfv b(JsonObject $$0) {
-      Builder<hfu> $$1 = ImmutableList.builder();
-      int $$2 = ayp.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class hfw implements aup {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hfv b = new hfv("US", "English", false);
+   private Map<String, hfv> c = ImmutableMap.of("en_us", b);
+   private String d;
+   private final Consumer<hfs> e;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = ayp.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               hfu $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = ayp.a($$0, "width", -1);
-      int $$9 = ayp.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = ayp.a($$0, "interpolate", false);
-      return new hfv($$1.build(), $$8, $$9, $$2, $$10);
+   public hfw(String $$0, Consumer<hfs> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   private hfu a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new hfu(ayp.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = ayp.m($$1, "frames[" + $$0 + "]");
-         int $$3 = ayp.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+   private static Map<String, hfv> a(Stream<atb> $$0) {
+      Map<String, hfv> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            hgg $$2 = $$1x.a(hgg.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
          }
-
-         int $$4 = ayp.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new hfu($$4, $$3);
-      } else {
-         return null;
-      }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
    @Override
+   public void a(auo $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         hfv $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
+      }
+
+      hfs $$4 = hfs.a($$0, $$1, $$2);
+      hfu.a($$4);
+      tl.a($$4);
+      this.e.accept($$4);
+   }
+
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
    public String a() {
-      return "animation";
+      return this.d;
+   }
+
+   public SortedMap<String, hfv> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public hfv b(String $$0) {
+      return this.c.get($$0);
    }
 }

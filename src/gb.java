@@ -38,7 +38,7 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
          try {
             $$0.skip();
             aku $$2 = aku.a($$0);
-            return new gb.d<>(axf.a(this.b, $$2));
+            return new gb.d<>(axe.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
@@ -94,7 +94,7 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
 
    static record b<T>(akt<T> a) implements gb.c<T> {
       @Override
-      public Either<akt<T>, axf<T>> a() {
+      public Either<akt<T>, axe<T>> a() {
          return Either.left(this.a);
       }
 
@@ -118,16 +118,16 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
    }
 
    public interface c<T> extends Predicate<jr<T>> {
-      Either<akt<T>, axf<T>> a();
+      Either<akt<T>, axe<T>> a();
 
       <E> Optional<gb.c<E>> a(akt<? extends ke<E>> var1);
 
       String b();
    }
 
-   static record d<T>(axf<T> a) implements gb.c<T> {
+   static record d<T>(axe<T> a) implements gb.c<T> {
       @Override
-      public Either<akt<T>, axf<T>> a() {
+      public Either<akt<T>, axe<T>> a() {
          return Either.right(this.a);
       }
 
@@ -145,7 +145,7 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
          return "#" + this.a.b();
       }
 
-      public axf<T> c() {
+      public axe<T> c() {
          return this.a;
       }
    }

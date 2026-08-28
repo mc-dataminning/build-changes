@@ -1,203 +1,154 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dlf extends diy {
+public class dlf extends diw {
    public static final MapCodec<dlf> a = b(dlf::new);
-   public static final dxo b = dxn.bA;
-   public static final dxo c = dxn.H;
-   private static final dxu<jp> d = dxn.W;
-   private static final int e = 6;
-   private static final int f = 4;
-   private static final dbi g = new dbi(10);
-   private static final int h = 17;
-
-   public dlf(dww.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(d, jp.k).b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
-   }
+   public static final dxs<jn.a> b = dxl.L;
+   public static final dxm c = dxl.a;
+   public static final dxm d = dxl.x;
 
    @Override
-   protected MapCodec<dlf> a() {
+   public MapCodec<dlf> a() {
       return a;
    }
 
-   @Override
-   protected boolean c_(dwx $$0) {
-      return true;
+   protected dlf(dwu.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, jn.a.b).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected int a(dwx $$0, dgi $$1, ji $$2) {
-      return $$1.c_($$2) instanceof dun $$4 ? $$4.s() : 0;
-   }
-
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      boolean $$7 = $$0.c(c);
-      dtz $$8 = $$1.c_($$2);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
-         this.a($$8, true);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)), 2);
-         this.a($$8, false);
-      }
-   }
-
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      this.a($$0, $$1, $$2);
+   public dtx a(ji $$0, dwv $$1) {
+      return new dum($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
-      return $$0.C ? null : a($$2, dub.Q, dun::a);
+   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
+      if ($$0.C) {
+         return null;
+      } else {
+         return $$1.c(c) ? a($$2, dtz.k, dum::a) : null;
+      }
    }
 
-   private void a(@Nullable dtz $$0, boolean $$1) {
-      if ($$0 instanceof dun $$2) {
-         $$2.a($$1);
+   public static boolean a(dgg $$0) {
+      return $$0.G_().j() && $$0.W();
+   }
+
+   @Override
+   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
+      if (a($$1)) {
+         if ($$0.c(c)) {
+            if ($$3.a(16) == 0 && a($$1, $$2)) {
+               $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), avz.gB, awa.e, 1.0F, 1.0F, false);
+            }
+         }
       }
    }
 
    @Override
-   public dtz a(ji $$0, dwx $$1) {
-      dun $$2 = new dun($$0, $$1);
-      $$2.a($$1.b(c) && $$1.c(c));
-      return $$2;
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      dwv $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return c($$8, $$1, $$3);
    }
 
-   @Override
-   public dwx a(dag $$0) {
-      jn $$1 = $$0.d().g();
-
-      jn $$2 = switch ($$1) {
-         case a -> $$0.g().g();
-         case b -> $$0.g();
-         case c, d, e, f -> jn.b;
-      };
-      return this.m().b(d, jp.a($$1, $$2)).b(c, Boolean.valueOf($$0.q().C($$0.a())));
+   private static dwv c(dwv $$0, dgj $$1, ji $$2) {
+      boolean $$3 = b($$0, $$1, $$2);
+      boolean $$4 = !$$0.c(c);
+      return $$3 && $$4 ? $$0.b(c, Boolean.valueOf(true)) : $$0;
    }
 
-   @Override
-   public void a(dgi $$0, ji $$1, dwx $$2, bvg $$3, cwp $$4) {
-      if ($$2.c(c)) {
-         $$0.a($$1, this, 4);
+   public static boolean b(dwv $$0, dgj $$1, ji $$2) {
+      jn.a $$3 = $$0.c(b);
+
+      for (jn $$4 : $$3.g()) {
+         dwv $$5 = $$1.a_($$2.a($$4));
+         if (!$$5.a(awo.w) || $$5.c(b) != $$3) {
+            return false;
+         }
       }
+
+      return true;
+   }
+
+   private static boolean a(dgh $$0, ji $$1) {
+      for (jn $$2 : jn.values()) {
+         ji $$3 = $$1.a($$2);
+         dwv $$4 = $$0.a_($$3);
+         if (!$$4.a(awo.w)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public dwv a(dae $$0) {
+      return c(this.m().b(b, $$0.k().o()), $$0.q(), $$0.a());
    }
 
    @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      bsf.a($$0, $$3, $$1, $$2);
+   protected dwv a(dwv $$0, dqc $$1) {
+      return dqb.b($$0, $$1);
+   }
+
+   @Override
+   protected void a(dww.a<djk, dwv> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   protected void a(dwv $$0, dgg $$1, ji $$2, dwv $$3, boolean $$4) {
+      if ($$1.c_($$2) instanceof dum $$5) {
+         $$5.a(null);
+      }
+
       super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dun $$5) {
-         $$3.a($$5);
-      }
-
-      return bsj.a;
-   }
-
-   protected void a(dwx $$0, arc $$1, ji $$2) {
-      if ($$1.c_($$2) instanceof dun $$3) {
-         das var11 = $$3.aB_();
-         Optional<dbj<dat>> $$6 = a($$1, var11);
-         if ($$6.isEmpty()) {
-            $$1.c(1050, $$2, 0);
-         } else {
-            dbj<dat> $$7 = $$6.get();
-            cwp $$8 = $$7.b().a(var11, $$1.K_());
-            if ($$8.f()) {
-               $$1.c(1050, $$2, 0);
-            } else {
-               $$3.d(6);
-               $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 2);
-               $$8.a($$1);
-               this.a($$1, $$2, $$3, $$8, $$0, $$7);
-
-               for (cwp $$9 : $$7.b().a(var11)) {
-                  if (!$$9.f()) {
-                     this.a($$1, $$2, $$3, $$9, $$0, $$7);
-                  }
-               }
-
-               $$3.f().forEach($$0x -> {
-                  if (!$$0x.f()) {
-                     $$0x.h(1);
-                  }
-               });
-               $$3.e();
-            }
-         }
-      }
-   }
-
-   public static Optional<dbj<dat>> a(arc $$0, das $$1) {
-      return g.a($$0, $$1);
-   }
-
-   private void a(arc $$0, ji $$1, dun $$2, cwp $$3, dwx $$4, dbj<?> $$5) {
-      jn $$6 = $$4.c(d).a();
-      bsc $$7 = dvb.a($$0, $$1.a($$6));
-      cwp $$8 = $$3.v();
-      if ($$7 != null && ($$7 instanceof dun || $$3.M() > $$7.e_($$3))) {
-         while (!$$8.f()) {
-            cwp $$9 = $$8.c(1);
-            cwp $$10 = dvb.a($$2, $$7, $$9, $$6.g());
-            if (!$$10.f()) {
-               break;
-            }
-
-            $$8.h(1);
-         }
-      } else if ($$7 != null) {
-         while (!$$8.f()) {
-            int $$11 = $$8.M();
-            $$8 = dvb.a($$2, $$7, $$8, $$6.g());
-            if ($$11 == $$8.M()) {
-               break;
-            }
+   protected void a(dwv $$0, arc $$1, ji $$2, dfy $$3, BiConsumer<cwn, ji> $$4) {
+      if ($$1.c_($$2) instanceof dum $$5 && $$3 instanceof dgw $$6 && $$3.b().a()) {
+         $$5.a($$6.k());
+         if ($$3.c() instanceof cov $$7 && $$3.b().a()) {
+            this.a($$7, $$0, $$1, $$2);
          }
       }
 
-      if (!$$8.f()) {
-         fba $$12 = fba.b($$1);
-         fba $$13 = $$12.a($$6, 0.7);
-         lb.a($$0, $$8, 6, $$6, $$13);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-         for (ard $$14 : $$0.a(ard.class, fav.a($$12, 17.0, 17.0, 17.0))) {
-            ap.ad.a($$14, $$5.a(), $$2.f());
-         }
+   @Override
+   public dwv a(dgg $$0, ji $$1, dwv $$2, cov $$3) {
+      if ($$0.c_($$1) instanceof dum $$4) {
+         $$4.a($$3.dX().a($$3));
+         this.a($$3, $$2, $$0, $$1);
+      }
 
-         $$0.c(1049, $$1, 0);
-         $$0.c(2010, $$1, $$6.d());
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(cov $$0, dwv $$1, dgg $$2, ji $$3) {
+      if (!$$0.b() && !$$0.Z_() && $$1.c(d) && $$2 instanceof arc $$4) {
+         this.a($$4, $$3, $$2.A.a(20, 24));
       }
    }
 
    @Override
-   protected dpx a_(dwx $$0) {
-      return dpx.c;
+   protected boolean c_(dwv $$0) {
+      return true;
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.b(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(d, c, b);
+   protected int a(dwv $$0, dgg $$1, ji $$2) {
+      if (!$$0.c(c)) {
+         return 0;
+      } else {
+         return $$1.c_($$2) instanceof dum $$3 ? $$3.d() : 0;
+      }
    }
 }

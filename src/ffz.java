@@ -1,211 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 public class ffz {
-   public static final int a = -1;
-   private final List<fga> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
-   @Nullable
-   private ffx g;
-
-   ffz(List<fga> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(fga::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
-
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         fga $$5 = fga.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
-      }
+   public static ffw a() {
+      throw new IllegalArgumentException();
    }
 
-   public static ffz.a a() {
-      return new ffz.a();
-   }
-
-   public void a(int $$0) {
-      int $$1 = 0;
-
-      for (String $$2 : this.d()) {
-         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-         $$1++;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "VertexFormat" + this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public List<fga> c() {
-      return this.b;
-   }
-
-   public List<String> d() {
-      return this.c;
-   }
-
-   public int[] e() {
-      return this.f;
-   }
-
-   public int a(fga $$0) {
-      return this.f[$$0.c()];
-   }
-
-   public boolean b(fga $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public String c(fga $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ffz $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         fga $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
-      }
-   }
-
-   public void h() {
-      RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
-      }
-   }
-
-   public ffx i() {
-      ffx $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new ffx(fdo.a);
-      }
-
+   public static ffw a(ffw $$0) {
       return $$0;
    }
 
-   public static class a {
-      private final Builder<String, fga> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
+   public static ffw a(ffw $$0, ffw $$1) {
+      return new ffz.a($$0, $$1);
+   }
 
-      a() {
+   public static ffw a(ffw... $$0) {
+      return new ffz.b($$0);
+   }
+
+   static class a implements ffw {
+      private final ffw a;
+      private final ffw b;
+
+      public a(ffw $$0, ffw $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+         }
       }
 
-      public ffz.a a(String $$0, fga $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
+      @Override
+      public ffw a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
          return this;
       }
 
-      public ffz.a a(int $$0) {
-         this.c += $$0;
+      @Override
+      public ffw a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
          return this;
       }
 
-      public ffz a() {
-         ImmutableMap<String, fga> $$0 = this.a.buildOrThrow();
-         ImmutableList<fga> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new ffz($$1, $$2, this.b, this.c);
+      @Override
+      public ffw a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public ffw a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public ffw b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public ffw b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
+   static record b(ffw[] a) implements ffw {
+      b(ffw[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
 
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
-         this.c = $$0;
-         this.d = $$1;
+         this.a = a;
       }
 
-      public static ffz.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+      private void a(Consumer<ffw> $$0) {
+         for (ffw $$1 : this.a) {
+            $$0.accept($$1);
+         }
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
+      @Override
+      public ffw a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public ffw a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public ffw a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public ffw a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public ffw b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public ffw b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
       }
    }
 }

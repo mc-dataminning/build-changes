@@ -1,60 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public record cyz(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
-   public static final cyz a = new cyz(List.of(), List.of(), List.of(), List.of());
-   public static final Codec<cyz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(cyz::a),
-               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(cyz::b),
-               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(cyz::c),
-               ayi.i.listOf().optionalFieldOf("colors", List.of()).forGetter(cyz::d)
-            )
-            .apply($$0, cyz::new)
+public record cyz(List<czz> d) {
+   public static final Codec<cyz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(czz.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(cyz::a)).apply($$0, cyz::new)
    );
-   public static final ym<ByteBuf, cyz> c = ym.a(yk.l.a(yk.a()), cyz::a, yk.b.a(yk.a()), cyz::b, yk.o.a(yk.a()), cyz::c, yk.g.a(yk.a()), cyz::d, cyz::new);
+   public static final ym<vz, cyz> b = ym.a(czz.e.a(yk.a()), cyz::a, cyz::new);
+   public static final cyz c = new cyz(List.of(new czy(), new czx(List.of(new bto(btq.j, 900, 1), new bto(btq.v, 100, 1), new bto(btq.l, 800, 0)))));
 
-   @Nullable
-   private static <T> T a(List<T> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
+   public void a(cwn $$0, bvf $$1) {
+      for (czz $$2 : this.d) {
+         $$2.a($$1.dW(), $$0, $$1);
+      }
    }
 
-   @Nullable
-   public Float a(int $$0) {
-      return a(this.d, $$0);
-   }
-
-   @Nullable
-   public Boolean b(int $$0) {
-      return a(this.e, $$0);
-   }
-
-   @Nullable
-   public String c(int $$0) {
-      return a(this.f, $$0);
-   }
-
-   @Nullable
-   public Integer d(int $$0) {
-      return a(this.g, $$0);
-   }
-
-   public List<Float> a() {
+   public List<czz> a() {
       return this.d;
-   }
-
-   public List<Boolean> b() {
-      return this.e;
-   }
-
-   public List<String> c() {
-      return this.f;
-   }
-
-   public List<Integer> d() {
-      return this.g;
    }
 }

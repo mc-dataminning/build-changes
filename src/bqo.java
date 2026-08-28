@@ -1,13 +1,8 @@
-import java.time.Instant;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public final class bqo {
-   public final Instant a;
-   public final int b;
-   public final boq c;
-
-   public bqo(Instant $$0, int $$1, boq $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bqo {
 }

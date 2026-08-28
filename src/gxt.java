@@ -1,11 +1,10 @@
-import javax.annotation.Nullable;
-
-public class gxt extends gyc {
-   @Nullable
-   public bui.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class gxt extends gyh {
+   public float a;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
+   public float g;
+   public float h;
 }

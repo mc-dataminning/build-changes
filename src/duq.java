@@ -1,164 +1,95 @@
-import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class duq extends dtz implements bsp, fcm.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public duq.a h;
-   private dvg k;
-   private cwp l = cwp.j;
-   @Nullable
-   protected akt<evw> i;
-   protected long j;
-
-   public duq(ji $$0, dwx $$1) {
-      super(dub.P, $$0, $$1);
-      this.k = dvg.a;
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      this.k.a($$0);
-      if (!this.c_($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
-      }
-   }
-
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.k = dvg.b($$0);
-      if (!this.b_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cwp.a($$1, (un)$$0.p("item")).orElse(cwp.j);
-         } else {
-            this.l = cwp.j;
-         }
-      }
-   }
-
-   public abr j() {
-      return abr.a(this);
-   }
-
-   @Override
-   public tq a(jt.a $$0) {
-      return this.e($$0);
-   }
-
-   public jn k() {
-      return this.m().c(dxn.U);
-   }
-
-   public dvg s() {
-      return this.k;
-   }
-
-   public static cwp a(dvg $$0) {
-      cwp $$1 = cwt.eP.n();
-      $$1.b(kv.ak, $$0);
-      return $$1;
-   }
+public class duq {
+   public static final akt<dup> a = a("blank");
+   public static final akt<dup> b = a("angler");
+   public static final akt<dup> c = a("archer");
+   public static final akt<dup> d = a("arms_up");
+   public static final akt<dup> e = a("blade");
+   public static final akt<dup> f = a("brewer");
+   public static final akt<dup> g = a("burn");
+   public static final akt<dup> h = a("danger");
+   public static final akt<dup> i = a("explorer");
+   public static final akt<dup> j = a("flow");
+   public static final akt<dup> k = a("friend");
+   public static final akt<dup> l = a("guster");
+   public static final akt<dup> m = a("heart");
+   public static final akt<dup> n = a("heartbreak");
+   public static final akt<dup> o = a("howl");
+   public static final akt<dup> p = a("miner");
+   public static final akt<dup> q = a("mourner");
+   public static final akt<dup> r = a("plenty");
+   public static final akt<dup> s = a("prize");
+   public static final akt<dup> t = a("scrape");
+   public static final akt<dup> u = a("sheaf");
+   public static final akt<dup> v = a("shelter");
+   public static final akt<dup> w = a("skull");
+   public static final akt<dup> x = a("snort");
+   private static final Map<cwj, akt<dup>> y = Map.ofEntries(
+      Map.entry(cwr.rs, a),
+      Map.entry(cwr.yP, b),
+      Map.entry(cwr.yQ, c),
+      Map.entry(cwr.yR, d),
+      Map.entry(cwr.yS, e),
+      Map.entry(cwr.yT, f),
+      Map.entry(cwr.yU, g),
+      Map.entry(cwr.yV, h),
+      Map.entry(cwr.yW, i),
+      Map.entry(cwr.yX, j),
+      Map.entry(cwr.yY, k),
+      Map.entry(cwr.yZ, l),
+      Map.entry(cwr.za, m),
+      Map.entry(cwr.zb, n),
+      Map.entry(cwr.zc, o),
+      Map.entry(cwr.zd, p),
+      Map.entry(cwr.ze, q),
+      Map.entry(cwr.zf, r),
+      Map.entry(cwr.zg, s),
+      Map.entry(cwr.zh, t),
+      Map.entry(cwr.zi, u),
+      Map.entry(cwr.zj, v),
+      Map.entry(cwr.zk, w),
+      Map.entry(cwr.zl, x)
+   );
 
    @Nullable
-   @Override
-   public akt<evw> aw_() {
-      return this.i;
+   public static akt<dup> a(cwj $$0) {
+      return y.get($$0);
    }
 
-   @Override
-   public void a(@Nullable akt<evw> $$0) {
-      this.i = $$0;
+   private static akt<dup> a(String $$0) {
+      return akt.a(mc.ax, aku.b($$0));
    }
 
-   @Override
-   public long az_() {
-      return this.j;
+   public static dup a(ke<dup> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   @Override
-   public void a(long $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   protected void a(kr.a $$0) {
-      super.a($$0);
-      $$0.a(kv.ak, this.k);
-      $$0.a(kv.al, czh.a(List.of(this.l)));
-   }
-
-   @Override
-   protected void a(dtz.b $$0) {
-      super.a($$0);
-      this.k = $$0.a(kv.ak, dvg.a);
-      this.l = $$0.a(kv.al, czh.a).a();
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cwp f() {
-      this.d_(null);
-      return this.l;
-   }
-
-   @Override
-   public cwp c(int $$0) {
-      this.d_(null);
-      cwp $$1 = this.l.a($$0);
-      if (this.l.f()) {
-         this.l = cwp.j;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(cwp $$0) {
-      this.d_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dtz t() {
-      return this;
-   }
-
-   public void a(duq.a $$0) {
-      if (this.o != null && !this.o.B_()) {
-         this.o.a(this.aA_(), this.m().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < duq.a.values().length) {
-         this.g = this.o.ad();
-         this.h = duq.a.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   private static dup a(ke<dup> $$0, akt<dup> $$1, String $$2) {
+      return ke.a($$0, $$1, new dup(aku.b($$2)));
    }
 }

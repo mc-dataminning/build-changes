@@ -1,71 +1,43 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class fge {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<fge.a> b;
+public enum fge {
+   a,
+   b,
+   c,
+   d;
 
-   public static CompletableFuture<fge.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
+   private static final int e = 1024;
 
-      return b;
-   }
-
-   private static boolean a(CompletableFuture<fge.a> $$0) {
-      fge.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
-   }
-
-   private static CompletableFuture<fge.a> b() {
-      flv $$0 = flj.Q().X();
-      return $$0.g() != flv.a.c ? CompletableFuture.completedFuture(new fge.a(fge.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fgk $$0x = fgk.a();
-
+   public static fge a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
          try {
-            if ($$0x.g() != fgk.a.a) {
-               return new fge.a(fge.b.b);
-            } else {
-               return !$$0x.f() ? new fge.a(fge.b.c) : new fge.a(fge.b.a);
-            }
-         } catch (fig var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fge.a(fge.b.d) : new fge.a(var2);
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
          }
-      }, af.h());
-   }
-
-   public static record a(fge.b a, @Nullable fig b) {
-      public a(fge.b $$0) {
-         this($$0, null);
-      }
-
-      public a(fig $$0) {
-         this(fge.b.e, $$0);
-      }
-
-      @Nullable
-      public fuk a(fuk $$0) {
-         return (fuk)(switch (this.a) {
-            case a -> null;
-            case b -> new fit($$0);
-            case c -> new fjd($$0);
-            case d -> new fiy(wo.c("mco.error.invalid.session.title"), wo.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fiy(Objects.requireNonNull(this.b), $$0);
-         });
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public static double a(long $$0, fge $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   }
+
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, fge $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

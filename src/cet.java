@@ -1,50 +1,44 @@
-import javax.annotation.Nullable;
-
 public class cet extends cer {
-   @Nullable
-   private ji p;
+   private boolean p;
 
-   public cet(bvi $$0, dgi $$1) {
+   public cet(bvh $$0, dgg $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public etn a(ji $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   protected etn a(int $$0) {
+      this.p = this.a.aq() == buq.H;
+      this.o = new etr(this.p);
+      this.o.a(false);
+      return new etn(this.o, $$0);
    }
 
    @Override
-   public etn a(buk $$0, int $$1) {
-      this.p = $$0.dw();
-      return super.a($$0, $$1);
+   protected boolean a() {
+      return this.p || this.a.bn();
    }
 
    @Override
-   public boolean a(buk $$0, double $$1) {
-      etn $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dw();
-         this.d = $$1;
-         return true;
-      }
+   protected fay b() {
+      return new fay(this.a.dB(), this.a.e(0.5), this.a.dH());
    }
 
    @Override
-   public void c() {
-      if (!this.k()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.du(), (double)this.a.dr())
-               && (!(this.a.dD() > (double)this.p.v()) || !ji.a((double)this.p.u(), this.a.dD(), (double)this.p.w()).a(this.a.du(), (double)this.a.dr()))) {
-               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   protected double a(fay $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fay $$0, fay $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ji $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

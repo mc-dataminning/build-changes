@@ -1,2 +1,13 @@
-public interface bvp {
+public interface bvp extends bvo {
+   void b(int var1);
+
+   boolean a();
+
+   void c(int var1);
+
+   void b();
+
+   default int c() {
+      return 0;
+   }
 }

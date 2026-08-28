@@ -1,178 +1,102 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ews extends exe {
+public class ews extends exc {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<ews> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(ezp.a.fieldOf("source").forGetter($$0x -> $$0x.b), ews.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  kg.a(mc.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
+                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, ews::new)
    );
-   private final ezo b;
-   private final List<ews.b> c;
+   private final Optional<jv<dcx>> c;
+   private final boolean d;
 
-   ews(List<eza> $$0, ezo $$1, List<ews.b> $$2) {
+   ews(List<eyy> $$0, Optional<jv<dcx>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public exg<ews> b() {
-      return exh.C;
+   public exe<ews> b() {
+      return exf.h;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return this.b.b();
-   }
-
-   @Override
-   public cwp a(cwp $$0, evr $$1) {
-      un $$2 = this.b.a($$1);
-      if ($$2 == null) {
+   public cwn a(cwn $$0, evp $$1) {
+      azg $$2 = $$1.b();
+      boolean $$3 = $$0.a(cwr.rw);
+      boolean $$4 = !$$3 && this.d;
+      Stream<jr<dcx>> $$5 = this.c
+         .<Stream<jr<dcx>>>map(jv::a)
+         .orElseGet(() -> $$1.d().K_().e(mc.aO).c().map(Function.identity()))
+         .filter($$2x -> !$$4 || ((dcx)$$2x.a()).c($$0));
+      List<jr<dcx>> $$6 = $$5.toList();
+      Optional<jr<dcx>> $$7 = af.b($$6, $$2);
+      if ($$7.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
          return $$0;
       } else {
-         MutableObject<tq> $$3 = new MutableObject();
-         Supplier<un> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(kv.b, cyy.a).d());
-            }
-
-            return (un)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         tq $$5 = (tq)$$3.getValue();
-         if ($$5 != null) {
-            cyy.a(kv.b, $$0, $$5);
-         }
-
-         return $$0;
+         return a($$0, $$7.get(), $$2);
       }
    }
 
-   @Deprecated
-   public static ews.a a(ezo $$0) {
-      return new ews.a($$0);
+   private static cwn a(cwn $$0, jr<dcx> $$1, azg $$2) {
+      int $$3 = ayy.a($$2, $$1.a().d(), $$1.a().e());
+      if ($$0.a(cwr.rw)) {
+         $$0 = new cwn(cwr.vv);
+      }
+
+      $$0.a($$1, $$3);
+      return $$0;
    }
 
-   public static ews.a a(evr.b $$0) {
-      return new ews.a(ezm.a($$0));
+   public static ews.a c() {
+      return new ews.a();
    }
 
-   public static class a extends exe.a<ews.a> {
-      private final ezo a;
-      private final List<ews.b> b = Lists.newArrayList();
+   public static ews.a a(jt.a $$0) {
+      return c().a($$0.d(mc.aO).b(awr.n));
+   }
 
-      a(ezo $$0) {
-         this.a = $$0;
-      }
-
-      public ews.a a(String $$0, String $$1, ews.c $$2) {
-         try {
-            this.b.add(new ews.b(fp.g.a($$0), fp.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
-      }
-
-      public ews.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, ews.c.a);
-      }
+   public static class a extends exc.a<ews.a> {
+      private Optional<jv<dcx>> a = Optional.empty();
+      private boolean b = true;
 
       protected ews.a a() {
          return this;
       }
 
+      public ews.a a(jr<dcx> $$0) {
+         this.a = Optional.of(jv.a($$0));
+         return this;
+      }
+
+      public ews.a a(jv<dcx> $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ews.a e() {
+         this.b = false;
+         return this;
+      }
+
       @Override
-      public exf b() {
+      public exd b() {
          return new ews(this.g(), this.a, this.b);
-      }
-   }
-
-   static record b(fp.g b, fp.g c, ews.c d) {
-      public static final Codec<ews.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fp.g.a.fieldOf("source").forGetter(ews.b::a), fp.g.a.fieldOf("target").forGetter(ews.b::b), ews.c.d.fieldOf("op").forGetter(ews.b::c))
-               .apply($$0, ews.b::new)
-      );
-
-      public void a(Supplier<un> $$0, un $$1) {
-         try {
-            List<un> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public fp.g a() {
-         return this.b;
-      }
-
-      public fp.g b() {
-         return this.c;
-      }
-
-      public ews.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements azv {
-      a("replace") {
-         @Override
-         public void a(un $$0, fp.g $$1, List<un> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (un)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(un $$0, fp.g $$1, List<un> $$2) throws CommandSyntaxException {
-            List<un> $$3 = $$1.a($$0, tw::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof tw) {
-                  $$2.forEach($$1xx -> ((tw)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(un $$0, fp.g $$1, List<un> $$2) throws CommandSyntaxException {
-            List<un> $$3 = $$1.a($$0, tq::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof tq) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof tq) {
-                        ((tq)$$1x).a((tq)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<ews.c> d = azv.a(ews.c::values);
-      private final String e;
-
-      public abstract void a(un var1, fp.g var2, List<un> var3) throws CommandSyntaxException;
-
-      c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
       }
    }
 }

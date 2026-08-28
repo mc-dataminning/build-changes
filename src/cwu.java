@@ -1,59 +1,85 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record cwu(cvp<cwv> c, boolean d) implements czs {
-   public static final Codec<cwu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvp.a(mc.L, cwv.c).fieldOf("song").forGetter(cwu::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwu::b))
-            .apply($$0, cwu::new)
-   );
-   public static final ym<vz, cwu> b = ym.a(cvp.a(mc.L, cwv.d), cwu::a, yk.b, cwu::b, cwu::new);
+public class cwu {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jr<cwt> c;
+   private final ji d;
+   private final cwu.a e;
 
-   @Override
-   public void a(cwl.b $$0, Consumer<wo> $$1, cyh $$2) {
-      jt.a $$3 = $$0.a();
-      if (this.d && $$3 != null) {
-         this.c.a($$3).ifPresent($$1x -> {
-            xc $$2x = ((cwv)$$1x.a()).c().f();
-            wr.a($$2x, xl.a.a(n.h));
-            $$1.accept($$2x);
-         });
+   public cwu(cwu.a $$0, ji $$1) {
+      this.e = $$0;
+      this.d = $$1;
+   }
+
+   public boolean a() {
+      return this.c != null;
+   }
+
+   @Nullable
+   public cwt b() {
+      return this.c == null ? null : this.c.a();
+   }
+
+   public long c() {
+      return this.b;
+   }
+
+   public void a(jr<cwt> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
       }
    }
 
-   public cwu a(boolean $$0) {
-      return new cwu(this.c, $$0);
+   public void a(dgh $$0, jr<cwt> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.K_().e(mc.L).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
    }
 
-   public static bsj a(dgi $$0, ji $$1, cwp $$2, cox $$3) {
-      cwu $$4 = $$2.a(kv.ab);
-      if ($$4 == null) {
-         return bsj.f;
-      } else {
-         dwx $$5 = $$0.a_($$1);
-         if ($$5.a(djo.eg) && !$$5.c(dnr.b)) {
-            if (!$$0.C) {
-               cwp $$6 = $$2.b(1, $$3);
-               if ($$0.c_($$1) instanceof dvd $$7) {
-                  $$7.b($$6);
-                  $$0.a(ebt.c, $$1, ebt.a.a($$3, $$5));
-               }
+   public void a(dgh $$0, @Nullable dwv $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(ebr.F, this.d, ebr.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
 
-               $$3.a(awk.al);
+   public void b(dgh $$0, @Nullable dwv $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(ebr.E, this.d, ebr.a.a($$1));
+               a($$0, this.d);
             }
 
-            return bsj.a;
-         } else {
-            return bsj.f;
+            this.b++;
          }
       }
    }
 
-   public cvp<cwv> a() {
-      return this.c;
+   private boolean d() {
+      return this.b % 20L == 0L;
    }
 
-   public boolean b() {
-      return this.d;
+   private static void a(dgh $$0, ji $$1) {
+      if ($$0 instanceof arc $$2) {
+         fay $$3 = fay.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.H_().a(4) / 24.0F;
+         $$2.a(lt.ac, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

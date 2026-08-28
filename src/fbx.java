@@ -1,87 +1,46 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fbx {
-   private final fcf a;
-   private final String b;
-   private final fci c;
-   private wo d;
-   private wo e;
-   private fci.a f;
-   private boolean g;
-   @Nullable
-   private ye h;
-
-   public fbx(fcf $$0, String $$1, fci $$2, wo $$3, fci.a $$4, boolean $$5, @Nullable ye $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.i();
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-   }
-
-   public fcf a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public fci c() {
-      return this.c;
-   }
-
-   public wo d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
+class fbx {
+   private final Reference2ObjectOpenHashMap<fbv, fca> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
-   public ye f() {
-      return this.h;
+   public fca a(fbv $$0) {
+      return (fca)this.a.get($$0);
    }
 
-   public ye a(ye $$0) {
-      return Objects.requireNonNullElse(this.h, $$0);
+   public fca a(fbv $$0, Consumer<fca> $$1) {
+      return (fca)this.a.computeIfAbsent($$0, $$1x -> {
+         fca $$2 = new fca();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   private wo i() {
-      return wr.a((wo)this.d.f().a($$0 -> $$0.a(new wu(wu.a.a, wo.b(this.b)))));
+   public boolean b(fbv $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   public wo g() {
-      return this.e;
+   public boolean a() {
+      return !this.a.isEmpty();
    }
 
-   public void a(wo $$0) {
-      this.d = $$0;
-      this.e = this.i();
-      this.a.b(this);
+   public Object2IntMap<fbv> b() {
+      Object2IntMap<fbv> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
    }
 
-   public fci.a h() {
-      return this.f;
+   void a(fbv $$0, fca $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public void a(fci.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-      this.a.b(this);
-   }
-
-   public void b(@Nullable ye $$0) {
-      this.h = $$0;
-      this.a.b(this);
+   Map<fbv, fca> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

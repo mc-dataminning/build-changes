@@ -1,32 +1,31 @@
-public class gte extends gqw<cje, gzj, gcs> {
-   private static final aku a = aku.b("textures/entity/llama/creamy.png");
-   private static final aku b = aku.b("textures/entity/llama/white.png");
-   private static final aku k = aku.b("textures/entity/llama/brown.png");
-   private static final aku l = aku.b("textures/entity/llama/gray.png");
+public class gte extends gsa<cpn, gzj> {
+   private static final aku a = aku.b("textures/entity/llama/spit.png");
+   private final gcr b;
 
-   public gte(gsc.a $$0, gfa $$1, gfa $$2) {
-      super($$0, new gcs($$0.a($$1)), new gcs($$0.a($$2)), 0.7F);
-      this.a(new gwl(this, $$0.f(), $$0.h()));
+   public gte(gsb.a $$0) {
+      super($$0);
+      this.b = new gcr($$0.a(gez.bw));
    }
 
-   public aku a(gzj $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-      };
+   public void a(gzj $$0, ffs $$1, glv $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      ffw $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hec.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gzj b() {
+   public gzj a() {
       return new gzj();
    }
 
-   public void a(cje $$0, gzj $$1, float $$2) {
+   public void a(cpn $$0, gzj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gC();
-      $$1.b = !$$0.e_() && $$0.t();
-      $$1.c = $$0.ag();
-      $$1.d = $$0.gs();
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

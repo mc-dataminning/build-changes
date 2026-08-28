@@ -6,7 +6,7 @@ public class lo extends lu {
    public static final int a = 16711680;
    public static final lo b = new lo(16711680, 1.0F);
    public static final MapCodec<lo> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayi.i.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(lu::d)).apply($$0, lo::new)
+      $$0 -> $$0.group(ayh.i.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(lu::d)).apply($$0, lo::new)
    );
    public static final ym<vz, lo> d = ym.a(yk.g, $$0 -> $$0.h, yk.l, lu::d, lo::new);
    private final int h;
@@ -22,6 +22,6 @@ public class lo extends lu {
    }
 
    public Vector3f b() {
-      return axk.h(this.h);
+      return axj.h(this.h);
    }
 }

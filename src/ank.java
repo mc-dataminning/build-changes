@@ -12,8 +12,8 @@ public class ank {
       );
    }
 
-   private static int a(ex $$0, Collection<? extends buk> $$1) {
-      for (buk $$2 : $$1) {
+   private static int a(ex $$0, Collection<? extends buj> $$1) {
+      for (buj $$2 : $$1) {
          $$2.c($$0.e());
       }
 

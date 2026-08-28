@@ -1,14 +1,42 @@
-public class eyl {
-   public static final bai<buk> a = bai.a("this_entity");
-   public static final bai<cox> b = bai.a("last_damage_player");
-   public static final bai<bta> c = bai.a("damage_source");
-   public static final bai<buk> d = bai.a("attacking_entity");
-   public static final bai<buk> e = bai.a("direct_attacking_entity");
-   public static final bai<fba> f = bai.a("origin");
-   public static final bai<dwx> g = bai.a("block_state");
-   public static final bai<dtz> h = bai.a("block_entity");
-   public static final bai<cwp> i = bai.a("tool");
-   public static final bai<Float> j = bai.a("explosion_radius");
-   public static final bai<Integer> k = bai.a("enchantment_level");
-   public static final bai<Boolean> l = bai.a("enchantment_active");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+
+public class eyl extends eyo {
+   public static final MapCodec<eyl> a = a(eyl::new);
+   public static final Codec<eyl> b = b(eyl::new);
+
+   eyl(List<eyy> $$0) {
+      super($$0, af.a($$0));
+   }
+
+   public static eyl a(List<eyy> $$0) {
+      return new eyl(List.copyOf($$0));
+   }
+
+   @Override
+   public eyz b() {
+      return eza.c;
+   }
+
+   public static eyl.a a(eyy.a... $$0) {
+      return new eyl.a($$0);
+   }
+
+   public static class a extends eyo.a {
+      public a(eyy.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public eyl.a and(eyy.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eyy a(List<eyy> $$0) {
+         return new eyl($$0);
+      }
+   }
 }

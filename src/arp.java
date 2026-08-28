@@ -3,12 +3,12 @@ import javax.annotation.Nullable;
 
 public class arp implements arm {
    private final arm a;
-   private final bqz b;
+   private final bqy b;
    private boolean c;
 
    private arp(arm $$0, Executor $$1) {
       this.a = $$0;
-      this.b = new bqz($$1, "progressListener");
+      this.b = new bqy($$1, "progressListener");
    }
 
    public static arp a(arm $$0, Executor $$1) {
@@ -18,12 +18,12 @@ public class arp implements arm {
    }
 
    @Override
-   public void a(dfo $$0) {
+   public void a(dfm $$0) {
       this.b.a_(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(dfo $$0, @Nullable dzt $$1) {
+   public void a(dfm $$0, @Nullable dzr $$1) {
       if (this.c) {
          this.b.a_(() -> this.a.a($$0, $$1));
       }

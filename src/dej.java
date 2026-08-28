@@ -1,16 +1,14 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dej(jv<dcz> c, bro d) implements deh {
+public record dej(jr<dcx> c, brn d) implements def {
    public static final MapCodec<dej> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kg.a(mc.aO).fieldOf("enchantments").forGetter(dej::b), bro.c.fieldOf("cost").forGetter(dej::c)).apply($$0, dej::new)
+      $$0 -> $$0.group(dcx.c.fieldOf("enchantment").forGetter(dej::b), brn.c.fieldOf("level").forGetter(dej::c)).apply($$0, dej::new)
    );
 
    @Override
-   public void a(cwp $$0, ddf.a $$1, azh $$2, bsh $$3) {
-      for (ddc $$5 : ddb.b($$2, $$0, this.d.a($$2), this.c.a())) {
-         $$1.b($$5.a, $$5.b);
-      }
+   public void a(cwn $$0, ddd.a $$1, azg $$2, bsg $$3) {
+      $$1.b(this.c, ayy.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
    }
 
    @Override
@@ -18,11 +16,11 @@ public record dej(jv<dcz> c, bro d) implements deh {
       return b;
    }
 
-   public jv<dcz> b() {
+   public jr<dcx> b() {
       return this.c;
    }
 
-   public bro c() {
+   public brn c() {
       return this.d;
    }
 }

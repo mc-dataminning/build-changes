@@ -1,18 +1,27 @@
-public class guw extends gqs<cjb, gyj, gao<gyj>> {
-   private static final aku a = aku.b("textures/entity/horse/horse_zombie.png");
-   private static final aku b = aku.b("textures/entity/horse/horse_skeleton.png");
-   private final aku k;
+public class guw extends gth<cmk, haq, gei> {
+   private static final aku a = aku.b("textures/entity/illager/vex.png");
+   private static final aku b = aku.b("textures/entity/illager/vex_charging.png");
 
-   public guw(gsc.a $$0, gfa $$1, gfa $$2, boolean $$3) {
-      super($$0, new gcl($$0.a($$1)), new gcl($$0.a($$2)));
-      this.k = $$3 ? b : a;
+   public guw(gsb.a $$0) {
+      super($$0, new gei($$0.a(gez.ds)), 0.3F);
+      this.a(new gwi<>(this));
    }
 
-   public aku a(gyj $$0) {
-      return this.k;
+   protected int a(cmk $$0, ji $$1) {
+      return 15;
    }
 
-   public gyj b() {
-      return new gyj();
+   public aku a(haq $$0) {
+      return $$0.a ? b : a;
+   }
+
+   public haq b() {
+      return new haq();
+   }
+
+   public void a(cmk $$0, haq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gxm.a($$0, $$1, this.i);
+      $$1.a = $$0.gp();
    }
 }

@@ -1,20 +1,27 @@
-public class gxd extends gvu<hav, gep> {
-   public gxd(gtz<hav, gep> $$0) {
+public class gxd extends gvz<hav, geo> {
+   private static final aku a = aku.b("textures/entity/wither/wither_armor.png");
+   private final geo b;
+
+   public gxd(gty<hav, geo> $$0, gew $$1) {
       super($$0);
+      this.b = new geo($$1.a(gez.dB));
    }
 
-   protected void a(hav $$0, ffu $$1) {
-      if ($$0.c) {
-         this.d().e().a($$1);
-         this.d().b().a($$1);
-         this.d().c().a($$1);
-         $$1.a(0.0625F, 0.25F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(140.0F));
-         $$1.a(a.f.rotationDegrees(10.0F));
-         $$1.a(a.b.rotationDegrees(180.0F));
-      } else {
-         super.a($$0, $$1);
-      }
+   protected boolean a(hav $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return ayy.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected aku a() {
+      return a;
+   }
+
+   protected geo b() {
+      return this.b;
    }
 }

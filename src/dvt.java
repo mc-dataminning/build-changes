@@ -1,13 +1,16 @@
-public class dvt extends dtz {
-   protected dvt(dub<?> $$0, ji $$1, dwx $$2) {
-      super($$0, $$1, $$2);
+public class dvt extends due {
+   public dvt(ji $$0, dwv $$1) {
+      super(dtz.c, $$0, $$1);
    }
 
-   public dvt(ji $$0, dwx $$1) {
-      this(dub.o, $$0, $$1);
-   }
-
-   public boolean a(jn $$0) {
-      return $$0.o() == jn.a.b;
+   @Override
+   protected void a(dgg $$0, ji $$1, dwv $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 != $$4) {
+         euf $$5 = eub.a($$0, $$2.c(dsd.c).g(), jn.b);
+         djk $$6 = $$2.b();
+         $$0.a($$1, $$6, $$5);
+         $$0.a($$1.e(), $$6, $$5);
+      }
    }
 }

@@ -1,4 +1,3 @@
-public class gyk extends gyi {
-   public float a;
-   public float b;
+public class gyk extends gyz {
+   public boolean a;
 }

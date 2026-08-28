@@ -1,66 +1,58 @@
 import com.mojang.serialization.Codec;
 
-public class eff extends efy<eht> {
-   public eff(Codec<eht> $$0) {
+public class eff extends efw<eih> {
+   public eff(Codec<eih> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<eht> $$0) {
-      dhg $$1 = $$0.b();
-      eht $$2 = $$0.f();
-      azh $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
+   public boolean a(efy<eih> $$0) {
+      ji $$1 = $$0.e();
+      dhe $$2 = $$0.b();
+      azg $$3 = $$0.d();
+      if ($$1.v() > $$2.P() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(djm.J) && !$$2.a_($$1.e()).a(djm.J)) {
          return false;
       } else {
-         ji.a $$8 = $$0.e().k();
-         ji.a $$9 = $$8.k().c($$2.b());
+         boolean $$4 = false;
 
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
+         for (jn $$5 : jn.values()) {
+            if ($$5 != jn.a && $$2.a_($$1.a($$5)).a(djm.ja)) {
+               $$4 = true;
                break;
             }
-
-            $$9.c($$2.b());
          }
 
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               eht.a $$13 = $$2.a().get($$11);
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, djm.ny.m(), 2);
 
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  ji $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dwv $$10 = $$2.a_($$9);
+                  if ($$10.l() || $$10.a(djm.J) || $$10.a(djm.ja) || $$10.a(djm.eb)) {
+                     for (jn $$11 : jn.values()) {
+                        dwv $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(djm.ny)) {
+                           $$2.a($$9, djm.ny.m(), 2);
+                           break;
+                        }
+                     }
+                  }
                }
             }
+
+            return true;
          }
-
-         return true;
-      }
-   }
-
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
       }
    }
 }

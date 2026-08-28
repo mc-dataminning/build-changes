@@ -1,22 +1,28 @@
-public class cty implements cso {
-   private final int[] a;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public cty(int $$0) {
-      this.a = new int[$$0];
+public interface cty extends azu {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
+   static cty a(final String $$0, final IntList $$1) {
+      return new cty() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
 
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
+         @Override
+         public String c() {
+            return $$0;
+         }
 
-   @Override
-   public int a() {
-      return this.a.length;
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

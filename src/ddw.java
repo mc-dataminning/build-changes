@@ -1,21 +1,23 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ddw(jr<avz> d, brm e, brm f) implements ddq {
+public record ddw(km d, Optional<edx> e, ekb f, Optional<jr<ebr>> g) implements ddo {
    public static final MapCodec<ddw> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               avz.b.fieldOf("sound").forGetter(ddw::b),
-               brm.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(ddw::c),
-               brm.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(ddw::d)
+               km.g.optionalFieldOf("offset", km.h).forGetter(ddw::b),
+               edx.b.optionalFieldOf("predicate").forGetter(ddw::c),
+               ekb.a.fieldOf("block_state").forGetter(ddw::d),
+               ebr.aj.optionalFieldOf("trigger_game_event").forGetter(ddw::e)
             )
             .apply($$0, ddw::new)
    );
 
    @Override
-   public void a(arc $$0, int $$1, dcy $$2, buk $$3, fba $$4) {
-      azh $$5 = $$3.dZ();
-      if (!$$3.bb()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dn(), this.e.a($$5), this.f.a($$5));
+   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
+      ji $$5 = ji.a((kb)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dZ(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -24,15 +26,19 @@ public record ddw(jr<avz> d, brm e, brm f) implements ddq {
       return a;
    }
 
-   public jr<avz> b() {
+   public km b() {
       return this.d;
    }
 
-   public brm c() {
+   public Optional<edx> c() {
       return this.e;
    }
 
-   public brm d() {
+   public ekb d() {
       return this.f;
+   }
+
+   public Optional<jr<ebr>> e() {
+      return this.g;
    }
 }

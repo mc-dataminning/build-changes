@@ -1,33 +1,89 @@
-import com.mojang.serialization.DataResult;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.stream.LongStream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public interface dzl<T> {
-   T a(int var1, int var2, int var3);
+public class dzl<T> implements dzg<T> {
+   private final jw<T> a;
+   @Nullable
+   private T b;
+   private final dzh<T> c;
 
-   void a(Consumer<T> var1);
-
-   void b(vl var1);
-
-   int c();
-
-   boolean a(Predicate<T> var1);
-
-   void a(dzk.b<T> var1);
-
-   dzk<T> d();
-
-   dzk<T> e();
-
-   dzl.a<T> a(jw<T> var1, dzk.d var2);
-
-   public static record a<T>(List<T> a, Optional<LongStream> b) {
+   public dzl(jw<T> $$0, dzh<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
    }
 
-   public interface b<T, C extends dzl<T>> {
-      DataResult<C> read(jw<T> var1, dzk.d var2, dzl.a<T> var3);
+   public static <A> dzg<A> a(int $$0, jw<A> $$1, dzh<A> $$2, List<A> $$3) {
+      return new dzl<>($$1, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(vl $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(vl $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return wf.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dzg<T> a(dzh<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

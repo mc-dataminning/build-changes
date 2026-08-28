@@ -1,37 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class eks extends ekw {
+public class eks extends eku {
    public static final MapCodec<eks> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eks::new, $$0 -> $$0.b);
    private final float b;
+
+   @Override
+   protected ekv<?> a() {
+      return ekv.b;
+   }
 
    public eks(float $$0) {
       this.b = $$0;
    }
 
    @Override
-   protected ekx<?> a() {
-      return ekx.e;
+   public void a(eku.a $$0) {
+      azg $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            ji $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dsl.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ji $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dsl.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ji $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dsl.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ji $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dsl.c, $$0);
+            }
+         }
+      });
    }
 
-   @Override
-   public void a(ekw.a $$0) {
-      azh $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<ji> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (jn $$3x : jn.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  jn $$4 = $$3x.g();
-                  ji $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, djo.fX.m().b(dkt.c, Integer.valueOf($$1.a(3))).b(dkt.aF, $$3x));
-                  }
-               }
-            }
-         });
+   private static void a(ji $$0, dxm $$1, eku.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (ji var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
       }
    }
 }

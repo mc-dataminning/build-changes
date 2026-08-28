@@ -1,77 +1,71 @@
 import javax.annotation.Nullable;
 
-public class dag extends dai {
-   private final ji b;
-   protected boolean a = true;
+public class dag {
+   @Nullable
+   private final cov a;
+   private final bsh b;
+   private final fau c;
+   private final dgg d;
+   private final cwn e;
 
-   public dag(cox $$0, bsi $$1, cwp $$2, faw $$3) {
-      this($$0.dW(), $$0, $$1, $$2, $$3);
+   public dag(cov $$0, bsh $$1, fau $$2) {
+      this($$0.dW(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public dag(dai $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   protected dag(dgg $$0, @Nullable cov $$1, bsh $$2, cwn $$3, fau $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   protected dag(dgi $$0, @Nullable cox $$1, bsi $$2, cwp $$3, faw $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.b().a($$4.c());
-      this.a = $$0.a_($$4.b()).a(this);
+   protected final fau j() {
+      return this.c;
    }
 
-   public static dag a(dag $$0, ji $$1, jn $$2) {
-      return new dag(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new faw(
-            new fba((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
-   }
-
-   @Override
    public ji a() {
-      return this.a ? super.a() : this.b;
+      return this.c.b();
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+   public jn k() {
+      return this.c.c();
    }
 
-   public boolean c() {
+   public fay l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cwn n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cov o() {
       return this.a;
    }
 
-   public jn d() {
-      return jn.a(this.o())[0];
+   public bsh p() {
+      return this.b;
    }
 
-   public jn e() {
-      return jn.a(this.o(), jn.a.b);
+   public dgg q() {
+      return this.d;
    }
 
-   public jn[] f() {
-      jn[] $$0 = jn.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         jn $$1 = this.k();
-         int $$2 = 0;
+   public jn g() {
+      return this.a == null ? jn.c : this.a.cO();
+   }
 
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
+   public boolean h() {
+      return this.a != null && this.a.fY();
+   }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dM();
    }
 }

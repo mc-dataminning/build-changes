@@ -19,7 +19,7 @@ public interface vw<T extends vu> {
 
       yw b();
 
-      @bag
+      @baf
       void a(vw.a.a var1);
 
       @FunctionalInterface

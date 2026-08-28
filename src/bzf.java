@@ -1,42 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bzf {
-   public static byk<coi> a(cek<jq> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return cam.a(
-         (Function<cam.b<coi>, ? extends App<cam.c<coi>, cap<coi>>>)($$5 -> $$5.group($$5.a(cek.E), $$5.c(cek.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jq $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ai() && (!$$13.isPresent() || $$9.ad() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dw()) > $$3) {
-                           fba $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   public static byj<bvf> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
+   }
 
-                           while ($$14 == null || ji.a((kb)$$14).k($$10.dw()) > $$3) {
-                              $$14 = cgb.a($$10, 15, 7, fba.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
-
-                           $$7.a(new cen($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dw()) > $$2) {
-                           $$7.a(new cen($$12.b(), $$1, $$2));
-                        }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
-
+   public static byj<bvf> a(Predicate<bvf> $$0, Function<bvf, Float> $$1, int $$2) {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$3 -> $$3.group($$3.c(cej.m), $$3.b(cej.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new cem($$3.b($$5), $$1.apply($$7), $$2));
                      return true;
-                  }))
+                  }
+               }))
       );
    }
 }

@@ -1,4 +1,3 @@
-@FunctionalInterface
 public interface dfs {
-   int getColor(dhk var1, double var2, double var4);
+   int a(arc var1, boolean var2, boolean var3);
 }

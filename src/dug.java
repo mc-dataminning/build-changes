@@ -1,159 +1,139 @@
-public class dug extends dvh implements dvf {
-   private static final int d = 1;
-   private ka<cwp> e = ka.a(27, cwp.j);
-   private final dum f = new dum() {
-      @Override
-      protected void a(dgi $$0, ji $$1, dwx $$2) {
-         dug.a($$0, $$1, $$2, awa.eS);
-      }
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(dgi $$0, ji $$1, dwx $$2) {
-         dug.a($$0, $$1, $$2, awa.eQ);
-      }
+public class dug extends dtx implements bsb {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final ka<cwn> d = ka.a(6, cwn.j);
+   private int e = -1;
 
-      @Override
-      protected void a(dgi $$0, ji $$1, dwx $$2, int $$3, int $$4) {
-         dug.this.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public dug(ji $$0, dwv $$1) {
+      super(dtz.N, $$0, $$1);
+   }
 
-      @Override
-      protected boolean a(cox $$0) {
-         if (!($$0.cd instanceof csl)) {
-            return false;
-         } else {
-            bsc $$1 = ((csl)$$0.cd).l();
-            return $$1 == dug.this || $$1 instanceof bsb && ((bsb)$$1).a(dug.this);
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dwv $$1 = this.m();
+
+         for (int $$2 = 0; $$2 < dko.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            dxm $$4 = dko.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
          }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(ebr.c, this.p, ebr.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
       }
-   };
-   private final duh g = new duh();
-
-   protected dug(dub<?> $$0, ji $$1, dwx $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public dug(ji $$0, dwx $$1) {
-      this(dub.b, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected wo j() {
-      return wo.c("container.chest");
    }
 
    @Override
    protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      this.e = ka.a(this.b(), cwp.j);
-      if (!this.b_($$0)) {
-         bsd.b($$0, this.e, $$1);
-      }
+      this.d.clear();
+      bsc.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
    }
 
    @Override
    protected void b(tq $$0, jt.a $$1) {
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsd.a($$0, this.e, $$1);
+      bsc.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cwn::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cwn::f);
+   }
+
+   @Override
+   public cwn a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cwn a(int $$0, int $$1) {
+      cwn $$2 = Objects.requireNonNullElse(this.d.get($$0), cwn.j);
+      this.d.set($$0, cwn.j);
+      if (!$$2.f()) {
+         this.c($$0);
       }
+
+      return $$2;
    }
 
-   public static void a(dgi $$0, ji $$1, dwx $$2, dug $$3) {
-      $$3.g.a();
+   @Override
+   public cwn b(int $$0) {
+      return this.a($$0, 1);
    }
 
-   static void a(dgi $$0, ji $$1, dwx $$2, avz $$3) {
-      dxp $$4 = $$2.c(dkp.d);
-      if ($$4 != dxp.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dxp.c) {
-            jn $$8 = dkp.i($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, awb.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+   @Override
+   public void a(int $$0, cwn $$1) {
+      if ($$1.a(awx.aZ)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
       }
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.g.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   public boolean a(bsb $$0, int $$1, cwn $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cwn.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.e_($$2x));
    }
 
    @Override
-   public void c_(cox $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.f.a($$0, this.i(), this.aA_(), this.m());
-      }
+   public int an_() {
+      return 1;
    }
 
    @Override
-   public void c(cox $$0) {
-      if (!this.q && !$$0.Z_()) {
-         this.f.b($$0, this.i(), this.aA_(), this.m());
-      }
+   public boolean a(cov $$0) {
+      return bsb.a(this, $$0);
    }
 
    @Override
-   protected ka<cwp> f() {
+   public boolean b(int $$0, cwn $$1) {
+      return $$1.a(awx.aZ) && this.a($$0).f() && $$1.M() == this.an_();
+   }
+
+   public int j() {
       return this.e;
    }
 
    @Override
-   protected void a(ka<cwp> $$0) {
-      this.e = $$0;
+   protected void a(dtx.b $$0) {
+      super.a($$0);
+      $$0.a(kv.al, czf.a).a(this.d);
    }
 
    @Override
-   public float a(float $$0) {
-      return this.g.a($$0);
-   }
-
-   public static int a(dfn $$0, ji $$1) {
-      dwx $$2 = $$0.a_($$1);
-      if ($$2.x()) {
-         dtz $$3 = $$0.c_($$1);
-         if ($$3 instanceof dug) {
-            return ((dug)$$3).f.a();
-         }
-      }
-
-      return 0;
-   }
-
-   public static void a(dug $$0, dug $$1) {
-      ka<cwp> $$2 = $$0.f();
-      $$0.a($$1.f());
-      $$1.a($$2);
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.al, czf.a(this.d));
    }
 
    @Override
-   protected csc a(int $$0, cow $$1) {
-      return csl.a($$0, $$1, this);
-   }
-
-   public void k() {
-      if (!this.q) {
-         this.f.c(this.i(), this.aA_(), this.m());
-      }
-   }
-
-   protected void a(dgi $$0, ji $$1, dwx $$2, int $$3, int $$4) {
-      djm $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   public void a(tq $$0) {
+      $$0.r("Items");
    }
 }

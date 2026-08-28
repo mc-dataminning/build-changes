@@ -1,52 +1,51 @@
-public class cpu extends cpk {
-   public cpu(bur<? extends cpu> $$0, dgi $$1) {
+import javax.annotation.Nullable;
+
+public class cpu extends cpc {
+   private int d = 200;
+
+   public cpu(buq<? extends cpu> $$0, dgg $$1) {
       super($$0, $$1);
    }
 
-   public cpu(dgi $$0, bvg $$1, fba $$2) {
-      super(bur.bi, $$1, $$2, $$0);
+   public cpu(dgg $$0, bvf $$1, cwn $$2, @Nullable cwn $$3) {
+      super(buq.bm, $$1, $$0, $$2, $$3);
    }
 
-   public cpu(dgi $$0, double $$1, double $$2, double $$3, fba $$4) {
-      super(bur.bi, $$1, $$2, $$3, $$4, $$0);
+   public cpu(dgg $$0, double $$1, double $$2, double $$3, cwn $$4, @Nullable cwn $$5) {
+      super(buq.bm, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   protected void a(fax $$0) {
-      super.a($$0);
-      if (this.dW() instanceof arc $$1) {
-         buk var7 = $$0.a();
-         buk $$4 = this.p();
-         int $$5 = var7.aG();
-         var7.d(5.0F);
-         bta $$6 = this.dX().a((cpk)this, $$4);
-         if (!var7.a($$1, $$6, 5.0F)) {
-            var7.h($$5);
-         } else {
-            ddb.a($$1, var7, $$6);
-         }
+   public void h() {
+      super.h();
+      if (this.dW().C && !this.l()) {
+         this.dW().a(lt.S, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(faw $$0) {
+   protected void a(bvf $$0) {
       super.a($$0);
-      if (this.dW() instanceof arc $$1) {
-         buk $$3 = this.p();
-         if (!($$3 instanceof bvi) || $$1.O().b(dge.c)) {
-            ji $$4 = $$0.b().a($$0.c());
-            if (this.dW().u($$4)) {
-               this.dW().b($$4, diz.a(this.dW(), $$4));
-            }
-         }
+      bto $$1 = new bto(btq.x, this.d, 0);
+      $$0.b($$1, this.E());
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.d = $$0.h("Duration");
       }
    }
 
    @Override
-   protected void a(fay $$0) {
-      super.a($$0);
-      if (!this.dW().C) {
-         this.at();
-      }
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.d);
+   }
+
+   @Override
+   protected cwn v() {
+      return new cwn(cwr.wp);
    }
 }

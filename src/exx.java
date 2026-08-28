@@ -1,56 +1,93 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class exx extends exe {
-   private static final Logger b = LogUtils.getLogger();
+public class exx extends exc {
    public static final MapCodec<exx> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(ezx.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and(
+               $$0.group(
+                  wq.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  exb.a(256).forGetter($$0x -> $$0x.c),
+                  evp.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, exx::new)
    );
-   private final ezw c;
-   private final boolean d;
+   private final List<wo> b;
+   private final exb c;
+   private final Optional<evp.b> d;
 
-   private exx(List<eza> $$0, ezw $$1, boolean $$2) {
+   public exx(List<eyy> $$0, List<wo> $$1, exb $$2, Optional<evp.b> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public exg<exx> b() {
-      return exh.n;
+   public exe<exx> b() {
+      return exf.A;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return this.c.a();
+   public Set<bah<?>> a() {
+      return this.d.<Set<bah<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - ayz.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(ayz.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   public cwn a(cwn $$0, evp $$1) {
+      $$0.a(kv.j, czg.a, $$1x -> new czg(this.a($$1x, $$1)));
       return $$0;
    }
 
-   public static exe.a<?> a(ezw $$0) {
-      return a($$1 -> new exx($$1, $$0, false));
+   private List<wo> a(@Nullable czg $$0, evp $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
+      } else {
+         UnaryOperator<wo> $$2 = exy.a($$1, this.d.orElse(null));
+         List<wo> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
+      }
    }
 
-   public static exe.a<?> a(ezw $$0, boolean $$1) {
-      return a($$2 -> new exx($$2, $$0, $$1));
+   public static exx.a c() {
+      return new exx.a();
+   }
+
+   public static class a extends exc.a<exx.a> {
+      private Optional<evp.b> a = Optional.empty();
+      private final Builder<wo> b = ImmutableList.builder();
+      private exb c = exb.a.b;
+
+      public exx.a a(exb $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public exx.a a(evp.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public exx.a a(wo $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      protected exx.a a() {
+         return this;
+      }
+
+      @Override
+      public exd b() {
+         return new exx(this.g(), this.b.build(), this.c, this.a);
+      }
    }
 }

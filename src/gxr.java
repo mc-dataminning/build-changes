@@ -1,5 +1,7 @@
-public class gxr extends gzi {
-   public boolean a;
-   public final buc b = new buc();
-   public final buc c = new buc();
+public class gxr extends gzh {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

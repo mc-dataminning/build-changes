@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class cke extends cjw {
+   private static final int b = 40;
+   private int c;
 
-public interface cke {
-   boolean a();
+   public cke(cjt $$0) {
+      super($$0);
+   }
 
-   void b();
+   @Override
+   public void b() {
+      this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), avz.iz, this.a.dn(), 2.5F, 0.8F + this.a.dZ().i() * 0.3F, false);
+   }
 
-   void a(arc var1);
+   @Override
+   public void a(arc $$0) {
+      if (this.c++ >= 40) {
+         this.a.gl().a(ckj.f);
+      }
+   }
 
-   void a(cjt var1, ji var2, bta var3, @Nullable cox var4);
+   @Override
+   public void c() {
+      this.c = 0;
+   }
 
-   void c();
-
-   void d();
-
-   float e();
-
-   float g();
-
-   ckk<? extends cke> h();
-
-   @Nullable
-   fba f();
-
-   float a(bta var1, float var2);
+   @Override
+   public ckj<cke> h() {
+      return ckj.h;
+   }
 }

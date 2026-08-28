@@ -1,16 +1,20 @@
-public class gtt extends gsv<cma, gza> {
-   private static final aku a = aku.b("textures/entity/illager/pillager.png");
+public class gtt extends gqv<cho, gzu, gde> {
+   private static final aku a = aku.b("textures/entity/bear/polarbear.png");
 
-   public gtt(gsc.a $$0) {
-      super($$0, new gco<>($$0.a(gfb.cd)), 0.5F);
-      this.a(new gwj<>(this));
+   public gtt(gsb.a $$0) {
+      super($$0, new gde($$0.a(gez.co)), new gde($$0.a(gez.cp)), 0.9F);
    }
 
-   public aku a(gza $$0) {
+   public aku a(gzu $$0) {
       return a;
    }
 
-   public gza b() {
-      return new gza();
+   public gzu b() {
+      return new gzu();
+   }
+
+   public void a(cho $$0, gzu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
    }
 }

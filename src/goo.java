@@ -1,64 +1,103 @@
-import java.util.Calendar;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class goo<T extends dtz & dvf> implements goi<T> {
-   private final gbn a;
-   private final gbn b;
-   private final gbn c;
-   private final boolean d = b();
+public class goo implements goh<duj> {
+   public static final hgt a = new hgt(hel.d, aku.b("entity/conduit/base"));
+   public static final hgt b = new hgt(hel.d, aku.b("entity/conduit/cage"));
+   public static final hgt c = new hgt(hel.d, aku.b("entity/conduit/wind"));
+   public static final hgt d = new hgt(hel.d, aku.b("entity/conduit/wind_vertical"));
+   public static final hgt e = new hgt(hel.d, aku.b("entity/conduit/open_eye"));
+   public static final hgt f = new hgt(hel.d, aku.b("entity/conduit/closed_eye"));
+   private final gfa g;
+   private final gfa h;
+   private final gfa i;
+   private final gfa j;
+   private final gog k;
 
-   public goo(goj.a $$0) {
-      this.a = new gbn($$0.a(gfb.V));
-      this.b = new gbn($$0.a(gfb.at));
-      this.c = new gbn($$0.a(gfb.au));
+   public goo(goi.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(gez.ac);
+      this.h = $$0.a(gez.ae);
+      this.i = $$0.a(gez.ad);
+      this.j = $$0.a(gez.ab);
    }
 
-   public static boolean b() {
-      Calendar $$0 = Calendar.getInstance();
-      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
+   public static gfg b() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      $$1.a("eye", gff.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new gfe(0.01F)), gfc.a);
+      return gfg.a($$0, 16, 16);
    }
 
-   @Override
-   public void a(T $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
-      dgi $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dwx $$8 = $$7 ? $$0.m() : djo.cD.m().b(dkp.c, jn.d);
-      dxp $$9 = $$8.b(dkp.d) ? $$8.c(dkp.d) : dxp.a;
-      if ($$8.b() instanceof dig<?> $$11) {
-         boolean $$12 = $$9 != dxp.a;
+   public static gfg c() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      $$1.a("wind", gff.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gfc.a);
+      return gfg.a($$0, 64, 32);
+   }
+
+   public static gfg d() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      $$1.a("shell", gff.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfc.a);
+      return gfg.a($$0, 32, 16);
+   }
+
+   public static gfg e() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      $$1.a("shell", gff.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfc.a);
+      return gfg.a($$0, 32, 16);
+   }
+
+   public void a(duj $$0, float $$1, ffs $$2, glv $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         ffw $$8 = a.a($$3, gmf::d);
          $$2.a();
-         float $$13 = $$8.c(dkp.c).p();
          $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dlu.c<? extends dug> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
-         } else {
-            $$14 = dlu.b::b;
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = ayy.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, gmf::g), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
 
-         float $$16 = $$14.apply(dkp.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gol<>()).applyAsInt($$4);
-         hgs $$18 = gms.a($$0, $$9, this.d);
-         ffy $$19 = $$18.a($$3, gmh::f);
-         if ($$12) {
-            if ($$9 == dxp.b) {
-               this.a($$2, $$19, this.b, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.c, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.a, $$16, $$17, $$5);
-         }
-
+         ffw $$13 = ($$12 == 1 ? d : c).a($$3, gmf::g);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         fkp $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, gmf::g), $$4, $$5);
          $$2.b();
       }
-   }
-
-   private void a(ffu $$0, ffy $$1, gbn $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
    }
 }

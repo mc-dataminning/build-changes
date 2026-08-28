@@ -1,15 +1,17 @@
-public class hfj extends hfn {
-   private static final aku a = aku.b("back");
+import java.io.IOException;
+import java.io.InputStream;
 
-   public hfj(hek $$0) {
-      super($$0, aku.b("textures/atlas/paintings.png"), aku.b("paintings"));
-   }
+public class hfj {
+   @Deprecated
+   public static int[] a(auo $$0, aku $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         fes $$3 = fes.a($$2);
+      ) {
+         var4 = $$3.f();
+      }
 
-   public hej a(ckx $$0) {
-      return this.a($$0.d());
-   }
-
-   public hej a() {
-      return this.a(a);
+      return var4;
    }
 }

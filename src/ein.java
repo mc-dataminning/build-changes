@@ -1,21 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class ein implements eic {
+public record ein(int b, int c, int d, jr<emo> e) implements eia {
    public static final Codec<ein> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(emq.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), emq.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ein::new)
+      $$0 -> $$0.group(
+               ayh.m.fieldOf("tries").orElse(128).forGetter(ein::a),
+               ayh.l.fieldOf("xz_spread").orElse(7).forGetter(ein::b),
+               ayh.l.fieldOf("y_spread").orElse(3).forGetter(ein::c),
+               emo.b.fieldOf("feature").forGetter(ein::d)
+            )
+            .apply($$0, ein::new)
    );
-   public final jr<emq> b;
-   public final jr<emq> c;
 
-   public ein(jr<emq> $$0, jr<emq> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public Stream<efk<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public jr<emo> d() {
+      return this.e;
    }
 }

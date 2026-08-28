@@ -1,61 +1,65 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class ewt extends exe {
+public class ewt extends exc {
    public static final MapCodec<ewt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ewt.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ewt::new)
+      $$0 -> a($$0)
+            .and($$0.group(ezv.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kg.a(mc.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ewt::new)
    );
-   private final ewt.a b;
+   private final ezu b;
+   private final Optional<jv<dcx>> c;
 
-   private ewt(List<eza> $$0, ewt.a $$1) {
+   ewt(List<eyy> $$0, ezu $$1, Optional<jv<dcx>> $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public exg<ewt> b() {
-      return exh.s;
+   public exe<ewt> b() {
+      return exf.g;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(this.b.g);
+   public Set<bah<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      if ($$1.c(this.b.g) instanceof bsm $$3) {
-         $$0.b(kv.g, $$3.an());
+   public cwn a(cwn $$0, evp $$1) {
+      azg $$2 = $$1.b();
+      kf $$3 = $$1.d().K_();
+      return dcz.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static ewt.a a(jt.a $$0, ezu $$1) {
+      return new ewt.a($$1).a($$0.d(mc.aO).b(awr.n));
+   }
+
+   public static class a extends exc.a<ewt.a> {
+      private final ezu a;
+      private Optional<jv<dcx>> b = Optional.empty();
+
+      public a(ezu $$0) {
+         this.a = $$0;
       }
 
-      return $$0;
-   }
+      protected ewt.a a() {
+         return this;
+      }
 
-   public static exe.a<?> a(ewt.a $$0) {
-      return a($$1 -> new ewt($$1, $$0));
-   }
-
-   public static enum a implements azv {
-      a("this", eyl.a),
-      b("attacking_entity", eyl.d),
-      c("last_damage_player", eyl.b),
-      d("block_entity", eyl.h);
-
-      public static final Codec<ewt.a> e = azv.a(ewt.a::values);
-      private final String f;
-      final bai<?> g;
-
-      private a(final String $$0, final bai<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      public ewt.a a(jv<dcx> $$0) {
+         this.b = Optional.of($$0);
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.f;
+      public exd b() {
+         return new ewt(this.g(), this.a, this.b);
       }
    }
 }

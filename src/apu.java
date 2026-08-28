@@ -32,8 +32,8 @@ public class apu extends apx<apu> {
    public final String g = this.a("bug-report-link", "");
    public final boolean h = this.a("force-gamemode", false);
    public final boolean i = this.a("enforce-whitelist", false);
-   public final bsg j = this.a("difficulty", a(bsg::a, bsg::a), bsg::e, bsg.b);
-   public final dgf k = this.a("gamemode", a(dgf::a, dgf::a), dgf::b, dgf.a);
+   public final bsf j = this.a("difficulty", a(bsf::a, bsf::a), bsf::e, bsf.b);
+   public final dgd k = this.a("gamemode", a(dgd::a, dgd::a), dgd::b, dgd.a);
    public final String l = this.a("level-name", "world");
    public final int m = this.a("server-port", 25565);
    @Nullable
@@ -60,35 +60,35 @@ public class apu extends apx<apu> {
    public final int H = this.a("network-compression-threshold", 256);
    public final boolean I = this.a("broadcast-rcon-to-ops", true);
    public final boolean J = this.a("broadcast-console-to-ops", true);
-   public final int K = this.a("max-world-size", $$0x -> ayz.a($$0x, 1, 29999984), 29999984);
+   public final int K = this.a("max-world-size", $$0x -> ayy.a($$0x, 1, 29999984), 29999984);
    public final boolean L = this.a("sync-chunk-writes", true);
    public final String M = this.a("region-file-compression", "deflate");
    public final boolean N = this.a("enable-jmx-monitoring", false);
    public final boolean O = this.a("enable-status", true);
    public final boolean P = this.a("hide-online-players", false);
-   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> ayz.a($$0x, 10, 1000), 100);
+   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> ayy.a($$0x, 10, 1000), 100);
    public final String R = this.a("text-filtering-config", "");
    public final int S = this.a("text-filtering-version", 0);
    public final Optional<MinecraftServer.b> T;
-   public final dfv U;
+   public final dft U;
    public final apx<apu>.a<Integer> V = this.b("player-idle-timeout", 0);
    public final apx<apu>.a<Boolean> W = this.b("white-list", false);
    public final boolean X = this.a("enforce-secure-profile", true);
    public final boolean Y = this.a("log-ips", true);
    public final int Z = this.a("pause-when-empty-seconds", 60);
    private final apu.a ag;
-   public final edq aa;
+   public final edo aa;
    public boolean ab = this.a("accepts-transfers", false);
 
    public apu(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = edq.a($$1).orElse(edq.g());
-      this.aa = new edq($$3, $$2, false);
+      long $$3 = edo.a($$1).orElse(edo.g());
+      this.aa = new edo($$3, $$2, false);
       this.ag = new apu.a(
-         this.a("generator-settings", $$0x -> ayp.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), enc.a.a().toString())
+         this.a("generator-settings", $$0x -> ayo.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ena.a.a().toString())
       );
       this.T = a(
          this.a("resource-pack-id", ""),
@@ -98,7 +98,7 @@ public class apu extends apx<apu> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", dhf.c.a().a())), this.a("initial-disabled-packs", String.join(",", dhf.c.a().b())));
+      this.U = b(this.a("initial-enabled-packs", String.join(",", dhd.c.a().a())), this.a("initial-disabled-packs", String.join(",", dhd.c.a().b())));
    }
 
    public static apu a(Path $$0) {
@@ -163,25 +163,25 @@ public class apu extends apx<apu> {
       }
    }
 
-   private static dfv b(String $$0, String $$1) {
+   private static dft b(String $$0, String $$1) {
       List<String> $$2 = af.splitToList($$0);
       List<String> $$3 = af.splitToList($$1);
-      return new dfv($$2, $$3);
+      return new dft($$2, $$3);
    }
 
-   public edn a(jt.a $$0) {
+   public edl a(jt.a $$0) {
       return this.ag.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, akt<enb>> c = Map.of("default", enc.a, "largebiomes", enc.c);
+      private static final Map<String, akt<emz>> c = Map.of("default", ena.a, "largebiomes", ena.c);
 
-      public edn a(jt.a $$0) {
-         jt<enb> $$1 = $$0.d(mc.bb);
-         jr.c<enb> $$2 = $$1.a(enc.a)
+      public edl a(jt.a $$0) {
+         jt<emz> $$1 = $$0.d(mc.bb);
+         jr.c<emz> $$2 = $$1.a(ena.a)
             .or(() -> $$1.c().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         jr<enb> $$3 = Optional.ofNullable(aku.c(this.b))
+         jr<emz> $$3 = Optional.ofNullable(aku.c(this.b))
             .map($$0x -> akt.a(mc.bb, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::a)
@@ -189,12 +189,12 @@ public class apu extends apx<apu> {
                apu.ad.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
                return $$2;
             });
-         edn $$4 = $$3.a().a();
-         if ($$3.a(enc.b)) {
+         edl $$4 = $$3.a().a();
+         if ($$3.a(ena.b)) {
             aks<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<elp> $$6 = elp.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apu.ad::error);
+            Optional<eln> $$6 = eln.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apu.ad::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new ecn($$6.get()));
+               return $$4.a($$0, new ecl($$6.get()));
             }
          }
 

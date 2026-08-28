@@ -1,125 +1,84 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bws {
-   public static final int a = 48;
+public class bws extends bwy<cgw> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final buq<? extends cgw> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public static bxa<bvo> a(Predicate<jr<cgn>> $$0, cek<jq> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public bws(buq<? extends cgw> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public static bxa<bvo> a(Predicate<jr<cgn>> $$0, cek<jq> $$1, cek<jq> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bws.a> $$8 = new Long2ObjectOpenHashMap();
-      byk<bvo> $$9 = cam.a(
-         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.e_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.ad() + (long)$$6xx.A.a(20));
-                     return false;
-                  } else if ($$6xx.ad() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.H_().a(20));
-                     cgk $$9x = $$6xx.A();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bws.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<ji> $$10 = $$2xxxx -> {
-                        bws.a $$3xxxx = (bws.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<jr<cgn>, ji>> $$11 = $$9x.c($$0, $$10, $$7x.dw(), 48, cgk.b.a).limit(5L).collect(Collectors.toSet());
-                     etn $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        ji $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(jq.a($$6xx.ai(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           agc.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<jr<cgn>, ji> $$14 : $$11) {
-                           $$8.computeIfAbsent(((ji)$$14.getSecond()).a(), $$2xxxx -> new bws.a($$6xx.A, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : cam.a((Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public bws(buq<? extends cgw> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cej.h, cek.a, cej.r, cek.b, cej.m, cek.c, cej.n, cek.c, cej.Z, cek.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   @Nullable
-   public static etn a(bvi $$0, Set<Pair<jr<cgn>, ji>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
+   protected boolean a(arc $$0, cgw $$1) {
+      return $$1.gz() && this.c($$1).isPresent();
+   }
+
+   protected void a(arc $$0, cgw $$1, long $$2) {
+      cgw $$3 = this.c($$1).get();
+      $$1.ec().a(cej.r, $$3);
+      $$3.ec().a(cej.r, $$1);
+      bxa.a($$1, (bvf)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dZ().a(50);
+      this.j = $$2 + (long)$$4;
+   }
+
+   protected boolean b(arc $$0, cgw $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
       } else {
-         Set<ji> $$2 = new HashSet<>();
-         int $$3 = 1;
+         cgw $$3 = this.a($$1);
+         return $$3.bL() && $$1.a($$3) && bxa.a($$1.ec(), $$3) && $$2 <= this.j && !$$1.gm() && !$$3.gm();
+      }
+   }
 
-         for (Pair<jr<cgn>, ji> $$4 : $$1) {
-            $$3 = Math.max($$3, ((cgn)((jr)$$4.getFirst()).a()).c());
-            $$2.add((ji)$$4.getSecond());
+   protected void c(arc $$0, cgw $$1, long $$2) {
+      cgw $$3 = this.a($$1);
+      bxa.a($$1, (bvf)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.ec().b(cej.r);
+            $$3.ec().b(cej.r);
+         }
+      }
+   }
+
+   protected void d(arc $$0, cgw $$1, long $$2) {
+      $$1.ec().b(cej.r);
+      $$1.ec().b(cej.m);
+      $$1.ec().b(cej.n);
+      this.j = 0L;
+   }
+
+   private cgw a(cgw $$0) {
+      return (cgw)$$0.ec().c(cej.r).get();
+   }
+
+   private boolean b(cgw $$0) {
+      bwh<?> $$1 = $$0.ec();
+      return $$1.a(cej.r) && $$1.c(cej.r).get().aq() == this.f;
+   }
+
+   private Optional<? extends cgw> c(cgw $$0) {
+      return $$0.ec().c(cej.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof cgw $$2 && $$0.a($$2) && !$$2.gm()) {
+            return true;
          }
 
-         return $$0.L().a($$2, $$3);
-      }
-   }
-
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final azh d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(azh $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+         return false;
+      }).map(cgw.class::cast);
    }
 }

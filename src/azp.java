@@ -1,24 +1,25 @@
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class azp {
+   private double a;
+   private double b;
+   private double c;
 
-public class azp<K, V> {
-   private final Function<K, V> a;
-   @Nullable
-   private K b = (K)null;
-   @Nullable
-   private V c;
-
-   public azp(Function<K, V> $$0) {
-      this.a = $$0;
-   }
-
-   public V a(K $$0) {
-      if (this.c == null || !Objects.equals(this.b, $$0)) {
-         this.c = this.a.apply($$0);
-         this.b = $$0;
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = ayy.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
       }
 
-      return this.c;
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
+   }
+
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
 }

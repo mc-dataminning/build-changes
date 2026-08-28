@@ -1,7 +1,11 @@
-public class gxs extends gzi {
-   public float a;
-   public boolean b = true;
-   public boolean c;
-   public boolean d;
-   public boolean e;
+import javax.annotation.Nullable;
+
+public class gxs extends gyb {
+   @Nullable
+   public buh.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

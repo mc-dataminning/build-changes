@@ -1,33 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bxz {
-   public static byk<bvg> a(int $$0, float $$1, int $$2) {
-      return cam.a(
-         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$3 -> $$3.group(
-                  $$3.c(cek.m), $$3.a(cek.b), $$3.a(cek.C), $$3.a(cek.t), $$3.a(cek.n), $$3.a(cek.r), $$3.a(cek.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.A()
-                           .d($$0xxxx -> $$0xxxx.a(cgo.n), $$0xxxx -> true, $$12.dw(), $$2 + 1, cgk.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.du(), (double)$$2))
-                           .or(() -> $$11.A().a($$0xxxxx -> $$0xxxxx.a(cgo.n), $$0xxxxx -> true, cgk.b.c, $$12.dw(), $$0, $$12.dZ()))
-                           .or(() -> $$3.<jq>a($$5).map(jq::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(jq.a($$11.ai(), $$10xx));
-                              if (!$$10xx.a($$12.du(), (double)$$2)) {
-                                 $$4.a(new cen($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class bxz extends bwy<bvh> {
+   public static final int c = 100;
+   private final brt d;
+   private final avy e;
+
+   public bxz(brt $$0, avy $$1) {
+      super(ImmutableMap.of(cej.n, cek.c, cej.T, cek.a), 100);
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   protected boolean a(arc $$0, bvh $$1, long $$2) {
+      return !$$1.aJ();
+   }
+
+   protected void b(arc $$0, bvh $$1, long $$2) {
+      $$1.r(true);
+      $$1.b(bvr.g);
+   }
+
+   protected void c(arc $$0, bvh $$1, long $$2) {
+      if ($$1.aJ()) {
+         $$1.h($$1.dz().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awa.g, 2.0F, 1.0F);
+      }
+
+      $$1.r(false);
+      $$1.b(bvr.a);
+      $$1.ec().b(cej.T);
+      $$1.ec().a(cej.S, this.d.a($$0.A));
    }
 }

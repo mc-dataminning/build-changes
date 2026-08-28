@@ -24,7 +24,7 @@ public class ans {
       if (!InetAddresses.isInetAddress($$1)) {
          throw a.create();
       } else {
-         ava $$2 = $$0.l().ag().g();
+         auz $$2 = $$0.l().ag().g();
          if (!$$2.a($$1)) {
             throw b.create();
          } else {

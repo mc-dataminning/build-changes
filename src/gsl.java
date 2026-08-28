@@ -1,23 +1,21 @@
-public class gsl extends gti<cir, gys, gce> {
-   public gsl(gsc.a $$0) {
-      super($$0, new gce($$0.a(gfb.aP)), 0.3F);
+public class gsl extends gth<clq, gys, gcd> {
+   private static final aku a = aku.b("textures/entity/ghast/ghast.png");
+   private static final aku b = aku.b("textures/entity/ghast/ghast_shooting.png");
+
+   public gsl(gsb.a $$0) {
+      super($$0, new gcd($$0.a(gez.aR)), 1.5F);
    }
 
    public aku a(gys $$0) {
-      return $$0.f;
+      return $$0.a ? b : a;
    }
 
    public gys b() {
       return new gys();
    }
 
-   public void a(cir $$0, gys $$1, float $$2) {
+   public void a(clq $$0, gys $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.bm();
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f = $$0.x().a().a();
+      $$1.a = $$0.m();
    }
 }

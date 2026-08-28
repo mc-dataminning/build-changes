@@ -1,12 +1,30 @@
-public class dcr {
-   public static dcp.i<?> a(ke<dcp.i<?>> $$0) {
-      ke.a($$0, "empty", dcp.c.f);
-      ke.a($$0, "any_fuel", dcp.a.f);
-      ke.a($$0, "item", dcp.d.e);
-      ke.a($$0, "item_stack", dcp.f.e);
-      ke.a($$0, "tag", dcp.h.e);
-      ke.a($$0, "smithing_trim", dcp.g.e);
-      ke.a($$0, "with_remainder", dcp.j.e);
-      return ke.a($$0, "composite", dcp.b.e);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dcr(dcn f, dcn g, dcn h) implements dch {
+   public static final MapCodec<dcr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcn.a.fieldOf("input").forGetter(dcr::b), dcn.a.fieldOf("result").forGetter(dcr::d), dcn.a.fieldOf("crafting_station").forGetter(dcr::e))
+            .apply($$0, dcr::new)
+   );
+   public static final ym<vz, dcr> b = ym.a(dcn.b, dcr::b, dcn.b, dcr::d, dcn.b, dcr::e, dcr::new);
+   public static final dch.a<dcr> c = new dch.a<>(a, b);
+
+   @Override
+   public dch.a<dcr> a() {
+      return c;
+   }
+
+   public dcn b() {
+      return this.f;
+   }
+
+   @Override
+   public dcn d() {
+      return this.g;
+   }
+
+   @Override
+   public dcn e() {
+      return this.h;
    }
 }

@@ -41,7 +41,7 @@ public interface yk {
          $$0.writeByte($$1);
       }
    };
-   ym<ByteBuf, Float> d = c.a(ayz::a, ayz::g);
+   ym<ByteBuf, Float> d = c.a(ayy::a, ayy::g);
    ym<ByteBuf, Short> e = new ym<ByteBuf, Short>() {
       public Short a(ByteBuf $$0) {
          return $$0.readShort();
@@ -514,7 +514,7 @@ public interface yk {
             int $$1 = wf.a($$0) - 1;
             if ($$1 == -1) {
                ke<T> $$2 = $$0.H().e($$0);
-               return $$2.a(axf.a($$0, aku.b.decode($$0))).orElseThrow();
+               return $$2.a(axe.a($$0, aku.b.decode($$0))).orElseThrow();
             } else {
                List<jr<T>> $$3 = new ArrayList<>(Math.min($$1, 65536));
 
@@ -527,7 +527,7 @@ public interface yk {
          }
 
          public void a(vz $$0x, jv<T> $$1) {
-            Optional<axf<T>> $$2 = $$1.e();
+            Optional<axe<T>> $$2 = $$1.e();
             if ($$2.isPresent()) {
                wf.a($$0, 0);
                aku.b.encode($$0, $$2.get().b());

@@ -1,78 +1,8 @@
-public interface dem {
-   akt<deh> a = den.a("trades/desert_armorer_boots_4");
-   akt<deh> b = den.a("trades/desert_armorer_leggings_4");
-   akt<deh> c = den.a("trades/desert_armorer_chestplate_4");
-   akt<deh> d = den.a("trades/desert_armorer_helmet_4");
-   akt<deh> e = den.a("trades/desert_armorer_leggings_5");
-   akt<deh> f = den.a("trades/desert_armorer_chestplate_5");
-   akt<deh> g = den.a("trades/plains_armorer_boots_4");
-   akt<deh> h = den.a("trades/plains_armorer_leggings_4");
-   akt<deh> i = den.a("trades/plains_armorer_chestplate_4");
-   akt<deh> j = den.a("trades/plains_armorer_helmet_4");
-   akt<deh> k = den.a("trades/plains_armorer_boots_5");
-   akt<deh> l = den.a("trades/plains_armorer_leggings_5");
-   akt<deh> m = den.a("trades/savanna_armorer_boots_4");
-   akt<deh> n = den.a("trades/savanna_armorer_leggings_4");
-   akt<deh> o = den.a("trades/savanna_armorer_chestplate_4");
-   akt<deh> p = den.a("trades/savanna_armorer_helmet_4");
-   akt<deh> q = den.a("trades/savanna_armorer_chestplate_5");
-   akt<deh> r = den.a("trades/savanna_armorer_helmet_5");
-   akt<deh> s = den.a("trades/snow_armorer_boots_4");
-   akt<deh> t = den.a("trades/snow_armorer_helmet_4");
-   akt<deh> u = den.a("trades/snow_armorer_boots_5");
-   akt<deh> v = den.a("trades/snow_armorer_helmet_5");
-   akt<deh> w = den.a("trades/jungle_armorer_boots_4");
-   akt<deh> x = den.a("trades/jungle_armorer_leggings_4");
-   akt<deh> y = den.a("trades/jungle_armorer_chestplate_4");
-   akt<deh> z = den.a("trades/jungle_armorer_helmet_4");
-   akt<deh> A = den.a("trades/jungle_armorer_boots_5");
-   akt<deh> B = den.a("trades/jungle_armorer_helmet_5");
-   akt<deh> C = den.a("trades/swamp_armorer_boots_4");
-   akt<deh> D = den.a("trades/swamp_armorer_leggings_4");
-   akt<deh> E = den.a("trades/swamp_armorer_chestplate_4");
-   akt<deh> F = den.a("trades/swamp_armorer_helmet_4");
-   akt<deh> G = den.a("trades/swamp_armorer_boots_5");
-   akt<deh> H = den.a("trades/swamp_armorer_helmet_5");
-   akt<deh> I = den.a("trades/taiga_armorer_leggings_5");
-   akt<deh> J = den.a("trades/taiga_armorer_chestplate_5");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static void a(qe<deh> $$0) {
-      js<dcz> $$1 = $$0.a(mc.aO);
-      $$0.a(a, new del($$1.b(dde.h), brl.a(1)));
-      $$0.a(b, new del($$1.b(dde.h), brl.a(1)));
-      $$0.a(c, new del($$1.b(dde.h), brl.a(1)));
-      $$0.a(d, new del($$1.b(dde.h), brl.a(1)));
-      $$0.a(e, new del($$1.b(dde.h), brl.a(1)));
-      $$0.a(f, new del($$1.b(dde.h), brl.a(1)));
-      $$0.a(g, new del($$1.b(dde.a), brl.a(1)));
-      $$0.a(h, new del($$1.b(dde.a), brl.a(1)));
-      $$0.a(i, new del($$1.b(dde.a), brl.a(1)));
-      $$0.a(j, new del($$1.b(dde.a), brl.a(1)));
-      $$0.a(k, new del($$1.b(dde.a), brl.a(1)));
-      $$0.a(l, new del($$1.b(dde.a), brl.a(1)));
-      $$0.a(m, new del($$1.b(dde.k), brl.a(1)));
-      $$0.a(n, new del($$1.b(dde.k), brl.a(1)));
-      $$0.a(o, new del($$1.b(dde.k), brl.a(1)));
-      $$0.a(p, new del($$1.b(dde.k), brl.a(1)));
-      $$0.a(q, new del($$1.b(dde.k), brl.a(1)));
-      $$0.a(r, new del($$1.b(dde.k), brl.a(1)));
-      $$0.a(s, new del($$1.b(dde.j), brl.a(1)));
-      $$0.a(t, new del($$1.b(dde.g), brl.a(1)));
-      $$0.a(u, new del($$1.b(dde.j), brl.a(1)));
-      $$0.a(v, new del($$1.b(dde.g), brl.a(1)));
-      $$0.a(w, new del($$1.b(dde.w), brl.a(1)));
-      $$0.a(x, new del($$1.b(dde.w), brl.a(1)));
-      $$0.a(y, new del($$1.b(dde.w), brl.a(1)));
-      $$0.a(z, new del($$1.b(dde.w), brl.a(1)));
-      $$0.a(A, new del($$1.b(dde.c), brl.a(1)));
-      $$0.a(B, new del($$1.b(dde.e), brl.a(1)));
-      $$0.a(C, new del($$1.b(dde.O), brl.a(1)));
-      $$0.a(D, new del($$1.b(dde.O), brl.a(1)));
-      $$0.a(E, new del($$1.b(dde.O), brl.a(1)));
-      $$0.a(F, new del($$1.b(dde.O), brl.a(1)));
-      $$0.a(G, new del($$1.b(dde.i), brl.a(1)));
-      $$0.a(H, new del($$1.b(dde.f), brl.a(1)));
-      $$0.a(I, new del($$1.b(dde.d), brl.a(1)));
-      $$0.a(J, new del($$1.b(dde.d), brl.a(1)));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dem {
 }

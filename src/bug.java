@@ -1,136 +1,38 @@
-public enum bug {
-   a(true) {
-      @Override
-      void a(bvi $$0, bvi $$1, buf $$2) {
-         buk $$3 = $$0.da();
-         $$1.w($$0);
-         $$1.h($$0.dz());
-         if ($$3 != null) {
-            $$3.ae();
-            $$3.J = 0;
+public class bug {
+   public static final bug a = new bug(0.75F, 0.5F, 0.25F);
+   public static final bug b = new bug(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-            for (buk $$4 : $$1.cZ()) {
-               $$4.ae();
-               $$4.a(buk.d.b);
-            }
-
-            $$3.n($$1);
-         }
-
-         buk $$5 = $$0.dl();
-         if ($$5 != null) {
-            $$0.ae();
-            $$1.n($$5);
-         }
-
-         if ($$2.b()) {
-            for (bus $$6 : bus.i) {
-               cwp $$7 = $$0.a($$6);
-               if (!$$7.f()) {
-                  $$1.a($$6, $$7.g());
-                  $$1.a($$6, $$0.h($$6));
-               }
-            }
-         }
-
-         $$1.Z = $$0.Z;
-         $$1.b(7, $$0.fJ());
-         $$1.bd = $$0.bd;
-         $$1.aN = $$0.aN;
-         $$1.aX = $$0.aX;
-         $$1.d($$0.aJ());
-         $$0.fP().ifPresent($$1::g);
-         buk $$8 = $$0.A();
-         if ($$8 != null) {
-            $$1.b($$8, true);
-         }
-
-         this.b($$0, $$1, $$2);
-      }
-   },
-   b(false) {
-      @Override
-      void a(bvi $$0, bvi $$1, buf $$2) {
-         buk $$3 = $$0.da();
-         if ($$3 != null) {
-            $$3.ae();
-         }
-
-         buk $$4 = $$0.A();
-         if ($$4 != null) {
-            $$0.a(true, true);
-         }
-
-         this.b($$0, $$1, $$2);
-      }
-   };
-
-   private final boolean c;
-
-   bug(final boolean $$0) {
+   private bug(float $$0, float $$1, float $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a() {
-      return this.c;
+   public bug.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bug.a.d;
+      } else if ($$0 < this.d) {
+         return bug.a.c;
+      } else {
+         return $$0 < this.c ? bug.a.b : bug.a.a;
+      }
    }
 
-   abstract void a(bvi var1, bvi var2, buf var3);
+   public bug.a a(cwn $$0) {
+      return !$$0.m() ? bug.a.a : this.a($$0.o(), $$0.p());
+   }
 
-   void b(bvi $$0, bvi $$1, buf $$2) {
-      $$1.E($$0.fw());
+   public bug.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
 
-      for (btp $$3 : $$0.eB()) {
-         $$1.a(new btp($$3));
-      }
-
-      if ($$0.e_()) {
-         $$1.a(true);
-      }
-
-      if ($$0 instanceof bub $$4 && $$1 instanceof bub $$5) {
-         $$5.c_($$4.Y_());
-         $$5.c = $$4.c;
-         $$5.d = $$4.d;
-      }
-
-      bwi<?> $$6 = $$0.ec();
-      bwi<?> $$7 = $$1.ec();
-      if ($$6.a(cek.ab, cel.c) && $$6.a(cek.ab)) {
-         $$7.a(cek.ab, $$6.c(cek.ab));
-      }
-
-      if ($$2.c()) {
-         $$1.a_($$0.fN());
-      }
-
-      $$1.v($$0.gd());
-      $$1.u($$0.gc());
-      if ($$0.ak()) {
-         $$1.aj();
-      }
-
-      if ($$0.l_()) {
-         $$1.b($$0.an());
-         $$1.p($$0.cL());
-      }
-
-      $$1.c($$0.bY());
-      $$1.n($$0.cC());
-      $$1.f($$0.bc());
-      $$1.f($$0.aC());
-      $$1.e($$0.bb());
-      $$0.as().forEach($$1::a);
-      if ($$2.d() != null) {
-         fcf $$8 = $$1.dW().R();
-         $$8.a($$1.cH(), $$2.d());
-         if ($$0.cr() != null && $$0.cr() == $$2.d()) {
-            $$8.b($$0.cH(), $$0.cr());
-         }
-      }
-
-      if ($$0 instanceof cmq $$9 && $$9.gw() && $$1 instanceof cmq $$10) {
-         $$10.y(true);
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

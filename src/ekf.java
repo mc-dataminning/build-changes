@@ -1,51 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class ekf extends ekh {
-   public static final MapCodec<ekf> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayr.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               esc.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayi.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, ekf::new)
-   );
-   private final ayr<Integer> i;
-   private final esc.a j;
-   private final float k;
-   private final esc l;
+public class ekf extends eke {
+   public static final MapCodec<ekf> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekf::new));
+   protected final List<dwv> h;
 
-   public ekf(ayr<Integer> $$0, esc.a $$1, float $$2, long $$3, esc.a $$4, float $$5, List<dwx> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = esc.b(new edr(new ect($$3)), $$1);
+   protected static <P extends ekf> P4<Mu<P>, Long, esa.a, Float, List<dwv>> b(Instance<P> $$0) {
+      return a($$0).and(ayh.b(dwv.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public ekf(long $$0, esa.a $$1, float $$2, List<dwv> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected eke<?> a() {
-      return eke.e;
+   protected ekc<?> a() {
+      return ekc.d;
    }
 
    @Override
-   public dwx a(azh $$0, ji $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)ayz.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dwx> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
+   public dwv a(azg $$0, ji $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   protected double a(ji $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   protected dwv a(List<dwv> $$0, ji $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dwv a(List<dwv> $$0, double $$1) {
+      double $$2 = ayy.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

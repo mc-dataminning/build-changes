@@ -36,22 +36,22 @@ public class asb extends ask {
 
    @Nullable
    public static ask a(String $$0) {
-      JsonObject $$1 = ayp.a($$0);
-      URI $$2 = URI.create(ayp.i($$1, "apiServer"));
-      String $$3 = ayp.i($$1, "apiPath");
-      String $$4 = ayp.i($$1, "scope");
-      String $$5 = ayp.a($$1, "serverId", "");
-      String $$6 = ayp.i($$1, "applicationId");
-      String $$7 = ayp.i($$1, "tenantId");
-      String $$8 = ayp.a($$1, "roomId", "Java:Chat");
-      String $$9 = ayp.i($$1, "certificatePath");
-      String $$10 = ayp.a($$1, "certificatePassword", "");
-      int $$11 = ayp.a($$1, "hashesToDrop", -1);
-      int $$12 = ayp.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = ayp.v($$1, "fullyFilteredEvents");
+      JsonObject $$1 = ayo.a($$0);
+      URI $$2 = URI.create(ayo.i($$1, "apiServer"));
+      String $$3 = ayo.i($$1, "apiPath");
+      String $$4 = ayo.i($$1, "scope");
+      String $$5 = ayo.a($$1, "serverId", "");
+      String $$6 = ayo.i($$1, "applicationId");
+      String $$7 = ayo.i($$1, "tenantId");
+      String $$8 = ayo.a($$1, "roomId", "Java:Chat");
+      String $$9 = ayo.i($$1, "certificatePath");
+      String $$10 = ayo.a($$1, "certificatePassword", "");
+      int $$11 = ayo.a($$1, "hashesToDrop", -1);
+      int $$12 = ayo.a($$1, "maxConcurrentRequests", 7);
+      JsonArray $$13 = ayo.v($$1, "fullyFilteredEvents");
       Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(ayp.a($$1x, "filteredEvent")));
-      int $$15 = ayp.a($$1, "connectionReadTimeoutMs", 2000);
+      $$13.forEach($$1x -> $$14.add(ayo.a($$1x, "filteredEvent")));
+      int $$15 = ayo.a($$1, "connectionReadTimeoutMs", 2000);
 
       URL $$16;
       try {
@@ -108,23 +108,23 @@ public class asb extends ask {
 
    @Override
    protected arv a(String $$0, ask.a $$1, JsonObject $$2) {
-      JsonObject $$3 = ayp.a($$2, "result", null);
+      JsonObject $$3 = ayo.a($$2, "result", null);
       if ($$3 == null) {
          return arv.b($$0);
       } else {
-         boolean $$4 = ayp.a($$3, "filtered", true);
+         boolean $$4 = ayo.a($$3, "filtered", true);
          if (!$$4) {
             return arv.a($$0);
          } else {
-            for (JsonElement $$6 : ayp.a($$3, "events", new JsonArray())) {
+            for (JsonElement $$6 : ayo.a($$3, "events", new JsonArray())) {
                JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = ayp.a($$7, "id", "");
+               String $$8 = ayo.a($$7, "id", "");
                if (this.d.contains($$8)) {
                   return arv.b($$0);
                }
             }
 
-            JsonArray $$9 = ayp.a($$3, "redactedTextIndex", new JsonArray());
+            JsonArray $$9 = ayo.a($$3, "redactedTextIndex", new JsonArray());
             return new arv($$0, this.a($$0, $$9, $$1));
          }
       }

@@ -75,7 +75,7 @@ public class ot implements mi {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayj($$4);
+            InputStream $$5 = new ayi($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
             a($$0, $$6, uf.a(ud.a($$5, tz.a())));

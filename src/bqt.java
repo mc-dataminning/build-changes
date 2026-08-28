@@ -1,48 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public interface bqt {
-   bqs a();
-
-   static <T> bqt.b<T> a(T $$0, int $$1) {
-      return new bqt.b<>($$0, bqs.a($$1));
+public class bqt {
+   private bqt() {
    }
 
-   public static class a implements bqt {
-      private final bqs a;
+   public static int a(List<? extends bqs> $$0) {
+      long $$1 = 0L;
 
-      public a(int $$0) {
-         this.a = bqs.a($$0);
+      for (bqs $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
       }
 
-      public a(bqs $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bqs a() {
-         return this.a;
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+      } else {
+         return (int)$$1;
       }
    }
 
-   public static record b<T>(T a, bqs b) implements bqt {
-      @Override
-      public bqs a() {
-         return this.b;
+   public static <T extends bqs> Optional<T> a(azg $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
+   }
+
+   public static <T extends bqs> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
       }
 
-      public static <E> Codec<bqt.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bqt.b::b), bqs.a.fieldOf("weight").forGetter(bqt.b::c)).apply($$1, bqt.b::new)
-         );
-      }
+      return Optional.empty();
+   }
 
-      public T b() {
-         return this.a;
-      }
-
-      public bqs c() {
-         return this.b;
-      }
+   public static <T extends bqs> Optional<T> a(azg $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
    }
 }

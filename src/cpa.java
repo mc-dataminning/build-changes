@@ -1,83 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record cpa(cpa.a d) {
-   public static final wo a = wo.c("multiplayer.disconnect.expired_public_key");
-   private static final wo e = wo.c("multiplayer.disconnect.invalid_public_key_signature");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cpa> c = cpa.a.a.xmap(cpa::new, cpa::b);
+public class cpa {
+   private final coz<jr<cwj>> a = new coz<>();
 
-   public static cpa a(azm $$0, UUID $$1, cpa.a $$2) throws cpa.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cpa.b(e);
-      } else {
-         return new cpa($$2);
+   public void a(cwn $$0) {
+      if (cou.d($$0)) {
+         this.b($$0);
       }
    }
 
-   public azm a() {
-      return azm.a(this.d.c, "SHA256withRSA");
+   public void b(cwn $$0) {
+      this.a($$0, $$0.k());
    }
 
-   public cpa.a b() {
-      return this.d;
-   }
-
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cpa.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayi.q.fieldOf("expires_at").forGetter(cpa.a::b), axx.f.fieldOf("key").forGetter(cpa.a::c), ayi.r.fieldOf("signature_v2").forGetter(cpa.a::d)
-               )
-               .apply($$0, cpa.a::new)
-      );
-
-      public a(vl $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
-      }
-
-      public void a(vl $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(azm $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cpa.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+   public void a(cwn $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.M());
+         this.a.a($$0.i(), $$2);
       }
    }
 
-   public static class b extends xo {
-      public b(wo $$0) {
-         super($$0);
-      }
+   public boolean a(dbc<?> $$0, @Nullable coz.b<jr<cwj>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   public boolean a(dbc<?> $$0, int $$1, @Nullable coz.b<jr<cwj>> $$2) {
+      dbb $$3 = $$0.ao_();
+      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
+   }
+
+   public boolean a(List<? extends coz.a<jr<cwj>>> $$0, @Nullable coz.b<jr<cwj>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   private boolean a(List<? extends coz.a<jr<cwj>>> $$0, int $$1, @Nullable coz.b<jr<cwj>> $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public int b(dbc<?> $$0, @Nullable coz.b<jr<cwj>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int b(dbc<?> $$0, int $$1, @Nullable coz.b<jr<cwj>> $$2) {
+      return this.a.b($$0.ao_().b(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

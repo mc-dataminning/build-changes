@@ -4,7 +4,7 @@ public class aeo implements yv<abk> {
    public static final ym<vl, aeo> a = yv.a(aeo::a, aeo::new);
    private final int b;
 
-   public aeo(buk $$0) {
+   public aeo(buj $$0) {
       this.b = $$0.ar();
    }
 
@@ -26,7 +26,7 @@ public class aeo implements yv<abk> {
    }
 
    @Nullable
-   public buk a(dgi $$0) {
+   public buj a(dgg $$0) {
       return $$0.a(this.b);
    }
 }

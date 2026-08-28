@@ -15,20 +15,20 @@ public abstract class pi<T> extends pn<T> {
       this.d = $$4;
    }
 
-   protected pi.a<T> a(axf<T> $$0) {
-      axc $$1 = this.c($$0);
+   protected pi.a<T> a(axe<T> $$0) {
+      axb $$1 = this.c($$0);
       return new pi.a<>($$1, this.d);
    }
 
    protected static class a<T> extends pn.b<T> {
       private final Function<T, akt<T>> a;
 
-      a(axc $$0, Function<T, akt<T>> $$1) {
+      a(axb $$0, Function<T, akt<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public pi.a<T> a(axf<T> $$0) {
+      public pi.a<T> a(axe<T> $$0) {
          super.b($$0);
          return this;
       }

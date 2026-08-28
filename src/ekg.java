@@ -1,30 +1,49 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class ekg extends ekd {
-   protected final long c;
-   protected final esc.a d;
-   protected final float e;
-   protected final esc f;
+public class ekg extends eke {
+   public static final MapCodec<ekg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dwv.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  ayh.b(dwv.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  ayh.b(dwv.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, ekg::new)
+   );
+   private final float g;
+   private final float h;
+   private final dwv i;
+   private final List<dwv> j;
+   private final List<dwv> k;
 
-   protected static <P extends ekg> P3<Mu<P>, Long, esc.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         esc.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayi.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public ekg(long $$0, esa.a $$1, float $$2, float $$3, float $$4, dwv $$5, List<dwv> $$6, List<dwv> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
-   protected ekg(long $$0, esc.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = esc.b(new edr(new ect($$0)), $$1);
+   @Override
+   protected ekc<?> a() {
+      return ekc.c;
    }
 
-   protected double a(ji $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   public dwv a(azg $$0, ji $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return af.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? af.a(this.k, $$0) : this.i;
+      }
    }
 }

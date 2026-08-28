@@ -1,27 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cns {
-   public static byk<cnl> a() {
-      return cam.a(
-         (Function<cam.b<cnl>, ? extends App<cam.c<cnl>, cap<cnl>>>)($$0 -> $$0.group($$0.b(cek.ak), $$0.c(cek.ab), $$0.c(cek.ah), $$0.a(cek.ao))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     if (!$$4x.e_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cns::a)).isPresent()) {
-                        cnf $$6 = $$0.b($$1);
-                        cnm.c($$3x, $$4x, $$6);
-                        cnm.b((cnk)$$4x);
-                        cnm.b($$3x, $$4x, $$6);
-                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cnm::b));
-                        return true;
-                     } else {
+   public static bwz<bvf> a(int $$0, int $$1) {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$2 -> $$2.group($$2.b(cej.ad), $$2.b(cej.L), $$2.a(cej.ae), $$2.a(cej.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.fa().f()) {
                         return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
+
+                        return true;
                      }
                   }))
       );
-   }
-
-   private static boolean a(cnk $$0) {
-      return $$0.ec().a(cek.ah);
    }
 }

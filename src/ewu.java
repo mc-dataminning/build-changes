@@ -1,102 +1,95 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class ewu extends exe {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<ewu> a = RecordCodecBuilder.mapCodec(
+public class ewu extends exc {
+   public static final int a = 0;
+   public static final MapCodec<ewu> b = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  kg.a(mc.aO).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+                  dcx.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  ezv.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
                )
             )
             .apply($$0, ewu::new)
    );
-   private final Optional<jv<dcz>> c;
-   private final boolean d;
+   private final jr<dcx> c;
+   private final ezu d;
+   private final int e;
 
-   ewu(List<eza> $$0, Optional<jv<dcz>> $$1, boolean $$2) {
+   ewu(List<eyy> $$0, jr<dcx> $$1, ezu $$2, int $$3) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public exg<ewu> b() {
-      return exh.h;
+   public exe<ewu> b() {
+      return exf.m;
    }
 
    @Override
-   public cwp a(cwp $$0, evr $$1) {
-      azh $$2 = $$1.b();
-      boolean $$3 = $$0.a(cwt.rw);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jr<dcz>> $$5 = this.c
-         .<Stream<jr<dcz>>>map(jv::a)
-         .orElseGet(() -> $$1.d().K_().e(mc.aO).c().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((dcz)$$2x.a()).c($$0));
-      List<jr<dcz>> $$6 = $$5.toList();
-      Optional<jr<dcz>> $$7 = af.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<bah<?>> a() {
+      return Sets.union(ImmutableSet.of(eyj.d), this.d.a());
    }
 
-   private static cwp a(cwp $$0, jr<dcz> $$1, azh $$2) {
-      int $$3 = ayz.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cwt.rw)) {
-         $$0 = new cwp(cwt.vv);
+   private boolean c() {
+      return this.e > 0;
+   }
+
+   @Override
+   public cwn a(cwn $$0, evp $$1) {
+      buj $$2 = $$1.c(eyj.d);
+      if ($$2 instanceof bvf $$3) {
+         int $$4 = dcz.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
+         }
+
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static ewu.a c() {
-      return new ewu.a();
+   public static ewu.a a(jt.a $$0, ezu $$1) {
+      jt.b<dcx> $$2 = $$0.d(mc.aO);
+      return new ewu.a($$2.b(ddc.s), $$1);
    }
 
-   public static ewu.a a(jt.a $$0) {
-      return c().a($$0.d(mc.aO).b(aws.n));
-   }
+   public static class a extends exc.a<ewu.a> {
+      private final jr<dcx> a;
+      private final ezu b;
+      private int c = 0;
 
-   public static class a extends exe.a<ewu.a> {
-      private Optional<jv<dcz>> a = Optional.empty();
-      private boolean b = true;
+      public a(jr<dcx> $$0, ezu $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
       protected ewu.a a() {
          return this;
       }
 
-      public ewu.a a(jr<dcz> $$0) {
-         this.a = Optional.of(jv.a($$0));
-         return this;
-      }
-
-      public ewu.a a(jv<dcz> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ewu.a e() {
-         this.b = false;
+      public ewu.a a(int $$0) {
+         this.c = $$0;
          return this;
       }
 
       @Override
-      public exf b() {
-         return new ewu(this.g(), this.a, this.b);
+      public exd b() {
+         return new ewu(this.g(), this.a, this.b, this.c);
       }
    }
 }

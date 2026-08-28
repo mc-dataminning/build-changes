@@ -1,8 +1,30 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.IntFunction;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface cos {
+public enum cos implements azb {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
+
+   private static final IntFunction<cos> d = axp.a(cos::b, values(), axp.a.b);
+   private final int e;
+   private final String f;
+
+   private cos(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   public static cos a(int $$0) {
+      return d.apply($$0);
+   }
 }

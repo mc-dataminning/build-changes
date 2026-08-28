@@ -1,118 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class efc extends efy<ehw> {
-   private static final ImmutableList<djm> a = ImmutableList.of(djo.K, djo.I, djo.ll, djo.ej, djo.fI, djo.fJ, djo.fK, djo.fL, djo.cD, djo.cA);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int ao = 15;
-
-   public efc(Codec<ehw> $$0) {
+public class efc extends efw<eht> {
+   public efc(Codec<eht> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ega<ehw> $$0) {
-      int $$1 = $$0.c().f();
-      ji $$2 = $$0.e();
-      dhg $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      ehw $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.k())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
+   public boolean a(efy<eht> $$0) {
+      ji $$1 = $$0.e();
+      dhe $$2 = $$0.b();
+      azg $$3 = $$0.d();
 
-         for (ji $$11 : ji.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+      eht $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.L_() + 3; $$1 = $$1.e()) {
+         if (!$$2.u($$1.e())) {
+            dwv $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
             }
          }
-
-         return $$10;
       }
-   }
 
-   private boolean a(dgj $$0, int $$1, ji $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+      if ($$1.v() <= $$2.L_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-      for (ji $$6 : ji.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         ji $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (ji.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (ji)$$10)) {
-                  this.a($$0, $$10, djo.el.m());
-                  $$10.c(jn.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(djo.el)) {
-                     break;
-                  }
-
-                  $$10.c(jn.b);
+            for (ji $$11 : ji.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
                }
             }
-         }
-      }
 
-      return $$5;
-   }
-
-   @Nullable
-   private static ji a(dgj $$0, int $$1, ji.a $$2, int $$3) {
-      while ($$2.v() > $$0.L_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
-         $$2.c(jn.a);
+         return true;
       }
-
-      return null;
-   }
-
-   private static boolean a(dgj $$0, int $$1, ji.a $$2) {
-      if (!a($$0, $$1, (ji)$$2)) {
-         return false;
-      } else {
-         dwx $$3 = $$0.a_($$2.c(jn.a));
-         $$2.c(jn.b);
-         return !$$3.l() && !a.contains($$3.b());
-      }
-   }
-
-   @Nullable
-   private static ji a(dgj $$0, ji.a $$1, int $$2) {
-      while ($$1.v() <= $$0.an() && $$2 > 0) {
-         $$2--;
-         dwx $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.l()) {
-            return $$1;
-         }
-
-         $$1.c(jn.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(dgj $$0, int $$1, ji $$2) {
-      dwx $$3 = $$0.a_($$2);
-      return $$3.l() || $$3.a(djo.K) && $$2.v() <= $$1;
    }
 }

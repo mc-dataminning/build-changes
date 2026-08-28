@@ -3,40 +3,44 @@ import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzw {
-   private static final int a = 60;
-
-   public static bxa<bvo> a(int $$0, float $$1) {
+   public static bwz<bvn> a(int $$0, float $$1) {
       MutableLong $$2 = new MutableLong(0L);
-      return cam.a(
-         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.o), $$3.c(cek.m), $$3.a(cek.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dw()).a(awv.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        ji $$8 = $$6.dw();
-                        ji.a $$9 = new ji.a();
-                        fbf $$10 = fbf.a($$6);
+      return cal.a(
+         (Function<cal.b<bvn>, ? extends App<cal.c<bvn>, cao<bvn>>>)($$3 -> $$3.group($$3.c(cej.o), $$3.c(cej.m), $$3.a(cej.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dw()).a(awu.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           fbd $$8 = fbd.a($$6);
+                           ji $$9 = $$6.dw();
+                           ji.a $$10 = new ji.a();
 
-                        for (ji $$11 : ji.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dwx $$12 = $$5x.a_($$11);
-                              dwx $$13 = $$5x.a_($$9.a($$11, jn.a));
-                              if (!$$12.a(djo.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jn.b)) {
-                                 ji $$14 = $$11.j();
-                                 $$5.a(new bxc($$14));
-                                 $$4.a(new cen(new bxc($$14), $$1, 1));
-                                 break;
+                           label45:
+                           for (ji $$11 : ji.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, jn.a)).b($$5x, $$11, $$8).c()) {
+                                 for (jn $$12 : jn.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jn.a)).a(djm.J)) {
+                                       $$5.a(new bxb($$11));
+                                       $$4.a(new cem(new bxb($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
                               }
                            }
-                        }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
                      }
-                  }))
+               ))
       );
    }
 }

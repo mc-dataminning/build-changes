@@ -1,27 +1,23 @@
-public class gvt extends gwa<gyb, gbs> {
-   private static final aku a = aku.b("textures/entity/creeper/creeper_armor.png");
-   private final gbs b;
-
-   public gvt(gtz<gyb, gbs> $$0, gey $$1) {
+public class gvt<S extends gyw, M extends gby<S> & gej> extends gwq<S, M> {
+   public gvt(gty<S, M> $$0) {
       super($$0);
-      this.b = new gbs($$1.a(gfb.aj));
    }
 
-   protected boolean a(gyb $$0) {
-      return $$0.b;
+   public void a(ffs $$0, glv $$1, int $$2, S $$3, float $$4, float $$5) {
+      hbk $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         this.a($$3, $$0);
+         $$6.a($$0, $$1, $$2, hec.d);
+         $$0.b();
+      }
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected aku a() {
-      return a;
-   }
-
-   protected gbs b() {
-      return this.b;
+   protected void a(S $$0, ffs $$1) {
+      this.d().a($$1);
+      $$1.a(a.b.rotation(0.75F));
+      $$1.b(1.07F, 1.07F, 1.07F);
+      $$1.a(0.0F, 0.13F, -0.34F);
+      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

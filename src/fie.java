@@ -1,15 +1,12 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+public class fie extends Exception {
+   public final fgk a;
 
-public class fie implements UncaughtExceptionHandler {
-   private final Logger a;
-
-   public fie(Logger $$0) {
+   public fie(fgk $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   public String getMessage() {
+      return this.a.c();
    }
 }

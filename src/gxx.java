@@ -1,10 +1,9 @@
-public class gxx extends gzi {
-   public boolean a;
+import javax.annotation.Nullable;
+
+public class gxx extends gyn {
+   private static final aku j = aku.b("textures/entity/cat/tabby.png");
+   public aku a = j;
    public boolean b;
-   public float c;
-   public final buc d = new buc();
-   public final buc e = new buc();
-   public final buc f = new buc();
-   public final buc g = new buc();
-   public final buc h = new buc();
+   @Nullable
+   public cvk c;
 }

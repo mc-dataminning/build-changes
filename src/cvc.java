@@ -1,275 +1,274 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.math.Fraction;
+import java.util.Collection;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class cvc extends cwl {
-   public static final int a = 4;
-   public static final int b = 3;
-   public static final int c = 12;
-   public static final int d = 11;
-   private static final int m = axk.a(1.0F, 1.0F, 0.33F, 0.33F);
-   private static final int n = axk.a(1.0F, 0.44F, 0.53F, 1.0F);
-   private static final int o = 10;
-   private static final int p = 2;
-   private static final int q = 200;
+public class cvc {
+   static final aku a = a("items");
+   private final wo b;
+   aku c = a;
+   boolean d = true;
+   boolean e = true;
+   boolean f = false;
+   private final cvc.f g;
+   private final int h;
+   private final cvc.h i;
+   @Nullable
+   private cwn j;
+   private Collection<cwn> k = cwo.a();
+   private Set<cwn> l = cwo.a();
+   private final Supplier<cwn> m;
+   private final cvc.b n;
 
-   public cvc(cwl.a $$0) {
-      super($$0);
+   cvc(cvc.f $$0, int $$1, cvc.h $$2, wo $$3, Supplier<cwn> $$4, cvc.b $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.b = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.i = $$2;
    }
 
-   public static float c(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P, cyt.a);
-      return $$1.f().floatValue();
+   public static aku a(String $$0) {
+      return aku.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
    }
 
-   @Override
-   public boolean a(cwp $$0, ctz $$1, csm $$2, cox $$3) {
-      cyt $$4 = $$0.a(kv.P);
-      if ($$4 == null) {
-         return false;
-      } else {
-         cwp $$5 = $$1.g();
-         cyt.a $$6 = new cyt.a($$4);
-         if ($$2 == csm.a && !$$5.f()) {
-            if ($$6.a($$1, $$3) > 0) {
-               b($$3);
-            } else {
-               c($$3);
-            }
+   public static cvc.a a(cvc.f $$0, int $$1) {
+      return new cvc.a($$0, $$1);
+   }
 
-            $$0.b(kv.P, $$6.d());
-            this.a($$3);
-            return true;
-         } else if ($$2 == csm.b && $$5.f()) {
-            cwp $$7 = $$6.b();
-            if ($$7 != null) {
-               cwp $$8 = $$1.d($$7);
-               if ($$8.M() > 0) {
-                  $$6.a($$8);
-               } else {
-                  a((buk)$$3);
-               }
-            }
+   public wo a() {
+      return this.b;
+   }
 
-            $$0.b(kv.P, $$6.d());
-            this.a($$3);
-            return true;
+   public cwn b() {
+      if (this.j == null) {
+         this.j = this.m.get();
+      }
+
+      return this.j;
+   }
+
+   public aku c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public cvc.f g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return !this.k.isEmpty();
+   }
+
+   public boolean i() {
+      return this.i != cvc.h.a || this.h();
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public cvc.h k() {
+      return this.i;
+   }
+
+   public void a(cvc.d $$0) {
+      cvc.c $$1 = new cvc.c(this, $$0.a);
+      akt<cvc> $$2 = mb.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.k = $$1.a;
+      this.l = $$1.b;
+   }
+
+   public Collection<cwn> l() {
+      return this.k;
+   }
+
+   public Collection<cwn> m() {
+      return this.l;
+   }
+
+   public boolean a(cwn $$0) {
+      return this.l.contains($$0);
+   }
+
+   public static class a {
+      private static final cvc.b a = ($$0, $$1) -> {
+      };
+      private final cvc.f b;
+      private final int c;
+      private wo d = wo.i();
+      private Supplier<cwn> e = () -> cwn.j;
+      private cvc.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private cvc.h j = cvc.h.a;
+      private aku k = cvc.a;
+
+      public a(cvc.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public cvc.a a(wo $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cvc.a a(Supplier<cwn> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cvc.a a(cvc.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cvc.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public cvc.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public cvc.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected cvc.a a(cvc.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public cvc.a a(aku $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public cvc d() {
+         if ((this.j == cvc.h.c || this.j == cvc.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
          } else {
-            return false;
+            cvc $$0 = new cvc(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.f = this.i;
+            $$0.e = this.h;
+            $$0.d = this.g;
+            $$0.c = this.k;
+            return $$0;
          }
       }
    }
 
-   @Override
-   public boolean a(cwp $$0, cwp $$1, ctz $$2, csm $$3, cox $$4, bvy $$5) {
-      if ($$3 == csm.a && $$1.f()) {
-         a($$0, -1);
-         return false;
-      } else {
-         cyt $$6 = $$0.a(kv.P);
-         if ($$6 == null) {
-            return false;
-         } else {
-            cyt.a $$7 = new cyt.a($$6);
-            if ($$3 == csm.a && !$$1.f()) {
-               if ($$2.b($$4) && $$7.a($$1) > 0) {
-                  b($$4);
-               } else {
-                  c($$4);
-               }
+   @FunctionalInterface
+   public interface b {
+      void accept(cvc.d var1, cvc.e var2);
+   }
 
-               $$0.b(kv.P, $$7.d());
-               this.a($$4);
-               return true;
-            } else if ($$3 == csm.b && $$1.f()) {
-               if ($$2.b($$4)) {
-                  cwp $$8 = $$7.b();
-                  if ($$8 != null) {
-                     a((buk)$$4);
-                     $$5.a($$8);
+   static class c implements cvc.e {
+      public final Collection<cwn> a = cwo.a();
+      public final Set<cwn> b = cwo.a();
+      private final cvc c;
+      private final crr d;
+
+      public c(cvc $$0, crr $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(cwn $$0, cvc.g $$1) {
+         if ($$0.M() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != cvc.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
+            } else {
+               if ($$0.h().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
                   }
                }
-
-               $$0.b(kv.P, $$7.d());
-               this.a($$4);
-               return true;
-            } else {
-               a($$0, -1);
-               return false;
             }
          }
       }
    }
 
-   @Override
-   public bsj a(dgi $$0, cox $$1, bsi $$2) {
-      if ($$0.C) {
-         return bsj.c;
-      } else {
-         $$1.c($$2);
-         return bsj.b;
+   public static record d(crr a, boolean b, jt.a c) {
+
+      public boolean a(crr $$0, boolean $$1, jt.a $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
       }
    }
 
-   private void a(dgi $$0, cox $$1, cwp $$2) {
-      if (this.a($$2, $$1)) {
-         a($$0, $$1);
-         $$1.b(awk.c.b(this));
+   public interface e {
+      void a(cwn var1, cvc.g var2);
+
+      default void a(cwn $$0) {
+         this.a($$0, cvc.g.a);
+      }
+
+      default void a(dgf $$0, cvc.g $$1) {
+         this.a(new cwn($$0), $$1);
+      }
+
+      default void a(dgf $$0) {
+         this.a(new cwn($$0), cvc.g.a);
+      }
+
+      default void a(Collection<cwn> $$0, cvc.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<cwn> $$0) {
+         this.a($$0, cvc.g.a);
       }
    }
 
-   @Override
-   public boolean d(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P, cyt.a);
-      return $$1.f().compareTo(Fraction.ZERO) > 0;
+   public static enum f {
+      a,
+      b;
    }
 
-   @Override
-   public int e(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P, cyt.a);
-      return Math.min(1 + ayz.a($$1.f(), 12), 13);
+   protected static enum g {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public int f(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P, cyt.a);
-      return $$1.f().compareTo(Fraction.ONE) >= 0 ? m : n;
-   }
-
-   public static void a(cwp $$0, int $$1) {
-      cyt $$2 = $$0.a(kv.P);
-      if ($$2 != null) {
-         cyt.a $$3 = new cyt.a($$2);
-         $$3.a($$1);
-         $$0.b(kv.P, $$3.d());
-      }
-   }
-
-   public static boolean g(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P);
-      return $$1 != null && $$1.h() != -1;
-   }
-
-   public static int h(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P, cyt.a);
-      return $$1.h();
-   }
-
-   public static cwp i(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P);
-      return $$1 != null && $$1.h() != -1 ? $$1.a($$1.h()) : cwp.j;
-   }
-
-   public static int j(cwp $$0) {
-      cyt $$1 = $$0.a(kv.P, cyt.a);
-      return $$1.a();
-   }
-
-   private boolean a(cwp $$0, cox $$1) {
-      cyt $$2 = $$0.a(kv.P);
-      if ($$2 != null && !$$2.g()) {
-         Optional<cwp> $$3 = a($$0, $$1, $$2);
-         if ($$3.isPresent()) {
-            $$1.a($$3.get(), true);
-            return true;
-         } else {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private static Optional<cwp> a(cwp $$0, cox $$1, cyt $$2) {
-      cyt.a $$3 = new cyt.a($$2);
-      cwp $$4 = $$3.b();
-      if ($$4 != null) {
-         a((buk)$$1);
-         $$0.b(kv.P, $$3.d());
-         return Optional.of($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   public void a(dgi $$0, bvg $$1, cwp $$2, int $$3) {
-      if (!$$0.C && $$1 instanceof cox $$4) {
-         int $$5 = this.a($$2, $$1);
-         boolean $$6 = $$3 == $$5;
-         if ($$6 || $$3 < $$5 - 10 && $$3 % 2 == 0) {
-            this.a($$0, $$4, $$2);
-         }
-      }
-   }
-
-   @Override
-   public int a(cwp $$0, bvg $$1) {
-      return 200;
-   }
-
-   @Override
-   public Optional<cuj> k(cwp $$0) {
-      return !$$0.b(kv.r) && !$$0.b(kv.q) ? Optional.ofNullable($$0.a(kv.P)).map(cui::new) : Optional.empty();
-   }
-
-   @Override
-   public void a(clb $$0) {
-      cyt $$1 = $$0.l().a(kv.P);
-      if ($$1 != null) {
-         $$0.l().b(kv.P, cyt.a);
-         cws.a($$0, $$1.d());
-      }
-   }
-
-   public static List<cvc> b() {
-      return Stream.of(cwt.rB, cwt.rC, cwt.rD, cwt.rE, cwt.rF, cwt.rG, cwt.rH, cwt.rI, cwt.rJ, cwt.rK, cwt.rL, cwt.rR, cwt.rO, cwt.rP, cwt.rQ, cwt.rN, cwt.rM)
-         .map($$0 -> (cvc)$$0)
-         .toList();
-   }
-
-   public static cwl a(cvm $$0) {
-      return switch ($$0) {
-         case a -> cwt.rC;
-         case b -> cwt.rD;
-         case c -> cwt.rE;
-         case d -> cwt.rF;
-         case e -> cwt.rG;
-         case f -> cwt.rH;
-         case g -> cwt.rI;
-         case h -> cwt.rJ;
-         case i -> cwt.rK;
-         case j -> cwt.rL;
-         case l -> cwt.rN;
-         case m -> cwt.rO;
-         case n -> cwt.rP;
-         case o -> cwt.rQ;
-         case p -> cwt.rR;
-         case k -> cwt.rM;
-      };
-   }
-
-   private static void a(buk $$0) {
-      $$0.a(awa.ds, 0.8F, 0.8F + $$0.dW().H_().i() * 0.4F);
-   }
-
-   private static void b(buk $$0) {
-      $$0.a(awa.dq, 0.8F, 0.8F + $$0.dW().H_().i() * 0.4F);
-   }
-
-   private static void c(buk $$0) {
-      $$0.a(awa.dr, 1.0F, 1.0F);
-   }
-
-   private static void a(dgi $$0, buk $$1) {
-      $$0.a(null, $$1.dw(), awa.dp, awb.h, 0.8F, 0.8F + $$1.dW().H_().i() * 0.4F);
-   }
-
-   private void a(cox $$0) {
-      csc $$1 = $$0.cd;
-      if ($$1 != null) {
-         $$1.a($$0.gi());
-      }
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,30 +1,32 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dke extends djm {
+public class dke extends djk {
    public static final MapCodec<dke> a = b(dke::new);
-   protected static final fbu b = djm.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final wo b = wo.c("container.cartography_table");
 
    @Override
-   public MapCodec<? extends dke> a() {
+   public MapCodec<dke> a() {
       return a;
    }
 
-   public dke(dww.d $$0) {
+   protected dke(dwu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b;
+   protected bsi a(dwv $$0, dgg $$1, ji $$2, cov $$3, fau $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awj.aw);
+      }
+
+      return bsi.a;
    }
 
+   @Nullable
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      return !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
-      return !$$1.u($$2.e());
+   protected bsk b(dwv $$0, dgg $$1, ji $$2) {
+      return new bsq(($$2x, $$3, $$4) -> new csi($$2x, $$3, csn.a($$1, $$2)), b);
    }
 }

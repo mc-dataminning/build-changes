@@ -1,61 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ees {
-   public static final ees a = new ees(false, djo.gV.m(), djo.qn.m(), djo.ew.m(), djo.aX.m());
-   public static final Codec<ees> b = RecordCodecBuilder.create(
+public class ees extends eep {
+   public static final Codec<ees> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(ees::a),
-               dwx.a.optionalFieldOf("air_state", a.b()).forGetter(ees::b),
-               dwx.a.optionalFieldOf("water_state", a.b()).forGetter(ees::c),
-               dwx.a.optionalFieldOf("lava_state", a.b()).forGetter(ees::d),
-               dwx.a.optionalFieldOf("barrier_state", a.b()).forGetter(ees::e)
+               eep.d.forGetter($$0x -> $$0x),
+               brl.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               brl.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               brl.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, ees::new)
    );
-   private final boolean c;
-   private final dwx d;
-   private final dwx e;
-   private final dwx f;
-   private final dwx g;
+   public final brl b;
+   public final brl c;
+   final brl j;
 
-   public static ees a(boolean $$0, dwx $$1, dwx $$2, dwx $$3, dwx $$4) {
-      return new ees($$0, $$1, $$2, $$3, $$4);
+   public ees(float $$0, elr $$1, brl $$2, edk $$3, eeq $$4, jv<djk> $$5, brl $$6, brl $$7, brl $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   public static ees a(dwx $$0, dwx $$1, dwx $$2, dwx $$3) {
-      return new ees(false, $$0, $$1, $$2, $$3);
+   public ees(float $$0, elr $$1, brl $$2, edk $$3, jv<djk> $$4, brl $$5, brl $$6, brl $$7) {
+      this($$0, $$1, $$2, $$3, eeq.a, $$4, $$5, $$6, $$7);
    }
 
-   public static ees a(boolean $$0, dwx $$1) {
-      return new ees($$0, $$1, a.c(), a.d(), a.e());
-   }
-
-   private ees(boolean $$0, dwx $$1, dwx $$2, dwx $$3, dwx $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
-      return this.c;
-   }
-
-   public dwx b() {
-      return this.d;
-   }
-
-   public dwx c() {
-      return this.e;
-   }
-
-   public dwx d() {
-      return this.f;
-   }
-
-   public dwx e() {
-      return this.g;
+   public ees(eep $$0, brl $$1, brl $$2, brl $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

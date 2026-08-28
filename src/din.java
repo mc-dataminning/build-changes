@@ -1,91 +1,72 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class din extends djw {
-   public static final MapCodec<din> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akt.a(mc.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               akt.a(mc.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               akt.a(mc.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               t()
-            )
-            .apply($$0, din::new)
-   );
-   public static final dxu<jn> b = dnk.aF;
-   protected static final float c = 2.0F;
-   private static final Map<jn, fbu> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         jn.d,
-         djm.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         jn.e,
-         djm.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         jn.c,
-         djm.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         jn.f,
-         djm.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final akt<djm> e;
-   private final akt<djm> f;
-   private final akt<cwl> g;
+public class din extends djk implements djn {
+   public static final MapCodec<din> a = b(din::new);
+   protected static final float b = 4.0F;
+   protected static final fbs c = djk.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
    public MapCodec<din> a() {
       return a;
    }
 
-   protected din(akt<djm> $$0, akt<djm> $$1, akt<cwl> $$2, dww.d $$3) {
-      super($$3);
-      this.l(this.F.b().b(b, jn.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   public din(dwu.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return d.get($$0.c(b));
+   protected fbs a(dwv $$0, dfl $$1, ji $$2, fbd $$3) {
+      fay $$4 = $$0.a($$2);
+      return c.a($$4.d, $$4.e, $$4.f);
    }
 
    @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if (!$$6.a(this.e) && $$4 == $$0.c(b)) {
-         Optional<djm> $$8 = $$1.K_().e(mc.f).f(this.f);
-         if ($$8.isPresent()) {
-            return $$8.get().m().c(drn.c, Integer.valueOf(7));
-         }
+   protected void b(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
-      return $$0.a(djo.cK);
+   protected boolean a(dwv $$0, dgj $$1, ji $$2) {
+      return $$1.a_($$2.e()).a(awo.ax);
    }
 
    @Override
-   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
-      return new cwp((dgh)DataFixUtils.orElse($$0.K_().e(mc.K).f(this.g), this));
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if (!$$0.a($$1, $$3)) {
+         return djm.a.m();
+      } else {
+         return $$4 == jn.b && $$6.a(djm.nB) ? djm.nB.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 
    @Override
-   protected dwx a(dwx $$0, dqe $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected cwn a(dgj $$0, ji $$1, dwv $$2, boolean $$3) {
+      return new cwn(cwr.ed);
    }
 
    @Override
-   protected dwx a(dwx $$0, dol $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public boolean a(dgj $$0, ji $$1, dwv $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(b);
+   public boolean a(dgg $$0, azg $$1, ji $$2, dwv $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azg $$1, ji $$2, dwv $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   protected float a(dwv $$0, cov $$1, dfl $$2, ji $$3) {
+      return $$1.eZ().h() instanceof cyb ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(dgg $$0, ji $$1) {
+      $$0.a($$1.d(), djm.nB.m().b(dio.i, dxh.b), 3);
    }
 }

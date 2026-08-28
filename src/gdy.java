@@ -1,22 +1,48 @@
-public class gdy extends gca<gyi> {
-   public gdy(gfc $$0) {
+public class gdy extends gby<gzh> {
+   private static final String a = "upper_body";
+   private final gfa b;
+   private final gfa c;
+   private final gfa d;
+   private final gfa e;
+
+   public gdy(gfa $$0) {
       super($$0);
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   public static gfi a() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("cube", gfh.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfe.a);
-      return gfi.a($$0, 64, 32);
+   public static gfg a() {
+      gfi $$0 = new gfi();
+      gfk $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gfe $$3 = new gfe(-0.5F);
+      $$1.a("head", gff.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gfc.a(0.0F, 4.0F, 0.0F));
+      gff $$4 = gff.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gfc.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gfc.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gff.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gfc.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gff.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gfc.a(0.0F, 24.0F, 0.0F));
+      return gfg.a($$0, 64, 64);
    }
 
-   public static gfi b() {
-      gfk $$0 = new gfk();
-      gfm $$1 = $$0.a();
-      $$1.a("cube", gfh.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfe.a);
-      $$1.a("right_eye", gfh.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gfe.a);
-      $$1.a("left_eye", gfh.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gfe.a);
-      $$1.a("mouth", gfh.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), gfe.a);
-      return gfi.a($$0, 64, 32);
+   public void a(gzh $$0) {
+      super.a($$0);
+      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = ayy.a(this.b.f);
+      float $$2 = ayy.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
+   }
+
+   public gfa b() {
+      return this.c;
    }
 }

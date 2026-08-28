@@ -39,7 +39,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
             akt<?> $$2x = $$1xx.h();
             return fw.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            axf<?> $$2x = $$1xx.h();
+            axe<?> $$2x = $$1xx.h();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -51,7 +51,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
          try {
             $$0.skip();
             aku $$2 = aku.a($$0);
-            axf<T> $$3 = axf.a(this.e, $$2);
+            axe<T> $$3 = axe.a(this.e, $$2);
             jv.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new ga.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -67,7 +67,7 @@ public class ga<T> implements ArgumentType<ga.c<T>> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      fc.a(this.d.f().map(axf::b), $$1, "#");
+      fc.a(this.d.f().map(axe::b), $$1, "#");
       return fc.a(this.d.c_().map(akt::a), $$1);
    }
 

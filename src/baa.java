@@ -1,14 +1,13 @@
 import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
 
-@FunctionalInterface
-public interface baa {
-   long get(TimeUnit var1);
+public class baa {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public interface a extends baa, LongSupplier {
-      @Override
-      default long get(TimeUnit $$0) {
-         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
-      }
+   public static brt a(int $$0, int $$1) {
+      return brt.a($$0 * 20, $$1 * 20);
    }
 }

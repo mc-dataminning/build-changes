@@ -10,7 +10,7 @@ public class arg extends aqj {
    private final int d;
    private final String e;
 
-   public arg(bre<Runnable> $$0, Executor $$1, int $$2) {
+   public arg(brd<Runnable> $$0, Executor $$1, int $$2) {
       super($$0, $$1);
       this.d = $$2;
       this.e = $$0.A_();
@@ -35,6 +35,6 @@ public class arg extends aqj {
 
    @VisibleForTesting
    public String d() {
-      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dfo($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
+      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dfm($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

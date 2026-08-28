@@ -1,112 +1,38 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.stream.Stream;
 
-public class eow {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<jr<eow>>> d = new MutableObject();
-   public static final Codec<eow> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(eow::a),
-               Codec.mapPair(eou.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eow::new)
-   );
-   public static final Codec<jr<eow>> b = af.a(akq.a(mc.aX, a), d::setValue);
-   private final List<Pair<eou, Integer>> e;
-   private final ObjectArrayList<eou> f;
-   private final jr<eow> g;
-   private int h = Integer.MIN_VALUE;
+public interface eow {
+   Codec<eow> b = mb.ah.q().dispatch(eow::b, Function.identity());
 
-   public eow(jr<eow> $$0, List<Pair<eou, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
+   void a(azg var1, BiConsumer<akt<eou>, akt<eou>> var2);
 
-      for (Pair<eou, Integer> $$2 : $$1) {
-         eou $$3 = (eou)$$2.getFirst();
+   Stream<akt<eou>> a();
 
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   static eov a(String $$0, String $$1) {
+      return a(ql.a($$0), ql.a($$1));
    }
 
-   public eow(jr<eow> $$0, List<Pair<Function<eow.a, ? extends eou>, Integer>> $$1, eow.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<eow.a, ? extends eou>, Integer> $$3 : $$1) {
-         eou $$4 = (eou)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   static eov a(akt<eou> $$0, akt<eou> $$1) {
+      return new eov($$0, $$1);
    }
 
-   public int a(erp $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != eon.b).mapToInt($$1 -> $$1.a($$0, ji.c, dqe.a).e()).max().orElse(0);
-      }
-
-      return this.h;
+   static eoz a(String $$0, bqq<String> $$1) {
+      bqq.a<akt<eou>> $$2 = bqq.a();
+      $$1.e().forEach($$1x -> $$2.a(ql.a((String)$$1x.b()), $$1x.a().a()));
+      return a(ql.a($$0), $$2.a());
    }
 
-   public jr<eow> a() {
-      return this.g;
+   static eoz a(akt<eou> $$0, bqq<akt<eou>> $$1) {
+      return new eoz($$0, $$1);
    }
 
-   public eou a(azh $$0) {
-      return (eou)(this.f.isEmpty() ? eon.b : (eou)this.f.get($$0.a(this.f.size())));
+   static epa a(bqq<List<eow>> $$0) {
+      return new epa($$0);
    }
 
-   public List<eou> b(azh $$0) {
-      return af.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements azv {
-      a("terrain_matching", ImmutableList.of(new equ(ecs.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final azv.a<eow.a> c = azv.a(eow.a::values);
-      private final String d;
-      private final ImmutableList<erl> e;
-
-      private a(final String $$0, final ImmutableList<erl> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static eow.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<erl> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-   }
+   MapCodec<? extends eow> b();
 }

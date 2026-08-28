@@ -18,14 +18,14 @@ public record aam(long c, List<aam.a> d) implements zy {
       return this.d;
    }
 
-   public static record a(ji b, euh c) {
-      public static final ym<ByteBuf, aam.a> a = ym.a(ji.b, aam.a::a, euh.a, aam.a::b, aam.a::new);
+   public static record a(ji b, euf c) {
+      public static final ym<ByteBuf, aam.a> a = ym.a(ji.b, aam.a::a, euf.a, aam.a::b, aam.a::new);
 
       public ji a() {
          return this.b;
       }
 
-      public euh b() {
+      public euf b() {
          return this.c;
       }
    }

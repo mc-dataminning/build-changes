@@ -1,115 +1,78 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
-public interface fne extends Supplier<JsonElement> {
-   void a(dwy<?, ?> var1);
+public class fne implements fnb {
+   private final djk a;
+   private final List<fnh> b;
+   private final Set<dxx<?>> c = Sets.newHashSet();
+   private final List<fnf> d = Lists.newArrayList();
 
-   static fne.c a() {
-      return new fne.c();
+   private fne(djk $$0, List<fnh> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   static fne a(fne... $$0) {
-      return new fne.a(fne.b.a, Arrays.asList($$0));
-   }
-
-   static fne b(fne... $$0) {
-      return new fne.a(fne.b.b, Arrays.asList($$0));
-   }
-
-   public static class a implements fne {
-      private final fne.b a;
-      private final List<fne> b;
-
-      a(fne.b $$0, List<fne> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(dwy<?, ?> $$0) {
-         this.b.forEach($$1 -> $$1.a($$0));
-      }
-
-      public JsonElement b() {
-         JsonArray $$0 = new JsonArray();
-         this.b.stream().map(Supplier::get).forEach($$0::add);
-         JsonObject $$1 = new JsonObject();
-         $$1.add(this.a.c, $$0);
-         return $$1;
-      }
-   }
-
-   public static enum b {
-      a("AND"),
-      b("OR");
-
-      final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static class c implements fne {
-      private final Map<dxz<?>, String> a = Maps.newHashMap();
-
-      private static <T extends Comparable<T>> String a(dxz<T> $$0, Stream<T> $$1) {
-         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
-      }
-
-      private static <T extends Comparable<T>> String c(dxz<T> $$0, T $$1, T[] $$2) {
-         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
-      }
-
-      private <T extends Comparable<T>> void a(dxz<T> $$0, String $$1) {
-         String $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+   public fne a(fnf $$0) {
+      $$0.b().forEach($$0x -> {
+         if (this.a.l().a($$0x.f()) != $$0x) {
+            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
+         } else if (!this.c.add($$0x)) {
+            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
          }
+      });
+      this.d.add($$0);
+      return this;
+   }
+
+   public JsonElement b() {
+      Stream<Pair<fng, List<fnh>>> $$0 = Stream.of(Pair.of(fng.a(), this.b));
+
+      for (fnf $$1 : this.d) {
+         Map<fng, List<fnh>> $$2 = $$1.a();
+         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
+               fng $$2x = ((fng)$$1.getFirst()).a((fng)$$1xx.getKey());
+               List<fnh> $$3 = a((List<fnh>)$$1.getSecond(), (List<fnh>)$$1xx.getValue());
+               return Pair.of($$2x, $$3);
+            }));
       }
 
-      public final <T extends Comparable<T>> fne.c a(dxz<T> $$0, T $$1) {
-         this.a($$0, $$0.b($$1));
-         return this;
-      }
+      Map<String, JsonElement> $$3 = new TreeMap<>();
+      $$0.forEach($$1 -> $$3.put(((fng)$$1.getFirst()).b(), fnh.a((List<fnh>)$$1.getSecond())));
+      JsonObject $$4 = new JsonObject();
+      $$4.add("variants", af.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
+      return $$4;
+   }
 
-      @SafeVarargs
-      public final <T extends Comparable<T>> fne.c a(dxz<T> $$0, T $$1, T... $$2) {
-         this.a($$0, c($$0, $$1, $$2));
-         return this;
-      }
+   private static List<fnh> a(List<fnh> $$0, List<fnh> $$1) {
+      Builder<fnh> $$2 = ImmutableList.builder();
+      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(fnh.a($$2x, $$2xx))));
+      return $$2.build();
+   }
 
-      public final <T extends Comparable<T>> fne.c b(dxz<T> $$0, T $$1) {
-         this.a($$0, "!" + $$0.b($$1));
-         return this;
-      }
+   @Override
+   public djk a() {
+      return this.a;
+   }
 
-      @SafeVarargs
-      public final <T extends Comparable<T>> fne.c b(dxz<T> $$0, T $$1, T... $$2) {
-         this.a($$0, "!" + c($$0, $$1, $$2));
-         return this;
-      }
+   public static fne a(djk $$0) {
+      return new fne($$0, ImmutableList.of(fnh.a()));
+   }
 
-      public JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
-         return $$0;
-      }
+   public static fne a(djk $$0, fnh $$1) {
+      return new fne($$0, ImmutableList.of($$1));
+   }
 
-      @Override
-      public void a(dwy<?, ?> $$0) {
-         List<dxz<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
-         }
-      }
+   public static fne a(djk $$0, fnh... $$1) {
+      return new fne($$0, ImmutableList.copyOf($$1));
    }
 }

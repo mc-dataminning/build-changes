@@ -1,60 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dla extends djm {
-   public static final MapCodec<dla> a = b(dla::new);
-   public static final dxo b = dxn.B;
-   public static final dxo c = dxn.v;
-
-   @Override
-   protected MapCodec<? extends dla> a() {
-      return a;
-   }
-
-   public dla(dww.d $$0) {
-      super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
-   }
+public class dla extends dis {
+   public static final MapCodec<dla> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dkz.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dla::new));
+   private final djk c;
 
    @Override
-   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof arc $$5) {
-         this.a($$0, $$5, $$2);
+   public MapCodec<dla> a() {
+      return b;
+   }
+
+   protected dla(djk $$0, dwu.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
+
+   @Override
+   protected void b(dwv $$0, dgg $$1, ji $$2, dwv $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
+   }
+
+   @Override
+   protected void a(dwv $$0, arc $$1, ji $$2, azg $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.m().b(d, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
-      if ($$1 instanceof arc $$6) {
-         this.a($$0, $$6, $$2);
-      }
-   }
-
-   public void a(dwx $$0, arc $$1, ji $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dwx $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? awa.fI : awa.fJ, awb.e);
+   protected dwv a(dwv $$0, dgj $$1, dgv $$2, ji $$3, jn $$4, ji $$5, dwv $$6, azg $$7) {
+      if ($$4 == jn.a && !$$0.a($$1, $$3)) {
+         return djm.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(d)) {
+            $$2.a($$3, esy.c, esy.c.a($$1));
          }
 
-         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Override
-   protected boolean c_(dwx $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dwx $$0, dgi $$1, ji $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

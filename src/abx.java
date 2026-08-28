@@ -1,15 +1,15 @@
 public class abx implements yv<abk> {
    public static final ym<vl, abx> a = yv.a(abx::a, abx::new);
-   private final bsg b;
+   private final bsf b;
    private final boolean c;
 
-   public abx(bsg $$0, boolean $$1) {
+   public abx(bsf $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private abx(vl $$0) {
-      this.b = bsg.a($$0.readUnsignedByte());
+      this.b = bsf.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class abx implements yv<abk> {
       return this.c;
    }
 
-   public bsg e() {
+   public bsf e() {
       return this.b;
    }
 }

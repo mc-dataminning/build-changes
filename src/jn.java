@@ -17,7 +17,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum jn implements azv {
+public enum jn implements azu {
    a(0, 1, -1, "down", jn.b.b, jn.a.b, new km(0, -1, 0)),
    b(1, 0, -1, "up", jn.b.a, jn.a.b, new km(0, 1, 0)),
    c(2, 3, 2, "north", jn.b.b, jn.a.c, new km(0, 0, -1)),
@@ -25,9 +25,9 @@ public enum jn implements azv {
    e(4, 5, 1, "west", jn.b.b, jn.a.a, new km(-1, 0, 0)),
    f(5, 4, 3, "east", jn.b.a, jn.a.a, new km(1, 0, 0));
 
-   public static final azv.a<jn> g = azv.a(jn::values);
+   public static final azu.a<jn> g = azu.a(jn::values);
    public static final Codec<jn> h = g.validate(jn::b);
-   public static final IntFunction<jn> i = axq.a(jn::d, values(), axq.a.b);
+   public static final IntFunction<jn> i = axp.a(jn::d, values(), axp.a.b);
    public static final ym<ByteBuf, jn> j = yk.a(i, jn::d);
    private final int k;
    private final int l;
@@ -36,7 +36,7 @@ public enum jn implements azv {
    private final jn.a o;
    private final jn.b p;
    private final km q;
-   private final fba r;
+   private final fay r;
    private static final jn[] s = values();
    private static final jn[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(jn[]::new);
    private static final jn[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jn[]::new);
@@ -49,16 +49,16 @@ public enum jn implements azv {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fba.a($$6);
+      this.r = fay.a($$6);
    }
 
-   public static jn[] a(buk $$0) {
+   public static jn[] a(buj $$0) {
       float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = ayz.a($$1);
-      float $$4 = ayz.b($$1);
-      float $$5 = ayz.a($$2);
-      float $$6 = ayz.b($$2);
+      float $$3 = ayy.a($$1);
+      float $$4 = ayy.b($$1);
+      float $$5 = ayy.a($$2);
+      float $$6 = ayy.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -93,7 +93,7 @@ public enum jn implements azv {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<jn> a(azh $$0) {
+   public static Collection<jn> a(azg $$0) {
       return af.b(values(), $$0);
    }
 
@@ -134,7 +134,7 @@ public enum jn implements azv {
       return this.p;
    }
 
-   public static jn a(buk $$0, jn.a $$1) {
+   public static jn a(buj $$0, jn.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.i(1.0F)) ? f : e;
          case b -> $$0.h(1.0F) < 0.0F ? b : a;
@@ -252,15 +252,15 @@ public enum jn implements azv {
    }
 
    public static jn a(int $$0) {
-      return t[ayz.a($$0 % t.length)];
+      return t[ayy.a($$0 % t.length)];
    }
 
    public static jn b(int $$0) {
-      return u[ayz.a($$0 % u.length)];
+      return u[ayy.a($$0 % u.length)];
    }
 
    public static jn a(double $$0) {
-      return b(ayz.a($$0 / 90.0 + 0.5) & 3);
+      return b(ayy.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static jn a(jn.a $$0, jn.b $$1) {
@@ -275,7 +275,7 @@ public enum jn implements azv {
       return (float)((this.m & 3) * 90);
    }
 
-   public static jn b(azh $$0) {
+   public static jn b(azg $$0) {
       return af.a(s, $$0);
    }
 
@@ -298,7 +298,7 @@ public enum jn implements azv {
       return $$3;
    }
 
-   public static jn a(fba $$0) {
+   public static jn a(fay $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,18 +353,18 @@ public enum jn implements azv {
       return this.q;
    }
 
-   public fba r() {
+   public fay r() {
       return this.r;
    }
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -ayz.a($$1);
-      float $$3 = ayz.b($$1);
+      float $$2 = -ayy.a($$1);
+      float $$3 = ayy.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements azv, Predicate<jn> {
+   public static enum a implements azu, Predicate<jn> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -430,7 +430,7 @@ public enum jn implements azv {
       };
 
       public static final jn.a[] d = values();
-      public static final azv.a<jn.a> e = azv.a(jn.a::values);
+      public static final azu.a<jn.a> e = azu.a(jn.a::values);
       private final String f;
 
       a(final String $$0) {
@@ -467,7 +467,7 @@ public enum jn implements azv {
          return this.f;
       }
 
-      public static jn.a a(azh $$0) {
+      public static jn.a a(azg $$0) {
          return af.a(d, $$0);
       }
 
@@ -534,11 +534,11 @@ public enum jn implements azv {
          this.d = $$1;
       }
 
-      public jn a(azh $$0) {
+      public jn a(azg $$0) {
          return af.a(this.c, $$0);
       }
 
-      public jn.a b(azh $$0) {
+      public jn.a b(azg $$0) {
          return af.a(this.d, $$0);
       }
 
@@ -555,7 +555,7 @@ public enum jn implements azv {
          return Arrays.stream(this.c);
       }
 
-      public List<jn> c(azh $$0) {
+      public List<jn> c(azg $$0) {
          return af.b(this.c, $$0);
       }
 

@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hao extends gyi {
-   public float a;
-   @Nullable
-   public dwx b;
+public class hao extends gzh {
+   public chw.b a = chw.b.g;
+   public int b = -1;
+   public int c = -1;
 }

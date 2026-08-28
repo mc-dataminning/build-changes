@@ -62,14 +62,14 @@ public class ft implements ArgumentType<ft.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayz.a($$0x, $$1);
+            return ayy.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return ayz.b($$0x, $$1);
+            return ayy.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class ft implements ArgumentType<ft.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(fcd var1, fcd var2) throws CommandSyntaxException;
+      void apply(fcb var1, fcb var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class ft implements ArgumentType<ft.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(fcd $$0, fcd $$1) throws CommandSyntaxException {
+      default void apply(fcb $$0, fcb $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

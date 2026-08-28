@@ -1,51 +1,97 @@
-public abstract class fwb<T extends ctg> extends fuz<T> implements csq {
-   private final aku G;
+import java.util.Objects;
 
-   public fwb(T $$0, cow $$1, wo $$2, aku $$3) {
-      super($$0, $$1, $$2);
-      this.G = $$3;
+public class fwb extends fvf implements fwd<ctg> {
+   private final ctg y;
+   private final cso z = new cso() {
+      @Override
+      public void a(csa $$0, int $$1, cwn $$2) {
+         fwb.this.M();
+      }
+
+      @Override
+      public void a(csa $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            fwb.this.N();
+         }
+      }
+   };
+
+   public fwb(ctg $$0, cou $$1, wo $$2) {
+      this.y = $$0;
    }
 
-   @Override
-   protected void G() {
+   public ctg L() {
+      return this.y;
    }
 
    @Override
    protected void aR_() {
       super.aR_();
-      this.G();
-      this.z.a(this);
+      this.y.a(this.z);
+   }
+
+   @Override
+   public void aO_() {
+      this.m.t.p();
+      super.aO_();
    }
 
    @Override
    public void aI_() {
       super.aI_();
-      this.z.b(this);
+      this.y.b(this.z);
    }
 
    @Override
-   public void a(fod $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(fod $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(fod $$0, float $$1, int $$2, int $$3) {
-      $$0.a(gmh::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      this.c($$0, this.C, this.D);
-   }
-
-   protected abstract void c(fod var1, int var2, int var3);
-
-   @Override
-   public void a(csc $$0, int $$1, int $$2) {
+   protected void m() {
+      if (this.m.t.gv()) {
+         this.c(fop.a(wn.d, $$0 -> this.aO_()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fop.a(wo.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.m();
+      }
    }
 
    @Override
-   public void a(csc $$0, int $$1, cwp $$2) {
+   protected void G() {
+      this.g(1);
+   }
+
+   @Override
+   protected void H() {
+      this.g(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.y.m()) {
+         this.g(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void g(int $$0) {
+      this.m.r.a(this.y.l, $$0);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   void M() {
+      cwn $$0 = this.y.l();
+      this.a(Objects.requireNonNullElse(fvf.a.a($$0), fvf.d));
+   }
+
+   void N() {
+      this.a(this.y.m());
+   }
+
+   @Override
+   protected void I() {
+      this.m.t.p();
    }
 }

@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fgp extends fgq {
+   private static final wo a = wo.c("mco.upload.cancelled");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fgp {
+   @Override
+   public wo a() {
+      return a;
+   }
 }

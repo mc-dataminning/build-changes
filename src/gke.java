@@ -1,118 +1,45 @@
-public class gke extends gkg {
-   gke(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public abstract class gke extends gjr {
+   protected hem E;
+
+   protected gke(gfw $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   protected gke(gfw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+   }
+
+   protected void a(hem $$0) {
+      this.E = $$0;
    }
 
    @Override
-   public gjk b() {
-      return gjk.b;
+   protected float c() {
+      return this.E.c();
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   protected float d() {
+      return this.E.d();
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
-      }
+   protected float e() {
+      return this.E.g();
    }
 
-   public static class a implements gjj<lx> {
-      private final gkb a;
-
-      public a(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.H_().a(5));
-         return $$8;
-      }
+   @Override
+   protected float f() {
+      return this.E.h();
    }
 
-   public static class b implements gjj<lx> {
-      private final gkb a;
-
-      public b(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.A.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
+   public void a(gjz $$0) {
+      this.a($$0.a(this.r));
    }
 
-   public static class c implements gjj<lx> {
-      private final gkb a;
-
-      public c(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gjj<lx> {
-      private final gkb a;
-
-      public d(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements gjj<lx> {
-      private final gkb a;
-
-      public e(gkb $$0) {
-         this.a = $$0;
-      }
-
-      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public void b(gjz $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

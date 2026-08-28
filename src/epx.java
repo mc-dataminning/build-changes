@@ -1,60 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class epx extends enm {
-   public static final MapCodec<epx> d = a(epx::new);
+public class epx extends enk {
+   public static final MapCodec<epx> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               epx.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, epx::new)
+   );
+   public final epx.a e;
+   public final float f;
+   public final float g;
 
-   public epx(enm.c $$0) {
+   public epx(enk.c $$0, epx.a $$1, float $$2, float $$3) {
       super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public Optional<enm.b> a(enm.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (jr<dhk> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(awo.X)) {
-            return Optional.empty();
-         }
-      }
-
-      return a($$0, ecs.a.c, $$1x -> a($$1x, $$0));
+   public Optional<enk.b> a(enk.a $$0) {
+      return a($$0, ecq.a.c, $$1 -> this.a($$1, $$0));
    }
 
-   private static enq a(dfo $$0, edr $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jn $$4 = jn.c.a.a($$1);
-      return new epw.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(eoe $$0, enm.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static eob a(dfo $$0, long $$1, eob $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         edr $$3 = new edr(new ect(edh.a()));
-         $$3.c($$1, $$0.h, $$0.i);
-         enq $$4 = $$2.c().get(0);
-         ene $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jn $$8 = jn.c.a.a($$3);
-         jn $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         enq $$10 = new epw.h($$3, $$6, $$7, $$9);
-         eoe $$11 = new eoe();
-         $$11.a($$10);
-         return $$11.a();
-      }
+   private void a(eoc $$0, enk.a $$1) {
+      ji $$2 = new ji($$1.h().d(), 90, $$1.h().e());
+      dqc $$3 = dqc.a($$1.f());
+      epw.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public env<?> e() {
-      return env.j;
+   public ent<?> e() {
+      return ent.k;
+   }
+
+   public static enum a implements azu {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<epx.a> c = azu.a(epx.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

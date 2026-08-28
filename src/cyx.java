@@ -1,26 +1,60 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class cyx {
-   public static final cyv a = a().a();
-   public static final cyv b = b().a();
-   public static final cyv c = b().a(2.0F).a(awa.nb).a(new dad(btr.s)).a();
-   public static final cyv d = b().b(awa.sP).a();
-   public static final cyv e = a().a(0.8F).a();
-   public static final cyv f = a().a(new czz(new btp(btr.q, 600, 0), 0.3F)).a();
-   public static final cyv g = a().a(new czz(List.of(new btp(btr.j, 400, 1), new btp(btr.k, 6000, 0), new btp(btr.l, 6000, 0), new btp(btr.v, 2400, 3)))).a();
-   public static final cyv h = a().a(new czz(List.of(new btp(btr.j, 100, 1), new btp(btr.v, 2400, 0)))).a();
-   public static final cyv i = a().a(new czz(new btp(btr.s, 100, 0), 0.6F)).a();
-   public static final cyv j = a().a(new czz(List.of(new btp(btr.s, 1200, 1), new btp(btr.q, 300, 2), new btp(btr.i, 300, 0)))).a();
-   public static final cyv k = a().a(new czz(new btp(btr.q, 600, 0), 0.8F)).a();
-   public static final cyv l = a().a(new czz(new btp(btr.s, 100, 0))).a();
-   public static final cyv m = b().a(daa.a).a();
-   public static final cyv n = a().a(new dae()).a();
+public record cyx(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
+   public static final cyx a = new cyx(List.of(), List.of(), List.of(), List.of());
+   public static final Codec<cyx> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(cyx::a),
+               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(cyx::b),
+               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(cyx::c),
+               ayh.i.listOf().optionalFieldOf("colors", List.of()).forGetter(cyx::d)
+            )
+            .apply($$0, cyx::new)
+   );
+   public static final ym<ByteBuf, cyx> c = ym.a(yk.l.a(yk.a()), cyx::a, yk.b.a(yk.a()), cyx::b, yk.o.a(yk.a()), cyx::c, yk.g.a(yk.a()), cyx::d, cyx::new);
 
-   public static cyv.a a() {
-      return cyv.b().a(1.6F).a(cwr.b).a(awa.kD).a(true);
+   @Nullable
+   private static <T> T a(List<T> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
    }
 
-   public static cyv.a b() {
-      return cyv.b().a(1.6F).a(cwr.c).a(awa.kC).a(false);
+   @Nullable
+   public Float a(int $$0) {
+      return a(this.d, $$0);
+   }
+
+   @Nullable
+   public Boolean b(int $$0) {
+      return a(this.e, $$0);
+   }
+
+   @Nullable
+   public String c(int $$0) {
+      return a(this.f, $$0);
+   }
+
+   @Nullable
+   public Integer d(int $$0) {
+      return a(this.g, $$0);
+   }
+
+   public List<Float> a() {
+      return this.d;
+   }
+
+   public List<Boolean> b() {
+      return this.e;
+   }
+
+   public List<String> c() {
+      return this.f;
+   }
+
+   public List<Integer> d() {
+      return this.g;
    }
 }

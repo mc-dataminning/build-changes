@@ -1,25 +1,44 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 
-public interface hen {
-   akn a = new akn("textures", ".png");
+public record hen(fes a, @Nullable hgj b) implements Closeable {
+   public static hen a(auo $$0, aku $$1) throws IOException {
+      aum $$2 = $$0.getResourceOrThrow($$1);
 
-   void a(aup var1, hen.a var2);
-
-   hep a();
-
-   public interface a {
-      default void a(aku $$0, aun $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      fes $$4;
+      try (InputStream $$3 = $$2.d()) {
+         $$4 = fes.a($$3);
       }
 
-      void a(aku var1, hen.b var2);
-
-      void a(Predicate<aku> var1);
+      hgj $$6 = $$2.f().a(hgj.d).orElse(null);
+      return new hen($$4, $$6);
    }
 
-   public interface b extends Function<hem, hed> {
-      default void a() {
-      }
+   public static hen a() {
+      return new hen(heb.a(), null);
+   }
+
+   public boolean b() {
+      return this.b != null ? this.b.a() : false;
+   }
+
+   public boolean c() {
+      return this.b != null ? this.b.b() : false;
+   }
+
+   @Override
+   public void close() {
+      this.a.close();
+   }
+
+   public fes d() {
+      return this.a;
+   }
+
+   @Nullable
+   public hgj e() {
+      return this.b;
    }
 }

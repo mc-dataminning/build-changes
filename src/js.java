@@ -7,9 +7,9 @@ public interface js<T> {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   Optional<jv.c<T>> a(axf<T> var1);
+   Optional<jv.c<T>> a(axe<T> var1);
 
-   default jv.c<T> b(axf<T> $$0) {
+   default jv.c<T> b(axe<T> $$0) {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 

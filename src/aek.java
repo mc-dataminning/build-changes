@@ -4,7 +4,7 @@ public class aek implements yv<abk> {
    private final double c;
    private final long d;
 
-   public aek(dyn $$0) {
+   public aek(dyl $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

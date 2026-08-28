@@ -250,7 +250,7 @@ public class kh {
       }
 
       @Override
-      public Optional<jv.c<T>> a(axf<T> $$0) {
+      public Optional<jv.c<T>> a(axe<T> $$0) {
          return Optional.of(jv.a(this.d, $$0));
       }
    }

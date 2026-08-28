@@ -66,7 +66,7 @@ public interface wo extends Message, wt {
       return new xc(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   ayl g();
+   ayk g();
 
    @Override
    default <T> Optional<T> a(wt.b<T> $$0, xl $$1) {
@@ -204,7 +204,7 @@ public interface wo extends Message, wt {
       return b($$0.toString());
    }
 
-   static wo a(dfo $$0) {
+   static wo a(dfm $$0) {
       return b($$0.toString());
    }
 

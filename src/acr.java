@@ -1,4 +1,4 @@
-public record acr(dfo b) implements yv<abk> {
+public record acr(dfm b) implements yv<abk> {
    public static final ym<vl, acr> a = yv.a(acr::a, acr::new);
 
    private acr(vl $$0) {

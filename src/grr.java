@@ -1,22 +1,23 @@
-public class grr extends gqw<chf, gyd, gbt> {
-   private static final aku a = aku.b("textures/entity/dolphin.png");
+public class grr<T extends ciz> extends gqr<T, gyd, gbs> {
+   public static final aku a = aku.b("textures/entity/horse/donkey.png");
+   public static final aku b = aku.b("textures/entity/horse/mule.png");
+   private final aku k;
 
-   public grr(gsc.a $$0) {
-      super($$0, new gbt($$0.a(gfb.ap)), new gbt($$0.a(gfb.aq)), 0.7F);
-      this.a(new gvx(this));
+   public grr(gsb.a $$0, gey $$1, gey $$2, boolean $$3) {
+      super($$0, new gbs($$0.a($$1)), new gbs($$0.a($$2)));
+      this.k = $$3 ? b : a;
    }
 
    public aku a(gyd $$0) {
-      return a;
+      return this.k;
    }
 
    public gyd a() {
       return new gyd();
    }
 
-   public void a(chf $$0, gyd $$1, float $$2) {
+   public void a(T $$0, gyd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gyx.a($$0, $$1, this.i);
-      $$1.a = $$0.dz().j() > 1.0E-7;
+      $$1.a = $$0.t();
    }
 }

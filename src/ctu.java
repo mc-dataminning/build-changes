@@ -1,68 +1,61 @@
-import javax.annotation.Nullable;
+public class ctu extends csa {
+   private static final int m = 27;
+   private final bsb n;
 
-public class ctu implements bsc, ctt {
-   private final ka<cwp> b = ka.a(1, cwp.j);
-   @Nullable
-   private dbj<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+   public ctu(int $$0, cou $$1) {
+      this($$0, $$1, new bsp(27));
    }
 
-   @Override
-   public boolean c() {
-      for (cwp $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+   public ctu(int $$0, cou $$1, bsb $$2) {
+      super(ctj.u, $$0);
+      a($$2, 27);
+      this.n = $$2;
+      $$2.c_($$1.k);
+      int $$3 = 3;
+      int $$4 = 9;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new ctv($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
       }
 
-      return true;
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public cwp a(int $$0) {
-      return this.b.get(0);
+   public boolean b(cov $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   public cwp a(int $$0, int $$1) {
-      return bsd.a(this.b, 0);
+   public cwn b(cov $$0, int $$1) {
+      cwn $$2 = cwn.j;
+      ctx $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cwn $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return cwn.j;
+            }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return cwn.j;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cwn.j);
+         } else {
+            $$3.c();
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public cwp b(int $$0) {
-      return bsd.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cwp $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cox $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable dbj<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dbj<?> d() {
-      return this.c;
+   public void a(cov $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

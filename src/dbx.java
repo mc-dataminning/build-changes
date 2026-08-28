@@ -1,19 +1,26 @@
-public record dbx(cwp a) implements dbk {
+import java.util.Optional;
+
+public interface dbx extends dbc<dby> {
    @Override
-   public cwp a(int $$0) {
-      if ($$0 != 0) {
-         throw new IllegalArgumentException("No item for index " + $$0);
-      } else {
-         return this.a;
-      }
+   default dbn<dbx> b() {
+      return dbn.g;
    }
 
    @Override
-   public int a() {
-      return 1;
+   dbm<? extends dbx> a();
+
+   default boolean a(dby $$0, dgg $$1) {
+      return day.a(this.c(), $$0.c()) && day.a(this.f(), $$0.d()) && day.a(this.k(), $$0.e());
    }
 
-   public cwp c() {
-      return this.a;
+   Optional<day> c();
+
+   Optional<day> f();
+
+   Optional<day> k();
+
+   @Override
+   default dbf h() {
+      return dbe.l;
    }
 }

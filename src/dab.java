@@ -1,31 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dab {
-   Codec<dab> d = mb.ay.q().dispatch(dab::a, dab.a::a);
-   ym<vz, dab> e = yk.a(mc.aE).b(dab::a, dab.a::b);
+public record dab(jv<btm> c) implements czz {
+   public static final MapCodec<dab> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kg.a(mc.W).fieldOf("effects").forGetter(dab::b)).apply($$0, dab::new));
+   public static final ym<vz, dab> b = ym.a(yk.c(mc.W), dab::b, dab::new);
 
-   dab.a<? extends dab> a();
+   public dab(jr<btm> $$0) {
+      this(jv.a($$0));
+   }
 
-   boolean a(dgi var1, cwp var2, bvg var3);
+   @Override
+   public czz.a<dab> a() {
+      return czz.a.b;
+   }
 
-   public static record a<T extends dab>(MapCodec<T> f, ym<vz, T> g) {
-      public static final dab.a<czz> a = a("apply_effects", czz.a, czz.b);
-      public static final dab.a<dad> b = a("remove_effects", dad.a, dad.b);
-      public static final dab.a<daa> c = a("clear_all_effects", daa.b, daa.c);
-      public static final dab.a<dae> d = a("teleport_randomly", dae.a, dae.b);
-      public static final dab.a<dac> e = a("play_sound", dac.a, dac.b);
+   @Override
+   public boolean a(dgg $$0, cwn $$1, bvf $$2) {
+      boolean $$3 = false;
 
-      private static <T extends dab> dab.a<T> a(String $$0, MapCodec<T> $$1, ym<vz, T> $$2) {
-         return ke.a(mb.ay, $$0, new dab.a<>($$1, $$2));
+      for (jr<btm> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
 
-      public MapCodec<T> a() {
-         return this.f;
-      }
+      return $$3;
+   }
 
-      public ym<vz, T> b() {
-         return this.g;
-      }
+   public jv<btm> b() {
+      return this.c;
    }
 }

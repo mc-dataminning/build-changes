@@ -1,29 +1,33 @@
-public class dby extends dak {
-   public dby(String $$0, daq $$1, dba $$2, cwp $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
+public record dby(cwn a, cwn b, cwn c) implements dbi {
    @Override
-   protected cwl f() {
-      return cwt.fe;
-   }
-
-   @Override
-   public dbo<dby> a() {
-      return dbo.o;
-   }
-
-   @Override
-   public dbp<dby> b() {
-      return dbp.b;
-   }
-
-   @Override
-   public dbh h() {
-      return switch (this.e()) {
-         case b -> dbg.f;
-         case a -> dbg.e;
-         case c -> dbg.g;
+   public cwn a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
       };
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public cwn c() {
+      return this.a;
+   }
+
+   public cwn d() {
+      return this.b;
+   }
+
+   public cwn e() {
+      return this.c;
    }
 }

@@ -1,39 +1,36 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+public final class heb {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final aku d = aku.b("missingno");
 
-public class heb extends hec {
-   @Nullable
-   private CompletableFuture<hec.a> e;
-
-   public heb(aup $$0, aku $$1, Executor $$2) {
-      super($$1);
-      this.e = CompletableFuture.supplyAsync(() -> hec.a.a($$0, $$1), $$2);
+   public static fes a() {
+      return a(16, 16);
    }
 
-   @Override
-   protected hec.a b(aup $$0) {
-      if (this.e != null) {
-         hec.a $$1 = this.e.join();
-         this.e = null;
-         return $$1;
-      } else {
-         return hec.a.a($$0, this.d);
+   public static fes a(int $$0, int $$1) {
+      fes $$2 = new fes($$0, $$1, false);
+      int $$3 = -524040;
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.a($$5, $$4, -524040);
+            } else {
+               $$2.a($$5, $$4, -16777216);
+            }
+         }
       }
+
+      return $$2;
    }
 
-   public CompletableFuture<Void> e() {
-      return this.e == null ? CompletableFuture.completedFuture(null) : this.e.thenApply($$0 -> null);
+   public static heg b() {
+      fes $$0 = a(16, 16);
+      return new heg(d, new hga(16, 16), $$0, auq.a);
    }
 
-   @Override
-   public void a(hek $$0, aup $$1, aku $$2, Executor $$3) {
-      this.e = CompletableFuture.supplyAsync(() -> hec.a.a($$1, this.d), af.g());
-      this.e.thenRunAsync(() -> $$0.a(this.d, this), a($$3));
-   }
-
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   public static aku c() {
+      return d;
    }
 }

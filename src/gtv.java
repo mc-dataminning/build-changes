@@ -1,43 +1,41 @@
-public class gtv extends gti<chq, gzw, gca<gyi>> {
-   private static final aku a = aku.b("textures/entity/fish/pufferfish.png");
-   private final gca<gyi> b;
-   private final gca<gyi> k;
-   private final gca<gyi> l = this.c();
+public class gtv extends gqv<chq, gzw, gdj> {
+   private static final aku a = aku.b("textures/entity/rabbit/brown.png");
+   private static final aku b = aku.b("textures/entity/rabbit/white.png");
+   private static final aku k = aku.b("textures/entity/rabbit/black.png");
+   private static final aku l = aku.b("textures/entity/rabbit/gold.png");
+   private static final aku m = aku.b("textures/entity/rabbit/salt.png");
+   private static final aku n = aku.b("textures/entity/rabbit/white_splotched.png");
+   private static final aku o = aku.b("textures/entity/rabbit/toast.png");
+   private static final aku p = aku.b("textures/entity/rabbit/caerbannog.png");
 
-   public gtv(gsc.a $$0) {
-      super($$0, new gdh($$0.a(gfb.cq)), 0.2F);
-      this.k = new gdi($$0.a(gfb.cr));
-      this.b = new gdj($$0.a(gfb.cs));
+   public gtv(gsb.a $$0) {
+      super($$0, new gdj($$0.a(gez.ct)), new gdj($$0.a(gez.cu)), 0.3F);
    }
 
    public aku a(gzw $$0) {
-      return a;
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> b;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
+      }
    }
 
    public gzw b() {
       return new gzw();
    }
 
-   protected float b(gzw $$0) {
-      return 0.1F + 0.1F * (float)$$0.a;
-   }
-
-   public void a(gzw $$0, ffu $$1, glx $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
    public void a(chq $$0, gzw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gq();
-   }
-
-   protected void a(gzw $$0, ffu $$1, float $$2, float $$3) {
-      $$1.a(0.0F, ayz.b($$0.u * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(n.a($$0.al().getString()));
+      $$1.c = $$0.gp();
    }
 }

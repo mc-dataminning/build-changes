@@ -3,9 +3,9 @@ public class abs implements yv<abk> {
    private final ji b;
    private final int c;
    private final int d;
-   private final djm e;
+   private final djk e;
 
-   public abs(ji $$0, djm $$1, int $$2, int $$3) {
+   public abs(ji $$0, djk $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class abs implements yv<abk> {
       return this.d;
    }
 
-   public djm g() {
+   public djk g() {
       return this.e;
    }
 }

@@ -8,7 +8,7 @@ public class br extends dz<br.a> {
       return br.a.a;
    }
 
-   public void a(ard $$0, cwp $$1, int $$2) {
+   public void a(ard $$0, cwn $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class br extends dz<br.a> {
          return ap.j.a(new br.a(Optional.empty(), Optional.empty(), dk.d.c));
       }
 
-      public boolean a(cwp $$0, int $$1) {
+      public boolean a(cwn $$0, int $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 

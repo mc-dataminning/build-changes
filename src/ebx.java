@@ -1,11 +1,8 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ebx {
-   Codec<ebx> c = mb.t.q().dispatch(ebx::a, eby::a);
-   ym<vz, ebx> d = yk.a(mc.ab).b(ebx::a, eby::b);
-
-   Optional<fba> a(dgi var1);
-
-   eby<? extends ebx> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ebx {
 }

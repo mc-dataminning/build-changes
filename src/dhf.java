@@ -1,25 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dhf(dfv d, crt e) {
-   public static final String a = "enabled_features";
-   public static final Codec<dhf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dfv.b.lenientOptionalFieldOf("DataPacks", dfv.a).forGetter(dhf::a), crv.f.lenientOptionalFieldOf("enabled_features", crv.h).forGetter(dhf::b)
-            )
-            .apply($$0, dhf::new)
+public class dhf {
+   public static final Codec<dhf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avy.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dhf::new)
    );
-   public static final dhf c = new dhf(dfv.a, crv.h);
+   private final jr<avy> b;
+   private final double c;
 
-   public dhf a(crt $$0) {
-      return new dhf(this.d, this.e.c($$0));
+   public dhf(jr<avy> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public dfv a() {
-      return this.d;
+   public jr<avy> a() {
+      return this.b;
    }
 
-   public crt b() {
-      return this.e;
+   public double b() {
+      return this.c;
    }
 }

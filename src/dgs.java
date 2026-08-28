@@ -1,50 +1,25 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+public final class dgs implements dyn {
+   private final int a;
+   private final dwv[] b;
 
-public class dgs {
-   private final Long2ObjectMap<List<ard>> a = new Long2ObjectOpenHashMap();
-   private final Map<ard, dgs.a> b = Maps.newHashMap();
-   private final aqh c;
-
-   public dgs(aqh $$0) {
-      this.c = $$0;
+   public dgs(int $$0, dwv[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private List<ard> a(dfo $$0) {
-      return (List<ard>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
+   @Override
+   public dwv a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : djm.a.m();
    }
 
-   public void a(dfo $$0, bvj $$1) {
-      for (ard $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new dgs.a()).a($$1);
-      }
-   }
-
-   public boolean a(bvj $$0, dfo $$1) {
-      for (ard $$2 : this.a($$1)) {
-         dgs.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   static class a {
-      private final Object2IntMap<bvj> a = new Object2IntOpenHashMap(bvj.values().length);
-
-      public void a(bvj $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
-
-      public boolean b(bvj $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
+   @Override
+   public void a(int $$0, dwv $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
    }
 }

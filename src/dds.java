@@ -1,19 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dds {
-   Codec<dds> b = mb.aw.q().dispatch(dds::a, Function.identity());
+public record dds(dde d) implements ddo {
+   public static final MapCodec<dds> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dde.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dds::new));
 
-   static MapCodec<? extends dds> a(ke<MapCodec<? extends dds>> $$0) {
-      ke.a($$0, "add", ddj.a);
-      ke.a($$0, "all_of", ddk.c.a);
-      ke.a($$0, "multiply", ddv.a);
-      ke.a($$0, "remove_binomial", ddx.a);
-      return ke.a($$0, "set", dec.a);
+   @Override
+   public void a(arc $$0, int $$1, dcw $$2, buj $$3, fay $$4) {
+      $$3.d(this.d.a($$1));
    }
 
-   float a(int var1, azh var2, float var3);
+   @Override
+   public MapCodec<dds> a() {
+      return a;
+   }
 
-   MapCodec<? extends dds> a();
+   public dde b() {
+      return this.d;
+   }
 }

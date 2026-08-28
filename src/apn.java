@@ -274,7 +274,7 @@ public class apn {
       un $$3 = a($$2, $$1);
       int $$4;
       if ($$3 instanceof ug) {
-         $$4 = ayz.a(((ug)$$3).j());
+         $$4 = ayy.a(((ug)$$3).j());
       } else if ($$3 instanceof tp) {
          $$4 = ((tp)$$3).size();
       } else if ($$3 instanceof tq) {
@@ -296,7 +296,7 @@ public class apn {
       if (!($$4 instanceof ug)) {
          throw e.create($$2.toString());
       } else {
-         int $$5 = ayz.a(((ug)$$4).j() * $$3);
+         int $$5 = ayy.a(((ug)$$4).j() * $$3);
          $$0.a(() -> $$1.a($$2, $$3, $$5), false);
          return $$5;
       }

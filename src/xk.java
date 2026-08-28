@@ -16,13 +16,13 @@ public interface xk {
    xe updateAndValidate(xe var1);
 
    public static class a implements xk {
-      private final azm d;
+      private final azl d;
       private final BooleanSupplier e;
       @Nullable
       private xe f;
       private boolean g = true;
 
-      public a(azm $$0, BooleanSupplier $$1) {
+      public a(azl $$0, BooleanSupplier $$1) {
          this.d = $$0;
          this.e = $$1;
       }

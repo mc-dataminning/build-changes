@@ -1,14 +1,14 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hbx() implements hbu {
+public record hbx() implements hbt {
    public static final MapCodec<hbx> a = MapCodec.unit(new hbx());
 
    @Override
-   public boolean a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
-      if ($$2 instanceof cox $$4 && $$4.cw != null) {
-         bva $$5 = gsj.a($$4);
-         return $$2.a($$5) == $$0;
+   public boolean a(cwn $$0, @Nullable gfw $$1, @Nullable bvf $$2, int $$3, cwl $$4) {
+      if ($$2 instanceof cov $$5 && $$5.cw != null) {
+         buz $$6 = gsi.a($$5);
+         return $$2.a($$6) == $$0;
       }
 
       return false;

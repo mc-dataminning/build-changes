@@ -11,11 +11,11 @@ import java.util.stream.Stream;
 public class ki {
    private static final Set<akt<? extends ke<?>>> a = akp.c.stream().map(akp.d::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<un> $$0, kf $$1, Set<atw> $$2, BiConsumer<akt<? extends ke<?>>, List<ki.a>> $$3) {
+   public static void a(DynamicOps<un> $$0, kf $$1, Set<atv> $$2, BiConsumer<akt<? extends ke<?>>, List<ki.a>> $$3) {
       akp.c.forEach($$4 -> a($$0, (akp.d<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<un> $$0, akp.d<T> $$1, kf $$2, Set<atw> $$3, BiConsumer<akt<? extends ke<?>>, List<ki.a>> $$4) {
+   private static <T> void a(DynamicOps<un> $$0, akp.d<T> $$1, kf $$2, Set<atv> $$3, BiConsumer<akt<? extends ke<?>>, List<ki.a>> $$4) {
       $$2.a($$1.a())
          .ifPresent(
             $$4x -> {

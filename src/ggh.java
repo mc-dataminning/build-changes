@@ -1,41 +1,17 @@
 public class ggh {
-   private final gkv a;
-   private final gfy b;
-   private final glt c;
-   private ggh.a d = ggh.a.a;
+   private final gfx a;
+   private final bnb b;
 
-   public ggh(gkv $$0, gfy $$1, glt $$2) {
+   public ggh(gfx $$0, bnb $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
    public void a() {
-      switch (this.d) {
-         case b:
-            ji $$0 = this.a.dw();
-            boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.Z_() || !this.a.bL()) {
-               this.d = ggh.a.c;
-            }
-         case a:
-         case c:
-      }
+      this.a.b(new ajn(af.c()));
    }
 
-   public boolean b() {
-      return this.d == ggh.a.c;
-   }
-
-   public void c() {
-      if (this.d == ggh.a.a) {
-         this.d = ggh.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public void a(ajk $$0) {
+      this.b.a(af.c() - $$0.b());
    }
 }

@@ -1,48 +1,29 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class efi extends efy<eij> {
-   public efi(Codec<eij> $$0) {
-      super($$0);
+public record efi<FC extends eia, F extends efw<FC>>(F d, FC e) {
+   public static final Codec<efi<?, ?>> a = mb.O.q().dispatch($$0 -> $$0.d, efw::a);
+   public static final Codec<jr<efi<?, ?>>> b = akq.a(mc.aL, a);
+   public static final Codec<jv<efi<?, ?>>> c = kg.a(mc.aL, a);
+
+   public boolean a(dhe $$0, dyr $$1, azg $$2, ji $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<efi<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(ega<eij> $$0) {
-      azh $$1 = $$0.d();
-      dhg $$2 = $$0.b();
-      dfo $$3 = new dfo($$0.e());
-      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ji.a $$6 = new ji.a();
-      IntListIterator var8 = $$4.iterator();
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   public F b() {
+      return this.d;
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ji $$9 = $$2.a(ecs.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, djo.cD.m(), 2);
-               bsp.a($$2, $$1, $$9, evn.a);
-               dwx $$10 = djo.cw.m();
-
-               for (jn $$11 : jn.c.a) {
-                  ji $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public FC c() {
+      return this.e;
    }
 }

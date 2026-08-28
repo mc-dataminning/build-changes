@@ -1,27 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class dfv {
-   public static final dfv a = new dfv(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<dfv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, dfv::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+public enum dfv implements dfl {
+   a;
 
-   public dfv(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   @Nullable
+   @Override
+   public dtx c_(ji $$0) {
+      return null;
    }
 
-   public List<String> a() {
-      return this.c;
+   @Override
+   public dwv a_(ji $$0) {
+      return djm.a.m();
    }
 
-   public List<String> b() {
-      return this.d;
+   @Override
+   public esx b_(ji $$0) {
+      return esy.a.g();
+   }
+
+   @Override
+   public int L_() {
+      return 0;
+   }
+
+   @Override
+   public int M_() {
+      return 0;
    }
 }

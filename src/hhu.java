@@ -1,15 +1,16 @@
-public class hhu extends hhv {
-   public hhu(cgy $$0) {
-      super($$0, awa.bR, awb.g);
+public class hhu extends hhw {
+   public hhu(cgx $$0) {
+      super($$0, avz.bQ, awa.g);
+      this.j = 0;
    }
 
    @Override
-   protected hhr o() {
-      return new hht(this.n);
+   protected hhs o() {
+      return new hhv(this.n);
    }
 
    @Override
    protected boolean p() {
-      return this.n.ac_();
+      return !this.n.ac_();
    }
 }

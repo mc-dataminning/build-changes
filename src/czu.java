@@ -1,32 +1,36 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record czu(float c, Optional<aku> d) {
-   public static final Codec<czu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.o.fieldOf("seconds").forGetter(czu::b), aku.a.optionalFieldOf("cooldown_group").forGetter(czu::c)).apply($$0, czu::new)
-   );
-   public static final ym<vz, czu> b = ym.a(yk.l, czu::b, aku.b.a(yk::a), czu::c, czu::new);
+public record czu(List<aru<String>> g) implements cyq<String, czu> {
+   public static final czu a = new czu(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<aru<String>> h = aru.a(Codec.string(0, 1024));
+   public static final Codec<List<aru<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<czu> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(czu::a)).apply($$0, czu::new));
+   public static final ym<ByteBuf, czu> f = aru.a(yk.b(1024)).a(yk.c(100)).a(czu::new, czu::a);
 
-   public czu(float $$0) {
-      this($$0, Optional.empty());
-   }
-
-   public int a() {
-      return (int)(this.c * 20.0F);
-   }
-
-   public void a(cwp $$0, bvg $$1) {
-      if ($$1 instanceof cox $$2) {
-         $$2.gE().a($$0, this.a());
+   public czu(List<aru<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
       }
    }
 
-   public float b() {
-      return this.c;
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
    }
 
-   public Optional<aku> c() {
-      return this.d;
+   public czu b(List<aru<String>> $$0) {
+      return new czu($$0);
+   }
+
+   @Override
+   public List<aru<String>> a() {
+      return this.g;
    }
 }

@@ -1,46 +1,19 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public enum dfw implements dfk {
-   a;
+public class dfw extends dfz {
+   private final buj a;
 
-   @Override
-   public float a(jn $$0, boolean $$1) {
-      return 1.0F;
+   public dfw(buj $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public eso C_() {
-      return eso.c;
+   public Optional<Float> a(dfy $$0, dfl $$1, ji $$2, dwv $$3, esx $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public int a(ji $$0, dfs $$1) {
-      return -1;
-   }
-
-   @Nullable
-   @Override
-   public dtz c_(ji $$0) {
-      return null;
-   }
-
-   @Override
-   public dwx a_(ji $$0) {
-      return djo.a.m();
-   }
-
-   @Override
-   public esz b_(ji $$0) {
-      return eta.a.g();
-   }
-
-   @Override
-   public int M_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public boolean a(dfy $$0, dfl $$1, ji $$2, dwv $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

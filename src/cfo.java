@@ -1,42 +1,38 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class cfo extends cfq<coi> {
-   private static final int a = 40;
+public class cfo {
+   private final bvh a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   public cfo() {
-      super(40);
+   public cfo(bvh $$0) {
+      this.a = $$0;
    }
 
-   protected void a(arc $$0, coi $$1) {
-      akt<dgi> $$2 = $$0.ai();
-      ji $$3 = $$1.dw();
-      List<jq> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ji $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gz().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jq.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bwi<?> $$10 = $$1.ec();
-      if (!$$4.isEmpty()) {
-         $$10.a(cek.f, $$4);
+   public boolean a(buj $$0) {
+      int $$1 = $$0.ar();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
       } else {
-         $$10.b(cek.f);
-      }
-   }
+         bor $$2 = boq.a();
+         $$2.a("hasLineOfSight");
+         boolean $$3 = this.a.E($$0);
+         $$2.c();
+         if ($$3) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   @Override
-   public Set<cek<?>> a() {
-      return ImmutableSet.of(cek.f);
+         return $$3;
+      }
    }
 }

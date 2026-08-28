@@ -1,88 +1,57 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dms extends dnm {
-   public static final MapCodec<dms> a = b(dms::new);
-   public static final int b = 3;
-   public static final dxw c = dxn.av;
-   private static final int f = 4;
-   private static final int g = 2;
+public class dms extends dif {
+   public static final MapCodec<dms> c = b(dms::new);
 
    @Override
    public MapCodec<dms> a() {
-      return a;
+      return c;
    }
 
-   public dms(dww.d $$0) {
+   protected dms(dwu.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      $$1.a($$2, this, ayz.a($$1.H_(), 60, 120));
+   public dtx a(ji $$0, dwv $$1) {
+      return new duw($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
+      return a($$0, $$2, dtz.a);
    }
 
    @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
-         ji.a $$4 = new ji.a();
+   protected void a(dgg $$0, ji $$1, cov $$2) {
+      dtx $$3 = $$0.c_($$1);
+      if ($$3 instanceof duw) {
+         $$2.a((bsk)$$3);
+         $$2.a(awj.am);
+      }
+   }
 
-         for (jn $$5 : jn.values()) {
-            $$4.a($$2, $$5);
-            dwx $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
-               $$1.a($$4, this, ayz.a($$3, 20, 40));
-            }
+   @Override
+   public void a(dwv $$0, dgg $$1, ji $$2, azg $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, avz.ky, awa.e, 1.0F, 1.0F, false);
          }
-      } else {
-         $$1.a($$2, this, ayz.a($$3, 20, 40));
+
+         jn $$7 = $$0.c(a);
+         jn.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jn.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jn.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lt.ag, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lt.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   private boolean f(dwx $$0, dgi $$1, ji $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.e($$0, $$1, $$2);
-         return true;
-      }
-   }
-
-   @Override
-   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.e($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dfn $$0, ji $$1, int $$2) {
-      int $$3 = 0;
-      ji.a $$4 = new ji.a();
-
-      for (jn $$5 : jn.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   protected void a(dwy.a<djm, dwx> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
-      return cwp.j;
    }
 }

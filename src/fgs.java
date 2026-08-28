@@ -1,13 +1,12 @@
-import javax.annotation.Nullable;
+public class fgs extends fgq {
+   final long a;
 
-public abstract class fgs extends RuntimeException {
-   @Nullable
-   public wo a() {
-      return null;
+   public fgs(long $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
+   @Override
    public wo[] b() {
-      return null;
+      return new wo[]{wo.c("mco.upload.failed.too_big.title"), wo.a("mco.upload.failed.too_big.description", fge.b(this.a, fge.a(this.a)))};
    }
 }

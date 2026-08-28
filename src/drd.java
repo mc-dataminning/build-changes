@@ -1,60 +1,42 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class drd extends djm {
+public class drd extends diw {
    public static final MapCodec<drd> a = b(drd::new);
-   protected static final fbu b = djm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
 
    @Override
    public MapCodec<drd> a() {
       return a;
    }
 
-   public drd(dww.d $$0) {
+   protected drd(dwu.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fbu b(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return b;
+   public dtx a(ji $$0, dwv $$1) {
+      return new dvo($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtx> dty<T> a(dgg $$0, dwv $$1, dtz<T> $$2) {
+      return a($$2, dtz.j, $$0.C ? dvo::a : dvo::b);
    }
 
    @Override
-   protected fbu b_(dwx $$0, dfn $$1, ji $$2) {
-      return fbr.b();
-   }
-
-   @Override
-   protected fbu c(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
-      return fbr.b();
-   }
-
-   @Override
-   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
-      djt.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
-      if ($$4 == jn.b && $$6.a(djo.J)) {
-         $$2.a($$3, this, 20);
+   protected void a(dwv $$0, arc $$1, ji $$2, cwn $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
+         this.a($$1, $$2, $$5);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(dwx $$0, eto $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(dwx $$0, dfn $$1, ji $$2) {
-      return 0.2F;
+   public void a(cwn $$0, cwj.b $$1, List<wo> $$2, cyf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dhb.a($$0, $$2, "SpawnData");
    }
 }

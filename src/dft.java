@@ -1,25 +1,27 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface dft extends dfz, dgl, dgn {
-   @Override
-   default <T extends dtz> Optional<T> a(ji $$0, dub<T> $$1) {
-      return dgl.super.a($$0, $$1);
+public class dft {
+   public static final dft a = new dft(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dft> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dft::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
+
+   public dft(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   default List<fbu> c(@Nullable buk $$0, fav $$1) {
-      return dfz.super.c($$0, $$1);
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   default boolean a(@Nullable buk $$0, fbu $$1) {
-      return dfz.super.a($$0, $$1);
-   }
-
-   @Override
-   default ji a(ecs.a $$0, ji $$1) {
-      return dgl.super.a($$0, $$1);
+   public List<String> b() {
+      return this.d;
    }
 }

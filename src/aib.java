@@ -4,13 +4,13 @@ public class aib implements yv<agf> {
    private static final int c = 2;
    private static final int d = 4;
    private final ji e;
-   private final dvr.a f;
-   private final dyg g;
+   private final dvp.a f;
+   private final dye g;
    private final String h;
    private final ji i;
    private final km j;
-   private final dol k;
-   private final dqe l;
+   private final doj k;
+   private final dqc l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class aib implements yv<agf> {
    private final long r;
 
    public aib(
-      ji $$0, dvr.a $$1, dyg $$2, String $$3, ji $$4, km $$5, dol $$6, dqe $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      ji $$0, dvp.a $$1, dye $$2, String $$3, ji $$4, km $$5, doj $$6, dqc $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,17 +39,17 @@ public class aib implements yv<agf> {
 
    private aib(vl $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dvr.a.class);
-      this.g = $$0.b(dyg.class);
+      this.f = $$0.b(dvp.a.class);
+      this.g = $$0.b(dye.class);
       this.h = $$0.p();
       int $$1 = 48;
-      this.i = new ji(ayz.a($$0.readByte(), -48, 48), ayz.a($$0.readByte(), -48, 48), ayz.a($$0.readByte(), -48, 48));
+      this.i = new ji(ayy.a($$0.readByte(), -48, 48), ayy.a($$0.readByte(), -48, 48), ayy.a($$0.readByte(), -48, 48));
       int $$2 = 48;
-      this.j = new km(ayz.a($$0.readByte(), 0, 48), ayz.a($$0.readByte(), 0, 48), ayz.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dol.class);
-      this.l = $$0.b(dqe.class);
+      this.j = new km(ayy.a($$0.readByte(), 0, 48), ayy.a($$0.readByte(), 0, 48), ayy.a($$0.readByte(), 0, 48));
+      this.k = $$0.b(doj.class);
+      this.l = $$0.b(dqc.class);
       this.m = $$0.d(128);
-      this.q = ayz.a($$0.readFloat(), 0.0F, 1.0F);
+      this.q = ayy.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
       int $$3 = $$0.readByte();
       this.n = ($$3 & 1) != 0;
@@ -102,11 +102,11 @@ public class aib implements yv<agf> {
       return this.e;
    }
 
-   public dvr.a e() {
+   public dvp.a e() {
       return this.f;
    }
 
-   public dyg f() {
+   public dye f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class aib implements yv<agf> {
       return this.j;
    }
 
-   public dol j() {
+   public doj j() {
       return this.k;
    }
 
-   public dqe k() {
+   public dqc k() {
       return this.l;
    }
 

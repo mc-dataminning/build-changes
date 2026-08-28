@@ -1,17 +1,17 @@
 public class aif implements yv<agf> {
    public static final ym<vl, aif> a = yv.a(aif::a, aif::new);
-   private final faw b;
-   private final bsi c;
+   private final fau b;
+   private final bsh c;
    private final int d;
 
-   public aif(bsi $$0, faw $$1, int $$2) {
+   public aif(bsh $$0, fau $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private aif(vl $$0) {
-      this.c = $$0.b(bsi.class);
+      this.c = $$0.b(bsh.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class aif implements yv<agf> {
       $$0.a(this);
    }
 
-   public bsi b() {
+   public bsh b() {
       return this.c;
    }
 
-   public faw e() {
+   public fau e() {
       return this.b;
    }
 

@@ -1,21 +1,17 @@
-public enum dxj implements azv {
-   a("none"),
-   b("small"),
-   c("large");
+public enum dxj implements azu {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String d;
+   private final String e;
 
    private dxj(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
    }
 }

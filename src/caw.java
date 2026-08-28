@@ -3,16 +3,15 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class caw {
-   public static <E extends cnz> bxa<E> a(Function<E, Optional<? extends bvg>> $$0) {
-      return cam.a(
-         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$1 -> $$1.group($$1.c(cek.ay), $$1.c(cek.o), $$1.a(cek.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bvg> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
+   public static bwz<bvf> a() {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$0 -> $$0.group($$0.a(cej.n), $$0.a(cej.az), $$0.a(cej.ay), $$0.c(cej.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<ji> $$7 = $$0.<bvf>a($$3).map(buj::dw).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
                         return false;
                      } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
+                        $$1.a(new bxb($$7.get()));
                         return true;
                      }
                   }))

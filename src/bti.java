@@ -1,24 +1,36 @@
-class bti extends btn {
-   protected bti(bto $$0, int $$1) {
+import javax.annotation.Nullable;
+
+class bti extends btl {
+   private final boolean c;
+
+   public bti(btn $$0, int $$1, boolean $$2) {
       super($$0, $$1);
+      this.c = $$2;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean a(arc $$0, bvg $$1, int $$2) {
-      if ($$1 instanceof ard $$3 && !$$3.Z_() && $$0.am() != bsg.a && $$0.c($$3.dw())) {
-         cqk $$4 = $$0.d($$3.dw());
-         if ($$4 == null || $$4.m() < $$4.l()) {
-            $$3.a(new btp(btr.I, 600, $$2));
-            $$3.c($$3.dw());
-            return false;
-         }
+   public boolean a(arc $$0, bvf $$1, int $$2) {
+      if (this.c == $$1.eD()) {
+         $$1.c((float)Math.max(4 << $$2, 0));
+      } else {
+         $$1.a($$0, $$1.dX().q(), (float)(6 << $$2));
       }
 
       return true;
+   }
+
+   @Override
+   public void a(arc $$0, @Nullable buj $$1, @Nullable buj $$2, bvf $$3, int $$4, double $$5) {
+      if (this.c == $$3.eD()) {
+         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
+         $$3.c((float)$$6);
+      } else {
+         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
+         if ($$1 == null) {
+            $$3.a($$0, $$3.dX().q(), (float)$$7);
+         } else {
+            $$3.a($$0, $$3.dX().c($$1, $$2), (float)$$7);
+         }
+      }
    }
 }

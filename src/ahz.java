@@ -1,7 +1,7 @@
-public record ahz(short b, cwp c) implements yv<agf> {
-   public static final ym<vz, ahz> a = ym.a(yk.e, ahz::b, cwp.a(cwp.g), ahz::e, ahz::new);
+public record ahz(short b, cwn c) implements yv<agf> {
+   public static final ym<vz, ahz> a = ym.a(yk.e, ahz::b, cwn.a(cwn.g), ahz::e, ahz::new);
 
-   public ahz(int $$0, cwp $$1) {
+   public ahz(int $$0, cwn $$1) {
       this((short)$$0, $$1);
    }
 
@@ -14,7 +14,7 @@ public record ahz(short b, cwp c) implements yv<agf> {
       $$0.a(this);
    }
 
-   public cwp e() {
+   public cwn e() {
       return this.c;
    }
 }

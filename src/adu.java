@@ -1,9 +1,9 @@
 import java.util.Set;
 
-public record adu(int b, bvt c, Set<bvu> d) implements yv<abk> {
-   public static final ym<vl, adu> a = ym.a(yk.h, adu::b, bvt.a, adu::e, bvu.m, adu::f, adu::new);
+public record adu(int b, bvs c, Set<bvt> d) implements yv<abk> {
+   public static final ym<vl, adu> a = ym.a(yk.h, adu::b, bvs.a, adu::e, bvt.m, adu::f, adu::new);
 
-   public static adu a(int $$0, bvt $$1, Set<bvu> $$2) {
+   public static adu a(int $$0, bvs $$1, Set<bvt> $$2) {
       return new adu($$0, $$1, $$2);
    }
 
@@ -16,11 +16,11 @@ public record adu(int b, bvt c, Set<bvu> d) implements yv<abk> {
       $$0.a(this);
    }
 
-   public bvt e() {
+   public bvs e() {
       return this.c;
    }
 
-   public Set<bvu> f() {
+   public Set<bvt> f() {
       return this.d;
    }
 }

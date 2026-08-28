@@ -1,5 +1,4 @@
-public class hae extends gyz {
-   public boolean b;
-   public boolean c;
-   public boolean d;
+public class hae extends gzh {
+   public float a;
+   public int b = 1;
 }

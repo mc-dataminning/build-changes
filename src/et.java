@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface et extends jt.a {
-   static et a(final jt.a $$0, final crt $$1) {
+   static et a(final jt.a $$0, final crr $$1) {
       return new et() {
          @Override
          public Stream<akt<? extends ke<?>>> b() {
@@ -15,11 +15,11 @@ public interface et extends jt.a {
          }
 
          @Override
-         public crt a() {
+         public crr a() {
             return $$1;
          }
       };
    }
 
-   crt a();
+   crr a();
 }

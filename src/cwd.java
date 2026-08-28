@@ -1,83 +1,73 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cwd extends cwl {
-   private static final wo a = wo.c("painting.random").a(n.h);
-   private final bur<? extends ckt> b;
+public class cwd extends cvg {
+   protected static final Map<djk, Pair<Predicate<dag>, Consumer<dag>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         djm.i,
+         Pair.of(cwd::b, a(djm.cK.m())),
+         djm.lg,
+         Pair.of(cwd::b, a(djm.cK.m())),
+         djm.j,
+         Pair.of(cwd::b, a(djm.cK.m())),
+         djm.k,
+         Pair.of(cwd::b, a(djm.j.m())),
+         djm.tj,
+         Pair.of((Predicate<dag>)$$0 -> true, a(djm.j.m(), cwr.ea))
+      )
+   );
 
-   public cwd(bur<? extends ckt> $$0, cwl.a $$1) {
-      super($$1);
-      this.b = $$0;
+   public cwd(cye $$0, float $$1, float $$2, cwj.a $$3) {
+      super($$0, awo.bD, $$1, $$2, $$3);
    }
 
    @Override
-   public bsj a(dai $$0) {
-      ji $$1 = $$0.a();
-      jn $$2 = $$0.k();
-      ji $$3 = $$1.a($$2);
-      cox $$4 = $$0.o();
-      cwp $$5 = $$0.n();
-      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
-         return bsj.d;
+   public bsi a(dag $$0) {
+      dgg $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      Pair<Predicate<dag>, Consumer<dag>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bsi.e;
       } else {
-         dgi $$6 = $$0.q();
-         ckt $$8;
-         if (this.b == bur.aL) {
-            Optional<ckw> $$7 = ckw.a($$6, $$3, $$2);
-            if ($$7.isEmpty()) {
-               return bsj.c;
+         Predicate<dag> $$4 = (Predicate<dag>)$$3.getFirst();
+         Consumer<dag> $$5 = (Consumer<dag>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cov $$6 = $$0.o();
+            $$1.a($$6, $$2, avz.mL, awa.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bvf.d($$0.p()));
+               }
             }
 
-            $$8 = $$7.get();
-         } else if (this.b == bur.at) {
-            $$8 = new cku($$6, $$3, $$2);
+            return bsi.a;
          } else {
-            if (this.b != bur.ag) {
-               return bsj.a;
-            }
-
-            $$8 = new cks($$6, $$3, $$2);
-         }
-
-         cyy $$12 = $$5.a(kv.W, cyy.a);
-         if (!$$12.c()) {
-            bur.a($$6, $$4, $$8, $$12);
-         }
-
-         if ($$8.m()) {
-            if (!$$6.C) {
-               $$8.z();
-               $$6.a($$4, ebt.t, $$8.du());
-               $$6.b($$8);
-            }
-
-            $$5.h(1);
-            return bsj.a;
-         } else {
-            return bsj.c;
+            return bsi.e;
          }
       }
    }
 
-   protected boolean a(cox $$0, jn $$1, cwp $$2, ji $$3) {
-      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   public static Consumer<dag> a(dwv $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(ebr.c, $$1.a(), ebr.a.a($$1.o(), $$0));
+      };
    }
 
-   @Override
-   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      jt.a $$4 = $$1.a();
-      if ($$4 != null && this.b == bur.aL) {
-         cyy $$5 = $$0.a(kv.W, cyy.a);
-         if (!$$5.c()) {
-            $$5.a($$4.a(ue.a), ckw.d).result().ifPresentOrElse($$1x -> {
-               ((ckx)$$1x.a()).e().ifPresent($$2::add);
-               ((ckx)$$1x.a()).f().ifPresent($$2::add);
-               $$2.add(wo.a("painting.dimensions", ((ckx)$$1x.a()).b(), ((ckx)$$1x.a()).c()));
-            }, () -> $$2.add(a));
-         } else if ($$3.b()) {
-            $$2.add(a);
-         }
-      }
+   public static Consumer<dag> a(dwv $$0, dgf $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(ebr.c, $$2.a(), ebr.a.a($$2.o(), $$0));
+         djk.a($$2.q(), $$2.a(), $$2.k(), new cwn($$1));
+      };
+   }
+
+   public static boolean b(dag $$0) {
+      return $$0.k() != jn.a && $$0.q().a_($$0.a().d()).l();
    }
 }

@@ -1,8 +1,8 @@
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public record abo(Object2IntMap<awh<?>> b) implements yv<abk> {
-   private static final ym<vz, Object2IntMap<awh<?>>> c = yk.a(Object2IntOpenHashMap::new, awh.a, yk.h);
+public record abo(Object2IntMap<awg<?>> b) implements yv<abk> {
+   private static final ym<vz, Object2IntMap<awg<?>>> c = yk.a(Object2IntOpenHashMap::new, awg.a, yk.h);
    public static final ym<vz, abo> a = c.a(abo::new, abo::b);
 
    @Override

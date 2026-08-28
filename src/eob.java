@@ -1,78 +1,92 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
 
-public record eob(List<enq> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final aku c = aku.b("jigsaw");
-   private static final Map<aku, aku> d = ImmutableMap.builder()
-      .put(aku.b("nvi"), c)
-      .put(aku.b("pcp"), c)
-      .put(aku.b("bastionremnant"), c)
-      .put(aku.b("runtime"), c)
-      .build();
+public interface eob {
+   eob a = a(epo.a::new, "MSCorridor");
+   eob b = a(epo.b::new, "MSCrossing");
+   eob c = a(epo.d::new, "MSRoom");
+   eob d = a(epo.e::new, "MSStairs");
+   eob e = a(epq.a::new, "NeBCr");
+   eob f = a(epq.b::new, "NeBEF");
+   eob g = a(epq.c::new, "NeBS");
+   eob h = a(epq.d::new, "NeCCS");
+   eob i = a(epq.e::new, "NeCTB");
+   eob j = a(epq.f::new, "NeCE");
+   eob k = a(epq.g::new, "NeSCSC");
+   eob l = a(epq.h::new, "NeSCLT");
+   eob m = a(epq.i::new, "NeSC");
+   eob n = a(epq.j::new, "NeSCRT");
+   eob o = a(epq.k::new, "NeCSR");
+   eob p = a(epq.l::new, "NeMT");
+   eob q = a(epq.o::new, "NeRC");
+   eob r = a(epq.p::new, "NeSR");
+   eob s = a(epq.q::new, "NeStart");
+   eob t = a(eqc.a::new, "SHCC");
+   eob u = a(eqc.b::new, "SHFC");
+   eob v = a(eqc.c::new, "SH5C");
+   eob w = a(eqc.d::new, "SHLT");
+   eob x = a(eqc.e::new, "SHLi");
+   eob y = a(eqc.g::new, "SHPR");
+   eob z = a(eqc.h::new, "SHPH");
+   eob A = a(eqc.i::new, "SHRT");
+   eob B = a(eqc.j::new, "SHRC");
+   eob C = a(eqc.l::new, "SHSD");
+   eob D = a(eqc.m::new, "SHStart");
+   eob E = a(eqc.n::new, "SHS");
+   eob F = a(eqc.o::new, "SHSSD");
+   eob G = a(epm::new, "TeJP");
+   eob H = a(epw.a::a, "ORP");
+   eob I = a(epj.a::new, "Iglu");
+   eob J = a(epy::new, "RUPO");
+   eob K = a(eqe::new, "TeSH");
+   eob L = a(epf::new, "TeDP");
+   eob M = a(epu.h::new, "OMB");
+   eob N = a(epu.j::new, "OMCR");
+   eob O = a(epu.k::new, "OMDXR");
+   eob P = a(epu.l::new, "OMDXYR");
+   eob Q = a(epu.m::new, "OMDYR");
+   eob R = a(epu.n::new, "OMDYZR");
+   eob S = a(epu.o::new, "OMDZR");
+   eob T = a(epu.p::new, "OMEntry");
+   eob U = a(epu.q::new, "OMPenthouse");
+   eob V = a(epu.s::new, "OMSimple");
+   eob W = a(epu.t::new, "OMSimpleT");
+   eob X = a(epu.u::new, "OMWR");
+   eob Y = a(eph.a::new, "ECP");
+   eob Z = a(eqg.i::new, "WMP");
+   eob aa = a(epd.a::new, "BTP");
+   eob ab = a(eqa.a::new, "Shipwreck");
+   eob ac = a(eps.a::new, "NeFos");
+   eob ad = a(eng::new, "jigsaw");
 
-   public eob(final List<enq> a) {
-      this.a = List.copyOf(a);
+   eno load(eoa var1, tq var2);
+
+   private static eob a(eob $$0, String $$1) {
+      return ke.a(mb.Q, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   private static eob a(eob.a $$0, String $$1) {
+      return a((eob)$$0, $$1);
    }
 
-   public boolean a(ji $$0) {
-      for (enq $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
+   private static eob a(eob.b $$0, String $$1) {
+      return a((eob)$$0, $$1);
+   }
+
+   public interface a extends eob {
+      eno load(tq var1);
+
+      @Override
+      default eno load(eoa $$0, tq $$1) {
+         return this.load($$1);
       }
-
-      return false;
    }
 
-   public un a(eoc $$0) {
-      tw $$1 = new tw();
+   public interface b extends eob {
+      eno load(ern var1, tq var2);
 
-      for (enq $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      @Override
+      default eno load(eoa $$0, tq $$1) {
+         return this.load($$0.c(), $$1);
       }
-
-      return $$1;
-   }
-
-   public static eob a(tw $$0, eoc $$1) {
-      List<enq> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tq $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         aku $$6 = aku.a($$5);
-         aku $$7 = d.getOrDefault($$6, $$6);
-         eod $$8 = mb.Q.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               enq $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new eob($$2);
-   }
-
-   public ene b() {
-      return enq.a(this.a.stream());
-   }
-
-   public List<enq> c() {
-      return this.a;
    }
 }

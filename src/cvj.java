@@ -1,16 +1,14 @@
-import java.util.List;
-
-public class cvj extends cwl {
-   public cvj(cwl.a $$0) {
-      super($$0);
+public class cvj extends cut {
+   public cvj(djk $$0, cwj.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
-      $$2.add(this.b().a(n.h));
-   }
-
-   public xc b() {
-      return wo.c(this.l + ".desc");
+   protected boolean a(dae $$0, dwv $$1) {
+      dgg $$2 = $$0.q();
+      ji $$3 = $$0.a().d();
+      dwv $$4 = $$2.z($$3) ? djm.J.m() : djm.a.m();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

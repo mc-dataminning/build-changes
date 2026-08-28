@@ -20,7 +20,7 @@ public class amn {
    }
 
    private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avd $$2 = $$0.l().ag();
+      avc $$2 = $$0.l().ag();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

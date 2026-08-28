@@ -1,51 +1,32 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzy {
-   public static bxa<bvo> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cam.a(
-         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.o), $$3.c(cek.m), $$3.a(cek.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dw()).a(awv.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        ji $$8 = null;
-                        ji $$9 = null;
-                        ji $$10 = $$6.dw();
+   public static bwz<bvf> a(djk $$0) {
+      return cal.a(
+         (Function<cal.b<bvf>, ? extends App<cal.c<bvf>, cao<bvf>>>)($$1 -> $$1.group($$1.c(cej.o), $$1.b(cej.m), $$1.b(cej.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bj() && $$3x.aJ()) {
+                        ji $$5 = $$3x.dw().e();
 
-                        for (ji $$12 : ji.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dwx $$13 = $$6.dW().a_($$12.d());
-                              dwx $$14 = $$6.dW().a_($$12);
-                              if ($$14.a(djo.J)) {
-                                 if ($$13.l()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.du(), 1.5)) {
-                                    $$9 = $$12.j();
-                                 }
+                        for (jn $$6 : jn.c.a) {
+                           ji $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).g($$2x, $$7).a(jn.b).c() && $$2x.b_($$7).b(esy.c)) {
+                              ji $$8 = $$7.d();
+                              if ($$2x.a_($$8).l()) {
+                                 dwv $$9 = $$0.m();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(ebr.i, $$8, ebr.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, avz.kp, awa.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
                               }
                            }
                         }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
-
-                        if ($$8 != null) {
-                           $$5.a(new bxc($$8));
-                           $$4.a(new cen(new bxc($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );

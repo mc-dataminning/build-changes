@@ -1,56 +1,23 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 public class aun {
-   private final atb a;
-   private final auh<InputStream> b;
-   private final auh<aur> c;
-   @Nullable
-   private aur d;
+   private static final Codec<aun> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(azh.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aun::new)
+   );
+   public static final ato<aun> a = new ato<>("filter", b);
+   private final List<azh> c;
 
-   public aun(atb $$0, auh<InputStream> $$1, auh<aur> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aun(List<azh> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   public aun(atb $$0, auh<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = aur.b;
-      this.d = aur.a;
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   public atb a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.a.b();
-   }
-
-   public Optional<atw> c() {
-      return this.a.c();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public aur f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

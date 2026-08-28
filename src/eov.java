@@ -1,15 +1,25 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public interface eov<P extends eou> {
-   eov<eot> a = a("single_pool_element", eot.b);
-   eov<eos> b = a("list_pool_element", eos.a);
-   eov<eoo> c = a("feature_pool_element", eoo.a);
-   eov<eon> d = a("empty_pool_element", eon.a);
-   eov<eor> e = a("legacy_single_pool_element", eor.a);
+record eov(akt<eou> c, akt<eou> d) implements eow {
+   static MapCodec<eov> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akt.a(mc.aX).fieldOf("alias").forGetter(eov::c), akt.a(mc.aX).fieldOf("target").forGetter(eov::d)).apply($$0, eov::new)
+   );
 
-   MapCodec<P> codec();
+   @Override
+   public void a(azg $$0, BiConsumer<akt<eou>, akt<eou>> $$1) {
+      $$1.accept(this.c, this.d);
+   }
 
-   static <P extends eou> eov<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.ag, $$0, () -> $$1);
+   @Override
+   public Stream<akt<eou>> a() {
+      return Stream.of(this.d);
+   }
+
+   @Override
+   public MapCodec<eov> b() {
+      return a;
    }
 }

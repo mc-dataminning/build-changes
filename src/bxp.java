@@ -1,79 +1,37 @@
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
-public class bxp<E extends bvg & cog> extends bwz<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<bvg, Optional<byn>> e;
-   private final float f;
+public class bxp {
+   public static bwz<cog> a(float $$0, int $$1) {
+      return cal.a((Function<cal.b<cog>, ? extends App<cal.c<cog>, cao<cog>>>)($$2 -> $$2.group($$2.c(cej.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dw())) {
+                  return false;
+               } else {
+                  cgj $$6 = $$3.A();
+                  int $$7 = $$6.a(kk.a($$4.dw()));
+                  fay $$8 = null;
 
-   public bxp(Function<bvg, Optional<byn>> $$0, float $$1, int $$2) {
-      super(Map.of(cek.n, cel.c, cek.m, cel.c, cek.aP, cel.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     fay $$10 = cgd.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kk.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kk.a(ji.a((kb)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   @Override
-   protected boolean a(arc $$0, E $$1) {
-      return this.b($$1);
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   @Override
-   protected boolean a(arc $$0, E $$1, long $$2) {
-      return this.b($$1);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new cem($$8, $$0, $$1));
+                  }
 
-   @Override
-   protected void d(arc $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> bxb.a($$1, $$1x, this.f, 3));
-   }
-
-   @Override
-   protected void c(arc $$0, E $$1, long $$2) {
-      Optional<byn> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         byn $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bF());
-         if ($$5 < 3.0) {
-            cwp $$6 = $$1.t().a(0, 1);
-            if (!$$6.f()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof cid $$7) {
-                  cie.a((bvg)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+                  return true;
                }
-
-               $$1.ec().a(cek.aP, 60);
-            }
-         }
-      }
-   }
-
-   private void a(byn $$0, cwp $$1, ard $$2) {
-      ji $$3 = $$0.b().e();
-      ap.aa.a($$2, $$3, $$1);
-   }
-
-   private boolean b(E $$0) {
-      if ($$0.t().c()) {
-         return false;
-      } else {
-         Optional<byn> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
-      }
-   }
-
-   private static fba a(byn $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
-   }
-
-   public static void a(bvg $$0, cwp $$1, fba $$2) {
-      fba $$3 = new fba(0.2F, 0.3F, 0.2F);
-      bxb.a($$0, $$1, $$2, $$3, 0.2F);
-      dgi $$4 = $$0.dW();
-      if ($$4.ad() % 7L == 0L && $$4.A.j() < 0.9) {
-         float $$5 = af.<Float>a(cid.d, $$4.H_());
-         $$4.a(null, $$0, awa.g, awb.g, 1.0F, $$5);
-      }
+            })));
    }
 }

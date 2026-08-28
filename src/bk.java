@@ -8,9 +8,9 @@ public class bk extends dz<bk.a> {
       return bk.a.a;
    }
 
-   public void a(ard $$0, cmq $$1, coi $$2) {
-      evr $$3 = bx.b($$0, $$1);
-      evr $$4 = bx.b($$0, $$2);
+   public void a(ard $$0, cmp $$1, cog $$2) {
+      evp $$3 = bx.b($$0, $$1);
+      evp $$4 = bx.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bk extends dz<bk.a> {
          return ap.s.a(new bk.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(evr $$0, evr $$1) {
+      public boolean a(evp $$0, evp $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record adc(int b, boolean c, Set<akt<dgi>> d, int e, int f, int g, boolean h, boolean i, boolean j, aga k, boolean l) implements yv<abk> {
+public record adc(int b, boolean c, Set<akt<dgg>> d, int e, int f, int g, boolean h, boolean i, boolean j, aga k, boolean l) implements yv<abk> {
    public static final ym<vz, adc> a = yv.a(adc::a, adc::new);
 
    private adc(vz $$0) {
@@ -47,7 +47,7 @@ public record adc(int b, boolean c, Set<akt<dgi>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<akt<dgi>> f() {
+   public Set<akt<dgg>> f() {
       return this.d;
    }
 

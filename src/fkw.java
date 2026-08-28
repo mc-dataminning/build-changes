@@ -1,54 +1,38 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class fkw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final axm<String> e = new axm<>(50);
+   private final gfx a;
+   private int b = -1;
+   @Nullable
+   private Consumer<tq> c;
 
-   public fkw(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
-         }
+   public fkw(gfx $$0) {
+      this.a = $$0;
+   }
+
+   public boolean a(int $$0, @Nullable tq $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
-
-         this.e.addLast($$0);
-         this.b();
-      }
+   private int a(Consumer<tq> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
-      }
+   public void a(int $$0, Consumer<tq> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aha($$2, $$0));
    }
 
-   public Collection<String> a() {
-      return this.e;
+   public void a(ji $$0, Consumer<tq> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agi($$2, $$0));
    }
 }

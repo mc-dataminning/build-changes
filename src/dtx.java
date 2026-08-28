@@ -1,144 +1,291 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dtx extends dtz {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public jn c;
-   private List<bvg> m;
-   private boolean n;
-   private int r;
+public abstract class dtx {
+   private static final Logger d = LogUtils.getLogger();
+   private final dtz<?> e;
+   @Nullable
+   protected dgg o;
+   protected final ji p;
+   protected boolean q;
+   private dwv f;
+   private kr g = kr.a;
 
-   public dtx(ji $$0, dwx $$1) {
-      super(dub.F, $$0, $$1);
+   public dtx(dtz<?> $$0, ji $$1, dwv $$2) {
+      this.e = $$0;
+      this.p = $$1.j();
+      this.a($$2);
+      this.f = $$2;
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.b();
-         this.r = 0;
-         this.c = jn.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
+   private void a(dwv $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.p + ", got " + $$0);
+      }
+   }
+
+   public boolean b(dwv $$0) {
+      return this.e.a($$0);
+   }
+
+   public static ji b(tq $$0) {
+      return new ji($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   }
+
+   @Nullable
+   public dgg i() {
+      return this.o;
+   }
+
+   public void a(dgg $$0) {
+      this.o = $$0;
+   }
+
+   public boolean l() {
+      return this.o != null;
+   }
+
+   protected void a(tq $$0, jt.a $$1) {
+   }
+
+   public final void c(tq $$0, jt.a $$1) {
+      this.a($$0, $$1);
+      dtx.a.a.parse($$1.a(ue.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(tq $$0, jt.a $$1) {
+      this.a($$0, $$1);
+   }
+
+   protected void b(tq $$0, jt.a $$1) {
+   }
+
+   public final tq b(jt.a $$0) {
+      tq $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final tq c(jt.a $$0) {
+      tq $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final tq d(jt.a $$0) {
+      tq $$1 = new tq();
+      this.b($$1, $$0);
+      dtx.a.a.encodeStart($$0.a(ue.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((tq)$$1x));
+      return $$1;
+   }
+
+   public final tq e(jt.a $$0) {
+      tq $$1 = new tq();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final tq f(jt.a $$0) {
+      tq $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(tq $$0) {
+      aku $$1 = dtz.a(this.p());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
       } else {
-         return super.a_($$0, $$1);
+         $$0.a("id", $$1.toString());
       }
    }
 
-   private static void a(dgi $$0, ji $$1, dwx $$2, dtx $$3, dtx.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
-
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, awa.ca, awb.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
-      }
+   public static void a(tq $$0, dtz<?> $$1) {
+      $$0.a("id", dtz.a($$1).toString());
    }
 
-   public static void a(dgi $$0, ji $$1, dwx $$2, dtx $$3) {
-      a($$0, $$1, $$2, $$3, dtx::b);
+   private void d(tq $$0) {
+      this.c($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
    }
 
-   public static void b(dgi $$0, ji $$1, dwx $$2, dtx $$3) {
-      a($$0, $$1, $$2, $$3, dtx::a);
-   }
-
-   public void a(jn $$0) {
-      ji $$1 = this.aA_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
+   @Nullable
+   public static dtx a(ji $$0, dwv $$1, tq $$2, jt.a $$3) {
+      String $$4 = $$2.l("id");
+      aku $$5 = aku.c($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
       } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.m().b(), 1, $$0.d());
-   }
-
-   private void b() {
-      ji $$0 = this.aA_();
-      if (this.o.ad() > this.l + 60L || this.m == null) {
-         this.l = this.o.ad();
-         fav $$1 = new fav($$0).g(48.0);
-         this.m = this.o.a(bvg.class, $$1);
-      }
-
-      if (!this.o.C) {
-         for (bvg $$2 : this.m) {
-            if ($$2.bL() && !$$2.dR() && $$0.a($$2.du(), 32.0)) {
-               $$2.ec().a(cek.D, this.o.ad());
+         return mb.j.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
             }
-         }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
       }
    }
 
-   private static boolean a(ji $$0, List<bvg> $$1) {
-      for (bvg $$2 : $$1) {
-         if ($$2.bL() && !$$2.dR() && $$0.a($$2.du(), 32.0) && $$2.aq().a(awt.c)) {
-            return true;
-         }
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.f);
       }
+   }
 
+   protected static void a(dgg $$0, ji $$1, dwv $$2) {
+      $$0.q($$1);
+      if (!$$2.l()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public ji aA_() {
+      return this.p;
+   }
+
+   public dwv m() {
+      return this.f;
+   }
+
+   @Nullable
+   public yv<abk> ax_() {
+      return null;
+   }
+
+   public tq a(jt.a $$0) {
+      return new tq();
+   }
+
+   public boolean n() {
+      return this.q;
+   }
+
+   public void av_() {
+      this.q = true;
+   }
+
+   public void o() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
       return false;
    }
 
-   private static void a(dgi $$0, ji $$1, List<bvg> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dtx::a);
+   public void a(p $$0) {
+      $$0.a("Name", this::k);
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.m());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
    }
 
-   private static void b(dgi $$0, ji $$1, List<bvg> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.du(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dB() - (double)$$1.u()) * ($$4x.dB() - (double)$$1.u()) + ($$4x.dH() - (double)$$1.w()) * ($$4x.dH() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dB() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dH() - (double)$$1.w());
-         int $$9 = ayz.a(($$4 - 21) / -2, 3, 15);
+   private String k() {
+      return mb.j.b(this.p()) + " // " + this.getClass().getCanonicalName();
+   }
 
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(lm.a(lt.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
+   public dtz<?> p() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void c(dwv $$0) {
+      this.a($$0);
+      this.f = $$0;
+   }
+
+   protected void a(dtx.b $$0) {
+   }
+
+   public final void a(cwn $$0) {
+      this.a($$0.c(), $$0.d());
+   }
+
+   public final void a(kr $$0, ks $$1) {
+      final Set<ku<?>> $$2 = new HashSet<>();
+      $$2.add(kv.Y);
+      $$2.add(kv.am);
+      final kr $$3 = kw.a($$0, $$1);
+      this.a(new dtx.b() {
+         @Nullable
+         @Override
+         public <T> T a(ku<T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(ku<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
          }
       });
+      ks $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
    }
 
-   private static boolean a(ji $$0, bvg $$1) {
-      return $$1.bL() && !$$1.dR() && $$0.a($$1.du(), 48.0) && $$1.aq().a(awt.c);
+   protected void a(kr.a $$0) {
    }
 
-   private static void a(bvg $$0) {
-      $$0.a(new btp(btr.x, 60));
+   @Deprecated
+   public void a(tq $$0) {
    }
 
-   @FunctionalInterface
-   interface a {
-      void run(dgi var1, ji var2, List<bvg> var3);
+   public final kr q() {
+      kr.a $$0 = kr.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public kr r() {
+      return this.g;
+   }
+
+   public void a(kr $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   public static wo a(String $$0, jt.a $$1) {
+      try {
+         return wo.a.a($$0, $$1);
+      } catch (Exception var3) {
+         d.warn("Failed to parse custom name from string '{}', discarding", $$0, var3);
+         return null;
+      }
+   }
+
+   static class a {
+      public static final Codec<kr> a = kr.b.optionalFieldOf("components", kr.a).codec();
+
+      private a() {
+      }
+   }
+
+   protected interface b {
+      @Nullable
+      <T> T a(ku<T> var1);
+
+      <T> T a(ku<? extends T> var1, T var2);
    }
 }

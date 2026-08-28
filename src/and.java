@@ -19,12 +19,12 @@ public class and {
       );
    }
 
-   private static void a(ex $$0, ard $$1, dgf $$2) {
+   private static void a(ex $$0, ard $$1, dgd $$2) {
       wo $$3 = wo.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> wo.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().O().b(dge.p)) {
+         if ($$0.e().O().b(dgc.p)) {
             $$1.a(wo.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class and {
       }
    }
 
-   private static int a(CommandContext<ex> $$0, Collection<ard> $$1, dgf $$2) {
+   private static int a(CommandContext<ex> $$0, Collection<ard> $$1, dgd $$2) {
       int $$3 = 0;
 
       for (ard $$4 : $$1) {

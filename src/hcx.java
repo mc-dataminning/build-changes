@@ -1,15 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hcx() implements hdb<cwn> {
-   public static final hdb.a<hcx, cwn> a = hdb.a.a(MapCodec.unit(new hcx()), cwn.j);
+public record hcx() implements hdc<akt<buq<?>>> {
+   public static final hdc.a<hcx, akt<buq<?>>> a = hdc.a.a(MapCodec.unit(new hcx()), akt.a(mc.z));
 
-   public cwn a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwn $$4) {
-      return $$4;
+   @Nullable
+   public akt<buq<?>> a(cwn $$0, @Nullable gfw $$1, @Nullable bvf $$2, int $$3, cwl $$4) {
+      return $$2 == null ? null : $$2.aq().r().h();
    }
 
    @Override
-   public hdb.a<hcx, cwn> a() {
+   public hdc.a<hcx, akt<buq<?>>> a() {
       return a;
    }
 }

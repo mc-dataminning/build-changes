@@ -36,7 +36,7 @@ public abstract class adf implements yv<abk> {
    }
 
    @Nullable
-   public buk a(dgi $$0) {
+   public buj a(dgg $$0) {
       return $$0.a(this.a);
    }
 
@@ -53,11 +53,11 @@ public abstract class adf implements yv<abk> {
    }
 
    public float g() {
-      return ayz.a(this.e);
+      return ayy.a(this.e);
    }
 
    public float h() {
-      return ayz.a(this.f);
+      return ayy.a(this.f);
    }
 
    public boolean i() {

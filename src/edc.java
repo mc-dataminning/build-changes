@@ -1,68 +1,60 @@
-public final class edc {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public class edc implements dfs {
+   private int a;
 
-   private edc() {
-   }
-
-   protected static ecw.c a(ecl $$0, ecl $$1, ecl $$2, edf $$3) {
-      dwx $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         edc.a $$8 = $$6 > 0.0 ? edc.a.a : edc.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = ayz.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
+   @Override
+   public int a(arc $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.O().b(dgc.D)) {
+         return 0;
+      } else {
+         azg $$3 = $$0.A;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.E_() < 5 && $$0.G_().g()) {
+               return 0;
             } else {
-               azh $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = ayz.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
+               int $$4 = 0;
+
+               for (ard $$5 : $$0.z()) {
+                  if (!$$5.Z_()) {
+                     ji $$6 = $$5.dw();
+                     if (!$$0.G_().g() || $$6.v() >= $$0.P() && $$0.h($$6)) {
+                        bsg $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           awf $$8 = $$5.I();
+                           int $$9 = ayy.a($$8.a(awj.i.b(awj.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              ji $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dwv $$12 = $$0.a_($$11);
+                              esx $$13 = $$0.b_($$11);
+                              if (dgr.a($$0, $$11, $$12, $$13, buq.aP)) {
+                                 bvy $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    cly $$17 = buq.aP.a($$0, bup.a);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bup.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
                   }
                }
+
+               return $$4;
             }
-         } else {
-            return $$4;
          }
-      };
-   }
-
-   protected static enum a {
-      a(djo.rC.m(), djo.tI.m(), djo.c.m(), 0, 50),
-      b(djo.T.m(), djo.tH.m(), djo.rb.m(), -60, -8);
-
-      final dwx e;
-      final dwx f;
-      final dwx g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dwx $$0, final dwx $$1, final dwx $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
       }
    }
 }

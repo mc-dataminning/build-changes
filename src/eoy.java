@@ -1,38 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Objects;
 
+@FunctionalInterface
 public interface eoy {
-   Codec<eoy> b = mb.ah.q().dispatch(eoy::b, Function.identity());
+   eoy a = $$0 -> $$0;
 
-   void a(azh var1, BiConsumer<akt<eow>, akt<eow>> var2);
+   akt<eou> lookup(akt<eou> var1);
 
-   Stream<akt<eow>> a();
-
-   static eox a(String $$0, String $$1) {
-      return a(ql.a($$0), ql.a($$1));
+   static eoy create(List<eow> $$0, ji $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         azg $$3 = azg.a($$2).e().a($$1);
+         Builder<akt<eou>, akt<eou>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<akt<eou>, akt<eou>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
+      }
    }
-
-   static eox a(akt<eow> $$0, akt<eow> $$1) {
-      return new eox($$0, $$1);
-   }
-
-   static epb a(String $$0, bqr<String> $$1) {
-      bqr.a<akt<eow>> $$2 = bqr.a();
-      $$1.e().forEach($$1x -> $$2.a(ql.a((String)$$1x.b()), $$1x.a().a()));
-      return a(ql.a($$0), $$2.a());
-   }
-
-   static epb a(akt<eow> $$0, bqr<akt<eow>> $$1) {
-      return new epb($$0, $$1);
-   }
-
-   static epc a(bqr<List<eoy>> $$0) {
-      return new epc($$0);
-   }
-
-   MapCodec<? extends eoy> b();
 }

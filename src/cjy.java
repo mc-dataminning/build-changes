@@ -1,41 +1,44 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cjy extends cjw {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
+public class cjy extends cjv {
    @Nullable
-   private fba d;
-   private int e;
+   private fay b;
+   private int c;
 
-   public cjy(cju $$0) {
+   public cjy(cjt $$0) {
       super($$0);
    }
 
    @Override
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.dZ().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dZ().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dZ().i() - 0.5F) * 8.0F;
+         this.a.dW().a(lt.v, this.a.dB() + (double)$$0, this.a.dD() + 2.0 + (double)$$1, this.a.dH() + (double)$$2, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
    public void a(arc $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gl().a(ckk.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gl().a(ckk.a);
+      this.c++;
+      if (this.b == null) {
+         ji $$1 = $$0.a(ecq.a.e, efv.a(this.a.m()));
+         this.b = fay.c($$1);
+      }
+
+      double $$2 = this.b.c(this.a.dB(), this.a.dD(), this.a.dH());
+      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.x(1.0F);
       } else {
-         double $$1 = this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
+         this.a.x(0.0F);
       }
    }
 
    @Override
    public void c() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(fba $$0) {
-      this.d = $$0;
+      this.b = null;
+      this.c = 0;
    }
 
    @Override
@@ -45,12 +48,12 @@ public class cjy extends cjw {
 
    @Nullable
    @Override
-   public fba f() {
-      return this.d;
+   public fay f() {
+      return this.b;
    }
 
    @Override
-   public ckk<cjy> h() {
-      return ckk.i;
+   public ckj<cjy> h() {
+      return ckj.j;
    }
 }

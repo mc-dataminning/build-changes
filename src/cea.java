@@ -1,20 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cea<T extends bvg> extends cdx<T> {
-   private final bwd i;
+public class cea extends ced {
+   private final bwc a;
+   private bvf b;
+   private int c;
 
-   public cea(bwd $$0, Class<T> $$1, boolean $$2, @Nullable cfx.a $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cea(bwc $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(ccd.a.d));
    }
 
    @Override
    public boolean b() {
-      return !this.i.p() && super.b();
+      if (this.a.p() && !this.a.gp()) {
+         bvf $$0 = this.a.ag_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eq();
+            int $$1 = $$0.er();
+            return $$1 != this.c && this.a(this.b, cfw.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean c() {
-      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+   public void d() {
+      this.e.h(this.b);
+      bvf $$0 = this.a.ag_();
+      if ($$0 != null) {
+         this.c = $$0.er();
+      }
+
+      super.d();
    }
 }

@@ -1,35 +1,50 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class heq {
-   private static final BiMap<aku, hep> i = HashBiMap.create();
-   public static final hep a = a("single", hev.b);
-   public static final hep b = a("directory", hes.b);
-   public static final hep c = a("filter", hew.b);
-   public static final hep d = a("unstitch", hex.b);
-   public static final hep e = a("paletted_permutations", heu.b);
-   public static Codec<hep> f = aku.a.flatXmap($$0 -> {
-      hep $$1 = (hep)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      aku $$1 = (aku)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<hen> g = f.dispatch(hen::a, hep::a);
-   public static Codec<List<hen>> h = g.listOf().fieldOf("sources").codec();
+@FunctionalInterface
+public interface heq {
+   Logger a = LogUtils.getLogger();
 
-   private static hep a(String $$0, MapCodec<? extends hen> $$1) {
-      hep $$2 = new hep($$1);
-      aku $$3 = aku.b($$0);
-      hep $$4 = (hep)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
-      }
+   static heq create(Collection<ato<?>> $$0) {
+      return ($$1, $$2) -> {
+         auq $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         fes $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fes.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         Optional<hfz> $$11 = $$3.a(hfz.b);
+         hga $$12;
+         if ($$11.isPresent()) {
+            $$12 = $$11.get().a($$7.a(), $$7.b());
+            if (!ayy.c($$7.a(), $$12.a()) || !ayy.c($$7.b(), $$12.b())) {
+               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+               $$7.close();
+               return null;
+            }
+         } else {
+            $$12 = new hga($$7.a(), $$7.b());
+         }
+
+         return new heg($$1, $$12, $$7, $$3);
+      };
    }
+
+   @Nullable
+   heg loadSprite(aku var1, aum var2);
 }

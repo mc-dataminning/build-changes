@@ -1,57 +1,24 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fhh extends fhz implements fht {
-   @SerializedName("name")
+public class fhh extends fhx {
+   private static final Logger b = LogUtils.getLogger();
    @Nullable
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+   public String a;
 
-   public String a() {
-      return this.a == null ? "" : this.a;
-   }
+   public static fhh a(String $$0) {
+      fhh $$1 = new fhh();
 
-   public void a(String $$0) {
-      this.a = $$0;
-   }
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = fjt.b("newsLink", $$2, null);
+      } catch (Exception var3) {
+         b.error("Could not parse RealmsNews: {}", var3.getMessage());
+      }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+      return $$1;
    }
 }

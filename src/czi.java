@@ -1,42 +1,44 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record czi(List<wo> e, List<wo> f) implements czs {
-   public static final czi a = new czi(List.of());
-   public static final int b = 256;
-   private static final xl g = xl.a.a(n.f).b(true);
-   public static final Codec<czi> c = wq.g.sizeLimitedListOf(256).xmap(czi::new, czi::a);
-   public static final ym<vz, czi> d = wq.b.a(yk.c(256)).a(czi::new, czi::a);
+public record czi(Map<String, czi.a> c) {
+   public static final czi a = new czi(Map.of());
+   public static final Codec<czi> b = Codec.unboundedMap(Codec.STRING, czi.a.a).xmap(czi::new, czi::a);
 
-   public czi(List<wo> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> wr.a($$0x.f(), g)));
+   public czi a(String $$0, czi.a $$1) {
+      return new czi(af.a(this.c, $$0, $$1));
    }
 
-   public czi(List<wo> e, List<wo> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
-      } else {
-         this.e = e;
-         this.f = f;
+   public Map<String, czi.a> a() {
+      return this.c;
+   }
+
+   public static record a(jr<eum> b, double c, double d, float e) {
+      public static final Codec<czi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  eum.b.fieldOf("type").forGetter(czi.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(czi.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(czi.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(czi.a::d)
+               )
+               .apply($$0, czi.a::new)
+      );
+
+      public jr<eum> a() {
+         return this.b;
       }
-   }
 
-   public czi a(wo $$0) {
-      return new czi(af.a(this.e, $$0));
-   }
+      public double b() {
+         return this.c;
+      }
 
-   @Override
-   public void a(cwl.b $$0, Consumer<wo> $$1, cyh $$2) {
-      this.f.forEach($$1);
-   }
+      public double c() {
+         return this.d;
+      }
 
-   public List<wo> a() {
-      return this.e;
-   }
-
-   public List<wo> b() {
-      return this.f;
+      public float d() {
+         return this.e;
+      }
    }
 }

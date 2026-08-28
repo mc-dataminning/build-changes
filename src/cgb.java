@@ -1,38 +1,33 @@
-import javax.annotation.Nullable;
-
 public class cgb {
-   @Nullable
-   public static fba a(bvo $$0, int $$1, int $$2) {
-      boolean $$3 = cgc.a($$0, $$1);
-      return cgf.a($$0, () -> {
-         ji $$4 = cgf.a($$0.dZ(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+   public static boolean a(bvh $$0) {
+      return $$0.L() instanceof ceq;
    }
 
-   @Nullable
-   public static fba a(bvo $$0, int $$1, int $$2, fba $$3, double $$4) {
-      fba $$5 = $$3.a($$0.dB(), $$0.dD(), $$0.dH());
-      boolean $$6 = cgc.a($$0, $$1);
-      return cgf.a($$0, () -> {
-         ji $$6x = cgf.a($$0.dZ(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   public static boolean a(bvn $$0, int $$1) {
+      return $$0.gb() && $$0.fY().a($$0.du(), (double)($$0.fZ() + (float)$$1) + 1.0);
    }
 
-   @Nullable
-   public static fba a(bvo $$0, int $$1, int $$2, fba $$3) {
-      fba $$4 = $$0.du().d($$3);
-      boolean $$5 = cgc.a($$0, $$1);
-      return cgf.a($$0, () -> {
-         ji $$5x = cgf.a($$0.dZ(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   public static boolean a(ji $$0, bvn $$1) {
+      return $$1.dW().e($$0.v());
    }
 
-   @Nullable
-   private static ji a(bvo $$0, int $$1, boolean $$2, ji $$3) {
-      ji $$4 = cgf.a($$0, $$1, $$0.dZ(), $$3);
-      return !cgc.a($$4, $$0) && !cgc.a($$2, $$0, $$4) && !cgc.a($$0.L(), $$4) && !cgc.b($$0, $$4) ? $$4 : null;
+   public static boolean a(boolean $$0, bvn $$1, ji $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(cer $$0, ji $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bvn $$0, ji $$1) {
+      return $$0.dW().b_($$1).a(awu.a);
+   }
+
+   public static boolean b(bvn $$0, ji $$1) {
+      return $$0.a(ett.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bvn $$0, ji $$1) {
+      return $$0.dW().a_($$1).e();
    }
 }

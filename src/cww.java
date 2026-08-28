@@ -1,85 +1,43 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cww {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jr<cwv> c;
-   private final ji d;
-   private final cww.a e;
+public class cww extends cwj {
+   private static final Logger a = LogUtils.getLogger();
 
-   public cww(cww.a $$0, ji $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public cww(cwj.a $$0) {
+      super($$0);
    }
 
-   public boolean a() {
-      return this.c != null;
-   }
+   @Override
+   public bsi a(dgg $$0, cov $$1, bsh $$2) {
+      cwn $$3 = $$1.b($$2);
+      List<akt<dbc<?>>> $$4 = $$3.a(kv.ac, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bsi.d;
+      } else {
+         if (!$$0.C) {
+            dbj $$5 = $$0.p().aI();
+            List<dbh<?>> $$6 = new ArrayList<>($$4.size());
 
-   @Nullable
-   public cwv b() {
-      return this.c == null ? null : this.c.a();
-   }
+            for (akt<dbc<?>> $$7 : $$4) {
+               Optional<dbh<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bsi.d;
+               }
 
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jr<cwv> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public void a(dgj $$0, jr<cwv> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.K_().e(mc.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
-
-   public void a(dgj $$0, @Nullable dwx $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(ebt.F, this.d, ebt.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dgj $$0, @Nullable dwx $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(ebt.E, this.d, ebt.a.a($$1));
-               a($$0, this.d);
+               $$6.add($$8.get());
             }
 
-            this.b++;
+            $$1.a($$6);
+            $$1.b(awj.c.b(this));
          }
+
+         return bsi.a;
       }
-   }
-
-   private boolean d() {
-      return this.b % 20L == 0L;
-   }
-
-   private static void a(dgj $$0, ji $$1) {
-      if ($$0 instanceof arc $$2) {
-         fba $$3 = fba.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.H_().a(4) / 24.0F;
-         $$2.a(lt.ac, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
    }
 }
