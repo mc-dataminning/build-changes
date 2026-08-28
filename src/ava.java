@@ -1,43 +1,52 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class ava extends avi<String, avb> {
-   public ava(File $$0) {
-      super($$0);
-   }
+public interface ava extends avd {
+   Set<String> a();
 
-   @Override
-   protected avh<String> a(JsonObject $$0) {
-      return new avb($$0);
-   }
+   List<auy> a(ald var1);
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
-   }
+   Map<ald, auy> b(String var1, Predicate<ald> var2);
 
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
+   Map<ald, List<auy>> c(String var1, Predicate<ald> var2);
 
-   @Nullable
-   public avb b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
+   Stream<atm> b();
 
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
+   public static enum a implements ava {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
       }
 
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
+      @Override
+      public Optional<auy> getResource(ald $$0) {
+         return Optional.empty();
       }
 
-      return $$1;
+      @Override
+      public List<auy> a(ald $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<ald, auy> b(String $$0, Predicate<ald> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<ald, List<auy>> c(String $$0, Predicate<ald> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<atm> b() {
+         return Stream.of();
+      }
    }
 }

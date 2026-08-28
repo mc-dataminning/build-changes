@@ -1,59 +1,99 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cfb<T> {
-   private final T a;
-   private long b;
+public class cfb extends cdn {
+   private final cdn a;
+   private final int b;
+   private boolean c;
 
-   public cfb(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public cfb(int $$0, cdn $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> cfb<T> a(T $$0) {
-      return new cfb<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> cfb<T> a(T $$0, long $$1) {
-      return new cfb<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public boolean a(cfb $$0) {
+      return this.P_() && $$0.i() < this.i();
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean b() {
+      return this.a.b();
    }
 
-   @bag
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public boolean c() {
+      return this.a.c();
    }
 
-   public static <T> Codec<cfb<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new cfb<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public boolean P_() {
+      return this.a.P_();
+   }
+
+   @Override
+   public void d() {
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (this.c) {
+         this.c = false;
+         this.a.e();
+      }
+   }
+
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<cdn.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<cdn.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public cdn k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cfb)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

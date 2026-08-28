@@ -1,79 +1,36 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class fbn {
-   private final PathMatcher a;
+public record fbn(float c) implements fbq {
+   public static final MapCodec<fbn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fbn::c)).apply($$0, fbn::new));
+   public static final Codec<fbn> b = Codec.FLOAT.xmap(fbn::new, fbn::c);
 
-   public fbn(PathMatcher $$0) {
-      this.a = $$0;
+   @Override
+   public fbp b() {
+      return fbr.b;
    }
 
-   public void a(Path $$0, List<fbo> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new fbo($$0, $$2));
-      }
+   @Override
+   public float b(exl $$0) {
+      return this.c;
    }
 
-   public List<fbo> a(Path $$0) throws IOException {
-      List<fbo> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
+   public static fbn a(float $$0) {
+      return new fbn($$0);
    }
 
-   public List<fbo> a(Path $$0, boolean $$1) throws IOException {
-      List<fbo> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fbn)$$0).c, this.c) == 0 : false;
       }
    }
 
-   public void b(Path $$0, final List<fbo> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               fbn.this.a($$0, $$1);
-            }
-         }
-
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
-
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

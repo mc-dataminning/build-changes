@@ -25,7 +25,7 @@ import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class ey {
-   private static final ThreadLocal<hx<ex>> f = new ThreadLocal<>();
+   private static final ThreadLocal<hy<ex>> f = new ThreadLocal<>();
    private static final Logger g = LogUtils.getLogger();
    public static final int a = 0;
    public static final int b = 1;
@@ -35,105 +35,105 @@ public class ey {
    private final CommandDispatcher<ex> h = new CommandDispatcher();
 
    public ey(ey.a $$0, et $$1) {
-      amc.a(this.h);
-      amd.a(this.h, $$1);
-      amx.a(this.h, $$1);
-      amh.a(this.h, $$1);
-      amj.a(this.h, $$1);
-      amk.a(this.h, $$1);
-      aml.a(this.h, $$1);
-      apn.a(this.h);
-      amm.a(this.h);
-      amo.a(this.h);
-      ams.a(this.h);
-      amt.a(this.h);
+      aml.a(this.h);
+      amm.a(this.h, $$1);
+      ang.a(this.h, $$1);
+      amq.a(this.h, $$1);
+      ams.a(this.h, $$1);
+      amt.a(this.h, $$1);
       amu.a(this.h, $$1);
+      apx.a(this.h);
       amv.a(this.h);
-      amw.a(this.h, $$1);
-      amy.a(this.h);
-      ana.a(this.h, $$1);
-      amz.a(this.h, $$1);
+      amx.a(this.h);
       anb.a(this.h);
       anc.a(this.h);
-      and.a(this.h);
-      ane.a(this.h, $$1);
+      and.a(this.h, $$1);
+      ane.a(this.h);
       anf.a(this.h, $$1);
-      ang.a(this.h);
-      anh.a(this.h, $$1);
-      anj.a(this.h);
+      anh.a(this.h);
+      anj.a(this.h, $$1);
+      ani.a(this.h, $$1);
       ank.a(this.h);
       anl.a(this.h);
-      anm.a(this.h, $$1);
+      anm.a(this.h);
+      ann.a(this.h, $$1);
       ano.a(this.h, $$1);
       anp.a(this.h);
-      ant.a(this.h, $$1);
+      anr.a(this.h, $$1);
+      ant.a(this.h);
+      anu.a(this.h);
       anv.a(this.h);
-      anw.a(this.h);
+      anw.a(this.h, $$1);
+      any.a(this.h, $$1);
       anz.a(this.h);
-      aob.a(this.h);
-      aoa.a(this.h);
-      aoc.a(this.h);
-      aod.a(this.h);
-      aoe.a(this.h);
-      aoi.a(this.h);
+      aod.a(this.h, $$1);
+      aof.a(this.h);
+      aog.a(this.h);
       aoj.a(this.h);
-      aok.a(this.h, $$1);
-      aol.a(this.h, $$0 != ey.a.c);
-      aon.a(this.h, $$1);
-      aop.a(this.h);
-      aoq.a(this.h);
+      aol.a(this.h);
+      aok.a(this.h);
+      aom.a(this.h);
+      aon.a(this.h);
+      aoo.a(this.h);
       aos.a(this.h);
       aot.a(this.h);
-      aov.a(this.h);
-      aow.a(this.h, $$1);
-      aox.a(this.h);
-      aoy.a(this.h, $$1);
+      aou.a(this.h, $$1);
+      aov.a(this.h, $$0 != ey.a.c);
+      aox.a(this.h, $$1);
       aoz.a(this.h);
       apa.a(this.h);
-      apb.a(this.h, $$1);
       apc.a(this.h);
       apd.a(this.h);
-      ape.a(this.h, $$1);
-      apg.a(this.h);
-      api.a(this.h);
+      apf.a(this.h);
+      apg.a(this.h, $$1);
+      aph.a(this.h);
+      api.a(this.h, $$1);
+      apj.a(this.h);
       apk.a(this.h);
-      if (bpr.f.d()) {
-         ani.a(this.h);
+      apl.a(this.h, $$1);
+      th.a(this.h, $$1);
+      apm.a(this.h);
+      apn.a(this.h);
+      apo.a(this.h, $$1);
+      apq.a(this.h);
+      aps.a(this.h);
+      apu.a(this.h);
+      if (bqj.f.d()) {
+         ans.a(this.h);
       }
 
       if (ab.aU) {
-         td.a(this.h);
-         any.a(this.h, $$1);
-         amr.a(this.h);
-         amq.a(this.h);
-         aph.a(this.h);
-         aor.a(this.h);
-         aom.a(this.h);
+         aoi.a(this.h, $$1);
+         ana.a(this.h);
+         amz.a(this.h);
+         apr.a(this.h);
+         apb.a(this.h);
+         aow.a(this.h);
          if ($$0.e) {
-            amp.a(this.h);
+            amy.a(this.h);
          }
       }
 
       if ($$0.e) {
-         ame.a(this.h);
-         amf.a(this.h);
-         amg.a(this.h);
          amn.a(this.h);
-         anq.a(this.h);
-         anr.a(this.h);
-         ans.a(this.h);
-         anu.a(this.h);
-         aof.a(this.h);
-         aog.a(this.h);
-         aoh.a(this.h);
-         aoo.a(this.h);
-         aou.a(this.h);
-         apf.a(this.h);
-         apj.a(this.h);
+         amo.a(this.h);
+         amp.a(this.h);
+         amw.a(this.h);
+         aoa.a(this.h);
+         aob.a(this.h);
+         aoc.a(this.h);
+         aoe.a(this.h);
+         aop.a(this.h);
+         aoq.a(this.h);
+         aor.a(this.h);
+         aoy.a(this.h);
+         ape.a(this.h);
+         app.a(this.h);
+         apt.a(this.h);
       }
 
       if ($$0.d) {
-         anx.a(this.h);
+         aoh.a(this.h);
       }
 
       this.h.setConsumer(ez.b_());
@@ -152,15 +152,15 @@ public class ey {
 
    public void a(ParseResults<ex> $$0, String $$1) {
       ex $$2 = (ex)$$0.getContext().getSource();
-      bpi.a().a(() -> "/" + $$1);
+      bqa.a().a(() -> "/" + $$1);
       ContextChain<ex> $$3 = a($$0, $$1, $$2);
 
       try {
          if ($$3 != null) {
-            a($$2, $$3x -> hx.a($$3x, $$1, $$3, $$2, eu.a));
+            a($$2, $$3x -> hy.a($$3x, $$1, $$3, $$2, eu.a));
          }
       } catch (Exception var12) {
-         xd $$5 = wp.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         xj $$5 = wv.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var12);
             StackTraceElement[] $$6 = var12.getStackTrace();
@@ -170,13 +170,13 @@ public class ey {
             }
          }
 
-         $$2.b(wp.c("command.failed").a($$1x -> $$1x.a(new wv.e($$5))));
+         $$2.b(wv.c("command.failed").a($$1x -> $$1x.a(new xb.e($$5))));
          if (ab.aU) {
-            $$2.b(wp.b(af.c(var12)));
+            $$2.b(wv.b(af.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         bpi.a().c();
+         bqa.a().c();
       }
    }
 
@@ -187,21 +187,21 @@ public class ey {
          return (ContextChain<ex>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(ws.a(var7.getRawMessage()));
+         $$2.b(wy.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            xd $$5 = wp.i().a(n.h).a($$1x -> $$1x.a(new wn.g("/" + $$1)));
+            xj $$5 = wv.i().a(n.h).a($$1x -> $$1x.a(new wt.g("/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(wo.u);
+               $$5.b(wu.u);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               wp $$6 = wp.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               wv $$6 = wv.b(var7.getInput().substring($$4)).a(n.m, n.t);
                $$5.b($$6);
             }
 
-            $$5.b(wp.c("command.context.here").a(n.m, n.u));
+            $$5.b(wv.c("command.context.here").a(n.m, n.u));
             $$2.b($$5);
          }
 
@@ -209,15 +209,15 @@ public class ey {
       }
    }
 
-   public static void a(ex $$0, Consumer<hx<ex>> $$1) {
+   public static void a(ex $$0, Consumer<hy<ex>> $$1) {
       MinecraftServer $$2 = $$0.l();
-      hx<ex> $$3 = f.get();
+      hy<ex> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().c(dgv.y));
-         int $$6 = $$2.aL().c(dgv.z);
+         int $$5 = Math.max(1, $$2.aL().d(dhl.y));
+         int $$6 = $$2.aL().d(dhl.z);
 
-         try (hx<ex> $$7 = new hx<>($$5, $$6, bpi.a())) {
+         try (hy<ex> $$7 = new hy<>($$5, $$6, bqa.a())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -229,12 +229,12 @@ public class ey {
       }
    }
 
-   public void a(are $$0) {
+   public void a(aro $$0) {
       Map<CommandNode<ex>, CommandNode<fc>> $$1 = Maps.newHashMap();
       RootCommandNode<fc> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.A(), $$1);
-      $$0.f.b(new acd($$2));
+      $$0.f.b(new acj($$2));
    }
 
    private void a(CommandNode<ex> $$0, CommandNode<fc> $$1, ex $$2, Map<CommandNode<ex>, CommandNode<fc>> $$3) {
@@ -249,7 +249,7 @@ public class ey {
             if ($$5 instanceof RequiredArgumentBuilder) {
                RequiredArgumentBuilder<fc, ?> $$6 = (RequiredArgumentBuilder<fc, ?>)$$5;
                if ($$6.getSuggestionsProvider() != null) {
-                  $$6.suggests(ix.b($$6.getSuggestionsProvider()));
+                  $$6.suggests(iy.b($$6.getSuggestionsProvider()));
                }
             }
 
@@ -310,39 +310,39 @@ public class ey {
       }
    }
 
-   public static et a(final jt.a $$0) {
+   public static et a(final ju.a $$0) {
       return new et() {
          @Override
-         public csn a() {
-            return csp.e.a();
+         public cte a() {
+            return ctg.e.a();
          }
 
          @Override
-         public Stream<akt<? extends ke<?>>> b() {
+         public Stream<alc<? extends kf<?>>> b() {
             return $$0.b();
          }
 
          @Override
-         public <T> Optional<jt.b<T>> a(akt<? extends ke<? extends T>> $$0x) {
+         public <T> Optional<ju.b<T>> a(alc<? extends kf<? extends T>> $$0x) {
             return $$0.a($$0).map(this::a);
          }
 
-         private <T> jt.b.a<T> a(final jt.b<T> $$0x) {
-            return new jt.b.a<T>() {
+         private <T> ju.b.a<T> a(final ju.b<T> $$0x) {
+            return new ju.b.a<T>() {
                @Override
-               public jt.b<T> a() {
+               public ju.b<T> a() {
                   return $$0;
                }
 
                @Override
-               public Optional<jv.c<T>> a(axf<T> $$0xx) {
+               public Optional<jw.c<T>> a(axp<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jv.c<T> b(axf<T> $$0xx) {
-                  Optional<jv.c<T>> $$1 = this.a().a($$0);
-                  return $$1.orElseGet(() -> jv.a(this.a(), $$0));
+               public jw.c<T> b(axp<T> $$0xx) {
+                  Optional<jw.c<T>> $$1 = this.a().a($$0);
+                  return $$1.orElseGet(() -> jw.a(this.a(), $$0));
                }
             };
          }
@@ -350,14 +350,14 @@ public class ey {
    }
 
    public static void b() {
-      et $$0 = a(or.a());
+      et $$0 = a(ot.a());
       CommandDispatcher<ex> $$1 = new ey(ey.a.a, $$0).a();
       RootCommandNode<ex> $$2 = $$1.getRoot();
       $$1.findAmbiguities(
          ($$1x, $$2x, $$3x, $$4x) -> g.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
       );
-      Set<ArgumentType<?>> $$3 = iv.a($$2);
-      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !iu.a($$0x.getClass())).collect(Collectors.toSet());
+      Set<ArgumentType<?>> $$3 = iw.a($$2);
+      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !iv.a($$0x.getClass())).collect(Collectors.toSet());
       if (!$$4.isEmpty()) {
          g.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
          throw new IllegalStateException("Unregistered argument types");

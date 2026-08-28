@@ -1,69 +1,108 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
 public class els extends elt {
-   public static final MapCodec<els> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayi.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
-               ayi.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
-               ayi.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
-               ekz.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, els::new)
+   public static final int a = 8;
+   public static final int b = 15;
+   public static final MapCodec<els> c = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(elr.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, els::new)
    );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final ekz e;
+   private final elr h;
 
-   public els(int $$0, int $$1, int $$2, ekz $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public els(bsv $$0, elw $$1, Optional<elq> $$2, elr $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
+   }
+
+   @Override
+   public boolean a(dhv $$0, BiConsumer<jj, dym> $$1, azs $$2, jj $$3, jj $$4, ekr $$5) {
+      List<jj> $$6 = Lists.newArrayList();
+      jj.a $$7 = $$3.k();
+
+      while ($$7.v() < $$4.v()) {
+         if (!this.a($$0, $$7)) {
+            return false;
+         }
+
+         $$7.c(jo.b);
+      }
+
+      $$6.add($$4.e());
+
+      for (jo $$8 : jo.c.a) {
+         jj $$9 = $$4.a($$8);
+         List<jj> $$10 = Lists.newArrayList();
+         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
+            return false;
+         }
+
+         $$6.addAll($$10);
+         $$6.add($$4.a($$8));
+      }
+
+      for (jj $$11 : $$6) {
+         this.a($$0, $$1, $$2, $$11, $$5);
+      }
+
+      return true;
+   }
+
+   private boolean a(dhv $$0, azs $$1, jj $$2, jo $$3, jj $$4, List<jj> $$5, int $$6) {
+      int $$7 = this.h.e();
+      if ($$6 != $$7 && $$5.size() <= $$7) {
+         for (jj $$9 : this.a($$2, $$3, $$1, $$4)) {
+            if (this.a($$0, $$9)) {
+               $$5.add($$9);
+               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected List<jj> a(jj $$0, jo $$1, azs $$2, jj $$3) {
+      jj $$4 = $$0.e();
+      jj $$5 = $$0.a($$1);
+      int $$6 = $$0.k($$3);
+      int $$7 = this.h.d();
+      float $$8 = this.h.f();
+      if ($$6 > $$7 - 3 && $$6 <= $$7) {
+         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
+      } else if ($$6 > $$7) {
+         return List.of($$4);
+      } else if ($$2.i() < $$8) {
+         return List.of($$4);
+      } else {
+         return $$2.h() ? List.of($$5) : List.of($$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dhv $$0, jj $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   }
+
+   @Override
+   protected void a(dhv $$0, BiConsumer<jj, dym> $$1, azs $$2, jj $$3, ekr $$4) {
+      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
+         dym $$5 = this.h.c().a($$2, $$3);
+         $$1.accept($$3, this.a($$0, $$3, $$5));
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
    protected elu<?> a() {
-      return elu.i;
-   }
-
-   @Override
-   public void a(elt.a $$0) {
-      List<ji> $$1 = eig.a($$0);
-      if (!$$1.isEmpty()) {
-         ji $$2 = $$1.getFirst();
-         int $$3 = $$2.v();
-         int $$4 = $$2.u();
-         int $$5 = $$2.u();
-         int $$6 = $$2.w();
-         int $$7 = $$2.w();
-
-         for (ji $$8 : $$1) {
-            if ($$8.v() == $$3) {
-               $$4 = Math.min($$4, $$8.u());
-               $$5 = Math.max($$5, $$8.u());
-               $$6 = Math.min($$6, $$8.w());
-               $$7 = Math.max($$7, $$8.w());
-            }
-         }
-
-         azh $$9 = $$0.b();
-         eob $$10 = new eob($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
-         ji.a $$11 = new ji.a();
-
-         for (int $$12 = 0; $$12 < this.b; $$12++) {
-            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
-            this.a($$0, $$11);
-         }
-      }
-   }
-
-   private void a(elt.a $$0, ji $$1) {
-      ji $$2 = $$1.d();
-      if ((eig.d($$0.a(), $$2) || eig.b($$0.a(), $$2)) && eig.a($$0.a(), $$2.e()) && !$$0.a().b($$2, $$0x -> $$0x.b(etx.c))) {
-         $$0.a($$2, this.e.a($$0.b(), $$1));
-      }
+      return elu.a;
    }
 }

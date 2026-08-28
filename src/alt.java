@@ -1,6 +1,9 @@
-public record alt(auf a, alf b, jy<ald> c, ewi d) implements AutoCloseable {
-   @Override
-   public void close() {
-      this.a.close();
-   }
+public interface alt {
+   String ae();
+
+   String M();
+
+   int N();
+
+   int O();
 }

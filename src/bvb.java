@@ -1,27 +1,24 @@
-import java.util.List;
-
-public enum bvb {
-   a(bvb.a.c),
-   b(bvb.a.b),
-   c(bvb.a.c),
-   d(bvb.a.d);
-
-   private final bvb.a e;
-
-   private bvb(final bvb.a $$0) {
-      this.e = $$0;
+class bvb extends buu {
+   protected bvb(buv $$0, int $$1, lt $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public List<fbx> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
    }
 
-   public interface a {
-      List<fbx> a = List.of(fbx.c);
-      bvb.a b = ($$0, $$1) -> a;
-      bvb.a c = ($$0, $$1) -> List.of(new fbx(0.0, (double)$$1, 0.0));
-      bvb.a d = ($$0, $$1) -> List.of(new fbx(0.0, (double)$$1 / 2.0, 0.0));
+   @Override
+   public boolean a(arn $$0, bwr $$1, int $$2) {
+      if ($$1 instanceof aro $$3 && !$$1.U_()) {
+         jj $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.B().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
+      }
 
-      List<fbx> create(float var1, float var2);
+      return true;
    }
 }

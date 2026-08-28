@@ -1,20 +1,15 @@
-public record agy(bnu b) implements yw<agf> {
-   public static final yn<vl, agy> a = yw.a(agy::a, agy::new);
+import io.netty.buffer.ByteBuf;
 
-   private agy(vl $$0) {
-      this($$0.b(bnu.class));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-   }
+public record agy() implements zc<agm> {
+   public static final agy a = new agy();
+   public static final yt<ByteBuf, agy> b = yt.a(a);
 
    @Override
-   public yy<agy> a() {
-      return agd.bB;
+   public ze<agy> a() {
+      return agk.bv;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 }

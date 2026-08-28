@@ -1,92 +1,47 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class faj implements fal {
-   private static final String d = "block_entity";
-   private static final faj.a e = new faj.a() {
-      @Override
-      public un a(ewo $$0) {
-         dus $$1 = $$0.c(ezi.h);
-         return $$1 != null ? $$1.b($$1.i().F_()) : null;
-      }
+public record faj(js<deh> b, List<Float> c) implements fau {
+   public static final MapCodec<faj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(deh.c.fieldOf("enchantment").forGetter(faj::c), ays.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(faj::d)).apply($$0, faj::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<bai<?>> b() {
-         return Set.of(ezi.h);
-      }
-   };
-   public static final faj a = new faj(e);
-   private static final Codec<faj.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         ewo.b $$1 = ewo.b.a($$0);
-         return b($$1);
-      }
-   }, faj.a::a);
-   public static final MapCodec<faj> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, faj::new));
-   public static final Codec<faj> c = f.xmap(faj::new, $$0 -> $$0.g);
-   private final faj.a g;
-
-   private static faj.a b(final ewo.b $$0) {
-      return new faj.a() {
-         @Nullable
-         @Override
-         public un a(ewo $$0x) {
-            bva $$1 = $$0.c($$0.a());
-            return $$1 != null ? dn.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<bai<?>> b() {
-            return Set.of($$0.a());
-         }
-      };
-   }
-
-   private faj(faj.a $$0) {
-      this.g = $$0;
+   @Override
+   public fav b() {
+      return faw.k;
    }
 
    @Override
-   public fak a() {
-      return fam.c;
+   public Set<bat<?>> a() {
+      return Set.of(faf.i);
    }
 
-   @Nullable
-   @Override
-   public un a(ewo $$0) {
-      return this.g.a($$0);
+   public boolean a(exl $$0) {
+      cxy $$1 = $$0.c(faf.i);
+      int $$2 = $$1 != null ? dej.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   @Override
-   public Set<bai<?>> b() {
-      return this.g.b();
+   public static fau.a a(js<deh> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new faj($$0, $$2);
    }
 
-   public static fal a(ewo.b $$0) {
-      return new faj(b($$0));
+   public js<deh> c() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      un a(ewo var1);
-
-      String a();
-
-      Set<bai<?>> b();
+   public List<Float> d() {
+      return this.c;
    }
 }

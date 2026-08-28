@@ -1,108 +1,108 @@
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
+import java.util.Arrays;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class dhm implements dgj {
-   protected final int a;
-   protected final int b;
-   protected final dzm[][] c;
-   protected boolean d;
-   protected final dgz e;
-   private final Supplier<jr<dic>> f;
+public enum dhm implements bag {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public dhm(dgz $$0, ji $$1, ji $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.F_().e(mc.aJ).b(dij.b));
-      this.a = kk.a($$1.u());
-      this.b = kk.a($$1.w());
-      int $$3 = kk.a($$2.u());
-      int $$4 = kk.a($$2.w());
-      this.c = new dzm[$$3 - this.a + 1][$$4 - this.b + 1];
-      dzq $$5 = $$0.S();
-      this.d = true;
+   public static final dhm e = a;
+   public static final bag.a<dhm> f = bag.a(dhm::values);
+   private static final IntFunction<dhm> g = aya.a(dhm::a, values(), aya.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final wv k;
+   private final wv l;
 
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
-         }
-      }
-
-      for (int $$8 = kk.a($$1.u()); $$8 <= kk.a($$2.u()); $$8++) {
-         for (int $$9 = kk.a($$1.w()); $$9 <= kk.a($$2.w()); $$9++) {
-            dzm $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
-      }
+   private dhm(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = wv.c("selectWorld.gameMode." + $$1);
+      this.l = wv.c("gameMode." + $$1);
    }
 
-   private dzm d(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w()));
+   public int a() {
+      return this.i;
    }
 
-   private dzm a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dzm $$4 = this.c[$$2][$$3];
-         return (dzm)($$4 != null ? $$4 : new dzs(this.e, new dgg($$0, $$1), this.f.get()));
+   public String b() {
+      return this.j;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
+   }
+
+   public wv d() {
+      return this.l;
+   }
+
+   public wv e() {
+      return this.k;
+   }
+
+   public void a(cqe $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
       } else {
-         return new dzs(this.e, new dgg($$0, $$1), this.f.get());
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
+
+      $$0.e = !this.f();
    }
 
-   @Override
-   public dzh A_() {
-      return this.e.A_();
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   @Override
-   public dgf c(int $$0, int $$1) {
-      return this.a($$0, $$1);
+   public boolean g() {
+      return this == b;
    }
 
-   @Override
-   public List<fcr> c(@Nullable bva $$0, fbs $$1) {
-      return List.of();
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static dhm a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static dhm a(String $$0) {
+      return a($$0, a);
    }
 
    @Nullable
-   @Override
-   public dus c_(ji $$0) {
-      dzm $$1 = this.d($$0);
-      return $$1.c_($$0);
+   @Contract("_,!null->!null;_,null->_")
+   public static dhm a(String $$0, @Nullable dhm $$1) {
+      dhm $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
    }
 
-   @Override
-   public dxq a_(ji $$0) {
-      if (this.s($$0)) {
-         return dkg.a.m();
-      } else {
-         dzm $$1 = this.d($$0);
-         return $$1.a_($$0);
-      }
+   public static int a(@Nullable dhm $$0) {
+      return $$0 != null ? $$0.i : -1;
    }
 
-   @Override
-   public etw b_(ji $$0) {
-      if (this.s($$0)) {
-         return etx.a.g();
-      } else {
-         dzm $$1 = this.d($$0);
-         return $$1.b_($$0);
-      }
+   @Nullable
+   public static dhm b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 
-   @Override
-   public int G_() {
-      return this.e.G_();
-   }
-
-   @Override
-   public int H_() {
-      return this.e.H_();
+   public static boolean c(int $$0) {
+      return Arrays.stream(values()).anyMatch($$1 -> $$1.i == $$0);
    }
 }

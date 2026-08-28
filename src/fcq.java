@@ -1,46 +1,61 @@
-public final class fcq extends fcg {
-   private final fcg d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+public class fcq extends fcs {
+   private final jo b;
+   private final jj c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-   protected fcq(fcg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+   public static fcq a(fcu $$0, jo $$1, jj $$2) {
+      return new fcq(true, $$0, $$1, $$2, false, false);
+   }
+
+   public fcq(fcu $$0, jo $$1, jj $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
+   }
+
+   public fcq(fcu $$0, jo $$1, jj $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private fcq(boolean $$0, fcu $$1, jo $$2, jj $$3, boolean $$4, boolean $$5) {
+      super($$1);
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public fcq a(jo $$0) {
+      return new fcq(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public fcq a(jj $$0) {
+      return new fcq(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public fcq a() {
+      return new fcq(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public jj b() {
+      return this.c;
+   }
+
+   public jo c() {
+      return this.b;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public fcs.a d() {
+      return this.d ? fcs.a.a : fcs.a.b;
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   public boolean e() {
+      return this.e;
    }
 
-   @Override
-   public int a(jn.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(jn.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(jn.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return ayz.a($$1, $$2, $$3) - $$2;
+   public boolean f() {
+      return this.f;
    }
 }

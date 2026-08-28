@@ -1,38 +1,53 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class enl extends enu {
+public class enl extends enn {
    public static final MapCodec<enl> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+               eff.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               eff.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, enl::new)
    );
-   private final int c;
-   private final double d;
-   private final double e;
+   private static final Logger b = LogUtils.getLogger();
+   private final eff d;
+   private final eff e;
+   private final int f;
 
-   private enl(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private enl(eff $$0, eff $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static enl a(int $$0, double $$1, double $$2) {
+   public static enl a(eff $$0, eff $$1, int $$2) {
       return new enl($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(azh $$0, ji $$1) {
-      double $$2 = dic.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public int a(azs $$0, efi $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public enr<?> b() {
-      return enr.g;
+   public eno<?> a() {
+      return eno.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

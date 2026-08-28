@@ -1,19 +1,19 @@
-import javax.annotation.Nullable;
-
-public class cyq extends cvj {
-   public cyq(cxd.a $$0) {
-      super($$0);
+public class cyq extends czj {
+   public cyq(dku $$0, dku $$1, cxu.a $$2) {
+      super($$0, $$1, jo.a, $$2);
    }
 
    @Override
-   public cpy a(dgz $$0, cxh $$1, bvy $$2, @Nullable cxh $$3) {
-      return new cqq($$0, $$2, $$1.c(1), $$3);
+   public wv a(cxy $$0) {
+      dau $$1 = $$0.a(kx.ai);
+      return (wv)($$1 != null && $$1.c().isPresent() ? wv.a(this.m + ".named", $$1.c().get()) : super.a($$0));
    }
 
    @Override
-   public cqk a(dgz $$0, kb $$1, cxh $$2, jn $$3) {
-      cqq $$4 = new cqq($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.b = cpy.a.b;
-      return $$4;
+   public void l(cxy $$0) {
+      dau $$1 = $$0.a(kx.ai);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(kx.ai, $$1x), dxb.a);
+      }
    }
 }

@@ -1,53 +1,29 @@
-public class ach implements yw<abl> {
-   public static final yn<wa, ach> a = yw.a(ach::a, ach::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final cxh e;
+public class ach implements zc<abr> {
+   public static final yt<vr, ach> a = zc.a(ach::a, ach::new);
+   private final boolean b;
 
-   public ach(int $$0, int $$1, int $$2, cxh $$3) {
+   public ach(boolean $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3.v();
    }
 
-   private ach(wa $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readShort();
-      this.e = cxh.h.decode($$0);
+   private ach(vr $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(wa $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.m(this.d);
-      cxh.h.encode($$0, this.e);
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yy<ach> a() {
-      return agd.v;
+   public ze<ach> a() {
+      return agk.p;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.d;
-   }
-
-   public cxh f() {
-      return this.e;
-   }
-
-   public int g() {
-      return this.c;
    }
 }

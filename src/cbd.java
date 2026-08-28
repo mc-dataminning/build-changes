@@ -1,67 +1,96 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cbd {
-   public static bxs<cpd> a(float $$0) {
-      return cbe.a(
-         (Function<cbe.b<cpd>, ? extends App<cbe.c<cpd>, cbh<cpd>>>)($$1 -> $$1.group($$1.b(cfc.d), $$1.c(cfc.c), $$1.b(cfc.g), $$1.a(cfc.m), $$1.a(cfc.n))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.n_()) {
-                           return false;
-                        } else if ($$7.gA().b() != cpg.b) {
-                           return false;
-                        } else {
-                           ji $$9 = $$1.<jq>b($$2).b();
-                           Optional<jr<chf>> $$10 = $$6x.A().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bvy>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cpd && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cpd)$$0xxxx)
-                                 .filter(bvy::bJ)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.ea().c(cfc.c).isEmpty()) {
-                                       bxt.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.ea().a(cfc.d, jq.a($$6x.aj(), $$9));
-                                       agc.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class cbd extends byi<cpu> {
+   private Set<cxu> c = ImmutableSet.of();
+
+   public cbd() {
+      super(ImmutableMap.of(cft.r, cfu.a, cft.h, cfu.a));
    }
 
-   private static boolean a(jr<chf> $$0, cpd $$1, ji $$2) {
-      boolean $$3 = $$1.ea().c(cfc.d).isPresent();
-      if ($$3) {
-         return false;
-      } else {
-         Optional<jq> $$4 = $$1.ea().c(cfc.c);
-         cpg $$5 = $$1.gA().b();
-         if ($$5.b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
+   protected boolean a(arn $$0, cpu $$1) {
+      return byk.a($$1.eb(), cft.r, bwb.bC);
+   }
+
+   protected boolean a(arn $$0, cpu $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arn $$0, cpu $$1, long $$2) {
+      cpu $$3 = (cpu)$$1.eb().c(cft.r).get();
+      byk.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(arn $$0, cpu $$1, long $$2) {
+      cpu $$3 = (cpu)$$1.eb().c(cft.r).get();
+      if (!($$1.g($$3) > 5.0)) {
+         byk.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         boolean $$4 = $$1.gy().b().a(cpx.g);
+         if ($$1.gG() && ($$4 || $$3.gH())) {
+            a($$1, cpu.bH.keySet(), $$3);
+         }
+
+         if ($$4 && $$1.n().a_(cyc.qf) > cyc.qf.h() / 2) {
+            a($$1, ImmutableSet.of(cyc.qf), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.n().a(this.c)) {
+            a($$1, this.c, $$3);
          }
       }
    }
 
-   private static boolean a(bwg $$0, ji $$1, chf $$2) {
-      euk $$3 = $$0.O().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
+   protected void d(arn $$0, cpu $$1, long $$2) {
+      $$1.eb().b(cft.r);
+   }
+
+   private static Set<cxu> a(cpu $$0, cpu $$1) {
+      ImmutableSet<cxu> $$2 = $$1.gy().b().a().d();
+      ImmutableSet<cxu> $$3 = $$0.gy().b().a().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
+
+   private static void a(cpu $$0, Set<cxu> $$1, bwr $$2) {
+      btx $$3 = $$0.n();
+      cxy $$4 = cxy.k;
+      int $$5 = 0;
+
+      while ($$5 < $$3.b()) {
+         cxy $$6;
+         cxu $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               $$7 = $$6.h();
+               if ($$1.contains($$7)) {
+                  if ($$6.M() > $$6.k() / 2) {
+                     $$8 = $$6.M() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.M() > 24) {
+                     $$8 = $$6.M() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new cxy($$7, $$8);
+         break;
+      }
+
+      if (!$$4.f()) {
+         byk.a($$0, $$4, $$2.dt());
+      }
    }
 }

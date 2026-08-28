@@ -1,44 +1,42 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.stream.Stream;
 
-public record eop(List<eop.a> c, epg d) {
-   public static final Codec<eop> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eop.a.a.listOf().fieldOf("structures").forGetter(eop::a), epg.b.fieldOf("placement").forGetter(eop::b)).apply($$0, eop::new)
+public class eop extends eon {
+   public static final MapCodec<eop> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bsv.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bsv.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, eop::new)
    );
-   public static final Codec<jr<eop>> b = akq.a(mc.aY, a);
+   private final bsv c;
+   private final bsv d;
 
-   public eop(jr<eoj> $$0, epg $$1) {
-      this(List.of(new eop.a($$0, 1)), $$1);
+   public static eop a(bsv $$0, bsv $$1) {
+      return new eop($$0, $$1);
    }
 
-   public static eop.a a(jr<eoj> $$0, int $$1) {
-      return new eop.a($$0, $$1);
+   public static eop a(bsv $$0) {
+      return new eop(bss.a(0), $$0);
    }
 
-   public static eop.a a(jr<eoj> $$0) {
-      return new eop.a($$0, 1);
+   public static eop b(bsv $$0) {
+      return new eop($$0, bss.a(0));
    }
 
-   public List<eop.a> a() {
-      return this.c;
+   private eop(bsv $$0, bsv $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public epg b() {
-      return this.d;
+   @Override
+   public Stream<jj> a_(eol $$0, azs $$1, jj $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new jj($$3, $$4, $$5));
    }
 
-   public static record a(jr<eoj> b, int c) {
-      public static final Codec<eop.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eoj.b.fieldOf("structure").forGetter(eop.a::a), ayi.m.fieldOf("weight").forGetter(eop.a::b)).apply($$0, eop.a::new)
-      );
-
-      public jr<eoj> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @Override
+   public eoo<?> b() {
+      return eoo.n;
    }
 }

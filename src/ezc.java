@@ -1,35 +1,40 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ezc extends eyb {
+public class ezc extends eyy {
    public static final MapCodec<ezc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(dao.h.fieldOf("pages").forGetter($$0x -> $$0x.b), eya.a.forGetter($$0x -> $$0x.c))).apply($$0, ezc::new)
+      $$0 -> a($$0)
+            .and($$0.group(exj.e.fieldOf("component").forGetter($$0x -> $$0x.b), ezb.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ezc::new)
    );
-   private final List<arv<wp>> b;
-   private final eya c;
+   private final exi<?> b;
+   private final eyz c;
 
-   protected ezc(List<ezx> $$0, List<arv<wp>> $$1, eya $$2) {
+   private ezc(List<fau> $$0, exi<?> $$1, eyz $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
    }
 
    @Override
-   protected cxh a(cxh $$0, ewo $$1) {
-      $$0.a(kv.V, dao.a, this::a);
-      return $$0;
-   }
-
-   @VisibleForTesting
-   public dao a(dao $$0) {
-      List<arv<wp>> $$1 = this.c.a($$0.a(), this.b);
-      return $$0.b($$1);
+   public eza<ezc> b() {
+      return ezb.u;
    }
 
    @Override
-   public eyd<ezc> b() {
-      return eye.N;
+   public cxy a(cxy $$0, exl $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(exr $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

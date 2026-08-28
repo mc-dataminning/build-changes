@@ -1,61 +1,28 @@
-public class ahm implements yw<agf> {
-   public static final yn<vl, ahm> a = yw.a(ahm::a, ahm::new);
-   private final int b;
-   private final ahm.a c;
-   private final int d;
+public record ahm(fcu b, float c, float d, boolean e) implements zc<agm> {
+   public static final yt<vr, ahm> a = yt.a(fcu.b, ahm::b, yr.l, ahm::e, yr.l, ahm::f, yr.b, ahm::g, ahm::new);
 
-   public ahm(bva $$0, ahm.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public ahm(bva $$0, ahm.a $$1, int $$2) {
-      this.b = $$0.ar();
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private ahm(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahm.a.class);
-      this.d = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+   public static ahm a(bvs $$0) {
+      return $$0.bR() ? new ahm($$0.N_().a(), $$0.N_().b(), $$0.N_().c(), $$0.aJ()) : new ahm($$0.dt(), $$0.dL(), $$0.dN(), $$0.aJ());
    }
 
    @Override
-   public yy<ahm> a() {
-      return agd.bS;
+   public ze<ahm> a() {
+      return agk.bM;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public ahm.a e() {
+   public float e() {
       return this.c;
    }
 
-   public int f() {
+   public float f() {
       return this.d;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
+   public boolean g() {
+      return this.e;
    }
 }

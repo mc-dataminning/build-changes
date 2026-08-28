@@ -1,95 +1,287 @@
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dvl {
-   public static final akt<dvk> a = a("blank");
-   public static final akt<dvk> b = a("angler");
-   public static final akt<dvk> c = a("archer");
-   public static final akt<dvk> d = a("arms_up");
-   public static final akt<dvk> e = a("blade");
-   public static final akt<dvk> f = a("brewer");
-   public static final akt<dvk> g = a("burn");
-   public static final akt<dvk> h = a("danger");
-   public static final akt<dvk> i = a("explorer");
-   public static final akt<dvk> j = a("flow");
-   public static final akt<dvk> k = a("friend");
-   public static final akt<dvk> l = a("guster");
-   public static final akt<dvk> m = a("heart");
-   public static final akt<dvk> n = a("heartbreak");
-   public static final akt<dvk> o = a("howl");
-   public static final akt<dvk> p = a("miner");
-   public static final akt<dvk> q = a("mourner");
-   public static final akt<dvk> r = a("plenty");
-   public static final akt<dvk> s = a("prize");
-   public static final akt<dvk> t = a("scrape");
-   public static final akt<dvk> u = a("sheaf");
-   public static final akt<dvk> v = a("shelter");
-   public static final akt<dvk> w = a("skull");
-   public static final akt<dvk> x = a("snort");
-   private static final Map<cxd, akt<dvk>> y = Map.ofEntries(
-      Map.entry(cxl.ru, a),
-      Map.entry(cxl.yR, b),
-      Map.entry(cxl.yS, c),
-      Map.entry(cxl.yT, d),
-      Map.entry(cxl.yU, e),
-      Map.entry(cxl.yV, f),
-      Map.entry(cxl.yW, g),
-      Map.entry(cxl.yX, h),
-      Map.entry(cxl.yY, i),
-      Map.entry(cxl.yZ, j),
-      Map.entry(cxl.za, k),
-      Map.entry(cxl.zb, l),
-      Map.entry(cxl.zc, m),
-      Map.entry(cxl.zd, n),
-      Map.entry(cxl.ze, o),
-      Map.entry(cxl.zf, p),
-      Map.entry(cxl.zg, q),
-      Map.entry(cxl.zh, r),
-      Map.entry(cxl.zi, s),
-      Map.entry(cxl.zj, t),
-      Map.entry(cxl.zk, u),
-      Map.entry(cxl.zl, v),
-      Map.entry(cxl.zm, w),
-      Map.entry(cxl.zn, x)
-   );
+public abstract class dvl {
+   private static final Logger d = LogUtils.getLogger();
+   private final dvn<?> e;
+   @Nullable
+   protected dhp n;
+   protected final jj o;
+   protected boolean p;
+   private dym f;
+   private kt g = kt.a;
+
+   public dvl(dvn<?> $$0, jj $$1, dym $$2) {
+      this.e = $$0;
+      this.o = $$1.j();
+      this.a($$2);
+      this.f = $$2;
+   }
+
+   private void a(dym $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.o + ", got " + $$0);
+      }
+   }
+
+   public boolean b(dym $$0) {
+      return this.e.a($$0);
+   }
+
+   public static jj b(tw $$0) {
+      return new jj($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   }
 
    @Nullable
-   public static akt<dvk> a(cxd $$0) {
-      return y.get($$0);
+   public dhp i() {
+      return this.n;
    }
 
-   private static akt<dvk> a(String $$0) {
-      return akt.a(mc.ax, aku.b($$0));
+   public void a(dhp $$0) {
+      this.n = $$0;
    }
 
-   public static dvk a(ke<dvk> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   public boolean l() {
+      return this.n != null;
    }
 
-   private static dvk a(ke<dvk> $$0, akt<dvk> $$1, String $$2) {
-      return ke.a($$0, $$1, new dvk(aku.b($$2)));
+   protected void a(tw $$0, ju.a $$1) {
+   }
+
+   public final void c(tw $$0, ju.a $$1) {
+      this.a($$0, $$1);
+      dvl.a.a.parse($$1.a(uk.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(tw $$0, ju.a $$1) {
+      this.a($$0, $$1);
+   }
+
+   protected void b(tw $$0, ju.a $$1) {
+   }
+
+   public final tw b(ju.a $$0) {
+      tw $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final tw c(ju.a $$0) {
+      tw $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final tw d(ju.a $$0) {
+      tw $$1 = new tw();
+      this.b($$1, $$0);
+      dvl.a.a.encodeStart($$0.a(uk.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((tw)$$1x));
+      return $$1;
+   }
+
+   public final tw e(ju.a $$0) {
+      tw $$1 = new tw();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final tw f(ju.a $$0) {
+      tw $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(tw $$0) {
+      ald $$1 = dvn.a(this.p());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         $$0.a("id", $$1.toString());
+      }
+   }
+
+   public static void a(tw $$0, dvn<?> $$1) {
+      $$0.a("id", dvn.a($$1).toString());
+   }
+
+   private void d(tw $$0) {
+      this.c($$0);
+      $$0.a("x", this.o.u());
+      $$0.a("y", this.o.v());
+      $$0.a("z", this.o.w());
+   }
+
+   @Nullable
+   public static dvl a(jj $$0, dym $$1, tw $$2, ju.a $$3) {
+      String $$4 = $$2.l("id");
+      ald $$5 = ald.c($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return md.j.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
+      }
+   }
+
+   public void e() {
+      if (this.n != null) {
+         a(this.n, this.o, this.f);
+      }
+   }
+
+   protected static void a(dhp $$0, jj $$1, dym $$2) {
+      $$0.q($$1);
+      if (!$$2.l()) {
+         $$0.b($$1, $$2.b());
+      }
+   }
+
+   public jj aw_() {
+      return this.o;
+   }
+
+   public dym m() {
+      return this.f;
+   }
+
+   @Nullable
+   public zc<abr> at_() {
+      return null;
+   }
+
+   public tw a(ju.a $$0) {
+      return new tw();
+   }
+
+   public boolean n() {
+      return this.p;
+   }
+
+   public void ar_() {
+      this.p = true;
+   }
+
+   public void o() {
+      this.p = false;
+   }
+
+   public void a(jj $$0, dym $$1) {
+      if (this instanceof btj $$2 && this.n != null) {
+         btm.a(this.n, $$0, $$2);
+      }
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", this::k);
+      if (this.n != null) {
+         p.a($$0, this.n, this.o, this.m());
+         p.a($$0, this.n, this.o, this.n.a_(this.o));
+      }
+   }
+
+   private String k() {
+      return md.j.b(this.p()) + " // " + this.getClass().getCanonicalName();
+   }
+
+   public dvn<?> p() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void c(dym $$0) {
+      this.a($$0);
+      this.f = $$0;
+   }
+
+   protected void a(kr $$0) {
+   }
+
+   public final void a(cxy $$0) {
+      this.a($$0.c(), $$0.d());
+   }
+
+   public final void a(kt $$0, ku $$1) {
+      final Set<kw<?>> $$2 = new HashSet<>();
+      $$2.add(kx.aa);
+      $$2.add(kx.ao);
+      final kt $$3 = ky.a($$0, $$1);
+      this.a(new kr() {
+         @Nullable
+         @Override
+         public <T> T a(kw<? extends T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(kw<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      ku $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
+   }
+
+   protected void a(kt.a $$0) {
+   }
+
+   @Deprecated
+   public void a(tw $$0) {
+   }
+
+   public final kt q() {
+      kt.a $$0 = kt.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public kt r() {
+      return this.g;
+   }
+
+   public void a(kt $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   public static wv a(@Nullable ut $$0, ju.a $$1) {
+      return $$0 == null
+         ? null
+         : (wv)wx.a.parse($$1.a(uk.a), $$0).resultOrPartial($$0x -> d.warn("Failed to parse custom name, discarding: {}", $$0x)).orElse(null);
+   }
+
+   static class a {
+      public static final Codec<kt> a = kt.b.optionalFieldOf("components", kt.a).codec();
+
+      private a() {
+      }
    }
 }

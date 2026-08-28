@@ -1,18 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Map;
 
-public class cok {
-   public static bxs<bvy> a() {
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$0 -> $$0.group($$0.b(cfc.o), $$0.a(cfc.ah))
-               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                     bvy $$6 = $$0.b($$1);
-                     if ($$6.aq() == bvi.aj && $$6.eF()) {
-                        $$2.a(true, (long)cog.d.a($$4.dU().A));
-                     }
+public class cok extends byi<cof> {
+   public cok() {
+      super(Map.of(cft.p, cfu.a, cft.ba, cfu.b, cft.bb, cfu.b, cft.n, cfu.b, cft.aW, cfu.b));
+   }
 
-                     return true;
-                  }))
-      );
+   protected boolean a(arn $$0, cof $$1) {
+      return $$1.bZ() || $$1.bj() || $$1.c(buy.y) != null;
+   }
+
+   protected boolean a(arn $$0, cof $$1, long $$2) {
+      return false;
+   }
+
+   protected void b(arn $$0, cof $$1, long $$2) {
+      $$1.eb().a(cft.aW, baq.a, 60L);
    }
 }

@@ -1,50 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface hfv {
-   Logger a = LogUtils.getLogger();
+public class hfv implements hfw<dau> {
+   private final dsc.a a;
+   private final gfy b;
+   @Nullable
+   private final ald c;
+   private final float d;
 
-   static hfv create(Collection<atp<?>> $$0) {
-      return ($$1, $$2) -> {
-         aur $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         ffr $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = ffr.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         Optional<hhe> $$11 = $$3.a(hhe.b);
-         hhf $$12;
-         if ($$11.isPresent()) {
-            $$12 = $$11.get().a($$7.a(), $$7.b());
-            if (!ayz.c($$7.a(), $$12.a()) || !ayz.c($$7.b(), $$12.b())) {
-               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-               $$7.close();
-               return null;
-            }
-         } else {
-            $$12 = new hhf($$7.a(), $$7.b());
-         }
-
-         return new hfl($$1, $$12, $$7, $$3);
-      };
+   public hfv(dsc.a $$0, gfy $$1, @Nullable ald $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Nullable
-   hfl loadSprite(aku var1, aun var2);
+   public dau a(cxy $$0) {
+      return $$0.a(kx.ai);
+   }
+
+   public void a(@Nullable dau $$0, cxw $$1, fho $$2, gny $$3, int $$4, int $$5, boolean $$6) {
+      goi $$7 = gra.a(this.a, $$0, this.c);
+      gra.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
+   }
+
+   public static record a(dsc.a b, Optional<ald> c, float d) implements hfw.a {
+      public static final MapCodec<hfv.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dsc.a.b.fieldOf("kind").forGetter(hfv.a::b),
+                  ald.a.optionalFieldOf("texture").forGetter(hfv.a::c),
+                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hfv.a::d)
+               )
+               .apply($$0, hfv.a::new)
+      );
+
+      public a(dsc.a $$0) {
+         this($$0, Optional.empty(), 0.0F);
+      }
+
+      @Override
+      public MapCodec<hfv.a> a() {
+         return a;
+      }
+
+      @Nullable
+      @Override
+      public hfw<?> a(ggz $$0) {
+         gfy $$1 = gra.a($$0, this.b);
+         ald $$2 = this.c.<ald>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
+         return $$1 != null ? new hfv(this.b, $$1, $$2, this.d) : null;
+      }
+   }
 }

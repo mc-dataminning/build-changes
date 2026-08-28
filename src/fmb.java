@@ -1,66 +1,56 @@
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fmb {
+public abstract class fmb implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final glx[] e = new glx[9];
-   private boolean f;
+   private boolean c = false;
 
-   public fmb(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new glx();
-      }
-   }
-
-   private void b() {
+   protected static void a(long $$0) {
       try {
-         tq $$0 = ud.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = uf.b($$0, 1343);
-         $$0 = bam.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = glx.a.parse(ue.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(glx::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   public void a() {
-      try {
-         tq $$0 = uf.e(new tq());
+   public static void a(fwf $$0) {
+      fnd $$1 = fnd.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
 
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            glx $$2 = this.a($$1);
-            DataResult<un> $$3 = glx.a.encodeStart(ue.a, $$2);
-            $$0.a(String.valueOf($$1), (un)$$3.getOrThrow());
-         }
+   protected void a(wv $$0) {
+      this.b();
+      fnd $$1 = fnd.Q();
+      $$1.execute(() -> $$1.a(new fks($$0, new fhz(new fwh()))));
+   }
 
-         ud.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fka $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(wv.b($$0.getMessage()));
       }
    }
 
-   public glx a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
+   protected void a(fka $$0) {
+      this.a($$0.a.b());
+   }
 
-      return this.e[$$0];
+   public abstract wv a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

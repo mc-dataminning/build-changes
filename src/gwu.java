@@ -1,27 +1,21 @@
-public class gwu extends gxb<gzc, gcs> {
-   private static final aku a = aku.b("textures/entity/creeper/creeper_armor.png");
-   private final gcs b;
+public class gwu extends gtd<cqr, hco> {
+   public static final ald a = ald.b("textures/entity/projectiles/arrow.png");
+   public static final ald g = ald.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gwu(gva<gzc, gcs> $$0, gfy $$1) {
+   public gwu(guf.a $$0) {
       super($$0);
-      this.b = new gcs($$1.a(ggb.al));
    }
 
-   protected boolean a(gzc $$0) {
-      return $$0.b;
+   protected ald a(hco $$0) {
+      return $$0.d ? g : a;
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   public hco a() {
+      return new hco();
    }
 
-   @Override
-   protected aku a() {
-      return a;
-   }
-
-   protected gcs b() {
-      return this.b;
+   public void a(cqr $$0, hco $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.y() > 0;
    }
 }

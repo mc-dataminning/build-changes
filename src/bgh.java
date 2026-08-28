@@ -1,30 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class bgh extends bat {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("down", "down_south")
-      .put("up", "up_north")
-      .put("north", "north_up")
-      .put("south", "south_up")
-      .put("west", "west_up")
-      .put("east", "east_up")
-      .build();
+public abstract class bgh extends DataFix {
+   private final String a;
 
-   public bgh(Schema $$0) {
-      super($$0, "jigsaw_rotation_fix");
+   public bgh(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   @Override
-   protected boolean a(String $$0) {
-      return $$0.equals("minecraft:jigsaw");
+   public TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(biq.F.typeName(), bkj.a());
+      if (!Objects.equals(this.getInputSchema().getType(biq.F), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
    }
 
-   @Override
-   protected <T> Dynamic<T> a(String $$0, Dynamic<T> $$1) {
-      String $$2 = $$1.get("facing").asString("north");
-      return $$1.remove("facing").set("orientation", $$1.createString(a.getOrDefault($$2, $$2)));
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new bgh($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

@@ -1,3 +1,5 @@
-public interface ajm extends vv {
-   void a(ajn var1);
+public interface ajm {
+   ald a();
+
+   void a(vr var1);
 }

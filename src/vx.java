@@ -1,30 +1,43 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface vx<T extends vv> {
-   vj a();
-
-   yx b();
-
-   yn<ByteBuf, yw<? super T>> c();
-
+public class vx extends MessageToMessageDecoder<zc<?>> {
+   private final zb a;
    @Nullable
-   yv d();
+   private zb.a b;
 
-   public interface a<T extends vv, B extends ByteBuf> {
-      vx<T> a(Function<ByteBuf, B> var1);
+   public vx(zb $$0) {
+      this.a = $$0;
+   }
 
-      vj a();
+   protected void a(ChannelHandlerContext $$0, zc<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         zc<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
+         }
+      } else {
+         zb.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
+            }
+         }
+      }
+   }
 
-      yx b();
-
-      @bag
-      void a(vx.a.a var1);
-
-      @FunctionalInterface
-      public interface a {
-         void accept(yy<?> var1, int var2);
+   private static void a(zc<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
    }
 }

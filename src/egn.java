@@ -1,54 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egn extends egu<eiv> {
-   public egn(Codec<eiv> $$0) {
-      super($$0);
+public class egn extends egk {
+   public static final Codec<egn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egk.d.forGetter($$0x -> $$0x),
+               bst.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bst.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bst.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, egn::new)
+   );
+   public final bst b;
+   public final bst c;
+   final bst j;
+
+   public egn(float $$0, enn $$1, bst $$2, eff $$3, egl $$4, jw<dku> $$5, bst $$6, bst $$7, bst $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(egw<eiv> $$0) {
-      eiv $$1 = $$0.f();
-      ji $$2 = $$0.e();
-      dhy $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      ji.a $$10 = new ji.a();
-
-      for (ji $$11 : ji.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public egn(float $$0, enn $$1, bst $$2, eff $$3, jw<dku> $$4, bst $$5, bst $$6, bst $$7) {
+      this($$0, $$1, $$2, $$3, egl.a, $$4, $$5, $$6, $$7);
    }
 
-   protected boolean a(eiv $$0, dhy $$1, azh $$2, int $$3, int $$4, ji.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
-
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dxq $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
-      }
-
-      return $$6;
+   public egn(egk $$0, bst $$1, bst $$2, bst $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

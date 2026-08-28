@@ -1,19 +1,7 @@
-public class dpp {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import javax.annotation.Nullable;
 
-   public static boolean a(dxq $$0) {
-      return $$0.l();
-   }
+public interface dpp {
+   boolean a(@Nullable bwr var1, dgv var2, jj var3, dym var4, eus var5);
 
-   public static int a(azh $$0) {
-      double $$1 = 1.0;
-
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
-
-      return $$2;
-   }
+   boolean a(dhq var1, jj var2, dym var3, eut var4);
 }

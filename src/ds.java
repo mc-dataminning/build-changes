@@ -18,15 +18,15 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g, Map<aku, ds.c> h, Optional<bx> i, Optional<ci> j) implements by {
+public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<alc<dcl<?>>> g, Map<ald, ds.c> h, Optional<bx> i, Optional<ci> j) implements by {
    public static final int b = 100;
    public static final MapCodec<ds> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                dk.d.d.optionalFieldOf("level", dk.d.c).forGetter(ds::b),
                cg.c.optionalFieldOf("gamemode", cg.a).forGetter(ds::c),
                ds.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(ds::d),
-               ayi.f(akt.a(mc.bm)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(ds::e),
-               Codec.unboundedMap(aku.a, ds.c.b).optionalFieldOf("advancements", Map.of()).forGetter(ds::f),
+               ays.f(alc.a(me.br)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(ds::e),
+               Codec.unboundedMap(ald.a, ds.c.b).optionalFieldOf("advancements", Map.of()).forGetter(ds::f),
                bx.a.optionalFieldOf("looking_at").forGetter(ds::g),
                ci.a.optionalFieldOf("input").forGetter(ds::h)
             )
@@ -34,15 +34,15 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
    );
 
    @Override
-   public boolean a(bva $$0, ard $$1, @Nullable fbx $$2) {
-      if (!($$0 instanceof are $$3)) {
+   public boolean a(bvs $$0, arn $$1, @Nullable fcu $$2) {
+      if (!($$0 instanceof aro $$3)) {
          return false;
-      } else if (!this.d.d($$3.ce)) {
+      } else if (!this.d.d($$3.cd)) {
          return false;
       } else if (!this.e.a($$3.h.b())) {
          return false;
       } else {
-         awl $$5 = $$3.I();
+         awv $$5 = $$3.I();
 
          for (ds.e<?> $$6 : this.f) {
             if (!$$6.a($$5)) {
@@ -50,21 +50,21 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
             }
          }
 
-         awf $$7 = $$3.J();
+         awp $$7 = $$3.J();
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<akt<dbv<?>>> $$8 = (Entry<akt<dbv<?>>>)var13.next();
-            if ($$7.b((akt<dbv<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<alc<dcl<?>>> $$8 = (Entry<alc<dcl<?>>>)var13.next();
+            if ($$7.b((alc<dcl<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
 
          if (!this.h.isEmpty()) {
-            alc $$9 = $$3.S();
-            alh $$10 = $$3.cU().aD();
+            all $$9 = $$3.S();
+            alq $$10 = $$3.cV().aD();
 
-            for (java.util.Map.Entry<aku, ds.c> $$11 : this.h.entrySet()) {
+            for (java.util.Map.Entry<ald, ds.c> $$11 : this.h.entrySet()) {
                ai $$12 = $$10.a($$11.getKey());
                if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
                   return false;
@@ -73,15 +73,15 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
          }
 
          if (this.i.isPresent()) {
-            fbx $$13 = $$3.bD();
-            fbx $$14 = $$3.h(1.0F);
-            fbx $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            fbu $$16 = cqm.a($$3.dU(), $$3, $$13, $$15, new fbs($$13, $$15).g(1.0), $$0x -> !$$0x.U_(), 0.0F);
-            if ($$16 == null || $$16.d() != fbv.a.c) {
+            fcu $$13 = $$3.bE();
+            fcu $$14 = $$3.h(1.0F);
+            fcu $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fcr $$16 = crd.a($$3.dV(), $$3, $$13, $$15, new fcp($$13, $$15).g(1.0), $$0x -> !$$0x.U_(), 0.0F);
+            if ($$16 == null || $$16.d() != fcs.a.c) {
                return false;
             }
 
-            bva $$17 = $$16.a();
+            bvs $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -108,11 +108,11 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
       return this.f;
    }
 
-   public Object2BooleanMap<akt<dbv<?>>> e() {
+   public Object2BooleanMap<alc<dcl<?>>> e() {
       return this.g;
    }
 
-   public Map<aku, ds.c> f() {
+   public Map<ald, ds.c> f() {
       return this.h;
    }
 
@@ -125,7 +125,7 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
    }
 
    static record a(Object2BooleanMap<String> c) implements ds.c {
-      public static final Codec<ds.a> a = ayi.f(Codec.STRING).xmap(ds.a::new, ds.a::a);
+      public static final Codec<ds.a> a = ays.f(Codec.STRING).xmap(ds.a::new, ds.a::a);
 
       public boolean a(ak $$0) {
          ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
@@ -174,8 +174,8 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
       private dk.d a = dk.d.c;
       private cg b = cg.a;
       private final Builder<ds.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<akt<dbv<?>>> d = new Object2BooleanOpenHashMap();
-      private final Map<aku, ds.c> e = Maps.newHashMap();
+      private final Object2BooleanMap<alc<dcl<?>>> d = new Object2BooleanOpenHashMap();
+      private final Map<ald, ds.c> e = Maps.newHashMap();
       private Optional<bx> f = Optional.empty();
       private Optional<ci> g = Optional.empty();
 
@@ -188,12 +188,12 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
          return this;
       }
 
-      public <T> ds.d a(awj<T> $$0, jr.c<T> $$1, dk.d $$2) {
+      public <T> ds.d a(awt<T> $$0, js.c<T> $$1, dk.d $$2) {
          this.c.add(new ds.e<>($$0, $$1, $$2));
          return this;
       }
 
-      public ds.d a(akt<dbv<?>> $$0, boolean $$1) {
+      public ds.d a(alc<dcl<?>> $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }
@@ -208,12 +208,12 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
          return this;
       }
 
-      public ds.d a(aku $$0, boolean $$1) {
+      public ds.d a(ald $$0, boolean $$1) {
          this.e.put($$0, new ds.b($$1));
          return this;
       }
 
-      public ds.d a(aku $$0, Map<String, Boolean> $$1) {
+      public ds.d a(ald $$0, Map<String, Boolean> $$1) {
          this.e.put($$0, new ds.a(new Object2BooleanOpenHashMap($$1)));
          return this;
       }
@@ -228,29 +228,29 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
       }
    }
 
-   static record e<T>(awj<T> b, jr<T> c, dk.d d, Supplier<awh<T>> e) {
-      public static final Codec<ds.e<?>> a = mb.v.q().dispatch(ds.e::a, ds.e::a);
+   static record e<T>(awt<T> b, js<T> c, dk.d d, Supplier<awr<T>> e) {
+      public static final Codec<ds.e<?>> a = md.v.q().dispatch(ds.e::a, ds.e::a);
 
-      public e(awj<T> $$0, jr<T> $$1, dk.d $$2) {
+      public e(awt<T> $$0, js<T> $$1, dk.d $$2) {
          this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
       }
 
-      private static <T> MapCodec<ds.e<T>> a(awj<T> $$0) {
+      private static <T> MapCodec<ds.e<T>> a(awt<T> $$0) {
          return RecordCodecBuilder.mapCodec(
             $$1 -> $$1.group($$0.b().r().fieldOf("stat").forGetter(ds.e::b), dk.d.d.optionalFieldOf("value", dk.d.c).forGetter(ds.e::c))
                   .apply($$1, ($$1x, $$2) -> new ds.e<>($$0, $$1x, $$2))
          );
       }
 
-      public boolean a(awl $$0) {
+      public boolean a(awv $$0) {
          return this.d.d($$0.a(this.e.get()));
       }
 
-      public awj<T> a() {
+      public awt<T> a() {
          return this.b;
       }
 
-      public jr<T> b() {
+      public js<T> b() {
          return this.c;
       }
 
@@ -258,7 +258,7 @@ public record ds(dk.d d, cg e, List<ds.e<?>> f, Object2BooleanMap<akt<dbv<?>>> g
          return this.d;
       }
 
-      public Supplier<awh<T>> d() {
+      public Supplier<awr<T>> d() {
          return this.e;
       }
    }

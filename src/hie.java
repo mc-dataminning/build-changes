@@ -1,63 +1,28 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class hie {
-   static final int a = -1;
-   private static final int b = 0;
+public record hie(int c, Optional<Integer> d) {
+   public static final Codec<hie> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.l.fieldOf("index").forGetter(hie::a), ays.m.optionalFieldOf("time").forGetter(hie::b)).apply($$0, hie::new)
+   );
+   public static final Codec<hie> b = Codec.either(ays.l, a)
+      .xmap($$0 -> (hie)$$0.map(hie::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
 
-   public static Object2IntMap<dxq> a(fni $$0, hht.c $$1) {
-      Map<dke, List<dyt<?>>> $$2 = new HashMap<>();
-      Map<hie.a, Set<dxq>> $$3 = new HashMap<>();
-      $$1.c().forEach(($$3x, $$4x) -> {
-         List<dyt<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hie.a $$6x = hie.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<dxq> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<dxq> $$6 : $$3.values()) {
-         Iterator<dxq> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            dxq $$8 = $$7.next();
-            if ($$8.o() != dqp.b) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
+   public hie(int $$0) {
+      this($$0, Optional.empty());
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hie.a a(dxq $$0, gor $$1, List<dyt<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$4 = $$1.a($$0);
-         return new hie.a($$4, $$3);
-      }
+   public int a(int $$0) {
+      return this.d.orElse($$0);
+   }
 
-      private static List<Object> a(dxq $$0, List<dyt<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+   public int a() {
+      return this.c;
+   }
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
-         }
-
-         return List.of($$2);
-      }
+   public Optional<Integer> b() {
+      return this.d;
    }
 }

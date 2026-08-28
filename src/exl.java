@@ -1,145 +1,147 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class exl extends eyb {
-   private static final Map<aku, exl.c> b = Stream.of(exl.a.a, exl.d.b, exl.e.b).collect(Collectors.toMap(exl.c::a, Function.identity()));
-   private static final Codec<exl.c> c = aku.a.comapFlatMap($$0 -> {
-      exl.c $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
-   }, exl.c::a);
-   private static final MapCodec<exl.b> d = ayi.a("formula", "parameters", c, exl.b::a, exl.c::b);
-   public static final MapCodec<exl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(ddr.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, exl::new)
-   );
-   private final jr<ddr> e;
-   private final exl.b f;
+public class exl {
+   private final exo a;
+   private final azs b;
+   private final jt.a c;
+   private final Set<exl.c<?>> d = Sets.newLinkedHashSet();
 
-   private exl(List<ezx> $$0, jr<ddr> $$1, exl.b $$2) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
+   exl(exo $$0, azs $$1, jt.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public eyd<exl> b() {
-      return eye.x;
+   public boolean a(bat<?> $$0) {
+      return this.a.b().a($$0);
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return Set.of(ezi.i);
+   public <T> T b(bat<T> $$0) {
+      return this.a.b().b($$0);
    }
 
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      cxh $$2 = $$1.c(ezi.i);
-      if ($$2 != null) {
-         int $$3 = ddt.a(this.e, $$2);
-         int $$4 = this.f.a($$1.b(), $$0.M(), $$3);
-         $$0.e($$4);
+   @Nullable
+   public <T> T c(bat<T> $$0) {
+      return this.a.b().c($$0);
+   }
+
+   public void a(ald $$0, Consumer<cxy> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public boolean a(exl.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(exl.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(exl.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public jt.a a() {
+      return this.c;
+   }
+
+   public azs b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.c();
+   }
+
+   public arn d() {
+      return this.a.a();
+   }
+
+   public static exl.c<exq> a(exq $$0) {
+      return new exl.c<>(exn.c, $$0);
+   }
+
+   public static exl.c<fau> a(fau $$0) {
+      return new exl.c<>(exn.a, $$0);
+   }
+
+   public static exl.c<eyz> a(eyz $$0) {
+      return new exl.c<>(exn.b, $$0);
+   }
+
+   public static class a {
+      private final exo a;
+      @Nullable
+      private azs b;
+
+      public a(exo $$0) {
+         this.a = $$0;
       }
 
-      return $$0;
-   }
-
-   public static eyb.a<?> a(jr<ddr> $$0, float $$1, int $$2) {
-      return a($$3 -> new exl($$3, $$0, new exl.a($$2, $$1)));
-   }
-
-   public static eyb.a<?> a(jr<ddr> $$0) {
-      return a($$1 -> new exl($$1, $$0, new exl.d()));
-   }
-
-   public static eyb.a<?> b(jr<ddr> $$0) {
-      return a($$1 -> new exl($$1, $$0, new exl.e(1)));
-   }
-
-   public static eyb.a<?> a(jr<ddr> $$0, int $$1) {
-      return a($$2 -> new exl($$2, $$0, new exl.e($$1)));
-   }
-
-   static record a(int b, float c) implements exl.b {
-      private static final Codec<exl.a> d = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(exl.a::b), Codec.FLOAT.fieldOf("probability").forGetter(exl.a::c)).apply($$0, exl.a::new)
-      );
-      public static final exl.c a = new exl.c(aku.b("binomial_with_bonus_count"), d);
-
-      @Override
-      public int a(azh $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
+      public exl.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = azs.a($$0);
          }
 
-         return $$1;
+         return this;
       }
 
-      @Override
-      public exl.c a() {
-         return a;
+      public exl.a a(azs $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public arn a() {
+         return this.a.a();
+      }
+
+      public exl a(Optional<ald> $$0) {
+         arn $$1 = this.a();
+         MinecraftServer $$2 = $$1.p();
+         azs $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::C_);
+         return new exl(this.a, $$3, $$2.bc().a());
       }
    }
 
-   interface b {
-      int a(azh var1, int var2, int var3);
+   public static enum b implements bag {
+      a("this", faf.a),
+      b("attacker", faf.d),
+      c("direct_attacker", faf.e),
+      d("attacking_player", faf.b);
 
-      exl.c a();
-   }
+      public static final bag.a<exl.b> e = bag.a(exl.b::values);
+      private final String f;
+      private final bat<? extends bvs> g;
 
-   static record c(aku a, Codec<? extends exl.b> b) {
-   }
+      private b(final String $$0, final bat<? extends bvs> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
 
-   static record d() implements exl.b {
-      public static final Codec<exl.d> a = Codec.unit(exl.d::new);
-      public static final exl.c b = new exl.c(aku.b("ore_drops"), a);
+      public bat<? extends bvs> a() {
+         return this.g;
+      }
 
-      @Override
-      public int a(azh $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
-
-            return $$1 * ($$3 + 1);
-         } else {
+      public static exl.b a(String $$0) {
+         exl.b $$1 = e.a($$0);
+         if ($$1 != null) {
             return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
          }
       }
 
       @Override
-      public exl.c a() {
-         return b;
+      public String c() {
+         return this.f;
       }
    }
 
-   static record e(int c) implements exl.b {
-      public static final Codec<exl.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(exl.e::b)).apply($$0, exl.e::new)
-      );
-      public static final exl.c b = new exl.c(aku.b("uniform_bonus_count"), a);
-
-      @Override
-      public int a(azh $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.c * $$2 + 1);
-      }
-
-      @Override
-      public exl.c a() {
-         return b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   public static record c<T>(exn<T> a, T b) {
    }
 }

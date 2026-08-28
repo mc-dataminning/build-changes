@@ -1,43 +1,41 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.BiFunction;
 
-public class ezd extends eyb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<ezd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ezd::new));
+public class ezd implements eyz {
+   public static final MapCodec<ezd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ezb.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, ezd::new)
+   );
+   public static final Codec<ezd> b = ezb.b.listOf().xmap(ezd::new, $$0 -> $$0.c);
+   private final List<eyz> c;
+   private final BiFunction<cxy, exl, cxy> d;
 
-   private ezd(List<ezx> $$0) {
-      super($$0);
+   private ezd(List<eyz> $$0) {
+      this.c = $$0;
+      this.d = ezb.a($$0);
+   }
+
+   public static ezd a(List<eyz> $$0) {
+      return new ezd(List.copyOf($$0));
+   }
+
+   public cxy a(cxy $$0, exl $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public eyd<ezd> b() {
-      return eye.l;
-   }
+   public void a(exr $$0) {
+      eyz.super.a($$0);
 
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dco $$2 = new dco($$0);
-         Optional<dca<dcp>> $$3 = $$1.d().t().a(dcg.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            cxh $$4 = $$3.get().b().a($$2, $$1.d().F_());
-            if (!$$4.f()) {
-               return $$4.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
       }
    }
 
-   public static eyb.a<?> c() {
-      return a(ezd::new);
+   @Override
+   public eza<ezd> b() {
+      return ezb.I;
    }
 }

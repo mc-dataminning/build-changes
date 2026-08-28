@@ -1,45 +1,60 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Optional;
 
-public class err extends esi {
-   public static final MapCodec<err> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(edo.a.g.fieldOf("heightmap").orElse(edo.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, err::new)
-   );
-   private final edo.a b;
-   private final int c;
+public class err extends epg {
+   public static final MapCodec<err> d = a(err::new);
 
-   public err(edo.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public err(epg.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public esl.d a(dhc $$0, ji $$1, ji $$2, esl.d $$3, esl.d $$4, esh $$5) {
-      edo.a $$6;
-      if ($$0 instanceof ard) {
-         if (this.b == edo.a.a) {
-            $$6 = edo.a.b;
-         } else if (this.b == edo.a.c) {
-            $$6 = edo.a.d;
-         } else {
-            $$6 = this.b;
+   public Optional<epg.b> a(epg.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (js<dis> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(awy.X)) {
+            return Optional.empty();
          }
-      } else {
-         $$6 = this.b;
       }
 
-      ji $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new esl.d(new ji($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+      return a($$0, eel.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static epk a(dgw $$0, efk $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      jo $$4 = jo.c.a.a($$1);
+      return new erq.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(epy $$0, epg.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static epv a(dgw $$0, long $$1, epv $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         efk $$3 = new efk(new eem(efa.a()));
+         $$3.c($$1, $$0.h, $$0.i);
+         epk $$4 = $$2.c().get(0);
+         eoy $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         jo $$8 = jo.c.a.a($$3);
+         jo $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         epk $$10 = new erq.h($$3, $$6, $$7, $$9);
+         epy $$11 = new epy();
+         $$11.a($$10);
+         return $$11.a();
+      }
    }
 
    @Override
-   protected esk<?> a() {
-      return esk.g;
+   public epp<?> e() {
+      return epp.j;
    }
 }

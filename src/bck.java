@@ -2,54 +2,93 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class bck extends DataFix {
+   private static final List<String> a = List.of(
+      "minecraft:witch", "minecraft:ravager", "minecraft:pillager", "minecraft:illusioner", "minecraft:evoker", "minecraft:vindicator"
+   );
+
    public bck(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bic.t)
+   private Typed<?> a(Typed<?> $$0, Map<String, String> $$1) {
+      return $$0.update(DSL.remainderFinder(), $$1x -> {
+         for (Entry<String, String> $$2 : $$1.entrySet()) {
+            $$1x = $$1x.renameAndFixField($$2.getKey(), $$2.getValue(), baz::a);
+         }
+
+         return $$1x;
+      });
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("frames", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> {
+            $$0xx = $$0xx.renameAndFixField("Pos", "pos", baz::a);
+            $$0xx = $$0xx.renameField("Rotation", "rotation");
+            return $$0xx.renameField("EntityId", "entity_id");
+         }))).update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> {
+            $$0xx = $$0xx.renameField("Pos", "pos");
+            $$0xx = $$0xx.renameField("Color", "color");
+            return $$0xx.renameField("Name", "name");
+         })));
+   }
+
+   public TypeRewriteRule makeRule() {
+      List<TypeRewriteRule> $$0 = new ArrayList<>();
+      this.a($$0);
+      this.b($$0);
+      $$0.add(
+         this.writeFixAndRead(
+            "BlockPos format for map frames", this.getInputSchema().getType(biq.j), this.getOutputSchema().getType(biq.j), $$0x -> $$0x.update("data", this::a)
+         )
       );
-      Type<?> $$1 = this.getInputSchema().getType(bic.C);
-      return TypeRewriteRule.seq(
-         this.a($$0, $$1, "minecraft:llama"),
-         new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:trader_llama"), this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
+      Type<?> $$1 = this.getInputSchema().getType(biq.t);
+      $$0.add(
+         this.fixTypeEverywhereTyped(
+            "BlockPos format for compass target",
+            $$1,
+            bgp.a($$1, "minecraft:compass"::equals, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("LodestonePos", baz::a)))
+         )
+      );
+      return TypeRewriteRule.seq($$0);
+   }
+
+   private void a(List<TypeRewriteRule> $$0) {
+      $$0.add(this.a(biq.D, "minecraft:bee", Map.of("HivePos", "hive_pos", "FlowerPos", "flower_pos")));
+      $$0.add(this.a(biq.D, "minecraft:end_crystal", Map.of("BeamTarget", "beam_target")));
+      $$0.add(this.a(biq.D, "minecraft:wandering_trader", Map.of("WanderTarget", "wander_target")));
+
+      for (String $$1 : a) {
+         $$0.add(this.a(biq.D, $$1, Map.of("PatrolTarget", "patrol_target")));
+      }
+
+      $$0.add(
+         this.fixTypeEverywhereTyped(
+            "BlockPos format in Leash for mobs",
+            this.getInputSchema().getType(biq.D),
+            $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.renameAndFixField("Leash", "leash", baz::a))
+         )
       );
    }
 
-   private TypeRewriteRule a(
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0, Type<?> $$1, String $$2
-   ) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bic.C, $$2);
-      OpticFinder<?> $$4 = DSL.namedChoice($$2, $$3);
-      OpticFinder<?> $$5 = $$3.findField("Items");
-      return this.fixTypeEverywhereTyped(
-         "Fix non-zero indexing in chest horse type " + $$2,
-         $$1,
-         $$3x -> $$3x.updateTyped(
-               $$4,
-               $$2xx -> $$2xx.updateTyped(
-                     $$5,
-                     $$1xxx -> $$1xxx.update(
-                           $$0,
-                           $$0xxxx -> $$0xxxx.mapSecond(
-                                 $$0xxxxx -> $$0xxxxx.mapSecond(
-                                       $$0xxxxxx -> $$0xxxxxx.mapSecond(
-                                             $$0xxxxxxx -> $$0xxxxxxx.update("Slot", $$0xxxxxxxx -> $$0xxxxxxxx.createByte((byte)($$0xxxxxxxx.asInt(2) - 2)))
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   private void b(List<TypeRewriteRule> $$0) {
+      $$0.add(this.a(biq.s, "minecraft:beehive", Map.of("FlowerPos", "flower_pos")));
+      $$0.add(this.a(biq.s, "minecraft:end_gateway", Map.of("ExitPortal", "exit_portal")));
+   }
+
+   private TypeRewriteRule a(TypeReference $$0, String $$1, Map<String, String> $$2) {
+      String $$3 = "BlockPos format in " + $$2.keySet() + " for " + $$1 + " (" + $$0.typeName() + ")";
+      OpticFinder<?> $$4 = DSL.namedChoice($$1, this.getInputSchema().getChoiceType($$0, $$1));
+      return this.fixTypeEverywhereTyped($$3, this.getInputSchema().getType($$0), $$2x -> $$2x.updateTyped($$4, $$1xx -> this.a($$1xx, $$2)));
    }
 }

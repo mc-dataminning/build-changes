@@ -1,26 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Function;
 
 public class bzu {
-   public static bxs<bvy> a() {
-      return cbe.a((Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$0 -> $$0.a((cbh<bvy>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bxa<?> $$3 = $$1.ea();
-               cre $$4 = $$0x.d($$1.du());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cri.h);
-                     $$3.a(cri.h);
-                  } else {
-                     $$3.b(cri.i);
-                     $$3.a(cri.i);
-                  }
-               }
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
 
-               return true;
-            }
-         }))));
+   public static byj<bwz> a() {
+      return cbv.a(
+         (Function<cbv.b<bwz>, ? extends App<cbv.c<bwz>, cby<bwz>>>)($$0 -> $$0.group($$0.b(cft.i), $$0.c(cft.n), $$0.a(cft.o), $$0.a(cft.r))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.C_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bwr> $$8 = $$0.b($$1);
+                        Optional<bwr> $$9 = $$8.stream().filter($$1xx -> a((bwr)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bwr> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              fcu $$11 = chn.a($$6, 20, 8);
+                              if ($$11 != null && $$5.c(jj.a((kc)$$11))) {
+                                 $$2.a(new cfw($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+                  }))
+      );
+   }
+
+   private static void a(cbw<?, bwr> $$0, cbw<?, bzw> $$1, cbw<?, cfw> $$2, bwr $$3) {
+      $$0.a($$3);
+      $$1.a(new byt($$3, true));
+      $$2.a(new cfw(new byt($$3, false), 0.6F, 1));
+   }
+
+   private static Optional<bwr> a(List<bwr> $$0) {
+      Map<bwr, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
+   }
+
+   private static Map<bwr, Integer> b(List<bwr> $$0) {
+      Map<bwr, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bzu::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
+   }
+
+   private static bwr a(bwr $$0) {
+      return $$0.eb().c(cft.r).get();
+   }
+
+   private static boolean b(bwr $$0) {
+      return $$0.eb().c(cft.r).isPresent();
+   }
+
+   private static boolean a(bwr $$0, bwr $$1) {
+      return $$1.eb().c(cft.r).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

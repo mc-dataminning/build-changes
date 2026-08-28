@@ -1,22 +1,22 @@
-import com.google.gson.JsonPrimitive;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class foi {
-   public static final foj<foi.a> a = new foj<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final foj<foi.a> b = new foj<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final foj<aku> c = new foj<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final foj<Boolean> d = new foj<>("uvlock", JsonPrimitive::new);
-   public static final foj<Integer> e = new foj<>("weight", JsonPrimitive::new);
+public record foi(int b) implements fon {
+   public static final MapCodec<foi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.i.fieldOf("value").forGetter(foi::b)).apply($$0, foi::new));
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
+   public foi(int b) {
+      b = axu.f(b);
+      this.b = b;
+   }
 
-      final int e;
+   @Override
+   public int a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2) {
+      return this.b;
+   }
 
-      private a(final int $$0) {
-         this.e = $$0;
-      }
+   @Override
+   public MapCodec<foi> a() {
+      return a;
    }
 }

@@ -1,151 +1,241 @@
-import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class epg {
-   public static final Codec<epg> b = mb.P.q().dispatch(epg::e, eph::codec);
-   private static final int a = 10387320;
-   private final km c;
-   private final epg.c d;
-   private final float e;
-   private final int f;
-   private final Optional<epg.a> g;
+   public static final Codec<epg> a = md.R.q().dispatch(epg::e, epp::codec);
+   public static final Codec<js<epg>> b = akz.a(me.aZ, a);
+   protected final epg.c c;
 
-   protected static <S extends epg> P5<Mu<S>, km, epg.c, Float, Integer, Optional<epg.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         km.v(16).optionalFieldOf("locate_offset", km.h).forGetter(epg::f),
-         epg.c.e.optionalFieldOf("frequency_reduction_method", epg.c.a).forGetter(epg::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(epg::h),
-         ayi.l.fieldOf("salt").forGetter(epg::i),
-         epg.a.a.optionalFieldOf("exclusion_zone").forGetter(epg::j)
-      );
+   public static <S extends epg> RecordCodecBuilder<S, epg.c> a(Instance<S> $$0) {
+      return epg.c.a.forGetter($$0x -> $$0x.c);
    }
 
-   protected epg(km $$0, epg.c $$1, float $$2, int $$3, Optional<epg.a> $$4) {
+   public static <S extends epg> MapCodec<S> a(Function<epg.c, S> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   }
+
+   protected epg(epg.c $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
    }
 
-   protected km f() {
-      return this.c;
+   public jw<dis> a() {
+      return this.c.b;
    }
 
-   protected epg.c g() {
-      return this.d;
+   public Map<bwu, epn> b() {
+      return this.c.c;
    }
 
-   protected float h() {
-      return this.e;
+   public eeh.a c() {
+      return this.c.d;
    }
 
-   protected int i() {
-      return this.f;
+   public epr d() {
+      return this.c.e;
    }
 
-   protected Optional<epg.a> j() {
-      return this.g;
+   public eoy a(eoy $$0) {
+      return this.d() != epr.a ? $$0.a(12) : $$0;
    }
 
-   public boolean b(dzo $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   public epo a(js<epg> $$0, alc<dhp> $$1, kg $$2, eak $$3, diw $$4, eez $$5, etj $$6, long $$7, dgw $$8, int $$9, dhr $$10, Predicate<js<dis>> $$11) {
+      bqm $$12 = bqj.f.a($$8, $$1, $$0);
+      epg.a $$13 = new epg.a($$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10, $$11);
+      Optional<epg.b> $$14 = this.b($$13);
+      if ($$14.isPresent()) {
+         epy $$15 = $$14.get().a();
+         epo $$16 = new epo(this, $$8, $$9, $$15.a());
+         if ($$16.b()) {
+            if ($$12 != null) {
+               $$12.finish(true);
+            }
+
+            return $$16;
+         }
+      }
+
+      if ($$12 != null) {
+         $$12.finish(false);
+      }
+
+      return epo.b;
    }
 
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   protected static Optional<epg.b> a(epg.a $$0, eel.a $$1, Consumer<epy> $$2) {
+      dgw $$3 = $$0.h();
+      int $$4 = $$3.b();
+      int $$5 = $$3.c();
+      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
+      return Optional.of(new epg.b(new jj($$4, $$6, $$5), $$2));
    }
 
-   public boolean c(dzo $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   private static boolean a(epg.b $$0, epg.a $$1) {
+      jj $$2 = $$0.b();
+      return $$1.j.test($$1.b.d().getNoiseBiome(kd.a($$2.u()), kd.a($$2.v()), kd.a($$2.w()), $$1.d.b()));
    }
 
-   protected abstract boolean a(dzo var1, int var2, int var3);
-
-   public ji a(dgg $$0) {
-      return new ji($$0.d(), 0, $$0.e()).a(this.f());
+   public void a(dio $$0, dil $$1, eak $$2, azs $$3, eoy $$4, dgw $$5, epv $$6) {
    }
 
-   public abstract eph<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      een $$5 = new een(new edp(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
+   private static int[] c(epg.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      eak $$5 = $$0.b();
+      dhr $$6 = $$0.i();
+      eez $$7 = $$0.d();
+      return new int[]{
+         $$5.c($$1, $$3, eel.a.a, $$6, $$7),
+         $$5.c($$1, $$3 + $$4, eel.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3, eel.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3 + $$4, eel.a.a, $$6, $$7)
+      };
    }
 
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      een $$5 = new een(new edp(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
+   public static int a(epg.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
+      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
    }
 
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      een $$5 = new een(new edp(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
+   protected static int a(epg.a $$0, int $$1, int $$2) {
+      dgw $$3 = $$0.h();
+      int $$4 = $$3.d();
+      int $$5 = $$3.e();
+      return b($$0, $$4, $$5, $$1, $$2);
    }
 
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      een $$7 = new een(new edp(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
+   protected static int b(epg.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
+      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
    }
 
    @Deprecated
-   public static record a(jr<eop> b, int c) {
-      public static final Codec<epg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(akq.a(mc.aY, eop.a, false).fieldOf("other_set").forGetter(epg.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(epg.a::b))
-               .apply($$0, epg.a::new)
-      );
-
-      boolean a(dzo $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
+   protected jj a(epg.a $$0, drm $$1) {
+      int $$2 = 5;
+      int $$3 = 5;
+      if ($$1 == drm.b) {
+         $$2 = -5;
+      } else if ($$1 == drm.c) {
+         $$2 = -5;
+         $$3 = -5;
+      } else if ($$1 == drm.d) {
+         $$3 = -5;
       }
 
-      public jr<eop> a() {
+      dgw $$4 = $$0.h();
+      int $$5 = $$4.a(7);
+      int $$6 = $$4.b(7);
+      return new jj($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
+   }
+
+   protected abstract Optional<epg.b> a(epg.a var1);
+
+   public Optional<epg.b> b(epg.a $$0) {
+      return this.a($$0).filter($$1 -> a($$1, $$0));
+   }
+
+   public abstract epp<?> e();
+
+   public static record a(kg a, eak b, diw c, eez d, etj e, efk f, long g, dgw h, dhr i, Predicate<js<dis>> j) {
+
+      public a(kg $$0, eak $$1, diw $$2, eez $$3, etj $$4, long $$5, dgw $$6, dhr $$7, Predicate<js<dis>> $$8) {
+         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
+      }
+
+      private static efk a(long $$0, dgw $$1) {
+         efk $$2 = new efk(new eem(0L));
+         $$2.c($$0, $$1.h, $$1.i);
+         return $$2;
+      }
+   }
+
+   public static record b(jj a, Either<Consumer<epy>, epy> b) {
+      public b(jj $$0, Consumer<epy> $$1) {
+         this($$0, Either.left($$1));
+      }
+
+      public epy a() {
+         return (epy)this.b.map($$0 -> {
+            epy $$1 = new epy();
+            $$0.accept($$1);
+            return $$1;
+         }, $$0 -> $$0);
+      }
+
+      public jj b() {
+         return this.a;
+      }
+
+      public Either<Consumer<epy>, epy> c() {
+         return this.b;
+      }
+   }
+
+   public static record c(jw<dis> b, Map<bwu, epn> c, eeh.a d, epr e) {
+      static final epg.c f = new epg.c(jw.a(), Map.of(), eeh.a.e, epr.a);
+      public static final MapCodec<epg.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  kh.a(me.aM).fieldOf("biomes").forGetter(epg.c::a),
+                  Codec.simpleMap(bwu.i, epn.a, bag.a(bwu.values())).fieldOf("spawn_overrides").forGetter(epg.c::b),
+                  eeh.a.l.fieldOf("step").forGetter(epg.c::c),
+                  epr.f.optionalFieldOf("terrain_adaptation", f.e).forGetter(epg.c::d)
+               )
+               .apply($$0, epg.c::new)
+      );
+
+      public c(jw<dis> $$0) {
+         this($$0, f.c, f.d, f.e);
+      }
+
+      public jw<dis> a() {
          return this.b;
       }
 
-      public int b() {
+      public Map<bwu, epn> b() {
          return this.c;
       }
-   }
 
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
-   }
-
-   public static enum c implements azv {
-      a("default", epg::a),
-      b("legacy_type_1", epg::d),
-      c("legacy_type_2", epg::c),
-      d("legacy_type_3", epg::b);
-
-      public static final Codec<epg.c> e = azv.a(epg.c::values);
-      private final String f;
-      private final epg.b g;
-
-      private c(final String $$0, final epg.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      public eeh.a c() {
+         return this.d;
       }
 
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      public epr d() {
+         return this.e;
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      public static class a {
+         private final jw<dis> a;
+         private Map<bwu, epn> b = epg.c.f.c;
+         private eeh.a c = epg.c.f.d;
+         private epr d = epg.c.f.e;
+
+         public a(jw<dis> $$0) {
+            this.a = $$0;
+         }
+
+         public epg.c.a a(Map<bwu, epn> $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public epg.c.a a(eeh.a $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public epg.c.a a(epr $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public epg.c a() {
+            return new epg.c(this.a, this.b, this.c, this.d);
+         }
       }
    }
 }

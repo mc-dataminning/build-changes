@@ -1,26 +1,40 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eos<S extends eoj> {
-   eos<eqd> a = a("buried_treasure", eqd.d);
-   eos<eqf> b = a("desert_pyramid", eqf.d);
-   eos<eqh> c = a("end_city", eqh.d);
-   eos<eqq> d = a("fortress", eqq.e);
-   eos<eqj> e = a("igloo", eqj.d);
-   eos<eqk> f = a("jigsaw", eqk.i);
-   eos<eqm> g = a("jungle_temple", eqm.d);
-   eos<eqo> h = a("mineshaft", eqo.d);
-   eos<eqs> i = a("nether_fossil", eqs.d);
-   eos<equ> j = a("ocean_monument", equ.d);
-   eos<eqw> k = a("ocean_ruin", eqw.d);
-   eos<eqy> l = a("ruined_portal", eqy.d);
-   eos<era> m = a("shipwreck", era.d);
-   eos<erc> n = a("stronghold", erc.d);
-   eos<ere> o = a("swamp_hut", ere.d);
-   eos<erg> p = a("woodland_mansion", erg.d);
+public class eos extends eom {
+   public static final MapCodec<eos> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eel.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eos::new)
+   );
+   private final eel.a c;
+   private final int d;
+   private final int e;
 
-   MapCodec<S> codec();
+   private eos(eel.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <S extends eoj> eos<S> a(String $$0, MapCodec<S> $$1) {
-      return ke.a(mb.R, $$0, () -> $$1);
+   public static eos a(eel.a $$0, int $$1, int $$2) {
+      return new eos($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(eol $$0, azs $$1, jj $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public eoo<?> b() {
+      return eoo.c;
    }
 }

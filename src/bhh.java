@@ -1,34 +1,16 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
 public class bhh extends DataFix {
-   public bhh(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bhh(Schema $$0) {
+      super($$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bic.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
-                  )
-            )
+   protected TypeRewriteRule makeRule() {
+      return this.writeFixAndRead(
+         "Map id fix", this.getInputSchema().getType(biq.j), this.getOutputSchema().getType(biq.j), $$0 -> $$0.createMap(Map.of($$0.createString("data"), $$0))
       );
-   }
-
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
    }
 }

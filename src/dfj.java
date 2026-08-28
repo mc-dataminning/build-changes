@@ -1,37 +1,45 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum dfj implements azv {
-   a(bvj.f, 11, "helmet"),
-   b(bvj.e, 16, "chestplate"),
-   c(bvj.d, 15, "leggings"),
-   d(bvj.c, 13, "boots"),
-   e(bvj.g, 16, "body");
+public record dfj(czx d, kn e, Optional<js<edm>> f) implements dey {
+   public static final MapCodec<dfj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               czx.b.fieldOf("properties").forGetter(dfj::b),
+               kn.g.optionalFieldOf("offset", kn.i).forGetter(dfj::c),
+               edm.aj.optionalFieldOf("trigger_game_event").forGetter(dfj::d)
+            )
+            .apply($$0, dfj::new)
+   );
 
-   public static final Codec<dfj> f = azv.b(dfj::values);
-   private final bvj g;
-   private final String h;
-   private final int i;
-
-   private dfj(final bvj $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public bvj a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
+   public dfj(czx $$0) {
+      this($$0, kn.i, Optional.of(edm.c));
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
+      jj $$5 = jj.a((kc)$$4).a(this.e);
+      dym $$6 = $$3.dV().a_($$5);
+      dym $$7 = this.d.a($$6);
+      if ($$6 != $$7 && $$3.dV().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
+
+   @Override
+   public MapCodec<dfj> a() {
+      return a;
+   }
+
+   public czx b() {
+      return this.d;
+   }
+
+   public kn c() {
+      return this.e;
+   }
+
+   public Optional<js<edm>> d() {
+      return this.f;
    }
 }

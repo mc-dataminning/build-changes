@@ -1,42 +1,46 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record fax(fat b, fat c) implements fat {
+public record fax(Optional<bx> b, exl.b c) implements fau {
    public static final MapCodec<fax> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fau.a.fieldOf("min").forGetter(fax::c), fau.a.fieldOf("max").forGetter(fax::d)).apply($$0, fax::new)
+      $$0 -> $$0.group(bx.a.optionalFieldOf("predicate").forGetter(fax::c), exl.b.e.fieldOf("entity").forGetter(fax::d)).apply($$0, fax::new)
    );
 
    @Override
-   public fas b() {
-      return fau.c;
-   }
-
-   public static fax a(float $$0, float $$1) {
-      return new fax(faq.a($$0), faq.a($$1));
+   public fav b() {
+      return faw.f;
    }
 
    @Override
-   public int a(ewo $$0) {
-      return ayz.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public Set<bat<?>> a() {
+      return Set.of(faf.f, this.c.a());
    }
 
-   @Override
-   public float b(ewo $$0) {
-      return ayz.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public boolean a(exl $$0) {
+      bvs $$1 = $$0.c(this.c.a());
+      fcu $$2 = $$0.c(faf.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static fau.a a(exl.b $$0) {
+      return a($$0, bx.a.a());
    }
 
-   public fat c() {
+   public static fau.a a(exl.b $$0, bx.a $$1) {
+      return () -> new fax(Optional.of($$1.b()), $$0);
+   }
+
+   public static fau.a a(exl.b $$0, bx $$1) {
+      return () -> new fax(Optional.of($$1), $$0);
+   }
+
+   public Optional<bx> c() {
       return this.b;
    }
 
-   public fat d() {
+   public exl.b d() {
       return this.c;
    }
 }

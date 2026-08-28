@@ -1,213 +1,189 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class etz {
+   protected static final int[][] a = new int[][]{
+      {1, 1, 0},
+      {-1, 1, 0},
+      {1, -1, 0},
+      {-1, -1, 0},
+      {1, 0, 1},
+      {-1, 0, 1},
+      {1, 0, -1},
+      {-1, 0, -1},
+      {0, 1, 1},
+      {0, -1, 1},
+      {0, 1, -1},
+      {0, -1, -1},
+      {1, 1, 0},
+      {0, -1, 1},
+      {-1, 1, 0},
+      {0, -1, -1}
+   };
+   private static final double e = Math.sqrt(3.0);
+   private static final double f = 0.5 * (e - 1.0);
+   private static final double g = (3.0 - e) / 6.0;
+   private final int[] h = new int[512];
+   public final double b;
+   public final double c;
+   public final double d;
 
-public abstract class etz extends etu {
-   public static final float e = 0.44444445F;
+   public etz(azs $$0) {
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.d = $$0.j() * 256.0;
+      int $$1 = 0;
 
-   @Override
-   public etv d() {
-      return etx.d;
-   }
+      while ($$1 < 256) {
+         this.h[$$1] = $$1++;
+      }
 
-   @Override
-   public etv e() {
-      return etx.e;
-   }
-
-   @Override
-   public cxd a() {
-      return cxl.rj;
-   }
-
-   @Override
-   public void a(dgz $$0, ji $$1, etw $$2, azh $$3) {
-      ji $$4 = $$1.d();
-      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(lt.ab, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, awa.ou, awb.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awa.os, awb.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         int $$4 = this.h[$$2];
+         this.h[$$2] = this.h[$$3 + $$2];
+         this.h[$$3 + $$2] = $$4;
       }
    }
 
-   @Override
-   public void a(ard $$0, ji $$1, etw $$2, azh $$3) {
-      if ($$0.O().b(dgv.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            ji $$5 = $$1;
+   private int a(int $$0) {
+      return this.h[$$0 & 0xFF];
+   }
 
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.p($$5)) {
-                  return;
-               }
+   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
+      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
+   }
 
-               dxq $$7 = $$0.a_($$5);
-               if ($$7.l()) {
-                  if (this.a((dhc)$$0, $$5)) {
-                     $$0.b($$5, djr.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
+   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
+      double $$6;
+      if ($$5 < 0.0) {
+         $$6 = 0.0;
+      } else {
+         $$5 *= $$5;
+         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
+      }
+
+      return $$6;
+   }
+
+   public double a(double $$0, double $$1) {
+      double $$2 = ($$0 + $$1) * f;
+      int $$3 = azk.a($$0 + $$2);
+      int $$4 = azk.a($$1 + $$2);
+      double $$5 = (double)($$3 + $$4) * g;
+      double $$6 = (double)$$3 - $$5;
+      double $$7 = (double)$$4 - $$5;
+      double $$8 = $$0 - $$6;
+      double $$9 = $$1 - $$7;
+      int $$10;
+      int $$11;
+      if ($$8 > $$9) {
+         $$10 = 1;
+         $$11 = 0;
+      } else {
+         $$10 = 0;
+         $$11 = 1;
+      }
+
+      double $$14 = $$8 - (double)$$10 + g;
+      double $$15 = $$9 - (double)$$11 + g;
+      double $$16 = $$8 - 1.0 + 2.0 * g;
+      double $$17 = $$9 - 1.0 + 2.0 * g;
+      int $$18 = $$3 & 0xFF;
+      int $$19 = $$4 & 0xFF;
+      int $$20 = this.a($$18 + this.a($$19)) % 12;
+      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
+      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
+      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
+      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
+      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
+      return 70.0 * ($$23 + $$24 + $$25);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = 0.3333333333333333;
+      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
+      int $$5 = azk.a($$0 + $$4);
+      int $$6 = azk.a($$1 + $$4);
+      int $$7 = azk.a($$2 + $$4);
+      double $$8 = 0.16666666666666666;
+      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
+      double $$10 = (double)$$5 - $$9;
+      double $$11 = (double)$$6 - $$9;
+      double $$12 = (double)$$7 - $$9;
+      double $$13 = $$0 - $$10;
+      double $$14 = $$1 - $$11;
+      double $$15 = $$2 - $$12;
+      int $$16;
+      int $$17;
+      int $$18;
+      int $$19;
+      int $$20;
+      int $$21;
+      if ($$13 >= $$14) {
+         if ($$14 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 1;
+            $$21 = 0;
+         } else if ($$13 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               ji $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.p($$9)) {
-                  return;
-               }
-
-               if ($$0.u($$9.d()) && this.b($$0, $$9)) {
-                  $$0.b($$9.d(), djr.a($$0, $$9));
-               }
-            }
+            $$16 = 0;
+            $$17 = 0;
+            $$18 = 1;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          }
-      }
-   }
-
-   private boolean a(dhc $$0, ji $$1) {
-      for (jn $$2 : jn.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean b(dhc $$0, ji $$1) {
-      return $$0.d($$1.v()) && !$$0.B($$1) ? false : $$0.a_($$1).m();
-   }
-
-   @Nullable
-   @Override
-   public lr h() {
-      return lt.i;
-   }
-
-   @Override
-   protected void a(dha $$0, ji $$1, dxq $$2) {
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public int b(dhc $$0) {
-      return $$0.B_().i() ? 4 : 2;
-   }
-
-   @Override
-   public dxq b(etw $$0) {
-      return dkg.K.m().b(doy.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(etv $$0) {
-      return $$0 == etx.e || $$0 == etx.d;
-   }
-
-   @Override
-   public int c(dhc $$0) {
-      return $$0.B_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(etw $$0, dgf $$1, ji $$2, etv $$3, jn $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(awv.a);
-   }
-
-   @Override
-   public int a(dhc $$0) {
-      return $$0.B_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(dgz $$0, ji $$1, etw $$2, etw $$3) {
-      int $$4 = this.a($$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.C_().a(4) != 0) {
-         $$4 *= 4;
+      } else if ($$14 < $$15) {
+         $$16 = 0;
+         $$17 = 0;
+         $$18 = 1;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else if ($$13 < $$15) {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 1;
+         $$20 = 1;
+         $$21 = 0;
       }
 
-      return $$4;
-   }
-
-   private void a(dha $$0, ji $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(ard $$0) {
-      return $$0.O().b(dgv.W);
-   }
-
-   @Override
-   protected void a(dha $$0, ji $$1, dxq $$2, jn $$3, etw $$4) {
-      if ($$3 == jn.a) {
-         etw $$5 = $$0.b_($$1);
-         if (this.a(awv.b) && $$5.a(awv.a)) {
-            if ($$2.b() instanceof doy) {
-               $$0.a($$1, dkg.b.m(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean i() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<avz> j() {
-      return Optional.of(awa.dm);
-   }
-
-   public static class a extends etz {
-      @Override
-      protected void a(dxr.a<etv, etw> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(etw $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(etw $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends etz {
-      @Override
-      public int d(etw $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(etw $$0) {
-         return true;
-      }
+      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
+      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
+      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
+      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
+      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
+      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
+      double $$58 = $$13 - 1.0 + 0.5;
+      double $$59 = $$14 - 1.0 + 0.5;
+      double $$60 = $$15 - 1.0 + 0.5;
+      int $$61 = $$5 & 0xFF;
+      int $$62 = $$6 & 0xFF;
+      int $$63 = $$7 & 0xFF;
+      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
+      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
+      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
+      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
+      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
+      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
+      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
+      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
+      return 32.0 * ($$68 + $$69 + $$70 + $$71);
    }
 }

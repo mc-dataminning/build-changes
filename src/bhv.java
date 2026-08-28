@@ -1,19 +1,34 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public class bhv extends bau {
-   private final Function<String, String> a;
-
-   public bhv(Schema $$0, String $$1, Function<String, String> $$2) {
+public class bhv extends DataFix {
+   public bhv(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAddTextBackgroundFix",
+         this.getInputSchema().getType(biq.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> (Dynamic)DataFixUtils.orElse(
+                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
+                  )
+            )
+      );
+   }
+
+   private double a(String $$0) {
+      try {
+         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
+         return $$1 / 2.0;
+      } catch (NumberFormatException var4) {
+         return 0.5;
+      }
    }
 }

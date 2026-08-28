@@ -1,56 +1,41 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfs {
-   public static final akt<dfr> a = a("sentry");
-   public static final akt<dfr> b = a("dune");
-   public static final akt<dfr> c = a("coast");
-   public static final akt<dfr> d = a("wild");
-   public static final akt<dfr> e = a("ward");
-   public static final akt<dfr> f = a("eye");
-   public static final akt<dfr> g = a("vex");
-   public static final akt<dfr> h = a("tide");
-   public static final akt<dfr> i = a("snout");
-   public static final akt<dfr> j = a("rib");
-   public static final akt<dfr> k = a("spire");
-   public static final akt<dfr> l = a("wayfinder");
-   public static final akt<dfr> m = a("shaper");
-   public static final akt<dfr> n = a("silence");
-   public static final akt<dfr> o = a("raiser");
-   public static final akt<dfr> p = a("host");
-   public static final akt<dfr> q = a("flow");
-   public static final akt<dfr> r = a("bolt");
+public record dfs(jw<deh> d, int e, int f) implements dfp {
+   public static final int b = 10000;
+   public static final MapCodec<dfs> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kh.a(me.aS).fieldOf("enchantments").forGetter(dfs::b),
+               ays.a(1, 10000).fieldOf("min_cost").forGetter(dfs::c),
+               ays.a(0, 10000).fieldOf("max_cost_span").forGetter(dfs::d)
+            )
+            .apply($$0, dfs::new)
+   );
 
-   public static void a(qe<dfr> $$0) {
-      a($$0, cxl.yz, a);
-      a($$0, cxl.yA, b);
-      a($$0, cxl.yB, c);
-      a($$0, cxl.yC, d);
-      a($$0, cxl.yD, e);
-      a($$0, cxl.yE, f);
-      a($$0, cxl.yF, g);
-      a($$0, cxl.yG, h);
-      a($$0, cxl.yH, i);
-      a($$0, cxl.yI, j);
-      a($$0, cxl.yJ, k);
-      a($$0, cxl.yK, l);
-      a($$0, cxl.yL, m);
-      a($$0, cxl.yM, n);
-      a($$0, cxl.yN, o);
-      a($$0, cxl.yO, p);
-      a($$0, cxl.yP, q);
-      a($$0, cxl.yQ, r);
+   @Override
+   public void a(cxy $$0, den.a $$1, azs $$2, bto $$3) {
+      float $$4 = $$3.d();
+      int $$5 = azk.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (dek $$7 : dej.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.b(), $$7.c());
+      }
    }
 
-   public static Optional<jr.c<dfr>> a(jt.a $$0, cxh $$1) {
-      return $$0.d(mc.bc).c().filter($$1x -> $$1.a(((dfr)$$1x.a()).b())).findFirst();
+   @Override
+   public MapCodec<dfs> a() {
+      return c;
    }
 
-   public static void a(qe<dfr> $$0, cxd $$1, akt<dfr> $$2) {
-      dfr $$3 = new dfr($$2.a(), mb.g.e($$1), wp.c(af.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public jw<deh> b() {
+      return this.d;
    }
 
-   private static akt<dfr> a(String $$0) {
-      return akt.a(mc.bc, aku.b($$0));
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

@@ -1,21 +1,19 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
 
 public class bdj extends DataFix {
    public bdj(Schema $$0) {
       super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.x);
-      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
-         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = bju.a($$1.get("id").asString("minecraft:air"));
-         int $$3 = $$1.get("count").asInt(0);
-         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
-      });
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(biq.s), bdj::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("Lock", "lock", bhe::b));
    }
 }

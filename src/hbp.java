@@ -1,7 +1,7 @@
-import javax.annotation.Nullable;
+public class hbp extends hbk {
+   public cit.a a;
 
-public class hbp extends gzj {
-   public float a;
-   @Nullable
-   public dxq b;
+   public hbp() {
+      this.a = cit.a.a;
+   }
 }

@@ -1,49 +1,51 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class dqm extends dke {
-   public static final MapCodec<dqm> a = b(dqm::new);
-   public static final dyh b = dqn.b;
+public abstract class dqm extends dku {
+   public static final dzd b = dzc.N;
+   public static final dzd c = dzc.O;
+   public static final dzd d = dzc.P;
+   public static final dzd e = dzc.Q;
+   public static final dzd f = dzc.L;
+   public static final dzd g = dzc.M;
+   public static final Map<jo, dzd> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jo.c, b, jo.f, c, jo.d, d, jo.e, e, jo.b, f, jo.a, g)));
+   private final Function<dym, fdo> a;
 
-   @Override
-   public MapCodec<dqm> a() {
-      return a;
-   }
-
-   public dqm(dxp.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dxq a(dax $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().C($$0.a())));
+   protected dqm(float $$0, dyl.d $$1) {
+      super($$1);
+      this.a = this.a($$0);
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.C($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
+   protected abstract MapCodec<? extends dqm> a();
+
+   private Function<dym, fdo> a(float $$0) {
+      fdo $$1 = dku.a((double)$$0);
+      Map<jo, fdo> $$2 = fdl.d(dku.c((double)$$0, 0.0, 8.0));
+      return this.a($$2x -> {
+         fdo $$3 = $$1;
+
+         for (Entry<jo, dzd> $$4 : h.entrySet()) {
+            if ($$2x.c($$4.getValue())) {
+               $$3 = fdl.a($$2.get($$4.getKey()), $$3);
             }
          }
-      }
+
+         return $$3;
+      });
    }
 
    @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$0.c(b) && !$$1.C($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
+   protected boolean e_(dym $$0) {
+      return false;
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.a.apply($$0);
    }
 }

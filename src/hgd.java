@@ -1,152 +1,108 @@
-import com.google.common.base.Suppliers;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class hgd implements hfw {
-   static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<hgd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.list(aku.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               aku.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, aku.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, hgd::new)
-   );
-   private final List<aku> d;
-   private final Map<String, aku> e;
-   private final aku f;
+public abstract class hgd implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
+   private int d = 10497;
+   private int e = 10497;
+   private int f = 9986;
+   private int g = 9729;
 
-   private hgd(List<aku> $$0, aku $$1, Map<String, aku> $$2) {
-      this.d = $$0;
-      this.e = $$2;
-      this.f = $$1;
-   }
+   public void a(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$1;
+      int $$2;
+      if ($$0) {
+         $$1 = 33071;
+         $$2 = 33071;
+      } else {
+         $$1 = 10497;
+         $$2 = 10497;
+      }
 
-   @Override
-   public void a(aup $$0, hfw.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+      boolean $$5 = this.d != $$1;
+      boolean $$6 = this.e != $$2;
+      if ($$5 || $$6) {
+         this.c();
+         if ($$5) {
+            GlStateManager._texParameter(3553, 10242, $$1);
+            this.d = $$1;
+         }
 
-      for (aku $$4 : this.d) {
-         aku $$5 = a.a($$4);
-         Optional<aun> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
-         } else {
-            hgc $$7 = new hgc($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               aku $$9 = $$4.g("_" + $$8.getKey());
-               $$1.a($$9, new hgd.a($$7, $$8.getValue(), $$9));
-            }
+         if ($$6) {
+            GlStateManager._texParameter(3553, 10243, $$2);
+            this.e = $$2;
          }
       }
    }
 
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
-      } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+   public void a(bao $$0, boolean $$1) {
+      this.a($$0.a(this.c), $$1);
+   }
 
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (axk.a($$4) != 0) {
-               $$2.put(axk.g($$4), $$1[$$3]);
-            }
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
+      }
+
+      boolean $$6 = this.f != $$2;
+      boolean $$7 = this.g != $$3;
+      if ($$7 || $$6) {
+         this.c();
+         if ($$6) {
+            GlStateManager._texParameter(3553, 10241, $$2);
+            this.f = $$2;
          }
 
-         return $$1x -> {
-            int $$2x = axk.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
-            } else {
-               int $$3x = axk.g($$1x);
-               int $$4x = $$2.getOrDefault($$3x, axk.f($$3x));
-               int $$5 = axk.a($$4x);
-               return axk.c($$2x * $$5 / 255, $$4x);
-            }
-         };
+         if ($$7) {
+            GlStateManager._texParameter(3553, 10240, $$3);
+            this.g = $$3;
+         }
       }
    }
 
-   private static int[] a(aup $$0, aku $$1) {
-      Optional<aun> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
-      } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               ffr $$4 = ffr.a($$3);
-            ) {
-               var5 = $$4.e();
-            }
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
 
-            return var5;
-         } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
-         }
+      return this.b;
+   }
+
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
+      }
+   }
+
+   public void c() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
       }
    }
 
    @Override
-   public hfy a() {
-      return hfz.e;
-   }
-
-   static record a(hgc a, Supplier<IntUnaryOperator> b, aku c) implements hfw.b {
-      @Nullable
-      public hfl a(hfv $$0) {
-         Object var3;
-         try {
-            ffr $$1 = this.a.a().a(this.b.get());
-            return new hfl(this.c, new hhf($$1.a(), $$1.b()), $$1, aur.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            hgd.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
-         }
-
-         return (hfl)var3;
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
-
-      public hgc b() {
-         return this.a;
-      }
-
-      public Supplier<IntUnaryOperator> c() {
-         return this.b;
-      }
-
-      public aku d() {
-         return this.c;
-      }
+   public void close() {
    }
 }

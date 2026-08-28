@@ -1,25 +1,16 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface hfw {
-   akn a = new akn("textures", ".png");
+public interface hfw<T> {
+   void a(@Nullable T var1, cxw var2, fho var3, gny var4, int var5, int var6, boolean var7);
 
-   void a(aup var1, hfw.a var2);
-
-   hfy a();
+   @Nullable
+   T b(cxy var1);
 
    public interface a {
-      default void a(aku $$0, aun $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
+      @Nullable
+      hfw<?> a(ggz var1);
 
-      void a(aku var1, hfw.b var2);
-
-      void a(Predicate<aku> var1);
-   }
-
-   public interface b extends Function<hfv, hfl> {
-      default void a() {
-      }
+      MapCodec<? extends hfw.a> a();
    }
 }

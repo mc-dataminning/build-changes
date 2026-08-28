@@ -1,87 +1,48 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cdt extends ccw {
-   public static final int a = 120;
-   protected final bwg b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class cdt extends cdn {
+   private final bwt a;
+   private bwr b;
+   private final float c;
 
-   public cdt(bwg $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public cdt(bwg $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public cdt(bwg $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(ccw.a.a));
+   public cdt(bwt $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(cdn.a.c, cdn.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cW()) {
+      if (this.a.cX()) {
          return false;
       } else {
-         if (!this.h) {
-            if (this.i && this.b.eu() >= 100) {
-               return false;
-            }
-
-            if (this.b.dX().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         fbx $$0 = this.h();
-         if ($$0 == null) {
+         this.b = this.a.f();
+         if (this.b == null) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            this.h = false;
-            return true;
+            double $$0 = this.a.g(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aJ() ? false : this.a.dY().a(b(5)) == 0;
+            }
          }
       }
    }
 
-   @Nullable
-   protected fbx h() {
-      return cgt.a(this.b, 10, 7);
-   }
-
    @Override
    public boolean c() {
-      return !this.b.O().k() && !this.b.cW();
+      return !this.a.aJ();
    }
 
    @Override
    public void d() {
-      this.b.O().a(this.c, this.d, this.e, this.f);
-   }
+      fcu $$0 = this.a.dy();
+      fcu $$1 = new fcu(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      }
 
-   @Override
-   public void e() {
-      this.b.O().m();
-      super.e();
-   }
-
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

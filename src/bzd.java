@@ -1,85 +1,122 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bzd {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+public class bzd extends byi<cpu> {
+   private static final int d = 200;
+   public static final float c = 0.5F;
+   @Nullable
+   private jj e;
+   private long f;
+   private int g;
+   private final List<jj> h = Lists.newArrayList();
 
-   public static bxs<bwg> a() {
-      return cbe.a(
-         (Function<cbe.b<bwg>, ? extends App<cbe.c<bwg>, cbh<bwg>>>)($$0 -> $$0.group($$0.b(cfc.i), $$0.c(cfc.m), $$0.a(cfc.n), $$0.a(cfc.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.C_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bvy> $$8 = $$0.b($$1);
-                        Optional<bvy> $$9 = $$8.stream().filter($$1xx -> a((bvy)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bvy> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              fbx $$11 = cgw.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(ji.a((kb)$$11))) {
-                                 $$2.a(new cff($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
+   public bzd() {
+      super(ImmutableMap.of(cft.o, cfu.b, cft.n, cfu.b, cft.f, cfu.a));
+   }
 
-                           return true;
-                        }
+   protected boolean a(arn $$0, cpu $$1) {
+      if (!$$0.O().c(dhl.c)) {
+         return false;
+      } else if (!$$1.gy().b().a(cpx.g)) {
+         return false;
+      } else {
+         jj.a $$2 = $$1.dv().k();
+         this.h.clear();
+
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  $$2.b($$1.dA() + (double)$$3, $$1.dC() + (double)$$4, $$1.dG() + (double)$$5);
+                  if (this.a($$2, $$0)) {
+                     this.h.add(new jj($$2));
+                  }
+               }
+            }
+         }
+
+         this.e = this.a($$0);
+         return this.e != null;
+      }
+   }
+
+   @Nullable
+   private jj a(arn $$0) {
+      return this.h.isEmpty() ? null : this.h.get($$0.C_().a(this.h.size()));
+   }
+
+   private boolean a(jj $$0, arn $$1) {
+      dym $$2 = $$1.a_($$0);
+      dku $$3 = $$2.b();
+      dku $$4 = $$1.a_($$0.e()).b();
+      return $$3 instanceof dmq && ((dmq)$$3).i($$2) || $$2.l() && $$4 instanceof dns;
+   }
+
+   protected void a(arn $$0, cpu $$1, long $$2) {
+      if ($$2 > this.f && this.e != null) {
+         $$1.eb().a(cft.o, new byl(this.e));
+         $$1.eb().a(cft.n, new cfw(new byl(this.e), 0.5F, 1));
+      }
+   }
+
+   protected void b(arn $$0, cpu $$1, long $$2) {
+      $$1.eb().b(cft.o);
+      $$1.eb().b(cft.n);
+      this.g = 0;
+      this.f = $$2 + 40L;
+   }
+
+   protected void c(arn $$0, cpu $$1, long $$2) {
+      if (this.e == null || this.e.a($$1.dt(), 1.0)) {
+         if (this.e != null && $$2 > this.f) {
+            dym $$3 = $$0.a_(this.e);
+            dku $$4 = $$3.b();
+            dku $$5 = $$0.a_(this.e.e()).b();
+            if ($$4 instanceof dmq && ((dmq)$$4).i($$3)) {
+               $$0.a(this.e, true, $$1);
+            }
+
+            if ($$3.l() && $$5 instanceof dns && $$1.gI()) {
+               btx $$6 = $$1.n();
+
+               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
+                  cxy $$8 = $$6.a($$7);
+                  boolean $$9 = false;
+                  if (!$$8.f() && $$8.a(axi.bM) && $$8.h() instanceof cwf $$10) {
+                     dym $$11 = $$10.d().m();
+                     $$0.b(this.e, $$11);
+                     $$0.a(edm.i, this.e, edm.a.a($$1, $$11));
+                     $$9 = true;
+                  }
+
+                  if ($$9) {
+                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), awk.gH, awl.e, 1.0F, 1.0F);
+                     $$8.h(1);
+                     if ($$8.f()) {
+                        $$6.a($$7, cxy.k);
                      }
-                  }))
-      );
+                     break;
+                  }
+               }
+            }
+
+            if ($$4 instanceof dmq && !((dmq)$$4).i($$3)) {
+               this.h.remove(this.e);
+               this.e = this.a($$0);
+               if (this.e != null) {
+                  this.f = $$2 + 20L;
+                  $$1.eb().a(cft.n, new cfw(new byl(this.e), 0.5F, 1));
+                  $$1.eb().a(cft.o, new byl(this.e));
+               }
+            }
+         }
+
+         this.g++;
+      }
    }
 
-   private static void a(cbf<?, bvy> $$0, cbf<?, bzf> $$1, cbf<?, cff> $$2, bvy $$3) {
-      $$0.a($$3);
-      $$1.a(new byc($$3, true));
-      $$2.a(new cff(new byc($$3, false), 0.6F, 1));
-   }
-
-   private static Optional<bvy> a(List<bvy> $$0) {
-      Map<bvy, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
-
-   private static Map<bvy, Integer> b(List<bvy> $$0) {
-      Map<bvy, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bzd::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
-   }
-
-   private static bvy a(bvy $$0) {
-      return $$0.ea().c(cfc.q).get();
-   }
-
-   private static boolean b(bvy $$0) {
-      return $$0.ea().c(cfc.q).isPresent();
-   }
-
-   private static boolean a(bvy $$0, bvy $$1) {
-      return $$1.ea().c(cfc.q).filter($$1x -> $$1x == $$0).isPresent();
+   protected boolean d(arn $$0, cpu $$1, long $$2) {
+      return this.g < 200;
    }
 }

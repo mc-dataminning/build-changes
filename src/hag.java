@@ -1,3 +1,3 @@
-public class hag extends hae {
-   public float d;
+public class hag extends hal {
+   public boolean a;
 }

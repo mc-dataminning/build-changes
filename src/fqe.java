@@ -1,31 +1,74 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fqe extends bso {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+public abstract class fqe extends fqg implements fsj {
+   @Nullable
+   private fsk a;
+   private boolean c;
 
-   public fqe(UUID $$0, wp $$1, float $$2, bso.a $$3, bso.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = af.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fqe(int $$0, int $$1, int $$2, int $$3, wv $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = af.c();
+   public final boolean aG_() {
+      return this.c;
    }
 
    @Override
-   public float j() {
-      long $$0 = af.c() - this.i;
-      float $$1 = ayz.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return ayz.h($$1, this.b, this.h);
+   public final void b_(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fsk aH_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fsk $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fpw a(fuq $$0) {
+      return fsj.super.a($$0);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return fsj.super.a($$0, $$1, $$2) || $$3;
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      return fsj.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      return fsj.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aI_() {
+      return fsj.super.aI_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      fsj.super.a($$0);
    }
 }

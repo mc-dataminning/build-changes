@@ -1,43 +1,13 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ekf extends ekk {
-   public static final MapCodec<ekf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ekf::new));
-   protected final int b;
+public class ekf implements ejv {
+   public static final Codec<ekf> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, ekf::new)
+   );
+   public final float l;
 
-   protected static <P extends ekf> P3<Mu<P>, bsd, bsd, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public ekf(bsd $$0, bsd $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ekl<?> a() {
-      return ekl.a;
-   }
-
-   @Override
-   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eju $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public ekf(float $$0) {
+      this.l = $$0;
    }
 }

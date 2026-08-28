@@ -1,47 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-public class cgk extends cgi<bwg> {
-   private static final cgp a = cgp.b().d();
-   private final Predicate<cxh> b;
+public class cgk extends cgt {
+   public static final float a = 10.0F;
 
-   public cgk(Predicate<cxh> $$0) {
-      this.b = $$0;
+   @Override
+   protected boolean a(arn $$0, bwr $$1, bwr $$2) {
+      return !$$1.eb().a(cft.V) && cgz.c($$0, $$1, $$2) && ckd.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
    }
 
-   protected void a(ard $$0, bwg $$1) {
-      bxa<?> $$2 = $$1.ea();
-      cgp $$3 = a.c().a((double)((float)$$1.h(bxg.E)));
-      List<cpr> $$4 = $$0.z()
-         .stream()
-         .filter(bvg.f)
-         .filter($$3x -> $$3.a($$0, $$1, $$3x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         cpr $$5 = $$4.get(0);
-         $$2.a(cfc.O, $$5);
-      } else {
-         $$2.b(cfc.O);
-      }
-   }
-
-   private boolean a(cpr $$0) {
-      return this.a($$0.eZ()) || this.a($$0.fa());
-   }
-
-   private boolean a(cxh $$0) {
-      return this.b.test($$0);
+   private boolean a(bwr $$0, bwr $$1) {
+      List<UUID> $$2 = $$0.eb().c(cft.ab).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
    @Override
-   public Set<cfc<?>> a() {
-      return ImmutableSet.of(cfc.O);
+   protected cft<bwr> b() {
+      return cft.C;
    }
 }

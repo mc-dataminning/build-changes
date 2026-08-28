@@ -1,53 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fla extends fle {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wp c = wp.c("mco.configure.world.closing");
-   private final fii d;
-   private final fjr e;
+public class fla {
+   private static final int a = 8226750;
+   private static final wv b = wv.c("mco.info").b(8226750);
+   private static final wv c = wv.c("mco.warning").b(-65536);
 
-   public fla(fii $$0, fjr $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public static frp a(fwf $$0, wv $$1, Consumer<frp> $$2) {
+      return new frp.a($$0, b).a($$1).a(wu.j, $$2).a(wu.e, frp::aK_).a();
    }
 
-   @Override
-   public void run() {
-      fhh $$0 = fhh.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = fii.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (fje var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
-      }
+   public static frp b(fwf $$0, wv $$1, Consumer<frp> $$2) {
+      return new frp.a($$0, c).a($$1).a(wu.j, $$2).a(wu.e, frp::aK_).a();
    }
 
-   @Override
-   public wp a() {
-      return c;
+   public static frp c(fwf $$0, wv $$1, Consumer<frp> $$2) {
+      return new frp.a($$0, c).a($$1).a(wu.h, $$2).a();
    }
 }

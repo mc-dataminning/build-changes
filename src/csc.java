@@ -1,121 +1,45 @@
-public class csc extends crr implements dvt {
-   private boolean c = true;
-   private boolean d = false;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   public csc(bvi<? extends csc> $$0, dgz $$1) {
-      super($$0, $$1);
+public class csc {
+   private final csb a;
+   private final List<csc.a> b = Lists.newArrayList();
+
+   public csc(csb $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public dxq v() {
-      return dkg.hz.m();
+   public csc a(int $$0, crz $$1) {
+      this.b.add(new csc.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   public int x() {
-      return 1;
+   public csb a() {
+      this.b.stream().map(csc.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         crz $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   @Override
-   public int b() {
-      return 5;
-   }
+   static class a {
+      private final int a;
+      private final crz b;
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.B()) {
-         this.r($$4);
+      public a(int $$0, crz $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   public boolean B() {
-      return this.c;
-   }
-
-   public void r(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public double C() {
-      return this.dz();
-   }
-
-   @Override
-   public double D() {
-      return this.dB() + 0.5;
-   }
-
-   @Override
-   public double E() {
-      return this.dF();
-   }
-
-   @Override
-   public boolean F() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.d = false;
-      super.h();
-      this.K();
-   }
-
-   @Override
-   protected double a(ji $$0, dyu $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.K();
-      return $$3;
-   }
-
-   private void K() {
-      if (!this.dU().C && this.bJ() && this.B() && !this.d && this.G()) {
-         this.d = true;
-         this.e();
+      public int a() {
+         return this.a;
       }
-   }
 
-   public boolean G() {
-      if (dvu.a(this.dU(), this)) {
-         return true;
-      } else {
-         for (clw $$1 : this.dU().a(clw.class, this.cQ().c(0.25, 0.0, 0.25), bvg.a)) {
-            if (dvu.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
+      public crz b() {
+         return this.b;
       }
-   }
-
-   @Override
-   protected cxd o() {
-      return cxl.ou;
-   }
-
-   @Override
-   public cxh dH() {
-      return new cxh(cxl.ou);
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public csw a(int $$0, cpq $$1) {
-      return new ctx($$0, $$1, this);
    }
 }

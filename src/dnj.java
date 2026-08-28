@@ -1,113 +1,99 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.Set;
 
-public class dnj extends dke {
-   public static final MapCodec<dnj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mb.e.q().fieldOf("potted").forGetter($$0x -> $$0x.d), t()).apply($$0, dnj::new)
-   );
-   private static final Map<dke, dke> b = Maps.newHashMap();
-   private static final fcr c = dke.b(6.0, 0.0, 6.0);
-   private final dke d;
+public class dnj extends dkg implements dqr {
+   public static final MapCodec<dnj> a = b(dnj::new);
+   private static final fdo b = dku.b(16.0, 6.0, 12.0);
 
    @Override
    public MapCodec<dnj> a() {
       return a;
    }
 
-   public dnj(dke $$0, dxp.d $$1) {
-      super($$1);
-      this.d = $$0;
-      b.put($$0, this);
+   protected dnj(dyl.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return c;
+   public dvl a(jj $$0, dym $$1) {
+      return new dxi($$0, $$1);
    }
 
    @Override
-   protected bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
-      dxq $$8 = ($$0.h() instanceof cvo $$7 ? b.getOrDefault($$7.d(), dkg.a) : dkg.a).m();
-      if ($$8.l()) {
-         return bsy.f;
-      } else if (!this.q()) {
-         return bsy.c;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, ecp.c, $$3);
-         $$4.a(awk.ah);
-         $$0.a(1, $$4);
-         return bsy.a;
-      }
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b;
    }
 
    @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (this.q()) {
-         return bsy.c;
-      } else {
-         cxh $$5 = new cxh(this.d);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
+   protected fdo a_(dym $$0, dhp $$1, jj $$2) {
+      return $$0.f($$1, $$2);
+   }
+
+   @Override
+   protected void a(dym $$0, dhp $$1, jj $$2, bvs $$3) {
+      if ($$3.n(false)) {
+         if (!$$1.C && $$1.aj() == dhp.k && $$3 instanceof aro $$4 && !$$4.i) {
+            $$4.n();
+            return;
          }
 
-         $$1.a($$2, dkg.gm.m(), 3);
-         $$1.a($$3, ecp.c, $$2);
-         return bsy.a;
+         $$3.a(this, $$2);
       }
    }
 
    @Override
-   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
-      return this.q() ? super.a($$0, $$1, $$2, $$3) : new cxh(this.d);
-   }
+   public evt a(arn $$0, bvs $$1, jj $$2) {
+      alc<dhp> $$3 = $$0.aj() == dhp.k ? dhp.i : dhp.k;
+      arn $$4 = $$0.p().a($$3);
+      if ($$4 == null) {
+         return null;
+      } else {
+         boolean $$5 = $$3 == dhp.k;
+         jj $$6 = $$5 ? arn.a : $$4.aa();
+         fcu $$7 = $$6.c();
+         float $$8;
+         Set<bxf> $$9;
+         if ($$5) {
+            ehp.a($$4, jj.a((kc)$$7).e(), true);
+            $$8 = jo.e.p();
+            $$9 = bxf.a(bxf.l, Set.of(bxf.e));
+            if ($$1 instanceof aro) {
+               $$7 = $$7.a(0.0, 1.0, 0.0);
+            }
+         } else {
+            $$8 = 0.0F;
+            $$9 = bxf.a(bxf.l, bxf.k);
+            if ($$1 instanceof aro $$12) {
+               return $$12.a(false, evt.a);
+            }
 
-   private boolean q() {
-      return this.d == dkg.a;
+            $$7 = $$1.a($$4, $$6).c();
+         }
+
+         return new evt($$4, $$7, fcu.c, $$8, 0.0F, $$9, evt.b.then(evt.c));
+      }
    }
 
    @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      return $$4 == jn.a && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public dke b() {
-      return this.d;
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(lv.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   protected boolean a(dxq $$0, eul $$1) {
+   protected cxy a(dhs $$0, jj $$1, dym $$2, boolean $$3) {
+      return cxy.k;
+   }
+
+   @Override
+   protected boolean a(dym $$0, eus $$1) {
       return false;
    }
 
    @Override
-   protected boolean f(dxq $$0) {
-      return $$0.a(dkg.ud) || $$0.a(dkg.ue);
-   }
-
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (this.f($$0) && $$1.B_().j()) {
-         boolean $$4 = this.d == dkg.ub;
-         boolean $$5 = dlz.a($$1);
-         if ($$4 != $$5) {
-            $$1.a($$2, this.o($$0), 3);
-            dmy.a $$6 = dmy.a.a($$4).c();
-            $$6.a($$1, $$2, $$3);
-            $$1.a(null, $$2, $$6.e(), awb.e, 1.0F, 1.0F);
-         }
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   public dxq o(dxq $$0) {
-      if ($$0.a(dkg.ud)) {
-         return dkg.ue.m();
-      } else {
-         return $$0.a(dkg.ue) ? dkg.ud.m() : $$0;
-      }
+   protected drf a_(dym $$0) {
+      return drf.a;
    }
 }

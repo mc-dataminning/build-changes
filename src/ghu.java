@@ -1,60 +1,103 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum ghu implements azv {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class ghu {
+   private static final Logger a = LogUtils.getLogger();
+   private final fnd b;
+   private final hmi c;
+   private final an d = new an();
+   private final Map<ai, ak> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private ghu.a f;
+   @Nullable
+   private ai g;
 
-   public static final Codec<ghu> d = azv.a(ghu::values);
-   private final String e;
-
-   private ghu(final String $$0) {
-      this.e = $$0;
+   public ghu(fnd $$0, hmi $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ghu a(xf $$0, wp $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   public void a(agd $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
+
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<ald, ak> $$1 : $$0.f().entrySet()) {
+         aj $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ak $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<au> $$4 = $$2.a().c();
+               if ($$0.h() && $$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fsu($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
       }
    }
 
-   private static boolean a(xf $$0, wp $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         wp $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
+   public an a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ai $$0, boolean $$1) {
+      gia $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahz.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
       }
    }
 
-   private static boolean a(wp $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xm.a).orElse(false);
-   }
-
-   private static boolean a(xm $$0) {
-      return !$$0.l().equals(xm.b);
-   }
-
-   public boolean a() {
-      return this == c;
+   public void a(@Nullable ghu.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            aj $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
    }
 
    @Nullable
-   public fma a(xf $$0) {
-      return switch (this) {
-         case b -> fma.a($$0.c());
-         case c -> fma.c();
-         default -> null;
-      };
+   public ai a(ald $$0) {
+      aj $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public interface a extends an.a {
+      void a(aj var1, ak var2);
+
+      void a(@Nullable ai var1);
    }
 }

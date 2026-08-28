@@ -1,89 +1,95 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public abstract class cde extends cdn {
+   protected bwt d;
+   protected jj e = jj.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class cde extends ccw {
-   public static final float a = 0.02F;
-   protected final bwa b;
-   @Nullable
-   protected bva c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bvy> f;
-   protected final cgp g;
-
-   public cde(bwa $$0, Class<? extends bvy> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
+   public cde(bwt $$0) {
+      this.d = $$0;
+      if (!chl.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   public cde(bwa $$0, Class<? extends bvy> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public cde(bwa $$0, Class<? extends bvy> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(ccw.a.b));
-      if ($$1 == cpr.class) {
-         Predicate<bva> $$5 = bvg.b($$0);
-         this.g = cgp.b().a((double)$$2).a(($$1x, $$2x) -> $$5.test($$1x));
+   protected boolean h() {
+      if (!this.f) {
+         return false;
       } else {
-         this.g = cgp.b().a((double)$$2);
+         dym $$0 = this.d.dV().a_(this.e);
+         if (!($$0.b() instanceof dnb)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dnb.e);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dym $$1 = this.d.dV().a_(this.e);
+         if ($$1.b() instanceof dnb) {
+            ((dnb)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
+         }
       }
    }
 
    @Override
    public boolean b() {
-      if (this.b.dX().i() >= this.e) {
+      if (!chl.a(this.d)) {
+         return false;
+      } else if (!this.d.P) {
          return false;
       } else {
-         if (this.b.f() != null) {
-            this.c = this.b.f();
-         }
+         cga $$0 = (cga)this.d.O();
+         evh $$1 = $$0.i();
+         if ($$1 != null && !$$1.c()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               evf $$3 = $$1.a($$2);
+               this.e = new jj($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
+                  this.f = dnb.a(this.d.dV(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
 
-         ard $$0 = a(this.b);
-         if (this.f == cpr.class) {
-            this.c = $$0.a(this.g, this.b, this.b.dz(), this.b.dD(), this.b.dF());
+            this.e = this.d.dv().d();
+            this.f = dnb.a(this.d.dV(), this.e);
+            return this.f;
          } else {
-            this.c = $$0.a(
-               this.b.dU().a(this.f, this.b.cQ().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dz(), this.b.dD(), this.b.dF()
-            );
+            return false;
          }
-
-         return this.c != null;
       }
    }
 
    @Override
    public boolean c() {
-      if (!this.c.bJ()) {
-         return false;
-      } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
-      }
+      return !this.a;
    }
 
    @Override
    public void d() {
-      this.h = this.a(40 + this.b.dX().a(40));
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
    }
 
    @Override
-   public void e() {
-      this.c = null;
+   public boolean Q_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.c.bJ()) {
-         double $$0 = this.i ? this.b.dD() : this.c.dD();
-         this.b.J().a(this.c.dz(), $$0, this.c.dF());
-         this.h--;
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
    }
 }

@@ -1,29 +1,25 @@
-public class zs implements yw<zp> {
-   public static final yn<vl, zs> a = yw.a(zs::a, zs::new);
-   private final long b;
+public record zs(String b, int c) implements zc<zi> {
+   public static final yt<vr, zs> a = zc.a(zs::a, zs::new);
 
-   public zs(long $$0) {
-      this.b = $$0;
+   private zs(vr $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private zs(vl $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vl $$0) {
-      $$0.b(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yy<zs> a() {
-      return zo.n;
+   public ze<zs> a() {
+      return zu.j;
    }
 
-   public void a(zp $$0) {
+   public void a(zi $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

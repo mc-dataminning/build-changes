@@ -1,12 +1,12 @@
-public class gyr extends haj {
-   public cje.e a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
+public class gyr extends gyf<hbt, gfa> {
+   private static final goi a = goi.q(ald.b("textures/entity/phantom_eyes.png"));
 
-   public gyr() {
-      this.a = cje.e.a;
-      this.d = 1.0F;
+   public gyr(gwc<hbt, gfa> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public goi a() {
+      return a;
    }
 }

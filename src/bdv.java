@@ -1,75 +1,33 @@
-import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.DoubleUnaryOperator;
 
-public class bdv extends DataFix {
-   private static final Set<String> a = Sets.newHashSet(
-      new String[]{
-         "ArmorStand",
-         "Bat",
-         "Blaze",
-         "CaveSpider",
-         "Chicken",
-         "Cow",
-         "Creeper",
-         "EnderDragon",
-         "Enderman",
-         "Endermite",
-         "EntityHorse",
-         "Ghast",
-         "Giant",
-         "Guardian",
-         "LavaSlime",
-         "MushroomCow",
-         "Ozelot",
-         "Pig",
-         "PigZombie",
-         "Rabbit",
-         "Sheep",
-         "Shulker",
-         "Silverfish",
-         "Skeleton",
-         "Slime",
-         "SnowMan",
-         "Spider",
-         "Squid",
-         "Villager",
-         "VillagerGolem",
-         "Witch",
-         "WitherBoss",
-         "Wolf",
-         "Zombie"
-      }
-   );
+public class bdv extends bhm {
+   private final String a;
+   private final DoubleUnaryOperator b;
 
-   public bdv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bdv(Schema $$0, String $$1, String $$2, String $$3, DoubleUnaryOperator $$4) {
+      super($$0, false, $$1, biq.D, $$2);
+      this.a = $$3;
+      this.b = $$4;
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
-      float $$3;
-      if ($$1.isPresent()) {
-         $$3 = $$1.get().floatValue();
-         $$0 = $$0.remove("HealF");
-      } else {
-         if (!$$2.isPresent()) {
-            return $$0;
-         }
-
-         $$3 = $$2.get().floatValue();
-      }
-
-      return $$0.set("Health", $$0.createFloat($$3));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bic.C), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("attributes", $$1 -> $$0.createList($$1.asStream().map($$0xx -> {
+            String $$1x = bkj.a($$0xx.get("id").asString(""));
+            if (!$$1x.equals(this.a)) {
+               return $$0xx;
+            } else {
+               double $$2 = $$0xx.get("base").asDouble(0.0);
+               return $$0xx.set("base", $$0xx.createDouble(this.b.applyAsDouble($$2)));
+            }
+         })));
    }
 }

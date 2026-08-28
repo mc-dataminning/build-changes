@@ -1,53 +1,69 @@
-public class acy implements yw<abl> {
-   public static final yn<vl, acy> a = yw.a(acy::a, acy::new);
-   private final int b;
-   private final ji c;
-   private final int d;
-   private final boolean e;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public acy(int $$0, ji $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1.j();
-      this.d = $$2;
-      this.e = $$3;
+public class acy implements zc<abr> {
+   public static final yt<vr, acy> a = zc.a(acy::a, acy::new);
+   public static final acy.a b = new acy.a(0);
+   public static final acy.a c = new acy.a(1);
+   public static final acy.a d = new acy.a(2);
+   public static final acy.a e = new acy.a(3);
+   public static final acy.a f = new acy.a(4);
+   public static final acy.a g = new acy.a(5);
+   public static final acy.a h = new acy.a(6);
+   public static final acy.a i = new acy.a(7);
+   public static final acy.a j = new acy.a(8);
+   public static final acy.a k = new acy.a(9);
+   public static final acy.a l = new acy.a(10);
+   public static final acy.a m = new acy.a(11);
+   public static final acy.a n = new acy.a(12);
+   public static final acy.a o = new acy.a(13);
+   public static final int p = 0;
+   public static final int q = 101;
+   public static final int r = 102;
+   public static final int s = 103;
+   public static final int t = 104;
+   private final acy.a u;
+   private final float v;
+
+   public acy(acy.a $$0, float $$1) {
+      this.u = $$0;
+      this.v = $$1;
    }
 
-   private acy(vl $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
+   private acy(vr $$0) {
+      this.u = (acy.a)acy.a.a.get($$0.readUnsignedByte());
+      this.v = $$0.readFloat();
    }
 
-   private void a(vl $$0) {
-      $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
+   private void a(vr $$0) {
+      $$0.l(this.u.b);
+      $$0.a(this.v);
    }
 
    @Override
-   public yy<acy> a() {
-      return agd.K;
+   public ze<acy> a() {
+      return agk.G;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
+   public acy.a b() {
+      return this.u;
    }
 
-   public int e() {
-      return this.b;
+   public float e() {
+      return this.v;
    }
 
-   public int f() {
-      return this.d;
-   }
+   public static class a {
+      static final Int2ObjectMap<acy.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public ji g() {
-      return this.c;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

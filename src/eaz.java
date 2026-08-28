@@ -1,32 +1,24 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import org.apache.commons.io.FileUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class eaz extends eaw {
-   private final eay a;
-   private final Path b;
+public interface eaz<T> {
+   int a(T var1);
 
-   public eaz(ebf $$0, Path $$1, ebf $$2, Path $$3, DataFixer $$4, boolean $$5) {
-      super($$0, $$1, $$4, $$5);
-      this.b = $$3;
-      this.a = new eay($$2, $$3, $$5);
-   }
+   boolean a(Predicate<T> var1);
 
-   @Override
-   public CompletableFuture<Void> a(dgg $$0, Supplier<tq> $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
+   T a(int var1);
 
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   void a(vr var1);
+
+   void b(vr var1);
+
+   int a();
+
+   int b();
+
+   eaz<T> a(eba<T> var1);
+
+   public interface a {
+      <A> eaz<A> create(int var1, jx<A> var2, eba<A> var3, List<A> var4);
    }
 }

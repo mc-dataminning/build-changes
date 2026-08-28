@@ -1,57 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public abstract class ckr implements ckz {
-   protected final ckp a;
+public enum ckr {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public ckr(ckp $$0) {
-      this.a = $$0;
+   private static final IntFunction<ckr> f = aya.a(ckr::a, values(), aya.a.b);
+   private final int g;
+
+   private ckr(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return false;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void a(ard $$0) {
-   }
-
-   @Override
-   public void a(cko $$0, ji $$1, btp $$2, @Nullable cpr $$3) {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public float e() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public fbx f() {
-      return null;
-   }
-
-   @Override
-   public float a(btp $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dx().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public static ckr a(int $$0) {
+      return f.apply($$0);
    }
 }

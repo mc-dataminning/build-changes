@@ -1,40 +1,61 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public class ari extends aqj {
-   private final LongSet c = new LongOpenHashSet();
-   private final int d;
-   private final String e;
-
-   public ari(brt<Runnable> $$0, Executor $$1, int $$2) {
-      super($$0, $$1);
-      this.d = $$2;
-      this.e = $$0.v_();
+public abstract class ari extends euf {
+   protected ari(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(long $$0) {
-      this.c.remove($$0);
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  long $$6 = kl.a($$0, $$3, $$4, $$5);
+                  if ($$6 != $$0) {
+                     this.b($$0, $$6, $$1, $$2);
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Nullable
    @Override
-   protected aqk.a c() {
-      return this.c.size() < this.d ? super.c() : null;
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               long $$7 = kl.a($$0, $$4, $$5, $$6);
+               if ($$7 == $$0) {
+                  $$7 = Long.MAX_VALUE;
+               }
+
+               if ($$7 != $$1) {
+                  int $$8 = this.b($$7, $$0, this.c($$7));
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                  }
+
+                  if ($$3 == 0) {
+                     return $$3;
+                  }
+               }
+            }
+         }
+      }
+
+      return $$3;
    }
 
    @Override
-   protected void a(aqk.a $$0) {
-      this.c.add($$0.a());
-      super.a($$0);
+   protected int b(long $$0, long $$1, int $$2) {
+      return this.a($$0) ? this.b($$1) : $$2 + 1;
    }
 
-   @VisibleForTesting
-   public String d() {
-      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dgg($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
+   protected abstract int b(long var1);
+
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

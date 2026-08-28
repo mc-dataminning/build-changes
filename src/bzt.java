@@ -1,23 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+public abstract class bzt<E extends bwr> implements byj<E>, cby<E> {
+   private byi.a a;
 
-public class bzt {
-   public static bxs<bvy> a(bvi<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$2x -> $$2x.group($$2x.a(cfc.n), $$2x.c(cfc.q), $$2x.b(cfc.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bvy> $$9 = $$2x.<cfe>b($$5).a($$3xx -> $$3xx.g((bva)$$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else {
-                        bvy $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new byc($$10, true));
-                        return true;
-                     }
-                  }))
-      );
+   public bzt() {
+      this.a = byi.a.a;
+   }
+
+   @Override
+   public final byi.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(arn $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = byi.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(arn $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(arn $$0, E $$1, long $$2) {
+      this.a = byi.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

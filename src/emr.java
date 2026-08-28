@@ -1,16 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public interface emr<P extends emq> {
-   emr<emp> a = a("constant", emp.b);
-   emr<emt> b = a("uniform", emt.a);
-   emr<emo> c = a("biased_to_bottom", emo.a);
-   emr<emu> d = a("very_biased_to_bottom", emu.a);
-   emr<ems> e = a("trapezoid", ems.a);
-   emr<emv> f = a("weighted_list", emv.a);
-
-   MapCodec<P> codec();
+public class emr<P extends emq> {
+   public static final emr<ems> a = a("trunk_vine", ems.a);
+   public static final emr<emn> b = a("leave_vine", emn.a);
+   public static final emr<emo> c = a("pale_moss", emo.a);
+   public static final emr<emm> d = a("creaking_heart", emm.a);
+   public static final emr<eml> e = a("cocoa", eml.a);
+   public static final emr<emk> f = a("beehive", emk.a);
+   public static final emr<emi> g = a("alter_ground", emi.a);
+   public static final emr<emj> h = a("attached_to_leaves", emj.a);
+   public static final emr<emp> i = a("place_on_ground", emp.a);
+   private final MapCodec<P> j;
 
    private static <P extends emq> emr<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.L, $$0, () -> $$1);
+      return kf.a(md.X, $$0, new emr<>($$1));
+   }
+
+   private emr(MapCodec<P> $$0) {
+      this.j = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

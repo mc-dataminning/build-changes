@@ -1,9 +1,19 @@
-public class dde {
-   public static ddb.a<?> a(ke<ddb.a<?>> $$0) {
-      ke.a($$0, "crafting_shapeless", ddg.c);
-      ke.a($$0, "crafting_shaped", ddf.c);
-      ke.a($$0, "furnace", dda.c);
-      ke.a($$0, "stonecutter", ddl.c);
-      return ke.a($$0, "smithing", ddk.c);
+public record dde(cxy a) implements dcr {
+   @Override
+   public cxy a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
+   }
+
+   @Override
+   public int a() {
+      return 1;
+   }
+
+   public cxy c() {
+      return this.a;
    }
 }

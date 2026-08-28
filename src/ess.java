@@ -1,18 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class ess implements est {
-   public static final ess a = new ess();
-   public static final MapCodec<ess> b = MapCodec.unit(a);
+public enum ess implements bag {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   @Nullable
-   @Override
-   public tq a(azh $$0, @Nullable tq $$1) {
-      return $$1;
+   public static Codec<ess> c = bag.b(ess::values);
+   private final String d;
+
+   private ess(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public esu<?> a() {
-      return esu.b;
+   public String c() {
+      return this.d;
    }
 }

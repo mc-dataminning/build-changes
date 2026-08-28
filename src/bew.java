@@ -1,22 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
 
-public class bew extends DataFix {
+public class bew extends bhm {
    public bew(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "EntityShulkerRotationFix", biq.D, "minecraft:shulker");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.w);
-      OpticFinder<?> $$1 = $$0.findField("minecraft:equippable");
-      return this.fixTypeEverywhereTyped(
-         "equippable asset rename fix",
-         $$0,
-         $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameField("model", "asset_id")))
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
+      } else {
+         return $$0;
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

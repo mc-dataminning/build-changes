@@ -1,58 +1,46 @@
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class amp {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.ban.failed"));
+
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(ey.a("config").then(ey.a("target", fk.c()).executes($$0x -> a((ex)$$0x.getSource(), fk.e($$0x, "target"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("ban").requires($$0x -> $$0x.c(3)))
             .then(
-               ey.a("unconfig")
-                  .then(
-                     ey.a("target", gn.a())
-                        .suggests(($$0x, $$1) -> fc.b(a(((ex)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((ex)$$0x.getSource(), gn.a($$0x, "target")))
-                  )
+               ((RequiredArgumentBuilder)ey.a("targets", fm.a()).executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets"), null)))
+                  .then(ey.a("reason", fo.a()).executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets"), fo.a($$0x, "reason"))))
             )
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
+   private static int a(ex $$0, Collection<GameProfile> $$1, @Nullable wv $$2) throws CommandSyntaxException {
+      avt $$3 = $$0.l().ag().f();
+      int $$4 = 0;
 
-      for (vi $$2 : $$0.ah().e()) {
-         if ($$2.k() instanceof ase $$3) {
-            $$1.add($$3.j().getId().toString());
-         }
-      }
-
-      return $$1;
-   }
-
-   private static int a(ex $$0, are $$1) {
-      GameProfile $$2 = $$1.gk();
-      $$1.f.n();
-      $$0.a(() -> wp.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
-   }
-
-   private static int a(ex $$0, UUID $$1) {
-      for (vi $$2 : $$0.l().ah().e()) {
-         vv var5 = $$2.k();
-         if (var5 instanceof ase) {
-            ase $$3 = (ase)var5;
-            if ($$3.j().getId().equals($$1)) {
-               $$3.m();
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            avu $$6 = new avu($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> wv.a("commands.ban.success", wv.b($$5.getName()), $$6.d()), true);
+            aro $$7 = $$0.l().ag().a($$5.getId());
+            if ($$7 != null) {
+               $$7.f.a(wv.c("multiplayer.disconnect.banned"));
             }
          }
       }
 
-      $$0.b(wp.b("Can't find player to unconfig"));
-      return 0;
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         return $$4;
+      }
    }
 }

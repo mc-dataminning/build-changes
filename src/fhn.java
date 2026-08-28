@@ -1,80 +1,111 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletionException;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fhn {
-   private static final Logger a = LogUtils.getLogger();
+public class fhn implements AutoCloseable {
+   private final fhl.a a;
+   @Nullable
+   private fhl.a b;
+   private final fhn.a c;
 
-   public static void a(fmg $$0, fvi $$1, fvi $$2, int $$3, fii $$4, @Nullable flg $$5) {
-      gah.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
-         Path $$10;
-         try {
-            $$10 = a($$7, $$8, $$9);
-         } catch (IOException var13) {
-            a.warn("Failed to create temporary world folder.");
-            $$0.a(new fjv(wp.c("mco.create.world.failed"), $$2));
-            return true;
-         }
-
-         fio $$13 = fio.a($$8.J(), $$8.J().e(), ab.b().c());
-         fhu $$14 = new fhu($$10, $$13, $$0.X(), $$4.a, $$3, fhv.f());
-         $$0.d(new fub($$14::b, wp.c("mco.create.world.reset.title"), wp.i(), wo.e, false));
-         if ($$5 != null) {
-            $$5.run();
-         }
-
-         $$14.a().handleAsync(($$5xx, $$6x) -> {
-            if ($$6x != null) {
-               if ($$6x instanceof CompletionException $$7x) {
-                  $$6x = $$7x.getCause();
-               }
-
-               if ($$6x instanceof fho) {
-                  $$0.d($$2);
-               } else {
-                  if ($$6x instanceof fhq $$8x) {
-                     a.warn("Failed to create realms world {}", $$8x.a());
-                  } else {
-                     a.warn("Failed to create realms world {}", $$6x.getMessage());
-                  }
-
-                  $$0.d(new fjv(wp.c("mco.create.world.failed"), $$2));
-               }
-            } else {
-               if ($$1 instanceof fjr $$9x) {
-                  $$9x.a($$4.a);
-               }
-
-               if ($$5 != null) {
-                  fhc.a($$4, $$1, true);
-               } else {
-                  $$0.d($$1);
-               }
-
-               fhc.g();
-            }
-
-            return null;
-         }, $$0);
-         return true;
-      });
+   public fhn(fhl.a $$0, fhn.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static Path a(jy<ald> $$0, ewg $$1, @Nullable Path $$2) throws IOException {
-      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
-      if ($$2 != null) {
-         Files.move($$2, $$3.resolve("datapacks"));
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, fht $$2) {
+      int $$3 = $$2.a(fhu.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+      } else {
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
+
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+         }
+
+         return $$8;
+      }
+   }
+
+   public ByteBuffer a() {
+      return this.a.a();
+   }
+
+   @Nullable
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
+   }
+
+   public fhn.a c() {
+      return this.c;
+   }
+
+   @Nullable
+   public fhn.b a(fhl $$0, fhw $$1) {
+      if (this.c.d() != fht.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         fhn.b $$3 = new fhn.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
+   }
+
+   public static record a(fht a, int b, int c, fht.c d, fht.b e) {
+   }
+
+   public static record b(Vector3f[] a, fht.b b) {
+      @Nullable
+      public fhl.a a(fhl $$0, fhw $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
+
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
+         }
+
+         return $$0.a();
       }
 
-      tq $$4 = $$1.a($$0.a(), null);
-      tq $$5 = new tq();
-      $$5.a("Data", $$4);
-      Path $$6 = Files.createFile($$3.resolve("level.dat"));
-      ud.a($$5, $$6);
-      return $$3;
+      private IntConsumer a(long $$0, fht.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
+
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
+      }
    }
 }

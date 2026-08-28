@@ -1,13 +1,45 @@
-public class gdm<S extends haa> extends gdn<S> {
-   public gdm(ggc $$0) {
-      super($$0);
+public class gdm extends gew {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final ghd d;
+   private final ghd e;
+
+   public gdm(ghd $$0) {
+      super($$0, goi::d);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   public static ggk a(ggg $$0) {
-      ggk $$1 = gdn.a($$0, 0.0F);
-      ggm $$2 = $$1.a();
-      $$2.a("right_leg", ggh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gge.a(-1.9F, 12.0F, 0.0F));
-      $$2.a("left_leg", ggh.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gge.a(1.9F, 12.0F, 0.0F));
-      return $$1;
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      $$1.a("bottom", ghi.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), ghf.a);
+      $$1.a("lid", ghi.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), ghf.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", ghi.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), ghf.a(0.0F, 9.0F, 1.0F));
+      return ghj.a($$0, 64, 64);
+   }
+
+   public static ghj b() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      $$1.a("bottom", ghi.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), ghf.a);
+      $$1.a("lid", ghi.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), ghf.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", ghi.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), ghf.a(0.0F, 9.0F, 1.0F));
+      return ghj.a($$0, 64, 64);
+   }
+
+   public static ghj c() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      $$1.a("bottom", ghi.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), ghf.a);
+      $$1.a("lid", ghi.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), ghf.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", ghi.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), ghf.a(0.0F, 9.0F, 1.0F));
+      return ghj.a($$0, 64, 64);
+   }
+
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

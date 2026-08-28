@@ -1,183 +1,67 @@
-public class agd {
-   public static final yy<abw> a = a("bundle");
-   public static final yy<abv> b = a("bundle_delimiter");
-   public static final yy<abm> c = a("add_entity");
-   public static final yy<abn> d = a("animate");
-   public static final yy<abo> e = a("award_stats");
-   public static final yy<abp> f = a("block_changed_ack");
-   public static final yy<abq> g = a("block_destruction");
-   public static final yy<abr> h = a("block_entity_data");
-   public static final yy<abs> i = a("block_event");
-   public static final yy<abt> j = a("block_update");
-   public static final yy<abu> k = a("boss_event");
-   public static final yy<abx> l = a("change_difficulty");
-   public static final yy<aby> m = a("chunk_batch_finished");
-   public static final yy<abz> n = a("chunk_batch_start");
-   public static final yy<aca> o = a("chunks_biomes");
-   public static final yy<acb> p = a("clear_titles");
-   public static final yy<acc> q = a("command_suggestions");
-   public static final yy<acd> r = a("commands");
-   public static final yy<ace> s = a("container_close");
-   public static final yy<acf> t = a("container_set_content");
-   public static final yy<acg> u = a("container_set_data");
-   public static final yy<ach> v = a("container_set_slot");
-   public static final yy<aci> w = a("cooldown");
-   public static final yy<acj> x = a("custom_chat_completions");
-   public static final yy<ack> y = a("damage_event");
-   public static final yy<acl> z = a("debug_sample");
-   public static final yy<acm> A = a("delete_chat");
-   public static final yy<acn> B = a("disguised_chat");
-   public static final yy<aco> C = a("entity_event");
-   public static final yy<acq> D = a("explode");
-   public static final yy<acr> E = a("forget_level_chunk");
-   public static final yy<acs> F = a("game_event");
-   public static final yy<act> G = a("horse_screen_open");
-   public static final yy<acu> H = a("hurt_animation");
-   public static final yy<acv> I = a("initialize_border");
-   public static final yy<acx> J = a("level_chunk_with_light");
-   public static final yy<acy> K = a("level_event");
-   public static final yy<acz> L = a("level_particles");
-   public static final yy<ada> M = a("light_update");
-   public static final yy<adc> N = a("login");
-   public static final yy<add> O = a("map_item_data");
-   public static final yy<ade> P = a("merchant_offers");
-   public static final yy<adf.a> Q = a("move_entity_pos");
-   public static final yy<adf.b> R = a("move_entity_pos_rot");
-   public static final yy<adg> S = a("move_minecart_along_track");
-   public static final yy<adf.c> T = a("move_entity_rot");
-   public static final yy<adh> U = a("move_vehicle");
-   public static final yy<adi> V = a("open_book");
-   public static final yy<adj> W = a("open_screen");
-   public static final yy<adk> X = a("open_sign_editor");
-   public static final yy<adl> Y = a("place_ghost_recipe");
-   public static final yy<adm> Z = a("player_abilities");
-   public static final yy<adn> aa = a("player_chat");
-   public static final yy<ado> ab = a("player_combat_end");
-   public static final yy<adp> ac = a("player_combat_enter");
-   public static final yy<adq> ad = a("player_combat_kill");
-   public static final yy<adr> ae = a("player_info_remove");
-   public static final yy<ads> af = a("player_info_update");
-   public static final yy<adt> ag = a("player_look_at");
-   public static final yy<adu> ah = a("player_position");
-   public static final yy<adv> ai = a("player_rotation");
-   public static final yy<adx> aj = a("recipe_book_add");
-   public static final yy<ady> ak = a("recipe_book_remove");
-   public static final yy<adz> al = a("recipe_book_settings");
-   public static final yy<aea> am = a("remove_entities");
-   public static final yy<aeb> an = a("remove_mob_effect");
-   public static final yy<aed> ao = a("respawn");
-   public static final yy<aee> ap = a("rotate_head");
-   public static final yy<aef> aq = a("section_blocks_update");
-   public static final yy<aeg> ar = a("select_advancements_tab");
-   public static final yy<aeh> as = a("server_data");
-   public static final yy<aei> at = a("set_action_bar_text");
-   public static final yy<aej> au = a("set_border_center");
-   public static final yy<aek> av = a("set_border_lerp_size");
-   public static final yy<ael> aw = a("set_border_size");
-   public static final yy<aem> ax = a("set_border_warning_delay");
-   public static final yy<aen> ay = a("set_border_warning_distance");
-   public static final yy<aeo> az = a("set_camera");
-   public static final yy<aep> aA = a("set_chunk_cache_center");
-   public static final yy<aeq> aB = a("set_chunk_cache_radius");
-   public static final yy<aes> aC = a("set_default_spawn_position");
-   public static final yy<aet> aD = a("set_display_objective");
-   public static final yy<aeu> aE = a("set_entity_data");
-   public static final yy<aev> aF = a("set_entity_link");
-   public static final yy<aew> aG = a("set_entity_motion");
-   public static final yy<aex> aH = a("set_equipment");
-   public static final yy<aey> aI = a("set_experience");
-   public static final yy<aez> aJ = a("set_health");
-   public static final yy<afa> aK = a("set_held_slot");
-   public static final yy<afb> aL = a("set_objective");
-   public static final yy<afc> aM = a("set_passengers");
-   public static final yy<afe> aN = a("set_player_team");
-   public static final yy<aff> aO = a("set_score");
-   public static final yy<afg> aP = a("set_simulation_distance");
-   public static final yy<afh> aQ = a("set_subtitle_text");
-   public static final yy<afi> aR = a("set_time");
-   public static final yy<afj> aS = a("set_title_text");
-   public static final yy<afk> aT = a("set_titles_animation");
-   public static final yy<afl> aU = a("sound_entity");
-   public static final yy<afm> aV = a("sound");
-   public static final yy<afn> aW = a("start_configuration");
-   public static final yy<afo> aX = a("stop_sound");
-   public static final yy<afp> aY = a("system_chat");
-   public static final yy<afq> aZ = a("tab_list");
-   public static final yy<afr> ba = a("tag_query");
-   public static final yy<afs> bb = a("take_item_entity");
-   public static final yy<aft> bc = a("teleport_entity");
-   public static final yy<acp> bd = a("entity_position_sync");
-   public static final yy<afw> be = a("update_advancements");
-   public static final yy<afx> bf = a("update_attributes");
-   public static final yy<afy> bg = a("update_mob_effect");
-   public static final yy<afz> bh = a("update_recipes");
-   public static final yy<adw> bi = a("projectile_power");
-   public static final yy<agh> bj = b("accept_teleportation");
-   public static final yy<agi> bk = b("block_entity_tag_query");
-   public static final yy<aht> bl = b("bundle_item_selected");
-   public static final yy<agj> bm = b("change_difficulty");
-   public static final yy<agk> bn = b("chat_ack");
-   public static final yy<agl> bo = b("chat_command");
-   public static final yy<agm> bp = b("chat_command_signed");
-   public static final yy<agn> bq = b("chat");
-   public static final yy<ago> br = b("chat_session_update");
-   public static final yy<agp> bs = b("chunk_batch_received");
-   public static final yy<agq> bt = b("client_command");
-   public static final yy<agr> bu = b("client_tick_end");
-   public static final yy<ags> bv = b("command_suggestion");
-   public static final yy<agt> bw = b("configuration_acknowledged");
-   public static final yy<agu> bx = b("container_button_click");
-   public static final yy<agv> by = b("container_click");
-   public static final yy<agw> bz = b("container_close");
-   public static final yy<agx> bA = b("container_slot_state_changed");
-   public static final yy<agy> bB = b("debug_sample_subscription");
-   public static final yy<agz> bC = b("edit_book");
-   public static final yy<aha> bD = b("entity_tag_query");
-   public static final yy<ahb> bE = b("interact");
-   public static final yy<ahc> bF = b("jigsaw_generate");
-   public static final yy<ahd> bG = b("lock_difficulty");
-   public static final yy<ahe.a> bH = b("move_player_pos");
-   public static final yy<ahe.b> bI = b("move_player_pos_rot");
-   public static final yy<ahe.c> bJ = b("move_player_rot");
-   public static final yy<ahe.d> bK = b("move_player_status_only");
-   public static final yy<ahf> bL = b("move_vehicle");
-   public static final yy<ahg> bM = b("paddle_boat");
-   public static final yy<ahh> bN = b("pick_item_from_block");
-   public static final yy<ahi> bO = b("pick_item_from_entity");
-   public static final yy<ahj> bP = b("place_recipe");
-   public static final yy<ahk> bQ = b("player_abilities");
-   public static final yy<ahl> bR = b("player_action");
-   public static final yy<ahm> bS = b("player_command");
-   public static final yy<ahn> bT = b("player_input");
-   public static final yy<aho> bU = b("player_loaded");
-   public static final yy<ahp> bV = b("recipe_book_change_settings");
-   public static final yy<ahq> bW = b("recipe_book_seen_recipe");
-   public static final yy<ahr> bX = b("rename_item");
-   public static final yy<ahs> bY = b("seen_advancements");
-   public static final yy<ahu> bZ = b("select_trade");
-   public static final yy<ahv> ca = b("set_beacon");
-   public static final yy<ahw> cb = b("set_carried_item");
-   public static final yy<ahx> cc = b("set_command_block");
-   public static final yy<ahy> cd = b("set_command_minecart");
-   public static final yy<ahz> ce = b("set_creative_mode_slot");
-   public static final yy<aia> cf = b("set_jigsaw_block");
-   public static final yy<aib> cg = b("set_structure_block");
-   public static final yy<aic> ch = b("sign_update");
-   public static final yy<aid> ci = b("swing");
-   public static final yy<aie> cj = b("teleport_to_entity");
-   public static final yy<aif> ck = b("use_item_on");
-   public static final yy<aig> cl = b("use_item");
-   public static final yy<aec> cm = a("reset_score");
-   public static final yy<afu> cn = a("ticking_state");
-   public static final yy<afv> co = a("ticking_step");
-   public static final yy<aer> cp = a("set_cursor_item");
-   public static final yy<afd> cq = a("set_player_inventory");
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-   private static <T extends yw<abl>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, aku.b($$0));
+public class agd implements zc<abr> {
+   public static final yt<wg, agd> a = zc.a(agd::a, agd::new);
+   private final boolean b;
+   private final List<ai> c;
+   private final Set<ald> d;
+   private final Map<ald, ak> e;
+   private final boolean f;
+
+   public agd(boolean $$0, Collection<ai> $$1, Set<ald> $$2, Map<ald, ak> $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
+      this.f = $$4;
    }
 
-   private static <T extends yw<agf>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, aku.b($$0));
+   private agd(wg $$0) {
+      this.b = $$0.readBoolean();
+      this.c = ai.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vr::q);
+      this.e = $$0.a(vr::q, ak::b);
+      this.f = $$0.readBoolean();
+   }
+
+   private void a(wg $$0) {
+      $$0.a(this.b);
+      ai.b.encode($$0, this.c);
+      $$0.a(this.d, vr::a);
+      $$0.a(this.e, vr::a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.f);
+   }
+
+   @Override
+   public ze<agd> a() {
+      return agk.bf;
+   }
+
+   public void a(abr $$0) {
+      $$0.a(this);
+   }
+
+   public List<ai> b() {
+      return this.c;
+   }
+
+   public Set<ald> e() {
+      return this.d;
+   }
+
+   public Map<ald, ak> f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.b;
+   }
+
+   public boolean h() {
+      return this.f;
    }
 }

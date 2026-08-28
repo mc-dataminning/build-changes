@@ -1,75 +1,137 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class dwp extends dvl {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private ald h = ald.b("empty");
+   private ald i = ald.b("empty");
+   private alc<eqq> j = alc.a(me.bc, ald.b("empty"));
+   private dwp.a k = dwp.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int q;
 
-public class dwp extends dus implements dhu, dws.b {
-   private static final Logger a = LogUtils.getLogger();
-   private dws b;
+   public dwp(jj $$0, dym $$1) {
+      super(dvn.G, $$0, $$1);
+   }
 
-   public dwp(ji $$0, dxq $$1) {
-      super(duu.R, $$0, $$1);
-      dwr $$2 = dwr.a;
-      dwr.a $$3 = dwr.a.a;
-      this.b = new dws(this, $$2, $$3);
+   public ald a() {
+      return this.h;
+   }
+
+   public ald c() {
+      return this.i;
+   }
+
+   public alc<eqq> d() {
+      return this.j;
+   }
+
+   public String f() {
+      return this.l;
+   }
+
+   public dwp.a j() {
+      return this.k;
+   }
+
+   public int k() {
+      return this.m;
+   }
+
+   public int s() {
+      return this.q;
+   }
+
+   public void a(ald $$0) {
+      this.h = $$0;
+   }
+
+   public void b(ald $$0) {
+      this.i = $$0;
+   }
+
+   public void a(alc<eqq> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dwp.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.q = $$0;
    }
 
    @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      this.b.a().parse($$1.a(ue.a), $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.n != null) {
-         this.f();
-      }
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
+   protected void b(tw $$0, ju.a $$1) {
       super.b($$0, $$1);
-      this.b
-         .a()
-         .encodeStart($$1.a(ue.a), this.b)
-         .ifSuccess($$1x -> $$0.a((tq)$$1x))
-         .ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
-   }
-
-   public abr b() {
-      return abr.a(this);
-   }
-
-   @Override
-   public tq a(jt.a $$0) {
-      return this.b.f().a(this.m().c(dsz.b));
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.q);
    }
 
    @Override
-   public void a(bvi<?> $$0, azh $$1) {
-      if (this.n == null) {
-         af.b("Expected non-null level");
-      } else {
-         this.b.a($$0, this.n);
-         this.e();
+   protected void a(tw $$0, ju.a $$1) {
+      super.a($$0, $$1);
+      this.h = ald.a($$0.l("name"));
+      this.i = ald.a($$0.l("target"));
+      this.j = alc.a(me.bc, ald.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = eti.a($$0, this.m());
+      this.m = $$0.h("placement_priority");
+      this.q = $$0.h("selection_priority");
+   }
+
+   public abx t() {
+      return abx.a(this);
+   }
+
+   @Override
+   public tw a(ju.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(arn $$0, int $$1, boolean $$2) {
+      jj $$3 = this.aw_().a(this.m().c(doz.b).a());
+      kf<eqq> $$4 = $$0.F_().f(me.bc);
+      js<eqq> $$5 = $$4.b(this.j);
+      eqk.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements bag {
+      a("rollable"),
+      b("aligned");
+
+      public static final bag.a<dwp.a> c = bag.a(dwp.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
-   }
 
-   public dws c() {
-      return this.b;
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   @Override
-   public dww d() {
-      return !this.m().b(dyg.bB) ? dww.a : this.m().c(dyg.bB);
-   }
-
-   @Override
-   public void a(dgz $$0, dww $$1) {
-      this.e();
-      $$0.b(this.o, this.m().b(dyg.bB, $$1));
-   }
-
-   @Override
-   public void f() {
-      this.e();
-      if (this.n != null) {
-         this.n.a(this.o, this.m(), this.m(), 3);
+      public wv a() {
+         return wv.c("jigsaw_block.joint." + this.d);
       }
    }
 }

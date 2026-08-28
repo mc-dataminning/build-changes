@@ -1,63 +1,132 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 
-public class gnl {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<gnk> b;
-   private volatile int c;
+public abstract class gnl {
+   private static final Object2ObjectMap<ald, gnl> a = af.a(new Object2ObjectArrayMap(), $$0 -> {
+      gnl.c $$1 = new gnl.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(ech.e, $$1);
+      $$0.put(ech.f, new gnl.b());
+      $$0.put(ech.g, new gnl.a());
+   });
+   private final float b;
+   private final boolean c;
+   private final gnl.d d;
+   private final boolean e;
+   private final boolean f;
 
-   private gnl(List<gnk> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public gnl(float $$0, boolean $$1, gnl.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public static gnl a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gnk.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gnk> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gnk());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new gnl($$3);
+   public static gnl a(ecj $$0) {
+      return (gnl)a.get($$0.r());
    }
 
-   @Nullable
-   public gnk a() {
-      gnk $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
-      } else {
-         return null;
-      }
+   public boolean a(float $$0) {
+      return false;
    }
 
-   public void a(gnk $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   public int b(float $$0) {
+      return 0;
+   }
+
+   public float a() {
+      return this.b;
    }
 
    public boolean b() {
-      return this.b.isEmpty();
+      return this.c;
    }
 
-   public int c() {
-      return this.c;
+   public abstract fcu a(fcu var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public gnl.d c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static class a extends gnl {
+      public a() {
+         super(Float.NaN, false, gnl.d.c, true, false);
+      }
+
+      @Override
+      public fcu a(fcu $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static class b extends gnl {
+      public b() {
+         super(Float.NaN, true, gnl.d.a, false, true);
+      }
+
+      @Override
+      public fcu a(fcu $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends gnl {
+      public static final int a = 192;
+      private static final float b = 0.4F;
+
+      public c() {
+         super(192.0F, true, gnl.d.b, false, false);
+      }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = azk.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = azk.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = azk.l(1.0F - (1.0F - azk.a($$2 * (float) Math.PI)) * 0.99F);
+         return axu.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public fcu a(fcu $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

@@ -1,35 +1,23 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class bkg extends bju {
-   public bkg(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bkg extends bhm {
+   public bkg(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Zombie Villager XP rebuild", biq.D, "minecraft:zombie_villager");
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "minecraft:egg");
-      $$0.registerSimple($$1, "minecraft:ender_pearl");
-      $$0.registerSimple($$1, "minecraft:fireball");
-      $$0.register($$1, "minecraft:potion", $$1x -> DSL.optionalFields("Potion", bic.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:small_fireball");
-      $$0.registerSimple($$1, "minecraft:snowball");
-      $$0.registerSimple($$1, "minecraft:wither_skull");
-      $$0.registerSimple($$1, "minecraft:xp_bottle");
-      $$0.register($$1, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", bic.u.in($$0)));
-      $$0.register($$1, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", bic.u.in($$0), bjv.a($$0)));
-      $$0.register($$1, "minecraft:falling_block", () -> DSL.optionalFields("BlockState", bic.u.in($$0), "TileEntityData", bic.s.in($$0)));
-      $$0.register($$1, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", bic.u.in($$0)));
-      $$0.register($$1, "minecraft:chest_minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0), "Items", DSL.list(bic.t.in($$0))));
-      $$0.register($$1, "minecraft:commandblock_minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0), "LastOutput", bic.z.in($$0)));
-      $$0.register($$1, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0)));
-      $$0.register($$1, "minecraft:hopper_minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0), "Items", DSL.list(bic.t.in($$0))));
-      $$0.register($$1, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0)));
-      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0), bic.G.in($$0)));
-      $$0.register($$1, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", bic.u.in($$0)));
-      return $$1;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
+         if ($$1.isEmpty()) {
+            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
+            return $$0x.set("Xp", $$0x.createInt(bjx.a($$2)));
+         } else {
+            return $$0x;
+         }
+      });
    }
 }

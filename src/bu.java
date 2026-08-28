@@ -17,24 +17,24 @@ public record bu(Optional<cv> b, Optional<cv> c, Optional<cv> d, Optional<cv> e,
             .apply($$0, bu::new)
    );
 
-   public static bu a(js<cxd> $$0, js<dui> $$1) {
-      return bu.a.a().a(cv.a.a().a($$0, cxl.vR).a(kt.a(cre.a($$1).a(), kv.ak, kv.h))).b();
+   public static bu a(jt<cxu> $$0, jt<dva> $$1) {
+      return bu.a.a().a(cv.a.a().a($$0, cyc.vT).a(kv.a(crv.a($$1).a(), kx.ak, kx.h))).b();
    }
 
-   public boolean a(@Nullable bva $$0) {
-      if ($$0 instanceof bvy $$1) {
-         if (this.b.isPresent() && !this.b.get().a($$1.a(bvj.f))) {
+   public boolean a(@Nullable bvs $$0) {
+      if ($$0 instanceof bwr $$1) {
+         if (this.b.isPresent() && !this.b.get().a($$1.a(bwc.f))) {
             return false;
-         } else if (this.c.isPresent() && !this.c.get().a($$1.a(bvj.e))) {
+         } else if (this.c.isPresent() && !this.c.get().a($$1.a(bwc.e))) {
             return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.a(bvj.d))) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.a(bwc.d))) {
             return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.a(bvj.c))) {
+         } else if (this.e.isPresent() && !this.e.get().a($$1.a(bwc.c))) {
             return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.a(bvj.g))) {
+         } else if (this.f.isPresent() && !this.f.get().a($$1.a(bwc.g))) {
             return false;
          } else {
-            return this.g.isPresent() && !this.g.get().a($$1.a(bvj.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(bvj.b));
+            return this.g.isPresent() && !this.g.get().a($$1.a(bwc.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(bwc.b));
          }
       } else {
          return false;

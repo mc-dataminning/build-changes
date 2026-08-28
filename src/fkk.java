@@ -1,76 +1,120 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class fkk extends hmd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("mco.terms.title");
-   private static final wp c = wp.c("mco.terms.sentence.1");
-   private static final wp C = wo.a().b(wp.c("mco.terms.sentence.2").c(xm.a.c(true)));
-   private final fvi D;
-   private final fii E;
-   private boolean F;
+public class fkk extends hne {
+   private static final wv a = wv.c("mco.backup.info.title");
+   private static final wv b = wv.c("mco.backup.unknown");
+   private final fwf c;
+   final fiu C;
+   final fub D = new fub(this);
+   private fkk.a E;
 
-   public fkk(fvi $$0, fii $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public fkk(fwf $$0, fiu $$1) {
+      super(a);
+      this.c = $$0;
+      this.C = $$1;
    }
 
    @Override
-   public void aR_() {
-      int $$0 = this.n / 4 - 2;
-      this.c(fpq.a(wp.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
-      this.c(fpq.a(wp.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());
+   public void aN_() {
+      this.D.a(a, this.p);
+      this.E = this.D.c(new fkk.a(this.m));
+      this.D.b(fqn.a(wu.k, $$0 -> this.aK_()).a());
+      this.c();
+      this.D.a($$1 -> {
+         fql var10000 = this.c($$1);
+      });
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.D);
-         return true;
+   protected void c() {
+      this.E.b(this.n, this.D.d());
+      this.D.a();
+   }
+
+   @Override
+   public void aK_() {
+      this.m.a(this.c);
+   }
+
+   wv a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         return super.a($$0, $$1, $$2);
+         return (wv)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wv.b($$1));
       }
    }
 
-   private void E() {
-      fhh $$0 = fhh.a();
-
+   private wv a(String $$0) {
       try {
-         $$0.j();
-         this.m.a(new fjx(this.D, new fld(this.D, this.E)));
-      } catch (fjd var3) {
-         a.error("Couldn't agree to TOS", var3);
+         return flf.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.F) {
-         this.m.p.a(axv.s.toString());
-         af.n().a(axv.s);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   private wv b(String $$0) {
+      try {
+         return flf.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   @Override
-   public wp i() {
-      return wo.a(super.i(), c).b(wo.v).b(C);
+   class a extends frj<fkk.b> {
+      public a(final fnd $$0) {
+         super($$0, fkk.this.n, fkk.this.D.d(), fkk.this.D.c(), 36);
+         if (fkk.this.C.e != null) {
+            fkk.this.C.e.forEach(($$0x, $$1) -> this.b(fkk.this.new b($$0x, $$1)));
+         }
+      }
    }
 
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, c, this.n / 2 - 120, g(5), -1);
-      int $$4 = this.p.a(c);
-      int $$5 = this.n / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.p.a(C) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.F = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.b(this.p, C, this.n / 2 - 120 + $$4, g(5), this.F ? 7107012 : 3368635);
+   class b extends frj.a<fkk.b> {
+      private static final wv b = wv.c("mco.backup.entry.templateName");
+      private static final wv c = wv.c("mco.backup.entry.gameDifficulty");
+      private static final wv d = wv.c("mco.backup.entry.name");
+      private static final wv e = wv.c("mco.backup.entry.gameServerVersion");
+      private static final wv f = wv.c("mco.backup.entry.uploaded");
+      private static final wv g = wv.c("mco.backup.entry.enabledPack");
+      private static final wv h = wv.c("mco.backup.entry.description");
+      private static final wv i = wv.c("mco.backup.entry.gameMode");
+      private static final wv j = wv.c("mco.backup.entry.seed");
+      private static final wv k = wv.c("mco.backup.entry.worldType");
+      private static final wv l = wv.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fkk.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fkk.this.p, fkk.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private wv a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public wv a() {
+         return wv.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

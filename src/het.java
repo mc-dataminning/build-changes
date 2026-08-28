@@ -2,50 +2,68 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class het implements her {
-   private final gpw a;
-   private final float b;
-   private final jn c;
-   private final hhy d;
+public class het extends heq implements hes {
+   public static final MapCodec<het> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("wobble", true).forGetter(heq::b), het.a.d.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, het::new)
+   );
+   private final het.a b;
+   private final azs c = azs.a();
+   private final heq.a d;
 
-   public het(gpw $$0, float $$1, jn $$2, hhy $$3) {
-      this.a = $$0;
+   public het(boolean $$0, het.a $$1) {
+      super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.d = this.a(0.9F);
    }
 
    @Override
-   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.c, this.b, this.d);
+   protected float a(cxy $$0, ghz $$1, int $$2, bvs $$3) {
+      float $$4 = this.b.a($$1, $$0, $$3, this.c);
+      long $$5 = $$1.ae();
+      if (this.d.a($$5)) {
+         this.d.a($$5, $$4);
+      }
+
+      return this.d.a();
    }
 
-   public static record a(aku b, float c, jn d) implements hev.a {
-      public static final MapCodec<het.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  aku.a.fieldOf("texture").forGetter(het.a::b),
-                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(het.a::c),
-                  jn.g.optionalFieldOf("orientation", jn.b).forGetter(het.a::d)
-               )
-               .apply($$0, het.a::new)
-      );
+   @Override
+   public MapCodec<het> a() {
+      return a;
+   }
 
-      public a() {
-         this(aku.b("shulker"), 0.0F, jn.b);
-      }
+   public static enum a implements bag {
+      a("random") {
+         @Override
+         public float a(ghz $$0, cxy $$1, bvs $$2, azs $$3) {
+            return $$3.i();
+         }
+      },
+      b("daytime") {
+         @Override
+         public float a(ghz $$0, cxy $$1, bvs $$2, azs $$3) {
+            return $$0.f(1.0F);
+         }
+      },
+      c("moon_phase") {
+         @Override
+         public float a(ghz $$0, cxy $$1, bvs $$2, azs $$3) {
+            return (float)$$0.at() / 8.0F;
+         }
+      };
 
-      public a(cwe $$0) {
-         this(gns.e($$0), 0.0F, jn.b);
+      public static final Codec<het.a> d = bag.a(het.a::values);
+      private final String e;
+
+      a(final String $$0) {
+         this.e = $$0;
       }
 
       @Override
-      public MapCodec<het.a> a() {
-         return a;
+      public String c() {
+         return this.e;
       }
 
-      @Override
-      public hev<?> a(gfy $$0) {
-         return new het(new gpw($$0), this.c, this.d, gns.b(this.b));
-      }
+      abstract float a(ghz var1, cxy var2, bvs var3, azs var4);
    }
 }

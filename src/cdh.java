@@ -1,27 +1,28 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cdh extends cdt {
-   private static final int i = 10;
-   private static final int j = 7;
+public class cdh extends cdn {
+   private final bwt a;
 
-   public cdh(bwg $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public cdh(bwt $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdn.a.c));
+      $$0.O().a(true);
    }
 
    @Override
    public boolean b() {
-      ard $$0 = (ard)this.b.dU();
-      ji $$1 = this.b.du();
-      return $$0.c($$1) ? false : super.b();
+      return this.a.bj() && this.a.b(axf.a) > this.a.dp() || this.a.bw();
    }
 
-   @Nullable
    @Override
-   protected fbx h() {
-      ard $$0 = (ard)this.b.dU();
-      ji $$1 = this.b.du();
-      kk $$2 = kk.a($$1);
-      kk $$3 = bxt.a($$0, $$2, 2);
-      return $$3 != $$2 ? cgt.a(this.b, 10, 7, fbx.c($$3.k()), (float) (Math.PI / 2)) : null;
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.a.dY().i() < 0.8F) {
+         this.a.N().a();
+      }
    }
 }

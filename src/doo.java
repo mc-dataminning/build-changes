@@ -1,76 +1,65 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class doo extends dke implements drl {
+public class doo extends dku implements dsb {
    public static final MapCodec<doo> a = b(doo::new);
-   public static final dyh b = dyg.m;
-   public static final dyh c = dyg.I;
-   private static final fcr d = fco.a(dke.b(4.0, 7.0, 9.0), dke.b(6.0, 0.0, 7.0));
-   private static final fcr e = d.a(0.0, 0.0625, 0.0).d();
+   private static final dzd b = dzc.I;
+   private static final fdo c = dku.b(12.0, 10.0, 16.0);
 
    @Override
    public MapCodec<doo> a() {
       return a;
    }
 
-   public doo(dxp.d $$0) {
+   protected doo(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
+      this.l(this.B.b().b(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected eut b_(dym $$0) {
+      return $$0.c(b) ? euu.c.a(false) : super.b_($$0);
    }
 
    @Nullable
    @Override
-   public dxq a(dax $$0) {
-      etw $$1 = $$0.q().b_($$0.a());
+   public dym a(dbn $$0) {
+      dym $$1 = super.a($$0);
+      if ($$1 != null) {
+         eut $$2 = $$0.q().b_($$0.a());
+         return $$1.b(b, Boolean.valueOf($$2.a() == euu.c));
+      } else {
+         return null;
+      }
+   }
 
-      for (jn $$2 : $$0.f()) {
-         if ($$2.o() == jn.a.b) {
-            dxq $$3 = this.m().b(b, Boolean.valueOf($$2 == jn.b));
-            if ($$3.a((dhc)$$0.q(), $$0.a())) {
-               return $$3.b(c, Boolean.valueOf($$1.a() == etx.c));
-            }
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      jj $$3 = $$2.d();
+      dym $$4 = $$1.a_($$3);
+      return $$4.c($$1, $$3, jo.a);
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return c;
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$4 == jo.b && !this.a($$0, $$1, $$3)) {
+         return dkw.a.m();
+      } else {
+         if ($$0.c(b)) {
+            $$2.a($$3, euu.c, euu.c.a($$1));
          }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
-
-      return null;
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return $$0.c(b) ? e : d;
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      jn $$3 = o($$0).g();
-      return dke.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static jn o(dxq $$0) {
-      return $$0.c(b) ? jn.a : jn.b;
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
-      }
-
-      return o($$0).g() == $$4 && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(c) ? etx.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
    }
 }

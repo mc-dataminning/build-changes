@@ -1,35 +1,132 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class amr {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.b("Target not reached"));
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, alc<dhp>> a = ImmutableBiMap.of("o", dhp.i, "n", dhp.j, "e", dhp.k);
+   @Nullable
+   private static amj g;
+   @Nullable
+   private static ami h;
 
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(ey.a("to", gt.a()).executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "to"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("chase")
+                  .then(
+                     ((LiteralArgumentBuilder)ey.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)ey.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    ey.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                             )
+                                       )
+                                 )
+                           ))
+                        .executes($$0x -> b((ex)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ey.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)ey.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 ey.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ex)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
+                                          )
+                                    )
+                              )
+                        ))
+                     .executes($$0x -> a((ex)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(ey.a("stop").executes($$0x -> a((ex)$$0x.getSource())))
       );
    }
 
-   private static int a(ex $$0, ji $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bwa $$3)) {
-         throw a.create();
+   private static int a(ex $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> wv.b("You have now stopped chasing"), false);
+         h = null;
+      }
+
+      if (g != null) {
+         g.b();
+         $$0.a(() -> wv.b("You are no longer being chased"), false);
+         g = null;
+      }
+
+      return 0;
+   }
+
+   private static boolean b(ex $$0) {
+      if (g != null) {
+         $$0.b(wv.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(wv.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
       } else {
-         cfk $$4 = new cfj($$3, $$0.e());
-         euk $$5 = $$4.a($$1, 0);
-         agc.a($$0.e(), $$3, $$5, $$4.p());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
-         } else {
-            $$0.a(() -> wp.b("Made path"), true);
-            return 1;
+         return false;
+      }
+   }
+
+   private static int a(ex $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new amj($$1, $$2, $$0.l().ag(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> wv.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(wv.b("Failed to start chase server on port " + $$2));
+            g = null;
          }
+
+         return 0;
+      }
+   }
+
+   private static int b(ex $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new ami($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> wv.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
    }
 }

@@ -1,51 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ehf extends efw {
-   public ehf(Codec<eja> $$0) {
+public abstract class ehf extends ehr<ekc> {
+   public ehf(Codec<ekc> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dha $$0, azh $$1, ji $$2, int $$3, ji.a $$4, eja $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   public boolean a(eht<ekc> $$0) {
+      azs $$1 = $$0.d();
+      dio $$2 = $$0.b();
+      jj $$3 = $$0.e();
+      Optional<dku> $$4 = md.e.a(awz.at, $$1).map(js::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
+   }
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  dxq $$17 = $$5.b.a($$1, $$2);
-                  if ($$17.b(doe.e) && $$17.b(doe.c) && $$17.b(doe.b) && $$17.b(doe.d) && $$17.b(doe.f)) {
-                     $$17 = $$17.b(doe.f, Boolean.valueOf($$6 >= $$3 - 1))
-                        .b(doe.e, Boolean.valueOf($$9 < -$$8))
-                        .b(doe.c, Boolean.valueOf($$9 > $$8))
-                        .b(doe.b, Boolean.valueOf($$10 < -$$8))
-                        .b(doe.d, Boolean.valueOf($$10 > $$8));
-                  }
+   protected abstract boolean a(dhq var1, azs var2, jj var3, dym var4);
 
-                  this.a($$0, $$4, $$17);
+   protected boolean b(dhq $$0, azs $$1, jj $$2, dym $$3) {
+      jj $$4 = $$2.d();
+      dym $$5 = $$0.a_($$2);
+      if (($$5.a(dkw.J) || $$5.a(awz.aw)) && $$0.a_($$4).a(dkw.J)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            md.e.a(awz.aw, $$1).map(js::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dkw.nx.m().b(drw.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (jo $$6 : jo.c.a) {
+            if ($$1.i() < 0.2F) {
+               jj $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dkw.J)) {
+                  md.e.a(awz.au, $$1).map(js::a).ifPresent($$3x -> {
+                     dym $$4x = $$3x.m();
+                     if ($$4x.b(dkf.d)) {
+                        $$4x = $$4x.b(dkf.d, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
                }
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
+         return true;
+      } else {
+         return false;
       }
-
-      return $$4;
    }
 }

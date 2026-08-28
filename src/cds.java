@@ -1,47 +1,37 @@
-public class cds extends ccw {
-   private final cjw a;
-   private int b;
+public class cds extends cdn {
+   private final cjf a;
+   private boolean b;
 
-   public cds(cjw $$0) {
+   public cds(cjf $$0) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void d() {
-      this.a.gY();
-      this.h();
-   }
-
-   private void h() {
-      avz $$0 = this.a.gX();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return false;
    }
 
    @Override
    public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dX().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fi() && this.a.dX().a(10) == 0;
-      } else {
+      if (!(this.a.e() instanceof aro $$0)) {
          return false;
+      } else {
+         boolean $$1 = !$$0.U_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
+         return !this.a.gq() && $$1 && this.a.gG();
       }
    }
 
-   private void a(cjw $$0) {
-      this.b = -$$0.hc();
+   @Override
+   public boolean P_() {
+      return !this.b;
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public void d() {
+      this.b = false;
+   }
+
+   @Override
+   public void a() {
+      if (!this.b && !this.a.x() && !this.a.O_()) {
+         if (this.a.e() instanceof aro $$0 && this.a.cR().c($$0.cR())) {
+            this.b = this.a.b($$0);
+         }
+      }
    }
 }

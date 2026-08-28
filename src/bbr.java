@@ -1,22 +1,75 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
-public class bbr extends bgy {
-   public bbr(Schema $$0, String $$1) {
-      super($$0, false, "BlockEntityFurnaceBurnTimeFix" + $$1, bic.s, $$1);
-   }
+public class bbr extends bhm {
+   private static final Map<String, String> a = Map.ofEntries(
+      Map.entry("b", "minecraft:base"),
+      Map.entry("bl", "minecraft:square_bottom_left"),
+      Map.entry("br", "minecraft:square_bottom_right"),
+      Map.entry("tl", "minecraft:square_top_left"),
+      Map.entry("tr", "minecraft:square_top_right"),
+      Map.entry("bs", "minecraft:stripe_bottom"),
+      Map.entry("ts", "minecraft:stripe_top"),
+      Map.entry("ls", "minecraft:stripe_left"),
+      Map.entry("rs", "minecraft:stripe_right"),
+      Map.entry("cs", "minecraft:stripe_center"),
+      Map.entry("ms", "minecraft:stripe_middle"),
+      Map.entry("drs", "minecraft:stripe_downright"),
+      Map.entry("dls", "minecraft:stripe_downleft"),
+      Map.entry("ss", "minecraft:small_stripes"),
+      Map.entry("cr", "minecraft:cross"),
+      Map.entry("sc", "minecraft:straight_cross"),
+      Map.entry("bt", "minecraft:triangle_bottom"),
+      Map.entry("tt", "minecraft:triangle_top"),
+      Map.entry("bts", "minecraft:triangles_bottom"),
+      Map.entry("tts", "minecraft:triangles_top"),
+      Map.entry("ld", "minecraft:diagonal_left"),
+      Map.entry("rd", "minecraft:diagonal_up_right"),
+      Map.entry("lud", "minecraft:diagonal_up_left"),
+      Map.entry("rud", "minecraft:diagonal_right"),
+      Map.entry("mc", "minecraft:circle"),
+      Map.entry("mr", "minecraft:rhombus"),
+      Map.entry("vh", "minecraft:half_vertical"),
+      Map.entry("hh", "minecraft:half_horizontal"),
+      Map.entry("vhr", "minecraft:half_vertical_right"),
+      Map.entry("hhb", "minecraft:half_horizontal_bottom"),
+      Map.entry("bo", "minecraft:border"),
+      Map.entry("cbo", "minecraft:curly_border"),
+      Map.entry("gra", "minecraft:gradient"),
+      Map.entry("gru", "minecraft:gradient_up"),
+      Map.entry("bri", "minecraft:bricks"),
+      Map.entry("glb", "minecraft:globe"),
+      Map.entry("cre", "minecraft:creeper"),
+      Map.entry("sku", "minecraft:skull"),
+      Map.entry("flo", "minecraft:flower"),
+      Map.entry("moj", "minecraft:mojang"),
+      Map.entry("pig", "minecraft:piglin")
+   );
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = $$0.renameField("CookTime", "cooking_time_spent");
-      $$0 = $$0.renameField("CookTimeTotal", "cooking_total_time");
-      $$0 = $$0.renameField("BurnTime", "lit_time_remaining");
-      return $$0.setFieldIfPresent("lit_total_time", $$0.get("lit_time_remaining").result());
+   public bbr(Schema $$0) {
+      super($$0, false, "BannerPatternFormatFix", biq.s, "minecraft:banner");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+      return $$0.update(DSL.remainderFinder(), bbr::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameAndFixField("Patterns", "patterns", $$0x -> $$0x.createList($$0x.asStream().map(bbr::b)));
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.renameAndFixField(
+         "Pattern",
+         "pattern",
+         $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map($$0xx -> a.getOrDefault($$0xx, $$0xx)).map($$0x::createString).result(), $$0x)
+      );
+      $$0 = $$0.set("color", $$0.createString(baz.a($$0.get("Color").asInt(0))));
+      return $$0.remove("Color");
    }
 }

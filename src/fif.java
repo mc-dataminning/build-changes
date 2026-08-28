@@ -1,13 +1,18 @@
-import com.google.gson.annotations.SerializedName;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class fif extends fiw implements fiq {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
+public class fif {
+   @Nullable
+   private static Proxy a;
 
-   public fif(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
+
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
    }
 }

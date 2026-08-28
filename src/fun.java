@@ -1,51 +1,88 @@
-public class fun extends fvi {
-   private static final aku a = aku.b("textures/gui/demo_background.png");
-   private static final int b = 256;
-   private static final int c = 256;
-   private fqj d = fqj.a;
-   private fqj s = fqj.a;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fun() {
-      super(wp.c("demo.help.title"));
+public class fun {
+   int a;
+   final Map<fun.a, fun.b> b = Maps.newTreeMap(Comparator.<fun.a, fuj>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fuk> $$0) {
+      this.a++;
+      $$0.accept(new fun.c(0));
    }
 
-   @Override
-   protected void aR_() {
-      int $$0 = -16;
-      this.c(fpq.a(wp.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         af.n().a(axv.f);
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(fpq.a(wp.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fmk $$1 = this.m.n;
-      this.d = fqj.a(
-         this.p,
-         wp.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
-         wp.c("demo.help.movementMouse"),
-         wp.a("demo.help.jump", $$1.z.k()),
-         wp.a("demo.help.inventory", $$1.C.k())
-      );
-      this.s = fqj.a(this.p, wp.c("demo.help.fullWrapped"), 218);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(gnh::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
+   static class a {
+      final fuj a;
+      final int b;
+
+      a(fuj $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
+   static class b {
+      fum<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fum.a;
+         this.b = -1;
+      }
+
+      public fun.b a(int $$0, fum<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements fuk {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fuj $$0, fum<?> $$1) {
+         fun.this.b.computeIfAbsent(new fun.a($$0, this.b), $$0x -> new fun.b()).a(fun.this.a, $$1);
+      }
+
+      @Override
+      public fuk a() {
+         return fun.this.new c(this.b + 1);
+      }
    }
 }

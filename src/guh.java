@@ -1,36 +1,34 @@
-public class guh extends guj<cmr, hbg, gdq> {
-   private static final aku a = aku.b("textures/entity/slime/magmacube.png");
+public class guh extends gue<cqt, ham> {
+   private static final ald a = ald.b("textures/entity/illager/evoker_fangs.png");
+   private final gec g;
 
-   public guh(gtd.a $$0) {
-      super($$0, new gdq($$0.a(ggb.bz)), 0.25F);
+   public guh(guf.a $$0) {
+      super($$0);
+      this.g = new gec($$0.a(ghc.aS));
    }
 
-   protected int a(cmr $$0, ji $$1) {
-      return 15;
+   public void a(ham $$0, fho $$1, gny $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.g.a($$0);
+         fhs $$5 = $$2.getBuffer(this.g.a(a));
+         this.g.a($$1, $$5, $$3, hgi.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public aku a(hbg $$0) {
-      return a;
+   public ham a() {
+      return new ham();
    }
 
-   public hbg b() {
-      return new hbg();
-   }
-
-   public void a(cmr $$0, hbg $$1, float $$2) {
+   public void a(cqt $$0, ham $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bF, $$0.bE);
-      $$1.b = $$0.gq();
-   }
-
-   protected float b(hbg $$0) {
-      return (float)$$0.b * 0.25F;
-   }
-
-   protected void a(hbg $$0, fgr $$1) {
-      int $$2 = $$0.b;
-      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
-      float $$4 = 1.0F / ($$3 + 1.0F);
-      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
+      $$1.a = $$0.dL();
+      $$1.b = $$0.a($$2);
    }
 }

@@ -1,107 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drn extends dke implements drl {
-   public static final MapCodec<drn> a = b(drn::new);
-   public static final dyo<dyy> b = dyg.bk;
-   public static final dyh c = dyg.I;
-   private static final fcr d = dke.b(16.0, 0.0, 8.0);
-   private static final fcr e = dke.b(16.0, 8.0, 16.0);
+public class drn extends dle implements dkx {
+   public static final MapCodec<drn> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dyb.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, drn::new)
+   );
+   public static final dzm f = dzc.aX;
+   private static final fdo a = dku.b(12.0, 0.0, 12.0);
+   protected final dyb g;
 
    @Override
    public MapCodec<? extends drn> a() {
+      return e;
+   }
+
+   protected drn(dyb $$0, dyl.d $$1) {
+      super($$1);
+      this.g = $$0;
+      this.l(this.B.b().b(f, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
       return a;
    }
 
-   public drn(dxp.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, dyy.b).b(c, Boolean.valueOf(false)));
+   @Override
+   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
    }
 
-   @Override
-   protected boolean g_(dxq $$0) {
-      return $$0.c(b) != dyy.c;
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return switch ((dyy)$$0.c(b)) {
-         case a -> e;
-         case b -> d;
-         case c -> fco.b();
-      };
-   }
-
-   @Nullable
-   @Override
-   public dxq a(dax $$0) {
-      ji $$1 = $$0.a();
-      dxq $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dyy.c).b(c, Boolean.valueOf(false));
+   public void a(arn $$0, jj $$1, dym $$2, azs $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 260);
       } else {
-         etw $$3 = $$0.q().b_($$1);
-         dxq $$4 = this.m().b(b, dyy.b).b(c, Boolean.valueOf($$3.a() == etx.c));
-         jn $$5 = $$0.k();
-         return $$5 != jn.a && ($$5 == jn.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dyy.a);
+         this.g.a($$0, $$0.m().g(), $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected boolean a(dxq $$0, dax $$1) {
-      cxh $$2 = $$1.n();
-      dyy $$3 = $$0.c(b);
-      if ($$3 == dyy.c || !$$2.a(this.i())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jn $$5 = $$1.k();
-         return $$3 == dyy.b ? $$5 == jn.b || $$4 && $$5.o().d() : $$5 == jn.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return true;
    }
 
    @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(c) ? etx.c.a(false) : super.b_($$0);
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return (double)$$0.A.i() < 0.45;
    }
 
    @Override
-   public boolean a(dha $$0, ji $$1, dxq $$2, etw $$3) {
-      return $$2.c(b) != dyy.c ? drl.super.a($$0, $$1, $$2, $$3) : false;
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 
    @Override
-   public boolean a(@Nullable bvy $$0, dgf $$1, ji $$2, dxq $$3, etv $$4) {
-      return $$3.c(b) != dyy.c ? drl.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(awv.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(f);
    }
 }

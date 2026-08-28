@@ -1,30 +1,22 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record bri<T>(T a, int b) {
-   private static final Logger c = LogUtils.getLogger();
-
-   public bri(T a, int b) {
-      if (b < 0) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Weight should be >= 0"));
+public record bri<T extends brh>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends brh> bri<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
       } else {
-         if (b == 0 && ab.aU) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-
-         this.a = a;
-         this.b = b;
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(brh::a)).toList();
+         Duration $$2 = $$1.stream().map(brh::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bqk.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bri<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
-   }
-
-   public static <E> Codec<bri<E>> a(Codec<E> $$0) {
-      return a($$0.fieldOf("data"));
-   }
-
-   public static <E> Codec<bri<E>> a(MapCodec<E> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group($$0.forGetter(bri::a), ayi.l.fieldOf("weight").forGetter(bri::b)).apply($$1, bri::new));
    }
 }

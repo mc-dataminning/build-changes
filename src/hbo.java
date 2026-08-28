@@ -1,3 +1,3 @@
-public class hbo extends gyq {
-   public boolean d;
+public class hbo extends hbn {
+   public float n = -1.0F;
 }

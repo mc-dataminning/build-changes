@@ -1,22 +1,31 @@
-@FunctionalInterface
-public interface ann {
-   void perform(ex var1, bva var2);
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 
-   public static record a(bva a, fj.a b) implements ann {
-      @Override
-      public void perform(ex $$0, bva $$1) {
-         if ($$1 instanceof are $$2) {
-            $$2.a($$0.m(), this.a, this.b);
-         } else {
-            $$1.a($$0.m(), this.b.a(this.a));
+public class ann {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      final LiteralArgumentBuilder<ex> $$2 = (LiteralArgumentBuilder<ex>)ey.a("gamerule").requires($$0x -> $$0x.c(2));
+      new dhl($$1.a()).a(new dhl.c() {
+         @Override
+         public <T extends dhl.g<T>> void a(dhl.e<T> $$0, dhl.f<T> $$1) {
+            LiteralArgumentBuilder<ex> $$2 = ey.a($$0.a());
+            $$2.then(((LiteralArgumentBuilder)$$2.executes($$1x -> ann.a((ex)$$1x.getSource(), $$0))).then($$1.a("value").executes($$1x -> ann.a($$1x, $$0))));
          }
-      }
+      });
+      $$0.register($$2);
    }
 
-   public static record b(fbx a) implements ann {
-      @Override
-      public void perform(ex $$0, bva $$1) {
-         $$1.a($$0.m(), this.a);
-      }
+   static <T extends dhl.g<T>> int a(CommandContext<ex> $$0, dhl.e<T> $$1) {
+      ex $$2 = (ex)$$0.getSource();
+      T $$3 = $$2.l().aL().b($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> wv.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
+
+   static <T extends dhl.g<T>> int a(ex $$0, dhl.e<T> $$1) {
+      T $$2 = $$0.l().aL().b($$1);
+      $$0.a(() -> wv.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

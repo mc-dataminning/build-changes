@@ -1,149 +1,69 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import java.util.List;
-import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
 
-public class gac extends fpn {
-   private static final int a = 32;
-   private static final String c = "telemetry.event.required";
-   private static final String d = "telemetry.event.optional";
-   private static final String e = "telemetry.event.optional.disabled";
-   private static final wp f = wp.c("telemetry_info.property_title").a(n.t);
-   private final fpa m;
-   private gac.a n;
-   @Nullable
-   private DoubleConsumer o;
+public class gac {
+   private final Reference2ObjectMap<cvk, gac.a> a = new Reference2ObjectArrayMap();
+   private final gal b;
 
-   public gac(int $$0, int $$1, int $$2, int $$3, fpa $$4) {
-      super($$0, $$1, $$2, $$3, wp.i());
-      this.m = $$4;
-      this.n = this.c(fmg.Q().C());
+   public gac(gal $$0) {
+      this.b = $$0;
    }
 
-   public void b(boolean $$0) {
-      this.n = this.c($$0);
-      this.h();
+   public void a() {
+      this.a.clear();
    }
 
-   public void q() {
-      this.n = this.c(fmg.Q().C());
-      this.h();
+   private void a(cvk $$0, bav $$1, ddx $$2, boolean $$3) {
+      List<cxy> $$4 = $$2.a($$1);
+      if (!$$4.isEmpty()) {
+         this.a.put($$0, new gac.a($$4, $$3));
+      }
    }
 
-   private gac.a c(boolean $$0) {
-      gac.b $$1 = new gac.b(this.r());
-      List<hld> $$2 = new ArrayList<>(hld.g());
-      $$2.sort(Comparator.comparing(hld::d));
+   protected void a(cvk $$0, bav $$1, ddx $$2) {
+      this.a($$0, $$1, $$2, false);
+   }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         hld $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+   protected void b(cvk $$0, bav $$1, ddx $$2) {
+      this.a($$0, $$1, $$2, true);
+   }
+
+   public void a(fpz $$0, fnd $$1, boolean $$2) {
+      this.a.forEach(($$3, $$4) -> {
+         int $$5 = $$3.e;
+         int $$6 = $$3.f;
+         if ($$4.b && $$2) {
+            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
+         } else {
+            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
+         }
+
+         cxy $$7 = $$4.a(this.b.currentIndex());
+         $$0.b($$7, $$5, $$6);
+         $$0.a(goi.O(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
+         if ($$4.b) {
+            $$0.a($$1.h, $$7, $$5, $$6);
+         }
+      });
+   }
+
+   public void a(fpz $$0, fnd $$1, int $$2, int $$3, @Nullable cvk $$4) {
+      if ($$4 != null) {
+         gac.a $$5 = (gac.a)this.a.get($$4);
+         if ($$5 != null) {
+            cxy $$6 = $$5.a(this.b.currentIndex());
+            $$0.a($$1.h, fwf.a($$1, $$6), $$2, $$3, $$6.a(kx.H));
          }
       }
-
-      return $$1.a();
    }
 
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.o = $$0;
-   }
+   static record a(List<cxy> a, boolean b) {
 
-   @Override
-   public void a(double $$0) {
-      super.a($$0);
-      if (this.o != null) {
-         this.o.accept(this.g());
-      }
-   }
-
-   @Override
-   protected int c() {
-      return this.n.a().y();
-   }
-
-   @Override
-   protected double o() {
-      return 9.0;
-   }
-
-   @Override
-   protected void c(fpc $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.p();
-      int $$5 = this.e();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.n.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(ftn $$0) {
-      $$0.a(ftm.a, this.n.b());
-   }
-
-   private wp a(wp $$0, boolean $$1) {
-      return (wp)($$1 ? $$0.f().a(n.h) : $$0);
-   }
-
-   private void a(gac.b $$0, hld $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.m, this.a(wp.a($$3, $$1.e()), $$2));
-      $$0.b(this.m, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.m, this.a(f, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(hld $$0, gac.b $$1, boolean $$2) {
-      for (hlf<?> $$3 : $$0.b()) {
-         $$1.a(this.m, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int r() {
-      return this.g - this.b();
-   }
-
-   static record a(ftf a, wp b) {
-   }
-
-   static class b {
-      private final int a;
-      private final fti b;
-      private final xd c = wp.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = fti.d();
-         this.b.c().a();
-         this.b.a(ftj.a($$0));
-      }
-
-      public void a(fpa $$0, wp $$1) {
-         this.a($$0, $$1, 0);
-      }
-
-      public void a(fpa $$0, wp $$1, int $$2) {
-         this.b.a(new fqk($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
-
-      public void b(fpa $$0, wp $$1) {
-         this.b.a(new fqk($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(ftj.b($$0));
-      }
-
-      public gac.a a() {
-         this.b.a();
-         return new gac.a(this.b, this.c);
+      public cxy a(int $$0) {
+         int $$1 = this.a.size();
+         return $$1 == 0 ? cxy.k : this.a.get($$0 % $$1);
       }
    }
 }

@@ -1,24 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eht extends egu<ejk> {
-   public eht(Codec<ejk> $$0) {
-      super($$0);
+public class eht<FC extends ejv> {
+   private final Optional<ehd<?, ?>> a;
+   private final dio b;
+   private final eak c;
+   private final azs d;
+   private final jj e;
+   private final FC f;
+
+   public eht(Optional<ehd<?, ?>> $$0, dio $$1, eak $$2, azs $$3, jj $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(egw<ejk> $$0) {
-      ejk $$1 = $$0.f();
-      azh $$2 = $$0.d();
-      dhy $$3 = $$0.b();
-      dzn $$4 = $$0.c();
-      ji $$5 = $$0.e();
+   public Optional<ehd<?, ?>> a() {
+      return this.a;
+   }
 
-      for (eio $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
-         }
-      }
+   public dio b() {
+      return this.b;
+   }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+   public eak c() {
+      return this.c;
+   }
+
+   public azs d() {
+      return this.d;
+   }
+
+   public jj e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

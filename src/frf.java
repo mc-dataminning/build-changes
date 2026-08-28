@@ -1,93 +1,192 @@
-public abstract class frf {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final fpa d;
-   protected final bnx e;
+import java.util.function.Consumer;
 
-   protected frf(fpa $$0, bnx $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class frf extends fqk {
+   private static final int a = 1;
+   private static final int c = -3092272;
+   private static final String d = "_";
+   private static final int e = -2039584;
+   private static final int f = -857677600;
+   private static final int m = 300;
+   private final fpx n;
+   private final wv o;
+   private final fri p;
+   private long q = af.c();
+
+   public frf(fpx $$0, int $$1, int $$2, int $$3, int $$4, wv $$5, wv $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.n = $$0;
+      this.o = $$5;
+      this.p = new fri($$0, $$3 - this.b());
+      this.p.a(this::r);
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
+   public void a(int $$0) {
+      this.p.a($$0);
    }
 
-   public int a() {
-      return 60 + 9;
+   public void b(Consumer<String> $$0) {
+      this.p.a($$0);
    }
 
-   public void a(fpc $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gnh.L(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
+   public void a(String $$0) {
+      this.p.a($$0);
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   public String q() {
+      return this.p.c();
+   }
+
+   @Override
+   public void a(fuk $$0) {
+      $$0.a(fuj.a, wv.a("gui.narrate.editBox", this.B(), this.q()));
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      this.p.a(fwf.t());
+      this.c($$0, $$1);
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p.a(true);
+      this.c($$0, $$1);
+      this.p.a(fwf.t());
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.p.e($$0);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aI_() && bah.a($$0)) {
+         this.p.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   protected void c(fpz $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.p.c();
+      if ($$4.isEmpty() && !this.aI_()) {
+         $$0.a(this.n, (xa)this.o, this.e(), this.p(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.p.d();
+         boolean $$6 = this.aI_() && (af.c() - this.q) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.p();
+
+         for (fri.a $$11 : this.p.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.n, $$4.substring($$11.a(), $$5), this.e(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.n, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.n, $$4.substring($$11.a(), $$11.b()), this.e(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
+            }
+
+            $$10 += 9;
+         }
+
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.n, "_", $$8, $$9, -3092272);
+         }
+
+         if (this.p.i()) {
+            fri.a $$13 = this.p.e();
+            int $$14 = this.e();
+            $$10 = this.p();
+
+            for (fri.a $$15 : this.p.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.n.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.n.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void b(fpz $$0) {
+      super.b($$0);
+      if (this.p.b()) {
+         int $$1 = this.p.a();
+         wv $$2 = wv.a("gui.multiLineEditBox.character_limit", this.p.c().length(), $$1);
+         $$0.b(this.n, $$2, this.F() + this.g - this.n.a($$2), this.G() + this.h + 4, 10526880);
+      }
+   }
+
+   @Override
+   public int c() {
+      return 9 * this.p.f();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0 / 2.0;
+   }
+
+   private void b(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(goi.N(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   private void r() {
+      double $$0 = this.g();
+      fri.a $$1 = this.p.c((int)($$0 / 9.0));
+      if (this.p.d() <= $$1.a()) {
+         $$0 = (double)(this.p.g() * 9);
+      } else {
+         fri.a $$2 = this.p.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.p.d() > $$2.b()) {
+            $$0 = (double)(this.p.g() * 9 - this.h + 9 + this.b());
+         }
       }
 
-      $$0.a(gnh.L(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gnh.L(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gnh.L(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gnh.L(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      this.a($$0);
+   }
+
+   private void c(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.F() - (double)this.a();
+      double $$3 = $$1 - (double)this.G() - (double)this.a() + this.g();
+      this.p.a($$2, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.q = af.c();
       }
-
-      this.d($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(fpc $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
-   }
-
-   protected void b(fpc $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gnh.L(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
-   }
-
-   protected void c(fpc $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
-
-   protected void d(fpc $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(fpc $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gnh.L(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = ayz.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axk.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axk.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

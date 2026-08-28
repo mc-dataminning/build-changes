@@ -1,63 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class xc {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xb[] c;
+public record xc(List<xh> d) {
+   public static final Codec<xc> a = xh.a.listOf().xmap(xc::new, xc::a);
+   public static xc b = new xc(List.of());
+   public static final int c = 20;
 
-   public xc(int $$0) {
-      this.c = new xb[$$0];
+   public void a(azw.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (xh $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public static xc a() {
-      return new xc(128);
+   public xc.a a(xi $$0) {
+      return new xc.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public int a(xb $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
-         }
+   public List<xh> a() {
+      return this.d;
+   }
+
+   public static record a(List<xh.a> b) {
+      public static final xc.a a = new xc.a(List.of());
+
+      public a(vr $$0) {
+         this($$0.a(vr.a(ArrayList::new, 20), xh.a::a));
       }
 
-      return -1;
-   }
-
-   @Nullable
-   public xb a(int $$0) {
-      return this.c[$$0];
-   }
-
-   public void a(xi $$0, @Nullable xb $$1) {
-      List<xb> $$2 = $$0.d().a();
-      ArrayDeque<xb> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
+      public void a(vr $$0) {
+         $$0.a(this.b, xh.a::a);
       }
 
-      this.a($$3);
-   }
+      public Optional<xc> a(xi $$0) {
+         List<xh> $$1 = new ArrayList<>(this.b.size());
 
-   @VisibleForTesting
-   void a(List<xb> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
+         for (xh.a $$2 : this.b) {
+            Optional<xh> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
 
-   private void a(ArrayDeque<xb> $$0) {
-      Set<xb> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xb $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
+            $$1.add($$3.get());
          }
+
+         return Optional.of(new xc($$1));
+      }
+
+      public List<xh.a> a() {
+         return this.b;
+      }
+   }
+
+   public static record b(int a, BitSet b) {
+      public b(vr $$0) {
+         this($$0.l(), $$0.e(20));
+      }
+
+      public void a(vr $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
       }
    }
 }

@@ -1,374 +1,122 @@
-import com.google.common.hash.HashCode;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Path;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class hiu {
-   private final hir a;
-   final his b;
-   private final hit c;
-   private final Runnable d;
-   private hiu.c e;
-   final List<hiu.e> f = new ArrayList<>();
+   private static final Logger e = LogUtils.getLogger();
+   private static final akw f = akw.a("blockstates");
+   private static final String g = "map";
+   private static final String h = "map=true";
+   private static final String i = "map=false";
+   private static final dyn<dku, dym> j = new dyn.a<dku, dym>(dkw.a).a(dzd.a("map")).a(dku::m, dym::new);
+   private static final ald k = ald.b("glow_item_frame");
+   private static final ald l = ald.b("item_frame");
+   private static final Map<ald, dyn<dku, dym>> m = Map.of(l, j, k, j);
+   public static final hjh a = new hjh(k, "map=true");
+   public static final hjh b = new hjh(k, "map=false");
+   public static final hjh c = new hjh(l, "map=true");
+   public static final hjh d = new hjh(l, "map=false");
 
-   public hiu(hir $$0, his $$1, hit $$2, Runnable $$3, hiu.c $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private static Function<ald, dyn<dku, dym>> a() {
+      Map<ald, dyn<dku, dym>> $$0 = new HashMap<>(m);
+
+      for (dku $$1 : md.e) {
+         $$0.put($$1.p().h().a(), $$1.l());
+      }
+
+      return $$0::get;
    }
 
-   void f() {
-      this.d.run();
-   }
+   public static CompletableFuture<hiu.c> a(hjn $$0, ava $$1, Executor $$2) {
+      Function<ald, dyn<dku, dym>> $$3 = a();
+      return CompletableFuture.<Map<ald, List<auy>>>supplyAsync(() -> f.b($$1), $$2).thenCompose($$3x -> {
+         List<CompletableFuture<hiu.c>> $$4 = new ArrayList<>($$3x.size());
 
-   private void b(UUID $$0) {
-      for (hiu.e $$1 : this.f) {
-         if ($$1.a.equals($$0)) {
-            $$1.a(hiu.d.f);
+         for (Entry<ald, List<auy>> $$5 : $$3x.entrySet()) {
+            $$4.add(CompletableFuture.supplyAsync(() -> {
+               ald $$3xx = f.b($$5.getKey());
+               dyn<dku, dym> $$4x = $$3.apply($$3xx);
+               if ($$4x == null) {
+                  e.debug("Discovered unknown block state definition {}, ignoring", $$3xx);
+                  return null;
+               } else {
+                  List<auy> $$5x = $$5.getValue();
+                  List<hiu.a> $$6 = new ArrayList<>($$5x.size());
+
+                  for (auy $$7 : $$5x) {
+                     try (Reader $$8 = $$7.e()) {
+                        JsonObject $$9 = aza.a($$8);
+                        gpl $$10 = gpl.a($$9);
+                        $$6.add(new hiu.a($$7.b(), $$10));
+                     } catch (Exception var15) {
+                        e.error("Failed to load blockstate definition {} from pack {}", new Object[]{$$3xx, $$7.b(), var15});
+                     }
+                  }
+
+                  try {
+                     return a($$3xx, $$4x, $$6, $$0);
+                  } catch (Exception var12) {
+                     e.error("Failed to load blockstate definition {}", $$3xx, var12);
+                     return null;
+                  }
+               }
+            }, $$2));
          }
-      }
-   }
 
-   public void a(UUID $$0, URL $$1, @Nullable HashCode $$2) {
-      if (this.e == hiu.c.c) {
-         this.b.a($$0, his.a.a);
-      } else {
-         this.a($$0, new hiu.e($$0, $$1, $$2));
-      }
-   }
+         return af.d($$4).thenApply($$0xx -> {
+            Map<hjh, hiu.b> $$1xx = new HashMap<>();
 
-   public void a(UUID $$0, Path $$1) {
-      if (this.e == hiu.c.c) {
-         this.b.a($$0, his.a.a);
-      } else {
-         URL $$2;
-         try {
-            $$2 = $$1.toUri().toURL();
-         } catch (MalformedURLException var5) {
-            throw new IllegalStateException("Can't convert path to URL " + $$1, var5);
-         }
-
-         hiu.e $$5 = new hiu.e($$0, $$2, null);
-         $$5.f = hiu.b.c;
-         $$5.d = $$1;
-         this.a($$0, $$5);
-      }
-   }
-
-   private void a(UUID $$0, hiu.e $$1) {
-      this.b($$0);
-      this.f.add($$1);
-      if (this.e == hiu.c.b) {
-         this.a($$1);
-      }
-
-      this.f();
-   }
-
-   private void a(hiu.e $$0) {
-      this.b.a($$0.a, his.b.a);
-      $$0.h = true;
-   }
-
-   @Nullable
-   private hiu.e c(UUID $$0) {
-      for (hiu.e $$1 : this.f) {
-         if (!$$1.a() && $$1.a.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(UUID $$0) {
-      hiu.e $$1 = this.c($$0);
-      if ($$1 != null) {
-         $$1.a(hiu.d.e);
-         this.f();
-      }
-   }
-
-   public void a() {
-      for (hiu.e $$0 : this.f) {
-         $$0.a(hiu.d.e);
-      }
-
-      this.f();
-   }
-
-   public void b() {
-      this.e = hiu.c.b;
-
-      for (hiu.e $$0 : this.f) {
-         if (!$$0.h && !$$0.a()) {
-            this.a($$0);
-         }
-      }
-
-      this.f();
-   }
-
-   public void c() {
-      this.e = hiu.c.c;
-
-      for (hiu.e $$0 : this.f) {
-         if (!$$0.h) {
-            $$0.a(hiu.d.c);
-         }
-      }
-
-      this.f();
-   }
-
-   public void d() {
-      this.e = hiu.c.a;
-   }
-
-   public void e() {
-      boolean $$0 = this.h();
-      if (!$$0) {
-         this.i();
-      }
-
-      this.g();
-   }
-
-   private void g() {
-      this.f.removeIf($$0 -> {
-         if ($$0.g != hiu.a.a) {
-            return false;
-         } else if ($$0.e != null) {
-            his.a $$1 = $$0.e.g;
-            if ($$1 != null) {
-               this.b.a($$0.a, $$1);
+            for (hiu.c $$2xx : $$0xx) {
+               if ($$2xx != null) {
+                  $$1xx.putAll($$2xx.c());
+               }
             }
 
-            return true;
-         } else {
-            return false;
-         }
+            return new hiu.c($$1xx);
+         });
       });
    }
 
-   private void a(Collection<hiu.e> $$0, asx.b $$1) {
-      if (!$$1.b().isEmpty()) {
-         for (hiu.e $$2 : this.f) {
-            if ($$2.g != hiu.a.c) {
-               if ($$1.b().contains($$2.a)) {
-                  $$2.a(hiu.d.a);
-               } else {
-                  $$2.a(hiu.d.d);
-               }
-            }
-         }
-      }
+   private static hiu.c a(ald $$0, dyn<dku, dym> $$1, List<hiu.a> $$2, hjn $$3) {
+      Map<hjh, hiu.b> $$4 = new HashMap<>();
 
-      for (hiu.e $$3 : $$0) {
-         Path $$4 = $$1.a().get($$3.a);
-         if ($$4 != null) {
-            $$3.f = hiu.b.c;
-            $$3.d = $$4;
-            if (!$$3.a()) {
-               this.b.a($$3.a, his.b.b);
-            }
-         }
-      }
-
-      this.f();
-   }
-
-   private boolean h() {
-      List<hiu.e> $$0 = new ArrayList<>();
-      boolean $$1 = false;
-
-      for (hiu.e $$2 : this.f) {
-         if (!$$2.a() && $$2.h) {
-            if ($$2.f != hiu.b.c) {
-               $$1 = true;
-            }
-
-            if ($$2.f == hiu.b.a) {
-               $$2.f = hiu.b.b;
-               $$0.add($$2);
-            }
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         Map<UUID, asx.c> $$3 = new HashMap<>();
-
-         for (hiu.e $$4 : $$0) {
-            $$3.put($$4.a, new asx.c($$4.b, $$4.c));
-         }
-
-         this.a.a($$3, $$1x -> this.a($$0, $$1x));
-      }
-
-      return $$1;
-   }
-
-   private void i() {
-      boolean $$0 = false;
-      final List<hiu.e> $$1 = new ArrayList<>();
-      final List<hiu.e> $$2 = new ArrayList<>();
-
-      for (hiu.e $$3 : this.f) {
-         if ($$3.g == hiu.a.b) {
-            return;
-         }
-
-         boolean $$4 = $$3.h && $$3.f == hiu.b.c && !$$3.a();
-         if ($$4 && $$3.g == hiu.a.a) {
-            $$1.add($$3);
-            $$0 = true;
-         }
-
-         if ($$3.g == hiu.a.c) {
-            if (!$$4) {
-               $$0 = true;
-               $$2.add($$3);
-            } else {
-               $$1.add($$3);
-            }
-         }
-      }
-
-      if ($$0) {
-         for (hiu.e $$5 : $$1) {
-            if ($$5.g != hiu.a.c) {
-               $$5.g = hiu.a.b;
-            }
-         }
-
-         for (hiu.e $$6 : $$2) {
-            $$6.g = hiu.a.b;
-         }
-
-         this.c.scheduleReload(new hit.a() {
-            @Override
-            public void a() {
-               for (hiu.e $$0 : $$1) {
-                  $$0.g = hiu.a.c;
-                  if ($$0.e == null) {
-                     hiu.this.b.a($$0.a, his.a.b);
-                  }
-               }
-
-               for (hiu.e $$1 : $$2) {
-                  $$1.g = hiu.a.a;
-               }
-
-               hiu.this.f();
-            }
-
-            @Override
-            public void a(boolean $$0) {
-               if (!$$0) {
-                  $$1.clear();
-
-                  for (hiu.e $$1 : hiu.this.f) {
-                     switch ($$1.g) {
-                        case a:
-                           $$1.a(hiu.d.d);
-                           break;
-                        case b:
-                           $$1.g = hiu.a.a;
-                           $$1.a(hiu.d.b);
-                           break;
-                        case c:
-                           $$1.add($$1);
-                     }
-                  }
-
-                  hiu.this.f();
-               } else {
-                  for (hiu.e $$2 : hiu.this.f) {
-                     if ($$2.g == hiu.a.b) {
-                        $$2.g = hiu.a.a;
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public List<hit.b> b() {
-               return $$1.stream().map($$0 -> new hit.b($$0.a, $$0.d)).toList();
-            }
+      for (hiu.a $$5 : $$2) {
+         $$5.b.a($$1, $$0 + "/" + $$5.a).forEach(($$2x, $$3x) -> {
+            hjh $$4x = gpb.a($$0, $$2x);
+            $$4.put($$4x, new hiu.b($$2x, $$3x));
          });
       }
+
+      return new hiu.c($$4);
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   static record a(String a, gpl b) {
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   public static record b(dym a, gps b) {
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
-   }
-
-   static enum d {
-      a(his.a.d),
-      b(his.a.e),
-      c(his.a.a),
-      d(his.a.c),
-      e(null),
-      f(null);
-
-      @Nullable
-      final his.a g;
-
-      private d(@Nullable final his.a $$0) {
-         this.g = $$0;
-      }
-   }
-
-   static class e {
-      final UUID a;
-      final URL b;
-      @Nullable
-      final HashCode c;
-      @Nullable
-      Path d;
-      @Nullable
-      hiu.d e;
-      hiu.b f = hiu.b.a;
-      hiu.a g = hiu.a.a;
-      boolean h;
-
-      e(UUID $$0, URL $$1, @Nullable HashCode $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static record c(Map<hjh, hiu.b> a) {
+      public Stream<hjk> a() {
+         return this.a.values().stream().map(hiu.b::b);
       }
 
-      public void a(hiu.d $$0) {
-         if (this.e == null) {
-            this.e = $$0;
-         }
+      public Map<hjh, gps> b() {
+         return af.a(this.a, hiu.b::b);
       }
 
-      public boolean a() {
-         return this.e != null;
+      public Map<hjh, hiu.b> c() {
+         return this.a;
       }
    }
 }

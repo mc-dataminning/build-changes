@@ -1,39 +1,103 @@
-import java.util.List;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cev<T extends bwa & bwd> extends ccw {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cev extends cdn {
+   private static final chg c = chg.b().d();
+   private final chg d;
+   protected final bwz a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cqi b;
+   private int k;
+   private boolean l;
+   private final Predicate<cxy> m;
+   private final boolean n;
 
-   public cev(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cev(bwz $$0, double $$1, Predicate<cxy> $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
+      this.d = c.c().a(($$0x, $$1x) -> this.a($$0x));
    }
 
    @Override
    public boolean b() {
-      return a(this.b).O().b(dgv.P) && this.h();
+      if (this.k > 0) {
+         this.k--;
+         return false;
+      } else {
+         this.b = a(this.a).a(this.d.a(this.a.h(bxx.E)), this.a);
+         return this.b != null;
+      }
    }
 
-   private boolean h() {
-      return this.b.ep() != null && this.b.ep().aq() == bvi.bR && this.b.er() > this.d;
+   private boolean a(bwr $$0) {
+      return this.m.test($$0.fa()) || this.m.test($$0.fb());
+   }
+
+   @Override
+   public boolean c() {
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dN() - this.i) > 5.0 || Math.abs((double)this.b.dL() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dA();
+            this.g = this.b.dC();
+            this.h = this.b.dG();
+         }
+
+         this.i = (double)this.b.dN();
+         this.j = (double)this.b.dL();
+      }
+
+      return this.b();
+   }
+
+   protected boolean h() {
+      return this.n;
    }
 
    @Override
    public void d() {
-      this.d = this.b.er();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwd)$$0).forEach(bwd::aa_);
-      }
-
-      super.d();
+      this.f = this.b.dA();
+      this.g = this.b.dC();
+      this.h = this.b.dG();
+      this.l = true;
    }
 
-   private List<? extends bwa> i() {
-      double $$0 = this.b.h(bxg.m);
-      fbs $$1 = fbs.a(this.b.ds()).c($$0, 10.0, $$0);
-      return this.b.dU().a((Class<? extends bwa>)this.b.getClass(), $$1, bvg.f);
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.O().m();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void a() {
+      this.a.J().a(this.b, (float)(this.a.ad() + 20), (float)this.a.ac());
+      if (this.a.g(this.b) < 6.25) {
+         this.a.O().m();
+      } else {
+         this.a.O().a(this.b, this.e);
+      }
+   }
+
+   public boolean i() {
+      return this.l;
    }
 }

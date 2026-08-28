@@ -1,18 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.slf4j.Logger;
 
 public class exc {
-   public static final Codec<exe> a = mb.D.q().dispatch(exe::a, exf::a);
-   public static final exf b = a("empty", ewz.a);
-   public static final exf c = a("item", exb.a);
-   public static final exf d = a("loot_table", exh.a);
-   public static final exf e = a("dynamic", ewy.a);
-   public static final exf f = a("tag", exj.a);
-   public static final exf g = a("alternatives", ewv.a);
-   public static final exf h = a("sequence", exi.a);
-   public static final exf i = a("group", exa.a);
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = ewu.a();
 
-   private static exf a(String $$0, MapCodec<? extends exe> $$1) {
-      return ke.a(mb.D, aku.b($$0), new exf($$1));
+   public exc(ewz.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(ewx.c).toFile();
+      this.c.mkdirs();
+   }
+
+   public void a(cqi $$0) {
+      try {
+         tw $$1 = $$0.f(new tw());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cH() + "-", ".dat");
+         uj.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cH() + ".dat");
+         Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
+         af.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.al().getString());
+      }
+   }
+
+   private void a(cqi $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cH() + $$1);
+      Path $$4 = $$2.resolve($$0.cH() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.al().getString(), var7);
+         }
+      }
+   }
+
+   private Optional<tw> b(cqi $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cH() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(uj.a($$2.toPath(), uf.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.al().getString());
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public Optional<tw> b(cqi $$0) {
+      Optional<tw> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
+
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = ul.b($$1x, -1);
+         $$1x = bax.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

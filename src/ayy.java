@@ -1,49 +1,43 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public record ayy(ayy.a a, String b) {
-   public static ayy a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new ayy(ayy.a.c, $$2 + " brand changed to '" + $$4 + "'");
-      } else {
-         return $$3.getSigners() == null
-            ? new ayy(ayy.a.b, $$2 + " jar signature invalidated")
-            : new ayy(ayy.a.a, $$2 + " jar signature and brand is untouched");
-      }
+public class ayy implements bai, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
+
+   public ayy(Executor $$0) {
+      this.d = $$0;
    }
 
-   public boolean a() {
-      return this.a.e;
+   @Override
+   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
+      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
+         if (!this.e) {
+            $$1.accept((T)$$1x);
+         }
+      }, this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1x) {
+            $$0x = $$1x.getCause();
+         }
+
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
    }
 
-   public ayy a(ayy $$0) {
-      return new ayy((ayy.a)ObjectUtils.max(new ayy.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
-   }
-
-   public String b() {
-      return this.a.d + " " + this.b;
-   }
-
-   public ayy.a c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(final String $$0, final boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

@@ -1,160 +1,387 @@
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
 public class gnr {
-   public static void a(fgr $$0, fgv $$1, fcr $$2, double $$3, double $$4, double $$5, int $$6) {
-      fgr.a $$7 = $$0.c();
-      $$2.a(($$6x, $$7x, $$8, $$9, $$10, $$11) -> {
-         Vector3f $$12 = new Vector3f((float)($$9 - $$6x), (float)($$10 - $$7x), (float)($$11 - $$8)).normalize();
-         $$1.a($$7, (float)($$6x + $$3), (float)($$7x + $$4), (float)($$8 + $$5)).a($$6).b($$7, $$12);
-         $$1.a($$7, (float)($$9 + $$3), (float)($$10 + $$4), (float)($$11 + $$5)).a($$6).b($$7, $$12);
-      });
-   }
+   private static final Map<dku, goi> a = af.a(Maps.newHashMap(), $$0 -> {
+      goi $$1 = goi.s();
+      $$0.put(dkw.gd, $$1);
+      goi $$2 = goi.d();
+      $$0.put(dkw.i, $$2);
+      $$0.put(dkw.fk, $$2);
+      $$0.put(dkw.fm, $$2);
+      $$0.put(dkw.gc, $$2);
+      $$0.put(dkw.hz, $$2);
+      $$0.put(dkw.fl, $$2);
+      $$0.put(dkw.aN, $$2);
+      $$0.put(dkw.aK, $$2);
+      $$0.put(dkw.aL, $$2);
+      $$0.put(dkw.aO, $$2);
+      $$0.put(dkw.aP, $$2);
+      $$0.put(dkw.aM, $$2);
+      $$0.put(dkw.aQ, $$2);
+      $$0.put(dkw.aR, $$2);
+      $$0.put(dkw.aT, $$2);
+      $$0.put(dkw.aU, $$2);
+      $$0.put(dkw.ag, $$2);
+      $$0.put(dkw.aS, $$2);
+      goi $$3 = goi.e();
+      $$0.put(dkw.z, $$3);
+      $$0.put(dkw.A, $$3);
+      $$0.put(dkw.B, $$3);
+      $$0.put(dkw.C, $$3);
+      $$0.put(dkw.D, $$3);
+      $$0.put(dkw.E, $$3);
+      $$0.put(dkw.F, $$3);
+      $$0.put(dkw.G, $$3);
+      $$0.put(dkw.aX, $$3);
+      $$0.put(dkw.bg, $$3);
+      $$0.put(dkw.bh, $$3);
+      $$0.put(dkw.bi, $$3);
+      $$0.put(dkw.bj, $$3);
+      $$0.put(dkw.bk, $$3);
+      $$0.put(dkw.bl, $$3);
+      $$0.put(dkw.bm, $$3);
+      $$0.put(dkw.bn, $$3);
+      $$0.put(dkw.bo, $$3);
+      $$0.put(dkw.bp, $$3);
+      $$0.put(dkw.bq, $$3);
+      $$0.put(dkw.br, $$3);
+      $$0.put(dkw.bs, $$3);
+      $$0.put(dkw.bt, $$3);
+      $$0.put(dkw.bu, $$3);
+      $$0.put(dkw.bv, $$3);
+      $$0.put(dkw.bw, $$3);
+      $$0.put(dkw.bx, $$3);
+      $$0.put(dkw.bz, $$3);
+      $$0.put(dkw.bA, $$3);
+      $$0.put(dkw.bB, $$3);
+      $$0.put(dkw.bC, $$3);
+      $$0.put(dkw.bD, $$3);
+      $$0.put(dkw.bE, $$3);
+      $$0.put(dkw.bY, $$3);
+      $$0.put(dkw.ud, $$3);
+      $$0.put(dkw.ue, $$3);
+      $$0.put(dkw.ca, $$3);
+      $$0.put(dkw.cb, $$3);
+      $$0.put(dkw.cc, $$3);
+      $$0.put(dkw.cd, $$3);
+      $$0.put(dkw.ce, $$3);
+      $$0.put(dkw.cf, $$3);
+      $$0.put(dkw.cg, $$3);
+      $$0.put(dkw.ch, $$3);
+      $$0.put(dkw.ci, $$3);
+      $$0.put(dkw.cj, $$3);
+      $$0.put(dkw.ck, $$3);
+      $$0.put(dkw.cl, $$3);
+      $$0.put(dkw.cm, $$3);
+      $$0.put(dkw.cn, $$3);
+      $$0.put(dkw.cw, $$3);
+      $$0.put(dkw.cx, $$3);
+      $$0.put(dkw.en, $$3);
+      $$0.put(dkw.eo, $$3);
+      $$0.put(dkw.cy, $$3);
+      $$0.put(dkw.cz, $$3);
+      $$0.put(dkw.cA, $$3);
+      $$0.put(dkw.tX, $$3);
+      $$0.put(dkw.tY, $$3);
+      $$0.put(dkw.cE, $$3);
+      $$0.put(dkw.cJ, $$3);
+      $$0.put(dkw.cW, $$3);
+      $$0.put(dkw.cX, $$3);
+      $$0.put(dkw.cY, $$3);
+      $$0.put(dkw.dK, $$3);
+      $$0.put(dkw.dX, $$3);
+      $$0.put(dkw.dY, $$3);
+      $$0.put(dkw.ed, $$3);
+      $$0.put(dkw.ef, $$3);
+      $$0.put(dkw.eu, $$3);
+      $$0.put(dkw.eL, $$3);
+      $$0.put(dkw.eM, $$3);
+      $$0.put(dkw.eN, $$3);
+      $$0.put(dkw.eO, $$3);
+      $$0.put(dkw.eP, $$3);
+      $$0.put(dkw.eQ, $$3);
+      $$0.put(dkw.eR, $$3);
+      $$0.put(dkw.eS, $$3);
+      $$0.put(dkw.po, $$3);
+      $$0.put(dkw.pp, $$3);
+      $$0.put(dkw.eT, $$3);
+      $$0.put(dkw.eU, $$3);
+      $$0.put(dkw.sy, $$3);
+      $$0.put(dkw.sz, $$3);
+      $$0.put(dkw.sB, $$3);
+      $$0.put(dkw.sA, $$3);
+      $$0.put(dkw.sC, $$3);
+      $$0.put(dkw.sD, $$3);
+      $$0.put(dkw.sF, $$3);
+      $$0.put(dkw.sE, $$3);
+      $$0.put(dkw.fp, $$3);
+      $$0.put(dkw.fq, $$3);
+      $$0.put(dkw.fr, $$3);
+      $$0.put(dkw.fs, $$3);
+      $$0.put(dkw.ft, $$3);
+      $$0.put(dkw.ub, $$3);
+      $$0.put(dkw.uc, $$3);
+      $$0.put(dkw.fu, $$3);
+      $$0.put(dkw.fv, $$3);
+      $$0.put(dkw.fB, $$3);
+      $$0.put(dkw.fL, $$3);
+      $$0.put(dkw.fN, $$3);
+      $$0.put(dkw.fX, $$3);
+      $$0.put(dkw.gj, $$3);
+      $$0.put(dkw.gm, $$3);
+      $$0.put(dkw.go, $$3);
+      $$0.put(dkw.gp, $$3);
+      $$0.put(dkw.gq, $$3);
+      $$0.put(dkw.gr, $$3);
+      $$0.put(dkw.gs, $$3);
+      $$0.put(dkw.gt, $$3);
+      $$0.put(dkw.gu, $$3);
+      $$0.put(dkw.gv, $$3);
+      $$0.put(dkw.gw, $$3);
+      $$0.put(dkw.gx, $$3);
+      $$0.put(dkw.gy, $$3);
+      $$0.put(dkw.gz, $$3);
+      $$0.put(dkw.uf, $$3);
+      $$0.put(dkw.ug, $$3);
+      $$0.put(dkw.gA, $$3);
+      $$0.put(dkw.gB, $$3);
+      $$0.put(dkw.gC, $$3);
+      $$0.put(dkw.gD, $$3);
+      $$0.put(dkw.gE, $$3);
+      $$0.put(dkw.gF, $$3);
+      $$0.put(dkw.gG, $$3);
+      $$0.put(dkw.gH, $$3);
+      $$0.put(dkw.gI, $$3);
+      $$0.put(dkw.gJ, $$3);
+      $$0.put(dkw.gK, $$3);
+      $$0.put(dkw.gL, $$3);
+      $$0.put(dkw.gM, $$3);
+      $$0.put(dkw.gN, $$3);
+      $$0.put(dkw.gO, $$3);
+      $$0.put(dkw.tO, $$3);
+      $$0.put(dkw.tP, $$3);
+      $$0.put(dkw.gn, $$3);
+      $$0.put(dkw.gP, $$3);
+      $$0.put(dkw.gQ, $$3);
+      $$0.put(dkw.hv, $$3);
+      $$0.put(dkw.hE, $$3);
+      $$0.put(dkw.iw, $$3);
+      $$0.put(dkw.jb, $$3);
+      $$0.put(dkw.jc, $$3);
+      $$0.put(dkw.jd, $$3);
+      $$0.put(dkw.je, $$3);
+      $$0.put(dkw.jf, $$3);
+      $$0.put(dkw.jg, $$3);
+      $$0.put(dkw.kM, $$3);
+      $$0.put(dkw.kN, $$3);
+      $$0.put(dkw.kO, $$3);
+      $$0.put(dkw.kP, $$3);
+      $$0.put(dkw.kQ, $$3);
+      $$0.put(dkw.kR, $$3);
+      $$0.put(dkw.kS, $$3);
+      $$0.put(dkw.kT, $$3);
+      $$0.put(dkw.kU, $$3);
+      $$0.put(dkw.sq, $$3);
+      $$0.put(dkw.sr, $$3);
+      $$0.put(dkw.st, $$3);
+      $$0.put(dkw.ss, $$3);
+      $$0.put(dkw.su, $$3);
+      $$0.put(dkw.sv, $$3);
+      $$0.put(dkw.sx, $$3);
+      $$0.put(dkw.sw, $$3);
+      $$0.put(dkw.kV, $$3);
+      $$0.put(dkw.kW, $$3);
+      $$0.put(dkw.kX, $$3);
+      $$0.put(dkw.bZ, $$3);
+      $$0.put(dkw.lc, $$3);
+      $$0.put(dkw.le, $$3);
+      $$0.put(dkw.ld, $$3);
+      $$0.put(dkw.lf, $$3);
+      $$0.put(dkw.mE, $$3);
+      $$0.put(dkw.mF, $$3);
+      $$0.put(dkw.mH, $$3);
+      $$0.put(dkw.mT, $$3);
+      $$0.put(dkw.mU, $$3);
+      $$0.put(dkw.mV, $$3);
+      $$0.put(dkw.mW, $$3);
+      $$0.put(dkw.mX, $$3);
+      $$0.put(dkw.mY, $$3);
+      $$0.put(dkw.mZ, $$3);
+      $$0.put(dkw.na, $$3);
+      $$0.put(dkw.nb, $$3);
+      $$0.put(dkw.nc, $$3);
+      $$0.put(dkw.nd, $$3);
+      $$0.put(dkw.ne, $$3);
+      $$0.put(dkw.nf, $$3);
+      $$0.put(dkw.ng, $$3);
+      $$0.put(dkw.nh, $$3);
+      $$0.put(dkw.ni, $$3);
+      $$0.put(dkw.nj, $$3);
+      $$0.put(dkw.nk, $$3);
+      $$0.put(dkw.nl, $$3);
+      $$0.put(dkw.nm, $$3);
+      $$0.put(dkw.nn, $$3);
+      $$0.put(dkw.no, $$3);
+      $$0.put(dkw.np, $$3);
+      $$0.put(dkw.nq, $$3);
+      $$0.put(dkw.nr, $$3);
+      $$0.put(dkw.ns, $$3);
+      $$0.put(dkw.nt, $$3);
+      $$0.put(dkw.nu, $$3);
+      $$0.put(dkw.nv, $$3);
+      $$0.put(dkw.nw, $$3);
+      $$0.put(dkw.nx, $$3);
+      $$0.put(dkw.nz, $$3);
+      $$0.put(dkw.nA, $$3);
+      $$0.put(dkw.nB, $$3);
+      $$0.put(dkw.nC, $$3);
+      $$0.put(dkw.ou, $$3);
+      $$0.put(dkw.oE, $$3);
+      $$0.put(dkw.oG, $$3);
+      $$0.put(dkw.oH, $$3);
+      $$0.put(dkw.oI, $$3);
+      $$0.put(dkw.oJ, $$3);
+      $$0.put(dkw.oK, $$3);
+      $$0.put(dkw.pb, $$3);
+      $$0.put(dkw.pc, $$3);
+      $$0.put(dkw.pd, $$3);
+      $$0.put(dkw.pe, $$3);
+      $$0.put(dkw.oT, $$3);
+      $$0.put(dkw.oZ, $$3);
+      $$0.put(dkw.oQ, $$3);
+      $$0.put(dkw.pf, $$3);
+      $$0.put(dkw.oS, $$3);
+      $$0.put(dkw.pQ, $$3);
+      $$0.put(dkw.pR, $$3);
+      $$0.put(dkw.pS, $$3);
+      $$0.put(dkw.pT, $$3);
+      $$0.put(dkw.pw, $$3);
+      $$0.put(dkw.px, $$3);
+      $$0.put(dkw.sX, $$3);
+      $$0.put(dkw.rc, $$3);
+      $$0.put(dkw.rb, $$3);
+      $$0.put(dkw.ra, $$3);
+      $$0.put(dkw.qZ, $$3);
+      $$0.put(dkw.sW, $$3);
+      $$0.put(dkw.sZ, $$3);
+      $$0.put(dkw.ta, $$3);
+      $$0.put(dkw.tb, $$3);
+      $$0.put(dkw.td, $$3);
+      $$0.put(dkw.tc, $$3);
+      $$0.put(dkw.tf, $$3);
+      $$0.put(dkw.tg, $$3);
+      $$0.put(dkw.th, $$3);
+      $$0.put(dkw.tj, $$3);
+      $$0.put(dkw.tk, $$3);
+      $$0.put(dkw.tl, $$3);
+      $$0.put(dkw.tm, $$3);
+      $$0.put(dkw.ru, $$3);
+      $$0.put(dkw.rv, $$3);
+      $$0.put(dkw.rx, $$3);
+      $$0.put(dkw.rz, $$3);
+      $$0.put(dkw.H, $$3);
+      $$0.put(dkw.tT, $$3);
+      $$0.put(dkw.sG, $$3);
+      $$0.put(dkw.sH, $$3);
+      $$0.put(dkw.sI, $$3);
+      $$0.put(dkw.sJ, $$3);
+      $$0.put(dkw.sK, $$3);
+      $$0.put(dkw.sL, $$3);
+      $$0.put(dkw.sM, $$3);
+      $$0.put(dkw.sN, $$3);
+      goi $$4 = goi.f();
+      $$0.put(dkw.eb, $$4);
+      $$0.put(dkw.eq, $$4);
+      $$0.put(dkw.ev, $$4);
+      $$0.put(dkw.ew, $$4);
+      $$0.put(dkw.ex, $$4);
+      $$0.put(dkw.ey, $$4);
+      $$0.put(dkw.ez, $$4);
+      $$0.put(dkw.eA, $$4);
+      $$0.put(dkw.eB, $$4);
+      $$0.put(dkw.eC, $$4);
+      $$0.put(dkw.eD, $$4);
+      $$0.put(dkw.eE, $$4);
+      $$0.put(dkw.eF, $$4);
+      $$0.put(dkw.eG, $$4);
+      $$0.put(dkw.eH, $$4);
+      $$0.put(dkw.eI, $$4);
+      $$0.put(dkw.eJ, $$4);
+      $$0.put(dkw.eK, $$4);
+      $$0.put(dkw.hW, $$4);
+      $$0.put(dkw.hX, $$4);
+      $$0.put(dkw.hY, $$4);
+      $$0.put(dkw.hZ, $$4);
+      $$0.put(dkw.ia, $$4);
+      $$0.put(dkw.ib, $$4);
+      $$0.put(dkw.ic, $$4);
+      $$0.put(dkw.id, $$4);
+      $$0.put(dkw.ie, $$4);
+      $$0.put(dkw.if, $$4);
+      $$0.put(dkw.ig, $$4);
+      $$0.put(dkw.ih, $$4);
+      $$0.put(dkw.ii, $$4);
+      $$0.put(dkw.ij, $$4);
+      $$0.put(dkw.ik, $$4);
+      $$0.put(dkw.il, $$4);
+      $$0.put(dkw.it, $$4);
+      $$0.put(dkw.pK, $$4);
+      $$0.put(dkw.lk, $$4);
+      $$0.put(dkw.nF, $$4);
+      $$0.put(dkw.rs, $$4);
+   });
+   private static final Map<eus, goi> b = af.a(Maps.newHashMap(), $$0 -> {
+      goi $$1 = goi.f();
+      $$0.put(euu.b, $$1);
+      $$0.put(euu.c, $$1);
+   });
+   private static boolean c;
 
-   public static void a(fgr $$0, fgv $$1, fbs $$2, float $$3, float $$4, float $$5, float $$6) {
-      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6, $$3, $$4, $$5);
-   }
-
-   public static void a(fgr $$0, fgv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$8, $$9, $$10);
-   }
-
-   public static void a(
-      fgr $$0,
-      fgv $$1,
-      double $$2,
-      double $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      double $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14
-   ) {
-      fgr.a $$15 = $$0.c();
-      float $$16 = (float)$$2;
-      float $$17 = (float)$$3;
-      float $$18 = (float)$$4;
-      float $$19 = (float)$$5;
-      float $$20 = (float)$$6;
-      float $$21 = (float)$$7;
-      $$1.a($$15, $$16, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-   }
-
-   public static void b(fgr $$0, fgv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, (float)$$2, (float)$$3, (float)$$4, (float)$$5, (float)$$6, (float)$$7, $$8, $$9, $$10, $$11);
-   }
-
-   public static void a(fgr $$0, fgv $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      Matrix4f $$12 = $$0.c().a();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-   }
-
-   public static void a(
-      fgr $$0, fgv $$1, jn $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      Matrix4f $$13 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case b:
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case c:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case d:
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case e:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case f:
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
+   public static goi a(dym $$0) {
+      dku $$1 = $$0.b();
+      if ($$1 instanceof dpi) {
+         return c ? goi.d() : goi.c();
+      } else {
+         goi $$2 = a.get($$1);
+         return $$2 != null ? $$2 : goi.c();
       }
    }
 
-   public static void a(fgr $$0, fgv $$1, Vector3f $$2, fbx $$3, int $$4) {
-      fgr.a $$5 = $$0.c();
-      $$1.a($$5, $$2).a($$4).b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
-      $$1.a($$5, (float)((double)$$2.x() + $$3.d), (float)((double)$$2.y() + $$3.e), (float)((double)$$2.z() + $$3.f))
-         .a($$4)
-         .b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
+   public static goi b(dym $$0) {
+      dku $$1 = $$0.b();
+      if ($$1 instanceof dpi) {
+         return c ? goi.d() : goi.c();
+      } else {
+         goi $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == goi.f() ? goi.g() : $$2;
+         } else {
+            return goi.c();
+         }
+      }
+   }
+
+   public static goi c(dym $$0) {
+      goi $$1 = a($$0);
+      return $$1 == goi.f() ? got.j() : got.i();
+   }
+
+   public static goi a(cxy $$0) {
+      if ($$0.h() instanceof cwf $$2) {
+         dku $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return got.j();
+      }
+   }
+
+   public static goi a(eut $$0) {
+      goi $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : goi.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

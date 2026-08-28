@@ -1,78 +1,38 @@
-public interface dfe {
-   akt<dez> a = dff.a("trades/desert_armorer_boots_4");
-   akt<dez> b = dff.a("trades/desert_armorer_leggings_4");
-   akt<dez> c = dff.a("trades/desert_armorer_chestplate_4");
-   akt<dez> d = dff.a("trades/desert_armorer_helmet_4");
-   akt<dez> e = dff.a("trades/desert_armorer_leggings_5");
-   akt<dez> f = dff.a("trades/desert_armorer_chestplate_5");
-   akt<dez> g = dff.a("trades/plains_armorer_boots_4");
-   akt<dez> h = dff.a("trades/plains_armorer_leggings_4");
-   akt<dez> i = dff.a("trades/plains_armorer_chestplate_4");
-   akt<dez> j = dff.a("trades/plains_armorer_helmet_4");
-   akt<dez> k = dff.a("trades/plains_armorer_boots_5");
-   akt<dez> l = dff.a("trades/plains_armorer_leggings_5");
-   akt<dez> m = dff.a("trades/savanna_armorer_boots_4");
-   akt<dez> n = dff.a("trades/savanna_armorer_leggings_4");
-   akt<dez> o = dff.a("trades/savanna_armorer_chestplate_4");
-   akt<dez> p = dff.a("trades/savanna_armorer_helmet_4");
-   akt<dez> q = dff.a("trades/savanna_armorer_chestplate_5");
-   akt<dez> r = dff.a("trades/savanna_armorer_helmet_5");
-   akt<dez> s = dff.a("trades/snow_armorer_boots_4");
-   akt<dez> t = dff.a("trades/snow_armorer_helmet_4");
-   akt<dez> u = dff.a("trades/snow_armorer_boots_5");
-   akt<dez> v = dff.a("trades/snow_armorer_helmet_5");
-   akt<dez> w = dff.a("trades/jungle_armorer_boots_4");
-   akt<dez> x = dff.a("trades/jungle_armorer_leggings_4");
-   akt<dez> y = dff.a("trades/jungle_armorer_chestplate_4");
-   akt<dez> z = dff.a("trades/jungle_armorer_helmet_4");
-   akt<dez> A = dff.a("trades/jungle_armorer_boots_5");
-   akt<dez> B = dff.a("trades/jungle_armorer_helmet_5");
-   akt<dez> C = dff.a("trades/swamp_armorer_boots_4");
-   akt<dez> D = dff.a("trades/swamp_armorer_leggings_4");
-   akt<dez> E = dff.a("trades/swamp_armorer_chestplate_4");
-   akt<dez> F = dff.a("trades/swamp_armorer_helmet_4");
-   akt<dez> G = dff.a("trades/swamp_armorer_boots_5");
-   akt<dez> H = dff.a("trades/swamp_armorer_helmet_5");
-   akt<dez> I = dff.a("trades/taiga_armorer_leggings_5");
-   akt<dez> J = dff.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qe<dez> $$0) {
-      js<ddr> $$1 = $$0.a(mc.aP);
-      $$0.a(a, new dfd($$1.b(ddw.h), bsa.a(1)));
-      $$0.a(b, new dfd($$1.b(ddw.h), bsa.a(1)));
-      $$0.a(c, new dfd($$1.b(ddw.h), bsa.a(1)));
-      $$0.a(d, new dfd($$1.b(ddw.h), bsa.a(1)));
-      $$0.a(e, new dfd($$1.b(ddw.h), bsa.a(1)));
-      $$0.a(f, new dfd($$1.b(ddw.h), bsa.a(1)));
-      $$0.a(g, new dfd($$1.b(ddw.a), bsa.a(1)));
-      $$0.a(h, new dfd($$1.b(ddw.a), bsa.a(1)));
-      $$0.a(i, new dfd($$1.b(ddw.a), bsa.a(1)));
-      $$0.a(j, new dfd($$1.b(ddw.a), bsa.a(1)));
-      $$0.a(k, new dfd($$1.b(ddw.a), bsa.a(1)));
-      $$0.a(l, new dfd($$1.b(ddw.a), bsa.a(1)));
-      $$0.a(m, new dfd($$1.b(ddw.k), bsa.a(1)));
-      $$0.a(n, new dfd($$1.b(ddw.k), bsa.a(1)));
-      $$0.a(o, new dfd($$1.b(ddw.k), bsa.a(1)));
-      $$0.a(p, new dfd($$1.b(ddw.k), bsa.a(1)));
-      $$0.a(q, new dfd($$1.b(ddw.k), bsa.a(1)));
-      $$0.a(r, new dfd($$1.b(ddw.k), bsa.a(1)));
-      $$0.a(s, new dfd($$1.b(ddw.j), bsa.a(1)));
-      $$0.a(t, new dfd($$1.b(ddw.g), bsa.a(1)));
-      $$0.a(u, new dfd($$1.b(ddw.j), bsa.a(1)));
-      $$0.a(v, new dfd($$1.b(ddw.g), bsa.a(1)));
-      $$0.a(w, new dfd($$1.b(ddw.w), bsa.a(1)));
-      $$0.a(x, new dfd($$1.b(ddw.w), bsa.a(1)));
-      $$0.a(y, new dfd($$1.b(ddw.w), bsa.a(1)));
-      $$0.a(z, new dfd($$1.b(ddw.w), bsa.a(1)));
-      $$0.a(A, new dfd($$1.b(ddw.c), bsa.a(1)));
-      $$0.a(B, new dfd($$1.b(ddw.e), bsa.a(1)));
-      $$0.a(C, new dfd($$1.b(ddw.O), bsa.a(1)));
-      $$0.a(D, new dfd($$1.b(ddw.O), bsa.a(1)));
-      $$0.a(E, new dfd($$1.b(ddw.O), bsa.a(1)));
-      $$0.a(F, new dfd($$1.b(ddw.O), bsa.a(1)));
-      $$0.a(G, new dfd($$1.b(ddw.i), bsa.a(1)));
-      $$0.a(H, new dfd($$1.b(ddw.f), bsa.a(1)));
-      $$0.a(I, new dfd($$1.b(ddw.d), bsa.a(1)));
-      $$0.a(J, new dfd($$1.b(ddw.d), bsa.a(1)));
+public record dfe(js<awj> d, bst e, bst f) implements dey {
+   public static final MapCodec<dfe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               awj.b.fieldOf("sound").forGetter(dfe::b),
+               bst.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dfe::c),
+               bst.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dfe::d)
+            )
+            .apply($$0, dfe::new)
+   );
+
+   @Override
+   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
+      azs $$5 = $$3.dY();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dm(), this.e.a($$5), this.f.a($$5));
+      }
+   }
+
+   @Override
+   public MapCodec<dfe> a() {
+      return a;
+   }
+
+   public js<awj> b() {
+      return this.d;
+   }
+
+   public bst c() {
+      return this.e;
+   }
+
+   public bst d() {
+      return this.f;
    }
 }

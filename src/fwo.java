@@ -1,49 +1,38 @@
-import java.util.List;
+public enum fwo {
+   a(
+      ald.b("advancements/box_obtained"),
+      ald.b("advancements/task_frame_obtained"),
+      ald.b("advancements/challenge_frame_obtained"),
+      ald.b("advancements/goal_frame_obtained")
+   ),
+   b(
+      ald.b("advancements/box_unobtained"),
+      ald.b("advancements/task_frame_unobtained"),
+      ald.b("advancements/challenge_frame_unobtained"),
+      ald.b("advancements/goal_frame_unobtained")
+   );
 
-public class fwo {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<aku> e = List.of();
-   private int f;
-   private int g;
+   private final ald c;
+   private final ald d;
+   private final ald e;
+   private final ald f;
 
-   public fwo(int $$0) {
-      this.d = $$0;
+   private fwo(final ald $$0, final ald $$1, final ald $$2, final ald $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void a(List<aku> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   public ald a() {
+      return this.c;
    }
 
-   public void a(csw $$0, fpc $$1, float $$2, int $$3, int $$4) {
-      cut $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
-      }
-   }
-
-   private void a(cut $$0, aku $$1, float $$2, fpc $$3, int $$4, int $$5) {
-      $$3.a(gnh::H, $$1, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axk.a($$2));
-   }
-
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   public ald a(ao $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

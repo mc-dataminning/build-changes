@@ -1,15 +1,12 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ddz(jv<cxd> c) {
-   public static final Codec<ddz> a = RecordCodecBuilder.create($$0 -> $$0.group(kg.a(mc.K).fieldOf("items").forGetter(ddz::a)).apply($$0, ddz::new));
-   public static final yn<wa, ddz> b = yn.a(yl.c(mc.K), ddz::a, ddz::new);
-
-   public boolean a(cxh $$0) {
-      return $$0.a(this.c);
-   }
-
-   public jv<cxd> a() {
-      return this.c;
+public class ddz {
+   public static ddx.i<?> a(kf<ddx.i<?>> $$0) {
+      kf.a($$0, "empty", ddx.c.f);
+      kf.a($$0, "any_fuel", ddx.a.f);
+      kf.a($$0, "item", ddx.d.e);
+      kf.a($$0, "item_stack", ddx.f.e);
+      kf.a($$0, "tag", ddx.h.e);
+      kf.a($$0, "smithing_trim", ddx.g.e);
+      kf.a($$0, "with_remainder", ddx.j.e);
+      return kf.a($$0, "composite", ddx.b.e);
    }
 }

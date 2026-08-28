@@ -1,37 +1,120 @@
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public record fmt(fmt.c a, fmv... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fmv[] var3, int var4, int var5, float var6);
+public interface fmt {
+   fmt a = new fmt.a(0.0F);
+   fmt b = new fmt.a(1.0F);
+
+   float a();
+
+   float a(boolean var1);
+
+   float b();
+
+   public static class a implements fmt {
+      private final float c;
+
+      a(float $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
+      }
    }
 
-   public static class b {
-      public static final fmt.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final fmt.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            ayz.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            ayz.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            ayz.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
-   }
+   public static class b implements fmt {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
 
-   public interface c {
-      void apply(ggc var1, Vector3f var2);
-   }
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
+      }
 
-   public static class d {
-      public static final fmt.c a = ggc::a;
-      public static final fmt.c b = ggc::b;
-      public static final fmt.c c = ggc::c;
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
+         }
+      }
+
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
+      }
+
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
+         }
+      }
+
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
+      }
    }
 }

@@ -1,61 +1,124 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class cmh extends cmo {
-   public static final float a = bvi.M.l() / bvi.ai.l();
-   private static final int d = 1200;
-   private static final int bF = 50;
-   private static final int bG = 6000;
-   private static final int bH = 2;
-   private static final int bI = 1200;
+public class cmh extends cmd {
+   public static final double b = 0.375;
 
-   public cmh(bvi<? extends cmh> $$0, dgz $$1) {
+   public cmh(bwb<? extends cmh> $$0, dhp $$1) {
       super($$0, $$1);
-      this.ga();
-      if (this.c != null) {
-         this.c.c(400);
+   }
+
+   public cmh(dhp $$0, jj $$1) {
+      super(bwb.av, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+   }
+
+   @Override
+   protected void f() {
+      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
+      double $$0 = (double)this.aq().l() / 2.0;
+      double $$1 = (double)this.aq().m();
+      this.a(new fcp(this.dA() - $$0, this.dC(), this.dG() - $$0, this.dA() + $$0, this.dC() + $$1, this.dG() + $$0));
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void a(arn $$0, @Nullable bvs $$1) {
+      this.a(awk.oA, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(tw $$0) {
+   }
+
+   @Override
+   public void a(tw $$0) {
+   }
+
+   @Override
+   public btq a(cqi $$0, btp $$1) {
+      if (this.dV().C) {
+         return btq.a;
+      } else {
+         boolean $$2 = false;
+         List<bwp> $$3 = cyi.a(this.dV(), this.j(), $$1x -> {
+            bvs $$2x = $$1x.C();
+            return $$2x == $$0 || $$2x == this;
+         });
+
+         for (bwp $$4 : $$3) {
+            if ($$4.C() == $$0) {
+               $$4.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$5 = false;
+         if (!$$2) {
+            this.at();
+            if ($$0.gj().d) {
+               for (bwp $$6 : $$3) {
+                  if ($$6.O_() && $$6.C() == this) {
+                     $$6.z();
+                     $$5 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$5) {
+            this.a(edm.b, $$0);
+         }
+
+         return btq.a;
       }
    }
 
-   public static bxf.a j() {
-      return cmo.q().a(bxg.v, 0.3F).a(bxg.c, 8.0).a(bxg.s, 80.0);
+   @Override
+   public boolean g() {
+      return this.dV().a_(this.a).a(awz.U);
    }
 
-   @Override
-   public int m() {
-      return 60;
-   }
+   public static cmh a(dhp $$0, jj $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
 
-   @Override
-   protected avz u() {
-      return this.bj() ? awa.ij : awa.ik;
-   }
-
-   @Override
-   protected avz e(btp $$0) {
-      return this.bj() ? awa.ip : awa.iq;
-   }
-
-   @Override
-   protected avz l_() {
-      return this.bj() ? awa.im : awa.in;
-   }
-
-   @Override
-   protected avz n() {
-      return awa.io;
-   }
-
-   @Override
-   protected void a(ard $$0) {
-      super.a($$0);
-      if ((this.af + this.ar()) % 1200 == 0) {
-         bue $$1 = new bue(bug.d, 6000, 2);
-         List<are> $$2 = buf.a($$0, this, this.ds(), 50.0, $$1, 1200);
-         $$2.forEach($$0x -> $$0x.f.b(new acs(acs.l, this.bb() ? 0.0F : 1.0F)));
+      for (cmh $$6 : $$0.a(cmh.class, new fcp((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.j().equals($$1)) {
+            return $$6;
+         }
       }
 
-      if (!this.gg()) {
-         this.a(this.du(), 16);
-      }
+      cmh $$7 = new cmh($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   public void m() {
+      this.a(awk.oB, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zc<abr> a(arl $$0) {
+      return new abs(this, 0, this.j());
+   }
+
+   @Override
+   public fcu v(float $$0) {
+      return this.p($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cxy dI() {
+      return new cxy(cyc.vO);
    }
 }

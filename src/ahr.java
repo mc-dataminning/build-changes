@@ -1,29 +1,36 @@
-public class ahr implements yw<agf> {
-   public static final yn<vl, ahr> a = yw.a(ahr::a, ahr::new);
-   private final String b;
+public class ahr implements zc<agm> {
+   public static final yt<vr, ahr> a = zc.a(ahr::a, ahr::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public ahr(String $$0) {
-      this.b = $$0;
+   public ahr(cqe $$0) {
+      this.c = $$0.b;
    }
 
-   private ahr(vl $$0) {
-      this.b = $$0.p();
+   private ahr(vr $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public yy<ahr> a() {
-      return agd.bX;
+   public ze<ahr> a() {
+      return agk.bR;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
+   public boolean b() {
+      return this.c;
    }
 }

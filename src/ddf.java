@@ -1,63 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-
-public record ddf(int f, int g, List<ddh> h, ddh i, ddh j) implements ddb {
-   public static final MapCodec<ddf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("width").forGetter(ddf::b),
-               Codec.INT.fieldOf("height").forGetter(ddf::c),
-               ddh.a.listOf().fieldOf("ingredients").forGetter(ddf::f),
-               ddh.a.fieldOf("result").forGetter(ddf::d),
-               ddh.a.fieldOf("crafting_station").forGetter(ddf::e)
-            )
-            .apply($$0, ddf::new)
-   );
-   public static final yn<wa, ddf> b = yn.a(yl.h, ddf::b, yl.h, ddf::c, ddh.b.a(yl.a()), ddf::f, ddh.b, ddf::d, ddh.b, ddf::e, ddf::new);
-   public static final ddb.a<ddf> c = new ddb.a<>(a, b);
-
-   public ddf(int f, int g, List<ddh> h, ddh i, ddh j) {
-      if (h.size() != f * g) {
-         throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      } else {
-         this.f = f;
-         this.g = g;
-         this.h = h;
-         this.i = i;
-         this.j = j;
-      }
+public class ddf extends dbr {
+   public ddf(String $$0, dbx $$1, dch $$2, cxy $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ddb.a<ddf> a() {
-      return c;
+   protected cxu f() {
+      return cyc.fg;
    }
 
    @Override
-   public boolean a(csn $$0) {
-      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && ddb.super.a($$0);
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public List<ddh> f() {
-      return this.h;
+   public dcv<ddf> a() {
+      return dcv.o;
    }
 
    @Override
-   public ddh d() {
-      return this.i;
+   public dcw<ddf> b() {
+      return dcw.b;
    }
 
    @Override
-   public ddh e() {
-      return this.j;
+   public dco h() {
+      return switch (this.e()) {
+         case b -> dcn.f;
+         case a -> dcn.e;
+         case c -> dcn.g;
+      };
    }
 }

@@ -1,127 +1,107 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public final class eec {
-   final eeb a;
-   private final js<esz.a> b;
-   private final edu c;
-   private final dil.f d;
-   private final eeg e;
-   private final eeb f;
-   private final eeb g;
-   private final Map<akt<esz.a>, esz> h;
-   private final Map<aku, eeb> i;
+public class eec extends eak {
+   public static final MapCodec<eec> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alb.d(diz.b)).apply($$0, $$0.stable(eec::new)));
+   private static final int h = 2;
+   private static final List<dym> i = StreamSupport.stream(md.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
+   private static final int j = azk.f(azk.c((float)i.size()));
+   private static final int k = azk.f((float)i.size() / (float)j);
+   protected static final dym d = dkw.a.m();
+   protected static final dym e = dkw.iu.m();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   public static eec a(js.a $$0, akt<edt> $$1, long $$2) {
-      return a($$0.b(mc.aS).b($$1).a(), $$0.b(mc.aT), $$2);
+   public eec(js.c<dis> $$0) {
+      super(new djd($$0));
    }
 
-   public static eec a(edt $$0, js<esz.a> $$1, long $$2) {
-      return new eec($$0, $$1, $$2);
+   @Override
+   protected MapCodec<? extends eak> b() {
+      return c;
    }
 
-   private eec(edt $$0, js<esz.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(aku.b("aquifer")).e();
-      this.g = this.a.a(aku.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new eeg(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   @Override
+   public void a(arv $$0, dil $$1, eez $$2, eaj $$3) {
+   }
 
-      class a implements edh.f {
-         private final Map<edh, edh> d = new HashMap<>();
+   @Override
+   public void a(dio $$0, eaj $$1, dil $$2) {
+      jj.a $$3 = new jj.a();
+      dgw $$4 = $$1.f();
+      int $$5 = $$4.h;
+      int $$6 = $$4.i;
 
-         private azh a(long $$0) {
-            return new edp($$2 + $$0);
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = kl.a($$5, $$7);
+            int $$10 = kl.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dym $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
          }
+      }
+   }
 
-         @Override
-         public edh.c a(edh.c $$0) {
-            jr<esz.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(edx.a)) {
-                  esz $$2 = esz.a(this.a(0L), new esz.a(-7, 1.0, 1.0));
-                  return new edh.c($$1, $$2);
-               }
+   @Override
+   public CompletableFuture<eaj> a(efn $$0, eez $$1, dil $$2, eaj $$3) {
+      return CompletableFuture.completedFuture($$3);
+   }
 
-               if ($$1.a(edx.b)) {
-                  esz $$3 = esz.a(this.a(1L), new esz.a(-7, 1.0, 1.0));
-                  return new edh.c($$1, $$3);
-               }
+   @Override
+   public int a(int $$0, int $$1, eel.a $$2, dhr $$3, eez $$4) {
+      return 0;
+   }
 
-               if ($$1.a(edx.j)) {
-                  esz $$4 = esz.b(eec.this.a.a(edx.j.a()), new esz.a(0, 0.0));
-                  return new edh.c($$1, $$4);
-               }
+   @Override
+   public dib a(int $$0, int $$1, dhr $$2, eez $$3) {
+      return new dib(0, new dym[0]);
+   }
+
+   @Override
+   public void a(List<String> $$0, eez $$1, jj $$2) {
+   }
+
+   public static dym a(int $$0, int $$1) {
+      dym $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = azk.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
             }
-
-            esz $$5 = eec.this.a($$1.e().orElseThrow());
-            return new edh.c($$1, $$5);
-         }
-
-         private edh a(edh $$0) {
-            if ($$0 instanceof esw $$1) {
-               azh $$2 = $$3 ? this.a(0L) : eec.this.a.a(aku.b("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (edh)($$0 instanceof edi.i ? new edi.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public edh apply(edh $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
          }
       }
 
-      this.c = $$0.i().a(new a());
-      edh.f $$4 = new edh.f() {
-         private final Map<edh, edh> a = new HashMap<>();
-
-         private edh a(edh $$0) {
-            if ($$0 instanceof edi.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof edi.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public edh apply(edh $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new dil.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      return $$2;
    }
 
-   public esz a(akt<esz.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> edx.a(this.b, this.a, $$0));
+   @Override
+   public void a(arv $$0, long $$1, eez $$2, diu $$3, dil $$4, eaj $$5) {
    }
 
-   public eeb a(aku $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   @Override
+   public void a(arv $$0) {
    }
 
-   public edu a() {
-      return this.c;
+   @Override
+   public int g() {
+      return 0;
    }
 
-   public dil.f b() {
-      return this.d;
+   @Override
+   public int e() {
+      return 384;
    }
 
-   public eeg c() {
-      return this.e;
-   }
-
-   public eeb d() {
-      return this.f;
-   }
-
-   public eeb e() {
-      return this.g;
+   @Override
+   public int f() {
+      return 63;
    }
 }

@@ -1,36 +1,43 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cgm extends cgc {
-   private static final ImmutableMap<bvi<?>, Float> a = ImmutableMap.builder()
-      .put(bvi.K, 8.0F)
-      .put(bvi.S, 12.0F)
-      .put(bvi.am, 8.0F)
-      .put(bvi.an, 12.0F)
-      .put(bvi.aT, 15.0F)
-      .put(bvi.aY, 12.0F)
-      .put(bvi.bB, 8.0F)
-      .put(bvi.bD, 10.0F)
-      .put(bvi.bM, 10.0F)
-      .put(bvi.bN, 8.0F)
-      .put(bvi.bP, 8.0F)
-      .build();
-
+public class cgm extends cgz<cor> {
    @Override
-   protected boolean a(ard $$0, bvy $$1, bvy $$2) {
-      return this.b($$2) && this.a($$1, $$2);
+   public Set<cft<?>> a() {
+      return ImmutableSet.of(cft.h, cft.ax, cft.ar, cft.aq, cft.at, cft.au, new cft[0]);
    }
 
-   private boolean a(bvy $$0, bvy $$1) {
-      float $$2 = (Float)a.get($$1.aq());
-      return $$1.g((bva)$$0) <= (double)($$2 * $$2);
+   protected void a(arn $$0, cor $$1) {
+      bxr<?> $$2 = $$1.eb();
+      $$2.a(cft.ax, this.b($$0, $$1));
+      Optional<cox> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cor> $$5 = Lists.newArrayList();
+      cfv $$6 = $$2.c(cft.h).orElse(cfv.a());
+
+      for (bwr $$7 : $$6.b($$0x -> !$$0x.n_() && ($$0x instanceof cox || $$0x instanceof cor))) {
+         if ($$7 instanceof cox $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cor $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(cft.ar, $$3);
+      $$2.a(cft.aq, $$5);
+      $$2.a(cft.at, $$4);
+      $$2.a(cft.au, $$5.size());
    }
 
-   @Override
-   protected cfc<bvy> b() {
-      return cfc.A;
-   }
-
-   private boolean b(bvy $$0) {
-      return a.containsKey($$0.aq());
+   private Optional<jj> b(arn $$0, cor $$1) {
+      return jj.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(awz.aU));
    }
 }

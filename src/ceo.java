@@ -1,102 +1,127 @@
 import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class ceo extends cew {
-   private static final cgp a = cgp.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
-   @Nullable
-   private Class<?>[] j;
+public class ceo<T extends cnj & cnn & cmw> extends cdn {
+   public static final btb a = bam.a(1, 2);
+   private final T b;
+   private ceo.a c = ceo.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public ceo(bwg $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(ccw.a.d));
+   public ceo(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
    }
 
    @Override
    public boolean b() {
-      int $$0 = this.e.er();
-      bvy $$1 = this.e.ep();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.aq() == bvi.bR && a(this.e).O().b(dgv.P)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.a($$1, a);
-         }
-      } else {
-         return false;
-      }
+      return this.i() && this.h();
    }
 
-   public ceo a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+   private boolean h() {
+      return this.b.b(cyc.wZ);
    }
 
    @Override
-   public void d() {
-      this.e.h(this.e.ep());
-      this.g = this.e.f();
-      this.d = this.e.er();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
-      super.d();
+   public boolean c() {
+      return this.i() && (this.b() || !this.b.O().k()) && this.h();
    }
 
-   protected void h() {
-      double $$0 = this.l();
-      fbs $$1 = fbs.a(this.e.ds()).c($$0, 10.0, $$0);
-      List<? extends bwa> $$2 = this.e.dU().a((Class<? extends bwa>)this.e.getClass(), $$1, bvg.f);
-      Iterator var5 = $$2.iterator();
+   private boolean i() {
+      return this.b.f() != null && this.b.f().bK();
+   }
 
-      while (true) {
-         bwa $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
+   @Override
+   public void e() {
+      super.e();
+      this.b.v(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fy()) {
+         this.b.fE();
+         this.b.b(false);
+         this.b.fA().b(kx.P, daa.a);
+      }
+   }
 
-            $$3 = (bwa)var5.next();
-            if (this.e != $$3 && $$3.f() == null && (!(this.e instanceof bwv) || ((bwv)this.e).ae_() == ((bwv)$$3).ae_()) && !$$3.s(this.e.ep())) {
-               if (this.j == null) {
-                  break;
-               }
+   @Override
+   public boolean Q_() {
+      return true;
+   }
 
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
+   @Override
+   public void a() {
+      bwr $$0 = this.b.f();
+      if ($$0 != null) {
+         boolean $$1 = this.b.P().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
          }
 
-         this.a($$3, this.e.ep());
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.g((bvs)$$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.O().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.dY());
+            }
+         } else {
+            this.h = 0;
+            this.b.O().m();
+         }
+
+         this.b.J().a($$0, 30.0F, 30.0F);
+         if (this.c == ceo.a.a) {
+            if (!$$4) {
+               this.b.c(crd.a(this.b, cyc.wZ));
+               this.c = ceo.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == ceo.a.b) {
+            if (!this.b.fy()) {
+               this.c = ceo.a.a;
+            }
+
+            int $$5 = this.b.fC();
+            cxy $$6 = this.b.fA();
+            if ($$5 >= cwq.b($$6, this.b)) {
+               this.b.fD();
+               this.c = ceo.a.c;
+               this.g = 20 + this.b.dY().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == ceo.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = ceo.a.d;
+            }
+         } else if (this.c == ceo.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            this.c = ceo.a.a;
+         }
       }
    }
 
-   protected void a(bwa $$0, bvy $$1) {
-      $$0.h($$1);
+   private boolean k() {
+      return this.c == ceo.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

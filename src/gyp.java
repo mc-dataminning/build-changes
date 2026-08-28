@@ -1,14 +1,22 @@
-public class gyp extends haa {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean j;
-   public boolean k = true;
-   public kj l = cll.b;
-   public kj m = cll.c;
-   public kj n = cll.d;
-   public kj o = cll.e;
-   public kj p = cll.f;
-   public kj q = cll.g;
+public class gyp extends gyt<hbr, gey> {
+   public gyp(gwc<hbr, gey> $$0) {
+      super($$0);
+   }
+
+   public void a(fho $$0, gny $$1, int $$2, hbr $$3, float $$4, float $$5) {
+      hdn $$6 = $$3.i;
+      if (!$$6.c() && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * azk.a($$3.u * 0.6F) + 0.2F;
+            $$8 -= 0.09F * azk.a($$3.u * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         $$6.a($$0, $$1, $$2, hgi.d);
+         $$0.b();
+      }
+   }
 }

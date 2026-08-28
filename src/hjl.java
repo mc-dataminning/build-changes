@@ -1,99 +1,131 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class hjl implements hkw<hjl> {
-   public static final akn a = new akn("sounds", ".ogg");
-   private final aku b;
-   private final bsg c;
-   private final bsg d;
-   private final int e;
-   private final hjl.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+public class hjl implements his {
+   public static final String a = "particle";
+   private final List<gpf> b;
+   private final Map<jo, List<gpf>> c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
+   private final hgs g;
+   private final gpp h;
 
-   public hjl(aku $$0, bsg $$1, bsg $$2, int $$3, hjl.a $$4, boolean $$5, boolean $$6, int $$7) {
+   public hjl(List<gpf> $$0, Map<jo, List<gpf>> $$1, boolean $$2, boolean $$3, boolean $$4, hgs $$5, gpp $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+      this.e = $$4;
+      this.f = $$3;
       this.g = $$5;
       this.h = $$6;
-      this.i = $$7;
    }
 
-   public aku a() {
-      return this.b;
+   public static his a(List<gpg> $$0, gpr $$1, hjm $$2, hji $$3, boolean $$4, boolean $$5, boolean $$6, gpp $$7) {
+      hgs $$8 = a($$2, $$1, "particle");
+      hjl.a $$9 = new hjl.a($$4, $$5, $$6, $$7).a($$8);
+
+      for (gpg $$10 : $$0) {
+         for (jo $$11 : $$10.c.keySet()) {
+            gph $$12 = $$10.c.get($$11);
+            hgs $$13 = a($$2, $$1, $$12.c());
+            if ($$12.a() == null) {
+               $$9.a(a($$10, $$12, $$13, $$11, $$3));
+            } else {
+               $$9.a(jo.a($$3.a().c(), $$12.a()), a($$10, $$12, $$13, $$11, $$3));
+            }
+         }
+      }
+
+      return $$9.b();
    }
 
-   public aku b() {
-      return a.a(this.b);
+   private static gpf a(gpg $$0, gph $$1, hgs $$2, jo $$3, hji $$4) {
+      return gpm.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$0.f);
    }
 
-   public bsg c() {
-      return this.c;
+   private static hgs a(hjm $$0, gpr $$1, String $$2) {
+      hiz $$3 = $$1.a($$2);
+      return $$3 != null ? $$0.a($$3) : $$0.a($$2);
    }
 
-   public bsg d() {
+   @Override
+   public List<gpf> a(@Nullable dym $$0, @Nullable jo $$1, azs $$2) {
+      return $$1 == null ? this.b : this.c.get($$1);
+   }
+
+   @Override
+   public boolean a() {
       return this.d;
    }
 
    @Override
-   public int e() {
+   public boolean b() {
       return this.e;
    }
 
-   public hjl a(azh $$0) {
-      return this;
-   }
-
    @Override
-   public void a(hkr $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public hjl.a f() {
+   public boolean c() {
       return this.f;
    }
 
-   public boolean g() {
+   @Override
+   public hgs d() {
       return this.g;
    }
 
-   public boolean h() {
+   @Override
+   public gpp e() {
       return this.h;
    }
 
-   public int i() {
-      return this.i;
-   }
+   public static class a {
+      private final Builder<gpf> a = ImmutableList.builder();
+      private final Map<jo, Builder<gpf>> b = af.a(jo.class, $$0x -> ImmutableList.builder());
+      private final boolean c;
+      @Nullable
+      private hgs d;
+      private final boolean e;
+      private final boolean f;
+      private final gpp g;
 
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(final String $$0) {
+      public a(boolean $$0, boolean $$1, boolean $$2, gpp $$3) {
          this.c = $$0;
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
       }
 
-      @Nullable
-      public static hjl.a a(String $$0) {
-         for (hjl.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
+      public hjl.a a(jo $$0, gpf $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
 
-         return null;
+      public hjl.a a(gpf $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public hjl.a a(hgs $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public hjl.a a() {
+         return this;
+      }
+
+      public his b() {
+         if (this.d == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            Map<jo, List<gpf>> $$0 = af.a(this.b, Builder::build);
+            return new hjl(this.a.build(), new EnumMap<>($$0), this.c, this.e, this.f, this.d, this.g);
+         }
       }
    }
 }

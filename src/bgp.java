@@ -1,46 +1,38 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
-public class bgp extends bav {
-   private static final Logger b = LogUtils.getLogger();
+public abstract class bgp extends DataFix {
+   private final String a;
+   private final Predicate<String> b;
 
-   public bgp(Schema $$0) {
-      super($$0, bic.a);
+   public bgp(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.a);
-      OpticFinder<?> $$1 = $$0.findField("CustomBossEvents");
-      OpticFinder<?> $$2 = DSL.typeFinder(DSL.and(DSL.optional(DSL.field("Name", this.getInputSchema().getTypeRaw(bic.z))), DSL.remainderType()));
-      return this.fixTypeEverywhereTyped("LevelUUIDFix", $$0, $$2x -> $$2x.update(DSL.remainderFinder(), $$0xx -> {
-            $$0xx = this.c($$0xx);
-            return this.b($$0xx);
-         }).updateTyped($$1, $$1xx -> $$1xx.updateTyped($$2, $$0xxx -> $$0xxx.update(DSL.remainderFinder(), this::d))));
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.t);
+      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Typed<?>> $$2) {
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(biq.F.typeName(), bkj.a()));
+      OpticFinder<?> $$4 = $$0.findField("tag");
+      return $$4x -> {
+         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
+         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$2) : $$4x;
+      };
    }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update(
-         "DimensionData",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
-            )
-      );
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.update("Players", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)a($$0xx).orElseGet(() -> {
-               b.warn("CustomBossEvents contains invalid UUIDs.");
-               return $$0xx;
-            }))));
-   }
+   protected abstract Typed<?> a(Typed<?> var1);
 }

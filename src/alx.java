@@ -1,60 +1,113 @@
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class alx {
-   private final Map<aku, alw> a = Maps.newHashMap();
+public class alx extends btz {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   @Nullable
-   public alw a(aku $$0) {
-      return this.a.get($$0);
+   public alx(MinecraftServer $$0) {
+      this.l = $$0;
    }
 
-   public alw a(aku $$0, wp $$1) {
-      alw $$2 = new alw($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
+   public boolean a() {
+      return this.j > 0L;
    }
 
-   public void a(alw $$0) {
-      this.a.remove($$0.a());
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
    }
 
-   public Collection<aku> a() {
-      return this.a.keySet();
+   private void n() {
+      this.l.ag().a(agb.a(this));
    }
 
-   public Collection<alw> b() {
-      return this.a.values();
+   private void o() {
+      this.l.ag().a(agc.a(this));
    }
 
-   public tq a(jt.a $$0) {
-      tq $$1 = new tq();
-
-      for (alw $$2 : this.a.values()) {
-         $$1.a($$2.a().toString(), $$2.a($$0));
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
       }
+   }
 
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
       return $$1;
    }
 
-   public void a(tq $$0, jt.a $$1) {
-      for (String $$2 : $$0.e()) {
-         aku $$3 = aku.a($$2);
-         this.a.put($$3, alw.a($$0.p($$2), $$3, $$1));
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)bam.b;
+      int $$2 = (int)((double)(bam.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aH().a(() -> wv.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.F();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
       }
    }
 
-   public void a(are $$0) {
-      for (alw $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
    }
 
-   public void b(are $$0) {
-      for (alw $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.F();
+      this.n();
+   }
+
+   public void a(aro $$0) {
+      $$0.f.b(agb.a(this));
+      $$0.f.b(agc.a(this));
    }
 }

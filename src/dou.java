@@ -1,84 +1,75 @@
-public class dou {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+
+public class dou extends dku {
+   public static final MapCodec<dou> a = b(dou::new);
+   public static final dzd b = dqm.b;
+   public static final dzd c = dqm.c;
+   public static final dzd d = dqm.d;
+   public static final dzd e = dqm.e;
+   public static final dzd f = dqm.f;
+   public static final dzd g = dqm.g;
+   private static final Map<jo, dzd> h = dqm.h;
+
+   @Override
+   public MapCodec<dou> a() {
+      return a;
+   }
+
+   public dou(dyl.d $$0) {
+      super($$0);
+      this.l(
+         this.B
+            .b()
+            .b(b, Boolean.valueOf(true))
+            .b(c, Boolean.valueOf(true))
+            .b(d, Boolean.valueOf(true))
+            .b(e, Boolean.valueOf(true))
+            .b(f, Boolean.valueOf(true))
+            .b(g, Boolean.valueOf(true))
+      );
+   }
+
+   @Override
+   public dym a(dbn $$0) {
+      dgv $$1 = $$0.q();
+      jj $$2 = $$0.a();
+      return this.m()
+         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
+         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
+         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(h.get($$1.a(jo.c)), $$0.c(b))
+         .b(h.get($$1.a(jo.d)), $$0.c(d))
+         .b(h.get($$1.a(jo.f)), $$0.c(c))
+         .b(h.get($$1.a(jo.e)), $$0.c(e))
+         .b(h.get($$1.a(jo.b)), $$0.c(f))
+         .b(h.get($$1.a(jo.a)), $$0.c(g));
+   }
+
+   @Override
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.b(h.get($$1.b(jo.c)), $$0.c(b))
+         .b(h.get($$1.b(jo.d)), $$0.c(d))
+         .b(h.get($$1.b(jo.f)), $$0.c(c))
+         .b(h.get($$1.b(jo.e)), $$0.c(e))
+         .b(h.get($$1.b(jo.b)), $$0.c(f))
+         .b(h.get($$1.b(jo.a)), $$0.c(g));
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(f, g, b, c, d, e);
+   }
 }

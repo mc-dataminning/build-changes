@@ -1,318 +1,145 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fsg implements auj, AutoCloseable {
-   static final Logger b = LogUtils.getLogger();
-   private static final String c = "fonts.json";
-   public static final aku a = aku.b("missing");
-   private static final akn d = akn.a("font");
-   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private final fsi f;
-   private final List<feq> g = new ArrayList<>();
-   private final Map<aku, fsi> h = new HashMap<>();
-   private final hft i;
+public class fsg {
+   private static final int a = 105;
+   private static final int b = 5;
+   private static final int c = 10;
+   private final fpx d;
    @Nullable
-   private volatile fsi j;
+   private bpz e;
+   private String f = "root";
+   private int g = 0;
 
-   public fsg(hft $$0) {
-      this.i = $$0;
-      this.f = af.a(new fsi($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
+   public fsg(fpx $$0) {
+      this.d = $$0;
    }
 
-   private static feq.a d() {
-      return new feq.a(new fse(), fsh.a.b);
+   public void a(@Nullable bpz $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
-      return this.a($$1, $$2).thenCompose($$0::a).thenAcceptAsync($$0x -> this.a($$0x, bpi.a()), $$3);
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
-   private CompletableFuture<fsg.d> a(aup $$0, Executor $$1) {
-      List<CompletableFuture<fsg.e>> $$2 = new ArrayList<>();
+   public void a(fpz $$0) {
+      if (this.e != null) {
+         List<bqd> $$1 = this.e.a(this.f);
+         bqd $$2 = $$1.removeFirst();
+         int $$3 = $$0.a() - 105 - 10;
+         int $$4 = $$3 - 105;
+         int $$5 = $$3 + 105;
+         int $$6 = $$1.size() * 9;
+         int $$7 = $$0.b() - this.g - 5;
+         int $$8 = $$7 - $$6;
+         int $$9 = 62;
+         int $$10 = $$8 - 62 - 5;
+         $$0.a($$4 - 5, $$10 - 62 - 5, $$5 + 5, $$7 + 5, -1873784752);
+         $$0.a($$4x -> {
+            double $$5x = 0.0;
 
-      for (Entry<aku, List<aun>> $$3 : d.b($$0).entrySet()) {
-         aku $$4 = d.b($$3.getKey());
-         $$2.add(CompletableFuture.supplyAsync(() -> {
-            List<Pair<fsg.a, fst.a>> $$4x = a($$3.getValue(), $$4);
-            fsg.e $$5 = new fsg.e($$4);
+            for (bqd $$6x : $$1) {
+               int $$7x = azk.a($$6x.a / 4.0) + 1;
+               fhs $$8x = $$4x.getBuffer(goi.D());
+               int $$9x = axu.f($$6x.a());
+               int $$10x = axu.a($$9x, -8355712);
+               fho.a $$11x = $$0.c().c();
+               $$8x.a($$11x, (float)$$3, (float)$$10, 10.0F).a($$9x);
 
-            for (Pair<fsg.a, fst.a> $$6 : $$4x) {
-               fsg.a $$7 = (fsg.a)$$6.getFirst();
-               fsh.a $$8 = ((fst.a)$$6.getSecond()).b();
-               ((fst.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
-                  CompletableFuture<Optional<feq>> $$6x = this.a($$7, $$5x, $$0, $$1);
-                  $$5.a($$7, $$8, $$6x);
-               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
+               for (int $$12x = $$7x; $$12x >= 0; $$12x--) {
+                  float $$13x = (float)(($$5x + $$6x.a * (double)$$12x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$14x = azk.a($$13x) * 105.0F;
+                  float $$15x = azk.b($$13x) * 105.0F * 0.5F;
+                  $$8x.a($$11x, (float)$$3 + $$14x, (float)$$10 - $$15x, 10.0F).a($$9x);
+               }
+
+               $$8x = $$4x.getBuffer(goi.C());
+
+               for (int $$16x = $$7x; $$16x > 0; $$16x--) {
+                  float $$17x = (float)(($$5x + $$6x.a * (double)$$16x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$18x = azk.a($$17x) * 105.0F;
+                  float $$19x = azk.b($$17x) * 105.0F * 0.5F;
+                  float $$20x = (float)(($$5x + $$6x.a * (double)($$16x - 1) / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$21 = azk.a($$20x) * 105.0F;
+                  float $$22 = azk.b($$20x) * 105.0F * 0.5F;
+                  if (!(($$19x + $$22) / 2.0F > 0.0F)) {
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22 + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22, 10.0F).a($$10x);
+                  }
+               }
+
+               $$5x += $$6x.a;
             }
-
-            return $$5;
-         }, $$1));
-      }
-
-      return af.d($$2)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<Optional<feq>>> $$2x = $$1x.stream().flatMap(fsg.e::d).collect(af.b());
-               feq.a $$3x = d();
-               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
-               return af.d($$2x)
-                  .thenCompose(
-                     $$3xx -> {
-                        Map<aku, List<feq.a>> $$4x = this.a($$1x);
-                        CompletableFuture<?>[] $$5 = $$4x.values()
-                           .stream()
-                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
-                           .toArray(CompletableFuture[]::new);
-                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
-                           List<feq> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
-                           return new fsg.d($$4x, $$3xxx);
-                        });
-                     }
-                  );
-            }
-         );
-   }
-
-   private CompletableFuture<Optional<feq>> a(fsg.a $$0, fst.b $$1, aup $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            return Optional.of($$1.load($$2));
-         } catch (Exception var4x) {
-            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
-            return Optional.empty();
+         });
+         DecimalFormat $$11 = new DecimalFormat("##0.00");
+         $$11.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
+         String $$12 = bpz.b($$2.d);
+         String $$13 = "";
+         if (!"unspecified".equals($$12)) {
+            $$13 = $$13 + "[0] ";
          }
-      }, $$3);
-   }
 
-   private Map<aku, List<feq.a>> a(List<fsg.e> $$0) {
-      Map<aku, List<feq.a>> $$1 = new HashMap<>();
-      aye<aku, fsg.e> $$2 = new aye<>();
-      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
-      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
-      return $$1;
-   }
+         if ($$12.isEmpty()) {
+            $$13 = $$13 + "ROOT ";
+         } else {
+            $$13 = $$13 + $$12 + " ";
+         }
 
-   private void a(List<feq.a> $$0, feq.a $$1) {
-      $$0.add(0, $$1);
-      IntSet $$2 = new IntOpenHashSet();
+         int $$14 = 16777215;
+         int $$15 = $$10 - 62;
+         $$0.b(this.d, $$13, $$4, $$15, 16777215);
+         $$13 = $$11.format($$2.b) + "%";
+         $$0.b(this.d, $$13, $$5 - this.d.b($$13), $$15, 16777215);
 
-      for (feq.a $$3 : $$0) {
-         $$2.addAll($$3.a().a());
+         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
+            bqd $$17 = $$1.get($$16);
+            StringBuilder $$18 = new StringBuilder();
+            if ("unspecified".equals($$17.d)) {
+               $$18.append("[?] ");
+            } else {
+               $$18.append("[").append($$16 + 1).append("] ");
+            }
+
+            String $$19 = $$18.append($$17.d).toString();
+            int $$20 = $$8 + $$16 * 9;
+            $$0.b(this.d, $$19, $$4, $$20, $$17.a());
+            $$19 = $$11.format($$17.a) + "%";
+            $$0.b(this.d, $$19, $$5 - 50 - this.d.b($$19), $$20, $$17.a());
+            $$19 = $$11.format($$17.b) + "%";
+            $$0.b(this.d, $$19, $$5 - this.d.b($$19), $$20, $$17.a());
+         }
       }
+   }
 
-      $$2.forEach($$1x -> {
-         if ($$1x != 32) {
-            for (feq.a $$2x : Lists.reverse($$0)) {
-               if ($$2x.a().a($$1x) != null) {
-                  break;
+   public void b(int $$0) {
+      if (this.e != null) {
+         List<bqd> $$1 = this.e.a(this.f);
+         if (!$$1.isEmpty()) {
+            bqd $$2 = $$1.remove(0);
+            if ($$0 == 0) {
+               if (!$$2.d.isEmpty()) {
+                  int $$3 = this.f.lastIndexOf(30);
+                  if ($$3 >= 0) {
+                     this.f = this.f.substring(0, $$3);
+                  }
+               }
+            } else {
+               $$0--;
+               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
+                  if (!this.f.isEmpty()) {
+                     this.f = this.f + "\u001e";
+                  }
+
+                  this.f = this.f + $$1.get($$0).d;
                }
             }
          }
-      });
-   }
-
-   private static Set<fsh> b(fmk $$0) {
-      Set<fsh> $$1 = EnumSet.noneOf(fsh.class);
-      if ($$0.S().c()) {
-         $$1.add(fsh.a);
-      }
-
-      if ($$0.T().c()) {
-         $$1.add(fsh.b);
-      }
-
-      return $$1;
-   }
-
-   private void a(fsg.d $$0, bpj $$1) {
-      $$1.a("closing");
-      this.j = null;
-      this.h.values().forEach(fsi::close);
-      this.h.clear();
-      this.g.forEach(feq::close);
-      this.g.clear();
-      Set<fsh> $$2 = b(fmg.Q().n);
-      $$1.b("reloading");
-      $$0.a().forEach(($$1x, $$2x) -> {
-         fsi $$3 = new fsi(this.i, $$1x);
-         $$3.a(Lists.reverse($$2x), $$2);
-         this.h.put($$1x, $$3);
-      });
-      this.g.addAll($$0.b);
-      $$1.c();
-      if (!this.h.containsKey(fmg.b)) {
-         throw new IllegalStateException("Default font failed to load");
-      }
-   }
-
-   public void a(fmk $$0) {
-      Set<fsh> $$1 = b($$0);
-
-      for (fsi $$2 : this.h.values()) {
-         $$2.a($$1);
-      }
-   }
-
-   private static List<Pair<fsg.a, fst.a>> a(List<aun> $$0, aku $$1) {
-      List<Pair<fsg.a, fst.a>> $$2 = new ArrayList<>();
-
-      for (aun $$3 : $$0) {
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
-            fsg.c $$6 = (fsg.c)fsg.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
-            List<fst.a> $$7 = $$6.b;
-
-            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
-               fsg.a $$9 = new fsg.a($$1, $$3.b(), $$8);
-               $$2.add(Pair.of($$9, $$7.get($$8)));
-            }
-         } catch (Exception var13) {
-            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
-         }
-      }
-
-      return $$2;
-   }
-
-   public fpa a() {
-      return new fpa(this::b, false);
-   }
-
-   public fpa b() {
-      return new fpa(this::b, true);
-   }
-
-   private fsi a(aku $$0) {
-      return this.h.getOrDefault($$0, this.f);
-   }
-
-   private fsi b(aku $$0) {
-      fsi $$1 = this.j;
-      if ($$1 != null && $$0.equals($$1.a())) {
-         return $$1;
-      } else {
-         fsi $$2 = this.a($$0);
-         this.j = $$2;
-         return $$2;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.h.values().forEach(fsi::close);
-      this.g.forEach(feq::close);
-      this.f.close();
-   }
-
-   static record a(aku a, String b, int c) {
-      @Override
-      public String toString() {
-         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
-      }
-   }
-
-   static record b(fsg.a a, fsh.a b, Either<CompletableFuture<Optional<feq>>, aku> c) {
-
-      public Optional<List<feq.a>> a(Function<aku, List<feq.a>> $$0) {
-         return (Optional<List<feq.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new feq.a($$0xx, this.b))), $$1 -> {
-            List<feq.a> $$2 = $$0.apply($$1);
-            if ($$2 == null) {
-               fsg.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
-               return Optional.empty();
-            } else {
-               return Optional.of($$2.stream().map(this::a).toList());
-            }
-         });
-      }
-
-      private feq.a a(feq.a $$0) {
-         return new feq.a($$0.a(), this.b.a($$0.b()));
-      }
-   }
-
-   static record c(List<fst.a> b) {
-      public static final Codec<fsg.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fst.a.a.listOf().fieldOf("providers").forGetter(fsg.c::a)).apply($$0, fsg.c::new)
-      );
-
-      public List<fst.a> a() {
-         return this.b;
-      }
-   }
-
-   static record d(Map<aku, List<feq.a>> a, List<feq> b) {
-   }
-
-   static record e(aku a, List<fsg.b> b, Set<aku> c) implements aye.a<aku> {
-
-      public e(aku $$0) {
-         this($$0, new ArrayList<>(), new HashSet<>());
-      }
-
-      public void a(fsg.a $$0, fsh.a $$1, fst.c $$2) {
-         this.b.add(new fsg.b($$0, $$1, Either.right($$2.a())));
-         this.c.add($$2.a());
-      }
-
-      public void a(fsg.a $$0, fsh.a $$1, CompletableFuture<Optional<feq>> $$2) {
-         this.b.add(new fsg.b($$0, $$1, Either.left($$2)));
-      }
-
-      private Stream<CompletableFuture<Optional<feq>>> d() {
-         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
-      }
-
-      public Optional<List<feq.a>> a(Function<aku, List<feq.a>> $$0) {
-         List<feq.a> $$1 = new ArrayList<>();
-
-         for (fsg.b $$2 : this.b) {
-            Optional<List<feq.a>> $$3 = $$2.a($$0);
-            if (!$$3.isPresent()) {
-               return Optional.empty();
-            }
-
-            $$1.addAll($$3.get());
-         }
-
-         return Optional.of($$1);
-      }
-
-      @Override
-      public void a(Consumer<aku> $$0) {
-         this.c.forEach($$0);
-      }
-
-      @Override
-      public void b(Consumer<aku> $$0) {
       }
    }
 }

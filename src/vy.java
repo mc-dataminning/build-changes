@@ -1,17 +1,17 @@
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageEncoder;
+import java.util.List;
 
-public interface vy {
-   static void a(ChannelHandlerContext $$0, yw<?> $$1) {
-      if ($$1.d()) {
-         $$0.channel().config().setAutoRead(false);
-         $$0.pipeline().addBefore($$0.name(), "inbound_config", new we.a());
-         $$0.pipeline().remove($$0.name());
-      }
+public class vy extends MessageToMessageEncoder<zc<?>> {
+   private final zb a;
+
+   public vy(zb $$0) {
+      this.a = $$0;
    }
 
-   static void b(ChannelHandlerContext $$0, yw<?> $$1) {
+   protected void a(ChannelHandlerContext $$0, zc<?> $$1, List<Object> $$2) throws Exception {
+      this.a.a($$1, $$2::add);
       if ($$1.d()) {
-         $$0.pipeline().addAfter($$0.name(), "outbound_config", new we.c());
          $$0.pipeline().remove($$0.name());
       }
    }

@@ -1,48 +1,78 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bxv extends bxr<cpd> {
+public record bxv(ald d, double e, bxv.a f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final MapCodec<bxv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ald.a.fieldOf("id").forGetter(bxv::b), Codec.DOUBLE.fieldOf("amount").forGetter(bxv::c), bxv.a.f.fieldOf("operation").forGetter(bxv::d))
+            .apply($$0, bxv::new)
+   );
+   public static final Codec<bxv> b = a.codec();
+   public static final yt<ByteBuf, bxv> c = yt.a(ald.b, bxv::b, yr.m, bxv::c, bxv.a.e, bxv::d, bxv::new);
+
+   public tw a() {
+      DataResult<ut> $$0 = b.encode(this, uk.a, new tw());
+      return (tw)$$0.getOrThrow();
+   }
+
    @Nullable
-   private cre c;
-
-   public bxv(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
-   }
-
-   protected boolean a(ard $$0, cpd $$1) {
-      ji $$2 = $$1.du();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bza.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(ard $$0, cpd $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(ard $$0, cpd $$1, long $$2) {
-      this.c = null;
-      $$1.ea().a($$0.af(), $$0.ae());
-   }
-
-   protected void c(ard $$0, cpd $$1, long $$2) {
-      azh $$3 = $$1.dX();
-      if ($$3.a(100) == 0) {
-         $$1.gw();
-      }
-
-      if ($$3.a(200) == 0 && bza.a($$0, $$1, $$1.du())) {
-         cwe $$4 = af.a(cwe.values(), $$3);
-         int $$5 = $$3.a(3);
-         cxh $$6 = this.a($$4, $$5);
-         cqk.a(new cqf($$1.dU(), $$1, $$1.dz(), $$1.dD(), $$1.dF(), $$6), $$0, $$6);
+   public static bxv a(tw $$0) {
+      DataResult<bxv> $$1 = b.parse(uk.a, $$0);
+      if ($$1.isSuccess()) {
+         return (bxv)$$1.getOrThrow();
+      } else {
+         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
+         return null;
       }
    }
 
-   private cxh a(cwe $$0, int $$1) {
-      cxh $$2 = new cxh(cxl.vv);
-      $$2.b(kv.ah, new czv((byte)$$1, List.of(new czu(czu.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   public boolean a(ald $$0) {
+      return $$0.equals(this.d);
+   }
+
+   public ald b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.e;
+   }
+
+   public bxv.a d() {
+      return this.f;
+   }
+
+   public static enum a implements bag {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<bxv.a> d = aya.a(bxv.a::a, values(), aya.a.a);
+      public static final yt<ByteBuf, bxv.a> e = yr.a(d, bxv.a::a);
+      public static final Codec<bxv.a> f = bag.a(bxv.a::values);
+      private final String g;
+      private final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

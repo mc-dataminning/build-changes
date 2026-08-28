@@ -1,24 +1,348 @@
-public enum dyi implements azv {
-   a("single"),
-   b("left"),
-   c("right");
+import java.util.Iterator;
+import java.util.List;
 
-   private final String d;
+public class dyi extends dvl {
+   private static final int b = 2;
+   private static final double c = 0.01;
+   public static final double a = 0.51;
+   private dym d = dkw.a.m();
+   private jo e;
+   private boolean f;
+   private boolean g;
+   private static final ThreadLocal<jo> h = ThreadLocal.withInitial(() -> null);
+   private float i;
+   private float j;
+   private long k;
+   private int l;
 
-   private dyi(final String $$0) {
-      this.d = $$0;
+   public dyi(jj $$0, dym $$1) {
+      super(dvn.l, $$0, $$1);
+   }
+
+   public dyi(jj $$0, dym $$1, dym $$2, jo $$3, boolean $$4, boolean $$5) {
+      this($$0, $$1);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public String c() {
+   public tw a(ju.a $$0) {
+      return this.e($$0);
+   }
+
+   public boolean a() {
+      return this.f;
+   }
+
+   public jo c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public float a(float $$0) {
+      if ($$0 > 1.0F) {
+         $$0 = 1.0F;
+      }
+
+      return azk.h($$0, this.j, this.i);
+   }
+
+   public float b(float $$0) {
+      return (float)this.e.j() * this.e(this.a($$0));
+   }
+
+   public float c(float $$0) {
+      return (float)this.e.k() * this.e(this.a($$0));
+   }
+
+   public float d(float $$0) {
+      return (float)this.e.l() * this.e(this.a($$0));
+   }
+
+   private float e(float $$0) {
+      return this.f ? $$0 - 1.0F : 1.0F - $$0;
+   }
+
+   private dym u() {
+      return !this.a() && this.d() && this.d.b() instanceof dyf
+         ? dkw.bG.m().b(dyg.d, Boolean.valueOf(this.i > 0.25F)).b(dyg.c, this.d.a(dkw.by) ? dzo.b : dzo.a).b(dyg.a, this.d.c(dyf.a))
+         : this.d;
+   }
+
+   private static void a(dhp $$0, jj $$1, float $$2, dyi $$3) {
+      jo $$4 = $$3.f();
+      double $$5 = (double)($$2 - $$3.i);
+      fdo $$6 = $$3.u().g($$0, $$1);
+      if (!$$6.c()) {
+         fcp $$7 = a($$1, $$6.a(), $$3);
+         List<bvs> $$8 = $$0.a_(null, dyh.a($$7, $$4, $$5).b($$7));
+         if (!$$8.isEmpty()) {
+            List<fcp> $$9 = $$6.e();
+            boolean $$10 = $$3.d.a(dkw.it);
+            Iterator var12 = $$8.iterator();
+
+            while (true) {
+               bvs $$11;
+               while (true) {
+                  if (!var12.hasNext()) {
+                     return;
+                  }
+
+                  $$11 = (bvs)var12.next();
+                  if ($$11.j_() != euy.d) {
+                     if (!$$10) {
+                        break;
+                     }
+
+                     if (!($$11 instanceof aro)) {
+                        fcu $$12 = $$11.dy();
+                        double $$13 = $$12.d;
+                        double $$14 = $$12.e;
+                        double $$15 = $$12.f;
+                        switch ($$4.o()) {
+                           case a:
+                              $$13 = (double)$$4.j();
+                              break;
+                           case b:
+                              $$14 = (double)$$4.k();
+                              break;
+                           case c:
+                              $$15 = (double)$$4.l();
+                        }
+
+                        $$11.n($$13, $$14, $$15);
+                        break;
+                     }
+                  }
+               }
+
+               double $$16 = 0.0;
+
+               for (fcp $$17 : $$9) {
+                  fcp $$18 = dyh.a(a($$1, $$17, $$3), $$4, $$5);
+                  fcp $$19 = $$11.cR();
+                  if ($$18.c($$19)) {
+                     $$16 = Math.max($$16, a($$18, $$4, $$19));
+                     if ($$16 >= $$5) {
+                        break;
+                     }
+                  }
+               }
+
+               if (!($$16 <= 0.0)) {
+                  $$16 = Math.min($$16, $$5) + 0.01;
+                  a($$4, $$11, $$16, $$4);
+                  if (!$$3.f && $$3.g) {
+                     a($$1, $$11, $$4, $$5);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(jo $$0, bvs $$1, double $$2, jo $$3) {
+      h.set($$0);
+      $$1.a(bwv.c, new fcu($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
+      $$1.aK();
+      h.set(null);
+   }
+
+   private static void b(dhp $$0, jj $$1, float $$2, dyi $$3) {
+      if ($$3.v()) {
+         jo $$4 = $$3.f();
+         if ($$4.o().d()) {
+            double $$5 = $$3.d.g($$0, $$1).c(jo.a.b);
+            fcp $$6 = a($$1, new fcp(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
+            double $$7 = (double)($$2 - $$3.i);
+
+            for (bvs $$9 : $$0.a((bvs)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
+               a($$4, $$9, $$7, $$4);
+            }
+         }
+      }
+   }
+
+   private static boolean a(fcp $$0, bvs $$1, jj $$2) {
+      return $$1.j_() == euy.a && $$1.aJ() && ($$1.d($$2) || $$1.dA() >= $$0.a && $$1.dA() <= $$0.d && $$1.dG() >= $$0.c && $$1.dG() <= $$0.f);
+   }
+
+   private boolean v() {
+      return this.d.a(dkw.pK);
+   }
+
+   public jo f() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   private static double a(fcp $$0, jo $$1, fcp $$2) {
+      switch ($$1) {
+         case f:
+            return $$0.d - $$2.a;
+         case e:
+            return $$2.d - $$0.a;
+         case b:
+         default:
+            return $$0.e - $$2.b;
+         case a:
+            return $$2.e - $$0.b;
+         case d:
+            return $$0.f - $$2.c;
+         case c:
+            return $$2.f - $$0.c;
+      }
+   }
+
+   private static fcp a(jj $$0, fcp $$1, dyi $$2) {
+      double $$3 = (double)$$2.e($$2.i);
+      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
+   }
+
+   private static void a(jj $$0, bvs $$1, jo $$2, double $$3) {
+      fcp $$4 = $$1.cR();
+      fcp $$5 = fdl.b().a().a($$0);
+      if ($$4.c($$5)) {
+         jo $$6 = $$2.g();
+         double $$7 = a($$5, $$6, $$4) + 0.01;
+         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
+         if (Math.abs($$7 - $$8) < 0.01) {
+            $$7 = Math.min($$7, $$3) + 0.01;
+            a($$2, $$1, $$7, $$6);
+         }
+      }
+   }
+
+   public dym j() {
       return this.d;
    }
 
-   public dyi a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+   public void k() {
+      if (this.n != null && (this.j < 1.0F || this.n.C)) {
+         this.i = 1.0F;
+         this.j = this.i;
+         this.n.o(this.o);
+         this.ar_();
+         if (this.n.a_(this.o).a(dkw.bX)) {
+            dym $$0;
+            if (this.g) {
+               $$0 = dkw.a.m();
+            } else {
+               $$0 = dku.b(this.d, this.n, this.o);
+            }
+
+            this.n.a(this.o, $$0, 3);
+            this.n.b(this.o, $$0.b(), evx.a(this.n, this.s(), null));
+         }
+      }
+   }
+
+   @Override
+   public void a(jj $$0, dym $$1) {
+      this.k();
+   }
+
+   public jo s() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   public static void a(dhp $$0, jj $$1, dym $$2, dyi $$3) {
+      $$3.k = $$0.ae();
+      $$3.j = $$3.i;
+      if ($$3.j >= 1.0F) {
+         if ($$0.C && $$3.l < 5) {
+            $$3.l++;
+         } else {
+            $$0.o($$1);
+            $$3.ar_();
+            if ($$0.a_($$1).a(dkw.bX)) {
+               dym $$4 = dku.b($$3.d, $$0, $$1);
+               if ($$4.l()) {
+                  $$0.a($$1, $$3.d, 340);
+                  dku.a($$3.d, $$4, $$0, $$1, 3);
+               } else {
+                  if ($$4.b(dzc.I) && $$4.c(dzc.I)) {
+                     $$4 = $$4.b(dzc.I, Boolean.valueOf(false));
+                  }
+
+                  $$0.a($$1, $$4, 67);
+                  $$0.b($$1, $$4.b(), evx.a($$0, $$3.s(), null));
+               }
+            }
+         }
+      } else {
+         float $$5 = $$3.i + 0.5F;
+         a($$0, $$1, $$5, $$3);
+         b($$0, $$1, $$5, $$3);
+         $$3.i = $$5;
+         if ($$3.i >= 1.0F) {
+            $$3.i = 1.0F;
+         }
+      }
+   }
+
+   @Override
+   protected void a(tw $$0, ju.a $$1) {
+      super.a($$0, $$1);
+      jt<dku> $$2 = (jt<dku>)(this.n != null ? this.n.a(me.f) : md.e);
+      this.d = ul.a($$2, $$0.p("blockState"));
+      this.e = jo.a($$0.h("facing"));
+      this.i = $$0.j("progress");
+      this.j = this.i;
+      this.f = $$0.q("extending");
+      this.g = $$0.q("source");
+   }
+
+   @Override
+   protected void b(tw $$0, ju.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("blockState", ul.a(this.d));
+      $$0.a("facing", this.e.d());
+      $$0.a("progress", this.j);
+      $$0.a("extending", this.f);
+      $$0.a("source", this.g);
+   }
+
+   public fdo a(dgv $$0, jj $$1) {
+      fdo $$2;
+      if (!this.f && this.g && this.d.b() instanceof dyf) {
+         $$2 = this.d.b(dyf.c, Boolean.valueOf(true)).g($$0, $$1);
+      } else {
+         $$2 = fdl.a();
+      }
+
+      jo $$4 = h.get();
+      if ((double)this.i < 1.0 && $$4 == this.f()) {
+         return $$2;
+      } else {
+         dym $$5;
+         if (this.d()) {
+            $$5 = dkw.bG.m().b(dyg.a, this.e).b(dyg.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
+         } else {
+            $$5 = this.d;
+         }
+
+         float $$7 = this.e(this.i);
+         double $$8 = (double)((float)this.e.j() * $$7);
+         double $$9 = (double)((float)this.e.k() * $$7);
+         double $$10 = (double)((float)this.e.l() * $$7);
+         return fdl.a($$2, $$5.g($$0, $$1).a($$8, $$9, $$10));
+      }
+   }
+
+   public long t() {
+      return this.k;
+   }
+
+   @Override
+   public void a(dhp $$0) {
+      super.a($$0);
+      if ($$0.a(me.f).a(this.d.b().p().h()).isEmpty()) {
+         this.d = dkw.a.m();
+      }
    }
 }

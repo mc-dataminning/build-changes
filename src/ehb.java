@@ -1,47 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class ehb extends egu<ejf> {
-   public ehb(Codec<ejf> $$0) {
+public class ehb extends ehr<ekc> {
+   public ehb(Codec<ekc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<ejf> $$0) {
-      dhy $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      azh $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dxq $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dkg.ei) && !$$4.a(dkg.el) && !$$4.a(dkg.pT)) {
-            return false;
-         } else {
-            $$1.a($$2, dkg.ep.m(), 2);
+   public boolean a(eht<ekc> $$0) {
+      azs $$1 = $$0.d();
+      dio $$2 = $$0.b();
+      dgw $$3 = new dgw($$0.e());
+      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      jj.a $$6 = new jj.a();
+      IntListIterator var8 = $$4.iterator();
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               ji $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-                  for (jn $$8 : jn.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dkg.ep)) {
-                        $$7++;
-                     }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            jj $$9 = $$2.a(eel.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dkw.cD.m(), 2);
+               btw.a($$2, $$1, $$9, exh.a);
+               dym $$10 = dkw.cw.m();
 
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dkg.ep.m(), 2);
+               for (jo $$11 : jo.c.a) {
+                  jj $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
                   }
                }
-            }
 
-            return true;
+               return true;
+            }
          }
       }
+
+      return false;
    }
 }

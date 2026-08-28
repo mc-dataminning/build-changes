@@ -1,15 +1,20 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hec() implements heh<cxf> {
-   public static final heh.a<hec, cxf> a = heh.a.a(MapCodec.unit(new hec()), cxf.j);
+public record hec() implements hdw {
+   public static final MapCodec<hec> a = MapCodec.unit(new hec());
 
-   public cxf a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      return $$4;
+   @Override
+   public boolean a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      if ($$2 instanceof gmw $$5 && $$5.bP.g() == $$0) {
+         return true;
+      }
+
+      return false;
    }
 
    @Override
-   public heh.a<hec, cxf> a() {
+   public MapCodec<hec> a() {
       return a;
    }
 }

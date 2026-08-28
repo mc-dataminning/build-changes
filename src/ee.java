@@ -8,7 +8,7 @@ public class ee extends dz<ee.a> {
       return ee.a.a;
    }
 
-   public void a(are $$0) {
+   public void a(aro $$0) {
       this.a($$0, $$0x -> true);
    }
 

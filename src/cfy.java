@@ -1,53 +1,40 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-
-public class cfy<T extends bvy> extends cgi<T> {
-   private final BiPredicate<T, bvy> a;
-   private final Predicate<T> b;
-   private final cfc<Boolean> c;
-   private final int d;
-
-   public cfy(int $$0, BiPredicate<T, bvy> $$1, Predicate<T> $$2, cfc<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+public class cfy extends cgb {
+   public cfy(bwt $$0, dhp $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(ard $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   protected evj a(int $$0) {
+      this.o = new evc(false);
+      return new evj(this.o, $$0);
    }
 
    @Override
-   public Set<cfc<?>> a() {
-      return Set.of(cfc.g);
+   protected boolean a() {
+      return true;
    }
 
    @Override
-   public void a(T $$0) {
-      Optional<List<bvy>> $$1 = $$0.ea().c(cfc.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
-         }
-      }
+   protected fcu b() {
+      return new fcu(this.a.dA(), this.a.e(0.5), this.a.dG());
    }
 
-   public void b(T $$0) {
-      $$0.ea().a(this.c, true, (long)this.d);
+   @Override
+   protected double a(fcu $$0) {
+      return $$0.e;
    }
 
-   public void c(T $$0) {
-      $$0.ea().b(this.c);
+   @Override
+   protected boolean a(fcu $$0, fcu $$1) {
+      return this.a.bm() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(jj $$0) {
+      return !this.b.a_($$0.e()).l();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

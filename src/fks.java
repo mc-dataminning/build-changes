@@ -1,93 +1,62 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class fks extends hne {
+   private final fwf a;
+   private final fks.a b;
+   private frg c = frg.a;
 
-public class fks {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
+   public fks(fka $$0, fwf $$1) {
+      super(fmu.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
+   public fks(wv $$0, fwf $$1) {
+      super(fmu.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
-      }
+   public fks(wv $$0, wv $$1, fwf $$2) {
+      super(fmu.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
    }
 
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      return b($$0, $$1, $$2);
+   private static fks.a a(fka $$0) {
+      fig $$1 = $$0.a;
+      return a(wv.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
    }
 
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
+   private static fks.a a(wv $$0) {
+      return a(wv.c("mco.errorMessage.generic"), $$0);
    }
 
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
+   private static fks.a a(wv $$0, wv $$1) {
+      return new fks.a($$0, $$1);
    }
 
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
-      }
+   @Override
+   public void aN_() {
+      this.c(fqn.a(wu.h, $$0 -> this.aK_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = frg.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
+   @Override
+   public void aK_() {
+      this.m.a(this.a);
    }
 
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
+   @Override
+   public wv i() {
+      return wv.i().b(this.b.a).f(": ").b(this.b.b);
    }
 
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   }
+
+   static record a(wv a, wv b) {
    }
 }

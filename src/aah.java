@@ -1,26 +1,26 @@
-public record aah(long c, ji d) implements zz {
-   public static final yn<vl, aah> a = zz.a(aah::a, aah::new);
-   public static final zz.b<aah> b = zz.a("debug/neighbors_update");
+public record aah(alc<edm> c, fcu d) implements aaf {
+   public static final yt<vr, aah> a = aaf.a(aah::a, aah::new);
+   public static final aaf.b<aah> b = aaf.a("debug/game_event");
 
-   private aah(vl $$0) {
-      this($$0.m(), $$0.e());
+   private aah(vr $$0) {
+      this($$0.a(me.G), $$0.k());
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.c);
+   private void a(vr $$0) {
+      $$0.b(this.c);
       $$0.a(this.d);
    }
 
    @Override
-   public zz.b<aah> a() {
+   public aaf.b<aah> a() {
       return b;
    }
 
-   public long b() {
+   public alc<edm> b() {
       return this.c;
    }
 
-   public ji c() {
+   public fcu c() {
       return this.d;
    }
 }

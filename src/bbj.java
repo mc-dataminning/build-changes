@@ -1,48 +1,26 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
 public class bbj extends DataFix {
-   public bbj(Schema $$0) {
-      super($$0, true);
+   private final String a;
+   private final Function<String, String> b;
+
+   public bbj(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.remove("Bees");
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.remove("EntityData");
-      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
-      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bic.s, "minecraft:beehive");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
-      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
-      Type<?> $$3 = $$2.getElement();
-      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
-      OpticFinder<?> $$5 = DSL.typeFinder($$3);
-      Type<?> $$6 = this.getInputSchema().getType(bic.s);
-      Type<?> $$7 = this.getOutputSchema().getType(bic.s);
+   protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "BeehiveFieldRenameFix",
-         $$6,
-         $$7,
-         $$4x -> bao.a(
-               $$7,
-               $$4x.updateTyped(
-                  $$1,
-                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
-                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
-               )
-            )
+         this.a, this.getInputSchema().getType(biq.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
+                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
+                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
+               }))
       );
    }
 }

@@ -1,44 +1,50 @@
-import java.util.Set;
+public class gdh extends gew {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final ghd e;
+   private final ghd f;
+   private final ghd g;
+   private final ghd h;
+   private final ghd i;
+   private final ghd j;
 
-public class gdh extends gek<gzv> {
-   public static final ggl a = new gby(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public gdh(ggc $$0) {
-      super($$0);
+   public gdh(ghd $$0) {
+      super($$0, goi::d);
+      this.e = $$0.b("left_lid");
+      this.f = $$0.b("right_lid");
+      this.g = $$0.b("left_pages");
+      this.h = $$0.b("right_pages");
+      this.i = $$0.b("flip_page1");
+      this.j = $$0.b("flip_page2");
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      ggm $$2 = $$1.a(
-         "head",
-         ggh.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         gge.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", ggh.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gge.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", ggh.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gge.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", ggh.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gge.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", ggh.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gge.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", ggh.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gge.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", ggh.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gge.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", ggh.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gge.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", ggh.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gge.a(-3.0F, 14.0F, -6.0F));
-      return ggi.a($$0, 64, 64);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      $$1.a("left_lid", ghi.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), ghf.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", ghi.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), ghf.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", ghi.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), ghf.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", ghi.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), ghf.a);
+      $$1.a("right_pages", ghi.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), ghf.a);
+      ghi $$2 = ghi.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, ghf.a);
+      $$1.a("flip_page2", $$2, ghf.a);
+      return ghj.a($$0, 64, 32);
    }
 
-   public void a(gzv $$0) {
-      super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
-      }
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (azk.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.e.f = (float) Math.PI + $$4;
+      this.f.f = -$$4;
+      this.g.f = $$4;
+      this.h.f = -$$4;
+      this.i.f = $$4 - $$4 * 2.0F * $$1;
+      this.j.f = $$4 - $$4 * 2.0F * $$2;
+      this.g.b = azk.a($$4);
+      this.h.b = azk.a($$4);
+      this.i.b = azk.a($$4);
+      this.j.b = azk.a($$4);
    }
 }

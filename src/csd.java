@@ -1,60 +1,59 @@
-public class csd extends crq {
-   private final dgb b = new dgb() {
-      @Override
-      public void a(dgz $$0, ji $$1, int $$2) {
-         $$0.a(csd.this, (byte)$$2);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
+
+public class csd {
+   private final List<csa> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<csa> a() {
+      return ImmutableList.copyOf(this.a);
+   }
+
+   public csd a(int $$0, float $$1) {
+      this.a.add(new csa($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public csd a(Collection<csa> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<csa> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         csa $$1 = this.a.get(this.b);
+         csa $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            csa $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
       }
-   };
-   private final Runnable c;
-
-   public csd(bvi<? extends csd> $$0, dgz $$1) {
-      super($$0, $$1);
-      this.c = this.c($$1);
-   }
-
-   @Override
-   protected cxd o() {
-      return cxl.oq;
-   }
-
-   @Override
-   public cxh dH() {
-      return new cxh(cxl.oq);
-   }
-
-   private Runnable c(dgz $$0) {
-      return $$0 instanceof ard ? () -> this.b.a((ard)$$0, this.du()) : () -> this.b.a($$0, this.du());
-   }
-
-   @Override
-   public dxq v() {
-      return dkg.cA.m();
-   }
-
-   @Override
-   protected void a(tq $$0) {
-      super.a($$0);
-      this.b.a(this.dU(), this.du(), $$0);
-   }
-
-   @Override
-   protected void b(tq $$0) {
-      super.b($$0);
-      this.b.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.b.a(this.dU(), $$0);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.c.run();
-   }
-
-   public dgb q() {
-      return this.b;
    }
 }

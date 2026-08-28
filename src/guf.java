@@ -1,32 +1,72 @@
-public class guf extends grx<cjz, hak, gds> {
-   private static final aku a = aku.b("textures/entity/llama/creamy.png");
-   private static final aku b = aku.b("textures/entity/llama/white.png");
-   private static final aku k = aku.b("textures/entity/llama/brown.png");
-   private static final aku l = aku.b("textures/entity/llama/gray.png");
+@FunctionalInterface
+public interface guf<T extends bvs> {
+   gue<T, ?> create(guf.a var1);
 
-   public guf(gtd.a $$0, gga $$1, gga $$2) {
-      super($$0, new gds($$0.a($$1)), new gds($$0.a($$2)), 0.7F);
-      this.a(new gxm(this, $$0.f(), $$0.h()));
-   }
+   public static class a {
+      private final gud a;
+      private final hdl b;
+      private final gnx c;
+      private final gpc d;
+      private final ava e;
+      private final ggz f;
+      private final hix g;
+      private final fpx h;
+      private final gye i;
 
-   public aku a(hak $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-      };
-   }
+      public a(gud $$0, hdl $$1, gnx $$2, gpc $$3, ava $$4, ggz $$5, hix $$6, fpx $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new gye($$6, this.i().c(got.g));
+      }
 
-   public hak b() {
-      return new hak();
-   }
+      public gud a() {
+         return this.a;
+      }
 
-   public void a(cjz $$0, hak $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gF();
-      $$1.b = !$$0.n_() && $$0.t();
-      $$1.c = $$0.aj();
-      $$1.d = $$0.gv();
+      public hdl b() {
+         return this.b;
+      }
+
+      public gnx c() {
+         return this.c;
+      }
+
+      public gpc d() {
+         return this.d;
+      }
+
+      public ava e() {
+         return this.e;
+      }
+
+      public ggz f() {
+         return this.f;
+      }
+
+      public hix g() {
+         return this.g;
+      }
+
+      public gye h() {
+         return this.i;
+      }
+
+      public hjg i() {
+         return this.d.a().a();
+      }
+
+      public ghd a(ghb $$0) {
+         return this.f.a($$0);
+      }
+
+      public fpx j() {
+         return this.h;
+      }
    }
 }

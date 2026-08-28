@@ -1,29 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class cae {
-   public static bxs<bvy> a(int $$0, BiPredicate<bvy, bvy> $$1) {
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$2 -> $$2.group($$2.b(cfc.o), $$2.a(cfc.ab), $$2.c(cfc.ai), $$2.a(cfc.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bvy $$10 = $$2.b($$3);
-                     if (!$$10.eF()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-                        $$5.a($$10.du(), (long)$$0);
-                        if ($$10.aq() != bvi.bR || $$7.O().b(dgv.O)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
-                        return true;
+   public static byj<bwr> a() {
+      return cbv.a((Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$0 -> $$0.group($$0.b(cft.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  jj $$5 = $$0.<jr>b($$1).b();
+                  if ($$5.a($$3.dv(), 3.0)) {
+                     dym $$6 = $$2.a_($$5);
+                     if ($$6.a(dkw.oF)) {
+                        dkq $$7 = (dkq)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

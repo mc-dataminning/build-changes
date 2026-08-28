@@ -1,58 +1,95 @@
-import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.time.Duration;
+import java.util.List;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fku {
-   private static final String a = "realms_persistence.json";
-   private static final fhz b = new fhz();
-   private static final Logger c = LogUtils.getLogger();
+public class fku extends hne {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hnf b = new hnf(Duration.ofSeconds(5L));
+   private final List<fmb> c;
+   private final fwf C;
+   private final fuf D = fuf.d();
+   private volatile wv E;
+   @Nullable
+   private frc F;
 
-   public fku.a a() {
-      return b();
-   }
+   public fku(fwf $$0, fmb... $$1) {
+      super(fmu.a);
+      this.C = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.E = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (fmb $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
 
-   public void a(fku.a $$0) {
-      b($$0);
-   }
-
-   public static fku.a b() {
-      Path $$0 = c();
-
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fku.a $$2 = b.a($$1, fku.a.class);
-         if ($$2 != null) {
-            return $$2;
-         }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
-      }
-
-      return new fku.a();
-   }
-
-   public static void b(fku.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
+               $$1x.run();
+               if ($$1x.d()) {
+                  return;
+               }
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new fjy(a));
+         $$3.start();
       }
    }
 
-   private static Path c() {
-      return fmg.Q().q.toPath().resolve("realms_persistence.json");
+   @Override
+   public void e() {
+      super.e();
+      if (this.F != null) {
+         b.a(this.m.aY(), this.F.B());
+      }
    }
 
-   public static class a implements fiq {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void aN_() {
+      this.D.c().b();
+      this.F = new frc(this.p, this.E);
+      this.D.a(this.F, $$0 -> $$0.e(30));
+      this.D.a(fqn.a(wu.e, $$0 -> this.f()).a());
+      this.D.a($$1 -> {
+         fql var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.D.a();
+      ftz.a(this.D, this.J());
+   }
+
+   protected void f() {
+      for (fmb $$0 : this.c) {
+         $$0.b();
+      }
+
+      this.m.a(this.C);
+   }
+
+   public void a(wv $$0) {
+      if (this.F != null) {
+         this.F.b($$0);
+      }
+
+      this.E = $$0;
    }
 }

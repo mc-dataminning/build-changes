@@ -1,51 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bhe extends DataFix {
+public class bhe extends bdm {
+   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+
    public bhe(Schema $$0) {
-      super($$0, false);
+      super($$0, "LockComponentPredicateFix", "minecraft:lock");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.s);
-      Type<?> $$1 = this.getInputSchema().getType(bic.t);
-      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bic.s);
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bic.E.typeName(), bju.a()));
-      OpticFinder<?> $$4 = $$0.findField("components");
-      OpticFinder<?> $$5 = $$1.findField("components");
-      OpticFinder<?> $$6 = $$4.type().findField("minecraft:item_name");
-      OpticFinder<Pair<String, String>> $$7 = DSL.typeFinder(this.getInputSchema().getType(bic.z));
-      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$4x -> {
-         Object $$5x = ((Pair)$$4x.get($$2.finder())).getFirst();
-         return $$5x.equals("minecraft:banner") ? this.a($$4x, $$4, $$6, $$7) : $$4x;
-      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", $$1, $$4x -> {
-         String $$5x = $$4x.getOptional($$3).<String>map(Pair::getSecond).orElse("");
-         return $$5x.equals("minecraft:white_banner") ? this.a($$4x, $$5, $$6, $$7) : $$4x;
-      }));
+   @Nullable
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1, OpticFinder<?> $$2, OpticFinder<Pair<String, String>> $$3) {
-      return $$0.updateTyped(
-         $$1,
-         $$2x -> {
-            boolean $$3x = $$2x.getOptionalTyped($$2)
-               .flatMap($$1xx -> $$1xx.getOptional($$3))
-               .<String>map(Pair::getSecond)
-               .flatMap(baq::d)
-               .filter($$0xx -> $$0xx.equals("block.minecraft.ominous_banner"))
-               .isPresent();
-            return $$3x
-               ? $$2x.updateTyped($$2, $$1xx -> $$1xx.set($$3, Pair.of(bic.z.typeName(), baq.b("block.minecraft.ominous_banner"))))
-                  .update(DSL.remainderFinder(), $$0xx -> $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon")))
-               : $$2x;
-         }
-      );
+   @Nullable
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return null;
+      } else if ($$1.get().isEmpty()) {
+         return null;
+      } else {
+         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
+         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
+         return $$0.emptyMap().set("components", $$3);
+      }
    }
 }

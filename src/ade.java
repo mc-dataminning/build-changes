@@ -1,69 +1,53 @@
-public class ade implements yw<abl> {
-   public static final yn<wa, ade> a = yw.a(ade::a, ade::new);
+public class ade implements zc<abr> {
+   public static final yt<vr, ade> a = zc.a(ade::a, ade::new);
    private final int b;
-   private final dfy c;
+   private final jj c;
    private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+   private final boolean e;
 
-   public ade(int $$0, dfy $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public ade(int $$0, jj $$1, int $$2, boolean $$3) {
       this.b = $$0;
-      this.c = $$1.a();
+      this.c = $$1.j();
       this.d = $$2;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
    }
 
-   private ade(wa $$0) {
-      this.b = $$0.x();
-      this.c = dfy.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   private ade(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(wa $$0) {
-      $$0.f(this.b);
-      dfy.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   private void a(vr $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public yy<ade> a() {
-      return agd.P;
+   public ze<ade> a() {
+      return agk.L;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean b() {
+      return this.e;
    }
 
-   public dfy e() {
-      return this.c;
+   public int e() {
+      return this.b;
    }
 
    public int f() {
       return this.d;
    }
 
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
+   public jj g() {
+      return this.c;
    }
 }

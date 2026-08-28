@@ -1,71 +1,38 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
-
-public abstract class gdv {
-   private static final Vector3f a = new Vector3f();
-   protected final ggc v;
-   protected final Function<aku, gnh> w;
-   private final List<ggc> b;
-
-   public gdv(ggc $$0, Function<aku, gnh> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+public class gdv extends ggt<hda> {
+   public gdv(ghd $$0) {
+      super($$0);
    }
 
-   public final gnh a(aku $$0) {
-      return this.w.apply($$0);
+   public static ghj a(ghh $$0) {
+      ghl $$1 = geo.a($$0, 0.0F);
+      ghn $$2 = $$1.a();
+      $$2.a("left_arm", ghi.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), ghf.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", ghi.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), ghf.a(1.9F, 12.0F, 0.0F));
+      return ghj.a($$1, 64, 64);
    }
 
-   public final void a(fgr $$0, fgv $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public final void a(fgr $$0, fgv $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
-
-   public final ggc e() {
-      return this.v;
-   }
-
-   public Optional<ggc> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<ggc> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (ggc $$0 : this.b) {
-         $$0.c();
+   @Override
+   public void a(hda $$0) {
+      super.a($$0);
+      if ($$0.h == geo.a.e) {
+         this.s.e = this.s.e * 0.5F - (float) Math.PI;
+         this.s.f = 0.0F;
       }
-   }
 
-   protected void a(bur $$0, fmu $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
+      if ($$0.f == geo.a.e) {
+         this.r.e = this.r.e * 0.5F - (float) Math.PI;
+         this.r.f = 0.0F;
+      }
 
-   protected void a(fmu $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fmw.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bur $$0, fmu $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fmw.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
-
-   protected void a(fmu $$0) {
-      fmw.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends gdv {
-      public a(ggc $$0, Function<aku, gnh> $$1) {
-         super($$0, $$1);
+      float $$1 = $$0.G;
+      if ($$1 > 0.0F) {
+         this.r.e = azk.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * azk.a(0.1F * $$0.u);
+         this.s.e = azk.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * azk.a(0.1F * $$0.u);
+         this.r.g = azk.j($$1, this.r.g, -0.15F);
+         this.s.g = azk.j($$1, this.s.g, 0.15F);
+         this.u.e = this.u.e - $$1 * 0.55F * azk.a(0.1F * $$0.u);
+         this.t.e = this.t.e + $$1 * 0.55F * azk.a(0.1F * $$0.u);
+         this.o.e = 0.0F;
       }
    }
 }

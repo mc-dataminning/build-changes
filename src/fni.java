@@ -1,78 +1,158 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fni {
-   private static final int c = -1;
-   public static final int a = -14647248;
-   public static final int b = -9321636;
-   private final jx<fnh> d = new jx<>(32);
-   private final Map<dke, Set<dyt<?>>> e = Maps.newHashMap();
+public class fni extends avf<Map<String, List<fni.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fni.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fni.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fni.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fni.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fni.a::d)
+                  )
+                  .apply($$0, fni.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final ald c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fni.b f;
 
-   public static fni a() {
-      fni $$0 = new fni();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.a($$1, $$0x.c(dmn.b) == dym.a ? $$2.e() : $$2) : dgx.a(), dkg.jg, dkg.jf);
-      $$0.a(dmn.b, dkg.jg, dkg.jf);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.a($$1, $$2) : dgx.a(), dkg.i, dkg.bB, dkg.bA, dkg.gx);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? gmf.a($$1, $$2) : dgx.a();
-         } else {
-            return -1;
+   public fni(ald $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   protected Map<String, List<fni.a>> a(ava $$0, bqb $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
          }
-      }, dkg.td, dkg.te);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -10380959, dkg.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -8345771, dkg.aM);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -9399763, dkg.aT, dkg.aU);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.b($$1, $$2) : -12012264, dkg.aK, dkg.aN, dkg.aO, dkg.aQ, dkg.ft, dkg.aS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.c($$1, $$2) : -1, dkg.J, dkg.nF, dkg.fP);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dql.b($$0x.c(dql.f)), dkg.cE);
-      $$0.a(dql.f, dkg.cE);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gmf.a($$1, $$2) : -1, dkg.ef);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dkg.fq, dkg.fp);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dsg.c);
-         return axk.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, dkg.fs, dkg.fr);
-      $$0.a(dsg.c, dkg.fs, dkg.fr);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dkg.fB);
-      return $$0;
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
    }
 
-   public int a(dxq $$0, dgz $$1, ji $$2) {
-      fnh $$3 = this.d.a(mb.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
+   protected void a(Map<String, List<fni.a>> $$0, ava $$1, bqb $$2) {
+      List<fni.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         af.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
       } else {
-         eua $$4 = $$0.a((dgf)$$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new fni.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
       }
    }
 
-   public int a(dxq $$0, @Nullable dgc $$1, @Nullable ji $$2, int $$3) {
-      fnh $$4 = this.d.a(mb.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   @Override
+   public void close() {
+      this.a();
    }
 
-   public void a(fnh $$0, dke... $$1) {
-      for (dke $$2 : $$1) {
-         this.d.a($$0, mb.e.a($$2));
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
       }
    }
 
-   private void a(Set<dyt<?>> $$0, dke... $$1) {
-      for (dke $$2 : $$1) {
-         this.e.put($$2, $$0);
+   private long a(List<fni.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<fni.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
       }
    }
 
-   private void a(dyt<?> $$0, dke... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
+   static class b extends TimerTask {
+      private final fnd a = fnd.Q();
+      private final List<fni.a> b;
+      private final long c;
+      private final AtomicLong d;
 
-   public Set<dyt<?>> a(dke $$0) {
-      return this.e.getOrDefault($$0, ImmutableSet.of());
+      public b(List<fni.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public fni.b a(List<fni.a> $$0, long $$1) {
+         this.cancel();
+         return new fni.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (fni.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fsw.a(fnd.Q().aA(), fsw.a.g, wv.a($$2.c, $$3), wv.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
+      }
    }
 }

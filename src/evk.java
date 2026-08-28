@@ -1,42 +1,38 @@
-import java.util.Optional;
+public enum evk {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public record evk(jr<evl> b, byte c, byte d, byte e, Optional<wp> f) {
-   public static final yn<wa, evk> a = yn.a(evl.c, evk::c, yl.c, evk::d, yl.c, evk::e, yl.c, evk::f, wr.c, evk::g, evk::new);
+   private final float A;
 
-   public evk(jr<evl> b, byte c, byte d, byte e, Optional<wp> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   private evk(final float $$0) {
+      this.A = $$0;
    }
 
-   public aku a() {
-      return this.b.a().b();
-   }
-
-   public boolean b() {
-      return this.b.a().c();
-   }
-
-   public jr<evl> c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<wp> g() {
-      return this.f;
+   public float a() {
+      return this.A;
    }
 }

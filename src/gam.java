@@ -1,5 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record gam(gat.a a, Set<dgv.e<dgv.a>> b, @Nullable akt<emk> c) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gam {
 }

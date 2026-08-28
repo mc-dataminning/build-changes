@@ -1,20 +1,29 @@
-public record ago(xg.a b) implements yw<agf> {
-   public static final yn<vl, ago> a = yw.a(ago::a, ago::new);
+public class ago implements zc<agm> {
+   public static final yt<vr, ago> a = zc.a(ago::a, ago::new);
+   private final int b;
 
-   private ago(vl $$0) {
-      this(xg.a.a($$0));
+   public ago(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vl $$0) {
-      xg.a.a($$0, this.b);
+   private ago(vr $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yy<ago> a() {
-      return agd.br;
+   public ze<ago> a() {
+      return agk.bk;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

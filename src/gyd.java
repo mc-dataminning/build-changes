@@ -1,44 +1,24 @@
-import javax.annotation.Nullable;
-
-public class gyd<S extends haa, M extends gda<S>> extends gxs<S, M> {
-   private final gcw a;
-   private final gcw b;
-   private final gxc c;
-
-   public gyd(gva<S, M> $$0, gfy $$1, gxc $$2) {
+public abstract class gyd<S extends hak, M extends gea<S>> extends gyt<S, M> {
+   public gyd(gwc<S, M> $$0) {
       super($$0);
-      this.a = new gcw($$1.a(ggb.aH));
-      this.b = new gcw($$1.a(ggb.aI));
-      this.c = $$2;
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
-      cxh $$6 = $$3.W;
-      dfm $$7 = $$6.a(kv.E);
-      if ($$7 != null && !$$7.c().isEmpty()) {
-         aku $$8 = a($$3);
-         gcw $$9 = $$3.aj ? this.b : this.a;
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$9.a($$3);
-         this.c.a(hhx.d.c, $$7.c().get(), $$9, $$6, $$0, $$1, $$2, $$8);
-         $$0.b();
+   @Override
+   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.u;
+         M $$7 = this.c();
+         fhs $$8 = $$1.getBuffer(goi.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, hgi.d, -8355712);
       }
    }
 
-   @Nullable
-   private static aku a(haa $$0) {
-      if ($$0 instanceof hav $$1) {
-         hgt $$2 = $$1.a;
-         if ($$2.d() != null) {
-            return $$2.d();
-         }
+   protected abstract boolean a(S var1);
 
-         if ($$2.c() != null && $$1.ay) {
-            return $$2.c();
-         }
-      }
+   protected abstract float a(float var1);
 
-      return null;
-   }
+   protected abstract ald a();
+
+   protected abstract M c();
 }

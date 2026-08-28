@@ -1,40 +1,70 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.List;
-import org.joml.Vector3f;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class grj implements gqy.a {
-   public static final int a = 200;
-   private final fmg b;
-   private final List<aan> c = Lists.newArrayList();
+class grj {
+   private final Map<jj, dvl> a;
+   @Nullable
+   private final List<ebb<dym>> b;
+   private final boolean c;
+   private final eat d;
 
-   grj(fmg $$0) {
-      this.b = $$0;
+   grj(eat $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof eap) {
+         this.b = null;
+      } else {
+         eau[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (eau $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
-   public void a(aan $$0) {
-      this.c.add($$0);
+   @Nullable
+   public dvl a(jj $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      fgv $$5 = $$1.getBuffer(gnh.y());
-      long $$6 = this.b.s.ae();
-      Iterator<aan> $$7 = this.c.iterator();
+   public dym b(jj $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dym $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dkw.iu.m();
+         }
 
-      while ($$7.hasNext()) {
-         aan $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (aan.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               eve $$12 = $$10.b();
-               gnr.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               gnr.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               gnr.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+         if ($$2 == 70) {
+            $$4 = eec.a($$1, $$3);
+         }
+
+         return $$4 == null ? dkw.a.m() : $$4;
+      } else if (this.b == null) {
+         return dkw.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               ebb<dym> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
             }
+
+            return dkw.a.m();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
          }
       }
    }

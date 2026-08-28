@@ -1,35 +1,25 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class exw extends eyb {
-   public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cv.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), eye.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, exw::new)
-   );
-   private final cv b;
-   private final eyc c;
+public class exw extends eyd {
+   public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, exw::new));
 
-   private exw(List<ezx> $$0, cv $$1, eyc $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private exw(int $$0, int $$1, List<fau> $$2, List<eyz> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public eyd<exw> b() {
-      return eye.v;
+   public eyc a() {
+      return exz.b;
    }
 
    @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   public void a(Consumer<cxy> $$0, exl $$1) {
    }
 
-   @Override
-   public void a(ewu $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public static eyd.a<?> b() {
+      return a(exw::new);
    }
 }

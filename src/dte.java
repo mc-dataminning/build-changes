@@ -1,20 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dte extends dnu {
+public class dte extends dnd implements dkx {
    public static final MapCodec<dte> c = b(dte::new);
-   private static final fcr e = dke.b(8.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dte> a() {
       return c;
    }
 
-   public dte(dxp.d $$0) {
-      super($$0, jn.b, e, false);
+   public dte(dyl.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dnv c() {
-      return (dnv)dkg.pd;
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      a($$0, $$2, new cxy(this));
    }
 }

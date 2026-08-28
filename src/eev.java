@@ -1,127 +1,68 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+public final class eev {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public interface eev extends BiPredicate<dhy, ji> {
-   Codec<eev> b = mb.M.q().dispatch(eev::a, eew::codec);
-   eev c = a(dkg.a);
-   eev d = a(dkg.a, dkg.J);
-
-   eew<?> a();
-
-   static eev a(List<eev> $$0) {
-      return new eet($$0);
+   private eev() {
    }
 
-   static eev a(eev... $$0) {
-      return a(List.of($$0));
+   protected static eep.c a(eee $$0, eee $$1, eee $$2, eey $$3) {
+      dym $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         eev.a $$8 = $$6 > 0.0 ? eev.a.a : eev.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = azk.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               azs $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = azk.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
    }
 
-   static eev a(eev $$0, eev $$1) {
-      return a(List.of($$0, $$1));
-   }
+   protected static enum a {
+      a(dkw.rE.m(), dkw.tM.m(), dkw.c.m(), 0, 50),
+      b(dkw.T.m(), dkw.tL.m(), dkw.rd.m(), -60, -8);
 
-   static eev b(List<eev> $$0) {
-      return new eeu($$0);
-   }
+      final dym e;
+      final dym f;
+      final dym g;
+      protected final int c;
+      protected final int d;
 
-   static eev b(eev... $$0) {
-      return b(List.of($$0));
-   }
-
-   static eev b(eev $$0, eev $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static eev a(km $$0, List<dke> $$1) {
-      return new efb($$0, jv.a(dke::p, $$1));
-   }
-
-   static eev c(List<dke> $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eev a(km $$0, dke... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static eev a(dke... $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eev a(km $$0, axf<dke> $$1) {
-      return new efa($$0, $$1);
-   }
-
-   static eev a(axf<dke> $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eev b(km $$0, List<etv> $$1) {
-      return new efc($$0, jv.a(etv::k, $$1));
-   }
-
-   static eev a(km $$0, etv... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static eev a(etv... $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eev a(eev $$0) {
-      return new efd($$0);
-   }
-
-   static eev a(km $$0) {
-      return new efe($$0);
-   }
-
-   static eev b() {
-      return a(km.h);
-   }
-
-   static eev a(dxq $$0, km $$1) {
-      return new efj($$1, $$0);
-   }
-
-   static eev a(km $$0, jn $$1) {
-      return new eey($$0, $$1);
-   }
-
-   static eev a(jn $$0) {
-      return a(km.h, $$0);
-   }
-
-   static eev b(km $$0) {
-      return new eff($$0);
-   }
-
-   static eev c() {
-      return b(km.h);
-   }
-
-   static eev d() {
-      return c(km.h);
-   }
-
-   static eev c(km $$0) {
-      return a($$0, etx.a);
-   }
-
-   static eev d(km $$0) {
-      return new eez($$0);
-   }
-
-   static eev e() {
-      return efh.a;
-   }
-
-   static eev e(km $$0) {
-      return new efi($$0);
-   }
-
-   static eev f() {
-      return e(km.h);
+      private a(final dym $$0, final dym $$1, final dym $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

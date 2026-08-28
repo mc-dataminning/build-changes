@@ -1,28 +1,37 @@
-import javax.annotation.Nullable;
+public class aec implements zc<abr> {
+   public static final yt<vr, aec> a = zc.a(aec::a, aec::new);
+   private final int b;
+   private final double c;
 
-public record aec(String b, @Nullable String c) implements yw<abl> {
-   public static final yn<vl, aec> a = yw.a(aec::a, aec::new);
-
-   private aec(vl $$0) {
-      this($$0.p(), $$0.c(vl::p));
+   public aec(int $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vl::a);
+   private aec(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yy<aec> a() {
-      return agd.cm;
+   public ze<aec> a() {
+      return agk.bj;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 }

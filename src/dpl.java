@@ -1,98 +1,118 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dpl extends dko implements dkh {
-   public static final MapCodec<dpl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akt.a(mc.aM).fieldOf("feature").forGetter($$0x -> $$0x.c), t()).apply($$0, dpl::new)
-   );
-   private static final fcr b = dke.b(6.0, 0.0, 6.0);
-   private final akt<egg<?, ?>> c;
+public class dpl extends dnp {
+   public static final MapCodec<dpl> a = b(dpl::new);
+   public static final dzd b = dzc.A;
+   private final Function<dym, fdo> d;
 
    @Override
    public MapCodec<dpl> a() {
       return a;
    }
 
-   public dpl(akt<egg<?, ?>> $$0, dxp.d $$1) {
-      super($$1);
-      this.c = $$0;
+   protected dpl(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(e, jo.c).b(b, Boolean.valueOf(false)).b(c, dyx.b));
+      this.d = this.b();
+   }
+
+   private Function<dym, fdo> b() {
+      Map<dyx, Map<jo, fdo>> $$0 = fdl.e(dku.b(6.0, 8.0, 10.0, 16.0));
+      return this.a($$1 -> $$0.get($$1.c(c)).get($$1.c(e)), new dzp[]{b});
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return b;
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.d.apply($$0);
    }
 
    @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (ji $$6 : ji.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      if ($$1.C) {
+         dym $$5 = $$0.a(b);
+         if ($$5.c(b)) {
+            a($$5, $$1, $$2, 1.0F);
          }
-
-         ji $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
-      return $$0.s();
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      ji $$3 = $$2.e();
-      dxq $$4 = $$1.a_($$3);
-      return $$4.a(awp.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(ard $$0, ji $$1, dxq $$2, azh $$3) {
-      Optional<? extends jr<egg<?, ?>>> $$4 = $$0.F_().e(mc.aM).a(this.c);
-      if ($$4.isEmpty()) {
-         return false;
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
+         this.b($$0, $$1, $$2, null);
+      }
+
+      return btq.a;
+   }
+
+   @Override
+   protected void a(dym $$0, arn $$1, jj $$2, dhi $$3, BiConsumer<cxy, jj> $$4) {
+      if ($$3.g()) {
+         this.b($$0, $$1, $$2, null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void b(dym $$0, dhp $$1, jj $$2, @Nullable cqi $$3) {
+      $$0 = $$0.a(b);
+      $$1.a($$2, $$0, 3);
+      this.e($$0, $$1, $$2);
+      a($$3, $$1, $$2, $$0);
+      $$1.a($$3, $$0.c(b) ? edm.a : edm.e, $$2);
+   }
+
+   protected static void a(@Nullable cqi $$0, dhq $$1, jj $$2, dym $$3) {
+      float $$4 = $$3.c(b) ? 0.6F : 0.5F;
+      $$1.a($$0, $$2, awk.oC, awl.e, 0.3F, $$4);
+   }
+
+   private static void a(dym $$0, dhq $$1, jj $$2, float $$3) {
+      jo $$4 = $$0.c(e).g();
+      jo $$5 = n($$0).g();
+      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
+      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
+      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
+      $$1.a(new lq(16711680, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      if ($$0.c(b) && $$3.i() < 0.25F) {
+         a($$0, $$1, $$2, 0.5F);
       }
    }
 
    @Override
-   public boolean a(dhc $$0, ji $$1, dxq $$2) {
+   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
+      if (!$$3 && $$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected int a(dym $$0, dgv $$1, jj $$2, jo $$3) {
+      return $$0.c(b) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(dym $$0, dgv $$1, jj $$2, jo $$3) {
+      return $$0.c(b) && n($$0) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected boolean f_(dym $$0) {
       return true;
    }
 
-   @Override
-   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
-      return (double)$$1.i() < 0.4;
+   private void e(dym $$0, dhp $$1, jj $$2) {
+      jo $$3 = n($$0).g();
+      ewb $$4 = evx.a($$1, $$3, $$3.o().d() ? jo.b : $$0.c(e));
+      $$1.a($$2, this, $$4);
+      $$1.a($$2.a($$3), this, $$4);
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(c, e, b);
    }
 }

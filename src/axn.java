@@ -1,35 +1,109 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class axn {
-   private final int a;
-   private final axn.a b;
-   private int c;
-   private int d;
+   private static final Codec<axn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.t.fieldOf("id").forGetter(axn::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, axn::new)
+   );
+   public static final Codec<axn> a = Codec.either(ays.t, b)
+      .xmap($$0 -> (axn)$$0.map($$0x -> new axn($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final ald c;
+   private final boolean d;
+   private final boolean e;
 
-   public axn(int $$0, axn.a $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private axn(ald $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public axn(int $$0) {
-      this($$0, $$0x -> $$0x);
+   private axn(ays.d $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
    }
 
-   public void a(boolean $$0) {
-      this.d = this.c;
-      if ($$0) {
-         if (this.c < this.a) {
-            this.c++;
+   private ays.d a() {
+      return new ays.d(this.c, this.d);
+   }
+
+   public static axn a(ald $$0) {
+      return new axn($$0, false, true);
+   }
+
+   public static axn b(ald $$0) {
+      return new axn($$0, false, false);
+   }
+
+   public static axn c(ald $$0) {
+      return new axn($$0, true, true);
+   }
+
+   public static axn d(ald $$0) {
+      return new axn($$0, true, false);
+   }
+
+   public <T> boolean a(axn.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.a(this.c);
+         if ($$2 == null) {
+            return !this.e;
          }
-      } else if (this.c > 0) {
-         this.c--;
+
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c, this.e);
+         if ($$3 == null) {
+            return !this.e;
+         }
+
+         $$1.accept($$3);
+      }
+
+      return true;
+   }
+
+   public void a(Consumer<ald> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
       }
    }
 
-   public float a(float $$0) {
-      float $$1 = ayz.h($$0, (float)this.d, (float)this.c) / (float)this.a;
-      return this.b.apply($$1);
+   public void b(Consumer<ald> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
    }
 
-   public interface a {
-      float apply(float var1);
+   public boolean a(Predicate<ald> $$0, Predicate<ald> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(ald var1, boolean var2);
+
+      @Nullable
+      Collection<T> a(ald var1);
    }
 }

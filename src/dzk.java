@@ -1,59 +1,92 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class dzk implements AutoCloseable {
-   private final dha a;
-   private final Long2ObjectMap<dzx> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private dzx c;
-   private long d;
+public final class dzk<T extends Enum<T> & bag> extends dzp<T> {
+   private final List<T> a;
+   private final Map<String, T> b;
+   private final int[] c;
 
-   public dzk(dha $$0) {
-      this.a = $$0;
-   }
+   private dzk(String $$0, Class<T> $$1, List<T> $$2) {
+      super($$0, $$1);
+      if ($$2.isEmpty()) {
+         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
+      } else {
+         this.a = List.copyOf($$2);
+         T[] $$3 = $$1.getEnumConstants();
+         this.c = new int[$$3.length];
 
-   @Nullable
-   public dzx a(ji $$0) {
-      int $$1 = this.a.f($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.ap()) {
-         long $$2 = kk.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dzx)this.b.computeIfAbsent($$2, $$2x -> {
-               dzm $$3 = this.a.a(kk.a($$0.u()), kk.a($$0.w()));
-               dzx $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
+         for (T $$4 : $$3) {
+            this.c[$$4.ordinal()] = $$2.indexOf($$4);
          }
 
-         return this.c;
-      } else {
-         return null;
-      }
-   }
+         Builder<String, T> $$5 = ImmutableMap.builder();
 
-   public dxq b(ji $$0) {
-      dzx $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dkg.a.m();
-      } else {
-         int $$2 = kk.b($$0.u());
-         int $$3 = kk.b($$0.v());
-         int $$4 = kk.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
+         for (T $$6 : $$2) {
+            String $$7 = $$6.c();
+            $$5.put($$7, $$6);
+         }
+
+         this.b = $$5.buildOrThrow();
       }
    }
 
    @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public List<T> a() {
+      return this.a;
+   }
 
-      while (var1.hasNext()) {
-         dzx $$0 = (dzx)var1.next();
-         $$0.b();
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
+   }
+
+   public int b(T $$0) {
+      return this.c[$$0.ordinal()];
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dzk<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      return 31 * $$0 + this.a.hashCode();
+   }
+
+   public static <T extends Enum<T> & bag> dzk<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static <T extends Enum<T> & bag> dzk<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
+
+   @SafeVarargs
+   public static <T extends Enum<T> & bag> dzk<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T extends Enum<T> & bag> dzk<T> a(String $$0, Class<T> $$1, List<T> $$2) {
+      return new dzk<>($$0, $$1, $$2);
    }
 }

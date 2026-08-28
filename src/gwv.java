@@ -1,23 +1,42 @@
-public class gwv<S extends gzy, M extends gda<S> & gfl> extends gxs<S, M> {
-   public gwv(gva<S, M> $$0) {
-      super($$0);
+public class gwv extends gsw<csv, hbo> {
+   private final gpc g;
+
+   public gwv(guf.a $$0) {
+      super($$0, ghc.du);
+      this.g = $$0.d();
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
-      hcn $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, hfh.d);
-         $$0.b();
+   protected void a(hbo $$0, dym $$1, fho $$2, gny $$3, int $$4) {
+      float $$5 = $$0.n;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = azk.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
       }
+
+      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
    }
 
-   protected void a(S $$0, fgr $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
+   public static void a(gpc $$0, dym $$1, fho $$2, gny $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hgi.a(hgi.a(1.0F), 10);
+      } else {
+         $$6 = hgi.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
+   }
+
+   public hbo a() {
+      return new hbo();
+   }
+
+   public void a(csv $$0, hbo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
    }
 }

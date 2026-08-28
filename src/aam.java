@@ -1,23 +1,35 @@
-import java.util.List;
+public record aam(aam.a c) implements aaf {
+   public static final yt<vr, aam> a = aaf.a(aam::a, aam::new);
+   public static final aaf.b<aam> b = aaf.a("debug/hive");
 
-public record aam(List<ji> c) implements zz {
-   public static final yn<vl, aam> a = zz.a(aam::a, aam::new);
-   public static final zz.b<aam> b = zz.a("debug/raids");
-
-   private aam(vl $$0) {
-      this($$0.a(ji.b));
+   private aam(vr $$0) {
+      this(new aam.a($$0));
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.c, ji.b);
+   private void a(vr $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public zz.b<aam> a() {
+   public aaf.b<aam> a() {
       return b;
    }
 
-   public List<ji> b() {
+   public aam.a b() {
       return this.c;
+   }
+
+   public static record a(jj a, String b, int c, int d, boolean e) {
+      public a(vr $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(vr $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

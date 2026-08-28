@@ -1,14 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public interface esu<P extends est> {
-   esu<esr> a = a("clear", esr.a);
-   esu<ess> b = a("passthrough", ess.b);
-   esu<esq> c = a("append_static", esq.a);
-   esu<esp> d = a("append_loot", esp.a);
+public class esu extends esv {
+   public static final MapCodec<esu> a = MapCodec.unit(() -> esu.b);
+   public static final esu b = new esu();
 
-   MapCodec<P> codec();
+   private esu() {
+   }
 
-   private static <P extends est> esu<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.n, $$0, () -> $$1);
+   @Override
+   public boolean a(jj $$0, jj $$1, jj $$2, azs $$3) {
+      return true;
+   }
+
+   @Override
+   protected esw<?> a() {
+      return esw.a;
    }
 }

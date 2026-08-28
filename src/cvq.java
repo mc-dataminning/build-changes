@@ -1,127 +1,221 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class cvq extends cxd {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cvq extends ctn {
+   public static final int m = 0;
+   public static final int n = 1;
+   private static final int r = 2;
+   private static final int s = 29;
+   private static final int t = 29;
+   private static final int u = 38;
+   private final cua v;
+   final cuh w = cuh.a();
+   private final dhp x;
+   private dcy.b<ddl> y = dcy.b.a();
+   private cxy z = cxy.k;
+   long A;
+   final cvk o;
+   final cvk p;
+   Runnable B = () -> {
+   };
+   public final btj q = new btx(1) {
+      @Override
+      public void e() {
+         super.e();
+         cvq.this.a(this);
+         cvq.this.B.run();
+      }
+   };
+   final cvf C = new cvf();
 
-   public cvq(cxd.a $$0) {
-      super($$0);
+   public cvq(int $$0, cqh $$1) {
+      this($$0, $$1, cua.a);
+   }
+
+   public cvq(int $$0, cqh $$1, final cua $$2) {
+      super(cuw.y, $$0);
+      this.v = $$2;
+      this.x = $$1.k.dV();
+      this.o = this.a(new cvk(this.q, 0, 20, 33));
+      this.p = this.a(new cvk(this.C, 1, 143, 33) {
+         @Override
+         public boolean a(cxy $$0) {
+            return false;
+         }
+
+         @Override
+         public void a(cqi $$0, cxy $$1) {
+            $$1.a($$0.dV(), $$0, $$1.M());
+            cvq.this.C.a($$0, this.j());
+            cxy $$2 = cvq.this.o.a(1);
+            if (!$$2.f()) {
+               cvq.this.f(cvq.this.w.b());
+            }
+
+            $$2.a(($$0x, $$1x) -> {
+               long $$2xxx = $$0x.ae();
+               if (cvq.this.A != $$2xxx) {
+                  $$0x.a(null, $$1x, awk.Bt, awl.e, 1.0F, 1.0F);
+                  cvq.this.A = $$2xxx;
+               }
+            });
+            super.a($$0, $$1);
+         }
+
+         private List<cxy> j() {
+            return List.of(cvq.this.o.g());
+         }
+      });
+      this.c($$1, 8, 84);
+      this.a(this.w);
+   }
+
+   public int l() {
+      return this.w.b();
+   }
+
+   public dcy.b<ddl> m() {
+      return this.y;
+   }
+
+   public int n() {
+      return this.y.d();
+   }
+
+   public boolean o() {
+      return this.o.h() && !this.y.c();
    }
 
    @Override
-   public bsy a(daz $$0) {
-      dgz $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      ji $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.C) {
-            $$0.o().a(ecp.C);
-            $$1.c(1505, $$2, 15);
-         }
-
-         return bsy.a;
-      } else {
-         dxq $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.c($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.C) {
-               $$0.o().a(ecp.C);
-               $$1.c(1505, $$3, 15);
-            }
-
-            return bsy.a;
-         } else {
-            return bsy.e;
-         }
-      }
+   public boolean b(cqi $$0) {
+      return a(this.v, $$0, dkw.oE);
    }
 
-   public static boolean a(cxh $$0, dgz $$1, ji $$2) {
-      dxq $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dkh $$4 && $$4.a($$1, $$2, $$3)) {
-         if ($$1 instanceof ard) {
-            if ($$4.a($$1, $$1.A, $$2, $$3)) {
-               $$4.a((ard)$$1, $$1.A, $$2, $$3);
-            }
-
-            $$0.h(1);
+   @Override
+   public boolean a(cqi $$0, int $$1) {
+      if (this.w.b() == $$1) {
+         return false;
+      } else {
+         if (this.e($$1)) {
+            this.w.a($$1);
+            this.f($$1);
          }
 
          return true;
       }
-
-      return false;
    }
 
-   public static boolean a(cxh $$0, dgz $$1, ji $$2, @Nullable jn $$3) {
-      if ($$1.a_($$2).a(dkg.J) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof ard)) {
-            return true;
-         } else {
-            azh $$4 = $$1.C_();
+   private boolean e(int $$0) {
+      return $$0 >= 0 && $$0 < this.y.d();
+   }
 
-            label80:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               ji $$6 = $$2;
-               dxq $$7 = dkg.bD.m();
+   @Override
+   public void a(btj $$0) {
+      cxy $$1 = this.o.g();
+      if (!$$1.a(this.z.h())) {
+         this.z = $$1.v();
+         this.c($$1);
+      }
+   }
 
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).m($$1, $$6)) {
-                     continue label80;
-                  }
-               }
+   private void c(cxy $$0) {
+      this.w.a(-1);
+      this.p.f(cxy.k);
+      if (!$$0.f()) {
+         this.y = this.x.Q().a().b($$0);
+      } else {
+         this.y = dcy.b.a();
+      }
+   }
 
-               jr<dic> $$9 = $$1.t($$6);
-               if ($$9.a(awo.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = mb.e.a(awp.au, $$1.A).map($$0x -> ((dke)$$0x.a()).m()).orElse($$7);
-                     if ($$7.b(djp.d)) {
-                        $$7 = $$7.b(djp.d, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = mb.e.a(awp.as, $$1.A).map($$0x -> ((dke)$$0x.a()).m()).orElse($$7);
-                  }
-               }
+   void f(int $$0) {
+      Optional<dcq<ddl>> $$2;
+      if (!this.y.c() && this.e($$0)) {
+         dcy.a<ddl> $$1 = this.y.e().get($$0);
+         $$2 = $$1.c().c();
+      } else {
+         $$2 = Optional.empty();
+      }
 
-               if ($$7.a(awp.au, $$0x -> $$0x.b(djp.d))) {
-                  for (int $$10 = 0; !$$7.a((dhc)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.b(djp.d, jn.c.a.a($$4));
-                  }
-               }
+      $$2.ifPresentOrElse($$0x -> {
+         this.C.a($$0x);
+         this.p.f(((ddl)$$0x.b()).a(new dde(this.q.a(0)), this.x.F_()));
+      }, () -> {
+         this.p.f(cxy.k);
+         this.C.a(null);
+      });
+      this.d();
+   }
 
-               if ($$7.a((dhc)$$1, $$6)) {
-                  dxq $$11 = $$1.a_($$6);
-                  if ($$11.a(dkg.J) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dkg.bD) && ((dkh)dkg.bD).a($$1, $$6, $$11) && $$4.a(10) == 0) {
-                     ((dkh)dkg.bD).a((ard)$$1, $$4, $$6, $$11);
-                  }
-               }
+   @Override
+   public cuw<?> a() {
+      return cuw.y;
+   }
+
+   public void a(Runnable $$0) {
+      this.B = $$0;
+   }
+
+   @Override
+   public boolean a(cxy $$0, cvk $$1) {
+      return $$1.c != this.C && super.a($$0, $$1);
+   }
+
+   @Override
+   public cxy b(cqi $$0, int $$1) {
+      cxy $$2 = cxy.k;
+      cvk $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxy $$4 = $$3.g();
+         cxu $$5 = $$4.h();
+         $$2 = $$4.v();
+         if ($$1 == 1) {
+            $$5.a($$4, $$0.dV(), $$0);
+            if (!this.a($$4, 2, 38, true)) {
+               return cxy.k;
             }
 
-            $$0.h(1);
-            return true;
+            $$3.b($$4, $$2);
+         } else if ($$1 == 0) {
+            if (!this.a($$4, 2, 38, false)) {
+               return cxy.k;
+            }
+         } else if (this.x.Q().a().a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxy.k;
+            }
+         } else if ($$1 >= 2 && $$1 < 29) {
+            if (!this.a($$4, 29, 38, false)) {
+               return cxy.k;
+            }
+         } else if ($$1 >= 29 && $$1 < 38 && !this.a($$4, 2, 29, false)) {
+            return cxy.k;
          }
-      } else {
-         return false;
+
+         if ($$4.f()) {
+            $$3.e(cxy.k);
+         }
+
+         $$3.d();
+         if ($$4.M() == $$2.M()) {
+            return cxy.k;
+         }
+
+         $$3.a($$0, $$4);
+         if ($$1 == 1) {
+            $$0.a($$4, false);
+         }
+
+         this.d();
       }
+
+      return $$2;
    }
 
-   public static void a(dha $$0, ji $$1, int $$2) {
-      dxq $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dkh $$4) {
-         ji $$5 = $$4.a($$1);
-         switch ($$4.aq_()) {
-            case a:
-               azd.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, lt.Q);
-               break;
-            case b:
-               azd.a($$0, $$5, $$2, lt.Q);
-         }
-      } else if ($$3.a(dkg.J)) {
-         azd.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, lt.Q);
-      }
+   @Override
+   public void a(cqi $$0) {
+      super.a($$0);
+      this.C.b(1);
+      this.v.a(($$1, $$2) -> this.a($$0, this.q));
    }
 }

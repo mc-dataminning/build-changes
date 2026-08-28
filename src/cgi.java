@@ -1,76 +1,24 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiPredicate;
 
-public abstract class cgi<E extends bvy> {
-   private static final azh a = azh.b();
-   private static final int b = 20;
-   private static final int c = 16;
-   private static final cgp d = cgp.b().a(16.0);
-   private static final cgp e = cgp.b().a(16.0).e();
-   private static final cgp f = cgp.a().a(16.0);
-   private static final cgp g = cgp.a().a(16.0).e();
-   private static final cgp h = cgp.a().a(16.0).d();
-   private static final cgp i = cgp.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cgi(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class cgi extends cgs<cof> {
+   @Override
+   public Set<cft<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cft.C)));
    }
 
-   public cgi() {
-      this(20);
-   }
-
-   public final void b(ard $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$1);
-         this.a($$0, $$1);
-      }
-   }
-
-   private void a(E $$0) {
-      double $$1 = $$0.h(bxg.m);
-      d.a($$1);
-      e.a($$1);
-      f.a($$1);
-      g.a($$1);
-      h.a($$1);
-      i.a($$1);
-   }
-
-   protected abstract void a(ard var1, E var2);
-
-   public abstract Set<cfc<?>> a();
-
-   public static boolean b(ard $$0, bvy $$1, bvy $$2) {
-      return $$1.ea().b(cfc.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
-   }
-
-   public static boolean c(ard $$0, bvy $$1, bvy $$2) {
-      return $$1.ea().b(cfc.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
-   }
-
-   public static BiPredicate<ard, bvy> a(bvy $$0, int $$1) {
-      return a($$1, ($$1x, $$2) -> c($$1x, $$0, $$2));
-   }
-
-   public static boolean d(ard $$0, bvy $$1, bvy $$2) {
-      return $$1.ea().b(cfc.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
-   }
-
-   static <T, U> BiPredicate<T, U> a(int $$0, BiPredicate<T, U> $$1) {
-      AtomicInteger $$2 = new AtomicInteger(0);
-      return ($$3, $$4) -> {
-         if ($$1.test($$3, $$4)) {
-            $$2.set($$0);
-            return true;
-         } else {
-            return $$2.decrementAndGet() >= 0;
-         }
-      };
+   protected void a(arn $$0, cof $$1) {
+      super.a($$0, $$1);
+      $$1.eb()
+         .c(cft.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bvz.e)
+         .filter($$2 -> cgz.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.eb().a(cft.C, $$1x), () -> $$1.eb().b(cft.C));
    }
 }

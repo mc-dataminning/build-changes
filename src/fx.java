@@ -11,58 +11,58 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class fx<T> implements ArgumentType<akt<T>> {
+public class fx<T> implements ArgumentType<alc<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wp.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wp.b("commands.place.jigsaw.invalid", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wp.b("recipe.notFound", $$0));
-   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wp.b("advancement.advancementNotFound", $$0));
-   final akt<? extends ke<T>> g;
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("commands.place.feature.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wv.b("commands.place.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wv.b("commands.place.jigsaw.invalid", $$0));
+   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wv.b("recipe.notFound", $$0));
+   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wv.b("advancement.advancementNotFound", $$0));
+   final alc<? extends kf<T>> g;
 
-   public fx(akt<? extends ke<T>> $$0) {
+   public fx(alc<? extends kf<T>> $$0) {
       this.g = $$0;
    }
 
-   public static <T> fx<T> a(akt<? extends ke<T>> $$0) {
+   public static <T> fx<T> a(alc<? extends kf<T>> $$0) {
       return new fx<>($$0);
    }
 
-   private static <T> akt<T> a(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      akt<?> $$4 = (akt<?>)$$0.getArgument($$1, akt.class);
-      Optional<akt<T>> $$5 = $$4.d($$2);
+   private static <T> alc<T> a(CommandContext<ex> $$0, String $$1, alc<kf<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      alc<?> $$4 = (alc<?>)$$0.getArgument($$1, alc.class);
+      Optional<alc<T>> $$5 = $$4.d($$2);
       return $$5.orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   private static <T> ke<T> a(CommandContext<ex> $$0, akt<? extends ke<T>> $$1) {
-      return ((ex)$$0.getSource()).l().ba().e($$1);
+   private static <T> kf<T> a(CommandContext<ex> $$0, alc<? extends kf<T>> $$1) {
+      return ((ex)$$0.getSource()).l().ba().f($$1);
    }
 
-   private static <T> jr.c<T> b(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      akt<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> js.c<T> b(CommandContext<ex> $$0, String $$1, alc<kf<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      alc<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jr.c<egg<?, ?>> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mc.aM, b);
+   public static js.c<ehd<?, ?>> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, me.aP, b);
    }
 
-   public static jr.c<eoj> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mc.aW, c);
+   public static js.c<epg> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, me.aZ, c);
    }
 
-   public static jr.c<ept> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mc.aZ, d);
+   public static js.c<eqq> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, me.bc, d);
    }
 
-   public static dca<?> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      dcc $$2 = ((ex)$$0.getSource()).l().aI();
-      akt<dbv<?>> $$3 = a($$0, $$1, mc.bm, e);
+   public static dcq<?> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      dcs $$2 = ((ex)$$0.getSource()).l().aI();
+      alc<dcl<?>> $$3 = a($$0, $$1, me.br, e);
       return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
    }
 
    public static ai e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      akt<ah> $$2 = a($$0, $$1, mc.bl, f);
+      alc<ah> $$2 = a($$0, $$1, me.bq, f);
       ai $$3 = ((ex)$$0.getSource()).l().aD().a($$2.a());
       if ($$3 == null) {
          throw f.create($$2.a());
@@ -71,9 +71,9 @@ public class fx<T> implements ArgumentType<akt<T>> {
       }
    }
 
-   public akt<T> a(StringReader $$0) throws CommandSyntaxException {
-      aku $$1 = aku.a($$0);
-      return akt.a(this.g, $$1);
+   public alc<T> a(StringReader $$0) throws CommandSyntaxException {
+      ald $$1 = ald.a($$0);
+      return alc.a(this.g, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -84,12 +84,12 @@ public class fx<T> implements ArgumentType<akt<T>> {
       return a;
    }
 
-   public static class a<T> implements it<fx<T>, fx.a<T>.a> {
-      public void a(fx.a<T>.a $$0, vl $$1) {
+   public static class a<T> implements iu<fx<T>, fx.a<T>.a> {
+      public void a(fx.a<T>.a $$0, vr $$1) {
          $$1.b($$0.b);
       }
 
-      public fx.a<T>.a a(vl $$0) {
+      public fx.a<T>.a a(vr $$0) {
          return new fx.a.a($$0.r());
       }
 
@@ -101,10 +101,10 @@ public class fx<T> implements ArgumentType<akt<T>> {
          return new fx.a.a($$0.g);
       }
 
-      public final class a implements it.a<fx<T>> {
-         final akt<? extends ke<T>> b;
+      public final class a implements iu.a<fx<T>> {
+         final alc<? extends kf<T>> b;
 
-         a(final akt<? extends ke<T>> $$1) {
+         a(final alc<? extends kf<T>> $$1) {
             this.b = $$1;
          }
 
@@ -113,7 +113,7 @@ public class fx<T> implements ArgumentType<akt<T>> {
          }
 
          @Override
-         public it<fx<T>, ?> a() {
+         public iu<fx<T>, ?> a() {
             return a.this;
          }
       }

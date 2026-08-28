@@ -1,133 +1,82 @@
-public class hff {
-   private static final int a = 96;
-   private static final float[] b = af.a(new float[256], $$0 -> {
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
-      }
-   });
+import com.ibm.icu.text.DateFormat;
+import com.ibm.icu.text.SimpleDateFormat;
+import com.ibm.icu.util.Calendar;
+import com.ibm.icu.util.TimeZone;
+import com.ibm.icu.util.ULocale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Date;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
 
-   private hff() {
+public class hff implements hfi<String> {
+   public static final String a = "";
+   private static final long c = TimeUnit.SECONDS.toMillis(1L);
+   private static final Codec<TimeZone> d = Codec.STRING.comapFlatMap($$0 -> {
+      TimeZone $$1 = TimeZone.getTimeZone($$0);
+      return $$1.equals(TimeZone.UNKNOWN_ZONE) ? DataResult.error(() -> "Unknown timezone: " + $$0) : DataResult.success($$1);
+   }, TimeZone::getID);
+   private static final MapCodec<hff.a> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("pattern").forGetter($$0x -> $$0x.a),
+               Codec.STRING.optionalFieldOf("locale", "").forGetter($$0x -> $$0x.b),
+               d.optionalFieldOf("time_zone").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, hff.a::new)
+   );
+   public static final hfi.a<hff, String> b = hfi.a.a(e.flatXmap(hff::a, $$0 -> DataResult.success($$0.f)), Codec.STRING);
+   private final hff.a f;
+   private final DateFormat g;
+   private long h;
+   private String i = "";
+
+   private hff(hff.a $$0, DateFormat $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public static ffr[] a(ffr[] $$0, int $$1) {
-      if ($$1 + 1 <= $$0.length) {
-         return $$0;
-      } else {
-         ffr[] $$2 = new ffr[$$1 + 1];
-         $$2[0] = $$0[0];
-         boolean $$3 = a($$2[0]);
-
-         for (int $$4 = 1; $$4 <= $$1; $$4++) {
-            if ($$4 < $$0.length) {
-               $$2[$$4] = $$0[$$4];
-            } else {
-               ffr $$5 = $$2[$$4 - 1];
-               ffr $$6 = new ffr($$5.a() >> 1, $$5.b() >> 1, false);
-               int $$7 = $$6.a();
-               int $$8 = $$6.b();
-
-               for (int $$9 = 0; $$9 < $$7; $$9++) {
-                  for (int $$10 = 0; $$10 < $$8; $$10++) {
-                     $$6.a(
-                        $$9,
-                        $$10,
-                        a(
-                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
-                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
-                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
-                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
-                           $$3
-                        )
-                     );
-                  }
-               }
-
-               $$2[$$4] = $$6;
-            }
-         }
-
-         return $$2;
-      }
+   public static hff a(String $$0, String $$1, Optional<TimeZone> $$2) {
+      return (hff)a(new hff.a($$0, $$1, $$2)).getOrThrow($$0x -> new IllegalStateException("Failed to validate format: " + $$0x));
    }
 
-   private static boolean a(ffr $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            if (axk.a($$0.a($$1, $$2)) == 0) {
-               return true;
-            }
-         }
+   private static DataResult<hff> a(hff.a $$0) {
+      ULocale $$1 = new ULocale($$0.b);
+      Calendar $$2 = $$0.c.<Calendar>map($$1x -> Calendar.getInstance($$1x, $$1)).orElseGet(() -> Calendar.getInstance($$1));
+      SimpleDateFormat $$3 = new SimpleDateFormat($$0.a, $$1);
+      $$3.setCalendar($$2);
+
+      try {
+         $$3.format(new Date());
+      } catch (Exception var5) {
+         return DataResult.error(() -> "Invalid time format '" + $$3 + "': " + var5.getMessage());
       }
 
-      return false;
+      return DataResult.success(new hff($$0, $$3));
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      if ($$4) {
-         float $$5 = 0.0F;
-         float $$6 = 0.0F;
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         if ($$0 >> 24 != 0) {
-            $$5 += a($$0 >> 24);
-            $$6 += a($$0 >> 16);
-            $$7 += a($$0 >> 8);
-            $$8 += a($$0 >> 0);
-         }
-
-         if ($$1 >> 24 != 0) {
-            $$5 += a($$1 >> 24);
-            $$6 += a($$1 >> 16);
-            $$7 += a($$1 >> 8);
-            $$8 += a($$1 >> 0);
-         }
-
-         if ($$2 >> 24 != 0) {
-            $$5 += a($$2 >> 24);
-            $$6 += a($$2 >> 16);
-            $$7 += a($$2 >> 8);
-            $$8 += a($$2 >> 0);
-         }
-
-         if ($$3 >> 24 != 0) {
-            $$5 += a($$3 >> 24);
-            $$6 += a($$3 >> 16);
-            $$7 += a($$3 >> 8);
-            $$8 += a($$3 >> 0);
-         }
-
-         $$5 /= 4.0F;
-         $$6 /= 4.0F;
-         $$7 /= 4.0F;
-         $$8 /= 4.0F;
-         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
-         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
-         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
-         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
-         if ($$9 < 96) {
-            $$9 = 0;
-         }
-
-         return axk.a($$9, $$10, $$11, $$12);
-      } else {
-         int $$13 = a($$0, $$1, $$2, $$3, 24);
-         int $$14 = a($$0, $$1, $$2, $$3, 16);
-         int $$15 = a($$0, $$1, $$2, $$3, 8);
-         int $$16 = a($$0, $$1, $$2, $$3, 0);
-         return axk.a($$13, $$14, $$15, $$16);
+   @Nullable
+   public String a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      long $$5 = af.c();
+      if ($$5 > this.h) {
+         this.i = this.b();
+         this.h = $$5 + c;
       }
+
+      return this.i;
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      float $$5 = a($$0 >> $$4);
-      float $$6 = a($$1 >> $$4);
-      float $$7 = a($$2 >> $$4);
-      float $$8 = a($$3 >> $$4);
-      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
-      return (int)((double)$$9 * 255.0);
+   private String b() {
+      return this.g.format(new Date());
    }
 
-   private static float a(int $$0) {
-      return b[$$0 & 0xFF];
+   @Override
+   public hfi.a<hff, String> a() {
+      return b;
+   }
+
+   static record a(String a, String b, Optional<TimeZone> c) {
    }
 }

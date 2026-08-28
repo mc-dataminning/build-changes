@@ -1,19 +1,21 @@
-public class buo extends buc {
-   public static final int c = 40;
-
-   protected buo(bud $$0, int $$1) {
+class buo extends buu {
+   protected buo(buv $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(ard $$0, bvy $$1, int $$2) {
-      $$1.a($$0, $$1.dV().r(), 1.0F);
-      return true;
+   public boolean a(arn $$0, bwr $$1, int $$2) {
+      return $$1.fv() > 0.0F;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
+   }
+
+   @Override
+   public void a(bwr $$0, int $$1) {
+      super.a($$0, $$1);
+      $$0.F(Math.max($$0.fv(), (float)(4 * (1 + $$1))));
    }
 }

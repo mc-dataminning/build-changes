@@ -1,51 +1,24 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
 
-public class bpo implements AutoCloseable {
-   public static final bpo a = new bpo(null);
-   @Nullable
-   private final bpj b;
+public class bpo extends bpf<StringReader> {
+   private final StringReader a;
 
-   bpo(@Nullable bpj $$0) {
-      this.b = $$0;
+   public bpo(bpc<StringReader> $$0, bpd<StringReader> $$1, StringReader $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   public bpo a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
-   }
-
-   public bpo a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public bpo a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public bpo a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
+   public StringReader d() {
+      return this.a;
    }
 
    @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+   public int c() {
+      return this.a.getCursor();
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.a.setCursor($$0);
    }
 }

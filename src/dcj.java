@@ -1,127 +1,54 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dcj implements dbk {
-   final dck c;
-   final cxh d;
-   final String e;
-   final dbi f;
-   final boolean g;
-   @Nullable
-   private dbu h;
-
-   public dcj(String $$0, dbi $$1, dck $$2, cxh $$3, boolean $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.g = $$4;
-   }
-
-   public dcj(String $$0, dbi $$1, dck $$2, cxh $$3) {
-      this($$0, $$1, $$2, $$3, true);
+public class dcj extends dcz {
+   public dcj(dby $$0) {
+      super("", $$0, dda.a(Map.of('#', dch.a(cyc.rz), 'x', dch.a(cyc.sV)), "###", "#x#", "###"), new cxy(cyc.vm));
    }
 
    @Override
-   public dcf<? extends dcj> a() {
-      return dcf.a;
+   public boolean a(dbz $$0, dhp $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cxy $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            ewn $$3 = cyl.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.e() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   public String j() {
-      return this.e;
+   public cxy a(dbz $$0, ju.a $$1) {
+      cxy $$2 = c($$0).c(1);
+      $$2.b(kx.O, das.b);
+      return $$2;
    }
 
-   @Override
-   public dbi c() {
-      return this.f;
-   }
-
-   @VisibleForTesting
-   public List<Optional<dbr>> f() {
-      return this.c.c();
-   }
-
-   @Override
-   public dbu ao_() {
-      if (this.h == null) {
-         this.h = dbu.a(this.c.c());
+   private static cxy c(dbz $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cxy $$2 = $$0.a($$1);
+         if ($$2.c(kx.M)) {
+            return $$2;
+         }
       }
 
-      return this.h;
+      return cxy.k;
    }
 
    @Override
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean a(dbj $$0, dgz $$1) {
-      return this.c.a($$0);
-   }
-
-   public cxh a(dbj $$0, jt.a $$1) {
-      return this.d.v();
-   }
-
-   public int k() {
-      return this.c.a();
-   }
-
-   public int l() {
-      return this.c.b();
+   public boolean al_() {
+      return true;
    }
 
    @Override
-   public List<ddb> g() {
-      return List.of(
-         new ddf(this.c.a(), this.c.b(), this.c.c().stream().map($$0 -> $$0.<ddh>map(dbr::c).orElse(ddh.c.c)).toList(), new ddh.f(this.d), new ddh.d(cxl.fe))
-      );
-   }
-
-   public static class a implements dcf<dcj> {
-      public static final MapCodec<dcj> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.e),
-                  dbi.e.fieldOf("category").orElse(dbi.d).forGetter($$0x -> $$0x.f),
-                  dck.b.forGetter($$0x -> $$0x.c),
-                  cxh.d.fieldOf("result").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dcj::new)
-      );
-      public static final yn<wa, dcj> x = yn.a(dcj.a::a, dcj.a::a);
-
-      @Override
-      public MapCodec<dcj> a() {
-         return w;
-      }
-
-      @Override
-      public yn<wa, dcj> b() {
-         return x;
-      }
-
-      private static dcj a(wa $$0) {
-         String $$1 = $$0.p();
-         dbi $$2 = $$0.b(dbi.class);
-         dck $$3 = dck.c.decode($$0);
-         cxh $$4 = cxh.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dcj($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wa $$0, dcj $$1) {
-         $$0.a($$1.e);
-         $$0.a($$1.f);
-         dck.c.encode($$0, $$1.c);
-         cxh.i.encode($$0, $$1.d);
-         $$0.a($$1.g);
-      }
+   public dcv<dcj> a() {
+      return dcv.f;
    }
 }

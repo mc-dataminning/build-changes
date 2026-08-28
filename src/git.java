@@ -1,48 +1,200 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.google.common.collect.Queues;
+import com.mojang.authlib.GameProfile;
+import java.time.Instant;
+import java.util.Deque;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-@FunctionalInterface
-public interface git {
-   Logger a = LogUtils.getLogger();
-   git b = $$0 -> Optional.empty();
+public class git {
+   private static final wv a = wv.c("chat.validation_error").a(n.m, n.u);
+   private final fnd b;
+   private final Deque<git.a> c = Queues.newArrayDeque();
+   private long d;
+   private long e;
 
-   Optional<giq> lookupRedirect(giq var1);
+   public git(fnd $$0) {
+      this.b = $$0;
+   }
 
-   static git createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   public void a() {
+      if (this.d != 0L) {
+         if (af.c() >= this.e + this.d) {
+            git.a $$0 = this.c.poll();
+
+            while ($$0 != null && !$$0.a()) {
+               $$0 = this.c.poll();
+            }
+         }
+      }
+   }
+
+   public void a(double $$0) {
+      long $$1 = (long)($$0 * 1000.0);
+      if ($$1 == 0L && this.d > 0L) {
+         this.c.forEach(git.a::a);
+         this.c.clear();
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new giq($$4x[3], giq.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
+      this.d = $$1;
+   }
+
+   public void b() {
+      this.c.remove().a();
+   }
+
+   public long c() {
+      return (long)this.c.size();
+   }
+
+   public void d() {
+      this.c.forEach(git.a::a);
+      this.c.clear();
+   }
+
+   public boolean a(xh $$0) {
+      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
+   }
+
+   private boolean e() {
+      return this.d > 0L && af.c() < this.e + this.d;
+   }
+
+   private void a(@Nullable xh $$0, BooleanSupplier $$1) {
+      if (this.e()) {
+         this.c.add(new git.a($$0, $$1));
+      } else {
+         $$1.getAsBoolean();
+      }
+   }
+
+   public void a(xl $$0, GameProfile $$1, wr.a $$2) {
+      boolean $$3 = this.b.n.aj().c();
+      xl $$4 = $$3 ? $$0.a() : $$0;
+      wv $$5 = $$2.a($$4.d());
+      Instant $$6 = Instant.now();
+      this.a($$0.l(), () -> {
+         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
+         gia $$7 = this.b.L();
+         if ($$7 != null) {
+            $$7.a($$0, $$6x);
+         }
+
+         return $$6x;
+      });
+   }
+
+   public void a(UUID $$0, wr.a $$1) {
+      this.a(null, () -> {
+         if (this.b.a($$0)) {
+            return false;
+         } else {
+            wv $$2 = $$1.a(a);
+            this.b.m.d().a($$2, null, fmx.d());
+            this.e = af.c();
+            return true;
+         }
+      });
+   }
+
+   public void a(wv $$0, wr.a $$1) {
+      Instant $$2 = Instant.now();
+      this.a(null, () -> {
+         wv $$3 = $$1.a($$0);
+         this.b.m.d().a($$3);
+         this.a($$1, $$0);
+         this.a($$3, $$2);
+         this.e = af.c();
+         return true;
+      });
+   }
+
+   private boolean a(wr.a $$0, xl $$1, wv $$2, GameProfile $$3, boolean $$4, Instant $$5) {
+      giv $$6 = this.a($$1, $$2, $$5);
+      if ($$4 && $$6.a()) {
+         return false;
+      } else if (!this.b.a($$1.g()) && !$$1.j()) {
+         fmx $$7 = $$6.a($$1);
+         xh $$8 = $$1.l();
+         wz $$9 = $$1.o();
+         if ($$9.a()) {
+            this.b.m.d().a($$2, $$8, $$7);
+            this.a($$0, $$1.d());
+         } else {
+            wv $$10 = $$9.b($$1.c());
+            if ($$10 != null) {
+               this.b.m.d().a($$0.a($$10), $$8, $$7);
+               this.a($$0, $$10);
             }
          }
 
-         return Optional.empty();
-      };
+         this.a($$1, $$0, $$3, $$6);
+         this.e = af.c();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(wr.a $$0, wv $$1) {
+      this.b.aY().a($$0.b($$1));
+   }
+
+   private giv a(xl $$0, wv $$1, Instant $$2) {
+      return this.a($$0.g()) ? giv.a : giv.a($$0, $$1, $$2);
+   }
+
+   private void a(xl $$0, wr.a $$1, GameProfile $$2, giv $$3) {
+      giu $$4 = this.b.ba().b();
+      $$4.a(gix.a($$2, $$0, $$3));
+   }
+
+   private void a(wv $$0, Instant $$1) {
+      giu $$2 = this.b.ba().b();
+      $$2.a(gix.a($$0, $$1));
+   }
+
+   public void a(wv $$0, boolean $$1) {
+      if (!this.b.n.ah().c() || !this.b.a(this.a($$0))) {
+         if ($$1) {
+            this.b.m.a($$0, false);
+         } else {
+            this.b.m.d().a($$0);
+            this.a($$0, Instant.now());
+         }
+
+         this.b.aY().b($$0);
+      }
+   }
+
+   private UUID a(wv $$0) {
+      String $$1 = baf.a($$0);
+      String $$2 = StringUtils.substringBetween($$1, "<", ">");
+      return $$2 == null ? af.e : this.b.aN().a($$2);
+   }
+
+   private boolean a(UUID $$0) {
+      if (this.b.T() && this.b.t != null) {
+         UUID $$1 = this.b.t.gh().getId();
+         return $$1.equals($$0);
+      } else {
+         return false;
+      }
+   }
+
+   static record a(@Nullable xh a, BooleanSupplier b) {
+      public boolean a() {
+         return this.b.getAsBoolean();
+      }
+
+      @Nullable
+      public xh b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
    }
 }

@@ -1,24 +1,58 @@
-import java.util.List;
-import java.util.function.Predicate;
+public interface eac {
+   void a(eae var1, double var2);
 
-public interface eac<T> {
-   int a(T var1);
+   void a(eae var1, double var2, double var4, long var6);
 
-   boolean a(Predicate<T> var1);
+   void a(eae var1, double var2, double var4);
 
-   T a(int var1);
+   void a(eae var1, int var2);
 
-   void a(vl var1);
+   void b(eae var1, int var2);
 
-   void b(vl var1);
+   void b(eae var1, double var2);
 
-   int a();
+   void c(eae var1, double var2);
 
-   int b();
+   public static class a implements eac {
+      private final eae a;
 
-   eac<T> a(ead<T> var1);
+      public a(eae $$0) {
+         this.a = $$0;
+      }
 
-   public interface a {
-      <A> eac<A> create(int var1, jw<A> var2, ead<A> var3, List<A> var4);
+      @Override
+      public void a(eae $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(eae $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(eae $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(eae $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(eae $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(eae $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(eae $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

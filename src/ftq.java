@@ -1,88 +1,34 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public class ftq {
-   int a;
-   final Map<ftq.a, ftq.b> b = Maps.newTreeMap(Comparator.<ftq.a, ftm>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public interface ftq {
+   MapCodec<ftq> b = ftr.f.dispatchMap(ftq::a, ftr::a);
 
-   public void a(Consumer<ftn> $$0) {
-      this.a++;
-      $$0.accept(new ftq.c(0));
-   }
+   ftr a();
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
+   Either<ftq.b, ftq.c> b();
 
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
+   public static record a(ftq b, fte.a c) {
+      public static final Codec<ftq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ftq.b.forGetter(ftq.a::a), fte.a.a.optionalFieldOf("filter", fte.a.b).forGetter(ftq.a::b)).apply($$0, ftq.a::new)
+      );
 
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
-   }
+      public ftq a() {
+         return this.b;
+      }
 
-   static class a {
-      final ftm a;
-      final int b;
-
-      a(ftm $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public fte.a b() {
+         return this.c;
       }
    }
 
-   static class b {
-      ftp<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = ftp.a;
-         this.b = -1;
-      }
-
-      public ftq.b a(int $$0, ftp<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   public interface b {
+      ffn load(ava var1) throws IOException;
    }
 
-   class c implements ftn {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(ftm $$0, ftp<?> $$1) {
-         ftq.this.b.computeIfAbsent(new ftq.a($$0, this.b), $$0x -> new ftq.b()).a(ftq.this.a, $$1);
-      }
-
-      @Override
-      public ftn a() {
-         return ftq.this.new c(this.b + 1);
-      }
+   public static record c(ald a) {
    }
 }

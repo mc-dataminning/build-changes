@@ -1,56 +1,106 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map.Entry;
+import java.util.List;
+import java.util.function.UnaryOperator;
 
-public record kx<T>(ku<T> b, T c) {
-   public static final yn<wa, kx<?>> a = new yn<wa, kx<?>>() {
-      public kx<?> a(wa $$0) {
-         ku<?> $$1 = ku.b.decode($$0);
-         return a($$0, (ku<T>)$$1);
-      }
+public class kx {
+   static final ayq a = new ayq(512);
+   public static final kw<dae> b = a("custom_data", $$0 -> $$0.a(dae.b));
+   public static final kw<Integer> c = a("max_stack_size", $$0 -> $$0.a(ays.a(1, 99)).a(yr.h));
+   public static final kw<Integer> d = a("max_damage", $$0 -> $$0.a(ays.m).a(yr.h));
+   public static final kw<Integer> e = a("damage", $$0 -> $$0.a(ays.l).a(yr.h));
+   public static final kw<daz> f = a("unbreakable", $$0 -> $$0.a(daz.a).a(daz.b));
+   public static final kw<wv> g = a("custom_name", $$0 -> $$0.a(wx.a).a(wx.b).a());
+   public static final kw<wv> h = a("item_name", $$0 -> $$0.a(wx.a).a(wx.b).a());
+   public static final kw<ald> i = a("item_model", $$0 -> $$0.a(ald.a).a(ald.b).a());
+   public static final kw<dao> j = a("lore", $$0 -> $$0.a(dao.c).a(dao.d).a());
+   public static final kw<cyu> k = a("rarity", $$0 -> $$0.a(cyu.e).a(cyu.g));
+   public static final kw<den> l = a("enchantments", $$0 -> $$0.a(den.b).a(den.c).a());
+   public static final kw<cvw> m = a("can_place_on", $$0 -> $$0.a(cvw.a).a(cvw.b).a());
+   public static final kw<cvw> n = a("can_break", $$0 -> $$0.a(cvw.a).a(cvw.b).a());
+   public static final kw<dam> o = a("attribute_modifiers", $$0 -> $$0.a(dam.b).a(dam.c).a());
+   public static final kw<daf> p = a("custom_model_data", $$0 -> $$0.a(daf.b).a(daf.c));
+   public static final kw<baq> q = a("hide_additional_tooltip", $$0 -> $$0.a(baq.b).a(baq.c));
+   public static final kw<baq> r = a("hide_tooltip", $$0 -> $$0.a(Codec.unit(baq.a)).a(baq.c));
+   public static final kw<Integer> s = a("repair_cost", $$0 -> $$0.a(ays.l).a(yr.h));
+   public static final kw<baq> t = a("creative_slot_lock", $$0 -> $$0.a(baq.c));
+   public static final kw<Boolean> u = a("enchantment_glint_override", $$0 -> $$0.a(Codec.BOOL).a(yr.b));
+   public static final kw<baq> v = a("intangible_projectile", $$0 -> $$0.a(baq.b));
+   public static final kw<ctk> w = a("food", $$0 -> $$0.a(ctk.a).a(ctk.b).a());
+   public static final kw<dab> x = a("consumable", $$0 -> $$0.a(dab.b).a(dab.c).a());
+   public static final kw<dbb> y = a("use_remainder", $$0 -> $$0.a(dbb.a).a(dbb.b).a());
+   public static final kw<dba> z = a("use_cooldown", $$0 -> $$0.a(dba.a).a(dba.b).a());
+   public static final kw<dag> A = a("damage_resistant", $$0 -> $$0.a(dag.a).a(dag.b).a());
+   public static final kw<dax> B = a("tool", $$0 -> $$0.a(dax.a).a(dax.b).a());
+   public static final kw<dbc> C = a("weapon", $$0 -> $$0.a(dbc.a).a(dbc.b).a());
+   public static final kw<def> D = a("enchantable", $$0 -> $$0.a(def.a).a(def.b).a());
+   public static final kw<dgc> E = a("equippable", $$0 -> $$0.a(dgc.a).a(dgc.b).a());
+   public static final kw<dep> F = a("repairable", $$0 -> $$0.a(dep.a).a(dep.b).a());
+   public static final kw<baq> G = a("glider", $$0 -> $$0.a(baq.b).a(baq.c));
+   public static final kw<ald> H = a("tooltip_style", $$0 -> $$0.a(ald.a).a(ald.b).a());
+   public static final kw<dah> I = a("death_protection", $$0 -> $$0.a(dah.a).a(dah.b).a());
+   public static final kw<den> J = a("stored_enchantments", $$0 -> $$0.a(den.b).a(den.c).a());
+   public static final kw<daj> K = a("dyed_color", $$0 -> $$0.a(daj.a).a(daj.b));
+   public static final kw<dar> L = a("map_color", $$0 -> $$0.a(dar.a).a(dar.b));
+   public static final kw<ewl> M = a("map_id", $$0 -> $$0.a(ewl.a).a(ewl.b));
+   public static final kw<daq> N = a("map_decorations", $$0 -> $$0.a(daq.b).a());
+   public static final kw<das> O = a("map_post_processing", $$0 -> $$0.a(das.d));
+   public static final kw<daa> P = a("charged_projectiles", $$0 -> $$0.a(daa.b).a(daa.c).a());
+   public static final kw<czz> Q = a("bundle_contents", $$0 -> $$0.a(czz.b).a(czz.c).a());
+   public static final kw<czu> R = a("potion_contents", $$0 -> $$0.a(czu.c).a(czu.d).a());
+   public static final kw<Float> S = a("potion_duration_scale", $$0 -> $$0.a(ays.n).a(yr.l).a());
+   public static final kw<daw> T = a("suspicious_stew_effects", $$0 -> $$0.a(daw.c).a(daw.d).a());
+   public static final kw<dbd> U = a("writable_book_content", $$0 -> $$0.a(dbd.e).a(dbd.f).a());
+   public static final kw<dbe> V = a("written_book_content", $$0 -> $$0.a(dbe.i).a(dbe.j).a());
+   public static final kw<dge> W = a("trim", $$0 -> $$0.a(dge.a).a(dge.b).a());
+   public static final kw<dai> X = a("debug_stick_state", $$0 -> $$0.a(dai.b).a());
+   public static final kw<dae> Y = a("entity_data", $$0 -> $$0.a(dae.c).a(dae.d));
+   public static final kw<dae> Z = a("bucket_entity_data", $$0 -> $$0.a(dae.b).a(dae.d));
+   public static final kw<dae> aa = a("block_entity_data", $$0 -> $$0.a(dae.c).a(dae.d));
+   public static final kw<js<cxr>> ab = a("instrument", $$0 -> $$0.a(cxr.c).a(cxr.d).a());
+   public static final kw<dat> ac = a("ominous_bottle_amplifier", $$0 -> $$0.a(dat.d).a(dat.e));
+   public static final kw<cyd> ad = a("jukebox_playable", $$0 -> $$0.a(cyd.a).a(cyd.b));
+   public static final kw<List<alc<dcl<?>>>> ae = a("recipes", $$0 -> $$0.a(alc.a(me.br).listOf()).a());
+   public static final kw<dap> af = a("lodestone_tracker", $$0 -> $$0.a(dap.a).a(dap.b).a());
+   public static final kw<dak> ag = a("firework_explosion", $$0 -> $$0.a(dak.c).a(dak.d).a());
+   public static final kw<dal> ah = a("fireworks", $$0 -> $$0.a(dal.b).a(dal.c).a());
+   public static final kw<dau> ai = a("profile", $$0 -> $$0.a(dau.a).a(dau.b).a());
+   public static final kw<ald> aj = a("note_block_sound", $$0 -> $$0.a(ald.a).a(ald.b));
+   public static final kw<dvb> ak = a("banner_patterns", $$0 -> $$0.a(dvb.b).a(dvb.c).a());
+   public static final kw<cwv> al = a("base_color", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kw<dwt> am = a("pot_decorations", $$0 -> $$0.a(dwt.b).a(dwt.c).a());
+   public static final kw<dan> an = a("container", $$0 -> $$0.a(dan.b).a(dan.c).a());
+   public static final kw<czx> ao = a("block_state", $$0 -> $$0.a(czx.b).a(czx.c).a());
+   public static final kw<List<dvi.c>> ap = a("bees", $$0 -> $$0.a(dvi.c.b).a(dvi.c.c.a(yr.a())).a());
+   public static final kw<btr> aq = a("lock", $$0 -> $$0.a(btr.b));
+   public static final kw<dav> ar = a("container_loot", $$0 -> $$0.a(dav.a));
+   public static final kw<js<cpz>> as = a("villager/variant", $$0 -> $$0.a(cpz.h).a(cpz.i));
+   public static final kw<js<cjn>> at = a("wolf/variant", $$0 -> $$0.a(cjn.c).a(cjn.d));
+   public static final kw<cwv> au = a("wolf/collar", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kw<ciq.v> av = a("fox/variant", $$0 -> $$0.a(ciq.v.c).a(ciq.v.d));
+   public static final kw<cjd.a> aw = a("salmon/size", $$0 -> $$0.a(cjd.a.d).a(cjd.a.e));
+   public static final kw<ciw.b> ax = a("parrot/variant", $$0 -> $$0.a(ciw.b.f).a(ciw.b.g));
+   public static final kw<cjj.b> ay = a("tropical_fish/pattern", $$0 -> $$0.a(cjj.b.m).a(cjj.b.n));
+   public static final kw<cwv> az = a("tropical_fish/base_color", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kw<cwv> aA = a("tropical_fish/pattern_color", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kw<cit.a> aB = a("mooshroom/variant", $$0 -> $$0.a(cit.a.c).a(cit.a.d));
+   public static final kw<cjc.g> aC = a("rabbit/variant", $$0 -> $$0.a(cjc.g.h).a(cjc.g.i));
+   public static final kw<js<ciy>> aD = a("pig/variant", $$0 -> $$0.a(ciy.c).a(ciy.d));
+   public static final kw<js<cir>> aE = a("frog/variant", $$0 -> $$0.a(cir.a).a(cir.b));
+   public static final kw<ckw> aF = a("horse/variant", $$0 -> $$0.a(ckw.h).a(ckw.i));
+   public static final kw<js<cmj>> aG = a("painting/variant", $$0 -> $$0.a(cmj.c).a(cmj.d));
+   public static final kw<ckq.d> aH = a("llama/variant", $$0 -> $$0.a(ckq.d.e).a(ckq.d.f));
+   public static final kw<cjv.e> aI = a("axolotl/variant", $$0 -> $$0.a(cjv.e.g).a(cjv.e.f));
+   public static final kw<js<cik>> aJ = a("cat/variant", $$0 -> $$0.a(cik.a).a(cik.b));
+   public static final kw<cwv> aK = a("cat/collar", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kw<cwv> aL = a("sheep/color", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kw<cwv> aM = a("shulker/color", $$0 -> $$0.a(cwv.q).a(cwv.r));
+   public static final kt aN = kt.a().a(c, 64).a(j, dao.a).a(l, den.a).a(s, 0).a(o, dam.a).a(k, cyu.a).a();
 
-      private static <T> kx<T> a(wa $$0, ku<T> $$1) {
-         return new kx<>($$1, $$1.e().decode($$0));
-      }
-
-      public void a(wa $$0, kx<?> $$1) {
-         b($$0, (kx<T>)$$1);
-      }
-
-      private static <T> void b(wa $$0, kx<T> $$1) {
-         ku.b.encode($$0, $$1.a());
-         $$1.a().e().encode($$0, $$1.b());
-      }
-   };
-
-   static kx<?> a(Entry<ku<?>, Object> $$0) {
-      return a($$0.getKey(), $$0.getValue());
+   public static kw<?> a(kf<kw<?>> $$0) {
+      return b;
    }
 
-   public static <T> kx<T> a(ku<T> $$0, Object $$1) {
-      return new kx<>($$0, (T)$$1);
-   }
-
-   public void a(kw $$0) {
-      $$0.b(this.b, this.c);
-   }
-
-   public <D> DataResult<D> a(DynamicOps<D> $$0) {
-      Codec<T> $$1 = this.b.b();
-      return $$1 == null ? DataResult.error(() -> "Component of type " + this.b + " is not encodable") : $$1.encodeStart($$0, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return this.b + "=>" + this.c;
-   }
-
-   public ku<T> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   private static <T> kw<T> a(String $$0, UnaryOperator<kw.a<T>> $$1) {
+      return kf.a(md.ao, $$0, $$1.apply(kw.a()).b());
    }
 }

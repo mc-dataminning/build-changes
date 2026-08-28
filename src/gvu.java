@@ -1,43 +1,39 @@
-public class gvu extends gtc<clx, hbp> {
-   private final gob a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gvu(gtd.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+public class gvu extends gvl<cix, hbu, gfb> {
+   private final Map<ciy.a, gco<gfb>> a;
+
+   public gvu(guf.a $$0) {
+      super($$0, new gfb($$0.a(ghc.bZ)), 0.7F);
+      this.a = a($$0);
+      this.a(new gyv<>(this, $$0.h(), hiy.d.g, $$0x -> $$0x.a, new gfb($$0.a(ghc.cm)), new gfb($$0.a(ghc.cl))));
    }
 
-   public void a(hbp $$0, fgr $$1, gmx $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.5F, 0.0F);
-      float $$4 = $$0.a;
-      if ($$0.a < 10.0F) {
-         float $$5 = 1.0F - $$0.a / 10.0F;
-         $$5 = ayz.a($$5, 0.0F, 1.0F);
-         $$5 *= $$5;
-         $$5 *= $$5;
-         float $$6 = 1.0F + $$5 * 0.3F;
-         $$1.b($$6, $$6, $$6);
-      }
+   private static Map<ciy.a, gco<gfb>> a(guf.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(ciy.a.a, new gco<>(new gfb($$0.a(ghc.bZ)), new gfb($$0.a(ghc.ck))), ciy.a.b, new gco<>(new gdp($$0.a(ghc.ac)), new gdp($$0.a(ghc.ad))))
+      );
+   }
 
-      $$1.a(a.d.rotationDegrees(-90.0F));
-      $$1.a(-0.5F, -0.5F, 0.5F);
-      $$1.a(a.d.rotationDegrees(90.0F));
+   public void a(hbu $$0, fho $$1, gny $$2, int $$3) {
       if ($$0.b != null) {
-         gvt.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+         this.g = this.a.get($$0.b.a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
       }
-
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hbp a() {
-      return new hbp();
+   public ald a(hbu $$0) {
+      return $$0.b == null ? hgh.c() : $$0.b.b();
    }
 
-   public void a(clx $$0, hbp $$1, float $$2) {
+   public hbu b() {
+      return new hbu();
+   }
+
+   public void a(cix $$0, hbu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.g() - $$2 + 1.0F;
-      $$1.b = $$0.j();
+      $$1.a = $$0.a(bwc.h).v();
+      $$1.b = $$0.t().a();
    }
 }

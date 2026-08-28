@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class fn extends gh<edo.a> {
-   private static final Codec<edo.a> a = azv.a(fn::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class fn extends gi<eel.a> {
+   private static final Codec<eel.a> a = bag.a(fn::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static edo.a[] b() {
-      return Arrays.stream(edo.a.values()).filter(edo.a::d).toArray(edo.a[]::new);
+   private static eel.a[] b() {
+      return Arrays.stream(eel.a.values()).filter(eel.a::d).toArray(eel.a[]::new);
    }
 
    private fn() {
@@ -18,8 +18,8 @@ public class fn extends gh<edo.a> {
       return new fn();
    }
 
-   public static edo.a a(CommandContext<ex> $$0, String $$1) {
-      return (edo.a)$$0.getArgument($$1, edo.a.class);
+   public static eel.a a(CommandContext<ex> $$0, String $$1) {
+      return (eel.a)$$0.getArgument($$1, eel.a.class);
    }
 
    @Override

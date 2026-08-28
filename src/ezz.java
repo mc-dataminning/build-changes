@@ -1,27 +1,35 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ezz {
-   public static final ezy a = a("inverted", ezu.a);
-   public static final ezy b = a("any_of", ezl.a);
-   public static final ezy c = a("all_of", ezk.a);
-   public static final ezy d = a("random_chance", fac.a);
-   public static final ezy e = a("random_chance_with_enchanted_bonus", fad.a);
-   public static final ezy f = a("entity_properties", faa.a);
-   public static final ezy g = a("killed_by_player", fab.a);
-   public static final ezy h = a("entity_scores", ezs.a);
-   public static final ezy i = a("block_state_property", ezw.a);
-   public static final ezy j = a("match_tool", fae.a);
-   public static final ezy k = a("table_bonus", ezm.a);
-   public static final ezy l = a("survives_explosion", ezt.a);
-   public static final ezy m = a("damage_source_properties", ezq.a);
-   public static final ezy n = a("location_check", ezv.a);
-   public static final ezy o = a("weather_check", fah.a);
-   public static final ezy p = a("reference", ezo.a);
-   public static final ezy q = a("time_check", faf.a);
-   public static final ezy r = a("value_check", fag.a);
-   public static final ezy s = a("enchantment_active_check", ezr.a);
+public class ezz extends eyy {
+   public static final MapCodec<ezz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(dbe.h.fieldOf("pages").forGetter($$0x -> $$0x.b), eyx.a.forGetter($$0x -> $$0x.c))).apply($$0, ezz::new)
+   );
+   private final List<asf<wv>> b;
+   private final eyx c;
 
-   private static ezy a(String $$0, MapCodec<? extends ezx> $$1) {
-      return ke.a(mb.F, aku.b($$0), new ezy($$1));
+   protected ezz(List<fau> $$0, List<asf<wv>> $$1, eyx $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   protected cxy a(cxy $$0, exl $$1) {
+      $$0.a(kx.V, dbe.a, this::a);
+      return $$0;
+   }
+
+   @VisibleForTesting
+   public dbe a(dbe $$0) {
+      List<asf<wv>> $$1 = this.c.a($$0.a(), this.b);
+      return $$0.b($$1);
+   }
+
+   @Override
+   public eza<ezz> b() {
+      return ezb.N;
    }
 }

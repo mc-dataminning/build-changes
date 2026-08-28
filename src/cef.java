@@ -1,40 +1,32 @@
-import java.util.EnumSet;
+public class cef extends cde {
+   private final boolean a;
+   private int b;
 
-public class cef extends ccw {
-   private final coy a;
-
-   public cef(coy $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccw.a.c, ccw.a.a));
+   public cef(bwt $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean b() {
-      if (!this.a.bJ()) {
-         return false;
-      } else if (this.a.bj()) {
-         return false;
-      } else if (!this.a.aJ()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cpr $$0 = this.a.x();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.bQ != null;
-         }
-      }
+   public boolean c() {
+      return this.a && this.b > 0 && super.c();
    }
 
    @Override
    public void d() {
-      this.a.O().m();
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
    public void e() {
-      this.a.a(null);
+      this.a(false);
+   }
+
+   @Override
+   public void a() {
+      this.b--;
+      super.a();
    }
 }

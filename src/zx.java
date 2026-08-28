@@ -1,21 +1,16 @@
-public record zx(String c) implements zz {
-   public static final yn<vl, zx> a = zz.a(zx::a, zx::new);
-   public static final zz.b<zx> b = zz.a("brand");
+import com.google.common.collect.Lists;
 
-   private zx(vl $$0) {
-      this($$0.p());
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.c);
-   }
+public record zx(aaf b) implements zc<zv> {
+   private static final int c = 32767;
+   public static final yt<vr, zx> a = aaf.<vr>a($$0 -> aag.a($$0, 32767), af.a(Lists.newArrayList(new aaf.c[]{new aaf.c<>(aad.b, aad.a)}), $$0 -> {
+   })).a(zx::new, zx::b);
 
    @Override
-   public zz.b<zx> a() {
-      return b;
+   public ze<zx> a() {
+      return zu.m;
    }
 
-   public String b() {
-      return this.c;
+   public void a(zv $$0) {
+      $$0.a(this);
    }
 }

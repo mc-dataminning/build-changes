@@ -1,5 +1,3 @@
-public class hbj extends haj {
-   public float a;
-   public float b;
-   public float c;
+public class hbj extends hak {
+   public long a;
 }

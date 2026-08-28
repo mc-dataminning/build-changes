@@ -1,31 +1,29 @@
-import javax.annotation.Nullable;
-
-public class aev implements yw<abl> {
-   public static final yn<vl, aev> a = yw.a(aev::a, aev::new);
+public class aev implements zc<abr> {
+   public static final yt<vr, aev> a = zc.a(aev::a, aev::new);
    private final int b;
    private final int c;
 
-   public aev(bva $$0, @Nullable bva $$1) {
-      this.b = $$0.ar();
-      this.c = $$1 != null ? $$1.ar() : 0;
+   public aev(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private aev(vl $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private aev(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(vl $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yy<aev> a() {
-      return agd.aF;
+   public ze<aev> a() {
+      return agk.aB;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 

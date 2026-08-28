@@ -1,38 +1,104 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class edl {
-   public final ekz a;
-   public final ekz b;
-   public final ekz c;
-   public final ekz d;
-   public final ekz e;
-   public final List<dxq> f;
-   public final axf<dke> g;
-   public final axf<dke> h;
-   public static final Codec<edl> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ekz.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               ekz.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               ekz.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               ekz.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               ekz.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayi.b(dxq.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axf.b(mc.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axf.b(mc.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, edl::new)
-   );
+public class edl implements edp {
+   private final List<edo> b = Lists.newArrayList();
+   private final Set<edo> c = Sets.newHashSet();
+   private final List<edo> d = Lists.newArrayList();
+   private boolean e;
+   private final arn f;
+   private final int g;
+   private final edl.a h;
 
-   public edl(ekz $$0, ekz $$1, ekz $$2, ekz $$3, ekz $$4, List<dxq> $$5, axf<dke> $$6, axf<dke> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public edl(arn $$0, int $$1, edl.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   @Override
+   public void a(edo $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
+      }
+
+      agj.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(edo $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
+
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
+      }
+   }
+
+   @Override
+   public boolean a(js<edm> $$0, fcu $$1, edm.a $$2, edp.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
+
+      try {
+         Iterator<edo> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            edo $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<fcu> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
+      }
+
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
+      }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
+   }
+
+   private static Optional<fcu> a(arn $$0, fcu $$1, edo $$2) {
+      Optional<fcu> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = jj.a($$3.get()).j(jj.a((kc)$$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

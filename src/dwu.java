@@ -1,105 +1,103 @@
-import java.util.Optional;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dwu {
-   private static final dwu.a a = dwu.a.a("trial_chamber/breeze");
-   private static final dwu.a b = dwu.a.a("trial_chamber/melee/husk");
-   private static final dwu.a c = dwu.a.a("trial_chamber/melee/spider");
-   private static final dwu.a d = dwu.a.a("trial_chamber/melee/zombie");
-   private static final dwu.a e = dwu.a.a("trial_chamber/ranged/poison_skeleton");
-   private static final dwu.a f = dwu.a.a("trial_chamber/ranged/skeleton");
-   private static final dwu.a g = dwu.a.a("trial_chamber/ranged/stray");
-   private static final dwu.a h = dwu.a.a("trial_chamber/slow_ranged/poison_skeleton");
-   private static final dwu.a i = dwu.a.a("trial_chamber/slow_ranged/skeleton");
-   private static final dwu.a j = dwu.a.a("trial_chamber/slow_ranged/stray");
-   private static final dwu.a k = dwu.a.a("trial_chamber/small_melee/baby_zombie");
-   private static final dwu.a l = dwu.a.a("trial_chamber/small_melee/cave_spider");
-   private static final dwu.a m = dwu.a.a("trial_chamber/small_melee/silverfish");
-   private static final dwu.a n = dwu.a.a("trial_chamber/small_melee/slime");
+public abstract class dwu extends dve implements btw {
+   @Nullable
+   protected alc<exq> l;
+   protected long m = 0L;
 
-   public static void a(qe<dwt> $$0) {
-      a(
-         $$0,
-         a,
-         dwt.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(brj.a(a(bvi.r))).a(),
-         dwt.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(brj.a(a(bvi.r))).b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a()
-      );
-      a($$0, b, c().a(brj.a(a(bvi.am))).a(), c().a(brj.a(a(bvi.am, ewk.ak))).b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a());
-      a($$0, c, c().a(brj.a(a(bvi.bn))).a(), a().a(brj.a(a(bvi.bn))).b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a());
-      a($$0, d, c().a(brj.a(a(bvi.bN))).a(), c().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.bN, ewk.ak))).a());
-      a($$0, e, c().a(brj.a(a(bvi.q))).a(), c().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.q, ewk.aj))).a());
-      a($$0, f, c().a(brj.a(a(bvi.be))).a(), c().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.be, ewk.aj))).a());
-      a($$0, g, c().a(brj.a(a(bvi.br))).a(), c().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.br, ewk.aj))).a());
-      a($$0, h, b().a(brj.a(a(bvi.q))).a(), b().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.q, ewk.aj))).a());
-      a($$0, i, b().a(brj.a(a(bvi.be))).a(), b().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.be, ewk.aj))).a());
-      a($$0, j, b().a(brj.a(a(bvi.br))).a(), b().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.br, ewk.aj))).a());
-      a(
-         $$0,
-         k,
-         dwt.b().d(0.5F).b(20).a(brj.a(a(bvi.bN, $$0x -> $$0x.a("IsBaby", true), null))).a(),
-         dwt.b().d(0.5F).b(20).b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.bN, $$0x -> $$0x.a("IsBaby", true), ewk.ak))).a()
-      );
-      a($$0, l, c().a(brj.a(a(bvi.v))).a(), a().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.v))).a());
-      a($$0, m, c().a(brj.a(a(bvi.bd))).a(), a().b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a()).a(brj.a(a(bvi.bd))).a());
-      a(
-         $$0,
-         n,
-         c().a(brj.<dht>b().a(a(bvi.bg, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bvi.bg, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
-         a()
-            .b(brj.<akt<ewt>>b().a(ewk.aN, 3).a(ewk.aO, 7).a())
-            .a(brj.<dht>b().a(a(bvi.bg, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bvi.bg, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
-            .a()
-      );
+   protected dwu(dvn<?> $$0, jj $$1, dym $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static <T extends bva> dht a(bvi<T> $$0) {
-      return a($$0, $$0x -> {
-      }, null);
+   @Nullable
+   @Override
+   public alc<exq> as_() {
+      return this.l;
    }
 
-   private static <T extends bva> dht a(bvi<T> $$0, Consumer<tq> $$1) {
-      return a($$0, $$1, null);
+   @Override
+   public void a(@Nullable alc<exq> $$0) {
+      this.l = $$0;
    }
 
-   private static <T extends bva> dht a(bvi<T> $$0, akt<ewt> $$1) {
-      return a($$0, $$0x -> {
-      }, $$1);
+   @Override
+   public long av_() {
+      return this.m;
    }
 
-   private static <T extends bva> dht a(bvi<T> $$0, Consumer<tq> $$1, @Nullable akt<ewt> $$2) {
-      tq $$3 = new tq();
-      $$3.a("id", mb.f.b($$0).toString());
-      $$1.accept($$3);
-      Optional<bvl> $$4 = Optional.ofNullable($$2).map($$0x -> new bvl($$0x, 0.0F));
-      return new dht($$3, Optional.empty(), $$4);
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
    }
 
-   private static void a(qe<dwt> $$0, dwu.a $$1, dwt $$2, dwt $$3) {
-      $$0.a($$1.a, $$2);
-      $$0.a($$1.b, $$3);
+   @Override
+   public boolean c() {
+      this.d_(null);
+      return super.c();
    }
 
-   static akt<dwt> a(String $$0) {
-      return akt.a(mc.bf, aku.b($$0));
+   @Override
+   public cxy a(int $$0) {
+      this.d_(null);
+      return super.a($$0);
    }
 
-   private static dwt.a a() {
-      return dwt.b().b(4.0F).d(0.5F).b(20).a(12.0F);
+   @Override
+   public cxy a(int $$0, int $$1) {
+      this.d_(null);
+      return super.a($$0, $$1);
    }
 
-   private static dwt.a b() {
-      return dwt.b().b(4.0F).d(2.0F).b(160);
+   @Override
+   public cxy b(int $$0) {
+      this.d_(null);
+      return super.b($$0);
    }
 
-   private static dwt.a c() {
-      return dwt.b().b(3.0F).d(0.5F).b(20);
+   @Override
+   public void a(int $$0, cxy $$1) {
+      this.d_(null);
+      super.a($$0, $$1);
    }
 
-   static record a(akt<dwt> a, akt<dwt> b) {
+   @Override
+   public boolean d(cqi $$0) {
+      return super.d($$0) && (this.l == null || !$$0.U_());
+   }
 
-      public static dwu.a a(String $$0) {
-         return new dwu.a(dwu.a($$0 + "/normal"), dwu.a($$0 + "/ominous"));
+   @Nullable
+   @Override
+   public ctn createMenu(int $$0, cqh $$1, cqi $$2) {
+      if (this.d($$2)) {
+         this.d_($$1.k);
+         return this.a($$0, $$1);
+      } else {
+         return null;
       }
+   }
+
+   @Override
+   protected void a(kr $$0) {
+      super.a($$0);
+      dav $$1 = $$0.a(kx.ar);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
+      }
+   }
+
+   @Override
+   protected void a(kt.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kx.ar, new dav(this.l, this.m));
+      }
+   }
+
+   @Override
+   public void a(tw $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

@@ -1,62 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqx extends dko implements dkh {
-   public static final MapCodec<dqx> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxf.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dqx::new)
-   );
-   public static final dyq f = dyg.aX;
-   private static final fcr a = dke.b(12.0, 0.0, 12.0);
-   protected final dxf g;
+public class dqx extends dku {
+   public static final MapCodec<dqx> a = b(dqx::new);
 
    @Override
-   public MapCodec<? extends dqx> a() {
-      return e;
-   }
-
-   protected dqx(dxf $$0, dxp.d $$1) {
-      super($$1);
-      this.g = $$0;
-      this.l(this.B.b().b(f, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+   public MapCodec<dqx> a() {
       return a;
    }
 
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
+   protected dqx(dyl.d $$0) {
+      super($$0);
    }
 
-   public void a(ard $$0, ji $$1, dxq $$2, azh $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 260);
+   @Override
+   protected btq a(cxy $$0, dym $$1, dhp $$2, jj $$3, cqi $$4, btp $$5, fcq $$6) {
+      if (!$$0.a(cyc.sW)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return btq.a;
       } else {
-         this.g.a($$0, $$0.m().g(), $$1, $$2, $$3);
+         jo $$7 = $$6.c();
+         jo $$8 = $$7.o() == jo.a.b ? $$4.cO().g() : $$7;
+         $$2.a(null, $$3, awk.vG, awl.e, 1.0F, 1.0F);
+         $$2.a($$3, dkw.er.m().b(dlp.b, $$8), 11);
+         cmn $$9 = new cmn(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cxy(cyc.sZ, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bwr.d($$5));
+         $$2.a($$4, edm.M, $$3);
+         $$4.b(awu.c.b(cyc.sW));
+         return btq.a;
       }
-   }
-
-   @Override
-   public boolean a(dhc $$0, ji $$1, dxq $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
-      return (double)$$0.A.i() < 0.45;
-   }
-
-   @Override
-   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(f);
    }
 }

@@ -1,33 +1,36 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
-public class ben extends DataFix {
+public class ben extends bhm {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("donkeykong", "donkey_kong");
+      $$0.put("burningskull", "burning_skull");
+      $$0.put("skullandroses", "skull_and_roses");
+   });
+
    public ben(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityPaintingMotiveFix", biq.D, "minecraft:painting");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(bic.C),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
-               }
-            )
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Motive").asString().result();
+      if ($$1.isPresent()) {
+         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
+         return $$0.set("Motive", $$0.createString(bkj.a(a.getOrDefault($$2, $$2))));
+      } else {
+         return $$0;
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

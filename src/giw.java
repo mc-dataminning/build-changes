@@ -1,17 +1,31 @@
-public class giw extends giy {
-   protected giw(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, glb $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-   public static class a implements gkj<lx> {
-      private final glb a;
+public interface giw {
+   Codec<giw> a = bag.a(giw.a::values).dispatch(giw::a, giw.a::a);
 
-      public a(glb $$0) {
-         this.a = $$0;
+   giw.a a();
+
+   public static enum a implements bag {
+      a("player", () -> gix.a.b),
+      b("system", () -> gix.b.b);
+
+      private final String c;
+      private final Supplier<MapCodec<? extends giw>> d;
+
+      private a(final String $$0, final Supplier<MapCodec<? extends giw>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new giw($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+      private MapCodec<? extends giw> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

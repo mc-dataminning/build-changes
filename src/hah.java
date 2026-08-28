@@ -1,11 +1,7 @@
 import javax.annotation.Nullable;
 
-public class hah extends gzj {
-   public jn a = jn.c;
-   public final hcn b = new hcn();
-   public int c;
-   public boolean d;
+public class hah extends hak {
+   public boolean a = true;
    @Nullable
-   public evo e;
-   public final hfa f = new hfa();
+   public fcu b;
 }

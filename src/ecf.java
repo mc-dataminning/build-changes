@@ -1,415 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class ecf<T extends ebu> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final ecc<T> c;
-   private final ebx<T> d;
-   private final ebw<T> e;
-   final ebz<T> f;
-   private final ecd<T> g;
-   private final Long2ObjectMap<ecj> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<ecf.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<ebs<T>> k = Queues.newConcurrentLinkedQueue();
+public class ecf implements AutoCloseable {
+   private final ebv a;
+   private final DataFixer b;
+   private final bax c;
 
-   public ecf(Class<T> $$0, ecc<T> $$1, ebx<T> $$2) {
-      this.e = new ebw<>();
-      this.f = new ebz<>($$0, this.h);
-      this.h.defaultReturnValue(ecj.a);
-      this.i.defaultReturnValue(ecf.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new ece<>(this.e, this.f);
+   public ecf(ecc $$0, Path $$1, DataFixer $$2, boolean $$3, bax $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new ebv($$0, $$1, $$3);
    }
 
-   void a(long $$0, eby<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
+   public CompletableFuture<Optional<tw>> a(dgw $$0) {
+      return this.a.a($$0);
    }
 
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cF())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
-      } else {
-         return true;
-      }
+   public CompletableFuture<Void> a(dgw $$0, @Nullable tw $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public boolean a(T $$0) {
-      return this.a($$0, false);
+   public tw a(tw $$0, int $$1) {
+      int $$2 = ul.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
    }
 
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
-      } else {
-         long $$2 = kk.c($$0.du());
-         eby<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new ecf.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         ecj $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
+   public Dynamic<ut> a(Dynamic<ut> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
    }
 
-   static <T extends ebu> ecj a(T $$0, ecj $$1) {
-      return $$0.dT() ? ecj.c : $$1;
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(dgg $$0, aqr $$1) {
-      ecj $$2 = ecj.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(dgg $$0, ecj $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == ecj.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         ecj $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      ecf.b $$1 = (ecf.b)this.i.get($$0);
-      if ($$1 == ecf.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      ecf.b $$2 = (ecf.b)this.i.get($$0);
-      if ($$2 == ecf.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(ebu::dS)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == ecf.b.c) {
-               this.d.a(new ebs<>(new dgg($$0), ImmutableList.of()));
-            }
-
-            return true;
-         } else if ($$2 == ecf.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new ebs<>(new dgg($$0), $$3));
-            $$3.forEach($$1);
-            return true;
-         }
-      }
-   }
-
-   private void c(long $$0) {
-      this.i.put($$0, ecf.b.b);
-      dgg $$1 = new dgg($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.da().forEach(this::g));
-      if (!$$1) {
-         return false;
-      } else {
-         this.i.remove($$0);
-         return true;
-      }
-   }
-
-   private void g(ebu $$0) {
-      $$0.c(bva.d.c);
-      $$0.a(ebv.a);
-   }
-
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != ecj.a ? true : this.d($$0));
-   }
-
-   private void h() {
-      ebs<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), ecf.b.c);
-      }
-   }
-
-   public void a() {
-      this.h();
-      this.g();
-   }
-
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
-
-      while (var2.hasNext()) {
-         Entry<ecf.b> $$1 = (Entry<ecf.b>)var2.next();
-         if ($$1.getValue() == ecf.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
-
-      return $$0;
-   }
-
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == ecj.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
-   }
-
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == ecj.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
-      }
-
-      this.d.a(true);
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
    }
 
    @Override
    public void close() throws IOException {
-      this.c();
-      this.d.close();
+      this.a.close();
    }
 
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public ecd<T> d() {
-      return this.g;
-   }
-
-   public boolean a(ji $$0) {
-      return ((ecj)this.h.get(dgg.a($$0))).a();
-   }
-
-   public boolean a(dgg $$0) {
-      return ((ecj)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == ecf.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      axz $$1 = axz.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         ecf.b $$2 = (ecf.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            eby<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(kk.b($$2x), kk.c($$2x), kk.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @bag
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   @bag
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements ebv {
-      private final T c;
-      private long d;
-      private eby<T> e;
-
-      a(final T $$0, final long $$1, final eby<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         ji $$0 = this.c.du();
-         long $$1 = kk.c($$0);
-         if ($$1 != this.d) {
-            ecj $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               ecf.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kk.a(this.d), $$1});
-            }
-
-            ecf.this.a(this.d, this.e);
-            eby<T> $$3 = ecf.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
-         }
-      }
-
-      private void a(ecj $$0, ecj $$1) {
-         ecj $$2 = ecf.a(this.c, $$0);
-         ecj $$3 = ecf.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               ecf.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               ecf.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               ecf.this.e(this.c);
-            }
-
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               ecf.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               ecf.this.c(this.c);
-            }
-
-            if ($$5) {
-               ecf.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(bva.d $$0) {
-         if (!this.e.b(this.c)) {
-            ecf.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kk.a(this.d), $$0});
-         }
-
-         ecj $$1 = ecf.a(this.c, this.e.c());
-         if ($$1.a()) {
-            ecf.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            ecf.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            ecf.this.c.f(this.c);
-         }
-
-         ecf.this.b.remove(this.c.cF());
-         this.c.a(a);
-         ecf.this.a(this.d, this.e);
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+   public ecc a() {
+      return this.a.a();
    }
 }

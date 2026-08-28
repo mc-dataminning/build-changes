@@ -1,43 +1,42 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 
-public class arq implements arn {
-   private final arn a;
-   private final bro b;
-   private boolean c;
+public class arq extends aqv {
+   public static final int a = 33;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final dim c;
 
-   private arq(arn $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = new bro($$1, "progressListener");
-   }
-
-   public static arq a(arn $$0, Executor $$1) {
-      arq $$2 = new arq($$0, $$1);
-      $$2.a();
-      return $$2;
+   public arq(dim $$0) {
+      super(34, 16, 256);
+      this.c = $$0;
+      $$0.b(this::b);
+      this.b.defaultReturnValue((byte)33);
    }
 
    @Override
-   public void a(dgg $$0) {
-      this.b.a_(() -> this.a.a($$0));
+   protected int b(long $$0) {
+      return this.c.a($$0, true);
+   }
+
+   public int a(dgw $$0) {
+      return this.c($$0.a());
    }
 
    @Override
-   public void a(dgg $$0, @Nullable ean $$1) {
-      if (this.c) {
-         this.b.a_(() -> this.a.a($$0, $$1));
+   protected int c(long $$0) {
+      return this.b.get($$0);
+   }
+
+   @Override
+   protected void a(long $$0, int $$1) {
+      if ($$1 >= 33) {
+         this.b.remove($$0);
+      } else {
+         this.b.put($$0, (byte)$$1);
       }
    }
 
-   @Override
    public void a() {
-      this.c = true;
-      this.b.a_(this.a::a);
-   }
-
-   @Override
-   public void b() {
-      this.c = false;
-      this.b.a_(this.a::b);
+      this.b(Integer.MAX_VALUE);
    }
 }

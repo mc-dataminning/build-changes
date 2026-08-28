@@ -1,37 +1,69 @@
-public class adk implements yw<abl> {
-   public static final yn<vl, adk> a = yw.a(adk::a, adk::new);
-   private final ji b;
-   private final boolean c;
+public class adk implements zc<abr> {
+   public static final yt<wg, adk> a = zc.a(adk::a, adk::new);
+   private final int b;
+   private final dgo c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-   public adk(ji $$0, boolean $$1) {
+   public adk(int $$0, dgo $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
-      this.c = $$1;
+      this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private adk(vl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private adk(wg $$0) {
+      this.b = $$0.x();
+      this.c = dgo.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wg $$0) {
+      $$0.f(this.b);
+      dgo.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
-   public yy<adk> a() {
-      return agd.X;
+   public ze<adk> a() {
+      return agk.Q;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public ji b() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public dgo e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

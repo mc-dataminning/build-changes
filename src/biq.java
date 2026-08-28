@@ -1,50 +1,58 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class biq extends DataFix {
-   public biq(Schema $$0) {
-      super($$0, true);
-   }
+public class biq {
+   public static final TypeReference a = a("level");
+   public static final TypeReference b = a("player");
+   public static final TypeReference c = a("chunk");
+   public static final TypeReference d = a("hotbar");
+   public static final TypeReference e = a("options");
+   public static final TypeReference f = a("structure");
+   public static final TypeReference g = a("stats");
+   public static final TypeReference h = a("saved_data/command_storage");
+   public static final TypeReference i = a("saved_data/tickets");
+   public static final TypeReference j = a("saved_data/map_data");
+   public static final TypeReference k = a("saved_data/idcounts");
+   public static final TypeReference l = a("saved_data/raids");
+   public static final TypeReference m = a("saved_data/random_sequences");
+   public static final TypeReference n = a("saved_data/structure_feature_indices");
+   public static final TypeReference o = a("saved_data/scoreboard");
+   public static final TypeReference p = a("advancements");
+   public static final TypeReference q = a("poi_chunk");
+   public static final TypeReference r = a("entity_chunk");
+   public static final TypeReference s = a("block_entity");
+   public static final TypeReference t = a("item_stack");
+   public static final TypeReference u = a("block_state");
+   public static final TypeReference v = a("flat_block_state");
+   public static final TypeReference w = a("data_components");
+   public static final TypeReference x = a("villager_trade");
+   public static final TypeReference y = a("particle");
+   public static final TypeReference z = a("text_component");
+   public static final TypeReference A = a("entity_equipment");
+   public static final TypeReference B = a("entity_name");
+   public static final TypeReference C = a("entity_tree");
+   public static final TypeReference D = a("entity");
+   public static final TypeReference E = a("block_name");
+   public static final TypeReference F = a("item_name");
+   public static final TypeReference G = a("game_event_name");
+   public static final TypeReference H = a("untagged_spawner");
+   public static final TypeReference I = a("structure_feature");
+   public static final TypeReference J = a("objective");
+   public static final TypeReference K = a("team");
+   public static final TypeReference L = a("recipe");
+   public static final TypeReference M = a("biome");
+   public static final TypeReference N = a("multi_noise_biome_source_parameter_list");
+   public static final TypeReference O = a("world_gen_settings");
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.G);
-      Type<?> $$1 = this.getOutputSchema().getType(bic.G);
-      OpticFinder<?> $$2 = $$0.findField("SpawnData");
-      Type<?> $$3 = $$1.findField("SpawnData").type();
-      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
-      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
-      return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
-         $$0,
-         $$1,
-         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
-      );
-   }
+   public static TypeReference a(final String $$0) {
+      return new TypeReference() {
+         public String typeName() {
+            return $$0;
+         }
 
-   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
-   }
-
-   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      List<?> $$3 = (List<?>)$$1.getValue();
-      List<?> $$4 = $$3.stream().map($$1x -> {
-         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
-         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> $$4x = new Dynamic($$2);
-         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
-         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
-      }).toList();
-      return new Typed($$0, $$2, $$4);
+         @Override
+         public String toString() {
+            return "@" + $$0;
+         }
+      };
    }
 }

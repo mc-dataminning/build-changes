@@ -1,25 +1,111 @@
-public class ggs {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = af.d();
+import java.util.Set;
 
-   public void a() {
-      this.e = af.d();
+public class ggs extends gea<hcz> {
+   public static final ghm a = new gcx(Set.of("head"));
+   private static final String b = "real_head";
+   private static final String c = "upper_body";
+   private static final String d = "real_tail";
+   private final ghd e;
+   private final ghd f;
+   private final ghd g;
+   private final ghd i;
+   private final ghd j;
+   private final ghd k;
+   private final ghd l;
+   private final ghd m;
+   private final ghd n;
+   private final ghd o;
+   private static final int p = 8;
+
+   public ggs(ghd $$0) {
+      super($$0);
+      this.e = $$0.b("head");
+      this.f = this.e.b("real_head");
+      this.g = $$0.b("body");
+      this.o = $$0.b("upper_body");
+      this.i = $$0.b("right_hind_leg");
+      this.j = $$0.b("left_hind_leg");
+      this.k = $$0.b("right_front_leg");
+      this.l = $$0.b("left_front_leg");
+      this.m = $$0.b("tail");
+      this.n = this.m.b("real_tail");
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(af.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = ayz.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
+   public static ghl a(ghh $$0) {
+      ghl $$1 = new ghl();
+      ghn $$2 = $$1.a();
+      float $$3 = 13.5F;
+      ghn $$4 = $$2.a("head", ghi.c(), ghf.a(-1.0F, 13.5F, -7.0F));
+      $$4.a(
+         "real_head",
+         ghi.c()
+            .a(0, 0)
+            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, $$0)
+            .a(16, 14)
+            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
+            .a(16, 14)
+            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
+            .a(0, 10)
+            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, $$0),
+         ghf.a
+      );
+      $$2.a("body", ghi.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, $$0), ghf.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("upper_body", ghi.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, $$0), ghf.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      ghi $$5 = ghi.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0);
+      $$2.a("right_hind_leg", $$5, ghf.a(-2.5F, 16.0F, 7.0F));
+      $$2.a("left_hind_leg", $$5, ghf.a(0.5F, 16.0F, 7.0F));
+      $$2.a("right_front_leg", $$5, ghf.a(-2.5F, 16.0F, -4.0F));
+      $$2.a("left_front_leg", $$5, ghf.a(0.5F, 16.0F, -4.0F));
+      ghn $$6 = $$2.a("tail", ghi.c(), ghf.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
+      $$6.a("real_tail", ghi.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0), ghf.a);
+      return $$1;
+   }
+
+   public void a(hcz $$0) {
+      super.a($$0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      if ($$0.a) {
+         this.m.f = 0.0F;
+      } else {
+         this.m.f = azk.b($$1 * 0.6662F) * 1.4F * $$2;
       }
-   }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+      if ($$0.b) {
+         float $$3 = $$0.ag;
+         this.o.c += 2.0F * $$3;
+         this.o.e = (float) (Math.PI * 2.0 / 5.0);
+         this.o.f = 0.0F;
+         this.g.c += 4.0F * $$3;
+         this.g.d -= 2.0F * $$3;
+         this.g.e = (float) (Math.PI / 4);
+         this.m.c += 9.0F * $$3;
+         this.m.d -= 2.0F * $$3;
+         this.i.c += 6.7F * $$3;
+         this.i.d -= 5.0F * $$3;
+         this.i.e = (float) (Math.PI * 3.0 / 2.0);
+         this.j.c += 6.7F * $$3;
+         this.j.d -= 5.0F * $$3;
+         this.j.e = (float) (Math.PI * 3.0 / 2.0);
+         this.k.e = 5.811947F;
+         this.k.b += 0.01F * $$3;
+         this.k.c += 1.0F * $$3;
+         this.l.e = 5.811947F;
+         this.l.b -= 0.01F * $$3;
+         this.l.c += 1.0F * $$3;
+      } else {
+         this.i.e = azk.b($$1 * 0.6662F) * 1.4F * $$2;
+         this.j.e = azk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+         this.k.e = azk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+         this.l.e = azk.b($$1 * 0.6662F) * 1.4F * $$2;
+      }
+
+      this.f.g = $$0.d + $$0.a(0.0F);
+      this.o.g = $$0.a(-0.08F);
+      this.g.g = $$0.a(-0.16F);
+      this.n.g = $$0.a(-0.2F);
+      this.e.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.e.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.m.e = $$0.c;
    }
 }

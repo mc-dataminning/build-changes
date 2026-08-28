@@ -1,44 +1,82 @@
-public class gdb extends gda<gzl> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final ggc d;
-   private final ggc e;
-   private final ggc f;
+public class gdb extends gea<gzu> {
+   public static final ghm a = ghm.scaling(0.5F);
+   private static final String b = "bone";
+   private static final String c = "stinger";
+   private static final String d = "left_antenna";
+   private static final String e = "right_antenna";
+   private static final String f = "front_legs";
+   private static final String g = "middle_legs";
+   private static final String i = "back_legs";
+   private final ghd j;
+   private final ghd k;
+   private final ghd l;
+   private final ghd m;
+   private final ghd n;
+   private final ghd o;
+   private final ghd p;
+   private final ghd q;
+   private final ghd r;
+   private float s;
 
-   public gdb(ggc $$0) {
+   public gdb(ghd $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+      this.j = $$0.b("bone");
+      ghd $$1 = this.j.b("body");
+      this.p = $$1.b("stinger");
+      this.q = $$1.b("left_antenna");
+      this.r = $$1.b("right_antenna");
+      this.k = this.j.b("right_wing");
+      this.l = this.j.b("left_wing");
+      this.m = this.j.b("front_legs");
+      this.n = this.j.b("middle_legs");
+      this.o = this.j.b("back_legs");
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      ggm $$2 = $$1.a("base", ggh.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gge.a(-5.0F, 24.0F, -5.0F));
-      ggh $$3 = ggh.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gge.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gge.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return ggi.a($$0, 64, 32);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      ghn $$2 = $$1.a("bone", ghi.c(), ghf.a(0.0F, 19.0F, 0.0F));
+      ghn $$3 = $$2.a("body", ghi.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), ghf.a);
+      $$3.a("stinger", ghi.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), ghf.a);
+      $$3.a("left_antenna", ghi.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), ghf.a(0.0F, -2.0F, -5.0F));
+      $$3.a("right_antenna", ghi.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), ghf.a(0.0F, -2.0F, -5.0F));
+      ghh $$4 = new ghh(0.001F);
+      $$2.a("right_wing", ghi.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), ghf.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
+      $$2.a("left_wing", ghi.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), ghf.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
+      $$2.a("front_legs", ghi.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), ghf.a(1.5F, 3.0F, -2.0F));
+      $$2.a("middle_legs", ghi.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), ghf.a(1.5F, 3.0F, 0.0F));
+      $$2.a("back_legs", ghi.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), ghf.a(1.5F, 3.0F, 2.0F));
+      return ghj.a($$0, 64, 64);
    }
 
-   public void a(gzl $$0) {
+   public void a(gzu $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + ayz.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
+      this.s = $$0.a;
+      this.p.k = $$0.b;
+      if (!$$0.c) {
+         float $$1 = $$0.u * 120.32113F * (float) (Math.PI / 180.0);
+         this.k.f = 0.0F;
+         this.k.g = azk.b($$1) * (float) Math.PI * 0.15F;
+         this.l.e = this.k.e;
+         this.l.f = this.k.f;
+         this.l.g = -this.k.g;
+         this.m.e = (float) (Math.PI / 4);
+         this.n.e = (float) (Math.PI / 4);
+         this.o.e = (float) (Math.PI / 4);
       }
 
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      if (!$$0.d && !$$0.c) {
+         float $$2 = azk.b($$0.u * 0.18F);
+         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
+         this.q.e = $$2 * (float) Math.PI * 0.03F;
+         this.r.e = $$2 * (float) Math.PI * 0.03F;
+         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
+         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
+         this.j.c = this.j.c - azk.b($$0.u * 0.18F) * 0.9F;
+      }
+
+      if (this.s > 0.0F) {
+         this.j.e = azk.j(this.s, this.j.e, 3.0915928F);
+      }
    }
 }

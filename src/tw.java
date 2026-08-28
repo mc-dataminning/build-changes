@@ -1,16 +1,28 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class tw extends tp<un> {
-   private static final int b = 37;
-   public static final up<tw> a = new up.b<tw>() {
-      public tw a(DataInput $$0, tz $$1) throws IOException {
+public class tw implements ut {
+   public static final Codec<tw> a = Codec.PASSTHROUGH.comapFlatMap($$0 -> {
+      ut $$1 = (ut)$$0.convert(uk.a).getValue();
+      return $$1 instanceof tw $$2 ? DataResult.success($$2 == $$0.getValue() ? $$2.i() : $$2) : DataResult.error(() -> "Not a compound tag: " + $$1);
+   }, $$0 -> new Dynamic(uk.a, $$0.i()));
+   private static final int c = 48;
+   private static final int w = 32;
+   public static final uv<tw> b = new uv.b<tw>() {
+      public tw a(DataInput $$0, uf $$1) throws IOException {
          $$1.b();
 
          tw var3;
@@ -23,30 +35,27 @@ public class tw extends tp<un> {
          return var3;
       }
 
-      private static tw d(DataInput $$0, tz $$1) throws IOException {
-         $$1.b(37L);
-         byte $$2 = $$0.readByte();
-         int $$3 = $$0.readInt();
-         if ($$2 == 0 && $$3 > 0) {
-            throw new uc("Missing type on ListTag");
-         } else {
-            $$1.a(4L, (long)$$3);
-            up<?> $$4 = uq.a($$2);
-            List<un> $$5 = Lists.newArrayListWithCapacity($$3);
+      private static tw d(DataInput $$0, uf $$1) throws IOException {
+         $$1.b(48L);
+         Map<String, ut> $$2 = Maps.newHashMap();
 
-            for (int $$6 = 0; $$6 < $$3; $$6++) {
-               $$5.add($$4.c($$0, $$1));
+         byte $$3;
+         while (($$3 = $$0.readByte()) != 0) {
+            String $$4 = e($$0, $$1);
+            ut $$5 = tw.a(uw.a($$3), $$4, $$0, $$1);
+            if ($$2.put($$4, $$5) == null) {
+               $$1.b(36L);
             }
-
-            return new tw($$5, $$2);
          }
+
+         return new tw($$2);
       }
 
       @Override
-      public uk.b a(DataInput $$0, uk $$1, tz $$2) throws IOException {
+      public uq.b a(DataInput $$0, uq $$1, uf $$2) throws IOException {
          $$2.b();
 
-         uk.b var4;
+         uq.b var4;
          try {
             var4 = c($$0, $$1, $$2);
          } finally {
@@ -56,65 +65,73 @@ public class tw extends tp<un> {
          return var4;
       }
 
-      private static uk.b c(DataInput $$0, uk $$1, tz $$2) throws IOException {
-         $$2.b(37L);
-         up<?> $$3 = uq.a($$0.readByte());
-         int $$4 = $$0.readInt();
-         switch ($$1.a($$3, $$4)) {
-            case c:
-               return uk.b.c;
-            case b:
-               $$3.a($$0, $$4, $$2);
-               return $$1.b();
-            default:
-               $$2.a(4L, (long)$$4);
-               int $$5 = 0;
+      private static uq.b c(DataInput $$0, uq $$1, uf $$2) throws IOException {
+         $$2.b(48L);
 
-               while (true) {
-                  label41: {
-                     if ($$5 < $$4) {
-                        switch ($$1.b($$3, $$5)) {
-                           case d:
-                              return uk.b.c;
+         byte $$3;
+         label35:
+         while (($$3 = $$0.readByte()) != 0) {
+            uv<?> $$4 = uw.a($$3);
+            switch ($$1.a($$4)) {
+               case d:
+                  return uq.b.c;
+               case c:
+                  ur.a($$0);
+                  $$4.b($$0, $$2);
+                  break label35;
+               case b:
+                  ur.a($$0);
+                  $$4.b($$0, $$2);
+                  break;
+               default:
+                  String $$5 = e($$0, $$2);
+                  switch ($$1.a($$4, $$5)) {
+                     case d:
+                        return uq.b.c;
+                     case c:
+                        $$4.b($$0, $$2);
+                        break label35;
+                     case b:
+                        $$4.b($$0, $$2);
+                        break;
+                     default:
+                        $$2.b(36L);
+                        switch ($$4.a($$0, $$1, $$2)) {
                            case c:
-                              $$3.b($$0, $$2);
-                              break;
+                              return uq.b.c;
                            case b:
-                              $$3.b($$0, $$2);
-                              break label41;
-                           default:
-                              switch ($$3.a($$0, $$1, $$2)) {
-                                 case c:
-                                    return uk.b.c;
-                                 case b:
-                                    break;
-                                 default:
-                                    break label41;
-                              }
                         }
-                     }
-
-                     int $$6 = $$4 - 1 - $$5;
-                     if ($$6 > 0) {
-                        $$3.a($$0, $$6, $$2);
-                     }
-
-                     return $$1.b();
                   }
-
-                  $$5++;
-               }
+            }
          }
+
+         if ($$3 != 0) {
+            while (($$3 = $$0.readByte()) != 0) {
+               ur.a($$0);
+               uw.a($$3).b($$0, $$2);
+            }
+         }
+
+         return $$1.b();
+      }
+
+      private static String e(DataInput $$0, uf $$1) throws IOException {
+         String $$2 = $$0.readUTF();
+         $$1.b(28L);
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
       }
 
       @Override
-      public void b(DataInput $$0, tz $$1) throws IOException {
+      public void b(DataInput $$0, uf $$1) throws IOException {
          $$1.b();
 
+         byte $$2;
          try {
-            up<?> $$2 = uq.a($$0.readByte());
-            int $$3 = $$0.readInt();
-            $$2.a($$0, $$3, $$1);
+            while (($$2 = $$0.readByte()) != 0) {
+               ur.a($$0);
+               uw.a($$2).b($$0, $$1);
+            }
          } finally {
             $$1.c();
          }
@@ -122,62 +139,314 @@ public class tw extends tp<un> {
 
       @Override
       public String a() {
-         return "LIST";
+         return "COMPOUND";
       }
 
       @Override
       public String b() {
-         return "TAG_List";
+         return "TAG_Compound";
       }
    };
-   private final List<un> c;
-   private byte w;
+   private final Map<String, ut> x;
 
-   tw(List<un> $$0, byte $$1) {
-      this.c = $$0;
-      this.w = $$1;
+   protected tw(Map<String, ut> $$0) {
+      this.x = $$0;
    }
 
    public tw() {
-      this(Lists.newArrayList(), (byte)0);
+      this(Maps.newHashMap());
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      if (this.c.isEmpty()) {
-         this.w = 0;
-      } else {
-         this.w = this.c.get(0).b();
+      for (String $$1 : this.x.keySet()) {
+         ut $$2 = this.x.get($$1);
+         a($$1, $$2, $$0);
       }
 
-      $$0.writeByte(this.w);
-      $$0.writeInt(this.c.size());
-
-      for (un $$1 : this.c) {
-         $$1.a($$0);
-      }
+      $$0.writeByte(0);
    }
 
    @Override
    public int a() {
-      int $$0 = 37;
-      $$0 += 4 * this.c.size();
+      int $$0 = 48;
 
-      for (un $$1 : this.c) {
-         $$0 += $$1.a();
+      for (Entry<String, ut> $$1 : this.x.entrySet()) {
+         $$0 += 28 + 2 * $$1.getKey().length();
+         $$0 += 36;
+         $$0 += $$1.getValue().a();
       }
 
       return $$0;
    }
 
-   @Override
-   public byte b() {
-      return 9;
+   public Set<String> e() {
+      return this.x.keySet();
    }
 
    @Override
-   public up<tw> c() {
-      return a;
+   public byte b() {
+      return 10;
+   }
+
+   @Override
+   public uv<tw> c() {
+      return b;
+   }
+
+   public int f() {
+      return this.x.size();
+   }
+
+   @Nullable
+   public ut a(String $$0, ut $$1) {
+      return this.x.put($$0, $$1);
+   }
+
+   public void a(String $$0, byte $$1) {
+      this.x.put($$0, tu.a($$1));
+   }
+
+   public void a(String $$0, short $$1) {
+      this.x.put($$0, uo.a($$1));
+   }
+
+   public void a(String $$0, int $$1) {
+      this.x.put($$0, ub.a($$1));
+   }
+
+   public void a(String $$0, long $$1) {
+      this.x.put($$0, ue.a($$1));
+   }
+
+   public void a(String $$0, UUID $$1) {
+      this.x.put($$0, ul.a($$1));
+   }
+
+   public UUID a(String $$0) {
+      return ul.a(this.c($$0));
+   }
+
+   public boolean b(String $$0) {
+      ut $$1 = this.c($$0);
+      return $$1 != null && $$1.c() == ua.a && ((ua)$$1).g().length == 4;
+   }
+
+   public void a(String $$0, float $$1) {
+      this.x.put($$0, tz.a($$1));
+   }
+
+   public void a(String $$0, double $$1) {
+      this.x.put($$0, tx.a($$1));
+   }
+
+   public void a(String $$0, String $$1) {
+      this.x.put($$0, ur.a($$1));
+   }
+
+   public void a(String $$0, byte[] $$1) {
+      this.x.put($$0, new tt($$1));
+   }
+
+   public void a(String $$0, List<Byte> $$1) {
+      this.x.put($$0, new tt($$1));
+   }
+
+   public void a(String $$0, int[] $$1) {
+      this.x.put($$0, new ua($$1));
+   }
+
+   public void b(String $$0, List<Integer> $$1) {
+      this.x.put($$0, new ua($$1));
+   }
+
+   public void a(String $$0, long[] $$1) {
+      this.x.put($$0, new ud($$1));
+   }
+
+   public void c(String $$0, List<Long> $$1) {
+      this.x.put($$0, new ud($$1));
+   }
+
+   public void a(String $$0, boolean $$1) {
+      this.x.put($$0, tu.a($$1));
+   }
+
+   @Nullable
+   public ut c(String $$0) {
+      return this.x.get($$0);
+   }
+
+   public byte d(String $$0) {
+      ut $$1 = this.x.get($$0);
+      return $$1 == null ? 0 : $$1.b();
+   }
+
+   public boolean e(String $$0) {
+      return this.x.containsKey($$0);
+   }
+
+   public boolean b(String $$0, int $$1) {
+      int $$2 = this.d($$0);
+      if ($$2 == $$1) {
+         return true;
+      } else {
+         return $$1 != 99 ? false : $$2 == 1 || $$2 == 2 || $$2 == 3 || $$2 == 4 || $$2 == 5 || $$2 == 6;
+      }
+   }
+
+   public byte f(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((um)this.x.get($$0)).i();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public short g(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((um)this.x.get($$0)).h();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public int h(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((um)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public long i(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((um)this.x.get($$0)).f();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0L;
+   }
+
+   public float j(String $$0) {
+      return this.b($$0, 0.0F);
+   }
+
+   public float b(String $$0, float $$1) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((um)this.x.get($$0)).k();
+         }
+      } catch (ClassCastException var4) {
+      }
+
+      return $$1;
+   }
+
+   public double k(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((um)this.x.get($$0)).j();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0.0;
+   }
+
+   public String l(String $$0) {
+      try {
+         if (this.b($$0, 8)) {
+            return this.x.get($$0).p_();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return "";
+   }
+
+   public byte[] m(String $$0) {
+      try {
+         if (this.b($$0, 7)) {
+            return ((tt)this.x.get($$0)).e();
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, tt.a, var3));
+      }
+
+      return new byte[0];
+   }
+
+   public int[] n(String $$0) {
+      try {
+         if (this.b($$0, 11)) {
+            return ((ua)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, ua.a, var3));
+      }
+
+      return new int[0];
+   }
+
+   public long[] o(String $$0) {
+      try {
+         if (this.b($$0, 12)) {
+            return ((ud)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, ud.a, var3));
+      }
+
+      return new long[0];
+   }
+
+   public tw p(String $$0) {
+      try {
+         if (this.b($$0, 10)) {
+            return (tw)this.x.get($$0);
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, b, var3));
+      }
+
+      return new tw();
+   }
+
+   public uc c(String $$0, int $$1) {
+      try {
+         if (this.d($$0) == 9) {
+            uc $$2 = (uc)this.x.get($$0);
+            if (!$$2.isEmpty() && $$2.f() != $$1) {
+               return new uc();
+            }
+
+            return $$2;
+         }
+      } catch (ClassCastException var4) {
+         throw new z(this.a($$0, uc.a, var4));
+      }
+
+      return new uc();
+   }
+
+   public boolean q(String $$0) {
+      return this.f($$0) != 0;
+   }
+
+   public void r(String $$0) {
+      this.x.remove($$0);
    }
 
    @Override
@@ -185,240 +454,118 @@ public class tw extends tp<un> {
       return this.p_();
    }
 
-   private void g() {
-      if (this.c.isEmpty()) {
-         this.w = 0;
-      }
+   public boolean g() {
+      return this.x.isEmpty();
    }
 
-   @Override
-   public un c(int $$0) {
-      un $$1 = this.c.remove($$0);
-      this.g();
-      return $$1;
+   private o a(String $$0, uv<?> $$1, ClassCastException $$2) {
+      o $$3 = o.a($$2, "Reading NBT data");
+      p $$4 = $$3.a("Corrupt NBT tag", 1);
+      $$4.a("Tag type found", () -> this.x.get($$0).c().a());
+      $$4.a("Tag type expected", $$1::a);
+      $$4.a("Tag name", $$0);
+      return $$3;
    }
 
-   @Override
-   public boolean isEmpty() {
-      return this.c.isEmpty();
+   protected tw h() {
+      return new tw(new HashMap<>(this.x));
    }
 
-   public tq a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 10) {
-            return (tq)$$1;
-         }
-      }
-
-      return new tq();
-   }
-
-   public tw b(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 9) {
-            return (tw)$$1;
-         }
-      }
-
-      return new tw();
-   }
-
-   public short d(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 2) {
-            return ((ui)$$1).h();
-         }
-      }
-
-      return 0;
-   }
-
-   public int e(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 3) {
-            return ((tv)$$1).g();
-         }
-      }
-
-      return 0;
-   }
-
-   public int[] f(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 11) {
-            return ((tu)$$1).g();
-         }
-      }
-
-      return new int[0];
-   }
-
-   public long[] g(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 12) {
-            return ((tx)$$1).g();
-         }
-      }
-
-      return new long[0];
-   }
-
-   public double h(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 6) {
-            return ((tr)$$1).j();
-         }
-      }
-
-      return 0.0;
-   }
-
-   public float i(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         if ($$1.b() == 5) {
-            return ((tt)$$1).k();
-         }
-      }
-
-      return 0.0F;
-   }
-
-   public String j(int $$0) {
-      if ($$0 >= 0 && $$0 < this.c.size()) {
-         un $$1 = this.c.get($$0);
-         return $$1.b() == 8 ? $$1.p_() : $$1.toString();
-      } else {
-         return "";
-      }
-   }
-
-   @Override
-   public int size() {
-      return this.c.size();
-   }
-
-   public un k(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public un d(int $$0, un $$1) {
-      un $$2 = this.k($$0);
-      if (!this.a($$0, $$1)) {
-         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
-      } else {
-         return $$2;
-      }
-   }
-
-   @Override
-   public void c(int $$0, un $$1) {
-      if (!this.b($$0, $$1)) {
-         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, un $$1) {
-      if (this.a($$1)) {
-         this.c.set($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(int $$0, un $$1) {
-      if (this.a($$1)) {
-         this.c.add($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(un $$0) {
-      if ($$0.b() == 0) {
-         return false;
-      } else if (this.w == 0) {
-         this.w = $$0.b();
-         return true;
-      } else {
-         return this.w == $$0.b();
-      }
-   }
-
-   public tw e() {
-      Iterable<un> $$0 = (Iterable<un>)(uq.a(this.w).d() ? this.c : Iterables.transform(this.c, un::d));
-      List<un> $$1 = Lists.newArrayList($$0);
-      return new tw($$1, this.w);
+   public tw i() {
+      return new tw(af.a(this.x, ut::d));
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tw && Objects.equals(this.c, ((tw)$$0).c);
+      return this == $$0 ? true : $$0 instanceof tw && Objects.equals(this.x, ((tw)$$0).x);
    }
 
    @Override
    public int hashCode() {
-      return this.c.hashCode();
+      return this.x.hashCode();
+   }
+
+   private static void a(String $$0, ut $$1, DataOutput $$2) throws IOException {
+      $$2.writeByte($$1.b());
+      if ($$1.b() != 0) {
+         $$2.writeUTF($$0);
+         $$1.a($$2);
+      }
+   }
+
+   static ut a(uv<?> $$0, String $$1, DataInput $$2, uf $$3) {
+      try {
+         return $$0.c($$2, $$3);
+      } catch (IOException var7) {
+         o $$5 = o.a(var7, "Loading NBT data");
+         p $$6 = $$5.a("NBT Tag");
+         $$6.a("Tag name", $$1);
+         $$6.a("Tag type", $$0.a());
+         throw new un($$5);
+      }
+   }
+
+   public tw a(tw $$0) {
+      for (String $$1 : $$0.x.keySet()) {
+         ut $$2 = $$0.x.get($$1);
+         if ($$2.b() == 10) {
+            if (this.b($$1, 10)) {
+               tw $$3 = this.p($$1);
+               $$3.a((tw)$$2);
+            } else {
+               this.a($$1, $$2.d());
+            }
+         } else {
+            this.a($$1, $$2.d());
+         }
+      }
+
+      return this;
    }
 
    @Override
-   public void a(ur $$0) {
+   public void a(ux $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public byte f() {
-      return this.w;
+   protected Set<Entry<String, ut>> j() {
+      return this.x.entrySet();
    }
 
    @Override
-   public void clear() {
-      this.c.clear();
-      this.w = 0;
-   }
-
-   @Override
-   public uk.b a(uk $$0) {
-      switch ($$0.a(uq.a(this.w), this.c.size())) {
-         case c:
-            return uk.b.c;
-         case b:
-            return $$0.b();
-         default:
-            int $$1 = 0;
-
-            while ($$1 < this.c.size()) {
-               un $$2 = this.c.get($$1);
-               switch ($$0.b($$2.c(), $$1)) {
+   public uq.b a(uq $$0) {
+      for (Entry<String, ut> $$1 : this.x.entrySet()) {
+         ut $$2 = $$1.getValue();
+         uv<?> $$3 = $$2.c();
+         uq.a $$4 = $$0.a($$3);
+         switch ($$4) {
+            case d:
+               return uq.b.c;
+            case c:
+               return $$0.b();
+            case b:
+               break;
+            default:
+               $$4 = $$0.a($$3, $$1.getKey());
+               switch ($$4) {
                   case d:
-                     return uk.b.c;
+                     return uq.b.c;
                   case c:
                      return $$0.b();
+                  case b:
+                     break;
                   default:
-                     switch ($$2.a($$0)) {
+                     uq.b $$5 = $$2.a($$0);
+                     switch ($$5) {
                         case c:
-                           return uk.b.c;
+                           return uq.b.c;
                         case b:
                            return $$0.b();
                      }
-                  case b:
-                     $$1++;
                }
-            }
-
-            return $$0.b();
+         }
       }
+
+      return $$0.b();
    }
 }

@@ -1,24 +1,24 @@
 import com.mojang.serialization.Codec;
 import java.util.Optional;
 
-public record cu(jv<czc> c) implements ea<cze> {
-   public static final Codec<cu> a = kg.a(mc.ad).xmap(cu::new, cu::b);
+public record cu(jw<czs> c) implements ea<czu> {
+   public static final Codec<cu> a = kh.a(me.ad).xmap(cu::new, cu::b);
 
    @Override
-   public ku<cze> a() {
-      return kv.R;
+   public kw<czu> a() {
+      return kx.R;
    }
 
-   public boolean a(cxh $$0, cze $$1) {
-      Optional<jr<czc>> $$2 = $$1.e();
+   public boolean a(cxy $$0, czu $$1) {
+      Optional<js<czs>> $$2 = $$1.e();
       return !$$2.isEmpty() && this.c.a($$2.get());
    }
 
-   public static cw a(jv<czc> $$0) {
+   public static cw a(jw<czs> $$0) {
       return new cu($$0);
    }
 
-   public jv<czc> b() {
+   public jw<czs> b() {
       return this.c;
    }
 }

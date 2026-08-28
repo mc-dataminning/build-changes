@@ -1,25 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejh implements eiy {
-   public static final Codec<ejh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ejh::new)
-   );
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
+public class ejh extends ehr<ekc> {
+   public ejh(Codec<ekc> $$0) {
+      super($$0);
+   }
 
-   public ejh(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   @Override
+   public boolean a(eht<ekc> $$0) {
+      dio $$1 = $$0.b();
+      jj $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (jo $$3 : jo.values()) {
+            if ($$3 != jo.a && dty.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dkw.ft.m().b(dty.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

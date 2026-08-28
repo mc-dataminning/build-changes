@@ -1,80 +1,68 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
 
-public abstract class gls extends cpr {
-   @Nullable
-   private ghk h;
-   protected fbx a = fbx.c;
-   public float b;
-   public float c;
-   public float d;
-   public final ggy e;
-   public float f;
-   public float g;
+public class gls extends gmh {
+   private static final float a = 1.0472F;
+   private int b;
 
-   public gls(ggy $$0, GameProfile $$1) {
-      super($$0, $$0.aa(), $$0.ab(), $$1);
-      this.e = $$0;
+   gls(ghz $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
-   public boolean U_() {
-      ghk $$0 = this.a();
-      return $$0 != null && $$0.e() == dgw.d;
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
    }
 
    @Override
-   public boolean b() {
-      ghk $$0 = this.a();
-      return $$0 != null && $$0.e() == dgw.b;
-   }
-
-   @Nullable
-   protected ghk a() {
-      if (this.h == null) {
-         this.h = fmg.Q().L().a(this.cF());
+   public void a(fhs $$0, fml $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - azk.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
       }
-
-      return this.h;
    }
 
    @Override
-   public void h() {
-      this.f = this.g;
-      this.a = this.dx();
-      super.h();
+   public int a(float $$0) {
+      return 240;
    }
 
-   public fbx J(float $$0) {
-      return this.a.a(this.dx(), (double)$$0);
+   @Override
+   public gll b() {
+      return gll.c;
    }
 
-   public hgt c() {
-      ghk $$0 = this.a();
-      return $$0 == null ? hgk.a(this.cF()) : $$0.g();
+   @Override
+   public void a() {
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
+      }
    }
 
-   public float a(boolean $$0, float $$1) {
-      float $$2 = 1.0F;
-      if (this.gm().b) {
-         $$2 *= 1.1F;
+   public static class a implements glk<ly> {
+      private final gmc a;
+
+      public a(gmc $$0) {
+         this.a = $$0;
       }
 
-      float $$3 = this.gm().b();
-      if ($$3 != 0.0F) {
-         float $$4 = (float)this.h(bxg.v) / $$3;
-         $$2 *= ($$4 + 1.0F) / 2.0F;
+      public glh a(ly $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gls $$8 = new gls($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
-
-      if (this.fB()) {
-         if (this.fD().a(cxl.pc)) {
-            float $$5 = Math.min((float)this.fF() / 20.0F, 1.0F);
-            $$2 *= 1.0F - ayz.l($$5) * 0.15F;
-         } else if ($$0 && this.gJ()) {
-            return 0.1F;
-         }
-      }
-
-      return ayz.h($$1, 1.0F, $$2);
    }
 }

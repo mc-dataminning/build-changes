@@ -1,127 +1,93 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class dwg extends dwu {
+   public static final int d = 9;
+   private kb<cxy> e = kb.a(9, cxy.k);
 
-public class dwg {
-   private static final Codec<wp[]> c = wr.a
-      .listOf()
-      .comapFlatMap(
-         $$0 -> af.a($$0, 4).map($$0x -> new wp[]{(wp)$$0x.get(0), (wp)$$0x.get(1), (wp)$$0x.get(2), (wp)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dwg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dwg::d),
-               cwe.q.fieldOf("color").orElse(cwe.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dwg::a)
-   );
-   public static final int b = 4;
-   private final wp[] d;
-   private final wp[] e;
-   private final cwe f;
-   private final boolean g;
-   @Nullable
-   private ayl[] h;
-   private boolean i;
-
-   public dwg() {
-      this(c(), c(), cwe.p, false);
+   protected dwg(dvn<?> $$0, jj $$1, dym $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public dwg(wp[] $$0, wp[] $$1, cwe $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public dwg(jj $$0, dym $$1) {
+      this(dvn.f, $$0, $$1);
    }
 
-   private static wp[] c() {
-      return new wp[]{wo.a, wo.a, wo.a, wo.a};
+   @Override
+   public int b() {
+      return 9;
    }
 
-   private static dwg a(wp[] $$0, Optional<wp[]> $$1, cwe $$2, boolean $$3) {
-      return new dwg($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
+   public int a(azs $$0) {
+      this.d_(null);
+      int $$1 = -1;
+      int $$2 = 1;
 
-   public boolean a() {
-      return this.g;
-   }
-
-   public dwg a(boolean $$0) {
-      return $$0 == this.g ? this : new dwg(this.d, this.e, this.f, $$0);
-   }
-
-   public cwe b() {
-      return this.f;
-   }
-
-   public dwg a(cwe $$0) {
-      return $$0 == this.b() ? this : new dwg(this.d, this.e, $$0, this.g);
-   }
-
-   public wp a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dwg a(int $$0, wp $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dwg a(int $$0, wp $$1, wp $$2) {
-      wp[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      wp[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dwg($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cpr $$0) {
-      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public wp[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayl[] a(boolean $$0, Function<wp, ayl> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayl[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
+         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
          }
       }
 
-      return this.h;
+      return $$1;
    }
 
-   private Optional<wp[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
+   public cxy b(cxy $$0) {
+      int $$1 = this.e_($$0);
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         cxy $$3 = this.e.get($$2);
+         if ($$3.f() || cxy.c($$0, $$3)) {
+            int $$4 = Math.min($$0.M(), $$1 - $$3.M());
+            if ($$4 > 0) {
+               if ($$3.f()) {
+                  this.a($$2, $$0.a($$4));
+               } else {
+                  $$0.h($$4);
+                  $$3.g($$4);
+               }
+            }
+
+            if ($$0.f()) {
+               break;
+            }
          }
       }
 
-      return Optional.empty();
+      return $$0;
    }
 
-   public boolean b(cpr $$0) {
-      for (wp $$1 : this.b($$0.aa())) {
-         xm $$2 = $$1.a();
-         wn $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == wn.a.c) {
-            return true;
-         }
-      }
+   @Override
+   protected wv j() {
+      return wv.c("container.dispenser");
+   }
 
-      return false;
+   @Override
+   protected void a(tw $$0, ju.a $$1) {
+      super.a($$0, $$1);
+      this.e = kb.a(this.b(), cxy.k);
+      if (!this.b_($$0)) {
+         btk.b($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected void b(tw $$0, ju.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         btk.a($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected kb<cxy> f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(kb<cxy> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected ctn a(int $$0, cqh $$1) {
+      return new cui($$0, $$1, this);
    }
 }

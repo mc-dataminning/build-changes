@@ -1,22 +1,26 @@
-public class gxf extends gxs<gzz, gdl> {
-   private final gdl a;
-   private final gdl b;
-   private final gxc c;
+public class gxf extends gue<crr, hak> {
+   private static final ald a = ald.b("textures/entity/projectiles/wind_charge.png");
+   private final ggp g;
 
-   public gxf(gva<gzz, gdl> $$0, gfy $$1, gxc $$2) {
+   public gxf(guf.a $$0) {
       super($$0);
-      this.c = $$2;
-      this.a = new gdl($$1.a(ggb.bg));
-      this.b = new gdl($$1.a(ggb.bi));
+      this.g = new ggp($$0.a(ghc.dK));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, gzz $$3, float $$4, float $$5) {
-      cxh $$6 = $$3.i;
-      dfm $$7 = $$6.a(kv.E);
-      if ($$7 != null && !$$7.c().isEmpty()) {
-         gdl $$8 = $$3.aj ? this.b : this.a;
-         $$8.a($$3);
-         this.c.a(hhx.d.e, $$7.c().get(), $$8, $$6, $$0, $$1, $$2);
-      }
+   @Override
+   public void a(hak $$0, fho $$1, gny $$2, int $$3) {
+      fhs $$4 = $$2.getBuffer(goi.a(a, this.a($$0.u) % 1.0F, 0.0F));
+      this.g.a($$0);
+      this.g.a($$1, $$4, $$3, hgi.d);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   @Override
+   public hak d() {
+      return new hak();
    }
 }

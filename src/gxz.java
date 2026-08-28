@@ -1,17 +1,18 @@
-public class gxz extends gxs<hav, gef> {
-   public static final aku a = aku.b("textures/entity/trident_riptide.png");
-   private final gfc b;
+public class gxz extends gyt<hbw, gfg> {
+   private final geo<hbw> a;
 
-   public gxz(gva<hav, gef> $$0, gfy $$1) {
+   public gxz(gwc<hbw, gfg> $$0, ggz $$1) {
       super($$0);
-      this.b = new gfc($$1.a(ggb.cp));
+      this.a = new gff($$1.a(ghc.cq));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, hav $$3, float $$4, float $$5) {
-      if ($$3.al) {
-         fgv $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, hfh.d);
+   public void a(fho $$0, gny $$1, int $$2, hbw $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.z) {
+         fhs $$6 = $$1.getBuffer(goi.d($$3.a.a()));
+         int $$7 = gvg.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
 }

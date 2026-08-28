@@ -1,46 +1,55 @@
-import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
 
-public class aja implements yw<aix> {
-   public static final yn<vl, aja> a = yw.a(aja::a, aja::new);
-   private final byte[] b;
+public class aja implements zc<aiy> {
+   public static final yt<vr, aja> a = zc.a(aja::a, aja::new);
+   private final String b;
    private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
 
-   public aja(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axy {
-      this.b = axx.a($$1, $$0.getEncoded());
-      this.c = axx.a($$1, $$2);
+   public aja(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private aja(vl $$0) {
-      this.b = $$0.b();
+   private aja(vr $$0) {
+      this.b = $$0.d(20);
       this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(vl $$0) {
+   private void a(vr $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public yy<aja> a() {
-      return aiv.h;
+   public ze<aja> a() {
+      return aje.c;
    }
 
-   public void a(aix $$0) {
+   public void a(aiy $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws axy {
-      return axx.a($$0, this.b);
+   public String b() {
+      return this.b;
    }
 
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, axx.b($$1, this.c));
-      } catch (axy var4) {
-         return false;
-      }
+   public PublicKey e() throws ayi {
+      return ayh.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

@@ -1,15 +1,17 @@
-import io.netty.buffer.ByteBuf;
+public record ajt(long b) implements zc<ajs> {
+   public static final yt<vr, ajt> a = zc.a(ajt::a, ajt::new);
 
-public class ajt implements yw<ajs> {
-   public static final ajt a = new ajt();
-   public static final yn<ByteBuf, ajt> b = yn.a(a);
+   private ajt(vr $$0) {
+      this($$0.readLong());
+   }
 
-   private ajt() {
+   private void a(vr $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public yy<ajt> a() {
-      return aju.b;
+   public ze<ajt> a() {
+      return aju.a;
    }
 
    public void a(ajs $$0) {

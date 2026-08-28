@@ -1,42 +1,23 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.MapCodec;
 
-public class eft extends efr {
-   public eft(Codec<efq> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(etx.e, etx.c);
-   }
+public interface eft<P extends efs> {
+   eft<efy> a = a("matching_blocks", efy.a);
+   eft<efx> b = a("matching_block_tag", efx.e);
+   eft<efz> c = a("matching_fluids", efz.a);
+   eft<efv> d = a("has_sturdy_face", efv.a);
+   eft<egc> e = a("solid", egc.a);
+   eft<egb> f = a("replaceable", egb.a);
+   eft<egg> g = a("would_survive", egg.a);
+   eft<efw> h = a("inside_world_bounds", efw.a);
+   eft<efr> i = a("any_of", efr.a);
+   eft<efq> j = a("all_of", efq.a);
+   eft<ega> k = a("not", ega.a);
+   eft<ege> l = a("true", ege.e);
+   eft<egf> m = a("unobstructed", egf.a);
 
-   @Override
-   protected int a() {
-      return 10;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   protected float a(azh $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(efp $$0, efq $$1, dzm $$2, Function<ji, jr<dic>> $$3, dzl $$4, ji.a $$5, ji.a $$6, eda $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dxq $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9);
-         return true;
-      } else {
-         return false;
-      }
+   private static <P extends efs> eft<P> a(String $$0, MapCodec<P> $$1) {
+      return kf.a(md.M, $$0, () -> $$1);
    }
 }

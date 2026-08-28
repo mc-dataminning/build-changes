@@ -1,108 +1,53 @@
 import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
-public class flx {
-   public static final wp a = wo.a;
+public class flx extends fmb {
    private static final Logger b = LogUtils.getLogger();
-   private final fmg c;
-   private final Narrator d = Narrator.getNarrator();
+   private static final wv c = wv.c("mco.configure.world.closing");
+   private final fjf d;
+   private final fko e;
 
-   public flx(fmg $$0) {
-      this.c = $$0;
+   public flx(fjf $$0, fko $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(wp $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.a($$1, false);
-      }
-   }
+   @Override
+   public void run() {
+      fie $$0 = fie.a();
 
-   public void b(wp $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.a($$1, false);
-      }
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
 
-   public void c(wp $$0) {
-      this.a($$0.getString());
-   }
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fjf.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fkb var4) {
+            if (this.d()) {
+               return;
+            }
 
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.a($$0, true);
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
          }
       }
    }
 
-   private void a(String $$0, boolean $$1) {
-      this.d.say($$0, $$1, this.c.n.a(awb.j) * this.c.n.a(awb.a));
-   }
-
-   private fmi d() {
-      return this.c.n.av().c();
-   }
-
-   private void b(String $$0) {
-      if (ab.aU) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(fmi $$0) {
-      this.b();
-      this.a(wp.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      fsb $$1 = fmg.Q().aA();
-      if (this.d.active()) {
-         if ($$0 == fmi.a) {
-            frz.b($$1, frz.a.a, wp.c("narrator.toast.disabled"), null);
-         } else {
-            frz.b($$1, frz.a.a, wp.c("narrator.toast.enabled"), $$0.b());
-         }
-      } else {
-         frz.b($$1, frz.a.a, wp.c("narrator.toast.disabled"), wp.c("options.narrator.notavailable"));
-      }
-   }
-
-   public boolean a() {
-      return this.d.active();
-   }
-
-   public void b() {
-      if (this.d() != fmi.a && this.d.active()) {
-         this.d.clear();
-      }
-   }
-
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new flx.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends gbj {
-      public a(String $$0) {
-         super($$0);
-      }
+   @Override
+   public wv a() {
+      return c;
    }
 }

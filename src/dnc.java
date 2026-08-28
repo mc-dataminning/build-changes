@@ -1,113 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dnc extends dke {
-   public static final MapCodec<dnc> a = b(dnc::new);
-   public static final dyq b = dyg.aT;
-   private static final fcr d = dke.b(16.0, 0.0, 15.0);
-   public static final int c = 7;
+public class dnc {
+   public static <S extends dvl> dnc.c<S> a(
+      dvn<S> $$0, Function<dym, dnc.a> $$1, Function<dym, jo> $$2, dzp<jo> $$3, dym $$4, dhq $$5, jj $$6, BiPredicate<dhq, jj> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dnc.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dnc.b::b;
+      } else {
+         dnc.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dnc.a.a;
+         boolean $$11 = $$9 == dnc.a.b;
+         if ($$10) {
+            return new dnc.c.b<>($$8);
+         } else {
+            jj $$12 = $$6.a($$2.apply($$4));
+            dym $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dnc.a $$14 = $$1.apply($$13);
+               if ($$14 != dnc.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dnc.b::b;
+                  }
 
-   @Override
-   public MapCodec<dnc> a() {
-      return a;
-   }
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dnc.c.a<>($$16, $$17);
+                  }
+               }
+            }
 
-   protected dnc(dxp.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$4 == jn.b && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      dxq $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dne || $$3.b() instanceof dxi;
-   }
-
-   @Override
-   public dxq a(dax $$0) {
-      return !this.m().a((dhc)$$0.q(), $$0.a()) ? dkg.j.m() : super.a($$0);
-   }
-
-   @Override
-   protected boolean g_(dxq $$0) {
-      return true;
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return d;
-   }
-
-   @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      int $$4 = $$0.c(b);
-      if (!a((dhc)$$1, $$2) && !$$1.r($$2.d())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((dgf)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
+            return new dnc.c.b<>($$8);
          }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
       }
    }
 
-   @Override
-   public void a(dgz $$0, dxq $$1, ji $$2, bva $$3, float $$4) {
-      if ($$0 instanceof ard $$5
-         && $$0.A.i() < $$4 - 0.5F
-         && $$3 instanceof bvy
-         && ($$3 instanceof cpr || $$5.O().b(dgv.c))
-         && $$3.dp() * $$3.dp() * $$3.dq() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   public static void a(@Nullable bva $$0, dxq $$1, dgz $$2, ji $$3) {
-      dxq $$4 = a($$1, dkg.j.m(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(ecp.c, $$3, ecp.a.a($$0, $$4));
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   private static boolean a(dgf $$0, ji $$1) {
-      return $$0.a_($$1.d()).a(awp.cC);
-   }
+   public interface c<S> {
+      <T> T apply(dnc.b<? super S, T> var1);
 
-   private static boolean a(dhc $$0, ji $$1) {
-      for (ji $$2 : ji.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(awv.a)) {
-            return true;
+      public static final class a<S> implements dnc.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dnc.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
          }
       }
 
-      return false;
-   }
+      public static final class b<S> implements dnc.c<S> {
+         private final S a;
 
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
-   }
+         public b(S $$0) {
+            this.a = $$0;
+         }
 
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
+         @Override
+         public <T> T apply(dnc.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

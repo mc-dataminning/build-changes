@@ -1,23 +1,27 @@
-public class gwy extends gxs<gze, gct> {
-   public gwy(gva<gze, gct> $$0) {
-      super($$0);
+public class gwy extends gsz<cjk, hcr, ggk> {
+   private static final ald a = ald.b("textures/entity/turtle/big_sea_turtle.png");
+
+   public gwy(guf.a $$0) {
+      super($$0, new ggk($$0.a(ghc.dC)), new ggk($$0.a(ghc.dD)), 0.7F);
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, gze $$3, float $$4, float $$5) {
-      hcn $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         float $$7 = 1.0F;
-         float $$8 = -1.0F;
-         float $$9 = ayz.e($$3.ab) / 60.0F;
-         if ($$3.ab < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
-         }
+   protected float a(hcr $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
+   }
 
-         $$6.a($$0, $$1, $$2, hfh.d);
-         $$0.b();
-      }
+   public hcr b() {
+      return new hcr();
+   }
+
+   public void a(cjk $$0, hcr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
+   }
+
+   public ald b(hcr $$0) {
+      return a;
    }
 }

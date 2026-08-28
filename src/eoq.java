@@ -1,33 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record eoq(eoq.a b, brj<dio.c> c) {
-   public static final Codec<eoq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eoq.a.c.fieldOf("bounding_box").forGetter(eoq::a), brj.a(dio.c.a).fieldOf("spawns").forGetter(eoq::b)).apply($$0, eoq::new)
-   );
+public class eoq extends eom {
+   public static final MapCodec<eoq> a = ays.m.fieldOf("chance").xmap(eoq::new, $$0 -> $$0.c);
+   private final int c;
 
-   public eoq.a a() {
-      return this.b;
+   private eoq(int $$0) {
+      this.c = $$0;
    }
 
-   public brj<dio.c> b() {
-      return this.c;
+   public static eoq a(int $$0) {
+      return new eoq($$0);
    }
 
-   public static enum a implements azv {
-      a("piece"),
-      b("full");
+   @Override
+   protected boolean a(eol $$0, azs $$1, jj $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
 
-      public static final Codec<eoq.a> c = azv.a(eoq.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public eoo<?> b() {
+      return eoo.b;
    }
 }

@@ -1,75 +1,104 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record xh<S>(List<xh.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
+public record xh(byte[] c) {
+   public static final Codec<xh> a = ays.r.xmap(xh::new, xh::b);
+   public static final int b = 256;
+
+   public xh(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static <S> xh<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<xh.a<S>> $$4 = a($$1, $$2);
+   public static xh a(vr $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xh($$1);
+   }
 
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
+   public static void a(vr $$0, xh $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(azx $$0, azw $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xh $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public xh.a a(xi $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xh.a($$1) : new xh.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable xh c) {
+      public static final int a = -1;
+
+      public a(xh $$0) {
+         this(-1, $$0);
       }
 
-      return new xh<>($$4);
-   }
+      public a(int $$0) {
+         this($$0, null);
+      }
 
-   private static <S> List<xh.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<xh.a<S>> $$2 = new ArrayList<>();
+      public static xh.a a(vr $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xh.a(xh.a($$0)) : new xh.a($$1);
+      }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ge) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new xh.a<>($$4, $$6));
-               }
-            }
+      public static void a(vr $$0, xh.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xh.a($$0, $$1.b());
          }
       }
 
-      return $$2;
-   }
-
-   @Nullable
-   public xh.a<S> a(String $$0) {
-      for (xh.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
-         }
+      public Optional<xh> a(xi $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
       }
 
-      return null;
-   }
-
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
-      }
-
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
-
-      public String c() {
+      public int a() {
          return this.b;
+      }
+
+      @Nullable
+      public xh b() {
+         return this.c;
       }
    }
 }

@@ -1,67 +1,40 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class flj extends fle {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wp c = wp.c("mco.backup.restoring");
-   private final fhx d;
-   private final long e;
-   private final fjr f;
+public class flj {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public flj(fhx $$0, long $$1, fjr $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   flj(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void run() {
-      fhh $$0 = fhh.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.g());
-            return;
-         } catch (fje var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fjd var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new fjv(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
+      } else {
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
       }
    }
 
-   @Override
-   public wp a() {
-      return c;
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public flj.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public flj.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public flj a() {
+         return new flj(this.a, this.b);
+      }
    }
 }

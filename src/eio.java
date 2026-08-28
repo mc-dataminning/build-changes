@@ -1,20 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eio {
-   public static final Codec<eio> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(enn.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, eio::new)
-   );
-   public final jr<enn> b;
-   public final float c;
-
-   public eio(jr<enn> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eio extends ehr<ekg> {
+   public eio(Codec<ekg> $$0) {
+      super($$0);
    }
 
-   public boolean a(dhy $$0, dzn $$1, azh $$2, ji $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(eht<ekg> $$0) {
+      azs $$1 = $$0.d();
+      ekg $$2 = $$0.f();
+      dio $$3 = $$0.b();
+      eak $$4 = $$0.c();
+      jj $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

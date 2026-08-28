@@ -1,9 +1,20 @@
-public interface sm {
-   void a(sl var1);
+import javax.annotation.Nullable;
 
-   void a(sl var1, so var2);
+class sm {
+   @Nullable
+   public final Long a;
+   public final Runnable b;
 
-   void b(sl var1, so var2);
+   private sm(@Nullable Long $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void a(sl var1, sl var2, so var3);
+   static sm a(Runnable $$0) {
+      return new sm(null, $$0);
+   }
+
+   static sm a(long $$0, Runnable $$1) {
+      return new sm($$0, $$1);
+   }
 }

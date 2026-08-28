@@ -1,79 +1,37 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
 
 public class aoa {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.recipe.take.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.op.failed"));
 
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ey.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                              .then(
-                                 ey.a("recipe", fx.a(mc.bm))
-                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
-                              ))
-                           .then(ey.a("*").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
-                     )
-               ))
-            .then(
-               ey.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                           .then(
-                              ey.a("recipe", fx.a(mc.bm))
-                                 .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
-                           ))
-                        .then(ey.a("*").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("op").requires($$0x -> $$0x.c(3))).then(ey.a("targets", fm.a()).suggests(($$0x, $$1) -> {
+            avn $$2 = ((ex)$$0x.getSource()).l().ag();
+            return fc.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
+         }).executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ex $$0, Collection<are> $$1, Collection<dca<?>> $$2) throws CommandSyntaxException {
+   private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avn $$2 = $$0.l().ag();
       int $$3 = 0;
 
-      for (are $$4 : $$1) {
-         $$3 += $$4.a($$2);
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> wv.a("commands.op.success", $$4.getName()), true);
+         }
       }
 
       if ($$3 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wp.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().m_()), true);
-         } else {
-            $$0.a(() -> wp.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int b(ex $$0, Collection<are> $$1, Collection<dca<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (are $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wp.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().m_()), true);
-         } else {
-            $$0.a(() -> wp.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
          return $$3;
       }
    }

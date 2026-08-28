@@ -1,37 +1,59 @@
 import java.util.List;
+import java.util.function.Predicate;
 
-public class cyi extends cxd {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public cyi(cxd.a $$0) {
+public class cyi extends cxu {
+   public cyi(cxu.a $$0) {
       super($$0);
    }
 
    @Override
-   public wp a(cxh $$0) {
-      cwe $$1 = $$0.a(kv.al);
-      return (wp)($$1 != null ? wp.c(this.m + "." + $$1.b()) : super.a($$0));
+   public btq a(dbp $$0) {
+      dhp $$1 = $$0.q();
+      jj $$2 = $$0.a();
+      dym $$3 = $$1.a_($$2);
+      if ($$3.a(awz.U)) {
+         cqi $$4 = $$0.o();
+         if (!$$1.C && $$4 != null) {
+            return a($$4, $$1, $$2);
+         }
+      }
+
+      return btq.e;
    }
 
-   @Override
-   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
-      cvl.a($$0, $$2);
+   public static btq a(cqi $$0, dhp $$1, jj $$2) {
+      cmh $$3 = null;
+      List<bwp> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+
+      for (bwp $$5 : $$4) {
+         if ($$3 == null) {
+            $$3 = cmh.a($$1, $$2);
+            $$3.m();
+         }
+
+         $$5.b($$3, true);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.a(edm.b, $$2, edm.a.a($$0));
+         return btq.b;
+      } else {
+         return btq.e;
+      }
    }
 
-   @Override
-   public cxj b(cxh $$0) {
-      return cxj.d;
-   }
+   public static List<bwp> a(dhp $$0, jj $$1, Predicate<bwp> $$2) {
+      double $$3 = 7.0;
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      fcp $$7 = new fcp((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
+      return $$0.a(bvs.class, $$7, $$1x -> {
+         if ($$1x instanceof bwp $$2x && $$2.test($$2x)) {
+            return true;
+         }
 
-   @Override
-   public int a(cxh $$0, bvy $$1) {
-      return 72000;
-   }
-
-   @Override
-   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
-      $$1.c($$2);
-      return bsy.c;
+         return false;
+      }).stream().map(bwp.class::cast).toList();
    }
 }

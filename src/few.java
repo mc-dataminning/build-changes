@@ -1,13 +1,11 @@
-public interface few {
-   <T> fgd<T> a(String var1, fgc<T> var2);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   <T> void a(fgd<T> var1);
-
-   <T> fgd<T> b(fgd<T> var1);
-
-   void a(few var1);
-
-   void a();
-
-   void a(Runnable var1);
+@Nonnull
+@TypeQualifierDefault({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface few {
 }

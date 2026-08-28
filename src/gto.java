@@ -1,22 +1,21 @@
-public class gto extends guj<cmn, hca, gdn<hca>> {
-   private static final aku a = aku.b("textures/entity/zombie/zombie.png");
+public class gto extends gsz<cil, hab, gdn> {
+   private static final ald a = ald.b("textures/entity/chicken.png");
 
-   public gto(gtd.a $$0, float $$1) {
-      super($$0, new gdg($$0.a(ggb.aU)), 0.5F * $$1);
-      this.a(new gxk<>(this));
-      this.a(new gxh<>(this, new gdg($$0.a(ggb.aV)), new gdg($$0.a(ggb.aW)), $$0.h()));
+   public gto(guf.a $$0) {
+      super($$0, new gdn($$0.a(ghc.Z)), new gdn($$0.a(ghc.aa)), 0.3F);
    }
 
-   public aku a(hca $$0) {
+   public ald a(hab $$0) {
       return a;
    }
 
-   public hca b() {
-      return new hca();
+   public hab a() {
+      return new hab();
    }
 
-   public void a(cmn $$0, hca $$1, float $$2) {
+   public void a(cil $$0, hab $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gtu.a($$0, $$1, $$2, this.i);
+      $$1.a = azk.h($$2, $$0.bI, $$0.bE);
+      $$1.b = azk.h($$2, $$0.bG, $$0.bF);
    }
 }

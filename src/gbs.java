@@ -1,73 +1,287 @@
-public class gbs extends gda<gyn> {
-   public static final ggl a = ggl.scaling(0.6F);
-   private static final float b = 25.0F;
-   private static final float c = 22.5F;
-   private static final float d = 16.5F;
-   private static final float e = 2.5F;
-   private static final String f = "head_cube";
-   private static final String g = "right_ear_cube";
-   private static final String i = "left_ear_cube";
-   private final ggc j;
-   private final ggc k;
-   private final ggc l;
-   private final ggc m;
-   private final ggc n;
-   private final ggc o;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public gbs(ggc $$0) {
-      super($$0);
-      this.j = $$0.b("body");
-      this.k = $$0.b("right_hind_leg");
-      this.l = $$0.b("left_hind_leg");
-      this.n = this.j.b("head");
-      this.o = this.j.b("tail");
-      this.m = $$0.b("cube");
+public class gbs {
+   private static final wv a = wv.c("selectWorld.newWorld");
+   private final List<Consumer<gbs>> b = new ArrayList<>();
+   private String c = a.getString();
+   private gbs.a d = gbs.a.a;
+   private btn e = btn.c;
+   @Nullable
+   private Boolean f;
+   private String g;
+   private boolean h;
+   private boolean i;
+   private final Path j;
+   private String k;
+   private gbq l;
+   private gbs.b m;
+   private final List<gbs.b> n = new ArrayList<>();
+   private final List<gbs.b> o = new ArrayList<>();
+   private dhl p;
+
+   public gbs(Path $$0, gbq $$1, Optional<alc<eov>> $$2, OptionalLong $$3) {
+      this.j = $$0;
+      this.l = $$1;
+      this.m = new gbs.b(a($$1, $$2).orElse(null));
+      this.r();
+      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
+      this.h = $$1.c().d();
+      this.i = $$1.c().e();
+      this.k = this.c(this.c);
+      this.d = $$1.i().a();
+      this.p = new dhl($$1.h().b());
+      $$1.i().b().forEach($$0x -> this.p.<dhl.a>b($$0x).a(false, null));
+      Optional.ofNullable($$1.i().c())
+         .flatMap($$1x -> $$1.a().a(me.aU).flatMap($$1xx -> $$1xx.a($$1x)))
+         .map($$0x -> ((enh)$$0x.a()).b())
+         .ifPresent($$0x -> this.a(gbn.a($$0x)));
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      ggm $$2 = $$1.a(
-         "body",
-         ggh.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new ggg(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new ggg(0.0F)),
-         gge.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", ggh.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new ggg(0.0F)), gge.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      ggm $$3 = $$2.a("head", ggh.c(), gge.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", ggh.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new ggg(0.0F)), gge.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      ggm $$4 = $$3.a("right_ear", ggh.c(), gge.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", ggh.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new ggg(0.0F)), gge.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      ggm $$5 = $$3.a("left_ear", ggh.c(), gge.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", ggh.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new ggg(0.0F)), gge.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", ggh.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new ggg(0.0F)), gge.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", ggh.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new ggg(0.0F)), gge.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", ggh.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new ggg(0.0F)), gge.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", ggh.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new ggg(0.0F)), gge.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", ggh.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new ggg(0.0F)), gge.a(0.0F, 24.0F, 0.0F));
-      return ggi.a($$0, 64, 64);
+   public void a(Consumer<gbs> $$0) {
+      this.b.add($$0);
    }
 
-   public void a(gyn $$0) {
-      super.a($$0);
-      if ($$0.a) {
-         this.j.l = true;
-         this.l.k = false;
-         this.k.k = false;
-         this.o.k = false;
-         this.m.k = true;
-      } else {
-         this.j.l = false;
-         this.l.k = true;
-         this.k.k = true;
-         this.o.k = true;
-         this.m.k = false;
-         this.n.e = ayz.a($$0.ab, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.n.f = ayz.a($$0.aa, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+   public void a() {
+      boolean $$0 = this.j();
+      if ($$0 != this.l.c().e()) {
+         this.l = this.l.a($$1x -> $$1x.a($$0));
       }
 
-      this.a(fmx.b, $$0.ad, $$0.ae, 16.5F, 2.5F);
-      this.a($$0.b, fmx.d, $$0.u, 1.0F);
-      this.a($$0.c, fmx.a, $$0.u, 1.0F);
-      this.a($$0.d, fmx.c, $$0.u, 1.0F);
+      boolean $$1 = this.i();
+      if ($$1 != this.l.c().d()) {
+         this.l = this.l.a($$1x -> $$1x.b($$1));
+      }
+
+      for (Consumer<gbs> $$2 : this.b) {
+         $$2.accept(this);
+      }
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
+      this.k = this.c($$0);
+      this.a();
+   }
+
+   private String c(String $$0) {
+      String $$1 = $$0.trim();
+
+      try {
+         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
+      } catch (Exception var5) {
+         try {
+            return v.a(this.j, "World", "");
+         } catch (IOException var4) {
+            throw new RuntimeException("Could not create save folder", var4);
+         }
+      }
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.k;
+   }
+
+   public void a(gbs.a $$0) {
+      this.d = $$0;
+      this.a();
+   }
+
+   public gbs.a d() {
+      return this.l() ? gbs.a.d : this.d;
+   }
+
+   public void a(btn $$0) {
+      this.e = $$0;
+      this.a();
+   }
+
+   public btn e() {
+      return this.f() ? btn.d : this.e;
+   }
+
+   public boolean f() {
+      return this.d() == gbs.a.b;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+      this.a();
+   }
+
+   public boolean g() {
+      if (this.l()) {
+         return true;
+      } else if (this.f()) {
+         return false;
+      } else {
+         return this.f == null ? this.d() == gbs.a.c : this.f;
+      }
+   }
+
+   public void b(String $$0) {
+      this.g = $$0;
+      this.l = this.l.a($$0x -> $$0x.a(efj.a(this.h())));
+      this.a();
+   }
+
+   public String h() {
+      return this.g;
+   }
+
+   public void b(boolean $$0) {
+      this.h = $$0;
+      this.a();
+   }
+
+   public boolean i() {
+      return this.l() ? false : this.h;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+      this.a();
+   }
+
+   public boolean j() {
+      return !this.l() && !this.f() ? this.i : false;
+   }
+
+   public void a(gbq $$0) {
+      this.l = $$0;
+      this.r();
+      this.a();
+   }
+
+   public gbq k() {
+      return this.l;
+   }
+
+   public void a(gbq.a $$0) {
+      this.l = this.l.a($$0);
+      this.a();
+   }
+
+   protected boolean a(din $$0) {
+      din $$1 = this.l.h();
+      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
+         this.l = new gbq(this.l.c(), this.l.d(), this.l.e(), this.l.f(), this.l.g(), $$0, this.l.i());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean l() {
+      return this.l.e().c();
+   }
+
+   public void a(gbs.b $$0) {
+      this.m = $$0;
+      js<eov> $$1 = $$0.c();
+      if ($$1 != null) {
+         this.a(($$1x, $$2) -> $$1.a().a());
+      }
+   }
+
+   public gbs.b m() {
+      return this.m;
+   }
+
+   @Nullable
+   public gbn n() {
+      js<eov> $$0 = this.m().c();
+      return $$0 != null ? gbn.a.get($$0.e()) : null;
+   }
+
+   public List<gbs.b> o() {
+      return this.n;
+   }
+
+   public List<gbs.b> p() {
+      return this.o;
+   }
+
+   private void r() {
+      kf<eov> $$0 = this.k().a().f(me.bi);
+      this.n.clear();
+      this.n.addAll(a($$0, axs.a).orElseGet(() -> $$0.c().map(gbs.b::new).toList()));
+      this.o.clear();
+      this.o.addAll(a($$0, axs.b).orElse(this.n));
+      js<eov> $$1 = this.m.c();
+      if ($$1 != null) {
+         gbs.b $$2 = a(this.k(), $$1.e()).map(gbs.b::new).orElse(this.n.getFirst());
+         boolean $$3 = gbn.a.get($$1.e()) != null;
+         if ($$3) {
+            this.m = $$2;
+         } else {
+            this.a($$2);
+         }
+      }
+   }
+
+   private static Optional<js<eov>> a(gbq $$0, Optional<alc<eov>> $$1) {
+      return $$1.flatMap($$1x -> $$0.a().f(me.bi).a($$1x));
+   }
+
+   private static Optional<List<gbs.b>> a(kf<eov> $$0, axp<eov> $$1) {
+      return $$0.a($$1).map($$0x -> $$0x.a().map(gbs.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
+   }
+
+   public void a(dhl $$0) {
+      this.p = $$0;
+      this.a();
+   }
+
+   public dhl q() {
+      return this.p;
+   }
+
+   public static enum a {
+      a("survival", dhm.a),
+      b("hardcore", dhm.a),
+      c("creative", dhm.b),
+      d("spectator", dhm.d);
+
+      public final dhm e;
+      public final wv f;
+      private final wv g;
+
+      private a(final String $$0, final dhm $$1) {
+         this.e = $$1;
+         this.f = wv.c("selectWorld.gameMode." + $$0);
+         this.g = wv.c("selectWorld.gameMode." + $$0 + ".info");
+      }
+
+      public wv a() {
+         return this.g;
+      }
+   }
+
+   public static record b(@Nullable js<eov> a) {
+      private static final wv b = wv.c("generator.custom");
+
+      public wv a() {
+         return Optional.ofNullable(this.a).flatMap(js::e).map($$0 -> wv.c($$0.a().h("generator"))).orElse(b);
+      }
+
+      public boolean b() {
+         return Optional.ofNullable(this.a).flatMap(js::e).filter($$0 -> $$0.equals(eow.d)).isPresent();
+      }
+
+      @Nullable
+      public js<eov> c() {
+         return this.a;
+      }
    }
 }

@@ -1,5 +1,3 @@
-public class hby extends gzj {
-   public boolean a;
-   public float b;
-   public float c;
+public class hby extends hbk {
+   public int a;
 }

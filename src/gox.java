@@ -1,95 +1,132 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gox implements gor {
-   private final List<gox.d> a;
+public class gox {
+   protected final gnu a;
+   protected final dhp b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   private kl h;
+   public grn.b[] f;
 
-   gox(List<gox.d> $$0) {
-      this.a = $$0;
+   public gox(grn $$0, dhp $$1, int $$2, gnu $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+      this.h = kl.a(this.g + 1, 0, this.g + 1);
    }
 
-   @Override
-   public Object a(dxq $$0) {
-      IntList $$1 = new IntArrayList();
+   protected void a(grn $$0) {
+      if (!fnd.Q().bx()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new grn.b[$$1];
 
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      record a(gox a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
-   }
-
-   @Override
-   public void a(hij.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
-   }
-
-   @Override
-   public hhr a(hia $$0) {
-      List<hii.a> $$1 = new ArrayList<>(this.a.size());
-
-      for (gox.d $$2 : this.a) {
-         hhr $$3 = $$2.b.a($$0);
-         $$1.add(new hii.a($$2.a, $$3));
-      }
-
-      return new hii($$1);
-   }
-
-   public static record b(List<goz> a) {
-      public gox a(dxr<dke, dxq> $$0) {
-         List<gox.d> $$1 = this.a.stream().map($$1x -> new gox.d($$1x.a($$0), $$1x.a())).toList();
-         return new gox($$1);
-      }
-
-      public Set<gop> a() {
-         return this.a.stream().map(goz::a).collect(Collectors.toSet());
-      }
-
-      public List<goz> b() {
-         return this.a;
-      }
-   }
-
-   public static class c implements JsonDeserializer<gox.b> {
-      public gox.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gox.b(this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<goz> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<goz> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
-         } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((goz)$$0.deserialize($$3, goz.class));
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, kl.b($$2, $$3 + this.b.aq(), $$4));
+               }
             }
-
-            return $$2;
          }
       }
    }
 
-   static record d(Predicate<dxq> a, gop b) {
+   public void a() {
+      for (grn.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ap();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dhr c() {
+      return this.b;
+   }
+
+   public void a(kl $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = $$0.a() - this.g;
+         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+
+         for (int $$4 = 0; $$4 < this.e; $$4++) {
+            int $$5 = $$0.c() - this.g;
+            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+
+            for (int $$7 = 0; $$7 < this.c; $$7++) {
+               int $$8 = this.b.aq() + $$7;
+               grn.b $$9 = this.f[this.a($$1, $$7, $$4)];
+               long $$10 = $$9.g();
+               if ($$10 != kl.b($$3, $$8, $$6)) {
+                  $$9.a(kl.b($$3, $$8, $$6));
+               }
+            }
+         }
+      }
+
+      this.h = $$0;
+      this.a.x().a();
+   }
+
+   public kl d() {
+      return this.h;
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      grn.b $$4 = this.b($$0, $$1, $$2);
+      if ($$4 != null) {
+         $$4.a($$3);
+      }
+   }
+
+   @Nullable
+   protected grn.b a(jj $$0) {
+      return this.a(kl.c($$0));
+   }
+
+   @Nullable
+   protected grn.b a(long $$0) {
+      int $$1 = kl.b($$0);
+      int $$2 = kl.c($$0);
+      int $$3 = kl.d($$0);
+      return this.b($$1, $$2, $$3);
+   }
+
+   @Nullable
+   private grn.b b(int $$0, int $$1, int $$2) {
+      if (!this.c($$0, $$1, $$2)) {
+         return null;
+      } else {
+         int $$3 = $$1 - this.b.aq();
+         int $$4 = Math.floorMod($$0, this.d);
+         int $$5 = Math.floorMod($$2, this.e);
+         return this.f[this.a($$4, $$3, $$5)];
+      }
+   }
+
+   private boolean c(int $$0, int $$1, int $$2) {
+      if ($$1 >= this.b.aq() && $$1 <= this.b.ar()) {
+         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
+      } else {
+         return false;
+      }
    }
 }

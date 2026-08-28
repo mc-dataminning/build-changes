@@ -1,53 +1,46 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public final class hlk extends hli {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class hlk implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   @Override
-   public void a(hlc $$0) {
-      if (fmg.Q().C()) {
-         super.a($$0);
+   public hlk(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
+   }
+
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
+      }
+
+      int $$1 = azk.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
+   }
+
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
+      } else {
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public void f() {
-      this.b.add((long)fmg.Q().o());
-      this.h();
-      this.c.add(fmg.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(hlc $$0) {
-      $$0.send(hld.c, $$0x -> {
-         $$0x.a(hlf.r, new LongArrayList(this.b));
-         $$0x.a(hlf.s, new LongArrayList(this.c));
-         $$0x.a(hlf.t, new LongArrayList(this.d));
-         $$0x.a(hlf.u, this.e());
-         $$0x.a(hlf.v, fmg.Q().n.aH());
-         $$0x.a(hlf.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public int b() {
+      return this.c;
    }
 }

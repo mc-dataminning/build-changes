@@ -1,133 +1,213 @@
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class bxt {
-   private bxt() {
+   private static final String b = "base";
+   private static final String c = "modifiers";
+   public static final String a = "id";
+   private final js<bxs> d;
+   private final Map<bxv.a, Map<ald, bxv>> e = Maps.newEnumMap(bxv.a.class);
+   private final Map<ald, bxv> f = new Object2ObjectArrayMap();
+   private final Map<ald, bxv> g = new Object2ObjectArrayMap();
+   private double h;
+   private boolean i = true;
+   private double j;
+   private final Consumer<bxt> k;
+
+   public bxt(js<bxs> $$0, Consumer<bxt> $$1) {
+      this.d = $$0;
+      this.k = $$1;
+      this.h = $$0.a().a();
    }
 
-   public static void a(bvy $$0, bvy $$1, float $$2, int $$3) {
-      c($$0, $$1);
-      b($$0, $$1, $$2, $$3);
+   public js<bxs> a() {
+      return this.d;
    }
 
-   public static boolean a(bxa<?> $$0, bvy $$1) {
-      Optional<cfe> $$2 = $$0.c(cfc.h);
-      return $$2.isPresent() && $$2.get().a($$1);
+   public double b() {
+      return this.h;
    }
 
-   public static boolean a(bxa<?> $$0, cfc<? extends bvy> $$1, bvi<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.aq() == $$2);
-   }
-
-   private static boolean a(bxa<?> $$0, cfc<? extends bvy> $$1, Predicate<bvy> $$2) {
-      return $$0.c($$1).filter($$2).filter(bvy::bJ).filter($$1x -> a($$0, $$1x)).isPresent();
-   }
-
-   private static void c(bvy $$0, bvy $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(bvy $$0, bvy $$1) {
-      $$0.ea().a(cfc.n, new byc($$1, true));
-   }
-
-   private static void b(bvy $$0, bvy $$1, float $$2, int $$3) {
-      a($$0, (bva)$$1, $$2, $$3);
-      a($$1, (bva)$$0, $$2, $$3);
-   }
-
-   public static void a(bvy $$0, bva $$1, float $$2, int $$3) {
-      a($$0, new byc($$1, true), $$2, $$3);
-   }
-
-   public static void a(bvy $$0, ji $$1, float $$2, int $$3) {
-      a($$0, new bxu($$1), $$2, $$3);
-   }
-
-   public static void a(bvy $$0, bzf $$1, float $$2, int $$3) {
-      cff $$4 = new cff($$1, $$2, $$3);
-      $$0.ea().a(cfc.n, $$1);
-      $$0.ea().a(cfc.m, $$4);
-   }
-
-   public static void a(bvy $$0, cxh $$1, fbx $$2) {
-      fbx $$3 = new fbx(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bvy $$0, cxh $$1, fbx $$2, fbx $$3, float $$4) {
-      double $$5 = $$0.dD() - (double)$$4;
-      clw $$6 = new clw($$0.dU(), $$0.dz(), $$5, $$0.dF(), $$1);
-      $$6.b($$0);
-      fbx $$7 = $$2.d($$0.ds());
-      $$7 = $$7.d().d($$3.d, $$3.e, $$3.f);
-      $$6.i($$7);
-      $$6.j();
-      $$0.dU().b($$6);
-   }
-
-   public static kk a(ard $$0, kk $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return kk.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bwa $$0, bvy $$1, int $$2) {
-      if ($$0.eZ().h() instanceof cyc $$3 && $$0.a($$3)) {
-         int $$4 = $$3.c() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.i($$1);
-   }
-
-   public static boolean a(bvy $$0, bvy $$1, double $$2) {
-      Optional<bvy> $$3 = $$0.ea().c(cfc.o);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         double $$4 = $$0.g($$3.get().ds());
-         double $$5 = $$0.g($$1.ds());
-         return $$5 > $$4 + $$2 * $$2;
+   public void a(double $$0) {
+      if ($$0 != this.h) {
+         this.h = $$0;
+         this.e();
       }
    }
 
-   public static boolean b(bvy $$0, bvy $$1) {
-      bxa<?> $$2 = $$0.ea();
-      return !$$2.a(cfc.h) ? false : $$2.c(cfc.h).get().a($$1);
+   @VisibleForTesting
+   Map<ald, bxv> a(bxv.a $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
    }
 
-   public static bvy a(bvy $$0, Optional<bvy> $$1, bvy $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   public Set<bxv> c() {
+      return ImmutableSet.copyOf(this.f.values());
    }
 
-   public static bvy a(bvy $$0, bvy $$1, bvy $$2) {
-      fbx $$3 = $$1.ds();
-      fbx $$4 = $$2.ds();
-      return $$0.g($$3) < $$0.g($$4) ? $$1 : $$2;
-   }
-
-   public static Optional<bvy> a(bvy $$0, cfc<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.ea().c($$1);
-      return $$2.<bva>map($$1x -> ((ard)$$0.dU()).b($$1x)).map($$0x -> $$0x instanceof bvy $$1x ? $$1x : null);
+   public Set<bxv> d() {
+      return ImmutableSet.copyOf(this.g.values());
    }
 
    @Nullable
-   public static fbx a(bwg $$0, int $$1, int $$2) {
-      fbx $$3 = cgt.a($$0, $$1, $$2);
-      int $$4 = 0;
-
-      while ($$3 != null && !$$0.dU().a_(ji.a((kb)$$3)).a(eul.b) && $$4++ < 10) {
-         $$3 = cgt.a($$0, $$1, $$2);
-      }
-
-      return $$3;
+   public bxv a(ald $$0) {
+      return this.f.get($$0);
    }
 
-   public static boolean a(bvy $$0) {
-      return $$0.ea().a(cfc.r);
+   public boolean b(ald $$0) {
+      return this.f.get($$0) != null;
+   }
+
+   private void f(bxv $$0) {
+      bxv $$1 = this.f.putIfAbsent($$0.b(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void a(bxv $$0) {
+      bxv $$1 = this.f.put($$0.b(), $$0);
+      if ($$0 != $$1) {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void b(bxv $$0) {
+      this.f($$0);
+   }
+
+   public void c(bxv $$0) {
+      this.c($$0.b());
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void d(bxv $$0) {
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void a(Collection<bxv> $$0) {
+      for (bxv $$1 : $$0) {
+         this.d($$1);
+      }
+   }
+
+   protected void e() {
+      this.i = true;
+      this.k.accept(this);
+   }
+
+   public void e(bxv $$0) {
+      this.c($$0.b());
+   }
+
+   public boolean c(ald $$0) {
+      bxv $$1 = this.f.remove($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1.d()).remove($$0);
+         this.g.remove($$0);
+         this.e();
+         return true;
+      }
+   }
+
+   public void f() {
+      for (bxv $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double g() {
+      if (this.i) {
+         this.j = this.i();
+         this.i = false;
+      }
+
+      return this.j;
+   }
+
+   private double i() {
+      double $$0 = this.b();
+
+      for (bxv $$1 : this.b(bxv.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bxv $$3 : this.b(bxv.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bxv $$4 : this.b(bxv.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.d.a().a($$2);
+   }
+
+   private Collection<bxv> b(bxv.a $$0) {
+      return this.e.getOrDefault($$0, Map.of()).values();
+   }
+
+   public void a(bxt $$0) {
+      this.h = $$0.h;
+      this.f.clear();
+      this.f.putAll($$0.f);
+      this.g.clear();
+      this.g.putAll($$0.g);
+      this.e.clear();
+      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends ald, ? extends bxv>)$$1));
+      this.e();
+   }
+
+   public tw h() {
+      tw $$0 = new tw();
+      alc<bxs> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("id", $$1.a().toString());
+      $$0.a("base", this.h);
+      if (!this.g.isEmpty()) {
+         uc $$2 = new uc();
+
+         for (bxv $$3 : this.g.values()) {
+            $$2.add($$3.a());
+         }
+
+         $$0.a("modifiers", $$2);
+      }
+
+      return $$0;
+   }
+
+   public void a(tw $$0) {
+      this.h = $$0.k("base");
+      if ($$0.b("modifiers", 9)) {
+         uc $$1 = $$0.c("modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bxv $$3 = bxv.a($$1.a($$2));
+            if ($$3 != null) {
+               this.f.put($$3.b(), $$3);
+               this.a($$3.d()).put($$3.b(), $$3);
+               this.g.put($$3.b(), $$3);
+            }
+         }
+      }
+
+      this.e();
    }
 }

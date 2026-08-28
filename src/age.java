@@ -1,200 +1,59 @@
-public class age {
-   public static final vx.a<agf, wa> a = zb.a(
-      vj.b,
-      $$0 -> $$0.a(agd.bj, agh.a)
-            .a(agd.bk, agi.a)
-            .a(agd.bl, aht.a)
-            .a(agd.bm, agj.a)
-            .a(agd.bn, agk.a)
-            .a(agd.bo, agl.a)
-            .a(agd.bp, agm.a)
-            .a(agd.bq, agn.a)
-            .a(agd.br, ago.a)
-            .a(agd.bs, agp.a)
-            .a(agd.bt, agq.a)
-            .a(agd.bu, agr.b)
-            .a(zo.l, zq.a)
-            .a(agd.bv, ags.a)
-            .a(agd.bw, agt.b)
-            .a(agd.bx, agu.a)
-            .a(agd.by, agv.a)
-            .a(agd.bz, agw.a)
-            .a(agd.bA, agx.a)
-            .a(abh.b, abj.a)
-            .a(zo.m, zr.a)
-            .a(agd.bB, agy.a)
-            .a(agd.bC, agz.a)
-            .a(agd.bD, aha.a)
-            .a(agd.bE, ahb.a)
-            .a(agd.bF, ahc.a)
-            .a(zo.n, zs.a)
-            .a(agd.bG, ahd.a)
-            .a(agd.bH, ahe.a.j)
-            .a(agd.bI, ahe.b.j)
-            .a(agd.bJ, ahe.c.j)
-            .a(agd.bK, ahe.d.j)
-            .a(agd.bL, ahf.a)
-            .a(agd.bM, ahg.a)
-            .a(agd.bN, ahh.a)
-            .a(agd.bO, ahi.a)
-            .a(ajl.b, ajn.a)
-            .a(agd.bP, ahj.a)
-            .a(agd.bQ, ahk.a)
-            .a(agd.bR, ahl.a)
-            .a(agd.bS, ahm.a)
-            .a(agd.bT, ahn.a)
-            .a(agd.bU, aho.a)
-            .a(zo.o, zt.a)
-            .a(agd.bV, ahp.a)
-            .a(agd.bW, ahq.a)
-            .a(agd.bX, ahr.a)
-            .a(zo.p, zu.a)
-            .a(agd.bY, ahs.a)
-            .a(agd.bZ, ahu.a)
-            .a(agd.ca, ahv.a)
-            .a(agd.cb, ahw.a)
-            .a(agd.cc, ahx.a)
-            .a(agd.cd, ahy.a)
-            .a(agd.ce, ahz.a)
-            .a(agd.cf, aia.a)
-            .a(agd.cg, aib.a)
-            .a(agd.ch, aic.a)
-            .a(agd.ci, aid.a)
-            .a(agd.cj, aie.a)
-            .a(agd.ck, aif.a)
-            .a(agd.cl, aig.a)
-   );
-   public static final vx.a<abl, wa> b = zb.b(
-      vj.b,
-      $$0 -> $$0.a(agd.a, abw::new, new abv())
-            .a(agd.c, abm.a)
-            .a(agd.d, abn.a)
-            .a(agd.e, abo.a)
-            .a(agd.f, abp.a)
-            .a(agd.g, abq.a)
-            .a(agd.h, abr.a)
-            .a(agd.i, abs.a)
-            .a(agd.j, abt.a)
-            .a(agd.k, abu.a)
-            .a(agd.l, abx.a)
-            .a(agd.m, aby.a)
-            .a(agd.n, abz.b)
-            .a(agd.o, aca.a)
-            .a(agd.p, acb.a)
-            .a(agd.q, acc.a)
-            .a(agd.r, acd.a)
-            .a(agd.s, ace.a)
-            .a(agd.t, acf.a)
-            .a(agd.u, acg.a)
-            .a(agd.v, ach.a)
-            .a(abh.a, abg.a)
-            .a(agd.w, aci.a)
-            .a(agd.x, acj.a)
-            .a(zo.a, zd.a)
-            .a(agd.y, ack.a)
-            .a(agd.z, acl.a)
-            .a(agd.A, acm.a)
-            .a(zo.c, zf.a)
-            .a(agd.B, acn.a)
-            .a(agd.C, aco.a)
-            .a(agd.bd, acp.a)
-            .a(agd.D, acq.a)
-            .a(agd.E, acr.a)
-            .a(agd.F, acs.a)
-            .a(agd.G, act.a)
-            .a(agd.H, acu.a)
-            .a(agd.I, acv.a)
-            .a(zo.d, zg.a)
-            .a(agd.J, acx.a)
-            .a(agd.K, acy.a)
-            .a(agd.L, acz.a)
-            .a(agd.M, ada.a)
-            .a(agd.N, adc.a)
-            .a(agd.O, add.a)
-            .a(agd.P, ade.a)
-            .a(agd.Q, adf.a.j)
-            .a(agd.R, adf.b.j)
-            .a(agd.S, adg.a)
-            .a(agd.T, adf.c.j)
-            .a(agd.U, adh.a)
-            .a(agd.V, adi.a)
-            .a(agd.W, adj.a)
-            .a(agd.X, adk.a)
-            .a(zo.e, zh.a)
-            .a(ajl.a, ajk.a)
-            .a(agd.Y, adl.a)
-            .a(agd.Z, adm.a)
-            .a(agd.aa, adn.a)
-            .a(agd.ab, ado.a)
-            .a(agd.ac, adp.b)
-            .a(agd.ad, adq.a)
-            .a(agd.ae, adr.a)
-            .a(agd.af, ads.a)
-            .a(agd.ag, adt.a)
-            .a(agd.ah, adu.a)
-            .a(agd.ai, adv.a)
-            .a(agd.aj, adx.a)
-            .a(agd.ak, ady.a)
-            .a(agd.al, adz.a)
-            .a(agd.am, aea.a)
-            .a(agd.an, aeb.a)
-            .a(agd.cm, aec.a)
-            .a(zo.f, zi.a)
-            .a(zo.g, zj.b)
-            .a(agd.ao, aed.a)
-            .a(agd.ap, aee.a)
-            .a(agd.aq, aef.a)
-            .a(agd.ar, aeg.a)
-            .a(agd.as, aeh.a)
-            .a(agd.at, aei.a)
-            .a(agd.au, aej.a)
-            .a(agd.av, aek.a)
-            .a(agd.aw, ael.a)
-            .a(agd.ax, aem.a)
-            .a(agd.ay, aen.a)
-            .a(agd.az, aeo.a)
-            .a(agd.aA, aep.a)
-            .a(agd.aB, aeq.a)
-            .a(agd.cp, aer.a)
-            .a(agd.aC, aes.a)
-            .a(agd.aD, aet.a)
-            .a(agd.aE, aeu.a)
-            .a(agd.aF, aev.a)
-            .a(agd.aG, aew.a)
-            .a(agd.aH, aex.a)
-            .a(agd.aI, aey.a)
-            .a(agd.aJ, aez.a)
-            .a(agd.aK, afa.a)
-            .a(agd.aL, afb.a)
-            .a(agd.aM, afc.a)
-            .a(agd.cq, afd.a)
-            .a(agd.aN, afe.a)
-            .a(agd.aO, aff.a)
-            .a(agd.aP, afg.a)
-            .a(agd.aQ, afh.a)
-            .a(agd.aR, afi.a)
-            .a(agd.aS, afj.a)
-            .a(agd.aT, afk.a)
-            .a(agd.aU, afl.a)
-            .a(agd.aV, afm.a)
-            .a(agd.aW, afn.b)
-            .a(agd.aX, afo.a)
-            .a(zo.i, zl.a)
-            .a(agd.aY, afp.a)
-            .a(agd.aZ, afq.a)
-            .a(agd.ba, afr.a)
-            .a(agd.bb, afs.a)
-            .a(agd.bc, aft.a)
-            .a(agd.cn, afu.a)
-            .a(agd.co, afv.a)
-            .a(zo.j, zm.a)
-            .a(agd.be, afw.a)
-            .a(agd.bf, afx.a)
-            .a(agd.bg, afy.a)
-            .a(agd.bh, afz.a)
-            .a(zo.k, zn.a)
-            .a(agd.bi, adw.a)
-            .a(zo.b, ze.a)
-            .a(zo.h, zk.a)
-   );
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class age implements zc<abr> {
+   public static final yt<wg, age> a = yt.a(yr.h, age::b, age.a.b.a(yr.a()), age::e, age::new);
+   private final int b;
+   private final List<age.a> c;
+
+   public age(int $$0, Collection<bxt> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bxt $$2 : $$1) {
+         this.c.add(new age.a($$2.a(), $$2.b(), $$2.c()));
+      }
+   }
+
+   private age(int $$0, List<age.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public ze<age> a() {
+      return agk.bg;
+   }
+
+   public void a(abr $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public List<age.a> e() {
+      return this.c;
+   }
+
+   public static record a(js<bxs> c, double d, Collection<bxv> e) {
+      public static final yt<ByteBuf, bxv> a = yt.a(ald.b, bxv::b, yr.m, bxv::c, bxv.a.e, bxv::d, bxv::new);
+      public static final yt<wg, age.a> b = yt.a(bxs.b, age.a::a, yr.m, age.a::b, a.a(yr.a(ArrayList::new)), age.a::c, age.a::new);
+
+      public js<bxs> a() {
+         return this.c;
+      }
+
+      public double b() {
+         return this.d;
+      }
+
+      public Collection<bxv> c() {
+         return this.e;
+      }
+   }
 }

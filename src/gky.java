@@ -1,107 +1,52 @@
-public class gky extends glg {
-   private static final azh a = azh.a();
-   private final glb b;
-   private float F = 1.0F;
-
-   gky(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
+public class gky extends gmh {
+   gky(ghz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
       this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
       this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
    }
 
    @Override
-   public gkk b() {
-      return gkk.c;
+   public gll b() {
+      return gll.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.y = 0.0F;
-      } else {
-         this.y = ayz.h(0.05F, this.y, this.F);
-      }
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   protected void e(float $$0) {
-      super.e($$0);
-      this.F = $$0;
-   }
+   public static class a implements glk<lz> {
+      private final gmc a;
 
-   private boolean g() {
-      fmg $$0 = fmg.Q();
-      glv $$1 = $$0.t;
-      return $$1 != null && $$1.bD().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gJ();
-   }
-
-   public static class a implements gkj<lx> {
-      private final glb a;
-
-      public a(glb $$0) {
+      public a(gmc $$0) {
          this.a = $$0;
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements gkj<lm> {
-      private final glb a;
-
-      public b(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lm $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkg $$8 = new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gky $$8 = new gky($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
          return $$8;
       }
    }
 
-   public static class c implements gkj<lx> {
-      private final glb a;
+   public static class b implements glk<lz> {
+      private final gmc a;
 
-      public c(glb $$0) {
+      public b(gmc $$0) {
          this.a = $$0;
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class d implements gkj<lx> {
-      private final glb a;
-
-      public d(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gky $$8 = new gky($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.A.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gky $$8 = new gky($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
          return $$8;
       }
    }

@@ -1,20 +1,7 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
+public class aiu {
+   public static final ze<ait> a = a("intention");
 
-public record aiu(GameProfile b) implements yw<aip> {
-   public static final yn<ByteBuf, aiu> a = yn.a(yl.y, aiu::b, aiu::new);
-
-   @Override
-   public yy<aiu> a() {
-      return aiv.b;
-   }
-
-   public void a(aip $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
+   private static <T extends zc<aiw>> ze<T> a(String $$0) {
+      return new ze<>(zd.a, ald.b($$0));
    }
 }

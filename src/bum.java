@@ -1,39 +1,46 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-class bum extends buc {
-   private final ToIntFunction<azh> c;
+public record bum(String i) {
+   public static final bum a = new bum("generic");
+   public static final bum b = new bum("ladder");
+   public static final bum c = new bum("vines");
+   public static final bum d = new bum("weeping_vines");
+   public static final bum e = new bum("twisting_vines");
+   public static final bum f = new bum("scaffolding");
+   public static final bum g = new bum("other_climbable");
+   public static final bum h = new bum("water");
 
-   protected bum(bud $$0, int $$1, ToIntFunction<azh> $$2) {
-      super($$0, $$1, lt.Y);
-      this.c = $$2;
-   }
-
-   @Override
-   public void a(ard $$0, bvy $$1, int $$2, bva.d $$3) {
-      if ($$3 == bva.d.a && ($$1 instanceof cpr || $$0.O().b(dgv.c))) {
-         this.a($$0, $$1.dX(), $$1.du());
+   public static bum a(dym $$0) {
+      if ($$0.a(dkw.cX) || $$0.a(awz.R)) {
+         return b;
+      } else if ($$0.a(dkw.ft)) {
+         return c;
+      } else if ($$0.a(dkw.pb) || $$0.a(dkw.pc)) {
+         return d;
+      } else if ($$0.a(dkw.pd) || $$0.a(dkw.pe)) {
+         return e;
+      } else {
+         return $$0.a(dkw.ou) ? f : g;
       }
    }
 
-   private void a(ard $$0, azh $$1, ji $$2) {
-      Set<ji> $$3 = Sets.newHashSet();
-      int $$4 = this.c.applyAsInt($$1);
-
-      for (ji $$5 : ji.a($$1, 15, $$2, 1)) {
-         ji $$6 = $$5.e();
-         if (!$$3.contains($$5) && $$0.a_($$5).v() && $$0.a_($$6).c($$0, $$6, jn.b)) {
-            $$3.add($$5.j());
-            if ($$3.size() >= $$4) {
-               break;
-            }
-         }
+   @Nullable
+   public static bum a(bwr $$0) {
+      Optional<jj> $$1 = $$0.eO();
+      if ($$1.isPresent()) {
+         dym $$2 = $$0.dV().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bj() ? h : null;
       }
+   }
 
-      for (ji $$7 : $$3) {
-         $$0.a($$7, dkg.bz.m(), 3);
-         $$0.c(3018, $$7, 0);
-      }
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

@@ -1,56 +1,56 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class aun {
-   private final atc a;
-   private final auh<InputStream> b;
-   private final auh<aur> c;
+public class aun extends aue {
+   private static final aua d = new aua(wv.c("dataPack.vanilla.description"), ab.b().a(ato.b), Optional.empty());
+   private static final ati e = new ati(ctg.h);
+   private static final ate f = ate.a(aua.b, d, ati.a, e);
+   private static final atl g = new atl("vanilla", wv.c("dataPack.vanilla.name"), aul.c, Optional.of(c));
+   private static final atn h = new atn(false, auh.b.b, false);
+   private static final atn i = new atn(false, auh.b.a, false);
+   private static final ald j = ald.b("datapacks");
+
+   public aun(fck $$0) {
+      super(ato.b, b(), j, $$0);
+   }
+
+   private static atl a(String $$0, wv $$1) {
+      return new atl($$0, $$1, aul.d, Optional.of(aug.a($$0)));
+   }
+
+   @VisibleForTesting
+   public static atq b() {
+      return new atr().a(f).a("minecraft").b().a().a(g);
+   }
+
+   @Override
+   protected wv a(String $$0) {
+      return wv.b($$0);
+   }
+
    @Nullable
-   private aur d;
-
-   public aun(atc $$0, auh<InputStream> $$1, auh<aur> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   protected auh a(atm $$0) {
+      return auh.a(g, b($$0), ato.b, h);
    }
 
-   public aun(atc $$0, auh<InputStream> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = aur.b;
-      this.d = aur.a;
+   @Nullable
+   @Override
+   protected auh a(String $$0, auh.c $$1, wv $$2) {
+      return auh.a(a($$0, $$2), $$1, ato.b, i);
    }
 
-   public atc a() {
-      return this.a;
+   public static auk a(Path $$0, fck $$1) {
+      return new auk(new aun($$1), new auf($$0, ato.b, aul.e, $$1));
    }
 
-   public String b() {
-      return this.a.b();
+   public static auk c() {
+      return new auk(new aun(new fck($$0 -> true)));
    }
 
-   public Optional<atw> c() {
-      return this.a.c();
-   }
-
-   public InputStream d() throws IOException {
-      return this.b.get();
-   }
-
-   public BufferedReader e() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
-   }
-
-   public aur f() throws IOException {
-      if (this.d == null) {
-         this.d = this.c.get();
-      }
-
-      return this.d;
+   public static auk a(ewz.c $$0) {
+      return a($$0.a(ewx.j), $$0.d().e());
    }
 }

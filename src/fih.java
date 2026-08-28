@@ -1,179 +1,289 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fih {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "notificationUuid";
-   private static final String c = "dismissable";
-   private static final String d = "seen";
-   private static final String e = "type";
-   private static final String f = "visitUrl";
-   private static final String g = "infoPopup";
-   static final wp h = wp.c("mco.notification.visitUrl.buttonText.default");
-   final UUID i;
-   final boolean j;
-   final boolean k;
-   final String l;
+public abstract class fih<T extends fih<T>> {
+   protected HttpURLConnection a;
+   private boolean c;
+   protected String b;
+   private static final int d = 60000;
+   private static final int e = 5000;
+   private static final String f = "Is-Prerelease";
+   private static final String g = "Cookie";
 
-   fih(UUID $$0, boolean $$1, boolean $$2, String $$3) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
+   public fih(String $$0, int $$1, int $$2) {
+      try {
+         this.b = $$0;
+         Proxy $$3 = fif.a();
+         if ($$3 != null) {
+            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
+         } else {
+            this.a = (HttpURLConnection)new URL($$0).openConnection();
+         }
+
+         this.a.setConnectTimeout($$1);
+         this.a.setReadTimeout($$2);
+      } catch (MalformedURLException var5) {
+         throw new fjz(var5.getMessage(), var5);
+      } catch (IOException var6) {
+         throw new fjz(var6.getMessage(), var6);
+      }
    }
 
-   public boolean a() {
-      return this.k;
+   public void a(String $$0, String $$1) {
+      a(this.a, $$0, $$1);
    }
 
-   public boolean b() {
-      return this.j;
+   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
+      String $$3 = $$0.getRequestProperty("Cookie");
+      if ($$3 == null) {
+         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+      } else {
+         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+      }
    }
 
-   public UUID c() {
-      return this.i;
+   public void a(boolean $$0) {
+      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
    }
 
-   public static List<fih> a(String $$0) {
-      List<fih> $$1 = new ArrayList<>();
+   public int a() {
+      return a(this.a);
+   }
+
+   public static int a(HttpURLConnection $$0) {
+      String $$1 = $$0.getHeaderField("Retry-After");
 
       try {
-         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
-            $$1.add(a($$3.getAsJsonObject()));
-         }
-      } catch (Exception var5) {
-         a.error("Could not parse list of RealmsNotifications", var5);
-      }
-
-      return $$1;
-   }
-
-   private static fih a(JsonObject $$0) {
-      UUID $$1 = fks.a("notificationUuid", $$0, null);
-      if ($$1 == null) {
-         throw new IllegalStateException("Missing required property notificationUuid");
-      } else {
-         boolean $$2 = fks.a("dismissable", $$0, true);
-         boolean $$3 = fks.a("seen", $$0, false);
-         String $$4 = fks.a("type", $$0);
-         fih $$5 = new fih($$1, $$2, $$3, $$4);
-
-         return (fih)(switch ($$4) {
-            case "visitUrl" -> fih.c.a($$5, $$0);
-            case "infoPopup" -> fih.a.a($$5, $$0);
-            default -> $$5;
-         });
+         return Integer.valueOf($$1);
+      } catch (Exception var3) {
+         return 5;
       }
    }
 
-   public static class a extends fih {
-      private static final String a = "title";
-      private static final String b = "message";
-      private static final String c = "image";
-      private static final String d = "urlButton";
-      private final fin e;
-      private final fin f;
-      private final aku g;
-      @Nullable
-      private final fih.b h;
-
-      private a(fih $$0, fin $$1, fin $$2, aku $$3, @Nullable fih.b $$4) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
+   public int b() {
+      try {
+         this.d();
+         return this.a.getResponseCode();
+      } catch (Exception var2) {
+         throw new fjz(var2.getMessage(), var2);
       }
+   }
 
-      public static fih.a a(fih $$0, JsonObject $$1) {
-         fin $$2 = fks.a("title", $$1, fin::a);
-         fin $$3 = fks.a("message", $$1, fin::a);
-         aku $$4 = aku.a(fks.a("image", $$1));
-         fih.b $$5 = fks.b("urlButton", $$1, fih.b::a);
-         return new fih.a($$0, $$2, $$3, $$4, $$5);
-      }
-
-      @Nullable
-      public fqs a(fvi $$0, Consumer<UUID> $$1) {
-         wp $$2 = this.e.a();
-         if ($$2 == null) {
-            fih.a.warn("Realms info popup had title with no available translation: {}", this.e);
-            return null;
+   public String c() {
+      try {
+         this.d();
+         String $$0;
+         if (this.b() >= 400) {
+            $$0 = this.a(this.a.getErrorStream());
          } else {
-            fqs.a $$3 = new fqs.a($$0, $$2).a(this.g).a(this.f.a(wo.a));
-            if (this.h != null) {
-               $$3.a(this.h.b.a(fih.h), $$2x -> {
-                  fmg $$3x = fmg.Q();
-                  $$3x.a(new fuf($$3xx -> {
-                     if ($$3xx) {
-                        af.n().a(this.h.a);
-                        $$3x.a($$0);
-                     } else {
-                        $$3x.a($$2x);
-                     }
-                  }, this.h.a, true));
-                  $$1.accept(this.c());
-               });
+            $$0 = this.a(this.a.getInputStream());
+         }
+
+         this.f();
+         return $$0;
+      } catch (IOException var2) {
+         throw new fjz(var2.getMessage(), var2);
+      }
+   }
+
+   private String a(@Nullable InputStream $$0) throws IOException {
+      if ($$0 == null) {
+         return "";
+      } else {
+         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
+         StringBuilder $$2 = new StringBuilder();
+
+         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
+            $$2.append((char)$$3);
+         }
+
+         return $$2.toString();
+      }
+   }
+
+   private void f() {
+      byte[] $$0 = new byte[1024];
+
+      try {
+         InputStream $$1 = this.a.getInputStream();
+
+         while ($$1.read($$0) > 0) {
+         }
+
+         $$1.close();
+         return;
+      } catch (Exception var9) {
+         try {
+            InputStream $$3 = this.a.getErrorStream();
+            if ($$3 != null) {
+               while ($$3.read($$0) > 0) {
+               }
+
+               $$3.close();
+               return;
+            }
+         } catch (IOException var8) {
+            return;
+         }
+      } finally {
+         if (this.a != null) {
+            this.a.disconnect();
+         }
+      }
+   }
+
+   protected T d() {
+      if (this.c) {
+         return (T)this;
+      } else {
+         T $$0 = this.e();
+         this.c = true;
+         return $$0;
+      }
+   }
+
+   protected abstract T e();
+
+   public static fih<?> a(String $$0) {
+      return new fih.b($$0, 5000, 60000);
+   }
+
+   public static fih<?> a(String $$0, int $$1, int $$2) {
+      return new fih.b($$0, $$1, $$2);
+   }
+
+   public static fih<?> b(String $$0, String $$1) {
+      return new fih.c($$0, $$1, 5000, 60000);
+   }
+
+   public static fih<?> a(String $$0, String $$1, int $$2, int $$3) {
+      return new fih.c($$0, $$1, $$2, $$3);
+   }
+
+   public static fih<?> b(String $$0) {
+      return new fih.a($$0, 5000, 60000);
+   }
+
+   public static fih<?> c(String $$0, String $$1) {
+      return new fih.d($$0, $$1, 5000, 60000);
+   }
+
+   public static fih<?> b(String $$0, String $$1, int $$2, int $$3) {
+      return new fih.d($$0, $$1, $$2, $$3);
+   }
+
+   public String c(String $$0) {
+      return a(this.a, $$0);
+   }
+
+   public static String a(HttpURLConnection $$0, String $$1) {
+      try {
+         return $$0.getHeaderField($$1);
+      } catch (Exception var3) {
+         return "";
+      }
+   }
+
+   public static class a extends fih<fih.a> {
+      public a(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public fih.a f() {
+         try {
+            this.a.setDoOutput(true);
+            this.a.setRequestMethod("DELETE");
+            this.a.connect();
+            return this;
+         } catch (Exception var2) {
+            throw new fjz(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class b extends fih<fih.b> {
+      public b(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public fih.b f() {
+         try {
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("GET");
+            return this;
+         } catch (Exception var2) {
+            throw new fjz(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class c extends fih<fih.c> {
+      private final String c;
+
+      public c(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public fih.c f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             }
 
-            $$3.a(wo.h, $$1x -> {
-               $$1x.aO_();
-               $$1.accept(this.c());
-            });
-            $$3.a(() -> $$1.accept(this.c()));
-            return $$3.a();
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("POST");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fjz(var3.getMessage(), var3);
          }
       }
    }
 
-   static record b(String a, fin b) {
-      private static final String c = "url";
-      private static final String d = "urlText";
+   public static class d extends fih<fih.d> {
+      private final String c;
 
-      public static fih.b a(JsonObject $$0) {
-         String $$1 = fks.a("url", $$0);
-         fin $$2 = fks.a("urlText", $$0, fin::a);
-         return new fih.b($$1, $$2);
-      }
-   }
-
-   public static class c extends fih {
-      private static final String a = "url";
-      private static final String b = "buttonText";
-      private static final String c = "message";
-      private final String d;
-      private final fin e;
-      private final fin f;
-
-      private c(fih $$0, String $$1, fin $$2, fin $$3) {
-         super($$0.i, $$0.j, $$0.k, $$0.l);
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+      public d(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
       }
 
-      public static fih.c a(fih $$0, JsonObject $$1) {
-         String $$2 = fks.a("url", $$1);
-         fin $$3 = fks.a("buttonText", $$1, fin::a);
-         fin $$4 = fks.a("message", $$1, fin::a);
-         return new fih.c($$0, $$2, $$3, $$4);
-      }
+      public fih.d f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
 
-      public wp d() {
-         return this.f.a(wp.c("mco.notification.visitUrl.message.default"));
-      }
-
-      public fpq a(fvi $$0) {
-         wp $$1 = this.e.a(fih.h);
-         return fpq.a($$1, fuf.b($$0, this.d)).a();
+            this.a.setDoOutput(true);
+            this.a.setDoInput(true);
+            this.a.setRequestMethod("PUT");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fjz(var3.getMessage(), var3);
+         }
       }
    }
 }

@@ -1,59 +1,52 @@
-import java.util.concurrent.locks.LockSupport;
+public class hks {
+   public static class a extends hjy {
+      private final gmw n;
 
-public class hks extends brn<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+      protected a(gmw $$0, awj $$1) {
+         super($$1, awl.i, hkp.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public hks() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
-
-   @Override
-   public Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread ay() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.b(() -> this.b);
+      @Override
+      public void q() {
+         if (this.n.dQ() || !this.n.bn()) {
+            this.n();
+         }
       }
    }
 
-   @Override
-   protected void A() {
-      LockSupport.park("waiting for tasks");
-   }
+   public static class b extends hjy {
+      public static final int n = 40;
+      private final gmw o;
+      private int p;
 
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+      public b(gmw $$0) {
+         super(awk.z, awl.i, hkp.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      this.bz();
-      this.b = false;
-      this.a = this.b();
+      @Override
+      public void q() {
+         if (!this.o.dQ() && this.p >= 0) {
+            if (this.o.bn()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

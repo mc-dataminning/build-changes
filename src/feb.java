@@ -1,26 +1,83 @@
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogListeners;
-import org.slf4j.event.Level;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class feb {
-   private static boolean a;
+public abstract class feb {
+   public boolean a(@Nullable feb $$0) {
+      return $$0 == null ? false : this == $$0;
+   }
 
-   public static void a() {
-      if (!a) {
-         TracyClient.load();
-         if (TracyClient.isAvailable()) {
-            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
-            a = true;
-         }
+   public abstract String b();
+
+   public abstract xj d(wv var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract feb.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract feb.b k();
+
+   public abstract feb.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, feb.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (feb.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static feb.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wv a() {
+         return wv.c("team.collision." + this.e);
       }
    }
 
-   private static int a(Level $$0) {
-      return switch ($$0) {
-         case DEBUG -> 11184810;
-         case WARN -> 16777130;
-         case ERROR -> 16755370;
-         default -> 16777215;
-      };
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
+
+      private static final Map<String, feb.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (feb.b)$$0));
+      public final String e;
+      public final int f;
+
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
+
+      @Nullable
+      public static feb.b a(String $$0) {
+         return g.get($$0);
+      }
+
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public wv b() {
+         return wv.c("team.visibility." + this.e);
+      }
    }
 }

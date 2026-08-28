@@ -1,105 +1,148 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public record bqb(
-   Instant a,
-   Instant b,
-   Duration c,
-   @Nullable Duration d,
-   List<bqo> e,
-   List<bqh> f,
-   bqj.a g,
-   bqn.a h,
-   bqk<bql> i,
-   bqk<bql> j,
-   bqk<bqg> k,
-   bqk<bqg> l,
-   bqi.a m,
-   bqi.a n,
-   List<bqf> o,
-   List<bqm> p
-) {
-   public List<Pair<ean, bqq<bqf>>> a() {
-      Map<ean, List<bqf>> $$0 = this.o.stream().collect(Collectors.groupingBy(bqf::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((ean)$$0x.getKey(), bqq.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<ean, bqq<bqf>>, Duration>comparing($$0x -> ((bqq)$$0x.getSecond()).f()).reversed())
-         .toList();
+public interface bqb {
+   String b = "root";
+
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   default void e(String $$0) {
    }
 
-   public String b() {
-      return new bqd().a(this);
+   default void a(long $$0) {
    }
 
-   public Instant c() {
-      return this.a;
+   default void a(int $$0) {
    }
 
-   public Instant d() {
-      return this.b;
+   default bqg d(String $$0) {
+      this.a($$0);
+      return new bqg(this);
    }
 
-   public Duration e() {
-      return this.c;
+   default bqg c(Supplier<String> $$0) {
+      this.a($$0);
+      return new bqg(this);
    }
 
-   @Nullable
-   public Duration f() {
-      return this.d;
+   void a(brk var1);
+
+   default void f(String $$0) {
+      this.a($$0, 1);
    }
 
-   public List<bqo> g() {
-      return this.e;
+   void a(String var1, int var2);
+
+   default void d(Supplier<String> $$0) {
+      this.a($$0, 1);
    }
 
-   public List<bqh> h() {
-      return this.f;
+   void a(Supplier<String> var1, int var2);
+
+   static bqb a(bqb $$0, bqb $$1) {
+      if ($$0 == bpx.a) {
+         return $$1;
+      } else {
+         return (bqb)($$1 == bpx.a ? $$0 : new bqb.a($$0, $$1));
+      }
    }
 
-   public bqj.a i() {
-      return this.g;
-   }
+   public static class a implements bqb {
+      private final bqb a;
+      private final bqb c;
 
-   public bqn.a j() {
-      return this.h;
-   }
+      public a(bqb $$0, bqb $$1) {
+         this.a = $$0;
+         this.c = $$1;
+      }
 
-   public bqk<bql> k() {
-      return this.i;
-   }
+      @Override
+      public void a() {
+         this.a.a();
+         this.c.a();
+      }
 
-   public bqk<bql> l() {
-      return this.j;
-   }
+      @Override
+      public void b() {
+         this.a.b();
+         this.c.b();
+      }
 
-   public bqk<bqg> m() {
-      return this.k;
-   }
+      @Override
+      public void a(String $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
 
-   public bqk<bqg> n() {
-      return this.l;
-   }
+      @Override
+      public void a(Supplier<String> $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
 
-   public bqi.a o() {
-      return this.m;
-   }
+      @Override
+      public void a(brk $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
 
-   public bqi.a p() {
-      return this.n;
-   }
+      @Override
+      public void c() {
+         this.a.c();
+         this.c.c();
+      }
 
-   public List<bqf> q() {
-      return this.o;
-   }
+      @Override
+      public void b(String $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
+      }
 
-   public List<bqm> r() {
-      return this.p;
+      @Override
+      public void b(Supplier<String> $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
+      }
+
+      @Override
+      public void a(String $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void a(Supplier<String> $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void e(String $$0) {
+         this.a.e($$0);
+         this.c.e($$0);
+      }
+
+      @Override
+      public void a(long $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
    }
 }

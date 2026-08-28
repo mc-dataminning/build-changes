@@ -1,17 +1,19 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class bkf extends bju {
-   public bkf(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bkf extends DataFix {
+   private final String a;
+   private final TypeReference b;
+
+   public bkf(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:piston", $$1x -> DSL.optionalFields("blockState", bic.u.in($$0)));
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      return this.writeAndRead(this.a, this.getInputSchema().getType(this.b), this.getOutputSchema().getType(this.b));
    }
 }

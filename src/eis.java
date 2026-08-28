@@ -1,23 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eis implements eiy {
-   public static final Codec<eis> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bsd.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bsd.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eis::new)
-   );
-   private final bsd b;
-   private final bsd c;
-
-   public eis(bsd $$0, bsd $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eis extends ehr<ekj> {
+   public eis(Codec<ekj> $$0) {
+      super($$0);
    }
 
-   public bsd a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(eht<ekj> $$0) {
+      dio $$1 = $$0.b();
+      jj $$2 = $$0.e();
+      ekj $$3 = $$0.f();
 
-   public bsd b() {
-      return this.c;
+      for (ekd.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
+
+      return true;
    }
 }

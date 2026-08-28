@@ -1,327 +1,365 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class edv {
-   public static final float a = -0.50375F;
-   private static final float n = 0.08F;
-   private static final double o = 1.5;
-   private static final double p = 1.5;
-   private static final double q = 1.5625;
-   private static final double r = -0.703125;
-   public static final int b = 64;
-   public static final long c = 4096L;
-   private static final edh s = edi.a(10.0);
-   private static final edh t = edi.a();
-   private static final akt<edh> u = a("zero");
-   private static final akt<edh> v = a("y");
-   private static final akt<edh> w = a("shift_x");
-   private static final akt<edh> x = a("shift_z");
-   private static final akt<edh> y = a("overworld/base_3d_noise");
-   private static final akt<edh> z = a("nether/base_3d_noise");
-   private static final akt<edh> A = a("end/base_3d_noise");
-   public static final akt<edh> d = a("overworld/continents");
-   public static final akt<edh> e = a("overworld/erosion");
-   public static final akt<edh> f = a("overworld/ridges");
-   public static final akt<edh> g = a("overworld/ridges_folded");
-   public static final akt<edh> h = a("overworld/offset");
-   public static final akt<edh> i = a("overworld/factor");
-   public static final akt<edh> j = a("overworld/jaggedness");
-   public static final akt<edh> k = a("overworld/depth");
-   private static final akt<edh> B = a("overworld/sloped_cheese");
-   public static final akt<edh> l = a("overworld_large_biomes/continents");
-   public static final akt<edh> m = a("overworld_large_biomes/erosion");
-   private static final akt<edh> C = a("overworld_large_biomes/offset");
-   private static final akt<edh> D = a("overworld_large_biomes/factor");
-   private static final akt<edh> E = a("overworld_large_biomes/jaggedness");
-   private static final akt<edh> F = a("overworld_large_biomes/depth");
-   private static final akt<edh> G = a("overworld_large_biomes/sloped_cheese");
-   private static final akt<edh> H = a("overworld_amplified/offset");
-   private static final akt<edh> I = a("overworld_amplified/factor");
-   private static final akt<edh> J = a("overworld_amplified/jaggedness");
-   private static final akt<edh> K = a("overworld_amplified/depth");
-   private static final akt<edh> L = a("overworld_amplified/sloped_cheese");
-   private static final akt<edh> M = a("end/sloped_cheese");
-   private static final akt<edh> N = a("overworld/caves/spaghetti_roughness_function");
-   private static final akt<edh> O = a("overworld/caves/entrances");
-   private static final akt<edh> P = a("overworld/caves/noodle");
-   private static final akt<edh> Q = a("overworld/caves/pillars");
-   private static final akt<edh> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
-   private static final akt<edh> S = a("overworld/caves/spaghetti_2d");
+public interface edv {
+   List<alc<edm>> d_ = List.of(
+      edm.T.h(),
+      edm.U.h(),
+      edm.V.h(),
+      edm.W.h(),
+      edm.X.h(),
+      edm.Y.h(),
+      edm.Z.h(),
+      edm.aa.h(),
+      edm.ab.h(),
+      edm.ac.h(),
+      edm.ad.h(),
+      edm.ae.h(),
+      edm.af.h(),
+      edm.ag.h(),
+      edm.ah.h()
+   );
+   int e_ = 0;
+   ToIntFunction<alc<edm>> f_ = af.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(edm.P.h(), 1);
+      $$0.put(edm.Q.h(), 1);
+      $$0.put(edm.x.h(), 1);
+      $$0.put(edm.J.h(), 2);
+      $$0.put(edm.A.h(), 2);
+      $$0.put(edm.O.h(), 2);
+      $$0.put(edm.C.h(), 3);
+      $$0.put(edm.K.h(), 3);
+      $$0.put(edm.B.h(), 3);
+      $$0.put(edm.u.h(), 4);
+      $$0.put(edm.n.h(), 4);
+      $$0.put(edm.S.h(), 4);
+      $$0.put(edm.q.h(), 5);
+      $$0.put(edm.v.h(), 5);
+      $$0.put(edm.r.h(), 6);
+      $$0.put(edm.M.h(), 6);
+      $$0.put(edm.s.h(), 6);
+      $$0.put(edm.o.h(), 7);
+      $$0.put(edm.l.h(), 8);
+      $$0.put(edm.m.h(), 8);
+      $$0.put(edm.j.h(), 9);
+      $$0.put(edm.d.h(), 9);
+      $$0.put(edm.e.h(), 9);
+      $$0.put(edm.g.h(), 9);
+      $$0.put(edm.k.h(), 10);
+      $$0.put(edm.h.h(), 10);
+      $$0.put(edm.a.h(), 10);
+      $$0.put(edm.b.h(), 10);
+      $$0.put(edm.I.h(), 10);
+      $$0.put(edm.H.h(), 10);
+      $$0.put(edm.c.h(), 11);
+      $$0.put(edm.f.h(), 12);
+      $$0.put(edm.y.h(), 12);
+      $$0.put(edm.i.h(), 13);
+      $$0.put(edm.z.h(), 13);
+      $$0.put(edm.t.h(), 14);
+      $$0.put(edm.G.h(), 14);
+      $$0.put(edm.R.h(), 14);
+      $$0.put(edm.p.h(), 15);
+      $$0.put(edm.w.h(), 15);
 
-   private static akt<edh> a(String $$0) {
-      return akt.a(mc.aN, aku.b($$0));
+      for (int $$1 = 1; $$1 <= 15; $$1++) {
+         $$0.put(b($$1), $$1);
+      }
+   });
+
+   edv.a x();
+
+   edv.d gq();
+
+   static int a_(js<edm> $$0) {
+      return $$0.e().map(edv::a).orElse(0);
    }
 
-   public static jr<? extends edh> a(qe<edh> $$0) {
-      js<esz.a> $$1 = $$0.a(mc.aT);
-      js<edh> $$2 = $$0.a(mc.aN);
-      $$0.a(u, edi.a());
-      int $$3 = ebm.e * 2;
-      int $$4 = ebm.d * 2;
-      $$0.a(v, edi.a($$3, $$4, (double)$$3, (double)$$4));
-      edh $$5 = a($$0, w, edi.b(edi.c(edi.b($$1.b(edx.j)))));
-      edh $$6 = a($$0, x, edi.b(edi.c(edi.c($$1.b(edx.j)))));
-      $$0.a(y, esw.a(0.25, 0.125, 80.0, 160.0, 8.0));
-      $$0.a(z, esw.a(0.25, 0.375, 80.0, 60.0, 8.0));
-      $$0.a(A, esw.a(0.25, 0.25, 80.0, 160.0, 4.0));
-      jr<edh> $$7 = $$0.a(d, edi.b(edi.a($$5, $$6, 0.25, $$1.b(edx.c))));
-      jr<edh> $$8 = $$0.a(e, edi.b(edi.a($$5, $$6, 0.25, $$1.b(edx.d))));
-      edh $$9 = a($$0, f, edi.b(edi.a($$5, $$6, 0.25, $$1.b(edx.i))));
-      $$0.a(g, a($$9));
-      edh $$10 = edi.b($$1.b(edx.M), 1500.0, 0.0);
-      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
-      jr<edh> $$11 = $$0.a(l, edi.b(edi.a($$5, $$6, 0.25, $$1.b(edx.g))));
-      jr<edh> $$12 = $$0.a(m, edi.b(edi.a($$5, $$6, 0.25, $$1.b(edx.h))));
-      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
-      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
-      $$0.a(M, edi.a(edi.a(0L), a($$2, A)));
-      $$0.a(N, b($$1));
-      $$0.a(R, edi.d(edi.a($$1.b(edx.u), 2.0, 1.0, -0.6, -1.3)));
-      $$0.a(S, f($$2, $$1));
-      $$0.a(O, d($$2, $$1));
-      $$0.a(P, e($$2, $$1));
-      return $$0.a(Q, c($$1));
+   static int a(alc<edm> $$0) {
+      return f_.applyAsInt($$0);
    }
 
-   private static void a(
-      qe<edh> $$0, js<edh> $$1, edh $$2, jr<edh> $$3, jr<edh> $$4, akt<edh> $$5, akt<edh> $$6, akt<edh> $$7, akt<edh> $$8, akt<edh> $$9, boolean $$10
-   ) {
-      edi.w.a $$11 = new edi.w.a($$3);
-      edi.w.a $$12 = new edi.w.a($$4);
-      edi.w.a $$13 = new edi.w.a($$1.b(f));
-      edi.w.a $$14 = new edi.w.a($$1.b(g));
-      edh $$15 = a($$0, $$5, a(edi.a(edi.a(-0.50375F), edi.a(qt.a($$11, $$12, $$14, $$10))), edi.c()));
-      edh $$16 = a($$0, $$6, a(edi.a(qt.a($$11, $$12, $$13, $$14, $$10)), s));
-      edh $$17 = a($$0, $$8, edi.a(edi.a(-64, 320, 1.5, -1.5), $$15));
-      edh $$18 = a($$0, $$7, a(edi.a(qt.b($$11, $$12, $$13, $$14, $$10)), t));
-      edh $$19 = edi.b($$18, $$2.g());
-      edh $$20 = b($$16, edi.a($$17, $$19));
-      $$0.a($$9, edi.a($$20, a($$1, y)));
+   static alc<edm> b(int $$0) {
+      return d_.get($$0 - 1);
    }
 
-   private static edh a(qe<edh> $$0, akt<edh> $$1, edh $$2) {
-      return new edi.j($$0.a($$1, $$2));
+   static int a_(float $$0, int $$1) {
+      double $$2 = 15.0 / (double)$$1;
+      return Math.max(1, 15 - azk.a($$2 * (double)$$0));
    }
 
-   private static edh a(js<edh> $$0, akt<edh> $$1) {
-      return new edi.j($$0.b($$1));
-   }
-
-   private static edh a(edh $$0) {
-      return edi.b(edi.a(edi.a($$0.d(), edi.a(-0.6666666666666666)).d(), edi.a(-0.3333333333333333)), edi.a(-3.0));
-   }
-
-   public static float a(float $$0) {
-      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
-   }
-
-   private static edh b(js<esz.a> $$0) {
-      edh $$1 = edi.a($$0.b(edx.z));
-      edh $$2 = edi.a($$0.b(edx.A), 0.0, -0.1);
-      return edi.d(edi.b($$2, edi.a($$1.d(), edi.a(-0.4))));
-   }
-
-   private static edh d(js<edh> $$0, js<esz.a> $$1) {
-      edh $$2 = edi.d(edi.b($$1.b(edx.x), 2.0, 1.0));
-      edh $$3 = edi.a($$1.b(edx.y), -0.065, -0.088);
-      edh $$4 = edi.a($$2, $$1.b(edx.v), edi.z.a.a);
-      edh $$5 = edi.a($$2, $$1.b(edx.w), edi.z.a.a);
-      edh $$6 = edi.a(edi.d($$4, $$5), $$3).a(-1.0, 1.0);
-      edh $$7 = a($$0, N);
-      edh $$8 = edi.b($$1.b(edx.B), 0.75, 0.5);
-      edh $$9 = edi.a(edi.a($$8, edi.a(0.37)), edi.a(-10, 30, 0.3, 0.0));
-      return edi.d(edi.c($$9, edi.a($$7, $$6)));
-   }
-
-   private static edh e(js<edh> $$0, js<esz.a> $$1) {
-      edh $$2 = a($$0, v);
-      int $$3 = -64;
-      int $$4 = -60;
-      int $$5 = 320;
-      edh $$6 = a($$2, edi.b($$1.b(edx.I), 1.0, 1.0), -60, 320, -1);
-      edh $$7 = a($$2, edi.a($$1.b(edx.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
-      double $$8 = 2.6666666666666665;
-      edh $$9 = a($$2, edi.b($$1.b(edx.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
-      edh $$10 = a($$2, edi.b($$1.b(edx.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
-      edh $$11 = edi.b(edi.a(1.5), edi.d($$9.d(), $$10.d()));
-      return edi.a($$6, -1000000.0, 0.0, edi.a(64.0), edi.a($$7, $$11));
-   }
-
-   private static edh c(js<esz.a> $$0) {
-      double $$1 = 25.0;
-      double $$2 = 0.3;
-      edh $$3 = edi.b($$0.b(edx.o), 25.0, 0.3);
-      edh $$4 = edi.a($$0.b(edx.p), 0.0, -2.0);
-      edh $$5 = edi.a($$0.b(edx.q), 0.0, 1.1);
-      edh $$6 = edi.a(edi.b($$3, edi.a(2.0)), $$4);
-      return edi.d(edi.b($$6, $$5.f()));
-   }
-
-   private static edh f(js<edh> $$0, js<esz.a> $$1) {
-      edh $$2 = edi.b($$1.b(edx.t), 2.0, 1.0);
-      edh $$3 = edi.a($$2, $$1.b(edx.r), edi.z.a.b);
-      edh $$4 = edi.a($$1.b(edx.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
-      edh $$5 = a($$0, R);
-      edh $$6 = edi.a($$4, edi.a(-64, 320, 8.0, -40.0)).d();
-      edh $$7 = edi.a($$6, $$5).f();
-      double $$8 = 0.083;
-      edh $$9 = edi.a($$3, edi.b(edi.a(0.083), $$5));
-      return edi.d($$9, $$7).a(-1.0, 1.0);
-   }
-
-   private static edh a(js<edh> $$0, js<esz.a> $$1, edh $$2) {
-      edh $$3 = a($$0, S);
-      edh $$4 = a($$0, N);
-      edh $$5 = edi.a($$1.b(edx.C), 8.0);
-      edh $$6 = edi.b(edi.a(4.0), $$5.e());
-      edh $$7 = edi.a($$1.b(edx.D), 0.6666666666666666);
-      edh $$8 = edi.a(edi.a(edi.a(0.27), $$7).a(-1.0, 1.0), edi.a(edi.a(1.5), edi.b(edi.a(-0.64), $$2)).a(0.0, 0.5));
-      edh $$9 = edi.a($$6, $$8);
-      edh $$10 = edi.c(edi.c($$9, a($$0, O)), edi.a($$3, $$4));
-      edh $$11 = a($$0, Q);
-      edh $$12 = edi.a($$11, -1000000.0, 0.03, edi.a(-1000000.0), $$11);
-      return edi.d($$10, $$12);
-   }
-
-   private static edh b(edh $$0) {
-      edh $$1 = edi.f($$0);
-      return edi.b(edi.a($$1), edi.a(0.64)).i();
-   }
-
-   protected static edu a(js<edh> $$0, js<esz.a> $$1, boolean $$2, boolean $$3) {
-      edh $$4 = edi.a($$1.b(edx.k), 0.5);
-      edh $$5 = edi.a($$1.b(edx.l), 0.67);
-      edh $$6 = edi.a($$1.b(edx.n), 0.7142857142857143);
-      edh $$7 = edi.a($$1.b(edx.m));
-      edh $$8 = a($$0, w);
-      edh $$9 = a($$0, x);
-      edh $$10 = edi.a($$8, $$9, 0.25, $$1.b($$2 ? edx.e : edx.a));
-      edh $$11 = edi.a($$8, $$9, 0.25, $$1.b($$2 ? edx.f : edx.b));
-      edh $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
-      edh $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
-      edh $$14 = b(edi.c($$12), $$13);
-      edh $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
-      edh $$16 = edi.c($$15, edi.b(edi.a(5.0), a($$0, O)));
-      edh $$17 = edi.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
-      edh $$18 = edi.c(b(a($$3, $$17)), a($$0, P));
-      edh $$19 = a($$0, v);
-      int $$20 = Stream.of(edy.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-ebm.e * 2);
-      int $$21 = Stream.of(edy.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-ebm.e * 2);
-      edh $$22 = a($$19, edi.b($$1.b(edx.E), 1.5, 1.5), $$20, $$21, 0);
-      float $$23 = 4.0F;
-      edh $$24 = a($$19, edi.b($$1.b(edx.F), 4.0, 4.0), $$20, $$21, 0).d();
-      edh $$25 = a($$19, edi.b($$1.b(edx.G), 4.0, 4.0), $$20, $$21, 0).d();
-      edh $$26 = edi.a(edi.a(-0.08F), edi.d($$24, $$25));
-      edh $$27 = edi.a($$1.b(edx.H));
-      return new edu(
-         $$4,
-         $$5,
-         $$6,
-         $$7,
-         $$10,
-         $$11,
-         a($$0, $$2 ? l : d),
-         a($$0, $$2 ? m : e),
-         $$13,
-         a($$0, f),
-         a($$3, edi.a($$14, edi.a(-0.703125)).a(-64.0, 64.0)),
-         $$18,
-         $$22,
-         $$26,
-         $$27
+   public static final class a {
+      public static Codec<edv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  edt.a.lenientOptionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  edu.a.fieldOf("selector").forGetter(edv.a::a),
+                  ays.l.fieldOf("event_delay").orElse(0).forGetter(edv.a::c)
+               )
+               .apply($$0, ($$0x, $$1, $$2) -> new edv.a((edt)$$0x.orElse(null), $$1, $$2, true))
       );
+      public static final String b = "listener";
+      @Nullable
+      edt c;
+      private int d;
+      final edu e;
+      private boolean f;
+
+      private a(@Nullable edt $$0, edu $$1, int $$2, boolean $$3) {
+         this.c = $$0;
+         this.d = $$2;
+         this.e = $$1;
+         this.f = $$3;
+      }
+
+      public a() {
+         this(null, new edu(), 0, false);
+      }
+
+      public edu a() {
+         return this.e;
+      }
+
+      @Nullable
+      public edt b() {
+         return this.c;
+      }
+
+      public void a(@Nullable edt $$0) {
+         this.c = $$0;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public void a(int $$0) {
+         this.d = $$0;
+      }
+
+      public void d() {
+         this.d = Math.max(0, this.d - 1);
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public void a(boolean $$0) {
+         this.f = $$0;
+      }
    }
 
-   private static edu b(js<edh> $$0, js<esz.a> $$1, edh $$2) {
-      edh $$3 = a($$0, w);
-      edh $$4 = a($$0, x);
-      edh $$5 = edi.a($$3, $$4, 0.25, $$1.b(edx.a));
-      edh $$6 = edi.a($$3, $$4, 0.25, $$1.b(edx.b));
-      edh $$7 = b($$2);
-      return new edu(edi.a(), edi.a(), edi.a(), edi.a(), $$5, $$6, edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), $$7, edi.a(), edi.a(), edi.a());
-   }
+   public static class b implements edo {
+      private final edv a;
 
-   private static edh a(boolean $$0, edh $$1) {
-      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
-   }
+      public b(edv $$0) {
+         this.a = $$0;
+      }
 
-   private static edh a(js<edh> $$0, int $$1, int $$2) {
-      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
-   }
+      @Override
+      public edq a() {
+         return this.a.gq().b();
+      }
 
-   private static edh a(edh $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
-   }
+      @Override
+      public int b() {
+         return this.a.gq().a();
+      }
 
-   protected static edu a(js<edh> $$0, js<esz.a> $$1) {
-      return b($$0, $$1, a($$0, 0, 128));
-   }
-
-   protected static edu b(js<edh> $$0, js<esz.a> $$1) {
-      return b($$0, $$1, a($$0, -64, 192));
-   }
-
-   protected static edu c(js<edh> $$0, js<esz.a> $$1) {
-      return b($$0, $$1, a(a($$0, A), 0, 256));
-   }
-
-   private static edh c(edh $$0) {
-      return a($$0, 0, 128);
-   }
-
-   protected static edu a(js<edh> $$0) {
-      edh $$1 = edi.c(edi.a(0L));
-      edh $$2 = b(c(a($$0, M)));
-      return new edu(
-         edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), $$1, edi.a(), edi.a(), c(edi.a($$1, edi.a(-0.703125))), $$2, edi.a(), edi.a(), edi.a()
-      );
-   }
-
-   protected static edu a() {
-      return new edu(edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a(), edi.a());
-   }
-
-   private static edh a(edh $$0, edh $$1) {
-      edh $$2 = edi.a(edi.b(), $$1, $$0);
-      return edi.b(edi.c($$2));
-   }
-
-   private static edh b(edh $$0, edh $$1) {
-      edh $$2 = edi.b($$1, $$0);
-      return edi.b(edi.a(4.0), $$2.h());
-   }
-
-   private static edh a(edh $$0, edh $$1, int $$2, int $$3, int $$4) {
-      return edi.a(edi.a($$0, (double)$$2, (double)($$3 + 1), $$1, edi.a((double)$$4)));
-   }
-
-   private static edh a(edh $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
-      edh $$10 = edi.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
-      edh $$9 = edi.a($$10, $$5, $$0);
-      edh $$11 = edi.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
-      return edi.a($$11, $$8, $$9);
-   }
-
-   protected static final class a {
-      protected static double a(double $$0) {
-         if ($$0 < -0.75) {
-            return 0.5;
-         } else if ($$0 < -0.5) {
-            return 0.75;
-         } else if ($$0 < 0.5) {
-            return 1.0;
+      @Override
+      public boolean a(arn $$0, js<edm> $$1, edm.a $$2, fcu $$3) {
+         edv.a $$4 = this.a.x();
+         edv.d $$5 = this.a.gq();
+         if ($$4.b() != null) {
+            return false;
+         } else if (!$$5.a($$1, $$2)) {
+            return false;
          } else {
-            return $$0 < 0.75 ? 2.0 : 3.0;
+            Optional<fcu> $$6 = $$5.b().a($$0);
+            if ($$6.isEmpty()) {
+               return false;
+            } else {
+               fcu $$7 = $$6.get();
+               if (!$$5.a($$0, jj.a((kc)$$3), $$1, $$2)) {
+                  return false;
+               } else if (a($$0, $$3, $$7)) {
+                  return false;
+               } else {
+                  this.a($$0, $$4, $$1, $$2, $$3, $$7);
+                  return true;
+               }
+            }
          }
       }
 
-      protected static double b(double $$0) {
-         if ($$0 < -0.5) {
-            return 0.75;
-         } else if ($$0 < 0.0) {
-            return 1.0;
-         } else {
-            return $$0 < 0.5 ? 1.5 : 2.0;
+      public void b(arn $$0, js<edm> $$1, edm.a $$2, fcu $$3) {
+         this.a.gq().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.x(), $$1, $$2, $$3, $$4));
+      }
+
+      private void a(arn $$0, edv.a $$1, js<edm> $$2, edm.a $$3, fcu $$4, fcu $$5) {
+         $$1.e.a(new edt($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.ae());
+      }
+
+      public static float a(jj $$0, jj $$1) {
+         return (float)Math.sqrt($$0.j($$1));
+      }
+
+      private static boolean a(dhp $$0, fcu $$1, fcu $$2) {
+         fcu $$3 = new fcu((double)azk.a($$1.d) + 0.5, (double)azk.a($$1.e) + 0.5, (double)azk.a($$1.f) + 0.5);
+         fcu $$4 = new fcu((double)azk.a($$2.d) + 0.5, (double)azk.a($$2.e) + 0.5, (double)azk.a($$2.f) + 0.5);
+
+         for (jo $$5 : jo.values()) {
+            fcu $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new dgx($$6, $$4, $$0x -> $$0x.a(awz.bs))).d() != fcs.a.b) {
+               return false;
+            }
          }
+
+         return true;
+      }
+   }
+
+   public interface c {
+      static void a(dhp $$0, edv.a $$1, edv.d $$2) {
+         if ($$0 instanceof arn $$3) {
+            if ($$1.c == null) {
+               a($$3, $$1, $$2);
+            }
+
+            if ($$1.c != null) {
+               boolean $$5 = $$1.c() > 0;
+               b($$3, $$1, $$2);
+               $$1.d();
+               if ($$1.c() <= 0) {
+                  $$5 = a($$3, $$1, $$2, $$1.c);
+               }
+
+               if ($$5) {
+                  $$2.e();
+               }
+            }
+         }
+      }
+
+      private static void a(arn $$0, edv.a $$1, edv.d $$2) {
+         $$1.a().a($$0.ae()).ifPresent($$3 -> {
+            $$1.a($$3);
+            fcu $$4 = $$3.c();
+            $$1.a($$2.a($$3.b()));
+            $$0.a(new mb($$2.b(), $$1.c()), $$4.d, $$4.e, $$4.f, 1, 0.0, 0.0, 0.0, 0.0);
+            $$2.e();
+            $$1.a().a();
+         });
+      }
+
+      private static void b(arn $$0, edv.a $$1, edv.d $$2) {
+         if ($$1.e()) {
+            if ($$1.c == null) {
+               $$1.a(false);
+            } else {
+               fcu $$3 = $$1.c.c();
+               edq $$4 = $$2.b();
+               fcu $$5 = $$4.a($$0).orElse($$3);
+               int $$6 = $$1.c();
+               int $$7 = $$2.a($$1.c.b());
+               double $$8 = 1.0 - (double)$$6 / (double)$$7;
+               double $$9 = azk.d($$8, $$3.d, $$5.d);
+               double $$10 = azk.d($$8, $$3.e, $$5.e);
+               double $$11 = azk.d($$8, $$3.f, $$5.f);
+               boolean $$12 = $$0.a(new mb($$4, $$6), $$9, $$10, $$11, 1, 0.0, 0.0, 0.0, 0.0) > 0;
+               if ($$12) {
+                  $$1.a(false);
+               }
+            }
+         }
+      }
+
+      private static boolean a(arn $$0, edv.a $$1, edv.d $$2, edt $$3) {
+         jj $$4 = jj.a((kc)$$3.c());
+         jj $$5 = $$2.b().a($$0).map(jj::a).orElse($$4);
+         if ($$2.f() && !a($$0, $$5)) {
+            return false;
+         } else {
+            $$2.a($$0, $$4, $$3.a(), $$3.a($$0).orElse(null), $$3.b($$0).orElse(null), edv.b.a($$4, $$5));
+            $$1.a(null);
+            return true;
+         }
+      }
+
+      private static boolean a(dhp $$0, jj $$1) {
+         dgw $$2 = new dgw($$1);
+
+         for (int $$3 = $$2.h - 1; $$3 <= $$2.h + 1; $$3++) {
+            for (int $$4 = $$2.i - 1; $$4 <= $$2.i + 1; $$4++) {
+               if (!$$0.a(dgw.c($$3, $$4)) || $$0.S().a($$3, $$4) == null) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public interface d {
+      int a();
+
+      edq b();
+
+      boolean a(arn var1, jj var2, js<edm> var3, edm.a var4);
+
+      void a(arn var1, jj var2, js<edm> var3, @Nullable bvs var4, @Nullable bvs var5, float var6);
+
+      default axp<edm> c() {
+         return axg.a;
+      }
+
+      default boolean d() {
+         return false;
+      }
+
+      default boolean f() {
+         return false;
+      }
+
+      default int a(float $$0) {
+         return azk.d($$0);
+      }
+
+      default boolean a(js<edm> $$0, edm.a $$1) {
+         if (!$$0.a(this.c())) {
+            return false;
+         } else {
+            bvs $$2 = $$1.a();
+            if ($$2 != null) {
+               if ($$2.U_()) {
+                  return false;
+               }
+
+               if ($$2.ce() && $$0.a(axg.d)) {
+                  if (this.d() && $$2 instanceof aro $$3) {
+                     ap.ab.a($$3);
+                  }
+
+                  return false;
+               }
+
+               if ($$2.bh()) {
+                  return false;
+               }
+            }
+
+            return $$1.b() != null ? !$$1.b().a(awz.bt) : true;
+         }
+      }
+
+      default void e() {
       }
    }
 }

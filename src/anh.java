@@ -1,425 +1,143 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class anh {
-   static final Dynamic3CommandExceptionType a = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wp.b("commands.item.target.not_a_container", $$0, $$1, $$2)
-   );
-   static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wp.b("commands.item.source.not_a_container", $$0, $$1, $$2)
-   );
-   static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wp.b("commands.item.target.no_such_slot", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wp.b("commands.item.source.no_such_slot", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wp.b("commands.item.target.no_changes", $$0));
-   private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> wp.b("commands.item.target.no_changed.known_item", $$0, $$1)
-   );
-   private static final SuggestionProvider<ex> g = ($$0, $$1) -> {
-      ale.a $$2 = ((ex)$$0.getSource()).l().bc();
-      return fc.a($$2.a(mc.bj), $$1);
-   };
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.experience.set.points.invalid"));
 
-   public static void a(CommandDispatcher<ex> $$0, et $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("item").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ((LiteralArgumentBuilder)ey.a("replace")
+   public static void a(CommandDispatcher<ex> $$0) {
+      LiteralCommandNode<ex> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("experience").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ey.a("add")
                         .then(
-                           ey.a("block")
+                           ey.a("target", fk.d())
                               .then(
-                                 ey.a("pos", gt.a())
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("amount", IntegerArgumentType.integer())
+                                          .executes(
+                                             $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
+                                          ))
+                                       .then(
+                                          ey.a("points")
+                                             .executes(
+                                                $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
+                                             )
+                                       ))
                                     .then(
-                                       ((RequiredArgumentBuilder)ey.a("slot", gf.a())
-                                             .then(
-                                                ey.a("with")
-                                                   .then(
-                                                      ((RequiredArgumentBuilder)ey.a("item", hg.a($$1))
-                                                            .executes(
-                                                               $$0x -> a(
-                                                                     (ex)$$0x.getSource(),
-                                                                     gt.a($$0x, "pos"),
-                                                                     gf.a($$0x, "slot"),
-                                                                     hg.a($$0x, "item").a(1, false)
-                                                                  )
-                                                            ))
-                                                         .then(
-                                                            ey.a("count", IntegerArgumentType.integer(1, 99))
-                                                               .executes(
-                                                                  $$0x -> a(
-                                                                        (ex)$$0x.getSource(),
-                                                                        gt.a($$0x, "pos"),
-                                                                        gf.a($$0x, "slot"),
-                                                                        hg.a($$0x, "item").a(IntegerArgumentType.getInteger($$0x, "count"), true)
-                                                                     )
-                                                               )
-                                                         )
-                                                   )
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)ey.a("from")
-                                                   .then(
-                                                      ey.a("block")
-                                                         .then(
-                                                            ey.a("source", gt.a())
-                                                               .then(
-                                                                  ((RequiredArgumentBuilder)ey.a("sourceSlot", gf.a())
-                                                                        .executes(
-                                                                           $$0x -> a(
-                                                                                 (ex)$$0x.getSource(),
-                                                                                 gt.a($$0x, "source"),
-                                                                                 gf.a($$0x, "sourceSlot"),
-                                                                                 gt.a($$0x, "pos"),
-                                                                                 gf.a($$0x, "slot")
-                                                                              )
-                                                                        ))
-                                                                     .then(
-                                                                        ey.a("modifier", fz.b($$1))
-                                                                           .suggests(g)
-                                                                           .executes(
-                                                                              $$0x -> a(
-                                                                                    (ex)$$0x.getSource(),
-                                                                                    gt.a($$0x, "source"),
-                                                                                    gf.a($$0x, "sourceSlot"),
-                                                                                    gt.a($$0x, "pos"),
-                                                                                    gf.a($$0x, "slot"),
-                                                                                    fz.b($$0x, "modifier")
-                                                                                 )
-                                                                           )
-                                                                     )
-                                                               )
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ey.a("entity")
-                                                      .then(
-                                                         ey.a("source", fk.a())
-                                                            .then(
-                                                               ((RequiredArgumentBuilder)ey.a("sourceSlot", gf.a())
-                                                                     .executes(
-                                                                        $$0x -> a(
-                                                                              (ex)$$0x.getSource(),
-                                                                              fk.a($$0x, "source"),
-                                                                              gf.a($$0x, "sourceSlot"),
-                                                                              gt.a($$0x, "pos"),
-                                                                              gf.a($$0x, "slot")
-                                                                           )
-                                                                     ))
-                                                                  .then(
-                                                                     ey.a("modifier", fz.b($$1))
-                                                                        .suggests(g)
-                                                                        .executes(
-                                                                           $$0x -> a(
-                                                                                 (ex)$$0x.getSource(),
-                                                                                 fk.a($$0x, "source"),
-                                                                                 gf.a($$0x, "sourceSlot"),
-                                                                                 gt.a($$0x, "pos"),
-                                                                                 gf.a($$0x, "slot"),
-                                                                                 fz.b($$0x, "modifier")
-                                                                              )
-                                                                        )
-                                                                  )
-                                                            )
-                                                      )
-                                                )
+                                       ey.a("levels")
+                                          .executes(
+                                             $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.b)
                                           )
                                     )
                               )
-                        ))
+                        )
+                  ))
+               .then(
+                  ey.a("set")
                      .then(
-                        ey.a("entity")
+                        ey.a("target", fk.d())
                            .then(
-                              ey.a("targets", fk.b())
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("amount", IntegerArgumentType.integer(0))
+                                       .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)))
+                                    .then(
+                                       ey.a("points")
+                                          .executes(
+                                             $$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.a)
+                                          )
+                                    ))
                                  .then(
-                                    ((RequiredArgumentBuilder)ey.a("slot", gf.a())
-                                          .then(
-                                             ey.a("with")
-                                                .then(
-                                                   ((RequiredArgumentBuilder)ey.a("item", hg.a($$1))
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ex)$$0x.getSource(),
-                                                                  fk.b($$0x, "targets"),
-                                                                  gf.a($$0x, "slot"),
-                                                                  hg.a($$0x, "item").a(1, false)
-                                                               )
-                                                         ))
-                                                      .then(
-                                                         ey.a("count", IntegerArgumentType.integer(1, 99))
-                                                            .executes(
-                                                               $$0x -> a(
-                                                                     (ex)$$0x.getSource(),
-                                                                     fk.b($$0x, "targets"),
-                                                                     gf.a($$0x, "slot"),
-                                                                     hg.a($$0x, "item").a(IntegerArgumentType.getInteger($$0x, "count"), true)
-                                                                  )
-                                                            )
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          ((LiteralArgumentBuilder)ey.a("from")
-                                                .then(
-                                                   ey.a("block")
-                                                      .then(
-                                                         ey.a("source", gt.a())
-                                                            .then(
-                                                               ((RequiredArgumentBuilder)ey.a("sourceSlot", gf.a())
-                                                                     .executes(
-                                                                        $$0x -> a(
-                                                                              (ex)$$0x.getSource(),
-                                                                              gt.a($$0x, "source"),
-                                                                              gf.a($$0x, "sourceSlot"),
-                                                                              fk.b($$0x, "targets"),
-                                                                              gf.a($$0x, "slot")
-                                                                           )
-                                                                     ))
-                                                                  .then(
-                                                                     ey.a("modifier", fz.b($$1))
-                                                                        .suggests(g)
-                                                                        .executes(
-                                                                           $$0x -> a(
-                                                                                 (ex)$$0x.getSource(),
-                                                                                 gt.a($$0x, "source"),
-                                                                                 gf.a($$0x, "sourceSlot"),
-                                                                                 fk.b($$0x, "targets"),
-                                                                                 gf.a($$0x, "slot"),
-                                                                                 fz.b($$0x, "modifier")
-                                                                              )
-                                                                        )
-                                                                  )
-                                                            )
-                                                      )
-                                                ))
-                                             .then(
-                                                ey.a("entity")
-                                                   .then(
-                                                      ey.a("source", fk.a())
-                                                         .then(
-                                                            ((RequiredArgumentBuilder)ey.a("sourceSlot", gf.a())
-                                                                  .executes(
-                                                                     $$0x -> a(
-                                                                           (ex)$$0x.getSource(),
-                                                                           fk.a($$0x, "source"),
-                                                                           gf.a($$0x, "sourceSlot"),
-                                                                           fk.b($$0x, "targets"),
-                                                                           gf.a($$0x, "slot")
-                                                                        )
-                                                                  ))
-                                                               .then(
-                                                                  ey.a("modifier", fz.b($$1))
-                                                                     .suggests(g)
-                                                                     .executes(
-                                                                        $$0x -> a(
-                                                                              (ex)$$0x.getSource(),
-                                                                              fk.a($$0x, "source"),
-                                                                              gf.a($$0x, "sourceSlot"),
-                                                                              fk.b($$0x, "targets"),
-                                                                              gf.a($$0x, "slot"),
-                                                                              fz.b($$0x, "modifier")
-                                                                           )
-                                                                     )
-                                                               )
-                                                         )
-                                                   )
-                                             )
-                                       )
+                                    ey.a("levels")
+                                       .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anh.a.b))
                                  )
                            )
                      )
                ))
             .then(
-               ((LiteralArgumentBuilder)ey.a("modify")
-                     .then(
-                        ey.a("block")
-                           .then(
-                              ey.a("pos", gt.a())
-                                 .then(
-                                    ey.a("slot", gf.a())
-                                       .then(
-                                          ey.a("modifier", fz.b($$1))
-                                             .suggests(g)
-                                             .executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "pos"), gf.a($$0x, "slot"), fz.b($$0x, "modifier")))
-                                       )
-                                 )
-                           )
-                     ))
+               ey.a("query")
                   .then(
-                     ey.a("entity")
-                        .then(
-                           ey.a("targets", fk.b())
-                              .then(
-                                 ey.a("slot", gf.a())
-                                    .then(
-                                       ey.a("modifier", fz.b($$1))
-                                          .suggests(g)
-                                          .executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"), gf.a($$0x, "slot"), fz.b($$0x, "modifier")))
-                                    )
-                              )
-                        )
+                     ((RequiredArgumentBuilder)ey.a("target", fk.c())
+                           .then(ey.a("points").executes($$0x -> a((ex)$$0x.getSource(), fk.e($$0x, "target"), anh.a.a))))
+                        .then(ey.a("levels").executes($$0x -> a((ex)$$0x.getSource(), fk.e($$0x, "target"), anh.a.b)))
                   )
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ex $$0, ji $$1, int $$2, jr<eyc> $$3) throws CommandSyntaxException {
-      bsr $$4 = a($$0, $$1, a);
-      if ($$2 >= 0 && $$2 < $$4.b()) {
-         cxh $$5 = a($$0, $$3, $$4.a($$2));
-         $$4.a($$2, $$5);
-         $$0.a(() -> wp.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.K()), true);
-         return 1;
-      } else {
-         throw c.create($$2);
+   private static int a(ex $$0, aro $$1, anh.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> wv.a("commands.experience.query." + $$2.e, $$1.m_(), $$3), false);
+      return $$3;
+   }
+
+   private static int a(ex $$0, Collection<? extends aro> $$1, int $$2, anh.a $$3) {
+      for (aro $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wv.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wv.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(ex $$0, Collection<? extends bva> $$1, int $$2, jr<eyc> $$3) throws CommandSyntaxException {
-      Map<bva, cxh> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
+   private static int b(ex $$0, Collection<? extends aro> $$1, int $$2, anh.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-      for (bva $$5 : $$1) {
-         bwq $$6 = $$5.a_($$2);
-         if ($$6 != bwq.a) {
-            cxh $$7 = a($$0, $$3, $$6.a().v());
-            if ($$6.a($$7)) {
-               $$4.put($$5, $$7);
-               if ($$5 instanceof are) {
-                  ((are)$$5).bQ.d();
-               }
-            }
+      for (aro $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
          }
       }
 
-      if ($$4.isEmpty()) {
-         throw e.create($$2);
+      if ($$4 == 0) {
+         throw a.create();
       } else {
-         if ($$4.size() == 1) {
-            Entry<bva, cxh> $$8 = $$4.entrySet().iterator().next();
-            $$0.a(() -> wp.a("commands.item.entity.set.success.single", $$8.getKey().m_(), $$8.getValue().K()), true);
+         if ($$1.size() == 1) {
+            $$0.a(() -> wv.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
          } else {
-            $$0.a(() -> wp.a("commands.item.entity.set.success.multiple", $$4.size()), true);
+            $$0.a(() -> wv.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
 
-         return $$4.size();
+         return $$1.size();
       }
    }
 
-   private static int a(ex $$0, ji $$1, int $$2, cxh $$3) throws CommandSyntaxException {
-      bsr $$4 = a($$0, $$1, a);
-      if ($$2 >= 0 && $$2 < $$4.b()) {
-         $$4.a($$2, $$3);
-         $$0.a(() -> wp.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$3.K()), true);
-         return 1;
-      } else {
-         throw c.create($$2);
-      }
-   }
-
-   static bsr a(ex $$0, ji $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
-      dus $$3 = $$0.e().c_($$1);
-      if (!($$3 instanceof bsr)) {
-         throw $$2.create($$1.u(), $$1.v(), $$1.w());
-      } else {
-         return (bsr)$$3;
-      }
-   }
-
-   private static int a(ex $$0, Collection<? extends bva> $$1, int $$2, cxh $$3) throws CommandSyntaxException {
-      List<bva> $$4 = Lists.newArrayListWithCapacity($$1.size());
-
-      for (bva $$5 : $$1) {
-         bwq $$6 = $$5.a_($$2);
-         if ($$6 != bwq.a && $$6.a($$3.v())) {
-            $$4.add($$5);
-            if ($$5 instanceof are) {
-               ((are)$$5).bQ.d();
-            }
-         }
-      }
-
-      if ($$4.isEmpty()) {
-         throw f.create($$3.K(), $$2);
-      } else {
-         if ($$4.size() == 1) {
-            $$0.a(() -> wp.a("commands.item.entity.set.success.single", $$4.iterator().next().m_(), $$3.K()), true);
+   static enum a {
+      a("points", cqi::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.gs()) {
+            return false;
          } else {
-            $$0.a(() -> wp.a("commands.item.entity.set.success.multiple", $$4.size(), $$3.K()), true);
+            $$0.a($$1);
+            return true;
          }
+      }, $$0 -> azk.d($$0.cf * (float)$$0.gs())),
+      b("levels", aro::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.cd);
 
-         return $$4.size();
-      }
-   }
+      public final BiConsumer<aro, Integer> c;
+      public final BiPredicate<aro, Integer> d;
+      public final String e;
+      final ToIntFunction<aro> f;
 
-   private static int a(ex $$0, ji $$1, int $$2, Collection<? extends bva> $$3, int $$4) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$0, $$1, $$2));
-   }
-
-   private static int a(ex $$0, ji $$1, int $$2, Collection<? extends bva> $$3, int $$4, jr<eyc> $$5) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
-   }
-
-   private static int a(ex $$0, ji $$1, int $$2, ji $$3, int $$4) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$0, $$1, $$2));
-   }
-
-   private static int a(ex $$0, ji $$1, int $$2, ji $$3, int $$4, jr<eyc> $$5) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
-   }
-
-   private static int a(ex $$0, bva $$1, int $$2, ji $$3, int $$4) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$1, $$2));
-   }
-
-   private static int a(ex $$0, bva $$1, int $$2, ji $$3, int $$4, jr<eyc> $$5) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
-   }
-
-   private static int a(ex $$0, bva $$1, int $$2, Collection<? extends bva> $$3, int $$4) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$1, $$2));
-   }
-
-   private static int a(ex $$0, bva $$1, int $$2, Collection<? extends bva> $$3, int $$4, jr<eyc> $$5) throws CommandSyntaxException {
-      return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
-   }
-
-   private static cxh a(ex $$0, jr<eyc> $$1, cxh $$2) {
-      ard $$3 = $$0.e();
-      ewr $$4 = new ewr.a($$3).a(ezi.f, $$0.d()).b(ezi.a, $$0.f()).a(ezh.d);
-      ewo $$5 = new ewo.a($$4).a(Optional.empty());
-      $$5.b(ewo.a($$1.a()));
-      cxh $$6 = $$1.a().apply($$2, $$5);
-      $$6.f($$6.k());
-      return $$6;
-   }
-
-   private static cxh a(bva $$0, int $$1) throws CommandSyntaxException {
-      bwq $$2 = $$0.a_($$1);
-      if ($$2 == bwq.a) {
-         throw d.create($$1);
-      } else {
-         return $$2.a().v();
-      }
-   }
-
-   private static cxh a(ex $$0, ji $$1, int $$2) throws CommandSyntaxException {
-      bsr $$3 = a($$0, $$1, b);
-      if ($$2 >= 0 && $$2 < $$3.b()) {
-         return $$3.a($$2).v();
-      } else {
-         throw d.create($$2);
+      private a(final String $$0, final BiConsumer<aro, Integer> $$1, final BiPredicate<aro, Integer> $$2, final ToIntFunction<aro> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

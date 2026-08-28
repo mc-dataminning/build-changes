@@ -1,42 +1,35 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.Set;
 
-public class arg extends aql {
-   public static final int a = 33;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final dhw c;
+public final class arg {
+   private final Object2BooleanMap<aro> a = new Object2BooleanOpenHashMap();
 
-   public arg(dhw $$0) {
-      super(34, 16, 256);
-      this.c = $$0;
-      $$0.b(this::b);
-      this.b.defaultReturnValue((byte)33);
+   public Set<aro> a() {
+      return this.a.keySet();
    }
 
-   @Override
-   protected int b(long $$0) {
-      return this.c.a($$0, true);
+   public void a(aro $$0, boolean $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public int a(dgg $$0) {
-      return this.c($$0.a());
+   public void a(aro $$0) {
+      this.a.removeBoolean($$0);
    }
 
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
+   public void b(aro $$0) {
+      this.a.replace($$0, true);
    }
 
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
+   public void c(aro $$0) {
+      this.a.replace($$0, false);
    }
 
-   public void a() {
-      this.b(Integer.MAX_VALUE);
+   public boolean d(aro $$0) {
+      return this.a.getOrDefault($$0, true);
+   }
+
+   public boolean e(aro $$0) {
+      return this.a.getBoolean($$0);
    }
 }

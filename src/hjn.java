@@ -1,66 +1,130 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class hjn implements JsonDeserializer<hjm> {
-   private static final bsb a = brz.a(1.0F);
+public interface hjn extends hjk {
+   boolean c = true;
+   hjn.a d = hjn.a.b;
 
-   public hjm a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = ayp.m($$0, "entry");
-      boolean $$4 = ayp.a($$3, "replace", false);
-      String $$5 = ayp.a($$3, "subtitle", null);
-      List<hjl> $$6 = this.a($$3);
-      return new hjm($$6, $$4, $$5);
+   his a(gpr var1, hjb var2, hji var3, boolean var4, boolean var5, gpp var6);
+
+   @Nullable
+   default Boolean a() {
+      return null;
    }
 
-   private List<hjl> a(JsonObject $$0) {
-      List<hjl> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = ayp.v($$0, "sounds");
+   @Nullable
+   default hjn.a b() {
+      return null;
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (ayp.a($$4)) {
-               aku $$5 = aku.a(ayp.a($$4, "sound"));
-               $$1.add(new hjl($$5, a, a, 1, hjl.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(ayp.m($$4, "sound")));
+   @Nullable
+   default gpp e() {
+      return null;
+   }
+
+   default gpr.a d() {
+      return gpr.a.a;
+   }
+
+   @Nullable
+   default hjn c() {
+      return null;
+   }
+
+   static his a(hjn $$0, hjb $$1, hji $$2) {
+      gpr $$3 = a($$0, $$1.b());
+      boolean $$4 = a($$0);
+      boolean $$5 = b($$0).a();
+      gpp $$6 = c($$0);
+      return $$0.a($$3, $$1, $$2, $$4, $$5, $$6);
+   }
+
+   static gpr a(hjn $$0, hjd $$1) {
+      gpr.c $$2 = new gpr.c();
+
+      while ($$0 != null) {
+         $$2.a($$0.d());
+         $$0 = $$0.c();
+      }
+
+      return $$2.a($$1);
+   }
+
+   static boolean a(hjn $$0) {
+      while ($$0 != null) {
+         Boolean $$1 = $$0.a();
+         if ($$1 != null) {
+            return $$1;
+         }
+
+         $$0 = $$0.c();
+      }
+
+      return true;
+   }
+
+   static hjn.a b(hjn $$0) {
+      while ($$0 != null) {
+         hjn.a $$1 = $$0.b();
+         if ($$1 != null) {
+            return $$1;
+         }
+
+         $$0 = $$0.c();
+      }
+
+      return d;
+   }
+
+   static gpo a(hjn $$0, cxw $$1) {
+      while ($$0 != null) {
+         gpp $$2 = $$0.e();
+         if ($$2 != null) {
+            gpo $$3 = $$2.a($$1);
+            if ($$3 != gpo.a) {
+               return $$3;
             }
          }
+
+         $$0 = $$0.c();
       }
 
-      return $$1;
+      return gpo.a;
    }
 
-   private hjl b(JsonObject $$0) {
-      aku $$1 = aku.a(ayp.i($$0, "name"));
-      hjl.a $$2 = this.a($$0, hjl.a.a);
-      float $$3 = ayp.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = ayp.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = ayp.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = ayp.a($$0, "preload", false);
-      boolean $$7 = ayp.a($$0, "stream", false);
-      int $$8 = ayp.a($$0, "attenuation_distance", 16);
-      return new hjl($$1, brz.a($$3), brz.a($$4), $$5, $$2, $$7, $$6, $$8);
+   static gpp c(hjn $$0) {
+      gpo $$1 = a($$0, cxw.b);
+      gpo $$2 = a($$0, cxw.c);
+      gpo $$3 = a($$0, cxw.d);
+      gpo $$4 = a($$0, cxw.e);
+      gpo $$5 = a($$0, cxw.f);
+      gpo $$6 = a($$0, cxw.g);
+      gpo $$7 = a($$0, cxw.h);
+      gpo $$8 = a($$0, cxw.i);
+      return new gpp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   private hjl.a a(JsonObject $$0, hjl.a $$1) {
-      hjl.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = hjl.a.a(ayp.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
+   public static enum a {
+      a("front"),
+      b("side");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
 
-      return $$2;
+      public static hjn.a a(String $$0) {
+         for (hjn.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         throw new IllegalArgumentException("Invalid gui light: " + $$0);
+      }
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

@@ -1,5 +1,8 @@
-public interface hil {
-   hfr a(hhy var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   hfr a(String var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hil {
 }

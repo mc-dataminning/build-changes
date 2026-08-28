@@ -1,68 +1,32 @@
-public class gbn<S extends haa> extends gdn<S> {
-   private static final String x = "left_sleeve";
-   private static final String y = "right_sleeve";
-   private static final String z = "left_pants";
-   private static final String A = "right_pants";
-   public final ggc a = this.s.b("left_sleeve");
-   public final ggc b = this.r.b("right_sleeve");
-   public final ggc c = this.u.b("left_pants");
-   public final ggc d = this.t.b("right_pants");
-   public final ggc e = this.q.b("jacket");
-   public final ggc f = this.o.b("right_ear");
-   public final ggc g = this.o.b("left_ear");
+import java.util.Map;
+import java.util.Optional;
 
-   public gbn(ggc $$0) {
-      super($$0, gnh::j);
+public interface gbn {
+   Map<Optional<alc<eov>>, gbn> a = Map.of(Optional.of(eow.b), ($$0, $$1) -> {
+      eak $$2 = $$1.e().a();
+      kg $$3 = $$1.a();
+      jt<dis> $$4 = $$3.f(me.aM);
+      jt<epm> $$5 = $$3.f(me.bb);
+      jt<eok> $$6 = $$3.f(me.aY);
+      return new fvg($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof eeg ? ((eeg)$$2).h() : enj.a($$4, $$5, $$6));
+   }, Optional.of(eow.e), ($$0, $$1) -> new fvf($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+
+   fwf createEditScreen(gbg var1, gbq var2);
+
+   static gbq.a a(enj $$0) {
+      return ($$1, $$2) -> {
+         eak $$3 = new eeg($$0);
+         return $$2.a($$1, $$3);
+      };
    }
 
-   public static ggk a(ggg $$0) {
-      ggk $$1 = gef.a($$0, false);
-      ggm $$2 = $$1.a();
-      $$2.a("body", ggh.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gge.a);
-      ggm $$3 = a($$0, $$1);
-      $$3.a("hat");
-      return $$1;
-   }
-
-   public static ggm a(ggg $$0, ggk $$1) {
-      ggm $$2 = $$1.a();
-      ggm $$3 = $$2.a(
-         "head",
-         ggh.c()
-            .a(0, 0)
-            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
-            .a(31, 1)
-            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
-            .a(2, 4)
-            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
-            .a(2, 0)
-            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
-         gge.a
-      );
-      $$3.a("left_ear", ggh.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gge.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
-      $$3.a("right_ear", ggh.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gge.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
-      return $$3;
-   }
-
-   @Override
-   public void a(S $$0) {
-      super.a($$0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      float $$3 = (float) (Math.PI / 6);
-      float $$4 = $$0.u * 0.1F + $$1 * 0.5F;
-      float $$5 = 0.08F + $$2 * 0.4F;
-      this.g.g = (float) (-Math.PI / 6) - ayz.b($$4 * 1.2F) * $$5;
-      this.f.g = (float) (Math.PI / 6) + ayz.b($$4) * $$5;
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+   private static gbq.a a(js<dis> $$0) {
+      return ($$1, $$2) -> {
+         kf<eeq> $$3 = $$1.f(me.aV);
+         js<eeq> $$4 = $$3.b(eeq.c);
+         diw $$5 = new djd($$0);
+         eak $$6 = new eeo($$5, $$4);
+         return $$2.a($$1, $$6);
+      };
    }
 }

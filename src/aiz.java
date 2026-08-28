@@ -1,27 +1,41 @@
-import java.util.UUID;
+public record aiz(int b, ajm c) implements zc<aiy> {
+   public static final yt<vr, aiz> a = zc.a(aiz::a, aiz::new);
+   private static final int d = 1048576;
 
-public record aiz(String b, UUID c) implements yw<aix> {
-   public static final yn<vl, aiz> a = yw.a(aiz::a, aiz::new);
-
-   private aiz(vl $$0) {
-      this($$0.d(16), $$0.n());
+   private aiz(vr $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+   private static ajm a(ald $$0, vr $$1) {
+      return b($$0, $$1);
+   }
+
+   private static ajo b(ald $$0, vr $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.k($$2);
+         return new ajo($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
    }
 
    @Override
-   public yy<aiz> a() {
-      return aiv.g;
+   public ze<aiz> a() {
+      return aje.a;
    }
 
-   public void a(aix $$0) {
+   public void a(aiy $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
+   public ajm e() {
       return this.c;
    }
 }

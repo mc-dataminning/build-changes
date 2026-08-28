@@ -1,20 +1,14 @@
-public record afg(int b) implements yw<abl> {
-   public static final yn<vl, afg> a = yw.a(afg::a, afg::new);
+import io.netty.buffer.ByteBuf;
 
-   private afg(vl $$0) {
-      this($$0.l());
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-   }
+public record afg(int b) implements zc<abr> {
+   public static final yt<ByteBuf, afg> a = yt.a(yr.h, afg::b, afg::new);
 
    @Override
-   public yy<afg> a() {
-      return agd.aP;
+   public ze<afg> a() {
+      return agk.aL;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 }

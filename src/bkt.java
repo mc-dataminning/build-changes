@@ -4,15 +4,29 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkt extends bju {
+public class bkt extends bkj {
    public bkt(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:panda", () -> bjv.a($$0));
-      $$0.register($$1, "minecraft:pillager", $$1x -> DSL.optionalFields("Inventory", DSL.list(bic.t.in($$0)), bjv.a($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         biq.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(biq.C.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(biq.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", biq.E.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(biq.u.in($$0))))
+               )
+            )
+      );
    }
 }

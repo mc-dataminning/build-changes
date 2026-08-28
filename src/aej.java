@@ -1,37 +1,36 @@
-public class aej implements yw<abl> {
-   public static final yn<vl, aej> a = yw.a(aej::a, aej::new);
-   private final double b;
-   private final double c;
+public record aej(agh e, byte f) implements zc<abr> {
+   public static final yt<wg, aej> a = zc.a(aej::a, aej::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aej(dzh $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+   private aej(wg $$0) {
+      this(new agh($$0), $$0.readByte());
    }
 
-   private aej(vl $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wg $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public yy<aej> a() {
-      return agd.au;
+   public ze<aej> a() {
+      return agk.ap;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.c;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public double e() {
-      return this.b;
+   public agh b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

@@ -1,31 +1,17 @@
-public record aai(int c, euk d, float e) implements zz {
-   public static final yn<vl, aai> a = zz.a(aai::a, aai::new);
-   public static final zz.b<aai> b = zz.a("debug/path");
-
-   private aai(vl $$0) {
-      this($$0.readInt(), euk.b($$0), $$0.readFloat());
-   }
-
-   private void a(vl $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
-   }
+public record aai(edq c, int d) implements aaf {
+   public static final yt<wg, aai> a = yt.a(edq.d, aai::b, yr.h, aai::c, aai::new);
+   public static final aaf.b<aai> b = aaf.a("debug/game_event_listeners");
 
    @Override
-   public zz.b<aai> a() {
+   public aaf.b<aai> a() {
       return b;
    }
 
-   public int b() {
+   public edq b() {
       return this.c;
    }
 
-   public euk c() {
+   public int c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

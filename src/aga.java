@@ -1,32 +1,18 @@
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record aga(jr<ebm> a, akt<dgz> b, long c, dgw d, @Nullable dgw e, boolean f, boolean g, Optional<jq> h, int i, int j) {
-   public aga(wa $$0) {
-      this(
-         ebm.i.decode($$0),
-         $$0.a(mc.bg),
-         $$0.readLong(),
-         dgw.a($$0.readByte()),
-         dgw.b($$0.readByte()),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(vl::h),
-         $$0.l(),
-         $$0.l()
-      );
+public record aga(wv b, Optional<kn> c) implements zc<abr> {
+   public static final yt<wg, aga> a = yt.a(wx.b, aga::b, yr.a(kn.h), aga::e, aga::new);
+
+   @Override
+   public ze<aga> a() {
+      return agk.be;
    }
 
-   public void a(wa $$0) {
-      ebm.i.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.l(this.d.a());
-      $$0.l(dgw.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, vl::a);
-      $$0.c(this.i);
-      $$0.c(this.j);
+   public void a(abr $$0) {
+      $$0.a(this);
+   }
+
+   public Optional<kn> e() {
+      return this.c;
    }
 }

@@ -1,23 +1,12 @@
-import io.netty.buffer.ByteBuf;
-
-public class afn implements yw<abl> {
-   public static final afn a = new afn();
-   public static final yn<ByteBuf, afn> b = yn.a(a);
-
-   private afn() {
-   }
+public record afn(wv b) implements zc<abr> {
+   public static final yt<wg, afn> a = yt.a(wx.d, afn::b, afn::new);
 
    @Override
-   public yy<afn> a() {
-      return agd.aW;
+   public ze<afn> a() {
+      return agk.aR;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

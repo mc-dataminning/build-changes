@@ -1,81 +1,66 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class grk implements gqy.a {
-   private final fmg a;
+public class grk implements dgs {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final grj[] c;
+   protected final dhp d;
 
-   public grk(fmg $$0) {
-      this.a = $$0;
+   grk(dhp $$0, int $$1, int $$2, grj[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      dgf $$6 = this.a.t.dU();
-      ji $$7 = ji.a($$2, $$3, $$4);
+   public dym a_(jj $$0) {
+      return this.a(kl.a($$0.u()), kl.a($$0.w())).b($$0);
+   }
 
-      for (ji $$8 : ji.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dxq $$9 = $$6.a_($$8);
-         if (!$$9.a(dkg.a)) {
-            fcr $$10 = $$9.f($$6, $$8);
+   @Override
+   public eut b_(jj $$0) {
+      return this.a(kl.a($$0.u()), kl.a($$0.w())).b($$0).y();
+   }
 
-            for (fbs $$11 : $$10.e()) {
-               fbs $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               int $$19 = -2130771968;
-               if ($$9.c($$6, $$8, jn.e)) {
-                  fgv $$20 = $$1.getBuffer(gnh.B());
-                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
-               }
+   @Override
+   public float a(jo $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
 
-               if ($$9.c($$6, $$8, jn.d)) {
-                  fgv $$21 = $$1.getBuffer(gnh.B());
-                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
+   @Override
+   public eui x_() {
+      return this.d.x_();
+   }
 
-               if ($$9.c($$6, $$8, jn.f)) {
-                  fgv $$22 = $$1.getBuffer(gnh.B());
-                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
-               }
+   @Nullable
+   @Override
+   public dvl c_(jj $$0) {
+      return this.a(kl.a($$0.u()), kl.a($$0.w())).a($$0);
+   }
 
-               if ($$9.c($$6, $$8, jn.c)) {
-                  fgv $$23 = $$1.getBuffer(gnh.B());
-                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
-               }
+   private grj a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
 
-               if ($$9.c($$6, $$8, jn.a)) {
-                  fgv $$24 = $$1.getBuffer(gnh.B());
-                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
+   @Override
+   public int a(jj $$0, dha $$1) {
+      return this.d.a($$0, $$1);
+   }
 
-               if ($$9.c($$6, $$8, jn.b)) {
-                  fgv $$25 = $$1.getBuffer(gnh.B());
-                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
-               }
-            }
-         }
-      }
+   @Override
+   public int G_() {
+      return this.d.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.d.H_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

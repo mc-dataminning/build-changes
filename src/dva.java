@@ -1,23 +1,19 @@
-public class dva {
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public record dva(ald e, String f) {
+   public static final Codec<dva> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ald.a.fieldOf("asset_id").forGetter(dva::a), Codec.STRING.fieldOf("translation_key").forGetter(dva::b)).apply($$0, dva::new)
+   );
+   public static final yt<wg, dva> b = yt.a(ald.b, dva::a, yr.o, dva::b, dva::new);
+   public static final Codec<js<dva>> c = akz.a(me.d, a);
+   public static final yt<wg, js<dva>> d = yr.a(me.d, b);
+
+   public ald a() {
+      return this.e;
    }
 
-   public float a(float $$0) {
-      return ayz.h($$0, this.c, this.b);
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
+   public String b() {
+      return this.f;
    }
 }

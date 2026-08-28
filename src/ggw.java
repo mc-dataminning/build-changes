@@ -1,106 +1,38 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ggw extends gfy {
+   private final ghd a;
+   private final ghd b;
 
-public class ggw extends ggv implements aat, wd {
-   private static final Logger l = LogUtils.getLogger();
-   private final GameProfile m;
-   private csn n;
-   private final kf.b o;
-   private final ghm p = new ghm();
-   @Nullable
-   private ghf q;
-   @Nullable
-   protected fpr.b k;
+   public ggw(ghd $$0) {
+      super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
+   }
 
-   public ggw(fmg $$0, vi $$1, ghd $$2) {
-      super($$0, $$1, $$2);
-      this.m = $$2.a();
-      this.o = $$2.c();
-      this.n = $$2.d();
-      this.k = $$2.i();
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      float $$2 = -16.0F;
+      ghn $$3 = $$1.a(
+         "head",
+         ghi.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         ghf.a(0.0F, -7.986666F, 0.0F).b(0.75F)
+      );
+      $$3.a("jaw", ghi.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), ghf.a(0.0F, 4.0F, -8.0F));
+      return ghj.a($$0, 256, 256);
    }
 
    @Override
-   public boolean c() {
-      return this.b.i();
-   }
-
-   @Override
-   protected void a(zz $$0) {
-      this.b($$0);
-   }
-
-   private void b(zz $$0) {
-      l.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(aav $$0) {
-      yz.a($$0, this, this.a);
-      this.p.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zn $$0) {
-      yz.a($$0, this, this.a);
-      this.p.a($$0.b());
-   }
-
-   @Override
-   public void a(aay $$0) {
-      this.n = csp.e.a($$0.b());
-   }
-
-   @Override
-   public void a(aax $$0) {
-      yz.a($$0, this, this.a);
-      if (this.q == null) {
-         this.q = new ghf();
-      }
-
-      List<atw> $$1 = this.q.a($$0.b());
-      this.b(new abd($$1));
-   }
-
-   @Override
-   public void a(aaw $$0) {
-      this.k = null;
-   }
-
-   private <T> T a(Function<aus, T> $$0) {
-      if (this.q == null) {
-         return $$0.apply(aus.b);
-      } else {
-         Object var3;
-         try (auf $$1 = this.q.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
-   }
-
-   @Override
-   public void a(aau $$0) {
-      yz.a($$0, this, this.a);
-      kf.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
-      this.b.a(age.b.a(wa.a($$1)), new ggz(this.a, this.b, new ghd(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
-      this.b.a(abc.a);
-      this.b.a(age.a.a(wa.a($$1)));
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   @Override
-   public void a(vk $$0) {
-      super.a($$0);
-      this.a.z();
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

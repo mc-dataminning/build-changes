@@ -1,124 +1,133 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class hgg {
+   private static final int a = 96;
+   private static final float[] b = af.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
+      }
+   });
 
-public class hgg implements hfw {
-   static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<hgg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aku.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               ayi.b(hgg.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, hgg::new)
-   );
-   private final aku d;
-   private final List<hgg.a> e;
-   private final double f;
-   private final double g;
-
-   public hgg(aku $$0, List<hgg.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   private hgg() {
    }
 
-   @Override
-   public void a(aup $$0, hfw.a $$1) {
-      aku $$2 = a.a(this.d);
-      Optional<aun> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         hgc $$4 = new hgc($$2, $$3.get(), this.e.size());
-
-         for (hgg.a $$5 : this.e) {
-            $$1.a($$5.b, new hgg.b($$4, $$5, this.f, this.g));
-         }
+   public static fgo[] a(fgo[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
       } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
+         fgo[] $$2 = new fgo[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-   @Override
-   public hfy a() {
-      return hfz.d;
-   }
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
+            } else {
+               fgo $$5 = $$2[$$4 - 1];
+               fgo $$6 = new fgo($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
 
-   static record a(aku b, double c, double d, double e, double f) {
-      public static final Codec<hgg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  aku.a.fieldOf("sprite").forGetter(hgg.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(hgg.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(hgg.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(hgg.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(hgg.a::e)
-               )
-               .apply($$0, hgg.a::new)
-      );
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
 
-      public aku a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements hfw.b {
-      private final hgc a;
-      private final hgg.a b;
-      private final double c;
-      private final double d;
-
-      b(hgc $$0, hgg.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public hfl a(hfv $$0) {
-         try {
-            ffr $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = ayz.a(this.b.c * $$2);
-            int $$5 = ayz.a(this.b.d * $$3);
-            int $$6 = ayz.a(this.b.e * $$2);
-            int $$7 = ayz.a(this.b.f * $$3);
-            ffr $$8 = new ffr(ffr.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new hfl(this.b.b, new hhf($$6, $$7), $$8, aur.a);
-         } catch (Exception var16) {
-            hgg.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+               $$2[$$4] = $$6;
+            }
          }
 
-         return hfg.b();
+         return $$2;
+      }
+   }
+
+   private static boolean a(fgo $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if (axu.a($$0.a($$1, $$2)) == 0) {
+               return true;
+            }
+         }
       }
 
-      @Override
-      public void a() {
-         this.a.b();
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return axu.a($$9, $$10, $$11, $$12);
+      } else {
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return axu.a($$13, $$14, $$15, $$16);
       }
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
+   }
+
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

@@ -1,33 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class aeg implements yw<abl> {
-   public static final yn<vl, aeg> a = yw.a(aeg::a, aeg::new);
-   @Nullable
-   private final aku b;
+public class aeg implements zc<abr> {
+   public static final yt<vr, aeg> a = zc.a(aeg::a, aeg::new);
+   private final IntList b;
 
-   public aeg(@Nullable aku $$0) {
-      this.b = $$0;
+   public aeg(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private aeg(vl $$0) {
-      this.b = $$0.c(vl::q);
+   public aeg(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b, vl::a);
+   private aeg(vr $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yy<aeg> a() {
-      return agd.ar;
+   public ze<aeg> a() {
+      return agk.an;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aku b() {
+   public IntList b() {
       return this.b;
    }
 }

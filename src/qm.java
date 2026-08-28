@@ -1,500 +1,318 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 
 public class qm {
-   private static final akt<esj> N = a("empty");
-   public static final akt<esj> a = a("zombie_plains");
-   public static final akt<esj> b = a("zombie_savanna");
-   public static final akt<esj> c = a("zombie_snowy");
-   public static final akt<esj> d = a("zombie_taiga");
-   public static final akt<esj> e = a("zombie_desert");
-   public static final akt<esj> f = a("mossify_10_percent");
-   public static final akt<esj> g = a("mossify_20_percent");
-   public static final akt<esj> h = a("mossify_70_percent");
-   public static final akt<esj> i = a("street_plains");
-   public static final akt<esj> j = a("street_savanna");
-   public static final akt<esj> k = a("street_snowy_or_taiga");
-   public static final akt<esj> l = a("farm_plains");
-   public static final akt<esj> m = a("farm_savanna");
-   public static final akt<esj> n = a("farm_snowy");
-   public static final akt<esj> o = a("farm_taiga");
-   public static final akt<esj> p = a("farm_desert");
-   public static final akt<esj> q = a("outpost_rot");
-   public static final akt<esj> r = a("bottom_rampart");
-   public static final akt<esj> s = a("treasure_rooms");
-   public static final akt<esj> t = a("housing");
-   public static final akt<esj> u = a("side_wall_degradation");
-   public static final akt<esj> v = a("stable_degradation");
-   public static final akt<esj> w = a("bastion_generic_degradation");
-   public static final akt<esj> x = a("rampart_degradation");
-   public static final akt<esj> y = a("entrance_replacement");
-   public static final akt<esj> z = a("bridge");
-   public static final akt<esj> A = a("roof");
-   public static final akt<esj> B = a("high_wall");
-   public static final akt<esj> C = a("high_rampart");
-   public static final akt<esj> D = a("fossil_rot");
-   public static final akt<esj> E = a("fossil_coal");
-   public static final akt<esj> F = a("fossil_diamonds");
-   public static final akt<esj> G = a("ancient_city_start_degradation");
-   public static final akt<esj> H = a("ancient_city_generic_degradation");
-   public static final akt<esj> I = a("ancient_city_walls_degradation");
-   public static final akt<esj> J = a("trail_ruins_houses_archaeology");
-   public static final akt<esj> K = a("trail_ruins_roads_archaeology");
-   public static final akt<esj> L = a("trail_ruins_tower_top_archaeology");
-   public static final akt<esj> M = a("trial_chambers_copper_bulb_degradation");
+   public static final alc<eqq> a = qn.a("village/plains/town_centers");
+   private static final alc<eqq> b = qn.a("village/plains/terminators");
 
-   private static akt<esj> a(String $$0) {
-      return akt.a(mc.aX, aku.b($$0));
-   }
-
-   private static void a(qe<esj> $$0, akt<esj> $$1, List<esi> $$2) {
-      $$0.a($$1, new esj($$2));
-   }
-
-   public static void a(qe<esj> $$0) {
-      js<dke> $$1 = $$0.a(mc.f);
-      esa $$2 = new esa(new esc(dkg.pT, 0.01F), eri.b, dkg.qe.m());
-      esa $$3 = new esa(new esc(dkg.qe, 0.5F), eri.b, dkg.pT.m());
-      a($$0, N, ImmutableList.of());
-      a(
-         $$0,
+   public static void a(qg<eqq> $$0) {
+      jt<eok> $$1 = $$0.a(me.aY);
+      js<eok> $$2 = $$1.b(rz.f);
+      js<eok> $$3 = $$1.b(rz.k);
+      js<eok> $$4 = $$1.b(rz.a);
+      jt<etg> $$5 = $$0.a(me.ba);
+      js<etg> $$6 = $$5.b(qo.f);
+      js<etg> $$7 = $$5.b(qo.g);
+      js<etg> $$8 = $$5.b(qo.h);
+      js<etg> $$9 = $$5.b(qo.a);
+      js<etg> $$10 = $$5.b(qo.i);
+      js<etg> $$11 = $$5.b(qo.l);
+      jt<eqq> $$12 = $$0.a(me.bc);
+      js<eqq> $$13 = $$12.b(qn.a);
+      js<eqq> $$14 = $$12.b(b);
+      $$0.a(
          a,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.m, 0.8F), eri.b, dkg.cu.m()),
-                  new esa(new esn(awp.q), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cw), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cx), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.m, 0.07F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.cu, 0.07F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.hG, 0.07F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.X, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.n, 0.1F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.cC, 0.1F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.aq, 0.02F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.fm, 0.5F), eri.b, dkg.bz.m()),
-                  new esa[]{
-                     new esa(
-                        new erp(dkg.fm.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))),
-                        eri.b,
-                        dkg.ii.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))
-                     ),
-                     new esa(
-                        new erp(dkg.fm.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))),
-                        eri.b,
-                        dkg.ii.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))
-                     ),
-                     new esa(new esc(dkg.cJ, 0.3F), eri.b, dkg.gP.m()),
-                     new esa(new esc(dkg.cJ, 0.2F), eri.b, dkg.gQ.m()),
-                     new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.lf.m())
-                  }
-               )
-            )
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(eqo.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(eqo.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(eqo.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(eqo.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(eqo.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(eqo.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(eqo.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
+            ),
+            eqq.a.b
          )
       );
-      a(
+      qn.a(
          $$0,
+         "village/plains/streets",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(eqo.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(eqo.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(eqo.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(eqo.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(eqo.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(eqo.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(eqo.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(eqo.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(eqo.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(eqo.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(eqo.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(eqo.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(eqo.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(eqo.a("village/plains/streets/turn_01", $$10), 3)
+               }
+            ),
+            eqq.a.a
+         )
+      );
+      qn.a(
+         $$0,
+         "village/plains/zombie/streets",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(eqo.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(eqo.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(eqo.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(eqo.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(eqo.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(eqo.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(eqo.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(eqo.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(eqo.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(eqo.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(eqo.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(eqo.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(eqo.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(eqo.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
+            ),
+            eqq.a.a
+         )
+      );
+      qn.a(
+         $$0,
+         "village/plains/houses",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(eqo.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(eqo.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(eqo.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(eqo.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(eqo.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(eqo.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(eqo.h(), 10)
+               }
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/plains/zombie/houses",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(eqo.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(eqo.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(eqo.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(eqo.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(eqo.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(eqo.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(eqo.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(eqo.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(eqo.h(), 10)
+               }
+            ),
+            eqq.a.b
+         )
+      );
+      $$0.a(
          b,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esn(awp.q), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cw), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cx), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.r, 0.2F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.im, 0.2F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.ab, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.ax, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.hH, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.hK, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.hU, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.fm, 0.5F), eri.b, dkg.bz.m()),
-                  new esa(
-                     new erp(dkg.fm.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))),
-                     eri.b,
-                     dkg.ii.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))
-                  ),
-                  new esa[]{
-                     new esa(
-                        new erp(dkg.fm.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))),
-                        eri.b,
-                        dkg.ii.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))
-                     ),
-                     new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.fs.m())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esn(awp.q), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cw), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cx), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.oG), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.o, 0.2F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.jS, 0.4F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.aj, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.aC, 0.05F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.fm, 0.5F), eri.b, dkg.bz.m()),
-                  new esa(
-                     new erp(dkg.fm.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))),
-                     eri.b,
-                     dkg.ii.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))
-                  ),
-                  new esa(
-                     new erp(dkg.fm.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))),
-                     eri.b,
-                     dkg.ii.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))
-                  ),
-                  new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.gP.m()),
-                  new esa[]{new esa(new esc(dkg.cJ, 0.8F), eri.b, dkg.gQ.m())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.m, 0.8F), eri.b, dkg.cu.m()),
-                  new esa(new esn(awp.q), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cw), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cx), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.oI), eri.b, dkg.oI.m().b(dkt.b, Boolean.valueOf(false))),
-                  new esa(new esc(dkg.m, 0.08F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.Y, 0.08F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.fm, 0.5F), eri.b, dkg.bz.m()),
-                  new esa(
-                     new erp(dkg.fm.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))),
-                     eri.b,
-                     dkg.ii.m().b(doi.a, Boolean.valueOf(true)).b(doi.c, Boolean.valueOf(true))
-                  ),
-                  new esa(
-                     new erp(dkg.fm.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))),
-                     eri.b,
-                     dkg.ii.m().b(doi.b, Boolean.valueOf(true)).b(doi.d, Boolean.valueOf(true))
-                  ),
-                  new esa(new esc(dkg.cJ, 0.3F), eri.b, dkg.fr.m()),
-                  new esa(new esc(dkg.cJ, 0.2F), eri.b, dkg.gQ.m()),
-                  new esa[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esn(awp.q), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cw), eri.b, dkg.a.m()),
-                  new esa(new ern(dkg.cx), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.kr, 0.08F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.be, 0.1F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.iY, 0.08F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.nN, 0.08F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.oa, 0.08F), eri.b, dkg.bz.m()),
-                  new esa(new esc(dkg.cJ, 0.2F), eri.b, dkg.lf.m()),
-                  new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.fs.m())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.m, 0.1F), eri.b, dkg.cu.m())))));
-      a($$0, g, ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.m, 0.2F), eri.b, dkg.cu.m())))));
-      a($$0, h, ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.m, 0.7F), eri.b, dkg.cu.m())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new ern(dkg.lg), new ern(dkg.J), dkg.n.m()),
-                  new esa(new esc(dkg.lg, 0.1F), eri.b, dkg.i.m()),
-                  new esa(new ern(dkg.i), new ern(dkg.J), dkg.J.m()),
-                  new esa(new ern(dkg.j), new ern(dkg.J), dkg.J.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new ern(dkg.lg), new ern(dkg.J), dkg.r.m()),
-                  new esa(new esc(dkg.lg, 0.2F), eri.b, dkg.i.m()),
-                  new esa(new ern(dkg.i), new ern(dkg.J), dkg.J.m()),
-                  new esa(new ern(dkg.j), new ern(dkg.J), dkg.J.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new ern(dkg.lg), new ern(dkg.J), dkg.o.m()),
-                  new esa(new ern(dkg.lg), new ern(dkg.eb), dkg.o.m()),
-                  new esa(new esc(dkg.lg, 0.2F), eri.b, dkg.i.m()),
-                  new esa(new ern(dkg.i), new ern(dkg.J), dkg.J.m()),
-                  new esa(new ern(dkg.j), new ern(dkg.J), dkg.J.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.cJ, 0.3F), eri.b, dkg.gP.m()),
-                  new esa(new esc(dkg.cJ, 0.2F), eri.b, dkg.gQ.m()),
-                  new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.lf.m())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.fs.m())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.gP.m()), new esa(new esc(dkg.cJ, 0.8F), eri.b, dkg.gQ.m()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.cJ, 0.3F), eri.b, dkg.fr.m()), new esa(new esc(dkg.cJ, 0.2F), eri.b, dkg.gQ.m()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.cJ, 0.2F), eri.b, dkg.lf.m()), new esa(new esc(dkg.cJ, 0.1F), eri.b, dkg.fs.m()))))
-      );
-      a($$0, q, ImmutableList.of(new ero(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new ese(ImmutableList.of(new esa(new esc(dkg.ll, 0.75F), eri.b, dkg.pZ.m()), new esa(new esc(dkg.pZ, 0.15F), eri.b, dkg.pY.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new ese(ImmutableList.of(new esa(new esc(dkg.pY, 0.35F), eri.b, dkg.pZ.m()), new esa(new esc(dkg.qa, 0.1F), eri.b, dkg.pZ.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new ese(ImmutableList.of(new esa(new esc(dkg.pY, 0.3F), eri.b, dkg.pZ.m()), new esa(new esc(dkg.pT, 1.0E-4F), eri.b, dkg.a.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new ese(ImmutableList.of(new esa(new esc(dkg.qa, 0.5F), eri.b, dkg.a.m()), new esa(new esc(dkg.co, 0.1F), eri.b, dkg.pZ.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new ese(ImmutableList.of(new esa(new esc(dkg.pY, 0.1F), eri.b, dkg.pZ.m()), new esa(new esc(dkg.pT, 1.0E-4F), eri.b, dkg.a.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.pY, 0.3F), eri.b, dkg.pZ.m()),
-                  new esa(new esc(dkg.pT, 1.0E-4F), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.co, 0.3F), eri.b, dkg.pZ.m()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.pY, 0.4F), eri.b, dkg.pZ.m()),
-                  new esa(new esc(dkg.pT, 0.01F), eri.b, dkg.pZ.m()),
-                  new esa(new esc(dkg.pY, 1.0E-4F), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.pT, 1.0E-4F), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.co, 0.3F), eri.b, dkg.pZ.m()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new ese(ImmutableList.of(new esa(new esc(dkg.qa, 0.5F), eri.b, dkg.a.m()), new esa(new esc(dkg.co, 0.6F), eri.b, dkg.pZ.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new ese(ImmutableList.of(new esa(new esc(dkg.pY, 0.3F), eri.b, dkg.pZ.m()), new esa(new esc(dkg.pT, 1.0E-4F), eri.b, dkg.a.m()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.pY, 0.3F), eri.b, dkg.pZ.m()),
-                  new esa(new esc(dkg.pY, 0.15F), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.pY, 0.3F), eri.b, dkg.pT.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.pY, 0.01F), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.pY, 0.5F), eri.b, dkg.pZ.m()),
-                  new esa(new esc(dkg.pY, 0.3F), eri.b, dkg.pT.m()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(new esa(new esc(dkg.co, 0.3F), eri.b, dkg.pZ.m()), new esa(eri.b, eri.b, new erj(0.0F, 0.05F, 0, 100, jn.a.b), dkg.a.m()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new ero(0.9F), new esb(awp.bR)));
-      a($$0, E, ImmutableList.of(new ero(0.1F), new esb(awp.bR)));
-      a($$0, F, ImmutableList.of(new ero(0.1F), new ese(ImmutableList.of(new esa(new ern(dkg.U), eri.b, dkg.cG.m()))), new esb(awp.bR)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.tA, 0.3F), eri.b, dkg.tF.m()),
-                  new esa(new esc(dkg.tw, 0.3F), eri.b, dkg.tG.m()),
-                  new esa(new esc(dkg.oH, 0.05F), eri.b, dkg.a.m())
-               )
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            new esb(awp.bR)
+            eqq.a.a
          )
       );
-      a(
+      qn.a($$0, "village/plains/trees", new eqq($$13, ImmutableList.of(Pair.of(eqo.a($$2), 1)), eqq.a.b));
+      qn.a(
          $$0,
-         H,
-         ImmutableList.of(
-            new ero($$1.b(awp.bX), 0.95F),
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.tA, 0.3F), eri.b, dkg.tF.m()),
-                  new esa(new esc(dkg.tw, 0.3F), eri.b, dkg.tG.m()),
-                  new esa(new esc(dkg.oH, 0.05F), eri.b, dkg.a.m())
-               )
+         "village/plains/decor",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/plains_lamp_1"), 2), Pair.of(eqo.a($$2), 1), Pair.of(eqo.a($$3), 1), Pair.of(eqo.a($$4), 1), Pair.of(eqo.h(), 2)
             ),
-            new esb(awp.bR)
+            eqq.a.b
          )
       );
-      a(
+      qn.a(
          $$0,
-         I,
-         ImmutableList.of(
-            new ero($$1.b(awp.bX), 0.95F),
-            new ese(
-               ImmutableList.of(
-                  new esa(new esc(dkg.tA, 0.3F), eri.b, dkg.tF.m()),
-                  new esa(new esc(dkg.tw, 0.3F), eri.b, dkg.tG.m()),
-                  new esa(new esc(dkg.ty, 0.3F), eri.b, dkg.a.m()),
-                  new esa(new esc(dkg.oH, 0.05F), eri.b, dkg.a.m())
-               )
+         "village/plains/zombie/decor",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(eqo.a($$2), 1),
+               Pair.of(eqo.a($$3), 1),
+               Pair.of(eqo.a($$4), 1),
+               Pair.of(eqo.h(), 2)
             ),
-            new esb(awp.bR)
+            eqq.a.b
          )
       );
-      a(
+      qn.a(
          $$0,
-         J,
-         List.of(
-            new ese(
-               List.of(
-                  new esa(new esc(dkg.O, 0.2F), eri.b, dkg.j.m()),
-                  new esa(new esc(dkg.O, 0.1F), eri.b, dkg.k.m()),
-                  new esa(new esc(dkg.fa, 0.1F), eri.b, dkg.eZ.m())
-               )
+         "village/plains/villagers",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(eqo.a("village/plains/villagers/baby"), 1),
+               Pair.of(eqo.a("village/plains/villagers/unemployed"), 10)
             ),
-            a(ewk.aZ, 6),
-            a(ewk.ba, 3)
+            eqq.a.b
          )
       );
-      a(
+      qn.a(
          $$0,
-         K,
-         List.of(
-            new ese(
-               List.of(
-                  new esa(new esc(dkg.O, 0.2F), eri.b, dkg.j.m()),
-                  new esa(new esc(dkg.O, 0.1F), eri.b, dkg.k.m()),
-                  new esa(new esc(dkg.fa, 0.1F), eri.b, dkg.eZ.m())
-               )
-            ),
-            a(ewk.aZ, 2)
+         "village/plains/zombie/villagers",
+         new eqq(
+            $$13,
+            ImmutableList.of(Pair.of(eqo.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(eqo.a("village/plains/zombie/villagers/unemployed"), 10)),
+            eqq.a.b
          )
       );
-      a($$0, L, List.of(a(ewk.aZ, 2)));
-      a(
+      qn.a(
          $$0,
-         M,
-         List.of(
-            new ese(
-               List.of(
-                  new esa(new esc(dkg.sQ, 0.1F), eri.b, dkg.sT.m().b(dls.c, Boolean.valueOf(true))),
-                  new esa(new esc(dkg.sQ, 0.33333334F), eri.b, dkg.sS.m().b(dls.c, Boolean.valueOf(true))),
-                  new esa(new esc(dkg.sQ, 0.5F), eri.b, dkg.sR.m().b(dls.c, Boolean.valueOf(true)))
-               )
+         "village/common/animals",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/common/animals/cows_1"), 7),
+               Pair.of(eqo.a("village/common/animals/pigs_1"), 7),
+               Pair.of(eqo.a("village/common/animals/horses_1"), 1),
+               Pair.of(eqo.a("village/common/animals/horses_2"), 1),
+               Pair.of(eqo.a("village/common/animals/horses_3"), 1),
+               Pair.of(eqo.a("village/common/animals/horses_4"), 1),
+               Pair.of(eqo.a("village/common/animals/horses_5"), 1),
+               Pair.of(eqo.a("village/common/animals/sheep_1"), 1),
+               Pair.of(eqo.a("village/common/animals/sheep_2"), 1),
+               Pair.of(eqo.h(), 5)
             ),
-            new esb(awp.bR)
+            eqq.a.b
          )
       );
-   }
-
-   private static erq a(akt<ewt> $$0, int $$1) {
-      return new erq(new ese(List.of(new esa(new esn(awp.cy), eri.b, erx.b, dkg.P.m(), new esp($$0)))), bsa.a($$1));
+      qn.a(
+         $$0,
+         "village/common/sheep",
+         new eqq($$13, ImmutableList.of(Pair.of(eqo.a("village/common/animals/sheep_1"), 1), Pair.of(eqo.a("village/common/animals/sheep_2"), 1)), eqq.a.b)
+      );
+      qn.a(
+         $$0,
+         "village/common/cats",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/common/animals/cat_black"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_british"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_calico"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_persian"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_red"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_white"), 1),
+               Pair.of(eqo.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(eqo.h(), 3)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/common/butcher_animals",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/common/animals/cows_1"), 3),
+               Pair.of(eqo.a("village/common/animals/pigs_1"), 3),
+               Pair.of(eqo.a("village/common/animals/sheep_1"), 1),
+               Pair.of(eqo.a("village/common/animals/sheep_2"), 1)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a($$0, "village/common/iron_golem", new eqq($$13, ImmutableList.of(Pair.of(eqo.a("village/common/iron_golem"), 1)), eqq.a.b));
+      qn.a($$0, "village/common/well_bottoms", new eqq($$13, ImmutableList.of(Pair.of(eqo.a("village/common/well_bottom"), 1)), eqq.a.b));
    }
 }

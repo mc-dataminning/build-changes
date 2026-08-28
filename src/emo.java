@@ -1,53 +1,76 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class emo extends emq {
    public static final MapCodec<emo> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               eei.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eei.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, emo::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final eei d;
-   private final eei e;
-   private final int f;
-
-   private emo(eei $$0, eei $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static emo a(eei $$0, eei $$1, int $$2) {
-      return new emo($$0, $$1, $$2);
-   }
+   private final float b;
+   private final float c;
+   private final float d;
 
    @Override
-   public int a(azh $$0, eel $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
-      }
-   }
-
-   @Override
-   public emr<?> a() {
+   protected emr<?> a() {
       return emr.c;
    }
 
+   public emo(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
    @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   public void a(emq.a $$0) {
+      azs $$1 = $$0.b();
+      dio $$2 = (dio)$$0.a();
+      List<jj> $$3 = af.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<jj> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((jj)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
+            }
+         });
+         jj $$5 = (jj)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.F_().a(me.aP).flatMap($$0x -> $$0x.a(rn.J)).ifPresent($$3x -> ((ehd)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
+         }
+
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               jj $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               jj $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+      }
+   }
+
+   private static void a(jj $$0, emq.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, dkw.uc.m().b(don.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
+      }
+
+      $$1.a($$0, dkw.uc.m().b(don.b, Boolean.valueOf(true)));
    }
 }

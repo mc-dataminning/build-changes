@@ -1,19 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dui(aku e, String f) {
-   public static final Codec<dui> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aku.a.fieldOf("asset_id").forGetter(dui::a), Codec.STRING.fieldOf("translation_key").forGetter(dui::b)).apply($$0, dui::new)
+public class dui extends dmi implements duh {
+   public static final MapCodec<dui> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(duh.a.e.fieldOf("weathering_state").forGetter(dui::q), t()).apply($$0, dui::new)
    );
-   public static final yn<wa, dui> b = yn.a(aku.b, dui::a, yl.o, dui::b, dui::new);
-   public static final Codec<jr<dui>> c = akq.a(mc.d, a);
-   public static final yn<wa, jr<dui>> d = yl.a(mc.d, b);
+   private final duh.a e;
 
-   public aku a() {
-      return this.e;
+   @Override
+   protected MapCodec<dui> a() {
+      return d;
    }
 
-   public String b() {
-      return this.f;
+   public dui(duh.a $$0, dyl.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(dym $$0) {
+      return duh.c($$0.b()).isPresent();
+   }
+
+   public duh.a q() {
+      return this.e;
    }
 }

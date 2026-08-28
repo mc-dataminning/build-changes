@@ -1,13 +1,23 @@
-public class dwm extends dus {
-   protected dwm(duu<?> $$0, ji $$1, dxq $$2) {
-      super($$0, $$1, $$2);
+public class dwm extends dwz {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public dwm(jj $$0, dym $$1) {
+      super(dvn.i, $$0, $$1);
    }
 
-   public dwm(ji $$0, dxq $$1) {
-      this(duu.o, $$0, $$1);
+   @Override
+   public int a() {
+      return 9;
    }
 
-   public boolean a(jn $$0) {
-      return $$0.o() == jn.a.b;
+   @Override
+   public int c() {
+      return 60;
+   }
+
+   @Override
+   public awj d() {
+      return awk.CY;
    }
 }

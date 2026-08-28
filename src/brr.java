@@ -1,27 +1,29 @@
-public abstract class brr<R extends Runnable> extends brn<R> {
-   private int b;
+public class brr implements brs {
+   public static final brs a = new brr();
 
-   public brr(String $$0) {
-      super($$0);
+   @Override
+   public void a() {
    }
 
    @Override
-   public boolean ax() {
-      return this.bB() || super.ax();
-   }
-
-   protected boolean bB() {
-      return this.b != 0;
+   public void b() {
    }
 
    @Override
-   public void d(R $$0) {
-      this.b++;
+   public void c() {
+   }
 
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bqb f() {
+      return bpx.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

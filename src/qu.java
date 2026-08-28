@@ -1,167 +1,249 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 
 public class qu {
-   public static final akt<ept> a = ql.a("trail_ruins/tower");
+   public static final alc<eqq> a = qn.a("village/taiga/town_centers");
+   private static final alc<eqq> b = qn.a("village/taiga/terminators");
 
-   public static void a(qe<ept> $$0) {
-      js<ept> $$1 = $$0.a(mc.aZ);
-      jr<ept> $$2 = $$1.b(ql.a);
-      js<esj> $$3 = $$0.a(mc.aX);
-      jr<esj> $$4 = $$3.b(qm.J);
-      jr<esj> $$5 = $$3.b(qm.K);
-      jr<esj> $$6 = $$3.b(qm.L);
+   public static void a(qg<eqq> $$0) {
+      jt<eok> $$1 = $$0.a(me.aY);
+      js<eok> $$2 = $$1.b(rz.h);
+      js<eok> $$3 = $$1.b(rz.i);
+      js<eok> $$4 = $$1.b(rz.e);
+      js<eok> $$5 = $$1.b(rz.l);
+      js<eok> $$6 = $$1.b(rz.m);
+      jt<etg> $$7 = $$0.a(me.ba);
+      js<etg> $$8 = $$7.b(qo.f);
+      js<etg> $$9 = $$7.b(qo.d);
+      js<etg> $$10 = $$7.b(qo.k);
+      js<etg> $$11 = $$7.b(qo.o);
+      jt<eqq> $$12 = $$0.a(me.bc);
+      js<eqq> $$13 = $$12.b(qn.a);
+      js<eqq> $$14 = $$12.b(b);
       $$0.a(
          a,
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_5", $$4), 1)
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
+               Pair.of(eqo.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
+               Pair.of(eqo.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
+               Pair.of(eqo.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
             ),
-            ept.a.b
+            eqq.a.b
          )
       );
-      ql.a(
+      qn.a(
          $$0,
-         "trail_ruins/tower/tower_top",
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(epr.b("trail_ruins/tower/tower_top_5", $$6), 1)
+         "village/taiga/streets",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/streets/corner_01", $$10), 2),
+               Pair.of(eqo.a("village/taiga/streets/corner_02", $$10), 2),
+               Pair.of(eqo.a("village/taiga/streets/corner_03", $$10), 2),
+               Pair.of(eqo.a("village/taiga/streets/straight_01", $$10), 4),
+               Pair.of(eqo.a("village/taiga/streets/straight_02", $$10), 4),
+               Pair.of(eqo.a("village/taiga/streets/straight_03", $$10), 4),
+               Pair.of(eqo.a("village/taiga/streets/straight_04", $$10), 7),
+               Pair.of(eqo.a("village/taiga/streets/straight_05", $$10), 7),
+               Pair.of(eqo.a("village/taiga/streets/straight_06", $$10), 4),
+               Pair.of(eqo.a("village/taiga/streets/crossroad_01", $$10), 1),
+               Pair.of(eqo.a("village/taiga/streets/crossroad_02", $$10), 1),
+               Pair.of(eqo.a("village/taiga/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/taiga/streets/crossroad_04", $$10), 2),
+                  Pair.of(eqo.a("village/taiga/streets/crossroad_05", $$10), 2),
+                  Pair.of(eqo.a("village/taiga/streets/crossroad_06", $$10), 2),
+                  Pair.of(eqo.a("village/taiga/streets/turn_01", $$10), 3)
+               }
             ),
-            ept.a.b
+            eqq.a.a
          )
       );
-      ql.a(
+      qn.a(
          $$0,
-         "trail_ruins/tower/additions",
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/tower/stable_5", $$4), 1)
+         "village/taiga/zombie/streets",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/zombie/streets/corner_01", $$10), 2),
+               Pair.of(eqo.a("village/taiga/zombie/streets/corner_02", $$10), 2),
+               Pair.of(eqo.a("village/taiga/zombie/streets/corner_03", $$10), 2),
+               Pair.of(eqo.a("village/taiga/zombie/streets/straight_01", $$10), 4),
+               Pair.of(eqo.a("village/taiga/zombie/streets/straight_02", $$10), 4),
+               Pair.of(eqo.a("village/taiga/zombie/streets/straight_03", $$10), 4),
+               Pair.of(eqo.a("village/taiga/zombie/streets/straight_04", $$10), 7),
+               Pair.of(eqo.a("village/taiga/zombie/streets/straight_05", $$10), 7),
+               Pair.of(eqo.a("village/taiga/zombie/streets/straight_06", $$10), 4),
+               Pair.of(eqo.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
+               Pair.of(eqo.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(eqo.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/streets/turn_01", $$10), 3)
+               }
             ),
-            ept.a.b
+            eqq.a.a
          )
       );
-      ql.a(
+      qn.a(
          $$0,
-         "trail_ruins/roads",
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(epr.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(epr.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(epr.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(epr.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(epr.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(epr.b("trail_ruins/roads/road_spacer_1", $$5), 1)
+         "village/taiga/houses",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
+               Pair.of(eqo.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
+               Pair.of(eqo.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
+               Pair.of(eqo.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
+               Pair.of(eqo.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
+               Pair.of(eqo.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_library_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_temple_1", $$8), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
+                  Pair.of(eqo.h(), 6)
+               }
             ),
-            ept.a.b
+            eqq.a.b
          )
       );
-      ql.a(
+      qn.a(
          $$0,
-         "trail_ruins/buildings",
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/one_room_5", $$4), 1)
+         "village/taiga/zombie/houses",
+         new eqq(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
+               Pair.of(eqo.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
+               Pair.of(eqo.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
+                  Pair.of(eqo.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
+                  Pair.of(eqo.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
+                  Pair.of(eqo.h(), 6)
+               }
             ),
-            ept.a.b
+            eqq.a.b
          )
       );
-      ql.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/buildings/group_room_5", $$4), 1)
+      $$0.a(
+         b,
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            ept.a.b
+            eqq.a.a
          )
       );
-      ql.a(
+      qn.a(
          $$0,
-         "trail_ruins/decor",
-         new ept(
-            $$2,
-            List.of(
-               Pair.of(epr.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(epr.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(epr.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(epr.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(epr.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(epr.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(epr.b("trail_ruins/decor/decor_7", $$4), 1)
+         "village/taiga/decor",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/taiga_lamp_post_1"), 10),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_5"), 2),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_6"), 1),
+               Pair.of(eqo.a($$2), 4),
+               Pair.of(eqo.a($$3), 4),
+               Pair.of(eqo.a($$4), 2),
+               Pair.of(eqo.a($$5), 4),
+               Pair.of(eqo.a($$6), 1),
+               new Pair[]{Pair.of(eqo.h(), 4)}
             ),
-            ept.a.b
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/taiga/zombie/decor",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(eqo.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(eqo.a($$2), 4),
+               Pair.of(eqo.a($$3), 4),
+               Pair.of(eqo.a($$4), 2),
+               Pair.of(eqo.a($$5), 4),
+               Pair.of(eqo.a($$6), 1),
+               Pair.of(eqo.h(), 4)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/taiga/villagers",
+         new eqq(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/taiga/villagers/nitwit"), 1),
+               Pair.of(eqo.a("village/taiga/villagers/baby"), 1),
+               Pair.of(eqo.a("village/taiga/villagers/unemployed"), 10)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/taiga/zombie/villagers",
+         new eqq(
+            $$13,
+            ImmutableList.of(Pair.of(eqo.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(eqo.a("village/taiga/zombie/villagers/unemployed"), 10)),
+            eqq.a.b
          )
       );
    }

@@ -1,10 +1,4 @@
-public class har extends haj {
-   public cif.b a;
-   public float b;
-   public gdy.a c;
-
-   public har() {
-      this.a = cif.b.a;
-      this.c = gdy.a.a;
-   }
+public class har extends hak {
+   public boolean a;
+   public final hdn b = new hdn();
 }

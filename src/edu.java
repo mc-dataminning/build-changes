@@ -1,110 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-public record edu(edh b, edh c, edh d, edh e, edh f, edh g, edh h, edh i, edh j, edh k, edh l, edh m, edh n, edh o, edh p) {
+public class edu {
    public static final Codec<edu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               a("barrier", edu::a),
-               a("fluid_level_floodedness", edu::b),
-               a("fluid_level_spread", edu::c),
-               a("lava", edu::d),
-               a("temperature", edu::e),
-               a("vegetation", edu::f),
-               a("continents", edu::g),
-               a("erosion", edu::h),
-               a("depth", edu::i),
-               a("ridges", edu::j),
-               a("initial_density_without_jaggedness", edu::k),
-               a("final_density", edu::l),
-               a("vein_toggle", edu::m),
-               a("vein_ridged", edu::n),
-               a("vein_gap", edu::o)
+               edt.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
             )
             .apply($$0, edu::new)
    );
+   private Optional<Pair<edt, Long>> b;
 
-   private static RecordCodecBuilder<edu, edh> a(String $$0, Function<edu, edh> $$1) {
-      return edh.d.fieldOf($$0).forGetter($$1);
+   public edu(Optional<edt> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
    }
 
-   public edu a(edh.f $$0) {
-      return new edu(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public edu() {
+      this.b = Optional.empty();
    }
 
-   public edh a() {
-      return this.b;
+   public void a(edt $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
+      }
    }
 
-   public edh b() {
-      return this.c;
+   private boolean b(edt $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
+      } else {
+         Pair<edt, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            edt $$4 = (edt)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : edv.a_($$0.a()) > edv.a_($$4.a());
+            }
+         }
+      }
    }
 
-   public edh c() {
-      return this.d;
+   public Optional<edt> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((edt)this.b.get().getLeft()) : Optional.empty();
+      }
    }
 
-   public edh d() {
-      return this.e;
-   }
-
-   public edh e() {
-      return this.f;
-   }
-
-   public edh f() {
-      return this.g;
-   }
-
-   public edh g() {
-      return this.h;
-   }
-
-   public edh h() {
-      return this.i;
-   }
-
-   public edh i() {
-      return this.j;
-   }
-
-   public edh j() {
-      return this.k;
-   }
-
-   public edh k() {
-      return this.l;
-   }
-
-   public edh l() {
-      return this.m;
-   }
-
-   public edh m() {
-      return this.n;
-   }
-
-   public edh n() {
-      return this.o;
-   }
-
-   public edh o() {
-      return this.p;
+   public void a() {
+      this.b = Optional.empty();
    }
 }

@@ -1,178 +1,49 @@
-public class fxl extends fvx<cuz> {
-   private static final aku G = aku.b("container/stonecutter/scroller");
-   private static final aku H = aku.b("container/stonecutter/scroller_disabled");
-   private static final aku I = aku.b("container/stonecutter/recipe_selected");
-   private static final aku J = aku.b("container/stonecutter/recipe_highlighted");
-   private static final aku K = aku.b("container/stonecutter/recipe");
-   private static final aku L = aku.b("textures/gui/container/stonecutter.png");
-   private static final int M = 12;
-   private static final int N = 15;
-   private static final int O = 4;
-   private static final int P = 3;
-   private static final int Q = 16;
-   private static final int R = 18;
-   private static final int S = 54;
-   private static final int T = 52;
-   private static final int U = 14;
-   private float V;
-   private boolean W;
-   private int X;
-   private boolean Y;
+import java.util.List;
 
-   public fxl(cuz $$0, cpq $$1, wp $$2) {
-      super($$0, $$1, $$2);
-      $$0.a(this::I);
-      this.w--;
+public class fxl {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<ald> e = List.of();
+   private int f;
+   private int g;
+
+   public fxl(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
+   public void a(List<ald> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
 
-   @Override
-   protected void a(fpc $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gnh::H, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = (int)(41.0F * this.V);
-      aku $$7 = this.H() ? G : H;
-      $$0.a(gnh::H, $$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
-      int $$8 = this.C + 52;
-      int $$9 = this.D + 14;
-      int $$10 = this.X + 12;
-      this.a($$0, $$2, $$3, $$8, $$9, $$10);
-      this.a($$0, $$8, $$9, $$10);
-   }
-
-   @Override
-   protected void a(fpc $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.Y) {
-         int $$3 = this.C + 52;
-         int $$4 = this.D + 14;
-         int $$5 = this.X + 12;
-         dci.b<dcv> $$6 = this.z.m();
-
-         for (int $$7 = this.X; $$7 < $$5 && $$7 < $$6.d(); $$7++) {
-            int $$8 = $$7 - this.X;
-            int $$9 = $$3 + $$8 % 4 * 16;
-            int $$10 = $$4 + $$8 / 4 * 18 + 2;
-            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
-               bak $$11 = ddi.a(this.m.s);
-               ddh $$12 = $$6.e().get($$7).c().b();
-               $$0.b(this.p, $$12.b($$11), $$1, $$2);
-            }
-         }
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
       }
    }
 
-   private void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = this.X; $$6 < $$5 && $$6 < this.z.n(); $$6++) {
-         int $$7 = $$6 - this.X;
-         int $$8 = $$3 + $$7 % 4 * 16;
-         int $$9 = $$7 / 4;
-         int $$10 = $$4 + $$9 * 18 + 2;
-         aku $$11;
-         if ($$6 == this.z.l()) {
-            $$11 = I;
-         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
-            $$11 = J;
-         } else {
-            $$11 = K;
+   public void a(ctn $$0, fpz $$1, float $$2, int $$3, int $$4) {
+      cvk $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
          }
 
-         $$0.a(gnh::H, $$11, $$8, $$10 - 1, 16, 18);
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
       }
    }
 
-   private void a(fpc $$0, int $$1, int $$2, int $$3) {
-      dci.b<dcv> $$4 = this.z.m();
-      bak $$5 = ddi.a(this.m.s);
-
-      for (int $$6 = this.X; $$6 < $$3 && $$6 < $$4.d(); $$6++) {
-         int $$7 = $$6 - this.X;
-         int $$8 = $$1 + $$7 % 4 * 16;
-         int $$9 = $$7 / 4;
-         int $$10 = $$2 + $$9 * 18 + 2;
-         ddh $$11 = $$4.e().get($$6).c().b();
-         $$0.a($$11.b($$5), $$8, $$10);
-      }
+   private void a(cvk $$0, ald $$1, float $$2, fpz $$3, int $$4, int $$5) {
+      $$3.a(goi::H, $$1, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axu.a($$2));
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      this.W = false;
-      if (this.Y) {
-         int $$3 = this.C + 52;
-         int $$4 = this.D + 14;
-         int $$5 = this.X + 12;
-
-         for (int $$6 = this.X; $$6 < $$5; $$6++) {
-            int $$7 = $$6 - this.X;
-            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
-            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
-            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.z.a(this.m.t, $$6)) {
-               fmg.Q().ak().a(hjj.a(awa.Bu, 1.0F));
-               this.m.r.a(this.z.l, $$6);
-               return true;
-            }
-         }
-
-         $$3 = this.C + 119;
-         $$4 = this.D + 9;
-         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
-            this.W = true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.W && this.H()) {
-         int $$5 = this.D + 14;
-         int $$6 = $$5 + 54;
-         this.V = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
-         this.V = ayz.a(this.V, 0.0F, 1.0F);
-         this.X = (int)((double)(this.V * (float)this.G()) + 0.5) * 4;
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (super.a($$0, $$1, $$2, $$3)) {
-         return true;
-      } else {
-         if (this.H()) {
-            int $$4 = this.G();
-            float $$5 = (float)$$3 / (float)$$4;
-            this.V = ayz.a(this.V - $$5, 0.0F, 1.0F);
-            this.X = (int)((double)(this.V * (float)$$4) + 0.5) * 4;
-         }
-
-         return true;
-      }
-   }
-
-   private boolean H() {
-      return this.Y && this.z.n() > 12;
-   }
-
-   protected int G() {
-      return (this.z.n() + 4 - 1) / 4 - 3;
-   }
-
-   private void I() {
-      this.Y = this.z.o();
-      if (!this.Y) {
-         this.V = 0.0F;
-         this.X = 0;
-      }
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

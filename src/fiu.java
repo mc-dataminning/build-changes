@@ -1,40 +1,50 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class fiu extends fiw {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public fiu.a c = fiu.a.a;
+public class fiu extends fjt {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static fiu a(String $$0) {
-      fiu $$1 = new fiu();
+   public static fiu a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fiu $$2 = new fiu();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fks.a("startDate", $$3, 0L);
-         $$1.b = fks.a("daysLeft", $$3, 0);
-         $$1.c = b(fks.b("subscriptionType", $$3, fiu.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+         $$2.a = flp.b("backupId", $$1, "");
+         $$2.b = flp.b("lastModifiedDate", $$1);
+         $$2.c = flp.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 
-   private static fiu.a b(String $$0) {
-      try {
-         return fiu.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fiu.a.a;
-      }
+   public boolean a() {
+      return this.g;
    }
 
-   public static enum a {
-      a,
-      b;
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

@@ -1,89 +1,71 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-public final class xo {
-   private static final String b = "#";
-   public static final Codec<xo> a = Codec.STRING.comapFlatMap(xo::a, xo::b);
-   private static final Map<n, xo> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new xo($$0.f(), $$0.g())));
-   private static final Map<String, xo> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
-   @Nullable
-   private final String f;
+public record xo(String b, Instant c, long d, xc e) {
+   public static final MapCodec<xo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(xo::a),
+               ays.q.fieldOf("time_stamp").forGetter(xo::b),
+               Codec.LONG.fieldOf("salt").forGetter(xo::c),
+               xc.a.optionalFieldOf("last_seen", xc.b).forGetter(xo::d)
+            )
+            .apply($$0, xo::new)
+   );
 
-   private xo(int $$0, String $$1) {
-      this.e = $$0 & 16777215;
-      this.f = $$1;
+   public static xo a(String $$0) {
+      return new xo($$0, Instant.now(), 0L, xc.b);
    }
 
-   private xo(int $$0) {
-      this.e = $$0 & 16777215;
-      this.f = null;
+   public void a(azw.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public int a() {
+   public xo.a a(xi $$0) {
+      return new xo.a(this.b, this.c, this.d, this.e.a($$0));
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public xc d() {
       return this.e;
    }
 
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xo $$1 = (xo)$$0;
-         return this.e == $$1.e;
-      } else {
-         return false;
+   public static record a(String a, Instant b, long c, xc.a d) {
+      public a(vr $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xc.a($$0));
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
-   }
+      public void a(vr $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
 
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   @Nullable
-   public static xo a(n $$0) {
-      return c.get($$0);
-   }
-
-   public static xo a(int $$0) {
-      return new xo($$0);
-   }
-
-   public static DataResult<xo> a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Invalid color value: " + $$0);
-         }
-      } else {
-         xo $$3 = d.get($$0);
-         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      public Optional<xo> a(xi $$0) {
+         return this.d.a($$0).map($$0x -> new xo(this.a, this.b, this.c, $$0x));
       }
    }
 }

@@ -1,145 +1,103 @@
-import java.util.Set;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class gbm<T extends gzk> extends gda<T> {
-   private static final float e = 2.1816616F;
-   private static final float f = (float) (Math.PI / 3);
-   private static final float g = (float) (Math.PI / 4);
-   private static final float i = (float) (Math.PI / 6);
-   private static final float j = (float) (Math.PI / 12);
-   protected static final String a = "head_parts";
-   private static final String k = "saddle";
-   private static final String l = "left_saddle_mouth";
-   private static final String m = "left_saddle_line";
-   private static final String n = "right_saddle_mouth";
-   private static final String o = "right_saddle_line";
-   private static final String p = "head_saddle";
-   private static final String q = "mouth_saddle_wrap";
-   protected static final ggl b = new gby(true, 16.2F, 1.36F, 2.7272F, 2.0F, 20.0F, Set.of("head_parts"));
-   protected final ggc c;
-   protected final ggc d;
-   private final ggc r;
-   private final ggc s;
-   private final ggc t;
-   private final ggc u;
-   private final ggc x;
-   private final ggc[] y;
-   private final ggc[] z;
+public class gbm extends fwf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<alc<dhp>> b = af.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(dhp.i, -13408734);
+      $$0.put(dhp.j, -10075085);
+      $$0.put(dhp.k, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bte d;
 
-   public gbm(ggc $$0) {
-      super($$0);
-      this.c = $$0.b("body");
-      this.d = $$0.b("head_parts");
-      this.r = $$0.b("right_hind_leg");
-      this.s = $$0.b("left_hind_leg");
-      this.t = $$0.b("right_front_leg");
-      this.u = $$0.b("left_front_leg");
-      this.x = this.c.b("tail");
-      ggc $$1 = this.c.b("saddle");
-      ggc $$2 = this.d.b("left_saddle_mouth");
-      ggc $$3 = this.d.b("right_saddle_mouth");
-      ggc $$4 = this.d.b("left_saddle_line");
-      ggc $$5 = this.d.b("right_saddle_line");
-      ggc $$6 = this.d.b("head_saddle");
-      ggc $$7 = this.d.b("mouth_saddle_wrap");
-      this.y = new ggc[]{$$1, $$2, $$3, $$6, $$7};
-      this.z = new ggc[]{$$4, $$5};
-   }
+   @Nullable
+   public static gbm a(fnd $$0, BooleanConsumer $$1, DataFixer $$2, ewz.c $$3, boolean $$4) {
+      try {
+         gbt $$5 = $$0.x();
+         auk $$6 = aun.a($$3);
 
-   public static ggk a(ggg $$0) {
-      ggk $$1 = new ggk();
-      ggm $$2 = $$1.a();
-      ggm $$3 = $$2.a("body", ggh.c().a(0, 32).a(-5.0F, -8.0F, -17.0F, 10.0F, 10.0F, 22.0F, new ggg(0.05F)), gge.a(0.0F, 11.0F, 5.0F));
-      ggm $$4 = $$2.a("head_parts", ggh.c().a(0, 35).a(-2.05F, -6.0F, -2.0F, 4.0F, 12.0F, 7.0F), gge.a(0.0F, 4.0F, -12.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      ggm $$5 = $$4.a("head", ggh.c().a(0, 13).a(-3.0F, -11.0F, -2.0F, 6.0F, 5.0F, 7.0F, $$0), gge.a);
-      $$4.a("mane", ggh.c().a(56, 36).a(-1.0F, -11.0F, 5.01F, 2.0F, 16.0F, 2.0F, $$0), gge.a);
-      $$4.a("upper_mouth", ggh.c().a(0, 25).a(-2.0F, -11.0F, -7.0F, 4.0F, 5.0F, 5.0F, $$0), gge.a);
-      $$2.a("left_hind_leg", ggh.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), gge.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", ggh.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), gge.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", ggh.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), gge.a(4.0F, 14.0F, -10.0F));
-      $$2.a("right_front_leg", ggh.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), gge.a(-4.0F, 14.0F, -10.0F));
-      $$3.a("tail", ggh.c().a(42, 36).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 4.0F, $$0), gge.a(0.0F, -5.0F, 2.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      $$3.a("saddle", ggh.c().a(26, 0).a(-5.0F, -8.0F, -9.0F, 10.0F, 9.0F, 9.0F, new ggg(0.5F)), gge.a);
-      $$4.a("left_saddle_mouth", ggh.c().a(29, 5).a(2.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), gge.a);
-      $$4.a("right_saddle_mouth", ggh.c().a(29, 5).a(-3.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), gge.a);
-      $$4.a("left_saddle_line", ggh.c().a(32, 2).a(3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), gge.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("right_saddle_line", ggh.c().a(32, 2).a(-3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), gge.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("head_saddle", ggh.c().a(1, 1).a(-3.0F, -11.0F, -1.9F, 6.0F, 5.0F, 6.0F, new ggg(0.22F)), gge.a);
-      $$4.a("mouth_saddle_wrap", ggh.c().a(19, 0).a(-2.0F, -11.0F, -4.0F, 4.0F, 5.0F, 2.0F, new ggg(0.2F)), gge.a);
-      $$5.a("left_ear", ggh.c().a(19, 16).a(0.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new ggg(-0.001F)), gge.a);
-      $$5.a("right_ear", ggh.c().a(19, 16).a(-2.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new ggg(-0.001F)), gge.a);
-      return $$1;
-   }
+         gbm var10;
+         try (amc $$7 = $$5.a($$3.h(), false, $$6)) {
+            exf $$8 = $$7.d();
+            kg.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new gbm($$1, $$2, $$3, $$8.J(), $$4, $$9);
+         }
 
-   public static ggk b(ggg $$0) {
-      return b.apply(c($$0));
-   }
-
-   protected static ggk c(ggg $$0) {
-      ggk $$1 = a($$0);
-      ggm $$2 = $$1.a();
-      ggg $$3 = $$0.a(0.0F, 5.5F, 0.0F);
-      $$2.a("left_hind_leg", ggh.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$3), gge.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", ggh.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$3), gge.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", ggh.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$3), gge.a(4.0F, 14.0F, -10.0F));
-      $$2.a("right_front_leg", ggh.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$3), gge.a(-4.0F, 14.0F, -10.0F));
-      return $$1;
-   }
-
-   public void a(T $$0) {
-      super.a($$0);
-
-      for (ggc $$1 : this.y) {
-         $$1.k = $$0.b;
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
       }
+   }
 
-      for (ggc $$2 : this.z) {
-         $$2.k = $$0.c && $$0.b;
+   private gbm(BooleanConsumer $$0, DataFixer $$1, ewz.c $$2, dht $$3, boolean $$4, kg $$5) {
+      super(wv.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.d = new bte($$2, $$1, $$5, $$4, false);
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.c(fqn.a(wu.e, $$0 -> {
+         this.d.a();
+         this.c.accept(false);
+      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.d.b()) {
+         this.c.accept(true);
       }
+   }
 
-      float $$3 = ayz.a($$0.aa, -20.0F, 20.0F);
-      float $$4 = $$0.ab * (float) (Math.PI / 180.0);
-      float $$5 = $$0.ae;
-      float $$6 = $$0.ad;
-      if ($$5 > 0.2F) {
-         $$4 += ayz.b($$6 * 0.8F) * 0.15F * $$5;
-      }
+   @Override
+   public void aK_() {
+      this.c.accept(false);
+   }
 
-      float $$7 = $$0.e;
-      float $$8 = $$0.f;
-      float $$9 = 1.0F - $$8;
-      float $$10 = $$0.g;
-      boolean $$11 = $$0.d;
-      this.d.e = (float) (Math.PI / 6) + $$4;
-      this.d.f = $$3 * (float) (Math.PI / 180.0);
-      float $$12 = $$0.ak ? 0.2F : 1.0F;
-      float $$13 = ayz.b($$12 * $$6 * 0.6662F + (float) Math.PI);
-      float $$14 = $$13 * 0.8F * $$5;
-      float $$15 = (1.0F - Math.max($$8, $$7)) * ((float) (Math.PI / 6) + $$4 + $$10 * ayz.a($$0.u) * 0.05F);
-      this.d.e = $$8 * ((float) (Math.PI / 12) + $$4) + $$7 * (2.1816616F + ayz.a($$0.u) * 0.05F) + $$15;
-      this.d.f = $$8 * $$3 * (float) (Math.PI / 180.0) + (1.0F - Math.max($$8, $$7)) * this.d.f;
-      float $$16 = $$0.ag;
-      this.d.c = this.d.c + ayz.h($$7, ayz.h($$8, 0.0F, -8.0F * $$16), 7.0F * $$16);
-      this.d.d = ayz.h($$8, this.d.d, -4.0F * $$16);
-      this.c.e = $$8 * (float) (-Math.PI / 4) + $$9 * this.c.e;
-      float $$17 = (float) (Math.PI / 12) * $$8;
-      float $$18 = ayz.b($$0.u * 0.6F + (float) Math.PI);
-      this.u.c -= 12.0F * $$16 * $$8;
-      this.u.d += 4.0F * $$16 * $$8;
-      this.t.c = this.u.c;
-      this.t.d = this.u.d;
-      float $$19 = ((float) (-Math.PI / 3) + $$18) * $$8 + $$14 * $$9;
-      float $$20 = ((float) (-Math.PI / 3) - $$18) * $$8 - $$14 * $$9;
-      this.s.e = $$17 - $$13 * 0.5F * $$5 * $$9;
-      this.r.e = $$17 + $$13 * 0.5F * $$5 * $$9;
-      this.u.e = $$19;
-      this.t.e = $$20;
-      this.x.e = (float) (Math.PI / 6) + $$5 * 0.75F;
-      this.x.c += $$5 * $$16;
-      this.x.d += $$5 * 2.0F * $$16;
-      if ($$11) {
-         this.x.f = ayz.b($$0.u * 0.7F);
-      } else {
-         this.x.f = 0.0F;
+   @Override
+   public void aE_() {
+      this.d.a();
+      this.d.close();
+   }
+
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      int $$4 = this.n / 2 - 150;
+      int $$5 = this.n / 2 + 150;
+      int $$6 = this.o / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
+      if (this.d.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.p, wv.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
+         $$0.b(this.p, wv.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.p, wv.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
+
+         for (alc<dhp> $$9 : this.d.c()) {
+            int $$10 = azk.d(this.d.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
+
+         int $$11 = this.d.f() + this.d.g();
+         wv $$12 = wv.a("optimizeWorld.progress.counter", $$11, this.d.e());
+         wv $$13 = wv.a("optimizeWorld.progress.percentage", azk.d(this.d.d() * 100.0F));
+         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
       }
    }
 }

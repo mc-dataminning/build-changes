@@ -1,29 +1,25 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egg<FC extends eiy, F extends egu<FC>>(F d, FC e) {
-   public static final Codec<egg<?, ?>> a = mb.O.q().dispatch($$0 -> $$0.d, egu::a);
-   public static final Codec<jr<egg<?, ?>>> b = akq.a(mc.aM, a);
-   public static final Codec<jv<egg<?, ?>>> c = kg.a(mc.aM, a);
+public class egg implements efs {
+   public static final MapCodec<egg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kn.v(16).optionalFieldOf("offset", kn.i).forGetter($$0x -> $$0x.e), dym.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, egg::new)
+   );
+   private final kn e;
+   private final dym f;
 
-   public boolean a(dhy $$0, dzn $$1, azh $$2, ji $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   protected egg(kn $$0, dym $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public Stream<egg<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   public boolean a(dio $$0, jj $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
-
-   public F b() {
-      return this.d;
-   }
-
-   public FC c() {
-      return this.e;
+   public eft<?> a() {
+      return eft.g;
    }
 }

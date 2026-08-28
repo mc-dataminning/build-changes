@@ -1,27 +1,13 @@
-public class gyf extends gxb<hbx, gfq> {
-   private static final aku a = aku.b("textures/entity/wither/wither_armor.png");
-   private final gfq b;
-
-   public gyf(gva<hbx, gfq> $$0, gfy $$1) {
+public abstract class gyf<S extends hak, M extends gea<S>> extends gyt<S, M> {
+   public gyf(gwc<S, M> $$0) {
       super($$0);
-      this.b = new gfq($$1.a(ggb.dD));
-   }
-
-   protected boolean a(hbx $$0) {
-      return $$0.d;
    }
 
    @Override
-   protected float a(float $$0) {
-      return ayz.b($$0 * 0.02F) * 3.0F;
+   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
+      fhs $$6 = $$1.getBuffer(this.a());
+      this.d().a($$0, $$6, $$2, hgi.d);
    }
 
-   @Override
-   protected aku a() {
-      return a;
-   }
-
-   protected gfq b() {
-      return this.b;
-   }
+   public abstract goi a();
 }

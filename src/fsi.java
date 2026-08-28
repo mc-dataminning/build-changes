@@ -1,185 +1,36 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.IntFunction;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fsi implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final azh b = azh.a();
-   private static final float c = 32.0F;
-   private final hft d;
-   private final aku e;
-   private fsm f;
-   private fsm g;
-   private List<feq.a> h = List.of();
-   private List<feq> i = List.of();
-   private final fsf<fsm> j = new fsf<>(fsm[]::new, fsm[][]::new);
-   private final fsf<fsi.a> k = new fsf<>(fsi.a[]::new, fsi.a[][]::new);
-   private final Int2ObjectMap<IntList> l = new Int2ObjectOpenHashMap();
-   private final List<fsj> m = Lists.newArrayList();
-   private final IntFunction<fsi.a> n = this::b;
-   private final IntFunction<fsm> o = this::c;
+public abstract class fsi implements fsj {
+   @Nullable
+   private fsk a;
+   private boolean b;
 
-   public fsi(hft $$0, aku $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public void a(List<feq.a> $$0, Set<fsh> $$1) {
-      this.h = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fsh> $$0) {
-      this.i = List.of();
-      this.c();
-      this.i = this.b(this.h, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.j.a();
-      this.k.a();
-      this.l.clear();
-      this.f = fso.b.bake(this::a);
-      this.g = fso.a.bake(this::a);
-   }
-
-   private List<feq> b(List<feq.a> $$0, Set<fsh> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<feq> $$3 = new ArrayList<>();
-
-      for (feq.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<feq> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (feq $$3x : $$3) {
-            fep $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fso.b) {
-                  ((IntList)this.l.computeIfAbsent(ayz.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   @Override
+   public final boolean aG_() {
+      return this.b;
    }
 
    @Override
-   public void close() {
-      this.d();
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
-   private void d() {
-      for (fsj $$0 : this.m) {
-         $$0.close();
+   @Nullable
+   @Override
+   public fsk aH_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fsk $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      this.m.clear();
-   }
-
-   private static boolean b(fep $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
-      }
-   }
-
-   private fsi.a b(int $$0) {
-      fep $$1 = null;
-
-      for (feq $$2 : this.i) {
-         fep $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new fsi.a($$1, $$3);
-            }
-         }
+      if ($$0 != null) {
+         $$0.a(true);
       }
 
-      return $$1 != null ? new fsi.a($$1, fso.b) : fsi.a.c;
-   }
-
-   public fep a(int $$0, boolean $$1) {
-      return this.k.a($$0, this.n).a($$1);
-   }
-
-   private fsm c(int $$0) {
-      for (feq $$1 : this.i) {
-         fep $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
-      }
-
-      a.warn("Couldn't find glyph for character {} (\\u{})", Character.toString($$0), String.format("%04x", $$0));
-      return this.f;
-   }
-
-   public fsm a(int $$0) {
-      return this.j.a($$0, this.o);
-   }
-
-   private fsm a(fer $$0) {
-      for (fsj $$1 : this.m) {
-         fsm $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      aku $$3 = this.e.g("/" + this.m.size());
-      boolean $$4 = $$0.c();
-      fsk $$5 = $$4 ? fsk.b($$3) : fsk.a($$3);
-      fsj $$6 = new fsj($$5, $$4);
-      this.m.add($$6);
-      this.d.a($$3, $$6);
-      fsm $$7 = $$6.a($$0);
-      return $$7 == null ? this.f : $$7;
-   }
-
-   public fsm a(fep $$0) {
-      IntList $$1 = (IntList)this.l.get(ayz.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(b.a($$1.size()))) : this.f;
-   }
-
-   public aku a() {
-      return this.e;
-   }
-
-   public fsm b() {
-      return this.g;
-   }
-
-   static record a(fep a, fep b) {
-      static final fsi.a c = new fsi.a(fso.b, fso.b);
-
-      fep a(boolean $$0) {
-         return $$0 ? this.b : this.a;
-      }
+      this.a = $$0;
    }
 }

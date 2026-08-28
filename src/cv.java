@@ -6,18 +6,18 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cv(Optional<jv<cxd>> b, dk.d c, kt d, Map<cw.a<?>, cw> e) implements Predicate<cxh> {
+public record cv(Optional<jw<cxu>> b, dk.d c, kv d, Map<cw.a<?>, cw> e) implements Predicate<cxy> {
    public static final Codec<cv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kg.a(mc.K).optionalFieldOf("items").forGetter(cv::a),
+               kh.a(me.K).optionalFieldOf("items").forGetter(cv::a),
                dk.d.d.optionalFieldOf("count", dk.d.c).forGetter(cv::b),
-               kt.a.optionalFieldOf("components", kt.c).forGetter(cv::c),
+               kv.a.optionalFieldOf("components", kv.c).forGetter(cv::c),
                cw.b.optionalFieldOf("predicates", Map.of()).forGetter(cv::d)
             )
             .apply($$0, cv::new)
    );
 
-   public boolean a(cxh $$0) {
+   public boolean a(cxy $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (!this.c.d($$0.M())) {
@@ -35,7 +35,7 @@ public record cv(Optional<jv<cxd>> b, dk.d c, kt d, Map<cw.a<?>, cw> e) implemen
       }
    }
 
-   public Optional<jv<cxd>> a() {
+   public Optional<jw<cxu>> a() {
       return this.b;
    }
 
@@ -43,7 +43,7 @@ public record cv(Optional<jv<cxd>> b, dk.d c, kt d, Map<cw.a<?>, cw> e) implemen
       return this.c;
    }
 
-   public kt c() {
+   public kv c() {
       return this.d;
    }
 
@@ -52,13 +52,13 @@ public record cv(Optional<jv<cxd>> b, dk.d c, kt d, Map<cw.a<?>, cw> e) implemen
    }
 
    public static class a {
-      private Optional<jv<cxd>> a = Optional.empty();
+      private Optional<jw<cxu>> a = Optional.empty();
       private dk.d b = dk.d.c;
-      private kt c;
+      private kv c;
       private final Builder<cw.a<?>, cw> d;
 
       private a() {
-         this.c = kt.c;
+         this.c = kv.c;
          this.d = ImmutableMap.builder();
       }
 
@@ -66,12 +66,12 @@ public record cv(Optional<jv<cxd>> b, dk.d c, kt d, Map<cw.a<?>, cw> e) implemen
          return new cv.a();
       }
 
-      public cv.a a(js<cxd> $$0, dgy... $$1) {
-         this.a = Optional.of(jv.a($$0x -> $$0x.i().f(), $$1));
+      public cv.a a(jt<cxu> $$0, dho... $$1) {
+         this.a = Optional.of(jw.a($$0x -> $$0x.i().f(), $$1));
          return this;
       }
 
-      public cv.a a(js<cxd> $$0, axf<cxd> $$1) {
+      public cv.a a(jt<cxu> $$0, axp<cxu> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }
@@ -86,7 +86,7 @@ public record cv(Optional<jv<cxd>> b, dk.d c, kt d, Map<cw.a<?>, cw> e) implemen
          return this;
       }
 
-      public cv.a a(kt $$0) {
+      public cv.a a(kv $$0) {
          this.c = $$0;
          return this;
       }

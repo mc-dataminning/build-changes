@@ -1,7 +1,27 @@
-public interface bnw {
-   void a(long[] var1);
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   void a(long var1);
+public class bnw extends bkj {
+   public bnw(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
 
-   void a(long var1, int var3);
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:llama", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:trader_llama", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:donkey", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:mule", $$1x -> a($$0));
+      $$0.registerSimple($$1, "minecraft:horse");
+      $$0.registerSimple($$1, "minecraft:skeleton_horse");
+      $$0.registerSimple($$1, "minecraft:zombie_horse");
+      return $$1;
+   }
+
+   private static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("Items", DSL.list(biq.t.in($$0)));
+   }
 }

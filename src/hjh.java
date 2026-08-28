@@ -1,50 +1,30 @@
-public class hjh extends hix {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final crq s;
-   private float t = 0.0F;
+import java.util.Locale;
 
-   public hjh(crq $$0) {
-      super(awa.pv, awb.g, hjo.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dz());
-      this.g = (double)((float)$$0.dB());
-      this.h = (double)((float)$$0.dF());
+public record hjh(ald a, String b) {
+   public hjh(ald a, String b) {
+      b = a(b);
+      this.a = a;
+      this.b = b;
+   }
+
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.b;
    }
 
    @Override
-   public boolean s() {
-      return !this.s.bb();
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 
-   @Override
-   public boolean r() {
-      return true;
+   public ald b() {
+      return this.a;
    }
 
-   @Override
-   public void q() {
-      if (this.s.dP()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dz());
-         this.g = (double)((float)this.s.dB());
-         this.h = (double)((float)this.s.dF());
-         float $$0 = (float)this.s.dx().i();
-         boolean $$1 = !this.s.cp() && this.s.f() instanceof csf;
-         if ($$0 >= 0.01F && this.s.dU().u().i() && !$$1) {
-            this.t = ayz.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = ayz.h(ayz.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
-      }
+   public String c() {
+      return this.b;
    }
 }

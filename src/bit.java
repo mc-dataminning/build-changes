@@ -3,17 +3,17 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bit extends bgy {
+public class bit extends bhm {
    public bit(Schema $$0, boolean $$1) {
-      super($$0, $$1, "StriderGravityFix", bic.C, "minecraft:strider");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("NoGravity").asBoolean(false) ? $$0.set("NoGravity", $$0.createBoolean(false)) : $$0;
+      super($$0, $$1, "Remove Golem Gossip Fix", biq.D, "minecraft:villager");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+      return $$0.update(DSL.remainderFinder(), bit::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
    }
 }

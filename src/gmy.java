@@ -1,251 +1,64 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
 public class gmy {
-   private final gmy.b a;
-   final ji b;
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = cqh.g();
+   public static final Codec<gmy> a = Codec.PASSTHROUGH.listOf().validate($$0 -> af.a($$0, c)).xmap(gmy::new, $$0 -> $$0.f);
+   private static final DynamicOps<ut> d = uk.a;
+   private static final Dynamic<?> e = new Dynamic(d, (ut)cxy.f.encodeStart(d, cxy.k).getOrThrow());
+   private List<Dynamic<?>> f;
 
-   public gmy(kk $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 * 2 + 1;
-      int $$5 = ayz.c($$4);
-      int $$6 = $$1 * 16;
-      ji $$7 = $$0.j();
-      this.b = $$0.k();
-      int $$8 = $$7.u() - $$6;
-      int $$9 = $$8 + $$5 * 16 - 1;
-      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
-      int $$11 = $$10 + $$5 * 16 - 1;
-      int $$12 = $$7.w() - $$6;
-      int $$13 = $$12 + $$5 * 16 - 1;
-      this.a = new gmy.b(new eob($$8, $$10, $$12, $$9, $$11, $$13));
+   private gmy(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public boolean a(gql.b $$0) {
-      return this.a.a($$0);
+   public gmy() {
+      this(Collections.nCopies(c, e));
    }
 
-   public void a(gmy.e $$0, gqp $$1, int $$2) {
-      this.a.a($$0, false, $$1, 0, $$2, true);
+   public List<cxy> a(ju.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> cxy.f.parse(alb.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cxy.k))
+         .toList();
    }
 
-   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
-      int $$7 = this.b.u();
-      int $$8 = this.b.v();
-      int $$9 = this.b.w();
-      return (double)$$7 > $$0 - (double)$$6
-         && (double)$$7 < $$3 + (double)$$6
-         && (double)$$8 > $$1 - (double)$$6
-         && (double)$$8 < $$4 + (double)$$6
-         && (double)$$9 > $$2 - (double)$$6
-         && (double)$$9 < $$5 + (double)$$6;
+   public void a(cqh $$0, kg $$1) {
+      alb<ut> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         cxy $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = cxy.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
+      }
+
+      this.f = $$3.build();
    }
 
-   static enum a {
-      a(4, 2, 1),
-      b(4, 1, 2),
-      c(2, 4, 1),
-      d(1, 4, 2),
-      e(2, 1, 4),
-      f(1, 2, 4);
-
-      final int g;
-      final int h;
-      final int i;
-
-      private a(final int $$0, final int $$1, final int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      public static gmy.a a(int $$0, int $$1, int $$2) {
-         if ($$0 > $$1 && $$0 > $$2) {
-            return $$1 > $$2 ? a : b;
-         } else if ($$1 > $$0 && $$1 > $$2) {
-            return $$0 > $$2 ? c : d;
-         } else {
-            return $$0 > $$1 ? e : f;
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   class b implements gmy.d {
-      private final gmy.d[] b = new gmy.d[8];
-      private final eob c;
-      private final int d;
-      private final int e;
-      private final int f;
-      private final gmy.a g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
-
-      public b(final eob $$0) {
-         this.c = $$0;
-         this.d = this.c.h() + this.c.d() / 2;
-         this.e = this.c.i() + this.c.e() / 2;
-         this.f = this.c.j() + this.c.f() / 2;
-         int $$1 = gmy.this.b.u() - this.d;
-         int $$2 = gmy.this.b.v() - this.e;
-         int $$3 = gmy.this.b.w() - this.f;
-         this.g = gmy.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
-         this.h = $$1 < 0;
-         this.i = $$2 < 0;
-         this.j = $$3 < 0;
-      }
-
-      public boolean a(gql.b $$0) {
-         long $$1 = $$0.g();
-         boolean $$2 = kk.c(kk.b($$1)) - this.d < 0;
-         boolean $$3 = kk.c(kk.c($$1)) - this.e < 0;
-         boolean $$4 = kk.c(kk.d($$1)) - this.f < 0;
-         boolean $$5 = $$2 != this.h;
-         boolean $$6 = $$3 != this.i;
-         boolean $$7 = $$4 != this.j;
-         int $$8 = a(this.g, $$5, $$6, $$7);
-         if (this.c()) {
-            boolean $$9 = this.b[$$8] != null;
-            this.b[$$8] = gmy.this.new c($$0);
-            return !$$9;
-         } else if (this.b[$$8] != null) {
-            gmy.b $$10 = (gmy.b)this.b[$$8];
-            return $$10.a($$0);
-         } else {
-            eob $$11 = this.a($$2, $$3, $$4);
-            gmy.b $$12 = gmy.this.new b($$11);
-            this.b[$$8] = $$12;
-            return $$12.a($$0);
-         }
-      }
-
-      private static int a(gmy.a $$0, boolean $$1, boolean $$2, boolean $$3) {
-         int $$4 = 0;
-         if ($$1) {
-            $$4 += $$0.g;
-         }
-
-         if ($$2) {
-            $$4 += $$0.h;
-         }
-
-         if ($$3) {
-            $$4 += $$0.i;
-         }
-
-         return $$4;
-      }
-
-      private boolean c() {
-         return this.c.d() == 32;
-      }
-
-      private eob a(boolean $$0, boolean $$1, boolean $$2) {
-         int $$3;
-         int $$4;
-         if ($$0) {
-            $$3 = this.c.h();
-            $$4 = this.d - 1;
-         } else {
-            $$3 = this.d;
-            $$4 = this.c.k();
-         }
-
-         int $$7;
-         int $$8;
-         if ($$1) {
-            $$7 = this.c.i();
-            $$8 = this.e - 1;
-         } else {
-            $$7 = this.e;
-            $$8 = this.c.l();
-         }
-
-         int $$11;
-         int $$12;
-         if ($$2) {
-            $$11 = this.c.j();
-            $$12 = this.f - 1;
-         } else {
-            $$11 = this.f;
-            $$12 = this.c.m();
-         }
-
-         return new eob($$3, $$7, $$11, $$4, $$8, $$12);
-      }
-
-      @Override
-      public void a(gmy.e $$0, boolean $$1, gqp $$2, int $$3, int $$4, boolean $$5) {
-         boolean $$6 = $$1;
-         if (!$$1) {
-            int $$7 = $$2.a(this.c);
-            $$1 = $$7 == -2;
-            $$6 = $$7 == -2 || $$7 == -1;
-         }
-
-         if ($$6) {
-            $$5 = $$5
-               && gmy.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-
-            for (gmy.d $$8 : this.b) {
-               if ($$8 != null) {
-                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
-               }
-            }
-         }
-      }
-
-      @Nullable
-      @Override
-      public gql.b a() {
-         return null;
-      }
-
-      @Override
-      public fbs b() {
-         return new fbs(
-            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
-         );
-      }
-   }
-
-   final class c implements gmy.d {
-      private final gql.b b;
-
-      c(final gql.b $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(gmy.e $$0, boolean $$1, gqp $$2, int $$3, int $$4, boolean $$5) {
-         fbs $$6 = this.b.b();
-         if ($$1 || $$2.a(this.a().b())) {
-            $$5 = $$5 && gmy.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-         }
-      }
-
-      @Override
-      public gql.b a() {
-         return this.b;
-      }
-
-      @Override
-      public fbs b() {
-         return this.b.b();
-      }
-   }
-
-   public interface d {
-      void a(gmy.e var1, boolean var2, gqp var3, int var4, int var5, boolean var6);
-
-      @Nullable
-      gql.b a();
-
-      fbs b();
-   }
-
-   @FunctionalInterface
-   public interface e {
-      void visit(gmy.d var1, boolean var2, int var3, boolean var4);
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

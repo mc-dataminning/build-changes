@@ -1,36 +1,35 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public interface xk {
+   wv a();
 
-public record xk(int b, UUID c, UUID d) {
-   public static final Codec<xk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.l.fieldOf("index").forGetter(xk::b), kl.a.fieldOf("sender").forGetter(xk::c), kl.a.fieldOf("session_id").forGetter(xk::d))
-            .apply($$0, xk::new)
-   );
+   void a(aro var1, boolean var2, wr.a var3);
 
-   public static xk a(UUID $$0) {
-      return a($$0, af.e);
+   static xk a(xl $$0) {
+      return (xk)($$0.h() ? new xk.a($$0.d()) : new xk.b($$0));
    }
 
-   public static xk a(UUID $$0, UUID $$1) {
-      return new xk(0, $$0, $$1);
+   public static record a(wv a) implements xk {
+      @Override
+      public void a(aro $$0, boolean $$1, wr.a $$2) {
+         $$0.f.a(this.a, $$2);
+      }
    }
 
-   public void a(azl.a $$0) throws SignatureException {
-      $$0.update(kl.b(this.c));
-      $$0.update(kl.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
+   public static record b(xl a) implements xk {
+      @Override
+      public wv a() {
+         return this.a.d();
+      }
 
-   public boolean a(xk $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
-   }
+      @Override
+      public void a(aro $$0, boolean $$1, wr.a $$2) {
+         xl $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.f.a($$3, $$2);
+         }
+      }
 
-   @Nullable
-   public xk a() {
-      return this.b == Integer.MAX_VALUE ? null : new xk(this.b + 1, this.c, this.d);
+      public xl b() {
+         return this.a;
+      }
    }
 }

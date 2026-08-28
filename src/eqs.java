@@ -1,48 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class eqs extends eoj {
-   public static final MapCodec<eqs> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), emq.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eqs::new)
-   );
-   public final emq e;
+public interface eqs {
+   Codec<eqs> b = md.ah.q().dispatch(eqs::b, Function.identity());
 
-   public eqs(eoj.c $$0, emq $$1) {
-      super($$0);
-      this.e = $$1;
+   void a(azs var1, BiConsumer<alc<eqq>, alc<eqq>> var2);
+
+   Stream<alc<eqq>> a();
+
+   static eqr a(String $$0, String $$1) {
+      return a(qn.a($$0), qn.a($$1));
    }
 
-   @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      een $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      eel $$5 = new eel($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dhl $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      ji.a $$8 = new ji.a($$2, $$6, $$3);
-
-      while ($$6 > $$4) {
-         dxq $$9 = $$7.a($$6);
-         dxq $$10 = $$7.a(--$$6);
-         if ($$9.l() && ($$10.a(dkg.ej) || $$10.c(dgp.a, $$8.q($$6), jn.b))) {
-            break;
-         }
-      }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         ji $$11 = new ji($$2, $$6, $$3);
-         return Optional.of(new eoj.b($$11, (Consumer<epb>)($$3x -> eqr.a($$0.e(), $$3x, $$1, $$11))));
-      }
+   static eqr a(alc<eqq> $$0, alc<eqq> $$1) {
+      return new eqr($$0, $$1);
    }
 
-   @Override
-   public eos<?> e() {
-      return eos.i;
+   static eqv a(String $$0, bsb<String> $$1) {
+      bsb.a<alc<eqq>> $$2 = bsb.b();
+      $$1.d().forEach($$1x -> $$2.a(qn.a((String)$$1x.a()), $$1x.b()));
+      return a(qn.a($$0), $$2.a());
    }
+
+   static eqv a(alc<eqq> $$0, bsb<alc<eqq>> $$1) {
+      return new eqv($$0, $$1);
+   }
+
+   static eqw a(bsb<List<eqs>> $$0) {
+      return new eqw($$0);
+   }
+
+   MapCodec<? extends eqs> b();
 }

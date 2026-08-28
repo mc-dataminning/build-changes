@@ -1,176 +1,151 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.net.URI;
+import java.net.Proxy;
 import java.net.URL;
-import java.nio.file.FileSystemAlreadyExistsException;
-import java.nio.file.FileSystemNotFoundException;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
+import java.time.Instant;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ath {
-   private static final Logger b = LogUtils.getLogger();
-   public static Consumer<ath> a = $$0 -> {
-   };
-   private static final Map<ate, Path> c = af.a(() -> {
-      synchronized (atg.class) {
-         Builder<ate, Path> $$0 = ImmutableMap.builder();
+public class ath implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bot<ath.e> d;
+   private final bsg e = new bsg(af.j(), "download-queue");
 
-         for (ate $$1 : ate.values()) {
-            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
-            URL $$3 = atg.class.getResource($$2);
-            if ($$3 == null) {
-               b.error("File {} does not exist in classpath", $$2);
-            } else {
-               try {
-                  URI $$4 = $$3.toURI();
-                  String $$5 = $$4.getScheme();
-                  if (!"jar".equals($$5) && !"file".equals($$5)) {
-                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
-                  }
+   public ath(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bot.a(ath.e.a, $$0.resolve("log.json"));
+      atg.a($$0, 20);
+   }
 
-                  Path $$6 = a($$4);
-                  $$0.put($$1, $$6.getParent());
-               } catch (Exception var12) {
-                  b.error("Couldn't resolve path to vanilla assets", var12);
-               }
+   private ath.b b(ath.a $$0, Map<UUID, ath.c> $$1) {
+      ath.b $$2 = new ath.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
+
+            try {
+               $$5 = azb.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
+            }
+
+            try {
+               this.d
+                  .a(
+                     new ath.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
+      );
+      return $$2;
+   }
 
-         return $$0.build();
-      }
-   });
-   private final Set<Path> d = new LinkedHashSet<>();
-   private final Map<ate, Set<Path>> e = new EnumMap<>(ate.class);
-   private asu f = asu.a();
-   private final Set<String> g = new HashSet<>();
-
-   private static Path a(URI $$0) throws IOException {
+   private Either<String, ath.d> a(Path $$0) {
       try {
-         return Paths.get($$0);
-      } catch (FileSystemNotFoundException var3) {
-      } catch (Throwable var4) {
-         b.warn("Unable to get path for: {}", $$0, var4);
-      }
-
-      try {
-         FileSystems.newFileSystem($$0, Collections.emptyMap());
-      } catch (FileSystemAlreadyExistsException var2) {
-      }
-
-      return Paths.get($$0);
-   }
-
-   private boolean b(Path $$0) {
-      if (!Files.exists($$0)) {
-         return false;
-      } else if (!Files.isDirectory($$0)) {
-         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
-      } else {
-         return true;
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new ath.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
-   private void c(Path $$0) {
-      if (this.b($$0)) {
-         this.d.add($$0);
+   public CompletableFuture<ath.b> a(ath.a $$0, Map<UUID, ath.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a_);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
+   }
+
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, azb.a e) {
+   }
+
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
       }
    }
 
-   private void b(ate $$0, Path $$1) {
-      if (this.b($$1)) {
-         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
+   public static record c(URL a, @Nullable HashCode b) {
+   }
+
+   static record d(String b, long c) {
+      public static final Codec<ath.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ath.d::a), Codec.LONG.fieldOf("size").forGetter(ath.d::b)).apply($$0, ath.d::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
       }
    }
 
-   public ath a() {
-      c.forEach(($$0, $$1) -> {
-         this.c($$1.getParent());
-         this.b($$0, $$1);
-      });
-      return this;
-   }
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, ath.d> f) {
+      public static final Codec<ath.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  km.d.fieldOf("id").forGetter(ath.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(ath.e::b),
+                  ays.q.fieldOf("time").forGetter(ath.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(ath.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), ath.d.a.fieldOf("file")).forGetter(ath.e::e)
+               )
+               .apply($$0, ath.e::new)
+      );
 
-   public ath a(ate $$0, Class<?> $$1) {
-      Enumeration<URL> $$2 = null;
-
-      try {
-         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
-      } catch (IOException var8) {
+      public UUID a() {
+         return this.b;
       }
 
-      while ($$2 != null && $$2.hasMoreElements()) {
-         URL $$3 = $$2.nextElement();
-
-         try {
-            URI $$4 = $$3.toURI();
-            if ("file".equals($$4.getScheme())) {
-               Path $$5 = Paths.get($$4);
-               this.c($$5.getParent());
-               this.b($$0, $$5);
-            }
-         } catch (Exception var7) {
-            b.error("Failed to extract path from {}", $$3, var7);
-         }
+      public String b() {
+         return this.c;
       }
 
-      return this;
-   }
-
-   public ath b() {
-      a.accept(this);
-      return this;
-   }
-
-   public ath a(Path $$0) {
-      this.c($$0);
-
-      for (ate $$1 : ate.values()) {
-         this.b($$1, $$0.resolve($$1.a()));
+      public Instant c() {
+         return this.d;
       }
 
-      return this;
-   }
+      public Optional<String> d() {
+         return this.e;
+      }
 
-   public ath a(ate $$0, Path $$1) {
-      this.c($$1);
-      this.b($$0, $$1);
-      return this;
-   }
-
-   public ath a(asu $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public ath a(String... $$0) {
-      this.g.addAll(Arrays.asList($$0));
-      return this;
-   }
-
-   public atg a(atb $$0) {
-      return new atg($$0, this.f, Set.copyOf(this.g), a(this.d), af.a(ate.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
-   }
-
-   private static List<Path> a(Collection<Path> $$0) {
-      List<Path> $$1 = new ArrayList<>($$0);
-      Collections.reverse($$1);
-      return List.copyOf($$1);
+      public Either<String, ath.d> e() {
+         return this.f;
+      }
    }
 }

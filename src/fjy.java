@@ -1,20 +1,15 @@
-public class fjy extends fjx {
-   private final fle a;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   public fjy(fvi $$0, fle $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+public class fjy implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public fjy(Logger $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.a.c();
-   }
-
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

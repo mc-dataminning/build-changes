@@ -1,77 +1,134 @@
-import com.google.common.base.Stopwatch;
-import java.io.File;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class su implements ti {
-   private final Document a;
-   private final Element b;
-   private final Stopwatch c;
-   private final File d;
+public class su {
+   final so a;
+   private final List<sm> b = Lists.newArrayList();
+   private int c;
 
-   public su(File $$0) throws ParserConfigurationException {
-      this.d = $$0;
-      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-      this.b = this.a.createElement("testsuite");
-      Element $$1 = this.a.createElement("testsuite");
-      $$1.appendChild(this.b);
-      this.a.appendChild($$1);
-      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
-      this.c = Stopwatch.createStarted();
+   su(so $$0) {
+      this.a = $$0;
+      this.c = $$0.p();
    }
 
-   private Element a(sl $$0, String $$1) {
-      Element $$2 = this.a.createElement("testcase");
-      $$2.setAttribute("name", $$1);
-      $$2.setAttribute("classname", $$0.t());
-      $$2.setAttribute("time", String.valueOf((double)$$0.l() / 1000.0));
-      this.b.appendChild($$2);
-      return $$2;
+   public su a(Runnable $$0) {
+      this.b.add(sm.a($$0));
+      return this;
    }
 
-   @Override
-   public void a(sl $$0) {
-      String $$1 = $$0.b();
-      String $$2 = $$0.n().getMessage();
-      Element $$3 = this.a.createElement($$0.r() ? "failure" : "skipped");
-      $$3.setAttribute("message", "(" + $$0.d().x() + ") " + $$2);
-      Element $$4 = this.a($$0, $$1);
-      $$4.appendChild($$3);
+   public su a(long $$0, Runnable $$1) {
+      this.b.add(sm.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   public void b(sl $$0) {
-      String $$1 = $$0.b();
-      this.a($$0, $$1);
+   public su a(int $$0) {
+      return this.a($$0, () -> {
+      });
    }
 
-   @Override
+   public su b(Runnable $$0) {
+      this.b.add(sm.a(() -> this.c($$0)));
+      return this;
+   }
+
+   public su a(int $$0, Runnable $$1) {
+      this.b.add(sm.a(() -> {
+         if (this.a.p() < this.c + $$0) {
+            throw new sg(wv.c("test.error.sequence.not_completed"), this.a.p());
+         } else {
+            this.c($$1);
+         }
+      }));
+      return this;
+   }
+
+   public su b(int $$0, Runnable $$1) {
+      this.b.add(sm.a(() -> {
+         if (this.a.p() < this.c + $$0) {
+            this.c($$1);
+            throw new sg(wv.c("test.error.sequence.not_completed"), this.a.p());
+         }
+      }));
+      return this;
+   }
+
    public void a() {
-      this.c.stop();
-      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
+      this.b.add(sm.a(this.a::m));
+   }
 
+   public void a(Supplier<Exception> $$0) {
+      this.b.add(sm.a(() -> this.a.a($$0.get())));
+   }
+
+   public su.a b() {
+      su.a $$0 = new su.a();
+      this.b.add(sm.a(() -> $$0.a(this.a.p())));
+      return $$0;
+   }
+
+   public void b(int $$0) {
       try {
-         this.a(this.d);
-      } catch (TransformerException var2) {
-         throw new Error("Couldn't save test report", var2);
+         this.d($$0);
+      } catch (sg var3) {
       }
    }
 
-   public void a(File $$0) throws TransformerException {
-      TransformerFactory $$1 = TransformerFactory.newInstance();
-      Transformer $$2 = $$1.newTransformer();
-      DOMSource $$3 = new DOMSource(this.a);
-      StreamResult $$4 = new StreamResult($$0);
-      $$2.transform($$3, $$4);
+   public void c(int $$0) {
+      try {
+         this.d($$0);
+      } catch (sg var3) {
+         this.a.a(var3);
+      }
+   }
+
+   private void c(Runnable $$0) {
+      try {
+         $$0.run();
+      } catch (sg var3) {
+         this.a.a(var3);
+      }
+   }
+
+   private void d(int $$0) {
+      Iterator<sm> $$1 = this.b.iterator();
+
+      while ($$1.hasNext()) {
+         sm $$2 = $$1.next();
+         $$2.b.run();
+         $$1.remove();
+         int $$3 = $$0 - this.c;
+         int $$4 = this.c;
+         this.c = $$0;
+         if ($$2.a != null && $$2.a != (long)$$3) {
+            this.a.a(new sg(wv.a("test.error.sequence.invalid_tick", (long)$$4 + $$2.a), $$0));
+            break;
+         }
+      }
+   }
+
+   public class a {
+      private static final int b = -1;
+      private int c = -1;
+
+      void a(int $$0) {
+         if (this.c != -1) {
+            throw new IllegalStateException("Condition already triggered at " + this.c);
+         } else {
+            this.c = $$0;
+         }
+      }
+
+      public void a() {
+         int $$0 = su.this.a.p();
+         if (this.c != $$0) {
+            if (this.c == -1) {
+               throw new sg(wv.c("test.error.sequence.condition_not_triggered"), $$0);
+            } else {
+               throw new sg(wv.a("test.error.sequence.condition_already_triggered", this.c), $$0);
+            }
+         }
+      }
    }
 }

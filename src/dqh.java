@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqh extends dke {
+public class dqh extends dku implements dkx {
    public static final MapCodec<dqh> a = b(dqh::new);
 
    @Override
@@ -8,30 +8,61 @@ public class dqh extends dke {
       return a;
    }
 
-   protected dqh(dxp.d $$0) {
+   public dqh(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
-      if (!$$0.a(cxl.sU)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.C) {
-         return bsy.a;
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
       } else {
-         jn $$7 = $$6.c();
-         jn $$8 = $$7.o() == jn.a.b ? $$4.cN().g() : $$7;
-         $$2.a(null, $$3, awa.vG, awb.e, 1.0F, 1.0F);
-         $$2.a($$3, dkg.er.m().b(dkz.b, $$8), 11);
-         clw $$9 = new clw(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cxh(cxl.sX, 4)
-         );
-         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, bvy.d($$5));
-         $$2.a($$4, ecp.M, $$3);
-         $$4.b(awk.c.b(cxl.sU));
-         return bsy.a;
+         for (jj $$3 : jj.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(awz.aO)) {
+               return true;
+            }
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (jj $$6 : jj.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         dym $$7 = $$0.a_($$6);
+         if ($$7.a(dkw.oP)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dkw.oY)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dkw.oP.m() : dkw.oY.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dkw.oP.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dkw.oY.m(), 3);
+      }
+   }
+
+   @Override
+   public dkx.a am_() {
+      return dkx.a.a;
    }
 }

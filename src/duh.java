@@ -1,104 +1,96 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class duh extends dus implements btb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
-   @Nullable
-   private wp d;
-   private final cwe e;
-   private duj f = duj.a;
+public interface duh extends dlw<duh.a> {
+   Supplier<BiMap<dku, dku>> v_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dkw.rA, dkw.rB)
+            .put(dkw.rB, dkw.rC)
+            .put(dkw.rC, dkw.rD)
+            .put(dkw.rJ, dkw.rI)
+            .put(dkw.rI, dkw.rH)
+            .put(dkw.rH, dkw.rG)
+            .put(dkw.rN, dkw.rM)
+            .put(dkw.rM, dkw.rL)
+            .put(dkw.rL, dkw.rK)
+            .put(dkw.rZ, dkw.rY)
+            .put(dkw.rY, dkw.rX)
+            .put(dkw.rX, dkw.rW)
+            .put(dkw.rV, dkw.rU)
+            .put(dkw.rU, dkw.rT)
+            .put(dkw.rT, dkw.rS)
+            .put(dkw.sq, dkw.sr)
+            .put(dkw.sr, dkw.st)
+            .put(dkw.st, dkw.ss)
+            .put(dkw.sy, dkw.sz)
+            .put(dkw.sz, dkw.sB)
+            .put(dkw.sB, dkw.sA)
+            .put(dkw.sG, dkw.sH)
+            .put(dkw.sH, dkw.sI)
+            .put(dkw.sI, dkw.sJ)
+            .put(dkw.sO, dkw.sP)
+            .put(dkw.sP, dkw.sQ)
+            .put(dkw.sQ, dkw.sR)
+            .build()
+   );
+   Supplier<BiMap<dku, dku>> w_ = Suppliers.memoize(() -> v_.get().inverse());
 
-   public duh(ji $$0, dxq $$1) {
-      this($$0, $$1, ((div)$$1.b()).b());
+   static Optional<dku> a(dku $$0) {
+      return Optional.ofNullable((dku)w_.get().get($$0));
    }
 
-   public duh(ji $$0, dxq $$1, cwe $$2) {
-      super(duu.u, $$0, $$1);
-      this.e = $$2;
-   }
+   static dku b(dku $$0) {
+      dku $$1 = $$0;
 
-   @Override
-   public wp al() {
-      return (wp)(this.d != null ? this.d : wp.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public wp an() {
-      return this.d;
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      aks<un> $$2 = $$1.a(ue.a);
-      if (!this.f.equals(duj.a)) {
-         $$0.a("patterns", (un)duj.b.encodeStart($$2, this.f).getOrThrow());
+      for (dku $$2 = (dku)w_.get().get($$0); $$2 != null; $$2 = (dku)w_.get().get($$2)) {
+         $$1 = $$2;
       }
 
-      if (this.d != null) {
-         $$0.a("CustomName", (un)wr.a.encodeStart($$2, this.d).getOrThrow());
+      return $$1;
+   }
+
+   static Optional<dym> b(dym $$0) {
+      return a($$0.b()).map($$1 -> $$1.m($$0));
+   }
+
+   static Optional<dku> c(dku $$0) {
+      return Optional.ofNullable((dku)v_.get().get($$0));
+   }
+
+   static dym c(dym $$0) {
+      return b($$0.b()).m($$0);
+   }
+
+   @Override
+   default Optional<dym> k_(dym $$0) {
+      return c($$0.b()).map($$1 -> $$1.m($$0));
+   }
+
+   @Override
+   default float aq_() {
+      return this.c() == duh.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements bag {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<duh.a> e = bag.a(duh.a::values);
+      private final String f;
+
+      private a(final String $$0) {
+         this.f = $$0;
       }
-   }
 
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("CustomName")) {
-         this.d = a($$0.c("CustomName"), $$1);
+      @Override
+      public String c() {
+         return this.f;
       }
-
-      if ($$0.e("patterns")) {
-         duj.b
-            .parse($$1.a(ue.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public abr a() {
-      return abr.a(this);
-   }
-
-   @Override
-   public tq a(jt.a $$0) {
-      return this.d($$0);
-   }
-
-   public duj b() {
-      return this.f;
-   }
-
-   public cxh c() {
-      cxh $$0 = new cxh(djj.a(this.e));
-      $$0.b(this.q());
-      return $$0;
-   }
-
-   public cwe f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dus.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(kv.ak, duj.a);
-      this.d = $$0.a(kv.g);
-   }
-
-   @Override
-   protected void a(kr.a $$0) {
-      super.a($$0);
-      $$0.a(kv.ak, this.f);
-      $$0.a(kv.g, this.d);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
    }
 }

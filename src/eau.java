@@ -1,16 +1,193 @@
-public interface eau {
-   void a(Throwable var1, ebf var2, dgg var3);
+import java.util.function.Predicate;
 
-   void b(Throwable var1, ebf var2, dgg var3);
+public class eau {
+   public static final int a = 16;
+   public static final int b = 16;
+   public static final int c = 4096;
+   public static final int d = 2;
+   private short e;
+   private short f;
+   private short g;
+   private final ebb<dym> h;
+   private ebc<js<dis>> i;
 
-   static z a(dgg $$0, dgg $$1) {
-      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
-      p $$3 = $$2.a("Misplaced Chunk");
-      $$3.a("Stored Position", $$0::toString);
-      return new z($$2);
+   private eau(eau $$0) {
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h.d();
+      this.i = $$0.i.d();
    }
 
-   default void a(dgg $$0, dgg $$1, ebf $$2) {
-      this.a(a($$0, $$1), $$2, $$1);
+   public eau(ebb<dym> $$0, ebc<js<dis>> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.g();
+   }
+
+   public eau(kf<dis> $$0) {
+      this.h = new ebb<>(dku.k, dkw.a.m(), ebb.d.d);
+      this.i = new ebb<>($$0.t(), $$0.b(diz.b), ebb.d.e);
+   }
+
+   public dym a(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2);
+   }
+
+   public eut b(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2).y();
+   }
+
+   public void a() {
+      this.h.a();
+   }
+
+   public void b() {
+      this.h.b();
+   }
+
+   public dym a(int $$0, int $$1, int $$2, dym $$3) {
+      return this.a($$0, $$1, $$2, $$3, true);
+   }
+
+   public dym a(int $$0, int $$1, int $$2, dym $$3, boolean $$4) {
+      dym $$5;
+      if ($$4) {
+         $$5 = this.h.a($$0, $$1, $$2, $$3);
+      } else {
+         $$5 = this.h.b($$0, $$1, $$2, $$3);
+      }
+
+      eut $$7 = $$5.y();
+      eut $$8 = $$3.y();
+      if (!$$5.l()) {
+         this.e--;
+         if ($$5.z()) {
+            this.f--;
+         }
+      }
+
+      if (!$$7.c()) {
+         this.g--;
+      }
+
+      if (!$$3.l()) {
+         this.e++;
+         if ($$3.z()) {
+            this.f++;
+         }
+      }
+
+      if (!$$8.c()) {
+         this.g++;
+      }
+
+      return $$5;
+   }
+
+   public boolean c() {
+      return this.e == 0;
+   }
+
+   public boolean d() {
+      return this.e() || this.f();
+   }
+
+   public boolean e() {
+      return this.f > 0;
+   }
+
+   public boolean f() {
+      return this.g > 0;
+   }
+
+   public void g() {
+      class a implements ebb.b<dym> {
+         public int a;
+         public int b;
+         public int c;
+
+         public void a(dym $$0, int $$1) {
+            eut $$2 = $$0.y();
+            if (!$$0.l()) {
+               this.a += $$1;
+               if ($$0.z()) {
+                  this.b += $$1;
+               }
+            }
+
+            if (!$$2.c()) {
+               this.a += $$1;
+               if ($$2.f()) {
+                  this.c += $$1;
+               }
+            }
+         }
+      }
+
+      a $$0 = new a();
+      this.h.a($$0);
+      this.e = (short)$$0.a;
+      this.f = (short)$$0.b;
+      this.g = (short)$$0.c;
+   }
+
+   public ebb<dym> h() {
+      return this.h;
+   }
+
+   public ebc<js<dis>> i() {
+      return this.i;
+   }
+
+   public void a(vr $$0) {
+      this.e = $$0.readShort();
+      this.h.a($$0);
+      ebb<js<dis>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
+   }
+
+   public void b(vr $$0) {
+      ebb<js<dis>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
+   }
+
+   public void c(vr $$0) {
+      $$0.m(this.e);
+      this.h.b($$0);
+      this.i.b($$0);
+   }
+
+   public int j() {
+      return 2 + this.h.c() + this.i.c();
+   }
+
+   public boolean a(Predicate<dym> $$0) {
+      return this.h.a($$0);
+   }
+
+   public js<dis> c(int $$0, int $$1, int $$2) {
+      return this.i.a($$0, $$1, $$2);
+   }
+
+   public void a(div $$0, djb.f $$1, int $$2, int $$3, int $$4) {
+      ebb<js<dis>> $$5 = this.i.e();
+      int $$6 = 4;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            for (int $$9 = 0; $$9 < 4; $$9++) {
+               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
+            }
+         }
+      }
+
+      this.i = $$5;
+   }
+
+   public eau k() {
+      return new eau(this);
    }
 }

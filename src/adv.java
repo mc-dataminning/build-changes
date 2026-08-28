@@ -1,16 +1,18 @@
-public record adv(float b, float c) implements yw<abl> {
-   public static final yn<vl, adv> a = yn.a(yl.l, adv::b, yl.l, adv::e, adv::new);
+import io.netty.buffer.ByteBuf;
+
+public class adv implements zc<abr> {
+   public static final adv a = new adv();
+   public static final yt<ByteBuf, adv> b = yt.a(a);
+
+   private adv() {
+   }
 
    @Override
-   public yy<adv> a() {
-      return agd.ai;
+   public ze<adv> a() {
+      return agk.ad;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   public float e() {
-      return this.c;
    }
 }

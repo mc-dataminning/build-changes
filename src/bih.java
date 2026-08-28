@@ -1,12 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
 
-public class bih {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
-      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
-      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
-      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
-      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
-      .build();
+public class bih extends bbf {
+   public bih(Schema $$0) {
+      super($$0, biq.b);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "PlayerUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> {
+            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
+            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
+               .update(DSL.remainderFinder(), $$0x -> bfc.c(bfc.b($$0x)));
+         }
+      );
+   }
 }

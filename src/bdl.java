@@ -1,33 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.DoubleUnaryOperator;
+import com.mojang.datafixers.types.Type;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class bdl extends bgy {
-   private final String a;
-   private final DoubleUnaryOperator b;
-
-   public bdl(Schema $$0, String $$1, String $$2, String $$3, DoubleUnaryOperator $$4) {
-      super($$0, false, $$1, bic.C, $$2);
-      this.a = $$3;
-      this.b = $$4;
+public class bdl extends DataFix {
+   public bdl(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("attributes", $$1 -> $$0.createList($$1.asStream().map($$0xx -> {
-            String $$1x = bju.a($$0xx.get("id").asString(""));
-            if (!$$1x.equals(this.a)) {
-               return $$0xx;
-            } else {
-               double $$2 = $$0xx.get("base").asDouble(0.0);
-               return $$0xx.set("base", $$0xx.createDouble(this.b.applyAsDouble($$2)));
-            }
-         })));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.w);
+      return this.fixTypeEverywhereTyped(
+         "Custom Model Data expansion", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("minecraft:custom_model_data", $$0xxx -> {
+                  float $$1 = $$0xxx.asNumber(0.0F).floatValue();
+                  return $$0xxx.createMap(Map.of($$0xxx.createString("floats"), $$0xxx.createList(Stream.of($$0xxx.createFloat($$1)))));
+               }))
+      );
    }
 }

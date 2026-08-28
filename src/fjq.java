@@ -1,38 +1,31 @@
-public class fjq extends hmd {
-   private static final wp a = wp.c("mco.client.incompatible.title").b(-65536);
-   private static final wp b = wp.b(ab.b().c()).b(-65536);
-   private static final wp c = wp.a("mco.client.unsupported.snapshot.version", b);
-   private static final wp C = wp.a("mco.client.outdated.stable.version", b);
-   private final fvi D;
-   private final fte E = new fte(this);
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-   public fjq(fvi $$0) {
-      super(a);
-      this.D = $$0;
-   }
+public class fjq extends fjt {
+   public long a;
+   public List<fjp> b = Lists.newArrayList();
 
-   @Override
-   public void aR_() {
-      this.E.a(a, this.p);
-      this.E.c(new fqk(this.E(), this.p).b(true));
-      this.E.b(fpq.a(wo.k, $$0 -> this.aO_()).a(200).a());
-      this.E.a($$1 -> {
-         fpo var10000 = this.c($$1);
-      });
-      this.c();
-   }
+   public static fjq a(String $$0) {
+      fjq $$1 = new fjq();
+      JsonParser $$2 = new JsonParser();
 
-   @Override
-   protected void c() {
-      this.E.a();
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = flp.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fjp $$8 = fjp.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.D);
-   }
-
-   private wp E() {
-      return ab.b().g() ? C : c;
+      return $$1;
    }
 }

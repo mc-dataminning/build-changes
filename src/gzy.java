@@ -1,7 +1,8 @@
-public class gzy extends haj {
-   public final hcn i = new hcn();
-
-   public static void a(bvy $$0, gzy $$1, hcl $$2) {
-      $$2.a($$1.i, $$0.eZ(), cxf.h, false, $$0);
-   }
+public class gzy extends hbk {
+   public final bvj a = new bvj();
+   public final bvj b = new bvj();
+   public final bvj c = new bvj();
+   public final bvj d = new bvj();
+   public final bvj e = new bvj();
+   public final bvj f = new bvj();
 }

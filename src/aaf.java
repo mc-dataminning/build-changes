@@ -1,45 +1,51 @@
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public record aaf(int c, ji d, List<aaf.a> e) implements zz {
-   public static final yn<vl, aaf> a = zz.a(aaf::a, aaf::new);
-   public static final zz.b<aaf> b = zz.a("debug/goal_selector");
+public interface aaf {
+   aaf.b<? extends aaf> a();
 
-   private aaf(vl $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(aaf.a::new));
+   static <B extends ByteBuf, T extends aaf> yt<B, T> a(yw<B, T> $$0, yu<B, T> $$1) {
+      return yt.a($$0, $$1);
    }
 
-   private void a(vl $$0) {
-      $$0.q(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+   static <T extends aaf> aaf.b<T> a(String $$0) {
+      return new aaf.b<>(ald.b($$0));
    }
 
-   @Override
-   public zz.b<aaf> a() {
-      return b;
+   static <B extends vr> yt<B, aaf> a(final aaf.a<B> $$0, List<aaf.c<? super B, ?>> $$1) {
+      final Map<ald, yt<? super B, ? extends aaf>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aaf.c::b));
+      return new yt<B, aaf>() {
+         private yt<? super B, ? extends aaf> a(ald $$0x) {
+            yt<? super B, ? extends aaf> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
+         }
+
+         private <T extends aaf> void a(B $$0x, aaf.b<T> $$1, aaf $$2x) {
+            $$0.a($$1.a());
+            yt<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, aaf $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public aaf a(B $$0x) {
+            ald $$1 = $$0.q();
+            return (aaf)this.a($$1).decode($$0);
+         }
+      };
    }
 
-   public int b() {
-      return this.c;
+   public interface a<B extends vr> {
+      yt<B, ? extends aaf> create(ald var1);
    }
 
-   public ji c() {
-      return this.d;
+   public static record b<T extends aaf>(ald a) {
    }
 
-   public List<aaf.a> d() {
-      return this.e;
-   }
-
-   public static record a(int a, boolean b, String c) {
-      public a(vl $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
-
-      public void a(vl $$0) {
-         $$0.q(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
+   public static record c<B extends vr, T extends aaf>(aaf.b<T> a, yt<B, T> b) {
    }
 }

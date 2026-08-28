@@ -1,42 +1,53 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public abstract class bau extends DataFix {
-   private final String a;
+public class bau {
+   private final Set<bat<?>> a;
+   private final Set<bat<?>> b;
 
-   public bau(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   bau(Set<bat<?>> $$0, Set<bat<?>> $$1) {
+      this.a = Set.copyOf($$0);
+      this.b = Set.copyOf(Sets.union($$0, $$1));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bic.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bic.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+   public Set<bat<?>> a() {
+      return this.a;
+   }
+
+   public Set<bat<?>> b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public static class a {
+      private final Set<bat<?>> a = Sets.newIdentityHashSet();
+      private final Set<bat<?>> b = Sets.newIdentityHashSet();
+
+      public bau.a a(bat<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public bau.a b(bat<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public bau a() {
+         return new bau(this.a, this.b);
       }
    }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
-   }
-
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

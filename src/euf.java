@@ -1,100 +1,166 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public class euf extends eus {
-   private final boolean a;
-   private float m;
-   private float n;
+public abstract class euf {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final euj b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   public euf(boolean $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(dhm $$0, bwa $$1) {
-      super.a($$0, $$1);
-      $$1.a(eun.j, 0.0F);
-      this.m = $$1.a(eun.c);
-      $$1.a(eun.c, 6.0F);
-      this.n = $$1.a(eun.k);
-      $$1.a(eun.k, 4.0F);
-   }
-
-   @Override
-   public void b() {
-      this.c.a(eun.c, this.m);
-      this.c.a(eun.k, this.n);
-      super.b();
-   }
-
-   @Override
-   public eui a() {
-      return !this.c.bj() ? super.a() : this.c(new ji(ayz.a(this.c.cQ().a), ayz.a(this.c.cQ().b + 0.5), ayz.a(this.c.cQ().c)));
-   }
-
-   @Override
-   public eur a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
-   }
-
-   @Override
-   public int a(eui[] $$0, eui $$1) {
-      int $$2 = super.a($$0, $$1);
-      eun $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      eun $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.c.a($$3) >= 0.0F && $$4 != eun.w) {
-         $$5 = ayz.d(Math.max(1.0F, this.c.dO()));
+   protected euf(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
       } else {
-         $$5 = 0;
+         this.f = $$0;
+         this.b = new euj($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
       }
+   }
 
-      double $$7 = this.d(new ji($$1.a, $$1.b, $$1.c));
-      eui $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jn.b, $$4);
-      eui $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jn.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
+   protected void d(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
       }
+   }
 
-      if (this.b($$9, $$1) && $$4 != eun.e) {
-         $$0[$$2++] = $$9;
-      }
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
+         }
+      });
+      $$1.forEach(this::d);
+   }
 
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         eui $$11 = $$0[$$10];
-         if ($$11.l == eun.j && this.a && $$11.b < this.c.dU().P() - 10) {
-            $$11.k++;
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
+   }
+
+   protected void e(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
+   }
+
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
+   }
+
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = azk.a($$2, 0, this.f - 1);
+         $$3 = azk.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
+         }
+
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = azk.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
+
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
          }
       }
-
-      return $$2;
    }
 
-   private boolean b(@Nullable eui $$0, eui $$1) {
-      return this.a($$0, $$1) && $$0.l == eun.j;
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = azk.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = azk.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
+
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
+      }
    }
 
-   @Override
-   protected boolean c() {
-      return true;
+   protected final boolean b() {
+      return this.d;
    }
 
-   @Override
-   public eun a(eup $$0, int $$1, int $$2, int $$3) {
-      eun $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == eun.j) {
-         ji.a $$5 = new ji.a();
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = azk.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
 
-         for (jn $$6 : jn.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            eun $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == eun.a) {
-               return eun.k;
+               this.a($$1, $$2, false);
             }
          }
 
-         return eun.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+         this.d = !this.b.b();
+         return $$0;
       }
    }
+
+   public int c() {
+      return this.c.size();
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
+   }
+
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

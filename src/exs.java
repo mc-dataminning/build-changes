@@ -1,65 +1,81 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public class exs extends eyb {
-   public static final MapCodec<exs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fau.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kg.a(mc.aP).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
-            .apply($$0, exs::new)
-   );
-   private final fat b;
-   private final Optional<jv<ddr>> c;
+public class exs extends exu {
+   public static final MapCodec<exs> a = a(exs::new);
 
-   exs(List<ezx> $$0, fat $$1, Optional<jv<ddr>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   exs(List<eyb> $$0, List<fau> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eyd<exs> b() {
-      return eye.g;
+   public eyc a() {
+      return exz.g;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return this.b.a();
+   protected ext a(List<? extends ext> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (ext)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ext $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
    }
 
    @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      azh $$2 = $$1.b();
-      kf $$3 = $$1.d().F_();
-      return ddt.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   public void a(exr $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
    }
 
-   public static exs.a a(jt.a $$0, fat $$1) {
-      return new exs.a($$1).a($$0.d(mc.aP).b(aws.n));
+   public static exs.a a(eyb.a<?>... $$0) {
+      return new exs.a($$0);
+   }
+
+   public static <E> exs.a a(Collection<E> $$0, Function<E, eyb.a<?>> $$1) {
+      return new exs.a($$0.stream().map($$1::apply).toArray(eyb.a[]::new));
    }
 
    public static class a extends eyb.a<exs.a> {
-      private final fat a;
-      private Optional<jv<ddr>> b = Optional.empty();
+      private final Builder<eyb> a = ImmutableList.builder();
 
-      public a(fat $$0) {
-         this.a = $$0;
+      public a(eyb.a<?>... $$0) {
+         for (eyb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
       protected exs.a a() {
          return this;
       }
 
-      public exs.a a(jv<ddr> $$0) {
-         this.b = Optional.of($$0);
+      @Override
+      public exs.a a(eyb.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public eyc b() {
-         return new exs(this.g(), this.a, this.b);
+      public eyb b() {
+         return new exs(this.a.build(), this.f());
       }
    }
 }

@@ -1,16 +1,20 @@
-import com.google.common.collect.Streams;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class goy implements gov {
-   public static final String a = "OR";
-   private final Iterable<? extends gov> d;
+public final class goy implements AutoCloseable {
+   private final fnd a;
+   private final fgp b;
 
-   public goy(Iterable<? extends gov> $$0) {
-      this.d = $$0;
+   public goy(fnd $$0) {
+      this.a = $$0;
+      this.b = new fgp(fgm::new);
+   }
+
+   public fgr a(fge $$0, @Nullable String $$1, String $$2) {
+      return new fgr(this.a, this.b, $$0, $$1, $$2);
    }
 
    @Override
-   public Predicate<dxq> getPredicate(dxr<dke, dxq> $$0) {
-      return af.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
+   public void close() {
+      this.b.a();
    }
 }

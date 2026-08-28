@@ -1,14 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pl extends pn<chf> {
-   public pl(mk $$0, CompletableFuture<jt.a> $$1) {
-      super($$0, mc.aa, $$1);
+public abstract class pl extends pk<cxu> {
+   private final CompletableFuture<pp.c<dku>> d;
+   private final Map<axp<dku>, axp<cxu>> g = new HashMap<>();
+
+   public pl(mm $$0, CompletableFuture<ju.a> $$1, CompletableFuture<pp.c<dku>> $$2) {
+      super($$0, me.K, $$1, $$0x -> $$0x.f().h());
+      this.d = $$2;
+   }
+
+   public pl(mm $$0, CompletableFuture<ju.a> $$1, CompletableFuture<pp.c<cxu>> $$2, CompletableFuture<pp.c<dku>> $$3) {
+      super($$0, me.K, $$1, $$2, $$0x -> $$0x.f().h());
+      this.d = $$3;
+   }
+
+   protected void a(axp<dku> $$0, axp<cxu> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(jt.a $$0) {
-      this.b(axa.a).a(chg.a, chg.b, chg.c, chg.d, chg.e, chg.f, chg.g, chg.h, chg.i, chg.j, chg.k, chg.l, chg.m);
-      this.b(axa.b).b(axa.a).a(chg.n, chg.o);
-      this.b(axa.c).a(chg.p, chg.q);
+   protected CompletableFuture<ju.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axm $$3 = this.c((axp<cxu>)$$2);
+            Optional<axm> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (ju.a)$$0;
+      });
    }
 }

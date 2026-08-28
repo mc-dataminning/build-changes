@@ -1,23 +1,33 @@
-public class gxk<S extends gyo, M extends gda<S> & gbt> extends gxs<S, M> {
-   public gxk(gva<S, M> $$0) {
-      super($$0);
+public class gxk extends gsz<cjm, hcz, ggs> {
+   public gxk(guf.a $$0) {
+      super($$0, new ggs($$0.a(ghc.dT)), new ggs($$0.a(ghc.dV)), 0.5F);
+      this.a(new gzh(this, $$0.f(), $$0.h()));
+      this.a(new gzi(this));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.g, bvr.b, $$0, $$1, $$2);
-      this.a($$3, $$3.i, bvr.a, $$0, $$1, $$2);
+   protected int a(hcz $$0) {
+      float $$1 = $$0.f;
+      return $$1 == 1.0F ? -1 : axu.a(1.0F, $$1, $$1, $$1);
    }
 
-   protected void a(S $$0, hcn $$1, bvr $$2, fgr $$3, gmx $$4, int $$5) {
-      if (!$$1.c()) {
-         $$3.a();
-         this.d().a($$2, $$3);
-         $$3.a(a.b.rotationDegrees(-90.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         boolean $$6 = $$2 == bvr.a;
-         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         $$1.a($$3, $$4, $$5, hfh.d);
-         $$3.b();
-      }
+   public ald b(hcz $$0) {
+      return $$0.g;
+   }
+
+   public hcz b() {
+      return new hcz();
+   }
+
+   public void a(cjm $$0, hcz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.W_();
+      $$1.b = $$0.x();
+      $$1.c = $$0.gE();
+      $$1.d = $$0.M($$2);
+      $$1.e = $$0.L($$2);
+      $$1.g = $$0.gC();
+      $$1.f = $$0.K($$2);
+      $$1.h = $$0.q() ? $$0.gF() : null;
+      $$1.i = $$0.aj().v();
    }
 }

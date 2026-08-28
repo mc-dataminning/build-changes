@@ -1,63 +1,131 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class clf<T extends ckz> {
-   private static clf<?>[] l = new clf[0];
-   public static final clf<ckv> a = a(ckv.class, "HoldingPattern");
-   public static final clf<cld> b = a(cld.class, "StrafePlayer");
-   public static final clf<ckx> c = a(ckx.class, "LandingApproach");
-   public static final clf<cky> d = a(cky.class, "Landing");
-   public static final clf<cle> e = a(cle.class, "Takeoff");
-   public static final clf<clb> f = a(clb.class, "SittingFlaming");
-   public static final clf<clc> g = a(clc.class, "SittingScanning");
-   public static final clf<cla> h = a(cla.class, "SittingAttacking");
-   public static final clf<ckt> i = a(ckt.class, "ChargingPlayer");
-   public static final clf<cku> j = a(cku.class, "Dying");
-   public static final clf<ckw> k = a(ckw.class, "Hover");
-   private final Class<? extends ckz> m;
-   private final int n;
-   private final String o;
+public class clf extends bvs {
+   private static final akg<Optional<jj>> b = akk.a(clf.class, aki.p);
+   private static final akg<Boolean> c = akk.a(clf.class, aki.k);
+   public int a;
 
-   private clf(int $$0, Class<? extends ckz> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
+   public clf(bwb<? extends clf> $$0, dhp $$1) {
+      super($$0, $$1);
+      this.I = true;
+      this.a = this.ae.a(100000);
    }
 
-   public ckz a(ckp $$0) {
-      try {
-         Constructor<? extends ckz> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends ckz> a() throws NoSuchMethodException {
-      return this.m.getConstructor(ckp.class);
-   }
-
-   public int b() {
-      return this.n;
+   public clf(dhp $$0, double $$1, double $$2, double $$3) {
+      this(bwb.R, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   protected bvs.d bg() {
+      return bvs.d.a;
    }
 
-   public static clf<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(b, Optional.empty());
+      $$0.a(c, true);
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void h() {
+      this.a++;
+      this.aK();
+      this.bW();
+      if (this.dV() instanceof arn) {
+         jj $$0 = this.dv();
+         if (((arn)this.dV()).F() != null && this.dV().a_($$0).l()) {
+            this.dV().b($$0, dkh.a(this.dV(), $$0));
+         }
+      }
    }
 
-   private static <T extends ckz> clf<T> a(Class<T> $$0, String $$1) {
-      clf<T> $$2 = new clf<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   protected void b(tw $$0) {
+      if (this.f() != null) {
+         $$0.a("beam_target", ul.a(this.f()));
+      }
+
+      $$0.a("ShowBottom", this.g());
+   }
+
+   @Override
+   protected void a(tw $$0) {
+      ul.a($$0, "beam_target").ifPresent(this::a);
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
+      }
+   }
+
+   @Override
+   public boolean bG() {
+      return true;
+   }
+
+   @Override
+   public final boolean b(buh $$0) {
+      return this.d($$0) ? false : !($$0.d() instanceof clg);
+   }
+
+   @Override
+   public final boolean a(arn $$0, buh $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if ($$1.d() instanceof clg) {
+         return false;
+      } else {
+         if (!this.dQ()) {
+            this.a(bvs.e.a);
+            if (!$$1.a(axb.l)) {
+               buh $$3 = $$1.d() != null ? this.dW().d(this, $$1.d()) : null;
+               $$0.a(this, $$3, null, this.dA(), this.dC(), this.dG(), 6.0F, false, dhp.a.b);
+            }
+
+            this.a($$0, $$1);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void c(arn $$0) {
+      this.a($$0, this.dW().p());
+      super.c($$0);
+   }
+
+   private void a(arn $$0, buh $$1) {
+      ecm $$2 = $$0.F();
+      if ($$2 != null) {
+         $$2.a(this, $$1);
+      }
+   }
+
+   public void a(@Nullable jj $$0) {
+      this.au().a(b, Optional.ofNullable($$0));
+   }
+
+   @Nullable
+   public jj f() {
+      return this.au().a(b).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.au().a(c, $$0);
+   }
+
+   public boolean g() {
+      return this.au().a(c);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return super.a($$0) || this.f() != null;
+   }
+
+   @Override
+   public cxy dI() {
+      return new cxy(cyc.wj);
    }
 }

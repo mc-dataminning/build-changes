@@ -1,4 +1,8 @@
-public class hbg extends haj {
-   public float a;
-   public int b = 1;
+public class hbg extends hae {
+   public final hdn a = new hdn();
+
+   @Override
+   public boolean a() {
+      return !this.a.c();
+   }
 }

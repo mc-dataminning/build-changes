@@ -1,19 +1,18 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum btt implements azv {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public interface btt {
+   wv al();
 
-   public static final Codec<btt> d = azv.a(btt::values);
-   private final String e;
-
-   private btt(final String $$0) {
-      this.e = $$0;
+   default boolean h_() {
+      return this.an() != null;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   default wv m_() {
+      return this.al();
+   }
+
+   @Nullable
+   default wv an() {
+      return null;
    }
 }

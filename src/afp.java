@@ -1,21 +1,12 @@
-public record afp(wp b, boolean c) implements yw<abl> {
-   public static final yn<wa, afp> a = yn.a(wr.d, afp::b, yl.b, afp::e, afp::new);
+public record afp(wv b) implements zc<abr> {
+   public static final yt<wg, afp> a = yt.a(wx.d, afp::b, afp::new);
 
    @Override
-   public yy<afp> a() {
-      return agd.aY;
+   public ze<afp> a() {
+      return agk.aT;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

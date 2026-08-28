@@ -1,9 +1,12 @@
-import javax.annotation.Nullable;
+public class gyz<M extends ggc> extends gyf<hbk, M> {
+   private static final goi a = goi.q(ald.b("textures/entity/spider_eyes.png"));
 
-public class gyz extends gzp {
-   private static final aku j = aku.b("textures/entity/cat/tabby.png");
-   public aku a = j;
-   public boolean b;
-   @Nullable
-   public cwe c;
+   public gyz(gwc<hbk, M> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public goi a() {
+      return a;
+   }
 }

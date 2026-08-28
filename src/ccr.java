@@ -1,86 +1,32 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ccr extends ccp {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class ccr extends ccw {
-   private int a;
-   private final bwg b;
-   @Nullable
-   private cpr c;
-   private ccf d;
-
-   public ccr(bwg $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      List<cro> $$0 = this.b.dU().a(cro.class, this.b.cQ().g(5.0));
-      boolean $$1 = false;
-
-      for (cro $$2 : $$0) {
-         bva $$3 = $$2.cV();
-         if ($$3 instanceof cpr $$4 && (ayz.e($$4.bg) > 0.0F || ayz.e($$4.bi) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
-      }
-
-      return this.c != null && (ayz.e(this.c.bg) > 0.0F || ayz.e(this.c.bi) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean P_() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c != null && this.c.bY() && (ayz.e(this.c.bg) > 0.0F || ayz.e(this.c.bi) > 0.0F);
-   }
-
-   @Override
-   public void d() {
-      for (cro $$1 : this.b.dU().a(cro.class, this.b.cQ().g(5.0))) {
-         if ($$1.cV() instanceof cpr $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = ccf.a;
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
+   public ccr(bwt $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      boolean $$0 = ayz.e(this.c.bg) > 0.0F || ayz.e(this.c.bi) > 0.0F;
-      float $$1 = this.d == ccf.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new fbx((double)this.b.bg, (double)this.b.bh, (double)this.b.bi));
-      this.b.a(bwc.a, this.b.dx());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == ccf.a) {
-            ji $$2 = this.c.du().a(this.c.cN().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.O().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = ccf.b;
-            }
-         } else if (this.d == ccf.b) {
-            jn $$3 = this.c.cO();
-            ji $$4 = this.c.du().a($$3, 10);
-            this.b.O().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = ccf.a;
-            }
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.O().k()) {
+            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
          }
+
+         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
+      }
+
+      float $$0 = azk.h(this.a.aW - this.a.aU);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aU -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aU += 4.0F;
       }
    }
 }

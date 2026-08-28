@@ -1,30 +1,46 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class esp implements est {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<esp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akt.a(mc.bi).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, esp::new)
-   );
-   private final akt<ewt> d;
+public class esp extends etf {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<esp> a = MapCodec.unit(() -> esp.b);
+   public static final esp b = new esp();
 
-   public esp(akt<ewt> $$0) {
-      this.d = $$0;
+   private esp() {
+   }
+
+   @Nullable
+   @Override
+   public eti.d a(dhs $$0, jj $$1, jj $$2, eti.d $$3, eti.d $$4, ete $$5) {
+      dym $$6 = $$4.b();
+      if ($$6.a(dkw.pD)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dym $$9;
+            try {
+               gs.a $$8 = gs.a($$0.a(me.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dkw.lp) ? null : new eti.d($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
    }
 
    @Override
-   public tq a(azh $$0, @Nullable tq $$1) {
-      tq $$2 = $$1 == null ? new tq() : $$1.i();
-      akt.a(mc.bi).encodeStart(ue.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public esu<?> a() {
-      return esu.d;
+   protected eth<?> a() {
+      return eth.h;
    }
 }

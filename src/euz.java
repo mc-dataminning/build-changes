@@ -1,35 +1,117 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class euz extends evg {
-   public euz(dql $$0) {
-      super($$0);
+public abstract class euz extends eur {
+   @Override
+   public eus d() {
+      return euu.b;
    }
 
    @Override
-   public void a(dgz $$0, ji $$1, dxq $$2, @Nullable eve $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dql.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dql.f, Integer.valueOf($$5)), 2);
-         }
+   public eus e() {
+      return euu.c;
+   }
 
-         Set<ji> $$6 = Sets.newHashSet();
-         $$6.add($$1);
+   @Override
+   public cxu a() {
+      return cyc.rk;
+   }
 
-         for (jn $$7 : jn.values()) {
-            $$6.add($$1.a($$7));
+   @Override
+   public void a(dhp $$0, jj $$1, eut $$2, azs $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awk.Da, awl.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
-
-         for (ji $$8 : $$6) {
-            $$0.a($$8, this.a);
-         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lv.ao, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
    }
 
-   private int c(dgz $$0, ji $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+   @Nullable
+   @Override
+   public lt h() {
+      return lv.l;
+   }
+
+   @Override
+   protected boolean a(arn $$0) {
+      return $$0.O().c(dhl.V);
+   }
+
+   @Override
+   protected void a(dhq $$0, jj $$1, dym $$2) {
+      dvl $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dku.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(dhs $$0) {
+      return 4;
+   }
+
+   @Override
+   public dym b(eut $$0) {
+      return dkw.J.m().b(dpo.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(eus $$0) {
+      return $$0 == euu.c || $$0 == euu.b;
+   }
+
+   @Override
+   public int c(dhs $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dhs $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(eut $$0, dgv $$1, jj $$2, eus $$3, jo $$4) {
+      return $$4 == jo.a && !$$3.a(axf.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awj> j() {
+      return Optional.of(awk.dj);
+   }
+
+   public static class a extends euz {
+      @Override
+      protected void a(dyn.a<eus, eut> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(eut $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eut $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends euz {
+      @Override
+      public int d(eut $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eut $$0) {
+         return true;
+      }
    }
 }

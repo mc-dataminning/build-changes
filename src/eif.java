@@ -1,75 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class eif extends egu<ejt> {
-   public eif(Codec<ejt> $$0) {
+public class eif extends ehr<ekc> {
+   public eif(Codec<ekc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<ejt> $$0) {
-      ejt $$1 = $$0.f();
-      dhy $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         dxq $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
+   public boolean a(eht<ekc> $$0) {
+      int $$1 = 0;
+      dio $$2 = $$0.b();
+      jj $$3 = $$0.e();
+      azs $$4 = $$0.d();
+      int $$5 = $$2.a(eel.a.d, $$3.u(), $$3.w());
+      jj $$6 = new jj($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(dkw.J)) {
+         dym $$7 = dkw.mE.m();
+         dym $$8 = dkw.mF.m();
+         int $$9 = 1 + $$4.a(10);
+
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(dkw.J) && $$2.a_($$6.d()).a(dkw.J) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.b(dpb.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
+               }
+            } else if ($$10 > 0) {
+               jj $$11 = $$6.e();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dkw.mE)) {
+                  $$2.a($$11, $$7.b(dpb.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
             }
 
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+            $$6 = $$6.d();
          }
       }
+
+      return $$1 > 0;
    }
 }

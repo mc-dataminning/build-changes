@@ -1,11 +1,12 @@
-import java.util.Set;
+import java.util.function.Supplier;
 
-public interface csk {
-   Set<akt<? extends ke<? extends csk>>> bT = Set.of(mc.K, mc.f, mc.z, mc.V, mc.ad, mc.W);
+public class csk extends csg {
+   public csk(bwb<? extends csk> $$0, dhp $$1, Supplier<cxu> $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   csn k();
-
-   default boolean a(csn $$0) {
-      return this.k().a($$0);
+   @Override
+   protected double b(bvv $$0) {
+      return (double)($$0.b() / 3.0F);
    }
 }

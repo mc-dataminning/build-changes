@@ -1,82 +1,113 @@
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fuu extends fvi {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public record fuu(fut a, int b, int c) {
+   private static final fuu d = new fuu(0, 0, 0, 0);
+
+   public fuu(int $$0, int $$1, int $$2, int $$3) {
+      this(new fut($$0, $$1), $$2, $$3);
+   }
+
+   public static fuu a() {
+      return d;
+   }
+
+   public static fuu a(fur $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fuu($$1, $$2, $$3, $$4);
+         case b -> new fuu($$2, $$1, $$4, $$3);
+      };
+   }
+
+   public fuu a(fus $$0) {
+      return new fuu(this.a.a($$0), this.b, this.c);
+   }
+
+   public int a(fur $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
+
+   public int b(fus $$0) {
+      fur $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fuu c(fus $$0) {
+      int $$1 = this.b($$0);
+      fur $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fuu $$0) {
+      return this.a($$0, fur.a) && this.a($$0, fur.b);
+   }
+
+   public boolean a(fuu $$0, fur $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fur $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
    @Nullable
-   private final wp d;
-   private final wp s;
-   private final Runnable u;
-   @Nullable
-   private fqj v;
-   private fpq w;
-   private int x;
-
-   public static fuu a(wp $$0, wp $$1, Runnable $$2) {
-      return new fuu($$0, null, $$1, $$2, 0);
+   public fuu b(fuu $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fuu($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   public static fuu a(wp $$0, wp $$1, wp $$2, Runnable $$3) {
-      return new fuu($$0, $$1, $$2, $$3, 20);
+   public int b() {
+      return this.a.b();
    }
 
-   protected fuu(wp $$0, @Nullable wp $$1, wp $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public int c() {
+      return this.a.b() + this.c;
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.d != null) {
-         this.v = fqj.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fpq.a(this.s, $$0x -> this.aO_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   public int d() {
+      return this.a.a();
    }
 
-   @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
+   public int e() {
+      return this.a.a() + this.b;
    }
 
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = fux.a(af.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fuu a(Matrix4f $$0) {
+      if (f.a($$0)) {
+         return this;
       } else {
-         this.v.a($$0, this.n / 2, 120);
+         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
+         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
+         return new fuu(azk.d($$1.x), azk.d($$1.y), azk.d($$2.x - $$1.x), azk.d($$2.y - $$1.y));
       }
    }
 
-   @Override
-   public boolean aG_() {
-      return this.v != null && this.w.j;
+   public fut f() {
+      return this.a;
    }
 
-   @Override
-   public void aO_() {
-      this.u.run();
+   public int g() {
+      return this.b;
    }
 
-   @Override
-   public wp i() {
-      return wo.a(this.l, this.d != null ? this.d : wo.a);
+   public int h() {
+      return this.c;
    }
 }

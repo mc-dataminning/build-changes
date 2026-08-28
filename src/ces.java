@@ -1,20 +1,45 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class ces<T extends bvy> extends cep<T> {
-   private final bwv i;
+public class ces extends cdn {
+   private final bxn a;
 
-   public ces(bwv $$0, Class<T> $$1, boolean $$2, @Nullable cgp.a $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return !this.i.q() && super.b();
+   public ces(bxn $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdn.a.c, cdn.a.a));
    }
 
    @Override
    public boolean c() {
-      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+      return this.a.gq();
+   }
+
+   @Override
+   public boolean b() {
+      boolean $$0 = this.a.gq();
+      if (!$$0 && !this.a.q()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else {
+         bwr $$1 = this.a.e();
+         if ($$1 == null) {
+            return true;
+         } else {
+            return this.a.g((bvs)$$1) < 144.0 && $$1.eq() != null ? false : $$0;
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.O().m();
+      this.a.x(true);
+   }
+
+   @Override
+   public void e() {
+      this.a.x(false);
    }
 }

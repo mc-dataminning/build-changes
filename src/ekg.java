@@ -1,28 +1,21 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ekg extends ekf {
-   public static final MapCodec<ekg> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ekg::new));
+public class ekg implements ejv {
+   public static final Codec<ekg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eok.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eok.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ekg::new)
+   );
+   public final js<eok> b;
+   public final js<eok> c;
 
-   public ekg(bsd $$0, bsd $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ekg(js<eok> $$0, js<eok> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected ekl<?> a() {
-      return ekl.e;
-   }
-
-   @Override
-   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public Stream<ehd<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

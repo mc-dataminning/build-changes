@@ -1,51 +1,34 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class elb extends eld {
-   public static final MapCodec<elb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayr.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               esz.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayi.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, elb::new)
-   );
-   private final ayr<Integer> i;
-   private final esz.a j;
-   private final float k;
-   private final esz l;
+public class elb extends elh {
+   public static final MapCodec<elb> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, elb::new));
 
-   public elb(ayr<Integer> $$0, esz.a $$1, float $$2, long $$3, esz.a $$4, float $$5, List<dxq> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = esz.b(new een(new edp($$3)), $$1);
+   public elb(bsv $$0, bsv $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected ela<?> a() {
-      return ela.e;
+   protected eli<?> a() {
+      return eli.d;
    }
 
    @Override
-   public dxq a(azh $$0, ji $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)ayz.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dxq> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
+   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      jj $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
    }
 
-   protected double a(ji $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(azs $$0, int $$1, ekr $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

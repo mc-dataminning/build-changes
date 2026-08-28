@@ -1,33 +1,60 @@
-public record aqn(String b, int c, cpo d, boolean e, int f, bvr g, boolean h, boolean i, aqv j) {
-   public static final int a = 16;
+public class aqn implements Comparable<aqn> {
+   private final int a;
+   private final jj b;
+   private int c;
+   private int d;
 
-   public aqn(vl $$0) {
-      this(
-         $$0.d(16),
-         $$0.readByte(),
-         $$0.b(cpo.class),
-         $$0.readBoolean(),
-         $$0.readUnsignedByte(),
-         $$0.b(bvr.class),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(aqv.class)
-      );
+   public aqn(int $$0, jj $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.l(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
+   public int a() {
+      return this.a;
    }
 
-   public static aqn a() {
-      return new aqn("en_us", 2, cpo.a, true, 0, cpr.bt, false, false, aqv.a);
+   public jj b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         aqn $$1 = (aqn)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.a);
+   }
+
+   public int a(aqn $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

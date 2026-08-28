@@ -1,32 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eix implements eiy {
-   public static final Codec<eix> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ji.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eix::new)
-   );
-   private final Optional<ji> b;
-   private final boolean c;
-
-   private eix(Optional<ji> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eix extends ehr<ekf> {
+   public eix(Codec<ekf> $$0) {
+      super($$0);
    }
 
-   public static eix a(ji $$0, boolean $$1) {
-      return new eix(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(eht<ekf> $$0) {
+      boolean $$1 = false;
+      azs $$2 = $$0.d();
+      dio $$3 = $$0.b();
+      jj $$4 = $$0.e();
+      ekf $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(eel.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      jj $$9 = new jj($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dkw.J)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dym $$11 = $$10 ? dkw.bE.m() : dkw.bD.m();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dym $$12 = $$11.b(dtg.d, dzi.a);
+               jj $$13 = $$9.d();
+               if ($$3.a_($$13).a(dkw.J)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
 
-   public static eix a() {
-      return new eix(Optional.empty(), false);
-   }
+            $$1 = true;
+         }
+      }
 
-   public Optional<ji> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      return $$1;
    }
 }

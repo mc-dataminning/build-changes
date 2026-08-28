@@ -1,57 +1,31 @@
-import java.util.List;
+public record aao(int c, evh d, float e) implements aaf {
+   public static final yt<vr, aao> a = aaf.a(aao::a, aao::new);
+   public static final aaf.b<aao> b = aaf.a("debug/path");
 
-public record aao(akt<dgz> c, eob d, List<aao.a> e) implements zz {
-   public static final yn<vl, aao> a = zz.a(aao::a, aao::new);
-   public static final zz.b<aao> b = zz.a("debug/structures");
-
-   private aao(vl $$0) {
-      this($$0.a(mc.bg), b($$0), $$0.a(aao.a::new));
+   private aao(vr $$0) {
+      this($$0.readInt(), evh.b($$0), $$0.readFloat());
    }
 
-   private void a(vl $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   private void a(vr $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public zz.b<aao> a() {
+   public aaf.b<aao> a() {
       return b;
    }
 
-   static eob b(vl $$0) {
-      return new eob($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vl $$0, eob $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public akt<dgz> b() {
+   public int b() {
       return this.c;
    }
 
-   public eob c() {
+   public evh c() {
       return this.d;
    }
 
-   public List<aao.a> d() {
+   public float d() {
       return this.e;
-   }
-
-   public static record a(eob a, boolean b) {
-      public a(vl $$0) {
-         this(aao.b($$0), $$0.readBoolean());
-      }
-
-      public void a(vl $$0) {
-         aao.a($$0, this.a);
-         $$0.a(this.b);
-      }
    }
 }

@@ -1,46 +1,46 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+public final class fdn extends fdd {
+   private final fdd d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public class fdn<T> implements fdq<T>, fds<T> {
-   private final List<fdo<T>> a = Lists.newArrayList();
-   private final Set<fdo<?>> b = new ObjectOpenCustomHashSet(fdo.a);
-
-   @Override
-   public void a(fdp<T> $$0) {
-      fdo<T> $$1 = new fdo<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
-   }
-
-   private void a(fdo<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
-      }
-   }
-
-   @Override
-   public boolean a(ji $$0, T $$1) {
-      return this.b.contains(fdo.a($$1, $$0));
+   protected fdn(fdd $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
    @Override
-   public int a() {
-      return this.a.size();
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
    @Override
-   public List<fdo<T>> a(long $$0) {
-      return this.a;
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public List<fdo<T>> b() {
-      return List.copyOf(this.a);
+   @Override
+   public int a(jo.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public static <T> fdn<T> a(List<fdo<T>> $$0) {
-      fdn<T> $$1 = new fdn<>();
-      $$0.forEach($$1::a);
-      return $$1;
+   @Override
+   public int b(jo.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(jo.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return azk.a($$1, $$2, $$3) - $$2;
    }
 }

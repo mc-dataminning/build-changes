@@ -1,37 +1,27 @@
-public abstract class bzc<E extends bvy> implements bxs<E>, cbh<E> {
-   private bxr.a a;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bzc() {
-      this.a = bxr.a.a;
+public class bzc {
+   public static byj<bwr> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   @Override
-   public final bxr.a a() {
-      return this.a;
-   }
-
-   @Override
-   public final boolean e(ard $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bxr.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(ard $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(ard $$0, E $$1, long $$2) {
-      this.a = bxr.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   public static <E extends bwr> byj<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return cbv.a((Function<cbv.b<E>, ? extends App<cbv.c<E>, cby<E>>>)($$4 -> {
+         cbv<E, ? extends cbw<? extends K1, cfw>> $$5 = $$2 ? $$4.a(cft.n) : $$4.c(cft.n);
+         return $$4.group($$4.a(cft.o), $$5, $$4.b(cft.M), $$4.a(cft.aQ)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cmn $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dV().A_().a($$11.dv()) && $$9.fM()) {
+                  cfw $$12 = new cfw(new byt($$11, false), $$1, 0);
+                  $$4x.a(new byt($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

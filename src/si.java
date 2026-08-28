@@ -1,20 +1,13 @@
-import javax.annotation.Nullable;
+import java.util.Collection;
 
-class si {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
-
-   private si(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   static si a(Runnable $$0) {
-      return new si(null, $$0);
-   }
-
-   static si a(long $$0, Runnable $$1) {
-      return new si($$0, $$1);
+public record si(int a, Collection<so> b, js<tj> c) {
+   public si(int a, Collection<so> b, js<tj> c) {
+      if (b.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.a = a;
+         this.b = b;
+         this.c = c;
+      }
    }
 }

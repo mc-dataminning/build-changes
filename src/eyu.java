@@ -1,56 +1,65 @@
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 import org.slf4j.Logger;
 
-public class eyu extends eyb {
+public class eyu extends eyy {
    private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<eyu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fau.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eyu::new)
+      $$0 -> a($$0).and(alc.a(me.bo).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, eyu::new)
    );
-   private final fat c;
-   private final boolean d;
+   private final alc<eyz> c;
 
-   private eyu(List<ezx> $$0, fat $$1, boolean $$2) {
+   private eyu(List<fau> $$0, alc<eyz> $$1) {
       super($$0);
       this.c = $$1;
-      this.d = $$2;
    }
 
    @Override
-   public eyd<eyu> b() {
-      return eye.n;
+   public eza<eyu> b() {
+      return ezb.H;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - ayz.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(ayz.d($$4 * (float)$$2));
+   public void a(exr $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
+      } else if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
       } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+         super.a($$0);
+         $$0.a()
+            .c(this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
       }
-
-      return $$0;
    }
 
-   public static eyb.a<?> a(fat $$0) {
-      return a($$1 -> new eyu($$1, $$0, false));
+   @Override
+   protected cxy a(cxy $$0, exl $$1) {
+      eyz $$2 = $$1.a().c(this.c).map(js::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
+         return $$0;
+      } else {
+         exl.c<?> $$3 = exl.a($$2);
+         if ($$1.b($$3)) {
+            cxy var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
    }
 
-   public static eyb.a<?> a(fat $$0, boolean $$1) {
-      return a($$2 -> new eyu($$2, $$0, $$1));
+   public static eyy.a<?> a(alc<eyz> $$0) {
+      return a($$1 -> new eyu($$1, $$0));
    }
 }

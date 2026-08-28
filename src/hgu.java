@@ -1,142 +1,183 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hgu {
-   static final Logger a = LogUtils.getLogger();
-   private final MinecraftSessionService b;
-   private final LoadingCache<hgu.a, CompletableFuture<Optional<hgt>>> c;
-   private final hgu.b d;
-   private final hgu.b e;
-   private final hgu.b f;
+public class hgu implements aut, hgv, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   public static final ald a = ald.b("");
+   private final Map<ald, hgd> c = new HashMap<>();
+   private final Set<hgv> d = new HashSet<>();
+   private final ava e;
 
-   public hgu(Path $$0, final MinecraftSessionService $$1, final Executor $$2) {
-      this.b = $$1;
-      this.d = new hgu.b($$0, Type.SKIN);
-      this.e = new hgu.b($$0, Type.CAPE);
-      this.f = new hgu.b($$0, Type.ELYTRA);
-      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<hgu.a, CompletableFuture<Optional<hgt>>>() {
-         public CompletableFuture<Optional<hgt>> a(hgu.a $$0) {
-            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-               Property $$2xx = $$0.b();
-               if ($$2xx == null) {
-                  return MinecraftProfileTextures.EMPTY;
-               } else {
-                  MinecraftProfileTextures $$3 = $$1.unpackTextures($$2xx);
-                  if ($$3.signatureState() == SignatureState.INVALID) {
-                     hgu.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
-                  }
+   public hgu(ava $$0) {
+      this.e = $$0;
+      fgo $$1 = hgh.a();
+      this.a(hgh.c(), new hgf($$1));
+   }
 
-                  return $$3;
-               }
-            }, af.h().a("unpackSkinTextures")).thenComposeAsync($$1xx -> hgu.this.a($$0.a(), $$1xx), $$2).handle(($$1xx, $$2xx) -> {
-               if ($$2xx != null) {
-                  hgu.a.warn("Failed to load texture for profile {}", $$0.a, $$2xx);
-               }
+   public void a(ald $$0, hgj $$1) {
+      try {
+         $$1.a(this.b($$0, $$1));
+      } catch (Throwable var6) {
+         o $$3 = o.a(var6, "Uploading texture");
+         p $$4 = $$3.a("Uploaded texture");
+         $$4.a("Resource location", $$1.d());
+         $$4.a("Texture id", $$0);
+         throw new z($$3);
+      }
 
-               return Optional.ofNullable($$1xx);
-            });
+      this.a($$0, (hgd)$$1);
+   }
+
+   private hgt b(ald $$0, hgj $$1) {
+      try {
+         return a(this.e, $$0, $$1);
+      } catch (Exception var4) {
+         b.error("Failed to load texture {} into slot {}", new Object[]{$$1.d(), $$0, var4});
+         return hgt.a();
+      }
+   }
+
+   public void a(ald $$0) {
+      this.a($$0, (hgd)(new hgk($$0)));
+   }
+
+   public void a(ald $$0, hgd $$1) {
+      hgd $$2 = this.c.put($$0, $$1);
+      if ($$2 != $$1) {
+         if ($$2 != null) {
+            this.b($$0, $$2);
+         }
+
+         if ($$1 instanceof hgv $$3) {
+            this.d.add($$3);
+         }
+      }
+   }
+
+   private void b(ald $$0, hgd $$1) {
+      this.d.remove($$1);
+
+      try {
+         $$1.close();
+      } catch (Exception var4) {
+         b.warn("Failed to close texture {}", $$0, var4);
+      }
+
+      $$1.b();
+   }
+
+   public hgd b(ald $$0) {
+      hgd $$1 = this.c.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         hgk $$2 = new hgk($$0);
+         this.a($$0, (hgj)$$2);
+         return $$2;
+      }
+   }
+
+   @Override
+   public void e() {
+      for (hgv $$0 : this.d) {
+         $$0.e();
+      }
+   }
+
+   public void c(ald $$0) {
+      hgd $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.b($$0, $$1);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.c.forEach(this::b);
+      this.c.clear();
+      this.d.clear();
+   }
+
+   @Override
+   public CompletableFuture<Void> a(aut.a $$0, ava $$1, Executor $$2, Executor $$3) {
+      List<hgu.a> $$4 = new ArrayList<>();
+      this.c.forEach(($$3x, $$4x) -> {
+         if ($$4x instanceof hgj $$5) {
+            $$4.add(a($$1, $$3x, $$5, $$2));
+         }
+      });
+      return CompletableFuture.allOf($$4.stream().map(hgu.a::b).toArray(CompletableFuture[]::new)).thenCompose($$0::a).thenAcceptAsync($$1x -> {
+         fkj.a(this.e);
+
+         for (hgu.a $$2x : $$4) {
+            $$2x.a.a($$2x.b.join());
+         }
+      }, $$3);
+   }
+
+   public void a(Path $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0));
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private void b(Path $$0) {
+      try {
+         Files.createDirectories($$0);
+      } catch (IOException var3) {
+         b.error("Failed to create directory {}", $$0, var3);
+         return;
+      }
+
+      this.c.forEach(($$1, $$2) -> {
+         if ($$2 instanceof hge $$3) {
+            try {
+               $$3.a($$1, $$0);
+            } catch (IOException var5) {
+               b.error("Failed to dump texture {}", $$1, var5);
+            }
          }
       });
    }
 
-   public Supplier<hgt> a(GameProfile $$0) {
-      CompletableFuture<Optional<hgt>> $$1 = this.c($$0);
-      hgt $$2 = hgk.a($$0);
-      return () -> $$1.getNow(Optional.empty()).orElse($$2);
-   }
-
-   public hgt b(GameProfile $$0) {
-      hgt $$1 = this.c($$0).getNow(Optional.empty()).orElse(null);
-      return $$1 != null ? $$1 : hgk.a($$0);
-   }
-
-   public CompletableFuture<Optional<hgt>> c(GameProfile $$0) {
-      Property $$1 = this.b.getPackedTextures($$0);
-      return (CompletableFuture<Optional<hgt>>)this.c.getUnchecked(new hgu.a($$0.getId(), $$1));
-   }
-
-   CompletableFuture<hgt> a(UUID $$0, MinecraftProfileTextures $$1) {
-      MinecraftProfileTexture $$2 = $$1.skin();
-      CompletableFuture<aku> $$3;
-      hgt.a $$4;
-      if ($$2 != null) {
-         $$3 = this.d.a($$2);
-         $$4 = hgt.a.a($$2.getMetadata("model"));
-      } else {
-         hgt $$5 = hgk.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
-      }
-
-      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.cape();
-      CompletableFuture<aku> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.elytra();
-      CompletableFuture<aku> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12)
-         .thenApply($$6x -> new hgt($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
-   }
-
-   static record a(UUID a, @Nullable Property b) {
-   }
-
-   static class b {
-      private final Path a;
-      private final Type b;
-      private final Map<String, CompletableFuture<aku>> c = new Object2ObjectOpenHashMap();
-
-      b(Path $$0, Type $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public CompletableFuture<aku> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<aku> $$2 = this.c.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.c.put($$1, $$2);
+   private static hgt a(ava $$0, ald $$1, hgj $$2) throws IOException {
+      try {
+         return $$2.a($$0);
+      } catch (FileNotFoundException var4) {
+         if ($$1 != a) {
+            b.warn("Missing resource {} referenced from {}", $$2.d(), $$1);
          }
 
-         return $$2;
+         return hgt.a();
       }
+   }
 
-      private CompletableFuture<aku> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         aku $$2 = this.a($$1);
-         Path $$3 = this.a.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         return hfk.a($$2, $$3, $$0.getUrl(), this.b == Type.SKIN);
-      }
+   private static hgu.a a(ava $$0, ald $$1, hgj $$2, Executor $$3) {
+      return new hgu.a($$2, CompletableFuture.supplyAsync(() -> {
+         try {
+            return a($$0, $$1, $$2);
+         } catch (IOException var4) {
+            throw new UncheckedIOException(var4);
+         }
+      }, $$3));
+   }
 
-      private aku a(String $$0) {
-         String $$1 = switch (this.b) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new MatchException(null, null);
-         };
-         return aku.b($$1 + "/" + $$0);
-      }
+   static record a(hgj a, CompletableFuture<hgt> b) {
    }
 }

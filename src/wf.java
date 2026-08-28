@@ -1,52 +1,24 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class wf {
-   public static String a(ByteBuf $$0, int $$1) {
-      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
-      int $$3 = wg.a($$0);
-      if ($$3 > $$2) {
-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
-      } else if ($$3 < 0) {
-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
-      } else {
-         int $$4 = $$0.readableBytes();
-         if ($$3 > $$4) {
-            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
-         } else {
-            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
-            $$0.readerIndex($$0.readerIndex() + $$3);
-            if ($$5.length() > $$1) {
-               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
-            } else {
-               return $$5;
-            }
-         }
-      }
+public class wf extends vo {
+   private static final Logger h = LogUtils.getLogger();
+   private static final wv i = wv.c("disconnect.exceeded_packet_rate");
+   private final int j;
+
+   public wf(int $$0) {
+      super(zd.a);
+      this.j = $$0;
    }
 
-   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
-      if ($$1.length() > $$2) {
-         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
-      } else {
-         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
-         ByteBuf $$4 = $$0.alloc().buffer($$3);
-
-         try {
-            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
-            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
-            if ($$5 > $$6) {
-               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
-            }
-
-            wg.a($$0, $$5);
-            $$0.writeBytes($$4);
-         } finally {
-            $$4.release();
-         }
+   @Override
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new zl(i), wc.a(() -> this.a(i)));
+         this.m();
       }
    }
 }

@@ -1,29 +1,20 @@
-public class ace implements yw<abl> {
-   public static final yn<vl, ace> a = yw.a(ace::a, ace::new);
-   private final int b;
+public record ace(int b) implements zc<abr> {
+   public static final yt<vr, ace> a = zc.a(ace::a, ace::new);
 
-   public ace(int $$0) {
-      this.b = $$0;
+   private ace(vr $$0) {
+      this($$0.l());
    }
 
-   private ace(vl $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(vl $$0) {
-      $$0.f(this.b);
+   private void a(vr $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yy<ace> a() {
-      return agd.s;
+   public ze<ace> a() {
+      return agk.m;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

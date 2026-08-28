@@ -1,13 +1,22 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class cgs {
-   @Nullable
-   public static fbx a(bwg $$0, int $$1, int $$2, int $$3, fbx $$4, double $$5) {
-      fbx $$6 = $$4.a($$0.dz(), $$0.dB(), $$0.dF());
-      boolean $$7 = cgu.a($$0, $$1);
-      return cgx.a($$0, () -> {
-         ji $$7x = cgr.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
-         return $$7x != null && !cgu.a($$0, $$7x) ? $$7x : null;
-      });
+public class cgs<T extends bwr> extends cgz<T> {
+   @Override
+   protected void a(arn $$0, T $$1) {
+      double $$2 = $$1.h(bxx.m);
+      fcp $$3 = $$1.cR().c($$2, $$2, $$2);
+      List<bwr> $$4 = $$0.a(bwr.class, $$3, $$1x -> $$1x != $$1 && $$1x.bK());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      bxr<?> $$5 = $$1.eb();
+      $$5.a(cft.g, $$4);
+      $$5.a(cft.h, new cfv($$0, $$1, $$4));
+   }
+
+   @Override
+   public Set<cft<?>> a() {
+      return ImmutableSet.of(cft.g, cft.h);
    }
 }

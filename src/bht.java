@@ -1,22 +1,32 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bht extends bav {
+public class bht extends bgp {
    public bht(Schema $$0) {
-      super($$0, bic.b);
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "PlayerUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> {
-            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
-            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
-               .update(DSL.remainderFinder(), $$0x -> beq.c(beq.b($$0x)));
-         }
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update(
+         "display",
+         $$0x -> $$0x.update(
+               "Name",
+               $$0xx -> {
+                  Optional<String> $$1 = $$0xx.asString().result();
+                  return $$1.isPresent()
+                     ? $$0xx.createString(
+                        $$1.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
+                     )
+                     : $$0xx;
+               }
+            )
       );
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return af.a($$0, $$0.getType(), this::a);
    }
 }

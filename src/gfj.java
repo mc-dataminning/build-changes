@@ -1,59 +1,35 @@
-import java.util.Set;
+public class gfj extends gea<hak> {
+   private final ghd a;
+   private final ghd b;
 
-public class gfj extends gek<hbr> {
-   private static final String i = "egg_belly";
-   public static final ggl a = new gby(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
-   private final ggc j;
-
-   public gfj(ggc $$0) {
+   public gfj(ghd $$0) {
       super($$0);
-      this.j = $$0.b("egg_belly");
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a("head", ggh.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gge.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
-         "body",
-         ggh.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         gge.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("egg_belly", ggh.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gge.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", ggh.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gge.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", ggh.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gge.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", ggh.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gge.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", ggh.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gge.a(5.0F, 21.0F, -4.0F));
-      return ggi.a($$0, 128, 64);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", ghi.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), ghf.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", ghi.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), ghf.a(-2.5F, 18.0F, -1.5F));
+      $$1.a("left_blue_fin", ghi.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), ghf.a(2.5F, 18.0F, -1.5F));
+      $$1.a("top_front_fin", ghi.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), ghf.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", ghi.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), ghf.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", ghi.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), ghf.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", ghi.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), ghf.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", ghi.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), ghf.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", ghi.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), ghf.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", ghi.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), ghf.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", ghi.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), ghf.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return ghj.a($$0, 32, 32);
    }
 
-   public void a(hbr $$0) {
+   @Override
+   public void a(hak $$0) {
       super.a($$0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      if ($$0.a) {
-         float $$3 = $$0.b ? 4.0F : 1.0F;
-         float $$4 = $$0.b ? 2.0F : 1.0F;
-         float $$5 = $$1 * 5.0F;
-         float $$6 = ayz.b($$3 * $$5);
-         float $$7 = ayz.b($$5);
-         this.f.f = -$$6 * 8.0F * $$2 * $$4;
-         this.g.f = $$6 * 8.0F * $$2 * $$4;
-         this.d.f = -$$7 * 3.0F * $$2;
-         this.e.f = $$7 * 3.0F * $$2;
-      } else {
-         float $$8 = 0.5F * $$2;
-         float $$9 = ayz.b($$1 * 0.6662F * 0.6F) * $$8;
-         this.d.e = $$9;
-         this.e.e = -$$9;
-         this.f.g = -$$9;
-         this.g.g = $$9;
-      }
-
-      this.j.k = $$0.c;
-      if (this.j.k) {
-         this.v.c--;
-      }
+      this.b.g = -0.2F + 0.4F * azk.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * azk.a($$0.u * 0.2F);
    }
 }

@@ -1,13 +1,113 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface aqs {
-   aqt d(long var1);
+public interface aqs<T> {
+   static <T> aqs<T> a(T $$0) {
+      return new aqs.b<>($$0);
+   }
 
-   void a(aqt var1);
+   static <T> aqs<T> a(String $$0) {
+      return a(() -> $$0);
+   }
 
-   CompletableFuture<dzm> a(aqt var1, eaq var2, azt<aqt> var3);
+   static <T> aqs<T> a(Supplier<String> $$0) {
+      return new aqs.a<>($$0);
+   }
 
-   aqe a(ean var1, dgg var2);
+   boolean a();
 
-   void g();
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(aqs<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   aqs<T> a(Consumer<T> var1);
+
+   <R> aqs<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements aqs<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public aqs<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> aqs<R> a(Function<T, R> $$0) {
+         return new aqs.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
+      }
+   }
+
+   public static record b<T>(T a) implements aqs<T> {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
+
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
+
+      @Override
+      public aqs<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> aqs<R> a(Function<T, R> $$0) {
+         return new aqs.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
+   }
 }

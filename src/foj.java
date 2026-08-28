@@ -1,43 +1,27 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class foj<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public record foj(int b, int c) implements fon {
+   public static final MapCodec<foj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ays.l.optionalFieldOf("index", 0).forGetter(foj::b), ays.i.fieldOf("default").forGetter(foj::c)).apply($$0, foj::new)
+   );
 
-   public foj(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   @Override
+   public int a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2) {
+      daf $$3 = $$0.a(kx.p);
+      if ($$3 != null) {
+         Integer $$4 = $$3.d(this.b);
+         if ($$4 != null) {
+            return axu.f($$4);
+         }
+      }
 
-   public foj<T>.a a(T $$0) {
-      return new foj.a($$0);
+      return axu.f(this.c);
    }
 
    @Override
-   public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public foj<T> a() {
-         return foj.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(foj.this.a, foj.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return foj.this.a + "=" + this.b;
-      }
+   public MapCodec<foj> a() {
+      return a;
    }
 }

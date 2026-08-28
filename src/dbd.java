@@ -1,91 +1,36 @@
-public class dbd extends dbl {
-   public dbd(dbi $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() != 2) {
-         return false;
+public record dbd(List<asf<String>> g) implements czy<String, dbd> {
+   public static final dbd a = new dbd(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<asf<String>> h = asf.a(Codec.string(0, 1024));
+   public static final Codec<List<asf<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<dbd> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dbd::a)).apply($$0, dbd::new));
+   public static final yt<ByteBuf, dbd> f = asf.a(yr.b(1024)).a(yr.c(100)).a(dbd::new, dbd::a);
+
+   public dbd(List<asf<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
       } else {
-         cwe $$2 = null;
-         boolean $$3 = false;
-         boolean $$4 = false;
-
-         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-            cxh $$6 = $$0.a($$5);
-            if (!$$6.f()) {
-               cxd $$7 = $$6.h();
-               if (!($$7 instanceof cvl)) {
-                  return false;
-               }
-
-               cvl $$8 = (cvl)$$7;
-               if ($$2 == null) {
-                  $$2 = $$8.b();
-               } else if ($$2 != $$8.b()) {
-                  return false;
-               }
-
-               int $$10 = $$6.a(kv.ak, duj.a).b().size();
-               if ($$10 > 6) {
-                  return false;
-               }
-
-               if ($$10 > 0) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$4 && $$3;
+         this.g = g;
       }
    }
 
-   public cxh a(dbj $$0, jt.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cxh $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(kv.ak, duj.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
 
-      return cxh.k;
+   public dbd b(List<asf<String>> $$0) {
+      return new dbd($$0);
    }
 
    @Override
-   public ka<cxh> a(dbj $$0) {
-      ka<cxh> $$1 = ka.a($$0.a(), cxh.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxh $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cxh $$4 = $$3.h().j();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(kv.ak, duj.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public dcf<dbd> a() {
-      return dcf.k;
+   public List<asf<String>> a() {
+      return this.g;
    }
 }

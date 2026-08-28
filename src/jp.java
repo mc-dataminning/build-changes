@@ -1,51 +1,38 @@
-public enum jp implements azv {
-   a("down_east", jn.a, jn.f),
-   b("down_north", jn.a, jn.c),
-   c("down_south", jn.a, jn.d),
-   d("down_west", jn.a, jn.e),
-   e("up_east", jn.b, jn.f),
-   f("up_north", jn.b, jn.c),
-   g("up_south", jn.b, jn.d),
-   h("up_west", jn.b, jn.e),
-   i("west_up", jn.e, jn.b),
-   j("east_up", jn.f, jn.b),
-   k("north_up", jn.c, jn.b),
-   l("south_up", jn.d, jn.b);
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-   private static final int m = jn.values().length;
-   private static final jp[] n = af.a(new jp[m * m], $$0 -> {
-      for (jp $$1 : values()) {
-         $$0[b($$1.q, $$1.p)] = $$1;
+public enum jp {
+   a(jo.c),
+   b(jo.c, jo.f),
+   c(jo.f),
+   d(jo.d, jo.f),
+   e(jo.d),
+   f(jo.d, jo.e),
+   g(jo.e),
+   h(jo.c, jo.e);
+
+   private final Set<jo> i;
+   private final kn j;
+
+   private jp(final jo... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new kn(0, 0, 0);
+
+      for (jo $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
-   });
-   private final String o;
-   private final jn p;
-   private final jn q;
-
-   private static int b(jn $$0, jn $$1) {
-      return $$0.ordinal() * m + $$1.ordinal();
    }
 
-   private jp(final String $$0, final jn $$1, final jn $$2) {
-      this.o = $$0;
-      this.q = $$1;
-      this.p = $$2;
+   public Set<jo> a() {
+      return this.i;
    }
 
-   @Override
-   public String c() {
-      return this.o;
+   public int b() {
+      return this.j.u();
    }
 
-   public static jp a(jn $$0, jn $$1) {
-      return n[b($$0, $$1)];
-   }
-
-   public jn a() {
-      return this.q;
-   }
-
-   public jn b() {
-      return this.p;
+   public int c() {
+      return this.j.w();
    }
 }

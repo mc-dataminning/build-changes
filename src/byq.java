@@ -1,101 +1,81 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class byq extends bxr<bwa> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private ji h;
-   private int i;
-   private int j;
-   private int k;
+public class byq<E extends bwt & cmw, T extends bwr> extends byi<E> {
+   private static final int c = 1200;
+   private int d;
+   private byq.a e = byq.a.a;
 
-   public byq(float $$0) {
-      super(ImmutableMap.of(cfc.w, cfd.a, cfc.m, cfd.b));
-      this.g = $$0;
+   public byq() {
+      super(ImmutableMap.of(cft.o, cfu.c, cft.p, cfu.a), 1200);
    }
 
-   protected boolean a(ard $$0, bwa $$1) {
-      return $$1.n_() && this.b($$0, $$1);
+   protected boolean a(arn $$0, E $$1) {
+      bwr $$2 = b($$1);
+      return $$1.b(cyc.wZ) && byk.b($$1, $$2) && byk.a($$1, $$2, 0);
    }
 
-   protected void a(ard $$0, bwa $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.A.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
+   protected boolean a(arn $$0, E $$1, long $$2) {
+      return $$1.eb().a(cft.p) && this.a($$0, $$1);
    }
 
-   protected void b(ard $$0, bwa $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
+   protected void b(arn $$0, E $$1, long $$2) {
+      bwr $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
    }
 
-   protected boolean c(ard $$0, bwa $$1, long $$2) {
-      return $$1.n_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
+   protected void c(arn $$0, E $$1, long $$2) {
+      if ($$1.fy()) {
+         $$1.fE();
+      }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(ard $$0, bwa $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.N().a();
-            this.j--;
-            this.k = 5;
-         }
+      if ($$1.b(cyc.wZ)) {
+         $$1.b(false);
+         $$1.fA().b(kx.P, daa.a);
       }
    }
 
-   private void a(bwa $$0, ji $$1) {
-      $$0.ea().a(cfc.m, new cff($$1, this.g, 0));
+   private void a(E $$0, bwr $$1) {
+      if (this.e == byq.a.a) {
+         $$0.c(crd.a($$0, cyc.wZ));
+         this.e = byq.a.b;
+         $$0.b(true);
+      } else if (this.e == byq.a.b) {
+         if (!$$0.fy()) {
+            this.e = byq.a.a;
+         }
+
+         int $$2 = $$0.fC();
+         cxy $$3 = $$0.fA();
+         if ($$2 >= cwq.b($$3, $$0)) {
+            $$0.fD();
+            this.e = byq.a.c;
+            this.d = 20 + $$0.dY().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == byq.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = byq.a.d;
+         }
+      } else if (this.e == byq.a.d) {
+         $$0.a($$1, 1.0F);
+         this.e = byq.a.a;
+      }
    }
 
-   private boolean b(ard $$0, bwa $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
+   private void b(bwt $$0, bwr $$1) {
+      $$0.eb().a(cft.o, new byt($$1, true));
    }
 
-   private boolean c(ard $$0, bwa $$1) {
-      ji $$2 = $$1.du();
-      ji $$3 = $$2.e();
-      return this.a($$0, $$2) || this.a($$0, $$3);
+   private static bwr b(bwr $$0) {
+      return $$0.eb().c(cft.p).get();
    }
 
-   private boolean d(ard $$0, bwa $$1) {
-      return this.a($$0, $$1.du());
-   }
-
-   private boolean a(ard $$0, ji $$1) {
-      return $$0.a_($$1).a(awp.T);
-   }
-
-   private Optional<ji> a(bwa $$0) {
-      return $$0.ea().c(cfc.w);
-   }
-
-   private boolean e(ard $$0, bwa $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(ard $$0, bwa $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

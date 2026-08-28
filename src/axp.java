@@ -1,28 +1,48 @@
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public record axp(int d, int e) {
-   public static final Codec<Integer> a = ayi.a(0, 15);
-   public static final Codec<axp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a.fieldOf("block").forGetter(axp::b), a.fieldOf("sky").forGetter(axp::c)).apply($$0, axp::new)
-   );
-   public static axp c = new axp(15, 15);
+public record axp<T>(alc<? extends kf<T>> a, ald b) {
+   private static final Interner<axp<?>> c = Interners.newWeakInterner();
 
-   public int a() {
-      return this.d << 4 | this.e << 20;
+   @Deprecated
+   public axp(alc<? extends kf<T>> a, ald b) {
+      this.a = a;
+      this.b = b;
    }
 
-   public static axp a(int $$0) {
-      int $$1 = $$0 >> 4 & 65535;
-      int $$2 = $$0 >> 20 & 65535;
-      return new axp($$1, $$2);
+   public static <T> Codec<axp<T>> a(alc<? extends kf<T>> $$0) {
+      return ald.a.xmap($$1 -> a($$0, $$1), axp::b);
    }
 
-   public int b() {
-      return this.d;
+   public static <T> Codec<axp<T>> b(alc<? extends kf<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? ald.d($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
    }
 
-   public int c() {
-      return this.e;
+   public static <T> yt<ByteBuf, axp<T>> c(alc<? extends kf<T>> $$0) {
+      return ald.b.a($$1 -> a($$0, $$1), axp::b);
+   }
+
+   public static <T> axp<T> a(alc<? extends kf<T>> $$0, ald $$1) {
+      return (axp<T>)c.intern(new axp<>($$0, $$1));
+   }
+
+   public boolean d(alc<? extends kf<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<axp<E>> e(alc<? extends kf<E>> $$0) {
+      return this.d($$0) ? Optional.of((axp<E>)this) : Optional.empty();
+   }
+
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

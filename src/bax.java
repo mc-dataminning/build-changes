@@ -1,37 +1,76 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Locale;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class bax extends DataFix {
-   private final String a;
-   private final TypeReference b;
+public enum bax {
+   a(biq.a),
+   b(biq.b),
+   c(biq.c),
+   d(biq.d),
+   e(biq.e),
+   f(biq.f),
+   g(biq.g),
+   h(biq.h),
+   i(biq.i),
+   j(biq.j),
+   k(biq.k),
+   l(biq.l),
+   m(biq.m),
+   n(biq.o),
+   o(biq.n),
+   p(biq.p),
+   q(biq.q),
+   r(biq.O),
+   s(biq.r);
 
-   public bax(Schema $$0, String $$1, TypeReference $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private bax(final TypeReference $$0) {
+      this.u = $$0;
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
-      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
-      return this.a($$0, $$1);
+   static int a() {
+      return ab.b().d().c();
    }
 
-   private <K> TypeRewriteRule a(TaggedChoiceType<K> $$0, TaggedChoiceType<?> $$1) {
-      if ($$0.getKeyType() != $$1.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$1, $$1x -> $$1xx -> {
-               if (!$$1.hasType($$1xx.getFirst())) {
-                  throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.a, $$1xx.getFirst(), this.b.typeName()));
-               } else {
-                  return $$1xx;
-               }
-            });
-      }
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bax.a())));
+         }
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = bax.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public tw a(DataFixer $$0, tw $$1, int $$2, int $$3) {
+      return (tw)this.a($$0, new Dynamic(uk.a, $$1), $$2, $$3).getValue();
+   }
+
+   public tw a(DataFixer $$0, tw $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

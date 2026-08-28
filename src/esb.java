@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class esb extends esi {
-   public final axf<dke> a;
-   public static final MapCodec<esb> b = axf.b(mc.f).xmap(esb::new, $$0 -> $$0.a).fieldOf("value");
+public class esb extends epg {
+   public static final MapCodec<esb> d = a(esb::new);
 
-   public esb(axf<dke> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public esl.d a(dhc $$0, ji $$1, ji $$2, esl.d $$3, esl.d $$4, esh $$5) {
-      return egu.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public esb(epg.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected esk<?> a() {
-      return esk.n;
+   public Optional<epg.b> a(epg.a $$0) {
+      return a($$0, eel.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(epy $$0, epg.a $$1) {
+      $$0.a(new esa($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public epp<?> e() {
+      return epp.o;
    }
 }

@@ -1,43 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record cls(int e, int f, aku g, Optional<wp> h, Optional<wp> i) {
-   public static final Codec<cls> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.a(1, 16).fieldOf("width").forGetter(cls::b),
-               ayi.a(1, 16).fieldOf("height").forGetter(cls::c),
-               aku.a.fieldOf("asset_id").forGetter(cls::d),
-               wr.a.optionalFieldOf("title").forGetter(cls::e),
-               wr.a.optionalFieldOf("author").forGetter(cls::f)
-            )
-            .apply($$0, cls::new)
-   );
-   public static final yn<wa, cls> b = yn.a(yl.h, cls::b, yl.h, cls::c, aku.b, cls::d, wr.e, cls::e, wr.e, cls::f, cls::new);
-   public static final Codec<jr<cls>> c = akq.a(mc.X, a);
-   public static final yn<wa, jr<cls>> d = yl.a(mc.X, b);
+public class cls extends clj {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bvk g;
 
-   public int a() {
-      return this.b() * this.c();
+   public cls(clg $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         fcu $$0 = this.a.K(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.c.dA();
+         double $$2 = this.a.c.e(0.5);
+         double $$3 = this.a.c.dG();
+
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.dY().k() / 2.0;
+            double $$6 = $$2 + this.a.dY().k() / 2.0;
+            double $$7 = $$3 + this.a.dY().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dV().a(lv.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
+      }
    }
 
-   public int c() {
-      return this.f;
+   @Override
+   public void a(arn $$0) {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.t().a(clw.e);
+         } else {
+            this.a.t().a(clw.g);
+         }
+      } else if (this.e == 10) {
+         fcu $$1 = new fcu(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
+         float $$2 = 5.0F;
+         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
+         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
+         double $$5 = this.a.c.e(0.5);
+         double $$6 = $$5;
+         jj.a $$7 = new jj.a($$3, $$5, $$4);
+
+         while ($$0.u($$7)) {
+            if (--$$6 < 0.0) {
+               $$6 = $$5;
+               break;
+            }
+
+            $$7.b($$3, $$6, $$4);
+         }
+
+         $$6 = (double)(azk.a($$6) + 1);
+         this.g = new bvk($$0, $$3, $$6, $$4);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(lv.h);
+         this.g.b(0.25F);
+         this.g.a(new buw(buy.g));
+         $$0.b(this.g);
+      }
    }
 
-   public aku d() {
-      return this.g;
+   @Override
+   public void c() {
+      this.e = 0;
+      this.f++;
    }
 
-   public Optional<wp> e() {
-      return this.h;
+   @Override
+   public void d() {
+      if (this.g != null) {
+         this.g.at();
+         this.g = null;
+      }
    }
 
-   public Optional<wp> f() {
-      return this.i;
+   @Override
+   public clw<cls> h() {
+      return clw.f;
+   }
+
+   public void i() {
+      this.f = 0;
    }
 }

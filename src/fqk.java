@@ -1,69 +1,99 @@
-import java.util.OptionalInt;
+public abstract class fqk extends fqg {
+   private static final fsa a = new fsa(ald.b("widget/text_field"), ald.b("widget/text_field_highlighted"));
+   private static final int c = 4;
 
-public class fqk extends fpm {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final azp<fqk.a, fqj> c;
-   private boolean d = false;
-
-   public fqk(wp $$0, fpa $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fqk(int $$0, int $$1, wp $$2, fpa $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = af.a($$1x -> $$1x.c.isPresent() ? fqj.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fqj.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fqk c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fqk d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fqk e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fqk b(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public fqk(int $$0, int $$1, int $$2, int $$3, wv $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public int A() {
-      return this.c.a(this.c()).b();
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return super.a($$0, $$1, $$2) || $$3;
    }
 
    @Override
-   public int y() {
-      return this.c.a(this.c()).a() * 9;
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.g();
+         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
+         if ($$5 != this.g()) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      fqj $$4 = this.c.a(this.c());
-      int $$5 = this.F();
-      int $$6 = this.G();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.A() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+   public void b(fpz $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.c($$0);
+         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.g(), 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.e();
+         this.b($$0);
       }
    }
 
-   private fqk.a c() {
-      return new fqk.a(this.B(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   protected void b(fpz $$0) {
+      this.a($$0);
    }
 
-   static record a(wp a, int b, OptionalInt c) {
+   protected int a() {
+      return 4;
+   }
+
+   protected int b() {
+      return this.a() * 2;
+   }
+
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
+   }
+
+   @Override
+   protected int l() {
+      return this.H();
+   }
+
+   @Override
+   protected int n() {
+      return this.c() + this.b();
+   }
+
+   protected void c(fpz $$0) {
+      this.a($$0, this.F(), this.G(), this.A(), this.y());
+   }
+
+   protected void a(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
+      ald $$5 = a.a(this.E(), this.aI_());
+      $$0.a(goi::H, $$5, $$1, $$2, $$3, $$4);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
+   }
+
+   protected abstract int c();
+
+   protected abstract void c(fpz var1, int var2, int var3, float var4);
+
+   protected int e() {
+      return this.F() + this.a();
+   }
+
+   protected int p() {
+      return this.G() + this.a();
+   }
+
+   @Override
+   public void a(hlv $$0) {
    }
 }

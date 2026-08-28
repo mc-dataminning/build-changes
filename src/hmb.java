@@ -1,96 +1,33 @@
 import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class hmb {
-   static final Logger a = LogUtils.getLogger();
-   final fvi b;
-   volatile boolean c;
-   @Nullable
-   vi d;
+public class hmb implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bot<hma> b;
+   private final bsg c;
 
-   public hmb(fvi $$0) {
-      this.b = $$0;
+   public hmb(FileChannel $$0, Executor $$1) {
+      this.b = new bot<>(hma.a, $$0);
+      this.c = new bsg($$1, "telemetry-event-log");
    }
 
-   public void a(final fii $$0, giq $$1) {
-      final fmg $$2 = fmg.Q();
-      $$2.aU();
-      $$2.aY().c(wp.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
+   public hmc a() {
+      return $$0 -> this.c.a_(() -> {
             try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (hmb.this.c) {
-                  return;
-               }
-
-               hmb.this.d = vi.a($$0, $$2.n.aD(), $$2.aQ().n());
-               if (hmb.this.c) {
-                  return;
-               }
-
-               ggx $$1 = new ggx(hmb.this.d, $$2, $$0.e($$3), hmb.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.q);
-               }
-
-               if (hmb.this.c) {
-                  return;
-               }
-
-               hmb.this.d.a($$3, $$4, $$1);
-               if (hmb.this.c) {
-                  return;
-               }
-
-               hmb.this.d.a(new aiz($$2.X().c(), $$2.X().b()));
-               $$2.a(gie.a($$0));
-               $$2.bc().a(gmd.c.c, String.valueOf($$0.a), Objects.requireNonNullElse($$0.c, "unknown"));
-               $$2.af().a(hmb.this.d, hiu.c.b);
-            } catch (Exception var5) {
-               $$2.af().i();
-               if (hmb.this.c) {
-                  return;
-               }
-
-               hmb.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               hma $$5 = new hma(hmb.this.b, wo.r, wp.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
             }
-         }
-      }).start();
+         });
    }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wp.c("disconnect.genericReason"));
-         this.d.n();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
-         }
-      }
+   @Override
+   public void close() {
+      this.c.a_(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

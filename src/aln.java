@@ -1,233 +1,88 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class aln extends fdc {
-   private final MinecraftServer b;
-   private final Set<fcu> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public class aln {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ke b = new ke(Optional.empty(), Lifecycle.experimental());
 
-   public aln(MinecraftServer $$0) {
-      this.b = $$0;
+   public static CompletableFuture<aln.b> a(jz<alm> $$0, List<kf.a<?>> $$1, ava $$2, Executor $$3) {
+      List<ju.b<?>> $$4 = axq.a($$0.b(alm.d), $$1);
+      ju.a $$5 = ju.a.a($$4.stream());
+      alb<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
+      List<CompletableFuture<ko<?>>> $$7 = exn.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
+      CompletableFuture<List<ko<?>>> $$8 = af.d($$7);
+      return $$8.thenApplyAsync($$2x -> a($$0, $$5, $$2x), $$3);
    }
 
-   @Override
-   protected void a(fdb $$0, fcu $$1, fcz $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new aff($$0.cH(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+   private static <T> CompletableFuture<ko<?>> a(exn<T> $$0, alb<JsonElement> $$1, ava $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         ko<T> $$3x = new ka<>($$0.b(), Lifecycle.experimental());
+         Map<ald, T> $$4 = new HashMap<>();
+         ave.a($$2, $$0.b(), $$1, $$0.c(), $$4);
+         $$4.forEach(($$2xx, $$3xx) -> $$3x.a(alc.a($$0.b(), $$2xx), (T)$$3xx, b));
+         axq.a($$2, $$3x);
+         return $$3x;
+      }, $$3);
+   }
+
+   private static aln.b a(jz<alm> $$0, ju.a $$1, List<ko<?>> $$2) {
+      jz<alm> $$3 = a($$0, $$2);
+      ju.a $$4 = a($$1, $$3.a(alm.d));
+      a($$4);
+      return new aln.b($$3, $$4);
+   }
+
+   private static ju.a a(ju.a $$0, ju.a $$1) {
+      return ju.a.a(Stream.concat($$0.c(), $$1.c()));
+   }
+
+   private static void a(ju.a $$0) {
+      azq.a $$1 = new azq.a();
+      exr $$2 = new exr($$1, fae.q, $$0);
+      exn.a().forEach($$2x -> a($$2, $$2x, $$0));
+      $$1.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+   }
+
+   private static jz<alm> a(jz<alm> $$0, List<ko<?>> $$1) {
+      return $$0.a(alm.d, new kg.c($$1).e());
+   }
+
+   private static <T> void a(exr $$0, exn<T> $$1, ju.a $$2) {
+      ju<T> $$3 = $$2.e($$1.b());
+      $$3.c().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
+   }
+
+   public static class a {
+      private final ju.a a;
+
+      public a(ju.a $$0) {
+         this.a = $$0;
       }
 
-      this.a();
-   }
-
-   @Override
-   protected void a(fdb $$0, fcu $$1) {
-      super.a($$0, $$1);
-      this.a();
-   }
-
-   @Override
-   public void a(fdb $$0) {
-      super.a($$0);
-      this.b.ag().a(new aec($$0.cH(), null));
-      this.a();
-   }
-
-   @Override
-   public void b(fdb $$0, fcu $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new aec($$0.cH(), $$1.b()));
+      public jt.a a() {
+         return this.a;
       }
 
-      this.a();
-   }
-
-   @Override
-   public void a(fct $$0, @Nullable fcu $$1) {
-      fcu $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ag().a(new aet($$0, $$1));
-         } else {
-            this.g($$2);
-         }
+      public Collection<ald> a(alc<? extends kf<?>> $$0) {
+         return this.a.e($$0).c_().map(alc::a).toList();
       }
 
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ag().a(new aet($$0, $$1));
-         } else {
-            this.e($$1);
-         }
-      }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, fcx $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ag().a(afe.a($$1, $$0, afe.a.a));
-         this.a();
-         return true;
-      } else {
-         return false;
+      public exq b(alc<exq> $$0) {
+         return this.a.a(me.bn).flatMap($$1 -> $$1.a($$0)).map(js::a).orElse(exq.a);
       }
    }
 
-   @Override
-   public void b(String $$0, fcx $$1) {
-      super.b($$0, $$1);
-      this.b.ag().a(afe.a($$1, $$0, afe.a.b));
-      this.a();
-   }
-
-   @Override
-   public void a(fcu $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(fcu $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ag().a(new afb($$0, 2));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void c(fcu $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(fcx $$0) {
-      super.a($$0);
-      this.b.ag().a(afe.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(fcx $$0) {
-      super.b($$0);
-      this.b.ag().a(afe.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(fcx $$0) {
-      super.c($$0);
-      this.b.ag().a(afe.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
-      }
-   }
-
-   public List<yw<?>> d(fcu $$0) {
-      List<yw<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afb($$0, 0));
-
-      for (fct $$2 : fct.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new aet($$2, $$0));
-         }
-      }
-
-      for (fcv $$3 : this.i($$0)) {
-         $$1.add(new aff($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
-      }
-
-      return $$1;
-   }
-
-   public void e(fcu $$0) {
-      List<yw<?>> $$1 = this.d($$0);
-
-      for (are $$2 : this.b.ag().t()) {
-         for (yw<?> $$3 : $$1) {
-            $$2.f.b($$3);
-         }
-      }
-
-      this.c.add($$0);
-   }
-
-   public List<yw<?>> f(fcu $$0) {
-      List<yw<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afb($$0, 1));
-
-      for (fct $$2 : fct.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new aet($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(fcu $$0) {
-      List<yw<?>> $$1 = this.f($$0);
-
-      for (are $$2 : this.b.ag().t()) {
-         for (yw<?> $$3 : $$1) {
-            $$2.f.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
-   }
-
-   public int h(fcu $$0) {
-      int $$1 = 0;
-
-      for (fct $$2 : fct.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public evi.a<fdd> b() {
-      return new evi.a<>(this::h, this::a, bam.n);
-   }
-
-   private fdd h() {
-      fdd $$0 = new fdd(this);
-      this.a($$0::g);
-      return $$0;
-   }
-
-   private fdd a(tq $$0, jt.a $$1) {
-      return this.h().b($$0, $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
+   public static record b(jz<alm> a, ju.a b) {
    }
 }

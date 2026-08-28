@@ -1,36 +1,26 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Set;
 
-public class aea implements yw<abl> {
-   public static final yn<vl, aea> a = yw.a(aea::a, aea::new);
-   private final IntList b;
+public record aea(int b, bxe c, Set<bxf> d) implements zc<abr> {
+   public static final yt<vr, aea> a = yt.a(yr.h, aea::b, bxe.a, aea::e, bxf.m, aea::f, aea::new);
 
-   public aea(IntList $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   public aea(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private aea(vl $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   public static aea a(int $$0, bxe $$1, Set<bxf> $$2) {
+      return new aea($$0, $$1, $$2);
    }
 
    @Override
-   public yy<aea> a() {
-      return agd.am;
+   public ze<aea> a() {
+      return agk.ai;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
-      return this.b;
+   public bxe e() {
+      return this.c;
+   }
+
+   public Set<bxf> f() {
+      return this.d;
    }
 }

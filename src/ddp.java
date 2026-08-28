@@ -1,20 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record ddp(int c) {
-   public static final Codec<ddp> a = RecordCodecBuilder.create($$0 -> $$0.group(ayi.m.fieldOf("value").forGetter(ddp::a)).apply($$0, ddp::new));
-   public static final yn<ByteBuf, ddp> b = yn.a(yl.h, ddp::a, ddp::new);
-
-   public ddp(int c) {
-      if (c <= 0) {
-         throw new IllegalArgumentException("Enchantment value must be positive, but was " + c);
-      } else {
-         this.c = c;
-      }
+public interface ddp<T> {
+   public interface a<T> extends ddp<T> {
+      T a(T var1, List<T> var2);
    }
 
-   public int a() {
-      return this.c;
+   public interface b<T> extends ddp<T> {
+      default T a(js<cxu> $$0) {
+         return this.a(new cxy($$0));
+      }
+
+      default T a(cxu $$0) {
+         return this.a(new cxy($$0));
+      }
+
+      T a(cxy var1);
    }
 }

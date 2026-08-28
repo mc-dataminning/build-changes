@@ -1,97 +1,104 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqk extends dke {
-   public static final MapCodec<dqk> a = b(dqk::new);
-   public static final dyh b = dqn.b;
+public class dqk extends dmy {
+   public static final MapCodec<dqk> b = b(dqk::new);
+   public static final dzd c = dzc.A;
 
    @Override
    public MapCodec<dqk> a() {
-      return a;
+      return b;
    }
 
-   public dqk(dxp.d $$0) {
+   public dqk(dyl.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+      this.l(this.B.b().b(a, jo.d).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a_(dxq $$0, dgz $$1, ji $$2, cpr $$3) {
-      e($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(a, c);
    }
 
    @Override
-   public void a(dgz $$0, ji $$1, dxq $$2, bva $$3) {
-      if (!$$3.cd()) {
-         e($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
-      if ($$2.C) {
-         a($$2, $$3);
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
       } else {
-         e($$1, $$2, $$3);
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
       }
 
-      return (bsy)($$0.h() instanceof cvo && new dax($$4, $$5, $$0, $$6).b() ? bsy.e : bsy.a);
-   }
-
-   private static void e(dxq $$0, dgz $$1, ji $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
-      }
+      this.a($$1, $$2, $$0);
    }
 
    @Override
-   protected boolean f(dxq $$0) {
-      return $$0.c(b);
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$0.c(a) == $$4 && !$$0.c(c)) {
+         this.a($$1, $$2, $$3);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+   private void a(dhs $$0, die $$1, jj $$2) {
+      if (!$$0.w_() && !$$1.U().a($$2, this)) {
+         $$1.a($$2, this, 2);
       }
    }
 
-   @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, cxh $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bsj.a(1, 5));
-      }
+   protected void a(dhp $$0, jj $$1, dym $$2) {
+      jo $$3 = $$2.c(a);
+      jj $$4 = $$1.a($$3.g());
+      ewb $$5 = evx.a($$0, $$3.g(), null);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
    }
 
    @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
+   protected boolean f_(dym $$0) {
+      return true;
    }
 
-   private static void a(dgz $$0, ji $$1) {
-      double $$2 = 0.5625;
-      azh $$3 = $$0.A;
+   @Override
+   protected int b(dym $$0, dgv $$1, jj $$2, jo $$3) {
+      return $$0.a($$1, $$2, $$3);
+   }
 
-      for (jn $$4 : jn.values()) {
-         ji $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).s()) {
-            jn.a $$6 = $$4.o();
-            double $$7 = $$6 == jn.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == jn.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == jn.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(lo.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+   @Override
+   protected int a(dym $$0, dgv $$1, jj $$2, jo $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dym $$0, dhp $$1, jj $$2, dym $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.w_() && $$0.c(c) && !$$1.U().a($$2, this)) {
+            dym $$5 = $$0.b(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
          }
       }
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
+   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
+      if ($$0.c(c) && $$1.n().a($$2, this)) {
+         this.a($$1, $$2, $$0.b(c, Boolean.valueOf(false)));
+      }
+   }
+
+   @Override
+   public dym a(dbn $$0) {
+      return this.m().b(a, $$0.d().g().g());
    }
 }

@@ -1,39 +1,90 @@
-import java.util.List;
 import java.util.Optional;
 
-public class cii {
-   public static final akt<cih> a = a(cir.a.a());
-   public static final akt<cih> b = a(cir.b.a());
-   public static final akt<cih> c = a(cir.c.a());
-   public static final akt<cih> d = a;
+public interface cii {
+   boolean m();
 
-   private static akt<cih> a(String $$0) {
-      return akt.a(mc.aU, aku.b($$0));
+   void w(boolean var1);
+
+   void j(cxy var1);
+
+   void h(tw var1);
+
+   cxy R_();
+
+   awj n();
+
+   @Deprecated
+   static void a(bwt $$0, cxy $$1) {
+      $$1.a(kx.g, $$0);
+      dae.a(kx.Z, $$1, $$1x -> {
+         if ($$0.gf()) {
+            $$1x.a("NoAI", $$0.gf());
+         }
+
+         if ($$0.bb()) {
+            $$1x.a("Silent", $$0.bb());
+         }
+
+         if ($$0.bc()) {
+            $$1x.a("NoGravity", $$0.bc());
+         }
+
+         if ($$0.cn()) {
+            $$1x.a("Glowing", $$0.cn());
+         }
+
+         if ($$0.cC()) {
+            $$1x.a("Invulnerable", $$0.cC());
+         }
+
+         $$1x.a("Health", $$0.eF());
+      });
    }
 
-   public static void a(qe<cih> $$0) {
-      a($$0, a, cih.a.a, "pig", Optional.empty());
-      a($$0, b, cih.a.a, "warm_pig", awo.al);
-      a($$0, c, cih.a.b, "cold_pig", awo.ak);
+   @Deprecated
+   static void a(bwt $$0, tw $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.d($$1.j("Health"));
+      }
    }
 
-   static void a(qe<cih> $$0, akt<cih> $$1, cih.a $$2, String $$3, axf<dic> $$4) {
-      a($$0, $$1, $$2, $$3, Optional.of($$0.a(mc.aJ).b($$4)));
-   }
+   static <T extends bwr & cii> Optional<btq> a(cqi $$0, btp $$1, T $$2) {
+      cxy $$3 = $$0.b($$1);
+      if ($$3.h() == cyc.rk && $$2.bK()) {
+         $$2.a($$2.n(), 1.0F, 1.0F);
+         cxy $$4 = $$2.R_();
+         $$2.j($$4);
+         cxy $$5 = cyb.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dhp $$6 = $$2.dV();
+         if (!$$6.C) {
+            ap.k.a((aro)$$0, $$4);
+         }
 
-   static void a(qe<cih> $$0, akt<cih> $$1, cih.a $$2, String $$3, Optional<jv<dic>> $$4) {
-      aku $$5 = aku.b("entity/pig/" + $$3);
-      $$0.a($$1, new cih($$2, $$5, $$4));
-   }
-
-   public static Optional<jr.c<cih>> a(azh $$0, kf $$1, jr<dic> $$2) {
-      ke<cih> $$3 = $$1.e(mc.aU);
-      List<jr.c<cih>> $$4 = $$3.c().filter($$1x -> ((cih)$$1x.a()).c().isPresent() && ((cih)$$1x.a()).c().get().a($$2)).toList();
-      if (!$$4.isEmpty()) {
-         return af.b($$4, $$0);
+         $$2.at();
+         return Optional.of(btq.a);
       } else {
-         List<jr.c<cih>> $$5 = $$3.c().filter($$0x -> ((cih)$$0x.a()).c().isEmpty()).toList();
-         return af.b($$5, $$0);
+         return Optional.empty();
       }
    }
 }

@@ -1,32 +1,13 @@
-public class cel extends cdg {
-   private final cnl b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cel(cnl $$0, double $$1, boolean $$2) {
+public class cel extends cek {
+   public cel(bwz $$0, double $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.b = $$0;
    }
 
+   @Nullable
    @Override
-   public void d() {
-      super.d();
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b.v(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   protected fcu h() {
+      return byk.a(this.b, 10, 7);
    }
 }

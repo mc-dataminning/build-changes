@@ -1,64 +1,84 @@
-import java.util.Calendar;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public class gpp<T extends dus & dvy> implements gpj<T> {
-   private final gcm a;
-   private final gcm b;
-   private final gcm c;
-   private final boolean d = b();
+public record gpp(gpo b, gpo c, gpo d, gpo e, gpo f, gpo g, gpo h, gpo i) {
+   public static final gpp a = new gpp(gpo.a, gpo.a, gpo.a, gpo.a, gpo.a, gpo.a, gpo.a, gpo.a);
 
-   public gpp(gpk.a $$0) {
-      this.a = new gcm($$0.a(ggb.V));
-      this.b = new gcm($$0.a(ggb.av));
-      this.c = new gcm($$0.a(ggb.aw));
+   public gpo a(cxw $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gpo.a;
+      };
    }
 
-   public static boolean b() {
-      Calendar $$0 = Calendar.getInstance();
-      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
+   public gpo a() {
+      return this.b;
    }
 
-   @Override
-   public void a(T $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
-      dgz $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dxq $$8 = $$7 ? $$0.m() : dkg.cD.m().b(dlh.c, jn.d);
-      dyi $$9 = $$8.b(dlh.d) ? $$8.c(dlh.d) : dyi.a;
-      if ($$8.b() instanceof diy<?> $$11) {
-         boolean $$12 = $$9 != dyi.a;
-         $$2.a();
-         float $$13 = $$8.c(dlh.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dmm.c<? extends duz> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
-         } else {
-            $$14 = dmm.b::b;
+   public gpo b() {
+      return this.c;
+   }
+
+   public gpo c() {
+      return this.d;
+   }
+
+   public gpo d() {
+      return this.e;
+   }
+
+   public gpo e() {
+      return this.f;
+   }
+
+   public gpo f() {
+      return this.g;
+   }
+
+   public gpo g() {
+      return this.h;
+   }
+
+   public gpo h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<gpp> {
+      public gpp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gpo $$4 = this.a($$2, $$3, cxw.c);
+         gpo $$5 = this.a($$2, $$3, cxw.b);
+         if ($$5 == gpo.a) {
+            $$5 = $$4;
          }
 
-         float $$16 = $$14.apply(dlh.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gpm<>()).applyAsInt($$4);
-         hhy $$18 = gns.a($$0, $$9, this.d);
-         fgv $$19 = $$18.a($$3, gnh::f);
-         if ($$12) {
-            if ($$9 == dyi.b) {
-               this.a($$2, $$19, this.b, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.c, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.a, $$16, $$17, $$5);
+         gpo $$6 = this.a($$2, $$3, cxw.e);
+         gpo $$7 = this.a($$2, $$3, cxw.d);
+         if ($$7 == gpo.a) {
+            $$7 = $$6;
          }
 
-         $$2.b();
+         gpo $$8 = this.a($$2, $$3, cxw.f);
+         gpo $$9 = this.a($$2, $$3, cxw.g);
+         gpo $$10 = this.a($$2, $$3, cxw.h);
+         gpo $$11 = this.a($$2, $$3, cxw.i);
+         return new gpp($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
-   }
 
-   private void a(fgr $$0, fgv $$1, gcm $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+      private gpo a(JsonDeserializationContext $$0, JsonObject $$1, cxw $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gpo)$$0.deserialize($$1.get($$3), gpo.class) : gpo.a;
+      }
    }
 }

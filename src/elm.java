@@ -1,72 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-public class elm extends elt {
+public class elm extends elh {
    public static final MapCodec<elm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               ekz.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               ayi.b(jn.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bsv.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
             .apply($$0, elm::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final ekz e;
-   protected final int f;
-   protected final List<jn> g;
+   private final bsv b;
+   private final int c;
 
-   public elm(float $$0, int $$1, int $$2, ekz $$3, int $$4, List<jn> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public elm(bsv $$0, bsv $$1, bsv $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public void a(elt.a $$0) {
-      Set<ji> $$1 = new HashSet<>();
-      azh $$2 = $$0.b();
-
-      for (ji $$3 : af.a($$0.d(), $$2)) {
-         jn $$4 = af.a(this.g, $$2);
-         ji $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            ji $$6 = $$5.b(-this.c, -this.d, -this.c);
-            ji $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (ji $$8 : ji.c($$6, $$7)) {
-               $$1.add($$8.j());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
-   }
-
-   private boolean a(elt.a $$0, ji $$1, jn $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         ji $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected eli<?> a() {
+      return eli.j;
    }
 
    @Override
-   protected elu<?> a() {
-      return elu.h;
+   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
+      jj $$9 = $$5.a();
+      jj.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
+   }
+
+   @Override
+   public int a(azs $$0, int $$1, ekr $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

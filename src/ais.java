@@ -1,29 +1,26 @@
-public class ais implements yw<aip> {
-   public static final yn<vl, ais> a = yw.a(ais::a, ais::new);
-   private final int b;
+public enum ais {
+   a,
+   b,
+   c;
 
-   public ais(int $$0) {
-      this.b = $$0;
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static ais a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   private ais(vl $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-   }
-
-   @Override
-   public yy<ais> a() {
-      return aiv.d;
-   }
-
-   public void a(aip $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

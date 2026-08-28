@@ -1,30 +1,43 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class asa implements ain {
-   private final MinecraftServer b;
-   private final vi c;
+public class asa implements arx {
+   private final arx a;
+   private final bsg b;
+   private boolean c;
 
-   public asa(MinecraftServer $$0, vi $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private asa(arx $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = new bsg($$1, "progressListener");
+   }
+
+   public static asa a(arx $$0, Executor $$1) {
+      asa $$2 = new asa($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
    @Override
-   public void a(aik $$0) {
-      if ($$0.g() != aij.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.c.a(aiw.b, new asi(this.b, this.c, false));
-         this.c.a(aiw.d);
+   public void a(dgw $$0) {
+      this.b.a_(() -> this.a.a($$0));
+   }
+
+   @Override
+   public void a(dgw $$0, @Nullable ebk $$1) {
+      if (this.c) {
+         this.b.a_(() -> this.a.a($$0, $$1));
       }
    }
 
    @Override
-   public void a(vk $$0) {
+   public void a() {
+      this.c = true;
+      this.b.a_(this.a::a);
    }
 
    @Override
-   public boolean c() {
-      return this.c.i();
+   public void b() {
+      this.c = false;
+      this.b.a_(this.a::b);
    }
 }

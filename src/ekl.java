@@ -1,28 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekl<P extends ekk> {
-   public static final ekl<ekf> a = a("blob_foliage_placer", ekf.a);
-   public static final ekl<ekq> b = a("spruce_foliage_placer", ekq.a);
-   public static final ekl<eko> c = a("pine_foliage_placer", eko.a);
-   public static final ekl<eke> d = a("acacia_foliage_placer", eke.a);
-   public static final ekl<ekg> e = a("bush_foliage_placer", ekg.c);
-   public static final ekl<ekj> f = a("fancy_foliage_placer", ekj.c);
-   public static final ekl<ekm> g = a("jungle_foliage_placer", ekm.a);
-   public static final ekl<ekn> h = a("mega_pine_foliage_placer", ekn.a);
-   public static final ekl<eki> i = a("dark_oak_foliage_placer", eki.a);
-   public static final ekl<ekp> j = a("random_spread_foliage_placer", ekp.a);
-   public static final ekl<ekh> k = a("cherry_foliage_placer", ekh.a);
-   private final MapCodec<P> l;
+public class ekl implements ejv {
+   public static final Codec<ekl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eok.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               axp.b(me.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               elw.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               elw.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               efs.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+            )
+            .apply($$0, ekl::new)
+   );
+   public final js<eok> b;
+   public final int c;
+   public final int d;
+   public final axp<dku> e;
+   public final elw f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final elw k;
+   public final int l;
+   public final int n;
+   public final efs o;
 
-   private static <P extends ekk> ekl<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.U, $$0, new ekl<>($$1));
-   }
-
-   private ekl(MapCodec<P> $$0) {
-      this.l = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.l;
+   public ekl(js<eok> $$0, int $$1, int $$2, axp<dku> $$3, elw $$4, int $$5, int $$6, int $$7, int $$8, elw $$9, int $$10, int $$11, efs $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

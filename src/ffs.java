@@ -1,103 +1,350 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
 
 public class ffs {
-   private static final Logger a = LogUtils.getLogger();
-   private final Long2ObjectMap<ffp> b = new Long2ObjectOpenHashMap();
-   private final ffq c;
+   private final List<ffs.d<?>> a = new ArrayList<>();
+   private final List<ffs.a<?>> b = new ArrayList<>();
+   private final List<ffs.e> c = new ArrayList<>();
 
-   public ffs(ffq $$0) {
-      this.c = $$0;
-      GLFW.glfwSetMonitorCallback(this::a);
-      PointerBuffer $$1 = GLFW.glfwGetMonitors();
-      if ($$1 != null) {
-         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
-            long $$3 = $$1.get($$2);
-            this.b.put($$3, $$0.createMonitor($$3));
+   public fft a(String $$0) {
+      ffs.e $$1 = new ffs.e(this.c.size(), $$0);
+      this.c.add($$1);
+      return $$1;
+   }
+
+   public <T> fha<T> a(String $$0, T $$1) {
+      ffs.a<T> $$2 = new ffs.a<>($$0, null, $$1);
+      this.b.add($$2);
+      return $$2.b;
+   }
+
+   public <T> fha<T> a(String $$0, fgz<T> $$1) {
+      return this.a($$0, $$1, null).b;
+   }
+
+   <T> ffs.d<T> a(String $$0, fgz<T> $$1, @Nullable ffs.e $$2) {
+      int $$3 = this.a.size();
+      ffs.d<T> $$4 = new ffs.d<>($$3, $$0, $$2, $$1);
+      this.a.add($$4);
+      return $$4;
+   }
+
+   public void a(fgx $$0) {
+      this.a($$0, ffs.c.a);
+   }
+
+   public void a(fgx $$0, ffs.c $$1) {
+      BitSet $$2 = this.a();
+      List<ffs.e> $$3 = new ArrayList<>($$2.cardinality());
+      BitSet $$4 = new BitSet(this.c.size());
+
+      for (ffs.e $$5 : this.c) {
+         this.a($$5, $$2, $$4, $$3);
+      }
+
+      this.a($$3);
+
+      for (ffs.e $$6 : $$3) {
+         for (ffs.d<?> $$7 : $$6.h) {
+            $$1.a($$7.a);
+            $$7.a($$0);
+         }
+
+         $$1.c($$6.c);
+         $$6.g.run();
+         $$1.d($$6.c);
+
+         for (int $$8 = $$6.i.nextSetBit(0); $$8 >= 0; $$8 = $$6.i.nextSetBit($$8 + 1)) {
+            ffs.d<?> $$9 = this.a.get($$8);
+            $$1.b($$9.a);
+            $$9.b($$0);
          }
       }
    }
 
-   private void a(long $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      if ($$1 == 262145) {
-         this.b.put($$0, this.c.createMonitor($$0));
-         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
-      } else if ($$1 == 262146) {
-         this.b.remove($$0);
-         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
+   private BitSet a() {
+      Deque<ffs.e> $$0 = new ArrayDeque<>(this.c.size());
+      BitSet $$1 = new BitSet(this.c.size());
+
+      for (ffs.f<?> $$2 : this.b) {
+         ffs.e $$3 = $$2.b.d;
+         if ($$3 != null) {
+            this.a($$3, $$1, $$0);
+         }
+      }
+
+      for (ffs.e $$4 : this.c) {
+         if ($$4.j) {
+            this.a($$4, $$1, $$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(ffs.e $$0, BitSet $$1, Deque<ffs.e> $$2) {
+      $$2.add($$0);
+
+      while (!$$2.isEmpty()) {
+         ffs.e $$3 = $$2.poll();
+         if (!$$1.get($$3.b)) {
+            $$1.set($$3.b);
+
+            for (int $$4 = $$3.f.nextSetBit(0); $$4 >= 0; $$4 = $$3.f.nextSetBit($$4 + 1)) {
+               $$2.add(this.c.get($$4));
+            }
+         }
       }
    }
 
-   @Nullable
-   public ffp a(long $$0) {
-      return (ffp)this.b.get($$0);
-   }
+   private void a(ffs.e $$0, BitSet $$1, BitSet $$2, List<ffs.e> $$3) {
+      if ($$2.get($$0.b)) {
+         String $$4 = $$2.stream().mapToObj($$0x -> this.c.get($$0x).c).collect(Collectors.joining(", "));
+         throw new IllegalStateException("Frame graph cycle detected between " + $$4);
+      } else if ($$1.get($$0.b)) {
+         $$2.set($$0.b);
+         $$1.clear($$0.b);
 
-   @Nullable
-   public ffp a(ffu $$0) {
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
-      if ($$1 != 0L) {
-         return this.a($$1);
-      } else {
-         int $$2 = $$0.q();
-         int $$3 = $$2 + $$0.m();
-         int $$4 = $$0.r();
-         int $$5 = $$4 + $$0.n();
-         int $$6 = -1;
-         ffp $$7 = null;
-         long $$8 = GLFW.glfwGetPrimaryMonitor();
-         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
-         ObjectIterator var12 = this.b.values().iterator();
+         for (int $$5 = $$0.f.nextSetBit(0); $$5 >= 0; $$5 = $$0.f.nextSetBit($$5 + 1)) {
+            this.a(this.c.get($$5), $$1, $$2, $$3);
+         }
 
-         while (var12.hasNext()) {
-            ffp $$9 = (ffp)var12.next();
-            int $$10 = $$9.c();
-            int $$11 = $$10 + $$9.b().a();
-            int $$12 = $$9.d();
-            int $$13 = $$12 + $$9.b().b();
-            int $$14 = a($$2, $$10, $$11);
-            int $$15 = a($$3, $$10, $$11);
-            int $$16 = a($$4, $$12, $$13);
-            int $$17 = a($$5, $$12, $$13);
-            int $$18 = Math.max(0, $$15 - $$14);
-            int $$19 = Math.max(0, $$17 - $$16);
-            int $$20 = $$18 * $$19;
-            if ($$20 > $$6) {
-               $$7 = $$9;
-               $$6 = $$20;
-            } else if ($$20 == $$6 && $$8 == $$9.f()) {
-               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
-               $$7 = $$9;
+         for (ffs.b<?> $$6 : $$0.d) {
+            for (int $$7 = $$6.e.nextSetBit(0); $$7 >= 0; $$7 = $$6.e.nextSetBit($$7 + 1)) {
+               if ($$7 != $$0.b) {
+                  this.a(this.c.get($$7), $$1, $$2, $$3);
+               }
             }
          }
 
-         a.debug("Selected monitor: {}", $$7);
-         return $$7;
+         $$3.add($$0);
+         $$2.clear($$0.b);
       }
    }
 
-   public static int a(int $$0, int $$1, int $$2) {
-      if ($$0 < $$1) {
-         return $$1;
-      } else {
-         return $$0 > $$2 ? $$2 : $$0;
+   private void a(Collection<ffs.e> $$0) {
+      ffs.e[] $$1 = new ffs.e[this.a.size()];
+
+      for (ffs.e $$2 : $$0) {
+         for (int $$3 = $$2.e.nextSetBit(0); $$3 >= 0; $$3 = $$2.e.nextSetBit($$3 + 1)) {
+            ffs.d<?> $$4 = this.a.get($$3);
+            ffs.e $$5 = $$1[$$3];
+            $$1[$$3] = $$2;
+            if ($$5 == null) {
+               $$2.h.add($$4);
+            } else {
+               $$5.i.clear($$3);
+            }
+
+            $$2.i.set($$3);
+         }
       }
    }
 
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
-      if ($$0 != null) {
-         $$0.free();
+   static class a<T> extends ffs.f<T> {
+      private final T c;
+
+      public a(String $$0, @Nullable ffs.e $$1, T $$2) {
+         super($$0, $$1);
+         this.c = $$2;
+      }
+
+      @Override
+      public T a() {
+         return this.c;
+      }
+   }
+
+   static class b<T> implements fha<T> {
+      final ffs.f<T> b;
+      private final int c;
+      @Nullable
+      final ffs.e d;
+      final BitSet e = new BitSet();
+      @Nullable
+      private ffs.b<T> f;
+
+      b(ffs.f<T> $$0, int $$1, @Nullable ffs.e $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public T get() {
+         return this.b.a();
+      }
+
+      ffs.b<T> a(ffs.e $$0) {
+         if (this.b.b != this) {
+            throw new IllegalStateException("Handle " + this + " is no longer valid, as its contents were moved into " + this.f);
+         } else {
+            ffs.b<T> $$1 = new ffs.b<>(this.b, this.c + 1, $$0);
+            this.b.b = $$1;
+            this.f = $$1;
+            return $$1;
+         }
+      }
+
+      @Override
+      public String toString() {
+         return this.d != null ? this.b + "#" + this.c + " (from " + this.d + ")" : this.b + "#" + this.c;
+      }
+   }
+
+   public interface c {
+      ffs.c a = new ffs.c() {
+      };
+
+      default void a(String $$0) {
+      }
+
+      default void b(String $$0) {
+      }
+
+      default void c(String $$0) {
+      }
+
+      default void d(String $$0) {
+      }
+   }
+
+   static class d<T> extends ffs.f<T> {
+      final int c;
+      private final fgz<T> d;
+      @Nullable
+      private T e;
+
+      public d(int $$0, String $$1, @Nullable ffs.e $$2, fgz<T> $$3) {
+         super($$1, $$2);
+         this.c = $$0;
+         this.d = $$3;
+      }
+
+      @Override
+      public T a() {
+         return Objects.requireNonNull(this.e, "Resource is not currently available");
+      }
+
+      public void a(fgx $$0) {
+         if (this.e != null) {
+            throw new IllegalStateException("Tried to acquire physical resource, but it was already assigned");
+         } else {
+            this.e = $$0.a(this.d);
+         }
+      }
+
+      public void b(fgx $$0) {
+         if (this.e == null) {
+            throw new IllegalStateException("Tried to release physical resource that was not allocated");
+         } else {
+            $$0.a(this.d, this.e);
+            this.e = null;
+         }
+      }
+   }
+
+   class e implements fft {
+      final int b;
+      final String c;
+      final List<ffs.b<?>> d = new ArrayList<>();
+      final BitSet e = new BitSet();
+      final BitSet f = new BitSet();
+      Runnable g = () -> {
+      };
+      final List<ffs.d<?>> h = new ArrayList<>();
+      final BitSet i = new BitSet();
+      boolean j;
+
+      public e(final int $$0, final String $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      private <T> void a(ffs.b<T> $$0) {
+         if ($$0.b instanceof ffs.d<?> $$1) {
+            this.e.set($$1.c);
+         }
+      }
+
+      private void a(ffs.e $$0) {
+         this.f.set($$0.b);
+      }
+
+      @Override
+      public <T> fha<T> a(String $$0, fgz<T> $$1) {
+         ffs.d<T> $$2 = ffs.this.a($$0, $$1, this);
+         this.e.set($$2.c);
+         return $$2.b;
+      }
+
+      @Override
+      public <T> void a(fha<T> $$0) {
+         this.b((ffs.b<T>)$$0);
+      }
+
+      private <T> void b(ffs.b<T> $$0) {
+         this.a($$0);
+         if ($$0.d != null) {
+            this.a($$0.d);
+         }
+
+         $$0.e.set(this.b);
+      }
+
+      @Override
+      public <T> fha<T> b(fha<T> $$0) {
+         return this.c((ffs.b<T>)$$0);
+      }
+
+      @Override
+      public void a(fft $$0) {
+         this.f.set(((ffs.e)$$0).b);
+      }
+
+      @Override
+      public void a() {
+         this.j = true;
+      }
+
+      private <T> ffs.b<T> c(ffs.b<T> $$0) {
+         this.d.add($$0);
+         this.b($$0);
+         return $$0.a(this);
+      }
+
+      @Override
+      public void a(Runnable $$0) {
+         this.g = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
+      }
+   }
+
+   abstract static class f<T> {
+      public final String a;
+      public ffs.b<T> b;
+
+      public f(String $$0, @Nullable ffs.e $$1) {
+         this.a = $$0;
+         this.b = new ffs.b<>(this, 0, $$1);
+      }
+
+      public abstract T a();
+
+      @Override
+      public String toString() {
+         return this.a;
       }
    }
 }

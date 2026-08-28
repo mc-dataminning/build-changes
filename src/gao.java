@@ -1,32 +1,64 @@
-import java.util.Map;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public interface gao {
-   Map<Optional<akt<eny>>, gao> a = Map.of(Optional.of(enz.b), ($$0, $$1) -> {
-      dzn $$2 = $$1.e().a();
-      kf $$3 = $$1.a();
-      js<dic> $$4 = $$3.e(mc.aJ);
-      js<eop> $$5 = $$3.e(mc.aY);
-      js<enn> $$6 = $$3.e(mc.aV);
-      return new fuj($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof edj ? ((edj)$$2).h() : emm.a($$4, $$5, $$6));
-   }, Optional.of(enz.e), ($$0, $$1) -> new fui($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+public class gao extends gan<gjb.a> {
+   private static final wv C = wv.c("gui.chatReport.title");
+   private static final wv D = wv.c("gui.chatReport.select_chat");
+   private frf E;
+   private fqn F;
+   private fqn G;
 
-   fvi createEditScreen(gah var1, gar var2);
-
-   static gar.a a(emm $$0) {
-      return ($$1, $$2) -> {
-         dzn $$3 = new edj($$0);
-         return $$2.a($$1, $$3);
-      };
+   private gao(fwf $$0, gji $$1, gjb.a $$2) {
+      super(C, $$0, $$1, $$2);
    }
 
-   private static gar.a a(jr<dic> $$0) {
-      return ($$1, $$2) -> {
-         ke<edt> $$3 = $$1.e(mc.aS);
-         jr<edt> $$4 = $$3.b(edt.c);
-         dig $$5 = new din($$0);
-         dzn $$6 = new edr($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   public gao(fwf $$0, gji $$1, UUID $$2) {
+      this($$0, $$1, new gjb.a($$2, $$1.a().b()));
+   }
+
+   public gao(fwf $$0, gji $$1, gjb $$2) {
+      this($$0, $$1, new gjb.a($$2, $$1.a().b()));
+   }
+
+   @Override
+   protected void E() {
+      this.F = this.z.a(fqn.a(D, $$0 -> this.m.a(new gaq(this, this.y, this.A, $$0x -> {
+            this.A = $$0x;
+            this.G();
+         }))).a(280).a());
+      this.G = fqn.a(c, $$0 -> this.m.a(new gat(this, this.A.i(), gjh.a, $$0x -> {
+            this.A.a($$0x);
+            this.G();
+         }))).a(280).a();
+      this.z.a(ftx.a(this.p, this.G, b));
+      this.E = this.a(280, 9 * 8, $$0 -> {
+         this.A.a($$0);
+         this.G();
+      });
+      this.z.a(ftx.a(this.p, this.E, d, $$0 -> $$0.e(12)));
+   }
+
+   @Override
+   protected void G() {
+      IntSet $$0 = this.A.a();
+      if ($$0.isEmpty()) {
+         this.F.b(D);
+      } else {
+         this.F.b(wv.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      gjg $$1 = this.A.i();
+      if ($$1 != null) {
+         this.G.b($$1.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.G();
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
    }
 }

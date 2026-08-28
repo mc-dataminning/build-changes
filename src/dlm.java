@@ -1,24 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlm extends dnb {
-   public static final MapCodec<dlm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axt.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, dlm::new)
-   );
-   private final axt b;
+public class dlm extends dku {
+   public static final MapCodec<dlm> a = b(dlm::new);
+   private static final fdo b = dku.b(16.0, 0.0, 1.0);
 
    @Override
-   public MapCodec<dlm> a() {
+   public MapCodec<? extends dlm> a() {
       return a;
    }
 
-   public dlm(axt $$0, dxp.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public dlm(dyl.d $$0) {
+      super($$0);
    }
 
    @Override
-   public int b(dxq $$0, dgf $$1, ji $$2) {
-      return this.b.a();
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b;
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return !$$1.u($$2.e());
    }
 }

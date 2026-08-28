@@ -1,42 +1,29 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ezk extends ezn {
-   public static final MapCodec<ezk> a = a(ezk::new);
-   public static final Codec<ezk> b = b(ezk::new);
+public class ezk extends eyy {
+   public static final MapCodec<ezk> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(uu.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, ezk::new));
+   private final tw b;
 
-   ezk(List<ezx> $$0) {
-      super($$0, af.a($$0));
-   }
-
-   public static ezk a(List<ezx> $$0) {
-      return new ezk(List.copyOf($$0));
+   private ezk(List<fau> $$0, tw $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public ezy b() {
-      return ezz.c;
+   public eza<ezk> b() {
+      return ezb.j;
    }
 
-   public static ezk.a a(ezx.a... $$0) {
-      return new ezk.a($$0);
+   @Override
+   public cxy a(cxy $$0, exl $$1) {
+      dae.a(kx.b, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
    }
 
-   public static class a extends ezn.a {
-      public a(ezx.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public ezk.a and(ezx.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected ezx a(List<ezx> $$0) {
-         return new ezk($$0);
-      }
+   @Deprecated
+   public static eyy.a<?> a(tw $$0) {
+      return a($$1 -> new ezk($$1, $$0));
    }
 }

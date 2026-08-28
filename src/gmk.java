@@ -1,132 +1,54 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+public class gmk extends gmh {
+   private final fcu a;
 
-public abstract class gmk {
-   private static final Object2ObjectMap<aku, gmk> a = af.a(new Object2ObjectArrayMap(), $$0 -> {
-      gmk.c $$1 = new gmk.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(ebk.e, $$1);
-      $$0.put(ebk.f, new gmk.b());
-      $$0.put(ebk.g, new gmk.a());
-   });
-   private final float b;
-   private final boolean c;
-   private final gmk.d d;
-   private final boolean e;
-   private final boolean f;
-
-   public gmk(float $$0, boolean $$1, gmk.d $$2, boolean $$3, boolean $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   gmk(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fcu $$7, int $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      $$8 = axu.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
+      this.v = (float)axu.b($$8) / 255.0F;
+      this.w = (float)axu.c($$8) / 255.0F;
+      this.x = (float)axu.d($$8) / 255.0F;
+      this.D = 0.26F;
+      this.a = $$7;
    }
 
-   public static gmk a(ebm $$0) {
-      return (gmk)a.get($$0.r());
+   @Override
+   public gll b() {
+      return gll.b;
    }
 
-   public boolean a(float $$0) {
-      return false;
-   }
-
-   public int b(float $$0) {
-      return 0;
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public abstract fbx a(fbx var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public gmk.d c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public static class a extends gmk {
-      public a() {
-         super(Float.NaN, false, gmk.d.c, true, false);
-      }
-
-      @Override
-      public fbx a(fbx $$0, float $$1) {
-         return $$0.c(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         int $$0 = this.t - this.s;
+         double $$1 = 1.0 / (double)$$0;
+         this.g = azk.d($$1, this.g, this.a.a());
+         this.h = azk.d($$1, this.h, this.a.b());
+         this.i = azk.d($$1, this.i, this.a.c());
       }
    }
 
-   public static class b extends gmk {
-      public b() {
-         super(Float.NaN, true, gmk.d.a, false, true);
-      }
-
-      @Override
-      public fbx a(fbx $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class c extends gmk {
-      public static final int a = 192;
-      private static final float b = 0.4F;
+   public static class a implements glk<ma> {
+      private final gmc a;
 
-      public c() {
-         super(192.0F, true, gmk.d.b, false, false);
+      public a(gmc $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public boolean a(float $$0) {
-         float $$1 = ayz.b($$0 * (float) (Math.PI * 2));
-         return $$1 >= -0.4F && $$1 <= 0.4F;
+      public glh a(ma $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmk $$8 = new gmk($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.a($$0.d());
+         return $$8;
       }
-
-      @Override
-      public int b(float $$0) {
-         float $$1 = ayz.b($$0 * (float) (Math.PI * 2));
-         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
-         float $$3 = ayz.l(1.0F - (1.0F - ayz.a($$2 * (float) Math.PI)) * 0.99F);
-         return axk.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
-      }
-
-      @Override
-      public fbx a(fbx $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

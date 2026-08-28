@@ -1,21 +1,138 @@
-public enum dzc implements azv {
-   a("none"),
-   b("low"),
-   c("tall");
-
-   private final String d;
-
-   private dzc(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
+public class dzc {
+   public static final dzd a = dzd.a("attached");
+   public static final dzd b = dzd.a("berries");
+   public static final dzd c = dzd.a("bloom");
+   public static final dzd d = dzd.a("bottom");
+   public static final dzd e = dzd.a("can_summon");
+   public static final dzd f = dzd.a("conditional");
+   public static final dzd g = dzd.a("disarmed");
+   public static final dzd h = dzd.a("drag");
+   public static final dzd i = dzd.a("enabled");
+   public static final dzd j = dzd.a("extended");
+   public static final dzd k = dzd.a("eye");
+   public static final dzd l = dzd.a("falling");
+   public static final dzd m = dzd.a("hanging");
+   public static final dzd n = dzd.a("has_bottle_0");
+   public static final dzd o = dzd.a("has_bottle_1");
+   public static final dzd p = dzd.a("has_bottle_2");
+   public static final dzd q = dzd.a("has_record");
+   public static final dzd r = dzd.a("has_book");
+   public static final dzd s = dzd.a("inverted");
+   public static final dzd t = dzd.a("in_wall");
+   public static final dzd u = dzd.a("lit");
+   public static final dzd v = dzd.a("locked");
+   public static final dzd w = dzd.a("natural");
+   public static final dzd x = dzd.a("occupied");
+   public static final dzd y = dzd.a("open");
+   public static final dzd z = dzd.a("persistent");
+   public static final dzd A = dzd.a("powered");
+   public static final dzd B = dzd.a("short");
+   public static final dzd C = dzd.a("shrieking");
+   public static final dzd D = dzd.a("signal_fire");
+   public static final dzd E = dzd.a("snowy");
+   public static final dzd F = dzd.a("tip");
+   public static final dzd G = dzd.a("triggered");
+   public static final dzd H = dzd.a("unstable");
+   public static final dzd I = dzd.a("waterlogged");
+   public static final dzk<jo.a> J = dzk.a("axis", jo.a.class, jo.a.a, jo.a.c);
+   public static final dzk<jo.a> K = dzk.a("axis", jo.a.class);
+   public static final dzd L = dzd.a("up");
+   public static final dzd M = dzd.a("down");
+   public static final dzd N = dzd.a("north");
+   public static final dzd O = dzd.a("east");
+   public static final dzd P = dzd.a("south");
+   public static final dzd Q = dzd.a("west");
+   public static final dzk<jo> R = dzk.a("facing", jo.class, jo.c, jo.f, jo.d, jo.e, jo.b, jo.a);
+   public static final dzk<jo> S = dzk.a("facing", jo.class, $$0 -> $$0 != jo.b);
+   public static final dzk<jo> T = dzk.a("facing", jo.class, jo.c.a);
+   public static final dzm U = dzm.a("flower_amount", 1, 4);
+   public static final dzm V = dzm.a("segment_amount", 1, 4);
+   public static final dzk<jq> W = dzk.a("orientation", jq.class);
+   public static final dzk<dyx> X = dzk.a("face", dyx.class);
+   public static final dzk<dza> Y = dzk.a("attachment", dza.class);
+   public static final dzk<dzz> Z = dzk.a("east", dzz.class);
+   public static final dzk<dzz> aa = dzk.a("north", dzz.class);
+   public static final dzk<dzz> ab = dzk.a("south", dzz.class);
+   public static final dzk<dzz> ac = dzk.a("west", dzz.class);
+   public static final dzk<dzr> ad = dzk.a("east", dzr.class);
+   public static final dzk<dzr> ae = dzk.a("north", dzr.class);
+   public static final dzk<dzr> af = dzk.a("south", dzr.class);
+   public static final dzk<dzr> ag = dzk.a("west", dzr.class);
+   public static final dzk<dzi> ah = dzk.a("half", dzi.class);
+   public static final dzk<dzl> ai = dzk.a("half", dzl.class);
+   public static final dzk<dzq> aj = dzk.a("shape", dzq.class);
+   public static final dzk<dzq> ak = dzk.a("shape", dzq.class, $$0 -> $$0 != dzq.j && $$0 != dzq.i && $$0 != dzq.g && $$0 != dzq.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final dzm at = dzm.a("age", 0, 1);
+   public static final dzm au = dzm.a("age", 0, 2);
+   public static final dzm av = dzm.a("age", 0, 3);
+   public static final dzm aw = dzm.a("age", 0, 4);
+   public static final dzm ax = dzm.a("age", 0, 5);
+   public static final dzm ay = dzm.a("age", 0, 7);
+   public static final dzm az = dzm.a("age", 0, 15);
+   public static final dzm aA = dzm.a("age", 0, 25);
+   public static final dzm aB = dzm.a("bites", 0, 6);
+   public static final dzm aC = dzm.a("candles", 1, 4);
+   public static final dzm aD = dzm.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final dzm aF = dzm.a("distance", 1, 7);
+   public static final dzm aG = dzm.a("eggs", 1, 4);
+   public static final dzm aH = dzm.a("hatch", 0, 2);
+   public static final dzm aI = dzm.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final dzm aN = dzm.a("level", 1, 3);
+   public static final dzm aO = dzm.a("level", 0, 8);
+   public static final dzm aP = dzm.a("level", 1, 8);
+   public static final dzm aQ = dzm.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final dzm aS = dzm.a("level", 0, 15);
+   public static final dzm aT = dzm.a("moisture", 0, 7);
+   public static final dzm aU = dzm.a("note", 0, 24);
+   public static final dzm aV = dzm.a("pickles", 1, 4);
+   public static final dzm aW = dzm.a("power", 0, 15);
+   public static final dzm aX = dzm.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final dzm aZ = dzm.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final dzm bc = dzm.a("charges", 0, 4);
+   public static final dzm bd = dzm.a("rotation", 0, dzs.a());
+   public static final dzk<dyz> be = dzk.a("part", dyz.class);
+   public static final dzk<dze> bf = dzk.a("type", dze.class);
+   public static final dzk<dzf> bg = dzk.a("mode", dzf.class);
+   public static final dzk<dzh> bh = dzk.a("hinge", dzh.class);
+   public static final dzk<dzn> bi = dzk.a("instrument", dzn.class);
+   public static final dzk<dzo> bj = dzk.a("type", dzo.class);
+   public static final dzk<dzu> bk = dzk.a("type", dzu.class);
+   public static final dzk<dzv> bl = dzk.a("shape", dzv.class);
+   public static final dzk<dzw> bm = dzk.a("mode", dzw.class);
+   public static final dzk<dyy> bn = dzk.a("leaves", dyy.class);
+   public static final dzk<dzy> bo = dzk.a("tilt", dzy.class);
+   public static final dzk<jo> bp = dzk.a("vertical_direction", jo.class, jo.b, jo.a);
+   public static final dzk<dzj> bq = dzk.a("thickness", dzj.class);
+   public static final dzk<dzt> br = dzk.a("sculk_sensor_phase", dzt.class);
+   public static final dzd bs = dzd.a("slot_0_occupied");
+   public static final dzd bt = dzd.a("slot_1_occupied");
+   public static final dzd bu = dzd.a("slot_2_occupied");
+   public static final dzd bv = dzd.a("slot_3_occupied");
+   public static final dzd bw = dzd.a("slot_4_occupied");
+   public static final dzd bx = dzd.a("slot_5_occupied");
+   public static final dzm by = dzm.a("dusted", 0, 3);
+   public static final dzd bz = dzd.a("cracked");
+   public static final dzd bA = dzd.a("crafting");
+   public static final dzk<dxs> bB = dzk.a("trial_spawner_state", dxs.class);
+   public static final dzk<dxz> bC = dzk.a("vault_state", dxz.class);
+   public static final dzk<dzg> bD = dzk.a("creaking_heart_state", dzg.class);
+   public static final dzd bE = dzd.a("ominous");
+   public static final dzk<dzx> bF = dzk.a("test_block_mode", dzx.class);
 }

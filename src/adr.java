@@ -1,23 +1,16 @@
-import java.util.List;
-import java.util.UUID;
-
-public record adr(List<UUID> b) implements yw<abl> {
-   public static final yn<vl, adr> a = yw.a(adr::a, adr::new);
-
-   private adr(vl $$0) {
-      this($$0.a(kl.g));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b, kl.g);
-   }
+public record adr(int b, ddr c) implements zc<abr> {
+   public static final yt<wg, adr> a = yt.a(yr.w, adr::b, ddr.e, adr::e, adr::new);
 
    @Override
-   public yy<adr> a() {
-      return agd.ae;
+   public ze<adr> a() {
+      return agk.Z;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
+   }
+
+   public ddr e() {
+      return this.c;
    }
 }

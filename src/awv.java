@@ -1,11 +1,28 @@
-public final class awv {
-   public static final axf<etv> a = a("water");
-   public static final axf<etv> b = a("lava");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private awv() {
+public class awv {
+   protected final Object2IntMap<awr<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public awv() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static axf<etv> a(String $$0) {
-      return axf.a(mc.D, aku.b($$0));
+   public void b(cqi $$0, awr<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cqi $$0, awr<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(awt<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(awr<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

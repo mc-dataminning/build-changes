@@ -1,121 +1,40 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class hfr {
-   private final aku a;
-   private final hfl b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class hfr implements hfs {
+   private final gew a;
+   private final hiz b;
 
-   protected hfr(aku $$0, hfl $$1, int $$2, int $$3, int $$4, int $$5) {
+   public hfr(gew $$0, hiz $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public hfl e() {
-      return this.b;
-   }
-
-   @Nullable
-   public hfr.a f() {
-      final hfn $$0 = this.b.e();
-      return $$0 != null ? new hfr.a() {
-         @Override
-         public void a() {
-            $$0.a(hfr.this.c, hfr.this.d);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public aku i() {
-      return this.a;
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void a(cxw $$0, fho $$1, gny $$2, int $$3, int $$4, boolean $$5) {
+      gqv.a($$1, $$2, $$3, $$4, this.a, this.b);
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
-   }
+   public static record a(eaa b, Optional<ald> c) implements hfw.a {
+      public static final MapCodec<hfr.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(eaa.a.fieldOf("wood_type").forGetter(hfr.a::b), ald.a.optionalFieldOf("texture").forGetter(hfr.a::c)).apply($$0, hfr.a::new)
+      );
 
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
-   }
-
-   public float k() {
-      return 4.0F / this.l();
-   }
-
-   public fgv a(fgv $$0) {
-      return new gnv($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a();
+      public a(eaa $$0) {
+         this($$0, Optional.empty());
+      }
 
       @Override
-      void close();
+      public MapCodec<hfr.a> a() {
+         return a;
+      }
+
+      @Override
+      public hfw<?> a(ggz $$0) {
+         gew $$1 = gqv.a($$0, this.b, gqv.a.c);
+         hiz $$2 = this.c.<hiz>map(got::d).orElseGet(() -> got.b(this.b));
+         return new hfr($$1, $$2);
+      }
    }
 }

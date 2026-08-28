@@ -1,35 +1,75 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.Set;
 
 public class beg extends DataFix {
-   private static final Codec<List<Float>> a = Codec.FLOAT.listOf();
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
 
    public beg(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(bic.C), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               if (a($$0x.get("HandDropChances"), 2)) {
-                  $$0x = $$0x.remove("HandDropChances");
-               }
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
+      } else {
+         if (!$$2.isPresent()) {
+            return $$0;
+         }
 
-               if (a($$0x.get("ArmorDropChances"), 4)) {
-                  $$0x = $$0x.remove("ArmorDropChances");
-               }
+         $$3 = $$2.get().floatValue();
+      }
 
-               return $$0x;
-            })
-      );
+      return $$0.set("Health", $$0.createFloat($$3));
    }
 
-   private static boolean a(OptionalDynamic<?> $$0, int $$1) {
-      return $$0.flatMap(a::parse).map($$1x -> $$1x.size() == $$1 && $$1x.stream().allMatch($$0xx -> $$0xx == 0.0F)).result().orElse(false);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(biq.D), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

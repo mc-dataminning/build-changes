@@ -1,26 +1,45 @@
-public record aal(ji c, int d) implements zz {
-   public static final yn<vl, aal> a = zz.a(aal::a, aal::new);
-   public static final zz.b<aal> b = zz.a("debug/poi_ticket_count");
+import java.util.List;
 
-   private aal(vl $$0) {
-      this($$0.e(), $$0.readInt());
+public record aal(int c, jj d, List<aal.a> e) implements aaf {
+   public static final yt<vr, aal> a = aaf.a(aal::a, aal::new);
+   public static final aaf.b<aal> b = aaf.a("debug/goal_selector");
+
+   private aal(vr $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aal.a::new));
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
+   private void a(vr $$0) {
+      $$0.q(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zz.b<aal> a() {
+   public aaf.b<aal> a() {
       return b;
    }
 
-   public ji b() {
+   public int b() {
       return this.c;
    }
 
-   public int c() {
+   public jj c() {
       return this.d;
+   }
+
+   public List<aal.a> d() {
+      return this.e;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(vr $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
+
+      public void a(vr $$0) {
+         $$0.q(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

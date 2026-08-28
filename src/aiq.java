@@ -1,41 +1,51 @@
-public record aiq(int b, ajd c) implements yw<aip> {
-   public static final yn<vl, aiq> a = yw.a(aiq::a, aiq::new);
-   private static final int d = 1048576;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   private aiq(vl $$0) {
-      this($$0.l(), a($$0.q(), $$0));
+public class aiq {
+   private static final double a = 4096.0;
+   private fcu b = fcu.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private static ajd a(aku $$0, vl $$1) {
-      return b($$0, $$1);
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   private static ajf b(aku $$0, vl $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.k($$2);
-         return new ajf($$0);
+   public fcu a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
       } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new fcu($$3, $$4, $$5);
       }
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+   public long a(fcu $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   @Override
-   public yy<aiq> a() {
-      return aiv.a;
+   public long b(fcu $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public void a(aip $$0) {
-      $$0.a(this);
+   public long c(fcu $$0) {
+      return a($$0.f) - a(this.b.f);
    }
 
-   public ajd e() {
-      return this.c;
+   public fcu d(fcu $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(fcu $$0) {
+      this.b = $$0;
+   }
+
+   public fcu a() {
+      return this.b;
    }
 }

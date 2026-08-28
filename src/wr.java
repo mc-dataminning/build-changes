@@ -1,145 +1,86 @@
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
-public class wr {
-   public static final Codec<wp> a = Codec.recursive("Component", wr::a);
-   public static final yn<wa, wp> b = yl.d(a);
-   public static final yn<wa, Optional<wp>> c = b.a(yl::a);
-   public static final yn<wa, wp> d = yl.c(a);
-   public static final yn<wa, Optional<wp>> e = d.a(yl::a);
-   public static final yn<ByteBuf, wp> f = yl.a(a);
+public record wr(ws l, ws m) {
+   public static final Codec<wr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ws.a.fieldOf("chat").forGetter(wr::a), ws.a.fieldOf("narration").forGetter(wr::b)).apply($$0, wr::new)
+   );
+   public static final yt<wg, wr> b = yt.a(ws.b, wr::a, ws.b, wr::b, wr::new);
+   public static final yt<wg, js<wr>> c = yr.a(me.aN, b);
+   public static final ws d = ws.a("chat.type.text");
+   public static final alc<wr> e = a("chat");
+   public static final alc<wr> f = a("say_command");
+   public static final alc<wr> g = a("msg_command_incoming");
+   public static final alc<wr> h = a("msg_command_outgoing");
+   public static final alc<wr> i = a("team_msg_command_incoming");
+   public static final alc<wr> j = a("team_msg_command_outgoing");
+   public static final alc<wr> k = a("emote_command");
 
-   public static Codec<wp> a(final int $$0) {
-      return new Codec<wp>() {
-         public <T> DataResult<Pair<wp, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return wr.a
-               .decode($$0, $$1)
-               .flatMap(
-                  $$2 -> this.a($$0, (wp)$$2.getFirst())
-                        ? DataResult.error(() -> "Component was too large: greater than max size " + $$0)
-                        : DataResult.success($$2)
-               );
-         }
-
-         public <T> DataResult<T> a(wp $$0x, DynamicOps<T> $$1, T $$2) {
-            return wr.a.encodeStart($$1, $$0);
-         }
-
-         private <T> boolean a(DynamicOps<T> $$0x, wp $$1) {
-            DataResult<JsonElement> $$2 = wr.a.encodeStart(a($$0), $$1);
-            return $$2.isSuccess() && ayp.a((JsonElement)$$2.getOrThrow(), $$0);
-         }
-
-         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0x) {
-            return (DynamicOps<JsonElement>)($$0 instanceof aks<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
-         }
-      };
+   private static alc<wr> a(String $$0) {
+      return alc.a(me.aN, ald.b($$0));
    }
 
-   private static xd a(List<wp> $$0) {
-      xd $$1 = $$0.get(0).f();
-
-      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
-         $$1.b($$0.get($$2));
-      }
-
-      return $$1;
+   public static void a(qg<wr> $$0) {
+      $$0.a(e, new wr(d, ws.a("chat.type.text.narrate")));
+      $$0.a(f, new wr(ws.a("chat.type.announcement"), ws.a("chat.type.text.narrate")));
+      $$0.a(g, new wr(ws.b("commands.message.display.incoming"), ws.a("chat.type.text.narrate")));
+      $$0.a(h, new wr(ws.c("commands.message.display.outgoing"), ws.a("chat.type.text.narrate")));
+      $$0.a(i, new wr(ws.d("chat.type.team.text"), ws.a("chat.type.text.narrate")));
+      $$0.a(j, new wr(ws.d("chat.type.team.sent"), ws.a("chat.type.text.narrate")));
+      $$0.a(k, new wr(ws.a("chat.type.emote"), ws.a("chat.type.emote")));
    }
 
-   public static <T extends azv, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
-      MapCodec<E> $$4 = new wr.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = azv.b((Supplier<T[]>)(() -> $$0));
-      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
-      MapCodec<E> $$7 = new wr.b($$3, $$6, $$4);
-      return ayi.a($$7, $$6);
+   public static wr.a a(alc<wr> $$0, bvs $$1) {
+      return a($$0, $$1.dV().F_(), $$1.m_());
    }
 
-   private static Codec<wp> a(Codec<wp> $$0) {
-      wq.a<?>[] $$1 = new wq.a[]{xw.b, ya.c, xt.b, xx.c, xy.b, xv.b};
-      MapCodec<wq> $$2 = a($$1, wq.a::a, wq::a, "type");
-      Codec<wp> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(wp::b), ayi.b($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(wp::c), xm.b.a.forGetter(wp::a))
-               .apply($$2x, xd::new)
-      );
-      return Codec.either(Codec.either(Codec.STRING, ayi.b($$0.listOf())), $$3)
-         .xmap($$0x -> (wp)$$0x.map($$0xx -> (wp)$$0xx.map(wp::b, wr::a), $$0xx -> $$0xx), $$0x -> {
-            String $$1x = $$0x.d();
-            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
-         });
+   public static wr.a a(alc<wr> $$0, ex $$1) {
+      return a($$0, $$1.u(), $$1.b());
    }
 
-   static class a<T> extends MapCodec<T> {
-      private final List<MapCodec<? extends T>> a;
-      private final Function<T, MapEncoder<? extends T>> b;
-
-      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         for (MapDecoder<? extends T> $$2 : this.a) {
-            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
-            if ($$3.result().isPresent()) {
-               return (DataResult<T>)$$3;
-            }
-         }
-
-         return DataResult.error(() -> "No matching codec found");
-      }
-
-      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
-         return $$3.encode($$0, $$1, $$2);
-      }
-
-      public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
-      }
-
-      public String toString() {
-         return "FuzzyCodec[" + this.a + "]";
-      }
+   public static wr.a a(alc<wr> $$0, kg $$1, wv $$2) {
+      kf<wr> $$3 = $$1.f(me.aN);
+      return new wr.a($$3.b($$0), $$2);
    }
 
-   static class b<T> extends MapCodec<T> {
-      private final String a;
-      private final MapCodec<T> b;
-      private final MapCodec<T> c;
+   public ws a() {
+      return this.l;
+   }
 
-      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public ws b() {
+      return this.m;
+   }
+
+   public static record a(js<wr> b, wv c, Optional<wv> d) {
+      public static final yt<wg, wr.a> a = yt.a(wr.c, wr.a::a, wx.d, wr.a::b, wx.e, wr.a::c, wr.a::new);
+
+      a(js<wr> $$0, wv $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
-         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      public wv a(wv $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
-         return this.c.encode($$0, $$1, $$2);
+      public wv b(wv $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
-         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+      public wr.a c(wv $$0) {
+         return new wr.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public js<wr> a() {
+         return this.b;
+      }
+
+      public wv b() {
+         return this.c;
+      }
+
+      public Optional<wv> c() {
+         return this.d;
       }
    }
 }

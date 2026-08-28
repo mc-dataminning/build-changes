@@ -1,177 +1,100 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class crp extends cqq {
+   private static final akg<Boolean> d = akk.a(crp.class, aki.k);
 
-public abstract class crp extends cro implements bvq, crv {
-   private static final int h = 27;
-   private ka<cxh> i = ka.a(27, cxh.k);
-   @Nullable
-   private akt<ewt> j;
-   private long k;
+   public crp(bwb<? extends crp> $$0, dhp $$1) {
+      super($$0, $$1);
+   }
 
-   public crp(bvi<? extends crp> $$0, dgz $$1, Supplier<cxd> $$2) {
-      super($$0, $$1, $$2);
+   public crp(dhp $$0, bwr $$1, fcu $$2) {
+      super(bwb.bK, $$1, $$2, $$0);
    }
 
    @Override
    protected float m() {
-      return 0.15F;
+      return this.o() ? 0.73F : super.m();
    }
 
    @Override
-   protected int n() {
-      return 1;
+   public boolean bY() {
+      return false;
    }
 
    @Override
-   protected void b(tq $$0) {
+   public float a(dhi $$0, dgv $$1, jj $$2, dym $$3, eut $$4, float $$5) {
+      return this.o() && cma.c($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(fcr $$0) {
+      super.a($$0);
+      if (this.dV() instanceof arn $$1) {
+         bvs var8 = $$0.a();
+         boolean $$7;
+         if (this.q() instanceof bwr $$5) {
+            buh $$6 = this.dW().a(this, $$5);
+            $$7 = var8.a($$1, $$6, 8.0F);
+            if ($$7) {
+               if (var8.bK()) {
+                  dej.a($$1, var8, $$6);
+               } else {
+                  $$5.c(5.0F);
+               }
+            }
+         } else {
+            $$7 = var8.a($$1, this.dW().q(), 5.0F);
+         }
+
+         if ($$7 && var8 instanceof bwr $$9) {
+            int $$10 = 0;
+            if (this.dV().an() == btn.c) {
+               $$10 = 10;
+            } else if (this.dV().an() == btn.d) {
+               $$10 = 40;
+            }
+
+            if ($$10 > 0) {
+               $$9.b(new buw(buy.t, 20 * $$10, 1), this.z());
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(fcs $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.dV().a(this, this.dA(), this.dC(), this.dG(), 1.0F, false, dhp.a.c);
+         this.at();
+      }
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(d, false);
+   }
+
+   public boolean o() {
+      return this.al.a(d);
+   }
+
+   public void a(boolean $$0) {
+      this.al.a(d, $$0);
+   }
+
+   @Override
+   protected boolean g() {
+      return false;
+   }
+
+   @Override
+   public void b(tw $$0) {
       super.b($$0);
-      this.a($$0, this.dW());
+      $$0.a("dangerous", this.o());
    }
 
    @Override
-   protected void a(tq $$0) {
+   public void a(tw $$0) {
       super.a($$0);
-      this.b($$0, this.dW());
-   }
-
-   @Override
-   public void a(ard $$0, btp $$1) {
-      this.a($$0, this.o());
-      this.a($$1, $$0, this);
-   }
-
-   @Override
-   public void a(bva.d $$0) {
-      if (!this.dU().C && $$0.a()) {
-         bsu.a(this.dU(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public bsy a(cpr $$0, bsx $$1) {
-      if (!$$0.ga()) {
-         bsy $$2 = super.a($$0, $$1);
-         if ($$2 != bsy.e) {
-            return $$2;
-         }
-      }
-
-      if (this.r($$0) && !$$0.ga()) {
-         return bsy.e;
-      } else {
-         bsy $$3 = this.b_($$0);
-         if ($$3.a() && $$0.dU() instanceof ard $$4) {
-            this.a(ecp.k, $$0);
-            cog.a($$4, $$0, true);
-         }
-
-         return $$3;
-      }
-   }
-
-   @Override
-   public void b(cpr $$0) {
-      $$0.a(this);
-      if ($$0.dU() instanceof ard $$1) {
-         this.a(ecp.k, $$0);
-         cog.a($$1, $$0, true);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.aj_();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cxh a(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public cxh a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cxh b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxh $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bwq a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cpr $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public csw createMenu(int $$0, cpq $$1, cpr $$2) {
-      if (this.j != null && $$2.U_()) {
-         return null;
-      } else {
-         this.e($$1.k);
-         return ctf.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable cpr $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public akt<ewt> q() {
-      return this.j;
-   }
-
-   @Override
-   public void a(@Nullable akt<ewt> $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public long s() {
-      return this.k;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public ka<cxh> t() {
-      return this.i;
-   }
-
-   @Override
-   public void u() {
-      this.i = ka.a(this.b(), cxh.k);
-   }
-
-   @Override
-   public void c(cpr $$0) {
-      this.dU().a(ecp.j, this.ds(), ecp.a.a($$0));
+      this.a($$0.q("dangerous"));
    }
 }

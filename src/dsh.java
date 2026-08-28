@@ -1,70 +1,49 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dsh extends dke {
-   public static final MapCodec<dsh> a = b(dsh::new);
-   private static final wp c = wp.c("container.stonecutter");
-   public static final dyo<jn> b = dod.e;
-   private static final fcr d = dke.b(16.0, 0.0, 9.0);
+public class dsh extends djp {
+   public static final MapCodec<dsh> c = b(dsh::new);
 
    @Override
    public MapCodec<dsh> a() {
-      return a;
+      return c;
    }
 
-   public dsh(dxp.d $$0) {
+   protected dsh(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, jn.c));
    }
 
    @Override
-   public dxq a(dax $$0) {
-      return this.m().b(b, $$0.g().g());
-   }
-
-   @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.ay);
-      }
-
-      return bsy.a;
+   public dvl a(jj $$0, dym $$1) {
+      return new dxc($$0, $$1);
    }
 
    @Nullable
    @Override
-   protected bta b(dxq $$0, dgz $$1, ji $$2) {
-      return new btg(($$2x, $$3, $$4) -> new cuz($$2x, $$3, ctj.a($$1, $$2)), c);
+   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
+      return a($$0, $$2, dvn.C);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return d;
+   protected void a(dhp $$0, jj $$1, cqi $$2) {
+      dvl $$3 = $$0.c_($$1);
+      if ($$3 instanceof dxc) {
+         $$2.a((bts)$$3);
+         $$2.a(awu.at);
+      }
    }
 
    @Override
-   protected boolean g_(dxq $$0) {
-      return true;
-   }
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awk.zi, awl.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
+         $$1.a(lv.ah, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,76 +1,142 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class diw extends dke {
-   public static final int a = 3;
-   public static final dyh b = dyg.u;
+public abstract class diw implements div {
+   public static final Codec<diw> a = md.Z.q().dispatchStable(diw::a, Function.identity());
+   private final Supplier<Set<js<dis>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   @Override
+   protected diw() {
+   }
+
    protected abstract MapCodec<? extends diw> a();
 
-   protected diw(dxp.d $$0) {
-      super($$0);
+   protected abstract Stream<js<dis>> b();
+
+   public Set<js<dis>> c() {
+      return this.b.get();
    }
 
-   protected abstract Iterable<fbx> b(dxq var1);
+   public Set<js<dis>> a(int $$0, int $$1, int $$2, int $$3, djb.f $$4) {
+      int $$5 = kd.a($$0 - $$3);
+      int $$6 = kd.a($$1 - $$3);
+      int $$7 = kd.a($$2 - $$3);
+      int $$8 = kd.a($$0 + $$3);
+      int $$9 = kd.a($$1 + $$3);
+      int $$10 = kd.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<js<dis>> $$14 = Sets.newHashSet();
 
-   public static boolean c(dxq $$0) {
-      return $$0.b(b) && ($$0.a(awp.ag) || $$0.a(awp.bm)) && $$0.c(b);
-   }
-
-   @Override
-   protected void a(dgz $$0, dxq $$1, fbt $$2, cqk $$3) {
-      if (!$$0.C && $$3.bX() && this.d($$1)) {
-         a($$0, $$1, $$2.b(), true);
-      }
-   }
-
-   protected boolean d(dxq $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(dgz $$0, fbx $$1, azh $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(lt.ah, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awa.dL, awb.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
          }
       }
 
-      $$0.a(lt.aM, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
+      return $$14;
    }
 
-   public static void a(@Nullable cpr $$0, dxq $$1, dha $$2, ji $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof diw) {
-         ((diw)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(lt.ah, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+   @Nullable
+   public Pair<jj, js<dis>> a(int $$0, int $$1, int $$2, int $$3, Predicate<js<dis>> $$4, azs $$5, djb.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<jj, js<dis>> a(jj $$0, int $$1, int $$2, int $$3, Predicate<js<dis>> $$4, djb.f $$5, dhs $$6) {
+      Set<js<dis>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = azk.a($$0.v(), $$6.G_() + 1, $$6.ao() + 1, $$3).toArray();
+
+         for (jj.a $$10 : jj.a(jj.c, $$8, jo.f, jo.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = kd.a($$11);
+            int $$14 = kd.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = kd.a($$15);
+               js<dis> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new jj($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<jj, js<dis>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<js<dis>> $$5, azs $$6, boolean $$7, djb.f $$8) {
+      int $$9 = kd.a($$0);
+      int $$10 = kd.a($$2);
+      int $$11 = kd.a($$3);
+      int $$12 = kd.a($$1);
+      Pair<jj, js<dis>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = ab.ar ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               js<dis> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     jj $$24 = new jj(kd.c($$21), $$1, kd.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
       }
 
-      $$2.a(null, $$3, awa.dN, awb.e, 1.0F, 1.0F);
-      $$2.a($$0, ecp.c, $$3);
-   }
-
-   private static void a(dha $$0, dxq $$1, ji $$2, boolean $$3) {
-      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
+      return $$13;
    }
 
    @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, dgs $$3, BiConsumer<cxh, ji> $$4) {
-      if ($$3.g() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
+   public abstract js<dis> getNoiseBiome(int var1, int var2, int var3, djb.f var4);
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public void a(List<String> $$0, jj $$1, djb.f $$2) {
    }
 }

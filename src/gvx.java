@@ -1,18 +1,20 @@
-public class gvx extends grt<cjw, gzk, gbm<gzk>> {
-   private static final aku a = aku.b("textures/entity/horse/horse_zombie.png");
-   private static final aku b = aku.b("textures/entity/horse/horse_skeleton.png");
-   private final aku k;
+public class gvx extends gsz<cja, hbx, gfh> {
+   private static final ald a = ald.b("textures/entity/bear/polarbear.png");
 
-   public gvx(gtd.a $$0, gga $$1, gga $$2, boolean $$3) {
-      super($$0, new gdl($$0.a($$1)), new gdl($$0.a($$2)));
-      this.k = $$3 ? b : a;
+   public gvx(guf.a $$0) {
+      super($$0, new gfh($$0.a(ghc.cy)), new gfh($$0.a(ghc.cz)), 0.9F);
    }
 
-   public aku a(gzk $$0) {
-      return this.k;
+   public ald a(hbx $$0) {
+      return a;
    }
 
-   public gzk b() {
-      return new gzk();
+   public hbx b() {
+      return new hbx();
+   }
+
+   public void a(cja $$0, hbx $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.K($$2);
    }
 }

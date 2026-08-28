@@ -1,60 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dls extends dke {
-   public static final MapCodec<dls> a = b(dls::new);
-   public static final dyh b = dyg.A;
-   public static final dyh c = dyg.u;
+public class dls extends dol implements dlr {
+   public static final MapCodec<dls> c = b(dls::new);
+   private static final float g = 0.11F;
 
    @Override
-   protected MapCodec<? extends dls> a() {
-      return a;
+   public MapCodec<dls> a() {
+      return c;
    }
 
-   public dls(dxp.d $$0) {
-      super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+   public dls(dyl.d $$0) {
+      super($$0, jo.a, s_, false, 0.1);
+      this.l(this.B.b().b(e, Integer.valueOf(0)).b(t_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof ard $$5) {
-         this.a($$0, $$5, $$2);
-      }
+   protected int a(azs $$0) {
+      return 1;
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
-      if ($$1 instanceof ard $$6) {
-         this.a($$0, $$6, $$2);
-      }
-   }
-
-   public void a(dxq $$0, ard $$1, ji $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dxq $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? awa.fI : awa.fJ, awb.e);
-         }
-
-         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
-      }
+   protected boolean h(dym $$0) {
+      return $$0.l();
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c, b);
+   protected dku b() {
+      return dkw.ta;
    }
 
    @Override
-   protected boolean c_(dxq $$0) {
+   protected dym a(dym $$0, dym $$1) {
+      return $$1.b(t_, $$0.c(t_));
+   }
+
+   @Override
+   protected dym a(dym $$0, azs $$1) {
+      return super.a($$0, $$1).b(t_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   protected cxy a(dhs $$0, jj $$1, dym $$2, boolean $$3) {
+      return new cxy(cyc.xA);
+   }
+
+   @Override
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      return dlr.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      super.a($$0);
+      $$0.a(t_);
+   }
+
+   @Override
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return !$$2.c(t_);
+   }
+
+   @Override
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
       return true;
    }
 
    @Override
-   protected int a(dxq $$0, dgz $$1, ji $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
    }
 }

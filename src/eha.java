@@ -1,149 +1,58 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
 
-public class eha extends egu<eiz> {
-   private static final jn[] a = jn.values();
-
-   public eha(Codec<eiz> $$0) {
+public class eha extends ehr<ekc> {
+   public eha(Codec<ekc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<eiz> $$0) {
-      eiz $$1 = $$0.f();
-      azh $$2 = $$0.d();
-      ji $$3 = $$0.e();
-      dhy $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<ji, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      een $$9 = new een(new edp($$4.E()));
-      esz $$10 = esz.a($$9, -4, 1.0);
-      List<ji> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      edn $$13 = $$1.d;
-      edl $$14 = $$1.c;
-      edm $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   public boolean a(eht<ekc> $$0) {
+      jj $$1 = $$0.e();
+      dio $$2 = $$0.b();
+      azs $$3 = $$0.d();
+      if ($$1.v() > $$2.P() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dkw.J) && !$$2.a_($$1.e()).a(dkw.J)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         ji $$27 = $$3.b($$24, $$25, $$26);
-         dxq $$28 = $$4.a_($$27);
-         if ($$28.l() || $$28.a($$14.h)) {
-            if (++$$22 > $$1.p) {
-               return false;
-            }
-         }
-
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
-      }
-
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
-         }
-      }
-
-      List<ji> $$31 = Lists.newArrayList();
-      Predicate<dxq> $$32 = a($$1.c.g);
-
-      for (ji $$33 : ji.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
-
-         for (Pair<ji, Integer> $$37 : $$7) {
-            $$35 += ayz.f($$33.j((km)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
-         }
-
-         for (ji $$38 : $$11) {
-            $$36 += ayz.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, dkg.a.m(), $$32);
-
-               for (jn $$39 : a) {
-                  ji $$40 = $$33.a($$39);
-                  etw $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.j());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
-            }
-         }
-      }
-
-      List<dxq> $$43 = $$14.f;
-
-      for (ji $$44 : $$31) {
-         dxq $$45 = af.a($$43, $$2);
-
-         for (jn $$46 : a) {
-            if ($$45.b(dyg.R)) {
-               $$45 = $$45.b(dyg.R, $$46);
-            }
-
-            ji $$47 = $$44.a($$46);
-            dxq $$48 = $$4.a_($$47);
-            if ($$45.b(dyg.I)) {
-               $$45 = $$45.b(dyg.I, Boolean.valueOf($$48.y().b()));
-            }
-
-            if (dkn.h($$48)) {
-               this.a($$4, $$47, $$45, $$32);
+         for (jo $$5 : jo.values()) {
+            if ($$5 != jo.a && $$2.a_($$1.a($$5)).a(dkw.ja)) {
+               $$4 = true;
                break;
             }
          }
-      }
 
-      return true;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dkw.ny.m(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  jj $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dym $$10 = $$2.a_($$9);
+                  if ($$10.l() || $$10.a(dkw.J) || $$10.a(dkw.ja) || $$10.a(dkw.eb)) {
+                     for (jo $$11 : jo.values()) {
+                        dym $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dkw.ny)) {
+                           $$2.a($$9, dkw.ny.m(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

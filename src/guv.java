@@ -1,20 +1,45 @@
-public class guv extends grx<cij, haw, geg> {
-   private static final aku a = aku.b("textures/entity/bear/polarbear.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public guv(gtd.a $$0) {
-      super($$0, new geg($$0.a(ggb.cq)), new geg($$0.a(ggb.cr)), 0.9F);
+public final class guv extends gsv<ckp, hba, gem> {
+   private static final Map<ckw, ald> a = Maps.newEnumMap(
+      Map.of(
+         ckw.a,
+         ald.b("textures/entity/horse/horse_white.png"),
+         ckw.b,
+         ald.b("textures/entity/horse/horse_creamy.png"),
+         ckw.c,
+         ald.b("textures/entity/horse/horse_chestnut.png"),
+         ckw.d,
+         ald.b("textures/entity/horse/horse_brown.png"),
+         ckw.e,
+         ald.b("textures/entity/horse/horse_black.png"),
+         ckw.f,
+         ald.b("textures/entity/horse/horse_gray.png"),
+         ckw.g,
+         ald.b("textures/entity/horse/horse_darkbrown.png")
+      )
+   );
+
+   public guv(guf.a $$0) {
+      super($$0, new gem($$0.a(ghc.bj)), new gem($$0.a(ghc.bm)));
+      this.a(new gyh(this));
+      this.a(new gyv<>(this, $$0.h(), hiy.d.e, $$0x -> $$0x.i, new gem($$0.a(ghc.bk)), new gem($$0.a(ghc.bn))));
+      this.a(new gyv<>(this, $$0.h(), hiy.d.j, $$0x -> $$0x.b, new geb($$0.a(ghc.bl)), new geb($$0.a(ghc.bo))));
    }
 
-   public aku a(haw $$0) {
-      return a;
+   public ald a(hba $$0) {
+      return a.get($$0.a);
    }
 
-   public haw b() {
-      return new haw();
+   public hba b() {
+      return new hba();
    }
 
-   public void a(cij $$0, haw $$1, float $$2) {
+   public void a(ckp $$0, hba $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.K($$2);
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.aj().v();
    }
 }

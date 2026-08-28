@@ -1,61 +1,48 @@
-public class fbt extends fbv {
-   private final jn b;
-   private final ji c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public static fbt a(fbx $$0, jn $$1, ji $$2) {
-      return new fbt(true, $$0, $$1, $$2, false, false);
+public record fbt(ald b, fp.g c) implements fbq {
+   public static final MapCodec<fbt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ald.a.fieldOf("storage").forGetter(fbt::c), fp.g.a.fieldOf("path").forGetter(fbt::d)).apply($$0, fbt::new)
+   );
+
+   @Override
+   public fbp b() {
+      return fbr.f;
    }
 
-   public fbt(fbx $$0, jn $$1, ji $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3, false);
-   }
+   private Optional<um> c(exl $$0) {
+      tw $$1 = $$0.d().p().aK().a(this.b);
 
-   public fbt(fbx $$0, jn $$1, ji $$2, boolean $$3, boolean $$4) {
-      this(false, $$0, $$1, $$2, $$3, $$4);
-   }
+      try {
+         List<ut> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof um $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
 
-   private fbt(boolean $$0, fbx $$1, jn $$2, ji $$3, boolean $$4, boolean $$5) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public fbt a(jn $$0) {
-      return new fbt(this.d, this.a, $$0, this.c, this.e, this.f);
-   }
-
-   public fbt a(ji $$0) {
-      return new fbt(this.d, this.a, this.b, $$0, this.e, this.f);
-   }
-
-   public fbt a() {
-      return new fbt(this.d, this.a, this.b, this.c, this.e, true);
-   }
-
-   public ji b() {
-      return this.c;
-   }
-
-   public jn c() {
-      return this.b;
+      return Optional.empty();
    }
 
    @Override
-   public fbv.a d() {
-      return this.d ? fbv.a.a : fbv.a.b;
+   public float b(exl $$0) {
+      return this.c($$0).map(um::k).orElse(0.0F);
    }
 
-   public boolean e() {
-      return this.e;
+   @Override
+   public int a(exl $$0) {
+      return this.c($$0).map(um::g).orElse(0);
    }
 
-   public boolean f() {
-      return this.f;
+   public ald c() {
+      return this.b;
+   }
+
+   public fp.g d() {
+      return this.c;
    }
 }

@@ -1,17 +1,12 @@
-public enum dyx implements azv {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dyx implements bag {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
    private dyx(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
    }
 
    @Override

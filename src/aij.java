@@ -1,26 +1,20 @@
-public enum aij {
-   a,
-   b,
-   c;
+public record aij(jj b, dzx c, String d) implements zc<agm> {
+   public static final yt<vr, aij> a = yt.a(jj.b, aij::b, dzx.f, aij::e, yr.o, aij::f, aij::new);
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static aij a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   @Override
+   public ze<aij> a() {
+      return agk.ci;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   public void a(agm $$0) {
+      $$0.a(this);
+   }
+
+   public dzx e() {
+      return this.c;
+   }
+
+   public String f() {
+      return this.d;
    }
 }

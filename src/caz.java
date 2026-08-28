@@ -1,40 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class caz extends bxr<cpd> {
-   public caz() {
-      super(ImmutableMap.of());
-   }
+public class caz {
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   protected boolean a(ard $$0, cpd $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(ard $$0, cpd $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bxa<?> $$3 = $$1.ea();
-         if (!$$3.c(cri.g)) {
-            $$3.b(cfc.t);
-            $$3.b(cfc.m);
-            $$3.b(cfc.n);
-            $$3.b(cfc.r);
-            $$3.b(cfc.q);
-         }
-
-         $$3.a(cri.g);
-      }
-   }
-
-   protected void c(ard $$0, cpd $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bvy $$0) {
-      return $$0.ea().a(cfc.A);
-   }
-
-   public static boolean c(bvy $$0) {
-      return $$0.ea().a(cfc.x);
+   public static bzt<bwz> a(cft<jr> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return cbv.a(
+         (Function<cbv.b<bwz>, ? extends App<cbv.c<bwz>, cby<bwz>>>)($$4 -> $$4.group($$4.a(cft.n), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jr $$9 = $$4.b($$5);
+                  if ($$6.aj() != $$9.a() || !$$9.b().a($$7.dt(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<fcu> $$10 = Optional.ofNullable(chn.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new cfw($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

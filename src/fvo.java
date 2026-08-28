@@ -1,185 +1,31 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class fvo extends fwf {
+   private final wv a;
 
-public class fvo {
-   private final fmg a;
-   private final fvs b;
-   private final fvp c;
-   private final int d;
-   private final aj e;
-   private final au f;
-   private final cxh g;
-   private final wp h;
-   private final fvq i;
-   private final Map<ai, fvq> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
-
-   public fvo(fmg $$0, fvs $$1, fvp $$2, int $$3, aj $$4, au $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fvq(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public fvo(wv $$0, wv $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public fvp a() {
-      return this.c;
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.c(fqn.a(wu.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
-   public int b() {
-      return this.d;
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
+      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
    }
 
-   public aj c() {
-      return this.e;
+   @Override
+   public void b(fpz $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
    }
 
-   public wp d() {
-      return this.h;
-   }
-
-   public au e() {
-      return this.f;
-   }
-
-   public void a(fpc $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(fpc $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(fpc $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      aku $$3 = this.f.d().orElse(hft.a);
-      int $$4 = ayz.a(this.k);
-      int $$5 = ayz.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a(gnh::H, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.e();
-   }
-
-   public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, ayz.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = ayz.a(this.k);
-      int $$7 = ayz.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fvq $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = ayz.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = ayz.a(this.q - 0.04F, 0.0F, 1.0F);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
-   @Nullable
-   public static fvo a(fmg $$0, fvs $$1, int $$2, aj $$3) {
-      Optional<au> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
-      } else {
-         for (fvp $$5 : fvp.values()) {
-            if ($$2 < $$5.a()) {
-               return new fvo($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
-
-            $$2 -= $$5.a();
-         }
-
-         return null;
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = ayz.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = ayz.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
-      }
-   }
-
-   public void a(aj $$0) {
-      Optional<au> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fvq $$2 = new fvq(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
-   }
-
-   private void a(fvq $$0, ai $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fvq $$6 : this.j.values()) {
-         $$6.b();
-      }
-   }
-
-   @Nullable
-   public fvq a(ai $$0) {
-      return this.j.get($$0);
-   }
-
-   public fvs f() {
-      return this.b;
+   @Override
+   public boolean aC_() {
+      return false;
    }
 }

@@ -1,13 +1,11 @@
-import javax.annotation.Nullable;
+public class hbl extends hbk {
+   public ckq.d a;
+   public boolean b;
+   public cxy c;
+   public boolean d;
 
-public class hbl extends gzd {
-   @Nullable
-   public bux.k.e a;
-   @Nullable
-   public bux.k.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
+   public hbl() {
+      this.a = ckq.d.a;
+      this.c = cxy.k;
    }
 }

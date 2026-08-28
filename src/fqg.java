@@ -1,49 +1,97 @@
-public class fqg extends fpq {
-   private boolean a;
+public abstract class fqg extends fql {
+   public static final int b = 6;
+   private double a;
+   private static final ald c = ald.b("widget/scroller");
+   private static final ald d = ald.b("widget/scroller_background");
+   private boolean e;
 
-   public fqg(int $$0, int $$1, fpq.c $$2) {
-      super($$0, $$1, 20, 20, wp.c("narrator.button.difficulty_lock"), $$2, q);
+   public fqg(int $$0, int $$1, int $$2, int $$3, wv $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected xd d() {
-      return wo.a(super.d(), this.a() ? wp.c("narrator.button.difficulty_lock.locked") : wp.c("narrator.button.difficulty_lock.unlocked"));
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.k) {
+         return false;
+      } else {
+         this.a(this.g() - $$3 * this.o());
+         return true;
+      }
    }
 
-   public boolean a() {
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.e) {
+         if ($$1 < (double)this.G()) {
+            this.a(0.0);
+         } else if ($$1 > (double)this.I()) {
+            this.a((double)this.i());
+         } else {
+            double $$5 = (double)Math.max(1, this.i());
+            int $$6 = this.k();
+            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
+            this.a(this.g() + $$4 * $$7);
+         }
+
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void b(double $$0, double $$1) {
+      this.e = false;
+   }
+
+   public double g() {
       return this.a;
    }
 
-   public void b(boolean $$0) {
-      this.a = $$0;
+   public void a(double $$0) {
+      this.a = azk.a($$0, 0.0, (double)this.i());
    }
 
-   @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      fqg.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fqg.a.c : fqg.a.f;
-      } else if (this.D()) {
-         $$4 = this.a ? fqg.a.b : fqg.a.e;
-      } else {
-         $$4 = this.a ? fqg.a.a : fqg.a.d;
+   public boolean c(double $$0, double $$1, int $$2) {
+      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
+      return this.e;
+   }
+
+   public void h() {
+      this.a(this.a);
+   }
+
+   public int i() {
+      return Math.max(0, this.n() - this.h);
+   }
+
+   protected boolean j() {
+      return this.i() > 0;
+   }
+
+   protected int k() {
+      return azk.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
+   }
+
+   protected int l() {
+      return this.H() - 6;
+   }
+
+   protected int m() {
+      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
+   }
+
+   protected void a(fpz $$0) {
+      if (this.j()) {
+         int $$1 = this.l();
+         int $$2 = this.k();
+         int $$3 = this.m();
+         $$0.a(goi::H, d, $$1, this.G(), 6, this.y());
+         $$0.a(goi::H, c, $$1, $$3, 6, $$2);
       }
-
-      $$0.a(gnh::H, $$4.g, this.F(), this.G(), this.g, this.h);
    }
 
-   static enum a {
-      a(aku.b("widget/locked_button")),
-      b(aku.b("widget/locked_button_highlighted")),
-      c(aku.b("widget/locked_button_disabled")),
-      d(aku.b("widget/unlocked_button")),
-      e(aku.b("widget/unlocked_button_highlighted")),
-      f(aku.b("widget/unlocked_button_disabled"));
+   protected abstract int n();
 
-      final aku g;
-
-      private a(final aku $$0) {
-         this.g = $$0;
-      }
-   }
+   protected abstract double o();
 }

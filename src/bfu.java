@@ -1,62 +1,26 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
-public class bfu extends DataFix {
-   public static final String[] a = new String[]{
-      "minecraft:white_shulker_box",
-      "minecraft:orange_shulker_box",
-      "minecraft:magenta_shulker_box",
-      "minecraft:light_blue_shulker_box",
-      "minecraft:yellow_shulker_box",
-      "minecraft:lime_shulker_box",
-      "minecraft:pink_shulker_box",
-      "minecraft:gray_shulker_box",
-      "minecraft:silver_shulker_box",
-      "minecraft:cyan_shulker_box",
-      "minecraft:purple_shulker_box",
-      "minecraft:blue_shulker_box",
-      "minecraft:brown_shulker_box",
-      "minecraft:green_shulker_box",
-      "minecraft:red_shulker_box",
-      "minecraft:black_shulker_box"
+public class bfu extends bgq {
+   private static final String[] a = new String[]{
+      "minecraft:ponder_goat_horn",
+      "minecraft:sing_goat_horn",
+      "minecraft:seek_goat_horn",
+      "minecraft:feel_goat_horn",
+      "minecraft:admire_goat_horn",
+      "minecraft:call_goat_horn",
+      "minecraft:yearn_goat_horn",
+      "minecraft:dream_goat_horn"
    };
 
-   public bfu(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bfu(Schema $$0) {
+      super($$0, "GoatHornIdFix", $$0x -> $$0x.equals("minecraft:goat_horn"));
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bic.E.typeName(), bju.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
-         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
-         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
-            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
-            if ($$5.isPresent()) {
-               Typed<?> $$6 = (Typed<?>)$$5.get();
-               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
-               if ($$7.isPresent()) {
-                  Typed<?> $$8 = (Typed<?>)$$7.get();
-                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
-                  int $$10 = $$9.get("Color").asInt(0);
-                  $$9.remove("Color");
-                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bic.E.typeName(), a[$$10 % 16]));
-               }
-            }
-         }
-
-         return $$3x;
-      });
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      int $$1 = $$0.get("SoundVariant").asInt(0);
+      String $$2 = a[$$1 >= 0 && $$1 < a.length ? $$1 : 0];
+      return $$0.remove("SoundVariant").set("instrument", $$0.createString($$2));
    }
 }

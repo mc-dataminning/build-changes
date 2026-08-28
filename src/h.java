@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 
-public enum h implements azv {
+public enum h implements bag {
    a("identity", i.a, false, false, false),
    b("rot_180_face_xy", i.a, true, true, false),
    c("rot_180_face_xz", i.a, true, false, true),
@@ -57,11 +57,11 @@ public enum h implements azv {
    U("rot_90_ref_z_neg", i.b, false, true, true),
    V("rot_90_ref_z_pos", i.b, true, false, true);
 
-   private static final jn.a[] X = jn.a.values();
+   private static final jo.a[] X = jo.a.values();
    private final Matrix3f Y;
    private final String Z;
    @Nullable
-   private Map<jn, jn> aa;
+   private Map<jo, jo> aa;
    private final boolean ab;
    private final boolean ac;
    private final boolean ad;
@@ -122,21 +122,21 @@ public enum h implements azv {
       return this.Z;
    }
 
-   public jn a(jn $$0) {
+   public jo a(jo $$0) {
       if (this.aa == null) {
-         this.aa = af.a(jn.class, $$0x -> {
-            jn.a $$1 = $$0x.o();
-            jn.b $$2 = $$0x.f();
-            jn.a $$3 = this.b($$1);
-            jn.b $$4 = this.a($$3) ? $$2.c() : $$2;
-            return jn.a($$3, $$4);
+         this.aa = af.a(jo.class, $$0x -> {
+            jo.a $$1 = $$0x.o();
+            jo.b $$2 = $$0x.f();
+            jo.a $$3 = this.b($$1);
+            jo.b $$4 = this.a($$3) ? $$2.c() : $$2;
+            return jo.a($$3, $$4);
          });
       }
 
       return this.aa.get($$0);
    }
 
-   public boolean a(jn.a $$0) {
+   public boolean a(jo.a $$0) {
       switch ($$0) {
          case a:
             return this.ab;
@@ -148,17 +148,17 @@ public enum h implements azv {
       }
    }
 
-   public jn.a b(jn.a $$0) {
+   public jo.a b(jo.a $$0) {
       return X[this.ae.a($$0.ordinal())];
    }
 
-   public jp a(jp $$0) {
-      return jp.a(this.a($$0.a()), this.a($$0.b()));
+   public jq a(jq $$0) {
+      return jq.a(this.a($$0.a()), this.a($$0.b()));
    }
 
    public static h a(int $$0, int $$1) {
-      $$0 = ayz.b($$0, 360);
-      $$1 = ayz.b($$1, 360);
+      $$0 = azk.b($$0, 360);
+      $$1 = azk.b($$1, 360);
       if ($$0 % 90 == 0 && $$1 % 90 == 0) {
          h $$2 = a;
 

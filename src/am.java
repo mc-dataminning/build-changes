@@ -7,43 +7,43 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record am(int c, List<akt<ewt>> d, List<akt<dbv<?>>> e, Optional<es> f) {
+public record am(int c, List<alc<exq>> d, List<alc<dcl<?>>> e, Optional<es> f) {
    public static final Codec<am> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(am::a),
-               akt.a(mc.bi).listOf().optionalFieldOf("loot", List.of()).forGetter(am::b),
-               akt.a(mc.bm).listOf().optionalFieldOf("recipes", List.of()).forGetter(am::c),
+               alc.a(me.bn).listOf().optionalFieldOf("loot", List.of()).forGetter(am::b),
+               alc.a(me.br).listOf().optionalFieldOf("recipes", List.of()).forGetter(am::c),
                es.a.optionalFieldOf("function").forGetter(am::d)
             )
             .apply($$0, am::new)
    );
    public static final am b = new am(0, List.of(), List.of(), Optional.empty());
 
-   public void a(are $$0) {
+   public void a(aro $$0) {
       $$0.d(this.c);
-      ewr $$1 = new ewr.a($$0.y()).a(ezi.a, $$0).a(ezi.f, $$0.ds()).a(ezh.m);
+      exo $$1 = new exo.a($$0.y()).a(faf.a, $$0).a(faf.f, $$0.dt()).a(fae.m);
       boolean $$2 = false;
 
-      for (akt<ewt> $$3 : this.d) {
+      for (alc<exq> $$3 : this.d) {
          ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cxh $$4 = (cxh)var6.next();
-            if ($$0.i($$4)) {
-               $$0.dU().a(null, $$0.dz(), $$0.dB(), $$0.dF(), awa.of, awb.h, 0.2F, (($$0.dX().i() - $$0.dX().i()) * 0.7F + 1.0F) * 2.0F);
+            cxy $$4 = (cxy)var6.next();
+            if ($$0.j($$4)) {
+               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awk.of, awl.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               clw $$5 = $$0.a($$4, false);
+               cmn $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.m();
-                  $$5.b($$0.cF());
+                  $$5.b($$0.cG());
                }
             }
          }
       }
 
       if ($$2) {
-         $$0.bQ.d();
+         $$0.bP.d();
       }
 
       if (!this.e.isEmpty()) {
@@ -58,11 +58,11 @@ public record am(int c, List<akt<ewt>> d, List<akt<dbv<?>>> e, Optional<es> f) {
       return this.c;
    }
 
-   public List<akt<ewt>> b() {
+   public List<alc<exq>> b() {
       return this.d;
    }
 
-   public List<akt<dbv<?>>> c() {
+   public List<alc<dcl<?>>> c() {
       return this.e;
    }
 
@@ -72,9 +72,9 @@ public record am(int c, List<akt<ewt>> d, List<akt<dbv<?>>> e, Optional<es> f) {
 
    public static class a {
       private int a;
-      private final Builder<akt<ewt>> b = ImmutableList.builder();
-      private final Builder<akt<dbv<?>>> c = ImmutableList.builder();
-      private Optional<aku> d = Optional.empty();
+      private final Builder<alc<exq>> b = ImmutableList.builder();
+      private final Builder<alc<dcl<?>>> c = ImmutableList.builder();
+      private Optional<ald> d = Optional.empty();
 
       public static am.a a(int $$0) {
          return new am.a().b($$0);
@@ -85,29 +85,29 @@ public record am(int c, List<akt<ewt>> d, List<akt<dbv<?>>> e, Optional<es> f) {
          return this;
       }
 
-      public static am.a a(akt<ewt> $$0) {
+      public static am.a a(alc<exq> $$0) {
          return new am.a().b($$0);
       }
 
-      public am.a b(akt<ewt> $$0) {
+      public am.a b(alc<exq> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static am.a c(akt<dbv<?>> $$0) {
+      public static am.a c(alc<dcl<?>> $$0) {
          return new am.a().d($$0);
       }
 
-      public am.a d(akt<dbv<?>> $$0) {
+      public am.a d(alc<dcl<?>> $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static am.a a(aku $$0) {
+      public static am.a a(ald $$0) {
          return new am.a().b($$0);
       }
 
-      public am.a b(aku $$0) {
+      public am.a b(ald $$0) {
          this.d = Optional.of($$0);
          return this;
       }

@@ -1,11 +1,15 @@
-import java.util.OptionalInt;
+public enum ffh {
+   a(34962),
+   b(34963),
+   c(35051),
+   d(36662),
+   e(36663),
+   f(35052),
+   g(35345);
 
-public record ffh(int a, int b, OptionalInt c, OptionalInt d, boolean e) {
-   public ffh a(int $$0, int $$1) {
-      return new ffh($$0, $$1, this.c, this.d, this.e);
-   }
+   final int h;
 
-   public ffh a(boolean $$0) {
-      return new ffh(this.a, this.b, this.c, this.d, $$0);
+   private ffh(final int $$0) {
+      this.h = $$0;
    }
 }

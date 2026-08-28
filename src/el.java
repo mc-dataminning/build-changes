@@ -8,9 +8,9 @@ public class el extends dz<el.a> {
       return el.a.a;
    }
 
-   public void a(are $$0, ji $$1) {
-      double $$2 = $$0.dz() - (double)$$1.u();
-      double $$3 = $$0.dF() - (double)$$1.w();
+   public void a(aro $$0, jj $$1) {
+      double $$2 = $$0.dA() - (double)$$1.u();
+      double $$3 = $$0.dG() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
       this.a($$0, $$1x -> $$1x.a($$4));
    }

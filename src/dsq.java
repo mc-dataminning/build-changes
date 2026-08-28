@@ -1,72 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsq extends dmn implements doz {
-   public static final MapCodec<dsq> c = b(dsq::new);
-   public static final dyo<dym> d = dmn.b;
-   private static final fcr e = dke.b(12.0, 0.0, 16.0);
+public class dsq extends dku {
+   public static final MapCodec<dsq> a = b(dsq::new);
+   private static final fdo b = dku.b(12.0, 13.0, 16.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<dsq> a() {
-      return c;
+      return a;
    }
 
-   public dsq(dxp.d $$0) {
+   public dsq(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return e;
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return dku.a($$1, $$2.d(), jo.a) && !$$1.z($$2);
    }
 
    @Override
-   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
-      return $$0.c($$1, $$2, jn.b) && !$$0.a(dkg.ll);
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$4 == jo.b && !this.a($$0, $$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
-      return new cxh(dkg.bD);
-   }
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(lv.aC, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      jj.a $$10 = new jj.a();
 
-   @Nullable
-   @Override
-   public dxq a(dax $$0) {
-      dxq $$1 = super.a($$0);
-      if ($$1 != null) {
-         etw $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(awv.a) && $$2.e() == 8) {
-            return $$1;
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + azk.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azk.a($$3, -10, 10));
+         dym $$12 = $$1.a_($$10);
+         if (!$$12.m($$1, $$10)) {
+            $$1.a(lv.aG, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
          }
       }
-
-      return null;
    }
 
    @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      if ($$0.c(d) == dym.a) {
-         dxq $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == dym.b;
-      } else {
-         etw $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(awv.a) && $$4.e() == 8;
-      }
-   }
-
-   @Override
-   protected etw b_(dxq $$0) {
-      return etx.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable bvy $$0, dgf $$1, ji $$2, dxq $$3, etv $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dha $$0, ji $$1, dxq $$2, etw $$3) {
-      return false;
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b;
    }
 }

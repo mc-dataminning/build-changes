@@ -1,15 +1,7 @@
-import java.util.List;
+public class uw {
+   private static final uv<?>[] a = new uv[]{ty.a, tu.a, uo.a, ub.a, ue.a, tz.b, tx.b, tt.a, ur.a, uc.a, tw.b, ua.a, ud.a};
 
-public record uw(List<String> a, up<?> b, String c) {
-   public uw(up<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
-   }
-
-   public uw(String $$0, up<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
-   }
-
-   public uw(String $$0, String $$1, up<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   public static uv<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : uv.a($$0);
    }
 }

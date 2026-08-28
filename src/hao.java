@@ -1,7 +1,3 @@
-public class hao extends haj {
-   public cic.a a;
-
-   public hao() {
-      this.a = cic.a.a;
-   }
+public class hao extends hak {
+   public int a;
 }

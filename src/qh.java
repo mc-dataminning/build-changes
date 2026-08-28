@@ -1,24 +1,65 @@
-import java.util.OptionalLong;
-
 public class qh {
-   public static void a(qe<ebm> $$0) {
+   public static final alc<egp<?>> a = a("cave");
+   public static final alc<egp<?>> b = a("cave_extra_underground");
+   public static final alc<egp<?>> c = a("canyon");
+   public static final alc<egp<?>> d = a("nether_cave");
+
+   private static alc<egp<?>> a(String $$0) {
+      return alc.a(me.aO, ald.b($$0));
+   }
+
+   public static void a(qg<egp<?>> $$0) {
+      jt<dku> $$1 = $$0.a(me.f);
       $$0.a(
-         ebk.a,
-         new ebm(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awp.bd, ebk.e, 0.0F, new ebm.a(false, true, bsj.a(0, 7), 0))
+         a,
+         egr.a
+            .a(
+               new egn(
+                  0.15F,
+                  enq.a(eff.b(8), eff.a(180)),
+                  bta.b(0.1F, 0.9F),
+                  eff.b(8),
+                  egl.a(false, dkw.pu.m()),
+                  $$1.b(awz.bk),
+                  bta.b(0.7F, 1.4F),
+                  bta.b(0.8F, 1.3F),
+                  bta.b(-1.0F, -0.4F)
+               )
+            )
       );
       $$0.a(
-         ebk.b,
-         new ebm(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awp.be, ebk.f, 0.1F, new ebm.a(true, false, bsa.a(7), 15))
+         b,
+         egr.a
+            .a(
+               new egn(
+                  0.07F,
+                  enq.a(eff.b(8), eff.a(47)),
+                  bta.b(0.1F, 0.9F),
+                  eff.b(8),
+                  egl.a(false, dkw.gR.m()),
+                  $$1.b(awz.bk),
+                  bta.b(0.7F, 1.4F),
+                  bta.b(0.8F, 1.3F),
+                  bta.b(-1.0F, -0.4F)
+               )
+            )
       );
       $$0.a(
-         ebk.c,
-         new ebm(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awp.bf, ebk.g, 0.0F, new ebm.a(false, true, bsj.a(0, 7), 0)
-         )
+         c,
+         egr.c
+            .a(
+               new egi(
+                  0.01F,
+                  enq.a(eff.a(10), eff.a(67)),
+                  bsr.a(3.0F),
+                  eff.b(8),
+                  egl.a(false, dkw.pv.m()),
+                  $$1.b(awz.bk),
+                  bta.b(-0.125F, 0.125F),
+                  new egi.a(bta.b(0.75F, 1.0F), bsz.a(0.0F, 6.0F, 2.0F), 3, bta.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
       );
-      $$0.a(
-         ebk.d,
-         new ebm(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awp.bd, ebk.e, 0.0F, new ebm.a(false, true, bsj.a(0, 7), 0))
-      );
+      $$0.a(d, egr.b.a(new egn(0.2F, enq.a(eff.a(0), eff.c(1)), bsr.a(0.5F), eff.b(10), $$1.b(awz.bl), bsr.a(1.0F), bsr.a(1.0F), bsr.a(-0.7F))));
    }
 }

@@ -1,115 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
 import javax.annotation.Nullable;
 
-public class dcx implements dbk {
-   final String c;
-   final dbi d;
-   final dbr e;
-   final dbr f;
-   final dcy g;
-   @Nullable
-   private dbu h;
-
-   public dcx(String $$0, dbi $$1, dbr $$2, dbr $$3, dcy $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+public class dcx extends dcb {
+   public dcx(dby $$0) {
+      super($$0);
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
+   @Nullable
+   private static Pair<cxy, cxy> c(dbz $$0) {
       if ($$0.e() != 2) {
-         return false;
+         return null;
       } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+         cxy $$1 = null;
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxh $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (!$$2 && this.e.a($$5) && $$5.h() != this.g.b().a()) {
-                  $$2 = true;
-               } else {
-                  if ($$3 || !this.f.a($$5)) {
-                     return false;
-                  }
-
-                  $$3 = true;
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cxy $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
                }
+
+               $$1 = $$3;
             }
          }
 
-         return $$2 && $$3;
+         return null;
       }
    }
 
-   public cxh a(dbj $$0, jt.a $$1) {
-      cxh $$2 = cxh.k;
+   private static boolean a(cxy $$0, cxy $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.c(kx.d) && $$1.c(kx.d) && $$0.c(kx.e) && $$1.c(kx.e);
+   }
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cxh $$4 = $$0.a($$3);
-         if (!$$4.f() && this.e.a($$4) && $$4.h() != this.g.b().a()) {
-            $$2 = $$4;
-         }
+   public boolean a(dbz $$0, dhp $$1) {
+      return c($$0) != null;
+   }
+
+   public cxy a(dbz $$0, ju.a $$1) {
+      Pair<cxy, cxy> $$2 = c($$0);
+      if ($$2 == null) {
+         return cxy.k;
+      } else {
+         cxy $$3 = (cxy)$$2.getFirst();
+         cxy $$4 = (cxy)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cxy $$9 = new cxy($$3.h());
+         $$9.b(kx.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         den $$10 = dej.b($$3);
+         den $$11 = dej.b($$4);
+         dej.a($$9, $$3x -> $$1.e(me.aS).c().filter($$0xx -> $$0xx.a(axc.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
-
-      return this.g.a($$2);
    }
 
    @Override
-   public List<ddb> g() {
-      return List.of(new ddg(List.of(this.e.c(), this.f.c()), this.g.a(), new ddh.d(cxl.fe)));
-   }
-
-   @Override
-   public dcf<dcx> a() {
-      return dcf.m;
-   }
-
-   @Override
-   public String j() {
-      return this.c;
-   }
-
-   @Override
-   public dbu ao_() {
-      if (this.h == null) {
-         this.h = dbu.b(List.of(this.e, this.f));
-      }
-
-      return this.h;
-   }
-
-   @Override
-   public dbi c() {
-      return this.d;
-   }
-
-   public static class a implements dcf<dcx> {
-      private static final MapCodec<dcx> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dbi.e.fieldOf("category").orElse(dbi.d).forGetter($$0x -> $$0x.d),
-                  dbr.d.fieldOf("input").forGetter($$0x -> $$0x.e),
-                  dbr.d.fieldOf("material").forGetter($$0x -> $$0x.f),
-                  dcy.a.fieldOf("result").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dcx::new)
-      );
-      public static final yn<wa, dcx> w = yn.a(yl.o, $$0 -> $$0.c, dbi.g, $$0 -> $$0.d, dbr.a, $$0 -> $$0.e, dbr.a, $$0 -> $$0.f, dcy.b, $$0 -> $$0.g, dcx::new);
-
-      @Override
-      public MapCodec<dcx> a() {
-         return x;
-      }
-
-      @Override
-      public yn<wa, dcx> b() {
-         return w;
-      }
+   public dcv<dcx> a() {
+      return dcv.n;
    }
 }

@@ -1,144 +1,59 @@
-import java.util.Optional;
-
 public class azu {
-   private static final char a = '�';
-   private static final Optional<Object> b = Optional.of(baf.a);
+   private final int a;
+   private final int b;
+   private final float c;
+   private final float d;
 
-   private static boolean a(xm $$0, aym $$1, int $$2, char $$3) {
-      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
-   }
-
-   public static boolean a(String $$0, xm $$1, aym $$2) {
-      int $$3 = $$0.length();
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isHighSurrogate($$5)) {
-            if ($$4 + 1 >= $$3) {
-               if (!$$2.accept($$4, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 + 1);
-            if (Character.isLowSurrogate($$6)) {
-               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
-                  return false;
-               }
-
-               $$4++;
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
-         }
+   public azu(int $$0) {
+      if ($$0 < 2) {
+         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
+      } else if ($$0 > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+      } else {
+         int $$1 = 1 << $$0;
+         this.a = $$1 - 1;
+         this.b = $$0;
+         this.c = (float)$$1 / 360.0F;
+         this.d = 360.0F / (float)$$1;
       }
-
-      return true;
    }
 
-   public static boolean b(String $$0, xm $$1, aym $$2) {
-      int $$3 = $$0.length();
+   public boolean a(int $$0, int $$1) {
+      int $$2 = this.a() >> 1;
+      return ($$0 & $$2) == ($$1 & $$2);
+   }
 
-      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isLowSurrogate($$5)) {
-            if ($$4 - 1 < 0) {
-               if (!$$2.accept(0, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 - 1);
-            if (Character.isHighSurrogate($$6)) {
-               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
-                  return false;
-               }
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
-         }
+   public int a(jo $$0) {
+      if ($$0.o().b()) {
+         return 0;
+      } else {
+         int $$1 = $$0.e();
+         return $$1 << this.b - 2;
       }
-
-      return true;
    }
 
-   public static boolean c(String $$0, xm $$1, aym $$2) {
-      return a($$0, 0, $$1, $$2);
+   public int a(float $$0) {
+      return Math.round($$0 * this.c);
    }
 
-   public static boolean a(String $$0, int $$1, xm $$2, aym $$3) {
-      return a($$0, $$1, $$2, $$2, $$3);
+   public int b(float $$0) {
+      return this.c(this.a($$0));
    }
 
-   public static boolean a(String $$0, int $$1, xm $$2, xm $$3, aym $$4) {
-      int $$5 = $$0.length();
-      xm $$6 = $$2;
-
-      for (int $$7 = $$1; $$7 < $$5; $$7++) {
-         char $$8 = $$0.charAt($$7);
-         if ($$8 == 167) {
-            if ($$7 + 1 >= $$5) {
-               break;
-            }
-
-            char $$9 = $$0.charAt($$7 + 1);
-            n $$10 = n.a($$9);
-            if ($$10 != null) {
-               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
-            }
-
-            $$7++;
-         } else if (Character.isHighSurrogate($$8)) {
-            if ($$7 + 1 >= $$5) {
-               if (!$$4.accept($$7, $$6, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$11 = $$0.charAt($$7 + 1);
-            if (Character.isLowSurrogate($$11)) {
-               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
-                  return false;
-               }
-
-               $$7++;
-            } else if (!$$4.accept($$7, $$6, 65533)) {
-               return false;
-            }
-         } else if (!a($$6, $$4, $$7, $$8)) {
-            return false;
-         }
-      }
-
-      return true;
+   public float a(int $$0) {
+      return (float)$$0 * this.d;
    }
 
-   public static boolean a(wu $$0, xm $$1, aym $$2) {
-      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
+   public float b(int $$0) {
+      float $$1 = this.a(this.c($$0));
+      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
    }
 
-   public static String a(String $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, xm.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+   public int c(int $$0) {
+      return $$0 & this.a;
    }
 
-   public static String a(wu $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, xm.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+   public int a() {
+      return this.a;
    }
 }

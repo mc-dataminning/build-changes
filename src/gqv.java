@@ -1,154 +1,126 @@
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class gqv implements gqy.a {
-   public static final jn[] a = jn.values();
-   private final fmg b;
+public class gqv extends gqe {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final fcu k = new fcu(0.0, -0.32F, 0.073F);
+   private final Map<gqv.b, gew> l;
 
-   public gqv(fmg $$0) {
-      this.b = $$0;
+   public gqv(gql.a $$0) {
+      super($$0);
+      Stream<gqv.b> $$1 = eaa.a().flatMap($$0x -> Arrays.stream(gqv.a.values()).map($$1x -> new gqv.b($$0x, $$1x)));
+      this.l = $$1.collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1x -> a($$0.f(), $$1x.a, $$1x.b)));
+   }
+
+   public static gew a(ggz $$0, eaa $$1, gqv.a $$2) {
+      return new gew.a($$0.a(ghc.a($$1, $$2)), goi::g);
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      gmt $$5 = this.b.f;
-      if (this.b.C || this.b.D) {
-         gnm $$6 = $$5.x();
-         ObjectListIterator $$27 = $$5.w().iterator();
+   protected float a() {
+      return 1.0F;
+   }
 
-         while ($$27.hasNext()) {
-            gql.b $$7 = (gql.b)$$27.next();
-            gnm.d $$8 = $$6.b($$7);
-            if ($$8 != null) {
-               ji $$9 = $$7.f();
-               $$0.a();
-               $$0.a((double)$$9.u() - $$2, (double)$$9.v() - $$3, (double)$$9.w() - $$4);
-               Matrix4f $$10 = $$0.c().a();
-               if (this.b.C) {
-                  fgv $$11 = $$1.getBuffer(gnh.y());
-                  int $$12 = $$8.b == 0 ? 0 : ayz.g((float)$$8.b / 50.0F, 0.9F, 0.9F);
-                  int $$13 = $$12 >> 16 & 0xFF;
-                  int $$14 = $$12 >> 8 & 0xFF;
-                  int $$15 = $$12 & 0xFF;
+   @Override
+   protected float b() {
+      return 0.9F;
+   }
 
-                  for (int $$16 = 0; $$16 < a.length; $$16++) {
-                     if ($$8.a($$16)) {
-                        jn $$17 = a[$$16];
-                        $$11.a($$10, 8.0F, 8.0F, 8.0F).a($$13, $$14, $$15, 255).b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
-                        $$11.a($$10, (float)(8 - 16 * $$17.j()), (float)(8 - 16 * $$17.k()), (float)(8 - 16 * $$17.l()))
-                           .a($$13, $$14, $$15, 255)
-                           .b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
-                     }
-                  }
-               }
+   private static void a(fho $$0, float $$1) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
+   }
 
-               if (this.b.D && $$7.d().a()) {
-                  fgv $$18 = $$1.getBuffer(gnh.y());
-                  int $$19 = 0;
+   @Override
+   protected void a(fho $$0, float $$1, dym $$2) {
+      a($$0, $$1);
+   }
 
-                  for (jn $$20 : a) {
-                     for (jn $$21 : a) {
-                        boolean $$22 = $$7.d().a($$20, $$21);
-                        if (!$$22) {
-                           $$19++;
-                           $$18.a($$10, (float)(8 + 8 * $$20.j()), (float)(8 + 8 * $$20.k()), (float)(8 + 8 * $$20.l()))
-                              .a(255, 0, 0, 255)
-                              .b((float)$$20.j(), (float)$$20.k(), (float)$$20.l());
-                           $$18.a($$10, (float)(8 + 8 * $$21.j()), (float)(8 + 8 * $$21.k()), (float)(8 + 8 * $$21.l()))
-                              .a(255, 0, 0, 255)
-                              .b((float)$$21.j(), (float)$$21.k(), (float)$$21.l());
-                        }
-                     }
-                  }
+   @Override
+   protected gew a(dym $$0, eaa $$1) {
+      gqv.a $$2 = gqv.a.a($$0);
+      return this.l.get(new gqv.b($$1, $$2));
+   }
 
-                  if ($$19 > 0) {
-                     fgv $$23 = $$1.getBuffer(gnh.C());
-                     float $$24 = 0.5F;
-                     float $$25 = 0.2F;
-                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                  }
-               }
+   @Override
+   protected hiz a(eaa $$0) {
+      return got.b($$0);
+   }
 
-               $$0.b();
-            }
+   @Override
+   protected fcu c() {
+      return k;
+   }
+
+   public static void a(fho $$0, gny $$1, int $$2, int $$3, gew $$4, hiz $$5) {
+      $$0.a();
+      a($$0, 0.0F);
+      $$0.b(1.0F, -1.0F, -1.0F);
+      fhs $$6 = $$5.a($$1, $$4::a);
+      $$4.a($$0, $$6, $$2, $$3);
+      $$0.b();
+   }
+
+   public static ghj a(gqv.a $$0) {
+      ghl $$1 = new ghl();
+      ghn $$2 = $$1.a();
+      $$2.a("board", ghi.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), ghf.a);
+      if ($$0 == gqv.a.a) {
+         $$2.a("plank", ghi.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), ghf.a);
+      }
+
+      if ($$0 == gqv.a.a || $$0 == gqv.a.b) {
+         ghn $$3 = $$2.a("normalChains", ghi.c(), ghf.a);
+         $$3.a("chainL1", ghi.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), ghf.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+         $$3.a("chainL2", ghi.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), ghf.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+         $$3.a("chainR1", ghi.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), ghf.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+         $$3.a("chainR2", ghi.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), ghf.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      }
+
+      if ($$0 == gqv.a.c) {
+         $$2.a("vChains", ghi.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), ghf.a);
+      }
+
+      return ghj.a($$1, 64, 32);
+   }
+
+   public static enum a implements bag {
+      a("wall"),
+      b("ceiling"),
+      c("ceiling_middle");
+
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public static gqv.a a(dym $$0) {
+         if ($$0.b() instanceof dlu) {
+            return $$0.c(dzc.a) ? c : b;
+         } else {
+            return a;
          }
       }
 
-      gqp $$26 = $$5.y();
-      if ($$26 != null) {
-         $$0.a();
-         $$0.a((float)($$26.b() - $$2), (float)($$26.c() - $$3), (float)($$26.d() - $$4));
-         Matrix4f $$27 = $$0.c().a();
-         Vector4f[] $$28 = $$26.a();
-         fgv $$29 = $$1.getBuffer(gnh.C());
-         this.a($$29, $$27, $$28, 0, 1, 2, 3, 0, 1, 1);
-         this.a($$29, $$27, $$28, 4, 5, 6, 7, 1, 0, 0);
-         this.a($$29, $$27, $$28, 0, 1, 5, 4, 1, 1, 0);
-         this.a($$29, $$27, $$28, 2, 3, 7, 6, 0, 0, 1);
-         this.a($$29, $$27, $$28, 0, 4, 7, 3, 0, 1, 0);
-         this.a($$29, $$27, $$28, 1, 5, 6, 2, 1, 0, 1);
-         fgv $$30 = $$1.getBuffer(gnh.y());
-         this.a($$30, $$27, $$28[0]);
-         this.a($$30, $$27, $$28[1]);
-         this.a($$30, $$27, $$28[1]);
-         this.a($$30, $$27, $$28[2]);
-         this.a($$30, $$27, $$28[2]);
-         this.a($$30, $$27, $$28[3]);
-         this.a($$30, $$27, $$28[3]);
-         this.a($$30, $$27, $$28[0]);
-         this.a($$30, $$27, $$28[4]);
-         this.a($$30, $$27, $$28[5]);
-         this.a($$30, $$27, $$28[5]);
-         this.a($$30, $$27, $$28[6]);
-         this.a($$30, $$27, $$28[6]);
-         this.a($$30, $$27, $$28[7]);
-         this.a($$30, $$27, $$28[7]);
-         this.a($$30, $$27, $$28[4]);
-         this.a($$30, $$27, $$28[0]);
-         this.a($$30, $$27, $$28[4]);
-         this.a($$30, $$27, $$28[1]);
-         this.a($$30, $$27, $$28[5]);
-         this.a($$30, $$27, $$28[2]);
-         this.a($$30, $$27, $$28[6]);
-         this.a($$30, $$27, $$28[3]);
-         this.a($$30, $$27, $$28[7]);
-         $$0.b();
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 
-   private void a(fgv $$0, Matrix4f $$1, Vector4f $$2) {
-      $$0.a($$1, $$2.x(), $$2.y(), $$2.z()).a(-16777216).b(0.0F, 0.0F, -1.0F);
-   }
-
-   private void a(fgv $$0, Matrix4f $$1, Vector4f[] $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
-      float $$10 = 0.25F;
-      $$0.a($$1, $$2[$$3].x(), $$2[$$3].y(), $$2[$$3].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
-      $$0.a($$1, $$2[$$4].x(), $$2[$$4].y(), $$2[$$4].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
-      $$0.a($$1, $$2[$$5].x(), $$2[$$5].y(), $$2[$$5].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
-      $$0.a($$1, $$2[$$6].x(), $$2[$$6].y(), $$2[$$6].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+   public static record b(eaa a, gqv.a b) {
    }
 }

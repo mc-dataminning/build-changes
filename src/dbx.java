@@ -1,23 +1,25 @@
-public class dbx {
-   public static final dby a = a("crafting_building_blocks");
-   public static final dby b = a("crafting_redstone");
-   public static final dby c = a("crafting_equipment");
-   public static final dby d = a("crafting_misc");
-   public static final dby e = a("furnace_food");
-   public static final dby f = a("furnace_blocks");
-   public static final dby g = a("furnace_misc");
-   public static final dby h = a("blast_furnace_blocks");
-   public static final dby i = a("blast_furnace_misc");
-   public static final dby j = a("smoker_food");
-   public static final dby k = a("stonecutter");
-   public static final dby l = a("smithing");
-   public static final dby m = a("campfire");
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   private static dby a(String $$0) {
-      return ke.a(mb.aB, $$0, new dby());
+public enum dbx implements bag {
+   a(0, "food"),
+   b(1, "blocks"),
+   c(2, "misc");
+
+   private static final IntFunction<dbx> f = aya.a($$0 -> $$0.g, values(), aya.a.a);
+   public static final Codec<dbx> d = bag.a(dbx::values);
+   public static final yt<ByteBuf, dbx> e = yr.a(f, $$0 -> $$0.g);
+   private final int g;
+   private final String h;
+
+   private dbx(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static dby a(ke<dby> $$0) {
-      return m;
+   @Override
+   public String c() {
+      return this.h;
    }
 }

@@ -1,71 +1,76 @@
-public abstract class dij {
-   public static final akt<dic> a = a("the_void");
-   public static final akt<dic> b = a("plains");
-   public static final akt<dic> c = a("sunflower_plains");
-   public static final akt<dic> d = a("snowy_plains");
-   public static final akt<dic> e = a("ice_spikes");
-   public static final akt<dic> f = a("desert");
-   public static final akt<dic> g = a("swamp");
-   public static final akt<dic> h = a("mangrove_swamp");
-   public static final akt<dic> i = a("forest");
-   public static final akt<dic> j = a("flower_forest");
-   public static final akt<dic> k = a("birch_forest");
-   public static final akt<dic> l = a("dark_forest");
-   public static final akt<dic> m = a("pale_garden");
-   public static final akt<dic> n = a("old_growth_birch_forest");
-   public static final akt<dic> o = a("old_growth_pine_taiga");
-   public static final akt<dic> p = a("old_growth_spruce_taiga");
-   public static final akt<dic> q = a("taiga");
-   public static final akt<dic> r = a("snowy_taiga");
-   public static final akt<dic> s = a("savanna");
-   public static final akt<dic> t = a("savanna_plateau");
-   public static final akt<dic> u = a("windswept_hills");
-   public static final akt<dic> v = a("windswept_gravelly_hills");
-   public static final akt<dic> w = a("windswept_forest");
-   public static final akt<dic> x = a("windswept_savanna");
-   public static final akt<dic> y = a("jungle");
-   public static final akt<dic> z = a("sparse_jungle");
-   public static final akt<dic> A = a("bamboo_jungle");
-   public static final akt<dic> B = a("badlands");
-   public static final akt<dic> C = a("eroded_badlands");
-   public static final akt<dic> D = a("wooded_badlands");
-   public static final akt<dic> E = a("meadow");
-   public static final akt<dic> F = a("cherry_grove");
-   public static final akt<dic> G = a("grove");
-   public static final akt<dic> H = a("snowy_slopes");
-   public static final akt<dic> I = a("frozen_peaks");
-   public static final akt<dic> J = a("jagged_peaks");
-   public static final akt<dic> K = a("stony_peaks");
-   public static final akt<dic> L = a("river");
-   public static final akt<dic> M = a("frozen_river");
-   public static final akt<dic> N = a("beach");
-   public static final akt<dic> O = a("snowy_beach");
-   public static final akt<dic> P = a("stony_shore");
-   public static final akt<dic> Q = a("warm_ocean");
-   public static final akt<dic> R = a("lukewarm_ocean");
-   public static final akt<dic> S = a("deep_lukewarm_ocean");
-   public static final akt<dic> T = a("ocean");
-   public static final akt<dic> U = a("deep_ocean");
-   public static final akt<dic> V = a("cold_ocean");
-   public static final akt<dic> W = a("deep_cold_ocean");
-   public static final akt<dic> X = a("frozen_ocean");
-   public static final akt<dic> Y = a("deep_frozen_ocean");
-   public static final akt<dic> Z = a("mushroom_fields");
-   public static final akt<dic> aa = a("dripstone_caves");
-   public static final akt<dic> ab = a("lush_caves");
-   public static final akt<dic> ac = a("deep_dark");
-   public static final akt<dic> ad = a("nether_wastes");
-   public static final akt<dic> ae = a("warped_forest");
-   public static final akt<dic> af = a("crimson_forest");
-   public static final akt<dic> ag = a("soul_sand_valley");
-   public static final akt<dic> ah = a("basalt_deltas");
-   public static final akt<dic> ai = a("the_end");
-   public static final akt<dic> aj = a("end_highlands");
-   public static final akt<dic> ak = a("end_midlands");
-   public static final akt<dic> al = a("small_end_islands");
-   public static final akt<dic> am = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   private static akt<dic> a(String $$0) {
-      return akt.a(mc.aJ, aku.b($$0));
+public record dij(tw d, Optional<dij.a> e, Optional<bwe> f) {
+   public static final String a = "entity";
+   public static final Codec<dij> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               tw.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
+               dij.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
+               bwe.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dij::new)
+   );
+   public static final Codec<bsb<dij>> c = bsb.a(b);
+
+   public dij() {
+      this(new tw(), Optional.empty(), Optional.empty());
+   }
+
+   public dij(tw d, Optional<dij.a> e, Optional<bwe> f) {
+      if (d.e("id")) {
+         ald $$3 = ald.c(d.l("id"));
+         if ($$3 != null) {
+            d.a("id", $$3.toString());
+         } else {
+            d.r("id");
+         }
+      }
+
+      this.d = d;
+      this.e = e;
+      this.f = f;
+   }
+
+   public tw a() {
+      return this.d;
+   }
+
+   public Optional<dij.a> b() {
+      return this.e;
+   }
+
+   public Optional<bwe> c() {
+      return this.f;
+   }
+
+   public static record a(azc<Integer> b, azc<Integer> c) {
+      private static final azc<Integer> d = new azc<>(0, 15);
+      public static final Codec<dij.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dij.a::new)
+      );
+
+      private static DataResult<azc<Integer>> a(azc<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<azc<Integer>> a(String $$0) {
+         return azc.a.lenientOptionalFieldOf($$0, d).validate(dij.a::a);
+      }
+
+      public boolean a(jj $$0, arn $$1) {
+         return this.b.a($$1.a(dhy.b, $$0)) && this.c.a($$1.a(dhy.a, $$0));
+      }
+
+      public azc<Integer> a() {
+         return this.b;
+      }
+
+      public azc<Integer> b() {
+         return this.c;
+      }
    }
 }

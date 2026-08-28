@@ -1,60 +1,55 @@
-public class eea implements dgm {
-   private int a;
+public interface eea extends azs {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
+
+   int c(int var1);
 
    @Override
-   public int a(ard $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.O().b(dgv.D)) {
-         return 0;
+   default int f() {
+      return this.c(32);
+   }
+
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
       } else {
-         azh $$3 = $$0.A;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.z_() < 5 && $$0.B_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-               for (are $$5 : $$0.z()) {
-                  if (!$$5.U_()) {
-                     ji $$6 = $$5.du();
-                     if (!$$0.B_().g() || $$6.v() >= $$0.P() && $$0.h($$6)) {
-                        bsw $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           awg $$8 = $$5.I();
-                           int $$9 = ayz.a($$8.a(awk.i.b(awk.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              ji $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dxq $$12 = $$0.a_($$11);
-                              etw $$13 = $$0.b_($$11);
-                              if (dhk.a($$0, $$11, $$12, $$13, bvi.aP)) {
-                                 bwr $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
-
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    cmu $$17 = bvi.aP.a($$0, bvh.a);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, bvh.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$4;
-            }
-         }
+         return $$2;
       }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

@@ -1,19 +1,293 @@
-import java.util.UUID;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.function.BiFunction;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface ecd<T extends ebu> {
+public class ecd<R, P> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "Sections";
+   private final ecf d;
+   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
+   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
+   private final Codec<P> g;
+   private final Function<R, P> h;
+   private final BiFunction<P, Runnable, R> i;
+   private final Function<Runnable, R> j;
+   private final kg k;
+   private final ebr l;
+   protected final dhr c;
+   private final LongSet m = new LongOpenHashSet();
+   private final Long2ObjectMap<CompletableFuture<Optional<ecd.a<P>>>> n = new Long2ObjectOpenHashMap();
+   private final Object o = new Object();
+
+   public ecd(ecf $$0, Codec<P> $$1, Function<R, P> $$2, BiFunction<P, Runnable, R> $$3, Function<Runnable, R> $$4, kg $$5, ebr $$6, dhr $$7) {
+      this.d = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.c = $$7;
+   }
+
+   protected void a(BooleanSupplier $$0) {
+      LongIterator $$1 = this.f.iterator();
+
+      while ($$1.hasNext() && $$0.getAsBoolean()) {
+         dgw $$2 = new dgw($$1.nextLong());
+         $$1.remove();
+         this.e($$2);
+      }
+
+      this.c();
+   }
+
+   private void c() {
+      synchronized (this.o) {
+         Iterator<Entry<CompletableFuture<Optional<ecd.a<P>>>>> $$0 = Long2ObjectMaps.fastIterator(this.n);
+
+         while ($$0.hasNext()) {
+            Entry<CompletableFuture<Optional<ecd.a<P>>>> $$1 = $$0.next();
+            Optional<ecd.a<P>> $$2 = (Optional<ecd.a<P>>)((CompletableFuture)$$1.getValue()).getNow(null);
+            if ($$2 != null) {
+               long $$3 = $$1.getLongKey();
+               this.a(new dgw($$3), $$2.orElse(null));
+               $$0.remove();
+               this.m.add($$3);
+            }
+         }
+      }
+   }
+
+   public void a() {
+      if (!this.f.isEmpty()) {
+         this.f.forEach($$0 -> this.e(new dgw($$0)));
+         this.f.clear();
+      }
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
    @Nullable
-   T a(int var1);
+   protected Optional<R> c(long $$0) {
+      return (Optional<R>)this.e.get($$0);
+   }
 
-   @Nullable
-   T a(UUID var1);
+   protected Optional<R> d(long $$0) {
+      if (this.e($$0)) {
+         return Optional.empty();
+      } else {
+         Optional<R> $$1 = this.c($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            this.c(kl.a($$0).r());
+            $$1 = this.c($$0);
+            if ($$1 == null) {
+               throw (IllegalStateException)af.b(new IllegalStateException());
+            } else {
+               return $$1;
+            }
+         }
+      }
+   }
 
-   Iterable<T> a();
+   protected boolean e(long $$0) {
+      int $$1 = kl.c(kl.c($$0));
+      return this.c.e($$1);
+   }
 
-   <U extends T> void a(ecb<T, U> var1, axl<U> var2);
+   protected R f(long $$0) {
+      if (this.e($$0)) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("sectionPos out of bounds"));
+      } else {
+         Optional<R> $$1 = this.d($$0);
+         if ($$1.isPresent()) {
+            return $$1.get();
+         } else {
+            R $$2 = this.j.apply(() -> this.a($$0));
+            this.e.put($$0, Optional.of($$2));
+            return $$2;
+         }
+      }
+   }
 
-   void a(fbs var1, Consumer<T> var2);
+   public CompletableFuture<?> a(dgw $$0) {
+      synchronized (this.o) {
+         long $$1 = $$0.a();
+         return this.m.contains($$1) ? CompletableFuture.completedFuture(null) : (CompletableFuture)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
+      }
+   }
 
-   <U extends T> void a(ecb<T, U> var1, fbs var2, axl<U> var3);
+   private void c(dgw $$0) {
+      long $$1 = $$0.a();
+      CompletableFuture<Optional<ecd.a<P>>> $$2;
+      synchronized (this.o) {
+         if (!this.m.add($$1)) {
+            return;
+         }
+
+         $$2 = (CompletableFuture<Optional<ecd.a<P>>>)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
+      }
+
+      this.a($$0, $$2.join().orElse(null));
+      synchronized (this.o) {
+         this.n.remove($$1);
+      }
+   }
+
+   private CompletableFuture<Optional<ecd.a<P>>> d(dgw $$0) {
+      alb<ut> $$1 = this.k.a(uk.a);
+      return this.d
+         .a($$0)
+         .thenApplyAsync($$1x -> $$1x.map($$1xx -> ecd.a.a(this.g, $$1, $$1xx, this.d, this.c)), af.h().a("parseSection"))
+         .exceptionally($$1x -> {
+            if ($$1x instanceof CompletionException) {
+               $$1x = $$1x.getCause();
+            }
+
+            if ($$1x instanceof IOException $$2) {
+               a.error("Error reading chunk {} data from disk", $$0, $$2);
+               this.l.a($$2, this.d.a(), $$0);
+               return Optional.empty();
+            } else {
+               throw new CompletionException($$1x);
+            }
+         });
+   }
+
+   private void a(dgw $$0, @Nullable ecd.a<P> $$1) {
+      if ($$1 == null) {
+         for (int $$2 = this.c.aq(); $$2 <= this.c.ar(); $$2++) {
+            this.e.put(a($$0, $$2), Optional.empty());
+         }
+      } else {
+         boolean $$3 = $$1.b();
+
+         for (int $$4 = this.c.aq(); $$4 <= this.c.ar(); $$4++) {
+            long $$5 = a($$0, $$4);
+            Optional<R> $$6 = Optional.ofNullable($$1.a.get($$4)).map($$1x -> this.i.apply((P)$$1x, () -> this.a($$5)));
+            this.e.put($$5, $$6);
+            $$6.ifPresent($$2 -> {
+               this.b($$5);
+               if ($$3) {
+                  this.a($$5);
+               }
+            });
+         }
+      }
+   }
+
+   private void e(dgw $$0) {
+      alb<ut> $$1 = this.k.a(uk.a);
+      Dynamic<ut> $$2 = this.a($$0, $$1);
+      ut $$3 = (ut)$$2.getValue();
+      if ($$3 instanceof tw) {
+         this.d.a($$0, (tw)$$3).exceptionally($$1x -> {
+            this.l.b($$1x, this.d.a(), $$0);
+            return null;
+         });
+      } else {
+         a.error("Expected compound tag, got {}", $$3);
+      }
+   }
+
+   private <T> Dynamic<T> a(dgw $$0, DynamicOps<T> $$1) {
+      Map<T, T> $$2 = Maps.newHashMap();
+
+      for (int $$3 = this.c.aq(); $$3 <= this.c.ar(); $$3++) {
+         long $$4 = a($$0, $$3);
+         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
+         if ($$5 != null && !$$5.isEmpty()) {
+            DataResult<T> $$6 = this.g.encodeStart($$1, this.h.apply($$5.get()));
+            String $$7 = Integer.toString($$3);
+            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
+         }
+      }
+
+      return new Dynamic(
+         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(ab.b().d().c())))
+      );
+   }
+
+   private static long a(dgw $$0, int $$1) {
+      return kl.b($$0.h, $$1, $$0.i);
+   }
+
+   protected void b(long $$0) {
+   }
+
+   protected void a(long $$0) {
+      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
+      if ($$1 != null && !$$1.isEmpty()) {
+         this.f.add(dgw.c(kl.b($$0), kl.d($$0)));
+      } else {
+         a.warn("No data for position: {}", kl.a($$0));
+      }
+   }
+
+   static int a(Dynamic<?> $$0) {
+      return $$0.get("DataVersion").asInt(1945);
+   }
+
+   public void b(dgw $$0) {
+      if (this.f.remove($$0.a())) {
+         this.e($$0);
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.d.close();
+   }
+
+   static record a<T>(Int2ObjectMap<T> a, boolean b) {
+
+      public static <T> ecd.a<T> a(Codec<T> $$0, DynamicOps<ut> $$1, ut $$2, ecf $$3, dhr $$4) {
+         Dynamic<ut> $$5 = new Dynamic($$1, $$2);
+         int $$6 = ecd.a($$5);
+         int $$7 = ab.b().d().c();
+         boolean $$8 = $$6 != $$7;
+         Dynamic<ut> $$9 = $$3.a($$5, $$6);
+         OptionalDynamic<ut> $$10 = $$9.get("Sections");
+         Int2ObjectMap<T> $$11 = new Int2ObjectOpenHashMap();
+
+         for (int $$12 = $$4.aq(); $$12 <= $$4.ar(); $$12++) {
+            Optional<T> $$13 = $$10.get(Integer.toString($$12)).result().flatMap($$1x -> $$0.parse($$1x).resultOrPartial(ecd.a::error));
+            if ($$13.isPresent()) {
+               $$11.put($$12, $$13.get());
+            }
+         }
+
+         return new ecd.a<>($$11, $$8);
+      }
+   }
 }

@@ -1,12 +1,31 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface dhf {
-   boolean a(ji var1, Predicate<dxq> var2);
+public enum dhf implements dgv {
+   a;
 
-   boolean b(ji var1, Predicate<etw> var2);
+   @Nullable
+   @Override
+   public dvl c_(jj $$0) {
+      return null;
+   }
 
-   <T extends dus> Optional<T> a(ji var1, duu<T> var2);
+   @Override
+   public dym a_(jj $$0) {
+      return dkw.a.m();
+   }
 
-   ji a(edo.a var1, ji var2);
+   @Override
+   public eut b_(jj $$0) {
+      return euu.a.g();
+   }
+
+   @Override
+   public int G_() {
+      return 0;
+   }
+
+   @Override
+   public int H_() {
+      return 0;
+   }
 }

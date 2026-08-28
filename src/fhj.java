@@ -1,178 +1,261 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.lwjgl.system.MemoryUtil;
 
-public interface fhj {
-   wp a = wp.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+public class fhj implements fhs {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fhl d;
+   private long e = -1L;
+   private int f;
+   private final fht g;
+   private final fht.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   int a();
-
-   wp b();
-
-   String c();
-
-   static fhj a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return fhj.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return fhj.b.b($$0);
+   public fhj(fhl $$0, fht.c $$1, fht $$2) {
+      if (!$$2.b(fhu.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
       } else {
-         try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = ayp.a($$2, "reason", null);
-            String $$4 = ayp.a($$2, "errorMsg", null);
-            int $$5 = ayp.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new fhj.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
-            }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
-         }
-
-         return new fhj.d($$0, $$1);
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fhu.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fhm.c;
+         boolean $$4 = $$2 == fhm.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
    }
 
-   public static record a(String d) implements fhj {
-      public static final int c = 401;
+   @Nullable
+   public fhn a() {
+      this.c();
+      this.f();
+      fhn $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
+   }
 
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public wp b() {
-         return wp.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+   public fhn b() {
+      fhn $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
       }
    }
 
-   public static record b(int e, @Nullable wp f) implements fhj {
-      public static final fhj.b c = new fhj.b(429, wp.c("mco.errorMessage.serviceBusy"));
-      public static final wp d = wp.c("mco.errorMessage.retry");
-
-      public static fhj.b a(String $$0) {
-         return new fhj.b(500, wp.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static fhj.b a(fjc $$0) {
-         return new fhj.b(500, wp.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static fhj.b a(int $$0) {
-         return new fhj.b($$0, d);
-      }
-
-      public static fhj.b b(int $$0) {
-         return new fhj.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public wp b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public wp e() {
-         return this.f;
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
       }
    }
 
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fhj {
-      @Override
-      public int a() {
-         return this.d;
-      }
-
-      @Override
-      public wp b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (hgz.a($$0)) {
-            return wp.c($$0);
+   @Nullable
+   private fhn d() {
+      if (this.f == 0) {
+         return null;
+      } else {
+         fhl.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
          } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (hgz.a($$1)) {
-                  return wp.c($$1);
-               }
-            }
-
-            return (wp)(this.f != null ? wp.b(this.f) : a);
+            int $$1 = this.h.a(this.f);
+            fht.b $$2 = fht.b.a(this.f);
+            return new fhn($$0, new fhn.a(this.g, this.f, $$1, this.h, $$2));
          }
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
       }
    }
 
-   public static record d(int c, String d) implements fhj {
-      @Override
-      public int a() {
-         return this.c;
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
+   }
+
+   private long a(fhu $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
+   }
+
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fhu.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fht.c.a || this.h == fht.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = axu.m($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
+   }
+
+   @Override
+   public fhs a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fhu.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public fhs a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fhu.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
       }
 
-      @Override
-      public wp b() {
-         return wp.b(this.d);
+      return this;
+   }
+
+   @Override
+   public fhs a(int $$0) {
+      long $$1 = this.a(fhu.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
       }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      return this;
+   }
+
+   @Override
+   public fhs a(float $$0, float $$1) {
+      long $$2 = this.a(fhu.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
       }
 
-      public int d() {
-         return this.c;
+      return this;
+   }
+
+   @Override
+   public fhs a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fhu.f);
+   }
+
+   @Override
+   public fhs b(int $$0) {
+      long $$1 = this.a(fhu.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
       }
 
-      public String e() {
-         return this.d;
+      return this;
+   }
+
+   @Override
+   public fhs b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fhu.g);
+   }
+
+   @Override
+   public fhs c(int $$0) {
+      long $$1 = this.a(fhu.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fhs a(short $$0, short $$1, fhu $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fhs b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fhu.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(azk.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fhs.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

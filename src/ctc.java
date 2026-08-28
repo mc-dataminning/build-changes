@@ -1,9 +1,9 @@
-public class ctc extends csy {
-   public ctc(int $$0, cpq $$1) {
-      super(cuf.k, dcg.c, dce.f, cum.c, $$0, $$1);
-   }
+public class ctc {
+   final ctf a;
+   final long b;
 
-   public ctc(int $$0, cpq $$1, bsr $$2, cti $$3) {
-      super(cuf.k, dcg.c, dce.f, cum.c, $$0, $$1, $$2, $$3);
+   ctc(ctf $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
    }
 }

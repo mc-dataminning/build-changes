@@ -1,81 +1,44 @@
-import com.mojang.authlib.GameProfile;
+public class glw extends gmh {
+   private final gmc a;
 
-public class glw extends gls {
-   private fbx h = fbx.c;
-   private int i;
-
-   public glw(ggy $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
+   protected glw(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gmc $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cQ().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
+   public gll b() {
+      return gll.b;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
+   }
+
+   public static class a implements glk<lz> {
+      private final gmc a;
+
+      public a(gmc $$0) {
+         this.a = $$0;
       }
 
-      $$1 *= 64.0 * cJ();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean b(btp $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.r(false);
-   }
-
-   @Override
-   public void k_() {
-      if (this.bQ()) {
-         this.N_().e();
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glw $$8 = new glw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
-
-      if (this.bl > 0) {
-         this.a(this.bl, this.bk);
-         this.bl--;
-      }
-
-      if (this.i > 0) {
-         this.j(new fbx((this.h.d - this.dx().d) / (double)this.i, (this.h.e - this.dx().e) / (double)this.i, (this.h.f - this.dx().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.bU = this.bV;
-      this.eX();
-      float $$1;
-      if (this.aJ() && !this.eF()) {
-         $$1 = (float)Math.min(0.1, this.dx().i());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.bV = this.bV + ($$1 - this.bV) * 0.4F;
-
-      try (bpo $$2 = bpi.a().d("push")) {
-         this.o();
-      }
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.h = new fbx($$0, $$1, $$2);
-      this.i = this.aq().p() + 1;
-   }
-
-   @Override
-   protected void ge() {
-   }
-
-   @Override
-   public void a(abm $$0) {
-      super.a($$0);
-      this.bx();
    }
 }

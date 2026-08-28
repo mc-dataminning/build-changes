@@ -1,110 +1,58 @@
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public abstract class chn extends chl {
+public class chn {
    @Nullable
-   private chn a;
-   private int b = 1;
-
-   public chn(bvi<? extends chn> $$0, dgz $$1) {
-      super($$0, $$1);
+   public static fcu a(bwz $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::c);
    }
 
-   @Override
-   protected void D() {
-      super.D();
-      this.bC.a(5, new ccs(this));
+   @Nullable
+   public static fcu a(bwz $$0, int $$1, int $$2, ToDoubleFunction<jj> $$3) {
+      boolean $$4 = chl.a($$0, $$1);
+      return cho.a(() -> {
+         jj $$4x = cho.a($$0.dY(), $$1, $$2);
+         jj $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
-   @Override
-   public int ai() {
-      return this.x();
+   @Nullable
+   public static fcu a(bwz $$0, int $$1, int $$2, fcu $$3) {
+      fcu $$4 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
+      boolean $$5 = chl.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   public int x() {
-      return super.ai();
+   @Nullable
+   public static fcu b(bwz $$0, int $$1, int $$2, fcu $$3) {
+      fcu $$4 = $$0.dt().d($$3);
+      boolean $$5 = chl.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   @Override
-   protected boolean q() {
-      return !this.gs();
-   }
-
-   public boolean gs() {
-      return this.a != null && this.a.bJ();
-   }
-
-   public chn a(chn $$0) {
-      this.a = $$0;
-      $$0.gy();
-      return $$0;
-   }
-
-   public void gt() {
-      this.a.gz();
-      this.a = null;
-   }
-
-   private void gy() {
-      this.b++;
-   }
-
-   private void gz() {
-      this.b--;
-   }
-
-   public boolean gu() {
-      return this.gv() && this.b < this.x();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.gv() && this.dU().A.a(200) == 1) {
-         List<? extends chl> $$0 = this.dU().a((Class<? extends chl>)this.getClass(), this.cQ().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.b = 1;
+   @Nullable
+   private static fcu a(bwz $$0, int $$1, int $$2, fcu $$3, boolean $$4) {
+      return cho.a($$0, () -> {
+         jj $$5 = cho.a($$0.dY(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
+         } else {
+            jj $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
          }
-      }
-   }
-
-   public boolean gv() {
-      return this.b > 1;
-   }
-
-   public boolean gw() {
-      return this.g(this.a) <= 121.0;
-   }
-
-   public void gx() {
-      if (this.gs()) {
-         this.O().a(this.a, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends chn> $$0) {
-      $$0.limit((long)(this.x() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+      });
    }
 
    @Nullable
-   @Override
-   public bwr a(dhq $$0, bsw $$1, bvh $$2, @Nullable bwr $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new chn.a(this);
-      } else {
-         this.a(((chn.a)$$3).a);
-      }
-
-      return $$3;
+   public static jj a(bwz $$0, jj $$1) {
+      $$1 = cho.a($$1, $$0.dV().ao(), $$1x -> chl.c($$0, $$1x));
+      return !chl.a($$0, $$1) && !chl.b($$0, $$1) ? $$1 : null;
    }
 
-   public static class a implements bwr {
-      public final chn a;
-
-      public a(chn $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   public static jj a(bwz $$0, int $$1, boolean $$2, jj $$3) {
+      jj $$4 = cho.a($$0, $$1, $$0.dY(), $$3);
+      return !chl.a($$4, $$0) && !chl.a($$2, $$0, $$4) && !chl.a($$0.O(), $$4) ? $$4 : null;
    }
 }

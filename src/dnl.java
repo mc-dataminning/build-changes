@@ -1,88 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnl extends dof {
-   public static final MapCodec<dnl> a = b(dnl::new);
-   public static final int b = 3;
-   public static final dyq c = dyg.av;
-   private static final int f = 4;
-   private static final int g = 2;
+public class dnl extends dri {
+   public static final MapCodec<dnl> b = b(dnl::new);
 
    @Override
    public MapCodec<dnl> a() {
-      return a;
+      return b;
    }
 
-   public dnl(dxp.d $$0) {
+   protected dnl(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(c, Integer.valueOf(0)));
+      this.l(this.B.b().b(a, jo.b));
    }
 
    @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
-      $$1.a($$2, this, ayz.a($$1.C_(), 60, 120));
+   public dym a(dbn $$0) {
+      jo $$1 = $$0.k();
+      dym $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
    }
 
    @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
-         ji.a $$4 = new ji.a();
-
-         for (jn $$5 : jn.values()) {
-            $$4.a($$2, $$5);
-            dxq $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
-               $$1.a($$4, this, ayz.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, ayz.a($$3, 20, 40));
-      }
-   }
-
-   private boolean f(dxq $$0, dgz $$1, ji $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.e($$0, $$1, $$2);
-         return true;
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      jo $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(lv.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.e($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dgf $$0, ji $$1, int $$2) {
-      int $$3 = 0;
-      ji.a $$4 = new ji.a();
-
-      for (jn $$5 : jn.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
-      return cxh.k;
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(a);
    }
 }

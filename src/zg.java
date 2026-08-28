@@ -1,29 +1,23 @@
-public class zg implements yw<zc> {
-   public static final yn<vl, zg> a = yw.a(zg::a, zg::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public zg(long $$0) {
+public class zg<B extends ByteBuf, L extends wb> {
+   private final ys.a<B, zc<? super L>, ze<? extends zc<? super L>>> a = ys.a(zc::a);
+   private final zd b;
+
+   public zg(zd $$0) {
       this.b = $$0;
    }
 
-   private zg(vl $$0) {
-      this.b = $$0.readLong();
+   public <T extends zc<? super L>> zg<B, L> a(ze<T> $$0, yt<? super B, T> $$1) {
+      if ($$0.a() != this.b) {
+         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
+      } else {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 
-   private void a(vl $$0) {
-      $$0.b(this.b);
-   }
-
-   @Override
-   public yy<zg> a() {
-      return zo.d;
-   }
-
-   public void a(zc $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
+   public yt<B, zc<? super L>> a() {
+      return this.a.a();
    }
 }

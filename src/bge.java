@@ -1,35 +1,29 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
 
-public class bge extends bav {
+public class bge extends DataFix {
    public bge(Schema $$0) {
-      super($$0, bic.t);
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bic.E.typeName(), bju.a()));
-      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
-         OpticFinder<?> $$2 = $$1.getType().findField("tag");
-         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
-               $$2xx = this.b($$2xx);
-               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
-                  $$2xx = this.c($$2xx);
-               }
-
-               return $$2xx;
-            }));
-      });
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.t);
+      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(biq.z);
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("display");
+      OpticFinder<?> $$4 = $$3.type().findField("Lore");
+      OpticFinder<Pair<String, String>> $$5 = DSL.typeFinder($$1);
+      return this.fixTypeEverywhereTyped(
+         "Item Lore componentize",
+         $$0,
+         $$4x -> $$4x.updateTyped(
+               $$2, $$3xx -> $$3xx.updateTyped($$3, $$2xxx -> $$2xxx.updateTyped($$4, $$1xxxx -> $$1xxxx.update($$5, $$0xxxxx -> $$0xxxxx.mapSecond(bba::a))))
+            )
+      );
    }
 }

@@ -1,220 +1,129 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
-public class fgu implements AutoCloseable {
-   private final fel a;
-   private final fem b;
-   @Nullable
-   private fem c = null;
-   private int d;
-   @Nullable
-   private fgw e;
-   @Nullable
-   private RenderSystem.a f;
-   private fgw.b g;
-   private int h;
-   private fgw.c i;
+public abstract class fgu {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   public fgu(fel $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = new fem(fek.a, $$0, 0);
-      this.d = GlStateManager._glGenVertexArrays();
+   public List<String> a(String $$0) {
+      fgu.a $$1 = new fgu.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
    }
 
-   public static fgu a(fgw.c $$0, fgw $$1, Consumer<fgv> $$2) {
-      fgm $$3 = fgt.b().a($$0, $$1);
-      $$2.accept($$3);
-      fgu $$4 = new fgu(fel.b);
-      $$4.a();
-      $$4.a($$3.b());
-      b();
-      return $$4;
-   }
+   private List<String> a(String $$0, fgu.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
 
-   public void a(fgq $$0) {
-      fgq var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
             }
 
-            RenderSystem.assertOnRenderThread();
-            fgq.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.c();
-            this.g = $$1.e();
-            this.i = $$1.d();
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!bah.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
+                  }
+
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.b($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!bah.h($$10)) {
+                     $$6.add($$10);
+                  }
+
+                  $$6.addAll($$14);
+               } else {
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
                }
+
+               int $$16 = bah.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
             }
-
-            throw var6;
          }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
       }
 
-      if ($$0 != null) {
-         $$0.close();
+      String $$17 = $$0.substring($$4);
+      if (!bah.h($$17)) {
+         $$6.add($$5 + $$17);
       }
+
+      return $$6;
    }
 
-   public void a(fgo.a $$0) {
-      fgo.a var2 = $$0;
-
-      label46: {
-         try {
-            if (this.e()) {
-               break label46;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            if (this.c != null) {
-               this.c.close();
-            }
-
-            this.c = new fem(fek.b, this.a, $$0.a());
-            this.f = null;
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   private fgw a(fgq.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.a().equals(this.e)) {
-         if (this.e != null) {
-            this.e.h();
-         }
-
-         this.b.b();
-         $$0.a().g();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            this.b.b();
-         }
-
-         this.b.a($$1.remaining());
-         this.b.a($$1, 0);
-      }
-
-      return $$0.a();
-   }
-
-   @Nullable
-   private RenderSystem.a b(fgq.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         if (this.c != null) {
-            this.c.close();
-         }
-
-         this.c = new fem(fek.b, this.a, $$1);
-         return null;
+   private String a(String $$0, fgu.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
-         if ($$2 != this.f || !$$2.a($$0.c())) {
-            $$2.b($$0.c());
+         return $$0;
+      }
+   }
+
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
+   }
+
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
+   }
+
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
+      } else {
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
          }
-
-         return $$2;
       }
    }
 
-   public void a() {
-      fgn.b();
-      GlStateManager._glBindVertexArray(this.d);
-   }
+   @Nullable
+   public abstract String a(boolean var1, String var2);
 
-   public static void b() {
-      fgn.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private fgw.b f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable gmh $$2) {
-      if ($$2 != null) {
-         RenderSystem.assertOnRenderThread();
-         $$2.a(this.i, $$0, $$1, fmg.Q().aO());
-         $$2.b();
-         this.c();
-         $$2.a();
+   public static String a(String $$0, goo $$1) {
+      if ($$1.c()) {
+         return $$0;
+      } else {
+         int $$2 = $$0.indexOf(10);
+         int $$3 = $$2 + 1;
+         return $$0.substring(0, $$3) + $$1.b() + "#line 1 0\n" + $$0.substring($$3);
       }
    }
 
-   public void a(gnh $$0) {
-      $$0.a();
-      this.a();
-      this.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      b();
-      $$0.b();
-   }
-
-   @Override
-   public void close() {
-      this.b.close();
-      if (this.c != null) {
-         this.c.close();
-         this.c = null;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
-   }
-
-   public fgw d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d == -1;
+   static final class a {
+      int a;
+      int b;
    }
 }

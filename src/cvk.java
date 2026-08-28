@@ -1,97 +1,159 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cvk extends cxd {
-   protected static final Map<dke, dke> a = new Builder()
-      .put(dkg.at, dkg.aB)
-      .put(dkg.X, dkg.aq)
-      .put(dkg.az, dkg.aH)
-      .put(dkg.ad, dkg.ao)
-      .put(dkg.u, dkg.aI)
-      .put(dkg.ae, dkg.ap)
-      .put(dkg.ax, dkg.aF)
-      .put(dkg.ab, dkg.am)
-      .put(dkg.ay, dkg.aG)
-      .put(dkg.ac, dkg.an)
-      .put(dkg.av, dkg.aD)
-      .put(dkg.Z, dkg.ak)
-      .put(dkg.aw, dkg.aE)
-      .put(dkg.aa, dkg.al)
-      .put(dkg.au, dkg.aC)
-      .put(dkg.Y, dkg.aj)
-      .put(dkg.oL, dkg.oM)
-      .put(dkg.oN, dkg.oO)
-      .put(dkg.oU, dkg.oV)
-      .put(dkg.oW, dkg.oX)
-      .put(dkg.aA, dkg.aJ)
-      .put(dkg.af, dkg.ar)
-      .put(dkg.ai, dkg.as)
-      .build();
+public class cvk {
+   private final int a;
+   public final btj c;
+   public int d;
+   public final int e;
+   public final int f;
 
-   public cvk(cyw $$0, float $$1, float $$2, cxd.a $$3) {
-      super($$3.a($$0, awp.bC, $$1, $$2, true));
+   public cvk(btj $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   public bsy a(daz $$0) {
-      dgz $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      cpr $$3 = $$0.o();
-      if (b($$0)) {
-         return bsy.e;
+   public void b(cxy $$0, cxy $$1) {
+      int $$2 = $$1.M() - $$0.M();
+      if ($$2 > 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   protected void a(cxy $$0, int $$1) {
+   }
+
+   protected void b(int $$0) {
+   }
+
+   protected void b_(cxy $$0) {
+   }
+
+   public void a(cqi $$0, cxy $$1) {
+      this.d();
+   }
+
+   public boolean a(cxy $$0) {
+      return true;
+   }
+
+   public cxy g() {
+      return this.c.a(this.a);
+   }
+
+   public boolean h() {
+      return !this.g().f();
+   }
+
+   public void e(cxy $$0) {
+      this.a($$0, this.g());
+   }
+
+   public void a(cxy $$0, cxy $$1) {
+      this.f($$0);
+   }
+
+   public void f(cxy $$0) {
+      this.c.a(this.a, $$0);
+      this.d();
+   }
+
+   public void d() {
+      this.c.e();
+   }
+
+   public int a() {
+      return this.c.aj_();
+   }
+
+   public int a_(cxy $$0) {
+      return Math.min(this.a(), $$0.k());
+   }
+
+   @Nullable
+   public ald c() {
+      return null;
+   }
+
+   public cxy a(int $$0) {
+      return this.c.a(this.a, $$0);
+   }
+
+   public boolean a(cqi $$0) {
+      return true;
+   }
+
+   public boolean b() {
+      return true;
+   }
+
+   public Optional<cxy> a(int $$0, int $$1, cqi $$2) {
+      if (!this.a($$2)) {
+         return Optional.empty();
+      } else if (!this.b($$2) && $$1 < this.g().M()) {
+         return Optional.empty();
       } else {
-         Optional<dxq> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
-         if ($$4.isEmpty()) {
-            return bsy.e;
+         $$0 = Math.min($$0, $$1);
+         cxy $$3 = this.a($$0);
+         if ($$3.f()) {
+            return Optional.empty();
          } else {
-            cxh $$5 = $$0.n();
-            if ($$3 instanceof are) {
-               ap.N.a((are)$$3, $$2, $$5);
+            if (this.g().f()) {
+               this.a(cxy.k, $$3);
             }
 
-            $$1.a($$2, $$4.get(), 11);
-            $$1.a(ecp.c, $$2, ecp.a.a($$3, $$4.get()));
-            if ($$3 != null) {
-               $$5.a(1, $$3, bvy.d($$0.p()));
-            }
-
-            return bsy.a;
+            return Optional.of($$3);
          }
       }
    }
 
-   private static boolean b(daz $$0) {
-      cpr $$1 = $$0.o();
-      return $$0.p().equals(bsx.a) && $$1.fa().a(cxl.wu) && !$$1.ga();
+   public cxy b(int $$0, int $$1, cqi $$2) {
+      Optional<cxy> $$3 = this.a($$0, $$1, $$2);
+      $$3.ifPresent($$1x -> this.a($$2, $$1x));
+      return $$3.orElse(cxy.k);
    }
 
-   private Optional<dxq> a(dgz $$0, ji $$1, @Nullable cpr $$2, dxq $$3) {
-      Optional<dxq> $$4 = this.a($$3);
-      if ($$4.isPresent()) {
-         $$0.a($$2, $$1, awa.aH, awb.e, 1.0F, 1.0F);
-         return $$4;
-      } else {
-         Optional<dxq> $$5 = dtp.b($$3);
-         if ($$5.isPresent()) {
-            $$0.a($$2, $$1, awa.aI, awb.e, 1.0F, 1.0F);
-            $$0.a($$2, 3005, $$1, 0);
-            return $$5;
+   public cxy d(cxy $$0) {
+      return this.b($$0, $$0.M());
+   }
+
+   public cxy b(cxy $$0, int $$1) {
+      if (!$$0.f() && this.a($$0)) {
+         cxy $$2 = this.g();
+         int $$3 = Math.min(Math.min($$1, $$0.M()), this.a_($$0) - $$2.M());
+         if ($$3 <= 0) {
+            return $$0;
          } else {
-            Optional<dxq> $$6 = Optional.ofNullable((dke)cwy.b.get().get($$3.b())).map($$1x -> $$1x.m($$3));
-            if ($$6.isPresent()) {
-               $$0.a($$2, $$1, awa.aJ, awb.e, 1.0F, 1.0F);
-               $$0.a($$2, 3004, $$1, 0);
-               return $$6;
-            } else {
-               return Optional.empty();
+            if ($$2.f()) {
+               this.e($$0.a($$3));
+            } else if (cxy.c($$2, $$0)) {
+               $$0.h($$3);
+               $$2.g($$3);
+               this.e($$2);
             }
+
+            return $$0;
          }
+      } else {
+         return $$0;
       }
    }
 
-   private Optional<dxq> a(dxq $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.m().b(dqv.d, $$0.c(dqv.d)));
+   public boolean b(cqi $$0) {
+      return this.a($$0) && this.a(this.g());
+   }
+
+   public int i() {
+      return this.a;
+   }
+
+   public boolean e() {
+      return true;
+   }
+
+   public boolean f() {
+      return false;
    }
 }

@@ -1,56 +1,25 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class oy extends pn<dui> {
-   public oy(mk $$0, CompletableFuture<jt.a> $$1) {
-      super($$0, mc.d, $$1);
-   }
+public class oy implements ox.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ato.b.a() + "/minecraft/structure/";
 
    @Override
-   protected void a(jt.a $$0) {
-      this.b(awn.a)
-         .a(
-            duk.b,
-            duk.c,
-            duk.d,
-            duk.e,
-            duk.f,
-            duk.g,
-            duk.h,
-            duk.i,
-            duk.j,
-            duk.k,
-            duk.l,
-            duk.m,
-            duk.n,
-            duk.o,
-            duk.p,
-            duk.q,
-            duk.r,
-            duk.s,
-            duk.t,
-            duk.u,
-            duk.v,
-            duk.w,
-            duk.x,
-            duk.y,
-            duk.z,
-            duk.A,
-            duk.B,
-            duk.C,
-            duk.D,
-            duk.E,
-            duk.G,
-            duk.H
-         );
-      this.b(awn.b).a(duk.M);
-      this.b(awn.c).a(duk.K);
-      this.b(awn.d).a(duk.L);
-      this.b(awn.e).a(duk.N);
-      this.b(awn.f).a(duk.J);
-      this.b(awn.g).a(duk.O);
-      this.b(awn.h).a(duk.P);
-      this.b(awn.i).a(duk.Q);
-      this.b(awn.j).a(duk.I);
-      this.b(awn.k).a(duk.F);
+   public tw apply(String $$0, tw $$1) {
+      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+   }
+
+   public static tw a(String $$0, tw $$1) {
+      eti $$2 = new eti();
+      int $$3 = ul.b($$1, 500);
+      int $$4 = 4292;
+      if ($$3 < 4292) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4292, $$0});
+      }
+
+      tw $$5 = bax.f.a(bay.a(), $$1, $$3);
+      $$2.a(md.e, $$5);
+      return $$2.a(new tw());
    }
 }

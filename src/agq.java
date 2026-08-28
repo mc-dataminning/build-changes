@@ -1,34 +1,29 @@
-public class agq implements yw<agf> {
-   public static final yn<vl, agq> a = yw.a(agq::a, agq::new);
-   private final agq.a b;
+public class agq implements zc<agm> {
+   public static final yt<vr, agq> a = zc.a(agq::a, agq::new);
+   private final btn b;
 
-   public agq(agq.a $$0) {
+   public agq(btn $$0) {
       this.b = $$0;
    }
 
-   private agq(vl $$0) {
-      this.b = $$0.b(agq.a.class);
+   private agq(vr $$0) {
+      this.b = btn.a($$0.readUnsignedByte());
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      $$0.l(this.b.a());
    }
 
    @Override
-   public yy<agq> a() {
-      return agd.bt;
+   public ze<agq> a() {
+      return agk.bn;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public agq.a b() {
+   public btn b() {
       return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

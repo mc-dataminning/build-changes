@@ -1,58 +1,143 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class frk extends frf {
-   private static final int f = -6745839;
-   private static final int g = -4548257;
-   private static final int h = -10547572;
-   private final Supplier<Float> i;
+public class frk extends fqt<frk.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final fzl n;
 
-   public frk(fpa $$0, bnx $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.i = $$2;
+   public frk(fnd $$0, int $$1, fzl $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
+   }
+
+   public void a(fng<?> $$0) {
+      this.b(frk.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(fng<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fng<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(frk.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<fql> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fql $$0, @Nullable fql $$1) {
+      this.b(frk.a.a($$0, $$1, this.n));
    }
 
    @Override
-   protected void d(fpc $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)bab.c / this.i.get();
-      this.a($$0, String.format(Locale.ROOT, "%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public int a() {
+      return 310;
    }
 
-   @Override
-   protected void c(fpc $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, bny.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(gnh.L(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, bny.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(gnh.L(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, bny.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(gnh.L(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
+   @Nullable
+   public fql b(fng<?> $$0) {
+      for (frk.a $$1 : this.aD_()) {
+         if ($$1 instanceof frk.b $$2) {
+            fql $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, bny.d.ordinal());
+   public void b() {
+      for (frk.a $$0 : this.aD_()) {
+         if ($$0 instanceof frk.b) {
+            frk.b $$1 = (frk.b)$$0;
+
+            for (fql $$2 : $$1.a.values()) {
+               if ($$2 instanceof fng.i<?> $$3) {
+                  $$3.c();
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public Optional<fsk> e(double $$0, double $$1) {
+      for (frk.a $$2 : this.aD_()) {
+         for (fsk $$3 : $$2.aD_()) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
+   protected static class a extends fqt.a<frk.a> {
+      private final List<fql> a;
+      private final fwf b;
+      private static final int c = 160;
+
+      a(List<fql> $$0, fwf $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static frk.a a(List<fql> $$0, fwf $$1) {
+         return new frk.a($$0, $$1);
+      }
+
+      public static frk.a a(fql $$0, @Nullable fql $$1, fwf $$2) {
+         return $$1 == null ? new frk.a(ImmutableList.of($$0), $$2) : new frk.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fql $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends fsk> aD_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fui> b() {
+         return this.a;
+      }
    }
 
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.i.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
-   }
+   protected static class b extends frk.a {
+      final Map<fng<?>, fql> a;
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+      private b(Map<fng<?>, fql> $$0, fzl $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static frk.b a(fnh $$0, fng<?> $$1, fzl $$2) {
+         return new frk.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static frk.b a(fnh $$0, fng<?> $$1, @Nullable fng<?> $$2, fzl $$3) {
+         fql $$4 = $$1.a($$0);
+         return $$2 == null ? new frk.b(ImmutableMap.of($$1, $$4), $$3) : new frk.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+      }
    }
 }

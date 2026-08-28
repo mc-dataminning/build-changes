@@ -1,61 +1,81 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 
-public class goa {
-   private Map<dxq, hhr> a = Map.of();
-   private final hif b;
+public class goa implements gny {
+   private final gny.a a;
+   private final gny.a b = gny.a(new fhl(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public goa(hif $$0) {
-      this.b = $$0;
-   }
-
-   public hfr a(dxq $$0) {
-      return this.b($$0).d();
-   }
-
-   public hhr b(dxq $$0) {
-      hhr $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public hif a() {
-      return this.b;
-   }
-
-   public void a(Map<dxq, hhr> $$0) {
+   public goa(gny.a $$0) {
       this.a = $$0;
    }
 
-   public static hig c(dxq $$0) {
-      return a(mb.e.b($$0.b()), $$0);
-   }
-
-   public static hig a(aku $$0, dxq $$1) {
-      return new hig($$0, b($$1.G()));
-   }
-
-   public static String b(Map<dyt<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dyt<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
+   @Override
+   public fhs getBuffer(goi $$0) {
+      if ($$0.V()) {
+         fhs $$1 = this.b.getBuffer($$0);
+         return new goa.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         fhs $$2 = this.a.getBuffer($$0);
+         Optional<goi> $$3 = $$0.U();
+         if ($$3.isPresent()) {
+            fhs $$4 = this.b.getBuffer($$3.get());
+            goa.a $$5 = new goa.a($$4, this.c, this.d, this.e, this.f);
+            return fhv.a($$5, $$2);
+         } else {
+            return $$2;
          }
+      }
+   }
 
-         dyt<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static record a(fhs a, int b) implements fhs {
+      public a(fhs $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axu.a($$4, $$1, $$2, $$3));
       }
 
-      return $$1.toString();
-   }
+      @Override
+      public fhs a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
 
-   private static <T extends Comparable<T>> String a(dyt<T> $$0, Comparable<?> $$1) {
-      return $$0.b((T)$$1);
+      @Override
+      public fhs a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fhs a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fhs a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fhs b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fhs b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

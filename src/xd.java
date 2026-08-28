@@ -1,130 +1,77 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
 import java.util.Objects;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class xd implements wp {
-   private final wq c;
-   private final List<wp> d;
-   private xm e;
-   private ayl f = ayl.a;
+public class xd {
+   private final xf[] a;
+   private int b;
+   private int c;
    @Nullable
-   private tl g;
+   private xh d;
 
-   xd(wq $$0, List<wp> $$1, xm $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public xd(int $$0) {
+      this.a = new xf[$$0];
    }
 
-   public static xd a(wq $$0) {
-      return new xd($$0, Lists.newArrayList(), xm.a);
+   public boolean a(xh $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new xf($$0, true) : null);
+         return true;
+      }
    }
 
-   @Override
-   public wq b() {
+   private void a(@Nullable xf $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(xh $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         xf $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
+   }
+
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
+   }
+
+   public xd.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<xh> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         xf $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
+         }
+      }
+
+      xc $$6 = new xc($$2);
+      xc.b $$7 = new xc.b($$0, $$1);
+      return new xd.a($$6, $$7);
+   }
+
+   public int c() {
       return this.c;
    }
 
-   @Override
-   public List<wp> c() {
-      return this.d;
-   }
-
-   public xd b(xm $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public xm a() {
-      return this.e;
-   }
-
-   public xd f(String $$0) {
-      return $$0.isEmpty() ? this : this.b(wp.b($$0));
-   }
-
-   public xd b(wp $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xd a(UnaryOperator<xm> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xd c(xm $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xd a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xd a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xd b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public ayl g() {
-      tl $$0 = tl.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof xd $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.h();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   public static record a(xc a, xc.b b) {
    }
 }

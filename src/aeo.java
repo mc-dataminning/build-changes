@@ -1,32 +1,12 @@
-import javax.annotation.Nullable;
-
-public class aeo implements yw<abl> {
-   public static final yn<vl, aeo> a = yw.a(aeo::a, aeo::new);
-   private final int b;
-
-   public aeo(bva $$0) {
-      this.b = $$0.ar();
-   }
-
-   private aeo(vl $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-   }
+public record aeo(wv b) implements zc<abr> {
+   public static final yt<wg, aeo> a = yt.a(wx.d, aeo::b, aeo::new);
 
    @Override
-   public yy<aeo> a() {
-      return agd.az;
+   public ze<aeo> a() {
+      return agk.au;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bva a(dgz $$0) {
-      return $$0.a(this.b);
    }
 }

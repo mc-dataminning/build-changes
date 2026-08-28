@@ -1,21 +1,27 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class caw {
-   private static final int a = 36;
-
-   public static bxs<bvy> a() {
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$0 -> $$0.group($$0.a(cfc.x), $$0.a(cfc.y), $$0.a(cfc.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bvy>a($$2).filter($$1xx -> $$1xx.g((bva)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.ea().a($$4.af(), $$4.ae());
+   public static byj<bwr> a(Function<bwr, Optional<bzw>> $$0, Predicate<bwr> $$1, int $$2, int $$3, float $$4) {
+      return cbv.a(
+         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$5 -> $$5.group($$5.a(cft.o), $$5.a(cft.n))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bzw> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bzw $$11 = $$10.get();
+                        if ($$8.dt().a((kc)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bzw $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new cfw($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
                      }
-
-                     return true;
                   }))
       );
    }

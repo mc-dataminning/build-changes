@@ -1,7 +1,29 @@
-public class ail {
-   public static final yy<aik> a = a("intention");
+public class ail implements zc<agm> {
+   public static final yt<vr, ail> a = zc.a(ail::a, ail::new);
+   private final btp b;
 
-   private static <T extends yw<ain>> yy<T> a(String $$0) {
-      return new yy<>(yx.a, aku.b($$0));
+   public ail(btp $$0) {
+      this.b = $$0;
+   }
+
+   private ail(vr $$0) {
+      this.b = $$0.b(btp.class);
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public ze<ail> a() {
+      return agk.cl;
+   }
+
+   public void a(agm $$0) {
+      $$0.a(this);
+   }
+
+   public btp b() {
+      return this.b;
    }
 }

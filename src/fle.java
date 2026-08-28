@@ -1,56 +1,64 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public abstract class fle implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fle extends hne {
+   private static final int a = 212;
+   private static final wv b = wv.c("mco.configure.world.name");
+   private static final wv c = wv.c("mco.configure.world.description");
+   private final fko C;
+   private final fjf D;
+   private fqw E;
+   private fqw F;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public fle(fko $$0, fjf $$1) {
+      super(wv.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
-   public static void a(fvi $$0) {
-      fmg $$1 = fmg.Q();
-      $$1.execute(() -> $$1.a($$0));
+   @Override
+   public void aN_() {
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fjf.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fqn $$2 = fqn.a(wv.c($$1), $$0x -> {
+         if (this.D.e == fjf.c.b) {
+            this.m.a(fla.a(this, wv.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
+         } else {
+            this.C.b(false);
+         }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new fqw(this.m.h, $$0, g(4), 212, 20, wv.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new fqw(this.m.h, $$0, g(8), 212, 20, wv.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      fqn $$3 = this.c(fqn.a(wv.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !bah.h($$1x));
+      this.c(fqn.a(wu.e, $$0x -> this.aK_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
-   protected void a(wp $$0) {
-      this.b();
-      fmg $$1 = fmg.Q();
-      $$1.execute(() -> $$1.a(new fjv($$0, new fhc(new fvk()))));
+   @Override
+   protected void aB_() {
+      this.b(this.F);
    }
 
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fjd $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wp.b($$0.getMessage()));
-      }
+   @Override
+   public void aK_() {
+      this.m.a(this.C);
    }
 
-   protected void a(fjd $$0) {
-      this.a($$0.a.b());
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
    }
 
-   public abstract wp a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }

@@ -1,28 +1,34 @@
 import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.Date;
+import javax.annotation.Nullable;
 
-public class avl extends avi<GameProfile, avm> {
-   public avl(File $$0) {
-      super($$0);
+public class avl extends avi<String> {
+   public avl(String $$0) {
+      this($$0, null, null, null, null);
+   }
+
+   public avl(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected avh<GameProfile> a(JsonObject $$0) {
-      return new avm($$0);
+   public wv e() {
+      return wv.b(String.valueOf(this.g()));
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   public avl(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
+
+   private static String b(JsonObject $$0) {
+      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
    }
 
    @Override
-   public String[] a() {
-      return this.d().stream().map(avh::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("ip", this.g());
+         super.a($$0);
+      }
    }
 }

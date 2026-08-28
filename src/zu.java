@@ -1,42 +1,26 @@
-import java.util.UUID;
+public class zu {
+   public static final ze<zj> a = a("custom_payload");
+   public static final ze<zk> b = a("custom_report_details");
+   public static final ze<zl> c = a("disconnect");
+   public static final ze<zm> d = a("keep_alive");
+   public static final ze<zn> e = a("ping");
+   public static final ze<zo> f = a("resource_pack_pop");
+   public static final ze<zp> g = a("resource_pack_push");
+   public static final ze<zq> h = a("server_links");
+   public static final ze<zr> i = a("store_cookie");
+   public static final ze<zs> j = a("transfer");
+   public static final ze<zt> k = a("update_tags");
+   public static final ze<zw> l = b("client_information");
+   public static final ze<zx> m = b("custom_payload");
+   public static final ze<zy> n = b("keep_alive");
+   public static final ze<zz> o = b("pong");
+   public static final ze<aaa> p = b("resource_pack");
 
-public record zu(UUID b, zu.a c) implements yw<zp> {
-   public static final yn<vl, zu> a = yw.a(zu::a, zu::new);
-
-   private zu(vl $$0) {
-      this($$0.n(), $$0.b(zu.a.class));
+   private static <T extends zc<zi>> ze<T> a(String $$0) {
+      return new ze<>(zd.b, ald.b($$0));
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public yy<zu> a() {
-      return zo.p;
-   }
-
-   public void a(zp $$0) {
-      $$0.a(this);
-   }
-
-   public zu.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   private static <T extends zc<zv>> ze<T> b(String $$0) {
+      return new ze<>(zd.a, ald.b($$0));
    }
 }

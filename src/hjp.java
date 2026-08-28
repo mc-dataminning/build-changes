@@ -1,5 +1,8 @@
-public interface hjp extends hjo {
-   boolean m();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void q();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hjp {
 }

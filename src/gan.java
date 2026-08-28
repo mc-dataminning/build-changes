@@ -1,103 +1,198 @@
-import com.mojang.datafixers.DataFixer;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class gan extends fvi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<akt<dgz>> b = af.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dgz.i, -13408734);
-      $$0.put(dgz.j, -10075085);
-      $$0.put(dgz.k, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bsm d;
+public abstract class gan<B extends gje.a<?>> extends fwf {
+   private static final wv C = wv.c("gui.abuseReport.report_sent_msg");
+   private static final wv D = wv.c("gui.abuseReport.sending.title").a(n.r);
+   private static final wv E = wv.c("gui.abuseReport.sent.title").a(n.r);
+   private static final wv F = wv.c("gui.abuseReport.error.title").a(n.r);
+   private static final wv G = wv.c("gui.abuseReport.send.generic_error");
+   protected static final wv a = wv.c("gui.abuseReport.send");
+   protected static final wv b = wv.c("gui.abuseReport.observed_what");
+   protected static final wv c = wv.c("gui.abuseReport.select_reason");
+   private static final wv H = wv.c("gui.abuseReport.describe");
+   protected static final wv d = wv.c("gui.abuseReport.more_comments");
+   private static final wv I = wv.c("gui.abuseReport.comments");
+   private static final wv J = wv.c("gui.abuseReport.attestation");
+   protected static final int s = 120;
+   protected static final int u = 20;
+   protected static final int v = 280;
+   protected static final int w = 8;
+   private static final Logger K = LogUtils.getLogger();
+   protected final fwf x;
+   protected final gji y;
+   protected final fuf z = fuf.d().a(8);
+   protected B A;
+   private fqp L;
+   protected fqn B;
 
-   @Nullable
-   public static gan a(fmg $$0, BooleanConsumer $$1, DataFixer $$2, ewc.c $$3, boolean $$4) {
-      try {
-         gau $$5 = $$0.x();
-         aua $$6 = aud.a($$3);
+   protected gan(wv $$0, fwf $$1, gji $$2, B $$3) {
+      super($$0);
+      this.x = $$1;
+      this.y = $$2;
+      this.A = $$3;
+   }
 
-         gan var10;
-         try (alt $$7 = $$5.a($$3.h(), false, $$6)) {
-            ewi $$8 = $$7.d();
-            kf.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new gan($$1, $$2, $$3, $$8.J(), $$4, $$9);
-         }
+   protected frf a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.y.a().b();
+      frf $$4 = new frf(this.p, 0, 0, $$0, $$1, H, I);
+      $$4.a(this.A.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
+   }
 
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
+   @Override
+   protected void aN_() {
+      this.z.c().b();
+      this.m();
+      this.E();
+      this.F();
+      this.G();
+      this.z.a($$1 -> {
+         fql var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   protected void m() {
+      this.z.a(new fru(this.l, this.p));
+   }
+
+   protected abstract void E();
+
+   protected void F() {
+      this.L = this.z.a(fqp.a(J, this.p).a(this.A.h()).a(280).a(($$0x, $$1) -> {
+         this.A.a($$1);
+         this.G();
+      }).a());
+      fuf $$0 = this.z.a(fuf.e().a(8));
+      $$0.a(fqn.a(wu.k, $$0x -> this.aK_()).a(120).a());
+      this.B = $$0.a(fqn.a(a, $$0x -> this.H()).a(120).a());
+   }
+
+   protected void G() {
+      gje.b $$0 = this.A.c();
+      this.B.j = $$0 == null && this.L.a();
+      this.B.a(x.a($$0, gje.b::a));
+   }
+
+   @Override
+   protected void c() {
+      this.z.a();
+      ftz.a(this.z, this.J());
+   }
+
+   protected void H() {
+      this.A.a(this.y).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.y.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(fvr.a(D, wu.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.I();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void I() {
+      this.M();
+      this.m.a(fvr.a(E, C, wu.d, () -> this.m.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      K.error("Encountered error while sending abuse report", $$0);
+      wv $$2;
+      if ($$0.getCause() instanceof xv $$1) {
+         $$2 = $$1.a();
+      } else {
+         $$2 = G;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(wv $$0) {
+      wv $$1 = $$0.f().a(n.m);
+      this.m.a(fvr.a(F, $$1, wu.k, () -> this.m.a(this)));
+   }
+
+   void L() {
+      if (this.A.b()) {
+         this.y.a(this.A.e().b());
       }
    }
 
-   private gan(BooleanConsumer $$0, DataFixer $$1, ewc.c $$2, dhd $$3, boolean $$4, kf $$5) {
-      super(wp.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new bsm($$2, $$1, $$5, $$4, false);
+   void M() {
+      this.y.a(null);
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.c(fpq.a(wo.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
+   public void aK_() {
+      if (this.A.b()) {
+         this.m.a(new gan.a());
+      } else {
+         this.m.a(this.x);
       }
    }
 
    @Override
-   public void aO_() {
-      this.c.accept(false);
+   public void aE_() {
+      this.L();
+      super.aE_();
    }
 
-   @Override
-   public void aI_() {
-      this.d.a();
-      this.d.close();
-   }
+   class a extends fzc {
+      private static final wv c = wv.c("gui.abuseReport.discard.title").a(n.r);
+      private static final wv d = wv.c("gui.abuseReport.discard.content");
+      private static final wv s = wv.c("gui.abuseReport.discard.return");
+      private static final wv u = wv.c("gui.abuseReport.discard.draft");
+      private static final wv v = wv.c("gui.abuseReport.discard.discard");
 
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, wp.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, wp.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, wp.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+      protected a() {
+         super(c, d, d);
+      }
 
-         for (akt<dgz> $$9 : this.d.c()) {
-            int $$10 = ayz.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
+      @Override
+      protected fuc m() {
+         fuf $$0 = fuf.d().a(8);
+         $$0.c().b();
+         fuf $$1 = $$0.a(fuf.e().a(8));
+         $$1.a(fqn.a(s, $$0x -> this.aK_()).a());
+         $$1.a(fqn.a(u, $$0x -> {
+            gan.this.L();
+            this.m.a(gan.this.x);
+         }).a());
+         $$0.a(fqn.a(v, $$0x -> {
+            gan.this.M();
+            this.m.a(gan.this.x);
+         }).a());
+         return $$0;
+      }
 
-         int $$11 = this.d.f() + this.d.g();
-         wp $$12 = wp.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         wp $$13 = wp.a("optimizeWorld.progress.percentage", ayz.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      @Override
+      public void aK_() {
+         this.m.a(gan.this);
+      }
+
+      @Override
+      public boolean aC_() {
+         return false;
       }
    }
 }

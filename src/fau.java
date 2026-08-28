@@ -1,21 +1,27 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Predicate;
 
-public class fau {
-   private static final Codec<fat> h = mb.G.q().dispatch(fat::b, fas::a);
-   public static final Codec<fat> a = Codec.lazyInitialized(() -> {
-      Codec<fat> $$0 = Codec.withAlternative(h, fax.a.codec());
-      return Codec.either(faq.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof faq $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final fas b = a("constant", faq.a);
-   public static final fas c = a("uniform", fax.a);
-   public static final fas d = a("binomial", fap.a);
-   public static final fas e = a("score", fav.a);
-   public static final fas f = a("storage", faw.a);
-   public static final fas g = a("enchantment_level", far.a);
+public interface fau extends exm, Predicate<exl> {
+   Codec<fau> d = md.F.q().dispatch("condition", fau::b, fav::a);
+   Codec<fau> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fah.b));
+   Codec<js<fau>> f = akz.a(me.bp, e);
 
-   private static fas a(String $$0, MapCodec<? extends fat> $$1) {
-      return ke.a(mb.G, aku.b($$0), new fas($$1));
+   fav b();
+
+   @FunctionalInterface
+   public interface a {
+      fau build();
+
+      default fau.a invert() {
+         return far.a(this);
+      }
+
+      default fai.a or(fau.a $$0) {
+         return fai.a(this, $$0);
+      }
+
+      default fah.a and(fau.a $$0) {
+         return fah.a(this, $$0);
+      }
    }
 }

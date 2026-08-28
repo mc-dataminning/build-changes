@@ -1,37 +1,52 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fmi {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fmi extends fmb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wv c = wv.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   private static final IntFunction<fmi> e = axq.a(fmi::a, values(), axq.a.b);
-   private final int f;
-   private final wp g;
-
-   private fmi(final int $$0, final String $$1) {
-      this.f = $$0;
-      this.g = wp.c($$1);
+   public fmi(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a() {
-      return this.f;
+   @Override
+   public void run() {
+      fie $$0 = fie.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fkb var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
    }
 
-   public wp b() {
-      return this.g;
-   }
-
-   public static fmi a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   @Override
+   public wv a() {
+      return c;
    }
 }

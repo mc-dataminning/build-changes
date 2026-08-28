@@ -1,49 +1,102 @@
-public class gjc extends glg {
-   gjc(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class gjc {
+   final int a;
+   private final List<gjc.a> b = new ArrayList<>();
+
+   public gjc(int $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a)) {
-            this.k();
+   public void a(giu $$0, IntCollection $$1, gjc.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
+
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         giw $$6 = $$0.b($$4);
+         if ($$6 instanceof gix.a) {
+            gix.a $$5 = (gix.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
          }
       }
    }
 
-   @Override
-   public gkk b() {
-      return gkk.b;
+   public void a(xl $$0) {
+      this.b.add(new gjc.a($$0));
    }
 
-   public static class a implements gkj<lx> {
-      private final glb a;
+   public boolean b(xl $$0) {
+      boolean $$1 = false;
+      Iterator<gjc.a> $$2 = this.b.iterator();
 
-      public a(glb $$0) {
-         this.a = $$0;
+      while ($$2.hasNext()) {
+         gjc.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjc $$8 = new gjc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xh> b;
+      private xl c;
+      private boolean d = true;
+      private int e;
+
+      a(final xl $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
       }
+
+      boolean a(xl $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= gjc.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, gix.a var2);
    }
 }

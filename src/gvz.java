@@ -1,31 +1,41 @@
-public class gvz extends grx<cpd, hbu, gfm> {
-   private static final aku b = aku.b("textures/entity/villager/villager.png");
-   public static final gww.a a = new gww.a(-0.1171875F, -0.07421875F, 1.0F);
+public class gvz extends gsz<cjc, hbz, gfm> {
+   private static final ald a = ald.b("textures/entity/rabbit/brown.png");
+   private static final ald j = ald.b("textures/entity/rabbit/white.png");
+   private static final ald k = ald.b("textures/entity/rabbit/black.png");
+   private static final ald l = ald.b("textures/entity/rabbit/gold.png");
+   private static final ald m = ald.b("textures/entity/rabbit/salt.png");
+   private static final ald n = ald.b("textures/entity/rabbit/white_splotched.png");
+   private static final ald o = ald.b("textures/entity/rabbit/toast.png");
+   private static final ald p = ald.b("textures/entity/rabbit/caerbannog.png");
 
-   public gvz(gtd.a $$0) {
-      super($$0, new gfm($$0.a(ggb.dv)), new gfm($$0.a(ggb.dw)), 0.5F);
-      this.a(new gww<>(this, $$0.f(), a));
-      this.a(new gyc<>(this, $$0.e(), "villager"));
-      this.a(new gwv<>(this));
+   public gvz(guf.a $$0) {
+      super($$0, new gfm($$0.a(ghc.cD)), new gfm($$0.a(ghc.cE)), 0.3F);
    }
 
-   public aku a(hbu $$0) {
-      return b;
+   public ald a(hbz $$0) {
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> j;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
+      }
    }
 
-   protected float b(hbu $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.5F : $$1;
+   public hbz b() {
+      return new hbz();
    }
 
-   public hbu b() {
-      return new hbu();
-   }
-
-   public void a(cpd $$0, hbu $$1, float $$2) {
+   public void a(cjc $$0, hbz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gzy.a($$0, $$1, this.i);
-      $$1.a = $$0.q() > 0;
-      $$1.b = $$0.gA();
+      $$1.a = $$0.K($$2);
+      $$1.b = "Toast".equals(n.a($$0.al().getString()));
+      $$1.c = $$0.gq();
    }
 }

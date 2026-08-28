@@ -1,19 +1,20 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-
 public interface fcy {
-   int a();
+   fcy a = ($$0, $$1) -> false;
+   fcy b = ($$0, $$1) -> !$$0 && !$$1;
+   fcy c = ($$0, $$1) -> $$1 && !$$0;
+   fcy d = ($$0, $$1) -> !$$0;
+   fcy e = ($$0, $$1) -> $$0 && !$$1;
+   fcy f = ($$0, $$1) -> !$$1;
+   fcy g = ($$0, $$1) -> $$0 != $$1;
+   fcy h = ($$0, $$1) -> !$$0 || !$$1;
+   fcy i = ($$0, $$1) -> $$0 && $$1;
+   fcy j = ($$0, $$1) -> $$0 == $$1;
+   fcy k = ($$0, $$1) -> $$1;
+   fcy l = ($$0, $$1) -> !$$0 || $$1;
+   fcy m = ($$0, $$1) -> $$0;
+   fcy n = ($$0, $$1) -> $$0 || !$$1;
+   fcy o = ($$0, $$1) -> $$0 || $$1;
+   fcy p = ($$0, $$1) -> true;
 
-   boolean b();
-
-   @Nullable
-   yf c();
-
-   default xd a(yf $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
-   }
-
-   static xd a(@Nullable fcy $$0, yf $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

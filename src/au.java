@@ -5,10 +5,10 @@ import java.util.Optional;
 public class au {
    public static final Codec<au> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cxh.d.fieldOf("icon").forGetter(au::c),
-               wr.a.fieldOf("title").forGetter(au::a),
-               wr.a.fieldOf("description").forGetter(au::b),
-               aku.a.optionalFieldOf("background").forGetter(au::d),
+               cxy.d.fieldOf("icon").forGetter(au::c),
+               wx.a.fieldOf("title").forGetter(au::a),
+               wx.a.fieldOf("description").forGetter(au::b),
+               ald.a.optionalFieldOf("background").forGetter(au::d),
                ao.d.optionalFieldOf("frame", ao.a).forGetter(au::e),
                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(au::h),
                Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(au::i),
@@ -16,11 +16,11 @@ public class au {
             )
             .apply($$0, au::new)
    );
-   public static final yn<wa, au> b = yn.a(au::a, au::b);
-   private final wp c;
-   private final wp d;
-   private final cxh e;
-   private final Optional<aku> f;
+   public static final yt<wg, au> b = yt.a(au::a, au::b);
+   private final wv c;
+   private final wv d;
+   private final cxy e;
+   private final Optional<ald> f;
    private final ao g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class au {
    private float k;
    private float l;
 
-   public au(cxh $$0, wp $$1, wp $$2, Optional<aku> $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public au(cxy $$0, wv $$1, wv $$2, Optional<ald> $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,19 +44,19 @@ public class au {
       this.l = $$1;
    }
 
-   public wp a() {
+   public wv a() {
       return this.c;
    }
 
-   public wp b() {
+   public wv b() {
       return this.d;
    }
 
-   public cxh c() {
+   public cxy c() {
       return this.e;
    }
 
-   public Optional<aku> d() {
+   public Optional<ald> d() {
       return this.f;
    }
 
@@ -84,10 +84,10 @@ public class au {
       return this.j;
    }
 
-   private void a(wa $$0) {
-      wr.d.encode($$0, this.c);
-      wr.d.encode($$0, this.d);
-      cxh.i.encode($$0, this.e);
+   private void a(wg $$0) {
+      wx.d.encode($$0, this.c);
+      wx.d.encode($$0, this.d);
+      cxy.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,13 +108,13 @@ public class au {
       $$0.a(this.l);
    }
 
-   private static au b(wa $$0) {
-      wp $$1 = wr.d.decode($$0);
-      wp $$2 = wr.d.decode($$0);
-      cxh $$3 = cxh.i.decode($$0);
+   private static au b(wg $$0) {
+      wv $$1 = wx.d.decode($$0);
+      wv $$2 = wx.d.decode($$0);
+      cxy $$3 = cxy.i.decode($$0);
       ao $$4 = $$0.b(ao.class);
       int $$5 = $$0.readInt();
-      Optional<aku> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<ald> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       au $$9 = new au($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

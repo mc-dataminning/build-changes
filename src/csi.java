@@ -1,109 +1,147 @@
-public abstract class csi extends bva {
-   protected static final ajx<Integer> e = akb.a(csi.class, ajz.b);
-   protected static final ajx<Integer> f = akb.a(csi.class, ajz.b);
-   protected static final ajx<Float> g = akb.a(csi.class, ajz.d);
+import javax.annotation.Nullable;
 
-   public csi(bvi<?> $$0, dgz $$1) {
+public abstract class csi extends csh implements csm {
+   private kb<cxy> b = kb.a(36, cxy.k);
+   @Nullable
+   private alc<exq> c;
+   private long d;
+
+   protected csi(bwb<?> $$0, dhp $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean b(btp $$0) {
-      return true;
+   public void a(arn $$0, buh $$1) {
+      super.a($$0, $$1);
+      this.a($$1, $$0, this);
    }
 
    @Override
-   public boolean a(ard $$0, btp $$1, float $$2) {
-      if (this.dP()) {
-         return true;
-      } else if (this.d($$1)) {
-         return false;
+   public cxy a(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public cxy a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cxy b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cxy $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bxi a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cqi $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bvs.e $$0) {
+      if (!this.dV().C && $$0.a()) {
+         btm.a(this.dV(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   protected void b(tw $$0) {
+      super.b($$0);
+      this.a($$0, this.dX());
+   }
+
+   @Override
+   protected void a(tw $$0) {
+      super.a($$0);
+      this.b($$0, this.dX());
+   }
+
+   @Override
+   public btq a(cqi $$0, btp $$1) {
+      return this.b_($$0);
+   }
+
+   @Override
+   protected fcu a(fcu $$0) {
+      float $$1 = 0.98F;
+      if (this.c == null) {
+         int $$2 = 15 - ctn.b(this);
+         $$1 += (float)$$2 * 0.001F;
+      }
+
+      if (this.bj()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
+   }
+
+   @Override
+   public void a() {
+      this.af_();
+   }
+
+   public void a(alc<exq> $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Nullable
+   @Override
+   public ctn createMenu(int $$0, cqh $$1, cqi $$2) {
+      if (this.c != null && $$2.U_()) {
+         return null;
       } else {
-         boolean var10000;
-         label32: {
-            this.l(-this.J());
-            this.d(10);
-            this.bB();
-            this.b(this.H() + $$2 * 10.0F);
-            this.a(ecp.o, $$1.d());
-            if ($$1.d() instanceof cpr $$3 && $$3.gm().d) {
-               var10000 = true;
-               break label32;
-            }
-
-            var10000 = false;
-         }
-
-         boolean $$4 = var10000;
-         if (($$4 || !(this.H() > 40.0F)) && !this.a($$1)) {
-            if ($$4) {
-               this.at();
-            }
-         } else {
-            this.a($$0, $$1);
-         }
-
-         return true;
+         this.f($$1.k);
+         return this.a($$0, $$1);
       }
    }
 
-   boolean a(btp $$0) {
-      return false;
+   protected abstract ctn a(int var1, cqh var2);
+
+   @Nullable
+   @Override
+   public alc<exq> q() {
+      return this.c;
    }
 
    @Override
-   public boolean a(dgs $$0) {
-      return $$0.c() instanceof bwa && !$$0.a().O().b(dgv.c);
-   }
-
-   public void a(ard $$0, cxd $$1) {
-      this.c($$0);
-      if ($$0.O().b(dgv.i)) {
-         cxh $$2 = new cxh($$1);
-         $$2.b(kv.g, this.an());
-         this.a($$0, $$2);
-      }
+   public void a(@Nullable alc<exq> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected void a(akb.a $$0) {
-      $$0.a(e, 0);
-      $$0.a(f, 1);
-      $$0.a(g, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.al.a(e, $$0);
-   }
-
-   public void l(int $$0) {
-      this.al.a(f, $$0);
-   }
-
-   public void b(float $$0) {
-      this.al.a(g, $$0);
-   }
-
-   public float H() {
-      return this.al.a(g);
-   }
-
-   public int I() {
-      return this.al.a(e);
-   }
-
-   public int J() {
-      return this.al.a(f);
-   }
-
-   protected void a(ard $$0, btp $$1) {
-      this.a($$0, this.o());
+   public long s() {
+      return this.d;
    }
 
    @Override
-   public int bW() {
-      return 10;
+   public void a(long $$0) {
+      this.d = $$0;
    }
 
-   protected abstract cxd o();
+   @Override
+   public kb<cxy> t() {
+      return this.b;
+   }
+
+   @Override
+   public void u() {
+      this.b = kb.a(this.b(), cxy.k);
+   }
 }

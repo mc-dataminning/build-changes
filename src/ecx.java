@@ -1,60 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class ecx {
-   public static final Codec<ecx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecw.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
-            )
-            .apply($$0, ecx::new)
-   );
-   private Optional<Pair<ecw, Long>> b;
+   private Int2ObjectMap<bvs> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bvs> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bvs> c;
 
-   public ecx(Optional<ecw> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   public ecx() {
-      this.b = Optional.empty();
-   }
+         while ($$1.hasNext()) {
+            Entry<bvs> $$0 = (Entry<bvs>)$$1.next();
+            this.b.put($$0.getIntKey(), (bvs)$$0.getValue());
+         }
 
-   public void a(ecw $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
+         Int2ObjectMap<bvs> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
    }
 
-   private boolean b(ecw $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
+   public void a(bvs $$0) {
+      this.a();
+      this.a.put($$0.ar(), $$0);
+   }
+
+   public void b(bvs $$0) {
+      this.a();
+      this.a.remove($$0.ar());
+   }
+
+   public boolean c(bvs $$0) {
+      return this.a.containsKey($$0.ar());
+   }
+
+   public void a(Consumer<bvs> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
       } else {
-         Pair<ecw, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            ecw $$4 = (ecw)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : ecy.a_($$0.a()) > ecy.a_($$4.a());
+         this.c = this.a;
+
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bvs $$1 = (bvs)var2.next();
+               $$0.accept($$1);
             }
+         } finally {
+            this.c = null;
          }
       }
-   }
-
-   public Optional<ecw> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((ecw)this.b.get().getLeft()) : Optional.empty();
-      }
-   }
-
-   public void a() {
-      this.b = Optional.empty();
    }
 }

@@ -1,47 +1,33 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bpm {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bpg f = bpf.a;
+public abstract class bpm<C, V> implements bpg<StringReader, V>, bpn {
+   private final bpa<ald> b;
+   protected final C a;
 
-   public bpm(LongSupplier $$0, String $$1, long $$2) {
+   protected bpm(bpa<ald> $$0, C $$1) {
       this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+      this.a = $$1;
    }
 
-   public bpj a() {
-      this.f = new bpb(this.b, () -> this.d, () -> true);
-      this.d++;
-      return this.f;
-   }
-
-   public void b() {
-      if (this.f != bpf.a) {
-         bph $$0 = this.f.d();
-         this.f = bpf.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + af.f() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+   @Override
+   public Optional<V> a(bpf<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<ald> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
          }
+      } else {
+         $$0.a().a($$1, this, ald.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
       }
    }
 
-   @Nullable
-   public static bpm a(String $$0) {
-      return null;
-   }
-
-   public static bpj a(bpj $$0, @Nullable bpm $$1) {
-      return $$1 != null ? bpj.a($$1.a(), $$0) : $$0;
-   }
+   protected abstract V a(ImmutableStringReader var1, ald var2) throws Exception;
 }

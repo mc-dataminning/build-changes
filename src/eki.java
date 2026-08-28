@@ -1,51 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eki extends ekk {
-   public static final MapCodec<eki> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eki::new));
+public record eki(int b, int c, int d, js<eok> e) implements ejv {
+   public static final Codec<eki> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.m.fieldOf("tries").orElse(128).forGetter(eki::a),
+               ays.l.fieldOf("xz_spread").orElse(7).forGetter(eki::b),
+               ays.l.fieldOf("y_spread").orElse(3).forGetter(eki::c),
+               eok.b.fieldOf("feature").forGetter(eki::d)
+            )
+            .apply($$0, eki::new)
+   );
 
-   public eki(bsd $$0, bsd $$1) {
-      super($$0, $$1);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected ekl<?> a() {
-      return ekl.i;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
-      ji $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(azh $$0, int $$1, eju $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   public js<eok> d() {
+      return this.e;
    }
 }

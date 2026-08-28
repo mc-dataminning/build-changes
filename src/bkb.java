@@ -1,30 +1,22 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class bkb extends Schema {
-   public bkb(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bkb extends bhm {
+   public bkb(Schema $$0, boolean $$1) {
+      super($$0, $$1, "WeaponSmithChestLootTableFix", biq.s, "minecraft:chest");
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bic.b,
-         () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", bic.B.in($$0)),
-               "ender_pearls",
-               DSL.list(bic.B.in($$0)),
-               "Inventory",
-               DSL.list(bic.t.in($$0)),
-               "EnderItems",
-               DSL.list(bic.t.in($$0))
-            )
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            String $$1 = $$0x.get("LootTable").asString("");
+            return $$1.equals("minecraft:chests/village_blacksmith")
+               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
+               : $$0x;
+         }
       );
-      $$0.registerType(true, bic.B, () -> DSL.optionalFields("Passengers", DSL.list(bic.B.in($$0)), bic.C.in($$0)));
    }
 }

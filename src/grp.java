@@ -1,45 +1,57 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.BitSet;
+import java.util.Set;
 
-public class grp implements gqy.a {
-   private final List<ji> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class grp {
+   private static final int a = jo.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public void a(ji $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public void a(Set<jo> $$0) {
+      for (jo $$1 : $$0) {
+         for (jo $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(jo $$0, jo $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(jo $$0, jo $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      fgv $$5 = $$1.getBuffer(gnh.B());
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         ji $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gnr.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      for (jo $$1 : jo.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
       }
+
+      $$0.append('\n');
+
+      for (jo $$2 : jo.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (jo $$3 : jo.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
+      }
+
+      return $$0.toString();
    }
 }

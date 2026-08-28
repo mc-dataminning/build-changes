@@ -1,60 +1,55 @@
-public class buz {
-   private static final float a = (float) (Math.PI / 12);
-   private static final float b = (float) (-Math.PI / 12);
-   private float c;
-   private float d;
-   private float e;
-   private float f;
-   private float g;
-   private float h;
-   private final bvy i;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-   public buz(bvy $$0) {
-      this.i = $$0;
+class buz extends buu {
+   private static final int d = 2;
+   public static final int c = 2;
+   private final ToIntFunction<azs> e;
+
+   protected buz(buv $$0, int $$1, ToIntFunction<azs> $$2) {
+      super($$0, $$1, lv.X);
+      this.e = $$2;
    }
 
-   public void a() {
-      this.f = this.c;
-      this.g = this.d;
-      this.h = this.e;
-      float $$3;
-      float $$4;
-      float $$5;
-      if (this.i.fL()) {
-         float $$0 = 1.0F;
-         fbx $$1 = this.i.dx();
-         if ($$1.e < 0.0) {
-            fbx $$2 = $$1.d();
-            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
+   @VisibleForTesting
+   protected static int a(int $$0, buz.a $$1, int $$2) {
+      return $$0 < 1 ? $$2 : azk.a(0, $$0 - $$1.count($$0), $$2);
+   }
+
+   @Override
+   public void a(arn $$0, bwr $$1, int $$2, bvs.e $$3) {
+      if ($$3 == bvs.e.a) {
+         int $$4 = this.e.applyAsInt($$1.dY());
+         int $$5 = $$0.O().d(dhl.v);
+         int $$6 = a($$5, buz.a.a($$1), $$4);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            this.a($$1.dV(), $$1.dA(), $$1.dC() + 0.5, $$1.dG());
          }
-
-         $$3 = ayz.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
-         $$4 = ayz.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
-         $$5 = 0.0F;
-      } else if (this.i.ch()) {
-         $$3 = (float) (Math.PI * 2.0 / 9.0);
-         $$4 = (float) (-Math.PI / 4);
-         $$5 = 0.08726646F;
-      } else {
-         $$3 = (float) (Math.PI / 12);
-         $$4 = (float) (-Math.PI / 12);
-         $$5 = 0.0F;
       }
-
-      this.c = this.c + ($$3 - this.c) * 0.3F;
-      this.d = this.d + ($$5 - this.d) * 0.3F;
-      this.e = this.e + ($$4 - this.e) * 0.3F;
    }
 
-   public float a(float $$0) {
-      return ayz.h($$0, this.f, this.c);
+   private void a(dhp $$0, double $$1, double $$2, double $$3) {
+      cns $$4 = bwb.bg.a($$0, bwa.k);
+      if ($$4 != null) {
+         $$4.a(2, true);
+         $$4.b($$1, $$2, $$3, $$0.C_().i() * 360.0F, 0.0F);
+         $$0.b($$4);
+      }
    }
 
-   public float b(float $$0) {
-      return ayz.h($$0, this.g, this.d);
-   }
+   @FunctionalInterface
+   protected interface a {
+      int count(int var1);
 
-   public float c(float $$0) {
-      return ayz.h($$0, this.h, this.e);
+      static buz.a a(bwr $$0) {
+         return $$1 -> {
+            List<cns> $$2 = new ArrayList<>();
+            $$0.dV().a(bwb.bg, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
+            return $$2.size();
+         };
+      }
    }
 }

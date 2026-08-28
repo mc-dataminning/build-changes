@@ -1,39 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class exv extends eyb {
+public class exv extends eyd {
    public static final MapCodec<exv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ewo.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, exv::new)
+      $$0 -> $$0.group(ald.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exv::new)
    );
-   private final ewo.b b;
+   private final ald j;
 
-   public exv(List<ezx> $$0, ewo.b $$1) {
-      super($$0);
-      this.b = $$1;
+   private exv(ald $$0, int $$1, int $$2, List<fau> $$3, List<eyz> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eyd<exv> b() {
-      return eye.B;
+   public eyc a() {
+      return exz.e;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(this.b.a());
+   public void a(Consumer<cxy> $$0, exl $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      if ($$0.a(cxl.vo) && $$1.c(this.b.a()) instanceof cpr $$2) {
-         $$0.b(kv.ai, new dae($$2.gk()));
-      }
-
-      return $$0;
-   }
-
-   public static eyb.a<?> a(ewo.b $$0) {
-      return a($$1 -> new exv($$1, $$0));
+   public static eyd.a<?> a(ald $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exv($$0, $$1, $$2, $$3, $$4));
    }
 }

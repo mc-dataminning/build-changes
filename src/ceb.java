@@ -1,45 +1,42 @@
 import java.util.EnumSet;
 
-public class ceb extends ccw {
-   private final bwv a;
+public class ceb extends cdn {
+   private final bwz a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public ceb(bwv $$0) {
+   public ceb(bwz $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(ccw.a.c, ccw.a.a));
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.gs();
+      this.e = $$1;
+      this.a(EnumSet.of(cdn.a.a));
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.gs();
-      if (!$$0 && !this.a.q()) {
-         return false;
-      } else if (this.a.bj()) {
-         return false;
-      } else if (!this.a.aJ()) {
+      if (this.a.ga()) {
          return false;
       } else {
-         bvy $$1 = this.a.ae_();
-         if ($$1 == null) {
-            return true;
+         fcu $$0 = chk.a(this.a, 16, 7, fcu.c(this.a.gb()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
          } else {
-            return this.a.g((bva)$$1) < 144.0 && $$1.ep() != null ? false : $$0;
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
+            return true;
          }
       }
    }
 
    @Override
-   public void d() {
-      this.a.O().m();
-      this.a.x(true);
+   public boolean c() {
+      return !this.a.O().k();
    }
 
    @Override
-   public void e() {
-      this.a.x(false);
+   public void d() {
+      this.a.O().a(this.b, this.c, this.d, this.e);
    }
 }

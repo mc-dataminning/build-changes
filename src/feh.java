@@ -1,91 +1,132 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class feh {
-   private static final Logger a = LogUtils.getLogger();
+public class feh<T> implements fen<T>, fep<T> {
+   private final Queue<fem<T>> a = new PriorityQueue<>(fem.a);
+   @Nullable
+   private List<fel<T>> b;
+   private final Set<fem<?>> c = new ObjectOpenCustomHashSet(fem.c);
+   @Nullable
+   private BiConsumer<feh<T>, fem<T>> d;
 
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
+   public feh() {
+   }
+
+   public feh(List<fel<T>> $$0) {
+      this.b = $$0;
+
+      for (fel<T> $$1 : $$0) {
+         this.c.add(fem.a($$1.a(), $$1.b()));
       }
    }
 
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
-      } else {
-         return false;
+   public void a(@Nullable BiConsumer<feh<T>, fem<T>> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public fem<T> b() {
+      return this.a.peek();
+   }
+
+   @Nullable
+   public fem<T> c() {
+      fem<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(fem<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
       }
    }
 
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
+   private void b(fem<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
       }
    }
 
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
-      } else {
-         return false;
+   @Override
+   public boolean a(jj $$0, T $$1) {
+      return this.c.contains(fem.a($$1, $$0));
+   }
+
+   public void a(Predicate<fem<T>> $$0) {
+      Iterator<fem<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         fem<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
+         }
       }
    }
 
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
+   public Stream<fem<T>> d() {
+      return this.a.stream();
+   }
 
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
 
-            if ($$3 == 16) {
-               return 4355;
-            }
+   @Override
+   public List<fel<T>> a(long $$0) {
+      List<fel<T>> $$1 = new ArrayList<>(this.a.size());
+      if (this.b != null) {
+         $$1.addAll(this.b);
+      }
+
+      for (fem<T> $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public uc a(long $$0, Function<T, String> $$1) {
+      uc $$2 = new uc();
+
+      for (fel<T> $$4 : this.a($$0)) {
+         $$2.add($$4.a($$1));
+      }
+
+      return $$2;
+   }
+
+   public void b(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (fel<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
          }
       }
 
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+      this.b = null;
+   }
+
+   public static <T> feh<T> a(uc $$0, Function<String, Optional<T>> $$1, dgw $$2) {
+      return new feh<>(fel.a($$0, $$1, $$2));
    }
 }

@@ -1,46 +1,38 @@
-public class gsi extends guj<cno, gyx, gcj> {
-   private static final aku a = aku.b("textures/entity/breeze/breeze.png");
+import org.apache.commons.lang3.mutable.MutableInt;
 
-   public gsi(gtd.a $$0) {
-      super($$0, new gcj($$0.a(ggb.K)), 0.5F);
-      this.a(new gwq($$0, this));
-      this.a(new gwp(this));
+public class gsi {
+   private final fnd a;
+
+   public gsi(fnd $$0) {
+      this.a = $$0;
    }
 
-   public void a(gyx $$0, fgr $$1, gmx $$2, int $$3) {
-      gcj $$4 = this.c();
-      a($$4, $$4.a(), $$4.c());
-      super.a($$0, $$1, $$2, $$3);
+   public void a(fho $$0, grr $$1, gny $$2, double $$3, double $$4, double $$5) {
+      gnz $$6 = this.a.f.x().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
    }
 
-   public aku a(gyx $$0) {
-      return a;
-   }
-
-   public gyx a() {
-      return new gyx();
-   }
-
-   public void a(cno $$0, gyx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a.a($$0.a);
-      $$1.b.a($$0.bF);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.bG);
-      $$1.f.a($$0.d);
-   }
-
-   public static gcj a(gcj $$0, ggc... $$1) {
-      $$0.a().k = false;
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-
-      for (ggc $$2 : $$1) {
-         $$2.k = true;
+   private void a(gnz.d $$0, fho $$1, gny $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      fcp $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         gsa.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
       }
 
-      return $$0;
+      fhs $$17 = $$2.getBuffer(goi.y());
+      long $$18 = $$12 + 5L;
+      gos.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+   }
+
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return azk.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

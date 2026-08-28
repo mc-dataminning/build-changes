@@ -1,12 +1,19 @@
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public class pe extends pn<emk> {
-   public pe(mk $$0, CompletableFuture<jt.a> $$1) {
-      super($$0, mc.aR, $$1);
+public abstract class pe extends pp<deh> {
+   public pe(mm $$0, CompletableFuture<ju.a> $$1) {
+      super($$0, me.aS, $$1);
    }
 
-   @Override
-   protected void a(jt.a $$0) {
-      this.b(awu.a).a(eml.a).a(eml.b).a(eml.c).a(eml.d).a(eml.e).a(eml.f).a(eml.g).a(eml.h).a(eml.i);
+   protected void a(ju.a $$0, alc<deh>... $$1) {
+      this.b(axc.a).a($$1);
+      Set<alc<deh>> $$2 = Set.of($$1);
+      List<String> $$3 = $$0.e(me.aS).c().filter($$1x -> !$$2.contains($$1x.e().get())).map(js::g).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
+      }
    }
 }

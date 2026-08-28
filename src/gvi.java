@@ -1,29 +1,31 @@
-public class gvi extends grx<ckj, hbh, gez> {
-   private static final aku a = aku.b("textures/entity/sniffer/sniffer.png");
+public class gvi extends gue<cra, hbm> {
+   private static final ald a = ald.b("textures/entity/llama/spit.png");
+   private final geu g;
 
-   public gvi(gtd.a $$0) {
-      super($$0, new gez($$0.a(ggb.cS)), new gez($$0.a(ggb.cT)), 1.1F);
+   public gvi(guf.a $$0) {
+      super($$0);
+      this.g = new geu($$0.a(ghc.bE));
    }
 
-   public aku a(hbh $$0) {
-      return a;
+   public void a(hbm $$0, fho $$1, gny $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.g.a($$0);
+      fhs $$4 = $$2.getBuffer(this.g.a(a));
+      this.g.a($$1, $$4, $$3, hgi.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hbh b() {
-      return new hbh();
+   public hbm a() {
+      return new hbm();
    }
 
-   public void a(ckj $$0, hbh $$1, float $$2) {
+   public void a(cra $$0, hbm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.bJ);
-      $$1.c.a($$0.bH);
-      $$1.d.a($$0.bK);
-      $$1.e.a($$0.bF);
-      $$1.f.a($$0.bG);
-   }
-
-   protected fbs a(ckj $$0) {
-      return super.a($$0).g(0.6F);
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.l($$2);
    }
 }

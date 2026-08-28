@@ -1,44 +1,33 @@
-import org.joml.Vector2i;
+import com.mojang.serialization.Codec;
 
-public class fmp {
-   private double a;
-   private double b;
+public enum fmp implements azn, bag {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
-      }
+   public static final Codec<fmp> d = bag.a(fmp::values);
+   private final int e;
+   private final String f;
+   private final String g;
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
-
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
-      }
+   private fmp(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   @Override
+   public String c() {
+      return this.f;
+   }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
-      }
+   @Override
+   public int b() {
+      return this.e;
+   }
 
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
-      }
-
-      return $$1;
+   @Override
+   public String a() {
+      return this.g;
    }
 }

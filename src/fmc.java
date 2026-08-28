@@ -1,32 +1,66 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fmc implements azc, azv {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class fmc extends fmb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wv c = wv.c("mco.configure.world.opening");
+   private final fjf d;
+   private final fwf e;
+   private final boolean f;
+   private final fnd g;
 
-   public static final Codec<fmc> c = azv.a(fmc::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private fmc(final int $$0, final String $$1, final String $$2) {
+   public fmc(fjf $$0, fwf $$1, boolean $$2, fnd $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public int b() {
-      return this.d;
+   public void run() {
+      fie $$0 = fie.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fko) {
+                     ((fko)this.e).f();
+                  }
+
+                  this.d.e = fjf.c.b;
+                  if (this.f) {
+                     fhz.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (fkb var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public wv a() {
+      return c;
    }
 }

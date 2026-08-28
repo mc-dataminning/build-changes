@@ -1,99 +1,87 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cek extends ccw {
-   private final ccw a;
-   private final int b;
-   private boolean c;
+public class cek extends cdn {
+   public static final int a = 120;
+   protected final bwz b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public cek(int $$0, ccw $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public cek(bwz $$0, double $$1) {
+      this($$0, $$1, 120);
    }
 
-   public boolean a(cek $$0) {
-      return this.P_() && $$0.i() < this.i();
+   public cek(bwz $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public cek(bwz $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cdn.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
+      if (this.b.cX()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.ev() >= 100) {
+               return false;
+            }
+
+            if (this.b.dY().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         fcu $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
+            return true;
+         }
+      }
+   }
+
+   @Nullable
+   protected fcu h() {
+      return chk.a(this.b, 10, 7);
    }
 
    @Override
    public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean P_() {
-      return this.a.P_();
+      return !this.b.O().k() && !this.b.cX();
    }
 
    @Override
    public void d() {
-      if (!this.c) {
-         this.c = true;
-         this.a.d();
-      }
+      this.b.O().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void e() {
-      if (this.c) {
-         this.c = false;
-         this.a.e();
-      }
+      this.b.O().m();
+      super.e();
    }
 
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
+   public void i() {
+      this.h = true;
    }
 
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public void a(EnumSet<ccw.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<ccw.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public ccw k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cek)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

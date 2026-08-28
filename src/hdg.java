@@ -1,18 +1,28 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hdg() implements hcw {
-   public static final MapCodec<hdg> a = MapCodec.unit(new hdg());
+public record hdg(hdk.b b, hdg.a c) {
+   public static final Codec<hdg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hdm.a.fieldOf("model").forGetter(hdg::a), hdg.a.b.forGetter(hdg::b)).apply($$0, hdg::new)
+   );
 
-   @Override
-   public boolean a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      fmg $$5 = fmg.Q();
-      bva $$6 = $$5.ao();
-      return $$6 != null ? $$2 == $$6 : $$2 == $$5.t;
+   public hdk.b a() {
+      return this.b;
    }
 
-   @Override
-   public MapCodec<hdg> a() {
-      return a;
+   public hdg.a b() {
+      return this.c;
+   }
+
+   public static record a(boolean c) {
+      public static final hdg.a a = new hdg.a(true);
+      public static final MapCodec<hdg.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("hand_animation_on_swap", true).forGetter(hdg.a::a)).apply($$0, hdg.a::new)
+      );
+
+      public boolean a() {
+         return this.c;
+      }
    }
 }

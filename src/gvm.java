@@ -1,30 +1,27 @@
-public class gvm<T extends ciq> extends grx<T, hbj, gfd> {
-   private static final aku a = aku.b("textures/entity/squid/squid.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gvm(gtd.a $$0, gfd $$1, gfd $$2) {
-      super($$0, $$1, $$2, 0.7F);
+public class gvm extends gsz<cit, hbp, gdq> {
+   private static final Map<cit.a, ald> a = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cit.a.b, ald.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cit.a.a, ald.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gvm(guf.a $$0) {
+      super($$0, new gdq($$0.a(ghc.bJ)), new gdq($$0.a(ghc.bK)), 0.7F);
+      this.a(new gyo(this, $$0.d()));
    }
 
-   public aku a(hbj $$0) {
-      return a;
+   public ald a(hbp $$0) {
+      return a.get($$0.a);
    }
 
-   public hbj b() {
-      return new hbj();
+   public hbp b() {
+      return new hbp();
    }
 
-   public void a(T $$0, hbj $$1, float $$2) {
+   public void a(cit $$0, hbp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bM, $$0.bL);
-      $$1.b = ayz.h($$2, $$0.bG, $$0.bF);
-      $$1.c = ayz.h($$2, $$0.bI, $$0.bH);
-   }
-
-   protected void a(hbj $$0, fgr $$1, float $$2, float $$3) {
-      $$1.a(0.0F, $$0.aj ? 0.25F : 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      $$1.a(a.b.rotationDegrees($$0.b));
-      $$1.a(a.d.rotationDegrees($$0.c));
-      $$1.a(0.0F, $$0.aj ? -0.6F : -1.2F, 0.0F);
+      $$1.a = $$0.t();
    }
 }

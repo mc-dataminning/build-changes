@@ -1,44 +1,61 @@
-import java.util.List;
-
-public class afc implements yw<abl> {
-   public static final yn<vl, afc> a = yw.a(afc::a, afc::new);
+public class afc implements zc<abr> {
+   public static final yt<vr, afc> a = zc.a(afc::a, afc::new);
    private final int b;
-   private final int[] c;
+   private final int c;
+   private final int d;
+   private final int e;
 
-   public afc(bva $$0) {
-      this.b = $$0.ar();
-      List<bva> $$1 = $$0.cX();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).ar();
-      }
+   public afc(bvs $$0) {
+      this($$0.ar(), $$0.dy());
    }
 
-   private afc(vl $$0) {
+   public afc(int $$0, fcu $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = azk.a($$1.d, -3.9, 3.9);
+      double $$4 = azk.a($$1.e, -3.9, 3.9);
+      double $$5 = azk.a($$1.f, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
+   }
+
+   private afc(vr $$0) {
       this.b = $$0.l();
-      this.c = $$0.c();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
    }
 
-   private void a(vl $$0) {
+   private void a(vr $$0) {
       $$0.c(this.b);
-      $$0.a(this.c);
+      $$0.m(this.c);
+      $$0.m(this.d);
+      $$0.m(this.e);
    }
 
    @Override
-   public yy<afc> a() {
-      return agd.aM;
+   public ze<afc> a() {
+      return agk.aH;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public int e() {
-      return this.b;
+   public double e() {
+      return (double)this.c / 8000.0;
+   }
+
+   public double f() {
+      return (double)this.d / 8000.0;
+   }
+
+   public double g() {
+      return (double)this.e / 8000.0;
    }
 }

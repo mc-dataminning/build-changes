@@ -1,44 +1,69 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import javax.annotation.Nullable;
 
-public class gri implements gqy.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fmg c;
-   private Collection<ji> d = Lists.newArrayList();
+public class gri {
+   private static final int a = 2;
+   private int b = 2;
+   private final List<grn.b.a> c = new ObjectArrayList();
 
-   public gri(fmg $$0) {
-      this.c = $$0;
+   public synchronized void a(grn.b.a $$0) {
+      this.c.add($$0);
    }
 
-   public void a(Collection<ji> $$0) {
-      this.d = $$0;
-   }
+   @Nullable
+   public synchronized grn.b.a a(fcu $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<grn.b.a> $$5 = this.c.listIterator();
 
-   @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      ji $$5 = this.b().c();
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         grn.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
+            }
 
-      for (ji $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
+            }
          }
+      }
+
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
       }
    }
 
-   private static void a(fgr $$0, gmx $$1, ji $$2) {
-      gqy.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
+   public int a() {
+      return this.c.size();
    }
 
-   private static void a(fgr $$0, gmx $$1, String $$2, ji $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gqy.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   @Nullable
+   private grn.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
    }
 
-   private flo b() {
-      return this.c.j.k();
+   public synchronized void b() {
+      for (grn.b.a $$0 : this.c) {
+         $$0.a();
+      }
+
+      this.c.clear();
    }
 }

@@ -1,204 +1,194 @@
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.List;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class apu extends apx<apu> {
-   static final Logger ad = LogUtils.getLogger();
-   private static final Pattern ae = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final Splitter af = Splitter.on(',').trimResults();
-   public final boolean a = this.a("online-mode", true);
-   public final boolean b = this.a("prevent-proxy-connections", false);
-   public final String c = this.a("server-ip", "");
-   public final boolean d = this.a("pvp", true);
-   public final boolean e = this.a("allow-flight", false);
-   public final String f = this.a("motd", "A Minecraft Server");
-   public final String g = this.a("bug-report-link", "");
-   public final boolean h = this.a("force-gamemode", false);
-   public final boolean i = this.a("enforce-whitelist", false);
-   public final bsv j = this.a("difficulty", a(bsv::a, bsv::a), bsv::e, bsv.b);
-   public final dgw k = this.a("gamemode", a(dgw::a, dgw::a), dgw::b, dgw.a);
-   public final String l = this.a("level-name", "world");
-   public final int m = this.a("server-port", 25565);
-   @Nullable
-   public final Boolean n = this.b("announce-player-achievements");
-   public final boolean o = this.a("enable-query", false);
-   public final int p = this.a("query.port", 25565);
-   public final boolean q = this.a("enable-rcon", false);
-   public final int r = this.a("rcon.port", 25575);
-   public final String s = this.a("rcon.password", "");
-   public final boolean t = this.a("hardcore", false);
-   public final boolean u = this.a("allow-nether", true);
-   public final boolean v = this.a("spawn-monsters", true);
-   public final boolean w = this.a("use-native-transport", true);
-   public final boolean x = this.a("enable-command-block", false);
-   public final int y = this.a("spawn-protection", 16);
-   public final int z = this.a("op-permission-level", 4);
-   public final int A = this.a("function-permission-level", 2);
-   public final long B = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
-   public final int C = this.a("max-chained-neighbor-updates", 1000000);
-   public final int D = this.a("rate-limit", 0);
-   public final int E = this.a("view-distance", 10);
-   public final int F = this.a("simulation-distance", 10);
-   public final int G = this.a("max-players", 20);
-   public final int H = this.a("network-compression-threshold", 256);
-   public final boolean I = this.a("broadcast-rcon-to-ops", true);
-   public final boolean J = this.a("broadcast-console-to-ops", true);
-   public final int K = this.a("max-world-size", $$0x -> ayz.a($$0x, 1, 29999984), 29999984);
-   public final boolean L = this.a("sync-chunk-writes", true);
-   public final String M = this.a("region-file-compression", "deflate");
-   public final boolean N = this.a("enable-jmx-monitoring", false);
-   public final boolean O = this.a("enable-status", true);
-   public final boolean P = this.a("hide-online-players", false);
-   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> ayz.a($$0x, 10, 1000), 100);
-   public final String R = this.a("text-filtering-config", "");
-   public final int S = this.a("text-filtering-version", 0);
-   public final Optional<MinecraftServer.b> T;
-   public final dgn U;
-   public final apx<apu>.a<Integer> V = this.b("player-idle-timeout", 0);
-   public final apx<apu>.a<Boolean> W = this.b("white-list", false);
-   public final boolean X = this.a("enforce-secure-profile", true);
-   public final boolean Y = this.a("log-ips", true);
-   public final int Z = this.a("pause-when-empty-seconds", 60);
-   private final apu.a ag;
-   public final eem aa;
-   public boolean ab = this.a("accepts-transfers", false);
+public class apu {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wv.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wv.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wv.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wv.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wv.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wv.c("commands.worldborder.damage.amount.failed"));
 
-   public apu(Properties $$0) {
-      super($$0);
-      String $$1 = this.a("level-seed", "");
-      boolean $$2 = this.a("generate-structures", true);
-      long $$3 = eem.a($$1).orElse(eem.g());
-      this.aa = new eem($$3, $$2, false);
-      this.ag = new apu.a(
-         this.a("generator-settings", $$0x -> ayp.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), enz.a.a().toString())
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a(
+                                 "worldborder"
+                              )
+                              .requires($$0x -> $$0x.c(2)))
+                           .then(
+                              ey.a("add")
+                                 .then(
+                                    ((RequiredArgumentBuilder)ey.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   ((ex)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   0L
+                                                )
+                                          ))
+                                       .then(
+                                          ey.a("time", IntegerArgumentType.integer(0))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      ((ex)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((ex)$$0x.getSource()).e().A_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           ey.a("set")
+                              .then(
+                                 ((RequiredArgumentBuilder)ey.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((ex)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
+                                    .then(
+                                       ey.a("time", IntegerArgumentType.integer(0))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                )
+                                          )
+                                    )
+                              )
+                        ))
+                     .then(ey.a("center").then(ey.a("pos", ha.a()).executes($$0x -> a((ex)$$0x.getSource(), ha.a($$0x, "pos"))))))
+                  .then(
+                     ((LiteralArgumentBuilder)ey.a("damage")
+                           .then(
+                              ey.a("amount")
+                                 .then(
+                                    ey.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((ex)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                 )
+                           ))
+                        .then(
+                           ey.a("buffer")
+                              .then(
+                                 ey.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((ex)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                              )
+                        )
+                  ))
+               .then(ey.a("get").executes($$0x -> a((ex)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)ey.a("warning")
+                     .then(
+                        ey.a("distance")
+                           .then(
+                              ey.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                           )
+                     ))
+                  .then(
+                     ey.a("time")
+                        .then(
+                           ey.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  )
+            )
       );
-      this.T = a(
-         this.a("resource-pack-id", ""),
-         this.a("resource-pack", ""),
-         this.a("resource-pack-sha1", ""),
-         this.a("resource-pack-hash"),
-         this.a("require-resource-pack", false),
-         this.a("resource-pack-prompt", "")
-      );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", dhx.c.a().a())), this.a("initial-disabled-packs", String.join(",", dhx.c.a().b())));
    }
 
-   public static apu a(Path $$0) {
-      return new apu(b($$0));
-   }
-
-   protected apu a(kf $$0, Properties $$1) {
-      return new apu($$1);
-   }
-
-   @Nullable
-   private static wp c(String $$0) {
-      if (!Strings.isNullOrEmpty($$0)) {
-         try {
-            return wp.a.a($$0, kf.b);
-         } catch (Exception var2) {
-            ad.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
-         }
-      }
-
-      return null;
-   }
-
-   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
-      if ($$1.isEmpty()) {
-         return Optional.empty();
+   private static int a(ex $$0, float $$1) throws CommandSyntaxException {
+      eae $$2 = $$0.l().J().A_();
+      if ($$2.n() == (double)$$1) {
+         throw h.create();
       } else {
-         String $$6;
-         if (!$$2.isEmpty()) {
-            $$6 = $$2;
-            if (!Strings.isNullOrEmpty($$3)) {
-               ad.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-            }
-         } else if (!Strings.isNullOrEmpty($$3)) {
-            ad.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-            $$6 = $$3;
-         } else {
-            $$6 = "";
-         }
-
-         if ($$6.isEmpty()) {
-            ad.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
-         } else if (!ae.matcher($$6).matches()) {
-            ad.warn("Invalid sha1 for resource-pack-sha1");
-         }
-
-         wp $$9 = c($$5);
-         UUID $$10;
-         if ($$0.isEmpty()) {
-            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
-            ad.warn("resource-pack-id missing, using default of {}", $$10);
-         } else {
-            try {
-               $$10 = UUID.fromString($$0);
-            } catch (IllegalArgumentException var10) {
-               ad.warn("Failed to parse '{}' into UUID", $$0);
-               return Optional.empty();
-            }
-         }
-
-         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
+         $$2.b((double)$$1);
+         $$0.a(() -> wv.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
       }
    }
 
-   private static dgn b(String $$0, String $$1) {
-      List<String> $$2 = af.splitToList($$0);
-      List<String> $$3 = af.splitToList($$1);
-      return new dgn($$2, $$3);
+   private static int b(ex $$0, float $$1) throws CommandSyntaxException {
+      eae $$2 = $$0.l().J().A_();
+      if ($$2.o() == (double)$$1) {
+         throw i.create();
+      } else {
+         $$2.c((double)$$1);
+         $$0.a(() -> wv.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
+      }
    }
 
-   public eej a(jt.a $$0) {
-      return this.ag.a($$0);
+   private static int a(ex $$0, int $$1) throws CommandSyntaxException {
+      eae $$2 = $$0.l().J().A_();
+      if ($$2.q() == $$1) {
+         throw f.create();
+      } else {
+         $$2.b($$1);
+         $$0.a(() -> wv.a("commands.worldborder.warning.time.success", $$1), true);
+         return $$1;
+      }
    }
 
-   static record a(JsonObject a, String b) {
-      private static final Map<String, akt<eny>> c = Map.of("default", enz.a, "largebiomes", enz.c);
+   private static int b(ex $$0, int $$1) throws CommandSyntaxException {
+      eae $$2 = $$0.l().J().A_();
+      if ($$2.r() == $$1) {
+         throw g.create();
+      } else {
+         $$2.c($$1);
+         $$0.a(() -> wv.a("commands.worldborder.warning.distance.success", $$1), true);
+         return $$1;
+      }
+   }
 
-      public eej a(jt.a $$0) {
-         jt<eny> $$1 = $$0.d(mc.bd);
-         jr.c<eny> $$2 = $$1.a(enz.a)
-            .or(() -> $$1.c().findAny())
-            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         jr<eny> $$3 = Optional.ofNullable(aku.c(this.b))
-            .map($$0x -> akt.a(mc.bd, $$0x))
-            .or(() -> Optional.ofNullable(c.get(this.b)))
-            .flatMap($$1::a)
-            .orElseGet(() -> {
-               apu.ad.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
-               return $$2;
-            });
-         eej $$4 = $$3.a().a();
-         if ($$3.a(enz.b)) {
-            aks<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<emm> $$6 = emm.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apu.ad::error);
-            if ($$6.isPresent()) {
-               return $$4.a($$0, new edj($$6.get()));
+   private static int a(ex $$0) {
+      double $$1 = $$0.l().J().A_().i();
+      $$0.a(() -> wv.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      return azk.a($$1 + 0.5);
+   }
+
+   private static int a(ex $$0, fct $$1) throws CommandSyntaxException {
+      eae $$2 = $$0.l().J().A_();
+      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+         throw a.create();
+      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
+         $$2.c((double)$$1.i, (double)$$1.j);
+         $$0.a(() -> wv.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         return 0;
+      } else {
+         throw e.create();
+      }
+   }
+
+   private static int a(ex $$0, double $$1, long $$2) throws CommandSyntaxException {
+      eae $$3 = $$0.l().J().A_();
+      double $$4 = $$3.i();
+      if ($$4 == $$1) {
+         throw b.create();
+      } else if ($$1 < 1.0) {
+         throw c.create();
+      } else if ($$1 > 5.999997E7F) {
+         throw d.create();
+      } else {
+         if ($$2 > 0L) {
+            $$3.a($$4, $$1, $$2);
+            if ($$1 > $$4) {
+               $$0.a(() -> wv.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            } else {
+               $$0.a(() -> wv.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
             }
+         } else {
+            $$3.a($$1);
+            $$0.a(() -> wv.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
          }
 
-         return $$4;
+         return (int)($$1 - $$4);
       }
    }
 }

@@ -1,37 +1,47 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class btc {
-   public static final Codec<btc> a = RecordCodecBuilder.create($$0 -> $$0.group(eep.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, btc::new));
-   private final eep b;
+public class btc extends bsv {
+   public static final MapCodec<btc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bsb.b(bsv.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, btc::new)
+   );
+   private final bsb<bsv> b;
+   private final int f;
+   private final int g;
 
-   public btc(eep $$0) {
+   public btc(bsb<bsv> $$0) {
       this.b = $$0;
-   }
+      int $$1 = Integer.MAX_VALUE;
+      int $$2 = Integer.MIN_VALUE;
 
-   public btc(long $$0, aku $$1) {
-      this(a($$0, Optional.of($$1)));
-   }
-
-   public btc(long $$0, Optional<aku> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static eep a(long $$0, Optional<aku> $$1) {
-      eed.a $$2 = eed.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+      for (bsa<bsv> $$3 : $$0.d()) {
+         int $$4 = $$3.a().a();
+         int $$5 = $$3.a().b();
+         $$1 = Math.min($$1, $$4);
+         $$2 = Math.max($$2, $$5);
       }
 
-      return new eep($$2.a());
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static eed.a a(aku $$0) {
-      return eed.a($$0.toString());
+   @Override
+   public int a(azs $$0) {
+      return this.b.b($$0).a($$0);
    }
 
-   public azh a() {
-      return this.b;
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   public bsw<?> c() {
+      return bsw.e;
    }
 }

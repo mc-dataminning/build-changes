@@ -1,63 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eqw extends eoj {
-   public static final MapCodec<eqw> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               eqw.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eqw::new)
-   );
-   public final eqw.a e;
-   public final float f;
-   public final float g;
+record eqw(bsb<List<eqs>> c) implements eqs {
+   static MapCodec<eqw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bsb.b(Codec.list(eqs.b)).fieldOf("groups").forGetter(eqw::c)).apply($$0, eqw::new));
 
-   public eqw(eoj.c $$0, eqw.a $$1, float $$2, float $$3) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Override
+   public void a(azs $$0, BiConsumer<alc<eqq>, alc<eqq>> $$1) {
+      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      return a($$0, edo.a.c, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(epb $$0, eoj.a $$1) {
-      ji $$2 = new ji($$1.h().d(), 90, $$1.h().e());
-      dqw $$3 = dqw.a($$1.f());
-      eqv.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   public Stream<alc<eqq>> a() {
+      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(eqs::a);
    }
 
    @Override
-   public eos<?> e() {
-      return eos.k;
-   }
-
-   public static enum a implements azv {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<eqw.a> c = azv.a(eqw.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public MapCodec<eqw> b() {
+      return a;
    }
 }

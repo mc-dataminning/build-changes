@@ -1,63 +1,38 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.OptionalDynamic;
+import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class bfx extends DataFix {
-   private static final Set<String> a = Set.of(
-      "filled_map.buried_treasure",
-      "filled_map.explorer_jungle",
-      "filled_map.explorer_swamp",
-      "filled_map.mansion",
-      "filled_map.monument",
-      "filled_map.trial_chambers",
-      "filled_map.village_desert",
-      "filled_map.village_plains",
-      "filled_map.village_savanna",
-      "filled_map.village_snowy",
-      "filled_map.village_taiga"
-   );
+public class bfx extends bhn {
+   private final String a;
+   private final boolean b;
 
-   public bfx(Schema $$0) {
-      super($$0, false);
+   public bfx(Schema $$0, String $$1, String $$2, boolean $$3) {
+      super($$0, true, "Horse armor fix for " + $$1, biq.D, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bic.E.typeName(), bju.a()));
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("ItemStack custom_name to item_name component fix", $$0, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-         Optional<String> $$4 = $$3.map(Pair::getSecond);
-         if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
-            return $$2x.updateTyped($$2, bfx::b);
-         } else {
-            return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent() ? $$2x.updateTyped($$2, bfx::a) : $$2x;
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Dynamic<T> $$3 = $$0.remove(this.a);
+         if (this.b) {
+            $$3 = $$3.update(
+               "ArmorItems", $$0x -> $$0x.createList(Streams.mapWithIndex($$0x.asStream(), ($$0xx, $$1x) -> $$1x == 2L ? $$0xx.emptyMap() : $$0xx))
+            );
+            $$3 = $$3.update(
+               "ArmorDropChances",
+               $$0x -> $$0x.createList(Streams.mapWithIndex($$0x.asStream(), ($$0xx, $$1x) -> $$1x == 2L ? $$0xx.createFloat(0.085F) : $$0xx))
+            );
          }
-      });
-   }
 
-   private static <T> Typed<T> a(Typed<T> $$0) {
-      return a($$0, a::contains);
-   }
-
-   private static <T> Typed<T> b(Typed<T> $$0) {
-      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
-   }
-
-   private static <T> Typed<T> a(Typed<T> $$0, Predicate<String> $$1) {
-      return af.a($$0, $$0.getType(), $$1x -> {
-         OptionalDynamic<?> $$2 = $$1x.get("minecraft:custom_name");
-         Optional<String> $$3 = $$2.asString().result().flatMap(baq::d).filter($$1);
-         return $$3.isPresent() ? $$1x.renameField("minecraft:custom_name", "minecraft:item_name") : $$1x;
-      });
+         $$3 = $$3.set("body_armor_item", $$2);
+         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
+      } else {
+         return $$0;
+      }
    }
 }

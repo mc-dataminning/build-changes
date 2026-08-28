@@ -2,44 +2,50 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 public class bbq extends DataFix {
-   private static final Set<String> a = Set.of(
-      "minecraft:beacon",
-      "minecraft:banner",
-      "minecraft:brewing_stand",
-      "minecraft:chest",
-      "minecraft:trapped_chest",
-      "minecraft:dispenser",
-      "minecraft:dropper",
-      "minecraft:enchanting_table",
-      "minecraft:furnace",
-      "minecraft:hopper",
-      "minecraft:shulker_box"
-   );
-
    public bbq(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bju.a());
-      Type<?> $$1 = this.getInputSchema().getType(bic.s);
-      Type<?> $$2 = this.getOutputSchema().getType(bic.s);
-      Type<?> $$3 = bao.a($$1, $$1, $$2);
-      return this.fixTypeEverywhereTyped("BlockEntityCustomNameToComponentFix", $$1, $$2, $$3x -> {
-         Optional<String> $$4 = $$3x.getOptional($$0);
-         return $$4.isPresent() && !a.contains($$4.get()) ? bao.a($$2, $$3x) : af.a(bao.a($$3, $$3x), $$2, bbq::a);
+      Type<?> $$0 = this.getInputSchema().getType(biq.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(biq.s);
+      OpticFinder<?> $$2 = $$0.findField("CustomName");
+      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(biq.z));
+      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$3x -> {
+         Object $$4 = ((Pair)$$3x.get($$1.finder())).getFirst();
+         return $$4.equals("minecraft:banner") ? this.a($$3x, $$3, $$2) : $$3x;
       });
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", baq.a($$0.getOps(), $$1));
+   private Typed<?> a(Typed<?> $$0, OpticFinder<Pair<String, String>> $$1, OpticFinder<?> $$2) {
+      Optional<String> $$3 = $$0.getOptionalTyped($$2).flatMap($$1x -> $$1x.getOptional($$1).map(Pair::getSecond));
+      boolean $$4 = $$3.flatMap(bba::d).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
+      return $$4
+         ? af.a(
+            $$0,
+            $$0.getType(),
+            $$1x -> {
+               Dynamic<?> $$2x = $$1x.createMap(
+                  Map.of(
+                     $$1x.createString("minecraft:item_name"),
+                     $$1x.createString($$3.get()),
+                     $$1x.createString("minecraft:hide_additional_tooltip"),
+                     $$1x.emptyMap()
+                  )
+               );
+               return $$1x.set("components", $$2x).remove("CustomName");
+            }
+         )
+         : $$0;
    }
 }

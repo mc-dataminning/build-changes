@@ -1,132 +1,73 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import java.nio.ByteBuffer;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
 import javax.annotation.Nullable;
 
-public class fem implements AutoCloseable {
-   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
-   private final fek d;
-   private final fel e;
-   private boolean f;
-   private boolean g = false;
-   public final int a;
-   public int b;
-
-   public fem(fek $$0, fel $$1, int $$2) {
-      this.d = $$0;
-      this.b = $$2;
-      this.e = $$1;
-      this.a = GlStateManager._glGenBuffers();
-   }
-
-   public fem(fek $$0, fel $$1, ByteBuffer $$2) {
-      this($$0, $$1, $$2.remaining());
-      this.a($$2, 0);
-   }
-
-   public void a(int $$0) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
+public record fem<T>(T d, jj e, long f, feq g, long h) {
+   public static final Comparator<fem<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
       } else {
-         if (this.g) {
-            c.free((long)this.a);
-         }
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<fem<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<fem<?>> c = new Strategy<fem<?>>() {
+      public int a(fem<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
 
-         this.b = $$0;
-         if (this.e.l) {
-            this.g = false;
+      public boolean a(@Nullable fem<?> $$0, @Nullable fem<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
          } else {
-            this.b();
-            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
-            c.malloc((long)this.a, $$0);
-            this.g = true;
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
+   };
+
+   public fem(T $$0, jj $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, feq.d, $$3);
    }
 
-   public void a(ByteBuffer $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.l) {
-         throw new IllegalStateException("Buffer is not writable");
-      } else {
-         int $$2 = $$0.remaining();
-         if ($$2 + $$1 > this.b) {
-            throw new IllegalArgumentException(
-               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
-            );
-         } else {
-            this.b();
-            if (this.g) {
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-            } else if ($$1 == 0 && $$2 == this.b) {
-               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
-            } else {
-               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
-            }
-         }
-      }
+   public fem(T d, jj e, long f, feq g, long h) {
+      e = e.j();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
-   @Nullable
-   public fem.a a() {
-      return this.a(0, this.b);
+   public static <T> fem<T> a(T $$0, jj $$1) {
+      return new fem<>($$0, $$1, 0L, feq.d, 0L);
    }
 
-   @Nullable
-   public fem.a a(int $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.k) {
-         throw new IllegalStateException("Buffer is not readable");
-      } else if ($$0 + $$1 > this.b) {
-         throw new IllegalArgumentException(
-            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
-         );
-      } else {
-         this.b();
-         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
-         return $$2 == null ? null : new fem.a(this.d.h, $$2);
-      }
+   public fel<T> a(long $$0) {
+      return new fel<>(this.d, this.e, (int)(this.f - $$0), this.g);
    }
 
-   @Override
-   public void close() {
-      if (!this.f) {
-         this.f = true;
-         GlStateManager._glDeleteBuffers(this.a);
-         if (this.g) {
-            c.free((long)this.a);
-         }
-      }
+   public T a() {
+      return this.d;
    }
 
-   public void b() {
-      GlStateManager._glBindBuffer(this.d.h, this.a);
+   public jj b() {
+      return this.e;
    }
 
-   public static class a implements AutoCloseable {
-      private final int a;
-      private final ByteBuffer b;
+   public long c() {
+      return this.f;
+   }
 
-      protected a(int $$0, ByteBuffer $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public feq d() {
+      return this.g;
+   }
 
-      public ByteBuffer a() {
-         return this.b;
-      }
-
-      @Override
-      public void close() {
-         GlStateManager._glUnmapBuffer(this.a);
-      }
+   public long e() {
+      return this.h;
    }
 }

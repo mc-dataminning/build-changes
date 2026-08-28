@@ -1,84 +1,103 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public record goo(gon b, gon c, gon d, gon e, gon f, gon g, gon h, gon i) {
-   public static final goo a = new goo(gon.a, gon.a, gon.a, gon.a, gon.a, gon.a, gon.a, gon.a);
+public record goo(Map<String, String> c, Set<String> d) {
+   public static final goo a = new goo(Map.of(), Set.of());
+   public static final Codec<goo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(goo::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(goo::e)
+            )
+            .apply($$0, goo::new)
+   );
 
-   public gon a(cxf $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gon.a;
-      };
+   public static goo.a a() {
+      return new goo.a();
    }
 
-   public gon a() {
-      return this.b;
+   public goo a(goo $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
+      } else {
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new goo($$1.buildKeepingLast(), $$2.build());
+      }
    }
 
-   public gon b() {
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
       return this.c;
    }
 
-   public gon c() {
+   public Set<String> e() {
       return this.d;
    }
 
-   public gon d() {
-      return this.e;
-   }
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
 
-   public gon e() {
-      return this.f;
-   }
-
-   public gon f() {
-      return this.g;
-   }
-
-   public gon g() {
-      return this.h;
-   }
-
-   public gon h() {
-      return this.i;
-   }
-
-   protected static class a implements JsonDeserializer<goo> {
-      public goo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         gon $$4 = this.a($$2, $$3, cxf.c);
-         gon $$5 = this.a($$2, $$3, cxf.b);
-         if ($$5 == gon.a) {
-            $$5 = $$4;
-         }
-
-         gon $$6 = this.a($$2, $$3, cxf.e);
-         gon $$7 = this.a($$2, $$3, cxf.d);
-         if ($$7 == gon.a) {
-            $$7 = $$6;
-         }
-
-         gon $$8 = this.a($$2, $$3, cxf.f);
-         gon $$9 = this.a($$2, $$3, cxf.g);
-         gon $$10 = this.a($$2, $$3, cxf.h);
-         gon $$11 = this.a($$2, $$3, cxf.i);
-         return new goo($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      a() {
       }
 
-      private gon a(JsonDeserializationContext $$0, JsonObject $$1, cxf $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gon)$$0.deserialize($$1.get($$3), gon.class) : gon.a;
+      public goo.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
+         } else {
+            this.a.put($$0, b($$1));
+            return this;
+         }
+      }
+
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
+
+      public goo.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public goo.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public goo a() {
+         return new goo(this.a.build(), this.b.build());
       }
    }
 }

@@ -1,35 +1,66 @@
-import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public interface dcf<T extends dbv<?>> {
-   dcf<dcj> a = a("crafting_shaped", new dcj.a());
-   dcf<dcl> b = a("crafting_shapeless", new dcl.a());
-   dcf<dbc> c = a("crafting_special_armordye", new dbl.a<>(dbc::new));
-   dcf<dbf> d = a("crafting_special_bookcloning", new dbl.a<>(dbf::new));
-   dcf<dbs> e = a("crafting_special_mapcloning", new dbl.a<>(dbs::new));
-   dcf<dbt> f = a("crafting_special_mapextending", new dbl.a<>(dbt::new));
-   dcf<dbo> g = a("crafting_special_firework_rocket", new dbl.a<>(dbo::new));
-   dcf<dbq> h = a("crafting_special_firework_star", new dbl.a<>(dbq::new));
-   dcf<dbp> i = a("crafting_special_firework_star_fade", new dbl.a<>(dbp::new));
-   dcf<dcw> j = a("crafting_special_tippedarrow", new dbl.a<>(dcw::new));
-   dcf<dbd> k = a("crafting_special_bannerduplicate", new dbl.a<>(dbd::new));
-   dcf<dcm> l = a("crafting_special_shielddecoration", new dbl.a<>(dcm::new));
-   dcf<dcx> m = a("crafting_transmute", new dcx.a());
-   dcf<dch> n = a("crafting_special_repairitem", new dbl.a<>(dch::new));
-   dcf<dcp> o = a("smelting", new dbb.b<>(dcp::new, 200));
-   dcf<dbe> p = a("blasting", new dbb.b<>(dbe::new, 100));
-   dcf<dcu> q = a("smoking", new dbb.b<>(dcu::new, 100));
-   dcf<dbg> r = a("campfire_cooking", new dbb.b<>(dbg::new, 100));
-   dcf<dcv> s = a("stonecutting", new dcn.b<>(dcv::new));
-   dcf<dcs> t = a("smithing_transform", new dcs.a());
-   dcf<dct> u = a("smithing_trim", new dct.a());
-   dcf<dbm> v = a("crafting_decorated_pot", new dbl.a<>(dbm::new));
+public class dcf extends dcb {
+   private static final dch c = dch.a(cyc.vy);
 
-   MapCodec<T> a();
+   public dcf(dby $$0) {
+      super($$0);
+   }
 
-   @Deprecated
-   yn<wa, T> b();
+   public boolean a(dbz $$0, dhp $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   static <S extends dcf<T>, T extends dbv<?>> S a(String $$0, S $$1) {
-      return ke.a(mb.r, $$0, $$1);
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cww) {
+                  $$2 = true;
+               } else {
+                  if (!c.a($$5)) {
+                     return false;
+                  }
+
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cxy a(dbz $$0, ju.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cxy $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxy $$5 = $$0.a($$4);
+         if ($$5.h() instanceof cww $$7) {
+            $$2.add($$7.b().f());
+         } else if (c.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kx.ag, dak.a, $$2, dak::a);
+         return $$3;
+      } else {
+         return cxy.k;
+      }
+   }
+
+   @Override
+   public dcv<dcf> a() {
+      return dcv.i;
    }
 }

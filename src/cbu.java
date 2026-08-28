@@ -1,59 +1,67 @@
-public class cbu implements cbv {
-   private final bwa a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public cbu(bwa $$0) {
-      this.a = $$0;
+public class cbu {
+   public static byj<cpu> a(float $$0) {
+      return cbv.a(
+         (Function<cbv.b<cpu>, ? extends App<cbv.c<cpu>, cby<cpu>>>)($$1 -> $$1.group($$1.b(cft.d), $$1.c(cft.c), $$1.b(cft.g), $$1.a(cft.n), $$1.a(cft.o))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.n_()) {
+                           return false;
+                        } else if (!$$7.gy().b().a(cpx.b)) {
+                           return false;
+                        } else {
+                           jj $$9 = $$1.<jr>b($$2).b();
+                           Optional<js<chw>> $$10 = $$6x.A().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bwr>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cpu && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cpu)$$0xxxx)
+                                 .filter(bwr::bK)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.eb().c(cft.c).isEmpty()) {
+                                       byk.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.eb().a(cft.d, jr.a($$6x.aj(), $$9));
+                                       agj.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aV = this.a.dK();
-         this.c();
-         this.f = this.a.aX;
-         this.e = 0;
+   private static boolean a(js<chw> $$0, cpu $$1, jj $$2) {
+      boolean $$3 = $$1.eb().c(cft.d).isPresent();
+      if ($$3) {
+         return false;
       } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aX - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aX;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
+         Optional<jr> $$4 = $$1.eb().c(cft.c);
+         js<cpx> $$5 = $$1.gy().b();
+         if ($$5.a().b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
          }
       }
    }
 
-   private void b() {
-      this.a.aV = ayz.c(this.a.aV, this.a.aX, (float)this.a.ad());
-   }
-
-   private void c() {
-      this.a.aX = ayz.c(this.a.aX, this.a.aV, (float)this.a.ad());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = ayz.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.ad() * (1.0F - $$1);
-      this.a.aV = ayz.c(this.a.aV, this.a.aX, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cY() instanceof bwa);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dz() - this.a.K;
-      double $$1 = this.a.dF() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   private static boolean a(bwz $$0, jj $$1, chw $$2) {
+      evh $$3 = $$0.O().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

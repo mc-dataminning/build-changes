@@ -1,30 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record ddo<T>(T a, Optional<ezx> b) {
-   public static Codec<ezx> a(baj $$0) {
-      return ezx.e
-         .validate(
-            $$1 -> {
-               azf.a $$2 = new azf.a();
-               ewu $$3 = new ewu($$2, $$0);
-               $$1.a($$3);
-               return $$2.b()
-                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
-                  .orElseGet(() -> DataResult.success($$1));
-            }
-         );
+public record ddo(js<cxu> c, int d, ku e) {
+   private static final Codec<ddo> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxu.e.fieldOf("id").forGetter(ddo::b),
+               ays.a(1, 99).optionalFieldOf("count", 1).forGetter(ddo::c),
+               ku.b.optionalFieldOf("components", ku.a).forGetter(ddo::d)
+            )
+            .apply($$0, ddo::new)
+   );
+   public static final Codec<ddo> a = Codec.withAlternative(f, cxu.e, $$0 -> new ddo((cxu)$$0.a())).validate(ddo::a);
+   public static final yt<wg, ddo> b = yt.a(cxu.f, ddo::b, yr.h, ddo::c, ku.c, ddo::d, ddo::new);
+
+   public ddo(cxu $$0) {
+      this($$0.f(), 1, ku.a);
    }
 
-   public static <T> Codec<ddo<T>> a(Codec<T> $$0, baj $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(ddo::a), a($$1).optionalFieldOf("requirements").forGetter(ddo::b)).apply($$2, ddo::new)
-      );
+   private static DataResult<ddo> a(ddo $$0) {
+      return cxy.a(new cxy($$0.c, $$0.d, $$0.e)).map($$1 -> $$0);
    }
 
-   public boolean a(ewo $$0) {
-      return this.b.isEmpty() ? true : this.b.get().test($$0);
+   public cxy a(cxy $$0) {
+      cxy $$1 = $$0.a(this.c.a(), this.d);
+      $$1.b(this.e);
+      return $$1;
+   }
+
+   public ddx a() {
+      return new ddx.f(new cxy(this.c, this.d, this.e));
+   }
+
+   public js<cxu> b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public ku d() {
+      return this.e;
    }
 }

@@ -1,15 +1,57 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fjb implements UncaughtExceptionHandler {
-   private final Logger a;
+public class fjb extends fjt implements fjn {
+   @SerializedName("name")
+   @Nullable
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public fjb(Logger $$0) {
+   public String a() {
+      return this.a == null ? "" : this.a;
+   }
+
+   public void a(String $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   public UUID b() {
+      return this.b;
+   }
+
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

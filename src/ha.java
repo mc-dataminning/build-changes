@@ -10,14 +10,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
-public class ha implements ArgumentType<gv> {
-   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("argument.pos.mixed"));
-   private final boolean d;
+public class ha implements ArgumentType<gw> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.pos2d.incomplete"));
+   private final boolean c;
 
    public ha(boolean $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    public static ha a() {
@@ -28,16 +27,26 @@ public class ha implements ArgumentType<gv> {
       return new ha($$0);
    }
 
-   public static fbx a(CommandContext<ex> $$0, String $$1) {
-      return ((gv)$$0.getArgument($$1, gv.class)).a((ex)$$0.getSource());
+   public static fct a(CommandContext<ex> $$0, String $$1) {
+      fcu $$2 = ((gw)$$0.getArgument($$1, gw.class)).a((ex)$$0.getSource());
+      return new fct((float)$$2.d, (float)$$2.f);
    }
 
-   public static gv b(CommandContext<ex> $$0, String $$1) {
-      return (gv)$$0.getArgument($$1, gv.class);
-   }
-
-   public gv a(StringReader $$0) throws CommandSyntaxException {
-      return (gv)($$0.canRead() && $$0.peek() == '^' ? gw.a($$0) : hc.a($$0, this.d));
+   public gw a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         hc $$2 = hc.a($$0, this.c);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            hc $$3 = hc.a($$0, this.c);
+            return new hd($$2, new hc(true, 0.0), $$3);
+         } else {
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
+         }
+      }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -52,11 +61,11 @@ public class ha implements ArgumentType<gv> {
             $$3 = ((fc)$$0.getSource()).B();
          }
 
-         return fc.a($$2, $$3, $$1, ey.a(this::a));
+         return fc.b($$2, $$3, $$1, ey.a(this::a));
       }
    }
 
    public Collection<String> getExamples() {
-      return c;
+      return b;
    }
 }

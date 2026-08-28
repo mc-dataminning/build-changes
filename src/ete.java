@@ -1,113 +1,157 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class ete extends etn<etf.a, etf> {
-   private final ji.a g = new ji.a();
+public class ete {
+   private dpv a;
+   private drm b;
+   private jj c;
+   private boolean d;
+   @Nullable
+   private eoy e;
+   private ess f;
+   @Nullable
+   private azs g;
+   private int h;
+   private final List<etf> i;
+   private boolean j;
+   private boolean k;
 
-   public ete(dzz $$0) {
-      this($$0, new etf($$0));
+   public ete() {
+      this.a = dpv.a;
+      this.b = drm.a;
+      this.c = jj.c;
+      this.f = ess.b;
+      this.i = Lists.newArrayList();
    }
 
-   @VisibleForTesting
-   public ete(dzz $$0, etf $$1) {
-      super($$0, $$1);
+   public ete a() {
+      ete $$0 = new ete();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
    }
 
-   @Override
-   protected void a(long $$0) {
-      long $$1 = kk.e($$0);
-      if (this.f.b($$1)) {
-         dxq $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, etn.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
+   public ete a(dpv $$0) {
+      this.a = $$0;
+      return this;
+   }
 
-         if ($$3 > 0) {
-            this.c($$0, etn.a.a($$3, a($$2)));
-         }
+   public ete a(drm $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public ete a(jj $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public ete a(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public ete a(eoy $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public ete a(@Nullable azs $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public ete a(ess $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public ete b(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public ete b() {
+      this.i.clear();
+      return this;
+   }
+
+   public ete a(etf $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public ete b(etf $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public dpv c() {
+      return this.a;
+   }
+
+   public drm d() {
+      return this.b;
+   }
+
+   public jj e() {
+      return this.c;
+   }
+
+   public azs b(@Nullable jj $$0) {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return $$0 == null ? azs.a(af.c()) : azs.a(azk.a($$0));
       }
    }
 
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dxq $$3 = null;
+   public boolean f() {
+      return this.d;
+   }
 
-      for (jn $$4 : d) {
-         if (etn.a.a($$1, $$4)) {
-            long $$5 = ji.a($$0, $$4);
-            if (this.f.b(kk.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dxq $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.b($$8);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = etn.a.b($$1) ? dkg.a.m() : this.c(this.g.f($$0));
-                     }
+   @Nullable
+   public eoy g() {
+      return this.e;
+   }
 
-                     if (!this.a($$3, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, etn.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
+   public boolean h() {
+      return this.j;
+   }
+
+   public List<etf> i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.f == ess.b;
+   }
+
+   public eti.b a(List<eti.b> $$0, @Nullable jj $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
+      } else {
+         return $$0.get(this.b($$1).a($$2));
       }
    }
 
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = etn.a.a($$1);
-
-      for (jn $$3 : d) {
-         if (etn.a.a($$1, $$3)) {
-            long $$4 = ji.a($$0, $$3);
-            if (this.f.b(kk.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dxq $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, etn.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, etn.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, etn.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
+   public ete c(boolean $$0) {
+      this.k = $$0;
+      return this;
    }
 
-   private int a(long $$0, dxq $$1) {
-      int $$2 = $$1.k();
-      return $$2 > 0 && this.f.j(kk.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(dgg $$0) {
-      this.a($$0, true);
-      dzy $$1 = this.e.c($$0.h, $$0.i);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.k();
-            this.c($$0x.a(), etn.a.a($$2, a($$1x)));
-         });
-      }
+   public boolean k() {
+      return this.k;
    }
 }

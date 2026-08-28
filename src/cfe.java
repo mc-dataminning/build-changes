@@ -1,60 +1,51 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cfe {
-   private static final cfe a = new cfe();
-   private final List<bvy> b;
-   private final Predicate<bvy> c;
+public class cfe extends cfn {
+   private final cis a;
+   @Nullable
+   private bwr b;
+   private final chg c = chg.a().a(64.0);
 
-   private cfe() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public cfe(cis $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(cdn.a.d));
    }
 
-   public cfe(ard $$0, bvy $$1, List<bvy> $$2) {
-      this.b = $$2;
-      Object2BooleanOpenHashMap<bvy> $$3 = new Object2BooleanOpenHashMap($$2.size());
-      Predicate<bvy> $$4 = $$2x -> cgi.b($$0, $$1, $$2x);
-      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
-   }
+   @Override
+   public boolean b() {
+      fcp $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      arn $$1 = a(this.a);
+      List<? extends bwr> $$2 = $$1.a(cpu.class, this.c, this.a, $$0);
+      List<cqi> $$3 = $$1.a(this.c, this.a, $$0);
 
-   public static cfe a() {
-      return a;
-   }
+      for (bwr $$4 : $$2) {
+         cpu $$5 = (cpu)$$4;
 
-   public Optional<bvy> a(Predicate<bvy> $$0) {
-      for (bvy $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
+         for (cqi $$6 : $$3) {
+            int $$7 = $$5.f($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
+            }
          }
       }
 
-      return Optional.empty();
-   }
-
-   public Iterable<bvy> b(Predicate<bvy> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bvy> c(Predicate<bvy> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bvy $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bvy> $$0) {
-      for (bvy $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
+      if (this.b == null) {
+         return false;
+      } else {
+         if (this.b instanceof cqi $$8 && ($$8.U_() || $$8.b())) {
+            return false;
          }
-      }
 
-      return false;
+         return true;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.h(this.b);
+      super.d();
    }
 }

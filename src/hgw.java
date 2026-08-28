@@ -1,40 +1,50 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class hgw implements auj, AutoCloseable {
-   private final hfq a;
-   private final aku b;
-   private final Set<atp<?>> c;
+@FunctionalInterface
+public interface hgw {
+   Logger a = LogUtils.getLogger();
 
-   public hgw(hft $$0, aku $$1, aku $$2) {
-      this($$0, $$1, $$2, hfm.a);
+   static hgw create(Collection<atz<?>> $$0) {
+      return ($$1, $$2) -> {
+         avc $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         fgo $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fgo.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         Optional<hif> $$11 = $$3.a(hif.b);
+         hig $$12;
+         if ($$11.isPresent()) {
+            $$12 = $$11.get().a($$7.a(), $$7.b());
+            if (!azk.c($$7.a(), $$12.a()) || !azk.c($$7.b(), $$12.b())) {
+               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+               $$7.close();
+               return null;
+            }
+         } else {
+            $$12 = new hig($$7.a(), $$7.b());
+         }
+
+         return new hgm($$1, $$12, $$7, $$3);
+      };
    }
 
-   public hgw(hft $$0, aku $$1, aku $$2, Set<atp<?>> $$3) {
-      this.b = $$2;
-      this.a = new hfq($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
-
-   protected hfr a(aku $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, Executor $$2, Executor $$3) {
-      return hfm.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hfm.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
-   }
-
-   private void a(hfm.a $$0) {
-      try (bpo $$1 = bpi.a().d("upload")) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
-   }
+   @Nullable
+   hgm loadSprite(ald var1, auy var2);
 }

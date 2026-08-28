@@ -1,94 +1,31 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface ewi {
-   int d = 19133;
-   int e = 19132;
+public record ewi(ald d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<js<ewi>> b = md.ar.r();
+   public static final yt<wg, js<ewi>> c = yr.b(me.aC);
 
-   dhx D();
-
-   void a(dhx var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public boolean a() {
+      return this.f != -1;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   public ald b() {
+      return this.d;
    }
 
-   @Nullable
-   tq E();
+   public boolean c() {
+      return this.e;
+   }
 
-   void a(@Nullable tq var1);
+   public int d() {
+      return this.f;
+   }
 
-   ewh I();
+   public boolean e() {
+      return this.g;
+   }
 
-   dhd J();
-
-   tq a(kf var1, @Nullable tq var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dgw k();
-
-   void a(dgw var1);
-
-   boolean m();
-
-   bsv q();
-
-   void a(bsv var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dgv o();
-
-   @Nullable
-   tq w();
-
-   ebp.a C();
-
-   void a(ebp.a var1);
-
-   eem y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default csn K() {
-      return this.D().b();
+   public boolean f() {
+      return this.h;
    }
 }

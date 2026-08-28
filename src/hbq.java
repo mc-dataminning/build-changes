@@ -1,5 +1,8 @@
-public class hbq extends haj {
-   public cis.b a = cis.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class hbq extends hak {
+   public jo a = jo.c;
+   @Nullable
+   public cmj b;
+   public int[] c = new int[0];
 }

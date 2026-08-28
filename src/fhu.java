@@ -1,96 +1,158 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fhu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 20;
-   private final fhh c = fhh.a();
-   private final Path d;
-   private final fio e;
-   private final fms f;
-   private final long g;
-   private final int h;
-   private final fhv i;
-   private volatile boolean j;
+public record fhu(int i, int j, fhu.a k, fhu.b l, int m) {
+   public static final int a = 32;
+   private static final fhu[] n = new fhu[32];
+   private static final List<fhu> o = new ArrayList<>(32);
+   public static final fhu b = a(0, 0, fhu.a.a, fhu.b.a, 3);
+   public static final fhu c = a(1, 0, fhu.a.b, fhu.b.c, 4);
+   public static final fhu d = a(2, 0, fhu.a.a, fhu.b.d, 2);
+   public static final fhu e = d;
+   public static final fhu f = a(3, 1, fhu.a.e, fhu.b.d, 2);
+   public static final fhu g = a(4, 2, fhu.a.e, fhu.b.d, 2);
+   public static final fhu h = a(5, 0, fhu.a.c, fhu.b.b, 3);
+
+   public fhu(int i, int j, fhu.a k, fhu.b l, int m) {
+      if (i < 0 || i >= n.length) {
+         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
+      } else if (!this.a(j, l)) {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      } else {
+         this.i = i;
+         this.j = j;
+         this.k = k;
+         this.l = l;
+         this.m = m;
+      }
+   }
+
+   public static fhu a(int $$0, int $$1, fhu.a $$2, fhu.b $$3, int $$4) {
+      fhu $$5 = new fhu($$0, $$1, $$2, $$3, $$4);
+      if (n[$$0] != null) {
+         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
+      } else {
+         n[$$0] = $$5;
+         o.add($$5);
+         return $$5;
+      }
+   }
+
+   private boolean a(int $$0, fhu.b $$1) {
+      return $$0 == 0 || $$1 == fhu.b.d;
+   }
+
+   @Override
+   public String toString() {
+      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   }
+
+   public int a() {
+      return 1 << this.i;
+   }
+
+   public int b() {
+      return this.k.a() * this.m;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   }
+
    @Nullable
-   private fhf k;
-
-   public fhu(Path $$0, fio $$1, fms $$2, long $$3, int $$4, fhv $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   public static fhu a(int $$0) {
+      return n[$$0];
    }
 
-   public CompletableFuture<?> a() {
-      return CompletableFuture.runAsync(() -> {
-         File $$0 = null;
-
-         try {
-            fiv $$1 = this.c();
-            $$0 = fht.a(this.d, () -> this.j);
-            this.i.d();
-            fhf $$2 = new fhf($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
-            this.k = $$2;
-            fkm $$3 = $$2.a();
-            String $$4 = $$3.a();
-            if ($$4 != null) {
-               throw new fhq($$4);
-            }
-
-            fky.b(this.g);
-            this.c.a(this.g, this.h, this.e);
-         } catch (IOException var11) {
-            throw new fhq(var11.getMessage());
-         } catch (fjd var12) {
-            throw new fhq(var12.a.b());
-         } catch (CancellationException | InterruptedException var13) {
-            throw new fho();
-         } finally {
-            if ($$0 != null) {
-               b.debug("Deleting file {}", $$0.getAbsolutePath());
-               $$0.delete();
-            }
-         }
-      }, af.h());
+   public static Stream<fhu> b(int $$0) {
+      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
    }
 
-   public void b() {
-      this.j = true;
-      if (this.k != null) {
-         this.k.b();
-         this.k = null;
+   public int c() {
+      return this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public fhu.a e() {
+      return this.k;
+   }
+
+   public fhu.b f() {
+      return this.l;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(final int $$0, final String $$1, final int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public int b() {
+         return this.j;
+      }
+
+      @Override
+      public String toString() {
+         return this.i;
       }
    }
 
-   private fiv c() throws fjd, InterruptedException {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         try {
-            fiv $$1 = this.c.i(this.g);
-            if (this.j) {
-               throw new fho();
-            }
-
-            if ($$1 != null) {
-               if (!$$1.c()) {
-                  throw new fhs();
-               }
-
-               return $$1;
-            }
-         } catch (fje var3) {
-            Thread.sleep((long)var3.c * 1000L);
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
          }
+      }),
+      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
+
+      private final String f;
+      final fhu.b.a g;
+
+      private b(final String $$0, final fhu.b.a $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      throw new fhs();
+      @Override
+      public String toString() {
+         return this.f;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
+      }
    }
 }

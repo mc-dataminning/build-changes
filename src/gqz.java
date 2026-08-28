@@ -1,151 +1,80 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gqz implements gqy.a {
-   private final fmg a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<gqz.a> d = Lists.newArrayList();
-   private final List<gqz.b> e = Lists.newArrayList();
+public class gqz extends gqe {
+   private static final float a = 0.6666667F;
+   private static final fcu b = new fcu(0.0, 0.33333334F, 0.046666667F);
+   private final Map<eaa, gqz.a> c;
 
-   public gqz(fmg $$0) {
-      this.a = $$0;
+   public gqz(gql.a $$0) {
+      super($$0);
+      this.c = eaa.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gqz.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      dgz $$5 = this.a.s;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
-      } else {
-         fbx $$6 = new fbx($$2, 0.0, $$4);
-         this.d.removeIf(gqz.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         fgv $$7 = $$1.getBuffer(gnh.y());
+   protected gew a(dym $$0, eaa $$1) {
+      gqz.a $$2 = this.c.get($$1);
+      return $$0.b() instanceof dsv ? $$2.a() : $$2.b();
+   }
 
-         for (gqz.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               gqy.a($$0, $$7, fco.a(new fbs($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
+   @Override
+   protected hiz a(eaa $$0) {
+      return got.a($$0);
+   }
 
-         fgv $$9 = $$1.getBuffer(gnh.B());
+   @Override
+   protected float a() {
+      return 0.6666667F;
+   }
 
-         for (gqz.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> gnr.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
+   @Override
+   protected float b() {
+      return 0.6666667F;
+   }
 
-         for (gqz.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               gqy.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               gqy.a($$0, $$1, ji.a((kb)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
+   private static void a(fho $$0, float $$1) {
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+   }
 
-         for (gqz.a $$12 : this.d) {
-            fbx $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.d - 0.2F;
-            double $$16 = $$13.e - 0.2F;
-            double $$17 = $$13.f - 0.2F;
-            double $$18 = $$13.d + 0.2F;
-            double $$19 = $$13.e + 0.2F + 0.5;
-            double $$20 = $$13.f + 0.2F;
-            a($$0, $$1, new fbs($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            gqy.a($$0, $$1, $$12.b.a().toString(), $$13.d, $$13.e + 0.85F, $$13.f, -7564911, 0.0075F);
-         }
+   @Override
+   protected void a(fho $$0, float $$1, dym $$2) {
+      a($$0, $$1);
+      if (!($$2.b() instanceof dsv)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
       }
    }
 
-   private static void a(fgr $$0, gmx $$1, fbs $$2, float $$3, float $$4, float $$5, float $$6) {
-      flo $$7 = fmg.Q().j.k();
-      if ($$7.h()) {
-         fbx $$8 = $$7.b().e();
-         gqy.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
+   @Override
+   protected fcu c() {
+      return b;
    }
 
-   public void a(akt<ecp> $$0, fbx $$1) {
-      this.d.add(new gqz.a(af.c(), $$0, $$1));
+   public static void a(fho $$0, gny $$1, int $$2, int $$3, gew $$4, hiz $$5) {
+      $$0.a();
+      a($$0, 0.0F);
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fhs $$6 = $$5.a($$1, $$4::a);
+      $$4.a($$0, $$6, $$2, $$3);
+      $$0.b();
    }
 
-   public void a(ect $$0, int $$1) {
-      this.e.add(new gqz.b($$0, $$1));
+   public static gew a(ggz $$0, eaa $$1, boolean $$2) {
+      ghb $$3 = $$2 ? ghc.a($$1) : ghc.b($$1);
+      return new gew.a($$0.a($$3), goi::g);
    }
 
-   static record a(long a, akt<ecp> b, fbx c) {
-
-      public boolean a() {
-         return af.c() - this.a > 3000L;
+   public static ghj a(boolean $$0) {
+      ghl $$1 = new ghl();
+      ghn $$2 = $$1.a();
+      $$2.a("sign", ghi.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), ghf.a);
+      if ($$0) {
+         $$2.a("stick", ghi.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), ghf.a);
       }
 
-      public long b() {
-         return this.a;
-      }
-
-      public akt<ecp> c() {
-         return this.b;
-      }
-
-      public fbx d() {
-         return this.c;
-      }
+      return ghj.a($$1, 64, 32);
    }
 
-   static class b implements ecr {
-      public final ect a;
-      public final int b;
-
-      public b(ect $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public boolean a(dgz $$0, fbx $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<fbx> a(dgz $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public ect a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(ard $$0, jr<ecp> $$1, ecp.a $$2, fbx $$3) {
-         return false;
-      }
+   static record a(gew a, gew b) {
    }
 }

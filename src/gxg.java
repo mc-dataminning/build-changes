@@ -1,32 +1,25 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gxg extends gvl<cnz, hcw, ggq> {
+   private static final ald a = ald.b("textures/entity/witch.png");
 
-public class gxg extends gxs<gzz, gdl> {
-   private static final aku a = aku.b("invisible");
-   private static final Map<cka, aku> b = Maps.newEnumMap(
-      Map.of(
-         cka.a,
-         a,
-         cka.b,
-         aku.b("textures/entity/horse/horse_markings_white.png"),
-         cka.c,
-         aku.b("textures/entity/horse/horse_markings_whitefield.png"),
-         cka.d,
-         aku.b("textures/entity/horse/horse_markings_whitedots.png"),
-         cka.e,
-         aku.b("textures/entity/horse/horse_markings_blackdots.png")
-      )
-   );
-
-   public gxg(gva<gzz, gdl> $$0) {
-      super($$0);
+   public gxg(guf.a $$0) {
+      super($$0, new ggq($$0.a(ghc.dL)), 0.5F);
+      this.a(new gzf(this));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, gzz $$3, float $$4, float $$5) {
-      aku $$6 = b.get($$3.h);
-      if ($$6 != a && !$$3.z) {
-         fgv $$7 = $$1.getBuffer(gnh.j($$6));
-         this.d().a($$0, $$7, $$2, gue.a($$3, 0.0F));
-      }
+   public ald a(hcw $$0) {
+      return a;
+   }
+
+   public hcw b() {
+      return new hcw();
+   }
+
+   public void a(cnz $$0, hcw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      haz.a($$0, $$1, this.h);
+      $$1.a = $$0.ar();
+      cxy $$3 = $$0.fa();
+      $$1.b = !$$3.f();
+      $$1.c = $$3.a(cyc.tm);
    }
 }

@@ -1,40 +1,83 @@
-public class cwr extends cxd {
-   public cwr(cxd.a $$0) {
+import java.util.Collection;
+import javax.annotation.Nullable;
+
+public class cwr extends cxu {
+   public cwr(cxu.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsy a(daz $$0) {
-      cpr $$1 = $$0.o();
-      dgz $$2 = $$0.q();
-      ji $$3 = $$0.a();
-      dxq $$4 = $$2.a_($$3);
-      if (!dkt.i($$4) && !dku.h($$4) && !dkv.h($$4)) {
-         ji $$5 = $$3.a($$0.k());
-         if (djr.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, awa.jz, awb.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
-            dxq $$6 = djr.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, ecp.i, $$3);
-            cxh $$7 = $$0.n();
-            if ($$1 instanceof are) {
-               ap.z.a((are)$$1, $$5, $$7);
-               $$7.a(1, $$1, bvy.d($$0.p()));
-            }
-
-            return bsy.a;
-         } else {
-            return bsy.d;
-         }
-      } else {
-         $$2.a($$1, $$3, awa.jz, awb.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(dyg.u, Boolean.valueOf(true)), 11);
-         $$2.a($$1, ecp.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bvy.d($$0.p()));
-         }
-
-         return bsy.a;
+   public boolean a(cxy $$0, dym $$1, dhp $$2, jj $$3, bwr $$4) {
+      if (!$$2.C && $$4 instanceof cqi $$5) {
+         this.a($$5, $$1, $$2, $$3, false, $$0);
       }
+
+      return false;
+   }
+
+   @Override
+   public btq a(dbp $$0) {
+      cqi $$1 = $$0.o();
+      dhp $$2 = $$0.q();
+      if (!$$2.C && $$1 != null) {
+         jj $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return btq.d;
+         }
+      }
+
+      return btq.a;
+   }
+
+   private boolean a(cqi $$0, dym $$1, dhq $$2, jj $$3, boolean $$4, cxy $$5) {
+      if (!$$0.gF()) {
+         return false;
+      } else {
+         js<dku> $$6 = $$1.c();
+         dyn<dku, dym> $$7 = $$6.a().l();
+         Collection<dzp<?>> $$8 = $$7.d();
+         if ($$8.isEmpty()) {
+            a($$0, wv.a(this.m + ".empty", $$6.g()));
+            return false;
+         } else {
+            dai $$9 = $$5.a(kx.X);
+            if ($$9 == null) {
+               return false;
+            } else {
+               dzp<?> $$10 = $$9.a().get($$6);
+               if ($$4) {
+                  if ($$10 == null) {
+                     $$10 = $$8.iterator().next();
+                  }
+
+                  dym $$11 = a($$1, $$10, $$0.fX());
+                  $$2.a($$3, $$11, 18);
+                  a($$0, wv.a(this.m + ".update", $$10.f(), a($$11, $$10)));
+               } else {
+                  $$10 = a($$8, $$10, $$0.fX());
+                  $$5.b(kx.X, $$9.a($$6, $$10));
+                  a($$0, wv.a(this.m + ".select", $$10.f(), a($$1, $$10)));
+               }
+
+               return true;
+            }
+         }
+      }
+   }
+
+   private static <T extends Comparable<T>> dym a(dym $$0, dzp<T> $$1, boolean $$2) {
+      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? af.b($$0, $$1) : af.a($$0, $$1);
+   }
+
+   private static void a(cqi $$0, wv $$1) {
+      ((aro)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dym $$0, dzp<T> $$1) {
+      return $$1.b($$0.c($$1));
    }
 }

@@ -1,81 +1,117 @@
-import java.util.List;
+public class fzh extends fzl {
+   private static final wv a = wv.c("options.languageAccuracyWarning").b(-4539718);
+   private static final int u = 53;
+   private fzh.a v;
+   final hic w;
 
-public class fzh extends fqw {
-   private static final frd c = new frd(aku.b("recipe_book/tab"), aku.b("recipe_book/tab_selected"));
-   private final fzf.a d;
-   private static final float e = 15.0F;
-   private float f;
-
-   public fzh(fzf.a $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
-   }
-
-   public void a(flr $$0, boolean $$1) {
-      fzj.a $$2 = $$1 ? fzj.a.b : fzj.a.a;
-
-      for (fzj $$4 : $$0.a(this.d.c())) {
-         for (ddc $$5 : $$4.a($$2)) {
-            if ($$0.b($$5.a())) {
-               this.f = 15.0F;
-               return;
-            }
-         }
-      }
+   public fzh(fwf $$0, fnh $$1, hic $$2) {
+      super($$0, $$1, wv.c("options.language.title"));
+      this.w = $$2;
+      this.s.a(53);
    }
 
    @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
-         }
-
-         aku $$5 = this.a.a(true, this.b);
-         int $$6 = this.F();
-         if (this.b) {
-            $$6 -= 2;
-         }
-
-         $$0.a(gnh::H, $$5, $$6, this.G(), this.g, this.h);
-         this.a($$0);
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
-      }
+   protected void F() {
+      this.v = this.s.c(new fzh.a(this.m));
    }
 
-   private void a(fpc $$0) {
-      int $$1 = this.b ? -2 : 0;
-      if (this.d.b().isPresent()) {
-         $$0.b(this.d.a(), this.F() + 3 + $$1, this.G() + 5);
-         $$0.b(this.d.b().get(), this.F() + 14 + $$1, this.G() + 5);
-      } else {
-         $$0.b(this.d.a(), this.F() + 9 + $$1, this.G() + 5);
+   @Override
+   protected void m() {
+   }
+
+   @Override
+   protected void E() {
+      fuf $$0 = this.s.b(fuf.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fru(a, this.p));
+      fuf $$1 = $$0.a(fuf.e().a(8));
+      $$1.a(fqn.a(wv.c("options.font"), $$0x -> this.m.a(new fzg(this, this.c))).a());
+      $$1.a(fqn.a(wu.d, $$0x -> this.H()).a());
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.v.a(this.n, this.s);
+   }
+
+   void H() {
+      fzh.a.a $$0 = this.v.p();
+      if ($$0 != null && !$$0.b.equals(this.w.a())) {
+         this.w.a($$0.b);
+         this.c.ab = $$0.b;
+         this.m.l();
       }
+
+      this.m.a(this.b);
    }
 
-   public dbn b() {
-      return this.d.c();
-   }
-
-   public boolean a(flr $$0) {
-      List<fzj> $$1 = $$0.a(this.d.c());
-      this.k = false;
-
-      for (fzj $$2 : $$1) {
-         if ($$2.b()) {
-            this.k = true;
-            break;
+   class a extends frj<fzh.a.a> {
+      public a(final fnd $$0) {
+         super($$0, fzh.this.n, fzh.this.o - 33 - 53, 33, 18);
+         String $$1 = fzh.this.w.a();
+         fzh.this.w.b().forEach(($$1x, $$2) -> {
+            fzh.a.a $$3 = new fzh.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.p() != null) {
+            this.e(this.p());
          }
       }
 
-      return this.k;
+      @Override
+      public int a() {
+         return super.a() + 50;
+      }
+
+      public class a extends frj.a<fzh.a.a> {
+         final String b;
+         private final wv c;
+         private long d;
+
+         public a(final String $$1, final hib $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fzh.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fup.a($$0)) {
+               this.b();
+               fzh.this.H();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (af.c() - this.d < 250L) {
+               fzh.this.H();
+            }
+
+            this.d = af.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public wv a() {
+            return wv.a("narrator.select", this.c);
+         }
+      }
    }
 }

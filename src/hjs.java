@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hjs {
+public interface hjs {
+   void a(Map<UUID, ath.c> var1, Consumer<ath.b> var2);
 }

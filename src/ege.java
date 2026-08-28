@@ -1,48 +1,18 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.MapCodec;
 
-public class ege extends egu<ejf> {
-   public ege(Codec<ejf> $$0) {
-      super($$0);
+class ege implements efs {
+   public static ege a = new ege();
+   public static final MapCodec<ege> e = MapCodec.unit(() -> a);
+
+   private ege() {
+   }
+
+   public boolean a(dio $$0, jj $$1) {
+      return true;
    }
 
    @Override
-   public boolean a(egw<ejf> $$0) {
-      azh $$1 = $$0.d();
-      dhy $$2 = $$0.b();
-      dgg $$3 = new dgg($$0.e());
-      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ji.a $$6 = new ji.a();
-      IntListIterator var8 = $$4.iterator();
-
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ji $$9 = $$2.a(edo.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dkg.cD.m(), 2);
-               bte.a($$2, $$1, $$9, ewk.a);
-               dxq $$10 = dkg.cw.m();
-
-               for (jn $$11 : jn.c.a) {
-                  ji $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public eft<?> a() {
+      return eft.l;
    }
 }

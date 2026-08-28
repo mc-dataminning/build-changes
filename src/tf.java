@@ -1,76 +1,60 @@
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Optional;
 
-public record tf(String a, String b, String c, dqw d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sk> l) {
-   public tf(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<sk> $$6) {
-      this($$0, $$1, $$2, dqw.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
-   }
+public class tf implements st.c {
+   private static final int c = 5;
+   private static final int d = 6;
+   private final int e;
+   private int f;
+   private fcp g;
+   private final jj.a h;
+   private final jj i;
+   private final boolean j;
+   private float k = -1.0F;
+   private final Collection<so> l = new ArrayList<>();
 
-   public tf(String $$0, String $$1, String $$2, dqw $$3, int $$4, long $$5, boolean $$6, Consumer<sk> $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
-   }
-
-   public tf(String $$0, String $$1, String $$2, dqw $$3, int $$4, long $$5, boolean $$6, boolean $$7, Consumer<sk> $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, $$7, $$8);
-   }
-
-   public void a(sk $$0) {
-      this.l.accept($$0);
+   public tf(jj $$0, int $$1, boolean $$2) {
+      this.e = $$1;
+      this.h = $$0.k();
+      this.g = new fcp(this.h);
+      this.i = $$0;
+      this.j = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.b;
+   public void a(arn $$0) {
+      if (this.j) {
+         this.l.forEach($$1 -> {
+            eoy $$2 = $$1.f().d();
+            tg.a($$2, $$0);
+         });
+         this.l.clear();
+         this.g = new fcp(this.i);
+         this.h.g(this.i);
+      }
    }
 
-   public boolean a() {
-      return this.i > 1;
-   }
+   @Override
+   public Optional<so> spawnStructure(so $$0) {
+      jj $$1 = new jj(this.h);
+      $$0.a($$1);
+      $$0.o().a(1);
+      fcp $$2 = $$0.f().f();
+      this.g = this.g.b($$2);
+      this.h.e((int)$$2.b() + 5, 0, 0);
+      if ((float)this.h.u() > this.k) {
+         this.k = (float)this.h.u();
+      }
 
-   public String b() {
-      return this.a;
-   }
+      if (++this.f >= this.e) {
+         this.f = 0;
+         this.h.e(0, 0, (int)this.g.d() + 6);
+         this.h.p(this.i.u());
+         this.g = new fcp(this.h);
+      }
 
-   public String c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public dqw e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public long g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return this.g;
-   }
-
-   public boolean i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.j;
-   }
-
-   public boolean l() {
-      return this.k;
-   }
-
-   public Consumer<sk> m() {
-      return this.l;
+      this.l.add($$0);
+      return Optional.of($$0);
    }
 }

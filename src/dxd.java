@@ -1,116 +1,69 @@
-public enum dxd implements azv {
-   a("inactive", dxd.a.a) {
+import javax.annotation.Nullable;
+
+public class dxd extends dvl implements dik {
+   private final dgr a = new dgr() {
       @Override
-      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
-         $$3.a(cxh.k);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      public void a(dhp $$0, jj $$1, int $$2) {
+         $$0.a($$1, dkw.cA, $$2, 0);
       }
-   },
-   b("active", dxd.a.b) {
+
       @Override
-      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dwy.b.a($$0, this, $$2, $$3, $$1);
+      public void a(@Nullable dhp $$0, jj $$1, dij $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dym $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 260);
          }
-
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dxd.a.b) {
-      @Override
-      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
-         $$0.a(null, $$1, awa.BH, awb.e);
-      }
-   },
-   d("ejecting", dxd.a.b) {
-      @Override
-      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
-         $$0.a(null, $$1, awa.BJ, awb.e);
-      }
-
-      @Override
-      protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3) {
-         $$0.a(null, $$1, awa.BB, awb.e);
       }
    };
 
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dxd.a j;
-
-   dxd(final String $$0, final dxd.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public dxd(jj $$0, dym $$1) {
+      super(dvn.j, $$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   protected void a(tw $$0, ju.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.n, this.o, $$0);
    }
 
-   public int a() {
-      return this.j.c;
+   @Override
+   protected void b(tw $$0, ju.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
    }
 
-   public dxd a(ard $$0, ji $$1, dxa $$2, dxb $$3, dxc $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.ae() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.ae() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public static void a(dhp $$0, jj $$1, dym $$2, dxd $$3) {
+      $$3.a.a($$0, $$1);
    }
 
-   private static dxd a(ard $$0, ji $$1, dxa $$2, dxb $$3, dxc $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.ae() + 20L);
-      return $$4.c() ? b : a;
+   public static void b(dhp $$0, jj $$1, dym $$2, dxd $$3) {
+      $$3.a.a((arn)$$0, $$1);
    }
 
-   public void a(ard $$0, ji $$1, dxd $$2, dxa $$3, dxc $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
+   public abx a() {
+      return abx.a(this);
    }
 
-   protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3, boolean $$4) {
+   @Override
+   public tw a(ju.a $$0) {
+      tw $$1 = this.e($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
    }
 
-   protected void a(ard $$0, ji $$1, dxa $$2, dxc $$3) {
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
    }
 
-   private void a(ard $$0, ji $$1, cxh $$2, float $$3) {
-      lb.a($$0, $$2, 2, jn.b, fbx.c($$1).a(jn.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, awa.BD, awb.e, 1.0F, 0.8F + 0.4F * $$3);
+   @Override
+   public void a(bwb<?> $$0, azs $$1) {
+      this.a.a($$0, this.n, $$1, this.o);
+      this.e();
    }
 
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   public dgr c() {
+      return this.a;
    }
 }

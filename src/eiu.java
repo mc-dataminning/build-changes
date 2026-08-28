@@ -1,41 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiu implements eiy {
-   public static final Codec<eiu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxq.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dxq.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bsd.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bsd.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eiu::new)
-   );
-   private final dxq b;
-   private final dxq c;
-   private final bsd d;
-   private final bsd e;
+public class eiu extends ehr<ekd> {
+   private static final int a = 7;
 
-   public eiu(dxq $$0, dxq $$1, bsd $$2, bsd $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   eiu(Codec<ekd> $$0) {
+      super($$0);
    }
 
-   public dxq a() {
-      return this.b;
+   @Override
+   public boolean a(eht<ekd> $$0) {
+      dio $$1 = $$0.b();
+      azs $$2 = $$0.d();
+      ekd $$3 = $$0.f();
+      jj $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      jj.a $$6 = new jj.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dym $$8 = $$1.a_($$6);
+
+         for (ekd.a $$9 : $$3.b) {
+            if (eim.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public dxq b() {
-      return this.c;
+   private void a(jj.a $$0, azs $$1, jj $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
    }
 
-   public bsd c() {
-      return this.d;
-   }
-
-   public bsd d() {
-      return this.e;
+   private int a(azs $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

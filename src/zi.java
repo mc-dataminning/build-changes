@@ -1,23 +1,23 @@
-import java.util.Optional;
-import java.util.UUID;
+public interface zi extends abl {
+   void a(zm var1);
 
-public record zi(Optional<UUID> b) implements yw<zc> {
-   public static final yn<vl, zi> a = yw.a(zi::a, zi::new);
+   void a(zn var1);
 
-   private zi(vl $$0) {
-      this($$0.b(kl.g));
-   }
+   void a(zj var1);
 
-   private void a(vl $$0) {
-      $$0.a(this.b, kl.g);
-   }
+   void a(zl var1);
 
-   @Override
-   public yy<zi> a() {
-      return zo.f;
-   }
+   void a(zp var1);
 
-   public void a(zc $$0) {
-      $$0.a(this);
-   }
+   void a(zo var1);
+
+   void a(zt var1);
+
+   void a(zr var1);
+
+   void a(zs var1);
+
+   void a(zk var1);
+
+   void a(zq var1);
 }

@@ -1,69 +1,113 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
 
-public class gqg {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gql.b.a> c = new ObjectArrayList();
+public class gqg<T extends dvl & dvf> implements gqk<T> {
+   public static final ald a = ald.b("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
 
-   public synchronized void a(gql.b.a $$0) {
-      this.c.add($$0);
+   public gqg(gql.a $$0) {
    }
 
-   @Nullable
-   public synchronized gql.b.a a(fbx $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<gql.b.a> $$5 = this.c.listIterator();
+   @Override
+   public void a(T $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().ae();
+      List<dvf.a> $$7 = $$0.a();
+      int $$8 = 0;
 
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         gql.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
-         } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
-            }
-
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
-            }
-         }
-      }
-
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dvf.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
    }
 
-   public int a() {
-      return this.c.size();
+   private static void a(fho $$0, gny $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
    }
 
-   @Nullable
-   private gql.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
+   public static void a(fho $$0, gny $$1, ald $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = azk.i($$13 * 0.2F - (float)azk.d($$13 * 0.1F));
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$15 = 0.0F;
+      float $$18 = 0.0F;
+      float $$19 = -$$9;
+      float $$20 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 1.0F;
+      float $$25 = -1.0F + $$14;
+      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
+      a($$0, $$1.getBuffer(goi.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+      $$15 = -$$10;
+      float $$28 = -$$10;
+      $$18 = -$$10;
+      $$19 = -$$10;
+      $$23 = 0.0F;
+      $$24 = 1.0F;
+      $$25 = -1.0F + $$14;
+      $$26 = (float)$$7 * $$4 + $$25;
+      a($$0, $$1.getBuffer(goi.e($$2, true)), axu.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
    }
 
-   public synchronized void b() {
-      for (gql.b.a $$0 : this.c) {
-         $$0.a();
-      }
+   private static void a(
+      fho $$0,
+      fhs $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      fho.a $$17 = $$0.c();
+      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   }
 
-      this.c.clear();
+   private static void a(
+      fho.a $$0, fhs $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
+      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
+      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
+      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   }
+
+   private static void a(fho.a $$0, fhs $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hgi.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public boolean a(T $$0) {
+      return true;
+   }
+
+   @Override
+   public int aQ_() {
+      return 256;
+   }
+
+   @Override
+   public boolean a(T $$0, fcu $$1) {
+      return fcu.b($$0.aw_()).d(1.0, 0.0, 1.0).a((kc)$$1.d(1.0, 0.0, 1.0), (double)this.aQ_());
    }
 }

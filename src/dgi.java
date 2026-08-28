@@ -1,76 +1,56 @@
-import java.util.function.Predicate;
+import java.util.Optional;
 
 public class dgi {
-   private final fbx a;
-   private final fbx b;
-   private final dgi.a c;
-   private final dgi.b d;
-   private final fcc e;
+   public static final alc<dgh> a = a("sentry");
+   public static final alc<dgh> b = a("dune");
+   public static final alc<dgh> c = a("coast");
+   public static final alc<dgh> d = a("wild");
+   public static final alc<dgh> e = a("ward");
+   public static final alc<dgh> f = a("eye");
+   public static final alc<dgh> g = a("vex");
+   public static final alc<dgh> h = a("tide");
+   public static final alc<dgh> i = a("snout");
+   public static final alc<dgh> j = a("rib");
+   public static final alc<dgh> k = a("spire");
+   public static final alc<dgh> l = a("wayfinder");
+   public static final alc<dgh> m = a("shaper");
+   public static final alc<dgh> n = a("silence");
+   public static final alc<dgh> o = a("raiser");
+   public static final alc<dgh> p = a("host");
+   public static final alc<dgh> q = a("flow");
+   public static final alc<dgh> r = a("bolt");
 
-   public dgi(fbx $$0, fbx $$1, dgi.a $$2, dgi.b $$3, bva $$4) {
-      this($$0, $$1, $$2, $$3, fcc.a($$4));
+   public static void a(qg<dgh> $$0) {
+      a($$0, cyc.yB, a);
+      a($$0, cyc.yC, b);
+      a($$0, cyc.yD, c);
+      a($$0, cyc.yE, d);
+      a($$0, cyc.yF, e);
+      a($$0, cyc.yG, f);
+      a($$0, cyc.yH, g);
+      a($$0, cyc.yI, h);
+      a($$0, cyc.yJ, i);
+      a($$0, cyc.yK, j);
+      a($$0, cyc.yL, k);
+      a($$0, cyc.yM, l);
+      a($$0, cyc.yN, m);
+      a($$0, cyc.yO, n);
+      a($$0, cyc.yP, o);
+      a($$0, cyc.yQ, p);
+      a($$0, cyc.yR, q);
+      a($$0, cyc.yS, r);
    }
 
-   public dgi(fbx $$0, fbx $$1, dgi.a $$2, dgi.b $$3, fcc $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public static Optional<js.c<dgh>> a(ju.a $$0, cxy $$1) {
+      return $$0.e(me.bh).c().filter($$1x -> $$1.a(((dgh)$$1x.a()).b())).findFirst();
    }
 
-   public fbx a() {
-      return this.b;
+   public static void a(qg<dgh> $$0, cxu $$1, alc<dgh> $$2) {
+      dgh $$3 = new dgh($$2.a(), md.g.e($$1), wv.c(af.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   public fbx b() {
-      return this.a;
-   }
-
-   public fcr a(dxq $$0, dgf $$1, ji $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
-   }
-
-   public fcr a(etw $$0, dgf $$1, ji $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : fco.a();
-   }
-
-   public static enum a implements dgi.c {
-      a(dxp.a::b),
-      b(dxp.a::a),
-      c(dxp.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(awp.aT) ? fco.b() : fco.a());
-
-      private final dgi.c e;
-
-      private a(final dgi.c $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public fcr get(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public static enum b {
-      a($$0 -> false),
-      b(etw::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(awv.a));
-
-      private final Predicate<etw> e;
-
-      private b(final Predicate<etw> $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a(etw $$0) {
-         return this.e.test($$0);
-      }
-   }
-
-   public interface c {
-      fcr get(dxq var1, dgf var2, ji var3, fcc var4);
+   private static alc<dgh> a(String $$0) {
+      return alc.a(me.bh, ald.b($$0));
    }
 }

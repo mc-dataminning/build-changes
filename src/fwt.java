@@ -1,13 +1,140 @@
-import java.util.List;
+public abstract class fwt extends fwf {
+   private static final wv u = wv.c("advMode.setCommand");
+   private static final wv v = wv.c("advMode.command");
+   private static final wv w = wv.c("advMode.previousOutput");
+   protected fqw a;
+   protected fqw b;
+   protected fqn c;
+   protected fqn d;
+   protected fqu<Boolean> s;
+   fqq x;
 
-public class fwt extends fvy<ctu> {
-   private static final aku G = aku.b("container/furnace/lit_progress");
-   private static final aku H = aku.b("container/furnace/burn_progress");
-   private static final aku I = aku.b("textures/gui/container/furnace.png");
-   private static final wp J = wp.c("gui.recipebook.toggleRecipes.smeltable");
-   private static final List<fzf.a> K = List.of(new fzf.a(fzl.b), new fzf.a(cxl.qE, dbx.e), new fzf.a(cxl.b, dbx.f), new fzf.a(cxl.rj, cxl.ph, dbx.g));
+   public fwt() {
+      super(fmu.a);
+   }
 
-   public fwt(ctu $$0, cpq $$1, wp $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   @Override
+   public void e() {
+      if (!this.m().j()) {
+         this.aK_();
+      }
+   }
+
+   abstract dgq m();
+
+   abstract int E();
+
+   @Override
+   protected void aN_() {
+      this.c = this.c(fqn.a(wu.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fqn.a(wu.e, $$0x -> this.aK_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.s = this.c(fqu.a(wv.b("O"), wv.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, wv.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dgq $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fqw(this.p, this.n / 2 - 150, 50, 300, 20, wv.c("advMode.command")) {
+         @Override
+         protected xj d() {
+            return super.d().b(fwt.this.x.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fqw(this.p, this.n / 2 - 150, this.E(), 276, 20, wv.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new fqq(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aB_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected wv z() {
+      return this.x.a() ? this.x.b() : super.z();
+   }
+
+   @Override
+   public void a(fnd $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void F() {
+      dgq $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(dgq var1);
+
+   private void a(String $$0) {
+      this.x.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.F();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, u, this.n / 2, 20, 16777215);
+      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.x.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(fpz $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

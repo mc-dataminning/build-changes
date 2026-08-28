@@ -5,10 +5,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 
 public class fb {
-   public static <T> T a(Codec<T> $$0, jt.a $$1, DynamicCommandExceptionType $$2, StringReader $$3) throws CommandSyntaxException {
+   public static <T> T a(Codec<T> $$0, ju.a $$1, DynamicCommandExceptionType $$2, StringReader $$3) throws CommandSyntaxException {
       int $$4 = $$3.getCursor();
-      un $$5 = new uo($$3).d();
-      DataResult<T> $$6 = $$0.parse($$1.a(ue.a), $$5);
+      ut $$5 = new uu($$3).d();
+      DataResult<T> $$6 = $$0.parse($$1.a(uk.a), $$5);
       return (T)$$6.getOrThrow($$3x -> {
          $$3.setCursor($$4);
          return $$2.createWithContext($$3, $$3x);

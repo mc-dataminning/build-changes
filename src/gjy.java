@@ -1,15 +1,15 @@
-public class gjy extends glg {
-   private final glb a;
+public class gjy extends gmh {
+   private final gmc a;
 
-   protected gjy(ggy $$0, double $$1, double $$2, double $$3, double $$4, glb $$5) {
+   gjy(ghz $$0, double $$1, double $$2, double $$3, double $$4, gmc $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
+      this.a = $$5;
+      this.t = 4;
       float $$6 = this.r.i() * 0.6F + 0.4F;
       this.v = $$6;
       this.w = $$6;
       this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
+      this.D = 1.0F - (float)$$4 * 0.5F;
       this.b($$5);
    }
 
@@ -31,18 +31,18 @@ public class gjy extends glg {
    }
 
    @Override
-   public gkk b() {
-      return gkk.b;
+   public gll b() {
+      return gll.b;
    }
 
-   public static class a implements gkj<lx> {
-      private final glb a;
+   public static class a implements glk<lz> {
+      private final gmc a;
 
-      public a(glb $$0) {
+      public a(gmc $$0) {
          this.a = $$0;
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new gjy($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }

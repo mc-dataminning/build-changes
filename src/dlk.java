@@ -1,96 +1,127 @@
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class dlk extends dpw {
-   public static final MapCodec<dlk> a = b(dlk::new);
+public class dlk extends djm implements dsb {
+   public static final MapCodec<dlk> c = b(dlk::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final dzm f = dzc.aC;
+   public static final dzd g = djm.b;
+   public static final dzd h = dzc.I;
+   public static final ToIntFunction<dym> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<fcu>> C = af.a(
+      new Int2ObjectOpenHashMap(4),
+      $$0 -> {
+         float $$1 = 0.0625F;
+         $$0.put(1, List.of(new fcu(8.0, 8.0, 8.0).c(0.0625)));
+         $$0.put(2, List.of(new fcu(6.0, 7.0, 8.0).c(0.0625), new fcu(10.0, 8.0, 7.0).c(0.0625)));
+         $$0.put(3, List.of(new fcu(8.0, 5.0, 10.0).c(0.0625), new fcu(6.0, 7.0, 8.0).c(0.0625), new fcu(9.0, 8.0, 7.0).c(0.0625)));
+         $$0.put(
+            4, List.of(new fcu(7.0, 5.0, 9.0).c(0.0625), new fcu(10.0, 7.0, 9.0).c(0.0625), new fcu(6.0, 7.0, 6.0).c(0.0625), new fcu(9.0, 8.0, 6.0).c(0.0625))
+         );
+      }
+   );
+   private static final fdo[] Q = new fdo[]{
+      dku.b(2.0, 0.0, 6.0), dku.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0), dku.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0), dku.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0)
+   };
 
    @Override
    public MapCodec<dlk> a() {
-      return a;
+      return c;
    }
 
-   protected dlk(dxp.d $$0) {
-      super(10.0F, $$0);
-      this.l(
-         this.B
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
+   public dlk(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(f, Integer.valueOf(1)).b(g, Boolean.valueOf(false)).b(h, Boolean.valueOf(false)));
    }
 
    @Override
-   public dxq a(dax $$0) {
-      return a($$0.q(), $$0.a(), this.m());
-   }
-
-   public static dxq a(dgf $$0, ji $$1, dxq $$2) {
-      dxq $$3 = $$0.a_($$1.e());
-      dxq $$4 = $$0.a_($$1.d());
-      dxq $$5 = $$0.a_($$1.f());
-      dxq $$6 = $$0.a_($$1.i());
-      dxq $$7 = $$0.a_($$1.g());
-      dxq $$8 = $$0.a_($$1.h());
-      dke $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dkg.kX) || $$3.a(dkg.fU)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dkg.kX)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dkg.kX)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dkg.kX)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dkg.kX)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dkg.kX)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected btq a(cxy $$0, dym $$1, dhp $$2, jj $$3, cqi $$4, btp $$5, fcq $$6) {
+      if ($$0.f() && $$4.gj().e && $$1.c(g)) {
+         a($$4, $$1, $$2, $$3);
+         return btq.a;
       } else {
-         boolean $$8 = $$6.a(this) || $$6.a(dkg.kX) || $$4 == jn.a && $$6.a(dkg.fU);
-         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected boolean a(dym $$0, dbn $$1) {
+      return !$$1.h() && $$1.n().h() == this.i() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public dym a(dbn $$0) {
+      dym $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         eut $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == euu.c;
+         return super.a($$0).b(h, Boolean.valueOf($$3));
       }
    }
 
    @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      dxq $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$0.c(h)) {
+         $$2.a($$3, euu.c, euu.c.a($$1));
+      }
 
-      for (jn $$5 : jn.c.a) {
-         ji $$6 = $$2.a($$5);
-         dxq $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-            dxq $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dkg.fU)) {
-               return true;
-            }
+   @Override
+   protected eut b_(dym $$0) {
+      return $$0.c(h) ? euu.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return Q[$$0.c(f) - 1];
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(f, g, h);
+   }
+
+   @Override
+   public boolean a(dhq $$0, jj $$1, dym $$2, eut $$3) {
+      if (!$$2.c(h) && $$3.a() == euu.c) {
+         dym $$4 = $$2.b(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
          }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      return $$3.a(this) || $$3.a(dkg.fU);
+   public static boolean h(dym $$0) {
+      return $$0.a(awz.ag, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected Iterable<fcu> b(dym $$0) {
+      return (Iterable<fcu>)C.get($$0.c(f));
    }
 
    @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
+   protected boolean d(dym $$0) {
+      return !$$0.c(h) && super.d($$0);
+   }
+
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return dku.a($$1, $$2.e(), jo.b);
    }
 }

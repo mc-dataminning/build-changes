@@ -1,28 +1,22 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
 
-public class bcb extends bat {
-   private final String a;
-   private final String b;
-   private final String c;
-   private final UnaryOperator<String> d;
+public class bcb extends bhm {
+   public bcb(Schema $$0, String $$1) {
+      super($$0, false, "BlockEntityFurnaceBurnTimeFix" + $$1, biq.s, $$1);
+   }
 
-   public bcb(Schema $$0, String $$1, String $$2, String $$3, String $$4, UnaryOperator<String> $$5) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = $$0.renameField("CookTime", "cooking_time_spent");
+      $$0 = $$0.renameField("CookTimeTotal", "cooking_total_time");
+      $$0 = $$0.renameField("BurnTime", "lit_time_remaining");
+      return $$0.setFieldIfPresent("lit_total_time", $$0.get("lit_time_remaining").result());
    }
 
    @Override
-   protected boolean a(String $$0) {
-      return $$0.equals(this.a);
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(String $$0, Dynamic<T> $$1) {
-      return $$1.renameAndFixField(this.b, this.c, $$0x -> $$0x.createString(this.d.apply($$0x.asString(""))));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

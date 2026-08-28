@@ -1,21 +1,57 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public class dpv extends dtl {
-   public static final MapCodec<dpv> b = b(dpv::new);
-   private static final Map<jn, fcr> e = fco.c(dke.b(10.0, 8.0, 8.0, 16.0));
+public enum dpv implements bag {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dpv> a() {
-      return b;
+   public static final Codec<dpv> d = bag.a(dpv::values);
+   private final String e;
+   private final wv f;
+   private final h g;
+
+   private dpv(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = wv.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dpv(dxp.d $$0) {
-      super(drm.b.h, $$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public drm a(jo $$0) {
+      jo.a $$1 = $$0.o();
+      return (this != b || $$1 != jo.a.c) && (this != c || $$1 != jo.a.a) ? drm.a : drm.c;
+   }
+
+   public jo b(jo $$0) {
+      if (this == c && $$0.o() == jo.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == jo.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public wv b() {
+      return this.f;
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return e.get($$0.c(d));
+   public String c() {
+      return this.e;
    }
 }

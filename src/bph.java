@@ -1,32 +1,66 @@
-import java.nio.file.Path;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface bph {
-   char d = '\u001e';
+public final class bph {
+   private final Object2ObjectMap<bpa<?>, Object> a = new Object2ObjectArrayMap();
 
-   List<bpl> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   public <T> void a(bpa<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   default int f() {
-      return this.d() - this.b();
+   @Nullable
+   public <T> T a(bpa<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   String e();
+   public <T> T b(bpa<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   public <T> T b(bpa<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bpa<T>... $$0) {
+      for (bpa<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bpa<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(bph $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof bph $$1 ? this.a.equals($$1.a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -1,35 +1,32 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class hfz {
-   private static final BiMap<aku, hfy> i = HashBiMap.create();
-   public static final hfy a = a("single", hge.b);
-   public static final hfy b = a("directory", hgb.b);
-   public static final hfy c = a("filter", hgf.b);
-   public static final hfy d = a("unstitch", hgg.b);
-   public static final hfy e = a("paletted_permutations", hgd.b);
-   public static Codec<hfy> f = aku.a.flatXmap($$0 -> {
-      hfy $$1 = (hfy)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      aku $$1 = (aku)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<hfw> g = f.dispatch(hfw::a, hfy::a);
-   public static Codec<List<hfw>> h = g.listOf().fieldOf("sources").codec();
+public class hfz implements hfs {
+   private final ggh a;
 
-   private static hfy a(String $$0, MapCodec<? extends hfw> $$1) {
-      hfy $$2 = new hfy($$1);
-      aku $$3 = aku.b($$0);
-      hfy $$4 = (hfy)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   public hfz(ggh $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(cxw $$0, fho $$1, gny $$2, int $$3, int $$4, boolean $$5) {
+      $$1.a();
+      $$1.b(1.0F, -1.0F, -1.0F);
+      fhs $$6 = gvd.a($$2, this.a.a(ggh.a), false, $$5);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
+   }
+
+   public static record a() implements hfw.a {
+      public static final MapCodec<hfz.a> a = MapCodec.unit(new hfz.a());
+
+      @Override
+      public MapCodec<hfz.a> a() {
+         return a;
+      }
+
+      @Override
+      public hfw<?> a(ggz $$0) {
+         return new hfz(new ggh($$0.a(ghc.dx)));
       }
    }
 }

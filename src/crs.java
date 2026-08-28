@@ -1,12 +1,16 @@
-import java.util.function.Supplier;
+public class crs extends crr {
+   private static final float f = 3.0F;
 
-public class crs extends cro {
-   public crs(bvi<? extends crs> $$0, dgz $$1, Supplier<cxd> $$2) {
-      super($$0, $$1, $$2);
+   public crs(bwb<? extends crr> $$0, dhp $$1) {
+      super($$0, $$1);
+   }
+
+   public crs(cof $$0, dhp $$1) {
+      super(bwb.s, $$1, $$0, $$0.dA(), $$0.x(), $$0.dG());
    }
 
    @Override
-   protected double b(bvd $$0) {
-      return (double)($$0.b() / 3.0F);
+   protected void a(fcu $$0) {
+      this.dV().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dhp.a.e, lv.A, lv.z, awk.cQ);
    }
 }

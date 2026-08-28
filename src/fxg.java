@@ -1,33 +1,27 @@
-public class fxg extends fpq {
-   private static final aku a = aku.b("widget/page_forward_highlighted");
-   private static final aku b = aku.b("widget/page_forward");
-   private static final aku c = aku.b("widget/page_backward_highlighted");
-   private static final aku d = aku.b("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+public class fxg extends fwu<ctw> {
+   private static final ald G = ald.b("textures/gui/container/generic_54.png");
+   private final int H;
 
-   public fxg(int $$0, int $$1, boolean $$2, fpq.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, wo.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
+   public fxg(ctw $$0, cqh $$1, wv $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.H = $$0.m();
+      this.u = 114 + this.H * 18;
+      this.y = this.u - 94;
    }
 
    @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      aku $$4;
-      if (this.u) {
-         $$4 = this.D() ? a : b;
-      } else {
-         $$4 = this.D() ? c : d;
-      }
-
-      $$0.a(gnh::H, $$4, this.F(), this.G(), 23, 13);
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(hku $$0) {
-      if (this.v) {
-         $$0.a(hjj.a(awa.cy, 1.0F));
-      }
+   protected void a(fpz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(goi::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.H * 18 + 17, 256, 256);
+      $$0.a(goi::H, G, $$4, $$5 + this.H * 18 + 17, 0.0F, 126.0F, this.s, 96, 256, 256);
    }
 }

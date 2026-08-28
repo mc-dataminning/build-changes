@@ -1,25 +1,29 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public enum epf implements azv {
-   a("linear"),
-   b("triangular");
+public abstract class epf extends epg {
+   private final epf.a d;
+   private final int e;
+   private final int f;
 
-   public static final Codec<epf> c = azv.a(epf::values);
-   private final String d;
-
-   private epf(final String $$0) {
+   protected epf(epf.a $$0, int $$1, int $$2, epg.c $$3) {
+      super($$3);
       this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public Optional<epg.b> a(epg.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, eel.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public int a(azh $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   private void a(epy $$0, epg.a $$1) {
+      dgw $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      epk construct(efk var1, int var2, int var3);
    }
 }

@@ -1,38 +1,22 @@
-public class guq extends guj<cif, har, gdy> {
-   private static final aku a = aku.b("textures/entity/parrot/parrot_red_blue.png");
-   private static final aku b = aku.b("textures/entity/parrot/parrot_blue.png");
-   private static final aku k = aku.b("textures/entity/parrot/parrot_green.png");
-   private static final aku l = aku.b("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aku m = aku.b("textures/entity/parrot/parrot_grey.png");
+public class guq extends gvl<cne, hda, geo<hda>> {
+   private static final ald a = ald.b("textures/entity/zombie/zombie.png");
 
-   public guq(gtd.a $$0) {
-      super($$0, new gdy($$0.a(ggb.bP)), 0.3F);
+   public guq(guf.a $$0, float $$1) {
+      super($$0, new geh($$0.a(ghc.aY)), 0.5F * $$1);
+      this.a(new gyl<>(this));
+      this.a(new gyi<>(this, new geh($$0.a(ghc.aZ)), new geh($$0.a(ghc.ba)), $$0.h()));
    }
 
-   public aku a(har $$0) {
-      return a($$0.a);
+   public ald a(hda $$0) {
+      return a;
    }
 
-   public har b() {
-      return new har();
+   public hda b() {
+      return new hda();
    }
 
-   public void a(cif $$0, har $$1, float $$2) {
+   public void a(cne $$0, hda $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gG();
-      float $$3 = ayz.h($$2, $$0.bM, $$0.bJ);
-      float $$4 = ayz.h($$2, $$0.bL, $$0.bK);
-      $$1.b = (ayz.a($$3) + 1.0F) * $$4;
-      $$1.c = gdy.a($$0);
-   }
-
-   public static aku a(cif.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-         case e -> m;
-      };
+      guw.a($$0, $$1, $$2, this.h);
    }
 }

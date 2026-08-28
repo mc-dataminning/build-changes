@@ -1,23 +1,96 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fir extends fiw implements fiq {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class fir {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 20;
+   private final fie c = fie.a();
+   private final Path d;
+   private final fjl e;
+   private final fnp f;
+   private final long g;
+   private final int h;
+   private final fis i;
+   private volatile boolean j;
+   @Nullable
+   private fic k;
 
-   public fir(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fir(Path $$0, fjl $$1, fnp $$2, long $$3, int $$4, fis $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 
-   public int a() {
-      return this.b;
+   public CompletableFuture<?> a() {
+      return CompletableFuture.runAsync(() -> {
+         File $$0 = null;
+
+         try {
+            fjs $$1 = this.c();
+            $$0 = fiq.a(this.d, () -> this.j);
+            this.i.d();
+            fic $$2 = new fic($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
+            this.k = $$2;
+            flj $$3 = $$2.a();
+            String $$4 = $$3.a();
+            if ($$4 != null) {
+               throw new fin($$4);
+            }
+
+            flv.b(this.g);
+            this.c.a(this.g, this.h, this.e);
+         } catch (IOException var11) {
+            throw new fin(var11.getMessage());
+         } catch (fka var12) {
+            throw new fin(var12.a.b());
+         } catch (CancellationException | InterruptedException var13) {
+            throw new fil();
+         } finally {
+            if ($$0 != null) {
+               b.debug("Deleting file {}", $$0.getAbsolutePath());
+               $$0.delete();
+            }
+         }
+      }, af.h());
    }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+   public void b() {
+      this.j = true;
+      if (this.k != null) {
+         this.k.b();
+         this.k = null;
+      }
+   }
+
+   private fjs c() throws fka, InterruptedException {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         try {
+            fjs $$1 = this.c.i(this.g);
+            if (this.j) {
+               throw new fil();
+            }
+
+            if ($$1 != null) {
+               if (!$$1.c()) {
+                  throw new fip();
+               }
+
+               return $$1;
+            }
+         } catch (fkb var3) {
+            Thread.sleep((long)var3.c * 1000L);
+         }
+      }
+
+      throw new fip();
    }
 }

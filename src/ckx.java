@@ -1,80 +1,57 @@
 import javax.annotation.Nullable;
 
-public class ckx extends ckr {
-   private static final cgp b = cgp.a().d();
+public class ckx extends ckn {
+   private static final bvv bE = bwb.bO.n().a(bvu.a().a(bvt.a, 0.0F, bwb.bO.m() - 0.03125F, 0.0F)).a(0.5F);
+
+   public ckx(bwb<? extends ckx> $$0, dhp $$1) {
+      super($$0, $$1);
+   }
+
+   public static bxw.a q() {
+      return gR().a(bxx.s, 15.0).a(bxx.v, 0.2F);
+   }
+
+   public static boolean c(bwb<? extends cig> $$0, dhq $$1, bwa $$2, jj $$3, azs $$4) {
+      return !bwa.a($$2) ? cig.b($$0, $$1, $$2, $$3, $$4) : bwa.b($$2) || a($$1, $$3);
+   }
+
+   @Override
+   protected void a(azs $$0) {
+      this.g(bxx.o).a(a($$0::j));
+   }
+
+   @Override
+   protected awj u() {
+      return awk.Ey;
+   }
+
+   @Override
+   protected awj l_() {
+      return awk.Ez;
+   }
+
+   @Override
+   protected awj e(buh $$0) {
+      return awk.EA;
+   }
+
    @Nullable
-   private euk c;
-   @Nullable
-   private fbx d;
-
-   public ckx(ckp $$0) {
-      super($$0);
+   @Override
+   public bvi a(arn $$0, bvi $$1) {
+      return bwb.bO.a($$0, bwa.e);
    }
 
    @Override
-   public clf<ckx> h() {
-      return clf.c;
+   public btq b(cqi $$0, btp $$1) {
+      return (btq)(!this.gH() ? btq.e : super.b($$0, $$1));
    }
 
    @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
+   protected void gI() {
    }
 
    @Override
-   public void a(ard $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
-   }
-
-   @Nullable
-   @Override
-   public fbx f() {
-      return this.d;
-   }
-
-   private void b(ard $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.n();
-         ji $$2 = $$0.a(edo.a.f, egt.a(this.a.j()));
-         cpr $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            fbx $$4 = new fbx($$3.dz(), 0.0, $$3.dF()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
-
-         eui $$7 = new eui($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.t().a(clf.d);
-      }
-   }
-
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         km $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fbx($$1, $$3, $$2);
-      }
+   public bvv e(bxd $$0) {
+      return this.n_() ? bE : super.e($$0);
    }
 }

@@ -1,10 +1,15 @@
-public class cxg extends cwv {
-   public cxg(bvi<? extends clo> $$0, cxd.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class cxg extends cxu {
+   public cxg(cxu.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cpr $$0, jn $$1, cxh $$2, ji $$3) {
-      return !$$0.dU().s($$3) && $$0.a($$3, $$1, $$2);
+   public void a(cxy $$0, cxu.b $$1, List<wv> $$2, czn $$3) {
+      dak $$4 = $$0.a(kx.ag);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
+      }
    }
 }

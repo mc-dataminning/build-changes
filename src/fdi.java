@@ -1,45 +1,37 @@
-public class fdi {
-   private static final fds<Object> a = new fds<Object>() {
-      @Override
-      public void a(fdp<Object> $$0) {
-      }
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(ji $$0, Object $$1) {
-         return false;
-      }
+public class fdi extends fde {
+   @Nullable
+   private jj b;
+   @Nullable
+   private jj c;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final fdl<Object> b = new fdl<Object>() {
-      @Override
-      public void a(fdp<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(ji $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(ji $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> fds<T> a() {
-      return (fds<T>)a;
+   protected fdi(csh $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   public static <T> fdl<T> b() {
-      return (fdl<T>)b;
+   private void a(csh $$0) {
+      jj $$1 = $$0.j();
+      dym $$2 = $$0.dV().a_($$1);
+      boolean $$3 = dkj.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dzq $$4 = $$2.c(((dkj)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
+   }
+
+   @Override
+   public fdo a(dym $$0, dgz $$1, jj $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fdl.a();
    }
 }

@@ -1,59 +1,99 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
+import com.mojang.logging.LogUtils;
+import java.net.SocketAddress;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record bqj(Instant a, long b, bqj.b c) {
-   public static bqj a(RecordedEvent $$0) {
-      return new bqj($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bqj.b.a : bqj.b.b);
-   }
+public interface bqj {
+   bqj f = (bqj)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bqi.a() : new bqj.a());
 
-   public static bqj.a a(Duration $$0, List<bqj> $$1, Duration $$2, int $$3) {
-      return new bqj.a($$0, $$2, $$3, a($$1));
-   }
+   boolean a(bqh var1);
 
-   private static double a(List<bqj> $$0) {
-      long $$1 = 0L;
-      Map<bqj.b, List<bqj>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
-      List<bqj> $$3 = $$2.get(bqj.b.a);
-      List<bqj> $$4 = $$2.get(bqj.b.b);
+   Path b();
 
-      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-         bqj $$6 = $$3.get($$5);
-         bqj $$7 = $$4.get($$5 - 1);
-         $$1 += $$6.b - $$7.b;
+   boolean c();
+
+   boolean d();
+
+   void a(float var1);
+
+   void a(vp var1, ze<?> var2, SocketAddress var3, int var4);
+
+   void b(vp var1, ze<?> var2, SocketAddress var3, int var4);
+
+   void a(ecc var1, dgw var2, ecb var3, int var4);
+
+   void b(ecc var1, dgw var2, ecb var3, int var4);
+
+   @Nullable
+   bqm e();
+
+   @Nullable
+   bqm a(dgw var1, alc<dhp> var2, String var3);
+
+   @Nullable
+   bqm a(dgw var1, alc<dhp> var2, js<epg> var3);
+
+   public static class a implements bqj {
+      private static final Logger b = LogUtils.getLogger();
+      static final bqm a = $$0 -> {
+      };
+
+      @Override
+      public boolean a(bqh $$0) {
+         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
+         return false;
       }
 
-      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
-      return (double)$$1 / (double)$$8.getSeconds();
-   }
-
-   public static record a(Duration a, Duration b, int c, double d) {
-      public float a() {
-         return (float)this.b.toMillis() / (float)this.a.toMillis();
+      @Override
+      public Path b() {
+         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
       }
 
-      public Duration b() {
-         return this.a;
+      @Override
+      public boolean c() {
+         return false;
       }
 
-      public Duration c() {
-         return this.b;
+      @Override
+      public boolean d() {
+         return false;
       }
 
-      public int d() {
-         return this.c;
+      @Override
+      public void a(vp $$0, ze<?> $$1, SocketAddress $$2, int $$3) {
       }
 
-      public double e() {
-         return this.d;
+      @Override
+      public void b(vp $$0, ze<?> $$1, SocketAddress $$2, int $$3) {
       }
-   }
 
-   static enum b {
-      a,
-      b;
+      @Override
+      public void a(ecc $$0, dgw $$1, ecb $$2, int $$3) {
+      }
+
+      @Override
+      public void b(ecc $$0, dgw $$1, ecb $$2, int $$3) {
+      }
+
+      @Override
+      public void a(float $$0) {
+      }
+
+      @Override
+      public bqm e() {
+         return a;
+      }
+
+      @Nullable
+      @Override
+      public bqm a(dgw $$0, alc<dhp> $$1, String $$2) {
+         return null;
+      }
+
+      @Override
+      public bqm a(dgw $$0, alc<dhp> $$1, js<epg> $$2) {
+         return a;
+      }
    }
 }

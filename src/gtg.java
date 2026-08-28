@@ -1,27 +1,31 @@
-public class gtg<T extends cnc> extends gtw<T, gzm> {
-   private static final aku a = aku.b("textures/entity/illager/evoker.png");
+public class gtg extends gsz<cih, gzu, gdb> {
+   private static final ald a = ald.b("textures/entity/bee/bee_angry.png");
+   private static final ald j = ald.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final ald k = ald.b("textures/entity/bee/bee.png");
+   private static final ald l = ald.b("textures/entity/bee/bee_nectar.png");
 
-   public gtg(gtd.a $$0) {
-      super($$0, new gdo<>($$0.a(ggb.aN)), 0.5F);
-      this.a(new gxk<gzm, gdo<gzm>>(this) {
-         public void a(fgr $$0, gmx $$1, int $$2, gzm $$3, float $$4, float $$5) {
-            if ($$3.a) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gtg(guf.a $$0) {
+      super($$0, new gdb($$0.a(ghc.x)), new gdb($$0.a(ghc.y)), 0.4F);
    }
 
-   public aku a(gzm $$0) {
-      return a;
+   public ald a(gzu $$0) {
+      if ($$0.d) {
+         return $$0.e ? j : a;
+      } else {
+         return $$0.e ? l : k;
+      }
    }
 
-   public gzm b() {
-      return new gzm();
+   public gzu a() {
+      return new gzu();
    }
 
-   public void a(T $$0, gzm $$1, float $$2) {
+   public void a(cih $$0, gzu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gz();
+      $$1.a = $$0.K($$2);
+      $$1.b = !$$0.gD();
+      $$1.c = $$0.aJ() && $$0.dy().h() < 1.0E-7;
+      $$1.d = $$0.W_();
+      $$1.e = $$0.gC();
    }
 }

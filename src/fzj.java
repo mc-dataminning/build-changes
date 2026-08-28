@@ -1,72 +1,58 @@
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class fzj {
-   public static final fzj a = new fzj(List.of());
-   private final List<ddc> b;
-   private final Set<ddd> c = new HashSet<>();
-   private final Set<ddd> d = new HashSet<>();
+public class fzj extends fzl {
+   private static final wv a = wv.c("options.online.title");
+   @Nullable
+   private fng<Unit> u;
 
-   public fzj(List<ddc> $$0) {
-      this.b = $$0;
+   public fzj(fwf $$0, fnh $$1) {
+      super($$0, $$1, a);
    }
 
-   public void a(cpw $$0, Predicate<ddb> $$1) {
-      for (ddc $$2 : this.b) {
-         boolean $$3 = $$1.test($$2.b());
-         if ($$3) {
-            this.d.add($$2.a());
-         } else {
-            this.d.remove($$2.a());
-         }
-
-         if ($$3 && $$2.a($$0)) {
-            this.c.add($$2.a());
-         } else {
-            this.c.remove($$2.a());
+   @Override
+   protected void aN_() {
+      super.aN_();
+      if (this.u != null) {
+         fql $$0 = this.d.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
          }
       }
    }
 
-   public boolean a(ddd $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return !this.d.isEmpty();
-   }
-
-   public List<ddc> c() {
-      return this.b;
-   }
-
-   public List<ddc> a(fzj.a $$0) {
-      Predicate<ddd> $$1 = switch ($$0) {
-         case a -> this.d::contains;
-         case b -> this.c::contains;
-         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
-      };
-      List<ddc> $$2 = new ArrayList<>();
-
-      for (ddc $$3 : this.b) {
-         if ($$1.test($$3.a())) {
-            $$2.add($$3);
+   private fng<?>[] a(fnh $$0, fnd $$1) {
+      List<fng<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.W());
+      $$2.add($$0.X());
+      fng<Unit> $$3 = x.a(
+         $$1.s,
+         $$0x -> {
+            btn $$1x = $$0x.an();
+            return new fng<>(
+               "options.difficulty.online",
+               fng.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fng.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
          }
+      );
+      if ($$3 != null) {
+         this.u = $$3;
+         $$2.add($$3);
       }
 
-      return $$2;
+      return $$2.toArray(new fng[0]);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   protected void m() {
+      this.d.a(this.a(this.c, this.m));
    }
 }

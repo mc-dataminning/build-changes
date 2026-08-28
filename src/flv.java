@@ -1,38 +1,19 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
 public class flv {
-   private final ggz a;
-   private int b = -1;
-   @Nullable
-   private Consumer<tq> c;
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public flv(ggz $$0) {
-      this.a = $$0;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public boolean a(int $$0, @Nullable tq $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   private int a(Consumer<tq> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<tq> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aha($$2, $$0));
-   }
-
-   public void a(ji $$0, Consumer<tq> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agi($$2, $$0));
+   public static void a(long $$0, @Nullable String $$1) {
+      a.put($$0, $$1);
    }
 }

@@ -1,49 +1,16 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fbj<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final fbj<MinecraftServer> a = new fbj<MinecraftServer>().a(new fbg.a()).a(new fbh.a());
-   private final Map<aku, fbi.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, fbi.a<C, ?>> d = Maps.newHashMap();
+public class fbj {
+   private static final Codec<fbi> d = md.H.q().dispatch(fbi::a, fbh::a);
+   public static final Codec<fbi> a = Codec.lazyInitialized(
+      () -> Codec.either(fbg.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fbg $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final fbh b = a("storage", fbk.a);
+   public static final fbh c = a("context", fbg.b);
 
-   public fbj<C> a(fbi.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
-   }
-
-   private <T extends fbi<C>> fbi.a<C, T> a(Class<?> $$0) {
-      return (fbi.a<C, T>)this.d.get($$0);
-   }
-
-   public <T extends fbi<C>> tq a(T $$0) {
-      fbi.a<C, T> $$1 = this.a($$0.getClass());
-      tq $$2 = new tq();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
-   }
-
-   @Nullable
-   public fbi<C> a(tq $$0) {
-      aku $$1 = aku.c($$0.l("Type"));
-      fbi.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
+   private static fbh a(String $$0, MapCodec<? extends fbi> $$1) {
+      return kf.a(md.H, ald.b($$0), new fbh($$1));
    }
 }

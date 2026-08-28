@@ -1,5 +1,4 @@
-public class had extends haj {
+public class had extends hbk {
    public float a;
-   public int b;
-   public buw.a c = buw.a.a;
+   public boolean b;
 }

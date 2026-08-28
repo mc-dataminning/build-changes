@@ -1,9 +1,34 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
+import javax.annotation.Nullable;
 
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface fdx {
+public interface fdx {
+   int a();
+
+   void a(int var1);
+
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
+   }
+
+   default int b() {
+      return this.b(1);
+   }
+
+   default void c() {
+      this.a(0);
+   }
+
+   boolean d();
+
+   void e();
+
+   void f();
+
+   @Nullable
+   wv g();
+
+   void a(@Nullable wv var1);
+
+   void a(@Nullable yl var1);
 }

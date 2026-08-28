@@ -1,60 +1,120 @@
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
+@ac(
+   a = "System.out setup"
+)
 public class alf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final CompletableFuture<baf> b = CompletableFuture.completedFuture(baf.a);
-   private final ale.a c;
-   private final ey d;
-   private final dcc e;
-   private final alh f;
-   private final ali g;
-   private final List<ke.a<?>> h;
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   private alf(jy<ald> $$0, jt.a $$1, csn $$2, ey.a $$3, List<ke.a<?>> $$4, int $$5) {
-      this.c = new ale.a($$0.a());
-      this.h = $$4;
-      this.e = new dcc($$1);
-      this.d = new ey($$3, et.a($$1, $$2));
-      this.f = new alh($$1);
-      this.g = new ali($$5, this.d.a());
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (md.aG.i().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            dnv.b();
+            dmf.b();
+            if (bwb.a(bwb.bR) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               hq.a();
+               le.a();
+               kp.a();
+               md.a();
+               cwp.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
+         }
+      }
    }
 
-   public ali a() {
-      return this.g;
-   }
-
-   public ale.a b() {
-      return this.c;
-   }
-
-   public dcc c() {
-      return this.e;
-   }
-
-   public ey d() {
-      return this.d;
-   }
-
-   public alh e() {
-      return this.f;
-   }
-
-   public List<auj> f() {
-      return List.of(this.e, this.g, this.f);
-   }
-
-   public static CompletableFuture<alf> a(aup $$0, jy<ald> $$1, List<ke.a<?>> $$2, csn $$3, ey.a $$4, int $$5, Executor $$6, Executor $$7) {
-      return ale.a($$1, $$2, $$0, $$6).thenCompose($$7x -> {
-         alf $$8 = new alf($$7x.a(), $$7x.b(), $$3, $$4, $$2, $$5);
-         return auv.a($$0, $$8.f(), $$6, $$7, b, a.isDebugEnabled()).a().thenApply($$1xx -> $$8);
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      tr $$3 = tr.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
       });
    }
 
-   public void g() {
-      this.h.forEach(ke.a::d);
+   private static void a(final Set<String> $$0) {
+      final tr $$1 = tr.a();
+      dhl $$2 = new dhl(ctg.e.a());
+      $$2.a(new dhl.c() {
+         @Override
+         public <T extends dhl.g<T>> void a(dhl.e<T> $$0x, dhl.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
+   }
+
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(md.s, bxs::c, $$0);
+      a(md.f, bwb::g, $$0);
+      a(md.d, buu::f, $$0);
+      a(md.g, cxu::l, $$0);
+      a(md.e, dyl::v, $$0);
+      a(md.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (ab.aU) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         ey.b();
+      }
+
+      bxy.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new ali("STDERR", System.err));
+         System.setOut(new ali("STDOUT", a));
+      } else {
+         System.setErr(new alk("STDERR", System.err));
+         System.setOut(new alk("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

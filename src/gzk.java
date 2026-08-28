@@ -1,8 +1,8 @@
-public class gzk extends haj {
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gzk {
 }

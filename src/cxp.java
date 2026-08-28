@@ -1,51 +1,92 @@
-public interface cxp {
-   akt<cxn> a = a("13");
-   akt<cxn> b = a("cat");
-   akt<cxn> c = a("blocks");
-   akt<cxn> d = a("chirp");
-   akt<cxn> e = a("far");
-   akt<cxn> f = a("mall");
-   akt<cxn> g = a("mellohi");
-   akt<cxn> h = a("stal");
-   akt<cxn> i = a("strad");
-   akt<cxn> j = a("ward");
-   akt<cxn> k = a("11");
-   akt<cxn> l = a("wait");
-   akt<cxn> m = a("pigstep");
-   akt<cxn> n = a("otherside");
-   akt<cxn> o = a("5");
-   akt<cxn> p = a("relic");
-   akt<cxn> q = a("precipice");
-   akt<cxn> r = a("creator");
-   akt<cxn> s = a("creator_music_box");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   private static akt<cxn> a(String $$0) {
-      return akt.a(mc.L, aku.b($$0));
+public class cxp extends cxu implements cza {
+   public static final Supplier<BiMap<dku, dku>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dkw.rA, dkw.sa)
+            .put(dkw.rB, dkw.sc)
+            .put(dkw.rC, dkw.sb)
+            .put(dkw.rD, dkw.sd)
+            .put(dkw.rJ, dkw.sh)
+            .put(dkw.rI, dkw.sg)
+            .put(dkw.rH, dkw.sf)
+            .put(dkw.rG, dkw.se)
+            .put(dkw.rZ, dkw.sp)
+            .put(dkw.rY, dkw.so)
+            .put(dkw.rX, dkw.sn)
+            .put(dkw.rW, dkw.sm)
+            .put(dkw.rV, dkw.sl)
+            .put(dkw.rU, dkw.sk)
+            .put(dkw.rT, dkw.sj)
+            .put(dkw.rS, dkw.si)
+            .put(dkw.rN, dkw.rR)
+            .put(dkw.rM, dkw.rQ)
+            .put(dkw.rL, dkw.rP)
+            .put(dkw.rK, dkw.rO)
+            .put(dkw.sq, dkw.su)
+            .put(dkw.sr, dkw.sv)
+            .put(dkw.st, dkw.sx)
+            .put(dkw.ss, dkw.sw)
+            .put(dkw.sy, dkw.sC)
+            .put(dkw.sz, dkw.sD)
+            .put(dkw.sB, dkw.sF)
+            .put(dkw.sA, dkw.sE)
+            .put(dkw.sG, dkw.sK)
+            .put(dkw.sH, dkw.sL)
+            .put(dkw.sI, dkw.sM)
+            .put(dkw.sJ, dkw.sN)
+            .put(dkw.sO, dkw.sS)
+            .put(dkw.sP, dkw.sT)
+            .put(dkw.sQ, dkw.sU)
+            .put(dkw.sR, dkw.sV)
+            .build()
+   );
+   public static final Supplier<BiMap<dku, dku>> b = Suppliers.memoize(() -> a.get().inverse());
+
+   public cxp(cxu.a $$0) {
+      super($$0);
    }
 
-   private static void a(qe<cxn> $$0, akt<cxn> $$1, jr.c<avz> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cxn($$2, wp.c(af.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   @Override
+   public btq a(dbp $$0) {
+      dhp $$1 = $$0.q();
+      jj $$2 = $$0.a();
+      dym $$3 = $$1.a_($$2);
+      return a($$3).map($$3x -> {
+         cqi $$4 = $$0.o();
+         cxy $$5 = $$0.n();
+         if ($$4 instanceof aro $$6) {
+            ap.N.a($$6, $$2, $$5);
+         }
+
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(edm.c, $$2, edm.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return btq.a;
+      }).orElse(btq.e);
    }
 
-   static void a(qe<cxn> $$0) {
-      a($$0, a, awa.qq, 178, 1);
-      a($$0, b, awa.qs, 185, 2);
-      a($$0, c, awa.qr, 345, 3);
-      a($$0, d, awa.qt, 185, 4);
-      a($$0, e, awa.qu, 174, 5);
-      a($$0, f, awa.qv, 197, 6);
-      a($$0, g, awa.qw, 96, 7);
-      a($$0, h, awa.qy, 150, 8);
-      a($$0, i, awa.qz, 188, 9);
-      a($$0, j, awa.qB, 251, 10);
-      a($$0, k, awa.qp, 71, 11);
-      a($$0, l, awa.qA, 238, 12);
-      a($$0, m, awa.qx, 149, 13);
-      a($$0, n, awa.qC, 195, 14);
-      a($$0, o, awa.qo, 178, 15);
-      a($$0, p, awa.qD, 218, 14);
-      a($$0, q, awa.qG, 299, 13);
-      a($$0, r, awa.qE, 176, 12);
-      a($$0, s, awa.qF, 73, 11);
+   public static Optional<dym> a(dym $$0) {
+      return Optional.ofNullable((dku)a.get().get($$0.b())).map($$1 -> ((dku)$$1).m($$0));
+   }
+
+   @Override
+   public boolean a(dhp $$0, dwz $$1, boolean $$2, cqi $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.aw_(), 0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dxa $$0, cqi $$1) {
+      return true;
    }
 }

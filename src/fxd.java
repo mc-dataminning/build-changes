@@ -1,3 +1,48 @@
-public interface fxd<T extends csw> {
-   T F();
+public class fxd extends fwu<ctu> {
+   private static final ald G = ald.b("container/brewing_stand/fuel_length");
+   private static final ald H = ald.b("container/brewing_stand/brew_progress");
+   private static final ald I = ald.b("container/brewing_stand/bubbles");
+   private static final ald J = ald.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
+
+   public fxd(ctu $$0, cqh $$1, wv $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fpz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(goi::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azk.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(goi::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(goi::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(goi::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
+   }
 }

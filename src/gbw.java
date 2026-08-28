@@ -1,23 +1,34 @@
-public class gbw extends gda<gyq> {
-   public gbw(ggc $$0) {
-      super($$0, gnh::f);
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
+
+public class gbw implements gca {
+   private final GameProfile a;
+   private final Supplier<hhu> b;
+   private final wv c;
+
+   public gbw(GameProfile $$0) {
+      this.a = $$0;
+      this.b = fnd.Q().an().a($$0);
+      this.c = wv.b($$0.getName());
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a("back", ggh.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), gge.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
-      ggh $$2 = ggh.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, ggg.a, 1.0F, 0.8F);
-      $$1.a("cross_1", $$2, gge.b((float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("cross_2", $$2, gge.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
-      return ggi.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
+   @Override
+   public void a(gby $$0) {
+      fnd.Q().L().b(new aim(this.a.getId()));
    }
 
-   public void a(gyq $$0) {
-      super.a($$0);
-      if ($$0.c > 0.0F) {
-         float $$1 = -ayz.a($$0.c * 3.0F) * $$0.c;
-         this.v.g += $$1 * (float) (Math.PI / 180.0);
-      }
+   @Override
+   public wv aO_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(fpz $$0, float $$1, float $$2) {
+      frm.a($$0, this.b.get(), 2, 2, 12, axu.a($$2));
+   }
+
+   @Override
+   public boolean aP_() {
+      return true;
    }
 }

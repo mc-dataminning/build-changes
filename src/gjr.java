@@ -1,66 +1,85 @@
-public class gjr extends gko {
-   gjr(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
+
+public final class gjr {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final gjr c = new gjr(HostAndPort.fromParts("server.invalid", 25565));
+
+   public gjr(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
+   }
+
+   private gjr(HostAndPort $$0) {
+      this.b = $$0;
+   }
+
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static gjr a(String $$0) {
+      if ($$0 == null) {
+         return c;
+      } else {
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new gjr($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
+      }
+   }
+
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
+      }
+
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
+      }
    }
 
    @Override
-   public gkk b() {
-      return gkk.b;
+   public String toString() {
+      return this.b.toString();
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof gjr ? this.b.equals(((gjr)$$0).b) : false;
+      }
    }
 
    @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ayz.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements gkj<lx> {
-      private final glb a;
-
-      public a(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjr $$8 = new gjr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gkj<lx> {
-      private final glb a;
-
-      public b(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjr $$8 = new gjr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
-      }
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

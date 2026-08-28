@@ -1,11 +1,16 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public abstract class enu extends enq {
-   protected abstract int a(azh var1, ji var2);
-
+public record enu(eep.c[] a) implements eep.c {
+   @Nullable
    @Override
-   public Stream<ji> a_(eno $$0, azh $$1, ji $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   public dym calculate(eee.b $$0) {
+      for (eep.c $$1 : this.a) {
+         dym $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 }

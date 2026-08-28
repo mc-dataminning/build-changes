@@ -1,49 +1,65 @@
 import java.util.EnumSet;
 
-public class cdn extends ccw {
-   private static final cgp b = cgp.b().a(6.0);
-   public static final int a = 400;
-   private final cib c;
-   private cpd d;
-   private int e;
+public abstract class cdn {
+   private final EnumSet<cdn.a> a = EnumSet.noneOf(cdn.a.class);
 
-   public cdn(cib $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(ccw.a.a, ccw.a.b));
-   }
+   public abstract boolean b();
 
-   @Override
-   public boolean b() {
-      if (!this.c.dU().V()) {
-         return false;
-      } else if (this.c.dX().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = a(this.c).a(cpd.class, b, this.c, this.c.dz(), this.c.dB(), this.c.dF(), this.c.cQ().c(6.0, 2.0, 6.0));
-         return this.d != null;
-      }
-   }
-
-   @Override
    public boolean c() {
-      return this.e > 0;
+      return this.b();
    }
 
-   @Override
+   public boolean P_() {
+      return true;
+   }
+
    public void d() {
-      this.e = this.a(400);
-      this.c.w(true);
    }
 
-   @Override
    public void e() {
-      this.c.w(false);
-      this.d = null;
+   }
+
+   public boolean Q_() {
+      return false;
+   }
+
+   public void a() {
+   }
+
+   public void a(EnumSet<cdn.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void a() {
-      this.c.J().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<cdn.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.Q_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return azk.e($$0, 2);
+   }
+
+   protected static arn a(bvs $$0) {
+      return (arn)$$0.dV();
+   }
+
+   protected static arn a(dhp $$0) {
+      return (arn)$$0;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

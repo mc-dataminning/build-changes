@@ -1,37 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class ehn extends egu<eje> {
-   public ehn(Codec<eje> $$0) {
+public class ehn extends ehr<eju> {
+   public ehn(Codec<eju> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<eje> $$0) {
-      dhy $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      dxq $$3 = $$1.a_($$2.e());
-      eje $$4 = $$0.f();
-      azh $$5 = $$0.d();
-      if (!$$3.a(awp.aO)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.G_() + 1 && $$6 + 1 <= $$1.ao()) {
-            int $$7 = 0;
+   public boolean a(eht<eju> $$0) {
+      jj $$1 = $$0.e();
+      dio $$2 = $$0.b();
+      eju $$3 = $$0.f();
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               ji $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dxq $$10 = $$4.b.a($$5, $$9);
-               if ($$1.u($$9) && $$9.v() > $$1.G_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+      for (jj $$4 : jj.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            jj $$9 = $$4.j();
+            this.a($$2, $$9, dkw.lh.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof dxh $$5x) {
+                  $$5x.a($$3x, $$3.c());
                }
-            }
-
-            return $$7 > 0;
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dkw.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dkw.I.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dkw.I.m());
          } else {
-            return false;
+            this.a($$2, $$4, dkw.a.m());
          }
       }
+
+      return true;
    }
 }

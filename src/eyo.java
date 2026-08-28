@@ -1,65 +1,102 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eyo extends eyb {
-   private static final Codec<fat> b = Codec.withAlternative(fau.a, ayi.i, faq::new);
+public class eyo extends eyy {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<eyo> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  eya.e.a(fau.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
-                  eya.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
-                  eya.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
-                  eya.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
+                  kh.a(me.aS).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
+                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, eyo::new)
    );
-   private final Optional<eya.e<fat>> c;
-   private final Optional<eya.e<Boolean>> d;
-   private final Optional<eya.e<String>> e;
-   private final Optional<eya.e<fat>> f;
+   private final Optional<jw<deh>> c;
+   private final boolean d;
 
-   public eyo(List<ezx> $$0, Optional<eya.e<fat>> $$1, Optional<eya.e<Boolean>> $$2, Optional<eya.e<String>> $$3, Optional<eya.e<fat>> $$4) {
+   eyo(List<fau> $$0, Optional<jw<deh>> $$1, boolean $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
+   public eza<eyo> b() {
+      return ezb.h;
    }
 
    @Override
-   public eyd<eyo> b() {
-      return eye.R;
+   public cxy a(cxy $$0, exl $$1) {
+      azs $$2 = $$1.b();
+      boolean $$3 = $$0.a(cyc.rA);
+      boolean $$4 = !$$3 && this.d;
+      Stream<js<deh>> $$5 = this.c
+         .<Stream<js<deh>>>map(jw::a)
+         .orElseGet(() -> $$1.d().F_().f(me.aS).c().map(Function.identity()))
+         .filter($$2x -> !$$4 || ((deh)$$2x.a()).c($$0));
+      List<js<deh>> $$6 = $$5.toList();
+      Optional<js<deh>> $$7 = af.b($$6, $$2);
+      if ($$7.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$7.get(), $$2);
+      }
    }
 
-   private static <T> List<T> a(Optional<eya.e<T>> $$0, List<T> $$1) {
-      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
-   }
+   private static cxy a(cxy $$0, js<deh> $$1, azs $$2) {
+      int $$3 = azk.a($$2, $$1.a().d(), $$1.a().e());
+      if ($$0.a(cyc.rA)) {
+         $$0 = new cxy(cyc.vz);
+      }
 
-   private static <T, E> List<E> a(Optional<eya.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
-      return $$0.<List<E>>map($$2x -> {
-         List<E> $$3 = $$2x.a().stream().map($$2).toList();
-         return $$2x.b().a($$1, $$3);
-      }).orElse($$1);
-   }
-
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      czp $$2 = $$0.a(kv.p, czp.a);
-      $$0.b(kv.p, new czp(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
+      $$0.a($$1, $$3);
       return $$0;
+   }
+
+   public static eyo.a c() {
+      return new eyo.a();
+   }
+
+   public static eyo.a a(ju.a $$0) {
+      return c().a($$0.e(me.aS).b(axc.n));
+   }
+
+   public static class a extends eyy.a<eyo.a> {
+      private Optional<jw<deh>> a = Optional.empty();
+      private boolean b = true;
+
+      protected eyo.a a() {
+         return this;
+      }
+
+      public eyo.a a(js<deh> $$0) {
+         this.a = Optional.of(jw.a($$0));
+         return this;
+      }
+
+      public eyo.a a(jw<deh> $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eyo.a e() {
+         this.b = false;
+         return this;
+      }
+
+      @Override
+      public eyz b() {
+         return new eyo(this.g(), this.a, this.b);
+      }
    }
 }

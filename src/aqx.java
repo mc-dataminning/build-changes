@@ -1,52 +1,33 @@
-import javax.annotation.Nullable;
+public record aqx(String b, int c, cqf d, boolean e, int f, bwk g, boolean h, boolean i, arf j) {
+   public static final int a = 16;
 
-public class aqx {
-   @Nullable
-   protected static ji a(ard $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.B_().h();
-      dzw $$4 = $$0.d(kk.a($$1), kk.a($$2));
-      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(edo.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.G_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(edo.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(edo.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            ji.a $$7 = new ji.a();
-
-            for (int $$8 = $$5 + 1; $$8 >= $$0.G_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dxq $$9 = $$0.a_($$7);
-               if (!$$9.y().c()) {
-                  break;
-               }
-
-               if (dke.a($$9.g($$0, $$7), jn.b)) {
-                  return $$7.d().j();
-               }
-            }
-
-            return null;
-         }
-      }
+   public aqx(vr $$0) {
+      this(
+         $$0.d(16),
+         $$0.readByte(),
+         $$0.b(cqf.class),
+         $$0.readBoolean(),
+         $$0.readUnsignedByte(),
+         $$0.b(bwk.class),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(arf.class)
+      );
    }
 
-   @Nullable
-   public static ji a(ard $$0, dgg $$1) {
-      if (ab.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               ji $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   public void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+   }
 
-         return null;
-      }
+   public static aqx a() {
+      return new aqx("en_us", 2, cqf.a, true, 0, cqi.bs, false, false, arf.a);
    }
 }

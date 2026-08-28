@@ -1,8 +1,7 @@
-public class akj {
-   public static final akt<cxd> a = a("pumpkin_seeds");
-   public static final akt<cxd> b = a("melon_seeds");
+import java.util.List;
 
-   private static akt<cxd> a(String $$0) {
-      return akt.a(mc.K, aku.b($$0));
-   }
+public interface akj {
+   void a(akg<?> var1);
+
+   void a(List<akk.c<?>> var1);
 }

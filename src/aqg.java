@@ -1,65 +1,97 @@
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import com.google.common.collect.Streams;
+import com.mojang.logging.LogUtils;
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
+import java.lang.management.ThreadMXBean;
+import java.nio.file.Path;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class aqg {
-   private static final int c = 33;
-   private static final int d = 32;
-   private static final int e = 31;
-   private static final eaq f = eam.a.a(ean.n);
-   public static final int a = f.c().c();
-   public static final int b = 33 + a;
+public class aqg implements Runnable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final long b = 10000L;
+   private static final int c = 1;
+   private final aqd d;
+   private final long e;
 
-   @Nullable
-   public static ean a(int $$0) {
-      return a($$0 - 33, null);
+   public aqg(aqd $$0) {
+      this.d = $$0;
+      this.e = $$0.bv() * bam.b;
    }
 
-   @Nullable
-   @Contract("_,!null->!null;_,_->_")
-   public static ean a(int $$0, @Nullable ean $$1) {
-      if ($$0 > a) {
-         return $$1;
-      } else {
-         return $$0 <= 0 ? ean.n : f.c().a($$0);
+   @Override
+   public void run() {
+      while (this.d.x()) {
+         long $$0 = this.d.aB();
+         long $$1 = af.d();
+         long $$2 = $$1 - $$0;
+         if ($$2 > this.e) {
+            a.error(
+               LogUtils.FATAL_MARKER,
+               "A single server tick took {} seconds (should be max {})",
+               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)bam.a),
+               String.format(Locale.ROOT, "%.2f", this.d.aP().g() / (float)bam.c)
+            );
+            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
+            o $$3 = a("Watching Server", this.d.ay().threadId());
+            this.d.b($$3.f());
+            p $$4 = $$3.a("Performance stats");
+            $$4.a("Random tick rate", () -> this.d.aZ().o().b(dhl.o).toString());
+            $$4.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.aj().a() + ": " + $$0x.G()).collect(Collectors.joining(",\n")));
+            alf.a("Crash report:\n" + $$3.a(y.a));
+            Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + af.f() + "-server.txt");
+            if ($$3.a($$5, y.a)) {
+               a.error("This crash report has been saved to: {}", $$5.toAbsolutePath());
+            } else {
+               a.error("We were unable to save this crash report to disk.");
+            }
+
+            this.a();
+         }
+
+         try {
+            Thread.sleep(($$0 + this.e - $$1) / bam.b);
+         } catch (InterruptedException var10) {
+         }
       }
    }
 
-   public static ean b(int $$0) {
-      return a($$0, ean.c);
-   }
+   public static o a(String $$0, long $$1) {
+      ThreadMXBean $$2 = ManagementFactory.getThreadMXBean();
+      ThreadInfo[] $$3 = $$2.dumpAllThreads(true, true);
+      StringBuilder $$4 = new StringBuilder();
+      Error $$5 = new Error("Watchdog");
 
-   public static int a(ean $$0) {
-      return 33 + f.a($$0);
-   }
+      for (ThreadInfo $$6 : $$3) {
+         if ($$6.getThreadId() == $$1) {
+            $$5.setStackTrace($$6.getStackTrace());
+         }
 
-   public static aqr c(int $$0) {
-      if ($$0 <= 31) {
-         return aqr.d;
-      } else if ($$0 <= 32) {
-         return aqr.c;
-      } else {
-         return $$0 <= 33 ? aqr.b : aqr.a;
+         $$4.append($$6);
+         $$4.append("\n");
       }
+
+      o $$7 = new o($$0, $$5);
+      p $$8 = $$7.a("Thread Dump");
+      $$8.a("Threads", $$4);
+      return $$7;
    }
 
-   public static int a(aqr $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean f(int $$0) {
-      return $$0 <= b;
+   private void a() {
+      try {
+         Timer $$0 = new Timer();
+         $$0.schedule(new TimerTask() {
+            @Override
+            public void run() {
+               Runtime.getRuntime().halt(1);
+            }
+         }, 10000L);
+         System.exit(1);
+      } catch (Throwable var2) {
+         Runtime.getRuntime().halt(1);
+      }
    }
 }

@@ -1,34 +1,22 @@
-public class gtf extends gtc<cqc, gzl> {
-   private static final aku a = aku.b("textures/entity/illager/evoker_fangs.png");
-   private final gdb b;
+public class gtf extends gvl<cia, gzt, gda> {
+   private static final ald a = ald.b("textures/entity/bat.png");
 
-   public gtf(gtd.a $$0) {
-      super($$0);
-      this.b = new gdb($$0.a(ggb.aO));
+   public gtf(guf.a $$0) {
+      super($$0, new gda($$0.a(ghc.u)), 0.25F);
    }
 
-   public void a(gzl $$0, fgr $$1, gmx $$2, int $$3) {
-      float $$4 = $$0.b;
-      if ($$4 != 0.0F) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
-         $$1.b(-1.0F, -1.0F, 1.0F);
-         $$1.a(0.0F, -1.501F, 0.0F);
-         this.b.a($$0);
-         fgv $$5 = $$2.getBuffer(this.b.a(a));
-         this.b.a($$1, $$5, $$3, hfh.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public ald a(gzt $$0) {
+      return a;
    }
 
-   public gzl a() {
-      return new gzl();
+   public gzt a() {
+      return new gzt();
    }
 
-   public void a(cqc $$0, gzl $$1, float $$2) {
+   public void a(cia $$0, gzt $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.dK();
-      $$1.b = $$0.a($$2);
+      $$1.a = $$0.m();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

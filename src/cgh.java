@@ -1,38 +1,25 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+public class cgh extends cgt {
+   public static final float a = 8.0F;
 
-public class cgh {
-   private final bwa a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public cgh(bwa $$0) {
-      this.a = $$0;
+   @Override
+   protected boolean a(arn $$0, bwr $$1, bwr $$2) {
+      return this.b($$1, $$2) && $$2.bj() && (this.b($$2) || this.a($$1, $$2)) && cgz.c($$0, $$1, $$2);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   private boolean a(bwr $$0, bwr $$1) {
+      return !$$0.eb().a(cft.V) && $$1.aq().a(axd.j);
    }
 
-   public boolean a(bva $$0) {
-      int $$1 = $$0.ar();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         bpj $$2 = bpi.a();
-         $$2.a("hasLineOfSight");
-         boolean $$3 = this.a.E($$0);
-         $$2.c();
-         if ($$3) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private boolean b(bwr $$0) {
+      return $$0.aq().a(axd.i);
+   }
 
-         return $$3;
-      }
+   private boolean b(bwr $$0, bwr $$1) {
+      return $$1.g((bvs)$$0) <= 64.0;
+   }
+
+   @Override
+   protected cft<bwr> b() {
+      return cft.C;
    }
 }

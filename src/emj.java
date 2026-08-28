@@ -1,29 +1,72 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class emj {
-   public static final Codec<emj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, ebm.c).fieldOf("height").forGetter(emj::a), mb.e.q().fieldOf("block").orElse(dkg.a).forGetter($$0x -> $$0x.b().b()))
+public class emj extends emq {
+   public static final MapCodec<emj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               elw.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               ays.b(jo.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
             .apply($$0, emj::new)
    );
-   private final dke b;
-   private final int c;
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final elw e;
+   protected final int f;
+   protected final List<jo> g;
 
-   public emj(int $$0, dke $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public dxq b() {
-      return this.b.m();
+   public emj(float $$0, int $$1, int $$2, elw $$3, int $$4, List<jo> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + mb.e.b(this.b);
+   public void a(emq.a $$0) {
+      Set<jj> $$1 = new HashSet<>();
+      azs $$2 = $$0.b();
+
+      for (jj $$3 : af.a($$0.d(), $$2)) {
+         jo $$4 = af.a(this.g, $$2);
+         jj $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            jj $$6 = $$5.b(-this.c, -this.d, -this.c);
+            jj $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (jj $$8 : jj.c($$6, $$7)) {
+               $$1.add($$8.j());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(emq.a $$0, jj $$1, jo $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         jj $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected emr<?> a() {
+      return emr.h;
    }
 }

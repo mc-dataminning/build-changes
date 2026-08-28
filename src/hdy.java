@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hdy() implements heh<cvz.a> {
-   public static final heh.a<hdy, cvz.a> a = heh.a.a(MapCodec.unit(new hdy()), cvz.a.d);
+public record hdy() implements hdw {
+   public static final MapCodec<hdy> a = MapCodec.unit(new hdy());
 
-   public cvz.a a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      czk $$5 = $$0.a(kv.P);
-      if ($$5 == null || $$5.b()) {
-         return cvz.a.a;
-      } else {
-         return $$5.a(cxl.vv) ? cvz.a.c : cvz.a.b;
-      }
+   @Override
+   public boolean a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      return $$0.n();
    }
 
    @Override
-   public heh.a<hdy, cvz.a> a() {
+   public MapCodec<hdy> a() {
       return a;
    }
 }

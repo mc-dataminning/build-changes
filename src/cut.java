@@ -1,159 +1,88 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cut extends ctn {
+   private static final int q = 1;
+   private static final int r = 1;
+   public static final int m = 1;
+   public static final int n = 2;
+   public static final int o = 3;
+   public static final int p = 100;
+   private final btj s;
+   private final ctz t;
 
-public class cut {
-   private final int a;
-   public final bsr c;
-   public int d;
-   public final int e;
-   public final int f;
-
-   public cut(bsr $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.a = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public cut(int $$0) {
+      this($$0, new btx(1), new cvj(1));
    }
 
-   public void b(cxh $$0, cxh $$1) {
-      int $$2 = $$1.M() - $$0.M();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
-      }
+   public cut(int $$0, btj $$1, ctz $$2) {
+      super(cuw.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.s = $$1;
+      this.t = $$2;
+      this.a(new cvk($$1, 0, 0, 0) {
+         @Override
+         public void d() {
+            super.d();
+            cut.this.a(this.c);
+         }
+      });
+      this.a($$2);
    }
 
-   protected void a(cxh $$0, int $$1) {
-   }
-
-   protected void b(int $$0) {
-   }
-
-   protected void b_(cxh $$0) {
-   }
-
-   public void a(cpr $$0, cxh $$1) {
-      this.c();
-   }
-
-   public boolean a(cxh $$0) {
-      return true;
-   }
-
-   public cxh g() {
-      return this.c.a(this.a);
-   }
-
-   public boolean h() {
-      return !this.g().f();
-   }
-
-   public void e(cxh $$0) {
-      this.a($$0, this.g());
-   }
-
-   public void a(cxh $$0, cxh $$1) {
-      this.f($$0);
-   }
-
-   public void f(cxh $$0) {
-      this.c.a(this.a, $$0);
-      this.c();
-   }
-
-   public void c() {
-      this.c.e();
-   }
-
-   public int a() {
-      return this.c.an_();
-   }
-
-   public int a_(cxh $$0) {
-      return Math.min(this.a(), $$0.k());
-   }
-
-   @Nullable
-   public aku b() {
-      return null;
-   }
-
-   public cxh a(int $$0) {
-      return this.c.a(this.a, $$0);
-   }
-
-   public boolean a(cpr $$0) {
-      return true;
-   }
-
-   public boolean d() {
-      return true;
-   }
-
-   public Optional<cxh> a(int $$0, int $$1, cpr $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.g().M()) {
-         return Optional.empty();
+   @Override
+   public boolean a(cqi $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.b(0, $$2);
+         return true;
       } else {
-         $$0 = Math.min($$0, $$1);
-         cxh $$3 = this.a($$0);
-         if ($$3.f()) {
-            return Optional.empty();
-         } else {
-            if (this.g().f()) {
-               this.a(cxh.k, $$3);
-            }
+         switch ($$1) {
+            case 1:
+               int $$4 = this.t.a(0);
+               this.b(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.t.a(0);
+               this.b(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gv()) {
+                  return false;
+               }
 
-            return Optional.of($$3);
+               cxy $$5 = this.s.b(0);
+               this.s.e();
+               if (!$$0.gi().f($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
    }
 
-   public cxh b(int $$0, int $$1, cpr $$2) {
-      Optional<cxh> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cxh.k);
+   @Override
+   public cxy b(cqi $$0, int $$1) {
+      return cxy.k;
    }
 
-   public cxh d(cxh $$0) {
-      return this.b($$0, $$0.M());
+   @Override
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
    }
 
-   public cxh b(cxh $$0, int $$1) {
-      if (!$$0.f() && this.a($$0)) {
-         cxh $$2 = this.g();
-         int $$3 = Math.min(Math.min($$1, $$0.M()), this.a_($$0) - $$2.M());
-         if ($$3 <= 0) {
-            return $$0;
-         } else {
-            if ($$2.f()) {
-               this.e($$0.a($$3));
-            } else if (cxh.c($$2, $$0)) {
-               $$0.h($$3);
-               $$2.g($$3);
-               this.e($$2);
-            }
-
-            return $$0;
-         }
-      } else {
-         return $$0;
-      }
+   @Override
+   public boolean b(cqi $$0) {
+      return this.s.a($$0);
    }
 
-   public boolean b(cpr $$0) {
-      return this.a($$0) && this.a(this.g());
+   public cxy l() {
+      return this.s.a(0);
    }
 
-   public int i() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return true;
-   }
-
-   public boolean f() {
-      return false;
+   public int m() {
+      return this.t.a(0);
    }
 }

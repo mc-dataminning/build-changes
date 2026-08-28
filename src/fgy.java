@@ -1,142 +1,34 @@
-import java.util.function.Consumer;
-
-public class fgy {
-   public static fgv a() {
-      throw new IllegalArgumentException();
+public record fgy(int a, int b, boolean c, int d) implements fgz<ffy> {
+   public ffy a() {
+      return new ffz(this.a, this.b, this.c);
    }
 
-   public static fgv a(fgv $$0) {
-      return $$0;
+   public void a(ffy $$0) {
+      $$0.b(axu.j(this.d), axu.k(this.d), axu.l(this.d), axu.i(this.d));
    }
 
-   public static fgv a(fgv $$0, fgv $$1) {
-      return new fgy.a($$0, $$1);
+   public void b(ffy $$0) {
+      $$0.a();
    }
 
-   public static fgv a(fgv... $$0) {
-      return new fgy.b($$0);
+   @Override
+   public boolean a(fgz<?> $$0) {
+      return !($$0 instanceof fgy $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   static class a implements fgv {
-      private final fgv a;
-      private final fgv b;
-
-      public a(fgv $$0, fgv $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fgv a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fgv a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fgv a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fgv a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fgv b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fgv b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
+   public int b() {
+      return this.a;
    }
 
-   static record b(fgv[] a) implements fgv {
-      b(fgv[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
+   public int c() {
+      return this.b;
+   }
 
-         this.a = a;
-      }
+   public boolean d() {
+      return this.c;
+   }
 
-      private void a(Consumer<fgv> $$0) {
-         for (fgv $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public fgv a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public fgv a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public fgv a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fgv a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fgv b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fgv b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
-      }
+   public int e() {
+      return this.d;
    }
 }

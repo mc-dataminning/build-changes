@@ -1,30 +1,31 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record ddl(ddh f, ddh g, ddh h) implements ddb {
-   public static final MapCodec<ddl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddh.a.fieldOf("input").forGetter(ddl::b), ddh.a.fieldOf("result").forGetter(ddl::d), ddh.a.fieldOf("crafting_station").forGetter(ddl::e))
-            .apply($$0, ddl::new)
-   );
-   public static final yn<wa, ddl> b = yn.a(ddh.b, ddl::b, ddh.b, ddl::d, ddh.b, ddl::e, ddl::new);
-   public static final ddb.a<ddl> c = new ddb.a<>(a, b);
-
-   @Override
-   public ddb.a<ddl> a() {
-      return c;
-   }
-
-   public ddh b() {
-      return this.f;
+public class ddl extends ddd {
+   public ddl(String $$0, dch $$1, cxy $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public ddh d() {
-      return this.g;
+   public dcw<ddl> b() {
+      return dcw.f;
    }
 
    @Override
-   public ddh e() {
-      return this.h;
+   public dcv<ddl> a() {
+      return dcv.s;
+   }
+
+   @Override
+   public List<ddr> g() {
+      return List.of(new deb(this.k().c(), this.c(), new ddx.d(cyc.xv)));
+   }
+
+   public ddx c() {
+      return new ddx.f(this.l());
+   }
+
+   @Override
+   public dco h() {
+      return dcn.k;
    }
 }

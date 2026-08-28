@@ -1,37 +1,25 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bgu extends bgy {
-   public bgu(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bic.C, $$1);
+public class bgu extends bhm {
+   public bgu(Schema $$0, boolean $$1) {
+      super($$0, $$1, "JigsawPropertiesFix", biq.s, "minecraft:jigsaw");
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
+      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
+      return $$0.set("name", $$0.createString($$1))
+         .set("target", $$0.createString($$1))
+         .remove("attachement_type")
+         .set("pool", $$0.createString($$2))
+         .remove("target_pool");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Brain", this::b);
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("memories", this::c);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.updateMapValues(this::a);
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      return $$0.mapSecond(this::d);
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
+      return $$0.update(DSL.remainderFinder(), bgu::a);
    }
 }

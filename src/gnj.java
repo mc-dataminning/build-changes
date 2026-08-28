@@ -1,118 +1,76 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import java.util.ArrayList;
+import java.util.List;
 
 public class gnj {
-   private static final aku a = aku.b("textures/misc/underwater.png");
+   private static final List<goq> ae = new ArrayList<>();
+   public static final goq a = a("blit_screen", fhm.a);
+   public static final goq b = a("lightmap", fhm.a);
+   public static final goq c = a("particle", fhm.d);
+   public static final goq d = a("position", fhm.e);
+   public static final goq e = a("position_color", fhm.f);
+   public static final goq f = a("position_color_lightmap", fhm.h);
+   public static final goq g = a("position_color_tex_lightmap", fhm.k);
+   public static final goq h = a("position_tex", fhm.i);
+   public static final goq i = a("position_tex_color", fhm.j);
+   public static final goq j = a("rendertype_solid", fhm.b);
+   public static final goq k = a("rendertype_cutout_mipped", fhm.b);
+   public static final goq l = a("rendertype_cutout", fhm.b);
+   public static final goq m = a("rendertype_translucent", fhm.b);
+   public static final goq n = a("rendertype_translucent_moving_block", fhm.b);
+   public static final goq o = a("rendertype_armor_cutout_no_cull", fhm.c);
+   public static final goq p = a("rendertype_armor_translucent", fhm.c);
+   public static final goq q = a("rendertype_entity_solid", fhm.c);
+   public static final goq r = a("rendertype_entity_cutout", fhm.c);
+   public static final goq s = a("rendertype_entity_cutout_no_cull", fhm.c);
+   public static final goq t = a("rendertype_entity_cutout_no_cull_z_offset", fhm.c);
+   public static final goq u = a("rendertype_item_entity_translucent_cull", fhm.c);
+   public static final goq v = a("rendertype_entity_translucent", fhm.c);
+   public static final goq w = a("rendertype_entity_translucent_emissive", fhm.c);
+   public static final goq x = a("rendertype_entity_smooth_cutout", fhm.c);
+   public static final goq y = a("rendertype_beacon_beam", fhm.b);
+   public static final goq z = a("rendertype_entity_decal", fhm.c);
+   public static final goq A = a("rendertype_entity_no_outline", fhm.c);
+   public static final goq B = a("rendertype_entity_shadow", fhm.c);
+   public static final goq C = a("rendertype_entity_alpha", fhm.c);
+   public static final goq D = a("rendertype_eyes", fhm.c);
+   public static final goq E = a("rendertype_energy_swirl", fhm.c);
+   public static final goq F = a("rendertype_leash", fhm.h);
+   public static final goq G = a("rendertype_water_mask", fhm.e);
+   public static final goq H = a("rendertype_outline", fhm.j);
+   public static final goq I = a("rendertype_armor_entity_glint", fhm.i);
+   public static final goq J = a("rendertype_glint_translucent", fhm.i);
+   public static final goq K = a("rendertype_glint", fhm.i);
+   public static final goq L = a("rendertype_entity_glint", fhm.i);
+   public static final goq M = a("rendertype_text", fhm.k);
+   public static final goq N = a("rendertype_text_background", fhm.h);
+   public static final goq O = a("rendertype_text_intensity", fhm.k);
+   public static final goq P = a("rendertype_text_see_through", fhm.k);
+   public static final goq Q = a("rendertype_text_background_see_through", fhm.h);
+   public static final goq R = a("rendertype_text_intensity_see_through", fhm.k);
+   public static final goq S = a("rendertype_lightning", fhm.f);
+   public static final goq T = a("rendertype_tripwire", fhm.b);
+   public static final goq U = a("rendertype_end_portal", fhm.e);
+   public static final goq V = a("rendertype_end_gateway", fhm.e);
+   public static final goq W = a("rendertype_clouds", fhm.f);
+   public static final goq X = a("rendertype_lines", fhm.g);
+   public static final goq Y = a("rendertype_crumbling", fhm.b);
+   public static final goq Z = a("rendertype_gui", fhm.f);
+   public static final goq aa = a("rendertype_gui_overlay", fhm.f);
+   public static final goq ab = a("rendertype_gui_text_highlight", fhm.f);
+   public static final goq ac = a("rendertype_gui_ghost_recipe_overlay", fhm.f);
+   public static final goq ad = a("rendertype_breeze_wind", fhm.c);
 
-   public static void a(fmg $$0, fgr $$1, gmx $$2) {
-      cpr $$3 = $$0.t;
-      if (!$$3.ad) {
-         dxq $$4 = a($$3);
-         if ($$4 != null) {
-            a($$0.ap().a().a($$4), $$1, $$2);
-         }
-      }
-
-      if (!$$0.t.U_()) {
-         if ($$0.t.a(awv.a)) {
-            b($$0, $$1, $$2);
-         }
-
-         if ($$0.t.bX()) {
-            a($$1, $$2);
-         }
-      }
+   private static goq a(String $$0, fht $$1) {
+      return a($$0, $$1, goo.a);
    }
 
-   @Nullable
-   private static dxq a(cpr $$0) {
-      ji.a $$1 = new ji.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         double $$3 = $$0.dz() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dp() * 0.8F);
-         double $$4 = $$0.dD() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ej());
-         double $$5 = $$0.dF() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dp() * 0.8F);
-         $$1.b($$3, $$4, $$5);
-         dxq $$6 = $$0.dU().a_($$1);
-         if ($$6.o() != dqp.a && $$6.k($$0.dU(), $$1)) {
-            return $$6;
-         }
-      }
-
-      return null;
+   private static goq a(String $$0, fht $$1, goo $$2) {
+      goq $$3 = new goq(ald.b("core/" + $$0), $$1, $$2);
+      ae.add($$3);
+      return $$3;
    }
 
-   private static void a(hfr $$0, fgr $$1, gmx $$2) {
-      float $$3 = 0.1F;
-      int $$4 = axk.a(1.0F, 0.1F, 0.1F, 0.1F);
-      float $$5 = -1.0F;
-      float $$6 = 1.0F;
-      float $$7 = -1.0F;
-      float $$8 = 1.0F;
-      float $$9 = -0.5F;
-      float $$10 = $$0.c();
-      float $$11 = $$0.d();
-      float $$12 = $$0.g();
-      float $$13 = $$0.h();
-      Matrix4f $$14 = $$1.c().a();
-      fgv $$15 = $$2.getBuffer(gnh.D($$0.i()));
-      $$15.a($$14, -1.0F, -1.0F, -0.5F).a($$11, $$13).a($$4);
-      $$15.a($$14, 1.0F, -1.0F, -0.5F).a($$10, $$13).a($$4);
-      $$15.a($$14, 1.0F, 1.0F, -0.5F).a($$10, $$12).a($$4);
-      $$15.a($$14, -1.0F, 1.0F, -0.5F).a($$11, $$12).a($$4);
-   }
-
-   private static void b(fmg $$0, fgr $$1, gmx $$2) {
-      ji $$3 = ji.a($$0.t.dz(), $$0.t.dD(), $$0.t.dF());
-      float $$4 = gmv.a($$0.t.dU().B_(), $$0.t.dU().A($$3));
-      int $$5 = axk.a(0.1F, $$4, $$4, $$4);
-      float $$6 = 4.0F;
-      float $$7 = -1.0F;
-      float $$8 = 1.0F;
-      float $$9 = -1.0F;
-      float $$10 = 1.0F;
-      float $$11 = -0.5F;
-      float $$12 = -$$0.t.dK() / 64.0F;
-      float $$13 = $$0.t.dM() / 64.0F;
-      Matrix4f $$14 = $$1.c().a();
-      fgv $$15 = $$2.getBuffer(gnh.D(a));
-      $$15.a($$14, -1.0F, -1.0F, -0.5F).a(4.0F + $$12, 4.0F + $$13).a($$5);
-      $$15.a($$14, 1.0F, -1.0F, -0.5F).a(0.0F + $$12, 4.0F + $$13).a($$5);
-      $$15.a($$14, 1.0F, 1.0F, -0.5F).a(0.0F + $$12, 0.0F + $$13).a($$5);
-      $$15.a($$14, -1.0F, 1.0F, -0.5F).a(4.0F + $$12, 0.0F + $$13).a($$5);
-   }
-
-   private static void a(fgr $$0, gmx $$1) {
-      hfr $$2 = hib.b.c();
-      fgv $$3 = $$1.getBuffer(gnh.E($$2.i()));
-      float $$4 = $$2.c();
-      float $$5 = $$2.d();
-      float $$6 = ($$4 + $$5) / 2.0F;
-      float $$7 = $$2.g();
-      float $$8 = $$2.h();
-      float $$9 = ($$7 + $$8) / 2.0F;
-      float $$10 = $$2.k();
-      float $$11 = ayz.h($$10, $$4, $$6);
-      float $$12 = ayz.h($$10, $$5, $$6);
-      float $$13 = ayz.h($$10, $$7, $$9);
-      float $$14 = ayz.h($$10, $$8, $$9);
-      float $$15 = 1.0F;
-
-      for (int $$16 = 0; $$16 < 2; $$16++) {
-         $$0.a();
-         float $$17 = -0.5F;
-         float $$18 = 0.5F;
-         float $$19 = -0.5F;
-         float $$20 = 0.5F;
-         float $$21 = -0.5F;
-         $$0.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
-         $$0.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
-         Matrix4f $$22 = $$0.c().a();
-         $$3.a($$22, -0.5F, -0.5F, -0.5F).a($$12, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
-         $$3.a($$22, 0.5F, -0.5F, -0.5F).a($$11, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
-         $$3.a($$22, 0.5F, 0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
-         $$3.a($$22, -0.5F, 0.5F, -0.5F).a($$12, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
-         $$0.b();
-      }
+   public static List<goq> a() {
+      return ae;
    }
 }

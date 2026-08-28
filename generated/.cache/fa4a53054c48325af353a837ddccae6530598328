@@ -1,4 +1,4 @@
-// 25w02a	2026-08-28T03:26:22.591344089	vanilla/Tags for minecraft:item
+// 25w03a	2026-08-28T03:28:33.867720446	vanilla/Tags for minecraft:item
 6afbc8d2f12d963bba5d64cd6a63eb9a77c8a7b3 data/minecraft/tags/item/wolf_food.json
 c573efc219c198638b6916e5de42b196f8267a1e data/minecraft/tags/item/horse_tempt_items.json
 a91a14b0d844c2e8beb882a51072178e0667620c data/minecraft/tags/item/jungle_logs.json
@@ -170,6 +170,6 @@ d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/minecraft/tags/item/soul_fire_base
 04f7aade1edcb69408b1861c72ede4c545c3a679 data/minecraft/tags/item/rabbit_food.json
 d29f89452b265a80884c87a48e71ea780a21849a data/minecraft/tags/item/pillager_preferred_weapons.json
 50e13739c5004ff1f5177fb29ecff7b5d3d45cd3 data/minecraft/tags/item/coals.json
-13d81b6d0ad3432d8c6ff2772386362ecca51f2d data/minecraft/tags/item/panda_eats_from_ground.json
 090e10929cf921bcfe7ca9e263679610ff359335 data/minecraft/tags/item/wart_blocks.json
+13d81b6d0ad3432d8c6ff2772386362ecca51f2d data/minecraft/tags/item/panda_eats_from_ground.json
 237ae0010a21b6661acf9b44a30d8c6ff981d328 data/minecraft/tags/item/enchantable/chest_armor.json

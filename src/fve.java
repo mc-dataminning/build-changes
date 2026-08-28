@@ -1,274 +1,188 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fve extends fvi {
-   static final aku b = aku.b("container/slot");
-   static final Logger c = LogUtils.getLogger();
-   private static final int d = 18;
-   private static final int s = 20;
-   private static final int u = 1;
-   private static final int v = 1;
-   private static final int w = 2;
-   private static final int x = 2;
-   private static final akt<dic> y = dij.b;
-   public static final wp a = wp.c("flat_world_preset.unknown");
-   private final fuj z;
-   private wp A;
-   private wp B;
-   private fve.a C;
-   private fpq D;
-   fpz E;
-   emm F;
-
-   public fve(fuj $$0) {
-      super(wp.c("createWorld.customize.presets.title"));
-      this.z = $$0;
-   }
-
+public class fve extends fwf {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long s = 2000L;
+   public static final wv a = wv.c("connect.aborted");
+   public static final wv b = wv.a("disconnect.genericReason", wv.c("disconnect.unknownHost"));
    @Nullable
-   private static emj a(js<dke> $$0, String $$1, int $$2) {
-      List<String> $$3 = Splitter.on('*').limit(2).splitToList($$1);
-      int $$5;
-      String $$4;
-      if ($$3.size() == 2) {
-         $$4 = $$3.get(1);
+   volatile vo u;
+   @Nullable
+   ChannelFuture v;
+   volatile boolean w;
+   final fwf x;
+   private wv y = wv.c("connect.connecting");
+   private long z = -1L;
+   final wv A;
 
-         try {
-            $$5 = Math.max(Integer.parseInt($$3.get(0)), 0);
-         } catch (NumberFormatException var11) {
-            c.error("Error while parsing flat world string", var11);
-            return null;
-         }
-      } else {
-         $$4 = $$3.get(0);
-         $$5 = 1;
-      }
-
-      int $$9 = Math.min($$2 + $$5, ebm.c);
-      int $$10 = $$9 - $$2;
-
-      Optional<jr.c<dke>> $$11;
-      try {
-         $$11 = $$0.a(akt.a(mc.f, aku.a($$4)));
-      } catch (Exception var10) {
-         c.error("Error while parsing flat world string", var10);
-         return null;
-      }
-
-      if ($$11.isEmpty()) {
-         c.error("Error while parsing flat world string => Unknown block, {}", $$4);
-         return null;
-      } else {
-         return new emj($$10, $$11.get().a());
-      }
+   private fve(fwf $$0, wv $$1) {
+      super(fmu.a);
+      this.x = $$0;
+      this.A = $$1;
    }
 
-   private static List<emj> a(js<dke> $$0, String $$1) {
-      List<emj> $$2 = Lists.newArrayList();
-      String[] $$3 = $$1.split(",");
-      int $$4 = 0;
-
-      for (String $$5 : $$3) {
-         emj $$6 = a($$0, $$5, $$4);
-         if ($$6 == null) {
-            return Collections.emptyList();
-         }
-
-         $$2.add($$6);
-         $$4 += $$6.a();
-      }
-
-      return $$2;
-   }
-
-   public static emm a(js<dke> $$0, js<dic> $$1, js<eop> $$2, js<enn> $$3, String $$4, emm $$5) {
-      Iterator<String> $$6 = Splitter.on(';').split($$4).iterator();
-      if (!$$6.hasNext()) {
-         return emm.a($$1, $$2, $$3);
+   public static void a(fwf $$0, fnd $$1, gjr $$2, gio $$3, boolean $$4, @Nullable gis $$5) {
+      if ($$1.z instanceof fve) {
+         d.error("Attempt to connect while already connecting");
       } else {
-         List<emj> $$7 = a($$0, $$6.next());
-         if ($$7.isEmpty()) {
-            return emm.a($$1, $$2, $$3);
+         wv $$6;
+         if ($$5 != null) {
+            $$6 = wu.q;
+         } else if ($$4) {
+            $$6 = gnd.a;
          } else {
-            jr.c<dic> $$8 = $$1.b(y);
-            jr<dic> $$9 = $$8;
-            if ($$6.hasNext()) {
-               String $$10 = $$6.next();
-               $$9 = Optional.ofNullable(aku.c($$10)).map($$0x -> akt.a(mc.aJ, $$0x)).flatMap($$1::a).orElseGet(() -> {
-                  c.warn("Invalid biome: {}", $$10);
-                  return $$8;
-               });
+            $$6 = wu.r;
+         }
+
+         fve $$9 = new fve($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(wv.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aU();
+         $$1.a(gjf.a($$3.b));
+         $$1.bc().a(gne.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
+   }
+
+   private void a(final fnd $$0, final gjr $$1, final gio $$2, @Nullable final gis $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fve.this.w) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = gjt.a.a($$1).map(gjq::d);
+               if (fve.this.w) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fvm(fve.this.x, fve.this.A, fve.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               vo $$2;
+               synchronized (fve.this) {
+                  if (fve.this.w) {
+                     return;
+                  }
+
+                  $$2 = new vo(zd.b);
+                  $$2.a($$0.aQ().n());
+                  fve.this.v = vo.a($$0, $$0.n.aD(), $$2);
+               }
+
+               fve.this.v.syncUninterruptibly();
+               synchronized (fve.this) {
+                  if (fve.this.w) {
+                     $$2.a(fve.a);
+                     return;
+                  }
+
+                  fve.this.u = $$2;
+                  $$0.af().a($$2, a($$2.b()));
+               }
+
+               fve.this.u
+                  .a($$0.getHostName(), $$0.getPort(), ajf.b, ajf.d, new ghy(fve.this.u, $$0, $$2, fve.this.x, false, null, fve.this::a, $$3), $$3 != null);
+               fve.this.u.a(new aji($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fve.this.w) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fve.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fvm(fve.this.x, fve.this.A, wv.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static hjv.c a(gio.a $$0x) {
+            return switch ($$0) {
+               case a -> hjv.c.b;
+               case b -> hjv.c.c;
+               case c -> hjv.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
+   }
+
+   private void a(wv $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public void e() {
+      if (this.u != null) {
+         if (this.u.i()) {
+            this.u.b();
+         } else {
+            this.u.n();
+         }
+      }
+   }
+
+   @Override
+   public boolean aC_() {
+      return false;
+   }
+
+   @Override
+   protected void aN_() {
+      this.c(fqn.a(wu.e, $$0 -> {
+         synchronized (this) {
+            this.w = true;
+            if (this.v != null) {
+               this.v.cancel(true);
+               this.v = null;
             }
 
-            return $$5.a($$7, $$5.c(), $$9);
-         }
-      }
-   }
-
-   static String a(emm $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < $$0.e().size(); $$2++) {
-         if ($$2 > 0) {
-            $$1.append(",");
+            if (this.u != null) {
+               this.u.a(a);
+            }
          }
 
-         $$1.append($$0.e().get($$2));
-      }
-
-      $$1.append(";");
-      $$1.append($$0.d().e().map(akt::a).orElseThrow(() -> new IllegalStateException("Biome not registered")));
-      return $$1.toString();
+         this.m.a(this.x);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
    }
 
    @Override
-   protected void aR_() {
-      this.A = wp.c("createWorld.customize.presets.share");
-      this.B = wp.c("createWorld.customize.presets.list");
-      this.E = new fpz(this.p, 50, 40, this.n - 100, 20, this.A);
-      this.E.f(1230);
-      gar $$0 = this.z.a.m().k();
-      kf $$1 = $$0.a();
-      csn $$2 = $$0.h().b();
-      js<dic> $$3 = $$1.e(mc.aJ);
-      js<eop> $$4 = $$1.e(mc.aY);
-      js<enn> $$5 = $$1.e(mc.aV);
-      js<dke> $$6 = $$1.e(mc.f).a($$2);
-      this.E.a(a(this.z.l()));
-      this.F = this.z.l();
-      this.d(this.E);
-      this.C = this.c(new fve.a($$1, $$2));
-      this.D = this.c(fpq.a(wp.c("createWorld.customize.presets.select"), $$4x -> {
-         emm $$5x = a($$6, $$3, $$4, $$5, this.E.a(), this.F);
-         this.z.a($$5x);
-         this.m.a(this.z);
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
-      this.c(fpq.a(wo.e, $$0x -> this.m.a(this.z)).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-      this.c(this.C.p() != null);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.C.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(fmg $$0, int $$1, int $$2) {
-      String $$3 = this.E.a();
-      this.b($$0, $$1, $$2);
-      this.E.a($$3);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.z);
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 400.0F);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-      $$0.b(this.p, this.A, 51, 30, 10526880);
-      $$0.b(this.p, this.B, 51, 68, 10526880);
-      $$0.c().b();
-      this.E.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.D.j = $$0 || this.E.a().length() > 1;
-   }
-
-   class a extends fqm<fve.a.a> {
-      public a(final kf $$0, final csn $$1) {
-         super(fve.this.m, fve.this.n, fve.this.o - 117, 80, 24);
-
-         for (jr<emk> $$2 : $$0.e(mc.aR).c(awu.a)) {
-            Set<dke> $$3 = $$2.a().b().e().stream().map($$0x -> $$0x.b().b()).filter($$1x -> !$$1x.a($$1)).collect(Collectors.toSet());
-            if (!$$3.isEmpty()) {
-               fve.c
-                  .info(
-                     "Discarding flat world preset {} since it contains experimental blocks {}",
-                     $$2.e().map($$0x -> $$0x.a().toString()).orElse("<unknown>"),
-                     $$3
-                  );
-            } else {
-               this.b(new fve.a.a($$2));
-            }
-         }
+      long $$4 = af.c();
+      if ($$4 - this.z > 2000L) {
+         this.z = $$4;
+         this.m.aY().c(wv.c("narrator.joining"));
       }
 
-      public void a(@Nullable fve.a.a $$0) {
-         super.a($$0);
-         fve.this.c($$0 != null);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (super.a($$0, $$1, $$2)) {
-            return true;
-         } else {
-            if (fts.a($$0) && this.p() != null) {
-               this.p().b();
-            }
-
-            return false;
-         }
-      }
-
-      public class a extends fqm.a<fve.a.a> {
-         private static final aku b = aku.b("textures/gui/container/stats_icons.png");
-         private final emk c;
-         private final wp d;
-
-         public a(final jr<emk> $$1) {
-            this.c = $$1.a();
-            this.d = $$1.e().map($$0x -> wp.c($$0x.a().h("flat_world_preset"))).orElse(fve.a);
-         }
-
-         @Override
-         public void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            this.a($$0, $$3, $$2, this.c.a().a());
-            $$0.b(fve.this.p, this.d, $$3 + 18 + 5, $$2 + 6, -1);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            return super.a($$0, $$1, $$2);
-         }
-
-         void b() {
-            a.this.a(this);
-            fve.this.F = this.c.b();
-            fve.this.E.a(fve.a(fve.this.F));
-            fve.this.E.b(false);
-         }
-
-         private void a(fpc $$0, int $$1, int $$2, cxd $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            $$0.b(new cxh($$3), $$1 + 2, $$2 + 2);
-         }
-
-         private void a(fpc $$0, int $$1, int $$2) {
-            $$0.a(gnh::H, fve.b, $$1, $$2, 18, 18);
-         }
-
-         @Override
-         public wp a() {
-            return wp.a("narrator.select", this.d);
-         }
-      }
+      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

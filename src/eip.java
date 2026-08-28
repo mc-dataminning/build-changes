@@ -1,53 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record eip(List<eip.a> b, jn c, eev d, boolean e) implements eiy {
-   public static final Codec<eip> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eip.a.a.listOf().fieldOf("layers").forGetter(eip::a),
-               jn.g.fieldOf("direction").forGetter(eip::b),
-               eev.b.fieldOf("allowed_placement").forGetter(eip::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eip::d)
-            )
-            .apply($$0, eip::new)
-   );
-
-   public static eip.a a(bsd $$0, ekz $$1) {
-      return new eip.a($$0, $$1);
+public class eip extends ehr<eki> {
+   public eip(Codec<eki> $$0) {
+      super($$0);
    }
 
-   public static eip b(bsd $$0, ekz $$1) {
-      return new eip(List.of(a($$0, $$1)), jn.b, eev.c, false);
-   }
+   @Override
+   public boolean a(eht<eki> $$0) {
+      eki $$1 = $$0.f();
+      azs $$2 = $$0.d();
+      jj $$3 = $$0.e();
+      dio $$4 = $$0.b();
+      int $$5 = 0;
+      jj.a $$6 = new jj.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-   public List<eip.a> a() {
-      return this.b;
-   }
-
-   public jn b() {
-      return this.c;
-   }
-
-   public eev c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bsd b, ekz c) {
-      public static final Codec<eip.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bsd.d.fieldOf("height").forGetter(eip.a::a), ekz.a.fieldOf("provider").forGetter(eip.a::b)).apply($$0, eip.a::new)
-      );
-
-      public bsd a() {
-         return this.b;
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
       }
 
-      public ekz b() {
-         return this.c;
-      }
+      return $$5 > 0;
    }
 }

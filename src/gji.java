@@ -1,43 +1,73 @@
-import org.joml.Vector3f;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class gji extends gjk<ln> {
-   private final Vector3f a;
-   private final Vector3f b;
+public final class gji {
+   private static final int a = 1024;
+   private final giz b;
+   private final gjf c;
+   private final giu d;
+   @Nullable
+   private gje e;
 
-   protected gji(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ln $$7, glb $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
+   public gji(giz $$0, gjf $$1, giu $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   public static gji a(gjf $$0, UserApiService $$1) {
+      giu $$2 = new giu(1024);
+      giz $$3 = giz.a($$0, $$1);
+      return new gji($$3, $$0, $$2);
    }
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
-   }
-
-   @Override
-   public void a(fgv $$0, flo $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements gkj<ln> {
-      private final glb a;
-
-      public a(glb $$0) {
-         this.a = $$0;
+   public void a(fnd $$0, fwf $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gje $$4 = this.e.b();
+         $$0.a(
+            new fvd(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wv.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wv.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wv.c("gui.abuseReport.draft.edit"),
+               wv.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
+   }
 
-      public gkg a(ln $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gji($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+   public giz a() {
+      return this.b;
+   }
+
+   public giu b() {
+      return this.d;
+   }
+
+   public boolean a(gjf $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable gje $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

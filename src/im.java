@@ -1,60 +1,95 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-class im<T extends ez<T>> {
-   @Nullable
-   private List<ib<T>> a = new ArrayList<>();
-   @Nullable
-   private List<io.a<T>> b;
-   private final List<String> c = new ArrayList<>();
+public interface im<T> {
+   ald a();
 
-   public void a(ib<T> $$0) {
-      if (this.b != null) {
-         this.b.add(new io.c<>($$0));
-      } else {
-         this.a.add($$0);
-      }
+   io<T> a(@Nullable tw var1, CommandDispatcher<T> var2) throws fa;
+
+   private static boolean b(CharSequence $$0) {
+      int $$1 = $$0.length();
+      return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   private int a(String $$0) {
-      int $$1 = this.c.indexOf($$0);
-      if ($$1 == -1) {
-         $$1 = this.c.size();
-         this.c.add($$0);
-      }
+   static <T extends ez<T>> im<T> a(ald $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+      in<T> $$4 = new in<>();
 
-      return $$1;
-   }
+      for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
+         int $$6 = $$5 + 1;
+         String $$7 = $$3.get($$5).trim();
+         String $$10;
+         if (b($$7)) {
+            StringBuilder $$8 = new StringBuilder($$7);
 
-   private IntList a(List<String> $$0) {
-      IntArrayList $$1 = new IntArrayList($$0.size());
+            do {
+               if (++$$5 == $$3.size()) {
+                  throw new IllegalArgumentException("Line continuation at end of file");
+               }
 
-      for (String $$2 : $$0) {
-         $$1.add(this.a($$2));
-      }
+               $$8.deleteCharAt($$8.length() - 1);
+               String $$9 = $$3.get($$5).trim();
+               $$8.append($$9);
+               a($$8);
+            } while (b($$8));
 
-      return $$1;
-   }
-
-   public void a(String $$0, int $$1, T $$2) {
-      iq $$3 = iq.a($$0, $$1);
-      if (this.a != null) {
-         this.b = new ArrayList<>(this.a.size() + 1);
-
-         for (ib<T> $$4 : this.a) {
-            this.b.add(new io.c<>($$4));
+            $$10 = $$8.toString();
+         } else {
+            $$10 = $$7;
          }
 
-         this.a = null;
+         a($$10);
+         StringReader $$12 = new StringReader($$10);
+         if ($$12.canRead() && $$12.peek() != '#') {
+            if ($$12.peek() == '/') {
+               $$12.skip();
+               if ($$12.peek() == '/') {
+                  throw new IllegalArgumentException(
+                     "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (if you intended to make a comment, use '#' not '//')"
+                  );
+               }
+
+               String $$13 = $$12.readUnquotedString();
+               throw new IllegalArgumentException(
+                  "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (did you mean '" + $$13 + "'? Do not use a preceding forwards slash.)"
+               );
+            }
+
+            if ($$12.peek() == '$') {
+               $$4.a($$10.substring(1), $$6, $$2);
+            } else {
+               try {
+                  $$4.a(a($$1, $$2, $$12));
+               } catch (CommandSyntaxException var11) {
+                  throw new IllegalArgumentException("Whilst parsing command on line " + $$6 + ": " + var11.getMessage());
+               }
+            }
+         }
       }
 
-      this.b.add(new io.b<>($$3, this.a($$3.b()), $$2));
+      return $$4.a($$0);
    }
 
-   public il<T> a(aku $$0) {
-      return (il<T>)(this.b != null ? new io<>($$0, this.b, this.c) : new ip<>($$0, this.a));
+   static void a(CharSequence $$0) {
+      if ($$0.length() > 2000000) {
+         CharSequence $$1 = $$0.subSequence(0, Math.min(512, 2000000));
+         throw new IllegalStateException("Command too long: " + $$0.length() + " characters, contents: " + $$1 + "...");
+      }
+   }
+
+   static <T extends ez<T>> ic<T> a(CommandDispatcher<T> $$0, T $$1, StringReader $$2) throws CommandSyntaxException {
+      ParseResults<T> $$3 = $$0.parse($$2, $$1);
+      ey.a($$3);
+      Optional<ContextChain<T>> $$4 = ContextChain.tryFlatten($$3.getContext().build($$2.getString()));
+      if ($$4.isEmpty()) {
+         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$3.getReader());
+      } else {
+         return new ie.c<>($$2.getString(), $$4.get());
+      }
    }
 }

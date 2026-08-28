@@ -1,24 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bcq extends DataFix {
-   public bcq(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bcq(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped(
-         "ChunkLightRemoveFix",
-         $$0,
-         this.getOutputSchema().getType(bic.c),
-         $$1x -> $$1x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("isLightOn")))
-      );
+      return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(biq.c), bcq::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Dynamic<?> $$1 = $$0x;
+         Optional<? extends Dynamic<?>> $$2 = $$0x.get("CarvingMasks").result();
+         if ($$2.isPresent()) {
+            Optional<? extends Dynamic<?>> $$3 = $$2.get().get("AIR").result();
+            if ($$3.isPresent()) {
+               $$1 = $$0x.set("carving_mask", $$3.get());
+            }
+         }
+
+         return $$1.remove("CarvingMasks");
+      });
    }
 }

@@ -1,113 +1,60 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class alo extends bth {
-   private long g = 0L;
-   private long h = 0L;
-   private long i = 0L;
-   private long j = 0L;
-   private boolean k = false;
-   private final MinecraftServer l;
+public class alo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final CompletableFuture<baq> b = CompletableFuture.completedFuture(baq.a);
+   private final aln.a c;
+   private final ey d;
+   private final dcs e;
+   private final alq f;
+   private final alr g;
+   private final List<kf.a<?>> h;
 
-   public alo(MinecraftServer $$0) {
-      this.l = $$0;
+   private alo(jz<alm> $$0, ju.a $$1, cte $$2, ey.a $$3, List<kf.a<?>> $$4, int $$5) {
+      this.c = new aln.a($$0.a());
+      this.h = $$4;
+      this.e = new dcs($$1);
+      this.d = new ey($$3, et.a($$1, $$2));
+      this.f = new alq($$1);
+      this.g = new alr($$5, this.d.a());
    }
 
-   public boolean a() {
-      return this.j > 0L;
+   public alr a() {
+      return this.g;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.n();
+   public aln.a b() {
+      return this.c;
    }
 
-   private void n() {
-      this.l.ag().a(afu.a(this));
+   public dcs c() {
+      return this.e;
    }
 
-   private void o() {
-      this.l.ag().a(afv.a(this));
+   public ey d() {
+      return this.d;
    }
 
-   public boolean a(int $$0) {
-      if (!this.l()) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.o();
-         return true;
-      }
+   public alq e() {
+      return this.f;
    }
 
-   public boolean b() {
-      if (this.d > 0) {
-         this.d = 0;
-         this.o();
-         return true;
-      } else {
-         return false;
-      }
+   public List<aut> f() {
+      return List.of(this.e, this.g, this.f);
    }
 
-   public boolean c() {
-      if (this.g > 0L) {
-         this.p();
-         return true;
-      } else {
-         return false;
-      }
+   public static CompletableFuture<alo> a(ava $$0, jz<alm> $$1, List<kf.a<?>> $$2, cte $$3, ey.a $$4, int $$5, Executor $$6, Executor $$7) {
+      return aln.a($$1, $$2, $$0, $$6).thenCompose($$7x -> {
+         alo $$8 = new alo($$7x.a(), $$7x.b(), $$3, $$4, $$2, $$5);
+         return avg.a($$0, $$8.f(), $$6, $$7, b, a.isDebugEnabled()).a().thenApply($$1xx -> $$8);
+      });
    }
 
-   public boolean b(int $$0) {
-      boolean $$1 = this.g > 0L;
-      this.i = 0L;
-      this.j = (long)$$0;
-      this.g = (long)$$0;
-      this.k = this.l();
-      this.a(false);
-      return $$1;
-   }
-
-   private void p() {
-      long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)bab.b;
-      int $$2 = (int)((double)(bab.c * $$0) / $$1);
-      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
-      this.j = 0L;
-      this.i = 0L;
-      this.l.aH().a(() -> wp.a("commands.tick.sprint.report", $$2, $$3), true);
-      this.g = 0L;
-      this.a(this.k);
-      this.l.F();
-   }
-
-   public boolean d() {
-      if (!this.e) {
-         return false;
-      } else if (this.g > 0L) {
-         this.h = System.nanoTime();
-         this.g--;
-         return true;
-      } else {
-         this.p();
-         return false;
-      }
-   }
-
-   public void e() {
-      this.i = this.i + (System.nanoTime() - this.h);
-   }
-
-   @Override
-   public void a(float $$0) {
-      super.a($$0);
-      this.l.F();
-      this.n();
-   }
-
-   public void a(are $$0) {
-      $$0.f.b(afu.a(this));
-      $$0.f.b(afv.a(this));
+   public void g() {
+      this.h.forEach(kf.a::d);
    }
 }

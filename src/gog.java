@@ -1,55 +1,59 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SequencedMap;
 
-public record gog(@Nullable jn b, int c, String d, goi e) {
-   public static final int a = -1;
+public class gog {
+   private final gol a = new gol();
+   private final gom b;
+   private final gny.a c;
+   private final gny.a d;
+   private final goa e;
 
-   @Nullable
-   public jn a() {
+   public gog(int $$0) {
+      this.b = gom.a($$0);
+      SequencedMap<goi, fhl> $$1 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(got.h(), this.a.a(goi.c()));
+         $$0x.put(got.i(), this.a.a(goi.e()));
+         $$0x.put(got.a(), this.a.a(goi.d()));
+         $$0x.put(got.j(), this.a.a(goi.f()));
+         a($$0x, got.b());
+         a($$0x, got.c());
+         a($$0x, got.d());
+         a($$0x, got.e());
+         a($$0x, got.f());
+         $$0x.put(got.g(), new fhl(786432));
+         a($$0x, goi.j());
+         a($$0x, goi.l());
+         a($$0x, goi.k());
+         a($$0x, goi.m());
+         a($$0x, goi.i());
+      });
+      this.c = gny.a($$1, new fhl(786432));
+      this.e = new goa(this.c);
+      SequencedMap<goi, fhl> $$2 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hjc.l.forEach($$1x -> a($$0x, $$1x)));
+      this.d = gny.a($$2, new fhl(0));
+   }
+
+   private static void a(Object2ObjectLinkedOpenHashMap<goi, fhl> $$0, goi $$1) {
+      $$0.put($$1, new fhl($$1.R()));
+   }
+
+   public gol a() {
+      return this.a;
+   }
+
+   public gom b() {
       return this.b;
    }
 
-   public int b() {
+   public gny.a c() {
       return this.c;
    }
 
-   public String c() {
+   public gny.a d() {
       return this.d;
    }
 
-   public goi d() {
+   public goa e() {
       return this.e;
-   }
-
-   protected static class a implements JsonDeserializer<gog> {
-      private static final int a = -1;
-
-      public gog a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jn $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         goi $$7 = (goi)$$2.deserialize($$3, goi.class);
-         return new gog($$4, $$5, $$6, $$7);
-      }
-
-      protected int a(JsonObject $$0) {
-         return ayp.a($$0, "tintindex", -1);
-      }
-
-      private String b(JsonObject $$0) {
-         return ayp.i($$0, "texture");
-      }
-
-      @Nullable
-      private jn c(JsonObject $$0) {
-         String $$1 = ayp.a($$0, "cullface", "");
-         return jn.a($$1);
-      }
    }
 }

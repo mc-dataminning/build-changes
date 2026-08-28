@@ -1,16 +1,13 @@
-import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hcu() implements hcw {
-   public static final MapCodec<hcu> a = MapCodec.unit(new hcu());
+public class hcu extends haz implements hct {
+   public boolean a;
+   @Nullable
+   public cpv b;
 
+   @Nullable
    @Override
-   public boolean a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      return cvv.g($$0);
-   }
-
-   @Override
-   public MapCodec<hcu> a() {
-      return a;
+   public cpv a() {
+      return this.b;
    }
 }

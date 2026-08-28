@@ -1,26 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bfl extends DataFix {
+public class bfl extends bgp {
    public bfl(Schema $$0) {
-      super($$0, false);
+      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityLockToComponentFix", this.getInputSchema().getType(bic.s), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<? extends Dynamic<?>> $$1 = $$0x.get("lock").result();
-               if ($$1.isEmpty()) {
-                  return $$0x;
-               } else {
-                  Dynamic<?> $$2 = bfm.b($$1.get());
-                  return $$2 != null ? $$0x.set("lock", $$2) : $$0x.remove("lock");
-               }
-            })
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return af.a($$0, $$0.getType(), $$0x -> $$0x.remove("filtered_title").remove("filtered_pages"));
    }
 }

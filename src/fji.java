@@ -1,40 +1,81 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class fji implements Iterable<fii> {
-   private final fmg a;
-   private final Set<fii> b = new HashSet<>();
-   private List<fii> c = List.of();
+public class fji extends fjt {
+   private static final Logger b = LogUtils.getLogger();
+   public Map<Long, List<ProfileResult>> a = Map.of();
 
-   public fji(fmg $$0) {
-      this.a = $$0;
-   }
+   public static fji a(String $$0) {
+      fji $$1 = new fji();
+      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
 
-   public void a(List<fii> $$0) {
-      List<fii> $$1 = new ArrayList<>($$0);
-      $$1.sort(new fii.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         JsonObject $$3 = aza.a($$0);
+         if (aza.d($$3, "lists")) {
+            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
+               JsonObject $$6 = $$5.getAsJsonObject();
+               String $$7 = flp.b("playerList", $$6, null);
+               List<ProfileResult> $$9;
+               if ($$7 != null) {
+                  JsonElement $$8 = JsonParser.parseString($$7);
+                  if ($$8.isJsonArray()) {
+                     $$9 = a($$8.getAsJsonArray());
+                  } else {
+                     $$9 = Lists.newArrayList();
+                  }
+               } else {
+                  $$9 = Lists.newArrayList();
+               }
+
+               $$2.put(flp.a("serverId", $$6, -1L), $$9);
+            }
+         }
+      } catch (Exception var11) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
       }
 
-      this.c = $$1;
+      $$1.a = $$2.build();
+      return $$1;
    }
 
-   public void a(fii $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
+   private static List<ProfileResult> a(JsonArray $$0) {
+      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
+      MinecraftSessionService $$2 = fnd.Q().am();
+
+      for (JsonElement $$3 : $$0) {
+         if ($$3.isJsonObject()) {
+            UUID $$4 = flp.a("playerId", $$3.getAsJsonObject(), null);
+            if ($$4 != null && !fnd.Q().b($$4)) {
+               try {
+                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
+                  if ($$5 != null) {
+                     $$1.add($$5);
+                  }
+               } catch (Exception var7) {
+                  b.error("Could not get name for {}", $$4, var7);
+               }
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public Iterator<fii> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+   public List<ProfileResult> a(long $$0) {
+      List<ProfileResult> $$1 = this.a.get($$0);
+      return $$1 != null ? $$1 : List.of();
    }
 }

@@ -1,17 +1,36 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.crypto.Cipher;
+import java.util.HashMap;
+import java.util.Map;
 
-public class vd extends MessageToMessageDecoder<ByteBuf> {
-   private final vc a;
-
-   public vd(Cipher $$0) {
-      this.a = new vc($$0);
+public record vd(int a, Map<String, uv<?>> b, Map<String, vd> c) {
+   private vd(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   public static vd a() {
+      return new vd(1);
+   }
+
+   public void a(vc $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vd(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
+   }
+
+   public boolean a(uv<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
+   }
+
+   public int b() {
+      return this.a;
+   }
+
+   public Map<String, uv<?>> c() {
+      return this.b;
+   }
+
+   public Map<String, vd> d() {
+      return this.c;
    }
 }

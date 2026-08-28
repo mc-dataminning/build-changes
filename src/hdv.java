@@ -1,28 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public record hdv(boolean b) implements hds {
-   public static final MapCodec<hdv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("remaining", false).forGetter(hdv::b)).apply($$0, hdv::new)
-   );
+public class hdv {
+   private static final ays.b<ald, MapCodec<? extends hdw>> b = new ays.b<>();
+   public static final MapCodec<hdw> a = b.a(ald.a).dispatchMap("property", hdw::a, $$0 -> $$0);
 
-   @Override
-   public float a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3) {
-      if ($$2 != null && $$2.fD() == $$0) {
-         return this.b ? (float)$$2.fE() : (float)a($$0, $$2);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   @Override
-   public MapCodec<hdv> a() {
-      return a;
-   }
-
-   public static int a(cxh $$0, bvy $$1) {
-      return $$0.a($$1) - $$1.fE();
+   public static void a() {
+      b.a(ald.b("custom_model_data"), hdx.a);
+      b.a(ald.b("using_item"), hef.a);
+      b.a(ald.b("broken"), hdt.a);
+      b.a(ald.b("damaged"), hdy.a);
+      b.a(ald.b("fishing_rod/cast"), hea.a);
+      b.a(ald.b("has_component"), heb.a);
+      b.a(ald.b("bundle/has_selected_item"), hdu.a);
+      b.a(ald.b("selected"), hee.a);
+      b.a(ald.b("carried"), hec.a);
+      b.a(ald.b("extended_view"), hdz.a);
+      b.a(ald.b("keybind_down"), hed.a);
+      b.a(ald.b("view_entity"), heg.a);
    }
 }

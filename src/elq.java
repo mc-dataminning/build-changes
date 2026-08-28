@@ -1,60 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elq extends elt {
-   public static final MapCodec<elq> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elq::new, $$0 -> $$0.b);
-   private final float b;
+public record elq(elw b, float c) {
+   public static final Codec<elq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               elw.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, elq::new)
+   );
 
-   @Override
-   protected elu<?> a() {
-      return elu.b;
+   public elw a() {
+      return this.b;
    }
 
-   public elq(float $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(elt.a $$0) {
-      azh $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            ji $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dtg.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ji $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dtg.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ji $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dtg.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ji $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dtg.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(ji $$0, dyh $$1, elt.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (ji var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
-      }
+   public float b() {
+      return this.c;
    }
 }

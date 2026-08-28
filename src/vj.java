@@ -1,17 +1,17 @@
-public enum vj {
-   a("handshake"),
-   b("play"),
-   c("status"),
-   d("login"),
-   e("configuration");
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.crypto.Cipher;
 
-   private final String f;
+public class vj extends MessageToMessageDecoder<ByteBuf> {
+   private final vi a;
 
-   private vj(final String $$0) {
-      this.f = $$0;
+   public vj(Cipher $$0) {
+      this.a = new vi($$0);
    }
 
-   public String a() {
-      return this.f;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      $$2.add(this.a.a($$0, $$1));
    }
 }

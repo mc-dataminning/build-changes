@@ -1,84 +1,95 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class als {
    private static final Logger a = LogUtils.getLogger();
+   private static final ald b = ald.b("tick");
+   private static final ald c = ald.b("load");
+   private final MinecraftServer d;
+   private List<im<ex>> e = ImmutableList.of();
+   private boolean f;
+   private alr g;
 
-   public static <D, R> CompletableFuture<R> a(als.c $$0, als.f<D> $$1, als.e<D, R> $$2, Executor $$3, Executor $$4) {
+   public als(MinecraftServer $$0, alr $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
+   }
+
+   public CommandDispatcher<ex> a() {
+      return this.d.aG().a();
+   }
+
+   public void b() {
+      if (this.d.aP().i()) {
+         if (this.f) {
+            this.f = false;
+            Collection<im<ex>> $$0 = this.g.b(c);
+            this.a($$0, c);
+         }
+
+         this.a(this.e, b);
+      }
+   }
+
+   private void a(Collection<im<ex>> $$0, ald $$1) {
+      bqa.a().a($$1::toString);
+
+      for (im<ex> $$2 : $$0) {
+         this.a($$2, this.c());
+      }
+
+      bqa.a().c();
+   }
+
+   public void a(im<ex> $$0, ex $$1) {
+      bqb $$2 = bqa.a();
+      $$2.a(() -> "function " + $$0.a());
+
       try {
-         Pair<dhx, auf> $$5 = $$0.a.a();
-         auf $$6 = (auf)$$5.getSecond();
-         jy<ald> $$7 = ald.a();
-         List<ke.a<?>> $$8 = axg.a($$6, $$7.a(ald.a));
-         kf.b $$9 = $$7.b(ald.b);
-         List<jt.b<?>> $$10 = axg.a($$9, $$8);
-         kf.b $$11 = akp.a($$6, $$10, akp.a);
-         List<jt.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
-         kf.b $$13 = akp.a($$6, $$12, akp.b);
-         dhx $$14 = (dhx)$$5.getFirst();
-         jt.a $$15 = jt.a.a($$12.stream());
-         als.b<D> $$16 = $$1.get(new als.a($$6, $$14, $$15, $$13));
-         jy<ald> $$17 = $$7.a(ald.b, $$11, $$16.b);
-         return alf.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$4x -> {
-            $$4x.g();
-            return $$2.create($$6, $$4x, $$17, $$16.a);
-         }, $$4);
-      } catch (Exception var18) {
-         return CompletableFuture.failedFuture(var18);
+         io<ex> $$3 = $$0.a(null, this.a());
+         ey.a($$1, $$2x -> hy.a($$2x, $$3, $$1, eu.a));
+      } catch (fa var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
       }
    }
 
-   public static record a(aup a, dhx b, jt.a c, kf.b d) {
+   public void a(alr $$0) {
+      this.g = $$0;
+      this.b($$0);
    }
 
-   public static record b<D>(D a, kf.b b) {
+   private void b(alr $$0) {
+      this.e = List.copyOf($$0.b(b));
+      this.f = true;
    }
 
-   public static record c(als.d a, ey.a b, int c) {
+   public ex c() {
+      return this.d.aH().a(2).a();
    }
 
-   public static record d(aua a, dhx b, boolean c, boolean d) {
-      public Pair<dhx, auf> a() {
-         dhx $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
-         List<atc> $$1 = this.a.h();
-         auf $$2 = new aui(ate.b, $$1);
-         return Pair.of($$0, $$2);
-      }
-
-      public aua b() {
-         return this.a;
-      }
-
-      public dhx c() {
-         return this.b;
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   public Optional<im<ex>> a(ald $$0) {
+      return this.g.a($$0);
    }
 
-   @FunctionalInterface
-   public interface e<D, R> {
-      R create(auf var1, alf var2, jy<ald> var3, D var4);
+   public List<im<ex>> b(ald $$0) {
+      return this.g.b($$0);
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      als.b<D> get(als.a var1);
+   public Iterable<ald> d() {
+      return this.g.a().keySet();
+   }
+
+   public Iterable<ald> e() {
+      return this.g.b();
    }
 }

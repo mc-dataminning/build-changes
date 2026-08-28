@@ -1,5 +1,23 @@
-public interface dzj {
-   dxq a(int var1);
+public enum dzj implements bag {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   void a(int var1, dxq var2);
+   private final String f;
+
+   private dzj(final String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

@@ -1,43 +1,28 @@
-public class gtl extends grx<chz, gzs, gdd> {
-   private static final aku a = aku.b("textures/entity/fox/fox.png");
-   private static final aku b = aku.b("textures/entity/fox/fox_sleep.png");
-   private static final aku k = aku.b("textures/entity/fox/snow_fox.png");
-   private static final aku l = aku.b("textures/entity/fox/snow_fox_sleep.png");
+public class gtl extends gsz<cka, gzz, gdj> {
+   private static final ald a = ald.b("textures/entity/camel/camel.png");
 
-   public gtl(gtd.a $$0) {
-      super($$0, new gdd($$0.a(ggb.aP)), new gdd($$0.a(ggb.aQ)), 0.4F);
-      this.a(new gxe(this));
+   public gtl(guf.a $$0) {
+      super($$0, new gdj($$0.a(ghc.M)), new gdj($$0.a(ghc.N)), 0.7F);
+      this.a(new gyv<>(this, $$0.h(), hiy.d.i, $$0x -> $$0x.a, new gdk($$0.a(ghc.O)), new gdk($$0.a(ghc.P))));
    }
 
-   protected void a(gzs $$0, fgr $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.ab));
-      }
+   public ald a(gzz $$0) {
+      return a;
    }
 
-   public aku a(gzs $$0) {
-      if ($$0.h == chz.v.a) {
-         return $$0.d ? b : a;
-      } else {
-         return $$0.d ? l : k;
-      }
+   public gzz a() {
+      return new gzz();
    }
 
-   public gzs b() {
-      return new gzs();
-   }
-
-   public void a(chz $$0, gzs $$1, float $$2) {
+   public void a(cka $$0, gzz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gzy.a($$0, $$1, this.i);
-      $$1.a = $$0.K($$2);
-      $$1.c = $$0.ch();
-      $$1.b = $$0.L($$2);
-      $$1.d = $$0.fT();
-      $$1.e = $$0.x();
-      $$1.f = $$0.gs();
-      $$1.g = $$0.gt();
-      $$1.h = $$0.t();
+      $$1.a = $$0.a(bwc.h).v();
+      $$1.b = $$0.ca();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.bK);
+      $$1.e.a($$0.bL);
+      $$1.f.a($$0.bM);
+      $$1.g.a($$0.bN);
+      $$1.h.a($$0.bO);
    }
 }

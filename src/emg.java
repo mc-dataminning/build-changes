@@ -1,26 +1,29 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 
-public class emg<P extends emf> {
-   public static final emg<eme> a = a("straight_trunk_placer", eme.a);
-   public static final emg<emb> b = a("forking_trunk_placer", emb.a);
-   public static final emg<emc> c = a("giant_trunk_placer", emc.a);
-   public static final emg<emd> d = a("mega_jungle_trunk_placer", emd.b);
-   public static final emg<elz> e = a("dark_oak_trunk_placer", elz.a);
-   public static final emg<ema> f = a("fancy_trunk_placer", ema.a);
-   public static final emg<elx> g = a("bending_trunk_placer", elx.a);
-   public static final emg<emh> h = a("upwards_branching_trunk_placer", emh.a);
-   public static final emg<ely> i = a("cherry_trunk_placer", ely.a);
-   private final MapCodec<P> j;
+public class emg extends elw {
+   public static final MapCodec<emg> b = bsb.b(dym.a).comapFlatMap(emg::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bsb<dym> c;
 
-   private static <P extends emf> emg<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.V, $$0, new emg<>($$1));
+   private static DataResult<emg> a(bsb<dym> $$0) {
+      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new emg($$0));
    }
 
-   private emg(MapCodec<P> $$0) {
-      this.j = $$0;
+   public emg(bsb<dym> $$0) {
+      this.c = $$0;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   public emg(bsb.a<dym> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected elx<?> a() {
+      return elx.b;
+   }
+
+   @Override
+   public dym a(azs $$0, jj $$1) {
+      return this.c.b($$0);
    }
 }

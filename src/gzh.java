@@ -1,33 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class gzh extends gzj {
-   public float a;
-   public float b;
-   public boolean c;
-   @Nullable
-   public fbx d;
-   public boolean e;
-   public boolean f;
-   public double g;
-   public float h;
-   public final ckn i = new ckn();
+public class gzh extends gyt<hcz, ggs> {
+   private final ggs a;
+   private final ggs b;
+   private final gye c;
+   private static final Map<bvo.a, ald> d = Map.of(
+      bvo.a.b,
+      ald.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
+      bvo.a.c,
+      ald.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
+      bvo.a.d,
+      ald.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
+   );
 
-   public ckn.a a(int $$0) {
-      return this.i.a($$0, this.h);
+   public gzh(gwc<hcz, ggs> $$0, ggz $$1, gye $$2) {
+      super($$0);
+      this.a = new ggs($$1.a(ghc.dU));
+      this.b = new ggs($$1.a(ghc.dW));
+      this.c = $$2;
    }
 
-   public float a(int $$0, ckn.a $$1, ckn.a $$2) {
-      double $$3;
-      if (this.e) {
-         $$3 = (double)$$0 / Math.max(this.g / 4.0, 1.0);
-      } else if (this.f) {
-         $$3 = (double)$$0;
-      } else if ($$0 == 6) {
-         $$3 = 0.0;
-      } else {
-         $$3 = $$2.a() - $$1.a();
+   public void a(fho $$0, gny $$1, int $$2, hcz $$3, float $$4, float $$5) {
+      cxy $$6 = $$3.i;
+      dgc $$7 = $$6.a(kx.E);
+      if ($$7 != null && !$$7.d().isEmpty()) {
+         ggs $$8 = $$3.aj ? this.b : this.a;
+         $$8.a($$3);
+         this.c.a(hiy.d.d, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
+         this.a($$0, $$1, $$2, $$6, $$8);
       }
+   }
 
-      return (float)$$3;
+   private void a(fho $$0, gny $$1, int $$2, cxy $$3, gew $$4) {
+      bvo.a $$5 = bvo.b.a($$3);
+      if ($$5 != bvo.a.a) {
+         ald $$6 = d.get($$5);
+         fhs $$7 = $$1.getBuffer(goi.c($$6));
+         $$4.a($$0, $$7, $$2, hgi.d);
+      }
    }
 }

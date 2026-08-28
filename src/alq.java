@@ -1,78 +1,57 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class alq {
-   private static final int a = 8;
-   private final Queue<alq.a> b = new axm<>();
-   private final Object2IntLinkedOpenHashMap<alq.b> c = new Object2IntLinkedOpenHashMap();
+public class alq extends ave<ah> {
+   private static final Logger a = LogUtils.getLogger();
+   private Map<ald, ai> b = Map.of();
+   private an c = new an();
+   private final ju.a d;
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public alq(ju.a $$0) {
+      super($$0, ah.a, me.bq);
+      this.d = $$0;
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new alq.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
+   protected void a(Map<ald, ah> $$0, ava $$1, bqb $$2) {
+      Builder<ald, ai> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         this.a($$1x, $$2x);
+         $$3.put($$1x, new ai($$1x, $$2x));
+      });
+      this.b = $$3.buildOrThrow();
+      an $$4 = new an();
+      $$4.a(this.b.values());
 
-      while (this.b.size() > 8) {
-         this.b.remove();
-      }
-
-      alq.b $$4 = new alq.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
-   }
-
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
-
-         for (alq.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
+      for (aj $$5 : $$4.b()) {
+         if ($$5.b().b().c().isPresent()) {
+            av.a($$5);
          }
       }
 
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
-
-         while (var6.hasNext()) {
-            Entry<alq.b> $$3 = (Entry<alq.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((alq.b)$$3.getKey()).a)
-               .append(":")
-               .append(((alq.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
-         }
-      }
-
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+      this.c = $$4;
    }
 
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   private void a(ald $$0, ah $$1) {
+      azq.a $$2 = new azq.a();
+      $$1.a($$2, this.d);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }
 
-   static record b(String a, Class<? extends Throwable> b) {
+   @Nullable
+   public ai a(ald $$0) {
+      return this.b.get($$0);
+   }
+
+   public an a() {
+      return this.c;
+   }
+
+   public Collection<ai> b() {
+      return this.b.values();
    }
 }

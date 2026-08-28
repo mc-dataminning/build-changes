@@ -1,30 +1,14 @@
-public class gvl<T extends cnd> extends guj<T, haj, gfb> {
-   private static final aku a = aku.b("textures/entity/spider/spider.png");
-
-   public gvl(gtd.a $$0) {
-      this($$0, ggb.cW);
+public abstract class gvl<T extends bwt, S extends hbk, M extends gea<? super S>> extends gvg<T, S, M> {
+   public gvl(guf.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public gvl(gtd.a $$0, gga $$1) {
-      super($$0, new gfb($$0.a($$1)), 0.8F);
-      this.a(new gxy<>(this));
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cM() || $$0.h_() && $$0 == this.d.c);
    }
 
    @Override
-   protected float aV_() {
-      return 180.0F;
-   }
-
-   @Override
-   public aku b(haj $$0) {
-      return a;
-   }
-
-   public haj b() {
-      return new haj();
-   }
-
-   public void a(T $$0, haj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ag;
    }
 }

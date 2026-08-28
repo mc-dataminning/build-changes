@@ -1,39 +1,38 @@
-import java.util.function.IntFunction;
+public class fly extends fmb {
+   private static final wv b = wv.c("mco.connect.connecting");
+   private final hnc c;
+   private final fjf d;
+   private final fjg e;
 
-public enum fly implements azc {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
-
-   private static final IntFunction<fly> d = axq.a(fly::b, values(), axq.a.b);
-   private final int e;
-   private final String f;
-
-   private fly(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fly(fwf $$0, fjf $$1, fjg $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new hnc($$0);
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void run() {
+      if (this.e.a != null) {
+         this.c.a(this.d, gjr.a(this.e.a));
+      } else {
+         this.b();
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
+   public void b() {
+      super.b();
+      this.c.a();
+      fnd.Q().af().i();
    }
 
    @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
+   public void c() {
+      this.c.b();
    }
 
-   public static fly a(int $$0) {
-      return d.apply($$0);
+   @Override
+   public wv a() {
+      return b;
    }
 }

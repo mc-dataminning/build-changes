@@ -1,14 +1,18 @@
 import io.netty.buffer.ByteBuf;
 
-public record aho() implements yw<agf> {
-   public static final yn<ByteBuf, aho> a = yn.a(new aho());
+public record aho(jj b, boolean c) implements zc<agm> {
+   public static final yt<ByteBuf, aho> a = yt.a(jj.b, aho::b, yr.b, aho::e, aho::new);
 
    @Override
-   public yy<aho> a() {
-      return agd.bU;
+   public ze<aho> a() {
+      return agk.bO;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

@@ -1,32 +1,21 @@
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bhf extends bgb {
+public class bhf extends bdm {
    public bhf(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update(
-         "display",
-         $$0x -> $$0x.update(
-               "Name",
-               $$0xx -> {
-                  Optional<String> $$1 = $$0xx.asString().result();
-                  return $$1.isPresent()
-                     ? $$0xx.createString(
-                        $$1.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
-                     )
-                     : $$0xx;
-               }
-            )
-      );
+      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return af.a($$0, $$0.getType(), this::a);
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
+      $$0 = $$0.remove("pos").remove("dimension");
+      if ($$1.isPresent() && $$2.isPresent()) {
+         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
+      }
+
+      return $$0;
    }
 }

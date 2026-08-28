@@ -1,30 +1,37 @@
-import java.util.List;
-import java.util.Optional;
+public class agz implements zc<agm> {
+   public static final yt<vr, agz> a = zc.a(agz::a, agz::new);
+   private final int b;
+   private final String c;
 
-public record agz(int b, List<String> c, Optional<String> d) implements yw<agf> {
-   public static final yn<vl, agz> a = yn.a(yl.h, agz::b, yl.b(1024).a(yl.c(100)), agz::e, yl.b(32).a(yl::a), agz::f, agz::new);
+   public agz(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   public agz(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private agz(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public yy<agz> a() {
-      return agd.bC;
+   public ze<agz> a() {
+      return agk.bw;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public Optional<String> f() {
-      return this.d;
+   public String e() {
+      return this.c;
    }
 }

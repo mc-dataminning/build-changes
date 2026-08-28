@@ -1,18 +1,14 @@
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
 
-public record ahv(Optional<jr<buc>> b, Optional<jr<buc>> c) implements yw<agf> {
-   public static final yn<wa, ahv> a = yn.a(buc.b.a(yl::a), ahv::b, buc.b.a(yl::a), ahv::e, ahv::new);
+public record ahv() implements zc<agm> {
+   public static final yt<ByteBuf, ahv> a = yt.a(new ahv());
 
    @Override
-   public yy<ahv> a() {
-      return agd.ca;
+   public ze<ahv> a() {
+      return agk.bV;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
-   }
-
-   public Optional<jr<buc>> e() {
-      return this.c;
    }
 }

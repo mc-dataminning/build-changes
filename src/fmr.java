@@ -1,26 +1,29 @@
-import java.util.function.BooleanSupplier;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fmr extends fme {
-   private final BooleanSupplier h;
+public class fmr {
+   private final List<xa> a = Lists.newArrayList();
 
-   public fmr(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, ffm.b.a, $$1, $$2);
-      this.h = $$3;
+   public void a(xa $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
+   @Nullable
+   public xa a() {
+      if (this.a.isEmpty()) {
+         return null;
       } else {
-         super.a($$0);
+         return this.a.size() == 1 ? this.a.get(0) : xa.a(this.a);
       }
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   public xa b() {
+      xa $$0 = this.a();
+      return $$0 != null ? $$0 : xa.b;
+   }
+
+   public void c() {
+      this.a.clear();
    }
 }

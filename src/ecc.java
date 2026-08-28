@@ -1,15 +1,5 @@
-public interface ecc<T> {
-   void g(T var1);
-
-   void f(T var1);
-
-   void e(T var1);
-
-   void d(T var1);
-
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+public record ecc(String a, alc<dhp> b, String c) {
+   public ecc a(String $$0) {
+      return new ecc(this.a, this.b, this.c + $$0);
+   }
 }

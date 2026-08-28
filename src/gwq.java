@@ -1,19 +1,34 @@
-public class gwq extends gxs<gyx, gcj> {
-   private static final aku a = aku.b("textures/entity/breeze/breeze_wind.png");
-   private final gcj b;
+public class gwq extends gsz<cnw, hck, ggf> {
+   private static final ald a = ald.b("textures/entity/strider/strider.png");
+   private static final ald j = ald.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gwq(gtd.a $$0, gva<gyx, gcj> $$1) {
-      super($$1);
-      this.b = new gcj($$0.a(ggb.L));
+   public gwq(guf.a $$0) {
+      super($$0, new ggf($$0.a(ghc.dp)), new ggf($$0.a(ghc.dr)), 0.5F);
+      this.a(new gyv<>(this, $$0.h(), hiy.d.h, $$0x -> $$0x.a, new ggf($$0.a(ghc.dq)), new ggf($$0.a(ghc.ds))));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, gyx $$3, float $$4, float $$5) {
-      fgv $$6 = $$1.getBuffer(gnh.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gsi.a(this.b, this.b.d()).a($$0, $$6, $$2, hfh.d);
+   public ald a(hck $$0) {
+      return $$0.b ? j : a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   protected float b(hck $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
+   }
+
+   public hck b() {
+      return new hck();
+   }
+
+   public void a(cnw $$0, hck $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.a(bwc.h).v();
+      $$1.b = $$0.q();
+      $$1.c = $$0.ca();
+   }
+
+   protected boolean c(hck $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

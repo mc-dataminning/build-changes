@@ -1,30 +1,21 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cak {
-   public static bxs<cpd> a(cfc<List<jq>> $$0, float $$1, int $$2, int $$3, cfc<jq> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return cbe.a(
-         (Function<cbe.b<cpd>, ? extends App<cbe.c<cpd>, cbh<cpd>>>)($$6 -> $$6.group($$6.a(cfc.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jq> $$11 = $$6.b($$6x);
-                     jq $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
+   public static byj<bwr> a(bwb<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return cbv.a(
+         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$2x -> $$2x.group($$2x.a(cft.o), $$2x.c(cft.r), $$2x.b(cft.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bwr> $$9 = $$2x.<cfv>b($$5).a($$3xx -> $$3xx.g((bvs)$$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        jq $$13 = $$11.get($$8.C_().a($$11.size()));
-                        if ($$13 != null && $$8.aj() == $$13.a() && $$12.b().a($$9.ds(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new cff($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+                        bwr $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new byt($$10, true));
+                        return true;
                      }
                   }))
       );

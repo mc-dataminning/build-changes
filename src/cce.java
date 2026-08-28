@@ -1,64 +1,40 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cce extends ccw {
-   private final civ a;
-   @Nullable
-   private cpr b;
-   private final ard c;
-   private final float d;
-   private int e;
-   private final cgp f;
+public class cce extends byi<cpl> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public cce(civ $$0, float $$1) {
-      this.a = $$0;
-      this.c = a($$0);
-      this.d = $$1;
-      this.f = cgp.b().a((double)$$1);
-      this.a(EnumSet.of(ccw.a.b));
+   public cce() {
+      super(ImmutableMap.of(cft.az, cfu.a, cft.p, cfu.b, cft.aG, cfu.c, cft.aE, cfu.c), cpm.b);
    }
 
-   @Override
-   public boolean b() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
+   protected void a(arn $$0, cpl $$1, long $$2) {
+      bxr<cpl> $$3 = $$1.eb();
+      $$3.a(cft.aE, baq.a, 25L);
+      $$3.b(cft.n);
+      bwr $$4 = $$1.eb().c(cft.az).get();
+      byk.a($$1, $$4);
+      $$1.b(bxd.l);
+      $$1.a($$4, 20, false);
    }
 
-   @Override
-   public boolean c() {
-      if (!this.b.bJ()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+   protected boolean b(arn $$0, cpl $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(arn $$0, cpl $$1, long $$2) {
+      if (!$$1.eb().a(cft.aE) && !$$1.eb().a(cft.aG)) {
+         $$1.eb().a(cft.aG, baq.a, (long)(cpm.b - 25));
+         $$1.a(awk.CS, 3.0F, 1.0F);
       }
    }
 
-   @Override
-   public void d() {
-      this.a.z(true);
-      this.e = this.a(40 + this.a.dX().a(40));
-   }
-
-   @Override
-   public void e() {
-      this.a.z(false);
-      this.b = null;
-   }
-
-   @Override
-   public void a() {
-      this.a.J().a(this.b.dz(), this.b.dD(), this.b.dF(), 10.0F, (float)this.a.ac());
-      this.e--;
-   }
-
-   private boolean a(cpr $$0) {
-      for (bsx $$1 : bsx.values()) {
-         cxh $$2 = $$0.b($$1);
-         if ($$2.a(cxl.sy) || this.a.j($$2)) {
-            return true;
-         }
+   protected void d(arn $$0, cpl $$1, long $$2) {
+      if ($$1.c(bxd.l)) {
+         $$1.b(bxd.a);
       }
 
-      return false;
+      $$1.eb().c(cft.az).ifPresent($$1::j);
+      $$1.eb().b(cft.az);
    }
 }

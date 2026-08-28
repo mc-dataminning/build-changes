@@ -1,9 +1,16 @@
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-public record vk(wp a, Optional<Path> b, Optional<URI> c) {
-   public vk(wp $$0) {
-      this($$0, Optional.empty(), Optional.empty());
+public class vk extends MessageToByteEncoder<ByteBuf> {
+   private final vi a;
+
+   public vk(Cipher $$0) {
+      this.a = new vi($$0);
+   }
+
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

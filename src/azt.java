@@ -1,67 +1,37 @@
-import java.util.Locale;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-public class azt<T> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Object[] e;
+public class azt {
+   public static final Codec<azt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ays.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, azt::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<ald> f;
 
-   public static <T> azt<T> a(int $$0, int $$1, int $$2, azt.a<T> $$3) {
-      int $$4 = $$0 - $$2;
-      int $$5 = $$1 - $$2;
-      int $$6 = 2 * $$2 + 1;
-      return new azt<>($$4, $$5, $$6, $$6, $$3);
+   private azt(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   private azt(int $$0, int $$1, int $$2, int $$3, azt.a<T> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = new Object[this.c * this.d];
-
-      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
-         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
-            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
-         }
-      }
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   public void a(Consumer<T> $$0) {
-      for (Object $$1 : this.e) {
-         $$0.accept((T)$$1);
-      }
+   public Predicate<String> b() {
+      return this.e;
    }
 
-   public T a(int $$0, int $$1) {
-      if (!this.b($$0, $$1)) {
-         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
-      } else {
-         return (T)this.e[this.c($$0, $$1)];
-      }
-   }
-
-   public boolean b(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
-   }
-
-   private int c(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 * this.d + $$3;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      T get(int var1, int var2);
+   public Predicate<ald> c() {
+      return this.f;
    }
 }

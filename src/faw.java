@@ -1,48 +1,27 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public record faw(aku b, fp.g c) implements fat {
-   public static final MapCodec<faw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aku.a.fieldOf("storage").forGetter(faw::c), fp.g.a.fieldOf("path").forGetter(faw::d)).apply($$0, faw::new)
-   );
+public class faw {
+   public static final fav a = a("inverted", far.a);
+   public static final fav b = a("any_of", fai.a);
+   public static final fav c = a("all_of", fah.a);
+   public static final fav d = a("random_chance", faz.a);
+   public static final fav e = a("random_chance_with_enchanted_bonus", fba.a);
+   public static final fav f = a("entity_properties", fax.a);
+   public static final fav g = a("killed_by_player", fay.a);
+   public static final fav h = a("entity_scores", fap.a);
+   public static final fav i = a("block_state_property", fat.a);
+   public static final fav j = a("match_tool", fbb.a);
+   public static final fav k = a("table_bonus", faj.a);
+   public static final fav l = a("survives_explosion", faq.a);
+   public static final fav m = a("damage_source_properties", fan.a);
+   public static final fav n = a("location_check", fas.a);
+   public static final fav o = a("weather_check", fbe.a);
+   public static final fav p = a("reference", fal.a);
+   public static final fav q = a("time_check", fbc.a);
+   public static final fav r = a("value_check", fbd.a);
+   public static final fav s = a("enchantment_active_check", fao.a);
 
-   @Override
-   public fas b() {
-      return fau.f;
-   }
-
-   private Optional<ug> c(ewo $$0) {
-      tq $$1 = $$0.d().p().aK().a(this.b);
-
-      try {
-         List<un> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof ug $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public float b(ewo $$0) {
-      return this.c($$0).map(ug::k).orElse(0.0F);
-   }
-
-   @Override
-   public int a(ewo $$0) {
-      return this.c($$0).map(ug::g).orElse(0);
-   }
-
-   public aku c() {
-      return this.b;
-   }
-
-   public fp.g d() {
-      return this.c;
+   private static fav a(String $$0, MapCodec<? extends fau> $$1) {
+      return kf.a(md.F, ald.b($$0), new fav($$1));
    }
 }

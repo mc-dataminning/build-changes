@@ -1,167 +1,263 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dxs<O, S> {
-   public static final String b = "Name";
-   public static final String c = "Properties";
-   private static final Function<Entry<dyt<?>, Comparable<?>>, String> a = new Function<Entry<dyt<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dyt<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dyt<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
+public enum dxs implements bag {
+   a("inactive", 0, dxs.b.a, -1.0, false),
+   b("waiting_for_players", 4, dxs.b.b, 200.0, true),
+   c("active", 8, dxs.b.c, 1000.0, true),
+   d("waiting_for_reward_ejection", 8, dxs.b.b, -1.0, false),
+   e("ejecting_reward", 8, dxs.b.b, -1.0, false),
+   f("cooldown", 0, dxs.b.d, -1.0, false);
+
+   private static final float g = 40.0F;
+   private static final int h = azk.d(30.0F);
+   private final String i;
+   private final int j;
+   private final double k;
+   private final dxs.b l;
+   private final boolean m;
+
+   private dxs(final String $$0, final int $$1, final dxs.b $$2, final double $$3, final boolean $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l = $$2;
+      this.k = $$3;
+      this.m = $$4;
+   }
+
+   dxs a(jj $$0, dxo $$1, arn $$2) {
+      dxr $$3 = $$1.f();
+      dxp $$4 = $$1.b();
+
+      return switch (this) {
+         case a -> $$3.a($$1, $$2, b) == null ? this : b;
+         case b -> {
+            if (!$$1.a($$2)) {
+               $$3.b();
+               yield this;
+            } else if (!$$3.a($$1, $$2.A)) {
+               yield a;
+            } else {
+               $$3.a($$2, $$0, $$1);
+               yield $$3.c.isEmpty() ? this : c;
+            }
+         }
+         case c -> {
+            if (!$$1.a($$2)) {
+               $$3.b();
+               yield b;
+            } else if (!$$3.a($$1, $$2.A)) {
+               yield a;
+            } else {
+               int $$5 = $$3.a($$0);
+               $$3.a($$2, $$0, $$1);
+               if ($$1.e()) {
+                  this.a($$2, $$0, $$1);
+               }
+
+               if ($$3.a($$4, $$5)) {
+                  if ($$3.c()) {
+                     $$3.e = $$2.ae() + (long)$$1.g();
+                     $$3.g = 0;
+                     $$3.f = 0L;
+                     yield d;
+                  }
+               } else if ($$3.a($$2, $$4, $$5)) {
+                  $$1.c($$2, $$0).ifPresent($$4x -> {
+                     $$3.d.add($$4x);
+                     $$3.g++;
+                     $$3.f = $$2.ae() + (long)$$4.h();
+                     $$4.i().a($$2.C_()).ifPresent($$2xx -> {
+                        $$3.h = Optional.of($$2xx);
+                        $$1.j();
+                     });
+                  });
+               }
+
+               yield this;
+            }
+         }
+         case d -> {
+            if ($$3.a($$2, 40.0F, $$1.g())) {
+               $$2.a(null, $$0, awk.mI, awl.e);
+               yield e;
+            } else {
+               yield this;
+            }
+         }
+         case e -> {
+            if (!$$3.b($$2, (float)h, $$1.g())) {
+               yield this;
+            } else if ($$3.c.isEmpty()) {
+               $$2.a(null, $$0, awk.mJ, awl.e);
+               $$3.i = Optional.empty();
+               yield f;
+            } else {
+               if ($$3.i.isEmpty()) {
+                  $$3.i = $$4.j().a($$2.C_());
+               }
+
+               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
+               $$3.c.remove($$3.c.iterator().next());
+               yield this;
+            }
+         }
+         case f -> {
+            $$3.a($$2, $$0, $$1);
+            if (!$$3.c.isEmpty()) {
+               $$3.g = 0;
+               $$3.f = 0L;
+               yield c;
+            } else if ($$3.a($$2)) {
+               $$1.b($$2, $$0);
+               $$3.a();
+               yield b;
+            } else {
+               yield this;
+            }
+         }
+      };
+   }
+
+   private void a(arn $$0, jj $$1, dxo $$2) {
+      dxr $$3 = $$2.f();
+      dxp $$4 = $$2.b();
+      cxy $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(cxy.k);
+      if (!$$5.f()) {
+         if (this.a($$0, $$3)) {
+            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
+               bwx $$5x = bwx.a($$0, $$5);
+               $$5x.f($$4x);
+               $$0.b($$5x);
+               float $$6 = ($$0.C_().i() - $$0.C_().i()) * 0.2F + 1.0F;
+               $$0.a(null, jj.a((kc)$$4x), awk.mD, awl.e, 1.0F, $$6);
+               $$3.e = $$0.ae() + $$2.d().a();
+            });
          }
       }
-
-      private <T extends Comparable<T>> String a(dyt<T> $$0, Comparable<?> $$1) {
-         return $$0.b((T)$$1);
-      }
-   };
-   protected final O d;
-   private final Reference2ObjectArrayMap<dyt<?>, Comparable<?>> f;
-   private Map<dyt<?>, S[]> g;
-   protected final MapCodec<S> e;
-
-   protected dxs(O $$0, Reference2ObjectArrayMap<dyt<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.d = $$0;
-      this.f = $$1;
-      this.e = $$2;
    }
 
-   public <T extends Comparable<T>> S a(dyt<T> $$0) {
-      return this.b($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(List<T> $$0, T $$1) {
-      int $$2 = $$0.indexOf($$1) + 1;
-      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.d);
-      if (!this.G().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
-   }
-
-   @Override
-   public final boolean equals(Object $$0) {
-      return super.equals($$0);
-   }
-
-   @Override
-   public int hashCode() {
-      return super.hashCode();
-   }
-
-   public Collection<dyt<?>> F() {
-      return Collections.unmodifiableCollection(this.f.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dyt<T> $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dyt<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
+   private static Optional<fcu> a(arn $$0, jj $$1, dxo $$2, dxr $$3) {
+      List<cqi> $$4 = $$3.c
+         .stream()
+         .map($$0::a)
+         .filter(Objects::nonNull)
+         .filter($$2x -> !$$2x.b() && !$$2x.U_() && $$2x.bK() && $$2x.g($$1.b()) <= (double)azk.h($$2.h()))
+         .toList();
+      if ($$4.isEmpty()) {
+         return Optional.empty();
       } else {
-         return $$0.g().cast($$1);
+         bvs $$5 = a($$4, $$3.d, $$2, $$1, $$0);
+         return $$5 == null ? Optional.empty() : a($$5, $$0);
       }
    }
 
-   public <T extends Comparable<T>> Optional<T> d(dyt<T> $$0) {
-      return Optional.ofNullable(this.e($$0));
-   }
-
-   public <T extends Comparable<T>> T a(dyt<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.e($$0), $$1);
+   private static Optional<fcu> a(bvs $$0, arn $$1) {
+      fcu $$2 = $$0.dt();
+      fcu $$3 = $$2.a(jo.b, (double)($$0.dr() + 2.0F + (float)$$1.A.a(4)));
+      fcq $$4 = $$1.a(new dgy($$2, $$3, dgy.a.c, dgy.b.a, fcz.a()));
+      fcu $$5 = $$4.b().b().a(jo.a, 1.0);
+      jj $$6 = jj.a((kc)$$5);
+      return !$$1.a_($$6).g($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
    }
 
    @Nullable
-   private <T extends Comparable<T>> T e(dyt<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      return $$1 == null ? null : $$0.g().cast($$1);
-   }
-
-   public <T extends Comparable<T>, V extends T> S b(dyt<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
+   private static bvs a(List<cqi> $$0, Set<UUID> $$1, dxo $$2, jj $$3, arn $$4) {
+      Stream<bvs> $$5 = $$1.stream().map($$4::b).filter(Objects::nonNull).filter($$2x -> $$2x.bK() && $$2x.g($$3.b()) <= (double)azk.h($$2.h()));
+      List<? extends bvs> $$6 = $$4.A.h() ? $$5.toList() : $$0;
+      if ($$6.isEmpty()) {
+         return null;
       } else {
-         return this.a($$0, $$1, $$2);
+         return $$6.size() == 1 ? $$6.getFirst() : af.a($$6, $$4.A);
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S c(dyt<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
+   private boolean a(arn $$0, dxr $$1) {
+      return $$0.ae() >= $$1.e;
    }
 
-   private <T extends Comparable<T>, V extends T> S a(dyt<T> $$0, V $$1, Comparable<?> $$2) {
-      if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         int $$3 = $$0.a((T)$$1);
-         if ($$3 < 0) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
-         } else {
-            return (S)this.g.get($$0)[$$3];
+   public int a() {
+      return this.j;
+   }
+
+   public double b() {
+      return this.k;
+   }
+
+   public boolean d() {
+      return this.k >= 0.0;
+   }
+
+   public boolean e() {
+      return this.m;
+   }
+
+   public void a(dhp $$0, jj $$1, boolean $$2) {
+      this.l.emit($$0, $$0.C_(), $$1, $$2);
+   }
+
+   @Override
+   public String c() {
+      return this.i;
+   }
+
+   static class a {
+      private static final int a = 0;
+      private static final int b = 4;
+      private static final int c = 8;
+
+      private a() {
+      }
+   }
+
+   interface b {
+      dxs.b a = ($$0, $$1, $$2, $$3) -> {
+      };
+      dxs.b b = ($$0, $$1, $$2, $$3) -> {
+         if ($$1.a(2) == 0) {
+            fcu $$4 = $$2.b().a($$1, 0.9F);
+            a($$3 ? lv.N : lv.aM, $$4, $$0);
          }
-      }
-   }
-
-   public void a(Map<Map<dyt<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Map<dyt<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
-         ObjectIterator var3 = this.f.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dyt<?>, Comparable<?>> $$2 = (Entry<dyt<?>, Comparable<?>>)var3.next();
-            dyt<?> $$3 = $$2.getKey();
-            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
+      };
+      dxs.b c = ($$0, $$1, $$2, $$3) -> {
+         fcu $$4 = $$2.b().a($$1, 1.0F);
+         a(lv.ah, $$4, $$0);
+         a($$3 ? lv.N : lv.F, $$4, $$0);
+      };
+      dxs.b d = ($$0, $$1, $$2, $$3) -> {
+         fcu $$4 = $$2.b().a($$1, 0.9F);
+         if ($$1.a(3) == 0) {
+            a(lv.ah, $$4, $$0);
          }
 
-         this.g = $$1;
+         if ($$0.ae() % 20L == 0L) {
+            fcu $$5 = $$2.b().b(0.0, 0.5, 0.0);
+            int $$6 = $$0.C_().a(4) + 20;
+
+            for (int $$7 = 0; $$7 < $$6; $$7++) {
+               a(lv.ah, $$5, $$0);
+            }
+         }
+      };
+
+      private static void a(lz $$0, fcu $$1, dhp $$2) {
+         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
+
+      void emit(dhp var1, azs var2, jj var3, boolean var4);
    }
 
-   private Map<dyt<?>, Comparable<?>> d(dyt<?> $$0, Comparable<?> $$1) {
-      Map<dyt<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
+   static class c {
+      private static final double a = -1.0;
+      private static final double b = 200.0;
+      private static final double c = 1000.0;
 
-   public Map<dyt<?>, Comparable<?>> G() {
-      return this.f;
-   }
-
-   protected static <O, S extends dxs<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+      private c() {
+      }
    }
 }

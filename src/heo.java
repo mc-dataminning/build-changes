@@ -1,32 +1,25 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class heo implements her {
-   private final ggc a;
+public record heo(int b) implements hes {
+   public static final MapCodec<heo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.l.optionalFieldOf("index", 0).forGetter(heo::b)).apply($$0, heo::new));
 
-   public heo(ggc $$0) {
-      this.a = $$0;
+   @Override
+   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
+      daf $$4 = $$0.a(kx.p);
+      if ($$4 != null) {
+         Float $$5 = $$4.a(this.b);
+         if ($$5 != null) {
+            return $$5;
+         }
+      }
+
+      return 0.0F;
    }
 
    @Override
-   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
-      fgv $$6 = gpq.a.a($$2, gnh::d);
-      $$1.a();
-      $$1.a(0.5F, 0.5F, 0.5F);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
-   }
-
-   public static record a() implements hev.a {
-      public static final MapCodec<heo.a> a = MapCodec.unit(new heo.a());
-
-      @Override
-      public MapCodec<heo.a> a() {
-         return a;
-      }
-
-      @Override
-      public hev<?> a(gfy $$0) {
-         return new heo($$0.a(ggb.af));
-      }
+   public MapCodec<heo> a() {
+      return a;
    }
 }

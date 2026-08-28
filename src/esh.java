@@ -1,157 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class esh {
-   private dpf a;
-   private dqw b;
-   private ji c;
-   private boolean d;
-   @Nullable
-   private eob e;
-   private erv f;
-   @Nullable
-   private azh g;
-   private int h;
-   private final List<esi> i;
-   private boolean j;
-   private boolean k;
+public class esh extends etf {
+   public static final MapCodec<esh> a = MapCodec.unit(() -> esh.b);
+   public static final esh b = new esh();
+   private final Map<dku, dku> c = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dkw.m, dkw.pV);
+      $$0.put(dkw.cu, dkw.pV);
+      $$0.put(dkw.b, dkw.pZ);
+      $$0.put(dkw.eV, dkw.qa);
+      $$0.put(dkw.eW, dkw.qa);
+      $$0.put(dkw.cZ, dkw.pW);
+      $$0.put(dkw.nK, dkw.pW);
+      $$0.put(dkw.nM, dkw.qh);
+      $$0.put(dkw.fy, dkw.qe);
+      $$0.put(dkw.nI, dkw.qe);
+      $$0.put(dkw.kh, dkw.pY);
+      $$0.put(dkw.nY, dkw.pY);
+      $$0.put(dkw.kd, dkw.qi);
+      $$0.put(dkw.kc, dkw.qi);
+      $$0.put(dkw.kj, dkw.qd);
+      $$0.put(dkw.nW, dkw.qd);
+      $$0.put(dkw.om, dkw.qf);
+      $$0.put(dkw.ok, dkw.qf);
+      $$0.put(dkw.gk, dkw.pX);
+      $$0.put(dkw.gl, dkw.pX);
+      $$0.put(dkw.eY, dkw.qc);
+      $$0.put(dkw.eX, dkw.qb);
+      $$0.put(dkw.fk, dkw.fl);
+   });
 
-   public esh() {
-      this.a = dpf.a;
-      this.b = dqw.a;
-      this.c = ji.c;
-      this.f = erv.b;
-      this.i = Lists.newArrayList();
+   private esh() {
    }
 
-   public esh a() {
-      esh $$0 = new esh();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
-   }
-
-   public esh a(dpf $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public esh a(dqw $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public esh a(ji $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public esh a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public esh a(eob $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public esh a(@Nullable azh $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public esh a(erv $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public esh b(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public esh b() {
-      this.i.clear();
-      return this;
-   }
-
-   public esh a(esi $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public esh b(esi $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public dpf c() {
-      return this.a;
-   }
-
-   public dqw d() {
-      return this.b;
-   }
-
-   public ji e() {
-      return this.c;
-   }
-
-   public azh b(@Nullable ji $$0) {
-      if (this.g != null) {
-         return this.g;
+   @Override
+   public eti.d a(dhs $$0, jj $$1, jj $$2, eti.d $$3, eti.d $$4, ete $$5) {
+      dku $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         return $$0 == null ? azh.a(af.c()) : azh.a(ayz.a($$0));
+         dym $$7 = $$4.b();
+         dym $$8 = $$6.m();
+         if ($$7.b(dsu.b)) {
+            $$8 = $$8.b(dsu.b, $$7.c(dsu.b));
+         }
+
+         if ($$7.b(dsu.c)) {
+            $$8 = $$8.b(dsu.c, $$7.c(dsu.c));
+         }
+
+         if ($$7.b(dsd.b)) {
+            $$8 = $$8.b(dsd.b, $$7.c(dsd.b));
+         }
+
+         return new eti.d($$4.a(), $$8, $$4.c());
       }
    }
 
-   public boolean f() {
-      return this.d;
-   }
-
-   @Nullable
-   public eob g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<esi> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f == erv.b;
-   }
-
-   public esl.b a(List<esl.b> $$0, @Nullable ji $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
-      }
-   }
-
-   public esh c(boolean $$0) {
-      this.k = $$0;
-      return this;
-   }
-
-   public boolean k() {
-      return this.k;
+   @Override
+   protected eth<?> a() {
+      return eth.l;
    }
 }

@@ -1,76 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public record duj(List<duj.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final duj a = new duj(List.of());
-   public static final Codec<duj> b = duj.b.a.listOf().xmap(duj::new, duj::b);
-   public static final yn<wa, duj> c = duj.b.b.a(yl.a()).a(duj::new, duj::b);
+public class duj extends dnb implements duh {
+   public static final MapCodec<duj> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dzb.a.fieldOf("block_set_type").forGetter(dnb::b), duh.a.e.fieldOf("weathering_state").forGetter(duj::q), t()).apply($$0, duj::new)
+   );
+   private final duh.a h;
 
-   public duj a() {
-      return new duj(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   @Override
+   public MapCodec<duj> a() {
+      return g;
    }
 
-   public List<duj.b> b() {
-      return this.d;
+   protected duj(dzb $$0, duh.a $$1, dyl.d $$2) {
+      super($$0, $$2);
+      this.h = $$1;
    }
 
-   public static class a {
-      private final Builder<duj.b> a = ImmutableList.builder();
-
-      @Deprecated
-      public duj.a a(js<dui> $$0, akt<dui> $$1, cwe $$2) {
-         Optional<jr.c<dui>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            duj.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
-         }
-      }
-
-      public duj.a a(jr<dui> $$0, cwe $$1) {
-         return this.a(new duj.b($$0, $$1));
-      }
-
-      public duj.a a(duj.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public duj.a a(duj $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public duj a() {
-         return new duj(this.a.build());
+   @Override
+   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if ($$0.c(dnb.c) == dzi.b) {
+         this.a_($$0, $$1, $$2, $$3);
       }
    }
 
-   public static record b(jr<dui> c, cwe d) {
-      public static final Codec<duj.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dui.c.fieldOf("pattern").forGetter(duj.b::b), cwe.q.fieldOf("color").forGetter(duj.b::c)).apply($$0, duj.b::new)
-      );
-      public static final yn<wa, duj.b> b = yn.a(dui.d, duj.b::b, cwe.r, duj.b::c, duj.b::new);
+   @Override
+   protected boolean f(dym $$0) {
+      return duh.c($$0.b()).isPresent();
+   }
 
-      public xd a() {
-         String $$0 = this.c.a().b();
-         return wp.c($$0 + "." + this.d.b());
-      }
-
-      public jr<dui> b() {
-         return this.c;
-      }
-
-      public cwe c() {
-         return this.d;
-      }
+   public duh.a q() {
+      return this.h;
    }
 }

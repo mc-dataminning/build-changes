@@ -1,69 +1,87 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class dch extends dbl {
-   public dch(dbi $$0) {
-      super($$0);
-   }
+public final class dch implements cqm.a<js<cxu>>, Predicate<cxy> {
+   public static final yt<wg, dch> a = yr.c(me.K).a(dch::new, $$0 -> $$0.e);
+   public static final yt<wg, Optional<dch>> b = yr.c(me.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dch((jw<cxu>)$$0)), $$0 -> $$0.<jw.a<cxu>>map($$0x -> $$0x.e).orElse(jw.a()));
+   public static final Codec<jw<cxu>> c = akx.a(me.K, cxu.e, false);
+   public static final Codec<dch> d = ays.c(c).xmap(dch::new, $$0 -> $$0.e);
+   private final jw<cxu> e;
 
-   @Nullable
-   private static Pair<cxh, cxh> c(dbj $$0) {
-      if ($$0.e() != 2) {
-         return null;
-      } else {
-         cxh $$1 = null;
-
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            cxh $$3 = $$0.a($$2);
-            if (!$$3.f()) {
-               if ($$1 != null) {
-                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
-               }
-
-               $$1 = $$3;
-            }
+   private dch(jw<cxu> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cyc.a.f())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
          }
-
-         return null;
-      }
+      });
+      this.e = $$0;
    }
 
-   private static boolean a(cxh $$0, cxh $$1) {
-      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.b(kv.d) && $$1.b(kv.d) && $$0.b(kv.e) && $$1.b(kv.e);
+   public static boolean a(Optional<dch> $$0, cxy $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
-      return c($$0) != null;
+   @Deprecated
+   public Stream<js<cxu>> a() {
+      return this.e.a();
    }
 
-   public cxh a(dbj $$0, jt.a $$1) {
-      Pair<cxh, cxh> $$2 = c($$0);
-      if ($$2 == null) {
-         return cxh.k;
-      } else {
-         cxh $$3 = (cxh)$$2.getFirst();
-         cxh $$4 = (cxh)$$2.getSecond();
-         int $$5 = Math.max($$3.p(), $$4.p());
-         int $$6 = $$3.p() - $$3.o();
-         int $$7 = $$4.p() - $$4.o();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cxh $$9 = new cxh($$3.h());
-         $$9.b(kv.d, $$5);
-         $$9.b(Math.max($$5 - $$8, 0));
-         ddx $$10 = ddt.b($$3);
-         ddx $$11 = ddt.b($$4);
-         ddt.a($$9, $$3x -> $$1.d(mc.aP).c().filter($$0xx -> $$0xx.a(aws.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
-      }
+   public boolean b() {
+      return this.e.b() == 0;
+   }
+
+   public boolean a(cxy $$0) {
+      return $$0.a(this.e);
+   }
+
+   public boolean a(js<cxu> $$0) {
+      return this.e.a($$0);
    }
 
    @Override
-   public dcf<dch> a() {
-      return dcf.n;
+   public boolean equals(Object $$0) {
+      return $$0 instanceof dch $$1 ? Objects.equals(this.e, $$1.e) : false;
+   }
+
+   public static dch a(dho $$0) {
+      return new dch(jw.a($$0.i().f()));
+   }
+
+   public static dch a(dho... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static dch a(Stream<? extends dho> $$0) {
+      return new dch(jw.a($$0.map($$0x -> $$0x.i().f()).toList()));
+   }
+
+   public static dch a(jw<cxu> $$0) {
+      return new dch($$0);
+   }
+
+   public ddx c() {
+      return (ddx)this.e.d().map(ddx.h::new, $$0 -> new ddx.b($$0.stream().map(dch::b).toList()));
+   }
+
+   public static ddx a(Optional<dch> $$0) {
+      return $$0.<ddx>map(dch::c).orElse(ddx.c.c);
+   }
+
+   private static ddx b(js<cxu> $$0) {
+      ddx $$1 = new ddx.d($$0);
+      cxy $$2 = $$0.a().j();
+      if (!$$2.f()) {
+         ddx $$3 = new ddx.f($$2);
+         return new ddx.j($$1, $$3);
+      } else {
+         return $$1;
+      }
    }
 }

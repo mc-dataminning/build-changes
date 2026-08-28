@@ -1,12 +1,28 @@
-public record aei(wp b) implements yw<abl> {
-   public static final yn<wa, aei> a = yn.a(wr.d, aei::b, aei::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public yy<aei> a() {
-      return agd.at;
+public record aei(String b, @Nullable String c) implements zc<abr> {
+   public static final yt<vr, aei> a = zc.a(aei::a, aei::new);
+
+   private aei(vr $$0) {
+      this($$0.p(), $$0.c(vr::p));
    }
 
-   public void a(abl $$0) {
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vr::a);
+   }
+
+   @Override
+   public ze<aei> a() {
+      return agk.cp;
+   }
+
+   public void a(abr $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

@@ -1,35 +1,29 @@
-public interface fer {
-   int a();
+import java.util.function.Function;
 
-   int b();
+public class fer<T> implements fei<T> {
+   private final Function<jj, fep<T>> a;
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   public fer(Function<jj, fep<T>> $$0) {
+      this.a = $$0;
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   @Override
+   public boolean a(jj $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   @Override
+   public void a(fem<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
+   @Override
+   public boolean b(jj $$0, T $$1) {
+      return false;
    }
 
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   @Override
+   public int a() {
+      return 0;
    }
 }

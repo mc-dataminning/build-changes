@@ -1,26 +1,32 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record fan(aku b) implements fal {
-   public static final MapCodec<fan> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("source").forGetter(fan::c)).apply($$0, fan::new));
+public record fan(Optional<bm> b) implements fau {
+   public static final MapCodec<fan> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(fan::c)).apply($$0, fan::new));
 
    @Override
-   public fak a() {
-      return fam.b;
+   public fav b() {
+      return faw.m;
    }
 
    @Override
-   public un a(ewo $$0) {
-      return $$0.d().p().aK().a(this.b);
+   public Set<bat<?>> a() {
+      return Set.of(faf.f, faf.c);
    }
 
-   @Override
-   public Set<bai<?>> b() {
-      return Set.of();
+   public boolean a(exl $$0) {
+      buh $$1 = $$0.c(faf.c);
+      fcu $$2 = $$0.c(faf.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public aku c() {
+   public static fau.a a(bm.a $$0) {
+      return () -> new fan(Optional.of($$0.b()));
+   }
+
+   public Optional<bm> c() {
       return this.b;
    }
 }

@@ -1,70 +1,41 @@
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record gar(eem a, ke<ebn> b, eej c, jy<ald> d, alf e, dhx f, gam g) {
-   public gar(eek $$0, jy<ald> $$1, alf $$2, dhx $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new gam(gat.a.a, Set.of(), null));
+public class gar extends gan<gjd.a> {
+   private static final wv C = wv.c("gui.abuseReport.name.title");
+   private static final wv D = wv.c("gui.abuseReport.name.comment_box_label");
+   @Nullable
+   private frf E;
+
+   private gar(fwf $$0, gji $$1, gjd.a $$2) {
+      super(C, $$0, $$1, $$2);
    }
 
-   public gar(eem $$0, eej $$1, jy<ald> $$2, alf $$3, dhx $$4, gam $$5) {
-      this($$0, $$2.a(ald.c).e(mc.bh), $$1, $$2.a(ald.c), $$3, $$4, $$5);
+   public gar(fwf $$0, gji $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new gjd.a($$2, $$3, $$1.a().b()));
    }
 
-   public gar a(eem $$0, eej $$1) {
-      return new gar($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   public gar(fwf $$0, gji $$1, gjd $$2) {
+      this($$0, $$1, new gjd.a($$2, $$1.a().b()));
    }
 
-   public gar a(gar.b $$0) {
-      return new gar($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   @Override
+   protected void E() {
+      wv $$0 = wv.b(this.A.e().a()).a(n.o);
+      this.z.a(new fru(wv.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
+      this.E = this.a(280, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      this.z.a(ftx.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
    }
 
-   public gar a(gar.a $$0) {
-      return new gar(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
-   }
-
-   public kf.b a() {
-      return this.d.a();
-   }
-
-   public void b() {
-      for (ebn $$0 : this.d()) {
-         $$0.b().a();
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (super.b($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
       }
-   }
-
-   public eem c() {
-      return this.a;
-   }
-
-   public ke<ebn> d() {
-      return this.b;
-   }
-
-   public eej e() {
-      return this.c;
-   }
-
-   public jy<ald> f() {
-      return this.d;
-   }
-
-   public alf g() {
-      return this.e;
-   }
-
-   public dhx h() {
-      return this.f;
-   }
-
-   public gam i() {
-      return this.g;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<kf.b, eej, eej> {
-   }
-
-   public interface b extends UnaryOperator<eem> {
    }
 }

@@ -1,28 +1,16 @@
-public enum dym implements azv {
-   a(jn.a),
-   b(jn.b);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-   private final jn c;
+public class dym extends dyl.a {
+   public static final Codec<dym> a = a(md.e.q(), dku::m).stable();
 
-   private dym(final jn $$0) {
-      this.c = $$0;
-   }
-
-   public jn a() {
-      return this.c;
+   public dym(dku $$0, Reference2ObjectArrayMap<dzp<?>, Comparable<?>> $$1, MapCodec<dym> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dym b() {
-      return this == a ? b : a;
+   protected dym B() {
+      return this;
    }
 }

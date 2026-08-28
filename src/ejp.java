@@ -1,33 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejp(int b, int c, int d, int e, int f, bsd g, float h) implements eiy {
+public class ejp implements ejv {
    public static final Codec<ejp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ejp::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ejp::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ejp::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ejp::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ejp::f),
-               bsd.c.fieldOf("extra_rare_growths").forGetter(ejp::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ejp::h)
-            )
-            .apply($$0, ejp::new)
+      $$0 -> $$0.group(bsv.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bsv.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ejp::new)
    );
+   private final bsv b;
+   private final bsv c;
 
-   public int a() {
+   public ejp(bsv $$0, bsv $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public bsv a() {
       return this.b;
    }
 
-   public int b() {
+   public bsv b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

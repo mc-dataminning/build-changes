@@ -1,50 +1,74 @@
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record xy(ho c, Optional<wp> d) implements wq {
-   public static final MapCodec<xy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ho.a.fieldOf("selector").forGetter(xy::b), wr.a.optionalFieldOf("separator").forGetter(xy::c)).apply($$0, xy::new)
-   );
-   public static final wq.a<xy> b = new wq.a<>(a, "selector");
+public record xy(String d, @Nullable hn e) implements xx {
+   public static final MapCodec<xy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(xy::b)).apply($$0, xy::new));
+   public static final xx.a<xy> b = new xx.a<>(a, "entity");
 
-   @Override
-   public wq.a<?> a() {
-      return b;
+   public xy(String $$0) {
+      this($$0, a($$0));
    }
 
-   @Override
-   public xd a(@Nullable ex $$0, @Nullable bva $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return wp.i();
-      } else {
-         Optional<? extends wp> $$3 = ws.a($$0, this.d, $$1, $$2);
-         return ws.a(this.c.b().b($$0), $$3, bva::m_);
+   @Nullable
+   private static hn a(String $$0) {
+      try {
+         ho $$1 = new ho(new StringReader($$0), true);
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
    }
 
    @Override
-   public <T> Optional<T> a(wu.b<T> $$0, xm $$1) {
-      return $$0.accept($$1, this.c.a());
+   public Stream<tw> a(ex $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bvs> $$1 = this.e.b($$0);
+         return $$1.stream().map(dn::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
-   public <T> Optional<T> a(wu.a<T> $$0) {
-      return $$0.accept(this.c.a());
+   public xx.a<?> a() {
+      return b;
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.c + "}";
+      return "entity=" + this.d;
    }
 
-   public ho b() {
-      return this.c;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xy $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public Optional<wp> c() {
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
       return this.d;
+   }
+
+   @Nullable
+   public hn c() {
+      return this.e;
    }
 }

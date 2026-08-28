@@ -1,45 +1,21 @@
-public class act implements yw<abl> {
-   public static final yn<vl, act> a = yw.a(act::a, act::new);
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public act(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private act(vl $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
-   }
-
-   private void a(vl $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.q(this.d);
-   }
+public record act(wv b, wr.a c) implements zc<abr> {
+   public static final yt<wg, act> a = yt.a(wx.d, act::b, wr.a.a, act::e, act::new);
 
    @Override
-   public yy<act> a() {
-      return agd.G;
+   public ze<act> a() {
+      return agk.B;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public int e() {
+   public wr.a e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

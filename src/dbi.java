@@ -1,30 +1,31 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.mojang.serialization.MapCodec;
 
-public enum dbi implements azv {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+public interface dbi {
+   Codec<dbi> d = md.ay.q().dispatch(dbi::a, dbi.a::a);
+   yt<wg, dbi> e = yr.a(me.aE).b(dbi::a, dbi.a::b);
 
-   public static final Codec<dbi> e = azv.a(dbi::values);
-   public static final IntFunction<dbi> f = axq.a(dbi::a, values(), axq.a.a);
-   public static final yn<ByteBuf, dbi> g = yl.a(f, dbi::a);
-   private final String h;
-   private final int i;
+   dbi.a<? extends dbi> a();
 
-   private dbi(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
+   boolean a(dhp var1, cxy var2, bwr var3);
 
-   @Override
-   public String c() {
-      return this.h;
-   }
+   public static record a<T extends dbi>(MapCodec<T> f, yt<wg, T> g) {
+      public static final dbi.a<dbg> a = a("apply_effects", dbg.a, dbg.b);
+      public static final dbi.a<dbk> b = a("remove_effects", dbk.a, dbk.b);
+      public static final dbi.a<dbh> c = a("clear_all_effects", dbh.b, dbh.c);
+      public static final dbi.a<dbl> d = a("teleport_randomly", dbl.a, dbl.b);
+      public static final dbi.a<dbj> e = a("play_sound", dbj.a, dbj.b);
 
-   private int a() {
-      return this.i;
+      private static <T extends dbi> dbi.a<T> a(String $$0, MapCodec<T> $$1, yt<wg, T> $$2) {
+         return kf.a(md.ay, $$0, new dbi.a<>($$1, $$2));
+      }
+
+      public MapCodec<T> a() {
+         return this.f;
+      }
+
+      public yt<wg, T> b() {
+         return this.g;
+      }
    }
 }

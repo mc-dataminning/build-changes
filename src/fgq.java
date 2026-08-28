@@ -1,111 +1,130 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class fgq implements AutoCloseable {
-   private final fgo.a a;
-   @Nullable
-   private fgo.a b;
-   private final fgq.a c;
+public final class fgq {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public fgq(fgo.a $$0, fgq.a $$1) {
+   public fgq(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
       this.a = $$0;
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, fgw $$2) {
-      int $$3 = $$2.a(fgx.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
-
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
-         }
-
-         return $$8;
-      }
+   public fgq(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   public ByteBuffer a() {
-      return this.a.a();
+   public fgq(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
+   public int a() {
+      return this.a;
    }
 
-   public fgq.a c() {
+   public int b() {
+      return this.b;
+   }
+
+   public int c() {
       return this.c;
    }
 
-   @Nullable
-   public fgq.b a(fgo $$0, fgz $$1) {
-      if (this.c.d() != fgw.c.h) {
-         return null;
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public int f() {
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         fgq $$1 = (fgq)$$0;
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
       } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         fgq.b $$3 = new fgq.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
+         return false;
       }
    }
 
    @Override
-   public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
-      }
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
    }
 
-   public static record a(fgw a, int b, int c, fgw.c d, fgw.b e) {
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 
-   public static record b(Vector3f[] a, fgw.b b) {
-      @Nullable
-      public fgo.a a(fgo $$0, fgz $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.d);
-         IntConsumer $$4 = this.a($$3, this.b);
+   public static Optional<fgq> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
 
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
+
+               int $$10 = $$8 / 3;
+               return Optional.of(new fgq($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
          }
 
-         return $$0.a();
+         return Optional.empty();
       }
+   }
 
-      private IntConsumer a(long $$0, fgw.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
-
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
-         };
-      }
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

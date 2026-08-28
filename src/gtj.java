@@ -1,32 +1,22 @@
-public class gtj extends gtc<cqf, gzq> {
-   private final hcl a;
+public class gtj extends gsx<cmt, gzx> {
+   private static final ald a = ald.b("textures/entity/skeleton/bogged.png");
+   private static final ald j = ald.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gtj(gtd.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public gtj(guf.a $$0) {
+      super($$0, ghc.G, ghc.H, new gdg($$0.a(ghc.F)));
+      this.a(new gyw<>(this, $$0.f(), ghc.I, j));
    }
 
-   public void a(gzq $$0, fgr $$1, gmx $$2, int $$3) {
-      $$1.a();
-      $$1.a(this.e.b());
-      if ($$0.a) {
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.d.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(90.0F));
-      }
-
-      $$0.b.a($$1, $$2, $$3, hfh.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public ald a(gzx $$0) {
+      return a;
    }
 
-   public gzq a() {
-      return new gzq();
+   public gzx a() {
+      return new gzx();
    }
 
-   public void a(cqf $$0, gzq $$1, float $$2) {
+   public void a(cmt $$0, gzx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
-      this.a.a($$1.b, $$0.f(), cxf.h, $$0);
+      $$1.a = $$0.gr();
    }
 }

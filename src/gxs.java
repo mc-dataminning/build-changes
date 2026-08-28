@@ -1,25 +1,19 @@
-public abstract class gxs<S extends gzj, M extends gda<? super S>> {
-   private final gva<S, M> a;
+public class gxs extends gyt<gzy, gdi> {
+   private static final ald a = ald.b("textures/entity/breeze/breeze_wind.png");
+   private final gdi b;
 
-   public gxs(gva<S, M> $$0) {
-      this.a = $$0;
+   public gxs(guf.a $$0, gwc<gzy, gdi> $$1) {
+      super($$1);
+      this.b = new gdi($$0.a(ghc.L));
    }
 
-   protected static <S extends haj> void a(gda<S> $$0, aku $$1, fgr $$2, gmx $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.z) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   public void a(fho $$0, gny $$1, int $$2, gzy $$3, float $$4, float $$5) {
+      fhs $$6 = $$1.getBuffer(goi.a(a, this.a($$3.u) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gtk.a(this.b, this.b.d()).a($$0, $$6, $$2, hgi.d);
    }
 
-   protected static void b(gda<?> $$0, aku $$1, fgr $$2, gmx $$3, int $$4, haj $$5, int $$6) {
-      fgv $$7 = $$3.getBuffer(gnh.g($$1));
-      $$0.a($$2, $$7, $$4, gue.a($$5, 0.0F), $$6);
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(fgr var1, gmx var2, int var3, S var4, float var5, float var6);
 }

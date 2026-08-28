@@ -1,50 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ekp extends ekk {
-   public static final MapCodec<ekp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bsd.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
+public class ekp implements ejv {
+   public static final Codec<ekp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               ejb.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               jj.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, ekp::new)
    );
-   private final bsd b;
-   private final int c;
+   private final boolean b;
+   private final List<ejb.a> c;
+   @Nullable
+   private final jj d;
 
-   public ekp(bsd $$0, bsd $$1, bsd $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   public ekp(boolean $$0, List<ejb.a> $$1, @Nullable jj $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected ekl<?> a() {
-      return ekl.j;
+   private ekp(boolean $$0, List<ejb.a> $$1, Optional<jj> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
-      ji $$9 = $$5.a();
-      ji.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
-      }
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(azh $$0, int $$1, eju $$2) {
-      return this.b.a($$0);
+   public List<ejb.a> b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   @Nullable
+   public jj c() {
+      return this.d;
    }
 }

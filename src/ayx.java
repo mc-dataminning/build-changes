@@ -1,23 +1,4 @@
-import javax.annotation.Nullable;
-
-public class ayx {
-   @Nullable
-   private static byte[] a;
-
-   public static void a() {
-      a = new byte[10485760];
-   }
-
-   public static void b() {
-      if (a != null) {
-         a = null;
-
-         try {
-            System.gc();
-            System.gc();
-            System.gc();
-         } catch (Throwable var1) {
-         }
-      }
-   }
+@FunctionalInterface
+public interface ayx {
+   boolean accept(int var1, xs var2, int var3);
 }

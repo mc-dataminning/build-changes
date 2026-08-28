@@ -1,131 +1,185 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 
-public record czu(czu.a e, IntList f, IntList g, boolean h, boolean i) implements dai {
-   public static final czu a = new czu(czu.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<czu> c = RecordCodecBuilder.create(
+public record czu(Optional<js<czs>> e, Optional<Integer> f, List<buw> g, Optional<String> h) implements dac {
+   public static final czu a = new czu(Optional.empty(), Optional.empty(), List.of(), Optional.empty());
+   private static final wv i = wv.c("effect.none").a(n.h);
+   public static final int b = -13083194;
+   private static final Codec<czu> j = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               czu.a.g.fieldOf("shape").forGetter(czu::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(czu::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(czu::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(czu::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(czu::e)
+               czs.a.optionalFieldOf("potion").forGetter(czu::e),
+               Codec.INT.optionalFieldOf("custom_color").forGetter(czu::f),
+               buw.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(czu::d),
+               Codec.STRING.optionalFieldOf("custom_name").forGetter(czu::g)
             )
             .apply($$0, czu::new)
    );
-   private static final yn<ByteBuf, IntList> j = yl.g.a(yl.a()).a(IntArrayList::new, ArrayList::new);
-   public static final yn<ByteBuf, czu> d = yn.a(czu.a.f, czu::a, j, czu::b, j, czu::c, yl.b, czu::d, yl.b, czu::e, czu::new);
-   private static final wp k = wp.c("item.minecraft.firework_star.custom_color");
+   public static final Codec<czu> c = Codec.withAlternative(j, czs.a, czu::new);
+   public static final yt<wg, czu> d = yt.a(czs.b.a(yr::a), czu::e, yr.g.a(yr::a), czu::f, buw.e.a(yr.a()), czu::d, yr.o.a(yr::a), czu::g, czu::new);
 
-   @Override
-   public void a(cxd.b $$0, Consumer<wp> $$1, cyx $$2) {
-      this.a($$1);
-      this.b($$1);
+   public czu(js<czs> $$0) {
+      this(Optional.of($$0), Optional.empty(), List.of(), Optional.empty());
    }
 
-   public void a(Consumer<wp> $$0) {
-      $$0.accept(this.e.a().a(n.h));
+   public static cxy a(cxu $$0, js<czs> $$1) {
+      cxy $$2 = new cxy($$0);
+      $$2.b(kx.R, new czu($$1));
+      return $$2;
    }
 
-   public void b(Consumer<wp> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(wp.i().a(n.h), this.f));
-      }
+   public boolean a(js<czs> $$0) {
+      return this.e.isPresent() && this.e.get().a($$0) && this.g.isEmpty();
+   }
 
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(wp.c("item.minecraft.firework_star.fade_to").b(wo.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(wp.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(wp.c("item.minecraft.firework_star.flicker").a(n.h));
+   public Iterable<buw> a() {
+      if (this.e.isEmpty()) {
+         return this.g;
+      } else {
+         return (Iterable<buw>)(this.g.isEmpty() ? this.e.get().a().a() : Iterables.concat(this.e.get().a().a(), this.g));
       }
    }
 
-   private static wp a(xd $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   public void a(Consumer<buw> $$0, float $$1) {
+      if (this.e.isPresent()) {
+         for (buw $$2 : this.e.get().a().a()) {
+            $$0.accept($$2.a($$1));
+         }
+      }
+
+      for (buw $$3 : this.g) {
+         $$0.accept($$3.a($$1));
+      }
+   }
+
+   public czu b(js<czs> $$0) {
+      return new czu(Optional.of($$0), this.f, this.g, this.h);
+   }
+
+   public czu a(buw $$0) {
+      return new czu(this.e, this.f, af.a(this.g, $$0), this.h);
+   }
+
+   public int b() {
+      return this.a(-13083194);
+   }
+
+   public int a(int $$0) {
+      return this.f.isPresent() ? this.f.get() : a(this.a()).orElse($$0);
+   }
+
+   public wv a(String $$0) {
+      String $$1 = this.h.or(() -> this.e.map($$0x -> ((czs)$$0x.a()).b())).orElse("empty");
+      return wv.c($$0 + $$1);
+   }
+
+   public static OptionalInt a(Iterable<buw> $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (buw $$5 : $$0) {
+         if ($$5.g()) {
+            int $$6 = $$5.c().a().i();
+            int $$7 = $$5.e() + 1;
+            $$1 += $$7 * axu.b($$6);
+            $$2 += $$7 * axu.c($$6);
+            $$3 += $$7 * axu.d($$6);
+            $$4 += $$7;
+         }
+      }
+
+      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axu.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
+   }
+
+   public boolean c() {
+      return !this.g.isEmpty() ? true : this.e.isPresent() && !this.e.get().a().a().isEmpty();
+   }
+
+   public List<buw> d() {
+      return Lists.transform(this.g, buw::new);
+   }
+
+   public void a(Consumer<wv> $$0, float $$1, float $$2) {
+      a(this.a(), $$0, $$1, $$2);
+   }
+
+   public void a(bwr $$0, float $$1) {
+      if ($$0.dV() instanceof arn $$2) {
+         cqi $$5 = $$0 instanceof cqi $$4 ? $$4 : null;
+         this.a($$3x -> {
+            if ($$3x.c().a().a()) {
+               $$3x.c().a().a($$2, $$5, $$5, $$0, $$3x.e(), 1.0);
+            } else {
+               $$0.a($$3x);
+            }
+         }, $$1);
+      }
+   }
+
+   public static void a(Iterable<buw> $$0, Consumer<wv> $$1, float $$2, float $$3) {
+      List<Pair<js<bxs>, bxv>> $$4 = Lists.newArrayList();
+      boolean $$5 = true;
+
+      for (buw $$6 : $$0) {
+         $$5 = false;
+         js<buu> $$7 = $$6.c();
+         int $$8 = $$6.e();
+         $$7.a().a($$8, ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
+         xj $$9 = a($$7, $$8);
+         if (!$$6.a(20)) {
+            $$9 = wv.a("potion.withDuration", $$9, bux.a($$6, $$2, $$3));
          }
 
-         $$0.b(a($$1.getInt($$2)));
+         $$1.accept($$9.a($$7.a().h().a()));
       }
 
-      return $$0;
+      if ($$5) {
+         $$1.accept(i);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.accept(wu.a);
+         $$1.accept(wv.c("potion.whenDrank").a(n.f));
+
+         for (Pair<js<bxs>, bxv> $$10 : $$4) {
+            bxv $$11 = (bxv)$$10.getSecond();
+            double $$12 = $$11.c();
+            double $$14;
+            if ($$11.d() != bxv.a.b && $$11.d() != bxv.a.c) {
+               $$14 = $$11.c();
+            } else {
+               $$14 = $$11.c() * 100.0;
+            }
+
+            if ($$12 > 0.0) {
+               $$1.accept(wv.a("attribute.modifier.plus." + $$11.d().a(), dam.d.format($$14), wv.c(((bxs)((js)$$10.getFirst()).a()).c())).a(n.j));
+            } else if ($$12 < 0.0) {
+               $$14 *= -1.0;
+               $$1.accept(wv.a("attribute.modifier.take." + $$11.d().a(), dam.d.format($$14), wv.c(((bxs)((js)$$10.getFirst()).a()).c())).a(n.m));
+            }
+         }
+      }
    }
 
-   private static wp a(int $$0) {
-      cwe $$1 = cwe.b($$0);
-      return (wp)($$1 == null ? k : wp.c("item.minecraft.firework_star." + $$1.b()));
+   public static xj a(js<buu> $$0, int $$1) {
+      xj $$2 = wv.c($$0.a().f());
+      return $$1 > 0 ? wv.a("potion.withAmplifier", $$2, wv.c("potion.potency." + $$1)) : $$2;
    }
 
-   public czu a(IntList $$0) {
-      return new czu(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   @Override
+   public void a(dhp $$0, bwr $$1, cxy $$2, dab $$3) {
+      this.a($$1, $$2.a(kx.S, 1.0F));
    }
 
-   public czu.a a() {
-      return this.e;
-   }
-
-   public IntList b() {
-      return this.f;
-   }
-
-   public IntList c() {
-      return this.g;
-   }
-
-   public boolean d() {
+   public Optional<String> g() {
       return this.h;
-   }
-
-   public boolean e() {
-      return this.i;
-   }
-
-   public static enum a implements azv {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<czu.a> h = axq.a(czu.a::b, values(), axq.a.a);
-      public static final yn<ByteBuf, czu.a> f = yl.a(h, czu.a::b);
-      public static final Codec<czu.a> g = azv.b(czu.a::values);
-      private final int i;
-      private final String j;
-
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public xd a() {
-         return wp.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static czu.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
    }
 }

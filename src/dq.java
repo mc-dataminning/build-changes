@@ -8,8 +8,8 @@ public class dq extends dz<dq.a> {
       return dq.a.a;
    }
 
-   public void a(are $$0, bva $$1, btp $$2, float $$3, float $$4, boolean $$5) {
-      ewo $$6 = bx.b($$0, $$1);
+   public void a(aro $$0, bvs $$1, buh $$2, float $$3, float $$4, boolean $$5) {
+      exl $$6 = bx.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -47,7 +47,7 @@ public class dq extends dz<dq.a> {
          return ap.h.a(new dq.a(Optional.empty(), Optional.of($$0.b()), bx.a($$1)));
       }
 
-      public boolean a(are $$0, ewo $$1, btp $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(aro $$0, exl $$1, buh $$2, float $$3, float $$4, boolean $$5) {
          return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

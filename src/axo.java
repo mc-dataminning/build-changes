@@ -1,21 +1,17 @@
-import java.util.function.IntConsumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface axo {
-   int a(int var1, int var2);
+public record axo(List<axn> b, boolean c) {
+   public static final Codec<axo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axn.a.listOf().fieldOf("values").forGetter(axo::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axo::b)).apply($$0, axo::new)
+   );
 
-   void b(int var1, int var2);
+   public List<axn> a() {
+      return this.b;
+   }
 
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   axo d();
+   public boolean b() {
+      return this.c;
+   }
 }

@@ -1,95 +1,67 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
-public class bxf {
-   private final Map<jr<bxb>, bxc> a;
+public enum bxf {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8);
 
-   bxf(Map<jr<bxb>, bxc> $$0) {
-      this.a = $$0;
-   }
+   public static final Set<bxf> j = Set.of(values());
+   public static final Set<bxf> k = Set.of(e, d);
+   public static final Set<bxf> l = Set.of(f, g, h, i);
+   public static final yt<ByteBuf, Set<bxf>> m = yr.g.a(bxf::a, bxf::a);
+   private final int n;
 
-   private bxc d(jr<bxb> $$0) {
-      bxc $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
-      }
-   }
+   @SafeVarargs
+   public static Set<bxf> a(Set<bxf>... $$0) {
+      HashSet<bxf> $$1 = new HashSet<>();
 
-   public double a(jr<bxb> $$0) {
-      return this.d($$0).g();
-   }
-
-   public double b(jr<bxb> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(jr<bxb> $$0, aku $$1) {
-      bxe $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
-      }
-   }
-
-   @Nullable
-   public bxc a(Consumer<bxc> $$0, jr<bxb> $$1) {
-      bxc $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bxc $$3 = new bxc($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
-   }
-
-   public static bxf.a a() {
-      return new bxf.a();
-   }
-
-   public boolean c(jr<bxb> $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(jr<bxb> $$0, aku $$1) {
-      bxc $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<jr<bxb>, bxc> a = ImmutableMap.builder();
-      private boolean b;
-
-      private bxc b(jr<bxb> $$0) {
-         bxc $$1 = new bxc($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+      for (Set<bxf> $$2 : $$0) {
+         $$1.addAll($$2);
       }
 
-      public bxf.a a(jr<bxb> $$0) {
-         this.b($$0);
-         return this;
+      return $$1;
+   }
+
+   private bxf(final int $$0) {
+      this.n = $$0;
+   }
+
+   private int a() {
+      return 1 << this.n;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<bxf> a(int $$0) {
+      Set<bxf> $$1 = EnumSet.noneOf(bxf.class);
+
+      for (bxf $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
       }
 
-      public bxf.a a(jr<bxb> $$0, double $$1) {
-         bxc $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
+      return $$1;
+   }
+
+   public static int a(Set<bxf> $$0) {
+      int $$1 = 0;
+
+      for (bxf $$2 : $$0) {
+         $$1 |= $$2.a();
       }
 
-      public bxf a() {
-         this.b = true;
-         return new bxf(this.a.buildKeepingLast());
-      }
+      return $$1;
    }
 }

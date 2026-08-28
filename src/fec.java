@@ -1,99 +1,136 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.TracyClient;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-public class fec implements AutoCloseable {
-   private static final int a = 320;
-   private static final int b = 180;
-   private static final int c = 4;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private final ffb h = new ffc(320, 180, false);
-   private final fem i = new fem(fek.c, fel.f, 0);
-   @Nullable
-   private fen j;
-   private int k;
-   private boolean l;
+public class fec {
+   private static final Map<String, fec> a = Maps.newHashMap();
+   private static final Map<String, fec> o = Maps.newHashMap();
+   public static final fec b = b("dummy");
+   public static final fec c = b("trigger");
+   public static final fec d = b("deathCount");
+   public static final fec e = b("playerKillCount");
+   public static final fec f = b("totalKillCount");
+   public static final fec g = a("health", true, fec.a.b);
+   public static final fec h = a("food", true, fec.a.a);
+   public static final fec i = a("air", true, fec.a.a);
+   public static final fec j = a("armor", true, fec.a.a);
+   public static final fec k = a("xp", true, fec.a.a);
+   public static final fec l = a("level", true, fec.a.a);
+   public static final fec[] m = new fec[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final fec[] n = new fec[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final fec.a r;
 
-   private void a(int $$0, int $$1) {
-      float $$2 = (float)$$0 / (float)$$1;
-      if ($$0 > 320) {
-         $$0 = 320;
-         $$1 = (int)(320.0F / $$2);
-      }
+   private static fec a(String $$0, boolean $$1, fec.a $$2) {
+      fec $$3 = new fec($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
+   }
 
-      if ($$1 > 180) {
-         $$0 = (int)(180.0F * $$2);
-         $$1 = 180;
-      }
+   private static fec b(String $$0) {
+      return a($$0, false, fec.a.a);
+   }
 
-      $$0 = $$0 / 4 * 4;
-      $$1 = $$1 / 4 * 4;
-      if (this.f != $$0 || this.g != $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h.a($$0, $$1);
-         this.i.a($$0 * $$1 * 4);
-         if (this.j != null) {
-            this.j.close();
-            this.j = null;
-         }
+   protected fec(String $$0) {
+      this($$0, false, fec.a.a);
+   }
+
+   protected fec(String $$0, boolean $$1, fec.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<fec> a(String $$0) {
+      fec $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : md.v.b(ald.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, ald.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public void a(ffb $$0) {
-      if (this.j == null && !this.l) {
-         this.l = true;
-         if ($$0.c != this.d || $$0.d != this.e) {
-            this.d = $$0.c;
-            this.e = $$0.d;
-            this.a(this.d, this.e);
-         }
-
-         GlStateManager._glBindFramebuffer(36009, this.h.h);
-         GlStateManager._glBindFramebuffer(36008, $$0.h);
-         GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.f, this.g, 16384, 9729);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         GlStateManager._glBindFramebuffer(36009, 0);
-         this.i.b();
-         GlStateManager._glBindFramebuffer(36008, this.h.h);
-         GlStateManager._readPixels(0, 0, this.f, this.g, 6408, 5121, 0L);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         this.j = new fen();
-         this.k = 0;
-      }
+   private static <T> Optional<fec> a(awt<T> $$0, ald $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   public void a() {
-      if (this.j != null) {
-         if (this.j.a(0L)) {
-            this.j = null;
-
-            try (fem.a $$0 = this.i.a()) {
-               if ($$0 != null) {
-                  TracyClient.frameImage($$0.a(), this.f, this.g, this.k, true);
-               }
-            }
-         }
-      }
+   public String d() {
+      return this.p;
    }
 
-   public void b() {
-      this.k++;
-      this.l = false;
-      TracyClient.markFrame();
+   public boolean e() {
+      return this.q;
    }
 
-   @Override
-   public void close() {
-      if (this.j != null) {
-         this.j.close();
-         this.j = null;
+   public fec.a f() {
+      return this.r;
+   }
+
+   public static enum a implements bag {
+      a("integer"),
+      b("hearts");
+
+      private final String d;
+      public static final bag.a<fec.a> c = bag.a(fec.a::values);
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
-      this.i.close();
-      this.h.a();
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public static fec.a a(String $$0) {
+         return c.a($$0, a);
+      }
    }
 }

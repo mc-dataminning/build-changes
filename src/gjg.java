@@ -1,83 +1,47 @@
-public class gjg extends glg {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final glb M;
+import java.util.List;
+import java.util.Locale;
 
-   gjg(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, glb $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = ayz.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = ayz.a(this.r, 0.0F, 0.0F);
-      this.x = ayz.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public enum gjg {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
+
+   private final String l;
+   private final wv m;
+   private final wv n;
+
+   private gjg(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = wv.c($$1);
+      this.n = wv.c($$1 + ".description");
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
-      }
+   public String a() {
+      return this.l;
    }
 
-   @Override
-   public gkk b() {
-      return gkk.b;
+   public wv b() {
+      return this.m;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public wv c() {
+      return this.n;
    }
 
-   public static class a implements gkj<lx> {
-      private final glb a;
-
-      public a(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gjg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   public static List<gjg> a(gjh $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
+      };
    }
 }

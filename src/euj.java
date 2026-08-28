@@ -1,91 +1,65 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public abstract class euj {
-   protected eup b;
-   protected bwa c;
-   protected final Int2ObjectMap<eui> d = new Int2ObjectOpenHashMap();
-   protected int e;
-   protected int f;
-   protected int g;
-   protected boolean h = true;
-   protected boolean i;
-   protected boolean j;
-   protected boolean k;
+public class euj {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   public void a(dhm $$0, bwa $$1) {
-      this.b = new eup($$0, $$1);
-      this.c = $$1;
-      this.d.clear();
-      this.e = ayz.d($$1.dp() + 1.0F);
-      this.f = ayz.d($$1.dq() + 1.0F);
-      this.g = ayz.d($$1.dp() + 1.0F);
+   public euj(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   public void b() {
-      this.b = null;
-      this.c = null;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
    }
 
-   protected eui b(ji $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public boolean b() {
+      return this.c >= this.a;
    }
 
-   protected eui c(int $$0, int $$1, int $$2) {
-      return (eui)this.d.computeIfAbsent(eui.b($$0, $$1, $$2), $$3 -> new eui($$0, $$1, $$2));
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
    }
 
-   public abstract eui a();
-
-   public abstract eur a(double var1, double var3, double var5);
-
-   protected eur b(double $$0, double $$1, double $$2) {
-      return new eur(this.c(ayz.a($$0), ayz.a($$1), ayz.a($$2)));
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
    }
 
-   public abstract int a(eui[] var1, eui var2);
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
 
-   public abstract eun a(eup var1, int var2, int var3, int var4, bwa var5);
-
-   public abstract eun a(eup var1, int var2, int var3, int var4);
-
-   public eun a(bwa $$0, ji $$1) {
-      return this.a(new eup($$0.dU(), $$0), $$1.u(), $$1.v(), $$1.w());
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.i = $$0;
-   }
-
-   public void c(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public void d(boolean $$0) {
-      this.k = $$0;
-   }
-
-   public boolean d() {
-      return this.h;
-   }
-
-   public boolean e() {
-      return this.i;
-   }
-
-   public boolean f() {
-      return this.j;
-   }
-
-   public boolean g() {
-      return this.k;
-   }
-
-   public static boolean a(dxq $$0) {
-      return $$0.a(awp.aN) || $$0.a(dkg.K) || $$0.a(dkg.ll) || dkt.h($$0) || $$0.a(dkg.fQ);
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

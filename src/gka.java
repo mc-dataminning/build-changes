@@ -1,76 +1,25 @@
-public class gka extends gkg {
-   private static final int a = 3;
-   private final bva b;
-   private final bva D;
-   private int E;
-   private final gtb F;
-   private double G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-
-   public gka(gtb $$0, ggy $$1, bva $$2, bva $$3) {
-      this($$0, $$1, $$2, $$3, $$2.dx());
-   }
-
-   private gka(gtb $$0, ggy $$1, bva $$2, bva $$3, fbx $$4) {
-      super($$1, $$2.dz(), $$2.dB(), $$2.dF(), $$4.d, $$4.e, $$4.f);
-      this.b = this.a($$2);
-      this.D = $$3;
-      this.F = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bva a(bva $$0) {
-      return (bva)(!($$0 instanceof clw) ? $$0 : ((clw)$$0).v());
+public class gka extends gmh {
+   gka(ghz $$0, double $$1, double $$2, double $$3, dym $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(fnd.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public gkk b() {
-      return gkk.d;
+   public gll b() {
+      return gll.a;
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, flo $$2, float $$3) {
-      float $$4 = ((float)this.E + $$3) / 3.0F;
-      $$4 *= $$4;
-      double $$5 = ayz.d((double)$$3, this.J, this.G);
-      double $$6 = ayz.d((double)$$3, this.K, this.H);
-      double $$7 = ayz.d((double)$$3, this.L, this.I);
-      double $$8 = ayz.d((double)$$4, this.b.dz(), $$5);
-      double $$9 = ayz.d((double)$$4, this.b.dB(), $$6);
-      double $$10 = ayz.d((double)$$4, this.b.dF(), $$7);
-      fbx $$11 = $$2.b();
-      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fgr(), $$1, this.F.a(this.b, $$3));
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   public void a(fgv $$0, flo $$1, float $$2) {
-   }
-
-   @Override
-   public void a() {
-      this.E++;
-      if (this.E == 3) {
-         this.k();
+   public static class a implements glk<ln> {
+      public glh a(ln $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gka($$1, $$2, $$3, $$4, $$0.b());
       }
-
-      this.d();
-      this.c();
-   }
-
-   private void c() {
-      this.G = this.D.dz();
-      this.H = (this.D.dB() + this.D.dD()) / 2.0;
-      this.I = this.D.dF();
-   }
-
-   private void d() {
-      this.J = this.G;
-      this.K = this.H;
-      this.L = this.I;
    }
 }

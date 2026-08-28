@@ -1,76 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class elr extends elt {
-   public static final MapCodec<elr> a = RecordCodecBuilder.mapCodec(
+public record elr(jw<dku> b, jw<dku> c, elw d, int e, int f, float g) {
+   public static final Codec<elr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+               kh.a(me.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               kh.a(me.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               elw.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
             )
             .apply($$0, elr::new)
    );
-   private final float b;
-   private final float c;
-   private final float d;
 
-   @Override
-   protected elu<?> a() {
-      return elu.c;
+   public jw<dku> a() {
+      return this.b;
    }
 
-   public elr(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public jw<dku> b() {
+      return this.c;
    }
 
-   @Override
-   public void a(elt.a $$0) {
-      azh $$1 = $$0.b();
-      dhy $$2 = (dhy)$$0.a();
-      List<ji> $$3 = af.a($$0.c(), $$1);
-      if (!$$3.isEmpty()) {
-         Mutable<ji> $$4 = new MutableObject($$3.getFirst());
-         $$3.forEach($$1x -> {
-            if ($$1x.v() < ((ji)$$4.getValue()).v()) {
-               $$4.setValue($$1x);
-            }
-         });
-         ji $$5 = (ji)$$4.getValue();
-         if ($$1.i() < this.d) {
-            $$2.F_().a(mc.aM).flatMap($$0x -> $$0x.a(rl.J)).ifPresent($$3x -> ((egg)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
-         }
-
-         $$0.c().forEach($$2x -> {
-            if ($$1.i() < this.c) {
-               ji $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
-         $$0.d().forEach($$2x -> {
-            if ($$1.i() < this.b) {
-               ji $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
-      }
+   public elw c() {
+      return this.d;
    }
 
-   private static void a(ji $$0, elt.a $$1) {
-      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
-         $$1.a($$0, dkg.ua.m().b(dnx.b, Boolean.valueOf(false)));
-         $$0 = $$0.e();
-      }
+   public int d() {
+      return this.e;
+   }
 
-      $$1.a($$0, dkg.ua.m().b(dnx.b, Boolean.valueOf(true)));
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

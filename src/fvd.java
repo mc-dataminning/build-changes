@@ -1,168 +1,102 @@
-import java.net.URI;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fvd extends fvi {
-   private static final aku a = aku.b("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int s = 204;
-   private static final int u = 98;
-   private static final wp v = wp.c("menu.returnToGame");
-   private static final wp w = wp.c("gui.advancements");
-   private static final wp x = wp.c("gui.stats");
-   private static final wp y = wp.c("menu.sendFeedback");
-   private static final wp z = wp.c("menu.reportBugs");
-   private static final wp A = wp.c("menu.feedback");
-   private static final wp B = wp.c("menu.server_links");
-   private static final wp C = wp.c("menu.options");
-   private static final wp D = wp.c("menu.shareToLan");
-   private static final wp E = wp.c("menu.playerReporting");
-   private static final wp F = wp.c("menu.returnToMenu");
-   private static final wp G = wp.c("menu.savingLevel");
-   private static final wp H = wp.c("menu.game");
-   private static final wp I = wp.c("menu.paused");
-   private final boolean J;
-   @Nullable
-   private fpq K;
+public class fvd extends fwf {
+   private static final int d = 20;
+   private final wv s;
+   private frg u = frg.a;
+   protected wv a;
+   protected wv b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<fqn> w = Lists.newArrayList();
 
-   public fvd(boolean $$0) {
-      super($$0 ? H : I);
-      this.J = $$0;
+   public fvd(BooleanConsumer $$0, wv $$1, wv $$2) {
+      this($$0, $$1, $$2, wu.f, wu.g);
    }
 
-   public boolean m() {
-      return this.J;
+   public fvd(BooleanConsumer $$0, wv $$1, wv $$2, wv $$3, wv $$4) {
+      super($$1);
+      this.c = $$0;
+      this.s = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   protected void aR_() {
-      if (this.J) {
-         this.E();
-      }
-
-      this.c(new fqx(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+   public wv i() {
+      return wu.a(super.i(), this.s);
    }
 
-   private void E() {
-      ftd $$0 = new ftd();
-      $$0.c().a(4, 4, 4, 0);
-      ftd.b $$1 = $$0.d(2);
-      $$1.a(fpq.a(v, $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(w, () -> new fvs(this.m.t.j.p(), this)));
-      $$1.a(this.a(x, () -> new fvm(this, this.m.t.l())));
-      alm $$2 = this.m.t.j.E();
-      if ($$2.a()) {
-         a(this, $$1);
-      } else {
-         $$1.a(this.a(A, () -> new fvd.a(this)));
-         $$1.a(this.a(B, () -> new fya(this, $$2)));
-      }
-
-      $$1.a(this.a(C, () -> new fyl(this, this.m.n)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(D, () -> new fvj(this)));
-      } else {
-         $$1.a(this.a(E, () -> new gaa(this)));
-      }
-
-      wp $$3 = this.m.T() ? F : wo.p;
-      this.K = $$1.a(fpq.a($$3, $$0x -> {
-         $$0x.j = false;
-         this.m.ba().a(this.m, this, this::F, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      ftc.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.u = frg.a(this.p, this.s, this.n - 50);
+      int $$0 = azk.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
+      this.w.clear();
+      this.a($$0);
    }
 
-   static void a(fvi $$0, ftd.b $$1) {
-      $$1.a(a($$0, y, ab.b().g() ? axv.i : axv.h));
-      $$1.a(a($$0, z, axv.j)).j = !ab.b().d().a();
+   protected void a(int $$0) {
+      this.a(fqn.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fqn.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
    }
 
-   private void F() {
-      boolean $$0 = this.m.T();
-      ghn $$1 = this.m.S();
-      this.m.s.ad();
-      if ($$0) {
-         this.m.b(new fut(G));
-      } else {
-         this.m.y();
-      }
+   protected void a(fqn $$0) {
+      this.w.add(this.c($$0));
+   }
 
-      fvk $$2 = new fvk();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new fhc($$2));
-      } else {
-         this.m.a(new fxy($$2));
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.u.a($$0, this.n / 2, this.E());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.F()) / 2;
+      return azk.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int E() {
+      return this.m() + 20;
+   }
+
+   private int F() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (fqn $$1 : this.w) {
+         $$1.j = false;
       }
    }
 
    @Override
    public void e() {
       super.e();
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
-         $$0.a(gnh::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
+      if (--this.v == 0) {
+         for (fqn $$0 : this.w) {
+            $$0.j = true;
+         }
       }
    }
 
    @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      if (this.J) {
-         super.b($$0, $$1, $$2, $$3);
-      }
+   public boolean aC_() {
+      return false;
    }
 
-   private fpq a(wp $$0, Supplier<fvi> $$1) {
-      return fpq.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
-   }
-
-   private static fpq a(fvi $$0, wp $$1, URI $$2) {
-      return fpq.a($$1, fuf.b($$0, $$2)).a(98).a();
-   }
-
-   static class a extends fvi {
-      private static final wp b = wp.c("menu.feedback.title");
-      public final fvi a;
-      private final fte c = new fte(this);
-
-      protected a(fvi $$0) {
-         super(b);
-         this.a = $$0;
-      }
-
-      @Override
-      protected void aR_() {
-         this.c.a(b, this.p);
-         ftd $$0 = this.c.c(new ftd());
-         $$0.c().a(4, 4, 4, 0);
-         ftd.b $$1 = $$0.d(2);
-         fvd.a(this, $$1);
-         this.c.b(fpq.a(wo.k, $$0x -> this.aO_()).a(200).a());
-         this.c.a(this::c);
-         this.c();
-      }
-
-      @Override
-      protected void c() {
-         this.c.a();
-      }
-
-      @Override
-      public void aO_() {
-         this.m.a(this.a);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 }

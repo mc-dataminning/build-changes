@@ -1,34 +1,32 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class afx implements yw<abl> {
-   public static final yn<wa, afx> a = yn.a(yl.h, afx::b, afx.a.b.a(yl.a()), afx::e, afx::new);
+public class afx implements zc<abr> {
+   public static final yt<vr, afx> a = zc.a(afx::a, afx::new);
    private final int b;
-   private final List<afx.a> c;
+   @Nullable
+   private final tw c;
 
-   public afx(int $$0, Collection<bxc> $$1) {
-      this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (bxc $$2 : $$1) {
-         this.c.add(new afx.a($$2.a(), $$2.b(), $$2.c()));
-      }
-   }
-
-   private afx(int $$0, List<afx.a> $$1) {
+   public afx(int $$0, @Nullable tw $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Override
-   public yy<afx> a() {
-      return agd.bf;
+   private afx(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   public void a(abl $$0) {
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a((ut)this.c);
+   }
+
+   @Override
+   public ze<afx> a() {
+      return agk.bb;
+   }
+
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
@@ -36,24 +34,13 @@ public class afx implements yw<abl> {
       return this.b;
    }
 
-   public List<afx.a> e() {
+   @Nullable
+   public tw e() {
       return this.c;
    }
 
-   public static record a(jr<bxb> c, double d, Collection<bxe> e) {
-      public static final yn<ByteBuf, bxe> a = yn.a(aku.b, bxe::b, yl.m, bxe::c, bxe.a.e, bxe::d, bxe::new);
-      public static final yn<wa, afx.a> b = yn.a(bxb.b, afx.a::a, yl.m, afx.a::b, a.a(yl.a(ArrayList::new)), afx.a::c, afx.a::new);
-
-      public jr<bxb> a() {
-         return this.c;
-      }
-
-      public double b() {
-         return this.d;
-      }
-
-      public Collection<bxe> c() {
-         return this.e;
-      }
+   @Override
+   public boolean c() {
+      return true;
    }
 }

@@ -1,51 +1,41 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class awh<T> extends fdf {
-   public static final yn<wa, awh<?>> a = yl.a(mc.am).b(awh::a, awj::a);
-   private final awi o;
-   private final T p;
-   private final awj<T> q;
+public class awh {
+   public static final Codec<awh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awj.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, awh::new)
+   );
+   private final js<awj> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   protected awh(awj<T> $$0, T $$1, awi $$2) {
-      super(a($$0, $$1));
-      this.q = $$0;
-      this.o = $$2;
-      this.p = $$1;
+   public awh(js<awj> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public static <T> String a(awj<T> $$0, T $$1) {
-      return a(mb.v.b($$0)) + ":" + a($$0.b().b($$1));
+   public js<awj> a() {
+      return this.b;
    }
 
-   private static <T> String a(@Nullable aku $$0) {
-      return $$0.toString().replace(':', '.');
+   public int b() {
+      return this.c;
    }
 
-   public awj<T> a() {
-      return this.q;
+   public int c() {
+      return this.d;
    }
 
-   public T b() {
-      return this.p;
-   }
-
-   public String a(int $$0) {
-      return this.o.format($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof awh && Objects.equals(this.d(), ((awh)$$0).d());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
+   public boolean d() {
+      return this.e;
    }
 }

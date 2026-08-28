@@ -1,16 +1,9 @@
-public abstract class cul extends csw {
-   public cul(cuf<?> $$0, int $$1) {
-      super($$0, $$1);
+public class cul extends ctp {
+   public cul(int $$0, cqh $$1) {
+      super(cuw.o, dcw.b, dcu.e, cvd.b, $$0, $$1);
    }
 
-   public abstract cul.a a(boolean var1, boolean var2, dca<?> var3, ard var4, cpq var5);
-
-   public abstract void a(cpw var1);
-
-   public abstract cum am_();
-
-   public static enum a {
-      a,
-      b;
+   public cul(int $$0, cqh $$1, btj $$2, ctz $$3) {
+      super(cuw.o, dcw.b, dcu.e, cvd.b, $$0, $$1, $$2, $$3);
    }
 }

@@ -1,16 +1,36 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fbd {
-   private static final Codec<fbc> d = mb.I.q().dispatch(fbc::a, fbb::a);
-   public static final Codec<fbc> a = Codec.lazyInitialized(
-      () -> Codec.either(faz.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof faz $$1 ? Either.left($$1) : Either.right($$0))
+public record fbd(fbq b, exk c) implements fau {
+   public static final MapCodec<fbd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fbr.a.fieldOf("value").forGetter(fbd::c), exk.a.fieldOf("range").forGetter(fbd::d)).apply($$0, fbd::new)
    );
-   public static final fbb b = a("fixed", fba.a);
-   public static final fbb c = a("context", faz.a);
 
-   private static fbb a(String $$0, MapCodec<? extends fbc> $$1) {
-      return ke.a(mb.I, aku.b($$0), new fbb($$1));
+   @Override
+   public fav b() {
+      return faw.r;
+   }
+
+   @Override
+   public Set<bat<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public boolean a(exl $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
+
+   public static fau.a a(fbq $$0, exk $$1) {
+      return () -> new fbd($$0, $$1);
+   }
+
+   public fbq c() {
+      return this.b;
+   }
+
+   public exk d() {
+      return this.c;
    }
 }

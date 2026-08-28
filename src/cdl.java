@@ -1,55 +1,81 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cdl extends ccw {
-   private final bwg a;
+public class cdl extends cdn {
+   private final bxn a;
    @Nullable
-   private bvy b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
+   private bwr b;
+   private final double c;
+   private final cgb d;
+   private int e;
+   private final float f;
    private final float g;
+   private float h;
 
-   public cdl(bwg $$0, double $$1, float $$2) {
+   public cdl(bxn $$0, double $$1, float $$2, float $$3) {
       this.a = $$0;
-      this.f = $$1;
+      this.c = $$1;
+      this.d = $$0.O();
       this.g = $$2;
-      this.a(EnumSet.of(ccw.a.a));
+      this.f = $$3;
+      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
+      if (!($$0.O() instanceof cga) && !($$0.O() instanceof cfz)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
    }
 
    @Override
    public boolean b() {
-      this.b = this.a.f();
-      if (this.b == null) {
+      bwr $$0 = this.a.e();
+      if ($$0 == null) {
          return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      } else if (this.a.gt()) {
+         return false;
+      } else if (this.a.g((bvs)$$0) < (double)(this.g * this.g)) {
          return false;
       } else {
-         fbx $$0 = cgt.a(this.a, 16, 7, this.b.ds(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k() && this.b.bJ() && this.b.g(this.a) < (double)(this.g * this.g);
+      if (this.d.k()) {
+         return false;
+      } else {
+         return this.a.gt() ? false : !(this.a.g((bvs)this.b) <= (double)(this.f * this.f));
+      }
+   }
+
+   @Override
+   public void d() {
+      this.e = 0;
+      this.h = this.a.a(evk.j);
+      this.a.a(evk.j, 0.0F);
    }
 
    @Override
    public void e() {
       this.b = null;
+      this.d.m();
+      this.a.a(evk.j, this.h);
    }
 
    @Override
-   public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.f);
+   public void a() {
+      boolean $$0 = this.a.gs();
+      if (!$$0) {
+         this.a.J().a(this.b, 10.0F, (float)this.a.ac());
+      }
+
+      if (--this.e <= 0) {
+         this.e = this.a(10);
+         if ($$0) {
+            this.a.gr();
+         } else {
+            this.d.a(this.b, this.c);
+         }
+      }
    }
 }

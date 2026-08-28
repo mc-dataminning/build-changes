@@ -1,17 +1,6 @@
-import java.io.IOException;
-import java.io.InputStream;
+public interface hgo extends AutoCloseable {
+   void a(int var1, int var2);
 
-public class hgo {
-   @Deprecated
-   public static int[] a(aup $$0, aku $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         ffr $$3 = ffr.a($$2);
-      ) {
-         var4 = $$3.f();
-      }
-
-      return var4;
-   }
+   @Override
+   void close();
 }

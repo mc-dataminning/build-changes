@@ -1,59 +1,44 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
+public class gow implements fhs {
+   private final fhs a;
+   private final hgs b;
 
-public class gow implements gov {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
-
-   public gow(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gow(fhs $$0, hgs $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public Predicate<dxq> getPredicate(dxr<dke, dxq> $$0) {
-      dyt<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
-         }
-
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<dxq> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               $$5 = af.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
-            }
-
-            return $$3 ? $$5.negate() : $$5;
-         }
-      }
-   }
-
-   private Predicate<dxq> a(dxr<dke, dxq> $$0, dyt<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
-      }
+   public fhs a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+   public fhs a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public fhs a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
+
+   @Override
+   public fhs a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public fhs b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public fhs b(float $$0, float $$1, float $$2) {
+      return this.a.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
    }
 }

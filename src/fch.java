@@ -1,110 +1,119 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.primitives.UnsignedLong;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class fch implements fcc {
-   protected static final fcc a = new fch(false, -Double.MAX_VALUE, cxh.k, $$0 -> false, null) {
-      @Override
-      public boolean a(fcr $$0, ji $$1, boolean $$2) {
-         return $$2;
+public class fch<T> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Callback";
+   private static final String c = "Name";
+   private static final String d = "TriggerTime";
+   private final fcg<T> e;
+   private final Queue<fch.a<T>> f = new PriorityQueue<>(c());
+   private UnsignedLong g = UnsignedLong.ZERO;
+   private final Table<String, Long, fch.a<T>> h = HashBasedTable.create();
+
+   private static <T> Comparator<fch.a<T>> c() {
+      return Comparator.<fch.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
+   }
+
+   public fch(fcg<T> $$0, Stream<? extends Dynamic<?>> $$1) {
+      this($$0);
+      this.f.clear();
+      this.h.clear();
+      this.g = UnsignedLong.ZERO;
+      $$1.forEach($$0x -> {
+         ut $$1x = (ut)$$0x.convert(uk.a).getValue();
+         if ($$1x instanceof tw $$2) {
+            this.a($$2);
+         } else {
+            a.warn("Invalid format of events: {}", $$1x);
+         }
+      });
+   }
+
+   public fch(fcg<T> $$0) {
+      this.e = $$0;
+   }
+
+   public void a(T $$0, long $$1) {
+      while (true) {
+         fch.a<T> $$2 = this.f.peek();
+         if ($$2 == null || $$2.a > $$1) {
+            return;
+         }
+
+         this.f.remove();
+         this.h.remove($$2.c, $$1);
+         $$2.d.handle($$0, this, $$1);
       }
-   };
-   private final boolean b;
-   private final double c;
-   private final cxh d;
-   private final Predicate<etw> e;
-   @Nullable
-   private final bva f;
-
-   protected fch(boolean $$0, double $$1, cxh $$2, Predicate<etw> $$3, @Nullable bva $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
    }
 
-   @Deprecated
-   protected fch(bva $$0, boolean $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual bva.cg ()Z
-      // 05: aload 1
-      // 06: invokevirtual bva.dB ()D
-      // 09: aload 1
-      // 0a: instanceof bvy
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast bvy
-      // 14: invokevirtual bvy.eZ ()Lcxh;
-      // 17: goto 1d
-      // 1a: getstatic cxh.k Lcxh;
-      // 1d: iload 2
-      // 1e: ifeq 29
-      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fch.b (Letw;)Z, (Letw;)Z ]
-      // 26: goto 46
-      // 29: aload 1
-      // 2a: instanceof bvy
-      // 2d: ifeq 41
-      // 30: aload 1
-      // 31: checkcast bvy
-      // 34: dup
-      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 38: pop
-      // 39: invokedynamic test (Lbvy;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bvy.a (Letw;)Z, (Letw;)Z ]
-      // 3e: goto 46
-      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fch.a (Letw;)Z, (Letw;)Z ]
-      // 46: aload 1
-      // 47: invokespecial fch.<init> (ZDLcxh;Ljava/util/function/Predicate;Lbva;)V
-      // 4a: return
+   public void a(String $$0, long $$1, fcf<T> $$2) {
+      if (!this.h.contains($$0, $$1)) {
+         this.g = this.g.plus(UnsignedLong.ONE);
+         fch.a<T> $$3 = new fch.a<>($$1, this.g, $$0, $$2);
+         this.h.put($$0, $$1, $$3);
+         this.f.add($$3);
+      }
    }
 
-   @Override
-   public boolean a(cxd $$0) {
-      return this.d.a($$0);
+   public int a(String $$0) {
+      Collection<fch.a<T>> $$1 = this.h.row($$0).values();
+      $$1.forEach(this.f::remove);
+      int $$2 = $$1.size();
+      $$1.clear();
+      return $$2;
    }
 
-   @Override
-   public boolean a(etw $$0, etw $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
+   public Set<String> a() {
+      return Collections.unmodifiableSet(this.h.rowKeySet());
    }
 
-   @Override
-   public fcr a(dxq $$0, dgj $$1, ji $$2) {
-      return $$0.b($$1, $$2, this);
+   private void a(tw $$0) {
+      tw $$1 = $$0.p("Callback");
+      fcf<T> $$2 = this.e.a($$1);
+      if ($$2 != null) {
+         String $$3 = $$0.l("Name");
+         long $$4 = $$0.i("TriggerTime");
+         this.a($$3, $$4, $$2);
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.b;
+   private tw a(fch.a<T> $$0) {
+      tw $$1 = new tw();
+      $$1.a("Name", $$0.c);
+      $$1.a("TriggerTime", $$0.a);
+      $$1.a("Callback", this.e.a($$0.d));
+      return $$1;
    }
 
-   @Override
-   public boolean a(fcr $$0, ji $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(jn.a.b) - 1.0E-5F;
+   public uc b() {
+      uc $$0 = new uc();
+      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
+      return $$0;
    }
 
-   @Nullable
-   public bva c() {
-      return this.f;
+   public static class a<T> {
+      public final long a;
+      public final UnsignedLong b;
+      public final String c;
+      public final fcf<T> d;
+
+      a(long $$0, UnsignedLong $$1, String $$2, fcf<T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

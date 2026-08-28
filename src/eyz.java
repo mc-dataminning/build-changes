@@ -1,28 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class eyz extends eyb {
-   public static final MapCodec<eyz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(czc.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eyz::new));
-   private final jr<czc> b;
+public interface eyz extends exm, BiFunction<cxy, exl, cxy> {
+   eza<? extends eyz> b();
 
-   private eyz(List<ezx> $$0, jr<czc> $$1) {
-      super($$0);
-      this.b = $$1;
+   static Consumer<cxy> a(BiFunction<cxy, exl, cxy> $$0, Consumer<cxy> $$1, exl $$2) {
+      return $$3 -> $$1.accept($$0.apply($$3, $$2));
    }
 
-   @Override
-   public eyd<eyz> b() {
-      return eye.F;
-   }
-
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      $$0.a(kv.R, cze.a, this.b, cze::b);
-      return $$0;
-   }
-
-   public static eyb.a<?> a(jr<czc> $$0) {
-      return a($$1 -> new eyz($$1, $$0));
+   public interface a {
+      eyz b();
    }
 }

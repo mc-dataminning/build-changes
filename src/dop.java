@@ -1,36 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class dop extends dix {
-   public static final MapCodec<dop> c = b(dop::new);
+public class dop extends drl {
+   public static final MapCodec<dop> a = b(dop::new);
 
    @Override
    public MapCodec<dop> a() {
-      return c;
+      return a;
    }
 
-   public dop(dxp.d $$0) {
-      super($$0, ko.e);
-   }
-
-   @Override
-   protected double b(dxq $$0) {
-      return 0.9375;
+   public dop(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(d, jo.a.b));
    }
 
    @Override
-   public boolean d(dxq $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
-      if (this.a($$0, $$2, $$3)) {
-         $$3.aE();
-      }
-   }
-
-   @Override
-   protected int a(dxq $$0, dgz $$1, ji $$2) {
-      return 3;
+   public void a(dhp $$0, dym $$1, jj $$2, bvs $$3, double $$4) {
+      $$3.a($$4, 0.2F, $$0.al().l());
    }
 }

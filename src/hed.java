@@ -1,20 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hed(String b) implements heh<String> {
-   public static final heh.a<hed, String> a = heh.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hed::b)).apply($$0, hed::new)), Codec.STRING
-   );
+public record hed(fnb b) implements hdw {
+   private static final Codec<fnb> c = Codec.STRING.comapFlatMap($$0 -> {
+      fnb $$1 = fnb.b($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Invalid keybind: " + $$0);
+   }, fnb::h);
+   public static final MapCodec<hed> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.fieldOf("keybind").forGetter(hed::b)).apply($$0, hed::new));
 
-   @Nullable
-   public String a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      czh $$5 = $$0.a(kv.ao);
-      return $$5 == null ? null : $$5.b().get(this.b);
+   @Override
+   public boolean a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      return this.b.e();
    }
 
    @Override
-   public heh.a<hed, String> a() {
+   public MapCodec<hed> a() {
       return a;
    }
 }

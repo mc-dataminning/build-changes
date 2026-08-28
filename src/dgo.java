@@ -1,46 +1,49 @@
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public enum dgo implements dgc {
-   a;
+public class dgo extends ArrayList<dgn> {
+   public static final Codec<dgo> a = dgn.a.listOf().optionalFieldOf("Recipes", List.of()).xmap(dgo::new, Function.identity()).codec();
+   public static final yt<wg, dgo> b = dgn.b.a(yr.a(dgo::new));
 
-   @Override
-   public float a(jn $$0, boolean $$1) {
-      return 1.0F;
+   public dgo() {
    }
 
-   @Override
-   public etl x_() {
-      return etl.c;
+   private dgo(int $$0) {
+      super($$0);
    }
 
-   @Override
-   public int a(ji $$0, dgk $$1) {
-      return -1;
+   private dgo(Collection<dgn> $$0) {
+      super($$0);
    }
 
    @Nullable
-   @Override
-   public dus c_(ji $$0) {
-      return null;
+   public dgn a(cxy $$0, cxy $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dgn $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dgn $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
    }
 
-   @Override
-   public dxq a_(ji $$0) {
-      return dkg.a.m();
-   }
+   public dgo a() {
+      dgo $$0 = new dgo(this.size());
 
-   @Override
-   public etw b_(ji $$0) {
-      return etx.a.g();
-   }
+      for (dgn $$1 : this) {
+         $$0.add($$1.v());
+      }
 
-   @Override
-   public int H_() {
-      return 0;
-   }
-
-   @Override
-   public int G_() {
-      return 0;
+      return $$0;
    }
 }

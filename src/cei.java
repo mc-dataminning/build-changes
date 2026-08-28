@@ -1,16 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cei extends cej {
-   public cei(bwg $$0, double $$1) {
-      super($$0, $$1);
+public class cei extends cdn {
+   private final bwt a;
+   private double b;
+   private double c;
+   private int d;
+
+   public cei(bwt $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
    }
 
-   @Nullable
    @Override
-   protected fbx h() {
-      fbx $$0 = this.b.h(0.0F);
-      int $$1 = 8;
-      fbx $$2 = cgv.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cgr.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      return this.a.dY().i() < 0.02F;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void d() {
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.J().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

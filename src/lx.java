@@ -1,24 +1,17 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class lx extends ls<lx> implements lr {
-   private final MapCodec<lx> a = MapCodec.unit(this::e);
-   private final yn<wa, lx> b = yn.a(this);
-
-   protected lx(boolean $$0) {
-      super($$0);
-   }
-
-   public lx e() {
-      return this;
-   }
+public record lx(float c) implements lt {
+   public static final MapCodec<lx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, lx::new));
+   public static final yt<wg, lx> b = yt.a(yr.l, $$0 -> $$0.c, lx::new);
 
    @Override
-   public MapCodec<lx> c() {
-      return this.a;
+   public lu<lx> a() {
+      return lv.L;
    }
 
-   @Override
-   public yn<wa, lx> d() {
-      return this.b;
+   public float b() {
+      return this.c;
    }
 }

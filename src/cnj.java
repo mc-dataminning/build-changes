@@ -1,96 +1,114 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cnj extends cma {
-   public cnj(bvi<? extends cnj> $$0, dgz $$1) {
+public abstract class cnj extends bwz implements cnb {
+   protected cnj(bwb<? extends cnj> $$0, dhp $$1) {
       super($$0, $$1);
-      this.a(eun.i, 8.0F);
+      this.bw = 5;
    }
 
    @Override
-   protected void D() {
-      this.bD.a(3, new cep<>(this, coe.class, true));
-      super.D();
+   public awl dm() {
+      return awl.f;
    }
 
    @Override
-   protected avz u() {
-      return awa.DB;
+   public void k_() {
+      this.eY();
+      this.gs();
+      super.k_();
    }
 
-   @Override
-   protected avz e(btp $$0) {
-      return awa.DD;
-   }
-
-   @Override
-   protected avz l_() {
-      return awa.DC;
-   }
-
-   @Override
-   avz m() {
-      return awa.DE;
-   }
-
-   @Override
-   public axf<cxd> Y() {
-      return null;
-   }
-
-   @Override
-   public boolean g(cxh $$0) {
-      return !$$0.a(awy.bW) && super.g($$0);
-   }
-
-   @Override
-   protected void a(ard $$0, btp $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cme $$4 && $$4.x()) {
-         $$4.gs();
-         this.a($$0, cxl.vn);
+   protected void gs() {
+      float $$0 = this.bx();
+      if ($$0 > 0.5F) {
+         this.bc += 2;
       }
    }
 
    @Override
-   protected void a(azh $$0, bsw $$1) {
-      this.a(bvj.a, new cxh(cxl.py));
+   protected boolean aa() {
+      return true;
    }
 
    @Override
-   protected void a(dhq $$0, azh $$1, bsw $$2) {
-   }
-
-   @Nullable
-   @Override
-   public bwr a(dhq $$0, bsw $$1, bvh $$2, @Nullable bwr $$3) {
-      bwr $$4 = super.a($$0, $$1, $$2, $$3);
-      this.g(bxg.c).a(4.0);
-      this.n();
-      return $$4;
+   protected awj aV() {
+      return awk.nw;
    }
 
    @Override
-   public boolean c(ard $$0, bva $$1) {
-      if (!super.c($$0, $$1)) {
+   protected awj aW() {
+      return awk.nv;
+   }
+
+   @Override
+   protected awj e(buh $$0) {
+      return awk.nt;
+   }
+
+   @Override
+   protected awj l_() {
+      return awk.ns;
+   }
+
+   @Override
+   public bwr.a eN() {
+      return new bwr.a(awk.nu, awk.nr);
+   }
+
+   @Override
+   public float a(jj $$0, dhs $$1) {
+      return -$$1.w($$0);
+   }
+
+   public static boolean a(dig $$0, jj $$1, azs $$2) {
+      if ($$0.a(dhy.a, $$1) > $$2.a(32)) {
          return false;
       } else {
-         if ($$1 instanceof bvy) {
-            ((bvy)$$1).b(new bue(bug.t, 200), this);
+         ecj $$3 = $$0.B_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(dhy.b, $$1) > $$4) {
+            return false;
+         } else {
+            int $$5 = $$0.a().ag() ? $$0.c($$1, 10) : $$0.A($$1);
+            return $$5 <= $$3.d().a($$2);
          }
-
-         return true;
       }
    }
 
-   @Override
-   protected cpy a(cxh $$0, float $$1, @Nullable cxh $$2) {
-      cpy $$3 = super.a($$0, $$1, $$2);
-      $$3.e(100.0F);
-      return $$3;
+   public static boolean b(bwb<? extends cnj> $$0, dig $$1, bwa $$2, jj $$3, azs $$4) {
+      return $$1.an() != btn.a && (bwa.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean c(bwb<? extends cnj> $$0, dhq $$1, bwa $$2, jj $$3, azs $$4) {
+      return $$1.an() != btn.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static bxw.a gt() {
+      return bwt.E().a(bxx.c);
    }
 
    @Override
-   public boolean b(bue $$0) {
-      return $$0.a(bug.t) ? false : super.b($$0);
+   public boolean en() {
+      return true;
+   }
+
+   @Override
+   protected boolean eo() {
+      return true;
+   }
+
+   public boolean a(arn $$0, cqi $$1) {
+      return true;
+   }
+
+   @Override
+   public cxy e(cxy $$0) {
+      if ($$0.h() instanceof cyt) {
+         Predicate<cxy> $$1 = ((cyt)$$0.h()).d();
+         cxy $$2 = cyt.a(this, $$1);
+         return $$2.f() ? new cxy(cyc.pf) : $$2;
+      } else {
+         return cxy.k;
+      }
    }
 }

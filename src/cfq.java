@@ -1,25 +1,32 @@
-public class cfq extends cgc {
-   public static final float a = 8.0F;
+import com.mojang.serialization.Codec;
+
+public enum cfq implements bag {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<cfq> n = bag.a(cfq::values);
+
+   private cfq(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+   }
 
    @Override
-   protected boolean a(ard $$0, bvy $$1, bvy $$2) {
-      return this.b($$1, $$2) && $$2.bj() && (this.b($$2) || this.a($$1, $$2)) && cgi.c($$0, $$1, $$2);
-   }
-
-   private boolean a(bvy $$0, bvy $$1) {
-      return !$$0.ea().a(cfc.U) && $$1.aq().a(awt.j);
-   }
-
-   private boolean b(bvy $$0) {
-      return $$0.aq().a(awt.i);
-   }
-
-   private boolean b(bvy $$0, bvy $$1) {
-      return $$1.g((bva)$$0) <= 64.0;
-   }
-
-   @Override
-   protected cfc<bvy> b() {
-      return cfc.B;
+   public String c() {
+      return this.i;
    }
 }

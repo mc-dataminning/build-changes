@@ -1,59 +1,22 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cjx extends cjv {
-   public cjx(bvi<? extends cjx> $$0, dgz $$1) {
-      super($$0, $$1);
+public class cjx extends byi<cjv> {
+   public cjx() {
+      super(ImmutableMap.of(cft.O, cfu.a, cft.z, cfu.a), 200);
    }
 
-   @Override
-   protected avz u() {
-      return awa.hA;
+   protected boolean a(arn $$0, cjv $$1) {
+      return $$1.bj();
    }
 
-   @Override
-   protected avz gT() {
-      return awa.hB;
+   protected boolean a(arn $$0, cjv $$1, long $$2) {
+      return $$1.bj() && $$1.eb().a(cft.O);
    }
 
-   @Override
-   protected avz l_() {
-      return awa.hD;
-   }
-
-   @Nullable
-   @Override
-   protected avz gu() {
-      return awa.hE;
-   }
-
-   @Override
-   protected avz e(btp $$0) {
-      return awa.hF;
-   }
-
-   @Override
-   public boolean a(chp $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof cjx) && !($$0 instanceof cjy) ? false : this.hb() && ((cjw)$$0).hb();
-      }
-   }
-
-   @Override
-   protected void ha() {
-      this.a(awa.hG, 0.4F, 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public buq a(ard $$0, buq $$1) {
-      bvi<? extends cjw> $$2 = $$1 instanceof cjy ? bvi.aF : bvi.I;
-      cjw $$3 = $$2.a($$0, bvh.e);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
+   protected void b(arn $$0, cjv $$1, long $$2) {
+      bxr<cjv> $$3 = $$1.eb();
+      $$3.b(cft.n);
+      $$3.b(cft.o);
+      $$1.a(new buw(buy.j, 200, 0));
    }
 }

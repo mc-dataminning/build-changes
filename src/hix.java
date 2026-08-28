@@ -1,17 +1,21 @@
-public abstract class hix extends hiw implements hjp {
-   private boolean n;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   protected hix(avz $$0, awb $$1, azh $$2) {
-      super($$0, $$1, $$2);
+public class hix extends ave<hiy> {
+   public static final hiy a = new hiy(Map.of());
+   private static final akw b = akw.a("equipment");
+   private Map<alc<dga>, hiy> c = Map.of();
+
+   public hix() {
+      super(hiy.a, b);
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
+   protected void a(Map<ald, hiy> $$0, ava $$1, bqb $$2) {
+      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> alc.a(dgb.a, (ald)$$0x.getKey()), Entry::getValue));
    }
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public hiy a(alc<dga> $$0) {
+      return this.c.getOrDefault($$0, a);
    }
 }

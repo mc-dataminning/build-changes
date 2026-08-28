@@ -1,16 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.Locale;
 
-public class yh {
-   public static final MapCodec<yf> a = mb.an.q().dispatchMap(yf::a, yg::a);
-   public static final Codec<yf> b = a.codec();
-   public static final yn<wa, yf> c = yl.a(mc.ay).b(yf::a, yg::b);
-   public static final yn<wa, Optional<yf>> d = c.a(yl::a);
+public class yh extends IllegalArgumentException {
+   public yh(yg $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+   }
 
-   public static yg<?> a(ke<yg<?>> $$0) {
-      ke.a($$0, "blank", yd.b);
-      ke.a($$0, "styled", yi.a);
-      return ke.a($$0, "fixed", ye.a);
+   public yh(yg $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public yh(yg $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

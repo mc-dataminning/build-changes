@@ -1,284 +1,112 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class eeg {
-   private static final dxq a = dkg.hG.m();
-   private static final dxq b = dkg.hH.m();
-   private static final dxq c = dkg.iY.m();
-   private static final dxq d = dkg.hK.m();
-   private static final dxq e = dkg.hS.m();
-   private static final dxq f = dkg.hU.m();
-   private static final dxq g = dkg.hO.m();
-   private static final dxq h = dkg.ja.m();
-   private static final dxq i = dkg.ec.m();
-   private final dxq j;
-   private final int k;
-   private final dxq[] l;
-   private final esz m;
-   private final esz n;
-   private final esz o;
-   private final esz p;
-   private final esz q;
-   private final esz r;
-   private final esz s;
-   private final eeb t;
-   private final esz u;
-   private final esz v;
+public class eeg extends eak {
+   public static final MapCodec<eeg> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(enj.a.fieldOf("settings").forGetter(eeg::h)).apply($$0, $$0.stable(eeg::new))
+   );
+   private final enj d;
 
-   public eeg(eec $$0, dxq $$1, int $$2, eeb $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(edx.P);
-      this.l = a($$3.a(aku.b("clay_bands")));
-      this.u = $$0.a(edx.N);
-      this.v = $$0.a(edx.O);
-      this.n = $$0.a(edx.Q);
-      this.o = $$0.a(edx.R);
-      this.p = $$0.a(edx.S);
-      this.q = $$0.a(edx.T);
-      this.r = $$0.a(edx.U);
-      this.s = $$0.a(edx.V);
+   public eeg(enj $$0) {
+      super(new djd($$0.d()), af.b($$0::a));
+      this.d = $$0;
    }
 
-   public void a(eec $$0, die $$1, ke<dic> $$2, boolean $$3, eel $$4, final dzm $$5, eds $$6, eef.o $$7) {
-      final ji.a $$8 = new ji.a();
-      final dgg $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dzj $$12 = new dzj() {
-         @Override
-         public dxq a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
-
-         @Override
-         public void a(int $$0, dxq $$1) {
-            dhb $$2 = $$5.B();
-            if ($$2.d($$0)) {
-               $$5.a($$8.q($$0), $$1);
-               if (!$$1.y().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
-
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      eef.g $$13 = new eef.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      eef.u $$14 = $$7.apply($$13);
-      ji.a $$15 = new ji.a();
-
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(edo.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            jr<dic> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(dij.C)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
-
-            int $$22 = $$5.a(edo.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.G_();
-
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dxq $$28 = $$12.a($$27);
-               if ($$28.l()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.y().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = ebm.g;
-
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dxq $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dxq $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(dij.X) || $$21.a(dij.Y)) {
-               this.a($$13.c(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
+   @Override
+   public eal a(ju<epm> $$0, eez $$1, long $$2) {
+      Stream<js<epm>> $$3 = this.d.c().map(jw::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
+      return eal.a($$1, $$2, this.b, $$3);
    }
 
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   @Override
+   protected MapCodec<? extends eak> b() {
+      return c;
    }
 
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
+   public enj h() {
+      return this.d;
    }
 
-   private boolean a(dxq $$0) {
-      return !$$0.l() && $$0.y().c();
+   @Override
+   public void a(arv $$0, dil $$1, eez $$2, eaj $$3) {
    }
 
-   public int a() {
-      return this.k;
+   @Override
+   public int a(dhr $$0) {
+      return $$0.G_() + Math.min($$0.H_(), this.d.f().size());
    }
 
-   @Deprecated
-   public Optional<dxq> a(eef.o $$0, efp $$1, Function<ji, jr<dic>> $$2, dzm $$3, eds $$4, ji $$5, boolean $$6) {
-      eef.g $$7 = new eef.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().e(mc.aJ), $$1);
-      eef.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dxq $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
-   }
+   @Override
+   public CompletableFuture<eaj> a(efn $$0, eez $$1, dil $$2, eaj $$3) {
+      List<dym> $$4 = this.d.f();
+      jj.a $$5 = new jj.a();
+      eel $$6 = $$3.a(eel.a.c);
+      eel $$7 = $$3.a(eel.a.a);
 
-   private void a(dzj $$0, int $$1, int $$2, int $$3, dhb $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = ayz.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.G_(); $$12--) {
-               dxq $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
+      for (int $$8 = 0; $$8 < Math.min($$3.H_(), $$4.size()); $$8++) {
+         dym $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.G_() + $$8;
 
-               if ($$13.a(dkg.J)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.G_() && $$0.a($$14).l(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, dic $$1, dzj $$2, ji.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, this.k, $$5), this.k)) {
-            $$12 -= 2.0;
-         }
-
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
-         } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         azh $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).l() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(dkg.J) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
                }
             }
          }
       }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   private static dxq[] a(azh $$0) {
-      dxq[] $$1 = new dxq[192];
-      Arrays.fill($$1, c);
+   @Override
+   public int a(int $$0, int $$1, eel.a $$2, dhr $$3, eez $$4) {
+      List<dym> $$5 = this.d.f();
 
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
+      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
+         dym $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.G_() + $$6 + 1;
          }
       }
 
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
+      return $$3.G_();
    }
 
-   private static void a(azh $$0, dxq[] $$1, int $$2, dxq $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
-         }
-      }
+   @Override
+   public dib a(int $$0, int $$1, dhr $$2, eez $$3) {
+      return new dib($$2.G_(), this.d.f().stream().limit((long)$$2.H_()).map($$0x -> $$0x == null ? dkw.a.m() : $$0x).toArray(dym[]::new));
    }
 
-   protected dxq a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
+   @Override
+   public void a(List<String> $$0, eez $$1, jj $$2) {
+   }
+
+   @Override
+   public void a(arv $$0, long $$1, eez $$2, diu $$3, dil $$4, eaj $$5) {
+   }
+
+   @Override
+   public void a(arv $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return -63;
    }
 }

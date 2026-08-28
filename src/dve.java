@@ -1,256 +1,147 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class dve extends dus {
-   private static final int b = 2;
-   private static final int c = 13;
-   private static final float d = -0.0375F;
-   private static final int e = 16;
-   private static final int f = 42;
-   private static final int g = 8;
-   private static final dke[] h = new dke[]{dkg.ix, dkg.iy, dkg.iG, dkg.iz};
-   public int a;
-   private float i;
-   private boolean j;
-   private boolean k;
-   private final List<ji> l = Lists.newArrayList();
+public abstract class dve extends dvl implements btj, bts, btt {
+   private btr d = btr.a;
    @Nullable
-   private bvy m;
-   @Nullable
-   private UUID q;
-   private long r;
+   private wv e;
 
-   public dve(ji $$0, dxq $$1) {
-      super(duu.A, $$0, $$1);
+   protected dve(dvn<?> $$0, jj $$1, dym $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(tq $$0, jt.a $$1) {
+   protected void a(tw $$0, ju.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("Target")) {
-         this.q = $$0.a("Target");
-      } else {
-         this.q = null;
+      this.d = btr.b($$0, $$1);
+      if ($$0.e("CustomName")) {
+         this.e = a($$0.c("CustomName"), $$1);
       }
    }
 
    @Override
-   protected void b(tq $$0, jt.a $$1) {
+   protected void b(tw $$0, ju.a $$1) {
       super.b($$0, $$1);
-      if (this.m != null) {
-         $$0.a("Target", this.m.cF());
+      this.d.a($$0, $$1);
+      if (this.e != null) {
+         $$0.a("CustomName", (ut)wx.a.encodeStart($$1.a(uk.a), this.e).getOrThrow());
       }
-   }
-
-   public abr b() {
-      return abr.a(this);
    }
 
    @Override
-   public tq a(jt.a $$0) {
-      return this.e($$0);
+   public wv al() {
+      return this.e != null ? this.e : this.j();
    }
 
-   public static void a(dgz $$0, ji $$1, dxq $$2, dve $$3) {
-      $$3.a++;
-      long $$4 = $$0.ae();
-      List<ji> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         $$3.j = a($$0, $$1, $$5);
-         a($$3, $$5);
-      }
-
-      a($$0, $$1, $$3);
-      a($$0, $$1, $$5, $$3.m, $$3.a);
-      if ($$3.c()) {
-         $$3.i++;
-      }
-   }
-
-   public static void b(dgz $$0, ji $$1, dxq $$2, dve $$3) {
-      $$3.a++;
-      long $$4 = $$0.ae();
-      List<ji> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         boolean $$6 = a($$0, $$1, $$5);
-         if ($$6 != $$3.j) {
-            avz $$7 = $$6 ? awa.fy : awa.fC;
-            $$0.a(null, $$1, $$7, awb.e, 1.0F, 1.0F);
-         }
-
-         $$3.j = $$6;
-         a($$3, $$5);
-         if ($$6) {
-            b($$0, $$1, $$5);
-            a($$0, $$1, $$2, $$5, $$3);
-         }
-      }
-
-      if ($$3.c()) {
-         if ($$4 % 80L == 0L) {
-            $$0.a(null, $$1, awa.fz, awb.e, 1.0F, 1.0F);
-         }
-
-         if ($$4 > $$3.r) {
-            $$3.r = $$4 + 60L + (long)$$0.C_().a(40);
-            $$0.a(null, $$1, awa.fA, awb.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   private static void a(dve $$0, List<ji> $$1) {
-      $$0.a($$1.size() >= 42);
-   }
-
-   private static boolean a(dgz $$0, ji $$1, List<ji> $$2) {
-      $$2.clear();
-
-      for (int $$3 = -1; $$3 <= 1; $$3++) {
-         for (int $$4 = -1; $$4 <= 1; $$4++) {
-            for (int $$5 = -1; $$5 <= 1; $$5++) {
-               ji $$6 = $$1.b($$3, $$4, $$5);
-               if (!$$0.z($$6)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int $$7 = -2; $$7 <= 2; $$7++) {
-         for (int $$8 = -2; $$8 <= 2; $$8++) {
-            for (int $$9 = -2; $$9 <= 2; $$9++) {
-               int $$10 = Math.abs($$7);
-               int $$11 = Math.abs($$8);
-               int $$12 = Math.abs($$9);
-               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
-                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
-                  ji $$13 = $$1.b($$7, $$8, $$9);
-                  dxq $$14 = $$0.a_($$13);
-
-                  for (dke $$15 : h) {
-                     if ($$14.a($$15)) {
-                        $$2.add($$13);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$2.size() >= 16;
-   }
-
-   private static void b(dgz $$0, ji $$1, List<ji> $$2) {
-      int $$3 = $$2.size();
-      int $$4 = $$3 / 7 * 16;
-      int $$5 = $$1.u();
-      int $$6 = $$1.v();
-      int $$7 = $$1.w();
-      fbs $$8 = new fbs((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
-         .g((double)$$4)
-         .b(0.0, (double)$$0.H_(), 0.0);
-      List<cpr> $$9 = $$0.a(cpr.class, $$8);
-      if (!$$9.isEmpty()) {
-         for (cpr $$10 : $$9) {
-            if ($$1.a($$10.du(), (double)$$4) && $$10.bk()) {
-               $$10.a(new bue(bug.C, 260, 0, true, true));
-            }
-         }
-      }
-   }
-
-   private static void a(dgz $$0, ji $$1, dxq $$2, List<ji> $$3, dve $$4) {
-      bvy $$5 = $$4.m;
-      int $$6 = $$3.size();
-      if ($$6 < 42) {
-         $$4.m = null;
-      } else if ($$4.m == null && $$4.q != null) {
-         $$4.m = a($$0, $$1, $$4.q);
-         $$4.q = null;
-      } else if ($$4.m == null) {
-         List<bvy> $$7 = $$0.a(bvy.class, a($$1), $$0x -> $$0x instanceof cmk && $$0x.bk());
-         if (!$$7.isEmpty()) {
-            $$4.m = $$7.get($$0.A.a($$7.size()));
-         }
-      } else if (!$$4.m.bJ() || !$$1.a($$4.m.du(), 8.0)) {
-         $$4.m = null;
-      }
-
-      if ($$4.m != null) {
-         $$0.a(null, $$4.m.dz(), $$4.m.dB(), $$4.m.dF(), awa.fB, awb.e, 1.0F, 1.0F);
-         $$4.m.a($$0.al().q(), 4.0F);
-      }
-
-      if ($$5 != $$4.m) {
-         $$0.a($$1, $$2, $$2, 2);
-      }
-   }
-
-   private static void a(dgz $$0, ji $$1, dve $$2) {
-      if ($$2.q == null) {
-         $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cF().equals($$2.q)) {
-         $$2.m = a($$0, $$1, $$2.q);
-         if ($$2.m == null) {
-            $$2.q = null;
-         }
-      }
-   }
-
-   private static fbs a(ji $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      return new fbs((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
+   @Override
+   public wv m_() {
+      return this.al();
    }
 
    @Nullable
-   private static bvy a(dgz $$0, ji $$1, UUID $$2) {
-      List<bvy> $$3 = $$0.a(bvy.class, a($$1), $$1x -> $$1x.cF().equals($$2));
-      return $$3.size() == 1 ? $$3.get(0) : null;
+   @Override
+   public wv an() {
+      return this.e;
    }
 
-   private static void a(dgz $$0, ji $$1, List<ji> $$2, @Nullable bva $$3, int $$4) {
-      azh $$5 = $$0.A;
-      double $$6 = (double)(ayz.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
-      $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      fbx $$7 = new fbx((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
+   protected abstract wv j();
 
-      for (ji $$8 : $$2) {
-         if ($$5.a(50) == 0) {
-            ji $$9 = $$8.b($$1);
-            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
-            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
-            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
-            $$0.a(lt.au, $$7.d, $$7.e, $$7.f, (double)$$10, (double)$$11, (double)$$12);
+   public boolean d(cqi $$0) {
+      return a($$0, this.d, this.m_());
+   }
+
+   public static boolean a(cqi $$0, btr $$1, wv $$2) {
+      if (!$$0.U_() && !$$1.a($$0.fa())) {
+         $$0.a(wv.a("container.isLocked", $$2), true);
+         $$0.a(awk.eR, awl.e, 1.0F, 1.0F);
+         return false;
+      } else {
+         return true;
+      }
+   }
+
+   protected abstract kb<cxy> f();
+
+   protected abstract void a(kb<cxy> var1);
+
+   @Override
+   public boolean c() {
+      for (cxy $$0 : this.f()) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      if ($$3 != null) {
-         fbx $$13 = new fbx($$3.dz(), $$3.dD(), $$3.dF());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dp());
-         float $$15 = -1.0F + $$5.i() * $$3.dq();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dp());
-         fbx $$17 = new fbx((double)$$14, (double)$$15, (double)$$16);
-         $$0.a(lt.au, $$13.d, $$13.e, $$13.f, $$17.d, $$17.e, $$17.f);
+      return true;
+   }
+
+   @Override
+   public cxy a(int $$0) {
+      return this.f().get($$0);
+   }
+
+   @Override
+   public cxy a(int $$0, int $$1) {
+      cxy $$2 = btk.a(this.f(), $$0, $$1);
+      if (!$$2.f()) {
+         this.e();
       }
+
+      return $$2;
    }
 
-   public boolean c() {
-      return this.j;
+   @Override
+   public cxy b(int $$0) {
+      return btk.a(this.f(), $$0);
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   public void a(int $$0, cxy $$1) {
+      this.f().set($$0, $$1);
+      $$1.f(this.e_($$1));
+      this.e();
    }
 
-   private void a(boolean $$0) {
-      this.k = $$0;
+   @Override
+   public boolean a(cqi $$0) {
+      return btj.a(this, $$0);
    }
 
-   public float a(float $$0) {
-      return (this.i + $$0) * -0.0375F;
+   @Override
+   public void a() {
+      this.f().clear();
+   }
+
+   @Nullable
+   @Override
+   public ctn createMenu(int $$0, cqh $$1, cqi $$2) {
+      return this.d($$2) ? this.a($$0, $$1) : null;
+   }
+
+   protected abstract ctn a(int var1, cqh var2);
+
+   @Override
+   protected void a(kr $$0) {
+      super.a($$0);
+      this.e = $$0.a(kx.g);
+      this.d = $$0.a(kx.aq, btr.a);
+      $$0.a(kx.an, dan.a).a(this.f());
+   }
+
+   @Override
+   protected void a(kt.a $$0) {
+      super.a($$0);
+      $$0.a(kx.g, this.e);
+      if (!this.d.equals(btr.a)) {
+         $$0.a(kx.aq, this.d);
+      }
+
+      $$0.a(kx.an, dan.a(this.f()));
+   }
+
+   @Override
+   public void a(tw $$0) {
+      $$0.r("CustomName");
+      $$0.r("lock");
+      $$0.r("Items");
    }
 }

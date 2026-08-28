@@ -1,54 +1,200 @@
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record bwl(fbx b, fbx c, float d, float e) {
-   public static final yn<vl, bwl> a = yn.a(fbx.b, bwl::a, fbx.b, bwl::b, yl.l, bwl::c, yl.l, bwl::d, bwl::new);
+public class bwl extends bvs implements bvl, bxo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akg<Float> b = akk.a(bwl.class, aki.d);
+   private static final akg<Float> c = akk.a(bwl.class, aki.d);
+   private static final akg<Boolean> d = akk.a(bwl.class, aki.k);
+   private static final String e = "width";
+   private static final String f = "height";
+   private static final String g = "attack";
+   private static final String h = "interaction";
+   private static final String i = "response";
+   @Nullable
+   private bwl.a j;
+   @Nullable
+   private bwl.a k;
 
-   public static bwl a(bva $$0) {
-      return $$0.bQ() ? new bwl($$0.N_().a(), $$0.ah(), $$0.N_().b(), $$0.N_().c()) : new bwl($$0.ds(), $$0.ah(), $$0.dK(), $$0.dM());
+   public bwl(bwb<?> $$0, dhp $$1) {
+      super($$0, $$1);
+      this.ad = true;
    }
 
-   public static bwl a(euw $$0) {
-      return new bwl($$0.c(), $$0.d(), $$0.e(), $$0.f());
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(b, 1.0F);
+      $$0.a(c, 1.0F);
+      $$0.a(d, false);
    }
 
-   public static bwl a(bwl $$0, bwl $$1, Set<bwm> $$2) {
-      double $$3 = $$2.contains(bwm.a) ? $$0.b.d : 0.0;
-      double $$4 = $$2.contains(bwm.b) ? $$0.b.e : 0.0;
-      double $$5 = $$2.contains(bwm.c) ? $$0.b.f : 0.0;
-      float $$6 = $$2.contains(bwm.d) ? $$0.d : 0.0F;
-      float $$7 = $$2.contains(bwm.e) ? $$0.e : 0.0F;
-      fbx $$8 = new fbx($$3 + $$1.b.d, $$4 + $$1.b.e, $$5 + $$1.b.f);
-      float $$9 = $$6 + $$1.d;
-      float $$10 = $$7 + $$1.e;
-      fbx $$11 = $$0.c;
-      if ($$2.contains(bwm.i)) {
-         float $$12 = $$0.d - $$9;
-         float $$13 = $$0.e - $$10;
-         $$11 = $$11.a((float)Math.toRadians((double)$$13));
-         $$11 = $$11.b((float)Math.toRadians((double)$$12));
+   @Override
+   protected void a(tw $$0) {
+      if ($$0.b("width", 99)) {
+         this.a($$0.j("width"));
       }
 
-      fbx $$14 = new fbx(a($$11.d, $$1.c.d, $$2, bwm.f), a($$11.e, $$1.c.e, $$2, bwm.g), a($$11.f, $$1.c.f, $$2, bwm.h));
-      return new bwl($$8, $$14, $$9, $$10);
+      if ($$0.b("height", 99)) {
+         this.b($$0.j("height"));
+      }
+
+      if ($$0.e("attack")) {
+         bwl.a.a.decode(uk.a, $$0.c("attack")).resultOrPartial(af.a("Interaction entity", a::error)).ifPresent($$0x -> this.j = (bwl.a)$$0x.getFirst());
+      } else {
+         this.j = null;
+      }
+
+      if ($$0.e("interaction")) {
+         bwl.a.a.decode(uk.a, $$0.c("interaction")).resultOrPartial(af.a("Interaction entity", a::error)).ifPresent($$0x -> this.k = (bwl.a)$$0x.getFirst());
+      } else {
+         this.k = null;
+      }
+
+      this.a($$0.q("response"));
+      this.a(this.ax());
    }
 
-   private static double a(double $$0, double $$1, Set<bwm> $$2, bwm $$3) {
-      return $$2.contains($$3) ? $$0 + $$1 : $$1;
+   @Override
+   protected void b(tw $$0) {
+      $$0.a("width", this.g());
+      $$0.a("height", this.j());
+      if (this.j != null) {
+         bwl.a.a.encodeStart(uk.a, this.j).ifSuccess($$1 -> $$0.a("attack", $$1));
+      }
+
+      if (this.k != null) {
+         bwl.a.a.encodeStart(uk.a, this.k).ifSuccess($$1 -> $$0.a("interaction", $$1));
+      }
+
+      $$0.a("response", this.m());
    }
 
-   public fbx a() {
-      return this.b;
+   @Override
+   public void a(akg<?> $$0) {
+      super.a($$0);
+      if (c.equals($$0) || b.equals($$0)) {
+         this.i_();
+      }
    }
 
-   public fbx b() {
-      return this.c;
+   @Override
+   public boolean bF() {
+      return false;
    }
 
-   public float c() {
-      return this.d;
+   @Override
+   public boolean bG() {
+      return true;
    }
 
-   public float d() {
-      return this.e;
+   @Override
+   public euy j_() {
+      return euy.d;
+   }
+
+   @Override
+   public boolean g_() {
+      return true;
+   }
+
+   @Override
+   public boolean v(bvs $$0) {
+      if ($$0 instanceof cqi $$1) {
+         this.j = new bwl.a($$1.cG(), this.dV().ae());
+         if ($$1 instanceof aro $$2) {
+            ap.h.a($$2, this, $$1.dW().p(), 1.0F, 1.0F, false);
+         }
+
+         return !this.m();
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final boolean a(arn $$0, buh $$1, float $$2) {
+      return false;
+   }
+
+   @Override
+   public btq a(cqi $$0, btp $$1) {
+      if (this.dV().C) {
+         return this.m() ? btq.a : btq.c;
+      } else {
+         this.k = new bwl.a($$0.cG(), this.dV().ae());
+         return btq.c;
+      }
+   }
+
+   @Override
+   public void h() {
+   }
+
+   @Nullable
+   @Override
+   public bwr am() {
+      return this.j != null ? this.dV().a(this.j.a()) : null;
+   }
+
+   @Nullable
+   @Override
+   public bwr f() {
+      return this.k != null ? this.dV().a(this.k.a()) : null;
+   }
+
+   private void a(float $$0) {
+      this.al.a(b, $$0);
+   }
+
+   private float g() {
+      return this.al.a(b);
+   }
+
+   private void b(float $$0) {
+      this.al.a(c, $$0);
+   }
+
+   private float j() {
+      return this.al.a(c);
+   }
+
+   private void a(boolean $$0) {
+      this.al.a(d, $$0);
+   }
+
+   private boolean m() {
+      return this.al.a(d);
+   }
+
+   private bvv n() {
+      return bvv.b(this.g(), this.j());
+   }
+
+   @Override
+   public bvv a(bxd $$0) {
+      return this.n();
+   }
+
+   @Override
+   protected fcp c(fcu $$0) {
+      return this.n().a($$0);
+   }
+
+   static record a(UUID b, long c) {
+      public static final Codec<bwl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(km.a.fieldOf("player").forGetter(bwl.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bwl.a::b)).apply($$0, bwl.a::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
    }
 }

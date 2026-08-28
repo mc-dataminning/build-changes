@@ -1,254 +1,49 @@
-public abstract class fcg {
-   private static final jn.a[] d = jn.a.values();
-   protected final int a;
-   protected final int b;
-   protected final int c;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-   protected fcg(int $$0, int $$1, int $$2) {
-      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+public class fcg<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final fcg<MinecraftServer> a = new fcg<MinecraftServer>().a(new fcd.a()).a(new fce.a());
+   private final Map<ald, fcf.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, fcf.a<C, ?>> d = Maps.newHashMap();
+
+   public fcg<C> a(fcf.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
+   }
+
+   private <T extends fcf<C>> fcf.a<C, T> a(Class<?> $$0) {
+      return (fcf.a<C, T>)this.d.get($$0);
+   }
+
+   public <T extends fcf<C>> tw a(T $$0) {
+      fcf.a<C, T> $$1 = this.a($$0.getClass());
+      tw $$2 = new tw();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
+   }
+
+   @Nullable
+   public fcf<C> a(tw $$0) {
+      ald $$1 = ald.c($$0.l("Type"));
+      fcf.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
       } else {
-         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
-      }
-   }
-
-   public fcg a(h $$0) {
-      if ($$0 == h.a) {
-         return this;
-      } else {
-         jn.a $$1 = $$0.b(jn.a.a);
-         jn.a $$2 = $$0.b(jn.a.b);
-         jn.a $$3 = $$0.b(jn.a.c);
-         int $$4 = $$1.a(this.a, this.b, this.c);
-         int $$5 = $$2.a(this.a, this.b, this.c);
-         int $$6 = $$3.a(this.a, this.b, this.c);
-         boolean $$7 = $$0.a($$1);
-         boolean $$8 = $$0.a($$2);
-         boolean $$9 = $$0.a($$3);
-         boolean $$10 = $$1.a($$7, $$8, $$9);
-         boolean $$11 = $$2.a($$7, $$8, $$9);
-         boolean $$12 = $$3.a($$7, $$8, $$9);
-         fcg $$13 = new fca($$4, $$5, $$6);
-
-         for (int $$14 = 0; $$14 < this.a; $$14++) {
-            for (int $$15 = 0; $$15 < this.b; $$15++) {
-               for (int $$16 = 0; $$16 < this.c; $$16++) {
-                  if (this.b($$14, $$15, $$16)) {
-                     int $$17 = $$1.a($$14, $$15, $$16);
-                     int $$18 = $$2.a($$14, $$15, $$16);
-                     int $$19 = $$3.a($$14, $$15, $$16);
-                     $$13.c($$10 ? $$4 - 1 - $$17 : $$17, $$11 ? $$5 - 1 - $$18 : $$18, $$12 ? $$6 - 1 - $$19 : $$19);
-                  }
-               }
-            }
-         }
-
-         return $$13;
-      }
-   }
-
-   public boolean a(jf $$0, int $$1, int $$2, int $$3) {
-      return this.e($$0.a($$1, $$2, $$3, jn.a.a), $$0.a($$1, $$2, $$3, jn.a.b), $$0.a($$1, $$2, $$3, jn.a.c));
-   }
-
-   public boolean e(int $$0, int $$1, int $$2) {
-      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
-         return false;
-      } else {
-         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
-      }
-   }
-
-   public boolean b(jf $$0, int $$1, int $$2, int $$3) {
-      return this.b($$0.a($$1, $$2, $$3, jn.a.a), $$0.a($$1, $$2, $$3, jn.a.b), $$0.a($$1, $$2, $$3, jn.a.c));
-   }
-
-   public abstract boolean b(int var1, int var2, int var3);
-
-   public abstract void c(int var1, int var2, int var3);
-
-   public boolean a() {
-      for (jn.a $$0 : d) {
-         if (this.a($$0) >= this.b($$0)) {
-            return true;
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
          }
       }
-
-      return false;
-   }
-
-   public abstract int a(jn.a var1);
-
-   public abstract int b(jn.a var1);
-
-   public int a(jn.a $$0, int $$1, int $$2) {
-      int $$3 = this.c($$0);
-      if ($$1 >= 0 && $$2 >= 0) {
-         jn.a $$4 = jf.b.a($$0);
-         jn.a $$5 = jf.c.a($$0);
-         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
-            jf $$6 = jf.a(jn.a.a, $$0);
-
-            for (int $$7 = 0; $$7 < $$3; $$7++) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7;
-               }
-            }
-
-            return $$3;
-         } else {
-            return $$3;
-         }
-      } else {
-         return $$3;
-      }
-   }
-
-   public int b(jn.a $$0, int $$1, int $$2) {
-      if ($$1 >= 0 && $$2 >= 0) {
-         jn.a $$3 = jf.b.a($$0);
-         jn.a $$4 = jf.c.a($$0);
-         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
-            int $$5 = this.c($$0);
-            jf $$6 = jf.a(jn.a.a, $$0);
-
-            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7 + 1;
-               }
-            }
-
-            return 0;
-         } else {
-            return 0;
-         }
-      } else {
-         return 0;
-      }
-   }
-
-   public int c(jn.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   public int b() {
-      return this.c(jn.a.a);
-   }
-
-   public int c() {
-      return this.c(jn.a.b);
-   }
-
-   public int d() {
-      return this.c(jn.a.c);
-   }
-
-   public void a(fcg.b $$0, boolean $$1) {
-      this.a($$0, jf.a, $$1);
-      this.a($$0, jf.b, $$1);
-      this.a($$0, jf.c, $$1);
-   }
-
-   private void a(fcg.b $$0, jf $$1, boolean $$2) {
-      jf $$3 = $$1.a();
-      int $$4 = this.c($$3.a(jn.a.a));
-      int $$5 = this.c($$3.a(jn.a.b));
-      int $$6 = this.c($$3.a(jn.a.c));
-
-      for (int $$7 = 0; $$7 <= $$4; $$7++) {
-         for (int $$8 = 0; $$8 <= $$5; $$8++) {
-            int $$9 = -1;
-
-            for (int $$10 = 0; $$10 <= $$6; $$10++) {
-               int $$11 = 0;
-               int $$12 = 0;
-
-               for (int $$13 = 0; $$13 <= 1; $$13++) {
-                  for (int $$14 = 0; $$14 <= 1; $$14++) {
-                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
-                        $$11++;
-                        $$12 ^= $$13 ^ $$14;
-                     }
-                  }
-               }
-
-               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
-                  if ($$2) {
-                     if ($$9 == -1) {
-                        $$9 = $$10;
-                     }
-                  } else {
-                     $$0.consume(
-                        $$3.a($$7, $$8, $$10, jn.a.a),
-                        $$3.a($$7, $$8, $$10, jn.a.b),
-                        $$3.a($$7, $$8, $$10, jn.a.c),
-                        $$3.a($$7, $$8, $$10 + 1, jn.a.a),
-                        $$3.a($$7, $$8, $$10 + 1, jn.a.b),
-                        $$3.a($$7, $$8, $$10 + 1, jn.a.c)
-                     );
-                  }
-               } else if ($$9 != -1) {
-                  $$0.consume(
-                     $$3.a($$7, $$8, $$9, jn.a.a),
-                     $$3.a($$7, $$8, $$9, jn.a.b),
-                     $$3.a($$7, $$8, $$9, jn.a.c),
-                     $$3.a($$7, $$8, $$10, jn.a.a),
-                     $$3.a($$7, $$8, $$10, jn.a.b),
-                     $$3.a($$7, $$8, $$10, jn.a.c)
-                  );
-                  $$9 = -1;
-               }
-            }
-         }
-      }
-   }
-
-   public void b(fcg.b $$0, boolean $$1) {
-      fca.a(this, $$0, $$1);
-   }
-
-   public void a(fcg.a $$0) {
-      this.a($$0, jf.a);
-      this.a($$0, jf.b);
-      this.a($$0, jf.c);
-   }
-
-   private void a(fcg.a $$0, jf $$1) {
-      jf $$2 = $$1.a();
-      jn.a $$3 = $$2.a(jn.a.c);
-      int $$4 = this.c($$2.a(jn.a.a));
-      int $$5 = this.c($$2.a(jn.a.b));
-      int $$6 = this.c($$3);
-      jn $$7 = jn.a($$3, jn.b.b);
-      jn $$8 = jn.a($$3, jn.b.a);
-
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            boolean $$11 = false;
-
-            for (int $$12 = 0; $$12 <= $$6; $$12++) {
-               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
-               if (!$$11 && $$13) {
-                  $$0.consume($$7, $$2.a($$9, $$10, $$12, jn.a.a), $$2.a($$9, $$10, $$12, jn.a.b), $$2.a($$9, $$10, $$12, jn.a.c));
-               }
-
-               if ($$11 && !$$13) {
-                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, jn.a.a), $$2.a($$9, $$10, $$12 - 1, jn.a.b), $$2.a($$9, $$10, $$12 - 1, jn.a.c));
-               }
-
-               $$11 = $$13;
-            }
-         }
-      }
-   }
-
-   public interface a {
-      void consume(jn var1, int var2, int var3, int var4);
-   }
-
-   public interface b {
-      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

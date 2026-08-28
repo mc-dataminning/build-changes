@@ -1,20 +1,23 @@
-public record ajk(long b) implements yw<ajj> {
-   public static final yn<vl, ajk> a = yw.a(ajk::a, ajk::new);
+import io.netty.buffer.ByteBuf;
 
-   private ajk(vl $$0) {
-      this($$0.readLong());
-   }
+public class ajk implements zc<ajg> {
+   public static final ajk a = new ajk();
+   public static final yt<ByteBuf, ajk> b = yt.a(a);
 
-   private void a(vl $$0) {
-      $$0.b(this.b);
+   private ajk() {
    }
 
    @Override
-   public yy<ajk> a() {
-      return ajl.a;
+   public ze<ajk> a() {
+      return aje.i;
    }
 
-   public void a(ajj $$0) {
+   public void a(ajg $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

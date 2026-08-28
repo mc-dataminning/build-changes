@@ -1,70 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dtf extends djq {
+public class dtf extends dle implements dkx {
    public static final MapCodec<dtf> a = b(dtf::new);
-   public static final dyt<dxd> b = dyg.bC;
-   public static final dyo<jn> c = dod.e;
-   public static final dyh d = dyg.bE;
+   private static final fdo b = dku.b(12.0, 0.0, 13.0);
 
    @Override
    public MapCodec<dtf> a() {
       return a;
    }
 
-   public dtf(dxp.d $$0) {
+   protected dtf(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(c, jn.c).b(b, dxd.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public bsy a(cxh $$0, dxq $$1, dgz $$2, ji $$3, cpr $$4, bsx $$5, fbt $$6) {
-      if (!$$0.f() && $$1.c(b) == dxd.b) {
-         if ($$2 instanceof ard $$7) {
-            if (!($$7.c_($$3) instanceof dwy $$8)) {
-               return bsy.f;
-            }
-
-            dwy.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
-         }
-
-         return bsy.b;
-      } else {
-         return bsy.f;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dwy($$0, $$1);
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      return $$0 instanceof ard $$3
-         ? a($$2, duu.S, ($$1x, $$2x, $$3x, $$4) -> dwy.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, duu.S, ($$0x, $$1x, $$2x, $$3x) -> dwy.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
    }
 
    @Override
-   public dxq a(dax $$0) {
-      return this.m().b(c, $$0.g().g());
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return true;
    }
 
    @Override
-   public dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      dnd.a($$0, o($$3).m(), $$2, 2);
    }
 
-   @Override
-   public dxq a(dxq $$0, dpf $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   private static dnd o(dym $$0) {
+      return (dnd)($$0.a(dkw.bB) ? dkw.jg : dkw.jf);
    }
 }

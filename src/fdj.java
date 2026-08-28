@@ -1,59 +1,53 @@
-public interface fdj extends bsr {
-   cxh f();
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   default cxh c(int $$0) {
-      return this.f().a($$0);
-   }
+public class fdj extends AbstractDoubleList implements fdg {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   void b(cxh var1);
-
-   default cxh h() {
-      return this.c(this.an_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
+   protected fdj(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   default boolean c() {
-      return this.f().f();
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
    @Override
-   default void a() {
-      this.h();
+   public boolean a(fdg.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   @Override
-   default cxh b(int $$0) {
-      return this.a($$0, this.an_());
-   }
+   private boolean b(fdg.a $$0) {
+      int $$1 = this.a.size();
 
-   @Override
-   default cxh a(int $$0) {
-      return $$0 == 0 ? this.f() : cxh.k;
-   }
-
-   @Override
-   default cxh a(int $$0, int $$1) {
-      return $$0 != 0 ? cxh.k : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cxh $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
       }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public interface a extends fdj {
-      dus t();
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
 
-      @Override
-      default boolean a(cpr $$0) {
-         return bsr.a(this.t(), $$0);
-      }
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

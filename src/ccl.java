@@ -1,34 +1,59 @@
-import java.util.EnumSet;
+public class ccl implements ccm {
+   private final bwt a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class ccl extends ccw {
-   private final bwa a;
-   private final dgz b;
-
-   public ccl(bwa $$0, dgz $$1) {
+   public ccl(bwt $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(ccw.a.c));
    }
 
-   @Override
-   public boolean b() {
-      boolean $$0 = this.a.aw || this.a.av;
-      if ($$0 && this.a.aq().a(awt.h)) {
-         ji $$1 = this.a.du().d();
-         dxq $$2 = this.b.a_($$1);
-         return $$2.a(dkg.rr) || $$2.g(this.b, $$1) == fco.a();
+   public void a() {
+      if (this.f()) {
+         this.a.aU = this.a.dL();
+         this.c();
+         this.f = this.a.aW;
+         this.e = 0;
       } else {
-         return false;
+         if (this.e()) {
+            if (Math.abs(this.a.aW - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aW;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
+         }
       }
    }
 
-   @Override
-   public boolean Q_() {
-      return true;
+   private void b() {
+      this.a.aU = azk.c(this.a.aU, this.a.aW, (float)this.a.ad());
    }
 
-   @Override
-   public void a() {
-      this.a.N().a();
+   private void c() {
+      this.a.aW = azk.c(this.a.aW, this.a.aU, (float)this.a.ad());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azk.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ad() * (1.0F - $$1);
+      this.a.aU = azk.c(this.a.aU, this.a.aW, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cZ() instanceof bwt);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dA() - this.a.K;
+      double $$1 = this.a.dG() - this.a.M;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

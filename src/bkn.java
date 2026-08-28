@@ -4,26 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkn extends bju {
+public class bkn extends Schema {
    public bkn(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bjv.a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:turtle");
-      a($$0, $$1, "minecraft:cod_mob");
-      a($$0, $$1, "minecraft:tropical_fish");
-      a($$0, $$1, "minecraft:salmon_mob");
-      a($$0, $$1, "minecraft:puffer_fish");
-      a($$0, $$1, "minecraft:phantom");
-      a($$0, $$1, "minecraft:dolphin");
-      a($$0, $$1, "minecraft:drowned");
-      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", bic.u.in($$0), "Trident", bic.t.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, biq.H, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", biq.C.in($$0))), "SpawnData", biq.C.in($$0)));
    }
 }

@@ -1,40 +1,67 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cet extends cew {
-   private final bwv a;
-   private bvy b;
-   private int c;
+public class cet extends cdn {
+   private static final int a = 10;
+   private final bwz b;
+   private final int c;
+   @Nullable
+   private jj d;
 
-   public cet(bwv $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(ccw.a.d));
+   public cet(bwz $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(cdn.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gs()) {
-         bvy $$0 = this.a.ae_();
-         if ($$0 == null) {
+      if (this.b.cX()) {
+         return false;
+      } else if (this.b.dV().V()) {
+         return false;
+      } else if (this.b.dY().a(this.c) != 0) {
+         return false;
+      } else {
+         arn $$0 = (arn)this.b.dV();
+         jj $$1 = this.b.dv();
+         if (!$$0.a($$1, 6)) {
             return false;
          } else {
-            this.b = $$0.ep();
-            int $$1 = $$0.er();
-            return $$1 != this.c && this.a(this.b, cgp.a) && this.a.a(this.b, $$0);
+            fcu $$2 = chn.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kl.a($$1x))));
+            this.d = $$2 == null ? null : jj.a((kc)$$2);
+            return this.d != null;
          }
-      } else {
-         return false;
       }
    }
 
    @Override
-   public void d() {
-      this.e.h(this.b);
-      bvy $$0 = this.a.ae_();
-      if ($$0 != null) {
-         this.c = $$0.er();
-      }
+   public boolean c() {
+      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
+   }
 
-      super.d();
+   @Override
+   public void a() {
+      if (this.d != null) {
+         cgb $$0 = this.b.O();
+         if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
+            fcu $$1 = fcu.c(this.d);
+            fcu $$2 = this.b.dt();
+            fcu $$3 = $$2.d($$1);
+            $$1 = $$3.c(0.4).e($$1);
+            fcu $$4 = $$1.d($$2).d().c(10.0).e($$2);
+            jj $$5 = jj.a((kc)$$4);
+            $$5 = this.b.dV().a(eel.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
+      }
+   }
+
+   private void h() {
+      azs $$0 = this.b.dY();
+      jj $$1 = this.b.dV().a(eel.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

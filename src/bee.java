@@ -1,17 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Map.Entry;
 
-public class bee extends bip {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
+public class bee extends bhm {
+   private final Map<String, String> a;
 
-   public bee(Schema $$0, boolean $$1) {
-      super("EntityPufferfishRenameFix", $$0, $$1);
+   public bee(Schema $$0, String $$1, String $$2, Map<String, String> $$3) {
+      super($$0, false, $$1, biq.D, $$2);
+      this.a = $$3;
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      for (Entry<String, String> $$1 : this.a.entrySet()) {
+         $$0 = $$0.renameField($$1.getKey(), $$1.getValue());
+      }
+
+      return $$0;
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

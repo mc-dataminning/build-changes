@@ -1,29 +1,40 @@
-public record acu(int b, float c) implements yw<abl> {
-   public static final yn<vl, acu> a = yw.a(acu::a, acu::new);
+import javax.annotation.Nullable;
 
-   public acu(bvy $$0) {
-      this($$0.ar(), $$0.eK());
+public class acu implements zc<abr> {
+   public static final yt<vr, acu> a = zc.a(acu::a, acu::new);
+   private final int b;
+   private final byte c;
+
+   public acu(bvs $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private acu(vl $$0) {
-      this($$0.l(), $$0.readFloat());
+   private acu(vr $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vr $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public yy<acu> a() {
-      return agd.H;
+   public ze<acu> a() {
+      return agk.C;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   @Nullable
+   public bvs a(dhp $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
    }
 }

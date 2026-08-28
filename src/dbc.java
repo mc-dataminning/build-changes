@@ -1,69 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbc extends dbl {
-   public dbc(dbi $$0) {
-      super($$0);
+public record dbc(int c, boolean d) {
+   public static final Codec<dbc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.l.optionalFieldOf("item_damage_per_attack", 1).forGetter(dbc::a),
+               Codec.BOOL.optionalFieldOf("can_disable_blocking", false).forGetter(dbc::b)
+            )
+            .apply($$0, dbc::new)
+   );
+   public static final yt<wg, dbc> b = yt.a(yr.h, dbc::a, yr.b, dbc::b, dbc::new);
+
+   public int a() {
+      return this.c;
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxh $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.a(awy.bO)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$5.h() instanceof cwf)) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public cxh a(dbj $$0, jt.a $$1) {
-      List<cwf> $$2 = new ArrayList<>();
-      cxh $$3 = cxh.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxh $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(awy.bO)) {
-               if (!$$3.f()) {
-                  return cxh.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cwf $$6)) {
-                  return cxh.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? czt.a($$3, $$2) : cxh.k;
-   }
-
-   @Override
-   public dcf<dbc> a() {
-      return dcf.c;
+   public boolean b() {
+      return this.d;
    }
 }

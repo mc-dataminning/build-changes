@@ -1,29 +1,31 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+public class hkl extends hjy {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final cla p;
 
-public interface hkl extends hkk {
-   int a = 8192;
-
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      hkj $$1 = new hkj($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public hkl(cla $$0) {
+      super(awk.zs, awl.g, hkp.t());
+      this.p = $$0;
+      this.k = hkp.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
    @Override
-   default ByteBuffer b() throws IOException {
-      hkj $$0 = new hkj(16384);
+   public boolean s() {
+      return !this.p.bb();
+   }
 
-      while (this.a($$0)) {
+   @Override
+   public void q() {
+      if (!this.p.dQ() && this.p.f() == null && this.p.gr()) {
+         this.f = (double)((float)this.p.dA());
+         this.g = (double)((float)this.p.dC());
+         this.h = (double)((float)this.p.dG());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
       }
-
-      return $$0.a();
    }
 }

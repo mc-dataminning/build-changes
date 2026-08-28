@@ -1,26 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bci extends DataFix {
-   public bci(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
-      }
+public class bci extends bbf {
+   public bci(Schema $$0) {
+      super($$0, biq.s);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bic.u), $$0 -> $$0.update(DSL.remainderFinder(), bci::a));
+      return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.a), $$0 -> {
+         $$0 = this.a($$0, "minecraft:conduit", this::c);
+         return this.a($$0, "minecraft:skull", this::b);
+      });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.get("Owner").get().map($$0x -> a($$0x, "Id", "Id").orElse($$0x)).map($$1 -> $$0.remove("Owner").set("SkullOwner", $$1)).result().orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return b($$0, "target_uuid", "Target").orElse($$0);
    }
 }

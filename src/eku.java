@@ -1,40 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eku(jv<dke> b, jv<dke> c, ekz d, int e, int f, float g) {
+public class eku implements ejv {
    public static final Codec<eku> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kg.a(mc.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               kg.a(mc.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               ekz.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+               axp.b(me.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               elw.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eok.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               eoa.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bsv.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bsv.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
             )
             .apply($$0, eku::new)
    );
+   public final axp<dku> b;
+   public final elw c;
+   public final js<eok> d;
+   public final eoa e;
+   public final bsv f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bsv j;
+   public final float k;
 
-   public jv<dke> a() {
-      return this.b;
-   }
-
-   public jv<dke> b() {
-      return this.c;
-   }
-
-   public ekz c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   public eku(axp<dku> $$0, elw $$1, js<eok> $$2, eoa $$3, bsv $$4, float $$5, int $$6, float $$7, bsv $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

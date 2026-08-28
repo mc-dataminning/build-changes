@@ -1,100 +1,77 @@
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fpq extends fpg {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fpq.b q = $$0 -> $$0.get();
-   protected final fpq.c r;
-   protected final fpq.b s;
+public final class fpq {
+   public static final fpq a = a("all");
+   public static final fpq b = a("texture", a);
+   public static final fpq c = a("particle", b);
+   public static final fpq d = a("end", a);
+   public static final fpq e = a("bottom", d);
+   public static final fpq f = a("top", d);
+   public static final fpq g = a("front", a);
+   public static final fpq h = a("back", a);
+   public static final fpq i = a("side", a);
+   public static final fpq j = a("north", i);
+   public static final fpq k = a("south", i);
+   public static final fpq l = a("east", i);
+   public static final fpq m = a("west", i);
+   public static final fpq n = a("up");
+   public static final fpq o = a("down");
+   public static final fpq p = a("cross");
+   public static final fpq q = a("cross_emissive");
+   public static final fpq r = a("plant");
+   public static final fpq s = a("wall", a);
+   public static final fpq t = a("rail");
+   public static final fpq u = a("wool");
+   public static final fpq v = a("pattern");
+   public static final fpq w = a("pane");
+   public static final fpq x = a("edge");
+   public static final fpq y = a("fan");
+   public static final fpq z = a("stem");
+   public static final fpq A = a("upperstem");
+   public static final fpq B = a("crop");
+   public static final fpq C = a("dirt");
+   public static final fpq D = a("fire");
+   public static final fpq E = a("lantern");
+   public static final fpq F = a("platform");
+   public static final fpq G = a("unsticky");
+   public static final fpq H = a("torch");
+   public static final fpq I = a("layer0");
+   public static final fpq J = a("layer1");
+   public static final fpq K = a("layer2");
+   public static final fpq L = a("lit_log");
+   public static final fpq M = a("candle");
+   public static final fpq N = a("inside");
+   public static final fpq O = a("content");
+   public static final fpq P = a("inner_top");
+   public static final fpq Q = a("flowerbed");
+   private final String R;
+   @Nullable
+   private final fpq S;
 
-   public static fpq.a a(wp $$0, fpq.c $$1) {
-      return new fpq.a($$0, $$1);
+   private static fpq a(String $$0) {
+      return new fpq($$0, null);
    }
 
-   protected fpq(int $$0, int $$1, int $$2, int $$3, wp $$4, fpq.c $$5, fpq.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+   private static fpq a(String $$0, fpq $$1) {
+      return new fpq($$0, $$1);
+   }
+
+   private fpq(String $$0, @Nullable fpq $$1) {
+      this.R = $$0;
+      this.S = $$1;
+   }
+
+   public String a() {
+      return this.R;
+   }
+
+   @Nullable
+   public fpq b() {
+      return this.S;
    }
 
    @Override
-   public void b() {
-      this.r.onPress(this);
-   }
-
-   @Override
-   protected xd d() {
-      return this.s.createNarrationMessage(() -> super.d());
-   }
-
-   @Override
-   public void a(ftn $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final wp a;
-      private final fpq.c b;
-      @Nullable
-      private frb c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fpq.b h = fpq.q;
-
-      public a(wp $$0, fpq.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fpq.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fpq.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fpq.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fpq.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fpq.a a(@Nullable frb $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fpq.a a(fpq.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fpq a() {
-         fpq $$0 = new fpq(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
-      }
-   }
-
-   public interface b {
-      xd createNarrationMessage(Supplier<xd> var1);
-   }
-
-   public interface c {
-      void onPress(fpq var1);
+   public String toString() {
+      return "#" + this.R;
    }
 }

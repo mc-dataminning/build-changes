@@ -1,77 +1,177 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class drh extends dko implements dkh, doz {
+public class drh extends dku {
    public static final MapCodec<drh> a = b(drh::new);
-   private static final fcr b = dke.b(12.0, 0.0, 12.0);
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final dzm d = dzc.bc;
+   private static final ImmutableList<kn> e = ImmutableList.of(
+      new kn(0, 0, -1), new kn(-1, 0, 0), new kn(0, 0, 1), new kn(1, 0, 0), new kn(-1, 0, -1), new kn(1, 0, -1), new kn(-1, 0, 1), new kn(1, 0, 1)
+   );
+   private static final ImmutableList<kn> f = new Builder()
+      .addAll(e)
+      .addAll(e.stream().map(kn::p).iterator())
+      .addAll(e.stream().map(kn::q).iterator())
+      .add(new kn(0, 1, 0))
+      .build();
 
    @Override
    public MapCodec<drh> a() {
       return a;
    }
 
-   protected drh(dxp.d $$0) {
+   public drh(dyl.d $$0) {
       super($$0);
+      this.l(this.B.b().b(d, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
-      return $$0.c($$1, $$2, jn.b) && !$$0.a(dkg.ll);
-   }
-
-   @Nullable
-   @Override
-   public dxq a(dax $$0) {
-      etw $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      dxq $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if (!$$8.l()) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
+   protected btq a(cxy $$0, dym $$1, dhp $$2, jj $$3, cqi $$4, btp $$5, fcq $$6) {
+      if (a($$0) && o($$1)) {
+         a($$4, $$2, $$3, $$1);
+         $$0.a(1, $$4);
+         return btq.a;
+      } else {
+         return (btq)($$5 == btp.a && a($$4.b(btp.b)) && o($$1) ? btq.e : btq.f);
       }
-
-      return $$8;
    }
 
    @Override
-   public boolean a(dhc $$0, ji $$1, dxq $$2) {
-      return $$0.a_($$1.d()).a(dkg.J);
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      if ($$0.c(d) == 0) {
+         return btq.e;
+      } else if (!a($$1)) {
+         if (!$$1.C) {
+            this.e($$0, $$1, $$2);
+         }
+
+         return btq.a;
+      } else {
+         if (!$$1.C) {
+            aro $$5 = (aro)$$3;
+            if ($$5.V() != $$1.aj() || !$$2.equals($$5.T())) {
+               $$5.a($$1.aj(), $$2, 0.0F, false, true);
+               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awk.wj, awl.e, 1.0F, 1.0F);
+               return btq.b;
+            }
+         }
+
+         return btq.c;
+      }
+   }
+
+   private static boolean a(cxy $$0) {
+      return $$0.a(cyc.fL);
+   }
+
+   private static boolean o(dym $$0) {
+      return $$0.c(d) < 4;
+   }
+
+   private static boolean a(jj $$0, dhp $$1) {
+      eut $$2 = $$1.b_($$0);
+      if (!$$2.a(axf.a)) {
+         return false;
+      } else if ($$2.b()) {
+         return true;
+      } else {
+         float $$3 = (float)$$2.e();
+         if ($$3 < 2.0F) {
+            return false;
+         } else {
+            eut $$4 = $$1.b_($$0.e());
+            return !$$4.a(axf.a);
+         }
+      }
+   }
+
+   private void e(dym $$0, dhp $$1, final jj $$2) {
+      $$1.a($$2, false);
+      boolean $$3 = jo.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
+      final boolean $$4 = $$3 || $$1.b_($$2.d()).a(axf.a);
+      dhj $$5 = new dhj() {
+         @Override
+         public Optional<Float> a(dhi $$0, dgv $$1, jj $$2x, dym $$3, eut $$4x) {
+            return $$2.equals($$2) && $$4 ? Optional.of(dkw.J.e()) : super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      };
+      fcu $$6 = $$2.b();
+      $$1.a(null, $$1.al().a($$6), $$5, $$6, 5.0F, true, dhp.a.b);
+   }
+
+   public static boolean a(dhp $$0) {
+      return $$0.B_().m();
+   }
+
+   public static void a(@Nullable bvs $$0, dhp $$1, jj $$2, dym $$3) {
+      dym $$4 = $$3.b(d, Integer.valueOf($$3.c(d) + 1));
+      $$1.a($$2, $$4, 3);
+      $$1.a(edm.c, $$2, edm.a.a($$0, $$4));
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awk.wh, awl.e, 1.0F, 1.0F);
    }
 
    @Override
-   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      if ($$0.c(d) != 0) {
+         if ($$3.a(100) == 0) {
+            $$1.a($$2, awk.wg, awl.e, 1.0F, 1.0F, false);
+         }
+
+         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
+         double $$5 = (double)$$2.v() + 1.0;
+         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
+         double $$7 = (double)$$3.i() * 0.04;
+         $$1.a(lv.aK, $$4, $$5, $$6, 0.0, $$7, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected boolean c_(dym $$0) {
       return true;
    }
 
-   @Override
-   protected etw b_(dxq $$0) {
-      return etx.c.a(false);
+   public static int a(dym $$0, int $$1) {
+      return azk.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
-      dxq $$4 = dkg.bE.m();
-      dxq $$5 = $$4.b(dsq.d, dym.a);
-      ji $$6 = $$2.d();
-      $$0.a($$2, $$4, 2);
-      $$0.a($$6, $$5, 2);
+   protected int a(dym $$0, dhp $$1, jj $$2) {
+      return a($$0, 15);
+   }
+
+   public static Optional<fcu> a(bwb<?> $$0, dgz $$1, jj $$2) {
+      Optional<fcu> $$3 = a($$0, $$1, $$2, true);
+      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
+   }
+
+   private static Optional<fcu> a(bwb<?> $$0, dgz $$1, jj $$2, boolean $$3) {
+      jj.a $$4 = new jj.a();
+      UnmodifiableIterator var5 = f.iterator();
+
+      while (var5.hasNext()) {
+         kn $$5 = (kn)var5.next();
+         $$4.g($$2).h($$5);
+         fcu $$6 = csn.a($$0, $$1, $$4, $$3);
+         if ($$6 != null) {
+            return Optional.of($$6);
+         }
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public boolean a(@Nullable bvy $$0, dgf $$1, ji $$2, dxq $$3, etv $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dha $$0, ji $$1, dxq $$2, etw $$3) {
+   protected boolean a(dym $$0, evi $$1) {
       return false;
    }
 }

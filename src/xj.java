@@ -1,108 +1,130 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class xj {
-   static final Logger a = LogUtils.getLogger();
+public class xj implements wv {
+   private final ww c;
+   private final List<wv> d;
+   private xs e;
+   private ayw f = ayw.a;
    @Nullable
-   xk b;
-   Instant c = Instant.EPOCH;
+   private tr g;
 
-   public xj(UUID $$0, UUID $$1) {
-      this.b = xk.a($$0, $$1);
+   xj(ww $$0, List<wv> $$1, xs $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public xj.c a(azn $$0) {
-      return $$1 -> {
-         xk $$2 = this.b;
-         if ($$2 == null) {
-            return null;
-         } else {
-            this.b = $$2.a();
-            return new xb($$0.sign($$2x -> xf.a($$2x, $$2, $$1)));
-         }
-      };
+   public static xj a(ww $$0) {
+      return new xj($$0, Lists.newArrayList(), xs.a);
    }
 
-   public xj.b a(final cpu $$0) {
-      final azm $$1 = $$0.a();
-      return new xj.b() {
-         @Override
-         public xf unpack(@Nullable xb $$0x, xi $$1x) throws xj.a {
-            if ($$0 == null) {
-               throw new xj.a(xj.a.a);
-            } else if ($$0.b().a()) {
-               throw new xj.a(xj.a.c);
-            } else {
-               xk $$2 = xj.this.b;
-               if ($$2 == null) {
-                  throw new xj.a(xj.a.b);
-               } else if ($$1.b().isBefore(xj.this.c)) {
-                  this.setChainBroken();
-                  throw new xj.a(xj.a.e);
-               } else {
-                  xj.this.c = $$1.b();
-                  xf $$3 = new xf($$2, $$0, $$1, null, wt.c);
-                  if (!$$3.a($$1)) {
-                     this.setChainBroken();
-                     throw new xj.a(xj.a.d);
-                  } else {
-                     if ($$3.a(Instant.now())) {
-                        xj.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
-                     }
-
-                     xj.this.b = $$2.a();
-                     return $$3;
-                  }
-               }
-            }
-         }
-
-         @Override
-         public void setChainBroken() {
-            xj.this.b = null;
-         }
-      };
+   @Override
+   public ww b() {
+      return this.c;
    }
 
-   public static class a extends xp {
-      static final wp a = wp.c("chat.disabled.missingProfileKey");
-      static final wp b = wp.c("chat.disabled.chain_broken");
-      static final wp c = wp.c("chat.disabled.expiredProfileKey");
-      static final wp d = wp.c("chat.disabled.invalid_signature");
-      static final wp e = wp.c("chat.disabled.out_of_order_chat");
+   @Override
+   public List<wv> c() {
+      return this.d;
+   }
 
-      public a(wp $$0) {
-         super($$0);
+   public xj b(xs $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public xs a() {
+      return this.e;
+   }
+
+   public xj f(String $$0) {
+      return $$0.isEmpty() ? this : this.b(wv.b($$0));
+   }
+
+   public xj b(wv $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xj a(UnaryOperator<xs> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xj c(xs $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xj a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xj a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xj b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public ayw g() {
+      tr $$0 = tr.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
+      }
+
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof xj $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      static xj.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new xj.a(xj.a.a);
-            } else {
-               return xf.a($$0, $$3.a());
-            }
-         };
-      }
-
-      xf unpack(@Nullable xb var1, xi var2) throws xj.a;
-
-      default void setChainBroken() {
-      }
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
    }
 
-   @FunctionalInterface
-   public interface c {
-      xj.c a = $$0 -> null;
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.h();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
 
-      @Nullable
-      xb pack(xi var1);
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
+      }
+
+      return $$0.toString();
    }
 }

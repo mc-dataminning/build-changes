@@ -1,38 +1,29 @@
-import org.apache.commons.lang3.mutable.MutableInt;
+public class grg implements gqk<dxu> {
+   private final hdl a;
+   private final azs b = azs.a();
+   private final hbf c = new hbf();
 
-public class grg {
-   private final fmg a;
-
-   public grg(fmg $$0) {
-      this.a = $$0;
+   public grg(gql.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(fgr $$0, gqp $$1, gmx $$2, double $$3, double $$4, double $$5) {
-      gmy $$6 = this.a.f.x().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
-   }
-
-   private void a(gmy.d $$0, fgr $$1, gmx $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      fbs $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         gqy.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
+   public void a(dxu $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
+      if (dxu.a.a($$0.c())) {
+         dhp $$6 = $$0.i();
+         if ($$6 != null) {
+            cxy $$7 = $$0.c().a();
+            if (!$$7.f()) {
+               this.a.a(this.c.a, $$7, cxw.h, false, $$6, null, 0);
+               this.c.b = hbf.a($$7.M());
+               this.c.c = hbf.a($$7);
+               dxv $$8 = $$0.d();
+               $$2.a();
+               $$2.a(0.5F, 0.4F, 0.5F);
+               $$2.a(a.d.rotationDegrees(azk.i($$1, $$8.b(), $$8.a())));
+               gvb.a($$2, $$3, $$4, this.c, this.b);
+               $$2.b();
+            }
+         }
       }
-
-      fgv $$17 = $$2.getBuffer(gnh.y());
-      long $$18 = $$12 + 5L;
-      gnr.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
-   }
-
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return ayz.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

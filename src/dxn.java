@@ -1,185 +1,64 @@
-import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dxn {
-   public static final int a = 12;
-   private final dgz b;
-   private final ji c;
-   private final boolean d;
-   private final ji e;
-   private final jn f;
-   private final List<ji> g = Lists.newArrayList();
-   private final List<ji> h = Lists.newArrayList();
-   private final jn i;
+public interface dxn {
+   dxn a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.U_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bE()))
+         .map(bvs::cG)
+         .toList();
+   dxn b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.U_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bE()))
+         .map(bvs::cG)
+         .toList();
+   dxn c = ($$0, $$1, $$2, $$3, $$4) -> {
+      fcp $$5 = new fcp($$2).g($$3);
+      return $$1.a($$0, bwb.ba, $$5, bwr::bK).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bE())).map(bvs::cG).toList();
+   };
 
-   public dxn(dgz $$0, ji $$1, jn $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
-      }
+   List<UUID> detect(arn var1, dxn.a var2, jj var3, double var4, boolean var6);
+
+   private static boolean a(dhp $$0, fcu $$1, fcu $$2) {
+      fcq $$3 = $$0.a(new dgy($$2, $$1, dgy.a.c, dgy.b.a, fcz.a()));
+      return $$3.b().equals(jj.a((kc)$$1)) || $$3.d() == fcs.a.a;
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dxq $$0 = this.b.a_(this.e);
-      if (!dxj.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.r() == eub.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            ji $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
+   public interface a {
+      dxn.a a = new dxn.a() {
+         @Override
+         public List<aro> a(arn $$0, Predicate<? super cqi> $$1) {
+            return $$0.a($$1);
          }
 
-         return true;
-      }
-   }
-
-   private static boolean a(dxq $$0) {
-      return $$0.a(dkg.it) || $$0.a(dkg.pI);
-   }
-
-   private static boolean a(dxq $$0, dxq $$1) {
-      if ($$0.a(dkg.pI) && $$1.a(dkg.it)) {
-         return false;
-      } else {
-         return $$0.a(dkg.it) && $$1.a(dkg.pI) ? false : a($$0) || a($$1);
-      }
-   }
-
-   private boolean a(ji $$0, jn $$1) {
-      dxq $$2 = this.b.a_($$0);
-      if ($$2.l()) {
-         return true;
-      } else if (!dxj.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               ji $$4 = $$0.a(this.f.g(), $$3);
-               dxq $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.l() || !a($$5, $$2) || !dxj.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               ji $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     ji $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.l()) {
-                  return true;
-               }
-
-               if (!dxj.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.r() == eub.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
-            }
+         @Override
+         public <T extends bvs> List<T> a(arn $$0, ecy<bvs, T> $$1, fcp $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
          }
+      };
+
+      List<? extends cqi> a(arn var1, Predicate<? super cqi> var2);
+
+      <T extends bvs> List<T> a(arn var1, ecy<bvs, T> var2, fcp var3, Predicate<? super T> var4);
+
+      static dxn.a a(cqi $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   private void a(int $$0, int $$1) {
-      List<ji> $$2 = Lists.newArrayList();
-      List<ji> $$3 = Lists.newArrayList();
-      List<ji> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(ji $$0) {
-      dxq $$1 = this.b.a_($$0);
-
-      for (jn $$2 : jn.values()) {
-         if ($$2.o() != this.f.o()) {
-            ji $$3 = $$0.a($$2);
-            dxq $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
+      static dxn.a a(final List<cqi> $$0) {
+         return new dxn.a() {
+            @Override
+            public List<cqi> a(arn $$0x, Predicate<? super cqi> $$1) {
+               return $$0.stream().filter($$1).toList();
             }
-         }
+
+            @Override
+            public <T extends bvs> List<T> a(arn $$0x, ecy<bvs, T> $$1, fcp $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-
-      return true;
-   }
-
-   public jn b() {
-      return this.f;
-   }
-
-   public List<ji> c() {
-      return this.g;
-   }
-
-   public List<ji> d() {
-      return this.h;
    }
 }

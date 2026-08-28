@@ -1,81 +1,27 @@
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.security.PrivateKey;
+import java.security.Signature;
 import org.slf4j.Logger;
 
-public class azy {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile z f;
+public interface azy {
+   Logger a = LogUtils.getLogger();
 
-   public azy(String $$0) {
-      this.b = $$0;
+   byte[] sign(azw var1);
+
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
    }
 
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
-
-            throw this.f;
+   static azy a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
          }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
-      }
-   }
-
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            z $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
-      }
-   }
-
-   public static z a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(azy::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new z($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+      };
    }
 }

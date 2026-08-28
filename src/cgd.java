@@ -1,30 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class cgd extends cgb {
+   private boolean p;
 
-public class cgd extends cgi<bvy> {
-   @Override
-   public Set<cfc<?>> a() {
-      return ImmutableSet.of(cfc.h, cfc.M, cfc.an);
+   public cgd(bwt $$0, dhp $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(ard $$0, bvy $$1) {
-      bxa<?> $$2 = $$1.ea();
-      List<coe> $$3 = Lists.newArrayList();
-      cfe $$4 = $$2.c(cfc.h).orElse(cfe.a());
-      Optional<bwa> $$5 = $$4.a($$0x -> $$0x instanceof cnj || $$0x instanceof clj).map(bwa.class::cast);
+   protected evj a(int $$0) {
+      this.p = this.a.aq() == bwb.H;
+      this.o = new evn(this.p);
+      this.o.a(false);
+      return new evj(this.o, $$0);
+   }
 
-      for (bvy $$7 : $$2.c(cfc.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof coe && ((coe)$$7).t()) {
-            $$3.add((coe)$$7);
-         }
-      }
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bm();
+   }
 
-      $$2.a(cfc.M, $$5);
-      $$2.a(cfc.an, $$3);
+   @Override
+   protected fcu b() {
+      return new fcu(this.a.dA(), this.a.e(0.5), this.a.dG());
+   }
+
+   @Override
+   protected double a(fcu $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fcu $$0, fcu $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(jj $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

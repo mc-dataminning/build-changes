@@ -1,36 +1,18 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class gma implements bqv {
-   private final gmt a;
-   private final Set<bqt> b = new ObjectOpenHashSet();
-   private final brb c = new brb();
-
-   public gma(LongSupplier $$0, gmt $$1) {
-      this.a = $$1;
-      this.b.add(brc.a($$0));
-      this.a();
+public class gma extends gko {
+   gma(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gmc $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.u = 0.5F;
    }
 
-   private void a() {
-      this.b.addAll(brc.a());
-      this.b.add(bqt.a("totalChunks", bqs.f, this.a, gmt::h));
-      this.b.add(bqt.a("renderedChunks", bqs.f, this.a, gmt::j));
-      this.b.add(bqt.a("lastViewDistance", bqs.f, this.a, gmt::i));
-      gql $$0 = this.a.g();
-      this.b.add(bqt.a("toUpload", bqs.g, $$0, gql::c));
-      this.b.add(bqt.a("freeBufferCount", bqs.g, $$0, gql::d));
-      this.b.add(bqt.a("toBatchCount", bqs.g, $$0, gql::b));
-      if (fgk.a().isPresent()) {
-         this.b.add(bqt.a("gpuUtilization", bqs.i, fmg.Q(), fmg::v));
+   public static class a implements glk<lz> {
+      private final gmc a;
+
+      public a(gmc $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public Set<bqt> a(Supplier<bpg> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gma($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

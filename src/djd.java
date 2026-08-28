@@ -1,79 +1,57 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class djd extends djc implements drl {
-   public static final MapCodec<djd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.e), Codec.FLOAT.fieldOf("width").forGetter($$0x -> $$0x.f), t())
-            .apply($$0, djd::new)
-   );
-   public static final dyh c = dyg.I;
-   public static final dyo<jn> d = dyg.R;
-   private final float e;
-   private final float f;
-   private final Map<jn, fcr> g;
+public class djd extends diw implements diu.a {
+   public static final MapCodec<djd> b = dis.c.fieldOf("biome").xmap(djd::new, $$0 -> $$0.c).stable();
+   private final js<dis> c;
+
+   public djd(js<dis> $$0) {
+      this.c = $$0;
+   }
 
    @Override
-   public MapCodec<djd> a() {
+   protected Stream<js<dis>> b() {
+      return Stream.of(this.c);
+   }
+
+   @Override
+   protected MapCodec<? extends diw> a() {
       return b;
    }
 
-   public djd(float $$0, float $$1, dxp.d $$2) {
-      super($$2);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, jn.b));
-      this.g = fco.d(dke.c((double)$$1, (double)(16.0F - $$0), 16.0));
-      this.e = $$0;
-      this.f = $$1;
+   @Override
+   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2, djb.f $$3) {
+      return this.c;
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.g.get($$0.c(d));
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      jn $$3 = $$0.c(d);
-      ji $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).c($$1, $$4, $$3);
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
-      }
-
-      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
    @Nullable
    @Override
-   public dxq a(dax $$0) {
-      dha $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == etx.c)).b(d, $$0.k());
+   public Pair<jj, js<dis>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<js<dis>> $$5, azs $$6, boolean $$7, djb.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new jj($$0, $$1, $$2), this.c) : Pair.of(new jj($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<jj, js<dis>> a(jj $$0, int $$1, int $$2, int $$3, Predicate<js<dis>> $$4, djb.f $$5, dhs $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
    }
 
    @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(c) ? etx.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c, d);
+   public Set<js<dis>> a(int $$0, int $$1, int $$2, int $$3, djb.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

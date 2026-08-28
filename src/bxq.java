@@ -1,15 +1,43 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-
 public class bxq {
-   public static bxs<bvy> a(cfc<?> $$0, int $$1) {
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$2 -> $$2.group($$2.a(cfc.o), $$2.c(cfc.ax), $$2.b($$0))
-               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
-                     $$2x.a(true, (long)$$1);
-                     $$1xx.b();
-                     return true;
-                  })))
-      );
+   private float a;
+   private float b;
+   private float c;
+   private float d = 1.0F;
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+      this.d = $$2;
+   }
+
+   public void a() {
+      this.a = 0.0F;
+      this.b = 0.0F;
+      this.c = 0.0F;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public float b(float $$0) {
+      return Math.min(azk.h($$0, this.a, this.b), 1.0F);
+   }
+
+   public float c() {
+      return this.c * this.d;
+   }
+
+   public float c(float $$0) {
+      return (this.c - this.b * (1.0F - $$0)) * this.d;
+   }
+
+   public boolean d() {
+      return this.b > 1.0E-5F;
    }
 }

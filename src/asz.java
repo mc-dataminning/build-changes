@@ -1,208 +1,39 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Enumeration;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class asz extends ast {
-   static final Logger c = LogUtils.getLogger();
-   private final asz.b d;
-   private final String e;
+public class asz implements ase {
+   public static final ase.a a = new ase.a("synchronize_registries");
+   private final List<aug> b;
+   private final jz<alm> c;
 
-   asz(atb $$0, asz.b $$1, String $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   private static String b(ate $$0, aku $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
-   }
-
-   @Nullable
-   @Override
-   public auh<InputStream> a(String... $$0) {
-      return this.b(String.join("/", $$0));
+   public asz(List<aug> $$0, jz<alm> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public auh<InputStream> a(ate $$0, aku $$1) {
-      return this.b(b($$0, $$1));
+   public void a(Consumer<zc<?>> $$0) {
+      $$0.accept(new abd(this.b));
    }
 
-   private String a(String $$0) {
-      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
+   private void a(Consumer<zc<?>> $$0, Set<aug> $$1) {
+      DynamicOps<ut> $$2 = this.c.a().a(uk.a);
+      kj.a($$2, this.c.c(alm.b), $$1, ($$1x, $$2x) -> $$0.accept(new abb($$1x, $$2x)));
+      $$0.accept(new zt(axr.a(this.c)));
    }
 
-   @Nullable
-   private auh<InputStream> b(String $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return null;
+   public void a(List<aug> $$0, Consumer<zc<?>> $$1) {
+      if ($$0.equals(this.b)) {
+         this.a($$1, Set.copyOf(this.b));
       } else {
-         ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : auh.create($$1, $$2);
+         this.a($$1, Set.of());
       }
    }
 
    @Override
-   public Set<String> a(ate $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-         String $$4 = this.a($$0.a() + "/");
-
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$5 = $$2.nextElement();
-            String $$6 = $$5.getName();
-            String $$7 = a($$4, $$6);
-            if (!$$7.isEmpty()) {
-               if (aku.j($$7)) {
-                  $$3.add($$7);
-               } else {
-                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
-               }
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   @VisibleForTesting
-   public static String a(String $$0, String $$1) {
-      if (!$$1.startsWith($$0)) {
-         return "";
-      } else {
-         int $$2 = $$0.length();
-         int $$3 = $$1.indexOf(47, $$2);
-         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.d.close();
-   }
-
-   @Override
-   public void a(ate $$0, String $$1, String $$2, atc.a $$3) {
-      ZipFile $$4 = this.d.a();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
-         String $$7 = $$6 + $$2 + "/";
-
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  aku $$11 = aku.b($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, auh.create($$4, $$8));
-                  } else {
-                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public static class a implements atx.c {
-      private final File a;
-
-      public a(Path $$0) {
-         this($$0.toFile());
-      }
-
-      public a(File $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public atc a(atb $$0) {
-         asz.b $$1 = new asz.b(this.a);
-         return new asz($$0, $$1, "");
-      }
-
-      @Override
-      public atc a(atb $$0, atx.a $$1) {
-         asz.b $$2 = new asz.b(this.a);
-         atc $$3 = new asz($$0, $$2, "");
-         List<String> $$4 = $$1.d();
-         if ($$4.isEmpty()) {
-            return $$3;
-         } else {
-            List<atc> $$5 = new ArrayList<>($$4.size());
-
-            for (String $$6 : $$4) {
-               $$5.add(new asz($$0, $$2, $$6));
-            }
-
-            return new asv($$3, $$5);
-         }
-      }
-   }
-
-   static class b implements AutoCloseable {
-      final File a;
-      @Nullable
-      private ZipFile b;
-      private boolean c;
-
-      b(File $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      ZipFile a() {
-         if (this.c) {
-            return null;
-         } else {
-            if (this.b == null) {
-               try {
-                  this.b = new ZipFile(this.a);
-               } catch (IOException var2) {
-                  asz.c.error("Failed to open pack {}", this.a, var2);
-                  this.c = true;
-                  return null;
-               }
-            }
-
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            IOUtils.closeQuietly(this.b);
-            this.b = null;
-         }
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
-      }
+   public ase.a a() {
+      return a;
    }
 }

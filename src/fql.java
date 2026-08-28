@@ -1,356 +1,301 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.time.Duration;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fql {
-   public static final int a = Integer.MAX_VALUE;
-   private static final int b = 2;
-   private final fpa c;
-   private final List<fql.a> d = Lists.newArrayList();
-   private String e;
+public abstract class fql implements frq, fsk, fud, fui {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int g;
+   protected int h;
+   private int c;
+   private int d;
+   private wv e;
+   protected boolean i;
+   public boolean j = true;
+   public boolean k = true;
+   protected float l = 1.0F;
    private int f;
-   private int g;
-   private boolean h;
-   private int i = Integer.MAX_VALUE;
-   private final int j;
-   private Consumer<String> k = $$0x -> {
-   };
-   private Runnable l = () -> {
-   };
+   private boolean m;
+   private final fsb n = new fsb();
 
-   public fql(fpa $$0, int $$1) {
+   public fql(int $$0, int $$1, int $$2, int $$3, wv $$4) {
       this.c = $$0;
-      this.j = $$1;
-      this.a("");
+      this.d = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.e = $$4;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public int y() {
+      return this.h;
    }
 
-   public void a(int $$0) {
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Character limit cannot be negative");
+   @Override
+   public final void a(fpz $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.i = $$0.a($$1, $$2) && $$1 >= this.F() && $$2 >= this.G() && $$1 < this.F() + this.g && $$2 < this.G() + this.h;
+         this.b($$0, $$1, $$2, $$3);
+         this.n.a(this.C(), this.aI_(), this.J());
+      }
+   }
+
+   public void a(@Nullable fry $$0) {
+      this.n.a($$0);
+   }
+
+   @Nullable
+   public fry z() {
+      return this.n.a();
+   }
+
+   public void a(Duration $$0) {
+      this.n.a($$0);
+   }
+
+   protected xj d() {
+      return a_(this.B());
+   }
+
+   public static xj a_(wv $$0) {
+      return wv.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(fpz var1, int var2, int var3, float var4);
+
+   protected static void a(fpz $$0, fpx $$1, wv $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(fpz $$0, fpx $$1, wv $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)af.c() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = azk.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.e();
       } else {
-         this.i = $$0;
+         int $$17 = azk.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
       }
    }
 
-   public boolean b() {
-      return this.i != Integer.MAX_VALUE;
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.k = $$0;
-   }
-
-   public void a(Runnable $$0) {
-      this.l = $$0;
-   }
-
-   public void a(String $$0) {
-      this.e = this.c($$0);
-      this.f = this.e.length();
-      this.g = this.f;
-      this.n();
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   public void b(String $$0) {
-      if (!$$0.isEmpty() || this.i()) {
-         String $$1 = this.d(azw.a($$0, true));
-         fql.a $$2 = this.e();
-         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
-         this.f = $$2.a + $$1.length();
-         this.g = this.f;
-         this.n();
-      }
-   }
-
-   public void b(int $$0) {
-      if (!this.i()) {
-         this.g = ayz.a(this.f + $$0, 0, this.e.length());
-      }
-
-      this.b("");
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.h = $$0;
-   }
-
-   public fql.a e() {
-      return new fql.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
-   }
-
-   public int f() {
-      return this.d.size();
-   }
-
-   public int g() {
-      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
-         fql.a $$1 = this.d.get($$0);
-         if (this.f >= $$1.a && this.f <= $$1.b) {
-            return $$0;
-         }
-      }
-
-      return -1;
-   }
-
-   public fql.a c(int $$0) {
-      return this.d.get(ayz.a($$0, 0, this.d.size() - 1));
-   }
-
-   public void a(frc $$0, int $$1) {
-      switch ($$0) {
-         case a:
-            this.f = $$1;
-            break;
-         case b:
-            this.f += $$1;
-            break;
-         case c:
-            this.f = this.e.length() + $$1;
-      }
-
-      this.f = ayz.a(this.f, 0, this.e.length());
-      this.l.run();
-      if (!this.h) {
-         this.g = this.f;
-      }
-   }
-
-   public void d(int $$0) {
-      if ($$0 != 0) {
-         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
-         fql.a $$2 = this.f($$0);
-         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
-         this.a(frc.a, $$2.a + $$3);
-      }
+   protected void a(fpz $$0, fpx $$1, int $$2, int $$3) {
+      int $$4 = this.F() + $$2;
+      int $$5 = this.F() + this.A() - $$2;
+      a($$0, $$1, this.B(), $$4, this.G(), $$5, this.G() + this.y(), $$3);
    }
 
    public void a(double $$0, double $$1) {
-      int $$2 = ayz.a($$0);
-      int $$3 = ayz.a($$1 / 9.0);
-      fql.a $$4 = this.d.get(ayz.a($$3, 0, this.d.size() - 1));
-      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
-      this.a(frc.a, $$4.a + $$5);
    }
 
-   public boolean e(int $$0) {
-      this.h = fvi.t();
-      if (fvi.f($$0)) {
-         this.f = this.e.length();
-         this.g = 0;
-         return true;
-      } else if (fvi.e($$0)) {
-         fmg.Q().p.a(this.j());
-         return true;
-      } else if (fvi.d($$0)) {
-         this.b(fmg.Q().p.a());
-         return true;
-      } else if (fvi.c($$0)) {
-         fmg.Q().p.a(this.j());
-         this.b("");
+   public void b(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.j && this.k) {
+         if (this.g($$2)) {
+            boolean $$3 = this.a_($$0, $$1);
+            if ($$3) {
+               this.a(fnd.Q().ak());
+               this.a($$0, $$1);
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.g($$2)) {
+         this.b($$0, $$1);
          return true;
       } else {
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.b("\n");
-               return true;
-            case 259:
-               if (fvi.s()) {
-                  fql.a $$3 = this.k();
-                  this.b($$3.a - this.f);
-               } else {
-                  this.b(-1);
-               }
+         return false;
+      }
+   }
 
-               return true;
-            case 261:
-               if (fvi.s()) {
-                  fql.a $$4 = this.l();
-                  this.b($$4.a - this.f);
-               } else {
-                  this.b(1);
-               }
+   protected boolean g(int $$0) {
+      return $$0 == 0;
+   }
 
-               return true;
-            case 262:
-               if (fvi.s()) {
-                  fql.a $$2 = this.l();
-                  this.a(frc.a, $$2.a);
-               } else {
-                  this.a(frc.b, 1);
-               }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.g($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-               return true;
-            case 263:
-               if (fvi.s()) {
-                  fql.a $$1 = this.k();
-                  this.a(frc.a, $$1.a);
-               } else {
-                  this.a(frc.b, -1);
-               }
+   @Nullable
+   @Override
+   public fpw a(fuq $$0) {
+      if (!this.j || !this.k) {
+         return null;
+      } else {
+         return !this.aI_() ? fpw.a(this) : null;
+      }
+   }
 
-               return true;
-            case 264:
-               if (!fvi.s()) {
-                  this.d(1);
-               }
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)this.H() && $$1 < (double)this.I();
+   }
 
-               return true;
-            case 265:
-               if (!fvi.s()) {
-                  this.d(-1);
-               }
+   public void a(hlv $$0) {
+      b($$0);
+   }
 
-               return true;
-            case 266:
-               this.a(frc.a, 0);
-               return true;
-            case 267:
-               this.a(frc.c, 0);
-               return true;
-            case 268:
-               if (fvi.s()) {
-                  this.a(frc.a, 0);
-               } else {
-                  this.a(frc.a, this.m().a);
-               }
+   public static void b(hlv $$0) {
+      $$0.a(hkk.a(awk.Bp, 1.0F));
+   }
 
-               return true;
-            case 269:
-               if (fvi.s()) {
-                  this.a(frc.c, 0);
-               } else {
-                  this.a(frc.a, this.m().b);
-               }
+   @Override
+   public int A() {
+      return this.g;
+   }
 
-               return true;
-            default:
-               return false;
+   public void h(int $$0) {
+      this.g = $$0;
+   }
+
+   public void i(int $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.l = $$0;
+   }
+
+   public void b(wv $$0) {
+      this.e = $$0;
+   }
+
+   public wv B() {
+      return this.e;
+   }
+
+   @Override
+   public boolean aI_() {
+      return this.m;
+   }
+
+   public boolean C() {
+      return this.i;
+   }
+
+   public boolean D() {
+      return this.C() || this.aI_();
+   }
+
+   @Override
+   public boolean E() {
+      return this.k && this.j;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public fui.a w() {
+      if (this.aI_()) {
+         return fui.a.c;
+      } else {
+         return this.i ? fui.a.b : fui.a.a;
+      }
+   }
+
+   @Override
+   public final void b(fuk $$0) {
+      this.a($$0);
+      this.n.a($$0);
+   }
+
+   protected abstract void a(fuk var1);
+
+   protected void c(fuk $$0) {
+      $$0.a(fuj.a, this.d());
+      if (this.j) {
+         if (this.aI_()) {
+            $$0.a(fuj.d, wv.c("narration.button.usage.focused"));
+         } else {
+            $$0.a(fuj.d, wv.c("narration.button.usage.hovered"));
          }
       }
    }
 
-   public Iterable<fql.a> h() {
+   @Override
+   public int F() {
+      return this.c;
+   }
+
+   @Override
+   public void j(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public int G() {
       return this.d;
    }
 
-   public boolean i() {
-      return this.g != this.f;
+   @Override
+   public void k(int $$0) {
+      this.d = $$0;
    }
 
-   @VisibleForTesting
-   public String j() {
-      fql.a $$0 = this.e();
-      return this.e.substring($$0.a, $$0.b);
+   public int H() {
+      return this.F() + this.A();
    }
 
-   private fql.a m() {
-      return this.f(0);
+   public int I() {
+      return this.G() + this.y();
    }
 
-   private fql.a f(int $$0) {
-      int $$1 = this.g();
-      if ($$1 < 0) {
-         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
-      } else {
-         return this.d.get(ayz.a($$1 + $$0, 0, this.d.size() - 1));
-      }
+   @Override
+   public void a(Consumer<fql> $$0) {
+      $$0.accept(this);
    }
 
-   @VisibleForTesting
-   public fql.a k() {
-      if (this.e.isEmpty()) {
-         return fql.a.c;
-      } else {
-         int $$0 = ayz.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
-            $$0--;
-         }
-
-         return new fql.a($$0, this.g($$0));
-      }
+   public void b(int $$0, int $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @VisibleForTesting
-   public fql.a l() {
-      if (this.e.isEmpty()) {
-         return fql.a.c;
-      } else {
-         int $$0 = ayz.a(this.f, 0, this.e.length() - 1);
-
-         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
-            $$0++;
-         }
-
-         return new fql.a($$0, this.g($$0));
-      }
+   @Override
+   public fuu J() {
+      return fud.super.J();
    }
 
-   private int g(int $$0) {
-      int $$1 = $$0;
-
-      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
-         $$1++;
-      }
-
-      return $$1;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1);
+      this.c($$2, $$3);
    }
 
-   private void n() {
-      this.o();
-      this.k.accept(this.e);
-      this.l.run();
+   @Override
+   public int K() {
+      return this.f;
    }
 
-   private void o() {
-      this.d.clear();
-      if (this.e.isEmpty()) {
-         this.d.add(fql.a.c);
-      } else {
-         this.c.b().a(this.e, this.j, xm.a, false, ($$0, $$1, $$2) -> this.d.add(new fql.a($$1, $$2)));
-         if (this.e.charAt(this.e.length() - 1) == '\n') {
-            this.d.add(new fql.a(this.e.length(), this.e.length()));
-         }
-      }
-   }
-
-   private String c(String $$0) {
-      return this.b() ? azw.a($$0, this.i, false) : $$0;
-   }
-
-   private String d(String $$0) {
-      if (this.b()) {
-         int $$1 = this.i - this.e.length();
-         return azw.a($$0, $$1, false);
-      } else {
-         return $$0;
-      }
-   }
-
-   protected static record a(int a, int b) {
-      static final fql.a c = new fql.a(0, 0);
+   public void l(int $$0) {
+      this.f = $$0;
    }
 }

@@ -1,138 +1,331 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Objects;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class eum {
-   private static final float a = 1.5F;
-   private final eui[] b = new eui[32];
-   private int c;
-   private final euj d;
-   private static final boolean e = false;
-   private final eug f = new eug();
+public final class eum extends euk<eun.a, eun> {
+   private static final long g = euk.a.a(15);
+   private static final long h = euk.a.a(15, jo.b);
+   private static final long i = euk.a.a(15, false, jo.b);
+   private final jj.a j = new jj.a();
+   private final eud k;
 
-   public eum(euj $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   public eum(eaw $$0) {
+      this($$0, new eun($$0));
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   @VisibleForTesting
+   protected eum(eaw $$0, eun $$1) {
+      super($$0, $$1);
+      this.k = new eud($$0.r());
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 == 15;
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      eud $$3 = this.b(kl.a($$0), kl.a($$1));
+      return $$3 == null ? $$2 : $$3.a(kl.b($$0), kl.b($$1));
    }
 
    @Nullable
-   public euk a(dhm $$0, bwa $$1, Set<ji> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      eui $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
-      } else {
-         Map<eur, ji> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         euk $$8 = this.a($$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+   private eud b(int $$0, int $$1) {
+      eav $$2 = this.e.c($$0, $$1);
+      return $$2 != null ? $$2.D() : null;
+   }
+
+   @Override
+   protected void a(long $$0) {
+      int $$1 = jj.a($$0);
+      int $$2 = jj.b($$0);
+      int $$3 = jj.c($$0);
+      long $$4 = kl.e($$0);
+      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
+      if ($$5 != Integer.MAX_VALUE) {
+         this.b($$1, $$3, $$5);
+      }
+
+      if (this.f.b($$4)) {
+         boolean $$6 = $$2 >= $$5;
+         if ($$6) {
+            this.b($$0, h);
+            this.c($$0, i);
+         } else {
+            int $$7 = this.f.e($$0);
+            if ($$7 > 0) {
+               this.f.a($$0, 0);
+               this.b($$0, euk.a.a($$7));
+            } else {
+               this.b($$0, c);
+            }
+         }
       }
    }
 
-   @Nullable
-   private euk a(eui $$0, Map<eur, ji> $$1, float $$2, int $$3, float $$4) {
-      bpj $$5 = bpi.a();
-      $$5.a("find_path");
-      $$5.a(bqs.a);
-      Set<eur> $$6 = $$1.keySet();
-      $$0.e = 0.0F;
-      $$0.f = this.a($$0, $$6);
-      $$0.g = $$0.f;
-      this.f.a();
-      this.f.a($$0);
-      Set<eui> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<eur> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$4);
+   private void b(int $$0, int $$1, int $$2) {
+      int $$3 = kl.c(this.f.c());
+      this.a($$0, $$1, $$2, $$3);
+      this.b($$0, $$1, $$2, $$3);
+   }
 
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
+   private void a(int $$0, int $$1, int $$2, int $$3) {
+      if ($$2 > $$3) {
+         int $$4 = kl.a($$0);
+         int $$5 = kl.a($$1);
+         int $$6 = $$2 - 1;
 
-         eui $$11 = this.f.c();
-         $$11.i = true;
+         for (int $$7 = kl.a($$6); this.f.a($$7); $$7--) {
+            if (this.f.b(kl.b($$4, $$7, $$5))) {
+               int $$8 = kl.c($$7);
+               int $$9 = $$8 + 15;
 
-         for (eur $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$3) {
-               $$12.e();
-               $$9.add($$12);
+               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
+                  long $$11 = jj.a($$0, $$10, $$1);
+                  if (!a(this.f.e($$11))) {
+                     return;
+                  }
+
+                  this.f.a($$11, 0);
+                  this.b($$11, $$10 == $$2 - 1 ? g : h);
+               }
             }
          }
+      }
+   }
 
-         if (!$$9.isEmpty()) {
-            break;
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kl.a($$0);
+      int $$5 = kl.a($$1);
+      int $$6 = Math.max(
+         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
+         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
+      );
+      int $$7 = Math.max($$2, $$3);
+
+      for (long $$8 = kl.b($$4, kl.a($$7), $$5); !this.f.m($$8); $$8 = kl.a($$8, jo.b)) {
+         if (this.f.b($$8)) {
+            int $$9 = kl.c(kl.c($$8));
+            int $$10 = $$9 + 15;
+
+            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
+               long $$12 = jj.a($$0, $$11, $$1);
+               if (a(this.f.e($$12))) {
+                  return;
+               }
+
+               this.f.a($$12, 15);
+               if ($$11 < $$6 || $$11 == $$2) {
+                  this.c($$12, i);
+               }
+            }
          }
+      }
+   }
 
-         if (!($$11.a($$0) >= $$2)) {
-            int $$13 = this.d.a(this.b, $$11);
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dym $$3 = null;
+      int $$4 = this.d($$0);
 
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               eui $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
+      for (jo $$5 : d) {
+         if (euk.a.a($$1, $$5)) {
+            long $$6 = jj.a($$0, $$5);
+            if (this.f.b(kl.e($$6))) {
+               int $$7 = this.f.e($$6);
+               int $$8 = $$2 - 1;
+               if ($$8 > $$7) {
+                  this.j.f($$6);
+                  dym $$9 = this.c(this.j);
+                  int $$10 = $$2 - this.b($$9);
+                  if ($$10 > $$7) {
+                     if ($$3 == null) {
+                        $$3 = euk.a.b($$1) ? dkw.a.m() : this.c(this.j.f($$0));
+                     }
+
+                     if (!this.a($$3, $$9, $$5)) {
+                        this.f.a($$6, $$10);
+                        if ($$10 > 1) {
+                           this.c($$6, euk.a.a($$10, a($$9), $$5.g()));
+                        }
+
+                        this.a($$6, $$5, $$10, true, $$4);
+                     }
                   }
                }
             }
          }
       }
-
-      Optional<euk> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(euk::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(euk::m).thenComparingInt(euk::e));
-      $$5.c();
-      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   protected float a(eui $$0, eui $$1) {
-      return $$0.a($$1);
-   }
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = this.d($$0);
+      int $$3 = euk.a.a($$1);
 
-   private float a(eui $$0, Set<eur> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (eur $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
+      for (jo $$4 : d) {
+         if (euk.a.a($$1, $$4)) {
+            long $$5 = jj.a($$0, $$4);
+            if (this.f.b(kl.e($$5))) {
+               int $$6 = this.f.e($$5);
+               if ($$6 != 0) {
+                  if ($$6 <= $$3 - 1) {
+                     this.f.a($$5, 0);
+                     this.b($$5, euk.a.a($$6, $$4.g()));
+                     this.a($$5, $$4, $$6, false, $$2);
+                  } else {
+                     this.c($$5, euk.a.b($$6, false, $$4.g()));
+                  }
+               }
+            }
+         }
       }
-
-      return $$2;
    }
 
-   private euk a(eui $$0, ji $$1, boolean $$2) {
-      List<eui> $$3 = Lists.newArrayList();
-      eui $$4 = $$0;
-      $$3.add(0, $$0);
+   private int d(long $$0) {
+      int $$1 = jj.b($$0);
+      int $$2 = kl.b($$1);
+      if ($$2 != 0) {
+         return 0;
+      } else {
+         int $$3 = jj.a($$0);
+         int $$4 = jj.c($$0);
+         int $$5 = kl.b($$3);
+         int $$6 = kl.b($$4);
+         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
+            return 0;
+         } else {
+            int $$7 = kl.a($$3);
+            int $$8 = kl.a($$1);
+            int $$9 = kl.a($$4);
+            int $$10 = 0;
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+            while (!this.f.b(kl.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
+               $$10++;
+            }
+
+            return $$10;
+         }
       }
+   }
 
-      return new euk($$3, $$1, $$2);
+   private void a(long $$0, jo $$1, int $$2, boolean $$3, int $$4) {
+      if ($$4 != 0) {
+         int $$5 = jj.a($$0);
+         int $$6 = jj.c($$0);
+         if (a($$1, kl.b($$5), kl.b($$6))) {
+            int $$7 = jj.b($$0);
+            int $$8 = kl.a($$5);
+            int $$9 = kl.a($$6);
+            int $$10 = kl.a($$7) - 1;
+            int $$11 = $$10 - $$4 + 1;
+
+            while ($$10 >= $$11) {
+               if (!this.f.b(kl.b($$8, $$10, $$9))) {
+                  $$10--;
+               } else {
+                  int $$12 = kl.c($$10);
+
+                  for (int $$13 = 15; $$13 >= 0; $$13--) {
+                     long $$14 = jj.a($$5, $$12 + $$13, $$6);
+                     if ($$3) {
+                        this.f.a($$14, $$2);
+                        if ($$2 > 1) {
+                           this.c($$14, euk.a.a($$2, true, $$1.g()));
+                        }
+                     } else {
+                        this.f.a($$14, 0);
+                        this.b($$14, euk.a.a($$2, $$1.g()));
+                     }
+                  }
+
+                  $$10--;
+               }
+            }
+         }
+      }
+   }
+
+   private static boolean a(jo $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case c -> $$2 == 15;
+         case d -> $$2 == 0;
+         case e -> $$1 == 15;
+         case f -> $$1 == 0;
+         default -> false;
+      };
+   }
+
+   @Override
+   public void a(dgw $$0, boolean $$1) {
+      super.a($$0, $$1);
+      if ($$1) {
+         eud $$2 = Objects.requireNonNullElse(this.b($$0.h, $$0.i), this.k);
+         int $$3 = $$2.a() - 1;
+         int $$4 = kl.a($$3) + 1;
+         long $$5 = kl.b($$0.h, $$0.i);
+         int $$6 = this.f.n($$5);
+         int $$7 = Math.max(this.f.c(), $$4);
+
+         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
+            eao $$9 = this.f.c(kl.b($$0.h, $$8, $$0.i));
+            if ($$9 != null && $$9.d()) {
+               $$9.a(15);
+            }
+         }
+      }
+   }
+
+   @Override
+   public void b(dgw $$0) {
+      long $$1 = kl.b($$0.h, $$0.i);
+      this.f.b($$1, true);
+      eud $$2 = Objects.requireNonNullElse(this.b($$0.h, $$0.i), this.k);
+      eud $$3 = Objects.requireNonNullElse(this.b($$0.h, $$0.i - 1), this.k);
+      eud $$4 = Objects.requireNonNullElse(this.b($$0.h, $$0.i + 1), this.k);
+      eud $$5 = Objects.requireNonNullElse(this.b($$0.h - 1, $$0.i), this.k);
+      eud $$6 = Objects.requireNonNullElse(this.b($$0.h + 1, $$0.i), this.k);
+      int $$7 = this.f.n($$1);
+      int $$8 = this.f.c();
+      int $$9 = kl.c($$0.h);
+      int $$10 = kl.c($$0.i);
+
+      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
+         long $$12 = kl.b($$0.h, $$11, $$0.i);
+         eao $$13 = this.f.c($$12);
+         if ($$13 != null) {
+            int $$14 = kl.c($$11);
+            int $$15 = $$14 + 15;
+            boolean $$16 = false;
+
+            for (int $$17 = 0; $$17 < 16; $$17++) {
+               for (int $$18 = 0; $$18 < 16; $$18++) {
+                  int $$19 = $$2.a($$18, $$17);
+                  if ($$19 <= $$15) {
+                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
+                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
+                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
+                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
+                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
+
+                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
+                        $$13.a($$18, kl.b($$25), $$17, 15);
+                        if ($$25 == $$19 || $$25 < $$24) {
+                           long $$26 = jj.a($$9 + $$18, $$25, $$10 + $$17);
+                           this.c($$26, euk.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
+                        }
+                     }
+
+                     if ($$19 < $$14) {
+                        $$16 = true;
+                     }
+                  }
+               }
+            }
+
+            if (!$$16) {
+               break;
+            }
+         }
+      }
    }
 }

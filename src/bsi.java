@@ -1,56 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class bsi extends bsb {
-   public static final MapCodec<bsi> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bsi::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
-   private final float d;
-
-   private bsi(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+public class bsi extends bse<bsk.c> {
+   public bsi(int $$0, Executor $$1, String $$2) {
+      super(new bsk.a($$0), $$1, $$2);
+      brm.a.a(this);
    }
 
-   public static bsi b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bsi($$0, $$1);
-      }
+   public bsk.c b(Runnable $$0) {
+      return new bsk.c(0, $$0);
    }
 
-   @Override
-   public float a(azh $$0) {
-      return ayz.b($$0, this.b, this.d);
-   }
-
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bsc<?> c() {
-      return bsc.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new bsk.c($$0, () -> $$1.accept($$2)));
+      return $$2;
    }
 }

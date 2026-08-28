@@ -1,276 +1,210 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
 
-public class akp {
-   private static final Logger d = LogUtils.getLogger();
-   private static final Comparator<akt<?>> e = Comparator.<akt<?>, aku>comparing(akt::b).thenComparing(akt::a);
-   private static final kd f = new kd(Optional.empty(), Lifecycle.experimental());
-   private static final Function<Optional<atw>, kd> g = af.b($$0 -> {
-      Lifecycle $$1 = $$0.<Boolean>map(atw::a).map($$0x -> Lifecycle.stable()).orElse(Lifecycle.experimental());
-      return new kd($$0, $$1);
-   });
-   public static final List<akp.d<?>> a = List.of(
-      new akp.d<>(mc.aO, ebm.h),
-      new akp.d<>(mc.aJ, dic.a),
-      new akp.d<>(mc.aK, wl.a),
-      new akp.d<>(mc.aL, efs.a),
-      new akp.d<>(mc.aM, egg.a),
-      new akp.d<>(mc.aV, enn.a),
-      new akp.d<>(mc.aW, eoj.a),
-      new akp.d<>(mc.aY, eop.a),
-      new akp.d<>(mc.aX, esk.c),
-      new akp.d<>(mc.aZ, ept.a),
-      new akp.d<>(mc.aS, edt.a),
-      new akp.d<>(mc.aT, esz.a.a),
-      new akp.d<>(mc.aN, edh.b),
-      new akp.d<>(mc.bd, eny.a),
-      new akp.d<>(mc.aR, emk.a),
-      new akp.d<>(mc.bc, dfr.a),
-      new akp.d<>(mc.bb, dfp.a),
-      new akp.d<>(mc.bf, dwt.b),
-      new akp.d<>(mc.m, ciw.a, true),
-      new akp.d<>(mc.aU, cih.a, true),
-      new akp.d<>(mc.X, cls.a, true),
-      new akp.d<>(mc.s, btr.a),
-      new akp.d<>(mc.be, diq.a),
-      new akp.d<>(mc.d, dui.a),
-      new akp.d<>(mc.aP, ddr.b),
-      new akp.d<>(mc.aQ, dez.a),
-      new akp.d<>(mc.L, cxn.a),
-      new akp.d<>(mc.I, cxa.a)
-   );
-   public static final List<akp.d<?>> b = List.of(new akp.d<>(mc.bh, ebn.a));
-   public static final List<akp.d<?>> c = List.of(
-      new akp.d<>(mc.aJ, dic.b),
-      new akp.d<>(mc.aK, wl.a),
-      new akp.d<>(mc.bc, dfr.a),
-      new akp.d<>(mc.bb, dfp.a),
-      new akp.d<>(mc.m, ciw.a, true),
-      new akp.d<>(mc.aU, cih.a, true),
-      new akp.d<>(mc.X, cls.a, true),
-      new akp.d<>(mc.aO, ebm.h),
-      new akp.d<>(mc.s, btr.a),
-      new akp.d<>(mc.d, dui.a),
-      new akp.d<>(mc.aP, ddr.b),
-      new akp.d<>(mc.L, cxn.a),
-      new akp.d<>(mc.I, cxa.a)
-   );
+public class akp<R extends dcl<?>> {
+   private static final int a = -1;
+   private final cqh b;
+   private final akp.a<R> c;
+   private final boolean d;
+   private final int e;
+   private final int f;
+   private final List<cvk> g;
+   private final List<cvk> h;
 
-   public static kf.b a(aup $$0, List<jt.b<?>> $$1, List<akp.d<?>> $$2) {
-      return a(($$1x, $$2x) -> $$1x.a($$0, $$2x), $$1, $$2);
-   }
-
-   public static kf.b a(Map<akt<? extends ke<?>>, akp.c> $$0, aus $$1, List<jt.b<?>> $$2, List<akp.d<?>> $$3) {
-      return a(($$2x, $$3x) -> $$2x.a($$0, $$1, $$3x), $$2, $$3);
-   }
-
-   private static kf.b a(akp.b $$0, List<jt.b<?>> $$1, List<akp.d<?>> $$2) {
-      Map<akt<?>, Exception> $$3 = new HashMap<>();
-      List<akp.a<?>> $$4 = $$2.stream().map($$1x -> $$1x.a(Lifecycle.stable(), $$3)).collect(Collectors.toUnmodifiableList());
-      aks.c $$5 = a($$1, $$4);
-      $$4.forEach($$2x -> $$0.apply($$2x, $$5));
-      $$4.forEach($$1x -> {
-         ke<?> $$2x = $$1x.b();
-
-         try {
-            $$2x.n();
-         } catch (Exception var4x) {
-            $$3.put($$2x.g(), var4x);
-         }
-
-         if ($$1x.a.c && $$2x.d() == 0) {
-            $$3.put($$2x.g(), new IllegalStateException("Registry must be non-empty"));
-         }
-      });
-      if (!$$3.isEmpty()) {
-         throw a($$3);
+   public static <I extends dcr, R extends dcl<I>> cvc.a a(
+      akp.a<R> $$0, int $$1, int $$2, List<cvk> $$3, List<cvk> $$4, cqh $$5, dcq<R> $$6, boolean $$7, boolean $$8
+   ) {
+      akp<R> $$9 = new akp<>($$0, $$5, $$7, $$1, $$2, $$3, $$4);
+      if (!$$8 && !$$9.b()) {
+         return cvc.a.a;
       } else {
-         return new kf.c($$4.stream().map(akp.a::b).toList()).e();
+         cqn $$10 = new cqn();
+         $$5.a($$10);
+         $$0.a($$10);
+         return $$9.a($$6, $$10);
       }
    }
 
-   private static aks.c a(List<jt.b<?>> $$0, List<akp.a<?>> $$1) {
-      final Map<akt<? extends ke<?>>, aks.b<?>> $$2 = new HashMap<>();
-      $$0.forEach($$1x -> $$2.put($$1x.g(), a($$1x)));
-      $$1.forEach($$1x -> $$2.put($$1x.b.g(), a($$1x.b)));
-      return new aks.c() {
-         @Override
-         public <T> Optional<aks.b<T>> a(akt<? extends ke<? extends T>> $$0) {
-            return Optional.ofNullable((aks.b<T>)$$2.get($$0));
-         }
-      };
+   private akp(akp.a<R> $$0, cqh $$1, boolean $$2, int $$3, int $$4, List<cvk> $$5, List<cvk> $$6) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private static <T> aks.b<T> a(kn<T> $$0) {
-      return new aks.b<>($$0, $$0.p(), $$0.h());
-   }
-
-   private static <T> aks.b<T> a(jt.b<T> $$0) {
-      return new aks.b<>($$0, $$0, $$0.h());
-   }
-
-   private static z a(Map<akt<?>, Exception> $$0) {
-      b($$0);
-      return c($$0);
-   }
-
-   private static void b(Map<akt<?>, Exception> $$0) {
-      StringWriter $$1 = new StringWriter();
-      PrintWriter $$2 = new PrintWriter($$1);
-      Map<aku, Map<aku, Exception>> $$3 = $$0.entrySet()
-         .stream()
-         .collect(Collectors.groupingBy($$0x -> ((akt)$$0x.getKey()).b(), Collectors.toMap($$0x -> ((akt)$$0x.getKey()).a(), Entry::getValue)));
-      $$3.entrySet().stream().sorted(Entry.comparingByKey()).forEach($$1x -> {
-         $$2.printf("> Errors in registry %s:%n", $$1x.getKey());
-         ((Map)$$1x.getValue()).entrySet().stream().sorted(Entry.comparingByKey()).forEach($$1xx -> {
-            $$2.printf(">> Errors in element %s:%n", $$1xx.getKey());
-            ((Exception)$$1xx.getValue()).printStackTrace($$2);
-         });
-      });
-      $$2.flush();
-      d.error("Registry loading errors:\n{}", $$1);
-   }
-
-   private static z c(Map<akt<?>, Exception> $$0) {
-      o $$1 = o.a(new IllegalStateException("Failed to load registries due to errors"), "Registry Loading");
-      p $$2 = $$1.a("Loading info");
-      $$2.a(
-         "Errors",
-         () -> {
-            StringBuilder $$1x = new StringBuilder();
-            $$0.entrySet()
-               .stream()
-               .sorted(Entry.comparingByKey(e))
-               .forEach(
-                  $$1xx -> $$1x.append("\n\t\t")
-                        .append(((akt)$$1xx.getKey()).b())
-                        .append("/")
-                        .append(((akt)$$1xx.getKey()).a())
-                        .append(": ")
-                        .append(((Exception)$$1xx.getValue()).getMessage())
-               );
-            return $$1x.toString();
-         }
-      );
-      return new z($$1);
-   }
-
-   private static <E> void a(kn<E> $$0, Decoder<E> $$1, aks<JsonElement> $$2, akt<E> $$3, aun $$4, kd $$5) throws IOException {
-      try (Reader $$6 = $$4.e()) {
-         JsonElement $$7 = JsonParser.parseReader($$6);
-         DataResult<E> $$8 = $$1.parse($$2, $$7);
-         E $$9 = (E)$$8.getOrThrow();
-         $$0.a($$3, $$9, $$5);
+   private cvc.a a(dcq<R> $$0, cqn $$1) {
+      if ($$1.a($$0.b(), null)) {
+         this.b($$0, $$1);
+         this.b.e();
+         return cvc.a.a;
+      } else {
+         this.a();
+         this.b.e();
+         return cvc.a.b;
       }
    }
 
-   static <E> void a(aup $$0, aks.c $$1, kn<E> $$2, Decoder<E> $$3, Map<akt<?>, Exception> $$4) {
-      akn $$5 = akn.a($$2.g());
-      aks<JsonElement> $$6 = aks.a(JsonOps.INSTANCE, $$1);
+   private void a() {
+      for (cvk $$0 : this.h) {
+         cxy $$1 = $$0.g().v();
+         this.b.a($$1, false);
+         $$0.f($$1);
+      }
 
-      for (Entry<aku, aun> $$7 : $$5.a($$0).entrySet()) {
-         aku $$8 = $$7.getKey();
-         akt<E> $$9 = akt.a($$2.g(), $$5.b($$8));
-         aun $$10 = $$7.getValue();
-         kd $$11 = g.apply($$10.c());
+      this.c.a();
+   }
 
-         try {
-            a($$2, $$3, $$6, $$9, $$10, $$11);
-         } catch (Exception var14) {
-            $$4.put($$9, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", $$8, $$10.b()), var14));
+   private void b(dcq<R> $$0, cqn $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = $$1.b($$0.b(), null);
+      if ($$2) {
+         for (cvk $$4 : this.g) {
+            cxy $$5 = $$4.g();
+            if (!$$5.f() && Math.min($$3, $$5.k()) < $$5.M() + 1) {
+               return;
+            }
          }
       }
 
-      axg.a($$0, $$2);
-   }
-
-   static <E> void a(Map<akt<? extends ke<?>>, akp.c> $$0, aus $$1, aks.c $$2, kn<E> $$3, Decoder<E> $$4, Map<akt<?>, Exception> $$5) {
-      akp.c $$6 = $$0.get($$3.g());
-      if ($$6 != null) {
-         aks<un> $$7 = aks.a(ue.a, $$2);
-         aks<JsonElement> $$8 = aks.a(JsonOps.INSTANCE, $$2);
-         akn $$9 = akn.a($$3.g());
-
-         for (ki.a $$10 : $$6.a) {
-            akt<E> $$11 = akt.a($$3.g(), $$10.a());
-            Optional<un> $$12 = $$10.b();
-            if ($$12.isPresent()) {
-               try {
-                  DataResult<E> $$13 = $$4.parse($$7, $$12.get());
-                  E $$14 = (E)$$13.getOrThrow();
-                  $$3.a($$11, $$14, f);
-               } catch (Exception var16) {
-                  $$5.put($$11, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse value %s from server", $$12.get()), var16));
-               }
-            } else {
-               aku $$16 = $$9.a($$10.a());
-
-               try {
-                  aun $$17 = $$1.getResourceOrThrow($$16);
-                  a($$3, $$4, $$8, $$11, $$17, f);
-               } catch (Exception var17) {
-                  $$5.put($$11, new IllegalStateException("Failed to parse local data", var17));
-               }
+      int $$6 = this.a($$3, $$2);
+      List<js<cxu>> $$7 = new ArrayList<>();
+      if ($$1.a($$0.b(), $$6, $$7::add)) {
+         int $$8 = a($$6, $$7);
+         if ($$8 != $$6) {
+            $$7.clear();
+            if (!$$1.a($$0.b(), $$8, $$7::add)) {
+               return;
             }
          }
 
-         axg.a($$6.b, $$3);
+         this.a();
+         ako.a(this.e, this.f, $$0.b(), $$0.b().ak_().a(), ($$2x, $$3x, $$4x, $$5) -> {
+            if ($$2x != -1) {
+               cvk $$6x = this.g.get($$3x);
+               js<cxu> $$7x = $$7.get($$2x);
+               int $$8x = $$8;
+
+               while ($$8x > 0) {
+                  $$8x = this.a($$6x, $$7x, $$8x);
+                  if ($$8x == -1) {
+                     return;
+                  }
+               }
+            }
+         });
       }
    }
 
-   static record a<T>(akp.d<T> a, kn<T> b, Map<akt<?>, Exception> c) {
-
-      public void a(aup $$0, aks.c $$1) {
-         akp.a($$0, $$1, this.b, this.a.b, this.c);
+   private static int a(int $$0, List<js<cxu>> $$1) {
+      for (js<cxu> $$2 : $$1) {
+         $$0 = Math.min($$0, $$2.a().h());
       }
 
-      public void a(Map<akt<? extends ke<?>>, akp.c> $$0, aus $$1, aks.c $$2) {
-         akp.a($$0, $$1, $$2, this.b, this.a.b, this.c);
+      return $$0;
+   }
+
+   private int a(int $$0, boolean $$1) {
+      if (this.d) {
+         return $$0;
+      } else if ($$1) {
+         int $$2 = Integer.MAX_VALUE;
+
+         for (cvk $$3 : this.g) {
+            cxy $$4 = $$3.g();
+            if (!$$4.f() && $$2 > $$4.M()) {
+               $$2 = $$4.M();
+            }
+         }
+
+         if ($$2 != Integer.MAX_VALUE) {
+            $$2++;
+         }
+
+         return $$2;
+      } else {
+         return 1;
       }
    }
 
-   @FunctionalInterface
-   interface b {
-      void apply(akp.a<?> var1, aks.c var2);
+   private int a(cvk $$0, js<cxu> $$1, int $$2) {
+      cxy $$3 = $$0.g();
+      int $$4 = this.b.a($$1, $$3);
+      if ($$4 == -1) {
+         return -1;
+      } else {
+         cxy $$5 = this.b.a($$4);
+         cxy $$6;
+         if ($$2 < $$5.M()) {
+            $$6 = this.b.a($$4, $$2);
+         } else {
+            $$6 = this.b.b($$4);
+         }
+
+         int $$8 = $$6.M();
+         if ($$3.f()) {
+            $$0.f($$6);
+         } else {
+            $$3.g($$8);
+         }
+
+         return $$2 - $$8;
+      }
    }
 
-   public static record c(List<ki.a> a, axh.a b) {
+   private boolean b() {
+      List<cxy> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (cvk $$2 : this.g) {
+         cxy $$3 = $$2.g().v();
+         if (!$$3.f()) {
+            int $$4 = this.b.e($$3);
+            if ($$4 == -1 && $$0.size() <= $$1) {
+               for (cxy $$5 : $$0) {
+                  if (cxy.b($$5, $$3) && $$5.M() != $$5.k() && $$5.M() + $$3.M() <= $$5.k()) {
+                     $$5.g($$3.M());
+                     $$3.e(0);
+                     break;
+                  }
+               }
+
+               if (!$$3.f()) {
+                  if ($$0.size() >= $$1) {
+                     return false;
+                  }
+
+                  $$0.add($$3);
+               }
+            } else if ($$4 == -1) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public static record d<T>(akt<? extends ke<T>> a, Codec<T> b, boolean c) {
+   private int c() {
+      int $$0 = 0;
 
-      d(akt<? extends ke<T>> $$0, Codec<T> $$1) {
-         this($$0, $$1, false);
+      for (cxy $$1 : this.b.g) {
+         if ($$1.f()) {
+            $$0++;
+         }
       }
 
-      akp.a<T> a(Lifecycle $$0, Map<akt<?>, Exception> $$1) {
-         kn<T> $$2 = new jz<>(this.a, $$0);
-         return new akp.a<>(this, $$2, $$1);
-      }
+      return $$0;
+   }
 
-      public void a(BiConsumer<akt<? extends ke<T>>, Codec<T>> $$0) {
-         $$0.accept(this.a, this.b);
-      }
+   public interface a<T extends dcl<?>> {
+      void a(cqn var1);
+
+      void a();
+
+      boolean a(dcq<T> var1);
    }
 }

@@ -1,17 +1,31 @@
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
 import java.util.List;
-import java.util.Map;
-import org.joml.Vector3f;
 
 public class hhz {
-   private static final String c = "missing";
-   private static final String d = "missingno";
-   public static final aku a = aku.b("builtin/missing");
-   public static final hig b = new hig(a, "missing");
+   public static ayw a(xa $$0, boolean $$1) {
+      xt $$2 = xt.a($$0, UCharacter::getMirror, hhz::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayw> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public static him a() {
-      goi $$0 = new goi(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jn, gog> $$1 = af.a(jn.class, $$1x -> new gog($$1x, -1, "missingno", $$0));
-      gof $$2 = new gof(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      return new goj(null, List.of($$2), new goq.a.a().a("particle", "missingno").a("missingno", new hhy(hfq.d, hfg.c())).a(), null, null, goo.a);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return ayw.composite($$4);
+   }
+
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

@@ -1,61 +1,59 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.stream.Stream;
 
-public class djj extends div {
-   public static final MapCodec<djj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwe.q.fieldOf("color").forGetter(div::b), t()).apply($$0, djj::new));
-   public static final dyq b = dyg.bd;
-   private static final Map<cwe, dke> c = Maps.newHashMap();
-   private static final fcr d = dke.b(8.0, 0.0, 16.0);
+public class djj extends diw {
+   public static final MapCodec<djj> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alb.d(diz.ai), alb.d(diz.aj), alb.d(diz.ak), alb.d(diz.al), alb.d(diz.am)).apply($$0, $$0.stable(djj::new))
+   );
+   private final js<dis> c;
+   private final js<dis> d;
+   private final js<dis> e;
+   private final js<dis> f;
+   private final js<dis> g;
 
-   @Override
-   public MapCodec<djj> a() {
-      return a;
+   public static djj a(jt<dis> $$0) {
+      return new djj($$0.b(diz.ai), $$0.b(diz.aj), $$0.b(diz.ak), $$0.b(diz.al), $$0.b(diz.am));
    }
 
-   public djj(cwe $$0, dxp.d $$1) {
-      super($$0, $$1);
-      this.l(this.B.b().b(b, Integer.valueOf(0)));
-      c.put($$0, this);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      return $$1.a_($$2.e()).e();
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return d;
+   private djj(js<dis> $$0, js<dis> $$1, js<dis> $$2, js<dis> $$3, js<dis> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public dxq a(dax $$0) {
-      return this.m().b(b, Integer.valueOf(dyw.a($$0.i() + 180.0F)));
+   protected Stream<js<dis>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      return $$4 == jn.a && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected MapCodec<? extends diw> a() {
+      return b;
    }
 
    @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
-   }
-
-   public static dke a(cwe $$0) {
-      return c.getOrDefault($$0, dkg.jh);
+   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2, djb.f $$3) {
+      int $$4 = kd.c($$0);
+      int $$5 = kd.c($$1);
+      int $$6 = kd.c($$2);
+      int $$7 = kl.a($$4);
+      int $$8 = kl.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (kl.a($$4) * 2 + 1) * 8;
+         int $$10 = (kl.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new eee.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
+      }
    }
 }

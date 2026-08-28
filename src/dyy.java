@@ -1,7 +1,7 @@
-public enum dyy implements azv {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dyy implements bag {
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 

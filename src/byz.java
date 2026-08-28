@@ -2,26 +2,36 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class byz {
-   private static final int a = 1;
+   public static byj<cpu> a(float $$0, int $$1) {
+      return cbv.a((Function<cbv.b<cpu>, ? extends App<cbv.c<cpu>, cby<cpu>>>)($$2 -> $$2.group($$2.c(cft.n)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dv())) {
+                  return false;
+               } else {
+                  cht $$6 = $$3.A();
+                  int $$7 = $$6.a(kl.a($$4.dv()));
+                  fcu $$8 = null;
 
-   public static bxs<bvy> a(float $$0) {
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$1 -> $$1.group($$1.a(cfc.n), $$1.c(cfc.m), $$1.b(cfc.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bY()) {
-                        return false;
-                     } else {
-                        bva $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new byc($$8, true));
-                           $$3.a(new cff(new byc($$8, false), $$0, 1));
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     fcu $$10 = chn.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kl.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kl.a(jj.a((kc)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
                         }
 
-                        return true;
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
                      }
-                  }))
-      );
+                  }
+
+                  if ($$8 != null) {
+                     $$2x.a(new cfw($$8, $$0, $$1));
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

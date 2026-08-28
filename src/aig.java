@@ -1,53 +1,20 @@
-public class aig implements yw<agf> {
-   public static final yn<vl, aig> a = yw.a(aig::a, aig::new);
-   private final bsx b;
-   private final int c;
-   private final float d;
-   private final float e;
+public record aig(short b, cxy c) implements zc<agm> {
+   public static final yt<wg, aig> a = yt.a(yr.e, aig::b, cxy.a(cxy.h), aig::e, aig::new);
 
-   public aig(bsx $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   private aig(vl $$0) {
-      this.b = $$0.b(bsx.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   public aig(int $$0, cxy $$1) {
+      this((short)$$0, $$1);
    }
 
    @Override
-   public yy<aig> a() {
-      return agd.cl;
+   public ze<aig> a() {
+      return agk.cf;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public bsx b() {
-      return this.b;
-   }
-
-   public int e() {
+   public cxy e() {
       return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

@@ -1,136 +1,121 @@
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fwy extends fxw<ctq> {
+   private static final ald G = ald.b("container/anvil/text_field");
+   private static final ald H = ald.b("container/anvil/text_field_disabled");
+   private static final ald I = ald.b("container/anvil/error");
+   private static final ald J = ald.b("textures/gui/container/anvil.png");
+   private static final wv K = wv.c("container.repair.expensive");
+   private fqw L;
+   private final cqi M;
 
-public class fwy extends fvz<ctz> {
-   private float G;
-   private float H;
-   private boolean I;
-   private final fwq J;
-
-   public fwy(cpr $$0) {
-      super($$0.bP, new fzb($$0.bP), $$0.gl(), wp.c("container.crafting"));
-      this.v = 97;
-      this.J = new fwq(this);
+   public fwy(ctq $$0, cqh $$1, wv $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.k;
+      this.v = 60;
    }
 
    @Override
-   public void E() {
-      super.E();
-      if (this.m.t.fX()) {
-         this.m.a(new fwn(this.m.t, this.m.t.j.y(), this.m.n.L().c()));
+   protected void G() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new fqw(this.p, $$0 + 62, $$1 + 24, 103, 12, wv.c("container.repair"));
+      this.L.f(false);
+      this.L.m(-1);
+      this.L.n(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
+   }
+
+   @Override
+   protected void aB_() {
+      this.b(this.L);
+   }
+
+   @Override
+   public void a(fnd $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.p();
+      }
+
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cvk $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().c(kx.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
+         }
+
+         if (this.z.a($$2)) {
+            this.m.t.j.b(new ahy($$2));
+         }
       }
    }
 
    @Override
-   protected void aR_() {
-      if (this.m.t.fX()) {
-         this.m.a(new fwn(this.m.t, this.m.t.j.y(), this.m.n.L().c()));
-      } else {
-         super.aR_();
+   protected void b(fpz $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.m();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         wv $$5;
+         if ($$3 >= 40 && !this.m.t.fU()) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = wv.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
       }
    }
 
    @Override
-   protected ftw G() {
-      return new ftw(this.C + 104, this.o / 2 - 22);
-   }
-
-   @Override
-   protected void H() {
-      this.I = true;
-   }
-
-   @Override
-   protected void b(fpc $$0, int $$1, int $$2) {
-      $$0.a(this.p, this.l, this.v, this.w, 4210752, false);
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+   protected void a(fpz $$0, float $$1, int $$2, int $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.J.a($$0, $$1, $$2, $$3);
-      this.G = (float)$$1;
-      this.H = (float)$$2;
+      $$0.a(goi::H, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
    }
 
    @Override
-   public boolean C() {
-      return this.J.a();
+   public void d(fpz $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean I() {
-      return false;
-   }
-
-   @Override
-   protected void a(fpc $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gnh::H, a, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.G, this.H, this.m.t);
-   }
-
-   public static void a(fpc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, bvy $$9) {
-      float $$10 = (float)($$1 + $$3) / 2.0F;
-      float $$11 = (float)($$2 + $$4) / 2.0F;
-      $$0.c($$1, $$2, $$3, $$4);
-      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
-      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
-      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
-      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
-      $$14.mul($$15);
-      float $$16 = $$9.aV;
-      float $$17 = $$9.dK();
-      float $$18 = $$9.dM();
-      float $$19 = $$9.aY;
-      float $$20 = $$9.aX;
-      $$9.aV = 180.0F + $$12 * 20.0F;
-      $$9.w(180.0F + $$12 * 40.0F);
-      $$9.x(-$$13 * 20.0F);
-      $$9.aX = $$9.dK();
-      $$9.aY = $$9.dK();
-      float $$21 = $$9.ej();
-      Vector3f $$22 = new Vector3f(0.0F, $$9.dq() / 2.0F + $$6 * $$21, 0.0F);
-      float $$23 = (float)$$5 / $$21;
-      a($$0, $$10, $$11, $$23, $$22, $$14, $$15, $$9);
-      $$9.aV = $$16;
-      $$9.w($$17);
-      $$9.x($$18);
-      $$9.aY = $$19;
-      $$9.aX = $$20;
-      $$0.e();
-   }
-
-   public static void a(fpc $$0, float $$1, float $$2, float $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, bvy $$7) {
-      $$0.c().a();
-      $$0.c().a((double)$$1, (double)$$2, 50.0);
-      $$0.c().b($$3, $$3, -$$3);
-      $$0.c().a($$4.x, $$4.y, $$4.z);
-      $$0.c().a($$5);
-      $$0.d();
-      ffn.e();
-      gtb $$8 = fmg.Q().aq();
-      if ($$6 != null) {
-         $$8.a($$6.conjugate(new Quaternionf()).rotateY((float) Math.PI));
+   protected void c(fpz $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
+         $$0.a(goi::H, I, $$1 + 99, $$2 + 45, 28, 21);
       }
-
-      $$8.a(false);
-      $$0.a($$3x -> $$8.a($$7, 0.0, 0.0, 0.0, 1.0F, $$0.c(), $$3x, 15728880));
-      $$0.d();
-      $$8.a(true);
-      $$0.c().b();
-      ffn.d();
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.I) {
-         this.I = false;
-         return true;
-      } else {
-         return super.b($$0, $$1, $$2);
+   public void a(ctn $$0, int $$1, cxy $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
       }
    }
 }

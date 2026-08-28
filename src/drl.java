@@ -1,42 +1,48 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface drl extends dkm, doz {
+public class drl extends dku {
+   public static final MapCodec<drl> c = b(drl::new);
+   public static final dzk<jo.a> d = dzc.K;
+
    @Override
-   default boolean a(@Nullable bvy $$0, dgf $$1, ji $$2, dxq $$3, etv $$4) {
-      return $$4 == etx.c;
+   public MapCodec<? extends drl> a() {
+      return c;
+   }
+
+   public drl(dyl.d $$0) {
+      super($$0);
+      this.l(this.m().b(d, jo.a.b));
    }
 
    @Override
-   default boolean a(dha $$0, ji $$1, dxq $$2, etw $$3) {
-      if (!$$2.c(dyg.I) && $$3.a() == etx.c) {
-         if (!$$0.w_()) {
-            $$0.a($$1, $$2.b(dyg.I, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected dym a(dym $$0, drm $$1) {
+      return b($$0, $$1);
+   }
 
-         return true;
-      } else {
-         return false;
+   public static dym b(dym $$0, drm $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jo.a)$$0.c(d)) {
+               case a:
+                  return $$0.b(d, jo.a.c);
+               case c:
+                  return $$0.b(d, jo.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
    }
 
    @Override
-   default cxh a(@Nullable bvy $$0, dha $$1, ji $$2, dxq $$3) {
-      if ($$3.c(dyg.I)) {
-         $$1.a($$2, $$3.b(dyg.I, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cxh(cxl.ri);
-      } else {
-         return cxh.k;
-      }
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   default Optional<avz> as_() {
-      return etx.c.j();
+   public dym a(dbn $$0) {
+      return this.m().b(d, $$0.k().o());
    }
 }

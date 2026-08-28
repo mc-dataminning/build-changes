@@ -1,51 +1,97 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface dlg<T extends Enum<T>> {
-   int x_ = 4;
+public class dlg extends dku {
+   public static final MapCodec<dlg> a = b(dlg::new);
+   public static final dzm b = dzc.az;
+   public static final int c = 15;
+   private static final fdo d = dku.b(14.0, 0.0, 16.0);
+   private static final fdo e = dku.b(14.0, 0.0, 15.0);
 
-   Optional<dxq> k_(dxq var1);
+   @Override
+   public MapCodec<dlg> a() {
+      return a;
+   }
 
-   float au_();
+   protected dlg(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
+   }
 
-   default void a_(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   @Override
+   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   T c();
+   @Override
+   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      jj $$4 = $$2.d();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
 
-   default Optional<dxq> c(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (ji $$7 : ji.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
          }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dlg<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.m());
+               dym $$7 = $$0.b(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 260);
+               $$1.a($$7, $$4, this, null, false);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 260);
             }
          }
       }
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.au_();
-      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
+   @Override
+   protected fdo b(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return e;
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return d;
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      for (jo $$3 : jo.c.a) {
+         dym $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(axf.b)) {
+            return false;
+         }
+      }
+
+      dym $$5 = $$1.a_($$2.e());
+      return ($$5.a(dkw.ed) || $$5.a(awz.J)) && !$$1.a_($$2.d()).n();
+   }
+
+   @Override
+   protected void a(dym $$0, dhp $$1, jj $$2, bvs $$3) {
+      $$3.a($$1.al().k(), 1.0F);
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dym $$0, evi $$1) {
+      return false;
    }
 }

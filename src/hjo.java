@@ -1,47 +1,16 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface hjo {
-   aku a();
+public class hjo extends hiw {
+   private final bsb<his> b;
 
-   @Nullable
-   hkv a(hku var1);
-
-   hjl b();
-
-   awb c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hjo.a k();
-
-   default boolean r() {
-      return false;
+   public hjo(bsb<his> $$0) {
+      super($$0.d().getFirst().a());
+      this.b = $$0;
    }
 
-   default boolean s() {
-      return true;
-   }
-
-   static azh t() {
-      return azh.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   public List<gpf> a(@Nullable dym $$0, @Nullable jo $$1, azs $$2) {
+      return this.b.b($$2).a($$0, $$1, $$2);
    }
 }

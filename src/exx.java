@@ -1,65 +1,70 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class exx extends eyb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<exx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(akt.a(mc.bj).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, exx::new)
-   );
-   private final akt<eyc> c;
+public class exx extends exu {
+   public static final MapCodec<exx> a = a(exx::new);
 
-   private exx(List<ezx> $$0, akt<eyc> $$1) {
-      super($$0);
-      this.c = $$1;
+   exx(List<eyb> $$0, List<fau> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eyd<exx> b() {
-      return eye.H;
+   public eyc a() {
+      return exz.i;
    }
 
    @Override
-   public void a(ewu $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
+   protected ext a(List<? extends ext> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ext)$$0.get(0);
+         case 2 -> {
+            ext $$1 = $$0.get(0);
+            ext $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ext $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   protected cxh a(cxh $$0, ewo $$1) {
-      eyc $$2 = $$1.a().c(this.c).map(jr::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         ewo.c<?> $$3 = ewo.a($$2);
-         if ($$1.b($$3)) {
-            cxh var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
+   public static exx.a a(eyb.a<?>... $$0) {
+      return new exx.a($$0);
+   }
 
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+   public static class a extends eyb.a<exx.a> {
+      private final Builder<eyb> a = ImmutableList.builder();
+
+      public a(eyb.a<?>... $$0) {
+         for (eyb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
       }
-   }
 
-   public static eyb.a<?> a(akt<eyc> $$0) {
-      return a($$1 -> new exx($$1, $$0));
+      protected exx.a a() {
+         return this;
+      }
+
+      @Override
+      public exx.a b(eyb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eyb b() {
+         return new exx(this.a.build(), this.f());
+      }
    }
 }

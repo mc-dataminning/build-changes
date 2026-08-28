@@ -1,42 +1,69 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bjc extends bgz {
+public class bjc extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("slot_0", "list")
+      .put("slot_1", "sidebar")
+      .put("slot_2", "below_name")
+      .put("slot_3", "sidebar.team.black")
+      .put("slot_4", "sidebar.team.dark_blue")
+      .put("slot_5", "sidebar.team.dark_green")
+      .put("slot_6", "sidebar.team.dark_aqua")
+      .put("slot_7", "sidebar.team.dark_red")
+      .put("slot_8", "sidebar.team.dark_purple")
+      .put("slot_9", "sidebar.team.gold")
+      .put("slot_10", "sidebar.team.gray")
+      .put("slot_11", "sidebar.team.dark_gray")
+      .put("slot_12", "sidebar.team.blue")
+      .put("slot_13", "sidebar.team.green")
+      .put("slot_14", "sidebar.team.aqua")
+      .put("slot_15", "sidebar.team.red")
+      .put("slot_16", "sidebar.team.light_purple")
+      .put("slot_17", "sidebar.team.yellow")
+      .put("slot_18", "sidebar.team.white")
+      .build();
+
    public bjc(Schema $$0) {
-      super($$0, true, "Trial Spawner config tag fixer", bic.s, "minecraft:trial_spawner");
+      super($$0, false);
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      List<String> $$1 = List.of(
-         "spawn_range",
-         "total_mobs",
-         "simultaneous_mobs",
-         "total_mobs_added_per_player",
-         "simultaneous_mobs_added_per_player",
-         "ticks_between_spawn",
-         "spawn_potentials",
-         "loot_tables_to_eject",
-         "items_to_drop_when_ominous"
+   @Nullable
+   private static String a(String $$0) {
+      return a.get($$0);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.o);
+      OpticFinder<?> $$1 = $$0.findField("data");
+      return this.fixTypeEverywhereTyped(
+         "Scoreboard DisplaySlot rename",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "DisplaySlots",
+                           $$0xxxx -> $$0xxxx.updateMapValues(
+                                 $$0xxxxx -> $$0xxxxx.mapFirst(
+                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
+                                             $$0xxxxxx.asString().result().map(bjc::a).map($$0xxxxxx::createString), $$0xxxxxx
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
-      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
-
-      for (String $$3 : $$1) {
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
-         if ($$4.isPresent()) {
-            $$2.put($$0.createString($$3), $$4.get());
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
    }
 }

@@ -1,30 +1,57 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public record epj(int c, int d) {
-   private static final Codec<epj> e = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayi.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
-            .apply($$0, epj::new)
-   );
-   public static final Codec<epj> a = Codec.either(ayi.l, e)
-      .xmap($$0 -> (epj)$$0.map(epj::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
-   public static final epj b = new epj(0);
+public class epj extends ewf {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public epj(int $$0) {
-      this($$0, $$0);
+   public static ewf.a<epj> a() {
+      return new ewf.a<>(epj::new, epj::b, bax.o);
    }
 
-   public boolean a() {
-      return this.d == this.c;
+   private epj(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public int b() {
+   public epj() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static epj b(tw $$0, ju.a $$1) {
+      return new epj(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public tw a(tw $$0, ju.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+      this.g();
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.d.remove($$0)) {
+         this.g();
+      }
+   }
+
+   public LongSet b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

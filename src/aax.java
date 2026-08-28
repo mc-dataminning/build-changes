@@ -1,15 +1,8 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record aax(List<atw> b) implements yw<aat> {
-   public static final yn<ByteBuf, aax> a = yn.a(atw.a.a(yl.a()), aax::b, aax::new);
-
-   @Override
-   public yy<aax> a() {
-      return aaz.d;
-   }
-
-   public void a(aat $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aax {
 }

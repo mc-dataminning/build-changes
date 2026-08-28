@@ -1,24 +1,29 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+public enum feq {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public interface feq extends AutoCloseable {
-   float a = 7.0F;
+   private final int h;
 
-   @Override
-   default void close() {
+   private feq(final int $$0) {
+      this.h = $$0;
    }
 
-   @Nullable
-   default fep a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(feq a, fsh.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
+   public static feq a(int $$0) {
+      for (feq $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
       }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
    }
 }

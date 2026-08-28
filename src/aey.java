@@ -1,45 +1,37 @@
-public class aey implements yw<abl> {
-   public static final yn<vl, aey> a = yw.a(aey::a, aey::new);
-   private final float b;
-   private final int c;
-   private final int d;
+public class aey implements zc<abr> {
+   public static final yt<vr, aey> a = zc.a(aey::a, aey::new);
+   private final jj b;
+   private final float c;
 
-   public aey(float $$0, int $$1, int $$2) {
+   public aey(jj $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private aey(vl $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private aey(vr $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(vl $$0) {
+   private void a(vr $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
    @Override
-   public yy<aey> a() {
-      return agd.aI;
+   public ze<aey> a() {
+      return agk.aD;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public jj b() {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

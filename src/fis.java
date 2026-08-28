@@ -1,22 +1,20 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+public interface fis {
+   fii b();
 
-public class fis extends fiw {
-   @Nullable
-   public String a;
-   public long b;
-   public long c;
+   void d();
 
-   public static fis a(JsonObject $$0) {
-      fis $$1 = new fis();
+   static fis f() {
+      return new fis() {
+         private final fii a = new fii();
 
-      try {
-         $$1.a = fks.b("profileUuid", $$0, null);
-         $$1.b = fks.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fks.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
-      }
+         @Override
+         public fii b() {
+            return this.a;
+         }
 
-      return $$1;
+         @Override
+         public void d() {
+         }
+      };
    }
 }

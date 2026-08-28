@@ -1,59 +1,24 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efx extends egu<eji> {
-   private static final dxq a = dkg.nB.m().b(dji.b, Integer.valueOf(1)).b(dji.c, dyc.a).b(dji.d, Integer.valueOf(0));
-   private static final dxq b = a.b(dji.c, dyc.c).b(dji.d, Integer.valueOf(1));
-   private static final dxq c = a.b(dji.c, dyc.c);
-   private static final dxq d = a.b(dji.c, dyc.b);
+public class efx extends egd {
+   final axp<dku> a;
+   public static final MapCodec<efx> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axp.a(me.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, efx::new)
+   );
 
-   public efx(Codec<eji> $$0) {
+   protected efx(kn $$0, axp<dku> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(egw<eji> $$0) {
-      int $$1 = 0;
-      ji $$2 = $$0.e();
-      dhy $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      eji $$5 = $$0.f();
-      ji.a $$6 = $$2.k();
-      ji.a $$7 = $$2.k();
-      if ($$3.u($$6)) {
-         if (dkg.nB.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   protected boolean a(dym $$0) {
+      return $$0.a(this.a);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(edo.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dkg.l.m(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jn.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jn.a, 1), c, 2);
-               $$3.a($$6.c(jn.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   @Override
+   public eft<?> a() {
+      return eft.b;
    }
 }

@@ -1,45 +1,30 @@
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class crc extends cra {
-   private static final dgt f = new dhs(true, false, Optional.of(1.22F), mb.e.a(awp.cD).map(Function.identity()));
-   private static final float g = 1.2F;
-   private static final float h = ayz.l(3.5F);
-   private int i = 5;
-
-   public crc(bvi<? extends cra> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   public crc(cpr $$0, dgz $$1, double $$2, double $$3, double $$4) {
-      super(bvi.bG, $$1, $$0, $$2, $$3, $$4);
-   }
-
-   public crc(dgz $$0, double $$1, double $$2, double $$3, fbx $$4) {
-      super(bvi.bG, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.i > 0) {
-         this.i--;
+@FunctionalInterface
+public interface crc {
+   crc a = ($$0, $$1, $$2) -> {
+   };
+   crc b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.i($$0.dy().c(-0.5));
+      $$0.w($$0.dL() + $$3);
+      $$0.N += $$3;
+      $$0.ar = true;
+   };
+   crc c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         fcu $$3 = $$1.bT().d();
+         $$0.i($$3);
+         $$0.ar = true;
       }
-   }
+   };
+   crc d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         fcu $$3 = $$1.dy().d();
+         $$0.i($$3);
+         $$0.ar = true;
+      }
+   };
 
-   @Override
-   public boolean a(cql $$0, @Nullable bva $$1, @Nullable bva $$2, boolean $$3) {
-      return this.i > 0 ? false : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(fbx $$0) {
-      this.dU().a(this, null, f, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dgz.a.e, lt.A, lt.z, awa.Do);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < (double)h ? false : super.a($$0);
-   }
+   void deflect(crb var1, @Nullable bvs var2, azs var3);
 }

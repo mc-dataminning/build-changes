@@ -1,37 +1,101 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class byi {
-   public static bxs<cpd> a(float $$0, int $$1) {
-      return cbe.a((Function<cbe.b<cpd>, ? extends App<cbe.c<cpd>, cbh<cpd>>>)($$2 -> $$2.group($$2.c(cfc.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.du())) {
-                  return false;
-               } else {
-                  chc $$6 = $$3.A();
-                  int $$7 = $$6.a(kk.a($$4.du()));
-                  fbx $$8 = null;
+public abstract class byi<E extends bwr> implements byj<E> {
+   public static final int a = 60;
+   protected final Map<cft<?>, cfu> b;
+   private byi.a c = byi.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     fbx $$10 = cgw.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kk.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(kk.a(ji.a((kb)$$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public byi(Map<cft<?>, cfu> $$0) {
+      this($$0, 60);
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   public byi(Map<cft<?>, cfu> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new cff($$8, $$0, $$1));
-                  }
+   public byi(Map<cft<?>, cfu> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
+   }
 
-                  return true;
-               }
-            })));
+   @Override
+   public byi.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(arn $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = byi.a.b;
+         int $$3 = this.e + $$0.C_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(arn $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(arn $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(arn $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(arn $$0, E $$1, long $$2) {
+      this.c = byi.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(arn $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(arn $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(arn $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cft<?>, cfu> $$1 : this.b.entrySet()) {
+         cft<?> $$2 = $$1.getKey();
+         cfu $$3 = $$1.getValue();
+         if (!$$0.eb().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

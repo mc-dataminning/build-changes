@@ -1,105 +1,103 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class drt extends dke {
+public class drt extends dkg implements dsb {
    public static final MapCodec<drt> a = b(drt::new);
-   public static final int b = 8;
-   public static final dyq c = dyg.aI;
-   private static final fcr[] e = dke.a(8, $$0 -> dke.b(16.0, 0.0, (double)($$0 * 2)));
-   public static final int d = 5;
+   public static final dzd b = dzc.C;
+   public static final dzd c = dzc.I;
+   public static final dzd d = dzc.e;
+   private static final fdo f = dku.b(16.0, 0.0, 8.0);
+   public static final double e = f.c(jo.a.b);
 
    @Override
    public MapCodec<drt> a() {
       return a;
    }
 
-   protected drt(dxp.d $$0) {
+   public drt(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(c, Integer.valueOf(1)));
+      this.l(this.B.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return $$1 == eul.a ? $$0.c(c) < 5 : false;
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return e[$$0.c(c)];
+   public void a(dhp $$0, jj $$1, dym $$2, bvs $$3) {
+      if ($$0 instanceof arn $$4) {
+         aro $$5 = dwx.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dvn.M).ifPresent($$2x -> $$2x.a($$4, $$5));
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return e[$$0.c(c) - 1];
+   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dvn.M).ifPresent($$1x -> $$1x.a($$1));
+      }
    }
 
    @Override
-   protected fcr b_(dxq $$0, dgf $$1, ji $$2) {
-      return e[$$0.c(c)];
+   protected fdo b(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return f;
    }
 
    @Override
-   protected fcr c(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return e[$$0.c(c)];
+   protected fdo d_(dym $$0) {
+      return f;
    }
 
    @Override
-   protected boolean g_(dxq $$0) {
+   protected boolean g_(dym $$0) {
       return true;
    }
 
+   @Nullable
    @Override
-   protected float c(dxq $$0, dgf $$1, ji $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   public dvl a(jj $$0, dym $$1) {
+      return new dwx($$0, $$1);
    }
 
    @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      dxq $$3 = $$1.a_($$2.e());
-      if ($$3.a(awp.ct)) {
-         return false;
-      } else {
-         return $$3.a(awp.cu) ? true : dke.a($$3.g($$1, $$2.e()), jn.b) || $$3.a(this) && $$3.c(c) == 8;
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, euu.c, euu.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Nullable
+   @Override
+   public dym a(dbn $$0) {
+      return this.m().b(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == euu.c));
    }
 
    @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      return !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected eut b_(dym $$0) {
+      return $$0.c(c) ? euu.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$1.a(dhi.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dax $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.i()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jn.b : true;
+   protected void a(dym $$0, arn $$1, jj $$2, cxy $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bss.a(5));
       }
    }
 
    @Nullable
    @Override
-   public dxq a(dax $$0) {
-      dxq $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c);
+   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
+      return !$$0.C ? dkg.a($$2, dvn.M, ($$0x, $$1x, $$2x, $$3) -> edv.c.a($$0x, $$3.x(), $$3.gq())) : null;
    }
 }

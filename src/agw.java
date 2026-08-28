@@ -1,29 +1,20 @@
-public class agw implements yw<agf> {
-   public static final yn<vl, agw> a = yw.a(agw::a, agw::new);
-   private final int b;
+public record agw(float b) implements zc<agm> {
+   public static final yt<vr, agw> a = zc.a(agw::a, agw::new);
 
-   public agw(int $$0) {
-      this.b = $$0;
+   private agw(vr $$0) {
+      this($$0.readFloat());
    }
 
-   private agw(vl $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(vl $$0) {
-      $$0.f(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yy<agw> a() {
-      return agd.bz;
+   public ze<agw> a() {
+      return agk.bt;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

@@ -1,52 +1,37 @@
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aoc {
-   public static <T extends ez<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.pardonip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("commands.pardonip.failed"));
+
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aoc.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aoc.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aoc.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ey.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> fc.a(((ex)$$0x.getSource()).l().ag().g().a(), $$1))
+                  .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+            )
       );
    }
 
-   static class a<T extends ez<T>> implements hu.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hs $$2, hy<T> $$3) {
-         $$0.p().onFailure();
-         hz $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
-
-   static class b<T extends ez<T>> implements hv.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hs $$3, hy<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(ii.a());
-            }
+   private static int a(ex $$0, String $$1) throws CommandSyntaxException {
+      if (!InetAddresses.isInetAddress($$1)) {
+         throw a.create();
+      } else {
+         avk $$2 = $$0.l().ag().g();
+         if (!$$2.a($$1)) {
+            throw b.create();
          } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new id.a<>($$6, $$5, $$3.d(), $$0, $$1));
+            $$2.c($$1);
+            $$0.a(() -> wv.a("commands.pardonip.success", $$1), true);
+            return 1;
          }
-      }
-   }
-
-   static class c<T extends ez<T>> implements hu.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hs $$2, hy<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hz $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
       }
    }
 }

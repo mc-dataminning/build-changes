@@ -1,84 +1,211 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.function.BooleanSupplier;
-import java.util.zip.GZIPOutputStream;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class fht {
-   private static final long a = 5368709120L;
-   private static final String b = "world";
-   private final BooleanSupplier c;
-   private final Path d;
+   public static final int a = -1;
+   private final List<fhu> b;
+   private final List<String> c;
+   private final int d;
+   private final int e;
+   private final int[] f = new int[32];
+   @Nullable
+   private fhr g;
 
-   public static File a(Path $$0, BooleanSupplier $$1) throws IOException {
-      return new fht($$0, $$1).a();
-   }
-
-   private fht(Path $$0, BooleanSupplier $$1) {
+   fht(List<fhu> $$0, List<String> $$1, IntList $$2, int $$3) {
+      this.b = $$0;
       this.c = $$1;
-      this.d = $$0;
-   }
+      this.d = $$3;
+      this.e = $$0.stream().mapToInt(fhu::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
 
-   private File a() throws IOException {
-      TarArchiveOutputStream $$0 = null;
-
-      File var3;
-      try {
-         File $$1 = File.createTempFile("realms-upload-file", ".tar.gz");
-         $$0 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$1)));
-         $$0.setLongFileMode(3);
-         this.a($$0, this.d, "world", true);
-         if (this.c.getAsBoolean()) {
-            throw new fho();
-         }
-
-         $$0.finish();
-         this.a($$1.length());
-         var3 = $$1;
-      } finally {
-         if ($$0 != null) {
-            $$0.close();
-         }
+      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
+         fhu $$5 = fhu.a($$4);
+         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
+         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
       }
-
-      return var3;
    }
 
-   private void a(TarArchiveOutputStream $$0, Path $$1, String $$2, boolean $$3) throws IOException {
-      if (this.c.getAsBoolean()) {
-         throw new fho();
+   public static fht.a a() {
+      return new fht.a();
+   }
+
+   public void a(int $$0) {
+      int $$1 = 0;
+
+      for (String $$2 : this.d()) {
+         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
+         $$1++;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "VertexFormat" + this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public List<fhu> c() {
+      return this.b;
+   }
+
+   public List<String> d() {
+      return this.c;
+   }
+
+   public int[] e() {
+      return this.f;
+   }
+
+   public int a(fhu $$0) {
+      return this.f[$$0.c()];
+   }
+
+   public boolean b(fhu $$0) {
+      return (this.e & $$0.a()) != 0;
+   }
+
+   public int f() {
+      return this.e;
+   }
+
+   public String c(fhu $$0) {
+      int $$1 = this.b.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException($$0 + " is not contained in format");
       } else {
-         this.a($$0.getBytesWritten());
-         File $$4 = $$1.toFile();
-         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
-         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
-         $$0.putArchiveEntry($$6);
-         if ($$4.isFile()) {
-            try (InputStream $$7 = new FileInputStream($$4)) {
-               $$7.transferTo($$0);
-            }
-
-            $$0.closeArchiveEntry();
-         } else {
-            $$0.closeArchiveEntry();
-            File[] $$8 = $$4.listFiles();
-            if ($$8 != null) {
-               for (File $$9 : $$8) {
-                  this.a($$0, $$9.toPath(), $$5 + "/", false);
-               }
-            }
-         }
+         return this.c.get($$1);
       }
    }
 
-   private void a(long $$0) {
-      if ($$0 > 5368709120L) {
-         throw new fhr(5368709120L);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof fht $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.e * 31 + Arrays.hashCode(this.f);
+   }
+
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = this.b();
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         GlStateManager._enableVertexAttribArray($$1);
+         fhu $$2 = this.b.get($$1);
+         $$2.a($$1, (long)this.a($$2), $$0);
+      }
+   }
+
+   public void h() {
+      RenderSystem.assertOnRenderThread();
+
+      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
+         GlStateManager._disableVertexAttribArray($$0);
+      }
+   }
+
+   public fhr i() {
+      fhr $$0 = this.g;
+      if ($$0 == null) {
+         this.g = $$0 = new fhr(ffi.a);
+      }
+
+      return $$0;
+   }
+
+   public static class a {
+      private final Builder<String, fhu> a = ImmutableMap.builder();
+      private final IntList b = new IntArrayList();
+      private int c;
+
+      a() {
+      }
+
+      public fht.a a(String $$0, fhu $$1) {
+         this.a.put($$0, $$1);
+         this.b.add(this.c);
+         this.c = this.c + $$1.b();
+         return this;
+      }
+
+      public fht.a a(int $$0) {
+         this.c += $$0;
+         return this;
+      }
+
+      public fht a() {
+         ImmutableMap<String, fhu> $$0 = this.a.buildOrThrow();
+         ImmutableList<fhu> $$1 = $$0.values().asList();
+         ImmutableList<String> $$2 = $$0.keySet().asList();
+         return new fht($$1, $$2, this.b, this.c);
+      }
+   }
+
+   public static enum b {
+      a(5123, 2),
+      b(5125, 4);
+
+      public final int c;
+      public final int d;
+
+      private b(final int $$0, final int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      public static fht.b a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum c {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

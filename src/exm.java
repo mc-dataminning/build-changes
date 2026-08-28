@@ -1,41 +1,11 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Set;
 
-public class exm extends eyb {
-   public static final MapCodec<exm> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, exm::new));
-
-   private exm(List<ezx> $$0) {
-      super($$0);
+public interface exm {
+   default Set<bat<?>> a() {
+      return Set.of();
    }
 
-   @Override
-   public eyd<exm> b() {
-      return eye.z;
-   }
-
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      Float $$2 = $$1.c(ezi.j);
-      if ($$2 != null) {
-         azh $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.M();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.e($$6);
-      }
-
-      return $$0;
-   }
-
-   public static eyb.a<?> c() {
-      return a(exm::new);
+   default void a(exr $$0) {
+      $$0.a(this);
    }
 }

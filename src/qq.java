@@ -1,119 +1,247 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class qq {
-   public static void a(qe<eoj> $$0) {
-      js<dic> $$1 = $$0.a(mc.aJ);
-      js<ept> $$2 = $$0.a(mc.aZ);
+   public static final alc<eqq> a = qn.a("village/snowy/town_centers");
+   private static final alc<eqq> b = qn.a("village/snowy/terminators");
+
+   public static void a(qg<eqq> $$0) {
+      jt<eok> $$1 = $$0.a(me.aY);
+      js<eok> $$2 = $$1.b(rz.h);
+      js<eok> $$3 = $$1.b(rz.c);
+      js<eok> $$4 = $$1.b(rz.d);
+      jt<etg> $$5 = $$0.a(me.ba);
+      js<etg> $$6 = $$5.b(qo.k);
+      js<etg> $$7 = $$5.b(qo.n);
+      js<etg> $$8 = $$5.b(qo.c);
+      jt<eqq> $$9 = $$0.a(me.bc);
+      js<eqq> $$10 = $$9.b(qn.a);
+      js<eqq> $$11 = $$9.b(b);
       $$0.a(
-         eod.a,
-         new eqk(
-            new eoj.c.a($$1.b(awo.y)).a(Map.of(bwb.a, new eoq(eoq.a.b, brj.a(new dio.c(bvi.aT, 1, 1))))).a(eou.c).a(),
-            $$2.b(qj.a),
-            7,
-            emp.a(eei.a(0)),
-            true,
-            edo.a.a
+         a,
+         new eqq(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
+               Pair.of(eqo.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
+               Pair.of(eqo.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
+               Pair.of(eqo.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
+               Pair.of(eqo.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
+               Pair.of(eqo.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
+            ),
+            eqq.a.b
          )
       );
-      $$0.a(eod.b, new eqo(new eoj.c.a($$1.b(awo.t)).a(edk.a.d).a(), eqo.a.a));
-      $$0.a(eod.c, new eqo(new eoj.c.a($$1.b(awo.u)).a(edk.a.d).a(), eqo.a.b));
-      $$0.a(eod.d, new erg(new eoj.c($$1.b(awo.Q))));
-      $$0.a(eod.e, new eqm(new eoj.c($$1.b(awo.s))));
-      $$0.a(eod.f, new eqf(new eoj.c($$1.b(awo.q))));
-      $$0.a(eod.g, new eqj(new eoj.c($$1.b(awo.r))));
-      $$0.a(eod.h, new era(new eoj.c($$1.b(awo.G)), false));
-      $$0.a(eod.i, new era(new eoj.c($$1.b(awo.F)), true));
-      $$0.a(
-         eod.j,
-         new ere(
-            new eoj.c.a($$1.b(awo.J))
-               .a(Map.of(bwb.a, new eoq(eoq.a.a, brj.a(new dio.c(bvi.bH, 1, 1))), bwb.b, new eoq(eoq.a.a, brj.a(new dio.c(bvi.u, 1, 1)))))
-               .a()
+      qn.a(
+         $$0,
+         "village/snowy/streets",
+         new eqq(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/streets/corner_01", $$6), 2),
+               Pair.of(eqo.a("village/snowy/streets/corner_02", $$6), 2),
+               Pair.of(eqo.a("village/snowy/streets/corner_03", $$6), 2),
+               Pair.of(eqo.a("village/snowy/streets/square_01", $$6), 2),
+               Pair.of(eqo.a("village/snowy/streets/straight_01", $$6), 4),
+               Pair.of(eqo.a("village/snowy/streets/straight_02", $$6), 4),
+               Pair.of(eqo.a("village/snowy/streets/straight_03", $$6), 4),
+               Pair.of(eqo.a("village/snowy/streets/straight_04", $$6), 7),
+               Pair.of(eqo.a("village/snowy/streets/straight_06", $$6), 4),
+               Pair.of(eqo.a("village/snowy/streets/straight_08", $$6), 4),
+               Pair.of(eqo.a("village/snowy/streets/crossroad_02", $$6), 1),
+               Pair.of(eqo.a("village/snowy/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/snowy/streets/crossroad_04", $$6), 2),
+                  Pair.of(eqo.a("village/snowy/streets/crossroad_05", $$6), 2),
+                  Pair.of(eqo.a("village/snowy/streets/crossroad_06", $$6), 2),
+                  Pair.of(eqo.a("village/snowy/streets/turn_01", $$6), 3)
+               }
+            ),
+            eqq.a.a
          )
       );
-      $$0.a(eod.k, new erc(new eoj.c.a($$1.b(awo.H)).a(eou.b).a()));
-      $$0.a(
-         eod.l,
-         new equ(
-            new eoj.c.a($$1.b(awo.v))
-               .a(Map.of(bwb.a, new eoq(eoq.a.b, brj.a(new dio.c(bvi.ai, 2, 4))), bwb.e, new eoq(eoq.a.b, dio.a), bwb.d, new eoq(eoq.a.b, dio.a)))
-               .a()
+      qn.a(
+         $$0,
+         "village/snowy/zombie/streets",
+         new eqq(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/zombie/streets/corner_01", $$6), 2),
+               Pair.of(eqo.a("village/snowy/zombie/streets/corner_02", $$6), 2),
+               Pair.of(eqo.a("village/snowy/zombie/streets/corner_03", $$6), 2),
+               Pair.of(eqo.a("village/snowy/zombie/streets/square_01", $$6), 2),
+               Pair.of(eqo.a("village/snowy/zombie/streets/straight_01", $$6), 4),
+               Pair.of(eqo.a("village/snowy/zombie/streets/straight_02", $$6), 4),
+               Pair.of(eqo.a("village/snowy/zombie/streets/straight_03", $$6), 4),
+               Pair.of(eqo.a("village/snowy/zombie/streets/straight_04", $$6), 7),
+               Pair.of(eqo.a("village/snowy/zombie/streets/straight_06", $$6), 4),
+               Pair.of(eqo.a("village/snowy/zombie/streets/straight_08", $$6), 4),
+               Pair.of(eqo.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
+               Pair.of(eqo.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
+                  Pair.of(eqo.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
+                  Pair.of(eqo.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
+                  Pair.of(eqo.a("village/snowy/zombie/streets/turn_01", $$6), 3)
+               }
+            ),
+            eqq.a.a
          )
       );
-      $$0.a(eod.m, new eqw(new eoj.c($$1.b(awo.w)), eqw.a.b, 0.3F, 0.9F));
-      $$0.a(eod.n, new eqw(new eoj.c($$1.b(awo.x)), eqw.a.a, 0.3F, 0.9F));
-      $$0.a(eod.o, new eqq(new eoj.c.a($$1.b(awo.R)).a(Map.of(bwb.a, new eoq(eoq.a.a, eqq.d))).a(edk.a.h).a()));
-      $$0.a(eod.p, new eqs(new eoj.c.a($$1.b(awo.S)).a(edk.a.h).a(eou.c).a(), emt.a(eei.a(32), eei.c(2))));
-      $$0.a(eod.q, new eqh(new eoj.c($$1.b(awo.W))));
-      $$0.a(eod.r, new eqd(new eoj.c.a($$1.b(awo.p)).a(edk.a.d).a()));
-      $$0.a(eod.s, new eqk(new eoj.c($$1.b(awo.T)), $$2.b(qa.a), 6, emp.a(eei.a(33)), false));
-      $$0.a(eod.t, new eqk(new eoj.c.a($$1.b(awo.L)).a(eou.c).a(), $$2.b(qk.a), 6, emp.a(eei.a(0)), true, edo.a.a));
-      $$0.a(eod.u, new eqk(new eoj.c.a($$1.b(awo.K)).a(eou.c).a(), $$2.b(qg.a), 6, emp.a(eei.a(0)), true, edo.a.a));
-      $$0.a(eod.v, new eqk(new eoj.c.a($$1.b(awo.M)).a(eou.c).a(), $$2.b(qn.a), 6, emp.a(eei.a(0)), true, edo.a.a));
-      $$0.a(eod.w, new eqk(new eoj.c.a($$1.b(awo.N)).a(eou.c).a(), $$2.b(qo.a), 6, emp.a(eei.a(0)), true, edo.a.a));
-      $$0.a(eod.x, new eqk(new eoj.c.a($$1.b(awo.O)).a(eou.c).a(), $$2.b(qs.a), 6, emp.a(eei.a(0)), true, edo.a.a));
-      $$0.a(
-         eod.y,
-         new eqy(
-            new eoj.c($$1.b(awo.E)),
-            List.of(new eqy.a(eqx.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new eqy.a(eqx.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      qn.a(
+         $$0,
+         "village/snowy/houses",
+         new eqq(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_1"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_2"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_3"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_4"), 3),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_5"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_6"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_7"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_small_house_8"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_medium_house_1"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_medium_house_2"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_medium_house_3"), 2),
+               Pair.of(eqo.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_tool_smith_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_armorer_house_1"), 1),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_armorer_house_2"), 1),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_fisher_cottage"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_tannery_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_library_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_masons_house_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_masons_house_2"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_temple_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_farm_1", $$7), 3),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_farm_2", $$7), 3),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_animal_pen_1"), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_animal_pen_2"), 2),
+                  Pair.of(eqo.h(), 6)
+               }
+            ),
+            eqq.a.b
          )
       );
-      $$0.a(eod.z, new eqy(new eoj.c($$1.b(awo.z)), new eqy.a(eqx.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(eod.A, new eqy(new eoj.c($$1.b(awo.A)), new eqy.a(eqx.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(eod.B, new eqy(new eoj.c($$1.b(awo.C)), new eqy.a(eqx.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         eod.C,
-         new eqy(
-            new eoj.c($$1.b(awo.D)),
-            List.of(new eqy.a(eqx.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new eqy.a(eqx.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      qn.a(
+         $$0,
+         "village/snowy/zombie/houses",
+         new eqq(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
+               Pair.of(eqo.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
+               Pair.of(eqo.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(eqo.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_library_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_temple_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_farm_1", $$8), 3),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_farm_2", $$8), 3),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
+                  Pair.of(eqo.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
+                  Pair.of(eqo.h(), 6)
+               }
+            ),
+            eqq.a.b
          )
       );
-      $$0.a(eod.D, new eqy(new eoj.c($$1.b(awo.B)), new eqy.a(eqx.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(eod.E, new eqy(new eoj.c($$1.b(awo.V)), new eqy.a(eqx.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
       $$0.a(
-         eod.F,
-         new eqk(
-            new eoj.c.a($$1.b(awo.U))
-               .a(Arrays.stream(bwb.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eoq(eoq.a.b, brj.a()))))
-               .a(edk.a.h)
-               .a(eou.d)
-               .a(),
-            $$2.b(pv.a),
-            Optional.of(aku.b("city_anchor")),
-            7,
-            emp.a(eei.a(-27)),
-            false,
-            Optional.empty(),
-            116,
-            List.of(),
-            eqk.d,
-            eqk.e
+         b,
+         new eqq(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/plains/terminators/terminator_01", $$6), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_02", $$6), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_03", $$6), 1),
+               Pair.of(eqo.a("village/plains/terminators/terminator_04", $$6), 1)
+            ),
+            eqq.a.a
          )
       );
-      $$0.a(eod.G, new eqk(new eoj.c.a($$1.b(awo.P)).a(edk.a.d).a(eou.b).a(), $$2.b(qu.a), 7, emp.a(eei.a(-15)), false, edo.a.a));
-      $$0.a(
-         eod.H,
-         new eqk(
-            new eoj.c.a($$1.b(awo.I))
-               .a(edk.a.d)
-               .a(eou.e)
-               .a(Arrays.stream(bwb.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eoq(eoq.a.a, brj.a()))))
-               .a(),
-            $$2.b(qv.a),
-            Optional.empty(),
-            20,
-            emt.a(eei.a(-40), eei.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            qv.c,
-            new epj(10),
-            erv.a
+      qn.a($$0, "village/snowy/trees", new eqq($$10, ImmutableList.of(Pair.of(eqo.a($$2), 1)), eqq.a.b));
+      qn.a(
+         $$0,
+         "village/snowy/decor",
+         new eqq(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/snowy_lamp_post_01"), 4),
+               Pair.of(eqo.a("village/snowy/snowy_lamp_post_02"), 4),
+               Pair.of(eqo.a("village/snowy/snowy_lamp_post_03"), 1),
+               Pair.of(eqo.a($$2), 4),
+               Pair.of(eqo.a($$3), 4),
+               Pair.of(eqo.a($$4), 1),
+               Pair.of(eqo.h(), 9)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/snowy/zombie/decor",
+         new eqq(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/snowy_lamp_post_01", $$8), 1),
+               Pair.of(eqo.a("village/snowy/snowy_lamp_post_02", $$8), 1),
+               Pair.of(eqo.a("village/snowy/snowy_lamp_post_03", $$8), 1),
+               Pair.of(eqo.a($$2), 4),
+               Pair.of(eqo.a($$3), 4),
+               Pair.of(eqo.a($$4), 4),
+               Pair.of(eqo.h(), 7)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/snowy/villagers",
+         new eqq(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eqo.a("village/snowy/villagers/nitwit"), 1),
+               Pair.of(eqo.a("village/snowy/villagers/baby"), 1),
+               Pair.of(eqo.a("village/snowy/villagers/unemployed"), 10)
+            ),
+            eqq.a.b
+         )
+      );
+      qn.a(
+         $$0,
+         "village/snowy/zombie/villagers",
+         new eqq(
+            $$10,
+            ImmutableList.of(Pair.of(eqo.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(eqo.a("village/snowy/zombie/villagers/unemployed"), 10)),
+            eqq.a.b
          )
       );
    }

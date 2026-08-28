@@ -1,32 +1,16 @@
-public class ges extends gda<hbd> {
-   private static final String a = "main";
-   private final ggc b;
+public class ges extends gea<hak> {
+   private static final String a = "knot";
+   private final ghd b;
 
-   public ges(ggc $$0) {
+   public ges(ghd $$0) {
       super($$0);
-      this.b = $$0.b("main");
+      this.b = $$0.b("knot");
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a(
-         "main",
-         ggh.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         gge.a
-      );
-      return ggi.a($$0, 64, 32);
-   }
-
-   public void a(hbd $$0) {
-      super.a($$0);
-      this.b.f = $$0.b * (float) (Math.PI / 180.0);
-      this.b.e = $$0.a * (float) (Math.PI / 180.0);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      $$1.a("knot", ghi.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), ghf.a);
+      return ghj.a($$0, 32, 32);
    }
 }

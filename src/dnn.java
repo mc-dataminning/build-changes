@@ -1,57 +1,16 @@
-import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnn extends diz {
-   public static final MapCodec<dnn> c = b(dnn::new);
+public interface dnn {
+   @Nullable
+   dvl a(jj var1, dym var2);
 
-   @Override
-   public MapCodec<dnn> a() {
-      return c;
-   }
-
-   protected dnn(dxp.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dvr($$0, $$1);
+   @Nullable
+   default <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
+      return null;
    }
 
    @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      return a($$0, $$2, duu.a);
-   }
-
-   @Override
-   protected void a(dgz $$0, ji $$1, cpr $$2) {
-      dus $$3 = $$0.c_($$1);
-      if ($$3 instanceof dvr) {
-         $$2.a((bta)$$3);
-         $$2.a(awk.am);
-      }
-   }
-
-   @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awa.ky, awb.e, 1.0F, 1.0F, false);
-         }
-
-         jn $$7 = $$0.c(a);
-         jn.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jn.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jn.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lt.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(lt.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   default <T extends dvl> edo a(arn $$0, T $$1) {
+      return $$1 instanceof edo.b<?> $$2 ? $$2.c() : null;
    }
 }

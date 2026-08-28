@@ -1,53 +1,78 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface xw extends wq {
-   MapCodec<xw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(xw::b)).apply($$0, xw::a));
-   wq.a<xw> b = new wq.a<>(a, "text");
-   xw c = new xw() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
+public record xw(String d, @Nullable gw e) implements xx {
+   public static final MapCodec<xw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xw::b)).apply($$0, xw::new));
+   public static final xx.a<xw> b = new xx.a<>(a, "block");
 
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static xw a(String $$0) {
-      return (xw)($$0.isEmpty() ? c : new xw.a($$0));
+   public xw(String $$0) {
+      this($$0, a($$0));
    }
 
-   String b();
+   @Nullable
+   private static gw a(String $$0) {
+      try {
+         return gu.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
 
    @Override
-   default wq.a<?> a() {
+   public Stream<tw> a(ex $$0) {
+      if (this.e != null) {
+         arn $$1 = $$0.e();
+         jj $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dvl $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.u()));
+            }
+         }
+      }
+
+      return Stream.empty();
+   }
+
+   @Override
+   public xx.a<?> a() {
       return b;
    }
 
-   public static record a(String d) implements xw {
-      @Override
-      public <T> Optional<T> a(wu.a<T> $$0) {
-         return $$0.accept(this.d);
-      }
+   @Override
+   public String toString() {
+      return "block=" + this.d;
+   }
 
-      @Override
-      public <T> Optional<T> a(wu.b<T> $$0, xm $$1) {
-         return $$0.accept($$1, this.d);
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xw $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
 
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
+         return false;
       }
+   }
 
-      @Override
-      public String b() {
-         return this.d;
-      }
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gw c() {
+      return this.e;
    }
 }

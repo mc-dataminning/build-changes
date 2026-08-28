@@ -1,99 +1,62 @@
-public abstract class fpn extends fpj {
-   private static final frd a = new frd(aku.b("widget/text_field"), aku.b("widget/text_field_highlighted"));
-   private static final int c = 4;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonObject;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public fpn(int $$0, int $$1, int $$2, int $$3, wp $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fpn {
+   private final Optional<ald> a;
+   private final Set<fpq> b;
+   private final Optional<String> c;
+
+   public fpn(Optional<ald> $$0, Optional<String> $$1, fpq... $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.b = ImmutableSet.copyOf($$2);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      boolean $$3 = this.c($$0, $$1, $$2);
-      return super.a($$0, $$1, $$2) || $$3;
+   public ald a(dku $$0) {
+      return fpm.a($$0, this.c.orElse(""));
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.g();
-         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
-         if ($$5 != this.g()) {
-            return true;
+   public ald a(dku $$0, fpp $$1, BiConsumer<ald, fpl> $$2) {
+      return this.a(fpm.a($$0, this.c.orElse("")), $$1, $$2);
+   }
+
+   public ald a(dku $$0, String $$1, fpp $$2, BiConsumer<ald, fpl> $$3) {
+      return this.a(fpm.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
+   }
+
+   public ald b(dku $$0, String $$1, fpp $$2, BiConsumer<ald, fpl> $$3) {
+      return this.a(fpm.a($$0, $$1), $$2, $$3);
+   }
+
+   public ald a(cxu $$0, fpp $$1, BiConsumer<ald, fpl> $$2) {
+      return this.a(fpm.a($$0, this.c.orElse("")), $$1, $$2);
+   }
+
+   public ald a(ald $$0, fpp $$1, BiConsumer<ald, fpl> $$2) {
+      Map<fpq, ald> $$3 = this.a($$1);
+      $$2.accept($$0, () -> {
+         JsonObject $$1x = new JsonObject();
+         this.a.ifPresent($$1xx -> $$1x.addProperty("parent", $$1xx.toString()));
+         if (!$$3.isEmpty()) {
+            JsonObject $$2x = new JsonObject();
+            $$3.forEach(($$1xx, $$2xx) -> $$2x.addProperty($$1xx.a(), $$2xx.toString()));
+            $$1x.add("textures", $$2x);
          }
-      }
 
-      return super.a($$0, $$1, $$2);
+         return $$1x;
+      });
+      return $$0;
    }
 
-   @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.c($$0);
-         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.g(), 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.e();
-         this.b($$0);
-      }
-   }
-
-   protected void b(fpc $$0) {
-      this.a($$0);
-   }
-
-   protected int a() {
-      return 4;
-   }
-
-   protected int b() {
-      return this.a() * 2;
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
-   }
-
-   @Override
-   protected int l() {
-      return this.H();
-   }
-
-   @Override
-   protected int n() {
-      return this.c() + this.b();
-   }
-
-   protected void c(fpc $$0) {
-      this.a($$0, this.F(), this.G(), this.A(), this.y());
-   }
-
-   protected void a(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
-      aku $$5 = a.a(this.E(), this.aM_());
-      $$0.a(gnh::H, $$5, $$1, $$2, $$3, $$4);
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
-   }
-
-   protected abstract int c();
-
-   protected abstract void c(fpc var1, int var2, int var3, float var4);
-
-   protected int e() {
-      return this.F() + this.a();
-   }
-
-   protected int p() {
-      return this.G() + this.a();
-   }
-
-   @Override
-   public void a(hku $$0) {
+   private Map<fpq, ald> a(fpp $$0) {
+      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
    }
 }

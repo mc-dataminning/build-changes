@@ -1,53 +1,48 @@
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.util.ReferenceCounted;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public record vn(ByteBuf a) implements ReferenceCounted {
-   public vn(final ByteBuf a) {
-      this.a = ByteBufUtil.ensureAccessible(a);
+public class vn extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
+
+   public vn(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   public static Object a(Object $$0) {
-      return $$0 instanceof ByteBuf $$1 ? new vn($$1) : $$0;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 > 8388608) {
+         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
+      } else {
+         if ($$3 < this.c) {
+            wm.a($$2, 0);
+            $$2.writeBytes($$1);
+         } else {
+            byte[] $$4 = new byte[$$3];
+            $$1.readBytes($$4);
+            wm.a($$2, $$4.length);
+            this.b.setInput($$4, 0, $$3);
+            this.b.finish();
+
+            while (!this.b.finished()) {
+               int $$5 = this.b.deflate(this.a);
+               $$2.writeBytes(this.a, 0, $$5);
+            }
+
+            this.b.reset();
+         }
+      }
    }
 
-   public static Object b(Object $$0) {
-      return $$0 instanceof vn $$1 ? ByteBufUtil.ensureAccessible($$1.a) : $$0;
+   public int a() {
+      return this.c;
    }
 
-   public int refCnt() {
-      return this.a.refCnt();
-   }
-
-   public vn a() {
-      this.a.retain();
-      return this;
-   }
-
-   public vn a(int $$0) {
-      this.a.retain($$0);
-      return this;
-   }
-
-   public vn b() {
-      this.a.touch();
-      return this;
-   }
-
-   public vn c(Object $$0) {
-      this.a.touch($$0);
-      return this;
-   }
-
-   public boolean release() {
-      return this.a.release();
-   }
-
-   public boolean release(int $$0) {
-      return this.a.release($$0);
-   }
-
-   public ByteBuf c() {
-      return this.a;
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

@@ -1,417 +1,320 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arl implements dhy {
-   private static final Logger a = LogUtils.getLogger();
-   private final azt<aqt> b;
-   private final dzm c;
-   private final ard d;
-   private final long e;
-   private final evy f;
-   private final azh h;
-   private final ebm i;
-   private final fdu<dke> j = new fdu<>($$0x -> this.y($$0x).q());
-   private final fdu<etv> k = new fdu<>($$0x -> this.y($$0x).r());
-   private final die l;
-   private final eaq m;
+public class arl {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 1;
+   private static final double d = 7.6293945E-6F;
+   public static final int a = 60;
+   private static final int e = 400;
+   private final arn f;
+   private final bvs g;
+   private final int h;
+   private final boolean i;
+   private final Consumer<zc<?>> j;
+   private final BiConsumer<zc<?>, List<UUID>> k;
+   private final aiq l = new aiq();
+   private byte m;
+   private byte n;
+   private byte o;
+   private fcu p;
+   private int q;
+   private int r;
+   private List<bvs> s = Collections.emptyList();
+   private boolean t;
+   private boolean u;
    @Nullable
-   private Supplier<String> n;
-   private final AtomicLong o = new AtomicLong();
-   private static final aku p = aku.b("worldgen_region_random");
+   private List<akk.c<?>> v;
 
-   public arl(ard $$0, azt<aqt> $$1, eaq $$2, dzm $$3) {
-      this.m = $$2;
-      this.b = $$1;
-      this.c = $$3;
-      this.d = $$0;
-      this.e = $$0.E();
-      this.f = $$0.y_();
-      this.h = $$0.m().i().a(p).a(this.c.f().l());
-      this.i = $$0.B_();
-      this.l = new die(this, die.a(this.e));
+   public arl(arn $$0, bvs $$1, int $$2, boolean $$3, Consumer<zc<?>> $$4, BiConsumer<zc<?>, List<UUID>> $$5) {
+      this.f = $$0;
+      this.j = $$4;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.k = $$5;
+      this.l.e($$1.du());
+      this.p = $$1.dy();
+      this.m = azk.g($$1.dL());
+      this.n = azk.g($$1.dN());
+      this.o = azk.g($$1.cA());
+      this.u = $$1.aJ();
+      this.v = $$1.au().c();
    }
 
-   public boolean a(dgg $$0, int $$1) {
-      return this.d.m().a.b($$0, $$1);
-   }
+   public void a() {
+      List<bvs> $$0 = this.g.cY();
+      if (!$$0.equals(this.s)) {
+         List<UUID> $$1 = this.a($$0).map(bvs::cG).toList();
+         this.k.accept(new afi(this.g), $$1);
+         this.s = $$0;
+      }
 
-   public dgg b() {
-      return this.c.f();
-   }
-
-   @Override
-   public void a(@Nullable Supplier<String> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public dzm a(int $$0, int $$1) {
-      return this.a($$0, $$1, ean.c);
-   }
-
-   @Nullable
-   @Override
-   public dzm a(int $$0, int $$1, ean $$2, boolean $$3) {
-      int $$4 = this.c.f().e($$0, $$1);
-      ean $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
-      aqt $$6;
-      if ($$5 != null) {
-         $$6 = this.b.a($$0, $$1);
-         if ($$2.c($$5)) {
-            dzm $$7 = $$6.a($$5);
-            if ($$7 != null) {
-               return $$7;
+      if (this.g instanceof cmg $$2 && this.q % 10 == 0) {
+         cxy $$3 = $$2.w();
+         if ($$3.h() instanceof cyl) {
+            ewl $$4 = $$3.a(kx.M);
+            ewn $$5 = cyl.a($$4, this.f);
+            if ($$5 != null) {
+               for (aro $$6 : this.f.z()) {
+                  $$5.a($$6, $$3);
+                  zc<?> $$7 = $$5.a($$4, $$6);
+                  if ($$7 != null) {
+                     $$6.f.b($$7);
+                  }
+               }
             }
          }
-      } else {
-         $$6 = null;
+
+         this.g();
       }
 
-      o $$9 = o.a(new IllegalStateException("Requested chunk unavailable during world generation"), "Exception generating new chunk");
-      p $$10 = $$9.a("Chunk request details");
-      $$10.a("Requested chunk", String.format(Locale.ROOT, "%d, %d", $$0, $$1));
-      $$10.a("Generating status", () -> this.m.a().f());
-      $$10.a("Requested status", $$2::f);
-      $$10.a("Actual status", () -> $$6 == null ? "[out of cache bounds]" : $$6.q().f());
-      $$10.a("Maximum allowed status", () -> $$5 == null ? "null" : $$5.f());
-      $$10.a("Dependencies", this.m.b()::toString);
-      $$10.a("Requested distance", $$4);
-      $$10.a("Generating chunk", this.c.f()::toString);
-      throw new z($$9);
-   }
+      if (this.q % this.h == 0 || this.g.ar || this.g.au().a()) {
+         byte $$8 = azk.g(this.g.dL());
+         byte $$9 = azk.g(this.g.dN());
+         boolean $$10 = Math.abs($$8 - this.m) >= 1 || Math.abs($$9 - this.n) >= 1;
+         if (this.g.bZ()) {
+            if ($$10) {
+               this.j.accept(new adl.c(this.g.ar(), $$8, $$9, this.g.aJ()));
+               this.m = $$8;
+               this.n = $$9;
+            }
 
-   @Override
-   public boolean b(int $$0, int $$1) {
-      int $$2 = this.c.f().e($$0, $$1);
-      return $$2 < this.m.b().b();
-   }
-
-   @Override
-   public dxq a_(ji $$0) {
-      return this.a(kk.a($$0.u()), kk.a($$0.w())).a_($$0);
-   }
-
-   @Override
-   public etw b_(ji $$0) {
-      return this.y($$0).b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public cpr a(double $$0, double $$1, double $$2, double $$3, Predicate<bva> $$4) {
-      return null;
-   }
-
-   @Override
-   public int z_() {
-      return 0;
-   }
-
-   @Override
-   public die D_() {
-      return this.l;
-   }
-
-   @Override
-   public jr<dic> a(int $$0, int $$1, int $$2) {
-      return this.d.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public float a(jn $$0, boolean $$1) {
-      return 1.0F;
-   }
-
-   @Override
-   public etl x_() {
-      return this.d.x_();
-   }
-
-   @Override
-   public boolean a(ji $$0, boolean $$1, @Nullable bva $$2, int $$3) {
-      dxq $$4 = this.a_($$0);
-      if ($$4.l()) {
-         return false;
-      } else {
-         if ($$1) {
-            dus $$5 = $$4.x() ? this.c_($$0) : null;
-            dke.a($$4, (dgz)this.d, $$0, $$5, $$2, cxh.k);
-         }
-
-         return this.a($$0, dkg.a.m(), 3, $$3);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dus c_(ji $$0) {
-      dzm $$1 = this.y($$0);
-      dus $$2 = $$1.c_($$0);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         tq $$3 = $$1.f($$0);
-         dxq $$4 = $$1.a_($$0);
-         if ($$3 != null) {
-            if ("DUMMY".equals($$3.l("id"))) {
-               if (!$$4.x()) {
-                  return null;
+            this.l.e(this.g.du());
+            this.g();
+            this.t = true;
+         } else {
+            label194: {
+               if (this.g instanceof csh $$11 && $$11.f() instanceof csw $$12) {
+                  this.a($$12, $$8, $$9, $$10);
+                  break label194;
                }
 
-               $$2 = ((dmx)$$4.b()).a($$0, $$4);
-            } else {
-               $$2 = dus.a($$0, $$4, $$3, this.d.F_());
-            }
-
-            if ($$2 != null) {
-               $$1.a($$2);
-               return $$2;
-            }
-         }
-
-         if ($$4.x()) {
-            a.warn("Tried to access a block entity before it was created. {}", $$0);
-         }
-
-         return null;
-      }
-   }
-
-   @Override
-   public boolean f_(ji $$0) {
-      int $$1 = kk.a($$0.u());
-      int $$2 = kk.a($$0.w());
-      dgg $$3 = this.b();
-      int $$4 = Math.abs($$3.h - $$1);
-      int $$5 = Math.abs($$3.i - $$2);
-      if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
-         if (this.c.A()) {
-            dhb $$6 = this.c.B();
-            if ($$6.e($$0.v())) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         af.b(
-            "Detected setBlock in a far chunk ["
-               + $$1
-               + ", "
-               + $$2
-               + "], pos: "
-               + $$0
-               + ", status: "
-               + this.m.a()
-               + (this.n == null ? "" : ", currently generating: " + this.n.get())
-         );
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(ji $$0, dxq $$1, int $$2, int $$3) {
-      if (!this.f_($$0)) {
-         return false;
-      } else {
-         dzm $$4 = this.y($$0);
-         dxq $$5 = $$4.a($$0, $$1, $$2);
-         if ($$5 != null) {
-            this.d.a($$0, $$5, $$1);
-         }
-
-         if ($$1.x()) {
-            if ($$4.n().d() == ear.b) {
-               dus $$6 = ((dmx)$$1.b()).a($$0, $$1);
-               if ($$6 != null) {
-                  $$4.a($$6);
+               this.r++;
+               fcu $$13 = this.g.du();
+               boolean $$14 = this.l.d($$13).h() >= 7.6293945E-6F;
+               zc<?> $$15 = null;
+               boolean $$16 = $$14 || this.q % 60 == 0;
+               boolean $$17 = false;
+               boolean $$18 = false;
+               long $$19 = this.l.a($$13);
+               long $$20 = this.l.b($$13);
+               long $$21 = this.l.c($$13);
+               boolean $$22 = $$19 < -32768L || $$19 > 32767L || $$20 < -32768L || $$20 > 32767L || $$21 < -32768L || $$21 > 32767L;
+               if ($$22 || this.r > 400 || this.t || this.u != this.g.aJ()) {
+                  this.u = this.g.aJ();
+                  this.r = 0;
+                  $$15 = acv.a(this.g);
+                  $$17 = true;
+                  $$18 = true;
+               } else if ((!$$16 || !$$10) && !(this.g instanceof cqp)) {
+                  if ($$16) {
+                     $$15 = new adl.a(this.g.ar(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aJ());
+                     $$17 = true;
+                  } else if ($$10) {
+                     $$15 = new adl.c(this.g.ar(), $$8, $$9, this.g.aJ());
+                     $$18 = true;
+                  }
                } else {
-                  $$4.d($$0);
+                  $$15 = new adl.b(this.g.ar(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), $$8, $$9, this.g.aJ());
+                  $$17 = true;
+                  $$18 = true;
                }
-            } else {
-               tq $$7 = new tq();
-               $$7.a("x", $$0.u());
-               $$7.a("y", $$0.v());
-               $$7.a("z", $$0.w());
-               $$7.a("id", "DUMMY");
-               $$4.a($$7);
+
+               if (this.g.ar || this.i || this.g instanceof bwr && ((bwr)this.g).fI()) {
+                  fcu $$23 = this.g.dy();
+                  double $$24 = $$23.g(this.p);
+                  if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.h() == 0.0) {
+                     this.p = $$23;
+                     if (this.g instanceof cqq $$25) {
+                        this.j.accept(new acc(List.of(new afc(this.g.ar(), this.p), new aec($$25.ar(), $$25.c))));
+                     } else {
+                        this.j.accept(new afc(this.g.ar(), this.p));
+                     }
+                  }
+               }
+
+               if ($$15 != null) {
+                  this.j.accept($$15);
+               }
+
+               this.g();
+               if ($$17) {
+                  this.l.e($$13);
+               }
+
+               if ($$18) {
+                  this.m = $$8;
+                  this.n = $$9;
+               }
+
+               this.t = false;
             }
-         } else if ($$5 != null && $$5.x()) {
-            $$4.d($$0);
          }
 
-         if ($$1.l(this, $$0) && ($$2 & 16) == 0) {
-            this.f($$0);
+         byte $$26 = azk.g(this.g.cA());
+         if (Math.abs($$26 - this.o) >= 1) {
+            this.j.accept(new aek(this.g, $$26));
+            this.o = $$26;
          }
 
-         return true;
+         this.g.ar = false;
+      }
+
+      this.q++;
+      if (this.g.T) {
+         this.g.T = false;
+         this.a(new afc(this.g));
       }
    }
 
-   private void f(ji $$0) {
-      this.y($$0).e($$0);
+   private Stream<bvs> a(List<bvs> $$0) {
+      return Streams.concat(new Stream[]{this.s.stream().filter($$1 -> !$$0.contains($$1)), $$0.stream().filter($$0x -> !this.s.contains($$0x))});
    }
 
-   @Override
-   public boolean b(bva $$0) {
-      int $$1 = kk.a($$0.dy());
-      int $$2 = kk.a($$0.dE());
-      this.a($$1, $$2).a($$0);
-      return true;
-   }
-
-   @Override
-   public boolean a(ji $$0, boolean $$1) {
-      return this.a($$0, dkg.a.m(), 3);
-   }
-
-   @Override
-   public dzh A_() {
-      return this.d.A_();
-   }
-
-   @Override
-   public boolean w_() {
-      return false;
-   }
-
-   @Deprecated
-   @Override
-   public ard a() {
-      return this.d;
-   }
-
-   @Override
-   public kf F_() {
-      return this.d.F_();
-   }
-
-   @Override
-   public csn K() {
-      return this.d.K();
-   }
-
-   @Override
-   public evy y_() {
-      return this.f;
-   }
-
-   @Override
-   public bsw d_(ji $$0) {
-      if (!this.b(kk.a($$0.u()), kk.a($$0.w()))) {
-         throw new RuntimeException("We are asking a region for a chunk out of bound");
+   private void a(csw $$0, byte $$1, byte $$2, boolean $$3) {
+      this.g();
+      if ($$0.e.isEmpty()) {
+         fcu $$4 = this.g.dy();
+         double $$5 = $$4.g(this.p);
+         fcu $$6 = this.g.du();
+         boolean $$7 = this.l.d($$6).h() >= 7.6293945E-6F;
+         boolean $$8 = $$7 || this.q % 60 == 0;
+         if ($$8 || $$3 || $$5 > 1.0E-7) {
+            this.j.accept(new adm(this.g.ar(), List.of(new csw.a(this.g.dt(), this.g.dy(), this.g.dL(), this.g.dN(), 1.0F))));
+         }
       } else {
-         return new bsw(this.d.an(), this.d.af(), 0L, this.d.as());
+         this.j.accept(new adm(this.g.ar(), List.copyOf($$0.e)));
+         $$0.e.clear();
+      }
+
+      this.m = $$1;
+      this.n = $$2;
+      this.l.e(this.g.dt());
+   }
+
+   public void a(aro $$0) {
+      this.g.e($$0);
+      $$0.f.b(new aeg(this.g.ar()));
+   }
+
+   public void b(aro $$0) {
+      List<zc<? super abr>> $$1 = new ArrayList<>();
+      this.a($$0, $$1::add);
+      $$0.f.b(new acc($$1));
+      this.g.d($$0);
+   }
+
+   public void a(aro $$0, Consumer<zc<abr>> $$1) {
+      if (this.g.dQ()) {
+         b.warn("Fetching packet for removed entity {}", this.g);
+      }
+
+      zc<abr> $$2 = this.g.a(this);
+      $$1.accept($$2);
+      if (this.v != null) {
+         $$1.accept(new afa(this.g.ar(), this.v));
+      }
+
+      boolean $$3 = this.i;
+      if (this.g instanceof bwr) {
+         Collection<bxt> $$4 = ((bwr)this.g).eZ().c();
+         if (!$$4.isEmpty()) {
+            $$1.accept(new age(this.g.ar(), $$4));
+         }
+
+         if (((bwr)this.g).fI()) {
+            $$3 = true;
+         }
+      }
+
+      if ($$3 && !(this.g instanceof bwr)) {
+         $$1.accept(new afc(this.g.ar(), this.p));
+      }
+
+      if (this.g instanceof bwr $$5) {
+         List<Pair<bwc, cxy>> $$6 = Lists.newArrayList();
+
+         for (bwc $$7 : bwc.j) {
+            cxy $$8 = $$5.a($$7);
+            if (!$$8.f()) {
+               $$6.add(Pair.of($$7, $$8.v()));
+            }
+         }
+
+         if (!$$6.isEmpty()) {
+            $$1.accept(new afd(this.g.ar(), $$6));
+         }
+      }
+
+      if (!this.g.cY().isEmpty()) {
+         $$1.accept(new afi(this.g));
+      }
+
+      if (this.g.bZ()) {
+         $$1.accept(new afi(this.g.dk()));
+      }
+
+      if (this.g instanceof bwp $$9 && $$9.O_()) {
+         $$1.accept(new afb(this.g, $$9.C()));
       }
    }
 
-   @Nullable
-   @Override
-   public MinecraftServer p() {
-      return this.d.p();
+   public fcu b() {
+      return this.l.a();
    }
 
-   @Override
-   public dzq S() {
-      return this.d.m();
+   public fcu c() {
+      return this.p;
    }
 
-   @Override
-   public long E() {
-      return this.e;
+   public float d() {
+      return azk.a(this.n);
    }
 
-   @Override
-   public fdl<dke> U() {
-      return this.j;
+   public float e() {
+      return azk.a(this.m);
    }
 
-   @Override
-   public fdl<etv> T() {
-      return this.k;
+   public float f() {
+      return azk.a(this.o);
    }
 
-   @Override
-   public int P() {
-      return this.d.P();
+   private void g() {
+      akk $$0 = this.g.au();
+      List<akk.c<?>> $$1 = $$0.b();
+      if ($$1 != null) {
+         this.v = $$0.c();
+         this.a(new afa(this.g.ar(), $$1));
+      }
+
+      if (this.g instanceof bwr) {
+         Set<bxt> $$2 = ((bwr)this.g).eZ().a();
+         if (!$$2.isEmpty()) {
+            this.a(new age(this.g.ar(), $$2));
+         }
+
+         $$2.clear();
+      }
    }
 
-   @Override
-   public azh C_() {
-      return this.h;
-   }
-
-   @Override
-   public int a(edo.a $$0, int $$1, int $$2) {
-      return this.a(kk.a($$1), kk.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
-   }
-
-   @Override
-   public void a(@Nullable bva $$0, ji $$1, avz $$2, awb $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public void a(lr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-   }
-
-   @Override
-   public void a(@Nullable bva $$0, int $$1, ji $$2, int $$3) {
-   }
-
-   @Override
-   public void a(jr<ecp> $$0, fbx $$1, ecp.a $$2) {
-   }
-
-   @Override
-   public ebm B_() {
-      return this.i;
-   }
-
-   @Override
-   public boolean a(ji $$0, Predicate<dxq> $$1) {
-      return $$1.test(this.a_($$0));
-   }
-
-   @Override
-   public boolean b(ji $$0, Predicate<etw> $$1) {
-      return $$1.test(this.b_($$0));
-   }
-
-   @Override
-   public <T extends bva> List<T> a(ecb<bva, T> $$0, fbs $$1, Predicate<? super T> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<bva> a(@Nullable bva $$0, fbs $$1, @Nullable Predicate<? super bva> $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public List<cpr> z() {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public int G_() {
-      return this.d.G_();
-   }
-
-   @Override
-   public int H_() {
-      return this.d.H_();
-   }
-
-   @Override
-   public long E_() {
-      return this.o.getAndIncrement();
+   private void a(zc<?> $$0) {
+      this.j.accept($$0);
+      if (this.g instanceof aro) {
+         ((aro)this.g).f.b($$0);
+      }
    }
 }

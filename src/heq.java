@@ -1,40 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class heq implements her {
-   private final gdv a;
-   private final hhy b;
+public abstract class heq {
+   private final boolean a;
 
-   public heq(gdv $$0, hhy $$1) {
+   protected heq(boolean $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
-      gpt.a($$1, $$2, $$3, $$4, this.a, this.b);
+   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
+      bvs $$4 = (bvs)($$2 != null ? $$2 : $$0.J());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         if ($$1 == null && $$4.dV() instanceof ghz $$5) {
+            $$1 = $$5;
+         }
+
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   public static record a(dzd b, Optional<aku> c) implements hev.a {
-      public static final MapCodec<heq.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(dzd.a.fieldOf("wood_type").forGetter(heq.a::b), aku.a.optionalFieldOf("texture").forGetter(heq.a::c)).apply($$0, heq.a::new)
-      );
+   protected abstract float a(cxy var1, ghz var2, int var3, bvs var4);
 
-      public a(dzd $$0) {
-         this($$0, Optional.empty());
-      }
+   protected boolean b() {
+      return this.a;
+   }
 
-      @Override
-      public MapCodec<heq.a> a() {
-         return a;
-      }
+   protected heq.a a(float $$0) {
+      return this.a ? b($$0) : c();
+   }
 
-      @Override
-      public hev<?> a(gfy $$0) {
-         gdv $$1 = gpt.a($$0, this.b, gpt.a.c);
-         hhy $$2 = this.c.<hhy>map(gns::d).orElseGet(() -> gns.b(this.b));
-         return new heq($$1, $$2);
-      }
+   public static heq.a b(final float $$0) {
+      return new heq.a() {
+         private float b;
+         private float c;
+         private long d;
+
+         @Override
+         public float a() {
+            return this.b;
+         }
+
+         @Override
+         public boolean a(long $$0x) {
+            return this.d != $$0;
+         }
+
+         @Override
+         public void a(long $$0x, float $$1) {
+            this.d = $$0;
+            float $$2 = azk.b($$1 - this.b + 0.5F, 1.0F) - 0.5F;
+            this.c += $$2 * 0.1F;
+            this.c = this.c * $$0;
+            this.b = azk.b(this.b + this.c, 1.0F);
+         }
+      };
+   }
+
+   public static heq.a c() {
+      return new heq.a() {
+         private float a;
+
+         @Override
+         public float a() {
+            return this.a;
+         }
+
+         @Override
+         public boolean a(long $$0) {
+            return true;
+         }
+
+         @Override
+         public void a(long $$0, float $$1) {
+            this.a = $$1;
+         }
+      };
+   }
+
+   public interface a {
+      float a();
+
+      boolean a(long var1);
+
+      void a(long var1, float var3);
    }
 }

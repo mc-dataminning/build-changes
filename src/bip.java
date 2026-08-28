@@ -2,39 +2,44 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Locale;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public abstract class bip extends DataFix {
-   private final String a;
-
-   public bip(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+public class bip extends DataFix {
+   public bip(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bic.C);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bic.C);
-      Type<Pair<String, String>> $$2 = DSL.named(bic.A.typeName(), bju.a());
-      if (!Objects.equals(this.getOutputSchema().getType(bic.A), $$2)) {
-         throw new IllegalStateException("Entity name type is not what was expected.");
-      } else {
-         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
-                  String $$3 = this.a($$2xxx);
-                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
-                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
-                  if (!$$5.equals($$4, true, true)) {
-                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
-                  } else {
-                     return $$3;
-                  }
-               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
-      }
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(biq.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 
-   protected abstract String a(String var1);
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
+      return !$$1
+         ? $$0
+         : $$0.update(
+            "Properties",
+            $$0x -> {
+               String $$1x = $$0x.get("east").asString("none");
+               String $$2 = $$0x.get("west").asString("none");
+               String $$3 = $$0x.get("north").asString("none");
+               String $$4 = $$0x.get("south").asString("none");
+               boolean $$5 = a($$1x) || a($$2);
+               boolean $$6 = a($$3) || a($$4);
+               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
+               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
+               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
+               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
+               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
+                  .update("west", $$1xx -> $$1xx.createString($$8))
+                  .update("north", $$1xx -> $$1xx.createString($$9))
+                  .update("south", $$1xx -> $$1xx.createString($$10));
+            }
+         );
+   }
+
+   private static boolean a(String $$0) {
+      return !"none".equals($$0);
+   }
 }

@@ -1,78 +1,36 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.security.SignatureException;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record xq(String d, @Nullable gv e) implements xr {
-   public static final MapCodec<xq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xq::b)).apply($$0, xq::new));
-   public static final xr.a<xq> b = new xr.a<>(a, "block");
+public record xq(int b, UUID c, UUID d) {
+   public static final Codec<xq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.l.fieldOf("index").forGetter(xq::b), km.a.fieldOf("sender").forGetter(xq::c), km.a.fieldOf("session_id").forGetter(xq::d))
+            .apply($$0, xq::new)
+   );
 
-   public xq(String $$0) {
-      this($$0, a($$0));
+   public static xq a(UUID $$0) {
+      return a($$0, af.e);
+   }
+
+   public static xq a(UUID $$0, UUID $$1) {
+      return new xq(0, $$0, $$1);
+   }
+
+   public void a(azw.a $$0) throws SignatureException {
+      $$0.update(km.b(this.c));
+      $$0.update(km.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
+
+   public boolean a(xq $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
    }
 
    @Nullable
-   private static gv a(String $$0) {
-      try {
-         return gt.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
-
-   @Override
-   public Stream<tq> a(ex $$0) {
-      if (this.e != null) {
-         ard $$1 = $$0.e();
-         ji $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            dus $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.b($$0.u()));
-            }
-         }
-      }
-
-      return Stream.empty();
-   }
-
-   @Override
-   public xr.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xq $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gv c() {
-      return this.e;
+   public xq a() {
+      return this.b == Integer.MAX_VALUE ? null : new xq(this.b + 1, this.c, this.d);
    }
 }

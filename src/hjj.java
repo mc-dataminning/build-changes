@@ -1,58 +1,61 @@
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class hjj extends hiw {
-   public hjj(avz $$0, awb $$1, float $$2, float $$3, azh $$4, ji $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+   private final List<hjj.a> b;
+   private final Map<dym, BitSet> c = new Reference2ObjectOpenHashMap();
+
+   private static his a(List<hjj.a> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Model must have at least one selector");
+      } else {
+         return $$0.getFirst().b();
+      }
    }
 
-   public static hjj a(avz $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   public hjj(List<hjj.a> $$0) {
+      super(a($$0));
+      this.b = $$0;
    }
 
-   public static hjj a(jr<avz> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public List<gpf> a(@Nullable dym $$0, @Nullable jo $$1, azs $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.c.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
+               if (this.b.get($$4).a.test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.c.put($$0, $$3);
+         }
+
+         List<gpf> $$5 = new ArrayList<>();
+         long $$6 = $$2.g();
+
+         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
+            if ($$3.get($$7)) {
+               $$2.b($$6);
+               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
+            }
+         }
+
+         return $$5;
+      }
    }
 
-   public static hjj a(avz $$0, float $$1, float $$2) {
-      return new hjj($$0.a(), awb.a, $$2, $$1, hjo.t(), false, 0, hjo.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static hjj a(avz $$0) {
-      return new hjj($$0.a(), awb.b, 1.0F, 1.0F, hjo.t(), false, 0, hjo.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static hjj a(avz $$0, fbx $$1) {
-      return new hjj($$0, awb.c, 4.0F, 1.0F, hjo.t(), false, 0, hjo.a.b, $$1.d, $$1.e, $$1.f);
-   }
-
-   public static hjj b(avz $$0, float $$1, float $$2) {
-      return new hjj($$0.a(), awb.i, $$2, $$1, hjo.t(), false, 0, hjo.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static hjj b(avz $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static hjj a(avz $$0, azh $$1, double $$2, double $$3, double $$4) {
-      return new hjj($$0, awb.i, 1.0F, 1.0F, $$1, false, 0, hjo.a.b, $$2, $$3, $$4);
-   }
-
-   public hjj(avz $$0, awb $$1, float $$2, float $$3, azh $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, hjo.a.b, $$5, $$6, $$7);
-   }
-
-   private hjj(avz $$0, awb $$1, float $$2, float $$3, azh $$4, boolean $$5, int $$6, hjo.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public hjj(aku $$0, awb $$1, float $$2, float $$3, azh $$4, boolean $$5, int $$6, hjo.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   public static record a(Predicate<dym> a, his b) {
    }
 }

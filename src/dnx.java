@@ -1,104 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class dnx extends dke implements dkh {
+public class dnx extends dle implements dkx, dry {
    public static final MapCodec<dnx> a = b(dnx::new);
-   private static final fcr c = dke.b(14.0, 0.0, 16.0);
-   private static final fcr d = dke.b(14.0, 2.0, 16.0);
-   public static final dyh b = dyg.F;
+   public static final dzk<jo> b = dzc.T;
+   public static final dzm c = dzc.U;
+   private final Function<dym, fdo> g;
 
    @Override
    public MapCodec<dnx> a() {
       return a;
    }
 
-   public dnx(dxp.d $$0) {
+   protected dnx(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(true)));
+      this.l(this.B.b().b(b, jo.c).b(c, Integer.valueOf(1)));
+      this.g = this.q();
+   }
+
+   private Function<dym, fdo> q() {
+      return this.a(this.a(b, c));
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return $$0.c(b) ? d : c;
+   public dym a(dym $$0, drm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
-      if ($$3.a(500) == 0) {
-         dxq $$4 = $$1.a_($$2.d());
-         if ($$4.a(awp.w) || $$4.a(dkg.aR)) {
-            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awa.tc, awb.e, 1.0F, 1.0F, false);
-         }
-      }
+   public dym a(dym $$0, dpv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected boolean e_(dxq $$0) {
+   public boolean a(dym $$0, dbn $$1) {
+      return this.a($$0, $$1, c) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.g.apply($$0);
+   }
+
+   @Override
+   public double b() {
+      return 3.0;
+   }
+
+   @Override
+   public dzm c() {
+      return c;
+   }
+
+   @Override
+   public dym a(dbn $$0) {
+      return this.a($$0, this, c, b);
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
       return true;
    }
 
    @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      return this.b($$1, $$2);
-   }
-
-   private boolean b(dgf $$0, ji $$1) {
-      ji $$2 = $$1.a(jn.b);
-      dxq $$3 = $$0.a_($$2);
-      return dpi.a($$0, jn.b, $$2, $$3) || $$3.a(dkg.ua);
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if (!this.b($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
-   }
-
-   @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (!this.b($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dhc $$0, ji $$1, dxq $$2) {
-      return this.o($$0.a_(this.a($$0, $$1).e()));
-   }
-
-   private boolean o(dxq $$0) {
-      return $$0.l();
-   }
-
-   public ji a(dgf $$0, ji $$1) {
-      ji.a $$2 = $$1.k();
-
-      dxq $$3;
-      do {
-         $$2.c(jn.a);
-         $$3 = $$0.a_($$2);
-      } while ($$3.a(this));
-
-      return $$2.a(jn.b).j();
-   }
-
-   @Override
-   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
       return true;
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
-      ji $$4 = this.a($$0, $$2).e();
-      if (this.o($$0.a_($$4))) {
-         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      int $$4 = $$3.c(c);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.b(c, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cxy(this));
       }
    }
 }

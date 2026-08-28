@@ -1,46 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiw implements eiy {
-   public static final Codec<eiw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bsd.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bsd.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bsd.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bsb.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bsb.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, eiw::new)
-   );
-   public final int b;
-   public final bsd c;
-   public final bsd d;
-   public final int e;
-   public final int f;
-   public final bsd g;
-   public final bsb h;
-   public final bsb i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class eiw extends ehr<ejq> {
+   public eiw(Codec<ejq> $$0) {
+      super($$0);
+   }
 
-   public eiw(int $$0, bsd $$1, bsd $$2, int $$3, int $$4, bsd $$5, bsb $$6, bsb $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(eht<ejq> $$0) {
+      int $$1 = 0;
+      azs $$2 = $$0.d();
+      dio $$3 = $$0.b();
+      jj $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(eel.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         jj $$10 = new jj($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dym $$11 = dkw.nx.m().b(drw.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dkw.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
+
+      return $$1 > 0;
    }
 }

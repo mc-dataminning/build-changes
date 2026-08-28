@@ -1,19 +1,20 @@
-public class cxz extends cyt {
-   public cxz(dke $$0, dke $$1, cxd.a $$2) {
-      super($$0, $$1, jn.a, $$2);
-   }
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   @Override
-   public wp a(cxh $$0) {
-      dae $$1 = $$0.a(kv.ai);
-      return (wp)($$1 != null && $$1.c().isPresent() ? wp.a(this.m + ".named", $$1.c().get()) : super.a($$0));
-   }
-
-   @Override
-   public void l(cxh $$0) {
-      dae $$1 = $$0.a(kv.ai);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(kv.ai, $$1x), dwh.a);
+public class cxz {
+   private static final Strategy<? super cxy> a = new Strategy<cxy>() {
+      public int a(@Nullable cxy $$0) {
+         return cxy.b($$0);
       }
+
+      public boolean a(@Nullable cxy $$0, @Nullable cxy $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && cxy.c($$0, $$1);
+      }
+   };
+
+   public static Set<cxy> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

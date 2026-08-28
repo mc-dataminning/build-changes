@@ -1,19 +1,41 @@
-public class bnv extends bnr {
-   private final bns c;
-   private final bnu d;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bnv(int $$0, bns $$1, bnu $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class bnv extends bkj {
+   public bnv(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public bnv(int $$0, bns $$1, bnu $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   protected void a() {
-      this.c.a(new acl((long[])this.b.clone(), this.d));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         biq.z,
+         () -> DSL.or(
+               DSL.or(DSL.constType(DSL.string()), DSL.list(biq.z.in($$0))),
+               DSL.optionalFields(
+                  "extra",
+                  DSL.list(biq.z.in($$0)),
+                  "separator",
+                  biq.z.in($$0),
+                  "hover_event",
+                  DSL.taggedChoice(
+                     "action",
+                     DSL.string(),
+                     Map.of(
+                        "show_text",
+                        DSL.optionalFields("value", biq.z.in($$0)),
+                        "show_item",
+                        biq.t.in($$0),
+                        "show_entity",
+                        DSL.optionalFields("id", biq.B.in($$0), "name", biq.z.in($$0))
+                     )
+                  )
+               )
+            )
+      );
    }
 }

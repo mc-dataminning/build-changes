@@ -1,72 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.BitSet;
 
-public class eby<T extends ebu> {
-   private static final Logger a = LogUtils.getLogger();
-   private final axr<T> b;
-   private ecj c;
+public class eby {
+   private final BitSet a = new BitSet();
 
-   public eby(Class<T> $$0, ecj $$1) {
-      this.c = $$1;
-      this.b = new axr<>($$0);
+   public void a(int $$0, int $$1) {
+      this.a.set($$0, $$0 + $$1);
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   public void b(int $$0, int $$1) {
+      this.a.clear($$0, $$0 + $$1);
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
+   public int a(int $$0) {
+      int $$1 = 0;
 
-   public axl.a a(fbs $$0, axl<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cQ().c($$0) && $$1.accept($$2).a()) {
-            return axl.a.b;
-         }
-      }
-
-      return axl.a.a;
-   }
-
-   public <U extends T> axl.a a(ecb<T, U> $$0, fbs $$1, axl<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return axl.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cQ().c($$1) && $$2.accept($$5).a()) {
-               return axl.a.b;
-            }
+      while (true) {
+         int $$2 = this.a.nextClearBit($$1);
+         int $$3 = this.a.nextSetBit($$2);
+         if ($$3 == -1 || $$3 - $$2 >= $$0) {
+            this.a($$2, $$0);
+            return $$2;
          }
 
-         return axl.a.a;
+         $$1 = $$3;
       }
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public ecj c() {
-      return this.c;
-   }
-
-   public ecj a(ecj $$0) {
-      ecj $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @bag
-   public int d() {
-      return this.b.size();
+   @VisibleForTesting
+   public IntSet a() {
+      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
    }
 }

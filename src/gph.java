@@ -1,14 +1,55 @@
-public class gph implements gpj<duq> {
-   public static final hhy a = new hhy(hfq.d, aku.b("entity/bell/bell_body"));
-   private final gce b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-   public gph(gpk.a $$0) {
-      this.b = new gce($$0.a(ggb.A));
+public record gph(@Nullable jo b, int c, String d, gpj e) {
+   public static final int a = -1;
+
+   @Nullable
+   public jo a() {
+      return this.b;
    }
 
-   public void a(duq $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
-      fgv $$6 = a.a($$3, gnh::d);
-      this.b.a($$0, $$1);
-      this.b.a($$2, $$6, $$4, $$5);
+   public int b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public gpj d() {
+      return this.e;
+   }
+
+   protected static class a implements JsonDeserializer<gph> {
+      private static final int a = -1;
+
+      public gph a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         jo $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         gpj $$7 = (gpj)$$2.deserialize($$3, gpj.class);
+         return new gph($$4, $$5, $$6, $$7);
+      }
+
+      protected int a(JsonObject $$0) {
+         return aza.a($$0, "tintindex", -1);
+      }
+
+      private String b(JsonObject $$0) {
+         return aza.i($$0, "texture");
+      }
+
+      @Nullable
+      private jo c(JsonObject $$0) {
+         String $$1 = aza.a($$0, "cullface", "");
+         return jo.a($$1);
+      }
    }
 }

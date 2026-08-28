@@ -1,25 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public interface dkx {
+   boolean a(dhs var1, jj var2, dym var3);
 
-public class dkx extends dma {
-   public static final MapCodec<dkx> a = b(dkx::new);
-   private static final fcr[] b = dke.a(7, $$0 -> dke.b(16.0, 0.0, (double)(2 + $$0)));
+   boolean a(dhp var1, azs var2, jj var3, dym var4);
 
-   @Override
-   public MapCodec<dkx> a() {
-      return a;
+   void a(arn var1, azs var2, jj var3, dym var4);
+
+   default jj a(jj $$0) {
+      return switch (this.am_()) {
+         case a -> $$0.d();
+         case b -> $$0;
+      };
    }
 
-   public dkx(dxp.d $$0) {
-      super($$0);
+   default dkx.a am_() {
+      return dkx.a.b;
    }
 
-   @Override
-   protected dgy d() {
-      return cxl.vg;
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return b[this.h($$0)];
+   public static enum a {
+      a,
+      b;
    }
 }

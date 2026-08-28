@@ -1,200 +1,138 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
 import java.time.Instant;
-import java.util.Deque;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class ghs {
-   private static final wp a = wp.c("chat.validation_error").a(n.m, n.u);
-   private final fmg b;
-   private final Deque<ghs.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+public class ghs implements gim {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cqk>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
 
-   public ghs(fmg $$0) {
-      this.b = $$0;
+   public ghs(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (af.c() >= this.e + this.d) {
-            ghs.a $$0 = this.c.poll();
+   @Override
+   public CompletableFuture<Optional<cqk>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
+   }
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cqk::a).orElse(true) : false;
+   }
+
+   private CompletableFuture<Optional<cqk>> a(Optional<cqk> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!ab.aU) {
+               this.a(null);
+            }
+
+            return $$0;
+         } else {
+            try {
+               cqk $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (ayi | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
             }
          }
-      }
+      }, af.j());
    }
 
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(ghs.a::a);
-         this.c.clear();
-      }
-
-      this.d = $$1;
-   }
-
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(ghs.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xb $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && af.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable xb $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new ghs.a($$0, $$1));
+   private Optional<cqk> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
       } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(xf $$0, GameProfile $$1, wl.a $$2) {
-      boolean $$3 = this.b.n.aj().c();
-      xf $$4 = $$3 ? $$0.a() : $$0;
-      wp $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         ggz $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
-   }
-
-   public void a(UUID $$0, wl.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            wp $$2 = $$1.a(a);
-            this.b.m.d().a($$2, null, fma.d());
-            this.e = af.c();
-            return true;
-         }
-      });
-   }
-
-   public void a(wp $$0, wl.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         wp $$3 = $$1.a($$0);
-         this.b.m.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = af.c();
-         return true;
-      });
-   }
-
-   private boolean a(wl.a $$0, xf $$1, wp $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      ghu $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fma $$7 = $$6.a($$1);
-         xb $$8 = $$1.l();
-         wt $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.m.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            wp $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.m.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cqk.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
             }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
          }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = af.c();
-         return true;
-      } else {
-         return false;
       }
    }
 
-   private void a(wl.a $$0, wp $$1) {
-      this.b.aY().a($$0.b($$1));
-   }
+   private void a(@Nullable cqk $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
 
-   private ghu a(xf $$0, wp $$1, Instant $$2) {
-      return this.a($$0.g()) ? ghu.a : ghu.a($$0, $$1, $$2);
-   }
-
-   private void a(xf $$0, wl.a $$1, GameProfile $$2, ghu $$3) {
-      ght $$4 = this.b.ba().b();
-      $$4.a(ghw.a($$2, $$0, $$3));
-   }
-
-   private void a(wp $$0, Instant $$1) {
-      ght $$2 = this.b.ba().b();
-      $$2.a(ghw.a($$0, $$1));
-   }
-
-   public void a(wp $$0, boolean $$1) {
-      if (!this.b.n.ah().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.m.a($$0, false);
-         } else {
-            this.b.m.d().a($$0);
-            this.a($$0, Instant.now());
+      if ($$0 != null) {
+         if (ab.aU) {
+            cqk.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
          }
-
-         this.b.aY().b($$0);
       }
    }
 
-   private UUID a(wp $$0) {
-      String $$1 = azu.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? af.e : this.b.aN().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.t != null) {
-         UUID $$1 = this.b.t.gk().getId();
-         return $$1.equals($$0);
+   @Nullable
+   private cqk a(UserApiService $$0) throws ayi, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cql.a $$2 = a($$1);
+         return new cqk(ayh.a($$1.keyPair().privateKey()), new cql($$2), Instant.parse($$1.refreshedAfter()));
       } else {
-         return false;
+         return null;
       }
    }
 
-   static record a(@Nullable xb a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public xb b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
+   private static cql.a a(KeyPairResponse $$0) throws ayi {
+      KeyPair $$1 = $$0.keyPair();
+      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = ayh.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cql.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new ayi(var5);
+         }
+      } else {
+         throw new ayi(new MissingException("Missing public key"));
       }
    }
 }

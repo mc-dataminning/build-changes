@@ -1,3 +1,4 @@
-public class hbm extends gzj {
-   public final hcn a = new hcn();
+public class hbm extends hak {
+   public float a;
+   public float b;
 }

@@ -1,25 +1,44 @@
-import java.util.Arrays;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public class fyo extends fym {
-   private static final wp a = wp.c("options.sounds.title");
+public class fyo implements fyr {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   private static fmj<?>[] a(fmk $$0) {
-      return new fmj[]{$$0.Z(), $$0.aa()};
-   }
-
-   public fyo(fvi $$0, fmk $$1) {
-      super($$0, $$1, a);
+   public fyo(fyo.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.c.b(awb.a));
-      this.d.a(this.H());
-      this.d.a(this.c.aw());
-      this.d.a(a(this.c));
+   public int a(fpx $$0) {
+      return this.c.size() * 12 + 2;
    }
 
-   private fmj<?>[] H() {
-      return Arrays.stream(awb.values()).filter($$0 -> $$0 != awb.a).map($$0 -> this.c.b($$0)).toArray(fmj[]::new);
+   @Override
+   public int b(fpx $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(fpx $$0, int $$1, int $$2, int $$3, int $$4, fpz $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         frm.a($$5, fnd.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
+      }
+   }
+
+   public static record a(List<ProfileResult> a) implements cvu {
    }
 }

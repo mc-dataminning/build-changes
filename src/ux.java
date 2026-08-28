@@ -1,36 +1,27 @@
-import java.util.HashMap;
-import java.util.Map;
+public interface ux {
+   void a(ur var1);
 
-public record ux(int a, Map<String, up<?>> b, Map<String, ux> c) {
-   private ux(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
-   }
+   void a(tu var1);
 
-   public static ux a() {
-      return new ux(1);
-   }
+   void a(uo var1);
 
-   public void a(uw $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new ux(this.a + 1)).a($$0);
-      } else {
-         this.b.put($$0.c(), $$0.b());
-      }
-   }
+   void a(ub var1);
 
-   public boolean a(up<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
-   }
+   void a(ue var1);
 
-   public int b() {
-      return this.a;
-   }
+   void a(tz var1);
 
-   public Map<String, up<?>> c() {
-      return this.b;
-   }
+   void a(tx var1);
 
-   public Map<String, ux> d() {
-      return this.c;
-   }
+   void a(tt var1);
+
+   void a(ua var1);
+
+   void a(ud var1);
+
+   void a(uc var1);
+
+   void a(tw var1);
+
+   void a(ty var1);
 }

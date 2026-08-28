@@ -1,53 +1,35 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
 
-public record btr(String d, bto e, float f, btn g, btt h) {
-   public static final Codec<btr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(btr::a),
-               bto.d.fieldOf("scaling").forGetter(btr::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(btr::c),
-               btn.g.optionalFieldOf("effects", btn.a).forGetter(btr::d),
-               btt.d.optionalFieldOf("death_message_type", btt.a).forGetter(btr::e)
-            )
-            .apply($$0, btr::new)
-   );
-   public static final Codec<jr<btr>> b = akr.a(mc.s);
-   public static final yn<wa, jr<btr>> c = yl.b(mc.s);
+public record btr(cv d) {
+   public static final btr a = new btr(cv.a.a().b());
+   public static final Codec<btr> b = cv.a.xmap(btr::new, btr::a);
+   public static final String c = "lock";
 
-   public btr(String $$0, bto $$1, float $$2) {
-      this($$0, $$1, $$2, btn.a, btt.a);
+   public boolean a(cxy $$0) {
+      return this.d.a($$0);
    }
 
-   public btr(String $$0, bto $$1, float $$2, btn $$3) {
-      this($$0, $$1, $$2, $$3, btt.a);
+   public void a(tw $$0, ju.a $$1) {
+      if (this != a) {
+         DataResult<ut> $$2 = b.encode(this, $$1.a(uk.a), new tw());
+         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+      }
    }
 
-   public btr(String $$0, float $$1, btn $$2) {
-      this($$0, bto.b, $$1, $$2);
+   public static btr b(tw $$0, ju.a $$1) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<btr, ut>> $$2 = b.decode($$1.a(uk.a), $$0.c("lock"));
+         if ($$2.isSuccess()) {
+            return (btr)((Pair)$$2.getOrThrow()).getFirst();
+         }
+      }
+
+      return a;
    }
 
-   public btr(String $$0, float $$1) {
-      this($$0, bto.b, $$1);
-   }
-
-   public String a() {
+   public cv a() {
       return this.d;
-   }
-
-   public bto b() {
-      return this.e;
-   }
-
-   public float c() {
-      return this.f;
-   }
-
-   public btn d() {
-      return this.g;
-   }
-
-   public btt e() {
-      return this.h;
    }
 }

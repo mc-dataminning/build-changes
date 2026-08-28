@@ -1,46 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dsb extends dru {
-   protected dsb(dxp.d $$0) {
-      super($$0);
-   }
-
-   private static boolean b(dxq $$0, dhc $$1, ji $$2) {
-      ji $$3 = $$2.d();
-      dxq $$4 = $$1.a_($$3);
-      if ($$4.a(dkg.ea) && $$4.c(drt.c) == 1) {
-         return true;
-      } else if ($$4.y().e() == 8) {
-         return false;
-      } else {
-         int $$5 = etn.a($$0, $$4, jn.b, $$4.g());
-         return $$5 < 15;
-      }
+public interface dsb extends dlc, dpp {
+   @Override
+   default boolean a(@Nullable bwr $$0, dgv $$1, jj $$2, dym $$3, eus $$4) {
+      return $$4 == euu.c;
    }
 
    @Override
-   protected abstract MapCodec<? extends dsb> a();
-
-   private static boolean c(dxq $$0, dhc $$1, ji $$2) {
-      ji $$3 = $$2.d();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awv.a);
-   }
-
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dkg.j.m());
-      } else {
-         if ($$1.A($$2.d()) >= 9) {
-            dxq $$4 = this.m();
-
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               ji $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dkg.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.b(c, Boolean.valueOf(o($$1.a_($$6.d())))));
-               }
-            }
+   default boolean a(dhq $$0, jj $$1, dym $$2, eut $$3) {
+      if (!$$2.c(dzc.I) && $$3.a() == euu.c) {
+         if (!$$0.w_()) {
+            $$0.a($$1, $$2.b(dzc.I, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
          }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   default cxy a(@Nullable bwr $$0, dhq $$1, jj $$2, dym $$3) {
+      if ($$3.c(dzc.I)) {
+         $$1.a($$2, $$3.b(dzc.I, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cxy(cyc.rk);
+      } else {
+         return cxy.k;
+      }
+   }
+
+   @Override
+   default Optional<awj> ao_() {
+      return euu.c.j();
    }
 }

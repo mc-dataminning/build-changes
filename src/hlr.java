@@ -1,69 +1,56 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class hlr implements hlx {
-   private static final int a = 1200;
-   private static final wp b = wp.c("tutorial.craft_planks.title");
-   private static final wp c = wp.c("tutorial.craft_planks.description");
-   private final hlw d;
-   @Nullable
-   private fsc e;
-   private int f;
+public class hlr {
+   private final avd a;
+   private final Map<ald, CompletableFuture<fff>> b = Maps.newHashMap();
 
-   public hlr(hlw $$0) {
-      this.d = $$0;
+   public hlr(avd $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hly.f);
-      } else {
-         fmg $$0 = this.d.e();
-         if (this.f == 1) {
-            glv $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gl().a(awy.b)) {
-                  this.d.a(hly.f);
-                  return;
+   public CompletableFuture<fff> a(ald $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               fff var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  hll $$2 = new hln($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new fff($$3, $$2.a());
                }
 
-               if (a($$1, awy.b)) {
-                  this.d.a(hly.f);
-                  return;
-               }
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
             }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fsc($$0.h, fsc.a.e, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+         }, af.j()));
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(cxh $$0) {
-      if ($$0.a(awy.b)) {
-         this.d.a(hly.f);
-      }
-   }
-
-   public static boolean a(glv $$0, axf<cxd> $$1) {
-      for (jr<cxd> $$2 : mb.g.c($$1)) {
-         if ($$0.l().a(awk.b.b($$2.a())) > 0) {
-            return true;
+   public CompletableFuture<hli> a(ald $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (hli)($$1 ? new hlo(hln::new, $$2) : new hln($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
          }
-      }
+      }, af.j());
+   }
 
-      return false;
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(fff::b));
+      this.b.clear();
+   }
+
+   public CompletableFuture<?> a(Collection<hkm> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

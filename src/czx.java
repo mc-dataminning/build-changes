@@ -1,150 +1,52 @@
-import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public final class czx {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final czx a = new czx(ka.a());
-   public static final Codec<czx> b = czx.a.a.sizeLimitedListOf(256).xmap(czx::b, czx::f);
-   public static final yn<wa, czx> c = cxh.h.a(yl.c(256)).a(czx::new, $$0 -> $$0.f);
-   private final ka<cxh> f;
-   private final int g;
+public record czx(Map<String, String> d) {
+   public static final czx a = new czx(Map.of());
+   public static final Codec<czx> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(czx::new, czx::b);
+   private static final yt<ByteBuf, Map<String, String>> e = yr.a(Object2ObjectOpenHashMap::new, yr.o, yr.o);
+   public static final yt<ByteBuf, czx> c = e.a(czx::new, czx::b);
 
-   private czx(ka<cxh> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
-      } else {
-         this.f = $$0;
-         this.g = cxh.a($$0);
-      }
+   public <T extends Comparable<T>> czx a(dzp<T> $$0, T $$1) {
+      return new czx(af.a(this.d, $$0.f(), $$0.b($$1)));
    }
 
-   private czx(int $$0) {
-      this(ka.a($$0, cxh.k));
+   public <T extends Comparable<T>> czx a(dzp<T> $$0, dym $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   private czx(List<cxh> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
+   @Nullable
+   public <T extends Comparable<T>> T a(dzp<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   private static czx b(List<czx.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(czx.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         czx $$2 = new czx($$1.getAsInt() + 1);
+   public dym a(dym $$0) {
+      dyn<dku, dym> $$1 = $$0.b().l();
 
-         for (czx.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
-         }
-
-         return $$2;
-      }
-   }
-
-   public static czx a(List<cxh> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         czx $$2 = new czx($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).v());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cxh> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).f()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<czx.a> f() {
-      List<czx.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cxh $$2 = this.f.get($$1);
-         if (!$$2.f()) {
-            $$0.add(new czx.a($$1, $$2));
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dzp<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
       }
 
       return $$0;
    }
 
-   public void a(ka<cxh> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cxh $$2 = $$1 < this.f.size() ? this.f.get($$1) : cxh.k;
-         $$0.set($$1, $$2.v());
-      }
+   private static <T extends Comparable<T>> dym a(dym $$0, dzp<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
    }
 
-   public cxh a() {
-      return this.f.isEmpty() ? cxh.k : this.f.get(0).v();
+   public boolean a() {
+      return this.d.isEmpty();
    }
 
-   public Stream<cxh> b() {
-      return this.f.stream().map(cxh::v);
-   }
-
-   public Stream<cxh> c() {
-      return this.f.stream().filter($$0 -> !$$0.f()).map(cxh::v);
-   }
-
-   public Iterable<cxh> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.f());
-   }
-
-   public Iterable<cxh> e() {
-      return Iterables.transform(this.d(), cxh::v);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof czx $$1 && cxh.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.g;
-   }
-
-   static record a(int b, cxh c) {
-      public static final Codec<czx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(czx.a::a), cxh.b.fieldOf("item").forGetter(czx.a::b)).apply($$0, czx.a::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public cxh b() {
-         return this.c;
-      }
+   public Map<String, String> b() {
+      return this.d;
    }
 }

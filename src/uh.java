@@ -1,5 +1,5 @@
-public class uh extends z {
-   public uh(o $$0) {
+public class uh extends RuntimeException {
+   public uh(String $$0) {
       super($$0);
    }
 }

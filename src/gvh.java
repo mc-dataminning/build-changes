@@ -1,36 +1,32 @@
-public class gvh extends guj<cnb, hbg, gey> {
-   public static final aku a = aku.b("textures/entity/slime/slime.png");
+public class gvh extends gsz<ckq, hbl, get> {
+   private static final ald a = ald.b("textures/entity/llama/creamy.png");
+   private static final ald j = ald.b("textures/entity/llama/white.png");
+   private static final ald k = ald.b("textures/entity/llama/brown.png");
+   private static final ald l = ald.b("textures/entity/llama/gray.png");
 
-   public gvh(gtd.a $$0) {
-      super($$0, new gey($$0.a(ggb.cQ)), 0.25F);
-      this.a(new gxw(this, $$0.f()));
+   public gvh(guf.a $$0, ghb $$1, ghb $$2) {
+      super($$0, new get($$0.a($$1)), new get($$0.a($$2)), 0.7F);
+      this.a(new gyn(this, $$0.f(), $$0.h()));
    }
 
-   protected float a(hbg $$0) {
-      return (float)$$0.b * 0.25F;
+   public ald a(hbl $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> j;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   protected void a(hbg $$0, fgr $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   public hbl b() {
+      return new hbl();
    }
 
-   public aku b(hbg $$0) {
-      return a;
-   }
-
-   public hbg b() {
-      return new hbg();
-   }
-
-   public void a(cnb $$0, hbg $$1, float $$2) {
+   public void a(ckq $$0, hbl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = ayz.h($$2, $$0.bF, $$0.bE);
-      $$1.b = $$0.gq();
+      $$1.a = $$0.gD();
+      $$1.b = !$$0.n_() && $$0.t();
+      $$1.c = $$0.aj();
+      $$1.d = $$0.gt();
    }
 }

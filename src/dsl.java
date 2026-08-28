@@ -1,26 +1,33 @@
-public enum dsl {
-   a {
-      @Override
-      public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
-         return dke.a($$0.h($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final fcr d = dke.b(2.0, 0.0, 10.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
-         return !fco.c($$0.h($$1, $$2).a($$3), this.d, fcb.c);
-      }
-   },
-   c {
-      private final fcr d = fco.a(fco.b(), dke.b(12.0, 0.0, 16.0), fcb.e);
+public class dsl extends dkh {
+   public static final MapCodec<dsl> b = b(dsl::new);
 
-      @Override
-      public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
-         return !fco.c($$0.h($$1, $$2).a($$3), this.d, fcb.c);
-      }
-   };
+   @Override
+   public MapCodec<dsl> a() {
+      return b;
+   }
 
-   public abstract boolean a(dxq var1, dgf var2, ji var3, jn var4);
+   public dsl(dyl.d $$0) {
+      super($$0, 2.0F);
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return this.a($$0, $$1, $$3) ? this.m() : dkw.a.m();
+   }
+
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return o($$1.a_($$2.e()));
+   }
+
+   public static boolean o(dym $$0) {
+      return $$0.a(awz.aV);
+   }
+
+   @Override
+   protected boolean g(dym $$0) {
+      return true;
+   }
 }

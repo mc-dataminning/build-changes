@@ -1,45 +1,27 @@
 import java.util.List;
 
-public class ig<T, P> implements hw<T> {
-   private final ig.a<T, P> a;
-   private final List<P> b;
-   private final ht<T> c;
-   private int d;
+public class ig<T extends ez<T>> implements ic<T> {
+   private final io<T> a;
+   private final eu b;
+   private final boolean c;
 
-   private ig(ig.a<T, P> $$0, List<P> $$1, hz $$2) {
+   public ig(io<T> $$0, eu $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = new ht<>($$2, this);
+      this.c = $$2;
    }
 
-   @Override
-   public void execute(hx<T> $$0, hz $$1) {
-      P $$2 = this.b.get(this.d);
-      $$0.a(this.a.create($$1, $$2));
-      if (++this.d < this.b.size()) {
-         $$0.a(this.c);
+   public void a(T $$0, hy<T> $$1, ia $$2) {
+      $$1.e();
+      List<ic<T>> $$3 = this.a.b();
+      ib $$4 = $$1.b();
+      if ($$4 != null) {
+         $$4.a($$2.c(), this.a.a(), this.a.b().size());
       }
-   }
 
-   public static <T, P> void a(hx<T> $$0, hz $$1, List<P> $$2, ig.a<T, P> $$3) {
-      int $$4 = $$2.size();
-      switch ($$4) {
-         case 0:
-            break;
-         case 1:
-            $$0.a($$3.create($$1, $$2.get(0)));
-            break;
-         case 2:
-            $$0.a($$3.create($$1, $$2.get(0)));
-            $$0.a($$3.create($$1, $$2.get(1)));
-            break;
-         default:
-            $$0.a((new ig<>($$3, $$2, $$1)).c);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a<T, P> {
-      ht<T> create(hz var1, P var2);
+      int $$5 = $$2.c() + 1;
+      ia.a $$6 = this.c ? $$2.e() : $$1.b($$5);
+      ia $$7 = new ia($$5, this.b, $$6);
+      ih.a($$1, $$7, $$3, ($$1x, $$2x) -> new hu<>($$1x, $$2x.bind($$0)));
    }
 }

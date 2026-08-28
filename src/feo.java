@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface feo<T> {
+   void a(fem<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fdz
-@fdy
-interface feo {
+   boolean a(jj var1, T var2);
+
+   int a();
 }

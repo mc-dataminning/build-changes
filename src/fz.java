@@ -10,15 +10,15 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class fz<T> implements ArgumentType<jr<T>> {
+public class fz<T> implements ArgumentType<js<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("argument.resource_or_id.invalid"));
-   private final jt.a d;
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wv.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.c("argument.resource_or_id.invalid"));
+   private final ju.a d;
    private final boolean e;
-   private final Codec<jr<T>> f;
+   private final Codec<js<T>> f;
 
-   protected fz(et $$0, akt<ke<T>> $$1, Codec<jr<T>> $$2) {
+   protected fz(et $$0, alc<kf<T>> $$1, Codec<js<T>> $$2) {
       this.d = $$0;
       this.e = $$0.a($$1).isPresent();
       this.f = $$2;
@@ -28,7 +28,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.c($$0);
    }
 
-   public static jr<ewt> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static js<exq> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.a($$0);
    }
 
-   public static jr<eyc> b(CommandContext<ex> $$0, String $$1) {
+   public static js<eyz> b(CommandContext<ex> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,36 +44,36 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return new fz.b($$0);
    }
 
-   public static jr<ezx> c(CommandContext<ex> $$0, String $$1) {
+   public static js<fau> c(CommandContext<ex> $$0, String $$1) {
       return d($$0, $$1);
    }
 
-   private static <T> jr<T> d(CommandContext<ex> $$0, String $$1) {
-      return (jr<T>)$$0.getArgument($$1, jr.class);
+   private static <T> js<T> d(CommandContext<ex> $$0, String $$1) {
+      return (js<T>)$$0.getArgument($$1, js.class);
    }
 
    @Nullable
-   public jr<T> a(StringReader $$0) throws CommandSyntaxException {
-      un $$1 = b($$0);
+   public js<T> a(StringReader $$0) throws CommandSyntaxException {
+      ut $$1 = b($$0);
       if (!this.e) {
          return null;
       } else {
-         aks<un> $$2 = this.d.a(ue.a);
-         return (jr<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+         alb<ut> $$2 = this.d.a(uk.a);
+         return (js<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
       }
    }
 
    @VisibleForTesting
-   static un b(StringReader $$0) throws CommandSyntaxException {
+   static ut b(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      un $$2 = new uo($$0).d();
+      ut $$2 = new uu($$0).d();
       if (c($$0)) {
          return $$2;
       } else {
          $$0.setCursor($$1);
-         aku $$3 = aku.a($$0);
+         ald $$3 = ald.a($$0);
          if (c($$0)) {
-            return ul.a($$3.toString());
+            return ur.a($$3.toString());
          } else {
             $$0.setCursor($$1);
             throw c.createWithContext($$0);
@@ -89,21 +89,21 @@ public class fz<T> implements ArgumentType<jr<T>> {
       return b;
    }
 
-   public static class a extends fz<eyc> {
+   public static class a extends fz<eyz> {
       protected a(et $$0) {
-         super($$0, mc.bj, eye.d);
+         super($$0, me.bo, ezb.d);
       }
    }
 
-   public static class b extends fz<ezx> {
+   public static class b extends fz<fau> {
       protected b(et $$0) {
-         super($$0, mc.bk, ezx.f);
+         super($$0, me.bp, fau.f);
       }
    }
 
-   public static class c extends fz<ewt> {
+   public static class c extends fz<exq> {
       protected c(et $$0) {
-         super($$0, mc.bi, ewt.e);
+         super($$0, me.bn, exq.e);
       }
    }
 }

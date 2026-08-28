@@ -1,28 +1,102 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-public class eqj extends eoj {
-   public static final MapCodec<eqj> d = a(eqj::new);
+public class eqj {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final eqq.a e;
 
-   public eqj(eoj.c $$0) {
-      super($$0);
+   public eqj(int $$0, int $$1, int $$2, int $$3, eqq.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public eqq.a e() {
+      return this.e;
+   }
+
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> eqj a(Dynamic<T> $$0) {
+      return new eqj(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         eqq.a.a($$0.get("dest_proj").asString(""))
+      );
    }
 
    @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      return a($$0, edo.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(epb $$0, eoj.a $$1) {
-      dgg $$2 = $$1.h();
-      een $$3 = $$1.f();
-      ji $$4 = new ji($$2.d(), 90, $$2.e());
-      dqw $$5 = dqw.a($$3);
-      eqi.a($$1.e(), $$4, $$5, $$0, $$3);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eqj $$1 = (eqj)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public eos<?> e() {
-      return eos.e;
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

@@ -1,91 +1,99 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public abstract class dmb extends dke implements drl {
-   public static final dyh a = dpw.b;
-   public static final dyh b = dpw.c;
-   public static final dyh c = dpw.d;
-   public static final dyh d = dpw.e;
-   public static final dyh e = dyg.I;
-   public static final Map<jn, dyh> f = dpw.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(af.a());
-   private final Function<dxq, fcr> g;
-   private final Function<dxq, fcr> h;
+public class dmb extends dot implements dkx {
+   public static final MapCodec<dmb> a = b(dmb::new);
+   public static final int b = 2;
+   public static final dzm c = dzc.au;
+   private static final List<Map<jo, fdo>> d = IntStream.rangeClosed(0, 2)
+      .mapToObj($$0 -> fdl.c(dku.b((double)(4 + $$0 * 2), (double)(7 - $$0 * 2), 12.0).a(0.0, 0.0, (double)($$0 - 5) / 16.0).d()))
+      .toList();
 
-   protected dmb(float $$0, float $$1, float $$2, float $$3, float $$4, dxp.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$4, $$2, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+   @Override
+   public MapCodec<dmb> a() {
+      return a;
+   }
+
+   public dmb(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(e, jo.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dmb> a();
+   protected boolean f(dym $$0) {
+      return $$0.c(c) < 2;
+   }
 
-   protected Function<dxq, fcr> a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      fcr $$5 = dke.b((double)$$0, 0.0, (double)$$1);
-      Map<jn, fcr> $$6 = fco.c(dke.a((double)$$2, (double)$$3, (double)$$4, 0.0, 8.0));
-      return this.a($$2x -> {
-         fcr $$3x = $$5;
+   @Override
+   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if ($$1.A.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
+   }
 
-         for (Entry<jn, dyh> $$4x : f.entrySet()) {
-            if ($$2x.c($$4x.getValue())) {
-               $$3x = fco.a($$3x, $$6.get($$4x.getKey()));
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      dym $$3 = $$1.a_($$2.a($$0.c(e)));
+      return $$3.a(awz.B);
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return d.get($$0.c(c)).get($$0.c(e));
+   }
+
+   @Nullable
+   @Override
+   public dym a(dbn $$0) {
+      dym $$1 = this.m();
+      dhs $$2 = $$0.q();
+      jj $$3 = $$0.a();
+
+      for (jo $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(e, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
+      }
 
-         return $$3x;
-      }, new dyt[]{e});
+      return null;
    }
 
    @Override
-   protected boolean e_(dxq $$0) {
-      return !$$0.c(e);
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$4 == $$0.c(e) && !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.h.apply($$0);
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return $$2.c(c) < 2;
    }
 
    @Override
-   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.g.apply($$0);
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return true;
    }
 
    @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(e) ? etx.c.a(false) : super.b_($$0);
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
    }
 
    @Override
-   protected boolean a(dxq $$0, eul $$1) {
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(e, c);
+   }
+
+   @Override
+   protected boolean a(dym $$0, evi $$1) {
       return false;
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
-         case d:
-            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
-         case b:
-            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
-         case c:
-            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
-      }
    }
 }

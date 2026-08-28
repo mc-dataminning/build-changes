@@ -1,285 +1,65 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+public abstract class hkc extends hjy {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final cih n;
+   private boolean r;
 
-public class hkc extends MinecraftServer {
-   private static final Logger l = LogUtils.getLogger();
-   private static final int m = 2;
-   private final fmg n;
-   private boolean o = true;
-   private int p = -1;
-   @Nullable
-   private dgw q;
-   @Nullable
-   private hkf r;
-   @Nullable
-   private UUID s;
-   private int t = 0;
-
-   public hkc(Thread $$0, fmg $$1, ewc.c $$2, aua $$3, alt $$4, alp $$5, aro $$6) {
-      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.au(), $$5, $$6);
-      this.b($$1.Y());
-      this.c($$1.K());
-      this.a(new hkb(this, this.bb(), this.g));
-      this.n = $$1;
+   public hkc(cih $$0, awj $$1, awl $$2) {
+      super($$1, $$2, hkp.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dA());
+      this.g = (double)((float)$$0.dC());
+      this.h = (double)((float)$$0.dG());
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   public boolean e() {
-      l.info("Starting integrated minecraft server version {}", ab.b().c());
-      this.d(true);
-      this.f(true);
-      this.g(true);
-      this.V();
-      this.q_();
-      GameProfile $$0 = this.T();
-      String $$1 = this.aZ().e();
-      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
-      return true;
-   }
-
-   @Override
-   public boolean E() {
-      return this.o;
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      boolean $$1 = this.o;
-      this.o = fmg.Q().ai();
-      bpj $$2 = bpi.a();
-      if (!$$1 && this.o) {
-         $$2.a("autoSave");
-         l.info("Saving and pausing game...");
-         this.b(false, false, false);
-         $$2.c();
+   public void q() {
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         fnd.Q().ak().a((hkq)this.o());
+         this.r = true;
       }
 
-      boolean $$3 = fmg.Q().L() != null;
-      if ($$3 && this.o) {
-         this.b();
+      if (!this.n.dQ() && !this.r) {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
+         float $$1 = (float)this.n.dy().i();
+         if ($$1 >= 0.01F) {
+            this.e = azk.h(azk.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = azk.h(azk.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
+         } else {
+            this.e = 0.0F;
+            this.d = 0.0F;
+         }
       } else {
-         if ($$1 && !this.o) {
-            this.H();
-         }
-
-         super.a($$0);
-         int $$4 = Math.max(2, this.n.n.e().c());
-         if ($$4 != this.ag().p()) {
-            l.info("Changing view distance to {}, from {}", $$4, this.ag().p());
-            this.ag().a($$4);
-         }
-
-         int $$5 = Math.max(2, this.n.n.f().c());
-         if ($$5 != this.t) {
-            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
-            this.ag().b($$5);
-            this.t = $$5;
-         }
+         this.n();
       }
    }
 
-   protected bnt a() {
-      return this.n.aQ().l();
+   private float u() {
+      return this.n.n_() ? 1.1F : 0.7F;
    }
 
-   @Override
-   public boolean g() {
-      return true;
-   }
-
-   private void b() {
-      for (are $$0 : this.ag().t()) {
-         $$0.a(awk.l);
-      }
-   }
-
-   @Override
-   public boolean m() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   @Override
-   public Path D() {
-      return this.n.q.toPath();
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public int o() {
-      return 0;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public void a(o $$0) {
-      this.n.b($$0);
-   }
-
-   @Override
-   public ad a(ad $$0) {
-      $$0.a("Type", "Integrated Server (map_client.txt)");
-      $$0.a("Is Modded", () -> this.Q().b());
-      $$0.a("Launched Version", this.n::i);
-      return $$0;
-   }
-
-   @Override
-   public ayy Q() {
-      return fmg.e().a(super.Q());
-   }
-
-   @Override
-   public boolean a(@Nullable dgw $$0, boolean $$1, int $$2) {
-      try {
-         this.n.aU();
-         this.n.L().w();
-         this.ah().a(null, $$2);
-         l.info("Started serving on {}", $$2);
-         this.p = $$2;
-         this.r = new hkf(this.ae(), $$2 + "");
-         this.r.start();
-         this.q = $$0;
-         this.ag().b($$1);
-         int $$3 = this.c(this.n.t.gk());
-         this.n.t.a($$3);
-
-         for (are $$4 : this.ag().t()) {
-            this.aG().a($$4);
-         }
-
-         return true;
-      } catch (IOException var7) {
-         return false;
-      }
-   }
-
-   @Override
-   public void v() {
-      super.v();
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
-      }
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.h(() -> {
-         for (are $$1 : Lists.newArrayList(this.ag().t())) {
-            if (!$$1.cF().equals(this.s)) {
-               this.ag().c($$1);
-            }
-         }
-      });
-      super.a($$0);
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
-      }
+   private float v() {
+      return this.n.n_() ? 1.5F : 1.1F;
    }
 
    @Override
    public boolean r() {
-      return this.p > -1;
-   }
-
-   @Override
-   public int S() {
-      return this.p;
-   }
-
-   @Override
-   public void a(dgw $$0) {
-      super.a($$0);
-      this.q = null;
-   }
-
-   @Override
-   public boolean q() {
       return true;
    }
 
    @Override
-   public int k() {
-      return 2;
+   public boolean s() {
+      return !this.n.bb();
    }
 
-   @Override
-   public int l() {
-      return 2;
-   }
+   protected abstract hjy o();
 
-   public void a(UUID $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return this.T() != null && $$0.getName().equalsIgnoreCase(this.T().getName());
-   }
-
-   @Override
-   public int b(int $$0) {
-      return (int)(this.n.n.g().c() * (double)$$0);
-   }
-
-   @Override
-   public boolean aX() {
-      return this.n.n.ad;
-   }
-
-   @Nullable
-   @Override
-   public dgw bd() {
-      return this.r() && !this.r_() ? (dgw)MoreObjects.firstNonNull(this.q, this.j.k()) : null;
-   }
-
-   @Override
-   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
-      boolean $$3 = super.b($$0, $$1, $$2);
-      this.d();
-      return $$3;
-   }
-
-   private void d() {
-      if (this.f.b()) {
-         this.n.execute(() -> frz.a(this.n));
-      }
-   }
-
-   @Override
-   public void a(Throwable $$0, ebf $$1, dgg $$2) {
-      super.a($$0, $$1, $$2);
-      this.d();
-      this.n.execute(() -> frz.a(this.n, $$2));
-   }
-
-   @Override
-   public void b(Throwable $$0, ebf $$1, dgg $$2) {
-      super.b($$0, $$1, $$2);
-      this.d();
-      this.n.execute(() -> frz.b(this.n, $$2));
-   }
+   protected abstract boolean p();
 }

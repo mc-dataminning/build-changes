@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fox {
+   void a(cxu var1, hdk.b var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fox {
+   void a(cxu var1, cxu var2);
 }

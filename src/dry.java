@@ -1,42 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.function.Function;
 
-public class dry extends djq {
-   public static final MapCodec<dry> a = b(dry::new);
+public interface dry {
+   int d = 1;
+   int e = 4;
+   dzm f = dzc.V;
 
-   @Override
-   public MapCodec<dry> a() {
-      return a;
+   default Function<dym, fdo> a(dzk<jo> $$0, dzm $$1) {
+      Map<jo, fdo> $$2 = fdl.c(dku.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
+      return $$3 -> {
+         fdo $$4 = fdl.a();
+         jo $$5 = $$3.c($$0);
+         int $$6 = $$3.c($$1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$4 = fdl.a($$4, $$2.get($$5));
+            $$5 = $$5.i();
+         }
+
+         return $$4.b();
+      };
    }
 
-   protected dry(dxp.d $$0) {
-      super($$0);
+   default dzm c() {
+      return f;
    }
 
-   @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dwj($$0, $$1);
+   default double b() {
+      return 1.0;
    }
 
-   @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      return a($$2, duu.j, $$0.C ? dwj::a : dwj::b);
+   default boolean a(dym $$0, dbn $$1, dzm $$2) {
+      return !$$1.h() && $$1.n().a($$0.b().i()) && $$0.c($$2) < 4;
    }
 
-   @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, cxh $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dhu.a($$0, $$2, "SpawnData");
+   default dym a(dbn $$0, dku $$1, dzm $$2, dzk<jo> $$3) {
+      dym $$4 = $$0.q().a_($$0.a());
+      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
    }
 }

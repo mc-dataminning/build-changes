@@ -1,37 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dfr(aku e, jr<cxd> f, wp g, boolean h) {
-   public static final Codec<dfr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aku.a.fieldOf("asset_id").forGetter(dfr::a),
-               cxd.e.fieldOf("template_item").forGetter(dfr::b),
-               wr.a.fieldOf("description").forGetter(dfr::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dfr::d)
-            )
-            .apply($$0, dfr::new)
+public record dfr(jw<deh> c, bsv d) implements dfp {
+   public static final MapCodec<dfr> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kh.a(me.aS).fieldOf("enchantments").forGetter(dfr::b), bsv.c.fieldOf("cost").forGetter(dfr::c)).apply($$0, dfr::new)
    );
-   public static final yn<wa, dfr> b = yn.a(aku.b, dfr::a, cxd.f, dfr::b, wr.b, dfr::c, yl.b, dfr::d, dfr::new);
-   public static final Codec<jr<dfr>> c = akq.a(mc.bc, a);
-   public static final yn<wa, jr<dfr>> d = yl.a(mc.bc, b);
 
-   public wp a(jr<dfp> $$0) {
-      return this.g.f().c($$0.a().d().a());
+   @Override
+   public void a(cxy $$0, den.a $$1, azs $$2, bto $$3) {
+      for (dek $$5 : dej.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.b(), $$5.c());
+      }
    }
 
-   public aku a() {
-      return this.e;
+   @Override
+   public MapCodec<dfr> a() {
+      return b;
    }
 
-   public jr<cxd> b() {
-      return this.f;
+   public jw<deh> b() {
+      return this.c;
    }
 
-   public wp c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
+   public bsv c() {
+      return this.d;
    }
 }

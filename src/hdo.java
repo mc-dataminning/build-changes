@@ -1,25 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hdo(int b) implements hds {
-   public static final MapCodec<hdo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(hdo::b)).apply($$0, hdo::new));
+public class hdo implements hdk {
+   private final his a;
 
-   @Override
-   public float a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3) {
-      czp $$4 = $$0.a(kv.p);
-      if ($$4 != null) {
-         Float $$5 = $$4.a(this.b);
-         if ($$5 != null) {
-            return $$5;
-         }
-      }
-
-      return 0.0F;
+   public hdo(his $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public MapCodec<hdo> a() {
-      return a;
+   public void a(hdn $$0, cxy $$1, hdl $$2, cxw $$3, @Nullable ghz $$4, @Nullable bwr $$5, int $$6) {
+      $$0.a().a(this.a, got.i());
    }
 }

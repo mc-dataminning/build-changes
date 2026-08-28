@@ -1,35 +1,67 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record bsz(cv d) {
-   public static final bsz a = new bsz(cv.a.a().b());
-   public static final Codec<bsz> b = cv.a.xmap(bsz::new, bsz::a);
-   public static final String c = "lock";
-
-   public boolean a(cxh $$0) {
-      return this.d.a($$0);
-   }
-
-   public void a(tq $$0, jt.a $$1) {
-      if (this != a) {
-         DataResult<un> $$2 = b.encode(this, $$1.a(ue.a), new tq());
-         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
-      }
-   }
-
-   public static bsz b(tq $$0, jt.a $$1) {
-      if ($$0.b("lock", 10)) {
-         DataResult<Pair<bsz, un>> $$2 = b.decode($$1.a(ue.a), $$0.c("lock"));
-         if ($$2.isSuccess()) {
-            return (bsz)((Pair)$$2.getOrThrow()).getFirst();
+public class bsz extends bst {
+   public static final MapCodec<bsz> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, bsz::new)
+      )
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
          }
-      }
+      );
+   private final float b;
+   private final float d;
+   private final float e;
 
-      return a;
+   public static bsz a(float $$0, float $$1, float $$2) {
+      return new bsz($$0, $$1, $$2);
    }
 
-   public cv a() {
+   private bsz(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public float a(azs $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   }
+
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
       return this.d;
+   }
+
+   @Override
+   public bsu<?> c() {
+      return bsu.d;
+   }
+
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

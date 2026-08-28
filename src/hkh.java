@@ -1,10 +1,34 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class hkh extends hjy {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cnf r;
 
-public interface hkh extends Closeable {
-   AudioFormat a();
+   public hkh(cnf $$0) {
+      super(awk.lQ, awl.f, hkp.t());
+      this.r = $$0;
+      this.k = hkp.a.a;
+      this.i = true;
+      this.j = 0;
+   }
 
-   ByteBuffer a(int var1) throws IOException;
+   @Override
+   public boolean s() {
+      return !this.r.bb();
+   }
+
+   @Override
+   public void q() {
+      if (!this.r.dQ() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dA());
+         this.g = (double)((float)this.r.dC());
+         this.h = (double)((float)this.r.dG());
+         float $$0 = this.r.M(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
+   }
 }

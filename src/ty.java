@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ty extends ug {
-   private static final int b = 16;
-   public static final up<ty> a = new up.a<ty>() {
-      public ty a(DataInput $$0, tz $$1) throws IOException {
-         return ty.a(d($$0, $$1));
+public class ty implements ut {
+   private static final int c = 8;
+   public static final uv<ty> a = new uv<ty>() {
+      public ty a(DataInput $$0, uf $$1) {
+         $$1.b(8L);
+         return ty.b;
       }
 
       @Override
-      public uk.b a(DataInput $$0, uk $$1, tz $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static long d(DataInput $$0, tz $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readLong();
+      public uq.b a(DataInput $$0, uq $$1, uf $$2) {
+         $$2.b(8L);
+         return $$1.a();
       }
 
       @Override
-      public int c() {
-         return 8;
+      public void a(DataInput $$0, int $$1, uf $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, uf $$1) {
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "END";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
+         return "TAG_End";
       }
 
       @Override
@@ -39,34 +39,33 @@ public class ty extends ug {
          return true;
       }
    };
-   private final long c;
+   public static final ty b = new ty();
 
-   ty(long $$0) {
-      this.c = $$0;
-   }
-
-   public static ty a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? ty.a.a[(int)$$0 - -128] : new ty($$0);
+   private ty() {
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 8;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 0;
    }
 
    @Override
-   public up<ty> c() {
+   public uv<ty> c() {
       return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.p_();
    }
 
    public ty e() {
@@ -74,72 +73,12 @@ public class ty extends ug {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ty && this.c == ((ty)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
-   }
-
-   @Override
-   public void a(ur $$0) {
+   public void a(ux $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return this.c;
-   }
-
-   @Override
-   public int g() {
-      return (int)(this.c & -1L);
-   }
-
-   @Override
-   public short h() {
-      return (short)((int)(this.c & 65535L));
-   }
-
-   @Override
-   public byte i() {
-      return (byte)((int)(this.c & 255L));
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public uk.b a(uk $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final ty[] a = new ty[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ty((long)(-128 + $$0));
-         }
-      }
+   public uq.b a(uq $$0) {
+      return $$0.a();
    }
 }

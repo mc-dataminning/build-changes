@@ -1,64 +1,27 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+public class grc implements gqk<dxg> {
+   private final gqg<dxg> a;
+   private final gqn<dxg> b;
 
-public class grc implements gqy.a {
-   private final fmg a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+   public grc(gql.a $$0) {
+      this.a = new gqg<>($$0);
+      this.b = new gqn<>($$0);
+   }
 
-   public grc(fmg $$0) {
-      this.a = $$0;
+   public void a(dxg $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public boolean a(dxg $$0) {
+      return this.a.a($$0) || this.b.a($$0);
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      dha $$5 = this.a.s;
-      fgv $$6 = $$1.getBuffer(gnh.B());
-      ji $$7 = ji.a($$2, 0.0, $$4);
-
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dzm $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<edo.a, edo> $$11 : $$10.e()) {
-               edo.a $$12 = $$11.getKey();
-               dgg $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kk.a($$13.h, $$15);
-                     int $$18 = kk.a($$13.i, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gnr.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
-         }
-      }
+   public int aQ_() {
+      return Math.max(this.a.aQ_(), this.b.aQ_());
    }
 
-   private Vector3f a(edo.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   public boolean a(dxg $$0, fcu $$1) {
+      return this.a.a($$0, $$1) || this.b.a($$0, $$1);
    }
 }

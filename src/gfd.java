@@ -1,45 +1,67 @@
-import java.util.Arrays;
-
-public class gfd extends gda<hbj> {
-   public static final ggl a = ggl.scaling(0.5F);
-   private final ggc[] b = new ggc[8];
-
-   public gfd(ggc $$0) {
+public class gfd extends gcm<hbv> {
+   public gfd(ghd $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      ggg $$2 = new ggg(0.02F);
-      int $$3 = -16;
-      $$1.a("body", ggh.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), gge.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      ggh $$5 = ggh.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, gge.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return ggi.a($$0, 64, 32);
-   }
-
-   public void a(hbj $$0) {
+   public void a(hbv $$0) {
       super.a($$0);
-
-      for (ggc $$1 : this.b) {
-         $$1.e = $$0.a;
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.H;
+      coz $$3 = $$0.d;
+      if ($$3 == coz.e) {
+         float $$4 = $$0.u / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azk.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azk.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + azk.a($$4 * 10.0F);
+         this.o.c = this.o.c + azk.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azk.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (azk.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + azk.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + azk.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == coz.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == coz.b) {
+         gcq.a(this.r, this.s, this.o, $$0.e == bwk.b);
+      } else if ($$3 == coz.c) {
+         gcq.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bwk.b);
+      } else if ($$3 == coz.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.e == bwk.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
       }
+   }
+
+   protected void a(hbv $$0, float $$1) {
+      float $$2 = $$0.H;
+      if ($$2 > 0.0F && $$0.d == coz.a) {
+         gcq.a(this.r, this.s, $$0.e, $$2, $$0.u);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(hbv $$0) {
+      if ($$0.e == bwk.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

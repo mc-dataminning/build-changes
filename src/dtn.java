@@ -1,35 +1,60 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtn extends dko {
+public class dtn extends dmq {
    public static final MapCodec<dtn> a = b(dtn::new);
-   private static final fcr b = dke.b(14.0, 0.0, 1.5);
+   public static final int b = 1;
+   public static final dzm c = dzc.at;
+   private static final fdo[] g = dku.a(1, $$0 -> dku.b(6.0, 0.0, (double)(6 + $$0 * 4)));
+   private static final int h = 1;
 
    @Override
    public MapCodec<dtn> a() {
       return a;
    }
 
-   protected dtn(dxp.d $$0) {
+   public dtn(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof ard && $$3 instanceof cro) {
-         $$1.a(new ji($$2), true, $$3);
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return g[this.h($$0)];
+   }
+
+   @Override
+   protected dzm b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 2;
+   }
+
+   @Override
+   protected dho d() {
+      return cyc.wm;
+   }
+
+   @Override
+   public dym b(int $$0) {
+      return $$0 == 2 ? dkw.bZ.m() : super.b($$0);
+   }
+
+   @Override
+   public void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
-      etw $$3 = $$1.b_($$2);
-      etw $$4 = $$1.b_($$2.d());
-      return ($$3.a() == etx.c || $$0.b() instanceof dof) && $$4.a() == etx.a;
+   protected int a(dhp $$0) {
+      return 1;
    }
 }

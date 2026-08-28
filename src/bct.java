@@ -1,61 +1,47 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bct extends DataFix {
-   public bct(Schema $$0) {
-      super($$0, true);
-   }
+public final class bct {
+   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
+      .put("minecraft:badlands_plateau", "minecraft:badlands")
+      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
+      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
+      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
+      .put("minecraft:desert_hills", "minecraft:desert")
+      .put("minecraft:desert_lakes", "minecraft:desert")
+      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
+      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
+      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:jungle_hills", "minecraft:jungle")
+      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
+      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
+      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
+      .put("minecraft:modified_jungle", "minecraft:jungle")
+      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
+      .put("minecraft:mountains", "minecraft:windswept_hills")
+      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
+      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
+      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
+      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
+      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
+      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
+      .put("minecraft:stone_shore", "minecraft:stony_shore")
+      .put("minecraft:swamp_hills", "minecraft:swamp")
+      .put("minecraft:taiga_hills", "minecraft:taiga")
+      .put("minecraft:taiga_mountains", "minecraft:taiga")
+      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
+      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
+      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
+      .put("minecraft:wooded_hills", "minecraft:forest")
+      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
+      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
+      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
+      .build();
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.c);
-      OpticFinder<?> $$1 = $$0.findField("Level");
-      OpticFinder<?> $$2 = $$1.type().findField("Structures");
-      Type<?> $$3 = this.getOutputSchema().getType(bic.c);
-      Type<?> $$4 = $$3.findFieldType("structures");
-      return this.fixTypeEverywhereTyped("Chunk Renames; purge Level-tag", $$0, $$3, $$3x -> {
-         Typed<?> $$4x = $$3x.getTyped($$1);
-         Typed<?> $$5 = a($$4x);
-         $$5 = $$5.set(DSL.remainderFinder(), a($$3x, (Dynamic)$$4x.get(DSL.remainderFinder())));
-         $$5 = a($$5, "TileEntities", "block_entities");
-         $$5 = a($$5, "TileTicks", "block_ticks");
-         $$5 = a($$5, "Entities", "entities");
-         $$5 = a($$5, "Sections", "sections");
-         $$5 = $$5.updateTyped($$2, $$4, $$0xx -> a($$0xx, "Starts", "starts"));
-         $$5 = a($$5, "Structures", "structures");
-         return $$5.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("Level"));
-      });
-   }
-
-   private static Typed<?> a(Typed<?> $$0, String $$1, String $$2) {
-      return a($$0, $$1, $$2, $$0.getType().findFieldType($$1)).update(DSL.remainderFinder(), $$1x -> $$1x.remove($$1));
-   }
-
-   private static <A> Typed<?> a(Typed<?> $$0, String $$1, String $$2, Type<A> $$3) {
-      Type<Either<A, Unit>> $$4 = DSL.optional(DSL.field($$1, $$3));
-      Type<Either<A, Unit>> $$5 = DSL.optional(DSL.field($$2, $$3));
-      return $$0.update($$4.finder(), $$5, Function.identity());
-   }
-
-   private static <A> Typed<Pair<String, A>> a(Typed<A> $$0) {
-      return new Typed(DSL.named("chunk", $$0.getType()), $$0.getOps(), Pair.of("chunk", $$0.getValue()));
-   }
-
-   private static <T> Dynamic<T> a(Typed<?> $$0, Dynamic<T> $$1) {
-      DynamicOps<T> $$2 = $$1.getOps();
-      Dynamic<T> $$3 = ((Dynamic)$$0.get(DSL.remainderFinder())).convert($$2);
-      DataResult<T> $$4 = $$2.getMap($$1.getValue()).flatMap($$2x -> $$2.mergeToMap($$3.getValue(), $$2x));
-      return $$4.result().map($$1x -> new Dynamic($$2, $$1x)).orElse($$1);
+   private bct() {
    }
 }

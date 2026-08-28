@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class fr implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wp.b("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wv.b("arguments.objective.readonly", $$0));
 
    public static fr a() {
       return new fr();
    }
 
-   public static fcu a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static fdr a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fdc $$3 = ((ex)$$0.getSource()).l().aJ();
-      fcu $$4 = $$3.a($$2);
+      fdz $$3 = ((ex)$$0.getSource()).l().aJ();
+      fdr $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fr implements ArgumentType<String> {
       }
    }
 
-   public static fcu b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      fcu $$2 = a($$0, $$1);
+   public static fdr b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      fdr $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

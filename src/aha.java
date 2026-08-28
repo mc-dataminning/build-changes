@@ -1,37 +1,23 @@
-public class aha implements yw<agf> {
-   public static final yn<vl, aha> a = yw.a(aha::a, aha::new);
-   private final int b;
-   private final int c;
+import io.netty.buffer.ByteBuf;
 
-   public aha(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class aha implements zc<agm> {
+   public static final aha a = new aha();
+   public static final yt<ByteBuf, aha> b = yt.a(a);
 
-   private aha(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aha() {
    }
 
    @Override
-   public yy<aha> a() {
-      return agd.bD;
+   public ze<aha> a() {
+      return agk.bx;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

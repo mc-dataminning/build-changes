@@ -1,35 +1,44 @@
-public class cdb extends ccw {
-   private final cio a;
-   private are b;
-   private boolean c;
+public class cdb extends cea {
+   private final cij g;
 
-   public cdb(cio $$0) {
-      this.a = $$0;
+   public cdb(cij $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean b() {
-      are $$0 = (are)this.a.ae_();
-      boolean $$1 = $$0 != null && !$$0.U_() && !$$0.gm().b && !$$0.bj() && !$$0.av;
-      return !this.a.gs() && $$1 && this.a.gI();
-   }
-
-   @Override
-   public boolean P_() {
-      return !this.c;
+      return this.g.q() && !this.g.gq() && super.b();
    }
 
    @Override
    public void d() {
-      this.b = (are)this.a.ae_();
-      this.c = false;
+      super.d();
+      this.g.x(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.x(false);
    }
 
    @Override
    public void a() {
-      if (!this.c && !this.a.x() && !this.a.O_()) {
-         if (this.a.cQ().c(this.b.cQ())) {
-            this.c = this.a.b(this.b);
+      super.a();
+      this.g.x(this.m());
+   }
+
+   @Override
+   protected boolean a(dhs $$0, jj $$1) {
+      if (!$$0.u($$1.d())) {
+         return false;
+      } else {
+         dym $$2 = $$0.a_($$1);
+         if ($$2.a(dkw.cD)) {
+            return dvt.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dkw.cL) && $$2.c(dod.b) ? true : $$2.a(awz.T, $$0x -> $$0x.d(dkn.b).map($$0xx -> $$0xx != dyz.a).orElse(true));
          }
       }
    }

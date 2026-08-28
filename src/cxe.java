@@ -1,69 +1,60 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class cxe {
-   private final Map<aku, cxe.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cxh $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class cxe extends cxu implements cys {
+   public cxe(cxu.a $$0) {
+      super($$0);
    }
 
-   public float a(cxh $$0, float $$1) {
-      aku $$2 = this.b($$0);
-      cxe.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return ayz.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<aku, cxe.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<aku, cxe.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
+   @Override
+   public btq a(dbp $$0) {
+      dhp $$1 = $$0.q();
+      jj $$2 = $$0.a();
+      dym $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dlj.i($$3) && !dlk.h($$3) && !dll.h($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (dkh.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, dkh.a($$1, $$2));
+            $$1.a($$0.o(), edm.i, $$2);
+            $$4 = true;
          }
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.b(dzc.u, Boolean.valueOf(true)));
+         $$1.a($$0.o(), edm.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return btq.a;
+      } else {
+         return btq.d;
       }
    }
 
-   public aku b(cxh $$0) {
-      dak $$1 = $$0.a(kv.z);
-      aku $$2 = mb.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   private void a(dhp $$0, jj $$1) {
+      azs $$2 = $$0.C_();
+      $$0.a(null, $$1, awk.jk, awl.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 
-   public void a(cxh $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   @Override
+   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
+      azs $$4 = $$0.C_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      fcu $$8 = new fcu($$5, $$6, $$7);
+      crf $$9 = new crf($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
+      $$9.a($$2);
+      return $$9;
    }
 
-   public void a(aku $$0, int $$1) {
-      this.a.put($$0, new cxe.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
+   @Override
+   public void a(crb $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
    }
 
-   public void a(aku $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(aku $$0, int $$1) {
-   }
-
-   protected void b(aku $$0) {
-   }
-
-   static record a(int a, int b) {
+   @Override
+   public cys.a b() {
+      return cys.a.a().a(($$0, $$1) -> dna.a($$0, 1.0, fcu.c)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

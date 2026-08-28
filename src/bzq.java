@@ -1,31 +1,24 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzq {
-   public static bxs<bvy> a(bwb $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
-   }
+   private static final int a = 1;
 
-   public static bzc<bvy> a(bvi<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq()), $$1);
-   }
-
-   public static bzc<bvy> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bzc<bvy> a(Predicate<bvy> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return cbe.a(
-         (Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$2x -> $$2x.group($$2x.c(cfc.n), $$2x.b(cfc.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bvy> $$8 = $$2x.<cfe>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bva)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
-                     if ($$8.isEmpty()) {
+   public static byj<bwr> a(float $$0) {
+      return cbv.a(
+         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$1 -> $$1.group($$1.a(cft.o), $$1.c(cft.n), $$1.b(cft.t))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bZ()) {
                         return false;
                      } else {
-                        $$3.a(new byc($$8.get(), true));
+                        bvs $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new byt($$8, true));
+                           $$3.a(new cfw(new byt($$8, false), $$0, 1));
+                        }
+
                         return true;
                      }
                   }))

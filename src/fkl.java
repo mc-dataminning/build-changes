@@ -1,256 +1,232 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import java.nio.file.Path;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkl extends hmd implements fhv {
-   private static final int b = 200;
-   private static final int c = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private static final String[] E = new String[]{"", ".", ". .", ". . ."};
-   private static final wp F = wp.c("mco.upload.verifying");
-   private final fke G;
-   private final ewd H;
+public class fkl extends hne {
+   static final Logger a = LogUtils.getLogger();
+   private static final wv b = wv.c("mco.configure.world.backup");
+   static final wv c = wv.c("mco.backup.button.restore");
+   static final wv C = wv.c("mco.backup.changes.tooltip");
+   private static final wv D = wv.c("mco.backup.nobackups");
+   private static final wv E = wv.c("mco.backup.button.download");
+   private static final String F = "uploaded";
+   private static final int G = 8;
+   final fko H;
+   List<fiu> I = Collections.emptyList();
    @Nullable
-   private final flg I;
-   private final long J;
-   private final int K;
-   final AtomicReference<fhu> a = new AtomicReference<>();
-   private final fhl L;
-   private final RateLimiter M;
+   fkl.a J;
+   final fub K = new fub(this);
+   private final int L;
    @Nullable
-   private volatile wp[] N;
-   private volatile wp O = wp.c("mco.upload.preparing");
-   @Nullable
-   private volatile String P;
-   private volatile boolean Q;
-   private volatile boolean R;
-   private volatile boolean S = true;
-   private volatile boolean T;
-   @Nullable
-   private fpq U;
-   @Nullable
-   private fpq V;
-   private int W;
-   private final fte X = new fte(this);
+   fqn M;
+   final fjf N;
+   boolean O = false;
 
-   public fkl(@Nullable flg $$0, long $$1, int $$2, fke $$3, ewd $$4) {
-      super(flx.a);
-      this.I = $$0;
-      this.J = $$1;
-      this.K = $$2;
-      this.G = $$3;
-      this.H = $$4;
-      this.L = new fhl();
-      this.M = RateLimiter.create(0.1F);
+   public fkl(fko $$0, fjf $$1, int $$2) {
+      super(b);
+      this.H = $$0;
+      this.N = $$1;
+      this.L = $$2;
    }
 
    @Override
-   public void aR_() {
-      this.U = this.X.b(fpq.a(wo.k, $$0x -> this.E()).a());
-      this.U.k = false;
-      this.V = this.X.b(fpq.a(wo.e, $$0x -> this.F()).a());
-      if (!this.T) {
-         if (this.G.b == -1) {
-            this.T = true;
-            this.H();
-         } else {
-            List<fle> $$0 = new ArrayList<>();
-            if (this.I != null) {
-               $$0.add(this.I);
-            }
-
-            $$0.add(new fll(this.J, this.G.b, () -> {
-               if (!this.T) {
-                  this.T = true;
-                  this.m.execute(() -> {
-                     this.m.a(this);
-                     this.H();
-                  });
-               }
-            }));
-            this.m.a(new fjx(this.G, $$0.toArray(new fle[0])));
-         }
-      }
-
-      this.X.a($$1 -> {
-         fpo var10000 = this.c($$1);
+   public void aN_() {
+      this.K.a(b, this.p);
+      this.J = this.K.c(new fkl.a());
+      fuf $$0 = this.K.b(fuf.e().a(8));
+      this.M = $$0.a(fqn.a(E, $$0x -> this.F()).a());
+      this.M.j = false;
+      $$0.a(fqn.a(wu.k, $$0x -> this.aK_()).a());
+      this.K.a($$1 -> {
+         fql var10000 = this.c($$1);
       });
       this.c();
+      this.E();
+   }
+
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.O && this.J != null) {
+         $$0.b(this.p, D, this.n / 2 - this.p.a(D) / 2, this.J.G() + this.J.y() / 2 - 9 / 2, -1);
+      }
    }
 
    @Override
    protected void c() {
-      this.X.a();
+      this.K.a();
+      if (this.J != null) {
+         this.J.a(this.n, this.K);
+      }
    }
 
    private void E() {
-      this.m.a(new fjr(new fhc(new fvk()), this.J));
+      (new Thread("Realms-fetch-backups") {
+         @Override
+         public void run() {
+            fie $$0 = fie.a();
+
+            try {
+               List<fiu> $$1 = $$0.e(fkl.this.N.a).a;
+               fkl.this.m.execute(() -> {
+                  fkl.this.I = $$1;
+                  fkl.this.O = fkl.this.I.isEmpty();
+                  if (!fkl.this.O && fkl.this.M != null) {
+                     fkl.this.M.j = true;
+                  }
+
+                  if (fkl.this.J != null) {
+                     fkl.this.J.a(fkl.this.I.stream().map($$0xx -> fkl.this.new b($$0xx)).toList());
+                  }
+               });
+            } catch (fka var3) {
+               fkl.a.error("Couldn't request backups", var3);
+            }
+         }
+      }).start();
+   }
+
+   @Override
+   public void aK_() {
+      this.m.a(this.H);
    }
 
    private void F() {
-      this.Q = true;
-      fhu $$0 = this.a.get();
-      if ($$0 != null) {
-         $$0.b();
-      } else {
-         this.m.a(this.G);
+      this.m
+         .a(
+            fla.a(
+               this,
+               wv.c("mco.configure.world.restore.download.question.line1"),
+               $$0 -> this.m
+                     .a(
+                        new fku(
+                           this.H.g(),
+                           new flz(this.N.a, this.L, Objects.requireNonNullElse(this.N.c, "") + " (" + this.N.i.get(this.N.p).a(this.N.p) + ")", this)
+                        )
+                     )
+            )
+         );
+   }
+
+   class a extends fqt<fkl.b> {
+      private static final int a = 36;
+
+      public a() {
+         super(fnd.Q(), fkl.this.n, fkl.this.K.d(), fkl.this.K.c(), 36);
+      }
+
+      @Override
+      public int a() {
+         return 300;
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         if (this.S) {
-            this.F();
-         } else {
-            this.E();
+   class b extends fqt.a<fkl.b> {
+      private static final int b = 2;
+      private final fiu c;
+      @Nullable
+      private fqn d;
+      @Nullable
+      private fqn e;
+      private final List<fql> f = new ArrayList<>();
+
+      public b(final fiu $$0) {
+         this.c = $$0;
+         this.a($$0);
+         if (!$$0.e.isEmpty()) {
+            this.e = fqn.a(fkl.C, $$0x -> fkl.this.m.a(new fkk(fkl.this, this.c)))
+               .a(8 + fkl.this.p.a(fkl.C))
+               .a($$0x -> wu.a(wv.a("mco.backup.narration", this.c()), (wv)$$0x.get()))
+               .a();
+            this.f.add(this.e);
          }
 
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!this.R && this.L.c() && this.L.d() && this.V != null) {
-         this.O = F;
-         this.V.j = false;
-      }
-
-      $$0.a(this.p, this.O, this.n / 2, 50, -1);
-      if (this.S) {
-         $$0.b(this.p, E[this.W / 10 % E.length], this.n / 2 + this.p.a(this.O) / 2 + 5, 50, -1);
-      }
-
-      if (this.L.c() && !this.Q) {
-         this.c($$0);
-         this.d($$0);
-      }
-
-      wp[] $$4 = this.N;
-      if ($$4 != null) {
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
+         if (!fkl.this.N.j) {
+            this.d = fqn.a(fkl.c, $$0x -> this.g()).a(8 + fkl.this.p.a(fkl.C)).a($$0x -> wu.a(wv.a("mco.backup.narration", this.c()), (wv)$$0x.get())).a();
+            this.f.add(this.d);
          }
       }
-   }
 
-   private void c(fpc $$0) {
-      double $$1 = this.L.e();
-      this.P = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, wp.a("mco.upload.percent", this.P), this.n / 2, 84, -1);
-   }
+      private void a(fiu $$0) {
+         int $$1 = fkl.this.I.indexOf($$0);
+         if ($$1 != fkl.this.I.size() - 1) {
+            fiu $$2 = fkl.this.I.get($$1 + 1);
 
-   private void d(fpc $$0) {
-      this.a($$0, this.L.g());
-   }
-
-   private void a(fpc $$0, long $$1) {
-      String $$2 = this.P;
-      if ($$1 > 0L && $$2 != null) {
-         int $$3 = this.p.b($$2);
-         String $$4 = "(" + fhd.b($$1) + "/s)";
-         $$0.b(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1);
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.W++;
-      this.L.f();
-      if (this.M.tryAcquire(1)) {
-         wp $$0 = this.G();
-         this.m.aY().c($$0);
-      }
-   }
-
-   private wp G() {
-      List<wp> $$0 = Lists.newArrayList();
-      $$0.add(this.O);
-      if (this.P != null) {
-         $$0.add(wp.a("mco.upload.percent", this.P));
-      }
-
-      wp[] $$1 = this.N;
-      if ($$1 != null) {
-         $$0.addAll(Arrays.asList($$1));
-      }
-
-      return wo.a($$0);
-   }
-
-   private void H() {
-      Path $$0 = this.m.q.toPath().resolve("saves").resolve(this.H.a());
-      fio $$1 = fio.a(this.H.g(), true, this.H.l().c());
-      fhu $$2 = new fhu($$0, $$1, this.m.X(), this.J, this.K, this);
-      if (!this.a.compareAndSet(null, $$2)) {
-         throw new IllegalStateException("Tried to start uploading but was already uploading");
-      } else {
-         $$2.a().handleAsync(($$0x, $$1x) -> {
-            if ($$1x != null) {
-               if ($$1x instanceof CompletionException $$2x) {
-                  $$1x = $$2x.getCause();
-               }
-
-               if ($$1x instanceof fhp $$3) {
-                  if ($$3.a() != null) {
-                     this.O = $$3.a();
+            for (String $$3 : $$0.d.keySet()) {
+               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
+                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
+                     this.a($$3);
                   }
-
-                  this.a($$3.b());
                } else {
-                  this.O = wp.a("mco.upload.failed", $$1x.getMessage());
-               }
-            } else {
-               this.O = wp.c("mco.upload.done");
-               if (this.U != null) {
-                  this.U.b(wo.d);
+                  this.a($$3);
                }
             }
-
-            this.R = true;
-            this.S = false;
-            if (this.U != null) {
-               this.U.k = true;
-            }
-
-            if (this.V != null) {
-               this.V.k = false;
-            }
-
-            this.a.set(null);
-            return null;
-         }, this.m);
+         }
       }
-   }
 
-   private void a(@Nullable wp... $$0) {
-      this.N = $$0;
-   }
+      private void a(String $$0) {
+         if ($$0.contains("uploaded")) {
+            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
+            this.c.e.put($$0, $$1);
+            this.c.a(true);
+         } else {
+            this.c.e.put($$0, this.c.d.get($$0));
+         }
+      }
 
-   @Override
-   public fhl b() {
-      return this.L;
-   }
+      private String c() {
+         return DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
+      }
 
-   @Override
-   public void d() {
-      this.O = wp.a("mco.upload.uploading", this.H.b());
+      private void g() {
+         wv $$0 = flt.a(this.c.b);
+         wv $$1 = wv.a("mco.configure.world.restore.question.line1", this.c(), $$0);
+         fkl.this.m.a(fla.b(fkl.this, $$1, $$0x -> fkl.this.m.a(new fku(fkl.this.H.g(), new fmg(this.c, fkl.this.N.a, fkl.this.H)))));
+      }
+
+      @Override
+      public List<? extends fsk> aD_() {
+         return this.f;
+      }
+
+      @Override
+      public List<? extends fui> b() {
+         return this.f;
+      }
+
+      @Override
+      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = $$2 + $$5 / 2;
+         int $$11 = $$10 - 9 - 2;
+         int $$12 = $$10 + 2;
+         int $$13 = this.c.a() ? -8388737 : -1;
+         $$0.b(fkl.this.p, wv.a("mco.backup.entry", flt.a(this.c.b)), $$3, $$11, $$13);
+         $$0.b(fkl.this.p, this.a(this.c.b), $$3, $$12, 5000268);
+         int $$14 = 0;
+         int $$15 = $$2 + $$5 / 2 - 10;
+         if (this.d != null) {
+            $$14 += this.d.A() + 8;
+            this.d.j($$3 + $$4 - $$14);
+            this.d.k($$15);
+            this.d.a($$0, $$6, $$7, $$9);
+         }
+
+         if (this.e != null) {
+            $$14 += this.e.A() + 8;
+            this.e.j($$3 + $$4 - $$14);
+            this.e.k($$15);
+            this.e.a($$0, $$6, $$7, $$9);
+         }
+      }
+
+      private String a(Date $$0) {
+         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+      }
    }
 }

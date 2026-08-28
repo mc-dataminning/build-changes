@@ -1,30 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejl(int b, int c, int d, jr<enn> e) implements eiy {
+public class ejl {
    public static final Codec<ejl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.m.fieldOf("tries").orElse(128).forGetter(ejl::a),
-               ayi.l.fieldOf("xz_spread").orElse(7).forGetter(ejl::b),
-               ayi.l.fieldOf("y_spread").orElse(3).forGetter(ejl::c),
-               enn.b.fieldOf("feature").forGetter(ejl::d)
-            )
+      $$0 -> $$0.group(eok.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, ejl::new)
    );
+   public final js<eok> b;
+   public final float c;
 
-   public int a() {
-      return this.b;
+   public ejl(js<eok> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public jr<enn> d() {
-      return this.e;
+   public boolean a(dio $$0, eak $$1, azs $$2, jj $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

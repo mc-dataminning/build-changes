@@ -1,28 +1,20 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+public class bat<T> {
+   private final ald a;
 
-public abstract class bat extends DataFix {
-   private final String a;
-
-   public bat(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bat(ald $$0) {
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bic.u), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   public static <T> bat<T> a(String $$0) {
+      return new bat<>(ald.b($$0));
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result().map(bju::a);
-      return $$1.isPresent() && this.a($$1.get()) ? $$0.update("Properties", $$1x -> this.a($$1.get(), $$1x)) : $$0;
+   public ald a() {
+      return this.a;
    }
 
-   protected abstract boolean a(String var1);
-
-   protected abstract <T> Dynamic<T> a(String var1, Dynamic<T> var2);
+   @Override
+   public String toString() {
+      return "<parameter " + this.a + ">";
+   }
 }

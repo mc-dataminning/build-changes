@@ -1,50 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cfl extends cfj {
-   @Nullable
-   private ji p;
+public class cfl extends cfn {
+   private final bxn a;
+   private bwr b;
+   private int c;
 
-   public cfl(bwa $$0, dgz $$1) {
-      super($$0, $$1);
+   public cfl(bxn $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(cdn.a.d));
    }
 
    @Override
-   public euk a(ji $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public euk a(bva $$0, int $$1) {
-      this.p = $$0.du();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(bva $$0, double $$1) {
-      euk $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.du();
-         this.d = $$1;
-         return true;
-      }
-   }
-
-   @Override
-   public void c() {
-      if (!this.k()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.ds(), (double)this.a.dp())
-               && (!(this.a.dB() > (double)this.p.v()) || !ji.a((double)this.p.u(), this.a.dB(), (double)this.p.w()).a(this.a.ds(), (double)this.a.dp()))) {
-               this.a.L().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
+   public boolean b() {
+      if (this.a.q() && !this.a.gq()) {
+         bwr $$0 = this.a.e();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.et();
+            int $$1 = $$0.eu();
+            return $$1 != this.c && this.a(this.b, chg.a) && this.a.a(this.b, $$0);
          }
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public void d() {
+      this.e.h(this.b);
+      bwr $$0 = this.a.e();
+      if ($$0 != null) {
+         this.c = $$0.eu();
+      }
+
+      super.d();
    }
 }

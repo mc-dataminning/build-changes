@@ -1,107 +1,61 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class apg {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.trigger.failed.invalid"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.c("commands.summon.invalidPosition"));
 
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)ey.a("trigger")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("summon").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("objective", fr.a())
-                        .suggests(($$0x, $$1) -> a((ex)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ex)$$0x.getSource(), ((ex)$$0x.getSource()).h(), fr.a($$0x, "objective"))))
-                     .then(
-                        ey.a("add")
-                           .then(
-                              ey.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ex)$$0x.getSource(),
-                                          ((ex)$$0x.getSource()).h(),
-                                          fr.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
+               ((RequiredArgumentBuilder)ey.a("entity", fw.a($$1, me.z))
+                     .suggests(iy.c)
+                     .executes($$0x -> b((ex)$$0x.getSource(), fw.e($$0x, "entity"), ((ex)$$0x.getSource()).d(), new tw(), true)))
                   .then(
-                     ey.a("set")
-                        .then(
-                           ey.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ex)$$0x.getSource(), ((ex)$$0x.getSource()).h(), fr.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
+                     ((RequiredArgumentBuilder)ey.a("pos", hb.a())
+                           .executes($$0x -> b((ex)$$0x.getSource(), fw.e($$0x, "entity"), hb.a($$0x, "pos"), new tw(), true)))
+                        .then(ey.a("nbt", fh.a()).executes($$0x -> b((ex)$$0x.getSource(), fw.e($$0x, "entity"), hb.a($$0x, "pos"), fh.a($$0x, "nbt"), false)))
                   )
             )
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ex $$0, SuggestionsBuilder $$1) {
-      fdb $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         fdc $$4 = $$0.l().aJ();
+   public static bvs a(ex $$0, js.c<bwb<?>> $$1, fcu $$2, tw $$3, boolean $$4) throws CommandSyntaxException {
+      jj $$5 = jj.a((kc)$$2);
+      if (!dhp.l($$5)) {
+         throw c.create();
+      } else {
+         tw $$6 = $$3.i();
+         $$6.a("id", $$1.h().a().toString());
+         arn $$7 = $$0.e();
+         bvs $$8 = bwb.a($$6, $$7, bwa.n, $$1x -> {
+            $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dL(), $$1x.dN());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof bwt) {
+               ((bwt)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bwa.n, null);
+            }
 
-         for (fcu $$5 : $$4.c()) {
-            if ($$5.c() == fdf.c) {
-               fcy $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
             }
          }
       }
-
-      return fc.b($$3, $$1);
    }
 
-   private static int a(ex $$0, are $$1, fcu $$2, int $$3) throws CommandSyntaxException {
-      fda $$4 = a($$0.l().aJ(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> wp.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(ex $$0, are $$1, fcu $$2, int $$3) throws CommandSyntaxException {
-      fda $$4 = a($$0.l().aJ(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> wp.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(ex $$0, are $$1, fcu $$2) throws CommandSyntaxException {
-      fda $$3 = a($$0.l().aJ(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> wp.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static fda a(fdc $$0, fdb $$1, fcu $$2) throws CommandSyntaxException {
-      if ($$2.c() != fdf.c) {
-         throw b.create();
-      } else {
-         fcy $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            fda $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
-      }
+   private static int b(ex $$0, js.c<bwb<?>> $$1, fcu $$2, tw $$3, boolean $$4) throws CommandSyntaxException {
+      bvs $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> wv.a("commands.summon.success", $$5.m_()), true);
+      return 1;
    }
 }

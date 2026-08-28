@@ -1,62 +1,127 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record dxa(akt<ewt> d, double e, double f, cxh g, Optional<akt<ewt>> h, dwr i, dwr.a j) {
-   static final String a = "config";
-   static dxa b = new dxa();
-   static Codec<dxa> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  akt.a(mc.bi).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dxa::b),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dxa::c),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dxa::d),
-                  cxh.a("key_item").forGetter(dxa::e),
-                  akt.a(mc.bi).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dxa::f)
-               )
-               .apply($$0, dxa::new)
-      )
-      .validate(dxa::h);
+public class dxa {
+   private static final Codec<wv[]> c = wx.a
+      .listOf()
+      .comapFlatMap(
+         $$0 -> af.a($$0, 4).map($$0x -> new wv[]{(wv)$$0x.get(0), (wv)$$0x.get(1), (wv)$$0x.get(2), (wv)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dxa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dxa::d),
+               cwv.q.fieldOf("color").orElse(cwv.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dxa::a)
+   );
+   public static final int b = 4;
+   private final wv[] d;
+   private final wv[] e;
+   private final cwv f;
+   private final boolean g;
+   @Nullable
+   private ayw[] h;
+   private boolean i;
 
-   private dxa() {
-      this(ewk.R, 4.0, 4.5, new cxh(cxl.zF), Optional.empty(), dwr.b, dwr.a.a);
+   public dxa() {
+      this(c(), c(), cwv.p, false);
    }
 
-   public dxa(akt<ewt> $$0, double $$1, double $$2, cxh $$3, Optional<akt<ewt>> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   public dxa(wv[] $$0, wv[] $$1, cwv $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public dwr a() {
-      return this.i;
+   private static wv[] c() {
+      return new wv[]{wu.a, wu.a, wu.a, wu.a};
    }
 
-   private DataResult<dxa> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
+   private static dxa a(wv[] $$0, Optional<wv[]> $$1, cwv $$2, boolean $$3) {
+      return new dxa($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   public akt<ewt> b() {
-      return this.d;
-   }
-
-   public double c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
-   }
-
-   public cxh e() {
+   public boolean a() {
       return this.g;
    }
 
-   public Optional<akt<ewt>> f() {
+   public dxa a(boolean $$0) {
+      return $$0 == this.g ? this : new dxa(this.d, this.e, this.f, $$0);
+   }
+
+   public cwv b() {
+      return this.f;
+   }
+
+   public dxa a(cwv $$0) {
+      return $$0 == this.b() ? this : new dxa(this.d, this.e, $$0, this.g);
+   }
+
+   public wv a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public dxa a(int $$0, wv $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dxa a(int $$0, wv $$1, wv $$2) {
+      wv[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wv[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dxa($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(cqi $$0) {
+      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public wv[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public ayw[] a(boolean $$0, Function<wv, ayw> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayw[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+         }
+      }
+
       return this.h;
    }
 
-   public dwr.a g() {
-      return this.j;
+   private Optional<wv[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public boolean b(cqi $$0) {
+      for (wv $$1 : this.b($$0.aa())) {
+         xs $$2 = $$1.a();
+         wt $$3 = $$2.i();
+         if ($$3 != null && $$3.a() == wt.a.c) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

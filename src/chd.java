@@ -1,108 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
 
-public class chd {
-   private final ji a;
-   private final jr<chf> b;
-   private int c;
-   private final Runnable d;
+public class chd extends cgt {
+   private static final ImmutableMap<bwb<?>, Float> a = ImmutableMap.builder()
+      .put(bwb.K, 8.0F)
+      .put(bwb.S, 12.0F)
+      .put(bwb.am, 8.0F)
+      .put(bwb.an, 12.0F)
+      .put(bwb.aT, 15.0F)
+      .put(bwb.aY, 12.0F)
+      .put(bwb.bB, 8.0F)
+      .put(bwb.bD, 10.0F)
+      .put(bwb.bM, 10.0F)
+      .put(bwb.bN, 8.0F)
+      .put(bwb.bP, 8.0F)
+      .build();
 
-   chd(ji $$0, jr<chf> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.j();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   @Override
+   protected boolean a(arn $$0, bwr $$1, bwr $$2) {
+      return this.b($$2) && this.a($$1, $$2);
    }
 
-   public chd(ji $$0, jr<chf> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   public chd.a a() {
-      return new chd.a(this.a, this.b, this.c);
-   }
-
-   @Deprecated
-   @bag
-   public int b() {
-      return this.c;
-   }
-
-   protected boolean c() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean d() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean e() {
-      return this.c > 0;
-   }
-
-   public boolean f() {
-      return this.c != this.b.a().b();
-   }
-
-   public ji g() {
-      return this.a;
-   }
-
-   public jr<chf> h() {
-      return this.b;
+   private boolean a(bwr $$0, bwr $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g((bvs)$$0) <= (double)($$2 * $$2);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((chd)$$0).a) : false;
-      }
+   protected cft<bwr> b() {
+      return cft.B;
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   public static record a(ji b, jr<chf> c, int d) {
-      public static final Codec<chd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ji.a.fieldOf("pos").forGetter(chd.a::a),
-                  akr.a(mc.aa).fieldOf("type").forGetter(chd.a::b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(chd.a::c)
-               )
-               .apply($$0, chd.a::new)
-      );
-
-      public chd a(Runnable $$0) {
-         return new chd(this.b, this.c, this.d, $$0);
-      }
-
-      public ji a() {
-         return this.b;
-      }
-
-      public jr<chf> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   private boolean b(bwr $$0) {
+      return a.containsKey($$0.aq());
    }
 }

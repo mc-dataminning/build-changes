@@ -1,34 +1,16 @@
-import com.google.gson.JsonObject;
-import java.util.Date;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class avb extends auy<String> {
-   public avb(String $$0) {
-      this($$0, null, null, null, null);
-   }
-
-   public avb(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
+public interface avb extends aut {
    @Override
-   public wp e() {
-      return wp.b(String.valueOf(this.g()));
+   default CompletableFuture<Void> a(aut.a $$0, ava $$1, Executor $$2, Executor $$3) {
+      return $$0.a(baq.a).thenRunAsync(() -> {
+         bqb $$1x = bqa.a();
+         $$1x.a("listener");
+         this.a($$1);
+         $$1x.c();
+      }, $$3);
    }
 
-   public avb(JsonObject $$0) {
-      super(b($$0), $$0);
-   }
-
-   private static String b(JsonObject $$0) {
-      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
-   }
-
-   @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("ip", this.g());
-         super.a($$0);
-      }
-   }
+   void a(ava var1);
 }

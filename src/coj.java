@@ -1,119 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
 
-public class coj {
-   private static final int a = 600;
-   private static final int b = 20;
-   private static final double c = 0.0125;
-   private static final int d = 8;
-   private static final int e = 8;
-   private static final float f = 0.6F;
-   private static final int g = 2;
-   private static final int h = 100;
-   private static final int i = 5;
+public class coj extends byi<cof> {
+   private static final int c = 256;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final float f = 0.7F;
+   private static final int g = Math.round(15.0F);
+   private static final int h = Math.round(4.0F);
+   private static final int i = Math.round(10.0F);
 
-   protected static bxa<?> a(coi $$0, bxa<coi> $$1) {
-      b($$0, $$1);
-      c($$0, $$1);
-      d($$0, $$1);
-      $$1.a(ImmutableSet.of(cri.a));
-      $$1.b(cri.b);
-      $$1.f();
-      return $$1;
+   @VisibleForTesting
+   public coj() {
+      super(ImmutableMap.of(cft.p, cfu.a, cft.aZ, cfu.b, cft.aX, cfu.b, cft.aY, cfu.b, cft.aW, cfu.a, cft.n, cfu.b, cft.bb, cfu.b), g + 1 + h);
    }
 
-   protected static void a(coi $$0) {
-      jq $$1 = jq.a($$0.dU().aj(), $$0.du());
-      $$0.ea().a(cfc.b, $$1);
-   }
-
-   private static void b(coi $$0, bxa<coi> $$1) {
-      $$1.a(cri.a, 0, ImmutableList.of(new byx(45, 90), new bzb(), byp.a(), cah.a()));
-   }
-
-   private static void c(coi $$0, bxa<coi> $$1) {
-      $$1.a(cri.b, 10, ImmutableList.of(cad.a(coj::a), a(), b(), bzt.a(bvi.bR, 4)));
-   }
-
-   private static void d(coi $$0, bxa<coi> $$1) {
-      $$1.a(cri.k, 10, ImmutableList.of(cag.a(($$1x, $$2) -> !a($$1x, (coe)$$0, $$2)), bzw.a(1.0F), byy.a(20)), cfc.o);
-   }
-
-   private static bzo<coi> a() {
-      return new bzo<>(
-         ImmutableList.of(
-            Pair.of(bzq.a(bvi.bR, 8.0F), 1),
-            Pair.of(bzq.a(bvi.aR, 8.0F), 1),
-            Pair.of(bzq.a(bvi.aS, 8.0F), 1),
-            Pair.of(bzq.a(8.0F), 1),
-            Pair.of(new byb(30, 60), 1)
-         )
-      );
-   }
-
-   private static bzo<coi> b() {
-      return new bzo<>(
-         ImmutableList.of(
-            Pair.of(bzj.a(0.6F), 2),
-            Pair.of(byo.a(bvi.aR, 8, cfc.q, 0.6F, 2), 2),
-            Pair.of(byo.a(bvi.aS, 8, cfc.q, 0.6F, 2), 2),
-            Pair.of(caj.a(cfc.b, 0.6F, 2, 100), 2),
-            Pair.of(cai.a(cfc.b, 0.6F, 5), 2),
-            Pair.of(new byb(30, 60), 1)
-         )
-      );
-   }
-
-   protected static void b(coi $$0) {
-      bxa<coi> $$1 = $$0.ea();
-      cri $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(cri.k, cri.b));
-      cri $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         d($$0);
-      }
-
-      $$0.v($$1.a(cfc.o));
-   }
-
-   private static boolean a(ard $$0, coe $$1, bvy $$2) {
-      return a($$0, $$1).filter($$1x -> $$1x == $$2).isPresent();
-   }
-
-   private static Optional<? extends bvy> a(ard $$0, coe $$1) {
-      Optional<bvy> $$2 = bxt.a($$1, cfc.ab);
-      if ($$2.isPresent() && cgi.d($$0, $$1, $$2.get())) {
-         return $$2;
-      } else {
-         Optional<? extends bvy> $$3 = $$1.ea().c(cfc.l);
-         return $$3.isPresent() ? $$3 : $$1.ea().c(cfc.M);
-      }
-   }
-
-   protected static void a(ard $$0, coi $$1, bvy $$2) {
-      if (!($$2 instanceof coe)) {
-         cog.a($$0, $$1, $$2);
-      }
-   }
-
-   protected static void a(coi $$0, bvy $$1) {
-      $$0.ea().b(cfc.E);
-      $$0.ea().a(cfc.ab, $$1.cF(), 600L);
-   }
-
-   protected static void c(coi $$0) {
-      if ((double)$$0.dU().A.i() < 0.0125) {
-         d($$0);
-      }
-   }
-
-   private static void d(coi $$0) {
-      $$0.ea().g().ifPresent($$1 -> {
-         if ($$1 == cri.k) {
-            $$0.gw();
+   protected boolean a(arn $$0, cof $$1) {
+      return $$1.aw() != bxd.a ? false : $$1.eb().c(cft.p).map($$1x -> a($$1, $$1x)).map($$1x -> {
+         if (!$$1x) {
+            $$1.eb().b(cft.aW);
          }
-      });
+
+         return $$1x;
+      }).orElse(false);
+   }
+
+   protected boolean a(arn $$0, cof $$1, long $$2) {
+      return $$1.eb().a(cft.p) && $$1.eb().a(cft.aW);
+   }
+
+   protected void b(arn $$0, cof $$1, long $$2) {
+      $$1.eb().c(cft.p).ifPresent($$1x -> $$1.b(bxd.q));
+      $$1.eb().a(cft.aX, baq.a, (long)g);
+      $$1.a(awk.cG, 1.0F, 1.0F);
+   }
+
+   protected void c(arn $$0, cof $$1, long $$2) {
+      if ($$1.aw() == bxd.q) {
+         $$1.b(bxd.a);
+      }
+
+      $$1.eb().a(cft.aZ, baq.a, (long)i);
+      $$1.eb().b(cft.aW);
+   }
+
+   protected void d(arn $$0, cof $$1, long $$2) {
+      bxr<cof> $$3 = $$1.eb();
+      bwr $$4 = $$3.c(cft.p).orElse(null);
+      if ($$4 != null) {
+         $$1.a(fj.a.b, $$4.dt());
+         if (!$$3.c(cft.aX).isPresent() && !$$3.c(cft.aY).isPresent()) {
+            $$3.a(cft.aY, baq.a, (long)h);
+            double $$5 = $$4.dA() - $$1.dA();
+            double $$6 = $$4.e($$4.bZ() ? 0.8 : 0.3) - $$1.x();
+            double $$7 = $$4.dG() - $$1.dG();
+            crb.a(new crs($$1, $$0), $$0, cxy.k, $$5, $$6, $$7, 0.7F, (float)(5 - $$0.an().a() * 4));
+            $$1.a(awk.cJ, 1.5F, 1.0F);
+         }
+      }
+   }
+
+   private static boolean a(cof $$0, bwr $$1) {
+      double $$2 = $$0.dt().g($$1.dt());
+      return $$2 < 256.0;
    }
 }

@@ -1,45 +1,45 @@
-import java.nio.file.Path;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
-public class bpd implements bph {
-   public static final bpd a = new bpd();
+public interface bpd<S> {
+   void a(int var1, bpi<S> var2, Object var3);
 
-   private bpd() {
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bpi.b(), $$1);
    }
 
-   @Override
-   public List<bpl> a(String $$0) {
-      return Collections.emptyList();
-   }
+   void a(int var1);
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
+   public static class a<S> implements bpd<S> {
+      private final List<bpe<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   @Override
-   public long a() {
-      return 0L;
-   }
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
+      }
 
-   @Override
-   public int b() {
-      return 0;
-   }
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
 
-   @Override
-   public long c() {
-      return 0L;
-   }
+      @Override
+      public void a(int $$0, bpi<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bpe<>($$0, $$1, $$2));
+         }
+      }
 
-   @Override
-   public int d() {
-      return 0;
-   }
+      public List<bpe<S>> a() {
+         return this.a;
+      }
 
-   @Override
-   public String e() {
-      return "";
+      public int b() {
+         return this.b;
+      }
    }
 }

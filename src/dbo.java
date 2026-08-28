@@ -1,70 +1,62 @@
-import java.util.ArrayList;
-import java.util.List;
+public class dbo extends dbn {
+   private final jo b;
 
-public class dbo extends dbl {
-   private static final dbr c = dbr.a(cxl.rx);
-   private static final dbr d = dbr.a(cxl.qb);
-   private static final dbr e = dbr.a(cxl.vw);
-
-   public dbo(dbi $$0) {
-      super($$0);
-   }
-
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxh $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (c.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (d.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!e.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public cxh a(dbj $$0, jt.a $$1) {
-      List<czu> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxh $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               czu $$6 = $$5.a(kv.ag);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cxh $$7 = new cxh(cxl.vv, 3);
-      $$7.b(kv.ah, new czv($$3, $$2));
-      return $$7;
+   public dbo(dhp $$0, jj $$1, jo $$2, cxy $$3, jo $$4) {
+      super($$0, null, btp.a, $$3, new fcq(fcu.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public dcf<dbo> a() {
-      return dcf.g;
+   public jj a() {
+      return this.j().b();
+   }
+
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jo d() {
+      return jo.a;
+   }
+
+   @Override
+   public jo[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jo[]{jo.a, jo.c, jo.f, jo.d, jo.e, jo.b};
+         case b:
+            return new jo[]{jo.a, jo.b, jo.c, jo.f, jo.d, jo.e};
+         case c:
+            return new jo[]{jo.a, jo.c, jo.f, jo.e, jo.b, jo.d};
+         case d:
+            return new jo[]{jo.a, jo.d, jo.f, jo.e, jo.b, jo.c};
+         case e:
+            return new jo[]{jo.a, jo.e, jo.d, jo.b, jo.c, jo.f};
+         case f:
+            return new jo[]{jo.a, jo.f, jo.d, jo.b, jo.c, jo.e};
+      }
+   }
+
+   @Override
+   public jo g() {
+      return this.b.o() == jo.a.b ? jo.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

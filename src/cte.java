@@ -1,181 +1,112 @@
-public class cte extends csw {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final ctj u;
-   long v;
-   public final bsr p = new btf(2) {
-      @Override
-      public void e() {
-         cte.this.a(this);
-         super.e();
-      }
-   };
-   private final cuo w = new cuo() {
-      @Override
-      public void e() {
-         cte.this.a(this);
-         super.e();
-      }
-   };
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public cte(int $$0, cpq $$1) {
-      this($$0, $$1, ctj.a);
+public final class cte {
+   private static final cte b = new cte(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final ctf c;
+   private final long d;
+
+   private cte(@Nullable ctf $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public cte(int $$0, cpq $$1, final ctj $$2) {
-      super(cuf.x, $$0);
-      this.u = $$2;
-      this.a(new cut(this.p, 0, 15, 15) {
-         @Override
-         public boolean a(cxh $$0) {
-            return $$0.b(kv.M);
-         }
-      });
-      this.a(new cut(this.p, 1, 15, 52) {
-         @Override
-         public boolean a(cxh $$0) {
-            return $$0.a(cxl.rx) || $$0.a(cxl.vk) || $$0.a(cxl.gk);
-         }
-      });
-      this.a(new cut(this.w, 2, 145, 39) {
-         @Override
-         public boolean a(cxh $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(cpr $$0, cxh $$1) {
-            cte.this.k.get(0).a(1);
-            cte.this.k.get(1).a(1);
-            $$1.h().a($$1, $$0.dU(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.ae();
-               if (cte.this.v != $$2xx) {
-                  $$0x.a(null, $$1x, awa.Bs, awb.e, 1.0F, 1.0F);
-                  cte.this.v = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-      this.c($$1, 8, 84);
-   }
-
-   @Override
-   public boolean b(cpr $$0) {
-      return a(this.u, $$0, dkg.oz);
-   }
-
-   @Override
-   public void a(bsr $$0) {
-      cxh $$1 = this.p.a(0);
-      cxh $$2 = this.p.a(1);
-      cxh $$3 = this.w.a(2);
-      if ($$3.f() || !$$1.f() && !$$2.f()) {
-         if (!$$1.f() && !$$2.f()) {
-            this.a($$1, $$2, $$3);
-         }
+   static cte a(ctf $$0, Collection<ctc> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
       } else {
-         this.w.b(2);
+         long $$2 = a($$0, 0L, $$1);
+         return new cte($$0, $$2);
       }
    }
 
-   private void a(cxh $$0, cxh $$1, cxh $$2) {
-      this.u.a(($$3, $$4) -> {
-         evq $$5 = cxu.b($$0, $$3);
-         if ($$5 != null) {
-            cxh $$6;
-            if ($$1.a(cxl.rx) && !$$5.h && $$5.f < 4) {
-               $$6 = $$0.c(1);
-               $$6.b(kv.O, dac.b);
-               this.d();
-            } else if ($$1.a(cxl.gk) && !$$5.h) {
-               $$6 = $$0.c(1);
-               $$6.b(kv.O, dac.a);
-               this.d();
-            } else {
-               if (!$$1.a(cxl.vk)) {
-                  this.w.b(2);
-                  this.d();
-                  return;
-               }
-
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!cxh.a($$6, $$2)) {
-               this.w.a(2, $$6);
-               this.d();
-            }
-         }
-      });
+   public static cte a() {
+      return b;
    }
 
-   @Override
-   public boolean a(cxh $$0, cut $$1) {
-      return $$1.c != this.w && super.a($$0, $$1);
+   public static cte a(ctc $$0) {
+      return new cte($$0.a, $$0.b);
    }
 
-   @Override
-   public cxh b(cpr $$0, int $$1) {
-      cxh $$2 = cxh.k;
-      cut $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxh $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 2) {
-            $$4.h().a($$4, $$0.dU(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return cxh.k;
-            }
+   public static cte a(ctc $$0, ctc... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cte($$0.a, $$2);
+   }
 
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.b(kv.M)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cxh.k;
-               }
-            } else if (!$$4.a(cxl.rx) && !$$4.a(cxl.vk) && !$$4.a(cxl.gk)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return cxh.k;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cxh.k;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return cxh.k;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cxh.k;
+   private static long a(ctf $$0, long $$1, Iterable<ctc> $$2) {
+      for (ctc $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
 
-         if ($$4.f()) {
-            $$3.e(cxh.k);
-         }
-
-         $$3.c();
-         if ($$4.M() == $$2.M()) {
-            return cxh.k;
-         }
-
-         $$3.a($$0, $$4);
-         this.d();
+         $$1 |= $$3.b;
       }
 
-      return $$2;
+      return $$1;
+   }
+
+   public boolean b(ctc $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(cte $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public boolean b(cte $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
+   }
+
+   public cte c(cte $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cte(this.c, this.d | $$0.d);
+      }
+   }
+
+   public cte d(cte $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new cte(this.c, $$1);
+      }
    }
 
    @Override
-   public void a(cpr $$0) {
-      super.a($$0);
-      this.w.b(2);
-      this.u.a(($$1, $$2) -> this.a($$0, this.p));
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cte $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

@@ -1,26 +1,29 @@
-import java.util.Set;
+public class adu implements zc<abr> {
+   public static final yt<vr, adu> a = zc.a(adu::a, adu::new);
+   private final int b;
 
-public record adu(int b, bwl c, Set<bwm> d) implements yw<abl> {
-   public static final yn<vl, adu> a = yn.a(yl.h, adu::b, bwl.a, adu::e, bwm.m, adu::f, adu::new);
+   public adu(bue $$0) {
+      this($$0.b());
+   }
 
-   public static adu a(int $$0, bwl $$1, Set<bwm> $$2) {
-      return new adu($$0, $$1, $$2);
+   public adu(int $$0) {
+      this.b = $$0;
+   }
+
+   private adu(vr $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public yy<adu> a() {
-      return agd.ah;
+   public ze<adu> a() {
+      return agk.ac;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   public bwl e() {
-      return this.c;
-   }
-
-   public Set<bwm> f() {
-      return this.d;
    }
 }

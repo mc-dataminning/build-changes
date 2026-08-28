@@ -1,31 +1,18 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class byn {
-   public static bxs<bwg> a(float $$0) {
-      return cbe.a(
-         (Function<cbe.b<bwg>, ? extends App<cbe.c<bwg>, cbh<bwg>>>)($$1 -> $$1.group($$1.c(cfc.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.du())) {
-                           return false;
-                        } else {
-                           ji $$5 = $$3.du();
-                           List<ji> $$6 = ji.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ji::j).collect(af.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new cff($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
+   public static <E extends bwr, T> byj<E> a(Predicate<E> $$0, cft<? extends T> $$1, cft<T> $$2, btb $$3) {
+      return cbv.a(
+         (Function<cbv.b<E>, ? extends App<cbv.c<E>, cby<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
+                     return true;
+                  }
+               }))
       );
    }
 }

@@ -8,7 +8,7 @@ public class dy extends dz<dy.a> {
       return dy.a.a;
    }
 
-   public void a(are $$0, cxh $$1) {
+   public void a(aro $$0, cxy $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class dy extends dz<dy.a> {
          return ap.G.a(new dy.a(Optional.empty(), $$0));
       }
 
-      public static aq<dy.a> a(js<cxd> $$0, dgy $$1) {
+      public static aq<dy.a> a(jt<cxu> $$0, dho $$1) {
          return ap.G.a(new dy.a(Optional.empty(), Optional.of(cv.a.a().a($$0, $$1).b())));
       }
 
-      public boolean a(cxh $$0) {
+      public boolean a(cxy $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

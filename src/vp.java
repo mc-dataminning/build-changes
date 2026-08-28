@@ -1,9 +1,17 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
+public enum vp {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public class vp extends ChannelOutboundHandlerAdapter {
-   public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) {
-      $$0.write(vn.a($$1), $$2);
+   private final String f;
+
+   private vp(final String $$0) {
+      this.f = $$0;
+   }
+
+   public String a() {
+      return this.f;
    }
 }

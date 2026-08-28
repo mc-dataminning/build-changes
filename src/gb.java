@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class gb<T> implements ArgumentType<gb.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final akt<? extends ke<T>> b;
+   final alc<? extends kf<T>> b;
 
-   public gb(akt<? extends ke<T>> $$0) {
+   public gb(alc<? extends kf<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> gb<T> a(akt<? extends ke<T>> $$0) {
+   public static <T> gb<T> a(alc<? extends kf<T>> $$0) {
       return new gb<>($$0);
    }
 
-   public static <T> gb.c<T> a(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> gb.c<T> a(CommandContext<ex> $$0, String $$1, alc<kf<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       gb.c<?> $$4 = (gb.c<?>)$$0.getArgument($$1, gb.c.class);
       Optional<gb.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
 
          try {
             $$0.skip();
-            aku $$2 = aku.a($$0);
-            return new gb.d<>(axf.a(this.b, $$2));
+            ald $$2 = ald.a($$0);
+            return new gb.d<>(axp.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         aku $$4 = aku.a($$0);
-         return new gb.b<>(akt.a(this.b, $$4));
+         ald $$4 = ald.a($$0);
+         return new gb.b<>(alc.a(this.b, $$4));
       }
    }
 
@@ -57,12 +57,12 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
       return a;
    }
 
-   public static class a<T> implements it<gb<T>, gb.a<T>.a> {
-      public void a(gb.a<T>.a $$0, vl $$1) {
+   public static class a<T> implements iu<gb<T>, gb.a<T>.a> {
+      public void a(gb.a<T>.a $$0, vr $$1) {
          $$1.b($$0.b);
       }
 
-      public gb.a<T>.a a(vl $$0) {
+      public gb.a<T>.a a(vr $$0) {
          return new gb.a.a($$0.r());
       }
 
@@ -74,10 +74,10 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
          return new gb.a.a($$0.b);
       }
 
-      public final class a implements it.a<gb<T>> {
-         final akt<? extends ke<T>> b;
+      public final class a implements iu.a<gb<T>> {
+         final alc<? extends kf<T>> b;
 
-         a(final akt<? extends ke<T>> $$1) {
+         a(final alc<? extends kf<T>> $$1) {
             this.b = $$1;
          }
 
@@ -86,24 +86,24 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
          }
 
          @Override
-         public it<gb<T>, ?> a() {
+         public iu<gb<T>, ?> a() {
             return a.this;
          }
       }
    }
 
-   static record b<T>(akt<T> a) implements gb.c<T> {
+   static record b<T>(alc<T> a) implements gb.c<T> {
       @Override
-      public Either<akt<T>, axf<T>> a() {
+      public Either<alc<T>, axp<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<gb.c<E>> a(akt<? extends ke<E>> $$0) {
+      public <E> Optional<gb.c<E>> a(alc<? extends kf<E>> $$0) {
          return this.a.d($$0).map(gb.b::new);
       }
 
-      public boolean a(jr<T> $$0) {
+      public boolean a(js<T> $$0) {
          return $$0.a(this.a);
       }
 
@@ -112,31 +112,31 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
          return this.a.a().toString();
       }
 
-      public akt<T> c() {
+      public alc<T> c() {
          return this.a;
       }
    }
 
-   public interface c<T> extends Predicate<jr<T>> {
-      Either<akt<T>, axf<T>> a();
+   public interface c<T> extends Predicate<js<T>> {
+      Either<alc<T>, axp<T>> a();
 
-      <E> Optional<gb.c<E>> a(akt<? extends ke<E>> var1);
+      <E> Optional<gb.c<E>> a(alc<? extends kf<E>> var1);
 
       String b();
    }
 
-   static record d<T>(axf<T> a) implements gb.c<T> {
+   static record d<T>(axp<T> a) implements gb.c<T> {
       @Override
-      public Either<akt<T>, axf<T>> a() {
+      public Either<alc<T>, axp<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<gb.c<E>> a(akt<? extends ke<E>> $$0) {
+      public <E> Optional<gb.c<E>> a(alc<? extends kf<E>> $$0) {
          return this.a.e($$0).map(gb.d::new);
       }
 
-      public boolean a(jr<T> $$0) {
+      public boolean a(js<T> $$0) {
          return $$0.a(this.a);
       }
 
@@ -145,7 +145,7 @@ public class gb<T> implements ArgumentType<gb.c<T>> {
          return "#" + this.a.b();
       }
 
-      public axf<T> c() {
+      public axp<T> c() {
          return this.a;
       }
    }

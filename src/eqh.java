@@ -1,31 +1,42 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eqh extends eoj {
-   public static final MapCodec<eqh> d = a(eqh::new);
+public class eqh extends eqo {
+   public static final MapCodec<eqh> a = MapCodec.unit(() -> eqh.b);
+   public static final eqh b = new eqh();
 
-   public eqh(eoj.c $$0) {
-      super($$0);
+   private eqh() {
+      super(eqq.a.a);
    }
 
    @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      dqw $$1 = dqw.a($$0.f());
-      ji $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eoj.b($$2, (Consumer<epb>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(epb $$0, ji $$1, dqw $$2, eoj.a $$3) {
-      List<eon> $$4 = Lists.newArrayList();
-      eqg.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   public kn a(etj $$0, drm $$1) {
+      return kn.i;
    }
 
    @Override
-   public eos<?> e() {
-      return eos.c;
+   public List<eti.a> a(etj $$0, jj $$1, drm $$2, azs $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eoy a(etj $$0, jj $$1, drm $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(etj $$0, dio $$1, dil $$2, eak $$3, jj $$4, jj $$5, drm $$6, eoy $$7, azs $$8, ess $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public eqp<?> a() {
+      return eqp.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

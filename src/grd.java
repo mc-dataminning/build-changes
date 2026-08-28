@@ -1,41 +1,41 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public class grd extends gre<dxh> {
+   private static final ald c = ald.b("textures/entity/end_gateway_beam.png");
 
-public class grd implements gqy.a {
-   private final fmg a;
-   private static final int b = 10;
+   public grd(gql.a $$0) {
+      super($$0);
+   }
 
-   public grd(fmg $$0) {
-      this.a = $$0;
+   public void a(dxh $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
+      if ($$0.a() || $$0.c()) {
+         float $$6 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.a() ? (double)$$0.i().ao() : 50.0;
+         $$6 = azk.a($$6 * (float) Math.PI);
+         int $$8 = azk.a((double)$$6 * $$7);
+         int $$9 = $$0.a() ? cwv.c.d() : cwv.k.d();
+         long $$10 = $$0.i().ae();
+         gqg.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      dgz $$5 = this.a.s;
-      ji $$6 = ji.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   protected float b() {
+      return 1.0F;
+   }
 
-      for (ji $$8 : ji.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(dhi.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = ayz.g($$10, 0.9F, 0.9F);
-         long $$12 = kk.e($$8.a());
-         if ($$7.add($$12)) {
-            gqy.a(
-               $$0,
-               $$1,
-               $$5.S().q().a(dhi.a, kk.a($$12)),
-               (double)kk.a(kk.b($$12), 8),
-               (double)kk.a(kk.c($$12), 8),
-               (double)kk.a(kk.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
 
-         if ($$9 != 15) {
-            gqy.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
-         }
-      }
+   @Override
+   protected goi d() {
+      return goi.u();
+   }
+
+   @Override
+   public int aQ_() {
+      return 256;
    }
 }

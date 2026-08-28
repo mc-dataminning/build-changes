@@ -1,28 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aoq {
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("setworldspawn").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ex)$$0x.getSource(), ji.a((kb)((ex)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)ey.a("pos", gt.a()).executes($$0x -> a((ex)$$0x.getSource(), gt.c($$0x, "pos"), 0.0F)))
-                  .then(ey.a("angle", fd.a()).executes($$0x -> a((ex)$$0x.getSource(), gt.c($$0x, "pos"), fd.a($$0x, "angle"))))
-            )
-      );
-   }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.save.alreadyOff"));
 
-   private static int a(ex $$0, ji $$1, float $$2) {
-      ard $$3 = $$0.e();
-      if ($$3.aj() != dgz.i) {
-         $$0.b(wp.c("commands.setworldspawn.failure.not_overworld"));
-         return 0;
-      } else {
-         $$3.a($$1, $$2);
-         $$0.a(() -> wp.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
-         return 1;
-      }
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ex $$1 = (ex)$$0x.getSource();
+         boolean $$2 = false;
+
+         for (arn $$3 : $$1.l().L()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
+               $$2 = true;
+            }
+         }
+
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> wv.c("commands.save.disabled"), true);
+            return 1;
+         }
+      }));
    }
 }

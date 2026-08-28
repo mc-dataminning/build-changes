@@ -1,104 +1,42 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.stream.IntStream;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+public class gmj extends glf {
+   private final bvs a;
+   private int b;
+   private final int D;
+   private final lt E;
 
-public class gmj {
-   private static final int a = 6;
-   private final List<aku> b;
-
-   public gmj(aku $$0) {
-      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
+   public gmj(ghz $$0, bvs $$1, lt $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public void a(fmg $$0, float $$1, float $$2, float $$3) {
-      fgt $$4 = fgt.b();
-      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$5, fea.a);
-      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
-      $$6.pushMatrix();
-      $$6.rotationX((float) Math.PI);
-      RenderSystem.setShader(gmi.i);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$7 = 2;
+   public gmj(ghz $$0, bvs $$1, lt $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dy());
+   }
 
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         $$6.pushMatrix();
-         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = 0.0F;
-         $$6.translate($$9, $$10, 0.0F);
-         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
+   private gmj(ghz $$0, bvs $$1, lt $$2, int $$3, fcu $$4) {
+      super($$0, $$1.dA(), $$1.e(0.5), $$1.dG(), $$4.d, $$4.e, $$4.f);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
+   }
 
-         for (int $$12 = 0; $$12 < 6; $$12++) {
-            RenderSystem.setShaderTexture(0, this.b.get($$12));
-            fgm $$13 = $$4.a(fgw.c.h, fgp.j);
-            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
-            if ($$12 == 0) {
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 1) {
-               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 2) {
-               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 3) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 4) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 5) {
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            fgn.a($$13.b());
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
-
-         $$6.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
       }
 
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$6.popMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
-   }
-
-   public void a(hft $$0) {
-      for (aku $$1 : this.b) {
-         $$0.a($$1);
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

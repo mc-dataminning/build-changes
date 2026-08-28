@@ -1,61 +1,68 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+public class ccs extends ccq {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class ccs extends ccw {
-   private static final int a = 200;
-   private final chn b;
-   private int c;
-   private int d;
-
-   public ccs(chn $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(chn $$0) {
-      return b(200 + $$0.dX().a(200) % 20);
-   }
-
-   @Override
-   public boolean b() {
-      if (this.b.gv()) {
-         return false;
-      } else if (this.b.gs()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<chn> $$0 = $$0x -> $$0x.gu() || !$$0x.gs();
-         List<? extends chn> $$1 = this.b.dU().a((Class<? extends chn>)this.b.getClass(), this.b.cQ().c(8.0, 8.0, 8.0), $$0);
-         chn $$2 = (chn)DataFixUtils.orElse($$1.stream().filter(chn::gu).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gs()));
-         return this.b.gs();
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.gs() && this.b.gw();
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      this.b.gt();
+   public ccs(bwt $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gx();
+      if (this.r && this.d.bj()) {
+         this.d.i(this.d.dy().b(0.0, 0.005, 0.0));
       }
+
+      if (this.k == ccq.a.b && !this.d.O().k()) {
+         double $$0 = this.e - this.d.dA();
+         double $$1 = this.f - this.d.dC();
+         double $$2 = this.g - this.d.dG();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.H(0.0F);
+         } else {
+            float $$4 = (float)(azk.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.w(this.b(this.d.dL(), $$4, (float)this.o));
+            this.d.aU = this.d.dL();
+            this.d.aW = this.d.dL();
+            float $$5 = (float)(this.h * this.d.h(bxx.v));
+            if (this.d.bj()) {
+               this.d.C($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(azk.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = azk.a(azk.h($$7), (float)(-this.n), (float)this.n);
+                  this.d.x(this.a(this.d.dN(), $$7, 5.0F));
+               }
+
+               float $$8 = azk.b(this.d.dN() * (float) (Math.PI / 180.0));
+               float $$9 = azk.a(this.d.dN() * (float) (Math.PI / 180.0));
+               this.d.bh = $$8 * $$5;
+               this.d.bg = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(azk.h(this.d.dL() - $$4));
+               float $$11 = a($$10);
+               this.d.C($$5 * this.q * $$11);
+            }
+         }
+      } else {
+         this.d.C(0.0F);
+         this.d.J(0.0F);
+         this.d.I(0.0F);
+         this.d.H(0.0F);
+      }
+   }
+
+   private static float a(float $$0) {
+      return 1.0F - azk.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

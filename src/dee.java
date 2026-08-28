@@ -1,25 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dee(ddy d) implements dei {
-   public static final MapCodec<dee> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddy.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dee::new));
-
-   @Override
-   public void a(ard $$0, int $$1, ddq $$2, bva $$3, fbx $$4) {
-      cxh $$5 = $$2.a();
-      if ($$5.b(kv.d) && $$5.b(kv.e)) {
-         are $$7 = $$2.c() instanceof are $$6 ? $$6 : null;
-         int $$8 = (int)this.d.a($$1);
-         $$5.a($$8, $$0, $$7, $$2.d());
-      }
+public record dee<T>(T a, Optional<fau> b) {
+   public static Codec<fau> a(bau $$0) {
+      return fau.e
+         .validate(
+            $$1 -> {
+               azq.a $$2 = new azq.a();
+               exr $$3 = new exr($$2, $$0);
+               $$1.a($$3);
+               return $$2.b()
+                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
+                  .orElseGet(() -> DataResult.success($$1));
+            }
+         );
    }
 
-   @Override
-   public MapCodec<dee> a() {
-      return a;
+   public static <T> Codec<dee<T>> a(Codec<T> $$0, bau $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(dee::a), a($$1).optionalFieldOf("requirements").forGetter(dee::b)).apply($$2, dee::new)
+      );
    }
 
-   public ddy b() {
-      return this.d;
+   public boolean a(exl $$0) {
+      return this.b.isEmpty() ? true : this.b.get().test($$0);
    }
 }

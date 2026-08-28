@@ -1,28 +1,46 @@
-public class ewa {
-   public static final ewa a = new ewa("advancements");
-   public static final ewa b = new ewa("stats");
-   public static final ewa c = new ewa("playerdata");
-   public static final ewa d = new ewa("players");
-   public static final ewa e = new ewa("level.dat");
-   public static final ewa f = new ewa("level.dat_old");
-   public static final ewa g = new ewa("icon.png");
-   public static final ewa h = new ewa("session.lock");
-   public static final ewa i = new ewa("generated");
-   public static final ewa j = new ewa("datapacks");
-   public static final ewa k = new ewa("resources.zip");
-   public static final ewa l = new ewa(".");
-   private final String m;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   private ewa(String $$0) {
-      this.m = $$0;
+public interface ewa {
+   jo[] a = new jo[]{jo.e, jo.f, jo.a, jo.b, jo.c, jo.d};
+
+   void a(jo var1, dym var2, jj var3, jj var4, int var5, int var6);
+
+   void a(jj var1, dku var2, @Nullable ewb var3);
+
+   void a(dym var1, jj var2, dku var3, @Nullable ewb var4, boolean var5);
+
+   default void a(jj $$0, dku $$1, @Nullable jo $$2, @Nullable ewb $$3) {
+      for (jo $$4 : a) {
+         if ($$4 != $$2) {
+            this.a($$0.a($$4), $$1, null);
+         }
+      }
    }
 
-   public String a() {
-      return this.m;
+   static void a(dhq $$0, jo $$1, jj $$2, jj $$3, dym $$4, int $$5, int $$6) {
+      dym $$7 = $$0.a_($$2);
+      if (($$5 & 128) == 0 || !$$7.a(dkw.cE)) {
+         dym $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.C_());
+         dku.a($$7, $$8, $$0, $$2, $$5, $$6);
+      }
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   static void a(dhp $$0, dym $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", md.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + md.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new z($$7);
+      }
    }
 }

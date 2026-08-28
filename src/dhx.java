@@ -1,25 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dhx(dgn d, csn e) {
-   public static final String a = "enabled_features";
-   public static final Codec<dhx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dgn.b.lenientOptionalFieldOf("DataPacks", dgn.a).forGetter(dhx::a), csp.f.lenientOptionalFieldOf("enabled_features", csp.h).forGetter(dhx::b)
-            )
-            .apply($$0, dhx::new)
-   );
-   public static final dhx c = new dhx(dgn.a, csp.h);
+public interface dhx {
+   boolean a(jj var1, dym var2, int var3, int var4);
 
-   public dhx a(csn $$0) {
-      return new dhx(this.d, this.e.c($$0));
+   default boolean a(jj $$0, dym $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   public dgn a() {
-      return this.d;
+   boolean a(jj var1, boolean var2);
+
+   default boolean b(jj $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   public csn b() {
-      return this.e;
+   default boolean a(jj $$0, boolean $$1, @Nullable bvs $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(jj var1, boolean var2, @Nullable bvs var3, int var4);
+
+   default boolean b(bvs $$0) {
+      return false;
    }
 }

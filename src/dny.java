@@ -1,65 +1,44 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dny extends dke implements drl {
-   public static final MapCodec<dny> a = b(dny::new);
-   private static final dyh b = dyg.I;
-   private static final fcr c = dke.b(12.0, 10.0, 16.0);
+public class dny extends dle implements dtc {
+   protected static final MapCodec<daw> b = daw.c.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dny> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dny::c), t()).apply($$0, dny::new));
+   private static final fdo a = dku.b(6.0, 0.0, 10.0);
+   private final daw d;
 
    @Override
-   public MapCodec<dny> a() {
-      return a;
-   }
-
-   protected dny(dxp.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(b) ? etx.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dxq a(dax $$0) {
-      dxq $$1 = super.a($$0);
-      if ($$1 != null) {
-         etw $$2 = $$0.q().b_($$0.a());
-         return $$1.b(b, Boolean.valueOf($$2.a() == etx.c));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      ji $$3 = $$2.d();
-      dxq $$4 = $$1.a_($$3);
-      return $$4.c($$1, $$3, jn.a);
-   }
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
+   public MapCodec<? extends dny> a() {
       return c;
    }
 
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$4 == jn.b && !this.a($$0, $$1, $$3)) {
-         return dkg.a.m();
-      } else {
-         if ($$0.c(b)) {
-            $$2.a($$3, etx.c, etx.c.a($$1));
-         }
+   public dny(js<buu> $$0, float $$1, dyl.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public dny(daw $$0, dyl.d $$1) {
+      super($$1);
+      this.d = $$0;
+   }
+
+   protected static daw a(js<buu> $$0, float $$1) {
+      return new daw(List.of(new daw.a($$0, azk.d($$1 * 20.0F))));
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return a.a($$0.a($$2));
+   }
+
+   @Override
+   public daw c() {
+      return this.d;
+   }
+
+   @Nullable
+   public buw b() {
+      return null;
    }
 }

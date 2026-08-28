@@ -1,24 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class efb implements eea {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final een i = new een(this);
 
-class efb extends efg {
-   private final jv<dke> e;
-   public static final MapCodec<efb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kg.a(mc.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, efb::new)
-   );
-
-   public efb(km $$0, jv<dke> $$1) {
-      super($$0);
-      this.e = $$1;
+   public efb(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   protected boolean a(dxq $$0) {
-      return $$0.a(this.e);
+   public azs d() {
+      return new efb(this.g());
    }
 
    @Override
-   public eew<?> a() {
-      return eew.a;
+   public eey e() {
+      return new eem.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

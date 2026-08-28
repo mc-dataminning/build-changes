@@ -1,24 +1,31 @@
-public abstract class gxb<S extends gzj, M extends gda<S>> extends gxs<S, M> {
-   public gxb(gva<S, M> $$0) {
-      super($$0);
+public class gxb extends gsz<cpu, hcu, ggn> {
+   private static final ald j = ald.b("textures/entity/villager/villager.png");
+   public static final gxy.a a = new gxy.a(-0.1171875F, -0.07421875F, 1.0F);
+
+   public gxb(guf.a $$0) {
+      super($$0, new ggn($$0.a(ghc.dF)), new ggn($$0.a(ghc.dG)), 0.5F);
+      this.a(new gxy<>(this, $$0.f(), a));
+      this.a(new gzd<>(this, $$0.e(), "villager"));
+      this.a(new gxx<>(this));
    }
 
-   @Override
-   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         fgv $$8 = $$1.getBuffer(gnh.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hfh.d, -8355712);
-      }
+   public ald a(hcu $$0) {
+      return j;
    }
 
-   protected abstract boolean a(S var1);
+   protected float b(hcu $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
+   }
 
-   protected abstract float a(float var1);
+   public hcu b() {
+      return new hcu();
+   }
 
-   protected abstract aku a();
-
-   protected abstract M c();
+   public void a(cpu $$0, hcu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      haz.a($$0, $$1, this.h);
+      $$1.a = $$0.q() > 0;
+      $$1.b = $$0.gy();
+   }
 }

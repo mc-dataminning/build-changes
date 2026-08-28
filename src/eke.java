@@ -1,34 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eke extends ekk {
-   public static final MapCodec<eke> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eke::new));
+public class eke implements ejv {
+   public static final Codec<eke> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eke::new)
+   );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public eke(bsd $$0, bsd $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected ekl<?> a() {
-      return ekl.d;
-   }
-
-   @Override
-   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ji $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eju $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public eke(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

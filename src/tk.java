@@ -1,65 +1,110 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-public record tk(List<String> c, Map<String, String> d) {
-   private static final Logger e = LogUtils.getLogger();
-   public static final tk a = new tk(List.of(), Map.of());
-   public static final Codec<tk> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.listOf().fieldOf("removed").forGetter(tk::b), Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("renamed").forGetter(tk::c)
-            )
-            .apply($$0, tk::new)
-   );
+public class tk implements tm, tn {
+   static final tm a = Stream::empty;
+   static final tn b = Stream::empty;
+   private final tm c;
+   private final tn d;
+   private final ex e;
 
-   public static tk a(InputStream $$0) {
-      JsonElement $$1 = JsonParser.parseReader(new InputStreamReader($$0, StandardCharsets.UTF_8));
-      return (tk)b.parse(JsonOps.INSTANCE, $$1).getOrThrow($$0x -> new IllegalStateException("Failed to parse deprecated language data: " + $$0x));
+   @Override
+   public Stream<jj> findTestPos() {
+      return this.d.findTestPos();
    }
 
-   public static tk a(String $$0) {
-      try (InputStream $$1 = tl.class.getResourceAsStream($$0)) {
-         return $$1 != null ? a($$1) : a;
-      } catch (Exception var6) {
-         e.error("Failed to read {}", $$0, var6);
-         return a;
+   public static tk.a a() {
+      return new tk.a();
+   }
+
+   tk(ex $$0, tm $$1, tn $$2) {
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public ex b() {
+      return this.e;
+   }
+
+   @Override
+   public Stream<js.c<sp>> findTests() {
+      return this.c.findTests();
+   }
+
+   public static class a {
+      private final UnaryOperator<Supplier<Stream<js.c<sp>>>> a;
+      private final UnaryOperator<Supplier<Stream<jj>>> b;
+
+      public a() {
+         this.a = $$0 -> $$0;
+         this.b = $$0 -> $$0;
       }
-   }
 
-   public static tk a() {
-      return a("/assets/minecraft/lang/deprecated.json");
-   }
-
-   public void a(Map<String, String> $$0) {
-      for (String $$1 : this.c) {
-         $$0.remove($$1);
+      private a(UnaryOperator<Supplier<Stream<js.c<sp>>>> $$0, UnaryOperator<Supplier<Stream<jj>>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      this.d.forEach(($$1x, $$2) -> {
-         String $$3 = $$0.remove($$1x);
-         if ($$3 == null) {
-            e.warn("Missing translation key for rename: {}", $$1x);
-            $$0.remove($$2);
-         } else {
-            $$0.put($$2, $$3);
-         }
-      });
-   }
+      public tk.a a(int $$0) {
+         return new tk.a(b($$0), b($$0));
+      }
 
-   public List<String> b() {
-      return this.c;
-   }
+      private static <Q> UnaryOperator<Supplier<Stream<Q>>> b(int $$0) {
+         return $$1 -> {
+            List<Q> $$2 = new LinkedList<>();
+            List<Q> $$3 = ((Stream)$$1.get()).toList();
 
-   public Map<String, String> c() {
-      return this.d;
+            for (int $$4 = 0; $$4 < $$0; $$4++) {
+               $$2.addAll($$3);
+            }
+
+            return $$2::stream;
+         };
+      }
+
+      private tk a(ex $$0, tm $$1, tn $$2) {
+         return new tk($$0, this.a.apply($$1::findTests)::get, this.b.apply($$2::findTestPos)::get);
+      }
+
+      public tk a(CommandContext<ex> $$0, int $$1) {
+         ex $$2 = (ex)$$0.getSource();
+         jj $$3 = jj.a((kc)$$2.d());
+         return this.a($$2, tk.a, () -> tg.c($$3, $$1, $$2.e()));
+      }
+
+      public tk a(CommandContext<ex> $$0) {
+         ex $$1 = (ex)$$0.getSource();
+         jj $$2 = jj.a((kc)$$1.d());
+         return this.a($$1, tk.a, () -> tg.b($$2, 15, $$1.e()).stream());
+      }
+
+      public tk b(CommandContext<ex> $$0) {
+         ex $$1 = (ex)$$0.getSource();
+         jj $$2 = jj.a((kc)$$1.d());
+         return this.a($$1, tk.a, () -> tg.c($$2, 200, $$1.e()));
+      }
+
+      public tk c(CommandContext<ex> $$0) {
+         ex $$1 = (ex)$$0.getSource();
+         return this.a($$1, tk.a, () -> tg.a(jj.a((kc)$$1.d()), $$1.i().L(), $$1.e()));
+      }
+
+      public tk a(CommandContext<ex> $$0, boolean $$1) {
+         return this.a((ex)$$0.getSource(), () -> se.a().filter($$1x -> !$$1 || ((sp)$$1x.a()).h()), tk.b);
+      }
+
+      public tk a(CommandContext<ex> $$0, Collection<js.c<sp>> $$1) {
+         return this.a((ex)$$0.getSource(), $$1::stream, tk.b);
+      }
+
+      public tk d(CommandContext<ex> $$0) {
+         return this.a($$0, false);
+      }
    }
 }

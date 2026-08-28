@@ -1,65 +1,8 @@
-public class rp {
-   public static final akt<enn> a = ru.a("monster_room");
-   public static final akt<enn> b = ru.a("monster_room_deep");
-   public static final akt<enn> c = ru.a("fossil_upper");
-   public static final akt<enn> d = ru.a("fossil_lower");
-   public static final akt<enn> e = ru.a("dripstone_cluster");
-   public static final akt<enn> f = ru.a("large_dripstone");
-   public static final akt<enn> g = ru.a("pointed_dripstone");
-   public static final akt<enn> h = ru.a("underwater_magma");
-   public static final akt<enn> i = ru.a("glow_lichen");
-   public static final akt<enn> j = ru.a("rooted_azalea_tree");
-   public static final akt<enn> k = ru.a("cave_vines");
-   public static final akt<enn> l = ru.a("lush_caves_vegetation");
-   public static final akt<enn> m = ru.a("lush_caves_clay");
-   public static final akt<enn> n = ru.a("lush_caves_ceiling_vegetation");
-   public static final akt<enn> o = ru.a("spore_blossom");
-   public static final akt<enn> p = ru.a("classic_vines_cave_feature");
-   public static final akt<enn> q = ru.a("amethyst_geode");
-   public static final akt<enn> r = ru.a("sculk_patch_deep_dark");
-   public static final akt<enn> s = ru.a("sculk_patch_ancient_city");
-   public static final akt<enn> t = ru.a("sculk_vein");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static void a(qe<enn> $$0) {
-      js<egg<?, ?>> $$1 = $$0.a(mc.aM);
-      jr<egg<?, ?>> $$2 = $$1.b(rd.a);
-      jr<egg<?, ?>> $$3 = $$1.b(rd.b);
-      jr<egg<?, ?>> $$4 = $$1.b(rd.c);
-      jr<egg<?, ?>> $$5 = $$1.b(rd.d);
-      jr<egg<?, ?>> $$6 = $$1.b(rd.e);
-      jr<egg<?, ?>> $$7 = $$1.b(rd.f);
-      jr<egg<?, ?>> $$8 = $$1.b(rd.g);
-      jr<egg<?, ?>> $$9 = $$1.b(rd.h);
-      jr<egg<?, ?>> $$10 = $$1.b(rd.i);
-      jr<egg<?, ?>> $$11 = $$1.b(rd.j);
-      jr<egg<?, ?>> $$12 = $$1.b(rd.m);
-      jr<egg<?, ?>> $$13 = $$1.b(rd.r);
-      jr<egg<?, ?>> $$14 = $$1.b(rd.s);
-      jr<egg<?, ?>> $$15 = $$1.b(rd.t);
-      jr<egg<?, ?>> $$16 = $$1.b(rl.c);
-      jr<egg<?, ?>> $$17 = $$1.b(rd.u);
-      jr<egg<?, ?>> $$18 = $$1.b(rd.v);
-      jr<egg<?, ?>> $$19 = $$1.b(rd.w);
-      jr<egg<?, ?>> $$20 = $$1.b(rd.x);
-      ru.a($$0, a, $$2, enf.a(10), enk.a(), eni.a(eei.a(0), eei.b()), enb.a());
-      ru.a($$0, b, $$2, enf.a(4), enk.a(), eni.a(eei.b(6), eei.a(-1)), enb.a());
-      ru.a($$0, c, $$3, ent.a(64), enk.a(), eni.a(eei.a(0), eei.b()), enb.a());
-      ru.a($$0, d, $$4, ent.a(64), enk.a(), eni.a(eei.a(), eei.a(-8)), enb.a());
-      ru.a($$0, e, $$5, enf.a(bsj.a(48, 96)), enk.a(), ru.j, enb.a());
-      ru.a($$0, f, $$6, enf.a(bsj.a(10, 48)), enk.a(), ru.j, enb.a());
-      ru.a($$0, g, $$7, enf.a(bsj.a(192, 256)), enk.a(), ru.j, enf.a(bsj.a(1, 5)), ens.a(bry.a(0.0F, 3.0F, -10, 10), bry.a(0.0F, 0.6F, -2, 2)), enb.a());
-      ru.a($$0, h, $$8, enf.a(bsj.a(44, 52)), enk.a(), ru.j, env.a(edo.a.c, Integer.MIN_VALUE, -2), enb.a());
-      ru.a($$0, i, $$9, enf.a(bsj.a(104, 157)), ru.j, enk.a(), env.a(edo.a.c, Integer.MIN_VALUE, -13), enb.a());
-      ru.a($$0, j, $$10, enf.a(bsj.a(1, 2)), enk.a(), ru.j, eng.a(jn.b, eev.c(), eev.c, 12), ens.a(bsa.a(-1)), enb.a());
-      ru.a($$0, k, $$11, enf.a(188), enk.a(), ru.j, eng.a(jn.b, eev.a(jn.a), eev.c, 12), ens.a(bsa.a(-1)), enb.a());
-      ru.a($$0, l, $$12, enf.a(125), enk.a(), ru.j, eng.a(jn.a, eev.c(), eev.c, 12), ens.a(bsa.a(1)), enb.a());
-      ru.a($$0, m, $$13, enf.a(62), enk.a(), ru.j, eng.a(jn.a, eev.c(), eev.c, 12), ens.a(bsa.a(1)), enb.a());
-      ru.a($$0, n, $$14, enf.a(125), enk.a(), ru.j, eng.a(jn.b, eev.c(), eev.c, 12), ens.a(bsa.a(-1)), enb.a());
-      ru.a($$0, o, $$15, enf.a(25), enk.a(), ru.j, eng.a(jn.b, eev.c(), eev.c, 12), ens.a(bsa.a(-1)), enb.a());
-      ru.a($$0, p, $$16, enf.a(256), enk.a(), ru.j, enb.a());
-      ru.a($$0, q, $$17, ent.a(24), enk.a(), eni.a(eei.b(6), eei.a(30)), enb.a());
-      ru.a($$0, r, $$18, enf.a(bsa.a(256)), enk.a(), ru.j, enb.a());
-      ru.a($$0, s, $$19);
-      ru.a($$0, t, $$20, enf.a(bsj.a(204, 250)), enk.a(), ru.j, enb.a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface rp {
 }

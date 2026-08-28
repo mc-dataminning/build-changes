@@ -1,25 +1,54 @@
-public class dbg extends dbb {
-   public dbg(String $$0, dbh $$1, dbr $$2, cxh $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
+public record dbg(List<buw> c, float f) implements dbi {
+   public static final MapCodec<dbg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(buw.d.listOf().fieldOf("effects").forGetter(dbg::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(dbg::c))
+            .apply($$0, dbg::new)
+   );
+   public static final yt<wg, dbg> b = yt.a(buw.e.a(yr.a()), dbg::b, yr.l, dbg::c, dbg::new);
+
+   public dbg(buw $$0, float $$1) {
+      this(List.of($$0), $$1);
+   }
+
+   public dbg(List<buw> $$0) {
+      this($$0, 1.0F);
+   }
+
+   public dbg(buw $$0) {
+      this($$0, 1.0F);
    }
 
    @Override
-   protected cxd f() {
-      return cxl.xz;
+   public dbi.a<dbg> a() {
+      return dbi.a.a;
    }
 
    @Override
-   public dcf<dbg> a() {
-      return dcf.r;
+   public boolean a(dhp $$0, cxy $$1, bwr $$2) {
+      if ($$2.dY().i() >= this.f) {
+         return false;
+      } else {
+         boolean $$3 = false;
+
+         for (buw $$4 : this.c) {
+            if ($$2.a(new buw($$4))) {
+               $$3 = true;
+            }
+         }
+
+         return $$3;
+      }
    }
 
-   @Override
-   public dcg<dbg> b() {
-      return dcg.e;
+   public List<buw> b() {
+      return this.c;
    }
 
-   @Override
-   public dby h() {
-      return dbx.m;
+   public float c() {
+      return this.f;
    }
 }

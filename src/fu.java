@@ -9,11 +9,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fu implements ArgumentType<lr> {
+public class fu implements ArgumentType<lt> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("particle.notFound", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("particle.invalidOptions", $$0));
-   private final jt.a d;
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wv.b("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("particle.invalidOptions", $$0));
+   private final ju.a d;
 
    public fu(et $$0) {
       this.d = $$0;
@@ -23,11 +23,11 @@ public class fu implements ArgumentType<lr> {
       return new fu($$0);
    }
 
-   public static lr a(CommandContext<ex> $$0, String $$1) {
-      return (lr)$$0.getArgument($$1, lr.class);
+   public static lt a(CommandContext<ex> $$0, String $$1) {
+      return (lt)$$0.getArgument($$1, lt.class);
    }
 
-   public lr a(StringReader $$0) throws CommandSyntaxException {
+   public lt a(StringReader $$0) throws CommandSyntaxException {
       return a($$0, this.d);
    }
 
@@ -35,30 +35,30 @@ public class fu implements ArgumentType<lr> {
       return c;
    }
 
-   public static lr a(StringReader $$0, jt.a $$1) throws CommandSyntaxException {
-      ls<?> $$2 = a($$0, $$1.d(mc.Y));
-      return a($$0, (ls<lr>)$$2, $$1);
+   public static lt a(StringReader $$0, ju.a $$1) throws CommandSyntaxException {
+      lu<?> $$2 = a($$0, $$1.e(me.Y));
+      return a($$0, (lu<lt>)$$2, $$1);
    }
 
-   private static ls<?> a(StringReader $$0, jt<ls<?>> $$1) throws CommandSyntaxException {
-      aku $$2 = aku.a($$0);
-      akt<ls<?>> $$3 = akt.a(mc.Y, $$2);
+   private static lu<?> a(StringReader $$0, ju<lu<?>> $$1) throws CommandSyntaxException {
+      ald $$2 = ald.a($$0);
+      alc<lu<?>> $$3 = alc.a(me.Y, $$2);
       return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
    }
 
-   private static <T extends lr> T a(StringReader $$0, ls<T> $$1, jt.a $$2) throws CommandSyntaxException {
-      tq $$3;
+   private static <T extends lt> T a(StringReader $$0, lu<T> $$1, ju.a $$2) throws CommandSyntaxException {
+      tw $$3;
       if ($$0.canRead() && $$0.peek() == '{') {
-         $$3 = new uo($$0).f();
+         $$3 = new uu($$0).f();
       } else {
-         $$3 = new tq();
+         $$3 = new tw();
       }
 
-      return (T)$$1.c().codec().parse($$2.a(ue.a), $$3).getOrThrow(b::create);
+      return (T)$$1.c().codec().parse($$2.a(uk.a), $$3).getOrThrow(b::create);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      jt.b<ls<?>> $$2 = this.d.d(mc.Y);
-      return fc.a($$2.c_().map(akt::a), $$1);
+      ju.b<lu<?>> $$2 = this.d.e(me.Y);
+      return fc.a($$2.c_().map(alc::a), $$1);
    }
 }

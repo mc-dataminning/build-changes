@@ -1,18 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Maps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public class fnr {
-   private static final ayi.b<aku, MapCodec<? extends fnq>> b = new ayi.b<>();
-   public static final Codec<fnq> a = b.a(aku.a).dispatch(fnq::a, $$0 -> $$0);
+public record fnr(float a, boolean b, Map<String, List<fnq>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<fnq>> b = Maps.newHashMap();
+      private boolean c;
 
-   public static void a() {
-      b.a(aku.b("custom_model_data"), fnm.a);
-      b.a(aku.b("constant"), fnl.a);
-      b.a(aku.b("dye"), fnn.a);
-      b.a(aku.b("grass"), fnp.a);
-      b.a(aku.b("firework"), fno.a);
-      b.a(aku.b("potion"), fnt.a);
-      b.a(aku.b("map_color"), fns.a);
-      b.a(aku.b("team"), fnu.a);
+      public static fnr.a a(float $$0) {
+         return new fnr.a($$0);
+      }
+
+      private a(float $$0) {
+         this.a = $$0;
+      }
+
+      public fnr.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public fnr.a a(String $$0, fnq $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
+         return this;
+      }
+
+      public fnr b() {
+         return new fnr(this.a, this.c, this.b);
+      }
    }
 }

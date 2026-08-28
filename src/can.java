@@ -1,28 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class can {
-   public static <E extends bvy> bzc<E> a(List<Pair<? extends cbh<? super E>, Integer>> $$0) {
-      return a($$0, byf.a.b, byf.b.a);
+   private static final int a = 1;
+
+   public static byj<bwt> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   public static <E extends bvy> bzc<E> a(List<Pair<? extends cbh<? super E>, Integer>> $$0, byf.a $$1, byf.b $$2) {
-      caa<cbh<? super E>> $$3 = new caa<>();
-      $$0.forEach($$1x -> $$3.a((cbh<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return cbe.a((Function<cbe.b<E>, ? extends App<cbe.c<E>, cbh<E>>>)($$3x -> $$3x.a((cbh<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == byf.a.b) {
-               $$3.a();
-            }
+   public static byj<bwt> a(Function<bwr, Float> $$0) {
+      return cbv.a(
+         (Function<cbv.b<bwt>, ? extends App<cbv.c<bwt>, cby<bwt>>>)($$1 -> $$1.group($$1.a(cft.n), $$1.a(cft.o), $$1.b(cft.p), $$1.a(cft.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bwr $$9 = $$1.b($$4);
+                     Optional<cfv> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && byk.a($$7, $$9, 1)) {
+                        $$2.b();
+                     } else {
+                        $$3.a(new byt($$9, true));
+                        $$2.a(new cfw(new byt($$9, false), $$0.apply($$7), 0));
+                     }
 
-            for (cbh<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == byf.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+                     return true;
+                  }))
+      );
    }
 }

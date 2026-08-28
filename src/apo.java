@@ -1,58 +1,126 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.Collection;
 import java.util.function.Function;
 
-public class apo implements apm {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.data.entity.invalid"));
-   public static final Function<String, apn.c> a = $$0 -> new apn.c() {
-         @Override
-         public apm a(CommandContext<ex> $$0x) throws CommandSyntaxException {
-            return new apo(fk.a($$0, $$0));
-         }
-
-         @Override
-         public ArgumentBuilder<ex, ?> a(ArgumentBuilder<ex, ?> $$0x, Function<ArgumentBuilder<ex, ?>, ArgumentBuilder<ex, ?>> $$1) {
-            return $$0.then(ey.a("entity").then($$1.apply(ey.a($$0, fk.a()))));
-         }
-      };
-   private final bva c;
-
-   public apo(bva $$0) {
-      this.c = $$0;
+public class apo {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a(
+                                    "targets", fk.d()
+                                 )
+                                 .then(ey.a("clear").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets")))))
+                              .then(ey.a("reset").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets")))))
+                           .then(
+                              ey.a("title")
+                                 .then(
+                                    ey.a("title", fg.a($$1))
+                                       .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "title", afp::new))
+                                 )
+                           ))
+                        .then(
+                           ey.a("subtitle")
+                              .then(
+                                 ey.a("title", fg.a($$1))
+                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "subtitle", afn::new))
+                              )
+                        ))
+                     .then(
+                        ey.a("actionbar")
+                           .then(
+                              ey.a("title", fg.a($$1))
+                                 .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "actionbar", aeo::new))
+                           )
+                     ))
+                  .then(
+                     ey.a("times")
+                        .then(
+                           ey.a("fadeIn", gn.a())
+                              .then(
+                                 ey.a("stay", gn.a())
+                                    .then(
+                                       ey.a("fadeOut", gn.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   fk.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   @Override
-   public void a(tq $$0) throws CommandSyntaxException {
-      if (this.c instanceof cpr) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cF();
-         this.c.g($$0);
-         this.c.a_($$1);
+   private static int a(ex $$0, Collection<aro> $$1) {
+      ach $$2 = new ach(false);
+
+      for (aro $$3 : $$1) {
+         $$3.f.b($$2);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wv.a("commands.title.cleared.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wv.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public tq a() {
-      return dn.b(this.c);
+   private static int b(ex $$0, Collection<aro> $$1) {
+      ach $$2 = new ach(true);
+
+      for (aro $$3 : $$1) {
+         $$3.f.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wv.a("commands.title.reset.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wv.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public wp b() {
-      return wp.a("commands.data.entity.modified", this.c.m_());
+   private static int a(ex $$0, Collection<aro> $$1, wv $$2, String $$3, Function<wv, zc<?>> $$4) throws CommandSyntaxException {
+      for (aro $$5 : $$1) {
+         $$5.f.b($$4.apply(wy.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wv.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wv.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public wp a(un $$0) {
-      return wp.a("commands.data.entity.query", this.c.m_(), uf.c($$0));
-   }
+   private static int a(ex $$0, Collection<aro> $$1, int $$2, int $$3, int $$4) {
+      afq $$5 = new afq($$2, $$3, $$4);
 
-   @Override
-   public wp a(fp.g $$0, double $$1, int $$2) {
-      return wp.a("commands.data.entity.get", $$0.a(), this.c.m_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      for (aro $$6 : $$1) {
+         $$6.f.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wv.a("commands.title.times.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wv.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

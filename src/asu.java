@@ -1,26 +1,36 @@
-import java.util.Map;
+public class asu implements akb {
+   private static final wv b = wv.c("multiplayer.status.request_handled");
+   private final aka c;
+   private final vo d;
+   private boolean e;
 
-public class asu {
-   private static final asu a = new asu(Map.of());
-   private final Map<atp<?>, ?> b;
-
-   private asu(Map<atp<?>, ?> $$0) {
-      this.b = $$0;
+   public asu(aka $$0, vo $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public <T> T a(atp<T> $$0) {
-      return (T)this.b.get($$0);
+   @Override
+   public void a(vq $$0) {
    }
 
-   public static asu a() {
-      return a;
+   @Override
+   public boolean c() {
+      return this.d.i();
    }
 
-   public static <T> asu a(atp<T> $$0, T $$1) {
-      return new asu(Map.of($$0, $$1));
+   @Override
+   public void a(akc $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new ajz(this.c));
+      }
    }
 
-   public static <T1, T2> asu a(atp<T1> $$0, T1 $$1, atp<T2> $$2, T2 $$3) {
-      return new asu(Map.of($$0, $$1, $$2, (T1)$$3));
+   @Override
+   public void a(ajw $$0) {
+      this.d.a(new ajt($$0.b()));
+      this.d.a(b);
    }
 }

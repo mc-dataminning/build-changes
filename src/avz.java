@@ -1,37 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.nio.charset.StandardCharsets;
 
-public record avz(aku e, Optional<Float> f) {
-   public static final Codec<avz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aku.a.fieldOf("sound_id").forGetter(avz::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(avz::b)).apply($$0, avz::a)
-   );
-   public static final Codec<jr<avz>> b = akq.a(mc.al, a);
-   public static final yn<ByteBuf, avz> c = yn.a(aku.b, avz::a, yl.l.a(yl::a), avz::b, avz::a);
-   public static final yn<wa, jr<avz>> d = yl.a(mc.al, c);
+public class avz {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   private static avz a(aku $$0, Optional<Float> $$1) {
-      return $$1.<avz>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
+
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
+      }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   public static avz a(aku $$0) {
-      return new avz($$0, Optional.empty());
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public static avz a(aku $$0, float $$1) {
-      return new avz($$0, Optional.of($$1));
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
    }
 
-   public float a(float $$0) {
-      return this.f.orElse($$0 > 1.0F ? 16.0F * $$0 : 16.0F);
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
    }
 
-   public aku a() {
-      return this.e;
-   }
-
-   public Optional<Float> b() {
-      return this.f;
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

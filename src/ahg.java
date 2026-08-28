@@ -1,37 +1,30 @@
-public class ahg implements yw<agf> {
-   public static final yn<vl, ahg> a = yw.a(ahg::a, ahg::new);
-   private final boolean b;
-   private final boolean c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahg(boolean $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahg(int b, List<String> c, Optional<String> d) implements zc<agm> {
+   public static final yt<vr, ahg> a = yt.a(yr.h, ahg::b, yr.b(1024).a(yr.c(100)), ahg::e, yr.b(32).a(yr::a), ahg::f, ahg::new);
 
-   private ahg(vl $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agf $$0) {
-      $$0.a(this);
+   public ahg(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public yy<ahg> a() {
-      return agd.bM;
+   public ze<ahg> a() {
+      return agk.bD;
    }
 
-   public boolean b() {
-      return this.b;
+   public void a(agm $$0) {
+      $$0.a(this);
    }
 
-   public boolean e() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public Optional<String> f() {
+      return this.d;
    }
 }

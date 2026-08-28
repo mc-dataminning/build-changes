@@ -1,147 +1,53 @@
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bso {
-   private final UUID h;
-   protected wp a;
-   protected float b;
-   protected bso.a c;
-   protected bso.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public class bso extends bsv {
+   public static final MapCodec<bso> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  bsv.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, bso::new)
+      )
+      .validate(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0)
+      );
+   private final bsv b;
+   private final int f;
+   private final int g;
 
-   public bso(UUID $$0, wp $$1, bso.a $$2, bso.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
+   public static bso a(bsv $$0, int $$1, int $$2) {
+      return new bso($$0, $$1, $$2);
    }
 
-   public UUID h() {
-      return this.h;
-   }
-
-   public wp i() {
-      return this.a;
-   }
-
-   public void a(wp $$0) {
-      this.a = $$0;
-   }
-
-   public float j() {
-      return this.b;
-   }
-
-   public void a(float $$0) {
+   public bso(bsv $$0, int $$1, int $$2) {
       this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public bso.a k() {
-      return this.c;
+   @Override
+   public int a(azs $$0) {
+      return azk.a(this.b.a($$0), this.f, this.g);
    }
 
-   public void a(bso.a $$0) {
-      this.c = $$0;
+   @Override
+   public int a() {
+      return Math.max(this.f, this.b.a());
    }
 
-   public bso.b l() {
-      return this.d;
+   @Override
+   public int b() {
+      return Math.min(this.g, this.b.b());
    }
 
-   public void a(bso.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean m() {
-      return this.e;
-   }
-
-   public bso a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean n() {
-      return this.f;
-   }
-
-   public bso b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public bso c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean o() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(final String $$0, final n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bso.a a(String $$0) {
-         for (bso.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return g;
-      }
-   }
-
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
-
-      private final String f;
-
-      private b(final String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static bso.b a(String $$0) {
-         for (bso.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
+   @Override
+   public bsw<?> c() {
+      return bsw.d;
    }
 }

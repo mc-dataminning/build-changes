@@ -1,59 +1,103 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class dit extends dig {
+public class dit {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dit a = new dit(jw.a(), List.of());
    public static final MapCodec<dit> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aks.d(dij.ai), aks.d(dij.aj), aks.d(dij.ak), aks.d(dij.al), aks.d(dij.am)).apply($$0, $$0.stable(dit::new))
+      $$0 -> $$0.group(
+               egp.c.promotePartial(af.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               eok.d.promotePartial(af.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dit::new)
    );
-   private final jr<dic> c;
-   private final jr<dic> d;
-   private final jr<dic> e;
-   private final jr<dic> f;
-   private final jr<dic> g;
+   private final jw<egp<?>> d;
+   private final List<jw<eok>> e;
+   private final Supplier<List<ehd<?, ?>>> f;
+   private final Supplier<Set<eok>> g;
 
-   public static dit a(js<dic> $$0) {
-      return new dit($$0.b(dij.ai), $$0.b(dij.aj), $$0.b(dij.ak), $$0.b(dij.al), $$0.b(dij.am));
+   dit(jw<egp<?>> $$0, List<jw<eok>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jw::a).map(js::a).flatMap(eok::a).filter($$0xx -> $$0xx.b() == ehr.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jw::a).map(js::a).collect(Collectors.toSet()));
    }
 
-   private dit(jr<dic> $$0, jr<dic> $$1, jr<dic> $$2, jr<dic> $$3, jr<dic> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public Iterable<js<egp<?>>> a() {
+      return this.d;
    }
 
-   @Override
-   protected Stream<jr<dic>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   public List<ehd<?, ?>> b() {
+      return this.f.get();
    }
 
-   @Override
-   protected MapCodec<? extends dig> a() {
-      return b;
+   public List<jw<eok>> c() {
+      return this.e;
    }
 
-   @Override
-   public jr<dic> getNoiseBiome(int $$0, int $$1, int $$2, dil.f $$3) {
-      int $$4 = kc.c($$0);
-      int $$5 = kc.c($$1);
-      int $$6 = kc.c($$2);
-      int $$7 = kk.a($$4);
-      int $$8 = kk.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kk.a($$4) * 2 + 1) * 8;
-         int $$10 = (kk.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new edh.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+   public boolean a(eok $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dit.b {
+      private final jt<eok> a;
+      private final jt<egp<?>> b;
+
+      public a(jt<eok> $$0, jt<egp<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dit.a a(eeh.a $$0, alc<eok> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dit.a a(alc<egp<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<js<egp<?>>> a = new ArrayList<>();
+      private final List<List<js<eok>>> b = new ArrayList<>();
+
+      public dit.b a(eeh.a $$0, js<eok> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dit.b a(int $$0, js<eok> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dit.b a(js<egp<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
          }
+      }
+
+      public dit a() {
+         return new dit(jw.a(this.a), this.b.stream().map(jw::a).collect(ImmutableList.toImmutableList()));
       }
    }
 }

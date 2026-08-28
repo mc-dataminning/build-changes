@@ -1,85 +1,79 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fck implements fcj {
-   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-   private final double[] b;
-   private final int[] c;
-   private final int[] d;
-   private final int e;
+public class fck {
+   private final PathMatcher a;
 
-   public fck(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
-      double $$4 = Double.NaN;
-      int $$5 = $$0.size();
-      int $$6 = $$1.size();
-      int $$7 = $$5 + $$6;
-      this.b = new double[$$7];
-      this.c = new int[$$7];
-      this.d = new int[$$7];
-      boolean $$8 = !$$2;
-      boolean $$9 = !$$3;
-      int $$10 = 0;
-      int $$11 = 0;
-      int $$12 = 0;
+   public fck(PathMatcher $$0) {
+      this.a = $$0;
+   }
 
-      while (true) {
-         boolean $$13 = $$11 >= $$5;
-         boolean $$14 = $$12 >= $$6;
-         if ($$13 && $$14) {
-            this.e = Math.max(1, $$10);
-            return;
-         }
-
-         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
-         if ($$15) {
-            $$11++;
-            if ($$8 && ($$12 == 0 || $$14)) {
-               continue;
-            }
-         } else {
-            $$12++;
-            if ($$9 && ($$11 == 0 || $$13)) {
-               continue;
-            }
-         }
-
-         int $$16 = $$11 - 1;
-         int $$17 = $$12 - 1;
-         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
-         if (!($$4 >= $$18 - 1.0E-7)) {
-            this.c[$$10] = $$16;
-            this.d[$$10] = $$17;
-            this.b[$$10] = $$18;
-            $$10++;
-            $$4 = $$18;
-         } else {
-            this.c[$$10 - 1] = $$16;
-            this.d[$$10 - 1] = $$17;
-         }
+   public void a(Path $$0, List<fcl> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new fcl($$0, $$2));
       }
    }
 
-   @Override
-   public boolean a(fcj.a $$0) {
-      int $$1 = this.e - 1;
+   public List<fcl> a(Path $$0) throws IOException {
+      List<fcl> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
-            return false;
-         }
+   public List<fcl> a(Path $$0, boolean $$1) throws IOException {
+      List<fcl> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
       }
 
-      return true;
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
+
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
+      }
    }
 
-   @Override
-   public int size() {
-      return this.e;
-   }
+   public void b(Path $$0, final List<fcl> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               fck.this.a($$0, $$1);
+            }
+         }
 
-   @Override
-   public DoubleList a() {
-      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
+
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

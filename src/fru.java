@@ -1,48 +1,56 @@
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fru extends fqj {
+   private float a = 0.5F;
 
-public class fru {
-   private final Consumer<fpo> a;
-   private final Consumer<fpo> b;
-   @Nullable
-   private frt c;
-   @Nullable
-   private ftx d;
+   public fru(wv $$0, fpx $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   }
 
-   public fru(Consumer<fpo> $$0, Consumer<fpo> $$1) {
+   public fru(int $$0, int $$1, wv $$2, fpx $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public fru(int $$0, int $$1, int $$2, int $$3, wv $$4, fpx $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
+
+   public fru b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private fru b(float $$0) {
       this.a = $$0;
-      this.b = $$1;
+      return this;
    }
 
-   public void a(ftx $$0) {
-      this.d = $$0;
-      frt $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   public fru c() {
+      return this.b(0.0F);
    }
 
-   public void a(frt $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            fmg.Q().ak().a(hjj.a(awa.Bp, 1.0F));
-         }
-      }
+   public fru e() {
+      return this.b(0.5F);
    }
 
-   @Nullable
-   public frt a() {
-      return this.c;
+   public fru g() {
+      return this.b(1.0F);
+   }
+
+   @Override
+   public void b(fpz $$0, int $$1, int $$2, float $$3) {
+      wv $$4 = this.B();
+      fpx $$5 = this.a();
+      int $$6 = this.A();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.F() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.G() + (this.y() - 9) / 2;
+      ayw $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
+
+   private ayw a(wv $$0, int $$1) {
+      fpx $$2 = this.a();
+      xa $$3 = $$2.a($$0, $$1 - $$2.a(wu.u));
+      return tr.a().a(xa.a($$3, wu.u));
    }
 }

@@ -1,28 +1,43 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+import java.util.Locale;
 
-public class fia extends fiw {
-   public Set<String> a = Sets.newHashSet();
+public enum fia {
+   a,
+   b,
+   c,
+   d;
 
-   public static fia a(String $$0) {
-      fia $$1 = new fia();
-      JsonParser $$2 = new JsonParser();
+   private static final int e = 1024;
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
+   public static fia a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
          }
-      } catch (Exception var8) {
       }
+   }
 
-      return $$1;
+   public static double a(long $$0, fia $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   }
+
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, fia $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

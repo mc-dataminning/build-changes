@@ -1,22 +1,21 @@
-public class gxo extends gxs<haq, gdx> {
-   public gxo(gva<haq, gdx> $$0) {
-      super($$0);
+public class gxo extends guw<coe, hdc, ggv> {
+   private static final ald a = ald.b("textures/entity/piglin/zombified_piglin.png");
+
+   public gxo(guf.a $$0, ghb $$1, ghb $$2, ghb $$3, ghb $$4, ghb $$5, ghb $$6) {
+      super($$0, new ggv($$0.a($$1)), new ggv($$0.a($$2)), 0.5F, gvv.a);
+      this.a(new gyi<>(this, new gen($$0.a($$3)), new gen($$0.a($$4)), new gen($$0.a($$5)), new gen($$0.a($$5)), $$0.h()));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, haq $$3, float $$4, float $$5) {
-      hcn $$6 = $$3.i;
-      if (!$$6.c() && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * ayz.a($$3.u * 0.6F) + 0.2F;
-            $$8 -= 0.09F * ayz.a($$3.u * 0.6F);
-         }
+   public ald a(hdc $$0) {
+      return a;
+   }
 
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         $$6.a($$0, $$1, $$2, hfh.d);
-         $$0.b();
-      }
+   public hdc b() {
+      return new hdc();
+   }
+
+   public void a(coe $$0, hdc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gh();
    }
 }

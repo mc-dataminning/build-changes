@@ -1,115 +1,114 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class cow {
-   public static final Codec<cow> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayi.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayi.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cow::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+public abstract class cow extends cnj {
+   protected static final akg<Boolean> a = akk.a(cow.class, aki.k);
+   public static final int b = 300;
+   protected int c;
 
-   public cow(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   public cow(bwb<? extends cow> $$0, dhp $$1) {
+      super($$0, $$1);
+      this.a_(true);
+      this.n();
+      this.a(evk.n, 16.0F);
+      this.a(evk.o, -1.0F);
    }
 
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
+   private void n() {
+      if (chl.a(this)) {
+         ((cga)this.O()).b(true);
+      }
+   }
+
+   protected abstract boolean j();
+
+   public void w(boolean $$0) {
+      this.au().a(a, $$0);
+   }
+
+   protected boolean m() {
+      return this.au().a(a);
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+      super.a($$0);
+      $$0.a(a, false);
+   }
+
+   @Override
+   public void b(tw $$0) {
+      super.b($$0);
+      if (this.m()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.c);
+   }
+
+   @Override
+   public void a(tw $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.c = $$0.h("TimeInOverworld");
+   }
+
+   @Override
+   protected void a(arn $$0) {
+      super.a($$0);
+      if (this.q()) {
+         this.c++;
       } else {
-         this.g++;
+         this.c = 0;
       }
 
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
-
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(ard $$0, ji $$1, are $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<are> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cow::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cow> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cow::c));
-            if ($$4.isPresent()) {
-               cow $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
+      if (this.c > 300) {
+         this.gr();
+         this.g($$0);
       }
    }
 
-   private boolean d() {
-      return this.i > 0;
+   @VisibleForTesting
+   public void b(int $$0) {
+      this.c = $$0;
    }
 
-   private static boolean a(ard $$0, ji $$1) {
-      fbs $$2 = fbs.a(fbx.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cou.class, $$2).isEmpty();
+   public boolean q() {
+      return !this.dV().B_().b() && !this.m() && !this.gf();
    }
 
-   private static List<are> b(ard $$0, ji $$1) {
-      fbx $$2 = fbx.b($$1);
-      return $$0.a($$1x -> !$$1x.U_() && $$1x.ds().a((kb)$$2, 16.0) && $$1x.bJ());
+   protected void g(arn $$0) {
+      this.a(bwb.bQ, bvm.a(this, true, true), $$0x -> $$0x.a(new buw(buy.i, 200, 0)));
    }
 
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
+   public boolean t() {
+      return !this.n_();
+   }
+
+   public abstract coz x();
+
+   @Nullable
+   @Override
+   public bwr f() {
+      return this.Q();
+   }
+
+   protected boolean gq() {
+      return this.fa().c(kx.B);
+   }
+
+   @Override
+   public void T() {
+      if (coy.c(this)) {
+         super.T();
       }
    }
 
-   private void f() {
-      this.a(this.c() - 1);
+   @Override
+   protected void ab() {
+      super.ab();
+      agj.a(this);
    }
 
-   public void a(int $$0) {
-      this.h = ayz.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cow $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
-   }
+   protected abstract void gr();
 }

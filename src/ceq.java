@@ -1,18 +1,24 @@
-import javax.annotation.Nullable;
+public class ceq extends cdn {
+   private final bwz a;
 
-public class ceq<T extends bvy> extends cep<T> {
-   private boolean i = true;
-
-   public ceq(crf $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cgp.a $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public ceq(bwz $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.i && super.b();
+      return this.a.dV().V() && this.a.a(bwc.f).f() && chl.a(this.a);
+   }
+
+   @Override
+   public void d() {
+      ((cga)this.a.O()).c(true);
+   }
+
+   @Override
+   public void e() {
+      if (chl.a(this.a)) {
+         ((cga)this.a.O()).c(false);
+      }
    }
 }

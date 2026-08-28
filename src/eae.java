@@ -1,379 +1,549 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.DynamicLike;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
 
-public class eae<T> implements ead<T>, eaf<T> {
-   private static final int a = 0;
-   private final ead<T> b = ($$0x, $$1x) -> 0;
-   private final jw<T> c;
-   private volatile eae.c<T> d;
-   private final eae.d e;
-   private final azy f = new azy("PalettedContainer");
+public class eae {
+   public static final double b = 5.999997E7F;
+   public static final double c = 2.9999984E7;
+   private final List<eac> a = Lists.newArrayList();
+   private double e = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private eae.a l = new eae.d(5.999997E7F);
+   public static final eae.c d = new eae.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   public void a() {
-      this.f.a();
+   public boolean a(jj $$0) {
+      return this.a((double)$$0.u(), (double)$$0.w());
    }
 
-   public void b() {
-      this.f.b();
+   public boolean a(fcu $$0) {
+      return this.a($$0.d, $$0.f);
    }
 
-   public static <T> Codec<eae<T>> a(jw<T> $$0, Codec<T> $$1, eae.d $$2, T $$3) {
-      eaf.b<T, eae<T>> $$4 = eae::a;
-      return a($$0, $$1, $$2, $$3, $$4);
+   public boolean a(dgw $$0) {
+      return this.a((double)$$0.d(), (double)$$0.e()) && this.a((double)$$0.f(), (double)$$0.g());
    }
 
-   public static <T> Codec<eaf<T>> b(jw<T> $$0, Codec<T> $$1, eae.d $$2, T $$3) {
-      eaf.b<T, eaf<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
-      return a($$0, $$1, $$2, $$3, $$4);
+   public boolean a(fcp $$0) {
+      return this.a($$0.a, $$0.c, $$0.d - 1.0E-5F, $$0.f - 1.0E-5F);
    }
 
-   private static <T, C extends eaf<T>> Codec<C> a(jw<T> $$0, Codec<T> $$1, eae.d $$2, T $$3, eaf.b<T, C> $$4) {
-      return RecordCodecBuilder.create(
-            $$2x -> $$2x.group(
-                     $$1.mapResult(ayi.a($$3)).listOf().fieldOf("palette").forGetter(eaf.a::a),
-                     Codec.LONG_STREAM.lenientOptionalFieldOf("data").forGetter(eaf.a::b)
-                  )
-                  .apply($$2x, eaf.a::new)
-         )
-         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   private boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.a($$0, $$1) && this.a($$2, $$3);
    }
 
-   public eae(jw<T> $$0, eae.d $$1, eae.a<T> $$2, axo $$3, List<T> $$4) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new eae.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   public boolean a(double $$0, double $$1) {
+      return this.a($$0, $$1, 0.0);
    }
 
-   private eae(jw<T> $$0, eae.d $$1, eae.c<T> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$2;
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 >= this.e() - $$2 && $$0 < this.g() + $$2 && $$1 >= this.f() - $$2 && $$1 < this.h() + $$2;
    }
 
-   private eae(eae<T> $$0) {
-      this.c = $$0.c;
-      this.e = $$0.e;
-      this.d = $$0.d.a(this);
+   public jj b(jj $$0) {
+      return this.b((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
    }
 
-   public eae(jw<T> $$0, T $$1, eae.d $$2) {
-      this.e = $$2;
-      this.c = $$0;
-      this.d = this.a(null, 0);
-      this.d.c.a($$1);
+   public jj b(fcu $$0) {
+      return this.b($$0.a(), $$0.b(), $$0.c());
    }
 
-   private eae.c<T> a(@Nullable eae.c<T> $$0, int $$1) {
-      eae.a<T> $$2 = this.e.a(this.c, $$1);
-      return $$0 != null && $$2.equals($$0.b()) ? $$0 : $$2.a(this.c, this, this.e.a());
+   public jj b(double $$0, double $$1, double $$2) {
+      return jj.a((kc)this.c($$0, $$1, $$2));
    }
 
-   @Override
-   public int onResize(int $$0, T $$1) {
-      eae.c<T> $$2 = this.d;
-      eae.c<T> $$3 = this.a($$2, $$0);
-      $$3.a($$2.c, $$2.b);
-      this.d = $$3;
-      return $$3.c.a($$1);
+   public fcu c(fcu $$0) {
+      return this.c($$0.d, $$0.e, $$0.f);
    }
 
-   public T a(int $$0, int $$1, int $$2, T $$3) {
-      this.a();
-
-      Object var5;
-      try {
-         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
-      } finally {
-         this.b();
-      }
-
-      return (T)var5;
+   public fcu c(double $$0, double $$1, double $$2) {
+      return new fcu(azk.a($$0, this.e(), this.g() - 1.0E-5F), $$1, azk.a($$2, this.f(), this.h() - 1.0E-5F));
    }
 
-   public T b(int $$0, int $$1, int $$2, T $$3) {
-      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   public double a(bvs $$0) {
+      return this.b($$0.dA(), $$0.dG());
    }
 
-   private T a(int $$0, T $$1) {
-      int $$2 = this.d.c.a($$1);
-      int $$3 = this.d.b.a($$0, $$2);
-      return this.d.c.a($$3);
+   public fdo c() {
+      return this.l.m();
    }
 
-   public void c(int $$0, int $$1, int $$2, T $$3) {
-      this.a();
-
-      try {
-         this.b(this.e.a($$0, $$1, $$2), $$3);
-      } finally {
-         this.b();
-      }
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
    }
 
-   private void b(int $$0, T $$1) {
-      int $$2 = this.d.c.a($$1);
-      this.d.b.b($$0, $$2);
+   public boolean a(bvs $$0, fcp $$1) {
+      double $$2 = Math.max(azk.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dA(), $$0.dG(), $$2);
    }
 
-   @Override
-   public T a(int $$0, int $$1, int $$2) {
-      return this.a(this.e.a($$0, $$1, $$2));
+   public ead d() {
+      return this.l.i();
    }
 
-   protected T a(int $$0) {
-      eae.c<T> $$1 = this.d;
-      return $$1.c.a($$1.b.a($$0));
+   public double e() {
+      return this.l.a();
    }
 
-   @Override
-   public void a(Consumer<T> $$0) {
-      eac<T> $$1 = this.d.d();
-      IntSet $$2 = new IntArraySet();
-      this.d.b.a($$2::add);
-      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   public double f() {
+      return this.l.c();
    }
 
-   public void a(vl $$0) {
-      this.a();
+   public double g() {
+      return this.l.b();
+   }
 
-      try {
-         int $$1 = $$0.readByte();
-         eae.c<T> $$2 = this.a(this.d, $$1);
-         $$2.c.a($$0);
-         $$0.b($$2.b.a());
-         this.d = $$2;
-      } finally {
-         this.b();
+   public double h() {
+      return this.l.d();
+   }
+
+   public double a() {
+      return this.i;
+   }
+
+   public double b() {
+      return this.j;
+   }
+
+   public void c(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (eac $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
       }
    }
 
-   @Override
-   public void b(vl $$0) {
-      this.a();
+   public double i() {
+      return this.l.e();
+   }
 
-      try {
-         this.d.a($$0);
-      } finally {
-         this.b();
+   public long j() {
+      return this.l.g();
+   }
+
+   public double k() {
+      return this.l.h();
+   }
+
+   public void a(double $$0) {
+      this.l = new eae.d($$0);
+
+      for (eac $$1 : this.l()) {
+         $$1.a(this, $$0);
       }
    }
 
-   private static <T> DataResult<eae<T>> a(jw<T> $$0, eae.d $$1, eaf.a<T> $$2) {
-      List<T> $$3 = $$2.a();
-      int $$4 = $$1.a();
-      int $$5 = $$1.b($$0, $$3.size());
-      eae.a<T> $$6 = $$1.a($$0, $$5);
-      axo $$7;
-      if ($$5 == 0) {
-         $$7 = new bah($$4);
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (eae.a)($$0 == $$1 ? new eae.d($$1) : new eae.b($$0, $$1, $$2));
+
+      for (eac $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
+      }
+   }
+
+   protected List<eac> l() {
+      return Lists.newArrayList(this.a);
+   }
+
+   public void a(eac $$0) {
+      this.a.add($$0);
+   }
+
+   public void b(eac $$0) {
+      this.a.remove($$0);
+   }
+
+   public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
+   }
+
+   public int m() {
+      return this.k;
+   }
+
+   public double n() {
+      return this.f;
+   }
+
+   public void b(double $$0) {
+      this.f = $$0;
+
+      for (eac $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
+   }
+
+   public double o() {
+      return this.e;
+   }
+
+   public void c(double $$0) {
+      this.e = $$0;
+
+      for (eac $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (eac $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (eac $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public eae.c t() {
+      return new eae.c(this);
+   }
+
+   public void a(eae.c $$0) {
+      this.c($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
       } else {
-         Optional<LongStream> $$8 = $$2.b();
-         if ($$8.isEmpty()) {
-            return DataResult.error(() -> "Missing values for non-zero storage");
-         }
-
-         long[] $$9 = $$8.get().toArray();
-
-         try {
-            if ($$6.a() == eae.d.f) {
-               eac<T> $$10 = new dzu<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
-               azo $$11 = new azo($$5, $$4, $$9);
-               int[] $$12 = new int[$$4];
-               $$11.a($$12);
-               a($$12, $$2x -> $$0.a($$10.a($$2x)));
-               $$7 = new azo($$6.b(), $$4, $$12);
-            } else {
-               $$7 = new azo($$6.b(), $$4, $$9);
-            }
-         } catch (azo.a var13) {
-            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
-         }
-      }
-
-      return DataResult.success(new eae<>($$0, $$1, $$6, $$7, $$3));
-   }
-
-   @Override
-   public eaf.a<T> a(jw<T> $$0, eae.d $$1) {
-      this.a();
-
-      eaf.a var12;
-      try {
-         dzu<T> $$2 = new dzu<>($$0, this.d.b.c(), this.b);
-         int $$3 = $$1.a();
-         int[] $$4 = new int[$$3];
-         this.d.b.a($$4);
-         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
-         int $$5 = $$1.b($$0, $$2.b());
-         Optional<LongStream> $$7;
-         if ($$5 != 0) {
-            azo $$6 = new azo($$5, $$3, $$4);
-            $$7 = Optional.of(Arrays.stream($$6.a()));
-         } else {
-            $$7 = Optional.empty();
-         }
-
-         var12 = new eaf.a<>($$2.c(), $$7);
-      } finally {
-         this.b();
-      }
-
-      return var12;
-   }
-
-   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
-      int $$2 = -1;
-      int $$3 = -1;
-
-      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
-         int $$5 = $$0[$$4];
-         if ($$5 != $$2) {
-            $$2 = $$5;
-            $$3 = $$1.applyAsInt($$5);
-         }
-
-         $$0[$$4] = $$3;
+         this.a($$0.g());
       }
    }
 
-   @Override
-   public int c() {
-      return this.d.a();
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      ead i();
+
+      void j();
+
+      void k();
+
+      eae.a l();
+
+      fdo m();
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return this.d.c.a($$0);
-   }
+   class b implements eae.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
 
-   @Override
-   public eae<T> d() {
-      return new eae<>(this);
-   }
+      b(final double $$0, final double $$1, final long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = af.c();
+         this.d = this.e + $$2;
+      }
 
-   @Override
-   public eae<T> e() {
-      return new eae<>(this.c, this.d.c.a(0), this.e);
-   }
+      @Override
+      public double a() {
+         return azk.a(eae.this.a() - this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+      }
 
-   @Override
-   public void a(eae.b<T> $$0) {
-      if (this.d.c.b() == 1) {
-         $$0.accept(this.d.c.a(0), this.d.b.b());
-      } else {
-         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
-         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
-         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+      @Override
+      public double c() {
+         return azk.a(eae.this.b() - this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+      }
+
+      @Override
+      public double b() {
+         return azk.a(eae.this.a() + this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+      }
+
+      @Override
+      public double d() {
+         return azk.a(eae.this.b() + this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(af.c() - this.e) / this.f;
+         return $$0 < 1.0 ? azk.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - af.c();
+      }
+
+      @Override
+      public double h() {
+         return this.c;
+      }
+
+      @Override
+      public ead i() {
+         return this.c < this.b ? ead.b : ead.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public eae.a l() {
+         return (eae.a)(this.g() <= 0L ? eae.this.new d(this.c) : this);
+      }
+
+      @Override
+      public fdo m() {
+         return fdl.a(
+            fdl.c,
+            fdl.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            fcy.e
+         );
       }
    }
 
-   static record a<T>(eac.a a, int b) {
-      public eae.c<T> a(jw<T> $$0, ead<T> $$1, int $$2) {
-         axo $$3 = (axo)(this.b == 0 ? new bah($$2) : new azo(this.b, $$2));
-         eac<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
-         return new eae.c<>(this, $$3, $$4);
-      }
-   }
+   public static class c {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(T var1, int var2);
-   }
-
-   static record c<T>(eae.a<T> a, axo b, eac<T> c) {
-
-      public void a(eac<T> $$0, axo $$1) {
-         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
-            T $$3 = $$0.a($$1.a($$2));
-            this.b.b($$2, this.c.a($$3));
-         }
-      }
-
-      public int a() {
-         return 1 + this.c.a() + wg.a(this.b.a().length) + this.b.a().length * 8;
+      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
 
-      public void a(vl $$0) {
-         $$0.l(this.b.c());
-         this.c.b($$0);
-         $$0.a(this.b.a());
+      c(eae $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
       }
 
-      public eae.c<T> a(ead<T> $$0) {
-         return new eae.c<>(this.a, this.b.d(), this.c.a($$0));
-      }
-
-      public eae.a<T> b() {
+      public double a() {
          return this.a;
       }
 
-      public axo c() {
+      public double b() {
          return this.b;
       }
 
-      public eac<T> d() {
+      public double c() {
          return this.c;
+      }
+
+      public double d() {
+         return this.d;
+      }
+
+      public int e() {
+         return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static eae.c a(DynamicLike<?> $$0, eae.c $$1) {
+         double $$2 = azk.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = azk.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new eae.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(tw $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
       }
    }
 
-   public abstract static class d {
-      public static final eac.a a = eah::a;
-      public static final eac.a b = eaa::a;
-      public static final eac.a c = dzu::a;
-      static final eac.a f = dzt::a;
-      public static final eae.d d = new eae.d(4) {
-         @Override
-         public <A> eae.a<A> a(jw<A> $$0, int $$1) {
-            return switch ($$1) {
-               case 0 -> new eae.a(a, $$1);
-               case 1, 2, 3, 4 -> new eae.a(b, 4);
-               case 5, 6, 7, 8 -> new eae.a(c, $$1);
-               default -> new eae.a(eae.d.f, ayz.e($$0.d()));
-            };
-         }
-      };
-      public static final eae.d e = new eae.d(2) {
-         @Override
-         public <A> eae.a<A> a(jw<A> $$0, int $$1) {
-            return switch ($$1) {
-               case 0 -> new eae.a(a, $$1);
-               case 1, 2, 3 -> new eae.a(b, $$1);
-               default -> new eae.a(eae.d.f, ayz.e($$0.d()));
-            };
-         }
-      };
-      private final int g;
+   class d implements eae.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private fdo g;
 
-      d(int $$0) {
-         this.g = $$0;
+      public d(final double $$0) {
+         this.b = $$0;
+         this.n();
       }
 
-      public int a() {
-         return 1 << this.g * 3;
+      @Override
+      public double a() {
+         return this.c;
       }
 
-      public int a(int $$0, int $$1, int $$2) {
-         return ($$1 << this.g | $$2) << this.g | $$0;
+      @Override
+      public double b() {
+         return this.e;
       }
 
-      public abstract <A> eae.a<A> a(jw<A> var1, int var2);
+      @Override
+      public double c() {
+         return this.d;
+      }
 
-      <A> int b(jw<A> $$0, int $$1) {
-         int $$2 = ayz.e($$1);
-         eae.a<A> $$3 = this.a($$0, $$2);
-         return $$3.a() == f ? $$2 : $$3.b();
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public ead i() {
+         return ead.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = azk.a(eae.this.a() - this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+         this.d = azk.a(eae.this.b() - this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+         this.e = azk.a(eae.this.a() + this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+         this.f = azk.a(eae.this.b() + this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
+         this.g = fdl.a(
+            fdl.c,
+            fdl.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            fcy.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public eae.a l() {
+         return this;
+      }
+
+      @Override
+      public fdo m() {
+         return this.g;
       }
    }
 }

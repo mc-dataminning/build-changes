@@ -1,63 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class czk extends cyr implements cys {
+   public static float a = 0.5F;
 
-public final class czk {
-   public static final czk a = new czk(List.of());
-   public static final Codec<czk> b = cxh.b.listOf().xmap(czk::new, $$0 -> $$0.d);
-   public static final yn<wa, czk> c = cxh.i.a(yl.a()).a(czk::new, $$0 -> $$0.d);
-   private final List<cxh> d;
-
-   private czk(List<cxh> $$0) {
-      this.d = $$0;
+   public czk(cxu.a $$0) {
+      super($$0);
    }
 
-   public static czk a(cxh $$0) {
-      return new czk(List.of($$0.v()));
-   }
-
-   public static czk a(List<cxh> $$0) {
-      return new czk(List.copyOf(Lists.transform($$0, cxh::v)));
-   }
-
-   public boolean a(cxd $$0) {
-      for (cxh $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
+   @Override
+   public btq a(dhp $$0, cqi $$1, btp $$2) {
+      cxy $$3 = $$1.b($$2);
+      if ($$0 instanceof arn $$4) {
+         crb.a(crn::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
       }
 
-      return false;
-   }
-
-   public List<cxh> a() {
-      return Lists.transform(this.d, cxh::v);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
+      $$1.b(awu.c.b(this));
+      $$3.a(1, $$1);
+      return btq.a;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof czk $$1 && cxh.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
+   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
+      return new crn($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 
    @Override
-   public int hashCode() {
-      return cxh.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+   public cys.a b() {
+      return cys.a.a().a(cys.a.a.c() * 0.5F).b(cys.a.a.d() * 1.25F).a();
    }
 }

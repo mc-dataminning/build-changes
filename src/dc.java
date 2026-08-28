@@ -15,11 +15,11 @@ public class dc extends dz<dc.a> {
       return dc.a.a;
    }
 
-   public void a(are $$0, Collection<bva> $$1, @Nullable cxh $$2) {
-      List<ewo> $$3 = Lists.newArrayList();
-      Set<bvi<?>> $$4 = Sets.newHashSet();
+   public void a(aro $$0, Collection<bvs> $$1, @Nullable cxy $$2) {
+      List<exl> $$3 = Lists.newArrayList();
+      Set<bwb<?>> $$4 = Sets.newHashSet();
 
-      for (bva $$5 : $$1) {
+      for (bvs $$5 : $$1) {
          $$4.add($$5.aq());
          $$3.add(bx.b($$0, $$5));
       }
@@ -38,25 +38,25 @@ public class dc extends dz<dc.a> {
                .apply($$0, dc.a::new)
       );
 
-      public static aq<dc.a> a(js<cxd> $$0, bx.a... $$1) {
-         return ap.H.a(new dc.a(Optional.empty(), bx.a($$1), dk.d.c, Optional.of(cv.a.a().a($$0, cxl.wX).b())));
+      public static aq<dc.a> a(jt<cxu> $$0, bx.a... $$1) {
+         return ap.H.a(new dc.a(Optional.empty(), bx.a($$1), dk.d.c, Optional.of(cv.a.a().a($$0, cyc.wZ).b())));
       }
 
-      public static aq<dc.a> a(js<cxd> $$0, dk.d $$1) {
-         return ap.H.a(new dc.a(Optional.empty(), List.of(), $$1, Optional.of(cv.a.a().a($$0, cxl.wX).b())));
+      public static aq<dc.a> a(jt<cxu> $$0, dk.d $$1) {
+         return ap.H.a(new dc.a(Optional.empty(), List.of(), $$1, Optional.of(cv.a.a().a($$0, cyc.wZ).b())));
       }
 
-      public boolean a(Collection<ewo> $$0, int $$1, @Nullable cxh $$2) {
+      public boolean a(Collection<exl> $$0, int $$1, @Nullable cxy $$2) {
          if (!this.e.isPresent() || $$2 != null && this.e.get().a($$2)) {
             if (!this.c.isEmpty()) {
-               List<ewo> $$3 = Lists.newArrayList($$0);
+               List<exl> $$3 = Lists.newArrayList($$0);
 
                for (bi $$4 : this.c) {
                   boolean $$5 = false;
-                  Iterator<ewo> $$6 = $$3.iterator();
+                  Iterator<exl> $$6 = $$3.iterator();
 
                   while ($$6.hasNext()) {
-                     ewo $$7 = $$6.next();
+                     exl $$7 = $$6.next();
                      if ($$4.a($$7)) {
                         $$6.remove();
                         $$5 = true;

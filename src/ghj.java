@@ -1,17 +1,21 @@
 public class ghj {
-   private final ggz a;
-   private final bnt b;
+   private final ghl a;
+   private final ghk b;
 
-   public ghj(ggz $$0, bnt $$1) {
+   private ghj(ghl $$0, ghk $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a() {
-      this.a.b(new ajn(af.c()));
+   public ghj a(ghm $$0) {
+      return new ghj($$0.apply(this.a), this.b);
    }
 
-   public void a(ajk $$0) {
-      this.b.a(af.c() - $$0.b());
+   public ghd a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static ghj a(ghl $$0, int $$1, int $$2) {
+      return new ghj($$0, new ghk($$1, $$2));
    }
 }

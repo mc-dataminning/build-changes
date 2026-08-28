@@ -1,160 +1,314 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ddx implements dai {
-   public static final ddx a = new ddx(new Object2IntOpenHashMap(), true);
-   private static final Codec<Integer> d = Codec.intRange(1, 255);
-   private static final Codec<Object2IntOpenHashMap<jr<ddr>>> e = Codec.unboundedMap(ddr.c, d).xmap(Object2IntOpenHashMap::new, Function.identity());
-   private static final Codec<ddx> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(e.fieldOf("levels").forGetter($$0x -> $$0x.g), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.h))
-            .apply($$0, ddx::new)
-   );
-   public static final Codec<ddx> b = Codec.withAlternative(f, e, $$0 -> new ddx($$0, true));
-   public static final yn<wa, ddx> c = yn.a(yl.a(Object2IntOpenHashMap::new, ddr.d, yl.h), $$0 -> $$0.g, yl.b, $$0 -> $$0.h, ddx::new);
-   final Object2IntOpenHashMap<jr<ddr>> g;
-   final boolean h;
+public interface ddx {
+   Codec<ddx> a = md.aA.q().dispatch(ddx::a, ddx.i::a);
+   yt<wg, ddx> b = yr.a(me.aG).b(ddx::a, ddx.i::b);
 
-   ddx(Object2IntOpenHashMap<jr<ddr>> $$0, boolean $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      ObjectIterator var3 = $$0.object2IntEntrySet().iterator();
+   <T> Stream<T> a(bav var1, ddp<T> var2);
 
-      while (var3.hasNext()) {
-         Entry<jr<ddr>> $$2 = (Entry<jr<ddr>>)var3.next();
-         int $$3 = $$2.getIntValue();
-         if ($$3 < 0 || $$3 > 255) {
-            throw new IllegalArgumentException("Enchantment " + $$2.getKey() + " has invalid level " + $$3);
-         }
+   ddx.i<? extends ddx> a();
+
+   default boolean a(cte $$0) {
+      return true;
+   }
+
+   default List<cxy> a(bav $$0) {
+      return this.a($$0, ddx.e.a).toList();
+   }
+
+   default cxy b(bav $$0) {
+      return this.a($$0, ddx.e.a).findFirst().orElse(cxy.k);
+   }
+
+   public static class a implements ddx {
+      public static final ddx.a c = new ddx.a();
+      public static final MapCodec<ddx.a> d = MapCodec.unit(c);
+      public static final yt<wg, ddx.a> e = yt.a(c);
+      public static final ddx.i<ddx.a> f = new ddx.i<>(d, e);
+
+      private a() {
       }
-   }
 
-   public int a(jr<ddr> $$0) {
-      return this.g.getInt($$0);
-   }
+      @Override
+      public ddx.i<ddx.a> a() {
+         return f;
+      }
 
-   @Override
-   public void a(cxd.b $$0, Consumer<wp> $$1, cyx $$2) {
-      if (this.h) {
-         jt.a $$3 = $$0.a();
-         jv<ddr> $$4 = a($$3, mc.aP, aws.a);
+      @Override
+      public String toString() {
+         return "<any fuel>";
+      }
 
-         for (jr<ddr> $$5 : $$4) {
-            int $$6 = this.g.getInt($$5);
-            if ($$6 > 0) {
-               $$1.accept(ddr.a($$5, $$6));
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         if ($$1 instanceof ddp.b<T> $$2) {
+            dwk $$3 = $$0.c(ddy.a);
+            if ($$3 != null) {
+               return $$3.a().stream().map($$2::a);
             }
          }
 
-         ObjectIterator var9 = this.g.object2IntEntrySet().iterator();
-
-         while (var9.hasNext()) {
-            Entry<jr<ddr>> $$7 = (Entry<jr<ddr>>)var9.next();
-            jr<ddr> $$8 = (jr<ddr>)$$7.getKey();
-            if (!$$4.a($$8)) {
-               $$1.accept(ddr.a((jr<ddr>)$$7.getKey(), $$7.getIntValue()));
-            }
-         }
+         return Stream.empty();
       }
    }
 
-   private static <T> jv<T> a(@Nullable jt.a $$0, akt<ke<T>> $$1, axf<T> $$2) {
-      if ($$0 != null) {
-         Optional<jv.c<T>> $$3 = $$0.d($$1).a($$2);
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
+   public static record b(List<ddx> f) implements ddx {
+      public static final MapCodec<ddx.b> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ddx.a.listOf().fieldOf("contents").forGetter(ddx.b::b)).apply($$0, ddx.b::new)
+      );
+      public static final yt<wg, ddx.b> d = yt.a(ddx.b.a(yr.a()), ddx.b::b, ddx.b::new);
+      public static final ddx.i<ddx.b> e = new ddx.i<>(c, d);
+
+      @Override
+      public ddx.i<ddx.b> a() {
+         return e;
       }
 
-      return jv.a();
-   }
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         return this.f.stream().flatMap($$2 -> $$2.a($$0, $$1));
+      }
 
-   public ddx a(boolean $$0) {
-      return new ddx(this.g, $$0);
-   }
+      @Override
+      public boolean a(cte $$0) {
+         return this.f.stream().allMatch($$1 -> $$1.a($$0));
+      }
 
-   public Set<jr<ddr>> a() {
-      return Collections.unmodifiableSet(this.g.keySet());
-   }
-
-   public Set<Entry<jr<ddr>>> b() {
-      return Collections.unmodifiableSet(this.g.object2IntEntrySet());
-   }
-
-   public int c() {
-      return this.g.size();
-   }
-
-   public boolean d() {
-      return this.g.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ddx $$1) ? false : this.h == $$1.h && this.g.equals($$1.g);
+      public List<ddx> b() {
+         return this.f;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.g.hashCode();
-      return 31 * $$0 + (this.h ? 1 : 0);
-   }
+   public static class c implements ddx {
+      public static final ddx.c c = new ddx.c();
+      public static final MapCodec<ddx.c> d = MapCodec.unit(c);
+      public static final yt<wg, ddx.c> e = yt.a(c);
+      public static final ddx.i<ddx.c> f = new ddx.i<>(d, e);
 
-   @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.g + ", showInTooltip=" + this.h + "}";
-   }
-
-   public static class a {
-      private final Object2IntOpenHashMap<jr<ddr>> a = new Object2IntOpenHashMap();
-      private final boolean b;
-
-      public a(ddx $$0) {
-         this.a.putAll($$0.g);
-         this.b = $$0.h;
+      private c() {
       }
 
-      public void a(jr<ddr> $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0);
+      @Override
+      public ddx.i<ddx.c> a() {
+         return f;
+      }
+
+      @Override
+      public String toString() {
+         return "<empty>";
+      }
+
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         return Stream.empty();
+      }
+   }
+
+   public static record d(js<cxu> f) implements ddx {
+      public static final MapCodec<ddx.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxu.e.fieldOf("item").forGetter(ddx.d::b)).apply($$0, ddx.d::new));
+      public static final yt<wg, ddx.d> d = yt.a(cxu.f, ddx.d::b, ddx.d::new);
+      public static final ddx.i<ddx.d> e = new ddx.i<>(c, d);
+
+      public d(cxu $$0) {
+         this($$0.f());
+      }
+
+      @Override
+      public ddx.i<ddx.d> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         return $$1 instanceof ddp.b<T> $$2 ? Stream.of($$2.a(this.f)) : Stream.empty();
+      }
+
+      @Override
+      public boolean a(cte $$0) {
+         return this.f.a().a($$0);
+      }
+
+      public js<cxu> b() {
+         return this.f;
+      }
+   }
+
+   public static class e implements ddp.b<cxy> {
+      public static final ddx.e a = new ddx.e();
+
+      public cxy b(cxy $$0) {
+         return $$0;
+      }
+   }
+
+   public static record f(cxy f) implements ddx {
+      public static final MapCodec<ddx.f> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxy.d.fieldOf("item").forGetter(ddx.f::b)).apply($$0, ddx.f::new));
+      public static final yt<wg, ddx.f> d = yt.a(cxy.i, ddx.f::b, ddx.f::new);
+      public static final ddx.i<ddx.f> e = new ddx.i<>(c, d);
+
+      @Override
+      public ddx.i<ddx.f> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         return $$1 instanceof ddp.b<T> $$2 ? Stream.of($$2.a(this.f)) : Stream.empty();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            this.a.put($$0, Math.min($$1, 255));
+            if ($$0 instanceof ddx.f $$1 && cxy.a(this.f, $$1.f)) {
+               return true;
+            }
+
+            return false;
          }
       }
 
-      public void b(jr<ddr> $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0, Math.min($$1, 255), Integer::max);
+      @Override
+      public boolean a(cte $$0) {
+         return this.f.h().a($$0);
+      }
+
+      public cxy b() {
+         return this.f;
+      }
+   }
+
+   public static record g(ddx f, ddx g, ddx h) implements ddx {
+      public static final MapCodec<ddx.g> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  ddx.a.fieldOf("base").forGetter(ddx.g::b), ddx.a.fieldOf("material").forGetter(ddx.g::c), ddx.a.fieldOf("pattern").forGetter(ddx.g::d)
+               )
+               .apply($$0, ddx.g::new)
+      );
+      public static final yt<wg, ddx.g> d = yt.a(ddx.b, ddx.g::b, ddx.b, ddx.g::c, ddx.b, ddx.g::d, ddx.g::new);
+      public static final ddx.i<ddx.g> e = new ddx.i<>(c, d);
+
+      @Override
+      public ddx.i<ddx.g> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         if ($$1 instanceof ddp.b<T> $$2) {
+            ju.a $$3 = $$0.c(ddy.b);
+            if ($$3 != null) {
+               azs $$4 = azs.a((long)System.identityHashCode(this));
+               List<cxy> $$5 = this.f.a($$0);
+               if ($$5.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               List<cxy> $$6 = this.g.a($$0);
+               if ($$6.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               List<cxy> $$7 = this.h.a($$0);
+               if ($$7.isEmpty()) {
+                  return Stream.empty();
+               }
+
+               return Stream.<cxy>generate(() -> {
+                  cxy $$5x = af.a($$5, $$4);
+                  cxy $$6x = af.a($$6, $$4);
+                  cxy $$7x = af.a($$7, $$4);
+                  return ddj.a($$3, $$5x, $$6x, $$7x);
+               }).limit(256L).filter($$0x -> !$$0x.f()).limit(16L).map($$2::a);
+            }
          }
-      }
 
-      public void a(Predicate<jr<ddr>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(jr<ddr> $$0) {
-         return this.a.getOrDefault($$0, 0);
-      }
-
-      public Set<jr<ddr>> a() {
-         return this.a.keySet();
+         return Stream.empty();
       }
 
       public ddx b() {
-         return new ddx(this.a, this.b);
+         return this.f;
+      }
+
+      public ddx c() {
+         return this.g;
+      }
+
+      public ddx d() {
+         return this.h;
+      }
+   }
+
+   public static record h(axp<cxu> f) implements ddx {
+      public static final MapCodec<ddx.h> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(axp.a(me.K).fieldOf("tag").forGetter(ddx.h::b)).apply($$0, ddx.h::new)
+      );
+      public static final yt<wg, ddx.h> d = yt.a(axp.c(me.K), ddx.h::b, ddx.h::new);
+      public static final ddx.i<ddx.h> e = new ddx.i<>(c, d);
+
+      @Override
+      public ddx.i<ddx.h> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         if ($$1 instanceof ddp.b<T> $$2) {
+            ju.a $$3 = $$0.c(ddy.b);
+            if ($$3 != null) {
+               return $$3.e(me.K).a(this.f).map($$1x -> $$1x.a().map($$2::a)).stream().flatMap($$0x -> $$0x);
+            }
+         }
+
+         return Stream.empty();
+      }
+
+      public axp<cxu> b() {
+         return this.f;
+      }
+   }
+
+   public static record i<T extends ddx>(MapCodec<T> a, yt<wg, T> b) {
+   }
+
+   public static record j(ddx f, ddx g) implements ddx {
+      public static final MapCodec<ddx.j> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ddx.a.fieldOf("input").forGetter(ddx.j::b), ddx.a.fieldOf("remainder").forGetter(ddx.j::c)).apply($$0, ddx.j::new)
+      );
+      public static final yt<wg, ddx.j> d = yt.a(ddx.b, ddx.j::b, ddx.b, ddx.j::c, ddx.j::new);
+      public static final ddx.i<ddx.j> e = new ddx.i<>(c, d);
+
+      @Override
+      public ddx.i<ddx.j> a() {
+         return e;
+      }
+
+      @Override
+      public <T> Stream<T> a(bav $$0, ddp<T> $$1) {
+         if ($$1 instanceof ddp.a<T> $$2) {
+            List<T> $$3 = this.g.a($$0, $$1).toList();
+            return this.f.a($$0, $$1).map($$2x -> $$2.a((T)$$2x, $$3));
+         } else {
+            return this.f.a($$0, $$1);
+         }
+      }
+
+      @Override
+      public boolean a(cte $$0) {
+         return this.f.a($$0) && this.g.a($$0);
+      }
+
+      public ddx b() {
+         return this.f;
+      }
+
+      public ddx c() {
+         return this.g;
       }
    }
 }

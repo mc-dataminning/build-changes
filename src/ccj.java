@@ -1,50 +1,19 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class ccj extends cdj {
-   private final chs g;
+public class ccj {
+   private static final bsv a = btb.a(100, 200);
 
-   public ccj(chs $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(ccw.a.c, ccw.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.q() && !this.g.gs() && !this.g.gF() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   protected int a(bwg $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.z(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gF()) {
-         this.g.z(true);
-      }
-   }
-
-   @Override
-   protected boolean a(dhc $$0, ji $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(awp.T);
+   public static byj<bwr> a() {
+      return cbv.a(
+         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$0 -> $$0.group($$0.a(cft.aC), $$0.a(cft.n), $$0.c(cft.aH), $$0.b(cft.C), $$0.c(cft.aA))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(baq.a);
+                     $$2.a(baq.a, (long)a.a($$3x.C_()));
+                     $$1.b();
+                     $$4x.b(bxd.m);
+                     return true;
+                  }))
+      );
    }
 }

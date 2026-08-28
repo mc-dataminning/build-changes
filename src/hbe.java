@@ -1,11 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hbe extends haj {
-   public fbx a = fbx.c;
-   @Nullable
-   public cwe b;
-   public float c;
-   public float d;
-   public float e;
-   public jn f = jn.a;
+public class hbe extends hbk {
+   public float a;
+   public int b;
+   public bvo.a c = bvo.a.a;
 }

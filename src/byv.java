@@ -1,72 +1,73 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
+import java.util.function.Function;
 
-public final class byv {
-   public static Optional<fbx> a(bwa $$0, fbx $$1, float $$2, int $$3, boolean $$4) {
-      fbx $$5 = $$0.ds();
-      fbx $$6 = new fbx($$1.d - $$5.d, 0.0, $$1.f - $$5.f).d().c(0.5);
-      fbx $$7 = $$1.d($$6);
-      fbx $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.f, $$8.d);
-      double $$11 = $$8.a(0.0, $$8.e, 0.0).h();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.e;
-      double $$14 = $$0.be();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = ayz.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               fbx $$27 = null;
-               bvd $$28 = $$0.a(bwk.g);
+public class byv extends byi<bwz> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bwr, Float> f;
+   private final Function<bwr, Double> g;
 
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  fbx $$33 = new fbx($$5.d + $$31, $$5.e + $$30, $$5.f + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new fbx($$23 * $$20, $$24, $$23 * $$19).c(0.95F));
-         }
-      }
+   public byv(Function<bwr, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   private static boolean a(bwa $$0, bvd $$1, fbx $$2, fbx $$3) {
-      fbx $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = ayz.c($$4.g() / $$5);
-      fbx $$7 = $$4.d();
-      fbx $$8 = $$2;
+   public byv(Function<bwr, Float> $$0, Function<bwr, Double> $$1) {
+      super(af.a(() -> {
+         Builder<cft<?>, cfu> $$0x = ImmutableMap.builder();
+         $$0x.put(cft.o, cfu.c);
+         $$0x.put(cft.n, cfu.c);
+         $$0x.put(cft.Q, cfu.b);
+         $$0x.put(cft.S, cfu.c);
+         $$0x.put(cft.P, cfu.a);
+         $$0x.put(cft.s, cfu.b);
+         $$0x.put(cft.aa, cfu.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.c($$5 * 0.9F));
-         if (!$$0.dU().a($$0, $$1.a($$8))) {
-            return false;
-         }
+   protected float a(bwz $$0) {
+      return this.f.apply($$0);
+   }
+
+   private Optional<cqi> b(bwz $$0) {
+      return $$0.eb().c(cft.P);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(arn $$0, bwz $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.eb().a(cft.s) && !$$1.eb().a(cft.aa);
+   }
+
+   protected void b(arn $$0, bwz $$1, long $$2) {
+      $$1.eb().a(cft.S, true);
+   }
+
+   protected void c(arn $$0, bwz $$1, long $$2) {
+      bxr<?> $$3 = $$1.eb();
+      $$3.a(cft.Q, 100);
+      $$3.a(cft.S, false);
+      $$3.b(cft.n);
+      $$3.b(cft.o);
+   }
+
+   protected void d(arn $$0, bwz $$1, long $$2) {
+      cqi $$3 = this.b($$1).get();
+      bxr<?> $$4 = $$1.eb();
+      $$4.a(cft.o, new byt($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < azk.k($$5)) {
+         $$4.b(cft.n);
+      } else {
+         $$4.a(cft.n, new cfw(new byt($$3, false), this.a($$1), 2));
       }
-
-      return true;
    }
 }

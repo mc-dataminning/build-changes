@@ -1,62 +1,20 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class apl implements apm {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.data.block.invalid"));
-   public static final Function<String, apn.c> a = $$0 -> new apn.c() {
-         @Override
-         public apm a(CommandContext<ex> $$0x) throws CommandSyntaxException {
-            ji $$1 = gt.a($$0, $$0 + "Pos");
-            dus $$2 = ((ex)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw apl.b.create();
-            } else {
-               return new apl($$2, $$1);
-            }
-         }
+public class apl {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(ey.a("targets", fk.d()).then(ey.a("message", fg.a($$1)).executes($$0x -> {
+               int $$1x = 0;
 
-         @Override
-         public ArgumentBuilder<ex, ?> a(ArgumentBuilder<ex, ?> $$0x, Function<ArgumentBuilder<ex, ?>, ArgumentBuilder<ex, ?>> $$1) {
-            return $$0.then(ey.a("block").then($$1.apply(ey.a($$0 + "Pos", gt.a()))));
-         }
-      };
-   private final dus c;
-   private final ji d;
+               for (aro $$2 : fk.f($$0x, "targets")) {
+                  $$2.b(wy.a((ex)$$0x.getSource(), fg.a($$0x, "message"), $$2, 0), false);
+                  $$1x++;
+               }
 
-   public apl(dus $$0, ji $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(tq $$0) {
-      dxq $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().F_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
-   }
-
-   @Override
-   public tq a() {
-      return this.c.b(this.c.i().F_());
-   }
-
-   @Override
-   public wp b() {
-      return wp.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public wp a(un $$0) {
-      return wp.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), uf.c($$0));
-   }
-
-   @Override
-   public wp a(fp.g $$0, double $$1, int $$2) {
-      return wp.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+               return $$1x;
+            })))
+      );
    }
 }

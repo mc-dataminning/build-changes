@@ -1,52 +1,30 @@
-public class gvv extends guj<cis, hbq, gda<hbq>> {
-   private final gda<hbq> a = this.c();
-   private final gda<hbq> b;
-   private static final aku k = aku.b("textures/entity/fish/tropical_a.png");
-   private static final aku l = aku.b("textures/entity/fish/tropical_b.png");
+public class gvv extends guw<cow, hbv, gfd> {
+   private static final ald j = ald.b("textures/entity/piglin/piglin.png");
+   private static final ald k = ald.b("textures/entity/piglin/piglin_brute.png");
+   public static final gxy.a a = new gxy.a(0.0F, 0.0F, 1.0019531F);
 
-   public gvv(gtd.a $$0) {
-      super($$0, new gfh($$0.a(ggb.dq)), 0.15F);
-      this.b = new gfi($$0.a(ggb.do));
-      this.a(new gyb(this, $$0.f()));
+   public gvv(guf.a $$0, ghb $$1, ghb $$2, ghb $$3, ghb $$4, ghb $$5, ghb $$6) {
+      super($$0, new gfd($$0.a($$1)), new gfd($$0.a($$2)), 0.5F, a);
+      this.a(new gyi<>(this, new gen($$0.a($$3)), new gen($$0.a($$4)), new gen($$0.a($$5)), new gen($$0.a($$6)), $$0.h()));
    }
 
-   public aku a(hbq $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
+   public ald a(hbv $$0) {
+      return $$0.a ? k : j;
    }
 
-   public hbq b() {
-      return new hbq();
+   public hbv b() {
+      return new hbv();
    }
 
-   public void a(cis $$0, hbq $$1, float $$2) {
+   public void a(cow $$0, hbv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gA();
-      $$1.b = $$0.gy().d();
-      $$1.c = $$0.gz().d();
+      $$1.a = $$0.aq() == bwb.aS;
+      $$1.d = $$0.x();
+      $$1.c = (float)cwq.b($$0.fA(), $$0);
+      $$1.b = $$0.q();
    }
 
-   public void a(hbq $$0, fgr $$1, gmx $$2, int $$3) {
-      this.h = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.b;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(hbq $$0) {
-      return $$0.b;
-   }
-
-   protected void a(hbq $$0, fgr $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * ayz.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   protected boolean b(hbv $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

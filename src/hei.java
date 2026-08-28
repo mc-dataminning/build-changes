@@ -1,17 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hei() implements heh<akt<dfp>> {
-   public static final heh.a<hei, akt<dfp>> a = heh.a.a(MapCodec.unit(new hei()), akt.a(mc.bb));
+public record hei() implements hes {
+   public static final MapCodec<hei> a = MapCodec.unit(new hei());
 
-   @Nullable
-   public akt<dfp> a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      dfo $$5 = $$0.a(kv.W);
-      return $$5 == null ? null : $$5.a().e().orElse(null);
+   @Override
+   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
+      return cwm.c($$0);
    }
 
    @Override
-   public heh.a<hei, akt<dfp>> a() {
+   public MapCodec<hei> a() {
       return a;
    }
 }

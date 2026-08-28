@@ -1,163 +1,108 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public final class czo {
-   private static final Logger e = LogUtils.getLogger();
-   public static final czo a = new czo(new tq());
-   private static final String f = "id";
-   public static final Codec<czo> b = Codec.withAlternative(tq.a, uo.i).xmap(czo::new, $$0 -> $$0.g);
-   public static final Codec<czo> c = b.validate(
-      $$0 -> $$0.e().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final yn<ByteBuf, czo> d = yl.r.a(czo::new, $$0 -> $$0.g);
-   private final tq g;
+public class czo extends cxu implements cys {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
 
-   private czo(tq $$0) {
-      this.g = $$0;
+   public czo(cxu.a $$0) {
+      super($$0);
    }
 
-   public static czo a(tq $$0) {
-      return new czo($$0.i());
+   public static dam c() {
+      return dam.a().a(bxx.c, new bxv(h, 8.0, bxv.a.a), bwd.b).a(bxx.e, new bxv(i, -2.9F, bxv.a.a), bwd.b).a();
    }
 
-   public static Predicate<cxh> a(ku<czo> $$0, tq $$1) {
-      return $$2 -> {
-         czo $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   public static dax d() {
+      return new dax(List.of(), 1.0F, 2, false);
    }
 
-   public boolean b(tq $$0) {
-      return uf.a($$0, this.g, true);
+   @Override
+   public cya b(cxy $$0) {
+      return cya.f;
    }
 
-   public static void a(ku<czo> $$0, cxh $$1, Consumer<tq> $$2) {
-      czo $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.g.g()) {
-         $$1.d($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
+   @Override
+   public int a(cxy $$0, bwr $$1) {
+      return 72000;
    }
 
-   public static void a(ku<czo> $$0, cxh $$1, tq $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.d($$0);
-      }
-   }
+   @Override
+   public boolean a(cxy $$0, dhp $$1, bwr $$2, int $$3) {
+      if ($$2 instanceof cqi $$4) {
+         int $$6 = this.a($$0, $$2) - $$3;
+         if ($$6 < 10) {
+            return false;
+         } else {
+            float $$7 = dej.a($$0, $$4);
+            if ($$7 > 0.0F && !$$4.bl()) {
+               return false;
+            } else if ($$0.r()) {
+               return false;
+            } else {
+               js<awj> $$8 = dej.b($$0, dei.C).orElse(awk.AE);
+               $$4.b(awu.c.b(this));
+               if ($$1 instanceof arn $$9) {
+                  $$0.a(1, $$4);
+                  if ($$7 == 0.0F) {
+                     cro $$10 = crb.a(cro::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
+                     if ($$4.fU()) {
+                        $$10.b = cqp.a.c;
+                     } else {
+                        $$4.gi().h($$0);
+                     }
 
-   public czo a(Consumer<tq> $$0) {
-      tq $$1 = this.g.i();
-      $$0.accept($$1);
-      return new czo($$1);
-   }
+                     $$1.a(null, $$10, $$8.a(), awl.h, 1.0F, 1.0F);
+                     return true;
+                  }
+               }
 
-   @Nullable
-   public aku a() {
-      return !this.g.b("id", 8) ? null : aku.c(this.g.l("id"));
-   }
+               if ($$7 > 0.0F) {
+                  float $$11 = $$4.dL();
+                  float $$12 = $$4.dN();
+                  float $$13 = -azk.a($$11 * (float) (Math.PI / 180.0)) * azk.b($$12 * (float) (Math.PI / 180.0));
+                  float $$14 = -azk.a($$12 * (float) (Math.PI / 180.0));
+                  float $$15 = azk.b($$11 * (float) (Math.PI / 180.0)) * azk.b($$12 * (float) (Math.PI / 180.0));
+                  float $$16 = azk.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
+                  $$13 *= $$7 / $$16;
+                  $$14 *= $$7 / $$16;
+                  $$15 *= $$7 / $$16;
+                  $$4.j((double)$$13, (double)$$14, (double)$$15);
+                  $$4.a(20, 8.0F, $$0);
+                  if ($$4.aJ()) {
+                     float $$17 = 1.1999999F;
+                     $$4.a(bwv.a, new fcu(0.0, 1.1999999F, 0.0));
+                  }
 
-   @Nullable
-   public <T> T a(jt.a $$0, akt<? extends ke<T>> $$1) {
-      aku $$2 = this.a();
-      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(akt.a($$1, $$2))).map(jr::a).orElse(null);
-   }
-
-   public void a(bva $$0) {
-      tq $$1 = $$0.f(new tq());
-      UUID $$2 = $$0.cF();
-      $$1.a(this.g);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dus $$0, jt.a $$1) {
-      tq $$2 = $$0.e($$1);
-      tq $$3 = $$2.i();
-      $$2.a(this.g);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.aA_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.aA_(), var7);
+                  $$1.a(null, $$4, $$8.a(), awl.h, 1.0F, 1.0F);
+                  return true;
+               } else {
+                  return false;
+               }
             }
          }
-      }
-
-      return false;
-   }
-
-   public <T> DataResult<czo> a(DynamicOps<un> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.g).map($$0x -> new czo((tq)$$0x));
-   }
-
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(ue.a, $$0);
-   }
-
-   public <T> DataResult<T> a(DynamicOps<un> $$0, MapDecoder<T> $$1) {
-      MapLike<un> $$2 = (MapLike<un>)$$0.getMap(this.g).getOrThrow();
-      return $$1.decode($$0, $$2);
-   }
-
-   public int b() {
-      return this.g.f();
-   }
-
-   public boolean c() {
-      return this.g.g();
-   }
-
-   public tq d() {
-      return this.g.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.g.e($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
       } else {
-         return $$0 instanceof czo $$1 ? this.g.equals($$1.g) : false;
+         return false;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.g.hashCode();
+   public btq a(dhp $$0, cqi $$1, btp $$2) {
+      cxy $$3 = $$1.b($$2);
+      if ($$3.r()) {
+         return btq.d;
+      } else if (dej.a($$3, $$1) > 0.0F && !$$1.bl()) {
+         return btq.d;
+      } else {
+         $$1.c($$2);
+         return btq.c;
+      }
    }
 
    @Override
-   public String toString() {
-      return this.g.toString();
-   }
-
-   @Deprecated
-   public tq e() {
-      return this.g;
+   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
+      cro $$4 = new cro($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.b = cqp.a.b;
+      return $$4;
    }
 }

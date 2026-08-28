@@ -1,19 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnw extends dke {
-   public static final MapCodec<dnw> d = b(dnw::new);
+public class dnw extends dmo {
+   public static final MapCodec<dnw> b = b(dnw::new);
 
    @Override
-   protected MapCodec<? extends dnw> a() {
-      return d;
+   public MapCodec<dnw> a() {
+      return b;
    }
 
-   protected dnw(dxp.d $$0) {
+   protected dnw(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean b(dxq $$0, dxq $$1, jn $$2) {
-      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      return btq.e;
    }
 }

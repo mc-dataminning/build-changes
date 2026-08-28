@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bal {
+@FunctionalInterface
+public interface bal {
+   long get(TimeUnit var1);
+
+   public interface a extends bal, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+      }
+   }
 }

@@ -1,14 +1,14 @@
-import com.mojang.serialization.MapCodec;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface ecu<T extends ect> {
-   ecu<ecl> a = a("block", new ecl.a());
-   ecu<ecn> b = a("entity", new ecn.a());
+public interface ecu<T> extends AutoCloseable {
+   CompletableFuture<ecp<T>> a(dgw var1);
 
-   MapCodec<T> a();
+   void a(ecp<T> var1);
 
-   yn<? super wa, T> b();
+   void a(boolean var1);
 
-   static <S extends ecu<T>, T extends ect> S a(String $$0, S $$1) {
-      return ke.a(mb.t, $$0, $$1);
+   @Override
+   default void close() throws IOException {
    }
 }

@@ -1,197 +1,153 @@
-public final class awp {
-   public static final axf<dke> a = a("wool");
-   public static final axf<dke> b = a("planks");
-   public static final axf<dke> c = a("stone_bricks");
-   public static final axf<dke> d = a("wooden_buttons");
-   public static final axf<dke> e = a("stone_buttons");
-   public static final axf<dke> f = a("buttons");
-   public static final axf<dke> g = a("wool_carpets");
-   public static final axf<dke> h = a("wooden_doors");
-   public static final axf<dke> i = a("mob_interactable_doors");
-   public static final axf<dke> j = a("wooden_stairs");
-   public static final axf<dke> k = a("wooden_slabs");
-   public static final axf<dke> l = a("wooden_fences");
-   public static final axf<dke> m = a("pressure_plates");
-   public static final axf<dke> n = a("wooden_pressure_plates");
-   public static final axf<dke> o = a("stone_pressure_plates");
-   public static final axf<dke> p = a("wooden_trapdoors");
-   public static final axf<dke> q = a("doors");
-   public static final axf<dke> r = a("saplings");
-   public static final axf<dke> s = a("logs_that_burn");
-   public static final axf<dke> t = a("overworld_natural_logs");
-   public static final axf<dke> u = a("logs");
-   public static final axf<dke> v = a("dark_oak_logs");
-   public static final axf<dke> w = a("pale_oak_logs");
-   public static final axf<dke> x = a("oak_logs");
-   public static final axf<dke> y = a("birch_logs");
-   public static final axf<dke> z = a("acacia_logs");
-   public static final axf<dke> A = a("cherry_logs");
-   public static final axf<dke> B = a("jungle_logs");
-   public static final axf<dke> C = a("spruce_logs");
-   public static final axf<dke> D = a("mangrove_logs");
-   public static final axf<dke> E = a("crimson_stems");
-   public static final axf<dke> F = a("warped_stems");
-   public static final axf<dke> G = a("bamboo_blocks");
-   public static final axf<dke> H = a("wart_blocks");
-   public static final axf<dke> I = a("banners");
-   public static final axf<dke> J = a("sand");
-   public static final axf<dke> K = a("smelts_to_glass");
-   public static final axf<dke> L = a("stairs");
-   public static final axf<dke> M = a("slabs");
-   public static final axf<dke> N = a("walls");
-   public static final axf<dke> O = a("anvil");
-   public static final axf<dke> P = a("rails");
-   public static final axf<dke> Q = a("leaves");
-   public static final axf<dke> R = a("trapdoors");
-   public static final axf<dke> S = a("small_flowers");
-   public static final axf<dke> T = a("beds");
-   public static final axf<dke> U = a("fences");
-   public static final axf<dke> V = a("flowers");
-   public static final axf<dke> W = a("bee_attractive");
-   public static final axf<dke> X = a("piglin_repellents");
-   public static final axf<dke> Y = a("gold_ores");
-   public static final axf<dke> Z = a("iron_ores");
-   public static final axf<dke> aa = a("diamond_ores");
-   public static final axf<dke> ab = a("redstone_ores");
-   public static final axf<dke> ac = a("lapis_ores");
-   public static final axf<dke> ad = a("coal_ores");
-   public static final axf<dke> ae = a("emerald_ores");
-   public static final axf<dke> af = a("copper_ores");
-   public static final axf<dke> ag = a("candles");
-   public static final axf<dke> ah = a("dirt");
-   public static final axf<dke> ai = a("terracotta");
-   public static final axf<dke> aj = a("badlands_terracotta");
-   public static final axf<dke> ak = a("concrete_powder");
-   public static final axf<dke> al = a("completes_find_tree_tutorial");
-   public static final axf<dke> am = a("shulker_boxes");
-   public static final axf<dke> an = a("flower_pots");
-   public static final axf<dke> ao = a("enderman_holdable");
-   public static final axf<dke> ap = a("ice");
-   public static final axf<dke> aq = a("valid_spawn");
-   public static final axf<dke> ar = a("impermeable");
-   public static final axf<dke> as = a("underwater_bonemeals");
-   public static final axf<dke> at = a("coral_blocks");
-   public static final axf<dke> au = a("wall_corals");
-   public static final axf<dke> av = a("coral_plants");
-   public static final axf<dke> aw = a("corals");
-   public static final axf<dke> ax = a("bamboo_plantable_on");
-   public static final axf<dke> ay = a("standing_signs");
-   public static final axf<dke> az = a("wall_signs");
-   public static final axf<dke> aA = a("signs");
-   public static final axf<dke> aB = a("ceiling_hanging_signs");
-   public static final axf<dke> aC = a("wall_hanging_signs");
-   public static final axf<dke> aD = a("all_hanging_signs");
-   public static final axf<dke> aE = a("all_signs");
-   public static final axf<dke> aF = a("dragon_immune");
-   public static final axf<dke> aG = a("dragon_transparent");
-   public static final axf<dke> aH = a("wither_immune");
-   public static final axf<dke> aI = a("wither_summon_base_blocks");
-   public static final axf<dke> aJ = a("beehives");
-   public static final axf<dke> aK = a("crops");
-   public static final axf<dke> aL = a("bee_growables");
-   public static final axf<dke> aM = a("portals");
-   public static final axf<dke> aN = a("fire");
-   public static final axf<dke> aO = a("nylium");
-   public static final axf<dke> aP = a("beacon_base_blocks");
-   public static final axf<dke> aQ = a("soul_speed_blocks");
-   public static final axf<dke> aR = a("wall_post_override");
-   public static final axf<dke> aS = a("climbable");
-   public static final axf<dke> aT = a("fall_damage_resetting");
-   public static final axf<dke> aU = a("hoglin_repellents");
-   public static final axf<dke> aV = a("soul_fire_base_blocks");
-   public static final axf<dke> aW = a("strider_warm_blocks");
-   public static final axf<dke> aX = a("campfires");
-   public static final axf<dke> aY = a("guarded_by_piglins");
-   public static final axf<dke> aZ = a("prevent_mob_spawning_inside");
-   public static final axf<dke> ba = a("fence_gates");
-   public static final axf<dke> bb = a("unstable_bottom_center");
-   public static final axf<dke> bc = a("mushroom_grow_block");
-   public static final axf<dke> bd = a("infiniburn_overworld");
-   public static final axf<dke> be = a("infiniburn_nether");
-   public static final axf<dke> bf = a("infiniburn_end");
-   public static final axf<dke> bg = a("base_stone_overworld");
-   public static final axf<dke> bh = a("stone_ore_replaceables");
-   public static final axf<dke> bi = a("deepslate_ore_replaceables");
-   public static final axf<dke> bj = a("base_stone_nether");
-   public static final axf<dke> bk = a("overworld_carver_replaceables");
-   public static final axf<dke> bl = a("nether_carver_replaceables");
-   public static final axf<dke> bm = a("candle_cakes");
-   public static final axf<dke> bn = a("cauldrons");
-   public static final axf<dke> bo = a("crystal_sound_blocks");
-   public static final axf<dke> bp = a("inside_step_sound_blocks");
-   public static final axf<dke> bq = a("combination_step_sound_blocks");
-   public static final axf<dke> br = a("camel_sand_step_sound_blocks");
-   public static final axf<dke> bs = a("occludes_vibration_signals");
-   public static final axf<dke> bt = a("dampens_vibrations");
-   public static final axf<dke> bu = a("dripstone_replaceable_blocks");
-   public static final axf<dke> bv = a("cave_vines");
-   public static final axf<dke> bw = a("moss_replaceable");
-   public static final axf<dke> bx = a("lush_ground_replaceable");
-   public static final axf<dke> by = a("azalea_root_replaceable");
-   public static final axf<dke> bz = a("small_dripleaf_placeable");
-   public static final axf<dke> bA = a("big_dripleaf_placeable");
-   public static final axf<dke> bB = a("snow");
-   public static final axf<dke> bC = a("mineable/axe");
-   public static final axf<dke> bD = a("mineable/hoe");
-   public static final axf<dke> bE = a("mineable/pickaxe");
-   public static final axf<dke> bF = a("mineable/shovel");
-   public static final axf<dke> bG = a("sword_efficient");
-   public static final axf<dke> bH = a("sword_instantly_mines");
-   public static final axf<dke> bI = a("needs_diamond_tool");
-   public static final axf<dke> bJ = a("needs_iron_tool");
-   public static final axf<dke> bK = a("needs_stone_tool");
-   public static final axf<dke> bL = a("incorrect_for_netherite_tool");
-   public static final axf<dke> bM = a("incorrect_for_diamond_tool");
-   public static final axf<dke> bN = a("incorrect_for_iron_tool");
-   public static final axf<dke> bO = a("incorrect_for_stone_tool");
-   public static final axf<dke> bP = a("incorrect_for_gold_tool");
-   public static final axf<dke> bQ = a("incorrect_for_wooden_tool");
-   public static final axf<dke> bR = a("features_cannot_replace");
-   public static final axf<dke> bS = a("lava_pool_stone_cannot_replace");
-   public static final axf<dke> bT = a("geode_invalid_blocks");
-   public static final axf<dke> bU = a("frog_prefer_jump_to");
-   public static final axf<dke> bV = a("sculk_replaceable");
-   public static final axf<dke> bW = a("sculk_replaceable_world_gen");
-   public static final axf<dke> bX = a("ancient_city_replaceable");
-   public static final axf<dke> bY = a("vibration_resonators");
-   public static final axf<dke> bZ = a("animals_spawnable_on");
-   public static final axf<dke> ca = a("armadillo_spawnable_on");
-   public static final axf<dke> cb = a("axolotls_spawnable_on");
-   public static final axf<dke> cc = a("goats_spawnable_on");
-   public static final axf<dke> cd = a("mooshrooms_spawnable_on");
-   public static final axf<dke> ce = a("parrots_spawnable_on");
-   public static final axf<dke> cf = a("polar_bears_spawnable_on_alternate");
-   public static final axf<dke> cg = a("rabbits_spawnable_on");
-   public static final axf<dke> ch = a("foxes_spawnable_on");
-   public static final axf<dke> ci = a("wolves_spawnable_on");
-   public static final axf<dke> cj = a("frogs_spawnable_on");
-   public static final axf<dke> ck = a("bats_spawnable_on");
-   public static final axf<dke> cl = a("azalea_grows_on");
-   public static final axf<dke> cm = a("convertable_to_mud");
-   public static final axf<dke> cn = a("mangrove_logs_can_grow_through");
-   public static final axf<dke> co = a("mangrove_roots_can_grow_through");
-   public static final axf<dke> cp = a("dead_bush_may_place_on");
-   public static final axf<dke> cq = a("snaps_goat_horn");
-   public static final axf<dke> cr = a("replaceable_by_trees");
-   public static final axf<dke> cs = a("replaceable_by_mushrooms");
-   public static final axf<dke> ct = a("snow_layer_cannot_survive_on");
-   public static final axf<dke> cu = a("snow_layer_can_survive_on");
-   public static final axf<dke> cv = a("invalid_spawn_inside");
-   public static final axf<dke> cw = a("sniffer_diggable_block");
-   public static final axf<dke> cx = a("sniffer_egg_hatch_boost");
-   public static final axf<dke> cy = a("trail_ruins_replaceable");
-   public static final axf<dke> cz = a("replaceable");
-   public static final axf<dke> cA = a("enchantment_power_provider");
-   public static final axf<dke> cB = a("enchantment_power_transmitter");
-   public static final axf<dke> cC = a("maintains_farmland");
-   public static final axf<dke> cD = a("blocks_wind_charge_explosions");
-   public static final axf<dke> cE = a("does_not_block_hoppers");
-   public static final axf<dke> cF = a("air");
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-   private awp() {
+public class awp extends awn {
+   public static final String b = "recipeBook";
+   private static final Logger e = LogUtils.getLogger();
+   private final awp.a f;
+   @VisibleForTesting
+   protected final Set<alc<dcl<?>>> c = Sets.newIdentityHashSet();
+   @VisibleForTesting
+   protected final Set<alc<dcl<?>>> d = Sets.newIdentityHashSet();
+
+   public awp(awp.a $$0) {
+      this.f = $$0;
    }
 
-   private static axf<dke> a(String $$0) {
-      return axf.a(mc.f, aku.b($$0));
+   public void a(alc<dcl<?>> $$0) {
+      this.c.add($$0);
+   }
+
+   public boolean b(alc<dcl<?>> $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(alc<dcl<?>> $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   public void d(alc<dcl<?>> $$0) {
+      this.d.remove($$0);
+   }
+
+   private void e(alc<dcl<?>> $$0) {
+      this.d.add($$0);
+   }
+
+   public int a(Collection<dcq<?>> $$0, aro $$1) {
+      List<aed.a> $$2 = new ArrayList<>();
+
+      for (dcq<?> $$3 : $$0) {
+         alc<dcl<?>> $$4 = $$3.a();
+         if (!this.c.contains($$4) && !$$3.b().al_()) {
+            this.a($$4);
+            this.e($$4);
+            this.f.displaysForRecipe($$4, $$2x -> $$2.add(new aed.a($$2x, $$3.b().i(), true)));
+            ap.g.a($$1, $$3);
+         }
+      }
+
+      if (!$$2.isEmpty()) {
+         $$1.f.b(new aed($$2, false));
+      }
+
+      return $$2.size();
+   }
+
+   public int b(Collection<dcq<?>> $$0, aro $$1) {
+      List<ddt> $$2 = Lists.newArrayList();
+
+      for (dcq<?> $$3 : $$0) {
+         alc<dcl<?>> $$4 = $$3.a();
+         if (this.c.contains($$4)) {
+            this.c($$4);
+            this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
+         }
+      }
+
+      if (!$$2.isEmpty()) {
+         $$1.f.b(new aee($$2));
+      }
+
+      return $$2.size();
+   }
+
+   public tw b() {
+      tw $$0 = new tw();
+      this.a().b($$0);
+      uc $$1 = new uc();
+
+      for (alc<dcl<?>> $$2 : this.c) {
+         $$1.add(ur.a($$2.a().toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      uc $$3 = new uc();
+
+      for (alc<dcl<?>> $$4 : this.d) {
+         $$3.add(ur.a($$4.a().toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(tw $$0, Predicate<alc<dcl<?>>> $$1) {
+      this.a(awo.a($$0));
+      uc $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      uc $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::e, $$1);
+   }
+
+   private void a(uc $$0, Consumer<alc<dcl<?>>> $$1, Predicate<alc<dcl<?>>> $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            alc<dcl<?>> $$5 = alc.a(me.br, ald.a($$4));
+            if (!$$2.test($$5)) {
+               e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$5);
+            }
+         } catch (aa var7) {
+            e.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(aro $$0) {
+      $$0.f.b(new aef(this.a()));
+      List<aed.a> $$1 = new ArrayList<>(this.c.size());
+
+      for (alc<dcl<?>> $$2 : this.c) {
+         this.f.displaysForRecipe($$2, $$2x -> $$1.add(new aed.a($$2x, false, this.d.contains($$2))));
+      }
+
+      $$0.f.b(new aed($$1, true));
+   }
+
+   public void a(awp $$0) {
+      this.c.clear();
+      this.d.clear();
+      this.a.a($$0.a);
+      this.c.addAll($$0.c);
+      this.d.addAll($$0.d);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void displaysForRecipe(alc<dcl<?>> var1, Consumer<dds> var2);
    }
 }

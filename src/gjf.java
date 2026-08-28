@@ -1,83 +1,67 @@
-public class gjf extends glg {
-   gjf(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
+
+public record gjf(String a, @Nullable gjf.a b) {
+   public static gjf a() {
+      return a(null);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public static gjf a(String $$0) {
+      return a(new gjf.a.b($$0));
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
+   public static gjf a(fjf $$0) {
+      return a(new gjf.a.a($$0));
    }
 
-   @Override
-   public gkk b() {
-      return gkk.b;
+   public static gjf a(@Nullable gjf.a $$0) {
+      return new gjf(g(), $$0);
    }
 
-   public static class a implements gkj<lx> {
-      private final glb a;
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
 
-      public a(glb $$0) {
-         this.a = $$0;
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gjf.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gjf.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("25w03a");
+      if (fnd.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
+      return $$0.toString();
    }
 
-   public static class b implements gkj<lx> {
-      private final glb a;
-
-      public b(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
+   public String e() {
+      return this.a;
    }
 
-   public static class c implements gkj<lx> {
-      private final glb a;
+   @Nullable
+   public gjf.a f() {
+      return this.b;
+   }
 
-      public c(glb $$0) {
-         this.a = $$0;
+   public interface a {
+      public static record a(long a, int b) implements gjf.a {
+         public a(fjf $$0) {
+            this($$0.a, $$0.p);
+         }
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gjf $$8 = new gjf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public static record b(String a) implements gjf.a {
       }
    }
 }

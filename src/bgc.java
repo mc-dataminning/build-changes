@@ -1,18 +1,29 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 
-public abstract class bgc extends bgb {
-   public bgc(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1, $$2);
+public class bgc extends DataFix {
+   public bgc(Schema $$0) {
+      super($$0, false);
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
-
-   @Override
-   protected final Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.t);
+      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(biq.z);
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("display");
+      OpticFinder<?> $$4 = $$3.type().findField("Name");
+      OpticFinder<Pair<String, String>> $$5 = DSL.typeFinder($$1);
+      return this.fixTypeEverywhereTyped(
+         "ItemCustomNameToComponentFix",
+         $$0,
+         $$4x -> $$4x.updateTyped(
+               $$2, $$3xx -> $$3xx.updateTyped($$3, $$2xxx -> $$2xxx.updateTyped($$4, $$1xxxx -> $$1xxxx.update($$5, $$0xxxxx -> $$0xxxxx.mapSecond(bba::a))))
+            )
+      );
    }
 }

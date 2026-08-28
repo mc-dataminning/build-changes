@@ -1,37 +1,45 @@
-import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.pardonip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("commands.jfr.dump.failed", $$0));
+
+   private ans() {
+   }
 
    public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("pardon-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ey.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> fc.a(((ex)$$0x.getSource()).l().ag().g().a(), $$1))
-                  .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(ey.a("start").executes($$0x -> a((ex)$$0x.getSource()))))
+            .then(ey.a("stop").executes($$0x -> b((ex)$$0x.getSource())))
       );
    }
 
-   private static int a(ex $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
+   private static int a(ex $$0) throws CommandSyntaxException {
+      bqh $$1 = bqh.a($$0.l());
+      if (!bqj.f.a($$1)) {
          throw a.create();
       } else {
-         ava $$2 = $$0.l().ag().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> wp.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
+         $$0.a(() -> wv.c("commands.jfr.started"), false);
+         return 1;
+      }
+   }
+
+   private static int b(ex $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bqj.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ab.aU ? $$1 : $$1.toAbsolutePath();
+         wv $$3 = wv.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new wt.c($$2.toString())).a(new xb.e(wv.c("chat.copy.click"))));
+         $$0.a(() -> wv.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
       }
    }
 }

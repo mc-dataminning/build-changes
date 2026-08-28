@@ -2,110 +2,60 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class pz {
-   public static void a(qe<ept> $$0) {
-      js<esj> $$1 = $$0.a(mc.aX);
-      jr<esj> $$2 = $$1.b(qm.t);
-      js<ept> $$3 = $$0.a(mc.aZ);
-      jr<ept> $$4 = $$3.b(ql.a);
-      ql.a(
+   public static void a(qg<eqq> $$0) {
+      jt<etg> $$1 = $$0.a(me.ba);
+      js<etg> $$2 = $$1.b(qo.y);
+      js<etg> $$3 = $$1.b(qo.w);
+      js<etg> $$4 = $$1.b(qo.z);
+      js<etg> $$5 = $$1.b(qo.x);
+      jt<eqq> $$6 = $$0.a(me.bc);
+      js<eqq> $$7 = $$6.b(qn.a);
+      qn.a(
          $$0,
-         "bastion/units/center_pieces",
-         new ept(
-            $$4,
+         "bastion/bridge/starting_pieces",
+         new eqq(
+            $$7,
             ImmutableList.of(
-               Pair.of(epr.b("bastion/units/center_pieces/center_0", $$2), 1),
-               Pair.of(epr.b("bastion/units/center_pieces/center_1", $$2), 1),
-               Pair.of(epr.b("bastion/units/center_pieces/center_2", $$2), 1)
+               Pair.of(eqo.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(eqo.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
             ),
-            ept.a.b
+            eqq.a.b
          )
       );
-      ql.a(
+      qn.a($$0, "bastion/bridge/bridge_pieces", new eqq($$7, ImmutableList.of(Pair.of(eqo.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), eqq.a.b));
+      qn.a(
          $$0,
-         "bastion/units/pathways",
-         new ept(
-            $$4,
-            ImmutableList.of(Pair.of(epr.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(epr.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
-            ept.a.b
+         "bastion/bridge/legs",
+         new eqq($$7, ImmutableList.of(Pair.of(eqo.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(eqo.b("bastion/bridge/legs/leg_1", $$3), 1)), eqq.a.b)
+      );
+      qn.a(
+         $$0,
+         "bastion/bridge/walls",
+         new eqq(
+            $$7,
+            ImmutableList.of(Pair.of(eqo.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(eqo.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            eqq.a.b
          )
       );
-      ql.a(
+      qn.a(
          $$0,
-         "bastion/units/walls/wall_bases",
-         new ept(
-            $$4,
-            ImmutableList.of(Pair.of(epr.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(epr.b("bastion/units/walls/connected_wall", $$2), 1)),
-            ept.a.b
+         "bastion/bridge/ramparts",
+         new eqq(
+            $$7,
+            ImmutableList.of(Pair.of(eqo.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(eqo.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            eqq.a.b
          )
       );
-      ql.a(
+      qn.a($$0, "bastion/bridge/rampart_plates", new eqq($$7, ImmutableList.of(Pair.of(eqo.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), eqq.a.b));
+      qn.a(
          $$0,
-         "bastion/units/stages/stage_0",
-         new ept(
-            $$4,
+         "bastion/bridge/connectors",
+         new eqq(
+            $$7,
             ImmutableList.of(
-               Pair.of(epr.b("bastion/units/stages/stage_0_0", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_0_1", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_0_2", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_0_3", $$2), 1)
+               Pair.of(eqo.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(eqo.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
             ),
-            ept.a.b
+            eqq.a.b
          )
       );
-      ql.a(
-         $$0,
-         "bastion/units/stages/stage_1",
-         new ept(
-            $$4,
-            ImmutableList.of(
-               Pair.of(epr.b("bastion/units/stages/stage_1_0", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_1_1", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_1_2", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_1_3", $$2), 1)
-            ),
-            ept.a.b
-         )
-      );
-      ql.a($$0, "bastion/units/stages/rot/stage_1", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), ept.a.b));
-      ql.a(
-         $$0,
-         "bastion/units/stages/stage_2",
-         new ept(
-            $$4, ImmutableList.of(Pair.of(epr.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(epr.b("bastion/units/stages/stage_2_1", $$2), 1)), ept.a.b
-         )
-      );
-      ql.a(
-         $$0,
-         "bastion/units/stages/stage_3",
-         new ept(
-            $$4,
-            ImmutableList.of(
-               Pair.of(epr.b("bastion/units/stages/stage_3_0", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_3_1", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_3_2", $$2), 1),
-               Pair.of(epr.b("bastion/units/stages/stage_3_3", $$2), 1)
-            ),
-            ept.a.b
-         )
-      );
-      ql.a($$0, "bastion/units/fillers/stage_0", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/fillers/stage_0", $$2), 1)), ept.a.b));
-      ql.a($$0, "bastion/units/edges", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/edges/edge_0", $$2), 1)), ept.a.b));
-      ql.a($$0, "bastion/units/wall_units", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/wall_units/unit_0", $$2), 1)), ept.a.b));
-      ql.a($$0, "bastion/units/edge_wall_units", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/wall_units/edge_0_large", $$2), 1)), ept.a.b));
-      ql.a(
-         $$0,
-         "bastion/units/ramparts",
-         new ept(
-            $$4,
-            ImmutableList.of(
-               Pair.of(epr.b("bastion/units/ramparts/ramparts_0", $$2), 1),
-               Pair.of(epr.b("bastion/units/ramparts/ramparts_1", $$2), 1),
-               Pair.of(epr.b("bastion/units/ramparts/ramparts_2", $$2), 1)
-            ),
-            ept.a.b
-         )
-      );
-      ql.a($$0, "bastion/units/large_ramparts", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/ramparts/ramparts_0", $$2), 1)), ept.a.b));
-      ql.a($$0, "bastion/units/rampart_plates", new ept($$4, ImmutableList.of(Pair.of(epr.b("bastion/units/rampart_plates/plate_0", $$2), 1)), ept.a.b));
    }
 }

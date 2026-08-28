@@ -1,24 +1,25 @@
-public class ggg {
-   public static final ggg a = new ggg(0.0F);
-   final float b;
-   final float c;
-   final float d;
+public class ggg extends gea<hbk> {
+   private final ghd a;
 
-   public ggg(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ggg(ghd $$0) {
+      super($$0, goi::g);
+      this.a = $$0.b("tail");
    }
 
-   public ggg(float $$0) {
-      this($$0, $$0, $$0);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", ghi.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), ghf.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", ghi.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), ghf.a(0.0F, 22.0F, 0.0F));
+      return ghj.a($$0, 16, 16);
    }
 
-   public ggg a(float $$0) {
-      return new ggg(this.b + $$0, this.c + $$0, this.d + $$0);
-   }
-
-   public ggg a(float $$0, float $$1, float $$2) {
-      return new ggg(this.b + $$0, this.c + $$1, this.d + $$2);
+   public void a(hbk $$0) {
+      super.a($$0);
+      float $$1 = $$0.ak ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.25F * azk.a(0.3F * $$0.u);
    }
 }

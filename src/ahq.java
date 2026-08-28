@@ -1,12 +1,20 @@
-public record ahq(ddd b) implements yw<agf> {
-   public static final yn<vl, ahq> a = yn.a(ddd.a, ahq::b, ahq::new);
+public record ahq(int b, ddt c, boolean d) implements zc<agm> {
+   public static final yt<vr, ahq> a = yt.a(yr.w, ahq::b, ddt.a, ahq::e, yr.b, ahq::f, ahq::new);
 
    @Override
-   public yy<ahq> a() {
-      return agd.bW;
+   public ze<ahq> a() {
+      return agk.bQ;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
+   }
+
+   public ddt e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

@@ -1,36 +1,43 @@
-public class gun extends gtc<bwe, hae> {
-   private static final float a = 40.0F;
-   private static final int b = 50;
-   private final hcl h;
-   private final azh i = azh.a();
+public class gun extends gsz<ciq, hat, gee> {
+   private static final ald a = ald.b("textures/entity/fox/fox.png");
+   private static final ald j = ald.b("textures/entity/fox/fox_sleep.png");
+   private static final ald k = ald.b("textures/entity/fox/snow_fox.png");
+   private static final ald l = ald.b("textures/entity/fox/snow_fox_sleep.png");
 
-   protected gun(gtd.a $$0) {
-      super($$0);
-      this.h = $$0.b();
+   public gun(guf.a $$0) {
+      super($$0, new gee($$0.a(ghc.aT)), new gee($$0.a(ghc.aU)), 0.4F);
+      this.a(new gyg(this));
    }
 
-   public hae a() {
-      return new hae();
-   }
-
-   public void a(bwe $$0, hae $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      cxh $$3 = $$0.g();
-      $$1.a($$0, $$3, this.h);
-   }
-
-   public void a(hae $$0, fgr $$1, gmx $$2, int $$3) {
-      if (!$$0.a.c()) {
-         $$1.a();
-         if ($$0.u <= 50.0F) {
-            float $$4 = Math.min($$0.u, 50.0F) / 50.0F;
-            $$1.b($$4, $$4, $$4);
-         }
-
-         float $$5 = ayz.h($$0.u * 40.0F);
-         $$1.a(a.d.rotationDegrees($$5));
-         gtz.a($$1, $$2, 15728880, $$0, this.i);
-         $$1.b();
+   protected void a(hat $$0, fho $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.g || $$0.f) {
+         $$1.a(a.b.rotationDegrees(-$$0.ab));
       }
+   }
+
+   public ald a(hat $$0) {
+      if ($$0.h == ciq.v.a) {
+         return $$0.d ? j : a;
+      } else {
+         return $$0.d ? l : k;
+      }
+   }
+
+   public hat b() {
+      return new hat();
+   }
+
+   public void a(ciq $$0, hat $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      haz.a($$0, $$1, this.h);
+      $$1.a = $$0.K($$2);
+      $$1.c = $$0.ci();
+      $$1.b = $$0.L($$2);
+      $$1.d = $$0.fQ();
+      $$1.e = $$0.x();
+      $$1.f = $$0.gq();
+      $$1.g = $$0.gr();
+      $$1.h = $$0.t();
    }
 }

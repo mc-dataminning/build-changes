@@ -1,48 +1,28 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekq extends ekk {
-   public static final MapCodec<ekq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bsd.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ekq::new)
+public class ekq implements ejv {
+   public static final Codec<ekq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eut.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               kh.a(me.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ekq::new)
    );
-   private final bsd b;
+   public final eut b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final jw<dku> f;
 
-   public ekq(bsd $$0, bsd $$1, bsd $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ekl<?> a() {
-      return ekl.b;
-   }
-
-   @Override
-   protected void a(dhf $$0, ekk.b $$1, azh $$2, eju $$3, int $$4, ekk.a $$5, int $$6, int $$7, int $$8) {
-      ji $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
-      }
-   }
-
-   @Override
-   public int a(azh $$0, int $$1, eju $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
-   }
-
-   @Override
-   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public ekq(eut $$0, boolean $$1, int $$2, int $$3, jw<dku> $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

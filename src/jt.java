@@ -1,122 +1,31 @@
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public interface jt<T> extends js<T> {
-   Stream<jr.c<T>> c();
+public interface jt<T> {
+   Optional<js.c<T>> a(alc<T> var1);
 
-   default Stream<akt<T>> c_() {
-      return this.c().map(jr.c::h);
+   default js.c<T> b(alc<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   Stream<jv.c<T>> e();
+   Optional<jw.c<T>> a(axp<T> var1);
 
-   default Stream<axf<T>> f() {
-      return this.e().map(jv.c::h);
+   default jw.c<T> b(axp<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 
-   public interface a extends js.a {
-      Stream<akt<? extends ke<?>>> b();
+   public interface a {
+      <T> Optional<? extends jt<T>> a(alc<? extends kf<? extends T>> var1);
 
-      default Stream<jt.b<?>> c() {
-         return this.b().map(this::d);
+      default <T> jt<T> b(alc<? extends kf<? extends T>> $$0) {
+         return (jt<T>)this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      @Override
-      <T> Optional<? extends jt.b<T>> a(akt<? extends ke<? extends T>> var1);
-
-      default <T> jt.b<T> d(akt<? extends ke<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      default <T> Optional<js.c<T>> c(alc<T> $$0) {
+         return this.a($$0.c()).flatMap($$1 -> $$1.a($$0));
       }
 
-      default <V> aks<V> a(DynamicOps<V> $$0) {
-         return aks.a((DynamicOps<T>)$$0, this);
-      }
-
-      static jt.a a(Stream<jt.b<?>> $$0) {
-         final Map<akt<? extends ke<?>>, jt.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(jt.b::g, $$0x -> $$0x));
-         return new jt.a() {
-            @Override
-            public Stream<akt<? extends ke<?>>> b() {
-               return $$1.keySet().stream();
-            }
-
-            @Override
-            public <T> Optional<jt.b<T>> a(akt<? extends ke<? extends T>> $$0) {
-               return Optional.ofNullable((jt.b<T>)$$1.get($$0));
-            }
-         };
-      }
-
-      default Lifecycle d() {
-         return this.c().map(jt.b::h).reduce(Lifecycle.stable(), Lifecycle::add);
-      }
-   }
-
-   public interface b<T> extends jt<T>, ju<T> {
-      akt<? extends ke<? extends T>> g();
-
-      Lifecycle h();
-
-      default jt.b<T> a(csn $$0) {
-         return csk.bT.contains(this.g()) ? this.a($$1 -> ((csk)$$1).a($$0)) : this;
-      }
-
-      default jt.b<T> a(final Predicate<T> $$0) {
-         return new jt.b.a<T>() {
-            @Override
-            public jt.b<T> a() {
-               return b.this;
-            }
-
-            @Override
-            public Optional<jr.c<T>> a(akt<T> $$0x) {
-               return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
-            }
-
-            @Override
-            public Stream<jr.c<T>> c() {
-               return this.a().c().filter($$1 -> $$0.test($$1.a()));
-            }
-         };
-      }
-
-      public interface a<T> extends jt.b<T> {
-         jt.b<T> a();
-
-         @Override
-         default akt<? extends ke<? extends T>> g() {
-            return this.a().g();
-         }
-
-         @Override
-         default Lifecycle h() {
-            return this.a().h();
-         }
-
-         @Override
-         default Optional<jr.c<T>> a(akt<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         default Stream<jr.c<T>> c() {
-            return this.a().c();
-         }
-
-         @Override
-         default Optional<jv.c<T>> a(axf<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         default Stream<jv.c<T>> e() {
-            return this.a().e();
-         }
+      default <T> js.c<T> d(alc<T> $$0) {
+         return this.a($$0.c()).flatMap($$1 -> $$1.a($$0)).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
       }
    }
 }

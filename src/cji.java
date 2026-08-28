@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum cji {
+   a("temperate"),
+   b("warm"),
+   c("cold");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cji {
+   private final String d;
+
+   private cji(final String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
+      return this.d;
+   }
 }

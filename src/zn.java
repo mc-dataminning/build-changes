@@ -1,31 +1,29 @@
-import java.util.Map;
+public class zn implements zc<zi> {
+   public static final yt<vr, zn> a = zc.a(zn::a, zn::new);
+   private final int b;
 
-public class zn implements yw<zc> {
-   public static final yn<vl, zn> a = yw.a(zn::a, zn::new);
-   private final Map<akt<? extends ke<?>>, axh.a> b;
-
-   public zn(Map<akt<? extends ke<?>>, axh.a> $$0) {
+   public zn(int $$0) {
       this.b = $$0;
    }
 
-   private zn(vl $$0) {
-      this.b = $$0.a(vl::r, axh.a::b);
+   private zn(vr $$0) {
+      this.b = $$0.readInt();
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b, vl::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vr $$0) {
+      $$0.q(this.b);
    }
 
    @Override
-   public yy<zn> a() {
-      return zo.k;
+   public ze<zn> a() {
+      return zu.e;
    }
 
-   public void a(zc $$0) {
+   public void a(zi $$0) {
       $$0.a(this);
    }
 
-   public Map<akt<? extends ke<?>>, axh.a> b() {
+   public int b() {
       return this.b;
    }
 }

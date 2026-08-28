@@ -1,14 +1,20 @@
-public class gxv<S extends hbf, M extends gda<S>> extends gxs<S, M> {
-   private final gev<S> a;
-   private final aku b;
+public class gxv extends gyt<haa, gdl> {
+   private static final ald a = ald.b("textures/entity/cat/cat_collar.png");
+   private final gdl b;
+   private final gdl c;
 
-   public gxv(gva<S, M> $$0, gfy $$1, gga $$2, aku $$3) {
+   public gxv(gwc<haa, gdl> $$0, ggz $$1) {
       super($$0);
-      this.b = $$3;
-      this.a = new gev<>($$1.a($$2));
+      this.b = new gdl($$1.a(ghc.T));
+      this.c = new gdl($$1.a(ghc.S));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(fho $$0, gny $$1, int $$2, haa $$3, float $$4, float $$5) {
+      cwv $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gdl $$8 = $$3.aj ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+      }
    }
 }

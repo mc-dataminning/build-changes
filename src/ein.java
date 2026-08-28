@@ -1,96 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ein extends egu<ejf> {
-   private static final jn[] a = jn.values();
-
-   public ein(Codec<ejf> $$0) {
+public class ein extends ehr<eke> {
+   public ein(Codec<eke> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<ejf> $$0) {
-      dhy $$1 = $$0.b();
-      ji $$2 = $$0.e();
-      azh $$3 = $$0.d();
-      if (!$$1.u($$2)) {
+   public boolean a(eht<eke> $$0) {
+      dhq $$1 = $$0.b();
+      jj $$2 = $$0.e();
+      azs $$3 = $$0.d();
+      eke $$4 = $$0.f();
+      Optional<jo> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         dxq $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dkg.ei) && !$$4.a(dkg.lm)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
+         jj $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && ehm.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         ehm.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
       }
    }
 
-   private void a(dha $$0, azh $$1, ji $$2) {
-      $$0.a($$2, dkg.lm.m(), 2);
-      ji.a $$3 = new ji.a();
-      ji.a $$4 = new ji.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.u($$3)) {
-            int $$6 = 0;
-
-            for (jn $$7 : a) {
-               dxq $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(dkg.ei) || $$8.a(dkg.lm)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, dkg.lm.m(), 2);
-            }
-         }
+   private static Optional<jo> a(dhq $$0, jj $$1, azs $$2) {
+      boolean $$3 = ehm.b($$0.a_($$1.d()));
+      boolean $$4 = ehm.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? jo.a : jo.b);
+      } else if ($$3) {
+         return Optional.of(jo.a);
+      } else {
+         return $$4 ? Optional.of(jo.b) : Optional.empty();
       }
    }
 
-   private void b(dha $$0, azh $$1, ji $$2) {
-      ji.a $$3 = new ji.a();
+   private static void a(dhq $$0, azs $$1, jj $$2, eke $$3) {
+      ehm.c($$0, $$2);
 
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.u($$3)) {
-            dxq $$5 = $$0.a_($$3.d());
-            if ($$5.a(dkg.ei) || $$5.a(dkg.lm)) {
-               int $$6 = ayz.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
+      for (jo $$4 : jo.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            jj $$5 = $$2.a($$4);
+            ehm.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               jj $$6 = $$5.a(jo.b($$1));
+               ehm.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  jj $$7 = $$6.a(jo.b($$1));
+                  ehm.c($$0, $$7);
                }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
             }
          }
-      }
-   }
-
-   public static void a(dha $$0, azh $$1, ji.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.e())) {
-               $$0.a($$2, dkg.pb.m().b(dnv.e, Integer.valueOf(ayz.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dkg.pc.m(), 2);
-         }
-
-         $$2.c(jn.a);
       }
    }
 }

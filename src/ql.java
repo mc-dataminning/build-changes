@@ -1,33 +1,42 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class ql {
-   public static final akt<ept> a = a("empty");
+   public static final alc<eqq> a = qn.a("pillager_outpost/base_plates");
 
-   public static akt<ept> a(aku $$0) {
-      return akt.a(mc.aZ, $$0);
-   }
-
-   public static akt<ept> a(String $$0) {
-      return a(aku.b($$0));
-   }
-
-   public static akt<ept> b(String $$0) {
-      return a(aku.a($$0));
-   }
-
-   public static void a(qe<ept> $$0, String $$1, ept $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(qe<ept> $$0) {
-      js<ept> $$1 = $$0.a(mc.aZ);
-      jr<ept> $$2 = $$1.b(a);
-      $$0.a(a, new ept($$2, ImmutableList.of(), ept.a.b));
-      qa.a($$0);
-      qj.a($$0);
-      qw.a($$0);
-      pv.a($$0);
-      qu.a($$0);
-      qv.a($$0);
+   public static void a(qg<eqq> $$0) {
+      jt<etg> $$1 = $$0.a(me.ba);
+      js<etg> $$2 = $$1.b(qo.q);
+      jt<eqq> $$3 = $$0.a(me.bc);
+      js<eqq> $$4 = $$3.b(qn.a);
+      $$0.a(a, new eqq($$4, ImmutableList.of(Pair.of(eqo.a("pillager_outpost/base_plate"), 1)), eqq.a.b));
+      qn.a(
+         $$0,
+         "pillager_outpost/towers",
+         new eqq(
+            $$4,
+            ImmutableList.of(Pair.of(eqo.b(ImmutableList.of(eqo.a("pillager_outpost/watchtower"), eqo.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            eqq.a.b
+         )
+      );
+      qn.a($$0, "pillager_outpost/feature_plates", new eqq($$4, ImmutableList.of(Pair.of(eqo.a("pillager_outpost/feature_plate"), 1)), eqq.a.a));
+      qn.a(
+         $$0,
+         "pillager_outpost/features",
+         new eqq(
+            $$4,
+            ImmutableList.of(
+               Pair.of(eqo.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(eqo.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(eqo.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(eqo.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(eqo.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(eqo.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(eqo.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(eqo.h(), 6)
+            ),
+            eqq.a.b
+         )
+      );
    }
 }

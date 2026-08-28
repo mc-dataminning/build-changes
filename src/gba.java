@@ -1,7 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gba {
-   List<gbb> a();
-
-   wp b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gba {
 }

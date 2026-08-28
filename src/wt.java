@@ -1,160 +1,138 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.BitSet;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.File;
+import java.net.URI;
+import java.nio.file.Path;
 
-public class wt {
-   public static final Codec<wt> a = azv.a(wt.a::values).dispatch(wt::c, wt.a::a);
-   public static final wt b = new wt(new BitSet(0), wt.a.b);
-   public static final wt c = new wt(new BitSet(0), wt.a.a);
-   public static final xm d = xm.a.a(n.i).a(new wv.e(wp.c("chat.filtered")));
-   static final MapCodec<wt> e = MapCodec.unit(c);
-   static final MapCodec<wt> f = MapCodec.unit(b);
-   static final MapCodec<wt> g = ayi.w.xmap(wt::new, wt::d).fieldOf("value");
-   private static final char h = '#';
-   private final BitSet i;
-   private final wt.a j;
+public interface wt {
+   Codec<wt> a = wt.a.h.dispatch("action", wt::a, $$0 -> $$0.k);
 
-   private wt(BitSet $$0, wt.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
+   wt.a a();
 
-   private wt(BitSet $$0) {
-      this.i = $$0;
-      this.j = wt.a.c;
-   }
+   public static enum a implements bag {
+      a("open_url", true, wt.e.b),
+      b("open_file", false, wt.d.b),
+      c("run_command", true, wt.f.b),
+      d("suggest_command", true, wt.g.b),
+      e("change_page", true, wt.b.b),
+      f("copy_to_clipboard", true, wt.c.b);
 
-   public wt(int $$0) {
-      this(new BitSet($$0), wt.a.c);
-   }
+      public static final Codec<wt.a> g = bag.a(wt.a::values);
+      public static final Codec<wt.a> h = g.validate(wt.a::a);
+      private final boolean i;
+      private final String j;
+      final MapCodec<? extends wt> k;
 
-   private wt.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static wt a(vl $$0) {
-      wt.a $$1 = $$0.b(wt.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new wt($$0.w(), wt.a.c);
-      };
-   }
-
-   public static void a(vl $$0, wt $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == wt.a.c) {
-         $$0.a($$1.i);
+      private a(final String $$0, final boolean $$1, final MapCodec<? extends wt> $$2) {
+         this.j = $$0;
+         this.i = $$1;
+         this.k = $$2;
       }
-   }
 
-   public void a(int $$0) {
-      this.i.set($$0);
-   }
-
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public wp b(String $$0) {
-      return switch (this.j) {
-         case a -> wp.b($$0);
-         case b -> null;
-         case c -> {
-            xd $$1 = wp.i();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.b(wp.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == wt.a.a;
-   }
-
-   public boolean b() {
-      return this.j == wt.a.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         wt $$1 = (wt)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
-   }
-
-   static enum a implements azv {
-      a("pass_through", () -> wt.e),
-      b("fully_filtered", () -> wt.f),
-      c("partially_filtered", () -> wt.g);
-
-      private final String d;
-      private final Supplier<MapCodec<wt>> e;
-
-      private a(final String $$0, final Supplier<MapCodec<wt>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+      public boolean a() {
+         return this.i;
       }
 
       @Override
       public String c() {
-         return this.d;
+         return this.j;
       }
 
-      private MapCodec<wt> a() {
-         return this.e.get();
+      public static DataResult<wt.a> a(wt.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Click event type not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
+   }
+
+   public static record b(int c) implements wt {
+      public static final MapCodec<wt.b> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.m.fieldOf("page").forGetter(wt.b::b)).apply($$0, wt.b::new));
+
+      @Override
+      public wt.a a() {
+         return wt.a.e;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static record c(String c) implements wt {
+      public static final MapCodec<wt.c> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("value").forGetter(wt.c::b)).apply($$0, wt.c::new)
+      );
+
+      @Override
+      public wt.a a() {
+         return wt.a.f;
+      }
+
+      public String b() {
+         return this.c;
+      }
+   }
+
+   public static record d(String c) implements wt {
+      public static final MapCodec<wt.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("path").forGetter(wt.d::c)).apply($$0, wt.d::new)
+      );
+
+      public d(File $$0) {
+         this($$0.toString());
+      }
+
+      public d(Path $$0) {
+         this($$0.toFile());
+      }
+
+      public File b() {
+         return new File(this.c);
+      }
+
+      @Override
+      public wt.a a() {
+         return wt.a.b;
+      }
+   }
+
+   public static record e(URI c) implements wt {
+      public static final MapCodec<wt.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.D.fieldOf("url").forGetter(wt.e::b)).apply($$0, wt.e::new));
+
+      @Override
+      public wt.a a() {
+         return wt.a.a;
+      }
+
+      public URI b() {
+         return this.c;
+      }
+   }
+
+   public static record f(String c) implements wt {
+      public static final MapCodec<wt.f> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.E.fieldOf("command").forGetter(wt.f::b)).apply($$0, wt.f::new));
+
+      @Override
+      public wt.a a() {
+         return wt.a.c;
+      }
+
+      public String b() {
+         return this.c;
+      }
+   }
+
+   public static record g(String c) implements wt {
+      public static final MapCodec<wt.g> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.E.fieldOf("command").forGetter(wt.g::b)).apply($$0, wt.g::new));
+
+      @Override
+      public wt.a a() {
+         return wt.a.d;
+      }
+
+      public String b() {
+         return this.c;
       }
    }
 }

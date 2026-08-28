@@ -1,30 +1,162 @@
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record gby(boolean a, float b, float c, float d, float e, float f, Set<String> g) implements ggl {
-   public gby(Set<String> $$0) {
-      this(false, 5.0F, 2.0F, $$0);
-   }
-
-   public gby(boolean $$0, float $$1, float $$2, Set<String> $$3) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
-   }
-
-   @Override
-   public ggk apply(ggk $$0) {
-      float $$1 = this.a ? 1.5F / this.d : 1.0F;
-      float $$2 = 1.0F / this.e;
-      UnaryOperator<gge> $$3 = $$1x -> $$1x.c(0.0F, this.b, this.c).b($$1);
-      UnaryOperator<gge> $$4 = $$1x -> $$1x.c(0.0F, this.f, 0.0F).b($$2);
-      ggk $$5 = new ggk();
-
-      for (Entry<String, ggm> $$6 : $$0.a().a()) {
-         String $$7 = $$6.getKey();
-         ggm $$8 = $$6.getValue();
-         $$5.a().a($$7, $$8.a(this.g.contains($$7) ? $$3 : $$4));
+public class gby {
+   static final ald b = ald.b("spectator/close");
+   static final ald c = ald.b("spectator/scroll_left");
+   static final ald d = ald.b("spectator/scroll_right");
+   private static final gca e = new gby.a();
+   private static final gca f = new gby.b(-1, true);
+   private static final gca g = new gby.b(1, true);
+   private static final gca h = new gby.b(1, false);
+   private static final int i = 8;
+   static final wv j = wv.c("spectatorMenu.close");
+   static final wv k = wv.c("spectatorMenu.previous_page");
+   static final wv l = wv.c("spectatorMenu.next_page");
+   public static final gca a = new gca() {
+      @Override
+      public void a(gby $$0) {
       }
 
-      return $$5;
+      @Override
+      public wv aO_() {
+         return wu.a;
+      }
+
+      @Override
+      public void a(fpz $$0, float $$1, float $$2) {
+      }
+
+      @Override
+      public boolean aP_() {
+         return false;
+      }
+   };
+   private final gcb m;
+   private gbz n;
+   private int o = -1;
+   int p;
+
+   public gby(gcb $$0) {
+      this.n = new gbx();
+      this.m = $$0;
+   }
+
+   public gca a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (gca)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
+   }
+
+   public List<gca> a() {
+      List<gca> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
+      return $$0;
+   }
+
+   public gca b() {
+      return this.a(this.o);
+   }
+
+   public gbz c() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      gca $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aP_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(gbz $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public gcc f() {
+      return new gcc(this.a(), this.o);
+   }
+
+   static class a implements gca {
+      @Override
+      public void a(gby $$0) {
+         $$0.d();
+      }
+
+      @Override
+      public wv aO_() {
+         return gby.j;
+      }
+
+      @Override
+      public void a(fpz $$0, float $$1, float $$2) {
+         $$0.a(goi::H, gby.b, 0, 0, 16, 16, axu.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
+   }
+
+   static class b implements gca {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(gby $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public wv aO_() {
+         return this.a < 0 ? gby.k : gby.l;
+      }
+
+      @Override
+      public void a(fpz $$0, float $$1, float $$2) {
+         int $$3 = axu.a($$2, $$1, $$1, $$1);
+         if (this.a < 0) {
+            $$0.a(goi::H, gby.c, 0, 0, 16, 16, $$3);
+         } else {
+            $$0.a(goi::H, gby.d, 0, 0, 16, 16, $$3);
+         }
+      }
+
+      @Override
+      public boolean aP_() {
+         return this.b;
+      }
    }
 }

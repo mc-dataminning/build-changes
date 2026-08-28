@@ -1,60 +1,77 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
+import com.google.common.base.Stopwatch;
+import java.io.File;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-public class ta implements so.c {
-   private static final int c = 5;
-   private static final int d = 6;
-   private final int e;
-   private int f;
-   private fbs g;
-   private final ji.a h;
-   private final ji i;
-   private final boolean j;
-   private float k = -1.0F;
-   private final Collection<sl> l = new ArrayList<>();
+public class ta implements to {
+   private final Document a;
+   private final Element b;
+   private final Stopwatch c;
+   private final File d;
 
-   public ta(ji $$0, int $$1, boolean $$2) {
-      this.e = $$1;
-      this.h = $$0.k();
-      this.g = new fbs(this.h);
-      this.i = $$0;
-      this.j = $$2;
+   public ta(File $$0) throws ParserConfigurationException {
+      this.d = $$0;
+      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+      this.b = this.a.createElement("testsuite");
+      Element $$1 = this.a.createElement("testsuite");
+      $$1.appendChild(this.b);
+      this.a.appendChild($$1);
+      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
+      this.c = Stopwatch.createStarted();
+   }
+
+   private Element a(so $$0, String $$1) {
+      Element $$2 = this.a.createElement("testcase");
+      $$2.setAttribute("name", $$1);
+      $$2.setAttribute("classname", $$0.t().toString());
+      $$2.setAttribute("time", String.valueOf((double)$$0.l() / 1000.0));
+      this.b.appendChild($$2);
+      return $$2;
    }
 
    @Override
-   public void a(ard $$0) {
-      if (this.j) {
-         this.l.forEach($$1 -> {
-            eob $$2 = tb.b($$1.f());
-            tb.a($$2, $$0);
-         });
-         this.l.clear();
-         this.g = new fbs(this.i);
-         this.h.g(this.i);
-      }
+   public void a(so $$0) {
+      String $$1 = $$0.b().toString();
+      String $$2 = $$0.n().getMessage();
+      Element $$3 = this.a.createElement($$0.r() ? "failure" : "skipped");
+      $$3.setAttribute("message", "(" + $$0.c().x() + ") " + $$2);
+      Element $$4 = this.a($$0, $$1);
+      $$4.appendChild($$3);
    }
 
    @Override
-   public Optional<sl> spawnStructure(sl $$0) {
-      ji $$1 = new ji(this.h);
-      $$0.b($$1);
-      $$0.o();
-      fbs $$2 = tb.a($$0.f());
-      this.g = this.g.b($$2);
-      this.h.e((int)$$2.b() + 5, 0, 0);
-      if ((float)this.h.u() > this.k) {
-         this.k = (float)this.h.u();
-      }
+   public void b(so $$0) {
+      String $$1 = $$0.b().toString();
+      this.a($$0, $$1);
+   }
 
-      if (++this.f >= this.e) {
-         this.f = 0;
-         this.h.e(0, 0, (int)this.g.d() + 6);
-         this.h.p(this.i.u());
-         this.g = new fbs(this.h);
-      }
+   @Override
+   public void a() {
+      this.c.stop();
+      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
 
-      this.l.add($$0);
-      return Optional.of($$0);
+      try {
+         this.a(this.d);
+      } catch (TransformerException var2) {
+         throw new Error("Couldn't save test report", var2);
+      }
+   }
+
+   public void a(File $$0) throws TransformerException {
+      TransformerFactory $$1 = TransformerFactory.newInstance();
+      Transformer $$2 = $$1.newTransformer();
+      DOMSource $$3 = new DOMSource(this.a);
+      StreamResult $$4 = new StreamResult($$0);
+      $$2.transform($$3, $$4);
    }
 }

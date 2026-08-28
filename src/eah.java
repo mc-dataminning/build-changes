@@ -1,89 +1,59 @@
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class eah<T> implements eac<T> {
-   private final jw<T> a;
+public class eah implements AutoCloseable {
+   private final dhq a;
+   private final Long2ObjectMap<eau> b = new Long2ObjectOpenHashMap();
    @Nullable
-   private T b;
-   private final ead<T> c;
+   private eau c;
+   private long d;
 
-   public eah(jw<T> $$0, ead<T> $$1, List<T> $$2) {
+   public eah(dhq $$0) {
       this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
+   }
+
+   @Nullable
+   public eau a(jj $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ap()) {
+         long $$2 = kl.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (eau)this.b.computeIfAbsent($$2, $$2x -> {
+               eaj $$3 = this.a.a(kl.a($$0.u()), kl.a($$0.w()));
+               eau $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
       }
    }
 
-   public static <A> eac<A> a(int $$0, jw<A> $$1, ead<A> $$2, List<A> $$3) {
-      return new eah<>($$1, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
+   public dym b(jj $$0) {
+      eau $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dkw.a.m();
       } else {
-         this.b = $$0;
-         return 0;
-      }
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
-   }
-
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+         int $$2 = kl.b($$0.u());
+         int $$3 = kl.b($$0.v());
+         int $$4 = kl.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
       }
    }
 
    @Override
-   public void a(vl $$0) {
-      this.b = this.a.b($$0.l());
-   }
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-   @Override
-   public void b(vl $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return wg.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public eac<T> a(ead<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
+      while (var1.hasNext()) {
+         eau $$0 = (eau)var1.next();
+         $$0.b();
       }
    }
 }

@@ -1,55 +1,35 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
-
 public class fre {
-   @Nullable
-   private frb a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
+   public static final ald a = ald.b("textures/gui/title/minecraft.png");
+   public static final ald b = ald.b("textures/gui/title/minceraft.png");
+   public static final ald c = ald.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azs.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public void a(Duration $$0) {
-      this.b = $$0;
+   public fre(boolean $$0) {
+      this.o = $$0;
    }
 
-   public void a(@Nullable frb $$0) {
-      this.a = $$0;
+   public void a(fpz $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Nullable
-   public frb a() {
-      return this.a;
-   }
-
-   public void a(boolean $$0, boolean $$1, ftx $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && fmg.Q().aX().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = af.c();
-            }
-
-            this.d = $$3;
-         }
-
-         if ($$3 && af.c() - this.c > this.b.toMillis()) {
-            fvi $$4 = fmg.Q().z;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
-      }
-   }
-
-   private fxt a(ftx $$0, boolean $$1, boolean $$2) {
-      return (fxt)(!$$1 && $$2 && fmg.Q().aX().b() ? new fxo($$0) : new fxv($$0));
-   }
-
-   public void a(ftn $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
+   public void a(fpz $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axu.a($$5);
+      $$0.a(goi::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(goi::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

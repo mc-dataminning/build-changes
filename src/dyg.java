@@ -1,137 +1,101 @@
-public class dyg {
-   public static final dyh a = dyh.a("attached");
-   public static final dyh b = dyh.a("berries");
-   public static final dyh c = dyh.a("bloom");
-   public static final dyh d = dyh.a("bottom");
-   public static final dyh e = dyh.a("can_summon");
-   public static final dyh f = dyh.a("conditional");
-   public static final dyh g = dyh.a("disarmed");
-   public static final dyh h = dyh.a("drag");
-   public static final dyh i = dyh.a("enabled");
-   public static final dyh j = dyh.a("extended");
-   public static final dyh k = dyh.a("eye");
-   public static final dyh l = dyh.a("falling");
-   public static final dyh m = dyh.a("hanging");
-   public static final dyh n = dyh.a("has_bottle_0");
-   public static final dyh o = dyh.a("has_bottle_1");
-   public static final dyh p = dyh.a("has_bottle_2");
-   public static final dyh q = dyh.a("has_record");
-   public static final dyh r = dyh.a("has_book");
-   public static final dyh s = dyh.a("inverted");
-   public static final dyh t = dyh.a("in_wall");
-   public static final dyh u = dyh.a("lit");
-   public static final dyh v = dyh.a("locked");
-   public static final dyh w = dyh.a("natural");
-   public static final dyh x = dyh.a("occupied");
-   public static final dyh y = dyh.a("open");
-   public static final dyh z = dyh.a("persistent");
-   public static final dyh A = dyh.a("powered");
-   public static final dyh B = dyh.a("short");
-   public static final dyh C = dyh.a("shrieking");
-   public static final dyh D = dyh.a("signal_fire");
-   public static final dyh E = dyh.a("snowy");
-   public static final dyh F = dyh.a("tip");
-   public static final dyh G = dyh.a("triggered");
-   public static final dyh H = dyh.a("unstable");
-   public static final dyh I = dyh.a("waterlogged");
-   public static final dyo<jn.a> J = dyo.a("axis", jn.a.class, jn.a.a, jn.a.c);
-   public static final dyo<jn.a> K = dyo.a("axis", jn.a.class);
-   public static final dyh L = dyh.a("up");
-   public static final dyh M = dyh.a("down");
-   public static final dyh N = dyh.a("north");
-   public static final dyh O = dyh.a("east");
-   public static final dyh P = dyh.a("south");
-   public static final dyh Q = dyh.a("west");
-   public static final dyo<jn> R = dyo.a("facing", jn.class, jn.c, jn.f, jn.d, jn.e, jn.b, jn.a);
-   public static final dyo<jn> S = dyo.a("facing", jn.class, $$0 -> $$0 != jn.b);
-   public static final dyo<jn> T = dyo.a("facing", jn.class, jn.c.a);
-   public static final dyq U = dyq.a("flower_amount", 1, 4);
-   public static final dyq V = dyq.a("segment_amount", 1, 4);
-   public static final dyo<jp> W = dyo.a("orientation", jp.class);
-   public static final dyo<dyb> X = dyo.a("face", dyb.class);
-   public static final dyo<dye> Y = dyo.a("attachment", dye.class);
-   public static final dyo<dzc> Z = dyo.a("east", dzc.class);
-   public static final dyo<dzc> aa = dyo.a("north", dzc.class);
-   public static final dyo<dzc> ab = dyo.a("south", dzc.class);
-   public static final dyo<dzc> ac = dyo.a("west", dzc.class);
-   public static final dyo<dyv> ad = dyo.a("east", dyv.class);
-   public static final dyo<dyv> ae = dyo.a("north", dyv.class);
-   public static final dyo<dyv> af = dyo.a("south", dyv.class);
-   public static final dyo<dyv> ag = dyo.a("west", dyv.class);
-   public static final dyo<dym> ah = dyo.a("half", dym.class);
-   public static final dyo<dyp> ai = dyo.a("half", dyp.class);
-   public static final dyo<dyu> aj = dyo.a("shape", dyu.class);
-   public static final dyo<dyu> ak = dyo.a("shape", dyu.class, $$0 -> $$0 != dyu.j && $$0 != dyu.i && $$0 != dyu.g && $$0 != dyu.h);
-   public static final int al = 1;
-   public static final int am = 2;
-   public static final int an = 3;
-   public static final int ao = 4;
-   public static final int ap = 5;
-   public static final int aq = 7;
-   public static final int ar = 15;
-   public static final int as = 25;
-   public static final dyq at = dyq.a("age", 0, 1);
-   public static final dyq au = dyq.a("age", 0, 2);
-   public static final dyq av = dyq.a("age", 0, 3);
-   public static final dyq aw = dyq.a("age", 0, 4);
-   public static final dyq ax = dyq.a("age", 0, 5);
-   public static final dyq ay = dyq.a("age", 0, 7);
-   public static final dyq az = dyq.a("age", 0, 15);
-   public static final dyq aA = dyq.a("age", 0, 25);
-   public static final dyq aB = dyq.a("bites", 0, 6);
-   public static final dyq aC = dyq.a("candles", 1, 4);
-   public static final dyq aD = dyq.a("delay", 1, 4);
-   public static final int aE = 7;
-   public static final dyq aF = dyq.a("distance", 1, 7);
-   public static final dyq aG = dyq.a("eggs", 1, 4);
-   public static final dyq aH = dyq.a("hatch", 0, 2);
-   public static final dyq aI = dyq.a("layers", 1, 8);
-   public static final int aJ = 0;
-   public static final int aK = 1;
-   public static final int aL = 3;
-   public static final int aM = 8;
-   public static final dyq aN = dyq.a("level", 1, 3);
-   public static final dyq aO = dyq.a("level", 0, 8);
-   public static final dyq aP = dyq.a("level", 1, 8);
-   public static final dyq aQ = dyq.a("honey_level", 0, 5);
-   public static final int aR = 15;
-   public static final dyq aS = dyq.a("level", 0, 15);
-   public static final dyq aT = dyq.a("moisture", 0, 7);
-   public static final dyq aU = dyq.a("note", 0, 24);
-   public static final dyq aV = dyq.a("pickles", 1, 4);
-   public static final dyq aW = dyq.a("power", 0, 15);
-   public static final dyq aX = dyq.a("stage", 0, 1);
-   public static final int aY = 7;
-   public static final dyq aZ = dyq.a("distance", 0, 7);
-   public static final int ba = 0;
-   public static final int bb = 4;
-   public static final dyq bc = dyq.a("charges", 0, 4);
-   public static final dyq bd = dyq.a("rotation", 0, dyw.a());
-   public static final dyo<dyd> be = dyo.a("part", dyd.class);
-   public static final dyo<dyi> bf = dyo.a("type", dyi.class);
-   public static final dyo<dyj> bg = dyo.a("mode", dyj.class);
-   public static final dyo<dyl> bh = dyo.a("hinge", dyl.class);
-   public static final dyo<dyr> bi = dyo.a("instrument", dyr.class);
-   public static final dyo<dys> bj = dyo.a("type", dys.class);
-   public static final dyo<dyy> bk = dyo.a("type", dyy.class);
-   public static final dyo<dyz> bl = dyo.a("shape", dyz.class);
-   public static final dyo<dza> bm = dyo.a("mode", dza.class);
-   public static final dyo<dyc> bn = dyo.a("leaves", dyc.class);
-   public static final dyo<dzb> bo = dyo.a("tilt", dzb.class);
-   public static final dyo<jn> bp = dyo.a("vertical_direction", jn.class, jn.b, jn.a);
-   public static final dyo<dyn> bq = dyo.a("thickness", dyn.class);
-   public static final dyo<dyx> br = dyo.a("sculk_sensor_phase", dyx.class);
-   public static final dyh bs = dyh.a("slot_0_occupied");
-   public static final dyh bt = dyh.a("slot_1_occupied");
-   public static final dyh bu = dyh.a("slot_2_occupied");
-   public static final dyh bv = dyh.a("slot_3_occupied");
-   public static final dyh bw = dyh.a("slot_4_occupied");
-   public static final dyh bx = dyh.a("slot_5_occupied");
-   public static final dyq by = dyq.a("dusted", 0, 3);
-   public static final dyh bz = dyh.a("cracked");
-   public static final dyh bA = dyh.a("crafting");
-   public static final dyo<dww> bB = dyo.a("trial_spawner_state", dww.class);
-   public static final dyo<dxd> bC = dyo.a("vault_state", dxd.class);
-   public static final dyo<dyk> bD = dyo.a("creaking_heart_state", dyk.class);
-   public static final dyh bE = dyh.a("ominous");
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class dyg extends dmy {
+   public static final MapCodec<dyg> b = b(dyg::new);
+   public static final dzk<dzo> c = dzc.bj;
+   public static final dzd d = dzc.B;
+   public static final int e = 4;
+   private static final fdo f = dku.c(16.0, 0.0, 4.0);
+   private static final Map<jo, fdo> g = fdl.d(fdl.a(f, dku.c(4.0, 4.0, 16.0)));
+   private static final Map<jo, fdo> h = fdl.d(fdl.a(f, dku.c(4.0, 4.0, 20.0)));
+
+   @Override
+   protected MapCodec<dyg> a() {
+      return b;
+   }
+
+   public dyg(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(a, jo.c).b(c, dzo.a).b(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected boolean g_(dym $$0) {
+      return true;
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return ($$0.c(d) ? g : h).get($$0.c(a));
+   }
+
+   private boolean a(dym $$0, dym $$1) {
+      dku $$2 = $$0.c(c) == dzo.a ? dkw.bF : dkw.by;
+      return $$1.a($$2) && $$1.c(dyf.c) && $$1.c(a) == $$0.c(a);
+   }
+
+   @Override
+   public dym a(dhp $$0, jj $$1, dym $$2, cqi $$3) {
+      if (!$$0.C && $$3.gk()) {
+         jj $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
+      jj $$4 = $$2.a($$0.c(a).g());
+      if (this.a($$0, $$1.a_($$4))) {
+         $$1.b($$4, true);
+      }
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      dym $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dkw.bX) && $$3.c(a) == $$0.c(a);
+   }
+
+   @Override
+   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
+      if ($$0.a((dhs)$$1, $$2)) {
+         $$1.b($$2.a($$0.c(a).g()), $$3, evx.a($$4, $$0.c(a).g()));
+      }
+   }
+
+   @Override
+   protected cxy a(dhs $$0, jj $$1, dym $$2, boolean $$3) {
+      return new cxy($$2.c(c) == dzo.b ? dkw.by : dkw.bF);
+   }
+
+   @Override
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   protected boolean a(dym $$0, evi $$1) {
+      return false;
+   }
 }

@@ -1,28 +1,26 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cal<T extends bwa> extends bxr<T> {
-   private final float c;
+public class cal {
+   public static byj<bwr> a() {
+      return cbv.a((Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$0 -> $$0.a((cby<bwr>)(($$0x, $$1, $$2) -> {
+            if ($$0x.A.a(20) != 0) {
+               return false;
+            } else {
+               bxr<?> $$3 = $$1.eb();
+               crv $$4 = $$0x.d($$1.dv());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(crz.h);
+                     $$3.a(crz.h);
+                  } else {
+                     $$3.b(crz.i);
+                     $$3.a(crz.i);
+                  }
+               }
 
-   public cal(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static <T extends bwa> boolean a(T $$0) {
-      return $$0.bj() && $$0.b(awv.a) > $$0.do() || $$0.bv();
-   }
-
-   protected boolean a(ard $$0, bwa $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(ard $$0, bwa $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ard $$0, bwa $$1, long $$2) {
-      if ($$1.dX().i() < this.c) {
-         $$1.N().a();
-      }
+               return true;
+            }
+         }))));
    }
 }

@@ -1,8 +1,9 @@
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public class mo {
-   public static ml a(mk $$0, CompletableFuture<jt.a> $$1) {
-      return new ml($$0, $$1, List.of(new mt(), new mq(), new mp(), new mr(), new ms()));
+public interface mo {
+   void a(ju.a var1, Consumer<ai> var2);
+
+   static ai a(String $$0) {
+      return ah.a.a().b(ald.a($$0));
    }
 }

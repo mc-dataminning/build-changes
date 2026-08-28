@@ -1,97 +1,65 @@
-import java.util.List;
+import java.util.Optional;
 
-public class cva implements cto {
-   private final ka<cxh> b;
-   private final int c;
-   private final int d;
-   private final csw e;
-
-   public cva(csw $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, ka.a($$1 * $$2, cxh.k));
-   }
-
-   private cva(csw $$0, int $$1, int $$2, ka<cxh> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class cva extends cvk {
+   public cva(btj $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int b() {
-      return this.b.size();
+   public void b(cxy $$0, cxy $$1) {
    }
 
    @Override
-   public boolean c() {
-      for (cxh $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
+   public boolean a(cqi $$0) {
+      return false;
+   }
 
+   @Override
+   public Optional<cxy> a(int $$0, int $$1, cqi $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public cxy b(int $$0, int $$1, cqi $$2) {
+      return cxy.k;
+   }
+
+   @Override
+   public cxy d(cxy $$0) {
+      return $$0;
+   }
+
+   @Override
+   public cxy b(cxy $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cqi $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cxy $$0) {
+      return false;
+   }
+
+   @Override
+   public cxy a(int $$0) {
+      return cxy.k;
+   }
+
+   @Override
+   public void a(cqi $$0, cxy $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
       return true;
-   }
-
-   @Override
-   public cxh a(int $$0) {
-      return $$0 >= this.b() ? cxh.k : this.b.get($$0);
-   }
-
-   @Override
-   public cxh b(int $$0) {
-      return bss.a(this.b, $$0);
-   }
-
-   @Override
-   public cxh a(int $$0, int $$1) {
-      cxh $$2 = bss.a(this.b, $$0, $$1);
-      if (!$$2.f()) {
-         this.e.a(this);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(int $$0, cxh $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cpr $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int ay_() {
-      return this.c;
-   }
-
-   @Override
-   public List<cxh> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void fillStackedContents(cpw $$0) {
-      for (cxh $$1 : this.b) {
-         $$0.a($$1);
-      }
    }
 }

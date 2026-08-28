@@ -1,4 +1,3 @@
-public class has extends haj {
-   public float a;
-   public int b;
+public class has extends hak {
+   public fcu a = fcu.c;
 }

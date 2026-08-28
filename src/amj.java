@@ -1,70 +1,138 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class amj {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wp.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("clear.failed.multiple", $$0));
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final int c;
+   private final avn d;
+   private final int e;
+   private volatile boolean f;
+   @Nullable
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public static void a(CommandDispatcher<ex> $$0, et $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ex)$$0x.getSource(), Collections.singleton(((ex)$$0x.getSource()).h()), $$0xx -> true)))
-            .then(
-               ((RequiredArgumentBuilder)ey.a("targets", fk.d()).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), $$0xx -> true)))
-                  .then(
-                     ((RequiredArgumentBuilder)ey.a("item", hj.a($$1)).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), hj.a($$0x, "item"))))
-                        .then(
-                           ey.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), hj.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
-            )
-      );
+   public amj(String $$0, int $$1, avn $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static int a(ex $$0, Collection<are> $$1, Predicate<cxh> $$2) throws CommandSyntaxException {
-      return a($$0, $$1, $$2, -1);
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
+      } else {
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
+      }
    }
 
-   private static int a(ex $$0, Collection<are> $$1, Predicate<cxh> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
+   private void c() {
+      amj.a $$0 = null;
 
-      for (are $$5 : $$1) {
-         $$4 += $$5.gl().a($$2, $$3, $$5.bP.r());
-         $$5.bQ.d();
-         $$5.bP.a($$5.gl());
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            amj.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
+
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     af.i().execute(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
+                        }
+                     });
+                  }
+               }
+            }
+
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
+            }
+         }
+      }
+   }
+
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+   }
+
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
+            }
+         }
+      } catch (ClosedByInterruptException var6) {
+         if (this.f) {
+            a.info("Remote control server closed by interrupt");
+         }
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
+         }
+      } finally {
+         IOUtils.closeQuietly(this.g);
       }
 
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().al());
-         } else {
-            throw b.create($$1.size());
-         }
-      } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> wp.a("commands.clear.test.single", $$6, $$1.iterator().next().m_()), true);
-            } else {
-               $$0.a(() -> wp.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> wp.a("commands.clear.success.single", $$6, $$1.iterator().next().m_()), true);
-         } else {
-            $$0.a(() -> wp.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
+      a.info("Remote control server is now stopped");
+      this.f = false;
+   }
 
-         return $$4;
+   @Nullable
+   private amj.a e() {
+      List<aro> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
+      } else {
+         aro $$1 = $$0.get(0);
+         String $$2 = (String)amr.a.inverse().get($$1.dV().aj());
+         return $$2 == null ? null : new amj.a($$2, $$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
+      }
+   }
+
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

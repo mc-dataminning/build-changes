@@ -1,56 +1,92 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public abstract class dnt extends dke {
-   protected final jn a;
-   protected final boolean b;
-   protected final fcr d;
+public class dnt extends dmr {
+   public static final MapCodec<dnt> g = b(dnt::new);
+   private final Function<dym, fdo> h;
 
-   protected dnt(dxp.d $$0, jn $$1, fcr $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<dnt> a() {
+      return g;
+   }
+
+   public dnt(dyl.d $$0) {
+      super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, $$0);
+      this.l(
+         this.B
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+      this.h = this.a(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected abstract MapCodec<? extends dnt> a();
-
-   @Nullable
-   @Override
-   public dxq a(dax $$0) {
-      dxq $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dxq b(azh $$0) {
-      return this.m();
+   protected fdo d_(dym $$0) {
+      return this.h.apply($$0);
    }
 
    @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      ji $$3 = $$2.a(this.a.g());
-      dxq $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   protected fdo c(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected boolean a(dym $$0, evi $$1) {
+      return false;
+   }
+
+   public boolean a(dym $$0, boolean $$1, jo $$2) {
+      dku $$3 = $$0.b();
+      boolean $$4 = this.o($$0);
+      boolean $$5 = $$3 instanceof dnu && dnu.a($$0, $$2);
+      return !k($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean o(dym $$0) {
+      return $$0.a(awz.U) && $$0.a(awz.l) == this.m().a(awz.l);
+   }
+
+   @Override
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      return (btq)(!$$1.w_() ? cyi.a($$3, $$1, $$2) : btq.e);
+   }
+
+   @Override
+   public dym a(dbn $$0) {
+      dgv $$1 = $$0.q();
+      jj $$2 = $$0.a();
+      eut $$3 = $$0.q().b_($$0.a());
+      jj $$4 = $$2.f();
+      jj $$5 = $$2.i();
+      jj $$6 = $$2.g();
+      jj $$7 = $$2.h();
+      dym $$8 = $$1.a_($$4);
+      dym $$9 = $$1.a_($$5);
+      dym $$10 = $$1.a_($$6);
+      dym $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jo.d), jo.d)))
+         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jo.e), jo.e)))
+         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jo.c), jo.c)))
+         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jo.f), jo.f)))
+         .b(e, Boolean.valueOf($$3.a() == euu.c));
+   }
+
+   @Override
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, euu.c, euu.c.a($$1));
       }
-   }
 
-   protected boolean o(dxq $$0) {
-      return true;
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.d;
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(a, b, d, c, e);
    }
-
-   protected abstract dnv c();
-
-   protected abstract dke b();
 }

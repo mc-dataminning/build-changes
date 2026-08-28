@@ -1,14 +1,8 @@
 import javax.annotation.Nullable;
 
-public class cwt extends cvo {
-   public cwt(dke $$0, cxd.a $$1) {
-      super($$0, $$1);
+public interface cwt {
+   default void a(@Nullable bwr $$0, dhp $$1, cxy $$2, jj $$3) {
    }
 
-   @Nullable
-   @Override
-   protected dxq c(dax $$0) {
-      cpr $$1 = $$0.o();
-      return $$1 != null && !$$1.gI() ? null : super.c($$0);
-   }
+   boolean a(@Nullable bwr var1, dhp var2, jj var3, @Nullable fcq var4);
 }

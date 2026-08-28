@@ -1,62 +1,35 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class cch extends ccw {
-   private final bwg a;
+public class cch<E extends cpl> extends byi<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public cch(bwg $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccw.a.a, ccw.a.b));
+   public cch(int $$0) {
+      super(ImmutableMap.of(cft.aC, cfu.a, cft.p, cfu.b, cft.n, cfu.b, cft.o, cfu.c, cft.C, cfu.c, cft.aA, cfu.c, cft.aH, cfu.c), $$0);
    }
 
-   @Override
-   public boolean b() {
-      return this.a.cs() < 140;
+   protected boolean a(arn $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   protected void b(arn $$0, E $$1, long $$2) {
+      $$1.a(awk.CT, 5.0F, 1.0F);
    }
 
-   @Override
-   public boolean P_() {
-      return false;
-   }
+   protected void c(arn $$0, E $$1, long $$2) {
+      if ($$1.c(bxd.m)) {
+         $$1.b(bxd.a);
+      }
 
-   @Override
-   public void d() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<ji> $$0 = ji.b(
-         ayz.a(this.a.dz() - 1.0), this.a.dA(), ayz.a(this.a.dF() - 1.0), ayz.a(this.a.dz() + 1.0), ayz.a(this.a.dB() + 8.0), ayz.a(this.a.dF() + 1.0)
-      );
-      ji $$1 = null;
-
-      for (ji $$2 : $$0) {
-         if (this.a(this.a.dU(), $$2)) {
-            $$1 = $$2;
-            break;
+      $$1.eb().b(cft.aC);
+      $$1.eb().c(cft.C).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
-      }
 
-      if ($$1 == null) {
-         $$1 = ji.a(this.a.dz(), this.a.dB() + 8.0, this.a.dF());
-      }
-
-      this.a.O().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
-   }
-
-   @Override
-   public void a() {
-      this.h();
-      this.a.a(0.02F, new fbx((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
-      this.a.a(bwc.a, this.a.dx());
-   }
-
-   private boolean a(dhc $$0, ji $$1) {
-      dxq $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dkg.nF)) && $$2.a(eul.a);
+         if (!$$1.eb().a(cft.aA)) {
+            cpm.a($$1, $$1x.dv());
+         }
+      });
    }
 }

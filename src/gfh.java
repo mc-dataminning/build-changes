@@ -1,26 +1,60 @@
-public class gfh extends gda<hbq> {
-   private final ggc a;
+import java.util.Set;
 
-   public gfh(ggc $$0) {
+public class gfh extends gfl<hbx> {
+   private static final float a = 2.25F;
+   private static final ghm i = new gcx(true, 16.0F, 4.0F, 2.25F, 2.0F, 24.0F, Set.of("head"));
+
+   public gfh(ghd $$0) {
       super($$0);
-      this.a = $$0.b("tail");
    }
 
-   public static ggi a(ggg $$0) {
-      ggk $$1 = new ggk();
-      ggm $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", ggh.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), gge.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", ggh.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gge.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", ggh.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gge.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", ggh.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gge.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", ggh.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gge.a(0.0F, 20.5F, -3.0F));
-      return ggi.a($$1, 32, 32);
+   public static ghj a(boolean $$0) {
+      ghl $$1 = new ghl();
+      ghn $$2 = $$1.a();
+      $$2.a(
+         "head",
+         ghi.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         ghf.a(0.0F, 10.0F, -16.0F)
+      );
+      $$2.a(
+         "body",
+         ghi.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         ghf.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$3 = 10;
+      ghi $$4 = ghi.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$2.a("right_hind_leg", $$4, ghf.a(-4.5F, 14.0F, 6.0F));
+      $$2.a("left_hind_leg", $$4, ghf.a(4.5F, 14.0F, 6.0F));
+      ghi $$5 = ghi.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$2.a("right_front_leg", $$5, ghf.a(-3.5F, 14.0F, -8.0F));
+      $$2.a("left_front_leg", $$5, ghf.a(3.5F, 14.0F, -8.0F));
+      return ghj.a($$1, 128, 64).a($$0 ? i : ghm.a).a(ghm.scaling(1.2F));
    }
 
-   public void a(hbq $$0) {
+   public void a(hbx $$0) {
       super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * ayz.a(0.6F * $$0.u);
+      float $$1 = $$0.a * $$0.a;
+      float $$2 = $$0.ag;
+      float $$3 = $$0.aj ? 0.44444445F : 1.0F;
+      this.c.e -= $$1 * (float) Math.PI * 0.35F;
+      this.c.c += $$1 * $$2 * 2.0F;
+      this.f.c -= $$1 * $$2 * 20.0F;
+      this.f.d += $$1 * $$2 * 4.0F;
+      this.f.e -= $$1 * (float) Math.PI * 0.45F;
+      this.g.c = this.f.c;
+      this.g.d = this.f.d;
+      this.g.e -= $$1 * (float) Math.PI * 0.45F;
+      this.b.c -= $$1 * $$3 * 24.0F;
+      this.b.d += $$1 * $$3 * 13.0F;
+      this.b.e += $$1 * (float) Math.PI * 0.15F;
    }
 }

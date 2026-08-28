@@ -1,62 +1,174 @@
-public enum dyr implements azv {
-   a("harp", awa.sG, dyr.a.a),
-   b("basedrum", awa.sA, dyr.a.a),
-   c("snare", awa.sJ, dyr.a.a),
-   d("hat", awa.sH, dyr.a.a),
-   e("bass", awa.sB, dyr.a.a),
-   f("flute", awa.sE, dyr.a.a),
-   g("bell", awa.sC, dyr.a.a),
-   h("guitar", awa.sF, dyr.a.a),
-   i("chime", awa.sD, dyr.a.a),
-   j("xylophone", awa.sK, dyr.a.a),
-   k("iron_xylophone", awa.sL, dyr.a.a),
-   l("cow_bell", awa.sM, dyr.a.a),
-   m("didgeridoo", awa.sN, dyr.a.a),
-   n("bit", awa.sO, dyr.a.a),
-   o("banjo", awa.sP, dyr.a.a),
-   p("pling", awa.sI, dyr.a.a),
-   q("zombie", awa.sQ, dyr.a.b),
-   r("skeleton", awa.sR, dyr.a.b),
-   s("creeper", awa.sS, dyr.a.b),
-   t("dragon", awa.sT, dyr.a.b),
-   u("wither_skeleton", awa.sU, dyr.a.b),
-   v("piglin", awa.sV, dyr.a.b),
-   w("custom_head", awa.Bp, dyr.a.c);
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String x;
-   private final jr<avz> y;
-   private final dyr.a z;
+public class dyr {
+   private final Predicate<dyq>[][][] a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private dyr(final String $$0, final jr<avz> $$1, final dyr.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   public dyr(Predicate<dyq>[][][] $$0) {
+      this.a = $$0;
+      this.b = $$0.length;
+      if (this.b > 0) {
+         this.c = $$0[0].length;
+         if (this.c > 0) {
+            this.d = $$0[0][0].length;
+         } else {
+            this.d = 0;
+         }
+      } else {
+         this.c = 0;
+         this.d = 0;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.x;
+   public int a() {
+      return this.b;
    }
 
-   public jr<avz> a() {
-      return this.y;
+   public int b() {
+      return this.c;
    }
 
-   public boolean b() {
-      return this.z == dyr.a.a;
+   public int c() {
+      return this.d;
    }
 
-   public boolean d() {
-      return this.z == dyr.a.c;
+   @VisibleForTesting
+   public Predicate<dyq>[][][] d() {
+      return this.a;
    }
 
-   public boolean e() {
-      return this.z != dyr.a.a;
+   @Nullable
+   @VisibleForTesting
+   public dyr.b a(dhs $$0, jj $$1, jo $$2, jo $$3) {
+      LoadingCache<jj, dyq> $$4 = a($$0, false);
+      return this.a($$1, $$2, $$3, $$4);
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   @Nullable
+   private dyr.b a(jj $$0, jo $$1, jo $$2, LoadingCache<jj, dyq> $$3) {
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         for (int $$5 = 0; $$5 < this.c; $$5++) {
+            for (int $$6 = 0; $$6 < this.b; $$6++) {
+               if (!this.a[$$6][$$5][$$4].test((dyq)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
+                  return null;
+               }
+            }
+         }
+      }
+
+      return new dyr.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+   }
+
+   @Nullable
+   public dyr.b a(dhs $$0, jj $$1) {
+      LoadingCache<jj, dyq> $$2 = a($$0, false);
+      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+
+      for (jj $$4 : jj.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
+         for (jo $$5 : jo.values()) {
+            for (jo $$6 : jo.values()) {
+               if ($$6 != $$5 && $$6 != $$5.g()) {
+                  dyr.b $$7 = this.a($$4, $$5, $$6, $$2);
+                  if ($$7 != null) {
+                     return $$7;
+                  }
+               }
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public static LoadingCache<jj, dyq> a(dhs $$0, boolean $$1) {
+      return CacheBuilder.newBuilder().build(new dyr.a($$0, $$1));
+   }
+
+   protected static jj a(jj $$0, jo $$1, jo $$2, int $$3, int $$4, int $$5) {
+      if ($$1 != $$2 && $$1 != $$2.g()) {
+         kn $$6 = new kn($$1.j(), $$1.k(), $$1.l());
+         kn $$7 = new kn($$2.j(), $$2.k(), $$2.l());
+         kn $$8 = $$6.d($$7);
+         return $$0.b(
+            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
+         );
+      } else {
+         throw new IllegalArgumentException("Invalid forwards & up combination");
+      }
+   }
+
+   static class a extends CacheLoader<jj, dyq> {
+      private final dhs a;
+      private final boolean b;
+
+      public a(dhs $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dyq a(jj $$0) {
+         return new dyq(this.a, $$0, this.b);
+      }
+   }
+
+   public static class b {
+      private final jj a;
+      private final jo b;
+      private final jo c;
+      private final LoadingCache<jj, dyq> d;
+      private final int e;
+      private final int f;
+      private final int g;
+
+      public b(jj $$0, jo $$1, jo $$2, LoadingCache<jj, dyq> $$3, int $$4, int $$5, int $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public jj a() {
+         return this.a;
+      }
+
+      public jo b() {
+         return this.b;
+      }
+
+      public jo c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public int f() {
+         return this.g;
+      }
+
+      public dyq a(int $$0, int $$1, int $$2) {
+         return (dyq)this.d.getUnchecked(dyr.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      }
    }
 }

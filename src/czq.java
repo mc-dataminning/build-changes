@@ -1,15 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record czq(axf<btr> c) {
-   public static final Codec<czq> a = RecordCodecBuilder.create($$0 -> $$0.group(axf.b(mc.s).fieldOf("types").forGetter(czq::a)).apply($$0, czq::new));
-   public static final yn<wa, czq> b = yn.a(axf.c(mc.s), czq::a, czq::new);
-
-   public boolean a(btp $$0) {
-      return $$0.a(this.c);
+public class czq extends cxu {
+   public czq(cxu.a $$0) {
+      super($$0);
    }
 
-   public axf<btr> a() {
-      return this.c;
+   @Override
+   public btq a(dhp $$0, cqi $$1, btp $$2) {
+      cxy $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(awu.c.b(this));
+      return btq.a;
    }
 }

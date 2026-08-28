@@ -1,40 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eyf extends eyb {
-   public static final MapCodec<eyf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(ewm.e.fieldOf("component").forGetter($$0x -> $$0x.b), eye.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eyf::new)
-   );
-   private final ewl<?> b;
-   private final eyc c;
+public class eyf extends exu {
+   public static final MapCodec<eyf> a = a(eyf::new);
 
-   private eyf(List<ezx> $$0, ewl<?> $$1, eyc $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   eyf(List<eyb> $$0, List<fau> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eyd<eyf> b() {
-      return eye.u;
+   public eyc a() {
+      return exz.h;
    }
 
    @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
+   protected ext a(List<? extends ext> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ext)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ext $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
+   }
+
+   public static eyf.a a(eyb.a<?>... $$0) {
+      return new eyf.a($$0);
+   }
+
+   public static class a extends eyb.a<eyf.a> {
+      private final Builder<eyb> a = ImmutableList.builder();
+
+      public a(eyb.a<?>... $$0) {
+         for (eyb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public void a(ewu $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+      protected eyf.a a() {
+         return this;
+      }
+
+      @Override
+      public eyf.a c(eyb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eyb b() {
+         return new eyf(this.a.build(), this.f());
+      }
    }
 }

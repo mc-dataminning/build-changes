@@ -1,12 +1,12 @@
-public class gxq extends gxd<has, gdz> {
-   private static final gnh a = gnh.q(aku.b("textures/entity/phantom_eyes.png"));
+public class gxq<M extends gfg> extends gzb<M> {
+   private static final ald a = ald.b("textures/entity/bee/bee_stinger.png");
 
-   public gxq(gva<has, gdz> $$0) {
-      super($$0);
+   public gxq(gvg<?, hbw, M> $$0, guf.a $$1) {
+      super($$0, new gdc($$1.a(ghc.z)), a, gzb.a.b);
    }
 
    @Override
-   public gnh a() {
-      return a;
+   protected int a(hbw $$0) {
+      return $$0.k;
    }
 }

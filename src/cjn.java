@@ -1,139 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class cjn {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 0.75F;
-   private static final bsj e = bsj.a(100, 140);
-   private static final int f = 2;
-   private static final int g = 4;
-   private static final float h = 3.5714288F;
-   private static final float i = 1.25F;
-
-   protected static void a(cjm $$0, azh $$1) {
-      $$0.ea().a(cfc.S, e.a($$1));
-   }
-
-   protected static bxa<?> a(bxa<cjm> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(cri.a));
-      $$0.b(cri.b);
-      $$0.f();
-      return $$0;
-   }
-
-   private static void b(bxa<cjm> $$0) {
-      $$0.a(cri.a, 0, ImmutableList.of(new bxm(2.0F), new byx(45, 90), new bzb(), new bxx(cfc.P), new bxx(cfc.S)));
-   }
-
-   private static void c(bxa<cjm> $$0) {
-      $$0.a(
-         cri.b,
-         ImmutableList.of(
-            Pair.of(0, bzr.a(bvi.bR, 6.0F, bsj.a(30, 60))),
-            Pair.of(0, new bxl(bvi.ab)),
-            Pair.of(1, new bye($$0x -> 1.25F)),
-            Pair.of(2, cad.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ea().c(cfc.B))),
-            Pair.of(3, cao.a(6, 1.0F)),
-            Pair.of(
-               4,
-               new bzo(
-                  ImmutableMap.of(cfc.m, cfd.b),
-                  ImmutableList.of(Pair.of(bzj.a(1.0F), 1), Pair.of(bzy.a(1.0F, 3), 1), Pair.of(new bxy(), 3), Pair.of(cbe.a(bva::aJ), 2))
-               )
+public final class cjn {
+   public static final Codec<cjn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ald.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
+               ald.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
+               ald.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
+               kh.a(me.aM).fieldOf("biomes").forGetter(cjn::d)
             )
-         ),
-         ImmutableSet.of(Pair.of(cfc.T, cfd.b), Pair.of(cfc.X, cfd.b))
-      );
+            .apply($$0, cjn::new)
+   );
+   public static final yt<wg, cjn> b = yt.a(ald.b, cjn::a, ald.b, cjn::b, ald.b, cjn::c, yr.c(me.aM), cjn::d, cjn::new);
+   public static final Codec<js<cjn>> c = akz.a(me.m, a);
+   public static final yt<wg, js<cjn>> d = yr.a(me.m, b);
+   private final ald e;
+   private final ald f;
+   private final ald g;
+   private final ald h;
+   private final ald i;
+   private final ald j;
+   private final jw<dis> k;
+
+   public cjn(ald $$0, ald $$1, ald $$2, jw<dis> $$3) {
+      this.e = $$0;
+      this.h = a($$0);
+      this.f = $$1;
+      this.i = a($$1);
+      this.g = $$2;
+      this.j = a($$2);
+      this.k = $$3;
    }
 
-   private static void d(bxa<cjm> $$0) {
-      $$0.a(
-         cri.t,
-         ImmutableList.of(
-            Pair.of(0, bzr.a(bvi.bR, 6.0F, bsj.a(30, 60))),
-            Pair.of(1, new bye($$0x -> 1.25F)),
-            Pair.of(2, cad.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ea().c(cfc.B))),
-            Pair.of(3, cao.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new byf(
-                  ImmutableMap.of(cfc.m, cfd.b),
-                  ImmutableSet.of(),
-                  byf.a.a,
-                  byf.b.b,
-                  ImmutableList.of(Pair.of(bzj.c(0.75F), 1), Pair.of(bzj.a(1.0F, true), 1), Pair.of(bzy.a(1.0F, 3), 1), Pair.of(cbe.a(bva::bj), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(cfc.T, cfd.b), Pair.of(cfc.X, cfd.a))
-      );
+   private static ald a(ald $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   private static void e(bxa<cjm> $$0) {
-      $$0.a(
-         cri.u,
-         ImmutableList.of(
-            Pair.of(0, bzr.a(bvi.bR, 6.0F, bsj.a(30, 60))),
-            Pair.of(1, cad.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ea().c(cfc.B))),
-            Pair.of(2, cap.a(8, 1.0F)),
-            Pair.of(3, car.a(dkg.tR)),
-            Pair.of(4, new bzo(ImmutableList.of(Pair.of(bzj.a(1.0F), 2), Pair.of(bzy.a(1.0F, 3), 1), Pair.of(new bxy(), 2), Pair.of(cbe.a(bva::aJ), 1))))
-         ),
-         ImmutableSet.of(Pair.of(cfc.T, cfd.b), Pair.of(cfc.Y, cfd.a))
-      );
+   public ald a() {
+      return this.h;
    }
 
-   private static void f(bxa<cjm> $$0) {
-      $$0.a(
-         cri.q,
-         ImmutableList.of(Pair.of(0, new bys(e, awa.kr)), Pair.of(1, new byt<>(e, 2, 4, 3.5714288F, $$0x -> awa.kq, awp.bU, 0.5F, cjn::a))),
-         ImmutableSet.of(Pair.of(cfc.O, cfd.b), Pair.of(cfc.r, cfd.b), Pair.of(cfc.S, cfd.b), Pair.of(cfc.X, cfd.b))
-      );
+   public ald b() {
+      return this.i;
    }
 
-   private static void g(bxa<cjm> $$0) {
-      $$0.a(cri.s, 0, ImmutableList.of(cag.a(), new cjo(awa.ks, awa.kn)), cfc.o);
+   public ald c() {
+      return this.j;
    }
 
-   private static <E extends bwa> boolean a(E $$0, ji $$1) {
-      dgz $$2 = $$0.dU();
-      ji $$3 = $$1.e();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
-         dxq $$4 = $$2.a_($$1);
-         dxq $$5 = $$2.a_($$3);
-         if (!$$4.a(awp.bU) && !$$5.a(awp.bU)) {
-            eup $$6 = new eup($$0.dU(), $$0);
-            eun $$7 = eus.a($$6, $$1.k());
-            eun $$8 = eus.a($$6, $$3.k());
-            return $$7 != eun.e && (!$$4.l() || $$8 != eun.e) ? byu.a($$0, $$1) : true;
-         } else {
-            return true;
-         }
+   public jw<dis> d() {
+      return this.k;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
       } else {
-         return false;
+         return !($$0 instanceof cjn $$1)
+            ? false
+            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
       }
    }
 
-   private static boolean b(cjm $$0) {
-      return !bxt.a($$0);
-   }
-
-   public static void a(cjm $$0) {
-      $$0.ea().a(ImmutableList.of(cri.s, cri.u, cri.q, cri.t, cri.b));
-   }
-
-   public static Predicate<cxh> a() {
-      return $$0 -> $$0.a(awy.ao);
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.k.hashCode();
    }
 }

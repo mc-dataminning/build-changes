@@ -1,69 +1,48 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public interface ewm {
-   ewl<czx> a = new ewl<czx>() {
-      @Override
-      public ku<czx> a() {
-         return kv.an;
-      }
+public class ewm extends ewf {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-      public Stream<cxh> a(czx $$0) {
-         return $$0.b();
-      }
+   public static ewf.a<ewm> a() {
+      return new ewf.a<>(ewm::new, ewm::b, bax.k);
+   }
 
-      public czx c() {
-         return czx.a;
-      }
+   public ewm() {
+      this.b.defaultReturnValue(-1);
+   }
 
-      public czx a(czx $$0, Stream<cxh> $$1) {
-         return czx.a($$1.toList());
-      }
-   };
-   ewl<czj> b = new ewl<czj>() {
-      @Override
-      public ku<czj> a() {
-         return kv.Q;
+   public static ewm b(tw $$0, ju.a $$1) {
+      ewm $$2 = new ewm();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
       }
 
-      public czj c() {
-         return czj.a;
+      return $$2;
+   }
+
+   @Override
+   public tw a(tw $$0, ju.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
       }
 
-      public Stream<cxh> a(czj $$0) {
-         return $$0.b();
-      }
+      return $$0;
+   }
 
-      public czj a(czj $$0, Stream<cxh> $$1) {
-         czj.a $$2 = new czj.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   ewl<czk> c = new ewl<czk>() {
-      @Override
-      public ku<czk> a() {
-         return kv.P;
-      }
-
-      public czk c() {
-         return czk.a;
-      }
-
-      public Stream<cxh> a(czk $$0) {
-         return $$0.a().stream();
-      }
-
-      public czk a(czk $$0, Stream<cxh> $$1) {
-         return czk.a($$1.toList());
-      }
-   };
-   Map<ku<?>, ewl<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(ewl::a, $$0 -> (ewl<?>)$$0));
-   Codec<ewl<?>> e = mb.ao.q().comapFlatMap($$0 -> {
-      ewl<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, ewl::a);
+   public ewl b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.g();
+      return new ewl($$0);
+   }
 }

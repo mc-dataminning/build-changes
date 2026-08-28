@@ -1,77 +1,26 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eth<M extends eth<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dzr[] d = new dzr[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dzr> a;
+public interface eth<P extends etf> {
+   Codec<etf> a = md.af.q().dispatch("processor_type", etf::a, eth::codec);
+   Codec<etg> b = a.listOf().xmap(etg::new, etg::a);
+   Codec<etg> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
+   Codec<js<etg>> d = akz.a(me.ba, c);
+   eth<esj> e = a("block_ignore", esj.a);
+   eth<esl> f = a("block_rot", esl.a);
+   eth<eso> g = a("gravity", eso.a);
+   eth<esp> h = a("jigsaw_replacement", esp.a);
+   eth<etb> i = a("rule", etb.a);
+   eth<est> j = a("nop", est.a);
+   eth<esi> k = a("block_age", esi.a);
+   eth<esh> l = a("blackstone_replace", esh.a);
+   eth<esq> m = a("lava_submerged_block", esq.a);
+   eth<esy> n = a("protected_blocks", esy.b);
+   eth<esn> o = a("capped", esn.a);
 
-   protected eth(Long2ObjectOpenHashMap<dzr> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
-   }
+   MapCodec<P> codec();
 
-   public abstract M b();
-
-   public dzr a(long $$0) {
-      dzr $$1 = ((dzr)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
-   }
-
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public dzr c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      dzr $$2 = (dzr)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public dzr d(long $$0) {
-      return (dzr)this.a.remove($$0);
-   }
-
-   public void a(long $$0, dzr $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
+   static <P extends etf> eth<P> a(String $$0, MapCodec<P> $$1) {
+      return kf.a(md.af, $$0, () -> $$1);
    }
 }

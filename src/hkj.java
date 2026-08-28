@@ -1,46 +1,45 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
-import java.util.List;
-import org.lwjgl.BufferUtils;
+public class hkj extends hjy {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cqi p;
+   private final csh q;
+   private final boolean r;
 
-public class hkj implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
-
-   public hkj(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
+   public hkj(cqi $$0, csh $$1, boolean $$2) {
+      super($$2 ? awk.pt : awk.pu, awl.g, hkp.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = hkp.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
-      }
-
-      int $$1 = ayz.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
+   @Override
+   public boolean s() {
+      return !this.q.bb();
    }
 
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dQ() || !this.p.bZ() || this.p.dk() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bn()) {
+         this.d = 0.0F;
       } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
+         float $$0 = (float)this.q.dy().i();
+         boolean $$1 = !this.q.cq() && this.q.f() instanceof csw;
+         if ($$0 >= 0.01F && !$$1) {
+            this.d = azk.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
       }
-   }
-
-   public int b() {
-      return this.c;
    }
 }

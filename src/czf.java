@@ -1,56 +1,153 @@
-public class czf {
-   public static final jr<czc> a = a("water", new czc("water"));
-   public static final jr<czc> b = a("mundane", new czc("mundane"));
-   public static final jr<czc> c = a("thick", new czc("thick"));
-   public static final jr<czc> d = a("awkward", new czc("awkward"));
-   public static final jr<czc> e = a("night_vision", new czc("night_vision", new bue(bug.p, 3600)));
-   public static final jr<czc> f = a("long_night_vision", new czc("night_vision", new bue(bug.p, 9600)));
-   public static final jr<czc> g = a("invisibility", new czc("invisibility", new bue(bug.n, 3600)));
-   public static final jr<czc> h = a("long_invisibility", new czc("invisibility", new bue(bug.n, 9600)));
-   public static final jr<czc> i = a("leaping", new czc("leaping", new bue(bug.h, 3600)));
-   public static final jr<czc> j = a("long_leaping", new czc("leaping", new bue(bug.h, 9600)));
-   public static final jr<czc> k = a("strong_leaping", new czc("leaping", new bue(bug.h, 1800, 1)));
-   public static final jr<czc> l = a("fire_resistance", new czc("fire_resistance", new bue(bug.l, 3600)));
-   public static final jr<czc> m = a("long_fire_resistance", new czc("fire_resistance", new bue(bug.l, 9600)));
-   public static final jr<czc> n = a("swiftness", new czc("swiftness", new bue(bug.a, 3600)));
-   public static final jr<czc> o = a("long_swiftness", new czc("swiftness", new bue(bug.a, 9600)));
-   public static final jr<czc> p = a("strong_swiftness", new czc("swiftness", new bue(bug.a, 1800, 1)));
-   public static final jr<czc> q = a("slowness", new czc("slowness", new bue(bug.b, 1800)));
-   public static final jr<czc> r = a("long_slowness", new czc("slowness", new bue(bug.b, 4800)));
-   public static final jr<czc> s = a("strong_slowness", new czc("slowness", new bue(bug.b, 400, 3)));
-   public static final jr<czc> t = a("turtle_master", new czc("turtle_master", new bue(bug.b, 400, 3), new bue(bug.k, 400, 2)));
-   public static final jr<czc> u = a("long_turtle_master", new czc("turtle_master", new bue(bug.b, 800, 3), new bue(bug.k, 800, 2)));
-   public static final jr<czc> v = a("strong_turtle_master", new czc("turtle_master", new bue(bug.b, 400, 5), new bue(bug.k, 400, 3)));
-   public static final jr<czc> w = a("water_breathing", new czc("water_breathing", new bue(bug.m, 3600)));
-   public static final jr<czc> x = a("long_water_breathing", new czc("water_breathing", new bue(bug.m, 9600)));
-   public static final jr<czc> y = a("healing", new czc("healing", new bue(bug.f, 1)));
-   public static final jr<czc> z = a("strong_healing", new czc("healing", new bue(bug.f, 1, 1)));
-   public static final jr<czc> A = a("harming", new czc("harming", new bue(bug.g, 1)));
-   public static final jr<czc> B = a("strong_harming", new czc("harming", new bue(bug.g, 1, 1)));
-   public static final jr<czc> C = a("poison", new czc("poison", new bue(bug.s, 900)));
-   public static final jr<czc> D = a("long_poison", new czc("poison", new bue(bug.s, 1800)));
-   public static final jr<czc> E = a("strong_poison", new czc("poison", new bue(bug.s, 432, 1)));
-   public static final jr<czc> F = a("regeneration", new czc("regeneration", new bue(bug.j, 900)));
-   public static final jr<czc> G = a("long_regeneration", new czc("regeneration", new bue(bug.j, 1800)));
-   public static final jr<czc> H = a("strong_regeneration", new czc("regeneration", new bue(bug.j, 450, 1)));
-   public static final jr<czc> I = a("strength", new czc("strength", new bue(bug.e, 3600)));
-   public static final jr<czc> J = a("long_strength", new czc("strength", new bue(bug.e, 9600)));
-   public static final jr<czc> K = a("strong_strength", new czc("strength", new bue(bug.e, 1800, 1)));
-   public static final jr<czc> L = a("weakness", new czc("weakness", new bue(bug.r, 1800)));
-   public static final jr<czc> M = a("long_weakness", new czc("weakness", new bue(bug.r, 4800)));
-   public static final jr<czc> N = a("luck", new czc("luck", new bue(bug.z, 6000)));
-   public static final jr<czc> O = a("slow_falling", new czc("slow_falling", new bue(bug.B, 1800)));
-   public static final jr<czc> P = a("long_slow_falling", new czc("slow_falling", new bue(bug.B, 4800)));
-   public static final jr<czc> Q = a("wind_charged", new czc("wind_charged", new bue(bug.J, 3600)));
-   public static final jr<czc> R = a("weaving", new czc("weaving", new bue(bug.K, 3600)));
-   public static final jr<czc> S = a("oozing", new czc("oozing", new bue(bug.L, 3600)));
-   public static final jr<czc> T = a("infested", new czc("infested", new bue(bug.M, 3600)));
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private static jr<czc> a(String $$0, czc $$1) {
-      return ke.b(mb.h, aku.b($$0), $$1);
+public class czf extends cxu {
+   private static final Map<bwb<? extends bwt>, czf> a = Maps.newIdentityHashMap();
+   private final bwb<?> b;
+
+   public czf(bwb<? extends bwt> $$0, cxu.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
-   public static jr<czc> a(ke<czc> $$0) {
-      return a;
+   @Override
+   public btq a(dbp $$0) {
+      dhp $$1 = $$0.q();
+      if ($$1.C) {
+         return btq.a;
+      } else {
+         cxy $$2 = $$0.n();
+         jj $$3 = $$0.a();
+         jo $$4 = $$0.k();
+         dym $$5 = $$1.a_($$3);
+         if ($$1.c_($$3) instanceof dik $$6) {
+            bwb<?> $$7 = this.a($$1.F_(), $$2);
+            $$6.a($$7, $$1.C_());
+            $$1.a($$3, $$5, $$5, 3);
+            $$1.a($$0.o(), edm.c, $$3);
+            $$2.h(1);
+            return btq.a;
+         } else {
+            jj $$8;
+            if ($$5.g($$1, $$3).c()) {
+               $$8 = $$3;
+            } else {
+               $$8 = $$3.a($$4);
+            }
+
+            bwb<?> $$10 = this.a($$1.F_(), $$2);
+            if ($$10.a((arn)$$1, $$2, $$0.o(), $$8, bwa.m, true, !Objects.equals($$3, $$8) && $$4 == jo.b) != null) {
+               $$2.h(1);
+               $$1.a($$0.o(), edm.t, $$3);
+            }
+
+            return btq.a;
+         }
+      }
+   }
+
+   @Override
+   public btq a(dhp $$0, cqi $$1, btp $$2) {
+      cxy $$3 = $$1.b($$2);
+      fcq $$4 = a($$0, $$1, dgy.b.b);
+      if ($$4.d() != fcs.a.b) {
+         return btq.e;
+      } else if ($$0 instanceof arn $$5) {
+         jj $$8 = $$4.b();
+         if (!($$0.a_($$8).b() instanceof dpo)) {
+            return btq.e;
+         } else if ($$0.a($$1, $$8) && $$1.a($$8, $$4.c(), $$3)) {
+            bwb<?> $$9 = this.a($$5.F_(), $$3);
+            bvs $$10 = $$9.a($$5, $$3, $$1, $$8, bwa.m, false, false);
+            if ($$10 == null) {
+               return btq.e;
+            } else {
+               $$3.a(1, $$1);
+               $$1.b(awu.c.b(this));
+               $$0.a($$1, edm.t, $$10.dt());
+               return btq.a;
+            }
+         } else {
+            return btq.d;
+         }
+      } else {
+         return btq.a;
+      }
+   }
+
+   public boolean a(ju.a $$0, cxy $$1, bwb<?> $$2) {
+      return Objects.equals(this.a($$0, $$1), $$2);
+   }
+
+   @Nullable
+   public static czf a(@Nullable bwb<?> $$0) {
+      return a.get($$0);
+   }
+
+   public static Iterable<czf> b() {
+      return Iterables.unmodifiableIterable(a.values());
+   }
+
+   public bwb<?> a(ju.a $$0, cxy $$1) {
+      dae $$2 = $$1.a(kx.Y, dae.a);
+      if (!$$2.c()) {
+         bwb<?> $$3 = $$2.a($$0, me.z);
+         if ($$3 != null) {
+            return $$3;
+         }
+      }
+
+      return this.b;
+   }
+
+   @Override
+   public cte k() {
+      return this.b.k();
+   }
+
+   public Optional<bwt> a(cqi $$0, bwt $$1, bwb<? extends bwt> $$2, arn $$3, fcu $$4, cxy $$5) {
+      if (!this.a($$3.F_(), $$5, $$2)) {
+         return Optional.empty();
+      } else {
+         bwt $$6;
+         if ($$1 instanceof bvi) {
+            $$6 = ((bvi)$$1).a($$3, (bvi)$$1);
+         } else {
+            $$6 = $$2.a($$3, bwa.m);
+         }
+
+         if ($$6 == null) {
+            return Optional.empty();
+         } else {
+            $$6.a(true);
+            if (!$$6.n_()) {
+               return Optional.empty();
+            } else {
+               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
+               $$3.a_($$6);
+               $$6.c($$5);
+               $$5.a(1, $$0);
+               return Optional.of($$6);
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean a(cxy $$0, @Nullable cqi $$1) {
+      if ($$1 != null && $$1.G() >= 2) {
+         dae $$2 = $$0.a(kx.Y);
+         if ($$2 != null) {
+            bwb<?> $$3 = $$2.a($$1.dV().F_(), me.z);
+            return $$3 != null && $$3.s();
+         }
+      }
+
+      return false;
    }
 }

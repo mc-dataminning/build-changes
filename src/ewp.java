@@ -1,11 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ewp {
-   default Set<bai<?>> a() {
-      return Set.of();
-   }
-
-   default void a(ewu $$0) {
-      $$0.a(this);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ewp {
 }

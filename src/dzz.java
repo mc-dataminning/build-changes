@@ -1,11 +1,21 @@
-import javax.annotation.Nullable;
+public enum dzz implements bag {
+   a("none"),
+   b("low"),
+   c("tall");
 
-public interface dzz {
-   @Nullable
-   dzy c(int var1, int var2);
+   private final String d;
 
-   default void a(dhi $$0, kk $$1) {
+   private dzz(final String $$0) {
+      this.d = $$0;
    }
 
-   dgf r();
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

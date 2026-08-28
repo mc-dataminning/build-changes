@@ -1,33 +1,37 @@
-public class gsp<T extends cnw> extends guj<T, gzb, gcr> {
-   private static final aku a = aku.b("textures/entity/creaking/creaking.png");
-   private static final aku b = aku.b("textures/entity/creaking/creaking_eyes.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gsp(gtd.a $$0) {
-      super($$0, new gcr($$0.a(ggb.aj)), 0.6F);
-      this.a(new gxl<>(this, b, ($$0x, $$1) -> 1.0F, gcr::b, gnh::q, true));
+public class gsp implements gsa.a {
+   private static final int a = 60;
+   private final Set<kl> b = Sets.newHashSet();
+
+   gsp() {
    }
 
-   public aku a(gzb $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public gzb a() {
-      return new gzb();
+   public void a(kl $$0) {
+      this.b.add($$0);
    }
 
-   public void a(T $$0, gzb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b.a($$0.bH);
-      $$1.a.a($$0.bI);
-      $$1.c.a($$0.bJ);
-      if ($$0.gt()) {
-         $$1.ac = 0.0F;
-         $$1.am = false;
-         $$1.d = $$0.gw();
-      } else {
-         $$1.d = $$0.gA();
-      }
+   public void b(kl $$0) {
+      this.b.remove($$0);
+   }
 
-      $$1.e = $$0.n();
+   @Override
+   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
+      jj $$5 = jj.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fho $$0, gny $$1, kl $$2) {
+      gsa.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

@@ -1,17 +1,16 @@
-public class aaz {
-   public static final yy<aau> a = a("finish_configuration");
-   public static final yy<aav> b = a("registry_data");
-   public static final yy<aay> c = a("update_enabled_features");
-   public static final yy<aax> d = a("select_known_packs");
-   public static final yy<aaw> e = a("reset_chat");
-   public static final yy<abc> f = b("finish_configuration");
-   public static final yy<abd> g = b("select_known_packs");
-
-   private static <T extends yw<aat>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, aku.b($$0));
+public interface aaz extends zi {
+   @Override
+   default vp b() {
+      return vp.e;
    }
 
-   private static <T extends yw<abb>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, aku.b($$0));
-   }
+   void a(aba var1);
+
+   void a(abb var1);
+
+   void a(abe var1);
+
+   void a(abd var1);
+
+   void a(abc var1);
 }

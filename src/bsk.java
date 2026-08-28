@@ -1,47 +1,101 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class bsk extends bsd {
-   public static final MapCodec<bsk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(brj.b(bsd.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bsk::new)
-   );
-   private final brj<bsd> b;
-   private final int f;
-   private final int g;
+public interface bsk<T extends Runnable> {
+   @Nullable
+   Runnable a();
 
-   public bsk(brj<bsd> $$0) {
-      this.b = $$0;
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = Integer.MIN_VALUE;
+   boolean a(T var1);
 
-      for (bri<bsd> $$3 : $$0.d()) {
-         int $$4 = $$3.a().a();
-         int $$5 = $$3.a().b();
-         $$1 = Math.min($$1, $$4);
-         $$2 = Math.max($$2, $$5);
+   boolean b();
+
+   int c();
+
+   public static final class a implements bsk<bsk.c> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
       }
 
-      this.f = $$1;
-      this.g = $$2;
+      @Nullable
+      @Override
+      public Runnable a() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bsk.c $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   @Override
-   public int a(azh $$0) {
-      return this.b.b($$0).a($$0);
+   public static final class b implements bsk<Runnable> {
+      private final Queue<Runnable> a;
+
+      public b(Queue<Runnable> $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public Runnable a() {
+         return this.a.poll();
+      }
+
+      @Override
+      public boolean a(Runnable $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 
-   @Override
-   public int a() {
-      return this.f;
-   }
+   public static record c(int a, Runnable b) implements Runnable {
 
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public bse<?> c() {
-      return bse.e;
+      @Override
+      public void run() {
+         this.b.run();
+      }
    }
 }

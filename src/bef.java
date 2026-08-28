@@ -1,17 +1,14 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
 
-public class bef extends bip {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
-
-   public bef(Schema $$0, boolean $$1) {
-      super("EntityRavagerRenameFix", $$0, $$1);
+public class bef extends bhm {
+   public bef(Schema $$0) {
+      super($$0, false, "EntityGoatMissingStateFix", biq.D, "minecraft:goat");
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
    }
 }

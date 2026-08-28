@@ -1,31 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ehd implements eiy {
-   public static final Codec<ehd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxq.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dxq.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dxq.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dxq.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               eev.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ehd::new)
-   );
-   public final dxq b;
-   public final dxq c;
-   public final dxq d;
-   public final dxq e;
-   public final eev f;
-   public final boolean g;
+public record ehd<FC extends ejv, F extends ehr<FC>>(F d, FC e) {
+   public static final Codec<ehd<?, ?>> a = md.O.q().dispatch($$0 -> $$0.d, ehr::a);
+   public static final Codec<js<ehd<?, ?>>> b = akz.a(me.aP, a);
+   public static final Codec<jw<ehd<?, ?>>> c = kh.a(me.aP, a);
 
-   public ehd(dxq $$0, dxq $$1, dxq $$2, dxq $$3, eev $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public boolean a(dio $$0, eak $$1, azs $$2, jj $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<ehd<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
+   }
+
+   @Override
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
+
+   public F b() {
+      return this.d;
+   }
+
+   public FC c() {
+      return this.e;
    }
 }

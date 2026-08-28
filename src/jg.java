@@ -1,85 +1,80 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-
-public record jg(ji b, ji c) implements Iterable<ji> {
-   public static final yn<ByteBuf, jg> a = new yn<ByteBuf, jg>() {
-      public jg a(ByteBuf $$0) {
-         return new jg(vl.b($$0), vl.b($$0));
+public enum jg {
+   a {
+      @Override
+      public int a(int $$0, int $$1, int $$2, jo.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
-      public void a(ByteBuf $$0, jg $$1) {
-         vl.a($$0, $$1.f());
-         vl.a($$0, $$1.g());
+      @Override
+      public double a(double $$0, double $$1, double $$2, jo.a $$3) {
+         return $$3.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public jo.a a(jo.a $$0) {
+         return $$0;
+      }
+
+      @Override
+      public jg a() {
+         return this;
+      }
+   },
+   b {
+      @Override
+      public int a(int $$0, int $$1, int $$2, jo.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, jo.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public jo.a a(jo.a $$0) {
+         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+      }
+
+      @Override
+      public jg a() {
+         return c;
+      }
+   },
+   c {
+      @Override
+      public int a(int $$0, int $$1, int $$2, jo.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, jo.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public jo.a a(jo.a $$0) {
+         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      }
+
+      @Override
+      public jg a() {
+         return b;
       }
    };
 
-   public jg(final ji b, final ji c) {
-      this.b = ji.a(b, c);
-      this.c = ji.b(b, c);
-   }
+   public static final jo.a[] d = jo.a.values();
+   public static final jg[] e = values();
 
-   public static jg a(ji $$0) {
-      return new jg($$0, $$0);
-   }
+   public abstract int a(int var1, int var2, int var3, jo.a var4);
 
-   public static jg a(ji $$0, ji $$1) {
-      return new jg($$0, $$1);
-   }
+   public abstract double a(double var1, double var3, double var5, jo.a var7);
 
-   public jg b(ji $$0) {
-      return new jg(ji.a(this.b, $$0), ji.b(this.c, $$0));
-   }
+   public abstract jo.a a(jo.a var1);
 
-   public boolean a() {
-      return this.b.equals(this.c);
-   }
+   public abstract jg a();
 
-   public boolean c(ji $$0) {
-      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
-   }
-
-   public fbs b() {
-      return fbs.a(this.b, this.c);
-   }
-
-   @Override
-   public Iterator<ji> iterator() {
-      return ji.c(this.b, this.c).iterator();
-   }
-
-   public int c() {
-      return this.c.u() - this.b.u() + 1;
-   }
-
-   public int d() {
-      return this.c.v() - this.b.v() + 1;
-   }
-
-   public int e() {
-      return this.c.w() - this.b.w() + 1;
-   }
-
-   public jg a(jn $$0, int $$1) {
-      if ($$1 == 0) {
-         return this;
-      } else {
-         return $$0.f() == jn.b.a ? a(this.b, ji.b(this.b, this.c.a($$0, $$1))) : a(ji.a(this.b.a($$0, $$1), this.c), this.c);
-      }
-   }
-
-   public jg b(jn $$0, int $$1) {
-      return $$1 == 0 ? this : new jg(this.b.a($$0, $$1), this.c.a($$0, $$1));
-   }
-
-   public jg a(km $$0) {
-      return new jg(this.b.a($$0), this.c.a($$0));
-   }
-
-   public ji f() {
-      return this.b;
-   }
-
-   public ji g() {
-      return this.c;
+   public static jg a(jo.a $$0, jo.a $$1) {
+      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

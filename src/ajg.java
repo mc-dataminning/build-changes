@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ajg extends abo {
+   @Override
+   default vp b() {
+      return vp.d;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajg {
+   void a(aji var1);
+
+   void a(ajj var1);
+
+   void a(ajh var1);
+
+   void a(ajk var1);
 }

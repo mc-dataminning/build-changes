@@ -1,25 +1,40 @@
-public class gxt<S extends haj & hba, M extends gda<? super S>> extends gxs<S, M> {
-   private final aku a;
-   private final M b;
-   private final M c;
+public class gxt extends gyt<hbw, gfg> {
+   private final geo<hbw> a;
+   private final hix b;
 
-   public gxt(gva<S, M> $$0, M $$1, M $$2, aku $$3) {
+   public gxt(gwc<hbw, gfg> $$0, ggz $$1, hix $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
+      this.a = new gfe<>($$1.a(ghc.cp));
+      this.b = $$2;
    }
 
-   public gxt(gva<S, M> $$0, M $$1, aku $$2) {
-      this($$0, $$1, $$1, $$2);
+   private boolean a(cxy $$0, hiy.d $$1) {
+      dgc $$2 = $$0.a(kx.E);
+      if ($$2 != null && !$$2.d().isEmpty()) {
+         hiy $$3 = this.b.a($$2.d().get());
+         return !$$3.a($$1).isEmpty();
+      } else {
+         return false;
+      }
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.a()) {
-         M $$6 = $$3.aj ? this.c : this.b;
-         $$6.a($$3);
-         fgv $$7 = $$1.getBuffer(gnh.g(this.a));
-         $$6.a($$0, $$7, $$2, hfh.d);
+   public void a(fho $$0, gny $$1, int $$2, hbw $$3, float $$4, float $$5) {
+      if (!$$3.z && $$3.ay) {
+         hhu $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.W, hiy.d.c)) {
+               $$0.a();
+               if (this.a($$3.W, hiy.d.a)) {
+                  $$0.a(0.0F, -0.053125F, 0.06875F);
+               }
+
+               fhs $$7 = $$1.getBuffer(goi.d($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, hgi.d);
+               $$0.b();
+            }
+         }
       }
    }
 }

@@ -1,23 +1,29 @@
-public class grz extends grx<cjb, gyn, gbs> {
-   private static final aku a = aku.b("textures/entity/armadillo.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public grz(gtd.a $$0) {
-      super($$0, new gbs($$0.a(ggb.d)), new gbs($$0.a(ggb.e)), 0.4F);
+public class grz implements gsa.a {
+   private final fnd a;
+   private double b = Double.MIN_VALUE;
+   private List<fdo> c = Collections.emptyList();
+
+   public grz(fnd $$0) {
+      this.a = $$0;
    }
 
-   public aku a(gyn $$0) {
-      return a;
-   }
+   @Override
+   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bvs $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
+      }
 
-   public gyn a() {
-      return new gyn();
-   }
+      fhs $$7 = $$1.getBuffer(goi.y());
 
-   public void a(cjb $$0, gyn $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.d.a($$0.bL);
-      $$1.b.a($$0.bJ);
-      $$1.c.a($$0.bK);
+      for (fdo $$8 : this.c) {
+         gsa.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

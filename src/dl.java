@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record dl(Map<jr<buc>, dl.b> b) {
-   public static final Codec<dl> a = Codec.unboundedMap(buc.a, dl.b.a).xmap(dl::new, dl::a);
+public record dl(Map<js<buu>, dl.b> b) {
+   public static final Codec<dl> a = Codec.unboundedMap(buu.a, dl.b.a).xmap(dl::new, dl::a);
 
-   public boolean a(bva $$0) {
-      if ($$0 instanceof bvy $$1 && this.a($$1.eC())) {
+   public boolean a(bvs $$0) {
+      if ($$0 instanceof bwr $$1 && this.a($$1.eD())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bvy $$0) {
-      return this.a($$0.eC());
+   public boolean a(bwr $$0) {
+      return this.a($$0.eD());
    }
 
-   public boolean a(Map<jr<buc>, bue> $$0) {
-      for (Entry<jr<buc>, dl.b> $$1 : this.b.entrySet()) {
-         bue $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<js<buu>, buw> $$0) {
+      for (Entry<js<buu>, dl.b> $$1 : this.b.entrySet()) {
+         buw $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record dl(Map<jr<buc>, dl.b> b) {
       return true;
    }
 
-   public Map<jr<buc>, dl.b> a() {
+   public Map<js<buu>, dl.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jr<buc>, dl.b> a = ImmutableMap.builder();
+      private final Builder<js<buu>, dl.b> a = ImmutableMap.builder();
 
       public static dl.a a() {
          return new dl.a();
       }
 
-      public dl.a a(jr<buc> $$0) {
+      public dl.a a(js<buu> $$0) {
          this.a.put($$0, new dl.b());
          return this;
       }
 
-      public dl.a a(jr<buc> $$0, dl.b $$1) {
+      public dl.a a(js<buu> $$0, dl.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record dl(Map<jr<buc>, dl.b> b) {
          this(dk.d.c, dk.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bue $$0) {
+      public boolean a(@Nullable buw $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

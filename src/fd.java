@@ -8,8 +8,8 @@ import java.util.Collection;
 
 public class fd implements ArgumentType<fd.a> {
    private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.angle.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("argument.angle.invalid"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.angle.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("argument.angle.invalid"));
 
    public static fd a() {
       return new fd();
@@ -23,7 +23,7 @@ public class fd implements ArgumentType<fd.a> {
       if (!$$0.canRead()) {
          throw a.createWithContext($$0);
       } else {
-         boolean $$1 = hb.b($$0);
+         boolean $$1 = hc.b($$0);
          float $$2 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readFloat() : 0.0F;
          if (!Float.isNaN($$2) && !Float.isInfinite($$2)) {
             return new fd.a($$2, $$1);
@@ -47,7 +47,7 @@ public class fd implements ArgumentType<fd.a> {
       }
 
       public float a(ex $$0) {
-         return ayz.h(this.b ? this.a + $$0.k().j : this.a);
+         return azk.h(this.b ? this.a + $$0.k().j : this.a);
       }
    }
 }

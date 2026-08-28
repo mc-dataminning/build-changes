@@ -1,130 +1,285 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class hld {
-   static final Map<String, hld> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<hld> a = Codec.STRING.comapFlatMap($$0 -> {
-      hld $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, hld::a);
-   private static final List<hlf<?>> i = List.of(hlf.a, hlf.b, hlf.c, hlf.d, hlf.e, hlf.f, hlf.g, hlf.h, hlf.m, hlf.l);
-   private static final List<hlf<?>> j = Stream.concat(i.stream(), Stream.of(hlf.i, hlf.j, hlf.k)).toList();
-   public static final hld b = a("world_loaded", "WorldLoaded").a(j).a(hlf.n).a(hlf.o).b();
-   public static final hld c = a("performance_metrics", "PerformanceMetrics").a(j).a(hlf.r).a(hlf.s).a(hlf.t).a(hlf.u).a(hlf.v).a(hlf.w).a().b();
-   public static final hld d = a("world_load_times", "WorldLoadTimes").a(j).a(hlf.x).a(hlf.y).a().b();
-   public static final hld e = a("world_unloaded", "WorldUnloaded").a(j).a(hlf.p).a(hlf.q).b();
-   public static final hld f = a("advancement_made", "AdvancementMade").a(j).a(hlf.D).a(hlf.E).a().b();
-   public static final hld g = a("game_load_times", "GameLoadTimes").a(i).a(hlf.z).a(hlf.A).a(hlf.B).a(hlf.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<hlf<?>> m;
-   private final boolean n;
-   private final MapCodec<hkz> o;
+public class hld extends MinecraftServer {
+   private static final Logger l = LogUtils.getLogger();
+   private static final int m = 2;
+   private final fnd n;
+   private boolean o = true;
+   private int p = -1;
+   @Nullable
+   private dhm q;
+   @Nullable
+   private hlg r;
+   @Nullable
+   private UUID s;
+   private int t = 0;
 
-   hld(String $$0, String $$1, List<hlf<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = hlg.a($$2).xmap($$0x -> new hkz(this, $$0x), hkz::b);
-   }
-
-   public static hld.a a(String $$0, String $$1) {
-      return new hld.a($$0, $$1);
-   }
-
-   public String a() {
-      return this.k;
-   }
-
-   public List<hlf<?>> b() {
-      return this.m;
-   }
-
-   public MapCodec<hkz> c() {
-      return this.o;
-   }
-
-   public boolean d() {
-      return this.n;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0, hlg $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
-
-      for (hlf<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
-      }
-
-      return $$2;
-   }
-
-   public <T> boolean a(hlf<T> $$0) {
-      return this.m.contains($$0);
+   public hld(Thread $$0, fnd $$1, ewz.c $$2, auk $$3, amc $$4, aly $$5, ary $$6) {
+      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.au(), $$5, $$6);
+      this.b($$1.Y());
+      this.c($$1.K());
+      this.a(new hlc(this, this.bb(), this.g));
+      this.n = $$1;
    }
 
    @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
+   public boolean e() {
+      l.info("Starting integrated minecraft server version {}", ab.b().c());
+      this.d(true);
+      this.f(true);
+      this.g(true);
+      this.V();
+      this.q_();
+      GameProfile $$0 = this.T();
+      String $$1 = this.aZ().e();
+      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
+      return true;
    }
 
-   public xd e() {
-      return this.a("title");
+   @Override
+   public boolean E() {
+      return this.o;
    }
 
-   public xd f() {
-      return this.a("description");
-   }
-
-   private xd a(String $$0) {
-      return wp.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<hld> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<hlf<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void a(BooleanSupplier $$0) {
+      boolean $$1 = this.o;
+      this.o = fnd.Q().ai();
+      bqb $$2 = bqa.a();
+      if (!$$1 && this.o) {
+         $$2.a("autoSave");
+         l.info("Saving and pausing game...");
+         this.b(false, false, false);
+         $$2.c();
       }
 
-      public hld.a a(List<hlf<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
-      }
+      boolean $$3 = fnd.Q().L() != null;
+      if ($$3 && this.o) {
+         this.b();
+      } else {
+         if ($$1 && !this.o) {
+            this.H();
+         }
 
-      public <T> hld.a a(hlf<T> $$0) {
-         this.c.add($$0);
-         return this;
-      }
+         super.a($$0);
+         int $$4 = Math.max(2, this.n.n.e().c());
+         if ($$4 != this.ag().p()) {
+            l.info("Changing view distance to {}, from {}", $$4, this.ag().p());
+            this.ag().a($$4);
+         }
 
-      public hld.a a() {
-         this.d = true;
-         return this;
-      }
-
-      public hld b() {
-         hld $$0 = new hld(this.a, this.b, List.copyOf(this.c), this.d);
-         if (hld.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
+         int $$5 = Math.max(2, this.n.n.f().c());
+         if ($$5 != this.t) {
+            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
+            this.ag().b($$5);
+            this.t = $$5;
          }
       }
+   }
+
+   protected bol a() {
+      return this.n.aQ().l();
+   }
+
+   @Override
+   public boolean g() {
+      return true;
+   }
+
+   private void b() {
+      for (aro $$0 : this.ag().t()) {
+         $$0.a(awu.l);
+      }
+   }
+
+   @Override
+   public boolean m() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   @Override
+   public Path D() {
+      return this.n.q.toPath();
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public void a(o $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public ad a(ad $$0) {
+      $$0.a("Type", "Integrated Server (map_client.txt)");
+      $$0.a("Is Modded", () -> this.Q().b());
+      $$0.a("Launched Version", this.n::i);
+      return $$0;
+   }
+
+   @Override
+   public azj Q() {
+      return fnd.e().a(super.Q());
+   }
+
+   @Override
+   public boolean a(@Nullable dhm $$0, boolean $$1, int $$2) {
+      try {
+         this.n.aU();
+         this.n.L().w();
+         this.ah().a(null, $$2);
+         l.info("Started serving on {}", $$2);
+         this.p = $$2;
+         this.r = new hlg(this.ae(), $$2 + "");
+         this.r.start();
+         this.q = $$0;
+         this.ag().b($$1);
+         int $$3 = this.c(this.n.t.gh());
+         this.n.t.a($$3);
+
+         for (aro $$4 : this.ag().t()) {
+            this.aG().a($$4);
+         }
+
+         return true;
+      } catch (IOException var7) {
+         return false;
+      }
+   }
+
+   @Override
+   public void v() {
+      super.v();
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.h(() -> {
+         for (aro $$1 : Lists.newArrayList(this.ag().t())) {
+            if (!$$1.cG().equals(this.s)) {
+               this.ag().c($$1);
+            }
+         }
+      });
+      super.a($$0);
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
+      }
+   }
+
+   @Override
+   public boolean r() {
+      return this.p > -1;
+   }
+
+   @Override
+   public int S() {
+      return this.p;
+   }
+
+   @Override
+   public void a(dhm $$0) {
+      super.a($$0);
+      this.q = null;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public int k() {
+      return 2;
+   }
+
+   @Override
+   public int l() {
+      return 2;
+   }
+
+   public void a(UUID $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return this.T() != null && $$0.getName().equalsIgnoreCase(this.T().getName());
+   }
+
+   @Override
+   public int b(int $$0) {
+      return (int)(this.n.n.g().c() * (double)$$0);
+   }
+
+   @Override
+   public boolean aX() {
+      return this.n.n.ad;
+   }
+
+   @Nullable
+   @Override
+   public dhm bd() {
+      return this.r() && !this.r_() ? (dhm)MoreObjects.firstNonNull(this.q, this.j.k()) : null;
+   }
+
+   @Override
+   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
+      boolean $$3 = super.b($$0, $$1, $$2);
+      this.d();
+      return $$3;
+   }
+
+   private void d() {
+      if (this.f.b()) {
+         this.n.execute(() -> fsw.a(this.n));
+      }
+   }
+
+   @Override
+   public void a(Throwable $$0, ecc $$1, dgw $$2) {
+      super.a($$0, $$1, $$2);
+      this.d();
+      this.n.execute(() -> fsw.a(this.n, $$2));
+   }
+
+   @Override
+   public void b(Throwable $$0, ecc $$1, dgw $$2) {
+      super.b($$0, $$1, $$2);
+      this.d();
+      this.n.execute(() -> fsw.b(this.n, $$2));
    }
 }

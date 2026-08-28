@@ -1,95 +1,51 @@
-public abstract class ccn extends ccw {
-   protected bwa d;
-   protected ji e = ji.c;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+public class ccn extends ccq {
+   private final int l;
+   private final boolean m;
 
-   public ccn(bwa $$0) {
-      this.d = $$0;
-      if (!cgu.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
-
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dxq $$0 = this.d.dU().a_(this.e);
-         if (!($$0.b() instanceof dml)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(dml.e);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dxq $$1 = this.d.dU().a_(this.e);
-         if ($$1.b() instanceof dml) {
-            ((dml)$$1.b()).a(this.d, this.d.dU(), $$1, this.e, $$0);
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (!cgu.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
-         return false;
-      } else {
-         cfj $$0 = (cfj)this.d.O();
-         euk $$1 = $$0.i();
-         if ($$1 != null && !$$1.c()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               eui $$3 = $$1.a($$2);
-               this.e = new ji($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dB(), (double)this.e.w()) > 2.25)) {
-                  this.f = dml.a(this.d.dU(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.du().d();
-            this.f = dml.a(this.d.dU(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a;
-   }
-
-   @Override
-   public void d() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dz());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dF());
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
+   public ccn(bwt $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
    public void a() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dz());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dF());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      if (this.k == ccq.a.b) {
+         this.k = ccq.a.a;
+         this.d.f(true);
+         double $$0 = this.e - this.d.dA();
+         double $$1 = this.f - this.d.dC();
+         double $$2 = this.g - this.d.dG();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.I(0.0F);
+            this.d.H(0.0F);
+            return;
+         }
+
+         float $$4 = (float)(azk.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.w(this.b(this.d.dL(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aJ()) {
+            $$5 = (float)(this.h * this.d.h(bxx.v));
+         } else {
+            $$5 = (float)(this.h * this.d.h(bxx.l));
+         }
+
+         this.d.C($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(azk.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.x(this.b(this.d.dN(), $$8, (float)this.l));
+            this.d.I($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.f(false);
+         }
+
+         this.d.I(0.0F);
+         this.d.H(0.0F);
       }
    }
 }

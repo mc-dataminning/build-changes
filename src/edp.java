@@ -1,82 +1,34 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
-
-public class edp implements edd {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final edq i = new edq(this);
-
-   public edp(long $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public azh d() {
-      return new edp(this.g());
-   }
-
-   @Override
-   public eeb e() {
-      return new edp.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw azy.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw azy.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements eeb {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
+public interface edp {
+   edp a = new edp() {
+      @Override
+      public boolean a() {
+         return true;
       }
 
       @Override
-      public azh a(int $$0, int $$1, int $$2) {
-         long $$3 = ayz.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new edp($$4);
+      public void a(edo $$0) {
       }
 
       @Override
-      public azh a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new edp((long)$$1 ^ this.a);
+      public void b(edo $$0) {
       }
 
       @Override
-      public azh a(long $$0) {
-         return new edp($$0);
+      public boolean a(js<edm> $$0, fcu $$1, edm.a $$2, edp.a $$3) {
+         return false;
       }
+   };
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   boolean a();
+
+   void a(edo var1);
+
+   void b(edo var1);
+
+   boolean a(js<edm> var1, fcu var2, edm.a var3, edp.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(edo var1, fcu var2);
    }
 }

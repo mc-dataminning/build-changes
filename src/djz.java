@@ -1,54 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class djz extends dma {
-   public static final MapCodec<djz> a = b(djz::new);
-   public static final int b = 3;
-   public static final dyq c = dyg.av;
-   private static final fcr[] g = dke.a(3, $$0 -> dke.b(16.0, 0.0, (double)(2 + $$0 * 2)));
+public class djz extends djl {
+   public static final MapCodec<djz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwv.q.fieldOf("color").forGetter(djl::b), t()).apply($$0, djz::new));
+   public static final dzm b = dzc.bd;
+   private static final Map<cwv, dku> c = Maps.newHashMap();
+   private static final fdo d = dku.b(8.0, 0.0, 16.0);
 
    @Override
    public MapCodec<djz> a() {
       return a;
    }
 
-   public djz(dxp.d $$0) {
-      super($$0);
+   public djz(cwv $$0, dyl.d $$1) {
+      super($$0, $$1);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected dyq b() {
-      return c;
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   public int c() {
-      return 3;
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return d;
    }
 
    @Override
-   protected dgy d() {
-      return cxl.wn;
+   public dym a(dbn $$0) {
+      return this.m().b(b, Integer.valueOf(dzs.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$4 == jo.a && !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected int a(dgz $$0) {
-      return super.a($$0) / 3;
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c);
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return g[this.h($$0)];
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b);
+   }
+
+   public static dku a(cwv $$0) {
+      return c.getOrDefault($$0, dkw.jh);
    }
 }

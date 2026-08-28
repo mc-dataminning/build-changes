@@ -1,41 +1,24 @@
 public class ghh {
-   private final glv a;
-   private final ggy b;
-   private final gmt c;
-   private ghh.a d = ghh.a.a;
+   public static final ghh a = new ghh(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public ghh(glv $$0, ggy $$1, gmt $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ghh(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            ji $$0 = this.a.du();
-            boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.U_() || !this.a.bJ()) {
-               this.d = ghh.a.c;
-            }
-         case a:
-         case c:
-      }
+   public ghh(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public boolean b() {
-      return this.d == ghh.a.c;
+   public ghh a(float $$0) {
+      return new ghh(this.b + $$0, this.c + $$0, this.d + $$0);
    }
 
-   public void c() {
-      if (this.d == ghh.a.a) {
-         this.d = ghh.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public ghh a(float $$0, float $$1, float $$2) {
+      return new ghh(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

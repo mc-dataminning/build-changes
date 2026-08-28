@@ -1,31 +1,40 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.HashCommon;
+import javax.annotation.Nullable;
 
-public record evl(aku d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<jr<evl>> b = mb.ar.r();
-   public static final yn<wa, jr<evl>> c = yl.b(mc.aC);
+public class evl {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final evk[] d = new evk[4096];
 
-   public boolean a() {
-      return this.f != -1;
+   public evk a(dgv $$0, jj $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      evk $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   public aku b() {
-      return this.d;
+   @Nullable
+   private evk a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   public boolean c() {
-      return this.e;
+   private evk a(dgv $$0, jj $$1, int $$2, long $$3) {
+      evk $$4 = evp.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
    }
 
-   public int d() {
-      return this.f;
+   public void a(jj $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
+      }
    }
 
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

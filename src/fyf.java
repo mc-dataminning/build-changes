@@ -1,70 +1,48 @@
-public class fyf extends fym {
-   public static final wp a = wp.c("options.accessibility.title");
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   private static fmj<?>[] a(fmk $$0) {
-      return new fmj[]{
-         $$0.av(),
-         $$0.Z(),
-         $$0.u(),
-         $$0.J(),
-         $$0.q(),
-         $$0.s(),
-         $$0.ab(),
-         $$0.o(),
-         $$0.p(),
-         $$0.C(),
-         $$0.D(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.am(),
-         $$0.an(),
-         $$0.ao(),
-         $$0.ar(),
-         $$0.ap(),
-         $$0.aq(),
-         $$0.b(),
-         $$0.a(),
-         $$0.t(),
-         $$0.c(),
-         $$0.w(),
-         $$0.K(),
-         $$0.v()
-      };
-   }
+public class fyf extends fwx {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gew u;
 
-   public fyf(fvi $$0, fmk $$1) {
-      super($$0, $$1, a);
+   public fyf(dwz $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      fpo $$0 = this.d.b(this.c.u());
-      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(frb.a(wp.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+   protected void aN_() {
+      super.aN_();
+      boolean $$0 = this.a.m().b() instanceof dsv;
+      this.u = gqz.a(this.m.aS(), this.b, $$0);
+   }
 
-      fpo $$1 = this.d.b(this.c.K());
-      if ($$1 != null) {
-         $$1.j = this.H();
+   @Override
+   protected void a(fpz $$0, dym $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dsv;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   protected void c(fpz $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hiz $$2 = got.a(this.b);
+            fhs $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, hgi.d);
+         });
+      }
    }
 
    @Override
-   protected void E() {
-      fti $$0 = this.s.b(fti.e().a(8));
-      $$0.a(fpq.a(wp.c("options.accessibility.link"), fuf.b(this, axv.l)).a());
-      $$0.a(fpq.a(wo.d, $$0x -> this.m.a(this.b)).a());
-   }
-
-   private boolean H() {
-      return this.m.s != null && this.m.s.K().b(csp.d);
+   protected Vector3f m() {
+      return s;
    }
 }

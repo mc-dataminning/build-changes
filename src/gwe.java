@@ -1,25 +1,25 @@
-public class gwe extends guj<cni, hbw, gfp> {
-   private static final aku a = aku.b("textures/entity/witch.png");
+public class gwe extends gsz<cje, hcc, gfr> {
+   private static final ald a = ald.b("textures/entity/sheep/sheep.png");
 
-   public gwe(gtd.a $$0) {
-      super($$0, new gfp($$0.a(ggb.dB)), 0.5F);
-      this.a(new gye(this));
+   public gwe(guf.a $$0) {
+      super($$0, new gfr($$0.a(ghc.cJ)), new gfr($$0.a(ghc.cK)), 0.7F);
+      this.a(new gyu(this, $$0.f()));
    }
 
-   public aku a(hbw $$0) {
+   public ald a(hcc $$0) {
       return a;
    }
 
-   public hbw b() {
-      return new hbw();
+   public hcc b() {
+      return new hcc();
    }
 
-   public void a(cni $$0, hbw $$1, float $$2) {
+   public void a(cje $$0, hcc $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gzy.a($$0, $$1, this.i);
-      $$1.a = $$0.ar();
-      cxh $$3 = $$0.eZ();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(cxl.tk);
+      $$1.b = $$0.L($$2);
+      $$1.a = $$0.K($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
    }
 }

@@ -1,24 +1,33 @@
-public record acp(int b, bwl c, boolean d) implements yw<abl> {
-   public static final yn<vl, acp> a = yn.a(yl.h, acp::b, bwl.a, acp::e, yl.b, acp::f, acp::new);
+import java.util.List;
 
-   public static acp a(bva $$0) {
-      return new acp($$0.ar(), new bwl($$0.dt(), $$0.dx(), $$0.dK(), $$0.dM()), $$0.aJ());
+public record acp(acp.a b, List<String> c) implements zc<abr> {
+   public static final yt<vr, acp> a = zc.a(acp::a, acp::new);
+
+   private acp(vr $$0) {
+      this($$0.b(acp.a.class), $$0.a(vr::p));
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vr::a);
    }
 
    @Override
-   public yy<acp> a() {
-      return agd.bd;
+   public ze<acp> a() {
+      return agk.x;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public bwl e() {
+   public List<String> e() {
       return this.c;
    }
 
-   public boolean f() {
-      return this.d;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

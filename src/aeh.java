@@ -1,19 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aeh(wp b, Optional<byte[]> c) implements yw<abl> {
-   public static final yn<ByteBuf, aeh> a = yn.a(wr.f, aeh::b, yl.n.a(yl::a), aeh::e, aeh::new);
+public record aeh(int b, js<buu> c) implements zc<abr> {
+   public static final yt<wg, aeh> a = yt.a(yr.h, aeh::b, buu.b, aeh::e, aeh::new);
 
    @Override
-   public yy<aeh> a() {
-      return agd.as;
+   public ze<aeh> a() {
+      return agk.ao;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
+   @Nullable
+   public bvs a(dhp $$0) {
+      return $$0.a(this.b);
+   }
+
+   public js<buu> e() {
       return this.c;
    }
 }

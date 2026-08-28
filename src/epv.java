@@ -1,38 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public interface epv {
-   Codec<epv> b = mb.ah.q().dispatch(epv::b, Function.identity());
+public record epv(List<epk> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ald c = ald.b("jigsaw");
+   private static final Map<ald, ald> d = ImmutableMap.builder()
+      .put(ald.b("nvi"), c)
+      .put(ald.b("pcp"), c)
+      .put(ald.b("bastionremnant"), c)
+      .put(ald.b("runtime"), c)
+      .build();
 
-   void a(azh var1, BiConsumer<akt<ept>, akt<ept>> var2);
-
-   Stream<akt<ept>> a();
-
-   static epu a(String $$0, String $$1) {
-      return a(ql.a($$0), ql.a($$1));
+   public epv(final List<epk> a) {
+      this.a = List.copyOf(a);
    }
 
-   static epu a(akt<ept> $$0, akt<ept> $$1) {
-      return new epu($$0, $$1);
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   static epy a(String $$0, brj<String> $$1) {
-      brj.a<akt<ept>> $$2 = brj.b();
-      $$1.d().forEach($$1x -> $$2.a(ql.a((String)$$1x.a()), $$1x.b()));
-      return a(ql.a($$0), $$2.a());
+   public boolean a(jj $$0) {
+      for (epk $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   static epy a(akt<ept> $$0, brj<akt<ept>> $$1) {
-      return new epy($$0, $$1);
+   public ut a(epw $$0) {
+      uc $$1 = new uc();
+
+      for (epk $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   static epz a(brj<List<epv>> $$0) {
-      return new epz($$0);
+   public static epv a(uc $$0, epw $$1) {
+      List<epk> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tw $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         ald $$6 = ald.a($$5);
+         ald $$7 = d.getOrDefault($$6, $$6);
+         epx $$8 = md.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               epk $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new epv($$2);
    }
 
-   MapCodec<? extends epv> b();
+   public eoy b() {
+      return epk.a(this.a.stream());
+   }
+
+   public List<epk> c() {
+      return this.a;
+   }
 }

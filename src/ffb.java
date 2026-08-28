@@ -1,225 +1,359 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.nio.IntBuffer;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.OptionalLong;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALC10;
+import org.lwjgl.openal.ALC11;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
+import org.lwjgl.openal.ALUtil;
+import org.lwjgl.system.MemoryStack;
+import org.slf4j.Logger;
 
-public abstract class ffb {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int l = 2;
-   private static final int m = 3;
-   public int c;
-   public int d;
-   public int e;
-   public int f;
-   public final boolean g;
-   public int h;
-   protected int i;
-   protected int j;
-   private final float[] n = af.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
-   public int k;
-
-   public ffb(boolean $$0) {
-      this.g = $$0;
-      this.h = -1;
-      this.i = -1;
-      this.j = -1;
-   }
-
-   public void a(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._enableDepthTest();
-      if (this.h >= 0) {
-         this.a();
+public class ffb {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 0;
+   private static final int c = 30;
+   private long d;
+   private long e;
+   private boolean f;
+   @Nullable
+   private String g;
+   private static final ffb.a h = new ffb.a() {
+      @Nullable
+      @Override
+      public ffa a() {
+         return null;
       }
 
-      this.b($$0, $$1);
-      GlStateManager._glBindFramebuffer(36160, 0);
-   }
-
-   public void a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.d();
-      this.e();
-      if (this.j > -1) {
-         TextureUtil.releaseTextureId(this.j);
-         this.j = -1;
+      @Override
+      public boolean a(ffa $$0) {
+         return false;
       }
 
-      if (this.i > -1) {
-         TextureUtil.releaseTextureId(this.i);
-         this.i = -1;
+      @Override
+      public void b() {
       }
 
-      if (this.h > -1) {
-         GlStateManager._glBindFramebuffer(36160, 0);
-         GlStateManager._glDeleteFramebuffers(this.h);
-         this.h = -1;
+      @Override
+      public int c() {
+         return 0;
       }
+
+      @Override
+      public int d() {
+         return 0;
+      }
+   };
+   private ffb.a i = h;
+   private ffb.a j = h;
+   private final ffc k = new ffc();
+
+   public ffb() {
+      this.g = a();
    }
 
-   public void a(ffb $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._glBindFramebuffer(36008, $$0.h);
-      GlStateManager._glBindFramebuffer(36009, this.h);
-      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
-      GlStateManager._glBindFramebuffer(36160, 0);
-   }
-
-   public void b(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      int $$2 = RenderSystem.maxSupportedTextureSize();
-      if ($$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.c = $$0;
-         this.d = $$1;
-         this.h = GlStateManager.glGenFramebuffers();
-         this.i = TextureUtil.generateTextureId();
-         if (this.g) {
-            this.j = TextureUtil.generateTextureId();
-            GlStateManager._bindTexture(this.j);
-            GlStateManager._texParameter(3553, 10241, 9728);
-            GlStateManager._texParameter(3553, 10240, 9728);
-            GlStateManager._texParameter(3553, 34892, 0);
-            GlStateManager._texParameter(3553, 10242, 33071);
-            GlStateManager._texParameter(3553, 10243, 33071);
-            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
-         }
-
-         this.a(9728, true);
-         GlStateManager._bindTexture(this.i);
-         GlStateManager._texParameter(3553, 10242, 33071);
-         GlStateManager._texParameter(3553, 10243, 33071);
-         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
-         GlStateManager._glBindFramebuffer(36160, this.h);
-         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-         if (this.g) {
-            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-         }
-
-         this.b();
-         this.f();
-         this.d();
+   public void a(@Nullable String $$0, boolean $$1) {
+      this.d = a($$0);
+      this.f = false;
+      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
+      if (ffe.a(this.d, "Get capabilities")) {
+         throw new IllegalStateException("Failed to get OpenAL capabilities");
+      } else if (!$$2.OpenALC11) {
+         throw new IllegalStateException("OpenAL 1.1 not supported");
       } else {
-         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$2 + ")");
-      }
-   }
+         MemoryStack $$3 = MemoryStack.stackPush();
 
-   public void a(int $$0) {
-      this.a($$0, false);
-   }
+         try {
+            IntBuffer $$4 = this.a($$3, $$2.ALC_SOFT_HRTF && $$1);
+            this.e = ALC10.alcCreateContext(this.d, $$4);
+         } catch (Throwable var9) {
+            if ($$3 != null) {
+               try {
+                  $$3.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
 
-   private void a(int $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if ($$1 || $$0 != this.k) {
-         this.k = $$0;
-         GlStateManager._bindTexture(this.i);
-         GlStateManager._texParameter(3553, 10241, $$0);
-         GlStateManager._texParameter(3553, 10240, $$0);
-         GlStateManager._bindTexture(0);
-      }
-   }
+            throw var9;
+         }
 
-   public void b() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
-      if ($$0 != 36053) {
-         if ($$0 == 36054) {
-            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
-         } else if ($$0 == 36055) {
-            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
-         } else if ($$0 == 36059) {
-            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
-         } else if ($$0 == 36060) {
-            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
-         } else if ($$0 == 36061) {
-            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
-         } else if ($$0 == 1285) {
-            throw new RuntimeException("GL_OUT_OF_MEMORY");
+         if ($$3 != null) {
+            $$3.close();
+         }
+
+         if (ffe.a(this.d, "Create context")) {
+            throw new IllegalStateException("Unable to create OpenAL context");
          } else {
-            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
+            ALC10.alcMakeContextCurrent(this.e);
+            int $$5 = this.i();
+            int $$6 = azk.a((int)azk.c((float)$$5), 2, 8);
+            int $$7 = azk.a($$5 - $$6, 8, 255);
+            this.i = new ffb.b($$7);
+            this.j = new ffb.b($$6);
+            ALCapabilities $$8 = AL.createCapabilities($$2);
+            ffe.a("Initialization");
+            if (!$$8.AL_EXT_source_distance_model) {
+               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+            } else {
+               AL10.alEnable(512);
+               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
+                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
+               } else {
+                  ffe.a("Enable per-source distance models");
+                  a.info("OpenAL initialized on device {}", this.b());
+                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
+               }
+            }
          }
       }
    }
 
-   public void c() {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._bindTexture(this.i);
+   private IntBuffer a(MemoryStack $$0, boolean $$1) {
+      int $$2 = 5;
+      IntBuffer $$3 = $$0.callocInt(11);
+      int $$4 = ALC10.alcGetInteger(this.d, 6548);
+      if ($$4 > 0) {
+         $$3.put(6546).put($$1 ? 1 : 0);
+         $$3.put(6550).put(0);
+      }
+
+      $$3.put(6554).put(1);
+      return $$3.put(0).flip();
+   }
+
+   private int i() {
+      MemoryStack $$0 = MemoryStack.stackPush();
+
+      int var7;
+      label58: {
+         try {
+            int $$1 = ALC10.alcGetInteger(this.d, 4098);
+            if (ffe.a(this.d, "Get attributes size")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            IntBuffer $$2 = $$0.mallocInt($$1);
+            ALC10.alcGetIntegerv(this.d, 4099, $$2);
+            if (ffe.a(this.d, "Get attributes")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            int $$3 = 0;
+
+            while ($$3 < $$1) {
+               int $$4 = $$2.get($$3++);
+               if ($$4 == 0) {
+                  break;
+               }
+
+               int $$5 = $$2.get($$3++);
+               if ($$4 == 4112) {
+                  var7 = $$5;
+                  break label58;
+               }
+            }
+         } catch (Throwable var9) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return 30;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+
+      return var7;
+   }
+
+   @Nullable
+   public static String a() {
+      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
+         return null;
+      } else {
+         ALUtil.getStringList(0L, 4115);
+         return ALC10.alcGetString(0L, 4114);
+      }
+   }
+
+   public String b() {
+      String $$0 = ALC10.alcGetString(this.d, 4115);
+      if ($$0 == null) {
+         $$0 = ALC10.alcGetString(this.d, 4101);
+      }
+
+      if ($$0 == null) {
+         $$0 = "Unknown";
+      }
+
+      return $$0;
+   }
+
+   public synchronized boolean c() {
+      String $$0 = a();
+      if (Objects.equals(this.g, $$0)) {
+         return false;
+      } else {
+         this.g = $$0;
+         return true;
+      }
+   }
+
+   private static long a(@Nullable String $$0) {
+      OptionalLong $$1 = OptionalLong.empty();
+      if ($$0 != null) {
+         $$1 = b($$0);
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(a());
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(null);
+      }
+
+      if ($$1.isEmpty()) {
+         throw new IllegalStateException("Failed to open OpenAL device");
+      } else {
+         return $$1.getAsLong();
+      }
+   }
+
+   private static OptionalLong b(@Nullable String $$0) {
+      long $$1 = ALC10.alcOpenDevice($$0);
+      return $$1 != 0L && !ffe.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
    }
 
    public void d() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._bindTexture(0);
-   }
-
-   public void a(boolean $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      if ($$0) {
-         GlStateManager._viewport(0, 0, this.e, this.f);
+      this.i.b();
+      this.j.b();
+      ALC10.alcDestroyContext(this.e);
+      if (this.d != 0L) {
+         ALC10.alcCloseDevice(this.d);
       }
    }
 
-   public void e() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._glBindFramebuffer(36160, 0);
+   public ffc e() {
+      return this.k;
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      this.n[0] = $$0;
-      this.n[1] = $$1;
-      this.n[2] = $$2;
-      this.n[3] = $$3;
+   @Nullable
+   public ffa a(ffb.c $$0) {
+      return ($$0 == ffb.c.b ? this.j : this.i).a();
    }
 
-   public void c(int $$0, int $$1) {
-      GlStateManager._glBindFramebuffer(36008, this.h);
-      GlStateManager._glBlitFrameBuffer(0, 0, this.c, this.d, 0, 0, $$0, $$1, 16384, 9728);
-      GlStateManager._glBindFramebuffer(36008, 0);
+   public void a(ffa $$0) {
+      if (!this.i.a($$0) && !this.j.a($$0)) {
+         throw new IllegalStateException("Tried to release unknown channel");
+      }
    }
 
-   public void d(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._colorMask(true, true, true, false);
-      GlStateManager._disableDepthTest();
-      GlStateManager._depthMask(false);
-      GlStateManager._viewport(0, 0, $$0, $$1);
-      gmh $$2 = Objects.requireNonNull(RenderSystem.setShader(gmi.a), "Blit shader not loaded");
-      $$2.a("InSampler", this.i);
-      fgm $$3 = RenderSystem.renderThreadTesselator().a(fgw.c.h, fgp.a);
-      $$3.a(0.0F, 0.0F, 0.0F);
-      $$3.a(1.0F, 0.0F, 0.0F);
-      $$3.a(1.0F, 1.0F, 0.0F);
-      $$3.a(0.0F, 1.0F, 0.0F);
-      fgn.a($$3.b());
-      GlStateManager._depthMask(true);
-      GlStateManager._colorMask(true, true, true, true);
+   public String f() {
+      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
    }
 
-   public void f() {
-      this.b(this.n[0], this.n[1], this.n[2], this.n[3]);
+   public List<String> g() {
+      List<String> $$0 = ALUtil.getStringList(0L, 4115);
+      return $$0 == null ? Collections.emptyList() : $$0;
    }
 
-   public void b(float $$0, float $$1, float $$2, float $$3) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a(true);
-      GlStateManager._clearColor($$0, $$1, $$2, $$3);
-      int $$4 = 16384;
-      if (this.g) {
-         GlStateManager._clearDepth(1.0);
-         $$4 |= 256;
+   public boolean h() {
+      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
+   }
+
+   interface a {
+      @Nullable
+      ffa a();
+
+      boolean a(ffa var1);
+
+      void b();
+
+      int c();
+
+      int d();
+   }
+
+   static class b implements ffb.a {
+      private final int a;
+      private final Set<ffa> b = Sets.newIdentityHashSet();
+
+      public b(int $$0) {
+         this.a = $$0;
       }
 
-      GlStateManager._clear($$4);
-      this.e();
+      @Nullable
+      @Override
+      public ffa a() {
+         if (this.b.size() >= this.a) {
+            if (ab.aU) {
+               ffb.a.warn("Maximum sound pool size {} reached", this.a);
+            }
+
+            return null;
+         } else {
+            ffa $$0 = ffa.a();
+            if ($$0 != null) {
+               this.b.add($$0);
+            }
+
+            return $$0;
+         }
+      }
+
+      @Override
+      public boolean a(ffa $$0) {
+         if (!this.b.remove($$0)) {
+            return false;
+         } else {
+            $$0.b();
+            return true;
+         }
+      }
+
+      @Override
+      public void b() {
+         this.b.forEach(ffa::b);
+         this.b.clear();
+      }
+
+      @Override
+      public int c() {
+         return this.a;
+      }
+
+      @Override
+      public int d() {
+         return this.b.size();
+      }
    }
 
-   public int g() {
-      return this.i;
-   }
-
-   public int h() {
-      return this.j;
+   public static enum c {
+      a,
+      b;
    }
 }

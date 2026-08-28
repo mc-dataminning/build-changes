@@ -1,29 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dep(ddy c) implements dek {
-   public static final MapCodec<dep> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddy.b.fieldOf("chance").forGetter(dep::b)).apply($$0, dep::new));
+public record dep(jw<cxu> c) {
+   public static final Codec<dep> a = RecordCodecBuilder.create($$0 -> $$0.group(kh.a(me.K).fieldOf("items").forGetter(dep::a)).apply($$0, dep::new));
+   public static final yt<wg, dep> b = yt.a(yr.c(me.K), dep::a, dep::new);
 
-   @Override
-   public float a(int $$0, azh $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
-      }
-
-      return $$2 - (float)$$4;
+   public boolean a(cxy $$0) {
+      return $$0.a(this.c);
    }
 
-   @Override
-   public MapCodec<dep> a() {
-      return a;
-   }
-
-   public ddy b() {
+   public jw<cxu> a() {
       return this.c;
    }
 }

@@ -1,112 +1,89 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public final class csn {
-   private static final csn b = new csn(null, 0L);
-   public static final int a = 64;
+public class csn {
+   public static int[][] a(jo $$0) {
+      jo $$1 = $$0.h();
+      jo $$2 = $$1.g();
+      jo $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
+   }
+
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
+
+   public static boolean a(dgz $$0, bwr $$1, fcp $$2) {
+      for (fdo $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
+      }
+
+      return $$0.A_().a($$2);
+   }
+
+   public static boolean a(dgz $$0, fcu $$1, bwr $$2, bxd $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
+   }
+
+   public static fdo a(dgv $$0, jj $$1) {
+      dym $$2 = $$0.a_($$1);
+      return !$$2.a(awz.aS) && (!($$2.b() instanceof dtp) || !$$2.c(dtp.b)) ? $$2.g($$0, $$1) : fdl.a();
+   }
+
+   public static double a(jj $$0, int $$1, Function<jj, fdo> $$2) {
+      jj.a $$3 = $$0.k();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         fdo $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jo.a.b);
+         }
+
+         $$4++;
+         $$3.c(jo.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
    @Nullable
-   private final cso c;
-   private final long d;
-
-   private csn(@Nullable cso $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   static csn a(cso $$0, Collection<csl> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
+   public static fcu a(bwb<?> $$0, dgz $$1, jj $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new csn($$0, $$2);
-      }
-   }
+         double $$4 = $$1.a(a((dgv)$$1, $$2), () -> a((dgv)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            fcu $$5 = fcu.a($$2, $$4);
+            fcp $$6 = $$0.n().a($$5);
 
-   public static csn a() {
-      return b;
-   }
+            for (fdo $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   public static csn a(csl $$0) {
-      return new csn($$0.a, $$0.b);
-   }
-
-   public static csn a(csl $$0, csl... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new csn($$0.a, $$2);
-   }
-
-   private static long a(cso $$0, long $$1, Iterable<csl> $$2) {
-      for (csl $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+            if ($$0 != bwb.bR || !$$1.a_($$2).a(awz.cv) && !$$1.a_($$2.d()).a(awz.cv)) {
+               return !$$1.A_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
          }
-
-         $$1 |= $$3.b;
       }
-
-      return $$1;
-   }
-
-   public boolean b(csl $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(csn $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public boolean b(csn $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public csn c(csn $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new csn(this.c, this.d | $$0.d);
-      }
-   }
-
-   public csn d(csn $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new csn(this.c, $$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof csn $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
    }
 }

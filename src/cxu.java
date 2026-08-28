@@ -1,334 +1,482 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cxu extends cxd {
-   public static final int a = 128;
-   public static final int b = 128;
-
-   public cxu(cxd.a $$0) {
-      super($$0);
-   }
-
-   public static cxh a(dgz $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
-      cxh $$6 = new cxh(cxl.sT);
-      evo $$7 = a($$0, $$1, $$2, $$3, $$4, $$5, $$0.aj());
-      $$6.b(kv.M, $$7);
-      return $$6;
-   }
-
+public class cxu implements ctb, dho {
+   public static final Codec<js<cxu>> e = md.g
+      .r()
+      .validate($$0 -> $$0.a(cyc.a.f()) ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0));
+   public static final yt<wg, js<cxu>> f = yr.b(me.K);
+   private static final Logger a = LogUtils.getLogger();
+   public static final Map<dku, cxu> g = Maps.newHashMap();
+   public static final ald h = ald.b("base_attack_damage");
+   public static final ald i = ald.b("base_attack_speed");
+   public static final int j = 64;
+   public static final int k = 99;
+   public static final int l = 13;
+   private final js.c<cxu> b = md.g.f(this);
+   private final kt c;
    @Nullable
-   public static evq a(@Nullable evo $$0, dgz $$1) {
-      return $$0 == null ? null : $$1.a($$0);
+   private final cxu d;
+   protected final String m;
+   private final cte n;
+
+   public static int a(cxu $$0) {
+      return $$0 == null ? 0 : md.g.a($$0);
    }
 
-   @Nullable
-   public static evq b(cxh $$0, dgz $$1) {
-      evo $$2 = $$0.a(kv.M);
-      return a($$2, $$1);
+   public static cxu b(int $$0) {
+      return md.g.a($$0);
    }
 
-   private static evo a(dgz $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, akt<dgz> $$6) {
-      evq $$7 = evq.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
-      evo $$8 = $$0.x();
-      $$0.a($$8, $$7);
-      return $$8;
+   @Deprecated
+   public static cxu a(dku $$0) {
+      return g.getOrDefault($$0, cyc.a);
    }
 
-   public void a(dgz $$0, bva $$1, evq $$2) {
-      if ($$0.aj() == $$2.e && $$1 instanceof cpr) {
-         int $$3 = 1 << $$2.f;
-         int $$4 = $$2.c;
-         int $$5 = $$2.d;
-         int $$6 = ayz.a($$1.dz() - (double)$$4) / $$3 + 64;
-         int $$7 = ayz.a($$1.dF() - (double)$$5) / $$3 + 64;
-         int $$8 = 128 / $$3;
-         if ($$0.B_().h()) {
-            $$8 /= 2;
-         }
-
-         evq.a $$9 = $$2.a((cpr)$$1);
-         $$9.b++;
-         ji.a $$10 = new ji.a();
-         ji.a $$11 = new ji.a();
-         boolean $$12 = false;
-
-         for (int $$13 = $$6 - $$8 + 1; $$13 < $$6 + $$8; $$13++) {
-            if (($$13 & 15) == ($$9.b & 15) || $$12) {
-               $$12 = false;
-               double $$14 = 0.0;
-
-               for (int $$15 = $$7 - $$8 - 1; $$15 < $$7 + $$8; $$15++) {
-                  if ($$13 >= 0 && $$15 >= -1 && $$13 < 128 && $$15 < 128) {
-                     int $$16 = ayz.h($$13 - $$6) + ayz.h($$15 - $$7);
-                     boolean $$17 = $$16 > ($$8 - 2) * ($$8 - 2);
-                     int $$18 = ($$4 / $$3 + $$13 - 64) * $$3;
-                     int $$19 = ($$5 / $$3 + $$15 - 64) * $$3;
-                     Multiset<eua> $$20 = LinkedHashMultiset.create();
-                     dzw $$21 = $$0.d(kk.a($$18), kk.a($$19));
-                     if (!$$21.E()) {
-                        int $$22 = 0;
-                        double $$23 = 0.0;
-                        if ($$0.B_().h()) {
-                           int $$24 = $$18 + $$19 * 231871;
-                           $$24 = $$24 * $$24 * 31287121 + $$24 * 11;
-                           if (($$24 >> 20 & 1) == 0) {
-                              $$20.add(dkg.j.m().a((dgf)$$0, ji.c), 10);
-                           } else {
-                              $$20.add(dkg.b.m().a((dgf)$$0, ji.c), 100);
-                           }
-
-                           $$23 = 100.0;
-                        } else {
-                           for (int $$25 = 0; $$25 < $$3; $$25++) {
-                              for (int $$26 = 0; $$26 < $$3; $$26++) {
-                                 $$10.d($$18 + $$25, 0, $$19 + $$26);
-                                 int $$27 = $$21.a(edo.a.b, $$10.u(), $$10.w()) + 1;
-                                 dxq $$31;
-                                 if ($$27 <= $$0.G_()) {
-                                    $$31 = dkg.I.m();
-                                 } else {
-                                    do {
-                                       $$10.q(--$$27);
-                                       $$31 = $$21.a_($$10);
-                                    } while ($$31.a($$0, $$10) == eua.a && $$27 > $$0.G_());
-
-                                    if ($$27 > $$0.G_() && !$$31.y().c()) {
-                                       int $$29 = $$27 - 1;
-                                       $$11.g($$10);
-
-                                       dxq $$30;
-                                       do {
-                                          $$11.q($$29--);
-                                          $$30 = $$21.a_($$11);
-                                          $$22++;
-                                       } while ($$29 > $$0.G_() && !$$30.y().c());
-
-                                       $$31 = this.a($$0, $$31, $$10);
-                                    }
-                                 }
-
-                                 $$2.a($$0, $$10.u(), $$10.w());
-                                 $$23 += (double)$$27 / (double)($$3 * $$3);
-                                 $$20.add($$31.a($$0, $$10));
-                              }
-                           }
-                        }
-
-                        $$22 /= $$3 * $$3;
-                        eua $$32 = (eua)Iterables.getFirst(Multisets.copyHighestCountFirst($$20), eua.a);
-                        eua.a $$34;
-                        if ($$32 == eua.m) {
-                           double $$33 = (double)$$22 * 0.1 + (double)($$13 + $$15 & 1) * 0.2;
-                           if ($$33 < 0.5) {
-                              $$34 = eua.a.c;
-                           } else if ($$33 > 0.9) {
-                              $$34 = eua.a.a;
-                           } else {
-                              $$34 = eua.a.b;
-                           }
-                        } else {
-                           double $$37 = ($$23 - $$14) * 4.0 / (double)($$3 + 4) + ((double)($$13 + $$15 & 1) - 0.5) * 0.4;
-                           if ($$37 > 0.6) {
-                              $$34 = eua.a.c;
-                           } else if ($$37 < -0.6) {
-                              $$34 = eua.a.a;
-                           } else {
-                              $$34 = eua.a.b;
-                           }
-                        }
-
-                        $$14 = $$23;
-                        if ($$15 >= 0 && $$16 < $$8 * $$8 && (!$$17 || ($$13 + $$15 & 1) != 0)) {
-                           $$12 |= $$2.a($$13, $$15, $$32.b($$34));
-                        }
-                     }
-                  }
-               }
-            }
+   public cxu(cxu.a $$0) {
+      this.m = $$0.d();
+      this.c = $$0.a(wv.c(this.m), $$0.e());
+      this.d = $$0.d;
+      this.n = $$0.e;
+      if (ab.aU) {
+         String $$1 = this.getClass().getSimpleName();
+         if (!$$1.endsWith("Item")) {
+            a.error("Item classes should end with Item and {} doesn't.", $$1);
          }
       }
    }
 
-   private dxq a(dgz $$0, dxq $$1, ji $$2) {
-      etw $$3 = $$1.y();
-      return !$$3.c() && !$$1.c($$0, $$2, jn.b) ? $$3.g() : $$1;
+   @Deprecated
+   public js.c<cxu> f() {
+      return this.b;
    }
 
-   private static boolean a(boolean[] $$0, int $$1, int $$2) {
-      return $$0[$$2 * 128 + $$1];
+   public kt g() {
+      return this.c;
    }
 
-   public static void a(ard $$0, cxh $$1) {
-      evq $$2 = b($$1, $$0);
-      if ($$2 != null) {
-         if ($$0.aj() == $$2.e) {
-            int $$3 = 1 << $$2.f;
-            int $$4 = $$2.c;
-            int $$5 = $$2.d;
-            boolean[] $$6 = new boolean[16384];
-            int $$7 = $$4 / $$3 - 64;
-            int $$8 = $$5 / $$3 - 64;
-            ji.a $$9 = new ji.a();
-
-            for (int $$10 = 0; $$10 < 128; $$10++) {
-               for (int $$11 = 0; $$11 < 128; $$11++) {
-                  jr<dic> $$12 = $$0.t($$9.d(($$7 + $$11) * $$3, 0, ($$8 + $$10) * $$3));
-                  $$6[$$10 * 128 + $$11] = $$12.a(awo.ab);
-               }
-            }
-
-            for (int $$13 = 1; $$13 < 127; $$13++) {
-               for (int $$14 = 1; $$14 < 127; $$14++) {
-                  int $$15 = 0;
-
-                  for (int $$16 = -1; $$16 < 2; $$16++) {
-                     for (int $$17 = -1; $$17 < 2; $$17++) {
-                        if (($$16 != 0 || $$17 != 0) && a($$6, $$13 + $$16, $$14 + $$17)) {
-                           $$15++;
-                        }
-                     }
-                  }
-
-                  eua.a $$18 = eua.a.d;
-                  eua $$19 = eua.a;
-                  if (a($$6, $$13, $$14)) {
-                     $$19 = eua.p;
-                     if ($$15 > 7 && $$14 % 2 == 0) {
-                        switch (($$13 + (int)(ayz.a((float)$$14 + 0.0F) * 7.0F)) / 8 % 5) {
-                           case 0:
-                           case 4:
-                              $$18 = eua.a.a;
-                              break;
-                           case 1:
-                           case 3:
-                              $$18 = eua.a.b;
-                              break;
-                           case 2:
-                              $$18 = eua.a.c;
-                        }
-                     } else if ($$15 > 7) {
-                        $$19 = eua.a;
-                     } else if ($$15 > 5) {
-                        $$18 = eua.a.b;
-                     } else if ($$15 > 3) {
-                        $$18 = eua.a.a;
-                     } else if ($$15 > 1) {
-                        $$18 = eua.a.a;
-                     }
-                  } else if ($$15 > 0) {
-                     $$19 = eua.A;
-                     if ($$15 > 3) {
-                        $$18 = eua.a.b;
-                     } else {
-                        $$18 = eua.a.d;
-                     }
-                  }
-
-                  if ($$19 != eua.a) {
-                     $$2.b($$13, $$14, $$19.b($$18));
-                  }
-               }
-            }
-         }
-      }
+   public int h() {
+      return this.c.a(kx.c, 1);
    }
 
-   @Override
-   public void a(cxh $$0, dgz $$1, bva $$2, int $$3, boolean $$4) {
-      if (!$$1.C) {
-         evq $$5 = b($$0, $$1);
-         if ($$5 != null) {
-            if ($$2 instanceof cpr $$6) {
-               $$5.a($$6, $$0);
-            }
-
-            if (!$$5.h && ($$4 || $$2 instanceof cpr $$7 && $$7.fa() == $$0)) {
-               this.a($$1, $$2, $$5);
-            }
-         }
-      }
+   public void a(dhp $$0, bwr $$1, cxy $$2, int $$3) {
    }
 
-   @Override
-   public void a(cxh $$0, dgz $$1) {
-      dac $$2 = $$0.d(kv.O);
-      if ($$2 != null) {
-         switch ($$2) {
-            case a:
-               a($$1, $$0);
-               break;
-            case b:
-               c($$0, $$1);
-         }
-      }
+   public void a(cmn $$0) {
    }
 
-   private static void c(cxh $$0, dgz $$1) {
-      evq $$2 = b($$0, $$1);
-      if ($$2 != null) {
-         evo $$3 = $$1.x();
-         $$1.a($$3, $$2.c());
-         $$0.b(kv.M, $$3);
-      }
+   public void l(cxy $$0) {
    }
 
-   public static void a(dgz $$0, cxh $$1) {
-      evq $$2 = b($$1, $$0);
-      if ($$2 != null) {
-         evo $$3 = $$0.x();
-         evq $$4 = $$2.b();
-         $$0.a($$3, $$4);
-         $$1.b(kv.M, $$3);
-      }
-   }
-
-   @Override
-   public void a(cxh $$0, cxd.b $$1, List<wp> $$2, cyx $$3) {
-      evo $$4 = $$0.a(kv.M);
-      evq $$5 = $$4 != null ? $$1.a($$4) : null;
-      dac $$6 = $$0.a(kv.O);
-      if ($$5 != null && ($$5.h || $$6 == dac.a)) {
-         $$2.add(wp.a("filled_map.locked", $$4.b()).a(n.h));
-      }
-
-      if ($$3.a()) {
-         if ($$5 != null) {
-            if ($$6 == null) {
-               $$2.add(a($$4));
-            }
-
-            int $$7 = $$6 == dac.b ? 1 : 0;
-            int $$8 = Math.min($$5.f + $$7, 4);
-            $$2.add(wp.a("filled_map.scale", 1 << $$8).a(n.h));
-            $$2.add(wp.a("filled_map.level", $$8, 4).a(n.h));
-         } else {
-            $$2.add(wp.c("filled_map.unknown").a(n.h));
-         }
-      }
-   }
-
-   public static wp a(evo $$0) {
-      return wp.a("filled_map.id", $$0.b()).a(n.h);
-   }
-
-   @Override
-   public bsy a(daz $$0) {
-      dxq $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(awp.I)) {
-         if (!$$0.q().C) {
-            evq $$2 = b($$0.n(), $$0.q());
-            if ($$2 != null && !$$2.a($$0.q(), $$0.a())) {
-               return bsy.d;
-            }
+   public boolean a(cxy $$0, dym $$1, dhp $$2, jj $$3, bwr $$4) {
+      dax $$5 = $$0.a(kx.B);
+      if ($$5 != null && !$$5.d()) {
+         if ($$4 instanceof cqi $$6 && $$6.gj().d) {
+            return false;
          }
 
-         return bsy.a;
+         return true;
       } else {
-         return super.a($$0);
+         return true;
+      }
+   }
+
+   @Override
+   public cxu i() {
+      return this;
+   }
+
+   public btq a(dbp $$0) {
+      return btq.e;
+   }
+
+   public float a(cxy $$0, dym $$1) {
+      dax $$2 = $$0.a(kx.B);
+      return $$2 != null ? $$2.a($$1) : 1.0F;
+   }
+
+   public btq a(dhp $$0, cqi $$1, btp $$2) {
+      cxy $$3 = $$1.b($$2);
+      dab $$4 = $$3.a(kx.x);
+      if ($$4 != null) {
+         return $$4.a($$1, $$3, $$2);
+      } else {
+         dgc $$5 = $$3.a(kx.E);
+         return (btq)($$5 != null && $$5.h() ? $$5.a($$3, $$1) : btq.e);
+      }
+   }
+
+   public cxy a(cxy $$0, dhp $$1, bwr $$2) {
+      dab $$3 = $$0.a(kx.x);
+      return $$3 != null ? $$3.a($$1, $$2, $$0) : $$0;
+   }
+
+   public boolean d(cxy $$0) {
+      return $$0.n();
+   }
+
+   public int e(cxy $$0) {
+      return azk.a(Math.round(13.0F - (float)$$0.o() * 13.0F / (float)$$0.p()), 0, 13);
+   }
+
+   public int f(cxy $$0) {
+      int $$1 = $$0.p();
+      float $$2 = Math.max(0.0F, ((float)$$1 - (float)$$0.o()) / (float)$$1);
+      return azk.g($$2 / 3.0F, 1.0F, 1.0F);
+   }
+
+   public boolean a(cxy $$0, cvk $$1, ctx $$2, cqi $$3) {
+      return false;
+   }
+
+   public boolean a(cxy $$0, cxy $$1, cvk $$2, ctx $$3, cqi $$4, bxi $$5) {
+      return false;
+   }
+
+   public float a(bvs $$0, float $$1, buh $$2) {
+      return 0.0F;
+   }
+
+   @Nullable
+   public buh a(bwr $$0) {
+      return null;
+   }
+
+   public void a(cxy $$0, bwr $$1, bwr $$2) {
+   }
+
+   public void b(cxy $$0, bwr $$1, bwr $$2) {
+   }
+
+   public boolean a(cxy $$0, dhp $$1, dym $$2, jj $$3, bwr $$4) {
+      dax $$5 = $$0.a(kx.B);
+      if ($$5 == null) {
+         return false;
+      } else {
+         if (!$$1.C && $$2.e($$1, $$3) != 0.0F && $$5.c() > 0) {
+            $$0.a($$5.c(), $$4, bwc.a);
+         }
+
+         return true;
+      }
+   }
+
+   public boolean b(cxy $$0, dym $$1) {
+      dax $$2 = $$0.a(kx.B);
+      return $$2 != null && $$2.b($$1);
+   }
+
+   public btq a(cxy $$0, cqi $$1, bwr $$2, btp $$3) {
+      return btq.e;
+   }
+
+   @Override
+   public String toString() {
+      return md.g.e(this).g();
+   }
+
+   public final cxy j() {
+      return this.d == null ? cxy.k : new cxy(this.d);
+   }
+
+   public void a(cxy $$0, dhp $$1, bvs $$2, int $$3, boolean $$4) {
+   }
+
+   public void a(cxy $$0, dhp $$1, cqi $$2) {
+      this.a($$0, $$1);
+   }
+
+   public void a(cxy $$0, dhp $$1) {
+   }
+
+   public cya b(cxy $$0) {
+      dab $$1 = $$0.a(kx.x);
+      return $$1 != null ? $$1.d() : cya.a;
+   }
+
+   public int a(cxy $$0, bwr $$1) {
+      dab $$2 = $$0.a(kx.x);
+      return $$2 != null ? $$2.a() : 0;
+   }
+
+   public boolean a(cxy $$0, dhp $$1, bwr $$2, int $$3) {
+      return false;
+   }
+
+   public void a(cxy $$0, cxu.b $$1, List<wv> $$2, czn $$3) {
+   }
+
+   public Optional<cvu> k(cxy $$0) {
+      return Optional.empty();
+   }
+
+   @VisibleForTesting
+   public final String l() {
+      return this.m;
+   }
+
+   public final wv m() {
+      return this.c.a(kx.h, wu.a);
+   }
+
+   public wv a(cxy $$0) {
+      return $$0.a().a(kx.h, wu.a);
+   }
+
+   public boolean c_(cxy $$0) {
+      return $$0.F();
+   }
+
+   protected static fcq a(dhp $$0, cqi $$1, dgy.b $$2) {
+      fcu $$3 = $$1.bE();
+      fcu $$4 = $$3.e($$1.d($$1.dN(), $$1.dL()).c($$1.gK()));
+      return $$0.a(new dgy($$3, $$4, dgy.a.b, $$2, $$1));
+   }
+
+   public boolean d_(cxy $$0) {
+      return false;
+   }
+
+   public cxy n() {
+      return new cxy(this);
+   }
+
+   public awj a() {
+      return awk.oe;
+   }
+
+   public boolean e() {
+      return true;
+   }
+
+   @Override
+   public cte k() {
+      return this.n;
+   }
+
+   public boolean a(cxy $$0, @Nullable cqi $$1) {
+      return false;
+   }
+
+   public static class a {
+      private static final akv<cxu, String> a = $$0 -> af.a("block", $$0.a());
+      private static final akv<cxu, String> b = $$0 -> af.a("item", $$0.a());
+      private final kt.a c = kt.a().a(kx.aN);
+      @Nullable
+      cxu d;
+      cte e = ctg.g;
+      @Nullable
+      private alc<cxu> f;
+      private akv<cxu, String> g = b;
+      private akv<cxu, ald> h = alc::a;
+
+      public cxu.a a(ctk $$0) {
+         return this.a($$0, dad.a);
+      }
+
+      public cxu.a a(ctk $$0, dab $$1) {
+         return this.a(kx.w, $$0).a(kx.x, $$1);
+      }
+
+      public cxu.a a(cxu $$0) {
+         return this.a(kx.y, new dbb(new cxy($$0)));
+      }
+
+      public cxu.a a(float $$0) {
+         return this.a(kx.z, new dba($$0));
+      }
+
+      public cxu.a a(int $$0) {
+         return this.a(kx.c, $$0);
+      }
+
+      public cxu.a b(int $$0) {
+         this.a(kx.d, $$0);
+         this.a(kx.c, 1);
+         this.a(kx.e, 0);
+         return this;
+      }
+
+      public cxu.a b(cxu $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cxu.a a(cyu $$0) {
+         return this.a(kx.k, $$0);
+      }
+
+      public cxu.a a() {
+         return this.a(kx.A, new dag(axb.i));
+      }
+
+      public cxu.a a(alc<cye> $$0) {
+         return this.a(kx.ad, new cyd(new cwy<>($$0), true));
+      }
+
+      public cxu.a c(int $$0) {
+         return this.a(kx.D, new def($$0));
+      }
+
+      public cxu.a c(cxu $$0) {
+         return this.a(kx.F, new dep(jw.a($$0.f())));
+      }
+
+      public cxu.a a(axp<cxu> $$0) {
+         jt<cxu> $$1 = md.a(md.g);
+         return this.a(kx.F, new dep($$1.b($$0)));
+      }
+
+      public cxu.a a(bwc $$0) {
+         return this.a(kx.E, dgc.a($$0).a());
+      }
+
+      public cxu.a b(bwc $$0) {
+         return this.a(kx.E, dgc.a($$0).b(false).a());
+      }
+
+      public cxu.a a(czm $$0, axp<dku> $$1, float $$2, float $$3, boolean $$4) {
+         return $$0.a(this, $$1, $$2, $$3, $$4);
+      }
+
+      public cxu.a a(czm $$0, float $$1, float $$2) {
+         return this.a($$0, awz.bE, $$1, $$2, false);
+      }
+
+      public cxu.a b(czm $$0, float $$1, float $$2) {
+         return $$0.a(this, $$1, $$2);
+      }
+
+      public cxu.a a(dfx $$0, dfz $$1) {
+         return this.b($$1.a($$0.a())).a($$0.a($$1)).c($$0.c()).a(kx.E, dgc.a($$1.a()).a($$0.d()).a($$0.h()).a()).a($$0.g());
+      }
+
+      public cxu.a a(ctc... $$0) {
+         this.e = ctg.e.a($$0);
+         return this;
+      }
+
+      public cxu.a b(alc<cxu> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cxu.a a(String $$0) {
+         this.g = akv.fixed($$0);
+         return this;
+      }
+
+      public cxu.a b() {
+         this.g = a;
+         return this;
+      }
+
+      public cxu.a c() {
+         this.g = b;
+         return this;
+      }
+
+      protected String d() {
+         return this.g.get(Objects.requireNonNull(this.f, "Item id not set"));
+      }
+
+      public ald e() {
+         return this.h.get(Objects.requireNonNull(this.f, "Item id not set"));
+      }
+
+      public <T> cxu.a a(kw<T> $$0, T $$1) {
+         this.c.a($$0, $$1);
+         return this;
+      }
+
+      public cxu.a a(dam $$0) {
+         return this.a(kx.o, $$0);
+      }
+
+      kt a(wv $$0, ald $$1) {
+         kt $$2 = this.c.a(kx.h, $$0).a(kx.i, $$1).a();
+         if ($$2.c(kx.e) && $$2.a(kx.c, 1) > 1) {
+            throw new IllegalStateException("Item cannot have both durability and be stackable");
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public interface b {
+      cxu.b a = new cxu.b() {
+         @Nullable
+         @Override
+         public ju.a a() {
+            return null;
+         }
+
+         @Override
+         public float b() {
+            return 20.0F;
+         }
+
+         @Nullable
+         @Override
+         public ewn a(ewl $$0) {
+            return null;
+         }
+      };
+
+      @Nullable
+      ju.a a();
+
+      float b();
+
+      @Nullable
+      ewn a(ewl var1);
+
+      static cxu.b a(@Nullable final dhp $$0) {
+         return $$0 == null ? a : new cxu.b() {
+            @Override
+            public ju.a a() {
+               return $$0.F_();
+            }
+
+            @Override
+            public float b() {
+               return $$0.u().f();
+            }
+
+            @Override
+            public ewn a(ewl $$0x) {
+               return $$0.a($$0);
+            }
+         };
+      }
+
+      static cxu.b a(final ju.a $$0) {
+         return new cxu.b() {
+            @Override
+            public ju.a a() {
+               return $$0;
+            }
+
+            @Override
+            public float b() {
+               return 20.0F;
+            }
+
+            @Nullable
+            @Override
+            public ewn a(ewl $$0x) {
+               return null;
+            }
+         };
       }
    }
 }

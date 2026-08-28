@@ -1,19 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import java.util.List;
 
-public record czs(Map<jr<dke>, dyt<?>> c) {
-   public static final czs a = new czs(Map.of());
-   public static final Codec<czs> b = Codec.dispatchedMap(mb.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dyt<?> $$2 = ((dke)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dyt::f)).xmap(czs::new, czs::a);
+public class czs implements ctb {
+   public static final Codec<js<czs>> a = md.h.r();
+   public static final yt<wg, js<czs>> b = yr.b(me.ad);
+   private final String c;
+   private final List<buw> d;
+   private cte e = ctg.g;
 
-   public czs a(jr<dke> $$0, dyt<?> $$1) {
-      return new czs(af.a(this.c, $$0, $$1));
+   public czs(String $$0, buw... $$1) {
+      this.c = $$0;
+      this.d = List.of($$1);
    }
 
-   public Map<jr<dke>, dyt<?>> a() {
+   public czs a(ctc... $$0) {
+      this.e = ctg.e.a($$0);
+      return this;
+   }
+
+   @Override
+   public cte k() {
+      return this.e;
+   }
+
+   public List<buw> a() {
+      return this.d;
+   }
+
+   public String b() {
       return this.c;
+   }
+
+   public boolean c() {
+      for (buw $$0 : this.d) {
+         if ($$0.c().a().a()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

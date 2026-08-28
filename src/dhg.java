@@ -1,15 +1,19 @@
-public interface dhg extends dhc {
-   long am();
+import java.util.Optional;
 
-   default float as() {
-      return ebm.k[this.B_().b(this.am())];
+public class dhg extends dhj {
+   private final bvs a;
+
+   public dhg(bvs $$0) {
+      this.a = $$0;
    }
 
-   default float f(float $$0) {
-      return this.B_().a(this.am());
+   @Override
+   public Optional<Float> a(dhi $$0, dgv $$1, jj $$2, dym $$3, eut $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   default int at() {
-      return this.B_().b(this.am());
+   @Override
+   public boolean a(dhi $$0, dgv $$1, jj $$2, dym $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

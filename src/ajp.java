@@ -1,8 +1,8 @@
-public interface ajp extends ajj, vf {
-   @Override
-   default vj b() {
-      return vj.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ajq var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajp {
 }

@@ -1,29 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class egx extends egu<ejc> {
-   public egx(Codec<ejc> $$0) {
+public class egx extends ehr<ejo> {
+   public egx(Codec<ejo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<ejc> $$0) {
-      ji $$1 = $$0.e();
-      ejc $$2 = $$0.f();
-      dhy $$3 = $$0.b();
-      ji.a $$4 = new ji.a();
+   public boolean a(eht<ejo> $$0) {
+      jj $$1 = $$0.e();
+      dio $$2 = $$0.b();
+      azs $$3 = $$0.d();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.G_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
+      ejo $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.G_() + 3; $$1 = $$1.e()) {
+         if (!$$2.u($$1.e())) {
+            dym $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
             }
          }
       }
 
-      return true;
+      if ($$1.v() <= $$2.G_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (jj $$11 : jj.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
+
+         return true;
+      }
    }
 }

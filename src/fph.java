@@ -1,74 +1,43 @@
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-public abstract class fph extends fpj implements frm {
-   @Nullable
-   private frn a;
-   private boolean c;
+public class fph<T> {
+   final String a;
+   final Function<T, JsonElement> b;
 
-   public fph(int $$0, int $$1, int $$2, int $$3, wp $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fph(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public fph<T>.a a(T $$0) {
+      return new fph.a($$0);
    }
 
    @Override
-   public final boolean aK_() {
-      return this.c;
-   }
-
-   @Override
-   public final void b_(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public frn aL_() {
+   public String toString() {
       return this.a;
    }
 
-   @Override
-   public void a(@Nullable frn $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public class a {
+      private final T b;
+
+      public a(final T $$1) {
+         this.b = $$1;
       }
 
-      if ($$0 != null) {
-         $$0.a(true);
+      public fph<T> a() {
+         return fph.this;
       }
 
-      this.a = $$0;
-   }
+      public void a(JsonObject $$0) {
+         $$0.add(fph.this.a, fph.this.b.apply(this.b));
+      }
 
-   @Nullable
-   @Override
-   public foz a(ftt $$0) {
-      return frm.super.a($$0);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      boolean $$3 = this.c($$0, $$1, $$2);
-      return frm.super.a($$0, $$1, $$2) || $$3;
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      return frm.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      return frm.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aM_() {
-      return frm.super.aM_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      frm.super.a($$0);
+      @Override
+      public String toString() {
+         return fph.this.a + "=" + this.b;
+      }
    }
 }

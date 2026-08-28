@@ -1,164 +1,179 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class bhk extends DataFix {
-   public static final String a = "key.unknown";
-   private static final Int2ObjectMap<String> b = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(0, "key.unknown");
-      $$0.put(11, "key.0");
-      $$0.put(2, "key.1");
-      $$0.put(3, "key.2");
-      $$0.put(4, "key.3");
-      $$0.put(5, "key.4");
-      $$0.put(6, "key.5");
-      $$0.put(7, "key.6");
-      $$0.put(8, "key.7");
-      $$0.put(9, "key.8");
-      $$0.put(10, "key.9");
-      $$0.put(30, "key.a");
-      $$0.put(40, "key.apostrophe");
-      $$0.put(48, "key.b");
-      $$0.put(43, "key.backslash");
-      $$0.put(14, "key.backspace");
-      $$0.put(46, "key.c");
-      $$0.put(58, "key.caps.lock");
-      $$0.put(51, "key.comma");
-      $$0.put(32, "key.d");
-      $$0.put(211, "key.delete");
-      $$0.put(208, "key.down");
-      $$0.put(18, "key.e");
-      $$0.put(207, "key.end");
-      $$0.put(28, "key.enter");
-      $$0.put(13, "key.equal");
-      $$0.put(1, "key.escape");
-      $$0.put(33, "key.f");
-      $$0.put(59, "key.f1");
-      $$0.put(68, "key.f10");
-      $$0.put(87, "key.f11");
-      $$0.put(88, "key.f12");
-      $$0.put(100, "key.f13");
-      $$0.put(101, "key.f14");
-      $$0.put(102, "key.f15");
-      $$0.put(103, "key.f16");
-      $$0.put(104, "key.f17");
-      $$0.put(105, "key.f18");
-      $$0.put(113, "key.f19");
-      $$0.put(60, "key.f2");
-      $$0.put(61, "key.f3");
-      $$0.put(62, "key.f4");
-      $$0.put(63, "key.f5");
-      $$0.put(64, "key.f6");
-      $$0.put(65, "key.f7");
-      $$0.put(66, "key.f8");
-      $$0.put(67, "key.f9");
-      $$0.put(34, "key.g");
-      $$0.put(41, "key.grave.accent");
-      $$0.put(35, "key.h");
-      $$0.put(199, "key.home");
-      $$0.put(23, "key.i");
-      $$0.put(210, "key.insert");
-      $$0.put(36, "key.j");
-      $$0.put(37, "key.k");
-      $$0.put(82, "key.keypad.0");
-      $$0.put(79, "key.keypad.1");
-      $$0.put(80, "key.keypad.2");
-      $$0.put(81, "key.keypad.3");
-      $$0.put(75, "key.keypad.4");
-      $$0.put(76, "key.keypad.5");
-      $$0.put(77, "key.keypad.6");
-      $$0.put(71, "key.keypad.7");
-      $$0.put(72, "key.keypad.8");
-      $$0.put(73, "key.keypad.9");
-      $$0.put(78, "key.keypad.add");
-      $$0.put(83, "key.keypad.decimal");
-      $$0.put(181, "key.keypad.divide");
-      $$0.put(156, "key.keypad.enter");
-      $$0.put(141, "key.keypad.equal");
-      $$0.put(55, "key.keypad.multiply");
-      $$0.put(74, "key.keypad.subtract");
-      $$0.put(38, "key.l");
-      $$0.put(203, "key.left");
-      $$0.put(56, "key.left.alt");
-      $$0.put(26, "key.left.bracket");
-      $$0.put(29, "key.left.control");
-      $$0.put(42, "key.left.shift");
-      $$0.put(219, "key.left.win");
-      $$0.put(50, "key.m");
-      $$0.put(12, "key.minus");
-      $$0.put(49, "key.n");
-      $$0.put(69, "key.num.lock");
-      $$0.put(24, "key.o");
-      $$0.put(25, "key.p");
-      $$0.put(209, "key.page.down");
-      $$0.put(201, "key.page.up");
-      $$0.put(197, "key.pause");
-      $$0.put(52, "key.period");
-      $$0.put(183, "key.print.screen");
-      $$0.put(16, "key.q");
-      $$0.put(19, "key.r");
-      $$0.put(205, "key.right");
-      $$0.put(184, "key.right.alt");
-      $$0.put(27, "key.right.bracket");
-      $$0.put(157, "key.right.control");
-      $$0.put(54, "key.right.shift");
-      $$0.put(220, "key.right.win");
-      $$0.put(31, "key.s");
-      $$0.put(70, "key.scroll.lock");
-      $$0.put(39, "key.semicolon");
-      $$0.put(53, "key.slash");
-      $$0.put(57, "key.space");
-      $$0.put(20, "key.t");
-      $$0.put(15, "key.tab");
-      $$0.put(22, "key.u");
-      $$0.put(200, "key.up");
-      $$0.put(47, "key.v");
-      $$0.put(17, "key.w");
-      $$0.put(45, "key.x");
-      $$0.put(21, "key.y");
-      $$0.put(44, "key.z");
+   private static final Int2ObjectMap<String> a = af.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, "minecraft:speed");
+      $$0.put(2, "minecraft:slowness");
+      $$0.put(3, "minecraft:haste");
+      $$0.put(4, "minecraft:mining_fatigue");
+      $$0.put(5, "minecraft:strength");
+      $$0.put(6, "minecraft:instant_health");
+      $$0.put(7, "minecraft:instant_damage");
+      $$0.put(8, "minecraft:jump_boost");
+      $$0.put(9, "minecraft:nausea");
+      $$0.put(10, "minecraft:regeneration");
+      $$0.put(11, "minecraft:resistance");
+      $$0.put(12, "minecraft:fire_resistance");
+      $$0.put(13, "minecraft:water_breathing");
+      $$0.put(14, "minecraft:invisibility");
+      $$0.put(15, "minecraft:blindness");
+      $$0.put(16, "minecraft:night_vision");
+      $$0.put(17, "minecraft:hunger");
+      $$0.put(18, "minecraft:weakness");
+      $$0.put(19, "minecraft:poison");
+      $$0.put(20, "minecraft:wither");
+      $$0.put(21, "minecraft:health_boost");
+      $$0.put(22, "minecraft:absorption");
+      $$0.put(23, "minecraft:saturation");
+      $$0.put(24, "minecraft:glowing");
+      $$0.put(25, "minecraft:levitation");
+      $$0.put(26, "minecraft:luck");
+      $$0.put(27, "minecraft:unluck");
+      $$0.put(28, "minecraft:slow_falling");
+      $$0.put(29, "minecraft:conduit_power");
+      $$0.put(30, "minecraft:dolphins_grace");
+      $$0.put(31, "minecraft:bad_omen");
+      $$0.put(32, "minecraft:hero_of_the_village");
+      $$0.put(33, "minecraft:darkness");
    });
+   private static final Set<String> b = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
 
-   public bhk(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bhk(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsKeyLwjgl3Fix",
-         this.getInputSchema().getType(bic.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$0xxx -> {
-                     if (((Dynamic)$$0xxx.getKey()).asString("").startsWith("key_")) {
-                        int $$1x = Integer.parseInt(((Dynamic)$$0xxx.getValue()).asString(""));
-                        if ($$1x < 0) {
-                           int $$2 = $$1x + 100;
-                           String $$3;
-                           if ($$2 == 0) {
-                              $$3 = "key.mouse.left";
-                           } else if ($$2 == 1) {
-                              $$3 = "key.mouse.right";
-                           } else if ($$2 == 2) {
-                              $$3 = "key.mouse.middle";
-                           } else {
-                              $$3 = "key.mouse." + ($$2 + 1);
-                           }
+   private static <T> Optional<Dynamic<T>> a(Dynamic<T> $$0, String $$1) {
+      return $$0.get($$1).asNumber().result().map($$0x -> (String)a.get($$0x.intValue())).map($$0::createString);
+   }
 
-                           return Pair.of((Dynamic)$$0xxx.getKey(), ((Dynamic)$$0xxx.getValue()).createString($$3));
-                        } else {
-                           String $$7 = (String)b.getOrDefault($$1x, "key.unknown");
-                           return Pair.of((Dynamic)$$0xxx.getKey(), ((Dynamic)$$0xxx.getValue()).createString($$7));
-                        }
-                     } else {
-                        return Pair.of((Dynamic)$$0xxx.getKey(), (Dynamic)$$0xxx.getValue());
-                     }
-                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
-      );
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Dynamic<T> $$2, String $$3) {
+      Optional<Dynamic<T>> $$4 = a($$0, $$1);
+      return $$2.replaceField($$1, $$3, $$4);
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2) {
+      return a($$0, $$1, $$0, $$2);
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = a($$0, "Id", "id");
+      $$0 = $$0.renameField("Ambient", "ambient");
+      $$0 = $$0.renameField("Amplifier", "amplifier");
+      $$0 = $$0.renameField("Duration", "duration");
+      $$0 = $$0.renameField("ShowParticles", "show_particles");
+      $$0 = $$0.renameField("ShowIcon", "show_icon");
+      Optional<Dynamic<T>> $$1 = $$0.get("HiddenEffect").result().map(bhk::a);
+      return $$0.replaceField("HiddenEffect", "hidden_effect", $$1);
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0, String $$1, String $$2) {
+      Optional<Dynamic<T>> $$3 = $$0.get($$1).asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(bhk::a)));
+      return $$0.replaceField($$1, $$2, $$3);
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, Dynamic<T> $$1) {
+      $$1 = a($$0, "EffectId", $$1, "id");
+      Optional<Dynamic<T>> $$2 = $$0.get("EffectDuration").result();
+      return $$1.replaceField("EffectDuration", "duration", $$2);
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return a($$0, $$0);
+   }
+
+   private Typed<?> a(Typed<?> $$0, TypeReference $$1, String $$2, Function<Dynamic<?>, Dynamic<?>> $$3) {
+      Type<?> $$4 = this.getInputSchema().getChoiceType($$1, $$2);
+      Type<?> $$5 = this.getOutputSchema().getChoiceType($$1, $$2);
+      return $$0.updateTyped(DSL.namedChoice($$2, $$4), $$5, $$1x -> $$1x.update(DSL.remainderFinder(), $$3));
+   }
+
+   private TypeRewriteRule a() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.s);
+      return this.fixTypeEverywhereTyped("BlockEntityMobEffectIdFix", $$0, $$0x -> this.a($$0x, biq.s, "minecraft:beacon", $$0xx -> {
+            $$0xx = a($$0xx, "Primary", "primary_effect");
+            return a($$0xx, "Secondary", "secondary_effect");
+         }));
+   }
+
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      Dynamic<T> $$1 = $$0.emptyMap();
+      Dynamic<T> $$2 = a($$0, $$1);
+      if (!$$2.equals($$1)) {
+         $$0 = $$0.set("stew_effects", $$0.createList(Stream.of($$2)));
+      }
+
+      return $$0.remove("EffectId").remove("EffectDuration");
+   }
+
+   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
+      return b($$0, "CustomPotionEffects", "custom_potion_effects");
+   }
+
+   private static <T> Dynamic<T> e(Dynamic<T> $$0) {
+      return b($$0, "Effects", "effects");
+   }
+
+   private static Dynamic<?> f(Dynamic<?> $$0) {
+      return b($$0, "ActiveEffects", "active_effects");
+   }
+
+   private TypeRewriteRule b() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.D);
+      return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", $$0, $$0x -> {
+         $$0x = this.a($$0x, biq.D, "minecraft:mooshroom", bhk::c);
+         $$0x = this.a($$0x, biq.D, "minecraft:arrow", bhk::d);
+         $$0x = this.a($$0x, biq.D, "minecraft:area_effect_cloud", bhk::e);
+         return $$0x.update(DSL.remainderFinder(), bhk::f);
+      });
+   }
+
+   private TypeRewriteRule c() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.b);
+      return this.fixTypeEverywhereTyped("PlayerMobEffectIdFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bhk::f));
+   }
+
+   private static <T> Dynamic<T> g(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Effects").asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(bhk::b)));
+      return $$0.replaceField("Effects", "effects", $$1);
+   }
+
+   private TypeRewriteRule d() {
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(biq.F.typeName(), bkj.a()));
+      Type<?> $$1 = this.getInputSchema().getType(biq.t);
+      OpticFinder<?> $$2 = $$1.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$0);
+         if ($$3.isPresent()) {
+            String $$4 = (String)$$3.get().getSecond();
+            if ($$4.equals("minecraft:suspicious_stew")) {
+               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bhk::g));
+            }
+
+            if (b.contains($$4)) {
+               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> b($$0xxx, "CustomPotionEffects", "custom_potion_effects")));
+            }
+         }
+
+         return $$2x;
+      });
+   }
+
+   protected TypeRewriteRule makeRule() {
+      return TypeRewriteRule.seq(this.a(), new TypeRewriteRule[]{this.b(), this.c(), this.d()});
    }
 }

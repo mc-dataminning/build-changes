@@ -1,168 +1,233 @@
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class alw extends aqz {
-   private final aku h;
-   private final Set<UUID> i = Sets.newHashSet();
-   private int j;
-   private int k = 100;
+public class alw extends fdz {
+   private final MinecraftServer b;
+   private final Set<fdr> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   public alw(aku $$0, wp $$1) {
-      super($$1, bso.a.g, bso.b.a);
-      this.h = $$0;
-      this.a(0.0F);
-   }
-
-   public aku a() {
-      return this.h;
+   public alw(MinecraftServer $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(are $$0) {
+   protected void a(fdy $$0, fdr $$1, fdw $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new afl($$0.cI(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+      }
+
+      this.a();
+   }
+
+   @Override
+   protected void a(fdy $$0, fdr $$1) {
+      super.a($$0, $$1);
+      this.a();
+   }
+
+   @Override
+   public void a(fdy $$0) {
       super.a($$0);
-      this.i.add($$0.cF());
-   }
-
-   public void a(UUID $$0) {
-      this.i.add($$0);
+      this.b.ag().a(new aei($$0.cI(), null));
+      this.a();
    }
 
    @Override
-   public void b(are $$0) {
+   public void b(fdy $$0, fdr $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new aei($$0.cI(), $$1.b()));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(fdq $$0, @Nullable fdr $$1) {
+      fdr $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ag().a(new aez($$0, $$1));
+         } else {
+            this.g($$2);
+         }
+      }
+
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ag().a(new aez($$0, $$1));
+         } else {
+            this.e($$1);
+         }
+      }
+
+      this.a();
+   }
+
+   @Override
+   public boolean a(String $$0, fdu $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ag().a(afk.a($$1, $$0, afk.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void b(String $$0, fdu $$1) {
+      super.b($$0, $$1);
+      this.b.ag().a(afk.a($$1, $$0, afk.a.b));
+      this.a();
+   }
+
+   @Override
+   public void a(fdr $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(fdr $$0) {
       super.b($$0);
-      this.i.remove($$0.cF());
+      if (this.c.contains($$0)) {
+         this.b.ag().a(new afh($$0, 2));
+      }
+
+      this.a();
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.i.clear();
-   }
-
-   public int c() {
-      return this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public void a(int $$0) {
-      this.j = $$0;
-      this.a(ayz.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
-   }
-
-   public void b(int $$0) {
-      this.k = $$0;
-      this.a(ayz.a((float)this.j / (float)$$0, 0.0F, 1.0F));
-   }
-
-   public final wp e() {
-      return ws.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new wv.e(wp.b(this.a().toString()))).a(this.a().toString()));
-   }
-
-   public boolean a(Collection<are> $$0) {
-      Set<UUID> $$1 = Sets.newHashSet();
-      Set<are> $$2 = Sets.newHashSet();
-
-      for (UUID $$3 : this.i) {
-         boolean $$4 = false;
-
-         for (are $$5 : $$0) {
-            if ($$5.cF().equals($$3)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            $$1.add($$3);
-         }
+   public void c(fdr $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
       }
 
-      for (are $$6 : $$0) {
-         boolean $$7 = false;
+      this.a();
+   }
 
-         for (UUID $$8 : this.i) {
-            if ($$6.cF().equals($$8)) {
-               $$7 = true;
-               break;
-            }
-         }
+   @Override
+   public void a(fdu $$0) {
+      super.a($$0);
+      this.b.ag().a(afk.a($$0, true));
+      this.a();
+   }
 
-         if (!$$7) {
-            $$2.add($$6);
+   @Override
+   public void b(fdu $$0) {
+      super.b($$0);
+      this.b.ag().a(afk.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(fdu $$0) {
+      super.c($$0);
+      this.b.ag().a(afk.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
+      }
+   }
+
+   public List<zc<?>> d(fdr $$0) {
+      List<zc<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afh($$0, 0));
+
+      for (fdq $$2 : fdq.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aez($$2, $$0));
          }
       }
 
-      for (UUID $$9 : $$1) {
-         for (are $$10 : this.g()) {
-            if ($$10.cF().equals($$9)) {
-               this.b($$10);
-               break;
-            }
-         }
-
-         this.i.remove($$9);
+      for (fds $$3 : this.i($$0)) {
+         $$1.add(new afl($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
 
-      for (are $$11 : $$2) {
-         this.a($$11);
-      }
-
-      return !$$1.isEmpty() || !$$2.isEmpty();
-   }
-
-   public tq a(jt.a $$0) {
-      tq $$1 = new tq();
-      $$1.a("Name", (un)wr.a.encodeStart($$0.a(ue.a), this.a).getOrThrow());
-      $$1.a("Visible", this.f());
-      $$1.a("Value", this.j);
-      $$1.a("Max", this.k);
-      $$1.a("Color", this.k().b());
-      $$1.a("Overlay", this.l().a());
-      $$1.a("DarkenScreen", this.m());
-      $$1.a("PlayBossMusic", this.n());
-      $$1.a("CreateWorldFog", this.o());
-      tw $$2 = new tw();
-
-      for (UUID $$3 : this.i) {
-         $$2.add(uf.a($$3));
-      }
-
-      $$1.a("Players", $$2);
       return $$1;
    }
 
-   public static alw a(tq $$0, aku $$1, jt.a $$2) {
-      aks<un> $$3 = $$2.a(ue.a);
-      wp $$4 = (wp)wr.a.parse($$3, $$0.c("Name")).getOrThrow();
-      alw $$5 = new alw($$1, $$4);
-      $$5.d($$0.q("Visible"));
-      $$5.a($$0.h("Value"));
-      $$5.b($$0.h("Max"));
-      $$5.a(bso.a.a($$0.l("Color")));
-      $$5.a(bso.b.a($$0.l("Overlay")));
-      $$5.a($$0.q("DarkenScreen"));
-      $$5.b($$0.q("PlayBossMusic"));
-      $$5.c($$0.q("CreateWorldFog"));
+   public void e(fdr $$0) {
+      List<zc<?>> $$1 = this.d($$0);
 
-      for (un $$7 : $$0.c("Players", 11)) {
-         $$5.a(uf.a($$7));
+      for (aro $$2 : this.b.ag().t()) {
+         for (zc<?> $$3 : $$1) {
+            $$2.f.b($$3);
+         }
       }
 
-      return $$5;
+      this.c.add($$0);
    }
 
-   public void c(are $$0) {
-      if (this.i.contains($$0.cF())) {
-         this.a($$0);
+   public List<zc<?>> f(fdr $$0) {
+      List<zc<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afh($$0, 1));
+
+      for (fdq $$2 : fdq.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aez($$2, $$0));
+         }
       }
+
+      return $$1;
    }
 
-   public void d(are $$0) {
-      super.b($$0);
+   public void g(fdr $$0) {
+      List<zc<?>> $$1 = this.f($$0);
+
+      for (aro $$2 : this.b.ag().t()) {
+         for (zc<?> $$3 : $$1) {
+            $$2.f.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(fdr $$0) {
+      int $$1 = 0;
+
+      for (fdq $$2 : fdq.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public ewf.a<fea> b() {
+      return new ewf.a<>(this::h, this::a, bax.n);
+   }
+
+   private fea h() {
+      fea $$0 = new fea(this);
+      this.a($$0::g);
+      return $$0;
+   }
+
+   private fea a(tw $$0, ju.a $$1) {
+      return this.h().b($$0, $$1);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

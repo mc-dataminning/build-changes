@@ -1,390 +1,320 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class gno extends auu<gno.c> implements AutoCloseable {
-   static final Logger d = LogUtils.getLogger();
-   public static final String a = "shaders";
-   public static final String b = "shaders/include/";
-   private static final akn e = akn.a("shaders");
-   private static final akn f = akn.a("post_effect");
-   public static final int c = 32768;
-   final hft g;
-   private final Consumer<Exception> h;
-   private gno.a i = new gno.a(gno.c.a);
+public class gno {
+   private static final int b = 96;
+   private static final List<gno.e> c = Lists.newArrayList(new gno.e[]{new gno.a(), new gno.b()});
+   public static final float a = 5000.0F;
+   private static int d = -1;
+   private static int e = -1;
+   private static long f = -1L;
+   private static boolean g = true;
 
-   public gno(hft $$0, Consumer<Exception> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
+   public static Vector4f a(fml $$0, float $$1, ghz $$2, int $$3, float $$4) {
+      euv $$5 = $$0.k();
+      bvs $$6 = $$0.g();
+      float $$19;
+      float $$20;
+      float $$21;
+      if ($$5 == euv.b) {
+         long $$7 = af.c();
+         int $$8 = $$2.t(jj.a((kc)$$0.b())).a().j();
+         if (f < 0L) {
+            d = $$8;
+            e = $$8;
+            f = $$7;
+         }
 
-   protected gno.c a(aup $$0, bpj $$1) {
-      Builder<aku, gnq> $$2 = ImmutableMap.builder();
-      Builder<gno.e, String> $$3 = ImmutableMap.builder();
-      Map<aku, aun> $$4 = $$0.b("shaders", $$0x -> a($$0x) || b($$0x));
+         int $$9 = d >> 16 & 0xFF;
+         int $$10 = d >> 8 & 0xFF;
+         int $$11 = d & 0xFF;
+         int $$12 = e >> 16 & 0xFF;
+         int $$13 = e >> 8 & 0xFF;
+         int $$14 = e & 0xFF;
+         float $$15 = azk.a((float)($$7 - f) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = azk.h($$15, (float)$$12, (float)$$9);
+         float $$17 = azk.h($$15, (float)$$13, (float)$$10);
+         float $$18 = azk.h($$15, (float)$$14, (float)$$11);
+         $$19 = $$16 / 255.0F;
+         $$20 = $$17 / 255.0F;
+         $$21 = $$18 / 255.0F;
+         if (d != $$8) {
+            d = $$8;
+            e = azk.d($$16) << 16 | azk.d($$17) << 8 | azk.d($$18);
+            f = $$7;
+         }
+      } else if ($$5 == euv.a) {
+         $$19 = 0.6F;
+         $$20 = 0.1F;
+         $$21 = 0.0F;
+         f = -1L;
+      } else if ($$5 == euv.c) {
+         $$19 = 0.623F;
+         $$20 = 0.734F;
+         $$21 = 0.785F;
+         f = -1L;
+      } else {
+         float $$28 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$28 = 1.0F - (float)Math.pow((double)$$28, 0.25);
+         int $$29 = $$2.a($$0.b(), $$1);
+         float $$30 = axu.j($$29);
+         float $$31 = axu.k($$29);
+         float $$32 = axu.l($$29);
+         float $$33 = azk.a(azk.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         diu $$34 = $$2.D_();
+         fcu $$35 = $$0.b().a(2.0, 2.0, 2.0).c(0.25);
+         fcu $$36 = ayk.a($$35, ($$3x, $$4x, $$5x) -> $$2.c().a(fcu.a($$34.a($$3x, $$4x, $$5x).a().e()), $$33));
+         $$19 = (float)$$36.a();
+         $$20 = (float)$$36.b();
+         $$21 = (float)$$36.c();
+         if ($$3 >= 4) {
+            float $$40 = azk.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$41 = new Vector3f($$40, 0.0F, 0.0F);
+            float $$42 = $$0.l().dot($$41);
+            if ($$42 < 0.0F) {
+               $$42 = 0.0F;
+            }
 
-      for (Entry<aku, aun> $$5 : $$4.entrySet()) {
-         aku $$6 = $$5.getKey();
-         fgg.a $$7 = fgg.a.a($$6);
-         if ($$7 != null) {
-            a($$6, $$5.getValue(), $$7, $$4, $$3);
-         } else if (a($$6)) {
-            a($$6, $$5.getValue(), $$2);
+            if ($$42 > 0.0F && $$2.c().a($$2.f($$1))) {
+               int $$43 = $$2.c().b($$2.f($$1));
+               $$42 *= axu.i($$43);
+               $$19 = $$19 * (1.0F - $$42) + axu.j($$43) * $$42;
+               $$20 = $$20 * (1.0F - $$42) + axu.k($$43) * $$42;
+               $$21 = $$21 * (1.0F - $$42) + axu.l($$43) * $$42;
+            }
+         }
+
+         $$19 += ($$30 - $$19) * $$28;
+         $$20 += ($$31 - $$20) * $$28;
+         $$21 += ($$32 - $$21) * $$28;
+         float $$44 = $$2.d($$1);
+         if ($$44 > 0.0F) {
+            float $$45 = 1.0F - $$44 * 0.5F;
+            float $$46 = 1.0F - $$44 * 0.4F;
+            $$19 *= $$45;
+            $$20 *= $$45;
+            $$21 *= $$46;
+         }
+
+         float $$47 = $$2.b($$1);
+         if ($$47 > 0.0F) {
+            float $$48 = 1.0F - $$47 * 0.5F;
+            $$19 *= $$48;
+            $$20 *= $$48;
+            $$21 *= $$48;
+         }
+
+         f = -1L;
+      }
+
+      float $$49 = ((float)$$0.b().e - (float)$$2.G_()) * $$2.k().e();
+      gno.e $$50 = a($$6, $$1);
+      if ($$50 != null) {
+         bwr $$51 = (bwr)$$6;
+         $$49 = $$50.a($$51, $$51.c($$50.a()), $$49, $$1);
+      }
+
+      if ($$49 < 1.0F && $$5 != euv.a && $$5 != euv.c) {
+         if ($$49 < 0.0F) {
+            $$49 = 0.0F;
+         }
+
+         $$49 *= $$49;
+         $$19 *= $$49;
+         $$20 *= $$49;
+         $$21 *= $$49;
+      }
+
+      if ($$4 > 0.0F) {
+         $$19 = $$19 * (1.0F - $$4) + $$19 * 0.7F * $$4;
+         $$20 = $$20 * (1.0F - $$4) + $$20 * 0.6F * $$4;
+         $$21 = $$21 * (1.0F - $$4) + $$21 * 0.6F * $$4;
+      }
+
+      float $$52;
+      if ($$5 == euv.b) {
+         if ($$6 instanceof gmw) {
+            $$52 = ((gmw)$$6).D();
+         } else {
+            $$52 = 1.0F;
+         }
+      } else {
+         label86: {
+            if ($$6 instanceof bwr $$54 && $$54.b(buy.p) && !$$54.b(buy.G)) {
+               $$52 = gnp.a($$54, $$1);
+               break label86;
+            }
+
+            $$52 = 0.0F;
          }
       }
 
-      Builder<aku, gnc> $$8 = ImmutableMap.builder();
-
-      for (Entry<aku, aun> $$9 : f.a($$0).entrySet()) {
-         b($$9.getKey(), $$9.getValue(), $$8);
+      if ($$19 != 0.0F && $$20 != 0.0F && $$21 != 0.0F) {
+         float $$57 = Math.min(1.0F / $$19, Math.min(1.0F / $$20, 1.0F / $$21));
+         $$19 = $$19 * (1.0F - $$52) + $$19 * $$57 * $$52;
+         $$20 = $$20 * (1.0F - $$52) + $$20 * $$57 * $$52;
+         $$21 = $$21 * (1.0F - $$52) + $$21 * $$57 * $$52;
       }
 
-      return new gno.c($$2.build(), $$3.build(), $$8.build());
+      return new Vector4f($$19, $$20, $$21, 1.0F);
    }
 
-   private static void a(aku $$0, aun $$1, fgg.a $$2, Map<aku, aun> $$3, Builder<gno.e, String> $$4) {
-      aku $$5 = $$2.c().b($$0);
-      ffx $$6 = a($$3, $$0);
-
-      try (Reader $$7 = $$1.e()) {
-         String $$8 = IOUtils.toString($$7);
-         $$4.put(new gno.e($$5, $$2), String.join("", $$6.a($$8)));
-      } catch (IOException var12) {
-         d.error("Failed to load shader source at {}", $$0, var12);
-      }
+   public static boolean a() {
+      return g = !g;
    }
 
-   private static ffx a(final Map<aku, aun> $$0, aku $$1) {
-      final aku $$2 = $$1.a(v::b);
-      return new ffx() {
-         private final Set<aku> c = new ObjectArraySet();
+   @Nullable
+   private static gno.e a(bvs $$0, float $$1) {
+      return $$0 instanceof bwr $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
 
-         @Override
-         public String a(boolean $$0x, String $$1) {
-            aku $$2;
-            try {
-               if ($$0) {
-                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> v.c($$1x + $$1)));
-               } else {
-                  $$2 = aku.a($$1).f("shaders/include/");
-               }
-            } catch (aa var8) {
-               gno.d.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
-               return "#error " + var8.getMessage();
-            }
-
-            if (!this.c.add($$2)) {
-               return null;
+   public static gnn a(fml $$0, gno.d $$1, Vector4f $$2, float $$3, boolean $$4, float $$5) {
+      if (!g) {
+         return gnn.a;
+      } else {
+         euv $$6 = $$0.k();
+         bvs $$7 = $$0.g();
+         gno.c $$8 = new gno.c($$1);
+         gno.e $$9 = a($$7, $$5);
+         if ($$6 == euv.a) {
+            if ($$7.U_()) {
+               $$8.b = -8.0F;
+               $$8.c = $$3 * 0.5F;
+            } else if ($$7 instanceof bwr && ((bwr)$$7).b(buy.l)) {
+               $$8.b = 0.0F;
+               $$8.c = 5.0F;
             } else {
-               try {
-                  String var5;
-                  try (Reader $$6 = $$0.get($$2).e()) {
-                     var5 = IOUtils.toString($$6);
-                  }
-
-                  return var5;
-               } catch (IOException var10) {
-                  gno.d.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
-                  return "#error " + var10.getMessage();
+               $$8.b = 0.25F;
+               $$8.c = 1.0F;
+            }
+         } else if ($$6 == euv.c) {
+            if ($$7.U_()) {
+               $$8.b = -8.0F;
+               $$8.c = $$3 * 0.5F;
+            } else {
+               $$8.b = 0.0F;
+               $$8.c = 2.0F;
+            }
+         } else if ($$9 != null) {
+            bwr $$10 = (bwr)$$7;
+            buw $$11 = $$10.c($$9.a());
+            if ($$11 != null) {
+               $$9.a($$8, $$10, $$11, $$3, $$5);
+            }
+         } else if ($$6 == euv.b) {
+            $$8.b = -8.0F;
+            $$8.c = 96.0F;
+            if ($$7 instanceof gmw $$12) {
+               $$8.c = $$8.c * Math.max(0.25F, $$12.D());
+               js<dis> $$13 = $$12.dV().t($$12.dv());
+               if ($$13.a(awy.aa)) {
+                  $$8.c *= 0.85F;
                }
             }
-         }
-      };
-   }
 
-   private static void a(aku $$0, aun $$1, Builder<aku, gnq> $$2) {
-      aku $$3 = e.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         gnq $$6 = (gnq)gnq.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-         $$2.put($$3, $$6);
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse shader config at {}", $$0, var9);
-      }
-   }
-
-   private static void b(aku $$0, aun $$1, Builder<aku, gnc> $$2) {
-      aku $$3 = f.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         $$2.put($$3, (gnc)gnc.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse post chain at {}", $$0, var9);
-      }
-   }
-
-   private static boolean a(aku $$0) {
-      return $$0.a().endsWith(".json");
-   }
-
-   private static boolean b(aku $$0) {
-      return fgg.a.a($$0) != null || $$0.a().endsWith(".glsl");
-   }
-
-   protected void a(gno.c $$0, aup $$1, bpj $$2) {
-      gno.a $$3 = new gno.a($$0);
-      Map<gnp, gno.b> $$4 = new HashMap<>();
-      Set<gnp> $$5 = new HashSet<>(gmi.a());
-
-      for (gnc $$6 : $$0.d.values()) {
-         for (gnc.e $$7 : $$6.b()) {
-            $$5.add($$7.a());
-         }
-      }
-
-      for (gnp $$8 : $$5) {
-         try {
-            $$3.c.put($$8, Optional.of($$3.b($$8)));
-         } catch (gno.b var11) {
-            $$4.put($$8, var11);
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         $$3.close();
-         throw new RuntimeException(
-            "Failed to load required shader programs:\n"
-               + $$4.entrySet().stream().map($$0x -> " - " + $$0x.getKey() + ": " + ((gno.b)$$0x.getValue()).getMessage()).collect(Collectors.joining("\n"))
-         );
-      } else {
-         this.i.close();
-         this.i = $$3;
-      }
-   }
-
-   @Override
-   public String c() {
-      return "Shader Loader";
-   }
-
-   private void a(Exception $$0) {
-      if (!this.i.f) {
-         this.h.accept($$0);
-         this.i.f = true;
-      }
-   }
-
-   public void a(aus $$0, gnp... $$1) throws IOException, gno.b {
-      for (gnp $$2 : $$1) {
-         aun $$3 = $$0.getResourceOrThrow(e.a($$2.a()));
-
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = JsonParser.parseReader($$4);
-            gnq $$6 = (gnq)gnq.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-            gnn $$7 = $$6.e().a($$2.c());
-            fgg $$8 = this.a($$0, $$6.a(), fgg.a.a, $$7);
-            fgg $$9 = this.a($$0, $$6.b(), fgg.a.b, $$7);
-            gmh $$10 = a($$2, $$6, $$8, $$9);
-            this.i.c.put($$2, Optional.of($$10));
-         }
-      }
-   }
-
-   private fgg a(aus $$0, aku $$1, fgg.a $$2, gnn $$3) throws IOException, gno.b {
-      aku $$4 = $$2.c().a($$1);
-
-      fgg var10;
-      try (Reader $$5 = $$0.getResourceOrThrow($$4).e()) {
-         String $$6 = IOUtils.toString($$5);
-         String $$7 = ffx.a($$6, $$3);
-         fgg $$8 = fgg.a($$1, $$2, $$7);
-         this.i.d.put(new gno.d($$1, $$2, $$3), $$8);
-         var10 = $$8;
-      }
-
-      return var10;
-   }
-
-   @Nullable
-   public gmh a(gnp $$0) {
-      try {
-         return this.i.a($$0);
-      } catch (gno.b var3) {
-         d.error("Failed to load shader program: {}", $$0, var3);
-         this.i.c.put($$0, Optional.empty());
-         this.a(var3);
-         return null;
-      }
-   }
-
-   public gmh b(gnp $$0) throws gno.b {
-      gmh $$1 = this.i.a($$0);
-      if ($$1 == null) {
-         throw new gno.b("Shader '" + $$0 + "' could not be found");
-      } else {
-         return $$1;
-      }
-   }
-
-   static gmh a(gnp $$0, gnq $$1, fgg $$2, fgg $$3) throws gno.b {
-      gmh $$4 = gmh.a($$2, $$3, $$0.b());
-      $$4.a($$1.d(), $$1.c());
-      return $$4;
-   }
-
-   @Nullable
-   public gnb a(aku $$0, Set<aku> $$1) {
-      try {
-         return this.i.a($$0, $$1);
-      } catch (gno.b var4) {
-         d.error("Failed to load post chain: {}", $$0, var4);
-         this.i.e.put($$0, Optional.empty());
-         this.a(var4);
-         return null;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.i.close();
-   }
-
-   class a implements AutoCloseable {
-      private final gno.c b;
-      final Map<gnp, Optional<gmh>> c = new HashMap<>();
-      final Map<gno.d, fgg> d = new HashMap<>();
-      final Map<aku, Optional<gnb>> e = new HashMap<>();
-      boolean f;
-
-      a(final gno.c $$0) {
-         this.b = $$0;
-      }
-
-      @Nullable
-      public gmh a(gnp $$0) throws gno.b {
-         Optional<gmh> $$1 = this.c.get($$0);
-         if ($$1 != null) {
-            return $$1.orElse(null);
-         } else {
-            gmh $$2 = this.b($$0);
-            this.c.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
-
-      gmh b(gnp $$0) throws gno.b {
-         gnq $$1 = this.b.b.get($$0.a());
-         if ($$1 == null) {
-            throw new gno.b("Could not find program with id: " + $$0.a());
-         } else {
-            gnn $$2 = $$1.e().a($$0.c());
-            fgg $$3 = this.a($$1.a(), fgg.a.a, $$2);
-            fgg $$4 = this.a($$1.b(), fgg.a.b, $$2);
-            return gno.a($$0, $$1, $$3, $$4);
-         }
-      }
-
-      private fgg a(aku $$0, fgg.a $$1, gnn $$2) throws gno.b {
-         gno.d $$3 = new gno.d($$0, $$1, $$2);
-         fgg $$4 = this.d.get($$3);
-         if ($$4 == null) {
-            $$4 = this.a($$3);
-            this.d.put($$3, $$4);
+            if ($$8.c > $$3) {
+               $$8.c = $$3;
+               $$8.d = fhe.b;
+            }
+         } else if ($$4) {
+            $$8.b = $$3 * 0.05F;
+            $$8.c = Math.min($$3, 192.0F) * 0.5F;
+         } else if ($$1 == gno.d.a) {
+            $$8.b = 0.0F;
+            $$8.c = $$3;
+            $$8.d = fhe.b;
+         } else if ($$1 == gno.d.b) {
+            float $$14 = azk.a($$3 / 10.0F, 4.0F, 64.0F);
+            $$8.b = $$3 - $$14;
+            $$8.c = $$3;
+            $$8.d = fhe.b;
          }
 
-         return $$4;
+         return new gnn($$8.b, $$8.c, $$8.d, $$2.x, $$2.y, $$2.z, $$2.w);
       }
+   }
 
-      private fgg a(gno.d $$0) throws gno.b {
-         String $$1 = this.b.c.get(new gno.e($$0.a, $$0.b));
-         if ($$1 == null) {
-            throw new gno.b("Could not find shader: " + $$0);
-         } else {
-            String $$2 = ffx.a($$1, $$0.c);
-            return fgg.a($$0.a, $$0.b, $$2);
-         }
-      }
-
-      @Nullable
-      public gnb a(aku $$0, Set<aku> $$1) throws gno.b {
-         Optional<gnb> $$2 = this.e.get($$0);
-         if ($$2 != null) {
-            return $$2.orElse(null);
-         } else {
-            gnb $$3 = this.b($$0, $$1);
-            this.e.put($$0, Optional.of($$3));
-            return $$3;
-         }
-      }
-
-      private gnb b(aku $$0, Set<aku> $$1) throws gno.b {
-         gnc $$2 = this.b.d.get($$0);
-         if ($$2 == null) {
-            throw new gno.b("Could not find post chain with id: " + $$0);
-         } else {
-            return gnb.a($$2, gno.this.g, gno.this, $$1);
-         }
+   static class a implements gno.e {
+      @Override
+      public js<buu> a() {
+         return buy.o;
       }
 
       @Override
-      public void close() {
-         RenderSystem.assertOnRenderThread();
-         this.c.values().forEach($$0 -> $$0.ifPresent(gmh::close));
-         this.d.values().forEach(fgg::close);
-         this.c.clear();
-         this.d.clear();
-         this.e.clear();
+      public void a(gno.c $$0, bwr $$1, buw $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : azk.h(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == gno.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else if ($$0.a == gno.d.b) {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
       }
    }
 
-   public static class b extends Exception {
-      public b(String $$0) {
-         super($$0);
+   static class b implements gno.e {
+      @Override
+      public js<buu> a() {
+         return buy.G;
       }
-   }
-
-   public static record c(Map<aku, gnq> b, Map<gno.e, String> c, Map<aku, gnc> d) {
-      public static final gno.c a = new gno.c(Map.of(), Map.of(), Map.of());
-
-      public Map<aku, gnq> a() {
-         return this.b;
-      }
-
-      public Map<gno.e, String> b() {
-         return this.c;
-      }
-
-      public Map<aku, gnc> c() {
-         return this.d;
-      }
-   }
-
-   static record d(aku a, fgg.a b, gnn c) {
 
       @Override
-      public String toString() {
-         String $$0 = this.a + " (" + this.b + ")";
-         return !this.c.c() ? $$0 + " with " + this.c : $$0;
+      public void a(gno.c $$0, bwr $$1, buw $$2, float $$3, float $$4) {
+         float $$5 = azk.h($$2.a($$1, $$4), $$3, 15.0F);
+
+         $$0.b = switch ($$0.a) {
+            case a -> 0.0F;
+            case b -> $$5 * 0.75F;
+         };
+         $$0.c = $$5;
+      }
+
+      @Override
+      public float a(bwr $$0, buw $$1, float $$2, float $$3) {
+         return 1.0F - $$1.a($$0, $$3);
       }
    }
 
-   static record e(aku a, fgg.a b) {
-      @Override
-      public String toString() {
-         return this.a + " (" + this.b + ")";
+   static class c {
+      public final gno.d a;
+      public float b;
+      public float c;
+      public fhe d = fhe.a;
+
+      public c(gno.d $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      js<buu> a();
+
+      void a(gno.c var1, bwr var2, buw var3, float var4, float var5);
+
+      default boolean a(bwr $$0, float $$1) {
+         return $$0.b(this.a());
+      }
+
+      default float a(bwr $$0, buw $$1, float $$2, float $$3) {
+         buw $$4 = $$0.c(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
+         }
+
+         return $$2;
       }
    }
 }

@@ -1,42 +1,49 @@
-public class gkd extends gkg {
-   private final gdv a;
-   private final gnh b = gnh.j(gsw.a);
-
-   gkd(ggy $$0, double $$1, double $$2, double $$3) {
+public class gkd extends gmh {
+   gkd(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.a = new gdi(fmg.Q().aS().a(ggb.aG));
-      this.u = 0.0F;
-      this.t = 30;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public gkk b() {
-      return gkk.d;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k += 0.002;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.85F;
+         this.k *= 0.85F;
+         this.l *= 0.85F;
+         if (!this.c.b_(jj.a(this.g, this.h, this.i)).a(axf.a)) {
+            this.k();
+         }
+      }
    }
 
    @Override
-   public void a(fgr $$0, gmx $$1, flo $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * ayz.a($$4 * (float) Math.PI);
-      int $$6 = axk.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      fgv $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hfh.d, $$6);
-      $$0.b();
+   public gll b() {
+      return gll.b;
    }
 
-   @Override
-   public void a(fgv $$0, flo $$1, float $$2) {
-   }
+   public static class a implements glk<lz> {
+      private final gmc a;
 
-   public static class a implements gkj<lx> {
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkd($$1, $$2, $$3, $$4);
+      public a(gmc $$0) {
+         this.a = $$0;
+      }
+
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkd $$8 = new gkd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

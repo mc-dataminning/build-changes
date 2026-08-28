@@ -1,42 +1,19 @@
-public class fuk extends fvi {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final wp c = wp.c("credits_and_attribution.screen.title");
-   private static final wp d = wp.c("credits_and_attribution.button.credits");
-   private static final wp s = wp.c("credits_and_attribution.button.attribution");
-   private static final wp u = wp.c("credits_and_attribution.button.licenses");
-   private final fvi v;
-   private final fte w = new fte(this);
+import com.google.common.collect.ImmutableList;
 
-   public fuk(fvi $$0) {
-      super(c);
-      this.v = $$0;
+public interface fuk {
+   default void a(fuj $$0, wv $$1) {
+      this.a($$0, fum.a($$1.getString()));
    }
 
-   @Override
-   protected void aR_() {
-      this.w.a(c, this.p);
-      fti $$0 = this.w.c(fti.d()).a(8);
-      $$0.c().b();
-      $$0.a(fpq.a(d, $$0x -> this.m()).a(210).a());
-      $$0.a(fpq.a(s, fuf.b(this, axv.d)).a(210).a());
-      $$0.a(fpq.a(u, fuf.b(this, axv.e)).a(210).a());
-      this.w.b(fpq.a(wo.d, $$0x -> this.aO_()).a(200).a());
-      this.w.a();
-      this.w.a(this::c);
+   default void a(fuj $$0, String $$1) {
+      this.a($$0, fum.a($$1));
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
+   default void a(fuj $$0, wv... $$1) {
+      this.a($$0, fum.a(ImmutableList.copyOf($$1)));
    }
 
-   private void m() {
-      this.m.a(new fvl(false, () -> this.m.a(this)));
-   }
+   void a(fuj var1, fum<?> var2);
 
-   @Override
-   public void aO_() {
-      this.m.a(this.v);
-   }
+   fuk a();
 }

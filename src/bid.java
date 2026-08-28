@@ -4,31 +4,26 @@ import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
 
 public class bid extends DataFix {
    private final String a;
-   private final UnaryOperator<String> b;
+   private final String b;
+   private final String c;
 
-   public bid(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bid(Schema $$0, boolean $$1, String $$2, String $$3, String $$4) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   protected TypeRewriteRule makeRule() {
+   public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          this.a,
-         this.getInputSchema().getType(bic.c),
+         this.getInputSchema().getType(biq.e),
          $$0 -> $$0.update(
-               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
+               DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get(this.b).result().map($$1 -> $$0x.set(this.c, $$1).remove(this.b)), $$0x)
             )
       );
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bju::a).map(this.b).map($$0::createString);
-      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
    }
 }

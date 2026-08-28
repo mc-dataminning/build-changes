@@ -1,63 +1,45 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
 public class ems extends emq {
-   public static final MapCodec<ems> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eei.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eei.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ems::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final eei d;
-   private final eei e;
-   private final int f;
+   public static final MapCodec<ems> a = MapCodec.unit(() -> ems.b);
+   public static final ems b = new ems();
 
-   private ems(eei $$0, eei $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static ems a(eei $$0, eei $$1, int $$2) {
-      return new ems($$0, $$1, $$2);
-   }
-
-   public static ems a(eei $$0, eei $$1) {
-      return a($$0, $$1, 0);
+   @Override
+   protected emr<?> a() {
+      return emr.a;
    }
 
    @Override
-   public int a(azh $$0, eel $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return ayz.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + ayz.b($$0, 0, $$6) + ayz.b($$0, 0, $$5);
+   public void a(emq.a $$0) {
+      azs $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            jj $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dty.d);
+            }
          }
-      }
-   }
 
-   @Override
-   public emr<?> a() {
-      return emr.e;
-   }
+         if ($$1.a(3) > 0) {
+            jj $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dty.f);
+            }
+         }
 
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+         if ($$1.a(3) > 0) {
+            jj $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dty.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jj $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dty.c);
+            }
+         }
+      });
    }
 }

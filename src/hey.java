@@ -1,32 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hey implements her {
-   private final gfg a;
+public record hey() implements hfi<cwq.a> {
+   public static final hfi.a<hey, cwq.a> a = hfi.a.a(MapCodec.unit(new hey()), cwq.a.d);
 
-   public hey(gfg $$0) {
-      this.a = $$0;
+   public cwq.a a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      daa $$5 = $$0.a(kx.P);
+      if ($$5 == null || $$5.b()) {
+         return cwq.a.a;
+      } else {
+         return $$5.a(cyc.vx) ? cwq.a.c : cwq.a.b;
+      }
    }
 
    @Override
-   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
-      $$1.a();
-      $$1.b(1.0F, -1.0F, -1.0F);
-      fgv $$6 = gub.a($$2, this.a.a(gfg.a), false, $$5);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
-   }
-
-   public static record a() implements hev.a {
-      public static final MapCodec<hey.a> a = MapCodec.unit(new hey.a());
-
-      @Override
-      public MapCodec<hey.a> a() {
-         return a;
-      }
-
-      @Override
-      public hev<?> a(gfy $$0) {
-         return new hey(new gfg($$0.a(ggb.dn)));
-      }
+   public hfi.a<hey, cwq.a> a() {
+      return a;
    }
 }

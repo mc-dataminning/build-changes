@@ -1,270 +1,184 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public final class aku implements Comparable<aku> {
-   public static final Codec<aku> a = Codec.STRING.comapFlatMap(aku::d, aku::toString).stable();
-   public static final yn<ByteBuf, aku> b = yl.o.a(aku::a, aku::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String h;
-   private final String i;
+public abstract class aku<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   private aku(String $$0, String $$1) {
-      assert j($$0);
-
-      assert i($$1);
-
-      this.h = $$0;
-      this.i = $$1;
+   protected aku(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
-   private static aku d(String $$0, String $$1) {
-      return new aku(e($$0, $$1), f($$0, $$1));
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   public static aku a(String $$0, String $$1) {
-      return d($$0, $$1);
+   public T emptyMap() {
+      return (T)this.a.emptyMap();
    }
 
-   public static aku a(String $$0) {
-      return a($$0, ':');
+   public T emptyList() {
+      return (T)this.a.emptyList();
    }
 
-   public static aku b(String $$0) {
-      return new aku("minecraft", f("minecraft", $$0));
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
    }
 
-   @Nullable
-   public static aku c(String $$0) {
-      return b($$0, ':');
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
    }
 
-   @Nullable
-   public static aku b(String $$0, String $$1) {
-      return j($$0) && i($$1) ? new aku($$0, $$1) : null;
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
    }
 
-   public static aku a(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return d($$4, $$3);
-         } else {
-            return b($$3);
-         }
-      } else {
-         return b($$0);
-      }
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
    }
 
-   @Nullable
-   public static aku b(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if (!i($$3)) {
-            return null;
-         } else if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return j($$4) ? new aku($$4, $$3) : null;
-         } else {
-            return new aku("minecraft", $$3);
-         }
-      } else {
-         return i($$0) ? new aku("minecraft", $$0) : null;
-      }
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
    }
 
-   public static DataResult<aku> d(String $$0) {
-      try {
-         return DataResult.success(a($$0));
-      } catch (aa var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
    }
 
-   public String a() {
-      return this.i;
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
    }
 
-   public String b() {
-      return this.h;
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
    }
 
-   public aku e(String $$0) {
-      return new aku(this.h, f(this.h, $$0));
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
    }
 
-   public aku a(UnaryOperator<String> $$0) {
-      return this.e($$0.apply(this.i));
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
    }
 
-   public aku f(String $$0) {
-      return this.e($$0 + this.i);
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
    }
 
-   public aku g(String $$0) {
-      return this.e(this.i + $$0);
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
    }
 
-   @Override
-   public String toString() {
-      return this.h + ":" + this.i;
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aku $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
-      }
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * this.h.hashCode() + this.i.hashCode();
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
    }
 
-   public int a(aku $$0) {
-      int $$1 = this.i.compareTo($$0.i);
-      if ($$1 == 0) {
-         $$1 = this.h.compareTo($$0.h);
-      }
-
-      return $$1;
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
    }
 
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
    }
 
-   public String d() {
-      return this.h + "." + this.i;
+   public DataResult<T> mergeToMap(T $$0, Map<T, T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
    }
 
-   public String e() {
-      return this.h.equals("minecraft") ? this.i : this.d();
+   public DataResult<T> mergeToPrimitive(T $$0, T $$1) {
+      return this.a.mergeToPrimitive($$0, $$1);
    }
 
-   public String h(String $$0) {
-      return $$0 + "." + this.d();
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
    }
 
-   public String c(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
    }
 
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
+   public T createMap(Map<T, T> $$0) {
+      return (T)this.a.createMap($$0);
    }
 
-   public static aku a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return a($$2);
-      } catch (aa var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
-      }
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
    }
 
-   public static aku b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return a($$2);
-         } catch (aa var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
    }
 
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
    }
 
-   public static boolean i(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
    }
 
-   public static boolean j(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
    }
 
-   private static String e(String $$0, String $$1) {
-      if (!j($$0)) {
-         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
    }
 
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
    }
 
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
    }
 
-   private static String f(String $$0, String $$1) {
-      if (!i($$1)) {
-         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
    }
 
-   public static class a implements JsonDeserializer<aku>, JsonSerializer<aku> {
-      public aku a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return aku.a(ayp.a($$0, "location"));
-      }
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
 
-      public JsonElement a(aku $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

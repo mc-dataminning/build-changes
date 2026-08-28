@@ -4,37 +4,28 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bnc extends bju {
+public class bnc extends bkj {
    public bnc(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:boat");
-      $$1.remove("minecraft:chest_boat");
-      this.registerSimple($$1, "minecraft:oak_boat");
-      this.registerSimple($$1, "minecraft:spruce_boat");
-      this.registerSimple($$1, "minecraft:birch_boat");
-      this.registerSimple($$1, "minecraft:jungle_boat");
-      this.registerSimple($$1, "minecraft:acacia_boat");
-      this.registerSimple($$1, "minecraft:cherry_boat");
-      this.registerSimple($$1, "minecraft:dark_oak_boat");
-      this.registerSimple($$1, "minecraft:mangrove_boat");
-      this.registerSimple($$1, "minecraft:bamboo_raft");
-      this.a($$1, "minecraft:oak_chest_boat");
-      this.a($$1, "minecraft:spruce_chest_boat");
-      this.a($$1, "minecraft:birch_chest_boat");
-      this.a($$1, "minecraft:jungle_chest_boat");
-      this.a($$1, "minecraft:acacia_chest_boat");
-      this.a($$1, "minecraft:cherry_chest_boat");
-      this.a($$1, "minecraft:dark_oak_chest_boat");
-      this.a($$1, "minecraft:mangrove_chest_boat");
-      this.a($$1, "minecraft:bamboo_chest_raft");
+      $$0.registerSimple($$1, "minecraft:breeze");
+      $$0.registerSimple($$1, "minecraft:wind_charge");
+      $$0.registerSimple($$1, "minecraft:breeze_wind_charge");
       return $$1;
    }
 
-   private void a(Map<String, Supplier<TypeTemplate>> $$0, String $$1) {
-      this.register($$0, $$1, $$0x -> DSL.optionalFields("Items", DSL.list(bic.t.in(this))));
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1,
+         "minecraft:trial_spawner",
+         () -> DSL.optionalFields(
+               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", biq.C.in($$0)))), "spawn_data", DSL.fields("entity", biq.C.in($$0))
+            )
+      );
+      return $$1;
    }
 }

@@ -1,52 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class egi extends egu<ejf> {
-   public egi(Codec<ejf> $$0) {
-      super($$0);
+public class egi extends egk {
+   public static final Codec<egi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egk.d.forGetter($$0x -> $$0x), bst.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), egi.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, egi::new)
+   );
+   public final bst b;
+   public final egi.a c;
+
+   public egi(float $$0, enn $$1, bst $$2, eff $$3, egl $$4, jw<dku> $$5, bst $$6, egi.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(egw<ejf> $$0) {
-      azh $$1 = $$0.d();
-      dhy $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      Optional<dke> $$4 = mb.e.a(awp.at, $$1).map(jr::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
+   public egi(egk $$0, bst $$1, egi.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   protected abstract boolean a(dha var1, azh var2, ji var3, dxq var4);
+   public static class a {
+      public static final Codec<egi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bst.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bst.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ays.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bst.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, egi.a::new)
+      );
+      public final bst b;
+      public final bst c;
+      public final int d;
+      public final bst e;
+      public final float f;
+      public final float g;
 
-   protected boolean b(dha $$0, azh $$1, ji $$2, dxq $$3) {
-      ji $$4 = $$2.d();
-      dxq $$5 = $$0.a_($$2);
-      if (($$5.a(dkg.J) || $$5.a(awp.aw)) && $$0.a_($$4).a(dkg.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            mb.e.a(awp.aw, $$1).map(jr::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dkg.nx.m().b(drg.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (jn $$6 : jn.c.a) {
-            if ($$1.i() < 0.2F) {
-               ji $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dkg.J)) {
-                  mb.e.a(awp.au, $$1).map(jr::a).ifPresent($$3x -> {
-                     dxq $$4x = $$3x.m();
-                     if ($$4x.b(djp.d)) {
-                        $$4x = $$4x.b(djp.d, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
+      public a(bst $$0, bst $$1, int $$2, bst $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

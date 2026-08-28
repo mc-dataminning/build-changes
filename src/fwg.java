@@ -1,48 +1,96 @@
-public class fwg extends fvx<ctd> {
-   private static final aku G = aku.b("container/brewing_stand/fuel_length");
-   private static final aku H = aku.b("container/brewing_stand/brew_progress");
-   private static final aku I = aku.b("container/brewing_stand/bubbles");
-   private static final aku J = aku.b("textures/gui/container/brewing_stand.png");
-   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
+import javax.annotation.Nullable;
 
-   public fwg(ctd $$0, cpq $$1, wp $$2) {
-      super($$0, $$1, $$2);
+public class fwg extends fwf {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final wv c = wv.c("selectWorld.allowCommands");
+   private static final wv d = wv.c("selectWorld.gameMode");
+   private static final wv s = wv.c("lanServer.otherPlayers");
+   private static final wv u = wv.c("lanServer.port");
+   private static final wv v = wv.a("lanServer.port.unavailable", 1024, 65535);
+   private static final wv w = wv.a("lanServer.port.invalid", 1024, 65535);
+   private static final int x = 16733525;
+   private final fwf y;
+   private dhm z = dhm.a;
+   private boolean A;
+   private int B = azb.a();
+   @Nullable
+   private fqw C;
+
+   public fwg(fwf $$0) {
+      super(wv.c("lanServer.title"));
+      this.y = $$0;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   protected void aN_() {
+      hld $$0 = this.m.V();
+      this.z = $$0.u();
+      this.A = $$0.aZ().m();
+      this.c(fqu.a(dhm::e).a(dhm.a, dhm.d, dhm.b, dhm.c).a(this.z).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.z = $$1x));
+      this.c(fqu.b(this.A).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.A = $$1x));
+      fqn $$1 = fqn.a(wv.c("lanServer.start"), $$1x -> {
+         this.m.a(null);
+         wv $$2;
+         if ($$0.a(this.z, this.A, this.B)) {
+            $$2 = aoh.a(this.B);
+         } else {
+            $$2 = wv.c("commands.publish.failed");
+         }
+
+         this.m.m.d().a($$2);
+         this.m.d();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
+      this.C = new fqw(this.p, this.n / 2 - 75, 160, 150, 20, wv.c("lanServer.port"));
+      this.C.b($$1x -> {
+         wv $$2 = this.a($$1x);
+         this.C.c(wv.b(this.B + "").a(n.i));
+         if ($$2 == null) {
+            this.C.m(14737632);
+            this.C.a(null);
+            $$1.j = true;
+         } else {
+            this.C.m(16733525);
+            this.C.a(fry.a($$2));
+            $$1.j = false;
+         }
+      });
+      this.C.c(wv.b(this.B + "").a(n.i));
+      this.c(this.C);
+      this.c($$1);
+      this.c(fqn.a(wu.e, $$0x -> this.aK_()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
    }
 
    @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
+   public void aK_() {
+      this.m.a(this.y);
+   }
+
+   @Nullable
+   private wv a(String $$0) {
+      if ($$0.isBlank()) {
+         this.B = azb.a();
+         return null;
+      } else {
+         try {
+            this.B = Integer.parseInt($$0);
+            if (this.B < 1024 || this.B > 65535) {
+               return w;
+            } else {
+               return !azb.a(this.B) ? v : null;
+            }
+         } catch (NumberFormatException var3) {
+            this.B = azb.a();
+            return w;
+         }
+      }
+   }
+
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fpc $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gnh::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = this.z.l();
-      int $$7 = ayz.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(gnh::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
-
-      int $$8 = this.z.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(gnh::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
-
-         $$9 = K[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(gnh::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
-      }
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      $$0.a(this.p, s, this.n / 2, 82, 16777215);
+      $$0.a(this.p, u, this.n / 2, 142, 16777215);
    }
 }

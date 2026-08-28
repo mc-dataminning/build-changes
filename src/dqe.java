@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqe extends dke {
+public class dqe extends dle {
    public static final MapCodec<dqe> a = b(dqe::new);
+   private static final fdo b = dku.b(12.0, 0.0, 3.0);
 
    @Override
    public MapCodec<dqe> a() {
       return a;
    }
 
-   public dqe(dxp.d $$0) {
+   public dqe(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean f_(dxq $$0) {
-      return true;
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b;
    }
 
    @Override
-   protected int a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
-      return 15;
+   protected boolean b(dym $$0, dgv $$1, jj $$2) {
+      return $$0.a(awz.aO) || $$0.a(dkw.ek) || super.b($$0, $$1, $$2);
    }
 }

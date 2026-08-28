@@ -1,44 +1,23 @@
 import java.util.List;
+import java.util.UUID;
 
-public record adx(List<adx.a> b, boolean c) implements yw<abl> {
-   public static final yn<wa, adx> a = yn.a(adx.a.c.a(yl.a()), adx::b, yl.b, adx::e, adx::new);
+public record adx(List<UUID> b) implements zc<abr> {
+   public static final yt<vr, adx> a = zc.a(adx::a, adx::new);
+
+   private adx(vr $$0) {
+      this($$0.a(km.g));
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b, km.g);
+   }
 
    @Override
-   public yy<adx> a() {
-      return agd.aj;
+   public ze<adx> a() {
+      return agk.af;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public static record a(ddc d, byte e) {
-      public static final byte a = 1;
-      public static final byte b = 2;
-      public static final yn<wa, adx.a> c = yn.a(ddc.a, adx.a::c, yl.c, adx.a::d, adx.a::new);
-
-      public a(ddc $$0, boolean $$1, boolean $$2) {
-         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
-      }
-
-      public boolean a() {
-         return (this.e & 1) != 0;
-      }
-
-      public boolean b() {
-         return (this.e & 2) != 0;
-      }
-
-      public ddc c() {
-         return this.d;
-      }
-
-      public byte d() {
-         return this.e;
-      }
    }
 }

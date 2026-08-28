@@ -1,82 +1,169 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gnq(aku b, aku c, List<gnq.a> d, List<gnq.b> e, gnn f) {
-   public static final Codec<gnq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aku.a.fieldOf("vertex").forGetter(gnq::a),
-               aku.a.fieldOf("fragment").forGetter(gnq::b),
-               gnq.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gnq::c),
-               gnq.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gnq::d),
-               gnn.b.optionalFieldOf("defines", gnn.a).forGetter(gnq::e)
-            )
-            .apply($$0, gnq::new)
-   );
+public class gnq extends avf<gnq.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ald b = ald.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public aku a() {
-      return this.b;
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   public aku b() {
-      return this.c;
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   public List<gnq.a> c() {
-      return this.d;
+   public void d() {
+      this.d = true;
    }
 
-   public List<gnq.b> d() {
-      return this.e;
+   public void e() {
+      this.e = true;
    }
 
-   public gnn e() {
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
       return this.f;
    }
 
-   public static record a(String b) {
-      public static final Codec<gnq.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gnq.a::a)).apply($$0, gnq.a::new));
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
 
-      public String a() {
-         return this.b;
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected gnq.a a(ava $$0, bqb $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         try (bqg $$6 = $$1.d("compile_regex")) {
+            a($$5.getAsJsonArray("renderer"), $$2);
+            a($$5.getAsJsonArray("version"), $$3);
+            a($$5.getAsJsonArray("vendor"), $$4);
+         }
+      }
+
+      return new gnq.a($$2, $$3, $$4);
+   }
+
+   protected void a(gnq.a $$0, ava $$1, bqb $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(ava $$0, bqb $$1) {
+      try {
+         JsonObject var4;
+         try (
+            bqg $$2 = $$1.d("parse_json");
+            Reader $$3 = $$0.openAsReader(b);
+         ) {
+            var4 = JsonParser.parseReader($$3).getAsJsonObject();
+         }
+
+         return var4;
+      } catch (JsonSyntaxException | IOException var10) {
+         a.warn("Failed to load GPU warnlist");
+         return null;
       }
    }
 
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<gnq.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(gnq.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(gnq.b::b),
-                     Codec.INT.fieldOf("count").forGetter(gnq.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gnq.b::d)
-                  )
-                  .apply($$0, gnq.b::new)
-         )
-         .validate(gnq.b::a);
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-      private static DataResult<gnq.b> a(gnq.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public String a() {
-         return this.b;
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
       }
 
-      public String b() {
-         return this.c;
-      }
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, fgh.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
 
-      public int c() {
-         return this.d;
-      }
+         String $$2 = a(this.b, fgh.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
 
-      public List<Float> d() {
-         return this.e;
+         String $$3 = a(this.c, fgh.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

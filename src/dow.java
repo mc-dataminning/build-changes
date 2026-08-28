@@ -1,79 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dow extends dke implements drl {
-   public static final MapCodec<dow> a = b(dow::new);
-   public static final int b = 15;
-   public static final dyq c = dyg.aS;
-   public static final dyh d = dyg.I;
-   public static final ToIntFunction<dxq> e = $$0 -> $$0.c(c);
+public class dow extends dku {
+   public static final MapCodec<dow> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(md.e.q().fieldOf("host").forGetter(dow::b), t()).apply($$0, dow::new));
+   private final dku b;
+   private static final Map<dku, dku> c = Maps.newIdentityHashMap();
+   private static final Map<dym, dym> d = Maps.newIdentityHashMap();
+   private static final Map<dym, dym> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dow> a() {
+   public MapCodec<? extends dow> a() {
       return a;
    }
 
-   public dow(dxp.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
+   public dow(dku $$0, dyl.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c, d);
+   public dku b() {
+      return this.b;
    }
 
-   @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C && $$3.gI()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bsy.b;
-      } else {
-         return bsy.c;
+   public static boolean o(dym $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(arn $$0, jj $$1) {
+      cnq $$2 = bwb.bd.a($$0, bwa.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.U();
       }
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return $$3.a(cxl.ib) ? fco.b() : fco.a();
-   }
-
-   @Override
-   protected boolean e_(dxq $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   protected dqp a_(dxq $$0) {
-      return dqp.a;
-   }
-
-   @Override
-   protected float c(dxq $$0, dgf $$1, ji $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
+   protected void a(dym $$0, arn $$1, jj $$2, cxy $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().c(dhl.h) && !dej.a($$3, axc.t)) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(d) ? etx.c.a(false) : super.b_($$0);
+   public static dym p(dym $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
    }
 
-   @Override
-   protected cxh a(dhc $$0, ji $$1, dxq $$2, boolean $$3) {
-      return a(super.a($$0, $$1, $$2, $$3), $$2.c(c));
+   public dym q(dym $$0) {
+      return a(e, $$0, () -> this.b().m());
    }
 
-   public static cxh a(cxh $$0, int $$1) {
-      $$0.b(kv.ao, czh.a.a(c, $$1));
-      return $$0;
+   private static dym a(Map<dym, dym> $$0, dym $$1, Supplier<dym> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dym $$2x = $$2.get();
+
+         for (dzp $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

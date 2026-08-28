@@ -1,80 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class gpx extends gpd {
-   private static final float a = 0.6666667F;
-   private static final fbx b = new fbx(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dzd, gpx.a> c;
+public class gpx implements gpw {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public gpx(gpk.a $$0) {
-      super($$0);
-      this.c = dzd.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gpx.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   public gpx(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   protected gdv a(dxq $$0, dzd $$1) {
-      gpx.a $$2 = this.c.get($$1);
-      return $$0.b() instanceof dsf ? $$2.a() : $$2.b();
+   public Predicate<dym> getPredicate(dyn<dku, dym> $$0) {
+      dzp<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dym> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = af.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
+      }
    }
 
-   @Override
-   protected hhy a(dzd $$0) {
-      return gns.a($$0);
-   }
-
-   @Override
-   protected float a() {
-      return 0.6666667F;
-   }
-
-   @Override
-   protected float b() {
-      return 0.6666667F;
-   }
-
-   private static void a(fgr $$0, float $$1) {
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-   }
-
-   @Override
-   protected void a(fgr $$0, float $$1, dxq $$2) {
-      a($$0, $$1);
-      if (!($$2.b() instanceof dsf)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+   private Predicate<dym> a(dyn<dku, dym> $$0, dzp<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
    }
 
    @Override
-   protected fbx c() {
-      return b;
-   }
-
-   public static void a(fgr $$0, gmx $$1, int $$2, int $$3, gdv $$4, hhy $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fgv $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static gdv a(gfy $$0, dzd $$1, boolean $$2) {
-      gga $$3 = $$2 ? ggb.a($$1) : ggb.b($$1);
-      return new gdv.a($$0.a($$3), gnh::g);
-   }
-
-   public static ggi a(boolean $$0) {
-      ggk $$1 = new ggk();
-      ggm $$2 = $$1.a();
-      $$2.a("sign", ggh.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gge.a);
-      if ($$0) {
-         $$2.a("stick", ggh.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gge.a);
-      }
-
-      return ggi.a($$1, 64, 32);
-   }
-
-   static record a(gdv a, gdv b) {
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

@@ -1,88 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class dmr extends djq {
-   public static final MapCodec<dmr> a = b(dmr::new);
-   public static final List<ji> b = ji.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(ji::j).toList();
-   private static final fcr c = dke.b(16.0, 0.0, 12.0);
+public abstract class dmr extends dku implements dsb {
+   public static final dzd a = dqm.b;
+   public static final dzd b = dqm.c;
+   public static final dzd c = dqm.d;
+   public static final dzd d = dqm.e;
+   public static final dzd e = dzc.I;
+   public static final Map<jo, dzd> f = dqm.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(af.a());
+   private final Function<dym, fdo> g;
+   private final Function<dym, fdo> h;
 
-   @Override
-   public MapCodec<dmr> a() {
-      return a;
-   }
-
-   protected dmr(dxp.d $$0) {
-      super($$0);
-   }
-
-   public static boolean a(dgz $$0, ji $$1, ji $$2) {
-      return $$0.a_($$1.a((km)$$2)).a(awp.cA) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awp.cB);
-   }
-
-   @Override
-   protected boolean g_(dxq $$0) {
-      return true;
+   protected dmr(float $$0, float $$1, float $$2, float $$3, float $$4, dyl.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$4, $$2, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return c;
-   }
+   protected abstract MapCodec<? extends dmr> a();
 
-   @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
-      super.a($$0, $$1, $$2, $$3);
+   protected Function<dym, fdo> a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      fdo $$5 = dku.b((double)$$0, 0.0, (double)$$1);
+      Map<jo, fdo> $$6 = fdl.c(dku.a((double)$$2, (double)$$3, (double)$$4, 0.0, 8.0));
+      return this.a($$2x -> {
+         fdo $$3x = $$5;
 
-      for (ji $$4 : b) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               lt.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+         for (Entry<jo, dzd> $$4x : f.entrySet()) {
+            if ($$2x.c($$4x.getValue())) {
+               $$3x = fdl.a($$3x, $$6.get($$4x.getKey()));
+            }
          }
-      }
+
+         return $$3x;
+      }, new dzp[]{e});
    }
 
    @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dvo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      return $$0.C ? a($$2, duu.n, dvo::a) : null;
+   protected boolean e_(dym $$0) {
+      return !$$0.c(e);
    }
 
    @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-      }
-
-      return bsy.a;
-   }
-
-   @Nullable
-   @Override
-   protected bta b(dxq $$0, dgz $$1, ji $$2) {
-      dus $$3 = $$1.c_($$2);
-      if ($$3 instanceof dvo) {
-         wp $$4 = ((btb)$$3).m_();
-         return new btg(($$2x, $$3x, $$4x) -> new cts($$2x, $$3x, ctj.a($$1, $$2)), $$4);
-      } else {
-         return null;
-      }
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.h.apply($$0);
    }
 
    @Override
-   protected boolean a(dxq $$0, eul $$1) {
+   protected fdo b(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.g.apply($$0);
+   }
+
+   @Override
+   protected eut b_(dym $$0) {
+      return $$0.c(e) ? euu.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dym $$0, evi $$1) {
       return false;
+   }
+
+   @Override
+   protected dym a(dym $$0, drm $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dym a(dym $$0, dpv $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

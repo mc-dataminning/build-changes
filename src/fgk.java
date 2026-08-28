@@ -1,90 +1,36 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fgk {
-   private int a;
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
 
-   public static Optional<fgk> a() {
-      return fgk.b.a;
+   public static void a() {
+      RenderSystem.setupLevelDiffuseLighting(c, d);
    }
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+   public static void b() {
+      RenderSystem.setupLevelDiffuseLighting(a, b);
    }
 
-   public fgk.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fgk.a $$0 = new fgk.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+   public static void c() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   public static void d() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
    }
 
-   static class b {
-      static final Optional<fgk> a = Optional.ofNullable(a());
+   public static void e() {
+      RenderSystem.setShaderLights(e, f);
+   }
 
-      private b() {
-      }
-
-      @Nullable
-      private static fgk a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fgk();
-      }
+   public static void a(Quaternionf $$0) {
+      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
    }
 }

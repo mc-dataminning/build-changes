@@ -1,37 +1,93 @@
-public class agi implements yw<agf> {
-   public static final yn<vl, agi> a = yw.a(agi::a, agi::new);
-   private final int b;
-   private final ji c;
+import java.util.UUID;
 
-   public agi(int $$0, ji $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class agi {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(bvs $$0) {
+      if ($$0 instanceof cqi) {
+         return $$0.al().getString();
+      } else {
+         wv $$1 = $$0.an();
+         return $$1 != null ? $$1.getString() : a($$0.cG());
+      }
    }
 
-   private agi(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
+   public static String a(UUID $$0) {
+      azs $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private static String a(azs $$0, String[] $$1) {
+      return af.a($$1, $$0);
    }
 
-   @Override
-   public yy<agi> a() {
-      return agd.bk;
-   }
-
-   public void a(agf $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public ji e() {
-      return this.c;
+   private static azs b(UUID $$0) {
+      return azs.a((long)($$0.hashCode() >> 2));
    }
 }

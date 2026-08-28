@@ -1,68 +1,43 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpr extends dke implements dkh {
+public class dpr extends dku {
    public static final MapCodec<dpr> a = b(dpr::new);
+   private static final int b = 20;
 
    @Override
    public MapCodec<dpr> a() {
       return a;
    }
 
-   public dpr(dxp.d $$0) {
+   public dpr(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dhc $$0, ji $$1, dxq $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
-      } else {
-         for (ji $$3 : ji.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awp.aO)) {
-               return true;
-            }
-         }
-
-         return false;
+   public void a(dhp $$0, jj $$1, dym $$2, bvs $$3) {
+      if (!$$3.ce() && $$3 instanceof bwr) {
+         $$3.a($$0.al().f(), 1.0F);
       }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
-      return true;
+   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
+      dlb.b($$1, $$2.d(), $$0);
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (ji $$6 : ji.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dxq $$7 = $$0.a_($$6);
-         if ($$7.a(dkg.oP)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dkg.oY)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$4 == jo.b && $$6.a(dkw.J)) {
+         $$2.a($$3, this, 20);
       }
 
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dkg.oP.m() : dkg.oY.m(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dkg.oP.m(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dkg.oY.m(), 3);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public dkh.a aq_() {
-      return dkh.a.a;
+   protected void a(dym $$0, dhp $$1, jj $$2, dym $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

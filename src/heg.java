@@ -1,18 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class heg {
-   private static final ayi.b<aku, heh.a<?, ?>> b = new ayi.b<>();
-   public static final Codec<heh.a<?, ?>> a = b.a(aku.a);
+public record heg() implements hdw {
+   public static final MapCodec<heg> a = MapCodec.unit(new heg());
 
-   public static void a() {
-      b.a(aku.b("custom_model_data"), heb.a);
-      b.a(aku.b("main_hand"), hef.a);
-      b.a(aku.b("charge_type"), hdy.a);
-      b.a(aku.b("trim_material"), hei.a);
-      b.a(aku.b("block_state"), hed.a);
-      b.a(aku.b("display_context"), hec.a);
-      b.a(aku.b("local_time"), hee.b);
-      b.a(aku.b("context_entity_type"), hea.a);
-      b.a(aku.b("context_dimension"), hdz.a);
+   @Override
+   public boolean a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      fnd $$5 = fnd.Q();
+      bvs $$6 = $$5.ao();
+      return $$6 != null ? $$2 == $$6 : $$2 == $$5.t;
+   }
+
+   @Override
+   public MapCodec<heg> a() {
+      return a;
    }
 }

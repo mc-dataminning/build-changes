@@ -1,20 +1,37 @@
-public record agp(float b) implements yw<agf> {
-   public static final yn<vl, agp> a = yw.a(agp::a, agp::new);
+public class agp implements zc<agm> {
+   public static final yt<vr, agp> a = zc.a(agp::a, agp::new);
+   private final int b;
+   private final jj c;
 
-   private agp(vl $$0) {
-      this($$0.readFloat());
+   public agp(int $$0, jj $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   private agp(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yy<agp> a() {
-      return agd.bs;
+   public ze<agp> a() {
+      return agk.bl;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public jj e() {
+      return this.c;
    }
 }

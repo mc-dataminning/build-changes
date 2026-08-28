@@ -1,31 +1,42 @@
-public class abt implements yw<abl> {
-   public static final yn<wa, abt> a = yn.a(ji.b, abt::e, yl.a(dke.k), abt::b, abt::new);
-   private final ji b;
-   private final dxq c;
+public class abt implements zc<abr> {
+   public static final yt<vr, abt> a = zc.a(abt::a, abt::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   public abt(ji $$0, dxq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public abt(bvs $$0, int $$1) {
+      this.g = $$0.ar();
+      this.h = $$1;
    }
 
-   public abt(dgf $$0, ji $$1) {
-      this($$1, $$0.a_($$1));
+   private abt(vr $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
+   }
+
+   private void a(vr $$0) {
+      $$0.c(this.g);
+      $$0.l(this.h);
    }
 
    @Override
-   public yy<abt> a() {
-      return agd.j;
+   public ze<abt> a() {
+      return agk.d;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public dxq b() {
-      return this.c;
+   public int b() {
+      return this.g;
    }
 
-   public ji e() {
-      return this.b;
+   public int e() {
+      return this.h;
    }
 }

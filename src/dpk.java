@@ -1,160 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
 public class dpk {
-   public static final dpk.e[] a = new dpk.e[]{dpk.e.a, dpk.e.b, dpk.e.c};
-   private final dpk.b b;
-
-   public dpk(dpi $$0) {
-      this(new dpk.a($$0));
-   }
-
-   public dpk(dpk.b $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
-      return jn.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
-   }
-
-   public Optional<dpk.c> a(dxq $$0, dha $$1, ji $$2, azh $$3) {
-      return jn.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long a(dxq $$0, dha $$1, ji $$2, boolean $$3) {
-      return jn.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
-
-   public Optional<dpk.c> a(dxq $$0, dha $$1, ji $$2, jn $$3, azh $$4, boolean $$5) {
-      return jn.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(dxq $$0, dha $$1, ji $$2, jn $$3, boolean $$4) {
-      return jn.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<dpk.c> a(dxq $$0, dha $$1, ji $$2, jn $$3, jn $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<dpk.c> a(dxq $$0, dgf $$1, ji $$2, jn $$3, jn $$4, dpk.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dpk.e $$6 : this.b.a()) {
-            dpk.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
-            }
-         }
-
-         return Optional.empty();
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public Optional<dpk.c> a(dha $$0, dpk.c $$1, boolean $$2) {
-      dxq $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
-   }
-
-   public static class a implements dpk.b {
-      protected dpi a;
-
-      public a(dpi $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public dxq a(dxq $$0, dgf $$1, ji $$2, jn $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(dgf $$0, ji $$1, ji $$2, jn $$3, dxq $$4) {
-         return $$4.l() || $$4.a(this.a) || $$4.a(dkg.J) && $$4.y().b();
-      }
-
-      @Override
-      public boolean a(dgf $$0, ji $$1, dpk.c $$2) {
-         dxq $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
-   }
-
-   public interface b {
-      @Nullable
-      dxq a(dxq var1, dgf var2, ji var3, jn var4);
-
-      boolean a(dgf var1, ji var2, dpk.c var3);
-
-      default dpk.e[] a() {
-         return dpk.a;
-      }
-
-      default boolean a(dxq $$0, jn $$1) {
-         return dpi.a($$0, $$1);
-      }
-
-      default boolean a(dxq $$0) {
-         return false;
-      }
-
-      default boolean b(dxq $$0, jn $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(dha $$0, dpk.c $$1, dxq $$2, boolean $$3) {
-         dxq $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.y($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
-         }
-      }
-   }
-
-   public static record c(ji a, jn b) {
-   }
-
-   @FunctionalInterface
-   public interface d {
-      boolean test(dgf var1, ji var2, dpk.c var3);
-   }
-
-   public static enum e {
-      a {
-         @Override
-         public dpk.c a(ji $$0, jn $$1, jn $$2) {
-            return new dpk.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dpk.c a(ji $$0, jn $$1, jn $$2) {
-            return new dpk.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dpk.c a(ji $$0, jn $$1, jn $$2) {
-            return new dpk.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
-
-      public abstract dpk.c a(ji var1, jn var2, jn var3);
-   }
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1004;
+   public static final int e = 1009;
+   public static final int f = 1010;
+   public static final int g = 1011;
+   public static final int h = 1015;
+   public static final int i = 1016;
+   public static final int j = 1017;
+   public static final int k = 1018;
+   public static final int l = 1019;
+   public static final int m = 1020;
+   public static final int n = 1021;
+   public static final int o = 1022;
+   public static final int p = 1023;
+   public static final int q = 1024;
+   public static final int r = 1025;
+   public static final int s = 1026;
+   public static final int t = 1027;
+   public static final int u = 1028;
+   public static final int v = 1029;
+   public static final int w = 1030;
+   public static final int x = 1031;
+   public static final int y = 1032;
+   public static final int z = 1033;
+   public static final int A = 1034;
+   public static final int B = 1035;
+   public static final int C = 1038;
+   public static final int D = 1039;
+   public static final int E = 1040;
+   public static final int F = 1041;
+   public static final int G = 1042;
+   public static final int H = 1043;
+   public static final int I = 1044;
+   public static final int J = 1045;
+   public static final int K = 1046;
+   public static final int L = 1047;
+   public static final int M = 1048;
+   public static final int N = 1049;
+   public static final int O = 1050;
+   public static final int P = 1051;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 2013;
+   public static final int aj = 3000;
+   public static final int ak = 3001;
+   public static final int al = 3002;
+   public static final int am = 3003;
+   public static final int an = 3004;
+   public static final int ao = 3005;
+   public static final int ap = 3006;
+   public static final int aq = 3007;
+   public static final int ar = 3008;
+   public static final int as = 3009;
+   public static final int at = 3011;
+   public static final int au = 3012;
+   public static final int av = 3013;
+   public static final int aw = 3014;
+   public static final int ax = 3015;
+   public static final int ay = 3016;
+   public static final int az = 3017;
+   public static final int aA = 3018;
+   public static final int aB = 3019;
+   public static final int aC = 3020;
+   public static final int aD = 3021;
 }

@@ -1,80 +1,87 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Optional;
 
-public class akx extends IOException {
-   private final List<akx.a> a = Lists.newArrayList();
-   private final String b;
+public class akx<E> implements Codec<jw<E>> {
+   private final alc<? extends kf<E>> a;
+   private final Codec<js<E>> b;
+   private final Codec<List<js<E>>> c;
+   private final Codec<Either<axp<E>, List<js<E>>>> d;
 
-   public akx(String $$0) {
-      this.a.add(new akx.a());
-      this.b = $$0;
+   private static <E> Codec<List<js<E>>> a(Codec<js<E>> $$0, boolean $$1) {
+      Codec<List<js<E>>> $$2 = $$0.listOf().validate(ays.b(js::f));
+      return $$1 ? $$2 : ays.c($$0, $$2);
    }
 
-   public akx(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new akx.a());
-      this.b = $$0;
+   public static <E> Codec<jw<E>> a(alc<? extends kf<E>> $$0, Codec<js<E>> $$1, boolean $$2) {
+      return new akx<>($$0, $$1, $$2);
    }
 
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
+   private akx(alc<? extends kf<E>> $$0, Codec<js<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(axp.b($$0), this.c);
    }
 
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new akx.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static akx a(Exception $$0) {
-      if ($$0 instanceof akx) {
-         return (akx)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new akx($$1, $$0);
-      }
-   }
-
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+   public <T> DataResult<Pair<jw<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alb<T> $$2) {
+         Optional<jt<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            jt<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).flatMap($$1x -> {
+               DataResult<jw<E>> $$2x = (DataResult<jw<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(jw.a($$0xx)));
+               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
+            });
          }
       }
+
+      return this.a($$0, $$1);
+   }
+
+   private static <E> DataResult<jw<E>> a(jt<E> $$0, axp<E> $$1) {
+      return $$0.a($$1)
+         .<DataResult<jw<E>>>map(DataResult::success)
+         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
+   }
+
+   public <T> DataResult<T> a(jw<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alb<T> $$3) {
+         Optional<jv<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.d().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
+   }
+
+   private <T> DataResult<Pair<jw<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<js.a<E>> $$1x = new ArrayList<>();
+
+         for (js<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof js.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(jw.a($$1x), $$0x.getSecond()));
+      });
+   }
+
+   private <T> DataResult<T> b(jw<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

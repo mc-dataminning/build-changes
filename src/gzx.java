@@ -1,4 +1,3 @@
-public class gzx extends haj {
-   public int a;
-   public boolean b;
+public class gzx extends hcf {
+   public boolean a;
 }

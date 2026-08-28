@@ -1,67 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public class bsh extends bsb {
-   public static final MapCodec<bsh> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, bsh::new)
-      )
-      .validate(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         }
-      );
-   private final float b;
-   private final float d;
-   private final float e;
+public class bsh implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
 
-   public static bsh a(float $$0, float $$1, float $$2) {
-      return new bsh($$0, $$1, $$2);
-   }
-
-   private bsh(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public bsh(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
    }
 
    @Override
-   public float a(azh $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
-   }
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
+      }
 
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bsc<?> c() {
-      return bsc.d;
-   }
-
-   @Override
-   public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+      return $$1;
    }
 }

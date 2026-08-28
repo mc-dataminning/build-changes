@@ -1,16 +1,17 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class fam {
-   private static final Codec<fal> d = mb.H.q().dispatch(fal::a, fak::a);
-   public static final Codec<fal> a = Codec.lazyInitialized(
-      () -> Codec.either(faj.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof faj $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final fak b = a("storage", fan.a);
-   public static final fak c = a("context", faj.b);
+public interface fam<T extends fam<T>> {
+   T b(fau.a var1);
 
-   private static fak a(String $$0, MapCodec<? extends fal> $$1) {
-      return ke.a(mb.H, aku.b($$0), new fak($$1));
+   default <E> T a_(Iterable<E> $$0, Function<E, fau.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
+
+   T d();
 }

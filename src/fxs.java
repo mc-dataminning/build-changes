@@ -1,32 +1,30 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public interface fxs {
-   static fxs a(ayl $$0) {
-      return new fxr($$0);
+public class fxs extends fwx {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final ald v = ald.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
+
+   public fxs(dwz $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wv.c("hanging_sign.edit"));
    }
 
-   static fxs a(cvd $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fxs)(switch ($$0) {
-         case cvc $$1 -> new fxq($$1.a());
-         case fxp.a $$2 -> new fxp($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   protected void a(fpz $$0, dym $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
-   int a(fpa var1);
-
-   int b(fpa var1);
-
-   default boolean a() {
-      return false;
+   @Override
+   protected void c(fpz $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(goi::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
-   default void a(fpa $$0, int $$1, int $$2, Matrix4f $$3, gmx.a $$4) {
-   }
-
-   default void a(fpa $$0, int $$1, int $$2, int $$3, int $$4, fpc $$5) {
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

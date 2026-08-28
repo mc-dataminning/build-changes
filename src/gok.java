@@ -1,154 +1,118 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
 public class gok {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gok.class, new gok.a())
-      .registerTypeAdapter(gos.class, new gos.a())
-      .registerTypeAdapter(gop.class, new gop.a())
-      .registerTypeAdapter(gox.b.class, new gox.c())
-      .registerTypeAdapter(goz.class, new goz.a())
-      .create();
-   private final Map<String, gop> c;
-   @Nullable
-   private final gox.b d;
+   private static final ald a = ald.b("textures/misc/underwater.png");
 
-   public static gok a(Reader $$0) {
-      return ayp.a(a, $$0, gok.class);
-   }
-
-   public static gok a(JsonElement $$0) {
-      return (gok)a.fromJson($$0, gok.class);
-   }
-
-   public gok(Map<String, gop> $$0, @Nullable gox.b $$1) {
-      this.d = $$1;
-      this.c = $$0;
-   }
-
-   @VisibleForTesting
-   public gop a(String $$0) {
-      gop $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         throw new gok.b();
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gok $$1) ? false : this.c.equals($$1.c) && Objects.equals(this.d, $$1.d);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.c.hashCode() + (this.d != null ? this.d.hashCode() : 0);
-   }
-
-   @VisibleForTesting
-   public Set<gop> a() {
-      Set<gop> $$0 = Sets.newHashSet(this.c.values());
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
+   public static void a(fnd $$0, fho $$1, gny $$2) {
+      cqi $$3 = $$0.t;
+      if (!$$3.ad) {
+         dym $$4 = a($$3);
+         if ($$4 != null) {
+            a($$0.ap().a().a($$4), $$1, $$2);
+         }
       }
 
-      return $$0;
+      if (!$$0.t.U_()) {
+         if ($$0.t.a(axf.a)) {
+            b($$0, $$1, $$2);
+         }
+
+         if ($$0.t.bY()) {
+            a($$1, $$2);
+         }
+      }
    }
 
    @Nullable
-   public gox.b b() {
-      return this.d;
+   private static dym a(cqi $$0) {
+      jj.a $$1 = new jj.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dA() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         double $$4 = $$0.dE() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ek());
+         double $$5 = $$0.dG() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dym $$6 = $$0.dV().a_($$1);
+         if ($$6.o() != drf.a && $$6.k($$0.dV(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
    }
 
-   public Map<dxq, gor> a(dxr<dke, dxq> $$0, String $$1) {
-      Map<dxq, gor> $$2 = new IdentityHashMap<>();
-      List<dxq> $$3 = $$0.a();
-      gox $$4;
-      if (this.d != null) {
-         $$4 = this.d.a($$0);
-         $$3.forEach($$2x -> $$2.put($$2x, $$4));
-      } else {
-         $$4 = null;
-      }
-
-      this.c.forEach(($$5x, $$6) -> {
-         try {
-            $$3.stream().filter(got.a($$0, $$5x)).forEach($$3xx -> {
-               gor $$4x = $$2.put($$3xx, $$6);
-               if ($$4x != null && $$4x != $$4) {
-                  String $$5xx = this.c.entrySet().stream().filter($$1xxx -> $$1xxx.getValue() == $$4).findFirst().get().getKey();
-                  throw new RuntimeException("Overlapping definition with: " + $$5xx);
-               }
-            });
-         } catch (Exception var9) {
-            b.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1, $$5x, var9.getMessage()});
-         }
-      });
-      return $$2;
+   private static void a(hgs $$0, fho $$1, gny $$2) {
+      float $$3 = 0.1F;
+      int $$4 = axu.a(1.0F, 0.1F, 0.1F, 0.1F);
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -0.5F;
+      float $$10 = $$0.c();
+      float $$11 = $$0.d();
+      float $$12 = $$0.g();
+      float $$13 = $$0.h();
+      Matrix4f $$14 = $$1.c().a();
+      fhs $$15 = $$2.getBuffer(goi.D($$0.i()));
+      $$15.a($$14, -1.0F, -1.0F, -0.5F).a($$11, $$13).a($$4);
+      $$15.a($$14, 1.0F, -1.0F, -0.5F).a($$10, $$13).a($$4);
+      $$15.a($$14, 1.0F, 1.0F, -0.5F).a($$10, $$12).a($$4);
+      $$15.a($$14, -1.0F, 1.0F, -0.5F).a($$11, $$12).a($$4);
    }
 
-   public static class a implements JsonDeserializer<gok> {
-      public gok a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, gop> $$4 = this.a($$2, $$3);
-         gox.b $$5 = this.b($$2, $$3);
-         if ($$4.isEmpty() && $$5 == null) {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         } else {
-            return new gok($$4, $$5);
-         }
-      }
-
-      protected Map<String, gop> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, gop> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = ayp.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (gop)$$0.deserialize($$4.getValue(), gop.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      @Nullable
-      protected gox.b b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = ayp.v($$1, "multipart");
-            return (gox.b)$$0.deserialize($$2, gox.b.class);
-         }
-      }
+   private static void b(fnd $$0, fho $$1, gny $$2) {
+      jj $$3 = jj.a($$0.t.dA(), $$0.t.dE(), $$0.t.dG());
+      float $$4 = gnw.a($$0.t.dV().B_(), $$0.t.dV().A($$3));
+      int $$5 = axu.a(0.1F, $$4, $$4, $$4);
+      float $$6 = 4.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -1.0F;
+      float $$10 = 1.0F;
+      float $$11 = -0.5F;
+      float $$12 = -$$0.t.dL() / 64.0F;
+      float $$13 = $$0.t.dN() / 64.0F;
+      Matrix4f $$14 = $$1.c().a();
+      fhs $$15 = $$2.getBuffer(goi.D(a));
+      $$15.a($$14, -1.0F, -1.0F, -0.5F).a(4.0F + $$12, 4.0F + $$13).a($$5);
+      $$15.a($$14, 1.0F, -1.0F, -0.5F).a(0.0F + $$12, 4.0F + $$13).a($$5);
+      $$15.a($$14, 1.0F, 1.0F, -0.5F).a(0.0F + $$12, 0.0F + $$13).a($$5);
+      $$15.a($$14, -1.0F, 1.0F, -0.5F).a(4.0F + $$12, 0.0F + $$13).a($$5);
    }
 
-   protected static class b extends RuntimeException {
+   private static void a(fho $$0, gny $$1) {
+      hgs $$2 = hjc.b.c();
+      fhs $$3 = $$1.getBuffer(goi.E($$2.i()));
+      float $$4 = $$2.c();
+      float $$5 = $$2.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$2.g();
+      float $$8 = $$2.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$2.k();
+      float $$11 = azk.h($$10, $$4, $$6);
+      float $$12 = azk.h($$10, $$5, $$6);
+      float $$13 = azk.h($$10, $$7, $$9);
+      float $$14 = azk.h($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$0.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$0.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$0.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$0.c().a();
+         $$3.a($$22, -0.5F, -0.5F, -0.5F).a($$12, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, 0.5F, -0.5F, -0.5F).a($$11, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, 0.5F, 0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, -0.5F, 0.5F, -0.5F).a($$12, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$0.b();
+      }
    }
 }

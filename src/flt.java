@@ -1,54 +1,41 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
 public class flt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final axm<String> e = new axm<>(50);
+   private static final wv a = wv.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public flt(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+   public static wv a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return wv.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return wv.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return wv.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return wv.a("mco.time.daysAgo", $$4);
          }
       }
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
-
-         this.e.addLast($$0);
-         this.b();
-      }
+   public static wv a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
    }
 
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
-      }
-   }
-
-   public Collection<String> a() {
-      return this.e;
+   public static void a(fpz $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      fnd $$5 = fnd.Q();
+      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
+      hhu $$7 = $$6 != null ? $$5.an().b($$6.profile()) : hhl.a($$4);
+      frm.a($$0, $$7, $$1, $$2, $$3);
    }
 }

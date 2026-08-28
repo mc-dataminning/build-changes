@@ -1,49 +1,97 @@
 import java.util.List;
 
-public class cvr extends cxd {
-   public cvr(cxd.a $$0) {
-      super($$0);
+public class cvr implements cuf {
+   private final kb<cxy> b;
+   private final int c;
+   private final int d;
+   private final ctn e;
+
+   public cvr(ctn $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, kb.a($$1 * $$2, cxy.k));
+   }
+
+   private cvr(ctn $$0, int $$1, int $$2, kb<cxy> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
-      List<bus> $$3 = $$0.a(bus.class, $$1.cQ().g(2.0), $$0x -> $$0x != null && $$0x.bJ() && $$0x.o() instanceof ckp);
-      cxh $$4 = $$1.b($$2);
-      if (!$$3.isEmpty()) {
-         bus $$5 = $$3.get(0);
-         $$5.a($$5.e() - 0.5F);
-         $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awa.cD, awb.g, 1.0F, 1.0F);
-         $$0.a($$1, ecp.y, $$1.ds());
-         if ($$1 instanceof are $$6) {
-            ap.T.a($$6, $$4, $$5);
-         }
-
-         return bsy.a.a(this.a($$4, $$1, new cxh(cxl.wp)));
-      } else {
-         fbt $$7 = a($$0, $$1, dgi.b.b);
-         if ($$7.d() == fbv.a.a) {
-            return bsy.e;
-         } else {
-            if ($$7.d() == fbv.a.b) {
-               ji $$8 = $$7.b();
-               if (!$$0.a($$1, $$8)) {
-                  return bsy.e;
-               }
-
-               if ($$0.b_($$8).a(awv.a)) {
-                  $$0.a($$1, $$1.dz(), $$1.dB(), $$1.dF(), awa.cC, awb.g, 1.0F, 1.0F);
-                  $$0.a($$1, ecp.y, $$8);
-                  return bsy.a.a(this.a($$4, $$1, cze.a(cxl.tk, czf.a)));
-               }
-            }
-
-            return bsy.e;
-         }
-      }
+   public int b() {
+      return this.b.size();
    }
 
-   protected cxh a(cxh $$0, cpr $$1, cxh $$2) {
-      $$1.b(awk.c.b(this));
-      return cxk.a($$0, $$1, $$2);
+   @Override
+   public boolean c() {
+      for (cxy $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cxy a(int $$0) {
+      return $$0 >= this.b() ? cxy.k : this.b.get($$0);
+   }
+
+   @Override
+   public cxy b(int $$0) {
+      return btk.a(this.b, $$0);
+   }
+
+   @Override
+   public cxy a(int $$0, int $$1) {
+      cxy $$2 = btk.a(this.b, $$0, $$1);
+      if (!$$2.f()) {
+         this.e.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, cxy $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cqi $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int au_() {
+      return this.c;
+   }
+
+   @Override
+   public List<cxy> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void fillStackedContents(cqn $$0) {
+      for (cxy $$1 : this.b) {
+         $$0.a($$1);
+      }
    }
 }

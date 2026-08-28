@@ -1,38 +1,23 @@
-public class gcv extends gfs<hca> {
-   public gcv(ggc $$0) {
-      super($$0);
+public class gcv extends gea<gzr> {
+   public gcv(ghd $$0) {
+      super($$0, goi::f);
    }
 
-   public static ggi a(ggg $$0) {
-      ggk $$1 = gdn.a($$0, 0.0F);
-      ggm $$2 = $$1.a();
-      $$2.a("left_arm", ggh.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gge.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", ggh.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gge.a(1.9F, 12.0F, 0.0F));
-      return ggi.a($$1, 64, 64);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      $$1.a("back", ghi.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), ghf.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
+      ghi $$2 = ghi.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, ghh.a, 1.0F, 0.8F);
+      $$1.a("cross_1", $$2, ghf.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, ghf.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return ghj.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
    }
 
-   @Override
-   public void a(hca $$0) {
+   public void a(gzr $$0) {
       super.a($$0);
-      if ($$0.h == gdn.a.e) {
-         this.s.e = this.s.e * 0.5F - (float) Math.PI;
-         this.s.f = 0.0F;
-      }
-
-      if ($$0.f == gdn.a.e) {
-         this.r.e = this.r.e * 0.5F - (float) Math.PI;
-         this.r.f = 0.0F;
-      }
-
-      float $$1 = $$0.G;
-      if ($$1 > 0.0F) {
-         this.r.e = ayz.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * ayz.a(0.1F * $$0.u);
-         this.s.e = ayz.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * ayz.a(0.1F * $$0.u);
-         this.r.g = ayz.j($$1, this.r.g, -0.15F);
-         this.s.g = ayz.j($$1, this.s.g, 0.15F);
-         this.u.e = this.u.e - $$1 * 0.55F * ayz.a(0.1F * $$0.u);
-         this.t.e = this.t.e + $$1 * 0.55F * ayz.a(0.1F * $$0.u);
-         this.o.e = 0.0F;
+      if ($$0.c > 0.0F) {
+         float $$1 = -azk.a($$0.c * 3.0F) * $$0.c;
+         this.v.g += $$1 * (float) (Math.PI / 180.0);
       }
    }
 }

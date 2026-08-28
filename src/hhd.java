@@ -1,28 +1,46 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public record hhd(int c, Optional<Integer> d) {
-   public static final Codec<hhd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.l.fieldOf("index").forGetter(hhd::a), ayi.m.optionalFieldOf("time").forGetter(hhd::b)).apply($$0, hhd::new)
-   );
-   public static final Codec<hhd> b = Codec.either(ayi.l, a)
-      .xmap($$0 -> (hhd)$$0.map(hhd::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
+public class hhd {
+   private final ald a;
+   private final auy b;
+   private final AtomicReference<fgo> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public hhd(int $$0) {
-      this($$0, Optional.empty());
+   public hhd(ald $$0, auy $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   public int a(int $$0) {
-      return this.d.orElse($$0);
+   public fgo a() throws IOException {
+      fgo $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = fgo.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   public int a() {
-      return this.c;
-   }
-
-   public Optional<Integer> b() {
-      return this.d;
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         fgo $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

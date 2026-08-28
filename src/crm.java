@@ -1,59 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
-public class crm {
-   private final List<crj> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<crj> a() {
-      return ImmutableList.copyOf(this.a);
+public class crm extends cri {
+   public crm(bwb<? extends crm> $$0, dhp $$1) {
+      super($$0, $$1);
    }
 
-   public crm a(int $$0, float $$1) {
-      this.a.add(new crj($$0, $$1));
-      this.b();
-      return this;
+   public crm(dhp $$0, bwr $$1, cxy $$2) {
+      super(bwb.U, $$1, $$0, $$2);
    }
 
-   public crm a(Collection<crj> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public crm(dhp $$0, double $$1, double $$2, double $$3, cxy $$4) {
+      super(bwb.U, $$1, $$2, $$3, $$0, $$4);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<crj> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   protected cxu g() {
+      return cyc.uY;
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         crj $$1 = this.a.get(this.b);
-         crj $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+   @Override
+   protected double bd() {
+      return 0.07;
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            crj $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   @Override
+   protected void a(fcs $$0) {
+      super.a($$0);
+      if (this.dV() instanceof arn) {
+         this.dV().c(2002, this.dv(), -13083194);
+         int $$1 = 3 + this.dV().A.a(5) + this.dV().A.a(5);
+         bwg.a((arn)this.dV(), $$0.g(), $$1);
+         this.at();
       }
    }
 }

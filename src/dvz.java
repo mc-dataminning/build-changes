@@ -1,61 +1,82 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public record dvz(Optional<cxd> d, Optional<cxd> e, Optional<cxd> f, Optional<cxd> g) {
-   public static final dvz a = new dvz(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dvz> b = mb.g.q().sizeLimitedListOf(4).xmap(dvz::new, dvz::a);
-   public static final yn<wa, dvz> c = yl.a(mc.K).a(yl.c(4)).a(dvz::new, dvz::a);
+public abstract class dvz {
+   private static final int a = 5;
+   private int b;
+   private double c;
 
-   private dvz(List<cxd> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   protected abstract void a(dhp var1, jj var2, dym var3);
+
+   protected abstract void b(dhp var1, jj var2, dym var3);
+
+   protected abstract void a(dhp var1, jj var2, dym var3, int var4, int var5);
+
+   protected abstract boolean a(cqi var1);
+
+   public void a(cqi $$0, dhp $$1, jj $$2, dym $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, edm.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gK(), this.c);
    }
 
-   public dvz(cxd $$0, cxd $$1, cxd $$2, cxd $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
+   public void b(cqi $$0, dhp $$1, jj $$2, dym $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, edm.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   private static Optional<cxd> a(List<cxd> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         cxd $$2 = $$0.get($$1);
-         return $$2 == cxl.ru ? Optional.empty() : Optional.of($$2);
+   private List<cqi> a(dhp $$0, jj $$1) {
+      double $$2 = this.c + 4.0;
+      fcp $$3 = new fcp($$1).g($$2);
+      return $$0.a(ecy.a(cqi.class), $$3, this::a);
+   }
+
+   public void c(dhp $$0, jj $$1, dym $$2) {
+      List<cqi> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (cqi $$4 : $$3) {
+         this.c = Math.max($$4.gK(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, edm.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, edm.j, $$1);
+         }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   public tq a(tq $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", (un)b.encodeStart(ue.a, this).getOrThrow());
-         return $$0;
-      }
+   public int a() {
+      return this.b;
    }
 
-   public List<cxd> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cxl.ru)).toList();
-   }
-
-   public static dvz b(@Nullable tq $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(ue.a, $$0.c("sherds")).result().orElse(a) : a;
-   }
-
-   public Optional<cxd> b() {
-      return this.d;
-   }
-
-   public Optional<cxd> c() {
-      return this.e;
-   }
-
-   public Optional<cxd> d() {
-      return this.f;
-   }
-
-   public Optional<cxd> e() {
-      return this.g;
+   private static void d(dhp $$0, jj $$1, dym $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

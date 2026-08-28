@@ -1,21 +1,16 @@
-public record aak(ji c) implements zz {
-   public static final yn<vl, aak> a = zz.a(aak::a, aak::new);
-   public static final zz.b<aak> b = zz.a("debug/poi_removed");
+public record aak() implements aaf {
+   public static final yt<vr, aak> a = aaf.a(aak::a, aak::new);
+   public static final aaf.b<aak> b = aaf.a("debug/game_test_clear");
 
-   private aak(vl $$0) {
-      this($$0.e());
+   private aak(vr $$0) {
+      this();
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.c);
+   private void a(vr $$0) {
    }
 
    @Override
-   public zz.b<aak> a() {
+   public aaf.b<aak> a() {
       return b;
-   }
-
-   public ji b() {
-      return this.c;
    }
 }

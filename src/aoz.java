@@ -1,48 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aoz {
-   private static final xm a = xm.a.a(new wv.e(wp.c("chat.type.team.hover"))).a(new wn.g("/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("commands.teammsg.failed.noteam"));
-
    public static void a(CommandDispatcher<ex> $$0) {
-      LiteralCommandNode<ex> $$1 = $$0.register((LiteralArgumentBuilder)ey.a("teammsg").then(ey.a("message", fo.a()).executes($$0x -> {
-         ex $$1x = (ex)$$0x.getSource();
-         bva $$2 = $$1x.g();
-         fcx $$3 = $$2.cq();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<are> $$4 = $$1x.l().ag().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cq() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               fo.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)ey.a("tm").redirect($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ex)$$0x.getSource(), Collections.singleton(((ex)$$0x.getSource()).h()), jj.a((kc)((ex)$$0x.getSource()).d()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)ey.a("targets", fk.d())
+                     .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), jj.a((kc)((ex)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)ey.a("pos", gu.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), gu.c($$0x, "pos"), 0.0F)))
+                        .then(ey.a("angle", fd.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), gu.c($$0x, "pos"), fd.a($$0x, "angle"))))
+                  )
+            )
+      );
    }
 
-   private static void a(ex $$0, bva $$1, fcx $$2, List<are> $$3, xf $$4) {
-      wp $$5 = $$2.d().c(a);
-      wl.a $$6 = wl.a(wl.i, $$0).c($$5);
-      wl.a $$7 = wl.a(wl.j, $$0).c($$5);
-      xe $$8 = xe.a($$4);
-      boolean $$9 = false;
+   private static int a(ex $$0, Collection<aro> $$1, jj $$2, float $$3) {
+      alc<dhp> $$4 = $$0.e().aj();
 
-      for (are $$10 : $$3) {
-         wl.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.j();
+      for (aro $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
 
-      if ($$9) {
-         $$0.a(avd.e);
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> wv.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> wv.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }
+
+      return $$1.size();
    }
 }

@@ -1,22 +1,9 @@
-public class gca extends gdv {
-   public static final int a = 20;
-   public static final int b = 40;
-   public static final String c = "flag";
-   private static final String d = "pole";
-   private static final String e = "bar";
+public interface gca {
+   void a(gby var1);
 
-   public gca(ggc $$0) {
-      super($$0, gnh::d);
-   }
+   wv aO_();
 
-   public static ggi a(boolean $$0) {
-      ggk $$1 = new ggk();
-      ggm $$2 = $$1.a();
-      if ($$0) {
-         $$2.a("pole", ggh.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), gge.a);
-      }
+   void a(fpz var1, float var2, float var3);
 
-      $$2.a("bar", ggh.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), gge.a);
-      return ggi.a($$1, 64, 64);
-   }
+   boolean aP_();
 }

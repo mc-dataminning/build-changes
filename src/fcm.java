@@ -1,53 +1,103 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-public class fcm extends AbstractDoubleList implements fcj {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public class fcm implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<fcm.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
 
-   protected fcm(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fcm(List<fcm.a> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
 
-   @Override
-   public boolean a(fcj.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(fcj.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
             return false;
+         };
+         };
+      });
+   }
+
+   @Override
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
+   }
+
+   public static fcm a(BufferedReader $$0) {
+      return new fcm($$0.lines().flatMap($$0x -> fcm.a.a($$0x).stream()).toList());
+   }
+
+   public static record a(fcm.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<fcm.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new fcm.a(fcm.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new fcm.a(fcm.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new fcm.a(fcm.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
          }
       }
 
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
+      static fcm.a b(String $$0) {
+         return new fcm.a(fcm.b.a, "glob:" + $$0);
       }
 
-      return true;
+      static fcm.a c(String $$0) {
+         return new fcm.a(fcm.b.a, "regex:" + $$0);
+      }
+
+      static fcm.a d(String $$0) {
+         return new fcm.a(fcm.b.b, $$0);
+      }
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
+   @FunctionalInterface
+   public interface b {
+      fcm.b a = FileSystem::getPathMatcher;
+      fcm.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
 
-   @Override
-   public DoubleList a() {
-      return this;
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

@@ -1,52 +1,35 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public abstract class beh extends DataFix {
-   protected final String a;
-
-   public beh(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+public class beh extends bhm {
+   public beh(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityHorseSaddleFix", biq.D, "EntityHorse");
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bic.C);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bic.C);
-      Function<String, Type<?>> $$2 = af.b($$2x -> {
-         Type<?> $$3 = (Type<?>)$$0.types().get($$2x);
-         return bao.a($$3, $$0, $$1);
-      });
-      return this.fixTypeEverywhere(
-         this.a,
-         $$0,
-         $$1,
-         $$2x -> $$3 -> {
-               String $$4 = (String)$$3.getFirst();
-               Type<?> $$5 = $$2.apply($$4);
-               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2x, $$5));
-               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
-               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
-                  throw new IllegalStateException(
-                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
-                  );
-               } else {
-                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
-               }
-            }
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biq.F.typeName(), bkj.a()));
+      Type<?> $$2 = this.getInputSchema().getTypeRaw(biq.t);
+      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
+      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
+      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
+         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
+         $$6 = $$6.set($$1, Pair.of(biq.F.typeName(), "minecraft:saddle"));
+         Dynamic<?> $$7 = $$5.emptyMap();
+         $$7 = $$7.set("Count", $$7.createByte((byte)1));
+         $$7 = $$7.set("Damage", $$7.createShort((short)0));
+         $$6 = $$6.set(DSL.remainderFinder(), $$7);
+         $$5.remove("Saddle");
+         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
+      } else {
+         return $$0;
+      }
    }
-
-   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
-      return new Typed($$2, $$1, $$0);
-   }
-
-   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

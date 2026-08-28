@@ -1,48 +1,46 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dal(cxh c) {
-   public static final Codec<dal> a = cxh.b.xmap(dal::new, dal::a);
-   public static final yn<wa, dal> b = yn.a(cxh.i, dal::a, dal::new);
+public record dal(int d, List<dak> e) implements day {
+   public static final int a = 256;
+   public static final Codec<dal> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.k.optionalFieldOf("flight_duration", 0).forGetter(dal::a),
+               dak.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(dal::b)
+            )
+            .apply($$0, dal::new)
+   );
+   public static final yt<ByteBuf, dal> c = yt.a(yr.h, dal::a, dak.d.a(yr.c(256)), dal::b, dal::new);
 
-   public cxh a(cxh $$0, int $$1, boolean $$2, dal.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
+   public dal(int d, List<dak> e) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
       } else {
-         cxh $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
-         }
+         this.d = d;
+         this.e = e;
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dal $$1 = (dal)$$0;
-         return cxh.a(this.c, $$1.c);
-      } else {
-         return false;
+   public void a(cxu.b $$0, Consumer<wv> $$1, czn $$2) {
+      if (this.d > 0) {
+         $$1.accept(wv.c("item.minecraft.firework_rocket.flight").b(wu.v).f(String.valueOf(this.d)).a(n.h));
+      }
+
+      for (dak $$3 : this.e) {
+         $$3.a($$1);
+         $$3.b($$1x -> $$1.accept(wv.b("  ").b($$1x)));
       }
    }
 
-   @Override
-   public int hashCode() {
-      return cxh.b(this.c);
+   public int a() {
+      return this.d;
    }
 
-   public cxh a() {
-      return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(cxh var1);
+   public List<dak> b() {
+      return this.e;
    }
 }

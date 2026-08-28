@@ -1,67 +1,61 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egl extends egu<eiu> {
-   private static final ImmutableList<dke> a = ImmutableList.of(dkg.I, dkg.fI, dkg.fJ, dkg.fK, dkg.fL, dkg.cD, dkg.cA);
-   private static final jn[] b = jn.values();
-   private static final double c = 0.9;
+public class egl {
+   public static final egl a = new egl(false, dkw.gV.m(), dkw.qp.m(), dkw.ew.m(), dkw.aX.m());
+   public static final Codec<egl> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(egl::a),
+               dym.a.optionalFieldOf("air_state", a.b()).forGetter(egl::b),
+               dym.a.optionalFieldOf("water_state", a.b()).forGetter(egl::c),
+               dym.a.optionalFieldOf("lava_state", a.b()).forGetter(egl::d),
+               dym.a.optionalFieldOf("barrier_state", a.b()).forGetter(egl::e)
+            )
+            .apply($$0, egl::new)
+   );
+   private final boolean c;
+   private final dym d;
+   private final dym e;
+   private final dym f;
+   private final dym g;
 
-   public egl(Codec<eiu> $$0) {
-      super($$0);
+   public static egl a(boolean $$0, dym $$1, dym $$2, dym $$3, dym $$4) {
+      return new egl($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(egw<eiu> $$0) {
-      boolean $$1 = false;
-      azh $$2 = $$0.d();
-      dhy $$3 = $$0.b();
-      eiu $$4 = $$0.f();
-      ji $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (ji $$13 : ji.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            ji $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
+   public static egl a(dym $$0, dym $$1, dym $$2, dym $$3) {
+      return new egl(false, $$0, $$1, $$2, $$3);
    }
 
-   private static boolean a(dha $$0, ji $$1, eiu $$2) {
-      dxq $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (jn $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != jn.b || !$$5 && $$4 == jn.b) {
-               return false;
-            }
-         }
+   public static egl a(boolean $$0, dym $$1) {
+      return new egl($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-         return true;
-      }
+   private egl(boolean $$0, dym $$1, dym $$2, dym $$3, dym $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dym b() {
+      return this.d;
+   }
+
+   public dym c() {
+      return this.e;
+   }
+
+   public dym d() {
+      return this.f;
+   }
+
+   public dym e() {
+      return this.g;
    }
 }

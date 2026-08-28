@@ -1,52 +1,80 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import java.util.List;
 
-public class ayw implements TypeAdapterFactory {
-   @Nullable
-   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
-      Class<T> $$2 = $$1.getRawType();
-      if (!$$2.isEnum()) {
-         return null;
-      } else {
-         final Map<String, T> $$3 = Maps.newHashMap();
+@FunctionalInterface
+public interface ayw {
+   ayw a = $$0 -> true;
 
-         for (T $$4 : $$2.getEnumConstants()) {
-            $$3.put(this.a($$4), $$4);
-         }
+   boolean accept(ayx var1);
 
-         return new TypeAdapter<T>() {
-            public void write(JsonWriter $$0, T $$1) throws IOException {
-               if ($$1 == null) {
-                  $$0.nullValue();
-               } else {
-                  $$0.value(ayw.this.a($$1));
-               }
-            }
+   static ayw codepoint(int $$0, xs $$1) {
+      return $$2 -> $$2.accept(0, $$1, $$0);
+   }
 
-            @Nullable
-            public T read(JsonReader $$0) throws IOException {
-               if ($$0.peek() == JsonToken.NULL) {
-                  $$0.nextNull();
-                  return null;
-               } else {
-                  return $$3.get($$0.nextString());
-               }
-            }
-         };
+   static ayw forward(String $$0, xs $$1) {
+      return $$0.isEmpty() ? a : $$2 -> baf.a($$0, $$1, $$2);
+   }
+
+   static ayw forward(String $$0, xs $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> baf.a($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static ayw backward(String $$0, xs $$1) {
+      return $$0.isEmpty() ? a : $$2 -> baf.b($$0, $$1, $$2);
+   }
+
+   static ayw backward(String $$0, xs $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> baf.b($$0, $$1, decorateOutput($$3, $$2));
+   }
+
+   static ayx decorateOutput(ayx $$0, Int2IntFunction $$1) {
+      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   }
+
+   static ayw composite() {
+      return a;
+   }
+
+   static ayw composite(ayw $$0) {
+      return $$0;
+   }
+
+   static ayw composite(ayw $$0, ayw $$1) {
+      return fromPair($$0, $$1);
+   }
+
+   static ayw composite(ayw... $$0) {
+      return fromList(ImmutableList.copyOf($$0));
+   }
+
+   static ayw composite(List<ayw> $$0) {
+      int $$1 = $$0.size();
+      switch ($$1) {
+         case 0:
+            return a;
+         case 1:
+            return $$0.get(0);
+         case 2:
+            return fromPair($$0.get(0), $$0.get(1));
+         default:
+            return fromList(ImmutableList.copyOf($$0));
       }
    }
 
-   String a(Object $$0) {
-      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
+   static ayw fromPair(ayw $$0, ayw $$1) {
+      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   }
+
+   static ayw fromList(List<ayw> $$0) {
+      return $$1 -> {
+         for (ayw $$2 : $$0) {
+            if (!$$2.accept($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 }

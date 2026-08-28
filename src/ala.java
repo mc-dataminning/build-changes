@@ -1,51 +1,65 @@
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class ala {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+public final class ala<E> implements Codec<js<E>> {
+   private final alc<? extends kf<E>> a;
 
-   public ala(Path $$0) {
-      this.b = $$0;
-      this.c = ab.aU || this.b();
+   public static <E> ala<E> a(alc<? extends kf<E>> $$0) {
+      return new ala<>($$0);
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
-         }
-
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
-      }
+   private ala(alc<? extends kf<E>> $$0) {
+      this.a = $$0;
    }
 
-   public boolean a() {
-      return this.c;
-   }
+   public <T> DataResult<T> a(js<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alb<?> $$3) {
+         Optional<jv<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
 
-   private void c() {
-      if (!ab.aU) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + axv.b + ").");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> ald.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
          }
       }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
+   }
+
+   public <T> DataResult<Pair<js<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alb<?> $$2) {
+         Optional<jt<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return ald.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     ald $$2x = (ald)$$1x.getFirst();
+                     return $$3.get()
+                        .a(alc.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
+         }
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
+   }
+
+   @Override
+   public String toString() {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

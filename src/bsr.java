@@ -1,86 +1,45 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface bsr extends bsp {
-   float r_ = 4.0F;
+public class bsr extends bst {
+   public static final bsr a = new bsr(0.0F);
+   public static final MapCodec<bsr> b = Codec.FLOAT.fieldOf("value").xmap(bsr::a, bsr::d);
+   private final float d;
 
-   int b();
-
-   boolean c();
-
-   cxh a(int var1);
-
-   cxh a(int var1, int var2);
-
-   cxh b(int var1);
-
-   void a(int var1, cxh var2);
-
-   default int an_() {
-      return 99;
+   public static bsr a(float $$0) {
+      return $$0 == 0.0F ? a : new bsr($$0);
    }
 
-   default int e_(cxh $$0) {
-      return Math.min(this.an_(), $$0.k());
+   private bsr(float $$0) {
+      this.d = $$0;
    }
 
-   void e();
-
-   boolean a(cpr var1);
-
-   default void c_(cpr $$0) {
+   public float d() {
+      return this.d;
    }
 
-   default void c(cpr $$0) {
+   @Override
+   public float a(azs $$0) {
+      return this.d;
    }
 
-   default boolean b(int $$0, cxh $$1) {
-      return true;
+   @Override
+   public float a() {
+      return this.d;
    }
 
-   default boolean a(bsr $$0, int $$1, cxh $$2) {
-      return true;
+   @Override
+   public float b() {
+      return this.d;
    }
 
-   default int a_(cxd $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cxh $$3 = this.a($$2);
-         if ($$3.h().equals($$0)) {
-            $$1 += $$3.M();
-         }
-      }
-
-      return $$1;
+   @Override
+   public bsu<?> c() {
+      return bsu.a;
    }
 
-   default boolean a(Set<cxd> $$0) {
-      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
-   }
-
-   default boolean a_(Predicate<cxh> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cxh $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   static boolean a(dus $$0, cpr $$1) {
-      return a($$0, $$1, 4.0F);
-   }
-
-   static boolean a(dus $$0, cpr $$1, float $$2) {
-      dgz $$3 = $$0.i();
-      ji $$4 = $$0.aA_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
-      }
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

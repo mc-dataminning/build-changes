@@ -1,66 +1,71 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class dbp extends dbl {
-   private static final dbr c = dbr.a(cxl.vw);
+public class dbp {
+   @Nullable
+   private final cqi a;
+   private final btp b;
+   private final fcq c;
+   private final dhp d;
+   private final cxy e;
 
-   public dbp(dbi $$0) {
-      super($$0);
+   public dbp(cqi $$0, btp $$1, fcq $$2) {
+      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxh $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.h() instanceof cwf) {
-                  $$2 = true;
-               } else {
-                  if (!c.a($$5)) {
-                     return false;
-                  }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
+   protected dbp(dhp $$0, @Nullable cqi $$1, btp $$2, cxy $$3, fcq $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cxh a(dbj $$0, jt.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cxh $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxh $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cwf $$7) {
-            $$2.add($$7.b().f());
-         } else if (c.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kv.ag, czu.a, $$2, czu::a);
-         return $$3;
-      } else {
-         return cxh.k;
-      }
+   protected final fcq j() {
+      return this.c;
    }
 
-   @Override
-   public dcf<dbp> a() {
-      return dcf.i;
+   public jj a() {
+      return this.c.b();
+   }
+
+   public jo k() {
+      return this.c.c();
+   }
+
+   public fcu l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cxy n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cqi o() {
+      return this.a;
+   }
+
+   public btp p() {
+      return this.b;
+   }
+
+   public dhp q() {
+      return this.d;
+   }
+
+   public jo g() {
+      return this.a == null ? jo.c : this.a.cO();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fX();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dL();
    }
 }

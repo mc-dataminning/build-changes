@@ -1,40 +1,105 @@
-public class eee implements edd {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final edq i = new edq(this);
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-   public eee(long $$0) {
-      this.b($$0);
+public interface eee {
+   Codec<eee> b = eef.b;
+   Codec<js<eee>> c = akz.a(me.aQ, b);
+   Codec<eee> d = c.xmap(eef.j::new, $$0 -> (js)($$0 instanceof eef.j $$1 ? $$1.j() : new js.a<>($$0)));
+
+   double a(eee.b var1);
+
+   void a(double[] var1, eee.a var2);
+
+   eee a(eee.f var1);
+
+   double a();
+
+   double b();
+
+   azd<? extends eee> c();
+
+   default eee a(double $$0, double $$1) {
+      return new eef.g(this, $$0, $$1);
    }
 
-   @Override
-   public azh d() {
-      return new eee(this.g());
+   default eee d() {
+      return eef.a(this, eef.k.a.a);
    }
 
-   @Override
-   public eeb e() {
-      return new edp.a(this.g());
+   default eee e() {
+      return eef.a(this, eef.k.a.b);
    }
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
+   default eee f() {
+      return eef.a(this, eef.k.a.c);
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
+   default eee g() {
+      return eef.a(this, eef.k.a.d);
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   default eee h() {
+      return eef.a(this, eef.k.a.e);
+   }
+
+   default eee i() {
+      return eef.a(this, eef.k.a.f);
+   }
+
+   public interface a {
+      eee.b a(int var1);
+
+      void a(double[] var1, eee var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default efn d() {
+         return efn.a();
+      }
+   }
+
+   public static record c(js<etw.a> b, @Nullable etw c) {
+      public static final Codec<eee.c> a = etw.a.b.xmap($$0 -> new eee.c($$0, null), eee.c::b);
+
+      public c(js<etw.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends eee {
+      @Override
+      default void a(double[] $$0, eee.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default eee a(eee.f $$0) {
+         return $$0.apply(this);
+      }
+   }
+
+   public static record e(int a, int b, int c) implements eee.b {
+   }
+
+   public interface f {
+      eee apply(eee var1);
+
+      default eee.c a(eee.c $$0) {
+         return $$0;
+      }
    }
 }

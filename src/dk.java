@@ -10,8 +10,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface dk<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("argument.range.swapped"));
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("argument.range.swapped"));
 
    Optional<T> a();
 

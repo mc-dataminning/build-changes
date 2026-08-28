@@ -1,90 +1,86 @@
-import java.util.EnumSet;
-import java.util.function.Function;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class cdp extends ccw {
-   public static final int b = 1;
-   protected final bwg c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<bwg, axf<btr>> a;
+public class cdp extends cek {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public cdp(bwg $$0, double $$1) {
-      this($$0, $$1, awr.F);
-   }
-
-   public cdp(bwg $$0, double $$1, axf<btr> $$2) {
-      this($$0, $$1, $$1x -> $$2);
-   }
-
-   public cdp(bwg $$0, double $$1, Function<bwg, axf<btr>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(ccw.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.c.bX()) {
-            ji $$0 = this.a(this.c.dU(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.c.eG() != null && this.c.eG().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      fbx $$0 = cgt.a(this.c, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.e = $$0.d;
-         this.f = $$0.e;
-         this.g = $$0.f;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.h;
-   }
-
-   @Override
-   public void d() {
-      this.c.O().a(this.e, this.f, this.g, this.d);
-      this.h = true;
-   }
-
-   @Override
-   public void e() {
-      this.h = false;
-   }
-
-   @Override
-   public boolean c() {
-      return !this.c.O().k();
+   public cdp(bwz $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
    @Nullable
-   protected ji a(dgf $$0, bva $$1, int $$2) {
-      ji $$3 = $$1.du();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : ji.a($$1.du(), $$2, 1, $$1x -> $$0.b_($$1x).a(awv.a)).orElse(null);
+   @Override
+   protected fcu h() {
+      float $$0 = this.b.dV().A.i();
+      if (this.b.dV().A.i() < 0.3F) {
+         return this.k();
+      } else {
+         fcu $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
+         }
+
+         return $$1 == null ? this.k() : $$1;
+      }
+   }
+
+   @Nullable
+   private fcu k() {
+      return chn.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private fcu l() {
+      arn $$0 = (arn)this.b.dV();
+      List<cpu> $$1 = $$0.a(bwb.bC, this.b.cR().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cpu $$2 = $$1.get(this.b.dV().A.a($$1.size()));
+         fcu $$3 = $$2.dt();
+         return chn.a(this.b, 10, 7, $$3);
+      }
+   }
+
+   @Nullable
+   private fcu m() {
+      kl $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         jj $$1 = this.a($$0);
+         return $$1 == null ? null : chn.a(this.b, 10, 7, fcu.c($$1));
+      }
+   }
+
+   @Nullable
+   private kl n() {
+      arn $$0 = (arn)this.b.dV();
+      List<kl> $$1 = kl.a(kl.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   }
+
+   @Nullable
+   private jj a(kl $$0) {
+      arn $$1 = (arn)this.b.dV();
+      cht $$2 = $$1.A();
+      List<jj> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cht.b.b).map(chu::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   }
+
+   private boolean a(cpu $$0) {
+      return $$0.a(this.b.dV().ae());
    }
 }

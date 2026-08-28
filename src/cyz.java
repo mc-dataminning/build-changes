@@ -1,41 +1,59 @@
-public class cyz extends cxd implements cyb {
-   public static float a = 1.5F;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public cyz(cxd.a $$0) {
-      super($$0);
+public class cyz extends cxu {
+   protected static final Map<dku, dym> a = Maps.newHashMap(
+      new Builder()
+         .put(dkw.i, dkw.lg.m())
+         .put(dkw.j, dkw.lg.m())
+         .put(dkw.l, dkw.lg.m())
+         .put(dkw.k, dkw.lg.m())
+         .put(dkw.fA, dkw.lg.m())
+         .put(dkw.tn, dkw.lg.m())
+         .build()
+   );
+
+   public cyz(czm $$0, float $$1, float $$2, cxu.a $$3) {
+      super($$3.a($$0, awz.bF, $$1, $$2, false));
    }
 
    @Override
-   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
-      cxh $$3 = $$1.b($$2);
-      if ($$0 instanceof ard $$4) {
-         cqk.a(($$2x, $$3x, $$4x) -> new crc($$1, $$0, $$1.ds().a(), $$1.bD().b(), $$1.ds().c()), $$4, $$3, $$1, 0.0F, a, 1.0F);
+   public btq a(dbp $$0) {
+      dhp $$1 = $$0.q();
+      jj $$2 = $$0.a();
+      dym $$3 = $$1.a_($$2);
+      if ($$0.k() == jo.a) {
+         return btq.e;
+      } else {
+         cqi $$4 = $$0.o();
+         dym $$5 = a.get($$3.b());
+         dym $$6 = null;
+         if ($$5 != null && $$1.a_($$2.d()).l()) {
+            $$1.a($$4, $$2, awk.xu, awl.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof dlj && $$3.c(dlj.b)) {
+            if (!$$1.w_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
+
+            dlj.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.b(dlj.b, Boolean.valueOf(false));
+         }
+
+         if ($$6 != null) {
+            if (!$$1.C) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(edm.c, $$2, edm.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, bwr.d($$0.p()));
+               }
+            }
+
+            return btq.a;
+         } else {
+            return btq.e;
+         }
       }
-
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awa.Dp, awb.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsy.a;
-   }
-
-   @Override
-   public cqk a(dgz $$0, kb $$1, cxh $$2, jn $$3) {
-      azh $$4 = $$0.C_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fbx $$8 = new fbx($$5, $$6, $$7);
-      crc $$9 = new crc($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.i($$8);
-      return $$9;
-   }
-
-   @Override
-   public void a(cqk $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cyb.a b() {
-      return cyb.a.a().a(($$0, $$1) -> dmk.a($$0, 1.0, fbx.c)).a(6.6666665F).b(1.0F).a(1051).a();
    }
 }

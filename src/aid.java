@@ -1,29 +1,29 @@
-public class aid implements yw<agf> {
-   public static final yn<vl, aid> a = yw.a(aid::a, aid::new);
-   private final bsx b;
+public class aid implements zc<agm> {
+   public static final yt<vr, aid> a = zc.a(aid::a, aid::new);
+   private final int b;
 
-   public aid(bsx $$0) {
+   public aid(int $$0) {
       this.b = $$0;
    }
 
-   private aid(vl $$0) {
-      this.b = $$0.b(bsx.class);
+   private aid(vr $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   private void a(vr $$0) {
+      $$0.m(this.b);
    }
 
    @Override
-   public yy<aid> a() {
-      return agd.ci;
+   public ze<aid> a() {
+      return agk.cc;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public bsx b() {
+   public int b() {
       return this.b;
    }
 }

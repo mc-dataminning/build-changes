@@ -1,100 +1,40 @@
-import com.google.common.base.Charsets;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import com.mojang.util.UndashedUuid;
+import java.net.URI;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class ayf implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public class ayf {
+   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
+   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
+   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
+   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
+   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
+   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
+   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
+   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
+   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
+   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
+   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
+   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
+   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
+   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
+   public static final URI o = URI.create("https://aka.ms/javablocking");
+   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
+   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
+   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
+   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
+   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
+   public static final String u = "https://aka.ms/ExtendJavaRealms";
+   public static final String v = "MCPE-28723";
+   public static final URI w = URI.create("https://bugs.mojang.com/browse/MCPE-28723");
 
-   public static ayf a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw ayf.a.a($$1);
-         } else {
-            return new ayf($$2, $$3);
-         }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
-      }
+   public static String a(@Nullable String $$0, UUID $$1, boolean $$2) {
+      return $$0 == null ? "https://aka.ms/ExtendJavaRealms" : a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   private ayf(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
-         }
-      }
-   }
-
-   public boolean a() {
-      return this.c.isValid();
-   }
-
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
-      }
-   }
-
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
-   }
-
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
-      }
-
-      public static ayf.a a(Path $$0) {
-         return new ayf.a($$0, "already locked (possibly by other Minecraft instance?)");
-      }
+   public static String a(@Nullable String $$0, UUID $$1) {
+      return $$0 == null
+         ? "https://aka.ms/ExtendJavaRealms"
+         : "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

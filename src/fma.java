@@ -1,74 +1,131 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public record fma(int a, @Nullable fma.a b, @Nullable wp c, @Nullable String d) {
-   private static final wp e = wp.c("chat.tag.system");
-   private static final wp f = wp.c("chat.tag.system_single_player");
-   private static final wp g = wp.c("chat.tag.not_secure");
-   private static final wp h = wp.c("chat.tag.modified");
-   private static final wp i = wp.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final fma l = new fma(13684944, null, e, "System");
-   private static final fma m = new fma(13684944, null, f, "System");
-   private static final fma n = new fma(13684944, null, g, "Not Secure");
-   private static final fma o = new fma(16733525, null, i, "Chat Error");
+public class fma extends fmb {
+   private static final wv b = wv.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final wv d = wv.c("mco.connect.connecting");
+   private final fjf e;
+   private final fwf f;
 
-   public static fma a() {
-      return l;
+   public fma(fwf $$0, fjf $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public static fma b() {
-      return m;
-   }
-
-   public static fma c() {
-      return n;
-   }
-
-   public static fma a(String $$0) {
-      wp $$1 = wp.b($$0).a(n.h);
-      wp $$2 = wp.i().b(h).b(wo.s).b($$1);
-      return new fma(6316128, fma.a.a, $$2, "Modified");
-   }
-
-   public static fma d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fma.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public wp g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(aku.b("icon/chat_modified"), 9, 9);
-
-      public final aku b;
-      public final int c;
-      public final int d;
-
-      private a(final aku $$0, final int $$1, final int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   @Override
+   public void run() {
+      fjg $$0;
+      try {
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (fka var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new flh(this.f, this.e));
+               return;
+            case 6006:
+               boolean $$3 = fnd.Q().b(this.e.g);
+               a(
+                  (fwf)($$3
+                     ? new fkm(this.f, this.e.a, this.e.i())
+                     : new fks(wv.c("mco.brokenworld.nonowner.title"), wv.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(wv.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
       }
 
-      public void a(fpc $$0, int $$1, int $$2) {
-         $$0.a(gnh::H, this.b, $$1, $$2, this.c, this.d);
+      if ($$0.a == null) {
+         this.a(wv.c("mco.errorMessage.connectionFailure"));
+      } else {
+         boolean $$7 = $$0.b != null && $$0.c != null;
+         fwf $$8 = (fwf)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+         a($$8);
+      }
+   }
+
+   private static UUID a(fjf $$0) {
+      return $$0.q != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
+   }
+
+   @Override
+   public wv a() {
+      return d;
+   }
+
+   private fjg f() throws fka, TimeoutException, CancellationException {
+      fie $$0 = fie.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.e.a);
+         } catch (fkb var4) {
+            a((long)var4.c);
+         }
+      }
+
+      throw new TimeoutException();
+   }
+
+   public fku a(fjg $$0) {
+      return new fkv(this.f, new fly(this.f, this.e, $$0));
+   }
+
+   private frp a(fjg $$0, UUID $$1, Function<fjg, fwf> $$2) {
+      wv $$3 = wv.c("mco.configure.world.resourcepack.question");
+      return fla.a(this.f, $$3, $$3x -> {
+         a(new fvq(b));
+         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+            fnd.Q().af().i();
+            c.error("Failed to download resource pack from {}", $$0, $$1xx);
+            a(new fks(wv.c("mco.download.resourcePack.fail"), this.f));
+            return null;
+         });
+      });
+   }
+
+   private CompletableFuture<?> a(fjg $$0, UUID $$1) {
+      try {
+         if ($$0.b == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
+         } else if ($$0.c == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+         } else {
+            hjr $$2 = fnd.Q().af();
+            CompletableFuture<Void> $$3 = $$2.b($$1);
+            $$2.g();
+            $$2.a($$1, new URL($$0.b), $$0.c);
+            return $$3;
+         }
+      } catch (Exception var5) {
+         return CompletableFuture.failedFuture(var5);
       }
    }
 }

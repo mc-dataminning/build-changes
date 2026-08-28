@@ -1,29 +1,12 @@
-public record sy(int a, boolean b) {
-   private static final sy c = new sy(1, true);
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public static sy a() {
-      return c;
+public record sy(Map<ald, ti<alc<tj>>> a, alc<Consumer<sn>> b, Consumer<sn> c) {
+   public sy(Map<ald, ti<alc<tj>>> $$0, ald $$1, Consumer<sn> $$2) {
+      this($$0, alc.a(me.aJ, $$1), $$2);
    }
 
-   public boolean b() {
-      return this.a < 1;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      boolean $$2 = $$0 != $$1;
-      boolean $$3 = this.b() || $$0 < this.a;
-      return $$3 && (!$$2 || !this.b);
-   }
-
-   public boolean c() {
-      return this.a != 1;
-   }
-
-   public int d() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return this.b;
+   public sy(ald $$0, ti<alc<tj>> $$1, Consumer<sn> $$2) {
+      this(Map.of($$0, $$1), $$0, $$2);
    }
 }

@@ -1,29 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class ejz {
-   public static final Codec<ejz> a = mb.Y.q().dispatch(ejz::b, eka::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class ejz implements ejv {
+   public static final Codec<ejz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, ecj.c).fieldOf("height").forGetter($$0x -> $$0x.b), dym.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+            .apply($$0, ejz::new)
+   );
+   public final int b;
+   public final dym c;
 
-   protected static <S extends ejz> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
-   }
-
-   public ejz(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract eka<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   public ejz(int $$0, dym $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

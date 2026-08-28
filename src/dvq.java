@@ -1,135 +1,222 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dvq {
-   private final Object2IntSortedMap<cxd> a;
+public class dvq extends dvl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private cxy l = cxy.k;
+   @Nullable
+   private jo m;
+   @Nullable
+   private alc<exq> q;
+   private long r;
 
-   dvq(Object2IntSortedMap<cxd> $$0) {
-      this.a = $$0;
+   public dvq(jj $$0, dym $$1) {
+      super(dvn.O, $$0, $$1);
    }
 
-   public boolean a(cxh $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<cxd> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cxh $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dvq a(jt.a $$0, csn $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dvq a(jt.a $$0, csn $$1, int $$2) {
-      return new dvq.a($$0, $$1)
-         .a(cxl.rj, $$2 * 100)
-         .a(dkg.iZ, $$2 * 8 * 10)
-         .a(cxl.tf, $$2 * 12)
-         .a(cxl.pe, $$2 * 8)
-         .a(cxl.pf, $$2 * 8)
-         .a(awy.r, $$2 * 3 / 2)
-         .a(awy.D, $$2 * 3 / 2)
-         .a(awy.b, $$2 * 3 / 2)
-         .a(dkg.y, $$2 * 3 / 2)
-         .a(awy.i, $$2 * 3 / 2)
-         .a(dkg.is, $$2 * 3 / 2)
-         .a(awy.j, $$2 * 3 / 4)
-         .a(dkg.kb, $$2 * 3 / 4)
-         .a(awy.n, $$2 * 3 / 2)
-         .a(awy.m, $$2 * 3 / 2)
-         .a(awy.k, $$2 * 3 / 2)
-         .a(awy.l, $$2 * 3 / 2)
-         .a(dkg.bf, $$2 * 3 / 2)
-         .a(dkg.cs, $$2 * 3 / 2)
-         .a(dkg.ct, $$2 * 3 / 2)
-         .a(dkg.oC, $$2 * 3 / 2)
-         .a(dkg.eg, $$2 * 3 / 2)
-         .a(dkg.cD, $$2 * 3 / 2)
-         .a(dkg.hs, $$2 * 3 / 2)
-         .a(dkg.cI, $$2 * 3 / 2)
-         .a(dkg.hw, $$2 * 3 / 2)
-         .a(awy.F, $$2 * 3 / 2)
-         .a(cxl.pc, $$2 * 3 / 2)
-         .a(cxl.rU, $$2 * 3 / 2)
-         .a(dkg.cX, $$2 * 3 / 2)
-         .a(awy.aU, $$2)
-         .a(awy.bu, $$2 * 4)
-         .a(cxl.pu, $$2)
-         .a(cxl.pt, $$2)
-         .a(cxl.px, $$2)
-         .a(cxl.pw, $$2)
-         .a(cxl.pv, $$2)
-         .a(awy.h, $$2)
-         .a(awy.aR, $$2 * 6)
-         .a(awy.a, $$2 / 2)
-         .a(awy.d, $$2 / 2)
-         .a(cxl.pX, $$2 / 2)
-         .a(awy.p, $$2 / 2)
-         .a(cxl.pa, $$2 / 2)
-         .a(awy.g, 1 + $$2 / 3)
-         .a(dkg.mG, 1 + $$2 * 20)
-         .a(cxl.wX, $$2 * 3 / 2)
-         .a(dkg.nB, $$2 / 4)
-         .a(dkg.bC, $$2 / 2)
-         .a(dkg.ou, $$2 / 4)
-         .a(dkg.ov, $$2 * 3 / 2)
-         .a(dkg.ow, $$2 * 3 / 2)
-         .a(dkg.oz, $$2 * 3 / 2)
-         .a(dkg.oA, $$2 * 3 / 2)
-         .a(dkg.oD, $$2 * 3 / 2)
-         .a(dkg.pE, $$2 * 3 / 2)
-         .a(dkg.ta, $$2 / 2)
-         .a(dkg.tb, $$2 / 2)
-         .a(dkg.ag, $$2 * 3 / 2)
-         .a(dkg.tf, $$2 / 2)
-         .a(awy.aL)
-         .a();
-   }
-
-   public static class a {
-      private final jt<cxd> a;
-      private final csn b;
-      private final Object2IntSortedMap<cxd> c = new Object2IntLinkedOpenHashMap();
-
-      public a(jt.a $$0, csn $$1) {
-         this.a = $$0.d(mc.K);
-         this.b = $$1;
+   public boolean a(long $$0, arn $$1, bwr $$2, jo $$3, cxy $$4) {
+      if (this.m == null) {
+         this.m = $$3;
       }
 
-      public dvq a() {
-         return new dvq(this.c);
-      }
-
-      public dvq.a a(axf<cxd> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
-         return this;
-      }
-
-      public dvq.a a(axf<cxd> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jr<cxd> $$2 : $$1x) {
-               this.a($$1, $$2.a());
+      this.j = $$0 + 40L;
+      if ($$0 < this.k) {
+         return false;
+      } else {
+         this.k = $$0 + 10L;
+         this.a($$1, $$2, $$4);
+         int $$5 = this.f();
+         if (++this.i >= 10) {
+            this.b($$1, $$2, $$4);
+            return true;
+         } else {
+            $$1.a(this.aw_(), this.m().b(), 2);
+            int $$6 = this.f();
+            if ($$5 != $$6) {
+               dym $$7 = this.m();
+               dym $$8 = $$7.b(dzc.by, Integer.valueOf($$6));
+               $$1.a(this.aw_(), $$8, 3);
             }
-         });
-         return this;
-      }
 
-      public dvq.a a(dgy $$0, int $$1) {
-         cxd $$2 = $$0.i();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cxd $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+            return false;
          }
       }
+   }
+
+   private void a(arn $$0, bwr $$1, cxy $$2) {
+      if (this.q != null) {
+         exq $$3 = $$0.p().bc().b(this.q);
+         if ($$1 instanceof aro $$4) {
+            ap.Q.a($$4, this.q);
+         }
+
+         exo $$5 = new exo.a($$0).a(faf.f, fcu.b(this.o)).a($$1.eg()).a(faf.a, $$1).a(faf.i, $$2).a(fae.i);
+         ObjectArrayList<cxy> $$6 = $$3.a($$5, this.r);
+
+         this.l = switch ($$6.size()) {
+            case 0 -> cxy.k;
+            case 1 -> (cxy)$$6.getFirst();
+            default -> {
+               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$6.size());
+               yield (cxy)$$6.getFirst();
+            }
+         };
+         this.q = null;
+         this.e();
+      }
+   }
+
+   private void b(arn $$0, bwr $$1, cxy $$2) {
+      this.c($$0, $$1, $$2);
+      dym $$3 = this.m();
+      $$0.c(3008, this.aw_(), dku.j($$3));
+      dku $$6;
+      if (this.m().b() instanceof dla $$5) {
+         $$6 = $$5.b();
+      } else {
+         $$6 = dkw.a;
+      }
+
+      $$0.a(this.o, $$6.m(), 3);
+   }
+
+   private void c(arn $$0, bwr $$1, cxy $$2) {
+      this.a($$0, $$1, $$2);
+      if (!this.l.f()) {
+         double $$3 = (double)bwb.aq.l();
+         double $$4 = 1.0 - $$3;
+         double $$5 = $$3 / 2.0;
+         jo $$6 = Objects.requireNonNullElse(this.m, jo.b);
+         jj $$7 = this.o.a($$6, 1);
+         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
+         double $$9 = (double)$$7.v() + 0.5 + (double)(bwb.aq.m() / 2.0F);
+         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
+         cmn $$11 = new cmn($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
+         $$11.i(fcu.c);
+         $$0.b($$11);
+         this.l = cxy.k;
+      }
+   }
+
+   public void a(arn $$0) {
+      if (this.i != 0 && $$0.ae() >= this.j) {
+         int $$1 = this.f();
+         this.i = Math.max(0, this.i - 2);
+         int $$2 = this.f();
+         if ($$1 != $$2) {
+            $$0.a(this.aw_(), this.m().b(dzc.by, Integer.valueOf($$2)), 3);
+         }
+
+         int $$3 = 4;
+         this.j = $$0.ae() + 4L;
+      }
+
+      if (this.i == 0) {
+         this.m = null;
+         this.j = 0L;
+         this.k = 0L;
+      } else {
+         $$0.a(this.aw_(), this.m().b(), 2);
+      }
+   }
+
+   private boolean c(tw $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.q = alc.a(me.bn, ald.a($$0.l("LootTable")));
+         this.r = $$0.i("LootTableSeed");
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean d(tw $$0) {
+      if (this.q == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", this.q.a().toString());
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public tw a(ju.a $$0) {
+      tw $$1 = super.a($$0);
+      if (this.m != null) {
+         $$1.a("hit_direction", this.m.ordinal());
+      }
+
+      if (!this.l.f()) {
+         $$1.a("item", this.l.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public abx a() {
+      return abx.a(this);
+   }
+
+   @Override
+   protected void a(tw $$0, ju.a $$1) {
+      super.a($$0, $$1);
+      if (!this.c($$0) && $$0.e("item")) {
+         this.l = cxy.a($$1, (ut)$$0.p("item")).orElse(cxy.k);
+      } else {
+         this.l = cxy.k;
+      }
+
+      if ($$0.e("hit_direction")) {
+         this.m = jo.values()[$$0.h("hit_direction")];
+      }
+   }
+
+   @Override
+   protected void b(tw $$0, ju.a $$1) {
+      super.b($$0, $$1);
+      if (!this.d($$0) && !this.l.f()) {
+         $$0.a("item", this.l.a($$1));
+      }
+   }
+
+   public void a(alc<exq> $$0, long $$1) {
+      this.q = $$0;
+      this.r = $$1;
+   }
+
+   private int f() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
+      }
+   }
+
+   @Nullable
+   public jo c() {
+      return this.m;
+   }
+
+   public cxy d() {
+      return this.l;
    }
 }

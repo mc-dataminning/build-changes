@@ -1,34 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hep implements hev<dvz> {
-   private final gpr a;
+public record hep(boolean b) implements hes {
+   public static final MapCodec<hep> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hep::b)).apply($$0, hep::new)
+   );
 
-   public hep(gpr $$0) {
-      this.a = $$0;
+   @Override
+   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
+      float $$4 = (float)$$0.o();
+      float $$5 = (float)$$0.p();
+      return this.b ? azk.a($$4 / $$5, 0.0F, 1.0F) : azk.a($$4, 0.0F, $$5);
    }
 
-   @Nullable
-   public dvz a(cxh $$0) {
-      return $$0.a(kv.am);
-   }
-
-   public void a(@Nullable dvz $$0, cxf $$1, fgr $$2, gmx $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dvz.a));
-   }
-
-   public static record a() implements hev.a {
-      public static final MapCodec<hep.a> a = MapCodec.unit(new hep.a());
-
-      @Override
-      public MapCodec<hep.a> a() {
-         return a;
-      }
-
-      @Override
-      public hev<?> a(gfy $$0) {
-         return new hep(new gpr($$0));
-      }
+   @Override
+   public MapCodec<hep> a() {
+      return a;
    }
 }

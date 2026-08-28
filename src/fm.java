@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fm implements ArgumentType<fm.a> {
    private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.player.unknown"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.player.unknown"));
 
    public static Collection<GameProfile> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       return ((fm.a)$$0.getArgument($$1, fm.a.class)).getNames((ex)$$0.getSource());
@@ -27,7 +27,7 @@ public class fm implements ArgumentType<fm.a> {
    }
 
    public <S> fm.a a(StringReader $$0, S $$1) throws CommandSyntaxException {
-      return a($$0, hn.a($$1));
+      return a($$0, ho.a($$1));
    }
 
    public fm.a a(StringReader $$0) throws CommandSyntaxException {
@@ -36,8 +36,8 @@ public class fm implements ArgumentType<fm.a> {
 
    private static fm.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '@') {
-         hn $$2 = new hn($$0, $$1);
-         hm $$3 = $$2.t();
+         ho $$2 = new ho($$0, $$1);
+         hn $$3 = $$2.t();
          if ($$3.b()) {
             throw fk.c.createWithContext($$0);
          } else {
@@ -62,7 +62,7 @@ public class fm implements ArgumentType<fm.a> {
       if ($$0.getSource() instanceof fc $$2) {
          StringReader $$3 = new StringReader($$1.getInput());
          $$3.setCursor($$1.getStart());
-         hn $$4 = new hn($$3, hn.a($$2));
+         ho $$4 = new ho($$3, ho.a($$2));
 
          try {
             $$4.t();
@@ -85,22 +85,22 @@ public class fm implements ArgumentType<fm.a> {
    }
 
    public static class b implements fm.a {
-      private final hm a;
+      private final hn a;
 
-      public b(hm $$0) {
+      public b(hn $$0) {
          this.a = $$0;
       }
 
       @Override
       public Collection<GameProfile> getNames(ex $$0) throws CommandSyntaxException {
-         List<are> $$1 = this.a.d($$0);
+         List<aro> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw fk.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (are $$3 : $$1) {
-               $$2.add($$3.gk());
+            for (aro $$3 : $$1) {
+               $$2.add($$3.gh());
             }
 
             return $$2;

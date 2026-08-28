@@ -1,23 +1,19 @@
-public interface zc extends abf {
-   void a(zg var1);
+import io.netty.buffer.ByteBuf;
 
-   void a(zh var1);
+public interface zc<T extends wb> {
+   ze<? extends zc<T>> a();
 
-   void a(zd var1);
+   void a(T var1);
 
-   void a(zf var1);
+   default boolean c() {
+      return false;
+   }
 
-   void a(zj var1);
+   default boolean d() {
+      return false;
+   }
 
-   void a(zi var1);
-
-   void a(zn var1);
-
-   void a(zl var1);
-
-   void a(zm var1);
-
-   void a(ze var1);
-
-   void a(zk var1);
+   static <B extends ByteBuf, T extends zc<?>> yt<B, T> a(yw<B, T> $$0, yu<B, T> $$1) {
+      return yt.a($$0, $$1);
+   }
 }

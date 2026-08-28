@@ -1,38 +1,48 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
 
-public class bbt extends bgy {
-   public bbt(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityJukeboxFix", bic.s, "minecraft:jukebox");
+public class bbt extends DataFix {
+   public bbt(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bic.s, "minecraft:jukebox");
-      Type<?> $$2 = $$1.findFieldType("RecordItem");
-      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("Record").asInt(0);
-      if ($$5 > 0) {
-         $$4.remove("Record");
-         String $$6 = bgd.a(bfp.a($$5), 0);
-         if ($$6 != null) {
-            Dynamic<?> $$7 = $$4.emptyMap();
-            $$7 = $$7.set("id", $$7.createString($$6));
-            $$7 = $$7.set("Count", $$7.createByte((byte)1));
-            return $$0.set(
-                  $$3,
-                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
-               )
-               .set(DSL.remainderFinder(), $$4);
-         }
-      }
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.remove("Bees");
+   }
 
-      return $$0;
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.remove("EntityData");
+      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
+      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
+   }
+
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(biq.s, "minecraft:beehive");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
+      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
+      Type<?> $$3 = $$2.getElement();
+      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
+      OpticFinder<?> $$5 = DSL.typeFinder($$3);
+      Type<?> $$6 = this.getInputSchema().getType(biq.s);
+      Type<?> $$7 = this.getOutputSchema().getType(biq.s);
+      return this.fixTypeEverywhereTyped(
+         "BeehiveFieldRenameFix",
+         $$6,
+         $$7,
+         $$4x -> baz.a(
+               $$7,
+               $$4x.updateTyped(
+                  $$1,
+                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
+                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
+               )
+            )
+      );
    }
 }

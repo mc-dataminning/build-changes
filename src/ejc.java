@@ -1,16 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejc implements eiy {
-   public static final Codec<ejc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, ebm.c).fieldOf("height").forGetter($$0x -> $$0x.b), dxq.a.fieldOf("state").forGetter($$0x -> $$0x.c))
-            .apply($$0, ejc::new)
-   );
-   public final int b;
-   public final dxq c;
+public class ejc extends ehr<ekq> {
+   public ejc(Codec<ekq> $$0) {
+      super($$0);
+   }
 
-   public ejc(int $$0, dxq $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public boolean a(eht<ekq> $$0) {
+      ekq $$1 = $$0.f();
+      dio $$2 = $$0.b();
+      jj $$3 = $$0.e();
+      if (!$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+         return false;
+      } else {
+         dym $$4 = $$2.a_($$3);
+         if (!$$4.l() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.i()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.i())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

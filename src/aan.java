@@ -1,32 +1,26 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record aan(long c, jj d) implements aaf {
+   public static final yt<vr, aan> a = aaf.a(aan::a, aan::new);
+   public static final aaf.b<aan> b = aaf.a("debug/neighbors_update");
 
-public record aan(long c, List<aan.a> d) implements zz {
-   public static final zz.b<aan> a = zz.a("debug/redstone_update_order");
-   public static final yn<vl, aan> b = yn.a(yl.k, aan::b, aan.a.a.a(yl.a()), aan::c, aan::new);
+   private aan(vr $$0) {
+      this($$0.m(), $$0.e());
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+   }
 
    @Override
-   public zz.b<aan> a() {
-      return a;
+   public aaf.b<aan> a() {
+      return b;
    }
 
    public long b() {
       return this.c;
    }
 
-   public List<aan.a> c() {
+   public jj c() {
       return this.d;
-   }
-
-   public static record a(ji b, eve c) {
-      public static final yn<ByteBuf, aan.a> a = yn.a(ji.b, aan.a::a, eve.a, aan.a::b, aan.a::new);
-
-      public ji a() {
-         return this.b;
-      }
-
-      public eve b() {
-         return this.c;
-      }
    }
 }

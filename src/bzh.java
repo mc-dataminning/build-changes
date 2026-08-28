@@ -1,92 +1,101 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
-public class bzh extends bxr<cjs> {
-   public static final int c = 200;
-   public static final float d = 1.65F;
-   private final Function<cjs, bsj> e;
-   private final cgp f;
+public class bzh extends byi<bwt> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
    private final float g;
-   private final ToDoubleFunction<cjs> h;
-   private fbx i;
-   private final Function<cjs, avz> j;
-   private final Function<cjs, avz> k;
+   @Nullable
+   private jj h;
+   private int i;
+   private int j;
+   private int k;
 
-   public bzh(Function<cjs, bsj> $$0, cgp $$1, float $$2, ToDoubleFunction<cjs> $$3, Function<cjs, avz> $$4, Function<cjs, avz> $$5) {
-      super(ImmutableMap.of(cfc.V, cfd.b, cfc.W, cfd.a), 200);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.i = fbx.c;
+   public bzh(float $$0) {
+      super(ImmutableMap.of(cft.x, cfu.a, cft.n, cfu.b));
+      this.g = $$0;
    }
 
-   protected boolean a(ard $$0, cjs $$1) {
-      return $$1.ea().a(cfc.W);
+   protected boolean a(arn $$0, bwt $$1) {
+      return $$1.n_() && this.b($$0, $$1);
    }
 
-   protected boolean a(ard $$0, cjs $$1, long $$2) {
-      return $$1.ea().a(cfc.W);
+   protected void a(arn $$0, bwt $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.A.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
    }
 
-   protected void b(ard $$0, cjs $$1, long $$2) {
-      ji $$3 = $$1.du();
-      bxa<?> $$4 = $$1.ea();
-      fbx $$5 = $$4.c(cfc.W).get();
-      this.i = new fbx((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
-      $$4.a(cfc.m, new cff($$5, this.g, 0));
+   protected void b(arn $$0, bwt $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
    }
 
-   protected void c(ard $$0, cjs $$1, long $$2) {
-      List<bvy> $$3 = $$0.a(bvy.class, this.f, $$1, $$1.cQ());
-      bxa<?> $$4 = $$1.ea();
-      if (!$$3.isEmpty()) {
-         bvy $$5 = $$3.get(0);
-         btp $$6 = $$0.al().c((bvy)$$1);
-         if ($$5.a($$0, $$6, (float)$$1.h(bxg.c))) {
-            ddt.a($$0, (bva)$$5, $$6);
-         }
+   protected boolean c(arn $$0, bwt $$1, long $$2) {
+      return $$1.n_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   }
 
-         int $$7 = $$1.b(bug.a) ? $$1.c(bug.a).e() + 1 : 0;
-         int $$8 = $$1.b(bug.b) ? $$1.c(bug.b).e() + 1 : 0;
-         float $$9 = 0.25F * (float)($$7 - $$8);
-         float $$10 = ayz.a($$1.fq() * 1.65F, 0.2F, 3.0F) + $$9;
-         float $$11 = $$5.i($$0.al().b((bvy)$$1)) ? 0.5F : 1.0F;
-         $$5.p((double)($$11 * $$10) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
-         this.b($$0, $$1);
-         $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, 1.0F);
-      } else if (this.c($$0, $$1)) {
-         $$0.a(null, $$1, this.j.apply($$1), awb.g, 1.0F, 1.0F);
-         boolean $$12 = $$1.gu();
-         if ($$12) {
-            $$0.a(null, $$1, this.k.apply($$1), awb.g, 1.0F, 1.0F);
-         }
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
 
-         this.b($$0, $$1);
+   protected void d(arn $$0, bwt $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
       } else {
-         Optional<cff> $$13 = $$4.c(cfc.m);
-         Optional<fbx> $$14 = $$4.c(cfc.W);
-         boolean $$15 = $$13.isEmpty() || $$14.isEmpty() || $$13.get().a().a().a($$14.get(), 0.25);
-         if ($$15) {
-            this.b($$0, $$1);
+         if (this.d($$0, $$1)) {
+            $$1.N().a();
+            this.j--;
+            this.k = 5;
          }
       }
    }
 
-   private boolean c(ard $$0, cjs $$1) {
-      fbx $$2 = $$1.dx().d(1.0, 0.0, 1.0).d();
-      ji $$3 = ji.a((kb)$$1.ds().e($$2));
-      return $$0.a_($$3).a(awp.cq) || $$0.a_($$3.d()).a(awp.cq);
+   private void a(bwt $$0, jj $$1) {
+      $$0.eb().a(cft.n, new cfw($$1, this.g, 0));
    }
 
-   protected void b(ard $$0, cjs $$1) {
-      $$0.a($$1, (byte)59);
-      $$1.ea().a(cfc.V, this.e.apply($$1).a($$0.A));
-      $$1.ea().b(cfc.W);
+   private boolean b(arn $$0, bwt $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(arn $$0, bwt $$1) {
+      jj $$2 = $$1.dv();
+      jj $$3 = $$2.e();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(arn $$0, bwt $$1) {
+      return this.a($$0, $$1.dv());
+   }
+
+   private boolean a(arn $$0, jj $$1) {
+      return $$0.a_($$1).a(awz.T);
+   }
+
+   private Optional<jj> a(bwt $$0) {
+      return $$0.eb().c(cft.x);
+   }
+
+   private boolean e(arn $$0, bwt $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(arn $$0, bwt $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

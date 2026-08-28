@@ -1,44 +1,63 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 
-public record daa(Map<String, daa.a> c) {
-   public static final daa a = new daa(Map.of());
-   public static final Codec<daa> b = Codec.unboundedMap(Codec.STRING, daa.a.a).xmap(daa::new, daa::a);
+public final class daa {
+   public static final daa a = new daa(List.of());
+   public static final Codec<daa> b = cxy.b.listOf().xmap(daa::new, $$0 -> $$0.d);
+   public static final yt<wg, daa> c = cxy.i.a(yr.a()).a(daa::new, $$0 -> $$0.d);
+   private final List<cxy> d;
 
-   public daa a(String $$0, daa.a $$1) {
-      return new daa(af.a(this.c, $$0, $$1));
+   private daa(List<cxy> $$0) {
+      this.d = $$0;
    }
 
-   public Map<String, daa.a> a() {
-      return this.c;
+   public static daa a(cxy $$0) {
+      return new daa(List.of($$0.v()));
    }
 
-   public static record a(jr<evl> b, double c, double d, float e) {
-      public static final Codec<daa.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  evl.b.fieldOf("type").forGetter(daa.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(daa.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(daa.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(daa.a::d)
-               )
-               .apply($$0, daa.a::new)
-      );
+   public static daa a(List<cxy> $$0) {
+      return new daa(List.copyOf(Lists.transform($$0, cxy::v)));
+   }
 
-      public jr<evl> a() {
-         return this.b;
+   public boolean a(cxu $$0) {
+      for (cxy $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
       }
 
-      public double b() {
-         return this.c;
-      }
+      return false;
+   }
 
-      public double c() {
-         return this.d;
-      }
+   public List<cxy> a() {
+      return Lists.transform(this.d, cxy::v);
+   }
 
-      public float d() {
-         return this.e;
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof daa $$1 && cxy.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return cxy.a(this.d);
+   }
+
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

@@ -1,11 +1,14 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface est {
-   Codec<est> c = mb.n.q().dispatch(est::a, esu::codec);
+public class est extends etf {
+   public static final MapCodec<est> a = MapCodec.unit(() -> est.b);
+   public static final est b = new est();
 
-   @Nullable
-   tq a(azh var1, @Nullable tq var2);
+   private est() {
+   }
 
-   esu<?> a();
+   @Override
+   protected eth<?> a() {
+      return eth.j;
+   }
 }

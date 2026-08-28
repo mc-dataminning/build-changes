@@ -1,38 +1,20 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public interface vw {
-   static vw a(final Runnable $$0) {
-      return new vw() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class vw extends ChannelInboundHandlerAdapter {
+   private final vh a;
 
-         @Nullable
-         @Override
-         public yw<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public vw(vh $$0) {
+      this.a = $$0;
    }
 
-   static vw a(final Supplier<yw<?>> $$0) {
-      return new vw() {
-         @Nullable
-         @Override
-         public yw<?> b() {
-            return $$0.get();
-         }
-      };
-   }
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      $$1 = vt.b($$1);
+      if ($$1 instanceof ByteBuf $$2) {
+         this.a.a($$2.readableBytes());
+      }
 
-   default void a() {
-   }
-
-   @Nullable
-   default yw<?> b() {
-      return null;
+      $$0.fireChannelRead($$1);
    }
 }

@@ -1,33 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtw extends dsx implements dtp {
-   public static final MapCodec<dtw> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dyf.a.fieldOf("block_set_type").forGetter(dsx::q), dtp.a.e.fieldOf("weathering_state").forGetter(dtw::r), t()).apply($$0, dtw::new)
-   );
-   private final dtp.a h;
+public class dtw extends dok {
+   public static final MapCodec<dtw> c = b(dtw::new);
+   private static final fdo e = dku.b(8.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dtw> a() {
-      return g;
+      return c;
    }
 
-   protected dtw(dyf $$0, dtp.a $$1, dxp.d $$2) {
-      super($$0, $$2);
-      this.h = $$1;
-   }
-
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dtw(dyl.d $$0) {
+      super($$0, jo.b, e, false);
    }
 
    @Override
-   protected boolean f(dxq $$0) {
-      return dtp.c($$0.b()).isPresent();
-   }
-
-   public dtp.a r() {
-      return this.h;
+   protected dol c() {
+      return (dol)dkw.pd;
    }
 }

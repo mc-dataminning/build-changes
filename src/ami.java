@@ -1,132 +1,141 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
+import java.util.List;
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class ami {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, akt<dgz>> a = ImmutableBiMap.of("o", dgz.i, "n", dgz.j, "e", dgz.k);
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
    @Nullable
-   private static ama g;
+   private Socket g;
    @Nullable
-   private static alz h;
+   private Thread h;
 
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)ey.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)ey.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    ey.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ex)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ey.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)ey.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 ey.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ex)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ex)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(ey.a("stop").executes($$0x -> a((ex)$$0x.getSource())))
-      );
+   public ami(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static int a(ex $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> wp.b("You have now stopped chasing"), false);
-         h = null;
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
       }
 
-      if (g != null) {
-         g.b();
-         $$0.a(() -> wp.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
    }
 
-   private static boolean b(ex $$0) {
-      if (g != null) {
-         $$0.b(wp.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(wp.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
    }
 
-   private static int a(ex $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new ama($$1, $$2, $$0.l().ag(), 100);
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
 
+      while (this.f) {
          try {
-            g.a();
-            $$0.a(() -> wp.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(wp.b("Failed to start chase server on port " + $$2));
-            g = null;
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
+                  }
+
+                  this.a($$2);
+               }
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+            }
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
          }
 
-         return 0;
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
+            }
+         }
       }
    }
 
-   private static int b(ex $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new alz($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> wp.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
+         } else {
+            a.warn("Unknown message type '{}'", $$2);
+         }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
       }
+   }
+
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<ami.a> b(Scanner $$0) {
+      alc<dhp> $$1 = (alc<dhp>)amr.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new ami.a($$1, new fcu((double)$$2, (double)$$3, (double)$$4), new fct($$6, $$5)));
+      }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<aro> $$1 = this.e.ag().t();
+         if (!$$1.isEmpty()) {
+            aro $$2 = $$1.get(0);
+            arn $$3 = this.e.J();
+            ex $$4 = new ex($$2.z(), fcu.a($$3.aa()), fct.a, $$3, 4, "", wu.a, this.e, $$2);
+            ey $$5 = this.e.aG();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(alc<dhp> a, fcu b, fct c) {
    }
 }

@@ -1,105 +1,85 @@
-import com.google.common.collect.Comparators;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class asb {
-   private static final Logger c = LogUtils.getLogger();
-   public static final float a = 0.01F;
-   public static final float b = 64.0F;
-   private static final float d = 9.0F;
-   private static final int e = 10;
-   private final LongSet f = new LongOpenHashSet();
-   private final boolean g;
-   private float h = 9.0F;
-   private float i;
-   private int j;
-   private int k = 1;
+public class asb implements arx {
+   private final arz a;
+   private final Long2ObjectOpenHashMap<ebk> b = new Long2ObjectOpenHashMap();
+   private dgw c = new dgw(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
 
-   public asb(boolean $$0) {
-      this.g = $$0;
+   private asb(arz $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void a(dzw $$0) {
-      this.f.add($$0.f().a());
+   public static asb b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
    }
 
-   public void a(are $$0, dgg $$1) {
-      if (!this.f.remove($$1.a()) && $$0.bJ()) {
-         $$0.f.b(new acr($$1));
+   public static asb c(int $$0) {
+      arz $$1 = arz.c($$0);
+      int $$2 = arx.a($$0);
+      int $$3 = $$0 + aqq.a;
+      int $$4 = arx.a($$3);
+      return new asb($$1, $$2, $$3, $$4);
+   }
+
+   public static asb c() {
+      return new asb(arz.c(), 0, 0, 0);
+   }
+
+   @Override
+   public void a(dgw $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
       }
    }
 
-   public void a(are $$0) {
-      if (this.j < this.k) {
-         float $$1 = Math.max(1.0F, this.h);
-         this.i = Math.min(this.i + this.h, $$1);
-         if (!(this.i < 1.0F)) {
-            if (!this.f.isEmpty()) {
-               ard $$2 = $$0.y();
-               aqh $$3 = $$2.m().a;
-               List<dzw> $$4 = this.a($$3, $$0.dw());
-               if (!$$4.isEmpty()) {
-                  asg $$5 = $$0.f;
-                  this.j++;
-                  $$5.b(abz.a);
-
-                  for (dzw $$6 : $$4) {
-                     a($$5, $$2, $$6);
-                  }
-
-                  $$5.b(new aby($$4.size()));
-                  this.i = this.i - (float)$$4.size();
-               }
-            }
+   @Override
+   public void a(dgw $$0, @Nullable ebk $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
+         } else {
+            this.b.put($$0.a(), $$1);
          }
       }
    }
 
-   private static void a(asg $$0, ard $$1, dzw $$2) {
-      $$0.b(new acx($$2, $$1.x_(), null, null));
-      dgg $$3 = $$2.f();
-      agc.a($$1, $$3);
+   @Override
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
    }
 
-   private List<dzw> a(aqh $$0, dgg $$1) {
-      int $$2 = ayz.d(this.i);
-      List<dzw> $$4;
-      if (!this.g && this.f.size() > $$2) {
-         $$4 = this.f
-            .stream()
-            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
-            .stream()
-            .mapToLong(Long::longValue)
-            .mapToObj($$0::e)
-            .filter(Objects::nonNull)
-            .toList();
-      } else {
-         $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
-      }
-
-      for (dzw $$5 : $$4) {
-         this.f.remove($$5.f().a());
-      }
-
-      return $$4;
+   @Override
+   public void b() {
+      this.g = false;
+      this.a.b();
    }
 
-   public void a(float $$0) {
-      this.j--;
-      this.h = Double.isNaN((double)$$0) ? 0.01F : ayz.a($$0, 0.01F, 64.0F);
-      if (this.j == 0) {
-         this.i = 1.0F;
-      }
-
-      this.k = 10;
+   public int d() {
+      return this.d;
    }
 
-   public boolean a(long $$0) {
-      return this.f.contains($$0);
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.a.d();
+   }
+
+   @Nullable
+   public ebk a(int $$0, int $$1) {
+      return (ebk)this.b.get(dgw.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
    }
 }

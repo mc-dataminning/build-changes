@@ -1,3 +1,4 @@
-public interface hbt {
-   cpe a();
+public class hbt extends hbk {
+   public float a;
+   public int b;
 }

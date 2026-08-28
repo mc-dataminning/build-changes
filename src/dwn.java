@@ -1,9 +1,15 @@
-public interface dwn {
-   void a();
+public interface dwn extends btj {
+   fcp y_ = dku.b(16.0, 11.0, 32.0).e().get(0);
 
-   boolean b();
+   default fcp ah_() {
+      return y_;
+   }
 
-   ji c();
+   double C();
 
-   String d();
+   double D();
+
+   double E();
+
+   boolean F();
 }

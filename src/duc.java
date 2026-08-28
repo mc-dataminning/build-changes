@@ -1,50 +1,82 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class duc extends dni {
-   public static final MapCodec<duc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dni::c), t()).apply($$0, duc::new));
+public class duc extends dsa {
+   public static final MapCodec<duc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eaa.a.fieldOf("wood_type").forGetter(dsa::d), t()).apply($$0, duc::new));
+   public static final dzk<jo> b = dot.e;
+   private static final Map<jo, fdo> c = fdl.c(dku.a(16.0, 4.5, 12.5, 14.0, 16.0));
 
    @Override
    public MapCodec<duc> a() {
       return a;
    }
 
-   public duc(jr<buc> $$0, float $$1, dxp.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public duc(dag $$0, dxp.d $$1) {
-      super($$0, $$1);
+   public duc(eaa $$0, dyl.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.B.b().b(b, jo.c).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dxq $$0, dgf $$1, ji $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dkg.ei) || $$0.a(dkg.ej) || $$0.a(dkg.ek);
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return c.get($$0.c(b));
    }
 
    @Override
-   public void a(dxq $$0, dgz $$1, ji $$2, azh $$3) {
-      fcr $$4 = this.a($$0, $$1, $$2, fcc.a());
-      fbx $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.d;
-      double $$7 = (double)$$2.w() + $$5.f;
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
 
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(lt.ah, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+   @Nullable
+   @Override
+   public dym a(dbn $$0) {
+      dym $$1 = this.m();
+      eut $$2 = $$0.q().b_($$0.a());
+      dhs $$3 = $$0.q();
+      jj $$4 = $$0.a();
+      jo[] $$5 = $$0.f();
+
+      for (jo $$6 : $$5) {
+         if ($$6.o().d()) {
+            jo $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(d, Boolean.valueOf($$2.a() == euu.c));
+            }
          }
       }
+
+      return null;
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
-      if ($$1 instanceof ard $$4 && $$1.an() != bsv.a && $$3 instanceof bvy $$5 && !$$5.a($$4, $$1.al().r())) {
-         $$5.a(this.b());
-      }
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public bue b() {
-      return new bue(bug.t, 40);
+   public float h(dym $$0) {
+      return $$0.c(b).p();
+   }
+
+   @Override
+   public fcu o(dym $$0) {
+      return c.get($$0.c(b)).a().f();
+   }
+
+   @Override
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b, d);
    }
 }

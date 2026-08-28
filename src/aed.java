@@ -1,36 +1,44 @@
-public record aed(aga e, byte f) implements yw<abl> {
-   public static final yn<wa, aed> a = yw.a(aed::a, aed::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import java.util.List;
 
-   private aed(wa $$0) {
-      this(new aga($$0), $$0.readByte());
-   }
-
-   private void a(wa $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
-   }
+public record aed(List<aed.a> b, boolean c) implements zc<abr> {
+   public static final yt<wg, aed> a = yt.a(aed.a.c.a(yr.a()), aed::b, yr.b, aed::e, aed::new);
 
    @Override
-   public yy<aed> a() {
-      return agd.ao;
+   public ze<aed> a() {
+      return agk.ak;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   public boolean e() {
+      return this.c;
    }
 
-   public aga b() {
-      return this.e;
-   }
+   public static record a(dds d, byte e) {
+      public static final byte a = 1;
+      public static final byte b = 2;
+      public static final yt<wg, aed.a> c = yt.a(dds.a, aed.a::c, yr.c, aed.a::d, aed.a::new);
 
-   public byte e() {
-      return this.f;
+      public a(dds $$0, boolean $$1, boolean $$2) {
+         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
+      }
+
+      public boolean a() {
+         return (this.e & 1) != 0;
+      }
+
+      public boolean b() {
+         return (this.e & 2) != 0;
+      }
+
+      public dds c() {
+         return this.d;
+      }
+
+      public byte d() {
+         return this.e;
+      }
    }
 }

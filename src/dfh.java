@@ -1,29 +1,62 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dfh(int a, Map<dfj, Integer> b, int c, jr<avz> d, float e, float f, axf<cxd> g, akt<dfk> h) {
-   public cxd.a a(cxd.a $$0, jv<bvi<?>> $$1) {
-      return $$0.b(dfj.e.a(this.a)).a(this.a(dfj.e)).a(this.g).a(kv.E, dfm.a(bvj.g).a(this.d).a(this.h).a($$1).a());
+public record dfh(deo d, deo e, kn f, Optional<efs> g, elw h, Optional<js<edm>> i) implements dey {
+   public static final MapCodec<dfh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               deo.b.fieldOf("radius").forGetter(dfh::b),
+               deo.b.fieldOf("height").forGetter(dfh::c),
+               kn.g.optionalFieldOf("offset", kn.i).forGetter(dfh::d),
+               efs.b.optionalFieldOf("predicate").forGetter(dfh::e),
+               elw.a.fieldOf("block_state").forGetter(dfh::f),
+               edm.aj.optionalFieldOf("trigger_game_event").forGetter(dfh::g)
+            )
+            .apply($$0, dfh::new)
+   );
+
+   @Override
+   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
+      jj $$5 = jj.a((kc)$$4).a(this.f);
+      azs $$6 = $$3.dY();
+      int $$7 = (int)this.d.a($$1);
+      int $$8 = (int)this.e.a($$1);
+
+      for (jj $$9 : jj.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
+         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azk.h($$7)
+            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
+            && $$0.b($$9, this.h.a($$6, $$9))) {
+            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+         }
+      }
    }
 
-   public cxd.a a(cxd.a $$0, jr<avz> $$1, boolean $$2, jv<bvi<?>> $$3) {
-      if ($$2) {
-         $$0 = $$0.b(dfj.e.a(this.a)).a(this.g);
-      }
-
-      return $$0.a(this.a(dfj.e)).a(kv.E, dfm.a(bvj.g).a($$1).a(this.h).a($$3).c($$2).a());
+   @Override
+   public MapCodec<dfh> a() {
+      return a;
    }
 
-   public czw a(dfj $$0) {
-      int $$1 = this.b.getOrDefault($$0, 0);
-      czw.a $$2 = czw.a();
-      bvk $$3 = bvk.a($$0.a());
-      aku $$4 = aku.b("armor." + $$0.b());
-      $$2.a(bxg.a, new bxe($$4, (double)$$1, bxe.a.a), $$3);
-      $$2.a(bxg.b, new bxe($$4, (double)this.e, bxe.a.a), $$3);
-      if (this.f > 0.0F) {
-         $$2.a(bxg.p, new bxe($$4, (double)this.f, bxe.a.a), $$3);
-      }
+   public deo b() {
+      return this.d;
+   }
 
-      return $$2.a();
+   public deo c() {
+      return this.e;
+   }
+
+   public kn d() {
+      return this.f;
+   }
+
+   public Optional<efs> e() {
+      return this.g;
+   }
+
+   public elw f() {
+      return this.h;
+   }
+
+   public Optional<js<edm>> g() {
+      return this.i;
    }
 }

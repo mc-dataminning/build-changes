@@ -1,41 +1,19 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-
 public class dhn {
-   private final List<dhn.a> a = Lists.newArrayList();
+   private static int[] a = new int[65536];
 
-   public void a(ji $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dhn.a($$0, $$1));
-      }
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   public double b(ji $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (dhn.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   static class a {
-      private final ji a;
-      private final double b;
-
-      public a(ji $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(ji $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

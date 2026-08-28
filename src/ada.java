@@ -1,48 +1,29 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public record ada(int b, float c) implements zc<abr> {
+   public static final yt<vr, ada> a = zc.a(ada::a, ada::new);
 
-public class ada implements yw<abl> {
-   public static final yn<vl, ada> a = yw.a(ada::a, ada::new);
-   private final int b;
-   private final int c;
-   private final adb d;
-
-   public ada(dgg $$0, etl $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.h;
-      this.c = $$0.i;
-      this.d = new adb($$0, $$1, $$2, $$3);
+   public ada(bwr $$0) {
+      this($$0.ar(), $$0.eL());
    }
 
-   private ada(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new adb($$0, this.b, this.c);
+   private ada(vr $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(vl $$0) {
+   private void a(vr $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+      $$0.a(this.c);
    }
 
    @Override
-   public yy<ada> a() {
-      return agd.M;
+   public ze<ada> a() {
+      return agk.I;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public adb f() {
-      return this.d;
    }
 }

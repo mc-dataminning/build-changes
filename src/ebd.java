@@ -1,110 +1,289 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public final class ebd implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<ebc> c = new Long2ObjectLinkedOpenHashMap();
-   private final ebf d;
-   private final Path e;
-   private final boolean f;
+public class ebd extends eaj {
+   @Nullable
+   private volatile eui n;
+   private volatile ebk o = ebk.c;
+   private final List<tw> p = Lists.newArrayList();
+   @Nullable
+   private eai q;
+   @Nullable
+   private edz r;
+   private final fek<dku> s;
+   private final fek<eus> t;
 
-   ebd(ebf $$0, Path $$1, boolean $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.d = $$0;
+   public ebd(dgw $$0, ebg $$1, dhr $$2, kf<dis> $$3, @Nullable efo $$4) {
+      this($$0, $$1, null, new fek<>(), new fek<>(), $$2, $$3, $$4);
    }
 
-   private ebc b(dgg $$0) throws IOException {
-      long $$1 = dgg.c($$0.h(), $$0.i());
-      ebc $$2 = (ebc)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((ebc)this.c.removeLast()).close();
-         }
+   public ebd(dgw $$0, ebg $$1, @Nullable eau[] $$2, fek<dku> $$3, fek<eus> $$4, dhr $$5, kf<dis> $$6, @Nullable efo $$7) {
+      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
+      this.s = $$3;
+      this.t = $$4;
+   }
 
-         v.c(this.e);
-         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         ebc $$4 = new ebc(this.d, $$3, this.e, this.f);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
+   @Override
+   public fep<dku> q() {
+      return this.s;
+   }
+
+   @Override
+   public fep<eus> r() {
+      return this.t;
+   }
+
+   @Override
+   public eaj.a a(long $$0) {
+      return new eaj.a(this.s.a($$0), this.t.a($$0));
+   }
+
+   @Override
+   public dym a_(jj $$0) {
+      int $$1 = $$0.v();
+      if (this.e($$1)) {
+         return dkw.nD.m();
+      } else {
+         eau $$2 = this.b(this.f($$1));
+         return $$2.c() ? dkw.a.m() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+      }
+   }
+
+   @Override
+   public eut b_(jj $$0) {
+      int $$1 = $$0.v();
+      if (this.e($$1)) {
+         return euu.a.g();
+      } else {
+         eau $$2 = this.b(this.f($$1));
+         return $$2.c() ? euu.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
       }
    }
 
    @Nullable
-   public tq a(dgg $$0) throws IOException {
-      ebc $$1 = this.b($$0);
-
-      tq var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = ud.a($$2);
-      }
-
-      return var4;
-   }
-
-   public void a(dgg $$0, uk $$1) throws IOException {
-      ebc $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            ud.a((DataInput)$$3, $$1, tz.a());
-         }
-      }
-   }
-
-   protected void a(dgg $$0, @Nullable tq $$1) throws IOException {
-      ebc $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
+   @Override
+   public dym a(jj $$0, dym $$1, int $$2) {
+      int $$3 = $$0.u();
+      int $$4 = $$0.v();
+      int $$5 = $$0.w();
+      if (this.e($$4)) {
+         return dkw.nD.m();
       } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            ud.a($$1, (DataOutput)$$3);
+         int $$6 = this.f($$4);
+         eau $$7 = this.b($$6);
+         boolean $$8 = $$7.c();
+         if ($$8 && $$1.a(dkw.a)) {
+            return $$1;
+         } else {
+            int $$9 = kl.b($$3);
+            int $$10 = kl.b($$4);
+            int $$11 = kl.b($$5);
+            dym $$12 = $$7.a($$9, $$10, $$11, $$1);
+            if (this.o.a(ebk.k)) {
+               boolean $$13 = $$7.c();
+               if ($$13 != $$8) {
+                  this.n.a($$0, $$13);
+               }
+
+               if (euk.a($$12, $$1)) {
+                  this.i.a(this, $$9, $$4, $$11);
+                  this.n.a($$0);
+               }
+            }
+
+            EnumSet<eel.a> $$14 = this.n().e();
+            EnumSet<eel.a> $$15 = null;
+
+            for (eel.a $$16 : $$14) {
+               eel $$17 = this.h.get($$16);
+               if ($$17 == null) {
+                  if ($$15 == null) {
+                     $$15 = EnumSet.noneOf(eel.a.class);
+                  }
+
+                  $$15.add($$16);
+               }
+            }
+
+            if ($$15 != null) {
+               eel.a(this, $$15);
+            }
+
+            for (eel.a $$18 : $$14) {
+               this.h.get($$18).a($$9, $$4, $$11, $$1);
+            }
+
+            return $$12;
          }
       }
    }
 
    @Override
-   public void close() throws IOException {
-      ayh<IOException> $$0 = new ayh<>();
-      ObjectIterator var2 = this.c.values().iterator();
+   public void a(dvl $$0) {
+      this.j.remove($$0.aw_());
+      this.k.put($$0.aw_(), $$0);
+   }
 
-      while (var2.hasNext()) {
-         ebc $$1 = (ebc)var2.next();
+   @Nullable
+   @Override
+   public dvl c_(jj $$0) {
+      return this.k.get($$0);
+   }
 
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
+   public Map<jj, dvl> H() {
+      return this.k;
+   }
+
+   public void b(tw $$0) {
+      this.p.add($$0);
+   }
+
+   @Override
+   public void a(bvs $$0) {
+      if (!$$0.bZ()) {
+         tw $$1 = new tw();
+         $$0.e($$1);
+         this.b($$1);
+      }
+   }
+
+   @Override
+   public void a(epg $$0, epo $$1) {
+      edz $$2 = this.z();
+      if ($$2 != null && $$1.b()) {
+         eoy $$3 = $$1.a();
+         dhr $$4 = this.B();
+         if ($$3.i() < $$4.G_() || $$3.l() > $$4.ao()) {
+            return;
          }
       }
 
-      $$0.a();
+      super.a($$0, $$1);
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   public List<tw> I() {
+      return this.p;
+   }
 
-      while (var1.hasNext()) {
-         ebc $$0 = (ebc)var1.next();
-         $$0.b();
+   @Override
+   public ebk n() {
+      return this.o;
+   }
+
+   public void a(ebk $$0) {
+      this.o = $$0;
+      if (this.r != null && $$0.a(this.r.a())) {
+         this.a(null);
+      }
+
+      this.i();
+   }
+
+   @Override
+   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2) {
+      if (this.o().a(ebk.f)) {
+         return super.getNoiseBiome($$0, $$1, $$2);
+      } else {
+         throw new IllegalStateException("Asking for biomes before we have biomes");
       }
    }
 
-   public ebf b() {
-      return this.d;
+   public static short g(jj $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      int $$4 = $$1 & 15;
+      int $$5 = $$2 & 15;
+      int $$6 = $$3 & 15;
+      return (short)($$4 | $$5 << 4 | $$6 << 8);
+   }
+
+   public static jj a(short $$0, int $$1, dgw $$2) {
+      int $$3 = kl.a($$2.h, $$0 & 15);
+      int $$4 = kl.a($$1, $$0 >>> 4 & 15);
+      int $$5 = kl.a($$2.i, $$0 >>> 8 & 15);
+      return new jj($$3, $$4, $$5);
+   }
+
+   @Override
+   public void e(jj $$0) {
+      if (!this.s($$0)) {
+         eaj.a(this.b, this.f($$0.v())).add(g($$0));
+      }
+   }
+
+   @Override
+   public void a(ShortList $$0, int $$1) {
+      eaj.a(this.b, $$1).addAll($$0);
+   }
+
+   public Map<jj, tw> J() {
+      return Collections.unmodifiableMap(this.j);
+   }
+
+   @Nullable
+   @Override
+   public tw a(jj $$0, ju.a $$1) {
+      dvl $$2 = this.c_($$0);
+      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
+   }
+
+   @Override
+   public void d(jj $$0) {
+      this.k.remove($$0);
+      this.j.remove($$0);
+   }
+
+   @Nullable
+   public eai E() {
+      return this.q;
+   }
+
+   public eai F() {
+      if (this.q == null) {
+         this.q = new eai(this.H_(), this.G_());
+      }
+
+      return this.q;
+   }
+
+   public void a(eai $$0) {
+      this.q = $$0;
+   }
+
+   public void a(eui $$0) {
+      this.n = $$0;
+   }
+
+   public void a(@Nullable edz $$0) {
+      this.r = $$0;
+   }
+
+   @Nullable
+   @Override
+   public edz z() {
+      return this.r;
+   }
+
+   private static <T> feh<T> a(fek<T> $$0) {
+      return new feh<>($$0.b());
+   }
+
+   public feh<dku> K() {
+      return a(this.s);
+   }
+
+   public feh<eus> L() {
+      return a(this.t);
+   }
+
+   @Override
+   public dhr B() {
+      return (dhr)(this.A() ? edz.b : this);
    }
 }

@@ -1,109 +1,70 @@
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public interface bwd {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
+public enum bwd implements bag, Iterable<bwc> {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bwc.a),
+   c(2, "offhand", bwc.b),
+   d(3, "hand", $$0 -> $$0.a() == bwc.a.a),
+   e(4, "feet", bwc.c),
+   f(5, "legs", bwc.d),
+   g(6, "chest", bwc.e),
+   h(7, "head", bwc.f),
+   i(8, "armor", bwc::f),
+   j(9, "body", bwc.g),
+   k(10, "saddle", bwc.h);
 
-   int a();
+   public static final IntFunction<bwd> l = aya.a($$0 -> $$0.o, values(), aya.a.a);
+   public static final Codec<bwd> m = bag.a(bwd::values);
+   public static final yt<ByteBuf, bwd> n = yr.a(l, $$0 -> $$0.o);
+   private final int o;
+   private final String p;
+   private final Predicate<bwc> q;
+   private final List<bwc> r;
 
-   void a(int var1);
-
-   @Nullable
-   UUID b();
-
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void a_(tq $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
-      }
+   private bwd(final int $$0, final String $$1, final Predicate<bwc> $$2) {
+      this.o = $$0;
+      this.p = $$1;
+      this.q = $$2;
+      this.r = bwc.j.stream().filter($$2).toList();
    }
 
-   default void a(dgz $$0, tq $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof ard $$2) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
-         } else {
-            UUID $$4 = $$1.a("AngryAt");
-            this.a($$4);
-            if ($$2.b($$4) instanceof bvy $$6) {
-               this.h($$6);
-            }
-         }
-      }
+   private bwd(final int $$0, final String $$1, final bwc $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   default void a(ard $$0, boolean $$1) {
-      bvy $$2 = this.f();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.eF()) && $$3 != null && $$0.b($$3) instanceof bwa) {
-         this.V_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cF())) {
-            this.a($$2.cF());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.aq() != bvi.bR || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.V_();
-            }
-         }
-      }
+   public static bwd a(bwc $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+         case h -> k;
+      };
    }
 
-   default boolean a(bvy $$0, ard $$1) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.aq() == bvi.bR && this.a_($$1) ? true : $$0.cF().equals(this.b());
-      }
+   @Override
+   public String c() {
+      return this.p;
    }
 
-   default boolean a_(ard $$0) {
-      return $$0.O().b(dgv.P) && this.Z_() && this.b() == null;
+   public boolean b(bwc $$0) {
+      return this.q.test($$0);
    }
 
-   default boolean Z_() {
-      return this.a() > 0;
+   public List<bwc> a() {
+      return this.r;
    }
 
-   default void a_(ard $$0, cpr $$1) {
-      if ($$0.O().b(dgv.O)) {
-         if ($$1.cF().equals(this.b())) {
-            this.V_();
-         }
-      }
+   @Override
+   public Iterator<bwc> iterator() {
+      return this.r.iterator();
    }
-
-   default void aa_() {
-      this.V_();
-      this.c();
-   }
-
-   default void V_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
-   }
-
-   @Nullable
-   bvy ep();
-
-   void a(@Nullable bvy var1);
-
-   void h(@Nullable bvy var1);
-
-   boolean c(bvy var1);
-
-   @Nullable
-   bvy f();
 }

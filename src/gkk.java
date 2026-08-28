@@ -1,18 +1,24 @@
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public record gkk(String f, @Nullable gnh g) {
-   public static final gkk a = new gkk("TERRAIN_SHEET", gnh.B(hfq.d));
-   public static final gkk b = new gkk("PARTICLE_SHEET_OPAQUE", gnh.A(hfq.e));
-   public static final gkk c = new gkk("PARTICLE_SHEET_TRANSLUCENT", gnh.B(hfq.e));
-   public static final gkk d = new gkk("CUSTOM", null);
-   public static final gkk e = new gkk("NO_RENDER", null);
-
-   public String a() {
-      return this.f;
+public class gkk extends gkl<lq> {
+   protected gkk(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lq $$7, gmc $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      Vector3f $$10 = $$7.b();
+      this.v = this.a($$10.x(), $$9);
+      this.w = this.a($$10.y(), $$9);
+      this.x = this.a($$10.z(), $$9);
    }
 
-   @Nullable
-   public gnh b() {
-      return this.g;
+   public static class a implements glk<lq> {
+      private final gmc a;
+
+      public a(gmc $$0) {
+         this.a = $$0;
+      }
+
+      public glh a(lq $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkk($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      }
    }
 }

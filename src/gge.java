@@ -1,67 +1,45 @@
-public record gge(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
-   public static final gge a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+import java.util.Arrays;
 
-   public static gge a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+public class gge extends gea<hcj> {
+   public static final ghm a = ghm.scaling(0.5F);
+   private final ghd[] b = new ghd[8];
+
+   public gge(ghd $$0) {
+      super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gge b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public static gge a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new gge($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      ghh $$2 = new ghh(0.02F);
+      int $$3 = -16;
+      $$1.a("body", ghi.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), ghf.a(0.0F, 8.0F, 0.0F));
+      int $$4 = 8;
+      ghi $$5 = ghi.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+
+      for (int $$6 = 0; $$6 < 8; $$6++) {
+         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
+         float $$8 = (float)Math.cos($$7) * 5.0F;
+         float $$9 = 15.0F;
+         float $$10 = (float)Math.sin($$7) * 5.0F;
+         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         float $$11 = (float)$$7;
+         $$1.a(a($$6), $$5, ghf.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+      }
+
+      return ghj.a($$0, 64, 32);
    }
 
-   public gge c(float $$0, float $$1, float $$2) {
-      return new gge(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
-   }
+   public void a(hcj $$0) {
+      super.a($$0);
 
-   public gge a(float $$0) {
-      return new gge(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
-   }
-
-   public gge b(float $$0) {
-      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
-   }
-
-   public gge d(float $$0, float $$1, float $$2) {
-      return new gge(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public float h() {
-      return this.i;
-   }
-
-   public float i() {
-      return this.j;
+      for (ghd $$1 : this.b) {
+         $$1.e = $$0.a;
+      }
    }
 }

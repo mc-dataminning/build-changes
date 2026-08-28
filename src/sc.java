@@ -1,28 +1,22 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface sc {
-   int a() default 100;
+public class sc extends tl {
+   public static final alc<Consumer<sn>> a = a("always_pass");
+   public static final Consumer<sn> b = sn::e;
 
-   String b() default "defaultBatch";
+   private static alc<Consumer<sn>> a(String $$0) {
+      return alc.a(me.aJ, ald.b($$0));
+   }
 
-   boolean c() default false;
+   public static Consumer<sn> a(kf<Consumer<sn>> $$0) {
+      a(new sc());
+      b($$0);
+      return b;
+   }
 
-   int d() default 0;
-
-   boolean e() default true;
-
-   boolean f() default false;
-
-   String g() default "";
-
-   long h() default 0L;
-
-   int i() default 1;
-
-   int j() default 1;
+   @Override
+   public void a(BiConsumer<alc<Consumer<sn>>, Consumer<sn>> $$0) {
+      $$0.accept(a, b);
+   }
 }

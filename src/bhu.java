@@ -1,22 +1,18 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public class bhu extends bau {
-   private final Predicate<String> a;
-
-   public bhu(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2.negate();
+public class bhu extends DataFix {
+   public bhu(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.filter(this::a);
-   }
-
-   private <T> boolean a(Dynamic<T> $$0) {
-      return $$0.get("type").asString().result().filter(this.a).isPresent();
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAccessibilityOnboardFix",
+         this.getInputSchema().getType(biq.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
+      );
    }
 }

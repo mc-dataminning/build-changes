@@ -35,7 +35,7 @@ public class Main {
          boolean $$13 = $$11 || $$9.has($$4);
          boolean $$14 = $$11 || $$9.has($$5);
          Collection<Path> $$15 = $$9.valuesOf($$8).stream().map($$0x -> Paths.get($$0x)).toList();
-         mh $$16 = new mh($$10, ab.b(), true);
+         mj $$16 = new mj($$10, ab.b(), true);
          a($$16, $$15, $$12, $$13, $$14);
          $$16.a();
       } else {
@@ -43,56 +43,56 @@ public class Main {
       }
    }
 
-   private static <T extends mi> mi.a<T> a(BiFunction<mk, CompletableFuture<jt.a>, T> $$0, CompletableFuture<jt.a> $$1) {
+   private static <T extends mk> mk.a<T> a(BiFunction<mm, CompletableFuture<ju.a>, T> $$0, CompletableFuture<ju.a> $$1) {
       return $$2 -> $$0.apply($$2, $$1);
    }
 
-   public static void a(mh $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      mh.a $$5 = $$0.a($$2);
-      $$5.a($$1x -> new ov($$1x, $$1).a(new ow()));
-      CompletableFuture<jt.a> $$6 = CompletableFuture.supplyAsync(or::a, af.h());
-      mh.a $$7 = $$0.a($$2);
-      $$7.a(a(oo::new, $$6));
-      $$7.a(a(mo::a, $$6));
-      $$7.a(a(ns::a, $$6));
-      $$7.a(a(om.a::new, $$6));
-      pn<dke> $$8 = $$7.a(a(pq::new, $$6));
-      pn<cxd> $$9 = $$7.a($$2x -> new ps($$2x, $$6, $$8.c()));
-      pn<dic> $$10 = $$7.a(a(oz::new, $$6));
-      pn<dui> $$11 = $$7.a(a(oy::new, $$6));
-      pn<eoj> $$12 = $$7.a(a(pm::new, $$6));
-      $$7.a(a(pa::new, $$6));
-      $$7.a(a(pb::new, $$6));
+   public static void a(mj $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4) {
+      mj.a $$5 = $$0.a($$2);
+      $$5.a($$1x -> new ox($$1x, $$1).a(new oy()));
+      CompletableFuture<ju.a> $$6 = CompletableFuture.supplyAsync(ot::a, af.h());
+      mj.a $$7 = $$0.a($$2);
+      $$7.a(a(oq::new, $$6));
+      $$7.a(a(mq::a, $$6));
+      $$7.a(a(nu::a, $$6));
+      $$7.a(a(oo.a::new, $$6));
+      pp<dku> $$8 = $$7.a(a(ps::new, $$6));
+      pp<cxu> $$9 = $$7.a($$2x -> new pu($$2x, $$6, $$8.c()));
+      pp<dis> $$10 = $$7.a(a(pb::new, $$6));
+      pp<dva> $$11 = $$7.a(a(pa::new, $$6));
+      pp<epg> $$12 = $$7.a(a(po::new, $$6));
+      $$7.a(a(pc::new, $$6));
       $$7.a(a(pd::new, $$6));
-      $$7.a(a(pe::new, $$6));
       $$7.a(a(pf::new, $$6));
       $$7.a(a(pg::new, $$6));
       $$7.a(a(ph::new, $$6));
-      $$7.a(a(pk::new, $$6));
-      $$7.a(a(pl::new, $$6));
+      $$7.a(a(pi::new, $$6));
+      $$7.a(a(pj::new, $$6));
+      $$7.a(a(pm::new, $$6));
+      $$7.a(a(pn::new, $$6));
+      $$7.a(a(pv::new, $$6));
       $$7.a(a(pt::new, $$6));
-      $$7.a(a(pr::new, $$6));
       $$7 = $$0.a($$3);
-      $$7.a($$1x -> new ot($$1x, $$1));
+      $$7.a($$1x -> new ov($$1x, $$1));
       $$7 = $$0.a($$4);
-      $$7.a(a(mv::new, $$6));
-      $$7.a(a(mz::new, $$6));
-      $$7.a(a(mw::new, $$6));
       $$7.a(a(mx::new, $$6));
-      $$7.a(nb::new);
+      $$7.a(a(nb::new, $$6));
+      $$7.a(a(my::new, $$6));
+      $$7.a(a(mz::new, $$6));
+      $$7.a(nd::new);
+      $$7.a(nc::new);
       $$7.a(na::new);
-      $$7.a(my::new);
-      CompletableFuture<kh.g> $$15 = oq.a($$6);
-      CompletableFuture<jt.a> $$16 = $$15.thenApply(kh.g::b);
-      mh.a $$17 = $$0.a($$2, "trade_rebalance");
-      $$17.a(a(oo::new, $$16));
-      $$17.a($$0x -> nw.a($$0x, wp.c("dataPack.trade_rebalance.description"), csn.a(csp.b)));
-      $$17.a(a(nk::a, $$6));
-      $$17.a(a(pp::new, $$6));
-      $$17.a(a(po::new, $$6));
+      CompletableFuture<ki.g> $$15 = os.a($$6);
+      CompletableFuture<ju.a> $$16 = $$15.thenApply(ki.g::b);
+      mj.a $$17 = $$0.a($$2, "trade_rebalance");
+      $$17.a(a(oq::new, $$16));
+      $$17.a($$0x -> ny.a($$0x, wv.c("dataPack.trade_rebalance.description"), cte.a(ctg.b)));
+      $$17.a(a(nm::a, $$6));
+      $$17.a(a(pr::new, $$6));
+      $$17.a(a(pq::new, $$6));
       $$7 = $$0.a($$2, "redstone_experiments");
-      $$7.a($$0x -> nw.a($$0x, wp.c("dataPack.redstone_experiments.description"), csn.a(csp.c)));
+      $$7.a($$0x -> ny.a($$0x, wv.c("dataPack.redstone_experiments.description"), cte.a(ctg.c)));
       $$7 = $$0.a($$2, "minecart_improvements");
-      $$7.a($$0x -> nw.a($$0x, wp.c("dataPack.minecart_improvements.description"), csn.a(csp.d)));
+      $$7.a($$0x -> ny.a($$0x, wv.c("dataPack.minecart_improvements.description"), cte.a(ctg.d)));
    }
 }

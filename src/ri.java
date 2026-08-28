@@ -1,82 +1,55 @@
 import java.util.List;
 
 public class ri {
-   public static final akt<egg<?, ?>> a = rf.a("ore_magma");
-   public static final akt<egg<?, ?>> b = rf.a("ore_soul_sand");
-   public static final akt<egg<?, ?>> c = rf.a("ore_nether_gold");
-   public static final akt<egg<?, ?>> d = rf.a("ore_quartz");
-   public static final akt<egg<?, ?>> e = rf.a("ore_gravel_nether");
-   public static final akt<egg<?, ?>> f = rf.a("ore_blackstone");
-   public static final akt<egg<?, ?>> g = rf.a("ore_dirt");
-   public static final akt<egg<?, ?>> h = rf.a("ore_gravel");
-   public static final akt<egg<?, ?>> i = rf.a("ore_granite");
-   public static final akt<egg<?, ?>> j = rf.a("ore_diorite");
-   public static final akt<egg<?, ?>> k = rf.a("ore_andesite");
-   public static final akt<egg<?, ?>> l = rf.a("ore_tuff");
-   public static final akt<egg<?, ?>> m = rf.a("ore_coal");
-   public static final akt<egg<?, ?>> n = rf.a("ore_coal_buried");
-   public static final akt<egg<?, ?>> o = rf.a("ore_iron");
-   public static final akt<egg<?, ?>> p = rf.a("ore_iron_small");
-   public static final akt<egg<?, ?>> q = rf.a("ore_gold");
-   public static final akt<egg<?, ?>> r = rf.a("ore_gold_buried");
-   public static final akt<egg<?, ?>> s = rf.a("ore_redstone");
-   public static final akt<egg<?, ?>> t = rf.a("ore_diamond_small");
-   public static final akt<egg<?, ?>> u = rf.a("ore_diamond_medium");
-   public static final akt<egg<?, ?>> v = rf.a("ore_diamond_large");
-   public static final akt<egg<?, ?>> w = rf.a("ore_diamond_buried");
-   public static final akt<egg<?, ?>> x = rf.a("ore_lapis");
-   public static final akt<egg<?, ?>> y = rf.a("ore_lapis_buried");
-   public static final akt<egg<?, ?>> z = rf.a("ore_infested");
-   public static final akt<egg<?, ?>> A = rf.a("ore_emerald");
-   public static final akt<egg<?, ?>> B = rf.a("ore_ancient_debris_large");
-   public static final akt<egg<?, ?>> C = rf.a("ore_ancient_debris_small");
-   public static final akt<egg<?, ?>> D = rf.a("ore_copper_small");
-   public static final akt<egg<?, ?>> E = rf.a("ore_copper_large");
-   public static final akt<egg<?, ?>> F = rf.a("ore_clay");
+   public static final alc<ehd<?, ?>> a = rh.a("ice_spike");
+   public static final alc<ehd<?, ?>> b = rh.a("ice_patch");
+   public static final alc<ehd<?, ?>> c = rh.a("forest_rock");
+   public static final alc<ehd<?, ?>> d = rh.a("iceberg_packed");
+   public static final alc<ehd<?, ?>> e = rh.a("iceberg_blue");
+   public static final alc<ehd<?, ?>> f = rh.a("blue_ice");
+   public static final alc<ehd<?, ?>> g = rh.a("lake_lava");
+   public static final alc<ehd<?, ?>> h = rh.a("disk_clay");
+   public static final alc<ehd<?, ?>> i = rh.a("disk_gravel");
+   public static final alc<ehd<?, ?>> j = rh.a("disk_sand");
+   public static final alc<ehd<?, ?>> k = rh.a("freeze_top_layer");
+   public static final alc<ehd<?, ?>> l = rh.a("disk_grass");
+   public static final alc<ehd<?, ?>> m = rh.a("bonus_chest");
+   public static final alc<ehd<?, ?>> n = rh.a("void_start_platform");
+   public static final alc<ehd<?, ?>> o = rh.a("desert_well");
+   public static final alc<ehd<?, ?>> p = rh.a("spring_lava_overworld");
+   public static final alc<ehd<?, ?>> q = rh.a("spring_lava_frozen");
+   public static final alc<ehd<?, ?>> r = rh.a("spring_water");
 
-   public static void a(qe<egg<?, ?>> $$0) {
-      esf $$1 = new esn(awp.bg);
-      esf $$2 = new esn(awp.bh);
-      esf $$3 = new esn(awp.bi);
-      esf $$4 = new ern(dkg.ei);
-      esf $$5 = new esn(awp.bj);
-      List<ejg.a> $$6 = List.of(ejg.a($$2, dkg.S.m()), ejg.a($$3, dkg.T.m()));
-      List<ejg.a> $$7 = List.of(ejg.a($$2, dkg.Q.m()), ejg.a($$3, dkg.R.m()));
-      List<ejg.a> $$8 = List.of(ejg.a($$2, dkg.cF.m()), ejg.a($$3, dkg.cG.m()));
-      List<ejg.a> $$9 = List.of(ejg.a($$2, dkg.aY.m()), ejg.a($$3, dkg.aZ.m()));
-      List<ejg.a> $$10 = List.of(ejg.a($$2, dkg.rC.m()), ejg.a($$3, dkg.rD.m()));
-      List<ejg.a> $$11 = List.of(ejg.a($$2, dkg.U.m()), ejg.a($$3, dkg.V.m()));
-      rf.a($$0, a, egu.I, new ejg($$4, dkg.ll.m(), 33));
-      rf.a($$0, b, egu.I, new ejg($$4, dkg.ej.m(), 12));
-      rf.a($$0, c, egu.I, new ejg($$4, dkg.W.m(), 10));
-      rf.a($$0, d, egu.I, new ejg($$4, dkg.hy.m(), 14));
-      rf.a($$0, e, egu.I, new ejg($$4, dkg.O.m(), 33));
-      rf.a($$0, f, egu.I, new ejg($$4, dkg.pT.m(), 33));
-      rf.a($$0, g, egu.I, new ejg($$1, dkg.j.m(), 33));
-      rf.a($$0, h, egu.I, new ejg($$1, dkg.O.m(), 33));
-      rf.a($$0, i, egu.I, new ejg($$1, dkg.c.m(), 64));
-      rf.a($$0, j, egu.I, new ejg($$1, dkg.e.m(), 64));
-      rf.a($$0, k, egu.I, new ejg($$1, dkg.g.m(), 64));
-      rf.a($$0, l, egu.I, new ejg($$1, dkg.rb.m(), 64));
-      rf.a($$0, m, egu.I, new ejg($$11, 17));
-      rf.a($$0, n, egu.I, new ejg($$11, 17, 0.5F));
-      rf.a($$0, o, egu.I, new ejg($$6, 9));
-      rf.a($$0, p, egu.I, new ejg($$6, 4));
-      rf.a($$0, q, egu.I, new ejg($$7, 9));
-      rf.a($$0, r, egu.I, new ejg($$7, 9, 0.5F));
-      rf.a($$0, s, egu.I, new ejg(List.of(ejg.a($$2, dkg.dV.m()), ejg.a($$3, dkg.dW.m())), 8));
-      rf.a($$0, t, egu.I, new ejg($$8, 4, 0.5F));
-      rf.a($$0, v, egu.I, new ejg($$8, 12, 0.7F));
-      rf.a($$0, w, egu.I, new ejg($$8, 8, 1.0F));
-      rf.a($$0, u, egu.I, new ejg($$8, 8, 0.5F));
-      rf.a($$0, x, egu.I, new ejg($$9, 7));
-      rf.a($$0, y, egu.I, new ejg($$9, 7, 1.0F));
-      rf.a($$0, z, egu.I, new ejg(List.of(ejg.a($$2, dkg.fb.m()), ejg.a($$3, dkg.tH.m())), 9));
-      rf.a($$0, A, egu.I, new ejg(List.of(ejg.a($$2, dkg.fZ.m()), ejg.a($$3, dkg.ga.m())), 3));
-      rf.a($$0, B, egu.af, new ejg($$5, dkg.pL.m(), 3, 1.0F));
-      rf.a($$0, C, egu.af, new ejg($$5, dkg.pL.m(), 2, 1.0F));
-      rf.a($$0, D, egu.I, new ejg($$10, 10));
-      rf.a($$0, E, egu.I, new ejg($$10, 20));
-      rf.a($$0, F, egu.I, new ejg($$1, dkg.ee.m(), 33));
+   public static void a(qg<ehd<?, ?>> $$0) {
+      rh.a($$0, a, ehr.s);
+      rh.a($$0, b, ehr.G, new ejs(eme.a(dkw.ja), efs.c(List.of(dkw.j, dkw.i, dkw.l, dkw.k, dkw.fA, dkw.ec, dkw.eb)), btb.a(2, 3), 1));
+      rh.a($$0, c, ehr.F, new ejo(dkw.cu.m()));
+      rh.a($$0, d, ehr.E, new ejo(dkw.ja.m()));
+      rh.a($$0, e, ehr.E, new ejo(dkw.ny.m()));
+      rh.a($$0, f, ehr.D);
+      rh.a($$0, g, ehr.H, new eig.a(elw.a(dkw.K.m()), elw.a(dkw.b.m())));
+      rh.a($$0, h, ehr.G, new ejs(eme.a(dkw.ee), efs.c(List.of(dkw.j, dkw.ee)), btb.a(2, 3), 1));
+      rh.a($$0, i, ehr.G, new ejs(eme.a(dkw.O), efs.c(List.of(dkw.j, dkw.i)), btb.a(2, 5), 2));
+      rh.a(
+         $$0, j, ehr.G, new ejs(new eme(elw.a(dkw.L), List.of(new eme.a(efs.a(jo.a.q(), dkw.a), elw.a(dkw.bc)))), efs.c(List.of(dkw.j, dkw.i)), btb.a(2, 6), 2)
+      );
+      rh.a($$0, k, ehr.u);
+      rh.a(
+         $$0,
+         l,
+         ehr.G,
+         new ejs(
+            new eme(elw.a(dkw.j), List.of(new eme.a(efs.a(efs.b(efs.b(jo.b.q()), efs.a(jo.b.q(), euu.c))), elw.a(dkw.i)))),
+            efs.c(List.of(dkw.j, dkw.to)),
+            btb.a(2, 6),
+            2
+         )
+      );
+      rh.a($$0, m, ehr.ad);
+      rh.a($$0, n, ehr.n);
+      rh.a($$0, o, ehr.o);
+      rh.a($$0, p, ehr.k, new ekq(euu.e.g(), true, 4, 1, jw.a(dku::p, dkw.b, dkw.c, dkw.e, dkw.g, dkw.tp, dkw.rd, dkw.rr, dkw.j)));
+      rh.a($$0, q, ehr.k, new ekq(euu.e.g(), true, 4, 1, jw.a(dku::p, dkw.ec, dkw.rt, dkw.ja)));
+      rh.a($$0, r, ehr.k, new ekq(euu.c.g(), true, 4, 1, jw.a(dku::p, dkw.b, dkw.c, dkw.e, dkw.g, dkw.tp, dkw.rd, dkw.rr, dkw.j, dkw.ec, dkw.rt, dkw.ja)));
    }
 }

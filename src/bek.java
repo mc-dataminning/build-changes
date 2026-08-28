@@ -3,17 +3,31 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bek extends bgy {
+public class bek extends bhm {
    public bek(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", bic.C, "minecraft:shulker");
+      super($$0, $$1, "EntityItemFrameDirectionFix", biq.D, "minecraft:item_frame");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
+      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
       return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private static byte a(byte $$0) {
+      switch ($$0) {
+         case 0:
+            return 3;
+         case 1:
+            return 4;
+         case 2:
+         default:
+            return 2;
+         case 3:
+            return 5;
+      }
    }
 }

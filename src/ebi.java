@@ -1,49 +1,54 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import java.util.Locale;
 
-public class ebi implements AutoCloseable {
-   private final eay a;
-   private final DataFixer b;
-   private final bam c;
+public final class ebi {
+   private final ImmutableList<ebk> a;
+   private final int[] b;
 
-   public ebi(ebf $$0, Path $$1, DataFixer $$2, boolean $$3, bam $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new eay($$0, $$1, $$3);
+   public ebi(ImmutableList<ebk> $$0) {
+      this.a = $$0;
+      int $$1 = $$0.isEmpty() ? 0 : ((ebk)$$0.getFirst()).b() + 1;
+      this.b = new int[$$1];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         ebk $$3 = (ebk)$$0.get($$2);
+         int $$4 = $$3.b();
+
+         for (int $$5 = 0; $$5 <= $$4; $$5++) {
+            this.b[$$5] = $$2;
+         }
+      }
    }
 
-   public CompletableFuture<Optional<tq>> a(dgg $$0) {
-      return this.a.a($$0);
+   @VisibleForTesting
+   public ImmutableList<ebk> a() {
+      return this.a;
    }
 
-   public CompletableFuture<Void> a(dgg $$0, @Nullable tq $$1) {
-      return this.a.a($$0, $$1);
+   public int b() {
+      return this.a.size();
    }
 
-   public tq a(tq $$0, int $$1) {
-      int $$2 = uf.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
+   public int a(ebk $$0) {
+      int $$1 = $$0.b();
+      if ($$1 >= this.b.length) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
+      } else {
+         return this.b[$$1];
+      }
    }
 
-   public Dynamic<un> a(Dynamic<un> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
+   public int c() {
+      return Math.max(0, this.a.size() - 1);
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
+   public ebk a(int $$0) {
+      return (ebk)this.a.get($$0);
    }
 
    @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public ebf a() {
-      return this.a.a();
+   public String toString() {
+      return this.a.toString();
    }
 }

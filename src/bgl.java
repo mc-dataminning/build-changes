@@ -1,82 +1,63 @@
-import com.google.gson.JsonElement;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JavaOps;
-import com.mojang.serialization.JsonOps;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
 public class bgl extends DataFix {
+   private static final Set<String> a = Set.of(
+      "filled_map.buried_treasure",
+      "filled_map.explorer_jungle",
+      "filled_map.explorer_swamp",
+      "filled_map.mansion",
+      "filled_map.monument",
+      "filled_map.trial_chambers",
+      "filled_map.village_desert",
+      "filled_map.village_plains",
+      "filled_map.village_savanna",
+      "filled_map.village_snowy",
+      "filled_map.village_taiga"
+   );
+
    public bgl(Schema $$0) {
       super($$0, false);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<? extends Pair<String, ?>> $$0 = this.getInputSchema().getType(bic.z).findFieldType("hoverEvent");
-      return this.a(this.getInputSchema().getTypeRaw(bic.z), $$0);
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biq.F.typeName(), bkj.a()));
+      OpticFinder<?> $$2 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped("ItemStack custom_name to item_name component fix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         Optional<String> $$4 = $$3.map(Pair::getSecond);
+         if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
+            return $$2x.updateTyped($$2, bgl::b);
+         } else {
+            return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent() ? $$2x.updateTyped($$2, bgl::a) : $$2x;
+         }
+      });
    }
 
-   private <C, H extends Pair<String, ?>> TypeRewriteRule a(Type<C> $$0, Type<H> $$1) {
-      Type<Pair<String, Either<Either<String, List<C>>, Pair<Either<List<C>, Unit>, Pair<Either<C, Unit>, Pair<Either<H, Unit>, Dynamic<?>>>>>>> $$2 = DSL.named(
-         bic.z.typeName(),
-         DSL.or(
-            DSL.or(DSL.string(), DSL.list($$0)),
-            DSL.and(
-               DSL.optional(DSL.field("extra", DSL.list($$0))),
-               DSL.optional(DSL.field("separator", $$0)),
-               DSL.optional(DSL.field("hoverEvent", $$1)),
-               DSL.remainderType()
-            )
-         )
-      );
-      if (!$$2.equals(this.getInputSchema().getType(bic.z))) {
-         throw new IllegalStateException("Text component type did not match, expected " + $$2 + " but got " + this.getInputSchema().getType(bic.z));
-      } else {
-         return this.fixTypeEverywhere(
-            "LegacyHoverEventFix",
-            $$2,
-            $$1x -> $$1xx -> $$1xx.mapSecond($$1xxx -> $$1xxx.mapRight($$1xxxx -> $$1xxxx.mapSecond($$1xxxxx -> $$1xxxxx.mapSecond($$1xxxxxx -> {
-                              Dynamic<?> $$2x = (Dynamic<?>)$$1xxxxxx.getSecond();
-                              Optional<? extends Dynamic<?>> $$3 = $$2x.get("hoverEvent").result();
-                              if ($$3.isEmpty()) {
-                                 return $$1xxxxxx;
-                              } else {
-                                 Optional<? extends Dynamic<?>> $$4 = $$3.get().get("value").result();
-                                 if ($$4.isEmpty()) {
-                                    return $$1xxxxxx;
-                                 } else {
-                                    String $$5 = ((Either)$$1xxxxxx.getFirst()).left().<String>map(Pair::getFirst).orElse("");
-                                    H $$6 = this.a($$1, $$5, (Dynamic<?>)$$3.get());
-                                    return $$1xxxxxx.mapFirst($$1xxxxxxx -> Either.left($$6));
-                                 }
-                              }
-                           }))))
-         );
-      }
+   private static <T> Typed<T> a(Typed<T> $$0) {
+      return a($$0, a::contains);
    }
 
-   private <H> H a(Type<H> $$0, String $$1, Dynamic<?> $$2) {
-      return "show_text".equals($$1) ? a($$0, $$2) : b($$0, $$2);
+   private static <T> Typed<T> b(Typed<T> $$0) {
+      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
    }
 
-   private static <H> H a(Type<H> $$0, Dynamic<?> $$1) {
-      Dynamic<?> $$2 = $$1.renameField("value", "contents");
-      return (H)af.a($$0, $$2).getValue();
-   }
-
-   private static <H> H b(Type<H> $$0, Dynamic<?> $$1) {
-      JsonElement $$2 = (JsonElement)$$1.convert(JsonOps.INSTANCE).getValue();
-      Dynamic<?> $$3 = new Dynamic(
-         JavaOps.INSTANCE, Map.of("action", "show_text", "contents", Map.<String, String>of("text", "Legacy hoverEvent: " + ayp.e($$2)))
-      );
-      return (H)af.a($$0, $$3).getValue();
+   private static <T> Typed<T> a(Typed<T> $$0, Predicate<String> $$1) {
+      return af.a($$0, $$0.getType(), $$1x -> {
+         OptionalDynamic<?> $$2 = $$1x.get("minecraft:custom_name");
+         Optional<String> $$3 = $$2.asString().result().flatMap(bba::d).filter($$1);
+         return $$3.isPresent() ? $$1x.renameField("minecraft:custom_name", "minecraft:item_name") : $$1x;
+      });
    }
 }

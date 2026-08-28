@@ -1,33 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtv extends dse implements dtp {
-   public static final MapCodec<dtv> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dtp.a.e.fieldOf("weathering_state").forGetter(dlg::c), dxq.a.fieldOf("base_state").forGetter($$0x -> $$0x.f), t()).apply($$0, dtv::new)
-   );
-   private final dtp.a h;
+public class dtv extends dol {
+   public static final MapCodec<dtv> c = b(dtv::new);
+   private static final fdo g = dku.b(8.0, 0.0, 15.0);
 
    @Override
    public MapCodec<dtv> a() {
-      return g;
+      return c;
    }
 
-   public dtv(dtp.a $$0, dxq $$1, dxp.d $$2) {
-      super($$1, $$2);
-      this.h = $$0;
-   }
-
-   @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dtv(dyl.d $$0) {
+      super($$0, jo.b, g, false, 0.1);
    }
 
    @Override
-   protected boolean f(dxq $$0) {
-      return dtp.c($$0.b()).isPresent();
+   protected int a(azs $$0) {
+      return dqf.a($$0);
    }
 
-   public dtp.a q() {
-      return this.h;
+   @Override
+   protected dku b() {
+      return dkw.pe;
+   }
+
+   @Override
+   protected boolean h(dym $$0) {
+      return dqf.a($$0);
    }
 }

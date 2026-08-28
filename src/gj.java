@@ -3,40 +3,31 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-public class gj implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wp.b("team.notFound", $$0));
+public class gj implements ArgumentType<xs> {
+   private static final Collection<String> b = List.of("{bold: true}", "{color: 'red'}", "{}");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wv.b("argument.style.invalid", $$0));
+   private final ju.a c;
 
-   public static gj a() {
-      return new gj();
+   private gj(ju.a $$0) {
+      this.c = $$0;
    }
 
-   public static fcx a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      fdc $$3 = ((ex)$$0.getSource()).l().aJ();
-      fcx $$4 = $$3.b($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static xs a(CommandContext<ex> $$0, String $$1) {
+      return (xs)$$0.getArgument($$1, xs.class);
    }
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
+   public static gj a(et $$0) {
+      return new gj($$0);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof fc ? fc.b(((fc)$$0.getSource()).r(), $$1) : Suggestions.empty();
+   public xs a(StringReader $$0) throws CommandSyntaxException {
+      return fb.a(xs.b.b, this.c, a, $$0);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

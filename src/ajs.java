@@ -1,8 +1,3 @@
-public interface ajs extends agg, ajm {
-   @Override
-   default vj b() {
-      return vj.c;
-   }
-
+public interface ajs extends wb {
    void a(ajt var1);
 }

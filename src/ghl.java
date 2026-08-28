@@ -1,26 +1,26 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import java.util.function.UnaryOperator;
 
-public interface ghl {
-   ghl a = new ghl() {
-      @Override
-      public CompletableFuture<Optional<cpt>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
+public class ghl {
+   private final ghn a;
 
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static ghl a(UserApiService $$0, fms $$1, Path $$2) {
-      return (ghl)($$1.g() == fms.a.c ? new ggr($$0, $$1.b(), $$2) : a);
+   public ghl() {
+      this(new ghn(ImmutableList.of(), ghf.a));
    }
 
-   CompletableFuture<Optional<cpt>> a();
+   private ghl(ghn $$0) {
+      this.a = $$0;
+   }
 
-   boolean b();
+   public ghn a() {
+      return this.a;
+   }
+
+   public ghl a(UnaryOperator<ghf> $$0) {
+      return new ghl(this.a.a($$0));
+   }
+
+   public ghl a(ghm $$0) {
+      return $$0.apply(this);
+   }
 }

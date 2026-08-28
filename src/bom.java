@@ -1,2 +1,3 @@
-public record bom<S>(int a, boq<S> b, Object c) {
+public enum bom {
+   a;
 }

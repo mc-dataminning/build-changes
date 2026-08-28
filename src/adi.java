@@ -1,29 +1,85 @@
-public class adi implements yw<abl> {
-   public static final yn<vl, adi> a = yw.a(adi::a, adi::new);
-   private final bsx b;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public adi(bsx $$0) {
-      this.b = $$0;
+public record adi(int b, boolean c, Set<alc<dhp>> d, int e, int f, int g, boolean h, boolean i, boolean j, agh k, boolean l) implements zc<abr> {
+   public static final yt<wg, adi> a = zc.a(adi::a, adi::new);
+
+   private adi(wg $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(me.bl)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new agh($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private adi(vl $$0) {
-      this.b = $$0.b(bsx.class);
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
+   private void a(wg $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, vr::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public yy<adi> a() {
-      return agd.V;
+   public ze<adi> a() {
+      return agk.O;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public bsx b() {
-      return this.b;
+   public boolean e() {
+      return this.c;
+   }
+
+   public Set<alc<dhp>> f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public agh m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

@@ -1,29 +1,32 @@
-public class cyu extends cya implements cyb {
-   public static float a = 0.5F;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public cyu(cxd.a $$0) {
-      super($$0);
+public enum cyu implements bag {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<cyu> e = bag.b(cyu::values);
+   public static final IntFunction<cyu> f = aya.a($$0 -> $$0.h, values(), aya.a.a);
+   public static final yt<ByteBuf, cyu> g = yr.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cyu(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
-      cxh $$3 = $$1.b($$2);
-      if ($$0 instanceof ard $$4) {
-         cqk.a(cqw::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
-      }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bsy.a;
-   }
-
-   @Override
-   public cqk a(dgz $$0, kb $$1, cxh $$2, jn $$3) {
-      return new cqw($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
-   }
-
-   @Override
-   public cyb.a b() {
-      return cyb.a.a().a(cyb.a.a.c() * 0.5F).b(cyb.a.a.d() * 1.25F).a();
+   public String c() {
+      return this.i;
    }
 }

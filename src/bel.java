@@ -1,26 +1,29 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
 
-public class bel extends bgy {
+public class bel extends bes {
    public bel(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bic.C, "minecraft:shulker");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+      super("EntityMinecartIdentifiersFix", $$0, true);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("Minecart")) {
+         return Pair.of($$0, $$1);
+      } else {
+         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
+
+         String $$3 = switch ($$2) {
+            case 1 -> "MinecartChest";
+            case 2 -> "MinecartFurnace";
+            default -> "MinecartRideable";
+         };
+         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(biq.D).types().get($$3);
+         return Pair.of($$3, af.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+      }
    }
 }

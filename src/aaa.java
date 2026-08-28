@@ -1,23 +1,42 @@
-public record aaa(aku a) implements zz {
-   public static <T extends vl> yn<T, aaa> a(aku $$0, int $$1) {
-      return zz.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.k($$3);
-            return new aaa($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+import java.util.UUID;
+
+public record aaa(UUID b, aaa.a c) implements zc<zv> {
+   public static final yt<vr, aaa> a = zc.a(aaa::a, aaa::new);
+
+   private aaa(vr $$0) {
+      this($$0.n(), $$0.b(aaa.a.class));
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zz.b<aaa> a() {
-      return new zz.b<>(this.a);
+   public ze<aaa> a() {
+      return zu.p;
    }
 
-   public aku b() {
-      return this.a;
+   public void a(zv $$0) {
+      $$0.a(this);
+   }
+
+   public aaa.a e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

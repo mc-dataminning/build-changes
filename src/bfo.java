@@ -1,29 +1,64 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
 public class bfo extends DataFix {
+   private static final String a = "minecraft:empty";
+
    public bfo(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.t);
-      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(bic.z);
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      OpticFinder<?> $$3 = $$2.type().findField("display");
-      OpticFinder<?> $$4 = $$3.type().findField("Name");
-      OpticFinder<Pair<String, String>> $$5 = DSL.typeFinder($$1);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.D);
+      Type<?> $$1 = this.getOutputSchema().getType(biq.D);
       return this.fixTypeEverywhereTyped(
-         "ItemCustomNameToComponentFix",
+         "Fix AbstractArrow item type",
          $$0,
-         $$4x -> $$4x.updateTyped(
-               $$2, $$3xx -> $$3xx.updateTyped($$3, $$2xxx -> $$2xxx.updateTyped($$4, $$1xxxx -> $$1xxxx.update($$5, $$0xxxxx -> $$0xxxxx.mapSecond(baq::a))))
-            )
+         $$1,
+         baz.a(this.a("minecraft:trident", bfo::c), this.a("minecraft:arrow", bfo::a), this.a("minecraft:spectral_arrow", bfo::b))
       );
+   }
+
+   private Function<Typed<?>, Typed<?>> a(String $$0, bfo.a<?> $$1) {
+      Type<?> $$2 = this.getInputSchema().getChoiceType(biq.D, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(biq.D, $$0);
+      return a($$0, $$1, $$2, $$3);
+   }
+
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bfo.a<?> $$1, Type<?> $$2, Type<T> $$3) {
+      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
+      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
+   }
+
+   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
+      return af.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
+   }
+
+   private static String a(Dynamic<?> $$0) {
+      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
+   }
+
+   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
+      return af.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
+   }
+
+   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
+      return new Typed($$1, $$0.getOps(), $$0.getValue());
+   }
+
+   interface a<F> {
+      Typed<F> fix(Typed<?> var1, Type<F> var2);
    }
 }

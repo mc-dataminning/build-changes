@@ -1,14 +1,13 @@
-public class fyh extends fym {
-   private static fmj<?>[] a(fmk $$0) {
-      return new fmj[]{$$0.S(), $$0.T()};
-   }
+import java.util.List;
 
-   public fyh(fvi $$0, fmk $$1) {
-      super($$0, $$1, wp.c("options.font.title"));
-   }
+public class fyh extends fwv<cvo> {
+   private static final ald G = ald.b("container/smoker/lit_progress");
+   private static final ald H = ald.b("container/smoker/burn_progress");
+   private static final ald I = ald.b("textures/gui/container/smoker.png");
+   private static final wv J = wv.c("gui.recipebook.toggleRecipes.smokable");
+   private static final List<gae.a> K = List.of(new gae.a(gak.d), new gae.a(cyc.qG, dcn.j));
 
-   @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   public fyh(cvo $$0, cqh $$1, wv $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

@@ -1,2 +1,6 @@
-public interface cvd {
+public enum cvd {
+   a,
+   b,
+   c,
+   d;
 }

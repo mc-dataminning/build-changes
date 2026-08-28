@@ -17,10 +17,10 @@ public class cx {
    public static final cw.a<ct> n = a("jukebox_playable", ct.a);
 
    private static <T extends cw> cw.a<T> a(String $$0, Codec<T> $$1) {
-      return ke.a(mb.aq, $$0, new cw.a<>($$1));
+      return kf.a(md.aq, $$0, new cw.a<>($$1));
    }
 
-   public static cw.a<?> a(ke<cw.a<?>> $$0) {
+   public static cw.a<?> a(kf<cw.a<?>> $$0) {
       return a;
    }
 }

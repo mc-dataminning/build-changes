@@ -1,29 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eme extends emf {
-   public static final MapCodec<eme> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eme::new));
+public record eme(elw b, List<eme.a> c) {
+   public static final Codec<eme> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(elw.a.fieldOf("fallback").forGetter(eme::a), eme.a.a.listOf().fieldOf("rules").forGetter(eme::b)).apply($$0, eme::new)
+   );
 
-   public eme(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public static eme a(elw $$0) {
+      return new eme($$0, List.of());
    }
 
-   @Override
-   protected emg<?> a() {
-      return emg.a;
+   public static eme a(dku $$0) {
+      return a(elw.a($$0));
    }
 
-   @Override
-   public List<ekk.a> a(dhf $$0, BiConsumer<ji, dxq> $$1, azh $$2, int $$3, ji $$4, eju $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+   public dym a(dio $$0, azs $$1, jj $$2) {
+      for (eme.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
       }
 
-      return ImmutableList.of(new ekk.a($$4.b($$3), 0, false));
+      return this.b.a($$1, $$2);
+   }
+
+   public elw a() {
+      return this.b;
+   }
+
+   public List<eme.a> b() {
+      return this.c;
+   }
+
+   public static record a(efs b, elw c) {
+      public static final Codec<eme.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(efs.b.fieldOf("if_true").forGetter(eme.a::a), elw.a.fieldOf("then").forGetter(eme.a::b)).apply($$0, eme.a::new)
+      );
+
+      public efs a() {
+         return this.b;
+      }
+
+      public elw b() {
+         return this.c;
+      }
    }
 }

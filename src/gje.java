@@ -1,70 +1,101 @@
-public class gje extends glg {
-   gje(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
+public abstract class gje {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected gjg e;
+   protected boolean f;
+
+   public gje(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
-         }
-      } else {
-         this.k();
-      }
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   @Override
-   public gkk b() {
-      return gkk.c;
-   }
+   public abstract gje b();
 
-   public static class a implements gkj<lx> {
-      private final glb a;
+   public abstract fwf a(fwf var1, gji var2);
 
-      public a(glb $$0) {
+   public abstract static class a<R extends gje> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gje $$8 = new gje($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public gjg i() {
+         return this.a.e;
+      }
+
+      public void a(gjg $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public gje.b c() {
+         return !this.e().f ? gje.b.e : null;
+      }
+
+      public abstract Either<gje.c, gje.b> a(gji var1);
+   }
+
+   public static record b(wv f) {
+      public static final gje.b a = new gje.b(wv.c("gui.abuseReport.send.no_reason"));
+      public static final gje.b b = new gje.b(wv.c("gui.chatReport.send.no_reported_messages"));
+      public static final gje.b c = new gje.b(wv.c("gui.chatReport.send.too_many_messages"));
+      public static final gje.b d = new gje.b(wv.c("gui.abuseReport.send.comment_too_long"));
+      public static final gje.b e = new gje.b(wv.c("gui.abuseReport.send.not_attested"));
+
+      public fry a() {
+         return fry.a(this.f);
+      }
+
+      public wv b() {
+         return this.f;
       }
    }
 
-   public static class b implements gkj<lx> {
-      private final glb a;
-
-      public b(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gje $$8 = new gje($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public static record c(UUID a, gjh b, AbuseReport c) {
    }
 }

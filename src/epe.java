@@ -1,72 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public abstract class epe extends epk {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class epe extends epg {
-   public static final MapCodec<epe> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(epe::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(epe::b),
-                     epf.c.optionalFieldOf("spread_type", epf.a).forGetter(epe::c)
-                  )
-               )
-               .apply($$0, epe::new)
-      )
-      .validate(epe::a);
-   private final int c;
-   private final int d;
-   private final epf e;
-
-   private static DataResult<epe> a(epe $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   protected epe(epx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jo $$7) {
+      super($$0, 0, epk.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   public epe(km $$0, epg.c $$1, float $$2, int $$3, Optional<epg.a> $$4, int $$5, int $$6, epf $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-   }
-
-   public epe(int $$0, int $$1, epf $$2, int $$3) {
-      this(km.h, epg.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public epf c() {
-      return this.e;
-   }
-
-   public dgg a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      een $$5 = new een(new edp(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dgg($$3 * this.c + $$7, $$4 * this.c + $$8);
+   protected epe(epx $$0, tw $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   protected boolean a(dzo $$0, int $$1, int $$2) {
-      dgg $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.h == $$1 && $$3.i == $$2;
+   protected void a(epw $$0, tw $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
    }
 
-   @Override
-   public eph<?> e() {
-      return eph.a;
+   protected boolean a(dhq $$0, eoy $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         jj.a $$5 = new jj.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(eel.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
+      }
+   }
+
+   protected boolean a(dhq $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.ao() + 1;
+         boolean $$3 = false;
+         jj.a $$4 = new jj.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(eel.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

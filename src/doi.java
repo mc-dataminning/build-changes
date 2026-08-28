@@ -1,82 +1,82 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.Function;
 
-public class doi extends dmb {
-   public static final MapCodec<doi> g = b(doi::new);
-
-   @Override
-   public MapCodec<? extends doi> a() {
-      return g;
-   }
-
-   protected doi(dxp.d $$0) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.B
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-   }
+public class doi extends dnp {
+   public static final MapCodec<doi> a = b(doi::new);
+   private static final wv b = wv.c("container.grindstone_title");
+   private final Function<dym, fdo> d;
 
    @Override
-   public dxq a(dax $$0) {
-      dgf $$1 = $$0.q();
-      ji $$2 = $$0.a();
-      etw $$3 = $$0.q().b_($$0.a());
-      ji $$4 = $$2.f();
-      ji $$5 = $$2.g();
-      ji $$6 = $$2.h();
-      ji $$7 = $$2.i();
-      dxq $$8 = $$1.a_($$4);
-      dxq $$9 = $$1.a_($$5);
-      dxq $$10 = $$1.a_($$6);
-      dxq $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jn.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jn.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jn.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jn.e))))
-         .b(e, Boolean.valueOf($$3.a() == etx.c));
+   public MapCodec<doi> a() {
+      return a;
+   }
+
+   protected doi(dyl.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(e, jo.c).b(c, dyx.b));
+      this.d = this.b();
+   }
+
+   private Function<dym, fdo> b() {
+      fdo $$0 = fdl.a(dku.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dku.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
+      fdo $$1 = fdl.a($$0, h.z);
+      fdo $$2 = fdl.a(dku.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
+      Map<dyx, Map<jo, fdo>> $$3 = fdl.e($$2);
+      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
+   }
+
+   private fdo o(dym $$0) {
+      return this.d.apply($$0);
    }
 
    @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
+   protected fdo b(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.o($$0);
+   }
+
+   @Override
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return this.o($$0);
+   }
+
+   @Override
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return true;
+   }
+
+   @Override
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awu.aD);
       }
 
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return btq.a;
    }
 
    @Override
-   protected fcr c(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return fco.a();
+   protected bts b(dym $$0, dhp $$1, jj $$2) {
+      return new bty(($$2x, $$3, $$4) -> new cun($$2x, $$3, cua.a($$1, $$2)), b);
    }
 
    @Override
-   protected boolean b(dxq $$0, dxq $$1, jn $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   public final boolean a(dxq $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof doi || $$0.a(awp.N);
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(e, $$1.a($$0.c(e)));
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.a($$1.a($$0.c(e)));
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(e, c);
+   }
+
+   @Override
+   protected boolean a(dym $$0, evi $$1) {
+      return false;
    }
 }

@@ -1,22 +1,26 @@
-import java.util.ArrayList;
-import java.util.List;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fyn extends fym {
-   private static final wp a = wp.c("options.skinCustomisation.title");
+public class fyn implements fys {
+   private final fuu a;
 
-   public fyn(fvi $$0, fmk $$1) {
-      super($$0, $$1, a);
+   public fyn(fuu $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void m() {
-      List<fpo> $$0 = new ArrayList<>();
-
-      for (cps $$1 : cps.values()) {
-         $$0.add(fpx.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
       }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
+
+      return $$6;
    }
 }

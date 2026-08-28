@@ -1,42 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class ero {
+   private static final ald[] a = new ald[]{
+      ald.b("nether_fossils/fossil_1"),
+      ald.b("nether_fossils/fossil_2"),
+      ald.b("nether_fossils/fossil_3"),
+      ald.b("nether_fossils/fossil_4"),
+      ald.b("nether_fossils/fossil_5"),
+      ald.b("nether_fossils/fossil_6"),
+      ald.b("nether_fossils/fossil_7"),
+      ald.b("nether_fossils/fossil_8"),
+      ald.b("nether_fossils/fossil_9"),
+      ald.b("nether_fossils/fossil_10"),
+      ald.b("nether_fossils/fossil_11"),
+      ald.b("nether_fossils/fossil_12"),
+      ald.b("nether_fossils/fossil_13"),
+      ald.b("nether_fossils/fossil_14")
+   };
 
-public class ero extends esi {
-   public static final MapCodec<ero> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kg.a(mc.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ero::new)
-   );
-   private final Optional<jv<dke>> b;
-   private final float c;
-
-   public ero(jv<dke> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
+   public static void a(etj $$0, epl $$1, azs $$2, jj $$3) {
+      drm $$4 = drm.a($$2);
+      $$1.a(new ero.a($$0, af.a(a, $$2), $$3, $$4));
    }
 
-   public ero(float $$0) {
-      this(Optional.empty(), $$0);
-   }
+   public static class a extends epq {
+      public a(etj $$0, ald $$1, jj $$2, drm $$3) {
+         super(epx.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+      }
 
-   private ero(Optional<jv<dke>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
+      public a(etj $$0, tw $$1) {
+         super(epx.ac, $$1, $$0, $$1x -> a(drm.valueOf($$1.l("Rot"))));
+      }
 
-   @Nullable
-   @Override
-   public esl.d a(dhc $$0, ji $$1, ji $$2, esl.d $$3, esl.d $$4, esh $$5) {
-      azh $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
-   }
+      private static ete a(drm $$0) {
+         return new ete().a($$0).a(dpv.a).a(esj.d);
+      }
 
-   @Override
-   protected esk<?> a() {
-      return esk.f;
+      @Override
+      protected void a(epw $$0, tw $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, jj $$1, dig $$2, azs $$3, eoy $$4) {
+      }
+
+      @Override
+      public void a(dio $$0, dil $$1, eak $$2, azs $$3, eoy $$4, dgw $$5, jj $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

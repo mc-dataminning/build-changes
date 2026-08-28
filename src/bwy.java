@@ -1,5 +1,13 @@
-public interface bwy<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T d();
+public interface bwy {
+   @Nullable
+   bvy<bwr> d();
+
+   dhp dV();
+
+   @Nullable
+   default bwr e() {
+      return bvy.a(this.d(), this.dV(), bwr.class);
+   }
 }

@@ -1,40 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eia extends egu<eji> {
-   public eia(Codec<eji> $$0) {
-      super($$0);
-   }
+public class eia implements ejv {
+   public static final Codec<eia> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dym.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dym.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dym.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dym.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               efs.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eia::new)
+   );
+   public final dym b;
+   public final dym c;
+   public final dym d;
+   public final dym e;
+   public final efs f;
+   public final boolean g;
 
-   @Override
-   public boolean a(egw<eji> $$0) {
-      boolean $$1 = false;
-      azh $$2 = $$0.d();
-      dhy $$3 = $$0.b();
-      ji $$4 = $$0.e();
-      eji $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(edo.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      ji $$9 = new ji($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dkg.J)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dxq $$11 = $$10 ? dkg.bE.m() : dkg.bD.m();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dxq $$12 = $$11.b(dsq.d, dym.a);
-               ji $$13 = $$9.d();
-               if ($$3.a_($$13).a(dkg.J)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
-
-            $$1 = true;
-         }
-      }
-
-      return $$1;
+   public eia(dym $$0, dym $$1, dym $$2, dym $$3, efs $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

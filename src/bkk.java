@@ -4,37 +4,24 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkk extends bju {
+public class bkk extends Schema {
    public bkk(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bic.C, () -> DSL.optionalFields("CustomName", bic.z.in($$0), DSL.taggedChoiceLazy("id", a(), $$1)));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:beacon", () -> b($$0));
-      $$0.register($$1, "minecraft:banner", () -> b($$0));
-      $$0.register($$1, "minecraft:brewing_stand", () -> a($$0));
-      $$0.register($$1, "minecraft:chest", () -> a($$0));
-      $$0.register($$1, "minecraft:trapped_chest", () -> a($$0));
-      $$0.register($$1, "minecraft:dispenser", () -> a($$0));
-      $$0.register($$1, "minecraft:dropper", () -> a($$0));
-      $$0.register($$1, "minecraft:enchanting_table", () -> b($$0));
-      $$0.register($$1, "minecraft:furnace", () -> a($$0));
-      $$0.register($$1, "minecraft:hopper", () -> a($$0));
-      $$0.register($$1, "minecraft:shulker_box", () -> a($$0));
-      return $$1;
-   }
-
-   public static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("Items", DSL.list(bic.t.in($$0)), "CustomName", bic.z.in($$0));
-   }
-
-   public static TypeTemplate b(Schema $$0) {
-      return DSL.optionalFields("CustomName", bic.z.in($$0));
+      $$0.registerType(
+         true,
+         biq.A,
+         () -> DSL.and(
+               DSL.optional(DSL.field("ArmorItems", DSL.list(biq.t.in($$0)))),
+               new TypeTemplate[]{
+                  DSL.optional(DSL.field("HandItems", DSL.list(biq.t.in($$0)))),
+                  DSL.optional(DSL.field("body_armor_item", biq.t.in($$0))),
+                  DSL.optional(DSL.field("saddle", biq.t.in($$0)))
+               }
+            )
+      );
    }
 }

@@ -1,18 +1,21 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blp extends bju {
+public class blp extends bkj {
    public blp(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.registerSimple($$1, $$2);
+   }
+
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:glow_squid", () -> bjv.a($$0));
-      $$0.register($$1, "minecraft:glow_item_frame", $$1x -> DSL.optionalFields("Item", bic.t.in($$0)));
+      $$1.remove("minecraft:illager_beast");
+      a($$0, $$1, "minecraft:ravager");
       return $$1;
    }
 }

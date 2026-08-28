@@ -1,82 +1,66 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fuz extends fwf {
+   private static final wv s = wv.c("selectWorld.backupJoinSkipButton");
+   public static final wv a = wv.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final fuz.a b;
+   private final wv v;
+   private final boolean w;
+   private frg x = frg.a;
+   final wv c;
+   protected int d;
+   private fqp y;
 
-public class fuz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cuf<?>, fuz.a<?, ?>> b = Maps.newHashMap();
+   public fuz(Runnable $$0, fuz.a $$1, wv $$2, wv $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
+   }
 
-   public static <T extends csw> void a(cuf<T> $$0, fmg $$1, int $$2, wp $$3) {
-      fuz.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", mb.p.b($$0));
+   public fuz(Runnable $$0, fuz.a $$1, wv $$2, wv $$3, wv $$4, boolean $$5) {
+      super($$2);
+      this.u = $$0;
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.x = frg.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = fqp.a(wv.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
+      }
+
+      this.c(fqn.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fqn.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fqn.a(wu.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+   }
+
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
+   }
+
+   @Override
+   public boolean aC_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
       } else {
-         $$4.a($$3, $$0, $$1, $$2);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   @Nullable
-   private static <T extends csw> fuz.a<T, ?> a(cuf<T> $$0) {
-      return (fuz.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends csw, U extends fvi & fxd<M>> void a(cuf<? extends M> $$0, fuz.a<M, U> $$1) {
-      fuz.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + mb.p.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cuf<?> $$1 : mb.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", mb.p.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   static {
-      a(cuf.a, fwj::new);
-      a(cuf.b, fwj::new);
-      a(cuf.c, fwj::new);
-      a(cuf.d, fwj::new);
-      a(cuf.e, fwj::new);
-      a(cuf.f, fwj::new);
-      a(cuf.g, fwp::new);
-      a(cuf.h, fwk::new);
-      a(cuf.i, fwb::new);
-      a(cuf.j, fwc::new);
-      a(cuf.k, fwd::new);
-      a(cuf.l, fwg::new);
-      a(cuf.m, fwl::new);
-      a(cuf.n, fws::new);
-      a(cuf.o, fwt::new);
-      a(cuf.p, fwu::new);
-      a(cuf.q, fww::new);
-      a(cuf.r, fxb::new);
-      a(cuf.s, fxc::new);
-      a(cuf.t, fxe::new);
-      a(cuf.u, fxh::new);
-      a(cuf.v, fxj::new);
-      a(cuf.w, fxk::new);
-      a(cuf.x, fwh::new);
-      a(cuf.y, fxl::new);
-   }
-
-   interface a<T extends csw, U extends fvi & fxd<T>> {
-      default void a(wp $$0, cuf<T> $$1, fmg $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gl()), $$2.t.gl(), $$0);
-         $$2.t.bQ = $$4.F();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cpq var2, wp var3);
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

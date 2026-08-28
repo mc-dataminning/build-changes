@@ -1,93 +1,38 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface eei {
-   Codec<eei> a = Codec.xor(eei.b.d, Codec.xor(eei.a.d, eei.c.d)).xmap(eei::a, eei::a);
-   eei b = b(0);
-   eei c = c(0);
+public class eei {
+   public final elw a;
+   public final elw b;
+   public final elw c;
+   public final elw d;
+   public final elw e;
+   public final List<dym> f;
+   public final axp<dku> g;
+   public final axp<dku> h;
+   public static final Codec<eei> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               elw.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               elw.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               elw.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               elw.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               elw.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               ays.b(dym.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               axp.b(me.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               axp.b(me.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eei::new)
+   );
 
-   static eei a(int $$0) {
-      return new eei.b($$0);
-   }
-
-   static eei b(int $$0) {
-      return new eei.a($$0);
-   }
-
-   static eei c(int $$0) {
-      return new eei.c($$0);
-   }
-
-   static eei a() {
-      return b;
-   }
-
-   static eei b() {
-      return c;
-   }
-
-   private static eei a(Either<eei.b, Either<eei.a, eei.c>> $$0) {
-      return (eei)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<eei.b, Either<eei.a, eei.c>> a(eei $$0) {
-      return $$0 instanceof eei.b ? Either.left((eei.b)$$0) : Either.right($$0 instanceof eei.a ? Either.left((eei.a)$$0) : Either.right((eei.c)$$0));
-   }
-
-   int a(eel var1);
-
-   public static record a(int e) implements eei {
-      public static final Codec<eei.a> d = Codec.intRange(ebm.e, ebm.d).fieldOf("above_bottom").xmap(eei.a::new, eei.a::c).codec();
-
-      @Override
-      public int a(eel $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements eei {
-      public static final Codec<eei.b> d = Codec.intRange(ebm.e, ebm.d).fieldOf("absolute").xmap(eei.b::new, eei.b::c).codec();
-
-      @Override
-      public int a(eel $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements eei {
-      public static final Codec<eei.c> d = Codec.intRange(ebm.e, ebm.d).fieldOf("below_top").xmap(eei.c::new, eei.c::c).codec();
-
-      @Override
-      public int a(eel $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   public eei(elw $$0, elw $$1, elw $$2, elw $$3, elw $$4, List<dym> $$5, axp<dku> $$6, axp<dku> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

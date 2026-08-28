@@ -1,12 +1,12 @@
 public class aju {
-   public static final yy<ajq> a = a("status_response");
-   public static final yy<ajt> b = b("status_request");
+   public static final ze<ajt> a = a("pong_response");
+   public static final ze<ajw> b = b("ping_request");
 
-   private static <T extends yw<ajp>> yy<T> a(String $$0) {
-      return new yy<>(yx.b, aku.b($$0));
+   private static <T extends zc<ajs>> ze<T> a(String $$0) {
+      return new ze<>(zd.b, ald.b($$0));
    }
 
-   private static <T extends yw<ajs>> yy<T> b(String $$0) {
-      return new yy<>(yx.a, aku.b($$0));
+   private static <T extends zc<ajv>> ze<T> b(String $$0) {
+      return new ze<>(zd.a, ald.b($$0));
    }
 }

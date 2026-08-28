@@ -1,125 +1,74 @@
-enum fvp {
-   a(
-      new fvp.a(aku.b("advancements/tab_above_left_selected"), aku.b("advancements/tab_above_middle_selected"), aku.b("advancements/tab_above_right_selected")),
-      new fvp.a(aku.b("advancements/tab_above_left"), aku.b("advancements/tab_above_middle"), aku.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fvp.a(aku.b("advancements/tab_below_left_selected"), aku.b("advancements/tab_below_middle_selected"), aku.b("advancements/tab_below_right_selected")),
-      new fvp.a(aku.b("advancements/tab_below_left"), aku.b("advancements/tab_below_middle"), aku.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fvp.a(aku.b("advancements/tab_left_top_selected"), aku.b("advancements/tab_left_middle_selected"), aku.b("advancements/tab_left_bottom_selected")),
-      new fvp.a(aku.b("advancements/tab_left_top"), aku.b("advancements/tab_left_middle"), aku.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fvp.a(aku.b("advancements/tab_right_top_selected"), aku.b("advancements/tab_right_middle_selected"), aku.b("advancements/tab_right_bottom_selected")),
-      new fvp.a(aku.b("advancements/tab_right_top"), aku.b("advancements/tab_right_middle"), aku.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-   private final fvp.a e;
-   private final fvp.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fvp implements AutoCloseable {
+   private static final ald a = ald.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final hgu d;
+   private final ald e;
+   @Nullable
+   private hgf f;
+   private boolean g;
 
-   private fvp(final fvp.a $$0, final fvp.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   private fvp(hgu $$0, ald $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public int a() {
-      return this.i;
+   public static fvp a(hgu $$0, String $$1) {
+      return new fvp($$0, ald.b("worlds/" + af.a($$1, ald::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   public void a(fpc $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fvp.a $$5 = $$3 ? this.e : this.f;
-      aku $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   public static fvp b(hgu $$0, String $$1) {
+      return new fvp($$0, ald.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(fgo $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new hgf($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(gnh::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fpc $$0, int $$1, int $$2, int $$3, cxh $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   public ald b() {
+      return this.f != null ? this.e : a;
    }
 
-   static record a(aku a, aku b, aku c) {
+   @Override
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

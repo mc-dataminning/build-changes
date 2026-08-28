@@ -1,36 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-public class ffn {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+public interface ffn extends AutoCloseable {
+   float a = 7.0F;
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+   @Override
+   default void close() {
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   @Nullable
+   default ffm a(int $$0) {
+      return null;
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
-   }
+   IntSet a();
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
-   }
-
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   public static record a(ffn a, fte.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
    }
 }

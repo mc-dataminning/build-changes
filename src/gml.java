@@ -1,51 +1,61 @@
-public enum gml {
-   a(new gml.b(gml.a.f, gml.a.e, gml.a.a), new gml.b(gml.a.f, gml.a.e, gml.a.d), new gml.b(gml.a.c, gml.a.e, gml.a.d), new gml.b(gml.a.c, gml.a.e, gml.a.a)),
-   b(new gml.b(gml.a.f, gml.a.b, gml.a.d), new gml.b(gml.a.f, gml.a.b, gml.a.a), new gml.b(gml.a.c, gml.a.b, gml.a.a), new gml.b(gml.a.c, gml.a.b, gml.a.d)),
-   c(new gml.b(gml.a.c, gml.a.b, gml.a.d), new gml.b(gml.a.c, gml.a.e, gml.a.d), new gml.b(gml.a.f, gml.a.e, gml.a.d), new gml.b(gml.a.f, gml.a.b, gml.a.d)),
-   d(new gml.b(gml.a.f, gml.a.b, gml.a.a), new gml.b(gml.a.f, gml.a.e, gml.a.a), new gml.b(gml.a.c, gml.a.e, gml.a.a), new gml.b(gml.a.c, gml.a.b, gml.a.a)),
-   e(new gml.b(gml.a.f, gml.a.b, gml.a.d), new gml.b(gml.a.f, gml.a.e, gml.a.d), new gml.b(gml.a.f, gml.a.e, gml.a.a), new gml.b(gml.a.f, gml.a.b, gml.a.a)),
-   f(new gml.b(gml.a.c, gml.a.b, gml.a.a), new gml.b(gml.a.c, gml.a.e, gml.a.a), new gml.b(gml.a.c, gml.a.e, gml.a.d), new gml.b(gml.a.c, gml.a.b, gml.a.d));
+public class gml extends gmh {
+   private final gmc a;
+   private static final int b = 8;
 
-   private static final gml[] g = af.a(new gml[6], $$0 -> {
-      $$0[gml.a.e] = a;
-      $$0[gml.a.b] = b;
-      $$0[gml.a.d] = c;
-      $$0[gml.a.a] = d;
-      $$0[gml.a.f] = e;
-      $$0[gml.a.c] = f;
-   });
-   private final gml.b[] h;
-
-   public static gml a(jn $$0) {
-      return g[$$0.d()];
+   protected gml(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gmc $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / azk.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
-   private gml(final gml.b... $$0) {
-      this.h = $$0;
+   @Override
+   public gll b() {
+      return gll.b;
    }
 
-   public gml.b a(int $$0) {
-      return this.h[$$0];
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public static final class a {
-      public static final int a = jn.d.d();
-      public static final int b = jn.b.d();
-      public static final int c = jn.f.d();
-      public static final int d = jn.c.d();
-      public static final int e = jn.a.d();
-      public static final int f = jn.e.d();
+   @Override
+   public glu.a p() {
+      return glu.a.b;
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-      b(int $$0, int $$1, int $$2) {
+   @Override
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements glk<lz> {
+      private final gmc a;
+
+      public a(gmc $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gml($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
       }
    }
 }

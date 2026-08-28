@@ -1,13 +1,77 @@
 import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ccz extends cde {
-   public ccz(bwa $$0, Class<? extends bvy> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(ccw.a.b, ccw.a.a));
+public class ccz extends cdn {
+   private static final chg d = chg.b().a(8.0).d();
+   protected final cig a;
+   private final Class<? extends cig> e;
+   protected final arn b;
+   @Nullable
+   protected cig c;
+   private int f;
+   private final double g;
+
+   public ccz(cig $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cig>)$$0.getClass());
    }
 
-   public ccz(bwa $$0, Class<? extends bvy> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(ccw.a.b, ccw.a.a));
+   public ccz(cig $$0, double $$1, Class<? extends cig> $$2) {
+      this.a = $$0;
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
+   }
+
+   @Override
+   public boolean b() {
+      if (!this.a.gA()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.bK() && this.c.gA() && this.f < 60 && !this.c.gn();
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+      this.f = 0;
+   }
+
+   @Override
+   public void a() {
+      this.a.J().a(this.c, 10.0F, (float)this.a.ac());
+      this.a.O().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cig h() {
+      List<? extends cig> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cig $$2 = null;
+
+      for (cig $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gn() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

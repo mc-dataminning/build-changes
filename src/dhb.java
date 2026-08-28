@@ -1,59 +1,25 @@
-public interface dhb {
-   int H_();
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   int G_();
-
-   default int ao() {
-      return this.G_() + this.H_() - 1;
+public interface dhb extends dhh, dhs, dhu {
+   @Override
+   default <T extends dvl> Optional<T> a(jj $$0, dvn<T> $$1) {
+      return dhs.super.a($$0, $$1);
    }
 
-   default int ap() {
-      return this.ar() - this.aq() + 1;
+   @Override
+   default List<fdo> c(@Nullable bvs $$0, fcp $$1) {
+      return dhh.super.c($$0, $$1);
    }
 
-   default int aq() {
-      return kk.a(this.G_());
+   @Override
+   default boolean a(@Nullable bvs $$0, fdo $$1) {
+      return dhh.super.a($$0, $$1);
    }
 
-   default int ar() {
-      return kk.a(this.ao());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 >= this.G_() && $$0 <= this.ao();
-   }
-
-   default boolean s(ji $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.G_() || $$0 > this.ao();
-   }
-
-   default int f(int $$0) {
-      return this.g(kk.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.aq();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.aq();
-   }
-
-   static dhb e(final int $$0, final int $$1) {
-      return new dhb() {
-         @Override
-         public int H_() {
-            return $$1;
-         }
-
-         @Override
-         public int G_() {
-            return $$0;
-         }
-      };
+   @Override
+   default jj a(eel.a $$0, jj $$1) {
+      return dhs.super.a($$0, $$1);
    }
 }

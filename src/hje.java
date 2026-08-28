@@ -1,44 +1,84 @@
-public class hje extends hix {
-   public static final int n = 20;
-   private final glv o;
-   private int p;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   public hje(glv $$0) {
-      super(awa.ir, awb.h, hjo.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class hje {
+   static final Logger a = LogUtils.getLogger();
+   private final Map<ald, hjn> b;
+   final hjn c;
+   private final List<hjk> d = new ArrayList<>();
+   private final Map<ald, hjn> e = new HashMap<>();
+
+   public hje(Map<ald, hjn> $$0, hjn $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.e.put(hja.a, $$1);
    }
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dP() && (this.p <= 20 || this.o.fL())) {
-         this.f = (double)((float)this.o.dz());
-         this.g = (double)((float)this.o.dB());
-         this.h = (double)((float)this.o.dF());
-         float $$0 = (float)this.o.dx().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = ayz.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
+   public void a() {
+      this.e.put(gpn.a, new gpn());
+   }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
+   public void a(hjk $$0) {
+      this.d.add($$0);
+   }
 
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+   public void b() {
+      this.d.forEach($$0 -> $$0.a(new hje.a()));
+   }
+
+   public Map<ald, hjn> c() {
+      return this.e;
+   }
+
+   public Set<ald> d() {
+      return Sets.difference(this.b.keySet(), this.e.keySet());
+   }
+
+   hjn a(ald $$0) {
+      return this.e.computeIfAbsent($$0, this::b);
+   }
+
+   private hjn b(ald $$0) {
+      hjn $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         a.warn("Missing block model: '{}'", $$0);
+         return this.c;
       } else {
-         this.n();
+         return $$1;
+      }
+   }
+
+   class a implements hjk.a {
+      private final List<ald> b = new ArrayList<>();
+      private final Set<ald> c = new HashSet<>();
+
+      @Override
+      public hjn a(ald $$0) {
+         if (this.b.contains($$0)) {
+            hje.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hje.this.c;
+         } else {
+            hjn $$1 = hje.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
+            }
+
+            return $$1;
+         }
+      }
+
+      private String a() {
+         return this.b.stream().map(ald::toString).collect(Collectors.joining("->"));
       }
    }
 }

@@ -1,84 +1,34 @@
-import java.util.function.LongFunction;
+public class een {
+   public final azs a;
+   private double b;
+   private boolean c;
 
-public class een extends edp {
-   private final azh d;
-   private int e;
-
-   public een(azh $$0) {
-      super(0L);
-      this.d = $$0;
+   public een(azs $$0) {
+      this.a = $$0;
    }
 
-   public int l() {
-      return this.e;
+   public void a() {
+      this.c = false;
    }
 
-   @Override
-   public azh d() {
-      return this.d.d();
-   }
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = azk.k($$0) + azk.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-   @Override
-   public eeb e() {
-      return this.d.e();
-   }
-
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof edp $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azh a(int $$0, int $$1, long $$2, long $$3) {
-      return azh.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(edp::new),
-      b(eep::new);
-
-      private final LongFunction<azh> c;
-
-      private a(final LongFunction<azh> $$0) {
-         this.c = $$0;
-      }
-
-      public azh a(long $$0) {
-         return this.c.apply($$0);
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
       }
    }
 }

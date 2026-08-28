@@ -1,142 +1,61 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record dwt(int d, float e, float f, float g, float h, int i, brj<dht> j, brj<akt<ewt>> k, akt<ewt> l) {
-   public static final dwt a = b().a();
-   public static final Codec<dwt> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dwt::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dwt::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dwt::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dwt::f),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dwt::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dwt::h),
-               dht.c.optionalFieldOf("spawn_potentials", brj.a()).forGetter(dwt::i),
-               brj.a(akt.a(mc.bi)).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(dwt::j),
-               akt.a(mc.bi).optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(dwt::k)
-            )
-            .apply($$0, dwt::new)
-   );
-   public static final Codec<jr<dwt>> c = akq.a(mc.bf, b);
+public record dwt(Optional<cxu> d, Optional<cxu> e, Optional<cxu> f, Optional<cxu> g) {
+   public static final dwt a = new dwt(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dwt> b = md.g.q().sizeLimitedListOf(4).xmap(dwt::new, dwt::a);
+   public static final yt<wg, dwt> c = yr.a(me.K).a(yr.c(4)).a(dwt::new, dwt::a);
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   private dwt(List<cxu> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   public dwt(cxu $$0, cxu $$1, cxu $$2, cxu $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
    }
 
-   public long a() {
-      return 160L;
+   private static Optional<cxu> a(List<cxu> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         cxu $$2 = $$0.get($$1);
+         return $$2 == cyc.rw ? Optional.empty() : Optional.of($$2);
+      }
    }
 
-   public static dwt.a b() {
-      return new dwt.a();
+   public tw a(tw $$0) {
+      if (this.equals(a)) {
+         return $$0;
+      } else {
+         $$0.a("sherds", (ut)b.encodeStart(uk.a, this).getOrThrow());
+         return $$0;
+      }
    }
 
-   public dwt a(bvi<?> $$0) {
-      tq $$1 = new tq();
-      $$1.a("id", mb.f.b($$0).toString());
-      dht $$2 = new dht($$1, Optional.empty(), Optional.empty());
-      return new dwt(this.d, this.e, this.f, this.g, this.h, this.i, brj.a($$2), this.k, this.l);
+   public List<cxu> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cyc.rw)).toList();
    }
 
-   public int c() {
+   public static dwt b(@Nullable tw $$0) {
+      return $$0 != null && $$0.e("sherds") ? b.parse(uk.a, $$0.c("sherds")).result().orElse(a) : a;
+   }
+
+   public Optional<cxu> b() {
       return this.d;
    }
 
-   public float d() {
+   public Optional<cxu> c() {
       return this.e;
    }
 
-   public float e() {
+   public Optional<cxu> d() {
       return this.f;
    }
 
-   public float f() {
+   public Optional<cxu> e() {
       return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public int h() {
-      return this.i;
-   }
-
-   public brj<dht> i() {
-      return this.j;
-   }
-
-   public brj<akt<ewt>> j() {
-      return this.k;
-   }
-
-   public akt<ewt> k() {
-      return this.l;
-   }
-
-   public static class a {
-      private int a = 4;
-      private float b = 6.0F;
-      private float c = 2.0F;
-      private float d = 2.0F;
-      private float e = 1.0F;
-      private int f = 40;
-      private brj<dht> g = brj.a();
-      private brj<akt<ewt>> h = brj.<akt<ewt>>b().a(ewk.aM).a(ewk.aL).a();
-      private akt<ewt> i = ewk.aP;
-
-      public dwt.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public dwt.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public dwt.a b(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public dwt.a c(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public dwt.a d(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public dwt.a b(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public dwt.a a(brj<dht> $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dwt.a b(brj<akt<ewt>> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public dwt.a a(akt<ewt> $$0) {
-         this.i = $$0;
-         return this;
-      }
-
-      public dwt a() {
-         return new dwt(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
-      }
    }
 }

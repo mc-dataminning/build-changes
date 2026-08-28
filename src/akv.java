@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface akv<T, V> {
+   V get(alc<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface akv {
+   static <T, V> akv<T, V> fixed(V $$0) {
+      return $$1 -> $$0;
+   }
 }

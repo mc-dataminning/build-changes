@@ -1,37 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import javax.annotation.Nullable;
 
 public class azi {
-   public static final Codec<azi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayi.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ayi.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, azi::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<aku> f;
+   @Nullable
+   private static byte[] a;
 
-   private azi(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   public Predicate<String> a() {
-      return this.c;
-   }
+   public static void b() {
+      if (a != null) {
+         a = null;
 
-   public Predicate<String> b() {
-      return this.e;
-   }
-
-   public Predicate<aku> c() {
-      return this.f;
+         try {
+            System.gc();
+            System.gc();
+            System.gc();
+         } catch (Throwable var1) {
+         }
+      }
    }
 }

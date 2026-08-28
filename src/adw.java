@@ -1,37 +1,21 @@
-public class adw implements yw<abl> {
-   public static final yn<vl, adw> a = yw.a(adw::a, adw::new);
-   private final int b;
-   private final double c;
-
-   public adw(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private adw(vl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
+public record adw(int b, wv c) implements zc<abr> {
+   public static final yt<wg, adw> a = yt.a(yr.h, adw::b, wx.d, adw::e, adw::new);
 
    @Override
-   public yy<adw> a() {
-      return agd.bi;
+   public ze<adw> a() {
+      return agk.ae;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public double e() {
+   public wv e() {
       return this.c;
    }
 }

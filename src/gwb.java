@@ -1,23 +1,26 @@
-public class gwb extends guj<cpj, hbu, gfm> {
-   private static final aku a = aku.b("textures/entity/wandering_trader.png");
+public class gwb extends gvl<cno, hca, gfo> {
+   private static final ald a = ald.b("textures/entity/illager/ravager.png");
 
-   public gwb(gtd.a $$0) {
-      super($$0, new gfm($$0.a(ggb.dy)), 0.5F);
-      this.a(new gww<>(this, $$0.f()));
-      this.a(new gwv<>(this));
+   public gwb(guf.a $$0) {
+      super($$0, new gfo($$0.a(ghc.cF)), 1.1F);
    }
 
-   public aku a(hbu $$0) {
+   public ald a(hca $$0) {
       return a;
    }
 
-   public hbu b() {
-      return new hbu();
+   public hca b() {
+      return new hca();
    }
 
-   public void a(cpj $$0, hbu $$1, float $$2) {
+   public void a(cno $$0, hca $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gzy.a($$0, $$1, this.i);
-      $$1.a = $$0.q() > 0;
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gx() > 0) {
+         $$1.c = ((float)(20 - $$0.gx()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

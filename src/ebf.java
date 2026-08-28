@@ -1,5 +1,18 @@
-public record ebf(String a, akt<dgz> b, String c) {
-   public ebf a(String $$0) {
-      return new ebf(this.a, this.b, this.c + $$0);
-   }
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public interface ebf {
+   @Nullable
+   epo a(epg var1);
+
+   void a(epg var1, epo var2);
+
+   LongSet b(epg var1);
+
+   void a(epg var1, long var2);
+
+   Map<epg, LongSet> h();
+
+   void b(Map<epg, LongSet> var1);
 }

@@ -1,27 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class gkh extends gmh {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final gmc M;
 
-public class gkh {
-   private final List<aku> a;
-
-   private gkh(List<aku> $$0) {
-      this.a = $$0;
+   gkh(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gmc $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = azk.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = azk.a(this.r, 0.0F, 0.0F);
+      this.x = azk.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
-   public List<aku> a() {
-      return this.a;
-   }
-
-   public static gkh a(JsonObject $$0) {
-      JsonArray $$1 = ayp.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gkh(List.of());
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         List<aku> $$2 = Streams.stream($$1).map($$0x -> ayp.a($$0x, "texture")).map(aku::a).collect(ImmutableList.toImmutableList());
-         return new gkh($$2);
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
+      }
+   }
+
+   @Override
+   public gll b() {
+      return gll.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements glk<lz> {
+      private final gmc a;
+
+      public a(gmc $$0) {
+         this.a = $$0;
+      }
+
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gkh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

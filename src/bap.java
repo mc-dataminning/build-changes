@@ -1,42 +1,25 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+public class bap<A, B> {
+   private A a;
+   private B b;
 
-public class bap extends bgy {
-   private static final String a = "minecraft:wolf";
-   private static final String b = "minecraft:generic.max_health";
-
-   public bap(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bic.C, "minecraft:wolf");
+   public bap(A $$0, B $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bju.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
-            }
+   public A a() {
+      return this.a;
+   }
 
-            return $$0x;
-         }
-      );
+   public void a(A $$0) {
+      this.a = $$0;
+   }
+
+   public B b() {
+      return this.b;
+   }
+
+   public void b(B $$0) {
+      this.b = $$0;
    }
 }

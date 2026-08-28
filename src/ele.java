@@ -1,49 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ele extends elc {
-   public static final MapCodec<ele> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
+public class ele extends elh {
+   public static final MapCodec<ele> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
             .and(
                $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dxq.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  ayi.b(dxq.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  ayi.b(dxq.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+                  bsv.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
                )
             )
             .apply($$0, ele::new)
    );
+   private final bsv b;
+   private final float c;
    private final float g;
    private final float h;
-   private final dxq i;
-   private final List<dxq> j;
-   private final List<dxq> k;
+   private final float i;
 
-   public ele(long $$0, esz.a $$1, float $$2, float $$3, float $$4, dxq $$5, List<dxq> $$6, List<dxq> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public ele(bsv $$0, bsv $$1, bsv $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected ela<?> a() {
-      return ela.c;
+   protected eli<?> a() {
+      return eli.k;
    }
 
    @Override
-   public dxq a(azh $$0, ji $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return af.a(this.j, $$0);
+   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      jj $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
+
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
+      }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
+   }
+
+   @Override
+   public int a(azs $$0, int $$1, ekr $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
       } else {
-         return $$0.i() < this.h ? af.a(this.k, $$0) : this.i;
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
       }
    }
 }

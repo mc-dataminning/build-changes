@@ -1,60 +1,24 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
-public class equ extends eoj {
-   public static final MapCodec<equ> d = a(equ::new);
+@FunctionalInterface
+public interface equ {
+   equ a = $$0 -> $$0;
 
-   public equ(eoj.c $$0) {
-      super($$0);
-   }
+   alc<eqq> lookup(alc<eqq> var1);
 
-   @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (jr<dic> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(awo.X)) {
-            return Optional.empty();
-         }
-      }
-
-      return a($$0, edo.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static eon a(dgg $$0, een $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jn $$4 = jn.c.a.a($$1);
-      return new eqt.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(epb $$0, eoj.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static eoy a(dgg $$0, long $$1, eoy $$2) {
-      if ($$2.a()) {
-         return $$2;
+   static equ create(List<eqs> $$0, jj $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
       } else {
-         een $$3 = new een(new edp(eed.a()));
-         $$3.c($$1, $$0.h, $$0.i);
-         eon $$4 = $$2.c().get(0);
-         eob $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jn $$8 = jn.c.a.a($$3);
-         jn $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         eon $$10 = new eqt.h($$3, $$6, $$7, $$9);
-         epb $$11 = new epb();
-         $$11.a($$10);
-         return $$11.a();
+         azs $$3 = azs.a($$2).e().a($$1);
+         Builder<alc<eqq>, alc<eqq>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<alc<eqq>, alc<eqq>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
       }
-   }
-
-   @Override
-   public eos<?> e() {
-      return eos.j;
    }
 }

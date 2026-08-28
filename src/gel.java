@@ -1,54 +1,80 @@
 import java.util.Set;
 
-public class gel extends gda<hay> {
-   private static final float a = 50.0F;
-   private static final float b = -40.0F;
-   private static final float c = 0.6F;
-   private static final ggl d = ggl.scaling(0.6F);
-   private static final ggl e = new gby(true, 22.0F, 2.0F, 2.65F, 2.5F, 36.0F, Set.of("head", "left_ear", "right_ear", "nose"));
-   private static final String f = "left_haunch";
-   private static final String g = "right_haunch";
-   private final ggc i;
-   private final ggc j;
-   private final ggc k;
-   private final ggc l;
-   private final ggc m;
+public class gel extends gea<hay> {
+   public static final ghm a = new gcx(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F, Set.of("head"));
+   private static final float b = 0.87266463F;
+   private static final float c = (float) (-Math.PI / 9);
+   private final ghd d;
+   private final ghd e;
+   private final ghd f;
+   private final ghd g;
+   private final ghd i;
+   private final ghd j;
+   private final ghd k;
+   private final ghd l;
+   private final ghd m;
 
-   public gel(ggc $$0) {
+   public gel(ghd $$0) {
       super($$0);
-      this.i = $$0.b("left_haunch");
-      this.j = $$0.b("right_haunch");
-      this.k = $$0.b("left_front_leg");
-      this.l = $$0.b("right_front_leg");
-      this.m = $$0.b("head");
+      this.g = $$0.b("body");
+      this.m = this.g.b("mane");
+      this.d = $$0.b("head");
+      this.e = this.d.b("right_ear");
+      this.f = this.d.b("left_ear");
+      this.i = $$0.b("right_front_leg");
+      this.j = $$0.b("left_front_leg");
+      this.k = $$0.b("right_hind_leg");
+      this.l = $$0.b("left_hind_leg");
    }
 
-   public static ggi a(boolean $$0) {
-      ggk $$1 = new ggk();
-      ggm $$2 = $$1.a();
-      ggm $$3 = $$2.a("left_haunch", ggh.c().a(30, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gge.a(3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F));
-      ggm $$4 = $$2.a("right_haunch", ggh.c().a(16, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gge.a(-3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F));
-      $$3.a("left_hind_foot", ggh.c().a(26, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gge.b(0.36651915F, 0.0F, 0.0F));
-      $$4.a("right_hind_foot", ggh.c().a(8, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gge.b(0.36651915F, 0.0F, 0.0F));
-      $$2.a("body", ggh.c().a(0, 0).a(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F), gge.a(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F));
-      $$2.a("left_front_leg", ggh.c().a(8, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gge.a(3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F));
-      $$2.a("right_front_leg", ggh.c().a(0, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gge.a(-3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F));
-      ggm $$5 = $$2.a("head", ggh.c().a(32, 0).a(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), gge.a(0.0F, 16.0F, -1.0F));
-      $$5.a("right_ear", ggh.c().a(52, 0).a(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gge.a(0.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 12), 0.0F));
-      $$5.a("left_ear", ggh.c().a(58, 0).a(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gge.a(0.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F));
-      $$2.a("tail", ggh.c().a(52, 6).a(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F), gge.a(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
-      $$5.a("nose", ggh.c().a(32, 9).a(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), gge.a);
-      return ggi.a($$1, 64, 32).a($$0 ? e : d);
+   private static ghl c() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      ghn $$2 = $$1.a("body", ghi.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), ghf.a(0.0F, 7.0F, 0.0F));
+      $$2.a("mane", ghi.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new ghh(0.001F)), ghf.a(0.0F, -14.0F, -7.0F));
+      ghn $$3 = $$1.a("head", ghi.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), ghf.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
+      $$3.a("right_ear", ghi.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), ghf.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
+      $$3.a("left_ear", ghi.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), ghf.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
+      $$3.a("right_horn", ghi.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), ghf.a(-7.0F, 2.0F, -12.0F));
+      $$3.a("left_horn", ghi.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), ghf.a(7.0F, 2.0F, -12.0F));
+      int $$4 = 14;
+      int $$5 = 11;
+      $$1.a("right_front_leg", ghi.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), ghf.a(-4.0F, 10.0F, -8.5F));
+      $$1.a("left_front_leg", ghi.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), ghf.a(4.0F, 10.0F, -8.5F));
+      $$1.a("right_hind_leg", ghi.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), ghf.a(-5.0F, 13.0F, 10.0F));
+      $$1.a("left_hind_leg", ghi.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), ghf.a(5.0F, 13.0F, 10.0F));
+      return $$0;
+   }
+
+   public static ghj a() {
+      ghl $$0 = c();
+      return ghj.a($$0, 128, 64);
+   }
+
+   public static ghj b() {
+      ghl $$0 = c();
+      ghn $$1 = $$0.a().b("body");
+      $$1.a("mane", ghi.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new ghh(0.001F)), ghf.a(0.0F, -14.0F, -3.0F));
+      return ghj.a($$0, 128, 64).a(a);
    }
 
    public void a(hay $$0) {
       super.a($$0);
-      this.m.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.m.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$1 = ayz.a($$0.a * (float) Math.PI);
-      this.i.e += $$1 * 50.0F * (float) (Math.PI / 180.0);
-      this.j.e += $$1 * 50.0F * (float) (Math.PI / 180.0);
-      this.k.e += $$1 * -40.0F * (float) (Math.PI / 180.0);
-      this.l.e += $$1 * -40.0F * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      this.e.g = (float) (-Math.PI * 2.0 / 9.0) - $$1 * azk.a($$2);
+      this.f.g = (float) (Math.PI * 2.0 / 9.0) + $$1 * azk.a($$2);
+      this.d.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$3 = 1.0F - (float)azk.a(10 - 2 * $$0.a) / 10.0F;
+      this.d.e = azk.h($$3, 0.87266463F, (float) (-Math.PI / 9));
+      if ($$0.aj) {
+         this.d.c += $$3 * 2.5F;
+      }
+
+      float $$4 = 1.2F;
+      this.i.e = azk.b($$2) * 1.2F * $$1;
+      this.j.e = azk.b($$2 + (float) Math.PI) * 1.2F * $$1;
+      this.k.e = this.j.e;
+      this.l.e = this.i.e;
    }
 }

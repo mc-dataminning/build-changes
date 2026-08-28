@@ -1,44 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record deq(km d, Optional<eev> e, ekz f, Optional<jr<ecp>> g) implements dei {
-   public static final MapCodec<deq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               km.g.optionalFieldOf("offset", km.h).forGetter(deq::b),
-               eev.b.optionalFieldOf("predicate").forGetter(deq::c),
-               ekz.a.fieldOf("block_state").forGetter(deq::d),
-               ecp.aj.optionalFieldOf("trigger_game_event").forGetter(deq::e)
-            )
-            .apply($$0, deq::new)
-   );
-
-   @Override
-   public void a(ard $$0, int $$1, ddq $$2, bva $$3, fbx $$4) {
-      ji $$5 = ji.a((kb)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dX(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+public record deq<T>(del a, del b, T c, Optional<fau> d) {
+   public static <S> Codec<deq<S>> a(Codec<S> $$0, bau $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  del.d.fieldOf("enchanted").forGetter(deq::a),
+                  del.d.fieldOf("affected").forGetter(deq::b),
+                  $$0.fieldOf("effect").forGetter(deq::c),
+                  dee.a($$1).optionalFieldOf("requirements").forGetter(deq::d)
+               )
+               .apply($$2, deq::new)
+      );
    }
 
-   @Override
-   public MapCodec<deq> a() {
-      return a;
+   public static <S> Codec<deq<S>> b(Codec<S> $$0, bau $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  del.d
+                     .validate($$0xx -> $$0xx != del.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(deq::a),
+                  $$0.fieldOf("effect").forGetter(deq::c),
+                  dee.a($$1).optionalFieldOf("requirements").forGetter(deq::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new deq<>($$0xx, del.c, $$1xx, $$2x))
+      );
    }
 
-   public km b() {
-      return this.d;
-   }
-
-   public Optional<eev> c() {
-      return this.e;
-   }
-
-   public ekz d() {
-      return this.f;
-   }
-
-   public Optional<jr<ecp>> e() {
-      return this.g;
+   public boolean a(exl $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

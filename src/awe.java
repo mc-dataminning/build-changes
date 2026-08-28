@@ -1,149 +1,146 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.function.UnaryOperator;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public final class awe {
-   public static final yn<vl, awe> a = yn.a(awe::b, awe::a);
-   private static final Map<cum, Pair<String, String>> b = ImmutableMap.of(
-      cum.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cum.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cum.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cum.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cum, awe.a> c;
+public class awe extends awc {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 3;
+   private static final int f = 2;
+   private static final int g = 0;
+   private static final int h = 2;
+   private static final int i = -1;
+   private boolean j;
+   private final Socket k;
+   private final byte[] l = new byte[1460];
+   private final String m;
+   private final alu n;
 
-   private awe(Map<cum, awe.a> $$0) {
-      this.c = $$0;
-   }
+   awe(alu $$0, String $$1, Socket $$2) {
+      super("RCON Client " + $$2.getInetAddress());
+      this.n = $$0;
+      this.k = $$2;
 
-   public awe() {
-      this(new EnumMap<>(cum.class));
-   }
-
-   private awe.a c(cum $$0) {
-      return this.c.getOrDefault($$0, awe.a.a);
-   }
-
-   private void a(cum $$0, UnaryOperator<awe.a> $$1) {
-      this.c.compute($$0, ($$1x, $$2) -> {
-         if ($$2 == null) {
-            $$2 = awe.a.a;
-         }
-
-         $$2 = $$1.apply($$2);
-         if ($$2.equals(awe.a.a)) {
-            $$2 = null;
-         }
-
-         return $$2;
-      });
-   }
-
-   public boolean a(cum $$0) {
-      return this.c($$0).b;
-   }
-
-   public void a(cum $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public boolean b(cum $$0) {
-      return this.c($$0).c;
-   }
-
-   public void b(cum $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$1x.b($$1));
-   }
-
-   private static awe a(vl $$0) {
-      Map<cum, awe.a> $$1 = new EnumMap<>(cum.class);
-
-      for (cum $$2 : cum.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         if ($$3 || $$4) {
-            $$1.put($$2, new awe.a($$3, $$4));
-         }
+      try {
+         this.k.setSoTimeout(0);
+      } catch (Exception var5) {
+         this.a = false;
       }
 
-      return new awe($$1);
-   }
-
-   private void b(vl $$0) {
-      for (cum $$1 : cum.values()) {
-         awe.a $$2 = this.c.getOrDefault($$1, awe.a.a);
-         $$0.a($$2.b);
-         $$0.a($$2.c);
-      }
-   }
-
-   public static awe a(tq $$0) {
-      Map<cum, awe.a> $$1 = new EnumMap<>(cum.class);
-      b.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         if ($$4 || $$5) {
-            $$1.put($$2, new awe.a($$4, $$5));
-         }
-      });
-      return new awe($$1);
-   }
-
-   public void b(tq $$0) {
-      b.forEach(($$1, $$2) -> {
-         awe.a $$3 = this.c.getOrDefault($$1, awe.a.a);
-         $$0.a((String)$$2.getFirst(), $$3.b);
-         $$0.a((String)$$2.getSecond(), $$3.c);
-      });
-   }
-
-   public awe a() {
-      return new awe(new EnumMap<>(this.c));
-   }
-
-   public void a(awe $$0) {
-      this.c.clear();
-      this.c.putAll($$0.c);
+      this.m = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof awe && this.c.equals(((awe)$$0).c);
+   public void run() {
+      try {
+         try {
+            while (this.a) {
+               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
+               int $$1 = $$0.read(this.l, 0, 1460);
+               if (10 > $$1) {
+                  return;
+               }
+
+               int $$2 = 0;
+               int $$3 = avz.b(this.l, 0, $$1);
+               if ($$3 != $$1 - 4) {
+                  return;
+               }
+
+               $$2 += 4;
+               int $$4 = avz.b(this.l, $$2, $$1);
+               $$2 += 4;
+               int $$5 = avz.a(this.l, $$2);
+               $$2 += 4;
+               switch ($$5) {
+                  case 2:
+                     if (this.j) {
+                        String $$7 = avz.a(this.l, $$2, $$1);
+
+                        try {
+                           this.a($$4, this.n.a($$7));
+                        } catch (Exception var15) {
+                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
+                        }
+                        break;
+                     }
+
+                     this.d();
+                     break;
+                  case 3:
+                     String $$6 = avz.a(this.l, $$2, $$1);
+                     $$2 += $$6.length();
+                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
+                        this.j = true;
+                        this.a($$4, 2, "");
+                        break;
+                     }
+
+                     this.j = false;
+                     this.d();
+                     break;
+                  default:
+                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
+               }
+            }
+
+            return;
+         } catch (IOException var16) {
+         } catch (Exception var17) {
+            d.error("Exception whilst parsing RCON input", var17);
+         }
+      } finally {
+         this.e();
+         d.info("Thread {} shutting down", this.b);
+         this.a = false;
+      }
+   }
+
+   private void a(int $$0, int $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
+      DataOutputStream $$4 = new DataOutputStream($$3);
+      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
+      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
+      $$4.writeInt(Integer.reverseBytes($$0));
+      $$4.writeInt(Integer.reverseBytes($$1));
+      $$4.write($$5);
+      $$4.write(0);
+      $$4.write(0);
+      this.k.getOutputStream().write($$3.toByteArray());
+   }
+
+   private void d() throws IOException {
+      this.a(-1, 2, "");
+   }
+
+   private void a(int $$0, String $$1) throws IOException {
+      int $$2 = $$1.length();
+
+      do {
+         int $$3 = 4096 <= $$2 ? 4096 : $$2;
+         this.a($$0, 0, $$1.substring(0, $$3));
+         $$1 = $$1.substring($$3);
+         $$2 = $$1.length();
+      } while (0 != $$2);
    }
 
    @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   public void b() {
+      this.a = false;
+      this.e();
+      super.b();
    }
 
-   static record a(boolean b, boolean c) {
-      public static final awe.a a = new awe.a(false, false);
-
-      @Override
-      public String toString() {
-         return "[open=" + this.b + ", filtering=" + this.c + "]";
-      }
-
-      public awe.a a(boolean $$0) {
-         return new awe.a($$0, this.c);
-      }
-
-      public awe.a b(boolean $$0) {
-         return new awe.a(this.b, $$0);
-      }
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public boolean b() {
-         return this.c;
+   private void e() {
+      try {
+         this.k.close();
+      } catch (IOException var2) {
+         d.warn("Failed to close socket", var2);
       }
    }
 }

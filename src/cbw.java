@@ -1,51 +1,35 @@
-public class cbw extends cbz {
-   private final int l;
-   private final boolean m;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-   public cbw(bwa $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public final class cbw<F extends K1, Value> {
+   private final bxr<?> a;
+   private final cft<Value> b;
+   private final App<F, Value> c;
+
+   public cbw(bxr<?> $$0, cft<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a() {
-      if (this.k == cbz.a.b) {
-         this.k = cbz.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.dz();
-         double $$1 = this.f - this.d.dB();
-         double $$2 = this.g - this.d.dF();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.I(0.0F);
-            this.d.H(0.0F);
-            return;
-         }
+   public App<F, Value> a() {
+      return this.c;
+   }
 
-         float $$4 = (float)(ayz.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.w(this.b(this.d.dK(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aJ()) {
-            $$5 = (float)(this.h * this.d.h(bxg.v));
-         } else {
-            $$5 = (float)(this.h * this.d.h(bxg.l));
-         }
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
+   }
 
-         this.d.C($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(ayz.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.x(this.b(this.d.dM(), $$8, (float)this.l));
-            this.d.I($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.f(false);
-         }
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
+   }
 
-         this.d.I(0.0F);
-         this.d.H(0.0F);
-      }
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
+
+   public void b() {
+      this.a.b(this.b);
    }
 }

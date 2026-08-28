@@ -1,29 +1,38 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eoi extends eoj {
-   private final eoi.a d;
-   private final int e;
-   private final int f;
+public class eoi extends eor {
+   public static final MapCodec<eoi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eoi::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   protected eoi(eoi.a $$0, int $$1, int $$2, eoj.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eoi(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static eoi a(int $$0, double $$1, double $$2) {
+      return new eoi($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, edo.a.a, $$1 -> this.a($$1, $$0));
+   protected int a(azs $$0, jj $$1) {
+      double $$2 = dis.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
-   private void a(epb $$0, eoj.a $$1) {
-      dgg $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      eon construct(een var1, int var2, int var3);
+   @Override
+   public eoo<?> b() {
+      return eoo.g;
    }
 }

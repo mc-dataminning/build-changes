@@ -1,42 +1,38 @@
-public abstract class bvo extends bwa {
-   protected bvo(bvi<? extends bvo> $$0, dgz $$1) {
-      super($$0, $$1);
+public class bvo {
+   public static final bvo a = new bvo(0.75F, 0.5F, 0.25F);
+   public static final bvo b = new bvo(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
+
+   private bvo(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dxq $$2, ji $$3) {
-   }
-
-   @Override
-   public void a_(fbx $$0) {
-      if (this.bj()) {
-         this.a(0.02F, $$0);
-         this.a(bwc.a, this.dx());
-         this.i(this.dx().c(0.8F));
-      } else if (this.bv()) {
-         this.a(0.02F, $$0);
-         this.a(bwc.a, this.dx());
-         this.i(this.dx().c(0.5));
+   public bvo.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bvo.a.d;
+      } else if ($$0 < this.d) {
+         return bvo.a.c;
       } else {
-         float $$1 = 0.91F;
-         if (this.aJ()) {
-            $$1 = this.dU().a_(this.aQ()).b().g() * 0.91F;
-         }
-
-         float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-         $$1 = 0.91F;
-         if (this.aJ()) {
-            $$1 = this.dU().a_(this.aQ()).b().g() * 0.91F;
-         }
-
-         this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
-         this.a(bwc.a, this.dx());
-         this.i(this.dx().c((double)$$1));
+         return $$0 < this.c ? bvo.a.b : bvo.a.a;
       }
    }
 
-   @Override
-   public boolean d_() {
-      return false;
+   public bvo.a a(cxy $$0) {
+      return !$$0.m() ? bvo.a.a : this.a($$0.o(), $$0.p());
+   }
+
+   public bvo.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,35 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public abstract class pj extends pi<cxd> {
-   private final CompletableFuture<pn.c<dke>> d;
-   private final Map<axf<dke>, axf<cxd>> g = new HashMap<>();
-
-   public pj(mk $$0, CompletableFuture<jt.a> $$1, CompletableFuture<pn.c<dke>> $$2) {
-      super($$0, mc.K, $$1, $$0x -> $$0x.f().h());
-      this.d = $$2;
-   }
-
-   public pj(mk $$0, CompletableFuture<jt.a> $$1, CompletableFuture<pn.c<cxd>> $$2, CompletableFuture<pn.c<dke>> $$3) {
-      super($$0, mc.K, $$1, $$2, $$0x -> $$0x.f().h());
-      this.d = $$3;
-   }
-
-   protected void a(axf<dke> $$0, axf<cxd> $$1) {
-      this.g.put($$0, $$1);
+public class pj extends pp<cxr> {
+   public pj(mm $$0, CompletableFuture<ju.a> $$1) {
+      super($$0, me.I, $$1);
    }
 
    @Override
-   protected CompletableFuture<jt.a> b() {
-      return super.b().thenCombine(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            axc $$3 = this.c((axf<cxd>)$$2);
-            Optional<axc> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (jt.a)$$0;
-      });
+   protected void a(ju.a $$0) {
+      this.b(axh.a).a(cxt.c).a(cxt.d).a(cxt.e).a(cxt.f);
+      this.b(axh.b).a(cxt.g).a(cxt.h).a(cxt.i).a(cxt.j);
+      this.b(axh.c).b(axh.a).b(axh.b);
    }
 }

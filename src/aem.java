@@ -1,29 +1,33 @@
-public class aem implements yw<abl> {
-   public static final yn<vl, aem> a = yw.a(aem::a, aem::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public aem(dzh $$0) {
-      this.b = $$0.q();
+public class aem implements zc<abr> {
+   public static final yt<vr, aem> a = zc.a(aem::a, aem::new);
+   @Nullable
+   private final ald b;
+
+   public aem(@Nullable ald $$0) {
+      this.b = $$0;
    }
 
-   private aem(vl $$0) {
-      this.b = $$0.l();
+   private aem(vr $$0) {
+      this.b = $$0.c(vr::q);
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b, vr::a);
    }
 
    @Override
-   public yy<aem> a() {
-      return agd.ax;
+   public ze<aem> a() {
+      return agk.as;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Nullable
+   public ald b() {
       return this.b;
    }
 }

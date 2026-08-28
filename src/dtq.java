@@ -1,33 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtq extends dls implements dtp {
-   public static final MapCodec<dtq> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dtp.a.e.fieldOf("weathering_state").forGetter(dtq::q), t()).apply($$0, dtq::new)
-   );
-   private final dtp.a e;
+public class dtq extends dlx {
+   public static final MapCodec<dtq> g = b(dtq::new);
 
    @Override
-   protected MapCodec<dtq> a() {
-      return d;
+   public MapCodec<dtq> a() {
+      return g;
    }
 
-   public dtq(dtp.a $$0, dxp.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public dtq(dyl.d $$0) {
+      super(() -> dvn.c, $$0);
    }
 
    @Override
-   protected void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dvl a(jj $$0, dym $$1) {
+      return new dxk($$0, $$1);
    }
 
    @Override
-   protected boolean f(dxq $$0) {
-      return dtp.c($$0.b()).isPresent();
+   protected awr<ald> c() {
+      return awu.i.b(awu.ai);
    }
 
-   public dtp.a q() {
-      return this.e;
+   @Override
+   protected boolean f_(dym $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dym $$0, dgv $$1, jj $$2, jo $$3) {
+      return azk.a(dvt.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(dym $$0, dgv $$1, jj $$2, jo $$3) {
+      return $$3 == jo.b ? $$0.a($$1, $$2, $$3) : 0;
    }
 }

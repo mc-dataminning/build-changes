@@ -1,69 +1,51 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class elf extends ekz {
-   public static final MapCodec<elf> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ekz.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bsd.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, elf::new)
-   );
-   private final ekz c;
-   private final String d;
-   @Nullable
-   private dyq e;
-   private final bsd f;
+public class elf extends elh {
+   public static final MapCodec<elf> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, elf::new));
 
-   public elf(ekz $$0, dyq $$1, bsd $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public elf(ekz $$0, String $$1, bsd $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public elf(bsv $$0, bsv $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected ela<?> a() {
-      return ela.g;
+   protected eli<?> a() {
+      return eli.i;
    }
 
    @Override
-   public dxq a(azh $$0, ji $$1) {
-      dxq $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         dyq $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
+   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
+      jj $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
          }
-
-         this.e = $$3;
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
-
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
    }
 
-   @Nullable
-   private static dyq a(dxq $$0, String $$1) {
-      Collection<dyt<?>> $$2 = $$0.F();
-      Optional<dyq> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dyq).map($$0x -> (dyq)$$0x).findAny();
-      return $$3.orElse(null);
+   @Override
+   public int a(azs $$0, int $$1, ekr $$2) {
+      return 4;
+   }
+
+   @Override
+   protected boolean b(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

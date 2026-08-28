@@ -1,13 +1,25 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-interface fcj {
-   DoubleList a();
+public class fcj extends Exception {
+   private final Path a;
+   private final List<fcl> b;
 
-   boolean a(fcj.a var1);
+   public fcj(Path $$0, List<fcl> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   int size();
+   @Override
+   public String getMessage() {
+      return a(this.a, this.b);
+   }
 
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   public static String a(Path $$0, List<fcl> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
    }
 }

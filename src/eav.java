@@ -1,5 +1,7 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-public interface eav {
-   CompletableFuture<Void> a(dgg var1, uk var2);
+public interface eav extends dgv {
+   void a(BiConsumer<jj, dym> var1);
+
+   eud D();
 }

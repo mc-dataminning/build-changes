@@ -1,57 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public interface dfv {
+   alc<dfp> a = a("mob_spawn_equipment");
+   alc<dfp> b = a("pillager_spawn_crossbow");
+   alc<dfp> c = a("raid/pillager_post_wave_3");
+   alc<dfp> d = a("raid/pillager_post_wave_5");
+   alc<dfp> e = a("raid/vindicator");
+   alc<dfp> f = a("raid/vindicator_post_wave_5");
+   alc<dfp> g = a("enderman_loot_drop");
 
-public record dfv(jr<cxd> d, int e, kt f, cxh g) {
-   public static final Codec<dfv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cxd.e.fieldOf("id").forGetter(dfv::a),
-               ayi.m.fieldOf("count").orElse(1).forGetter(dfv::b),
-               kt.a.optionalFieldOf("components", kt.c).forGetter(dfv::c)
-            )
-            .apply($$0, dfv::new)
-   );
-   public static final yn<wa, dfv> b = yn.a(cxd.f, dfv::a, yl.h, dfv::b, kt.b, dfv::c, dfv::new);
-   public static final yn<wa, Optional<dfv>> c = b.a(yl::a);
-
-   public dfv(dgy $$0) {
-      this($$0, 1);
+   static void a(qg<dfp> $$0) {
+      jt<deh> $$1 = $$0.a(me.aS);
+      $$0.a(a, new dfs($$1.b(axc.l), 5, 17));
+      $$0.a(b, new dft($$1.b(dem.K), bss.a(1)));
+      $$0.a(c, new dft($$1.b(dem.J), bss.a(1)));
+      $$0.a(d, new dft($$1.b(dem.J), bss.a(2)));
+      $$0.a(e, new dft($$1.b(dem.n), bss.a(1)));
+      $$0.a(f, new dft($$1.b(dem.n), bss.a(2)));
+      $$0.a(g, new dft($$1.b(dem.v), bss.a(1)));
    }
 
-   public dfv(dgy $$0, int $$1) {
-      this($$0.i().f(), $$1, kt.c);
-   }
-
-   public dfv(jr<cxd> $$0, int $$1, kt $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
-   }
-
-   public dfv a(UnaryOperator<kt.a> $$0) {
-      return new dfv(this.d, this.e, $$0.apply(kt.a()).a());
-   }
-
-   private static cxh a(jr<cxd> $$0, int $$1, kt $$2) {
-      return new cxh($$0, $$1, $$2.c());
-   }
-
-   public boolean a(cxh $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
-
-   public jr<cxd> a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public kt c() {
-      return this.f;
-   }
-
-   public cxh d() {
-      return this.g;
+   static alc<dfp> a(String $$0) {
+      return alc.a(me.aT, ald.b($$0));
    }
 }

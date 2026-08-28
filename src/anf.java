@@ -3,22 +3,32 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class anf {
-   public static final int a = 100;
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wv.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wv.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wv.c("commands.enchant.failed"));
 
    public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("give").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("enchant").requires($$0x -> $$0x.c(2)))
             .then(
-               ey.a("targets", fk.d())
+               ey.a("targets", fk.b())
                   .then(
-                     ((RequiredArgumentBuilder)ey.a("item", hg.a($$1)).executes($$0x -> a((ex)$$0x.getSource(), hg.a($$0x, "item"), fk.f($$0x, "targets"), 1)))
+                     ((RequiredArgumentBuilder)ey.a("enchantment", fw.a($$1, me.aS))
+                           .executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"), fw.g($$0x, "enchantment"), 1)))
                         .then(
-                           ey.a("count", IntegerArgumentType.integer(1))
+                           ey.a("level", IntegerArgumentType.integer(0))
                               .executes(
-                                 $$0x -> a((ex)$$0x.getSource(), hg.a($$0x, "item"), fk.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                                 $$0x -> a(
+                                       (ex)$$0x.getSource(), fk.b($$0x, "targets"), fw.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                    )
                               )
                         )
                   )
@@ -26,47 +36,43 @@ public class anf {
       );
    }
 
-   private static int a(ex $$0, hh $$1, Collection<are> $$2, int $$3) throws CommandSyntaxException {
-      cxh $$4 = $$1.a(1, false);
-      int $$5 = $$4.k();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(wp.a("commands.give.failed.toomanyitems", $$6, $$4.K()));
-         return 0;
+   private static int a(ex $$0, Collection<? extends bvs> $$1, js<deh> $$2, int $$3) throws CommandSyntaxException {
+      deh $$4 = $$2.a();
+      if ($$3 > $$4.e()) {
+         throw d.create($$3, $$4.e());
       } else {
-         for (are $$7 : $$2) {
-            int $$8 = $$3;
+         int $$5 = 0;
 
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cxh $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gl().f($$10);
-               if ($$11 && $$10.f()) {
-                  clw $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.u();
+         for (bvs $$6 : $$1) {
+            if ($$6 instanceof bwr) {
+               bwr $$7 = (bwr)$$6;
+               cxy $$8 = $$7.fa();
+               if (!$$8.f()) {
+                  if ($$4.c($$8) && dej.a(dej.b($$8).a(), $$2)) {
+                     $$8.a($$2, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.y().getString());
                   }
-
-                  $$7.dU().a(null, $$7.dz(), $$7.dB(), $$7.dF(), awa.of, awb.h, 0.2F, (($$7.dX().i() - $$7.dX().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bQ.d();
-               } else {
-                  clw $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.m();
-                     $$12.b($$7.cF());
-                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.al().getString());
                }
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.al().getString());
             }
          }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> wp.a("commands.give.success.single", $$3, $$4.K(), $$2.iterator().next().m_()), true);
+         if ($$5 == 0) {
+            throw e.create();
          } else {
-            $$0.a(() -> wp.a("commands.give.success.single", $$3, $$4.K(), $$2.size()), true);
-         }
+            if ($$1.size() == 1) {
+               $$0.a(() -> wv.a("commands.enchant.success.single", deh.a($$2, $$3), $$1.iterator().next().m_()), true);
+            } else {
+               $$0.a(() -> wv.a("commands.enchant.success.multiple", deh.a($$2, $$3), $$1.size()), true);
+            }
 
-         return $$2.size();
+            return $$5;
+         }
       }
    }
 }

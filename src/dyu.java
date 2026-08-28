@@ -1,36 +1,18 @@
-public enum dyu implements azv {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String k;
+public class dyu implements Predicate<dym> {
+   private final dku a;
 
-   private dyu(final String $$0) {
-      this.k = $$0;
+   public dyu(dku $$0) {
+      this.a = $$0;
    }
 
-   public String a() {
-      return this.k;
+   public static dyu a(dku $$0) {
+      return new dyu($$0);
    }
 
-   @Override
-   public String toString() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
-   }
-
-   @Override
-   public String c() {
-      return this.k;
+   public boolean a(@Nullable dym $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

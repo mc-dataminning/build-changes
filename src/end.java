@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum end implements azv {
-   a(jn.b, 1, "ceiling"),
-   b(jn.a, -1, "floor");
+public class end<P extends enc> {
+   public static final end<enb> a = a("straight_trunk_placer", enb.a);
+   public static final end<emy> b = a("forking_trunk_placer", emy.a);
+   public static final end<emz> c = a("giant_trunk_placer", emz.a);
+   public static final end<ena> d = a("mega_jungle_trunk_placer", ena.b);
+   public static final end<emw> e = a("dark_oak_trunk_placer", emw.a);
+   public static final end<emx> f = a("fancy_trunk_placer", emx.a);
+   public static final end<emu> g = a("bending_trunk_placer", emu.a);
+   public static final end<ene> h = a("upwards_branching_trunk_placer", ene.a);
+   public static final end<emv> i = a("cherry_trunk_placer", emv.a);
+   private final MapCodec<P> j;
 
-   public static final Codec<end> c = azv.a(end::values);
-   private final jn d;
-   private final int e;
-   private final String f;
-
-   private end(final jn $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private static <P extends enc> end<P> a(String $$0, MapCodec<P> $$1) {
+      return kf.a(md.V, $$0, new end<>($$1));
    }
 
-   public jn a() {
-      return this.d;
+   private end(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

@@ -1,34 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dux extends dwc {
-   public dux(ji $$0, dxq $$1) {
-      super(duu.K, $$0, $$1);
-   }
+public class dux extends dlm {
+   public static final MapCodec<dux> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwv.q.fieldOf("color").forGetter(dux::b), t()).apply($$0, dux::new));
+   private final cwv c;
 
    @Override
-   public ecy.d b() {
-      return new dux.a(this.aA_());
+   public MapCodec<dux> a() {
+      return b;
    }
 
-   protected class a extends dwc.a {
-      public a(final ji $$1) {
-         super($$1);
-      }
+   protected dux(cwv $$0, dyl.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(ard $$0, ji $$1, jr<ecp> $$2, @Nullable ecp.a $$3) {
-         int $$4 = this.a($$0, this.c, dux.this.m());
-         return $$4 != 0 && ecy.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(dgz $$0, ji $$1, dxq $$2) {
-         jn $$3 = $$2.c(dks.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   public cwv b() {
+      return this.c;
    }
 }

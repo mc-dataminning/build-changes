@@ -1,45 +1,37 @@
-public class aek implements yw<abl> {
-   public static final yn<vl, aek> a = yw.a(aek::a, aek::new);
-   private final double b;
-   private final double c;
-   private final long d;
+public class aek implements zc<abr> {
+   public static final yt<vr, aek> a = zc.a(aek::a, aek::new);
+   private final int b;
+   private final byte c;
 
-   public aek(dzh $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   public aek(bvs $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private aek(vl $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
+   private aek(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public yy<aek> a() {
-      return agd.av;
+   public ze<aek> a() {
+      return agk.aq;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public bvs a(dhp $$0) {
+      return $$0.a(this.b);
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
+   public float b() {
+      return azk.a(this.c);
    }
 }

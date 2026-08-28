@@ -1,165 +1,101 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record hlf<T>(String F, String G, Codec<T> H, hlf.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hlf<String> a = b("user_id", "userId");
-   public static final hlf<String> b = b("client_id", "clientId");
-   public static final hlf<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hlf<String> d = b("game_version", "buildDisplayName");
-   public static final hlf<String> e = b("operating_system", "buildPlatform");
-   public static final hlf<String> f = b("platform", "platform");
-   public static final hlf<Boolean> g = a("client_modded", "clientModded");
-   public static final hlf<String> h = b("launcher_name", "launcherName");
-   public static final hlf<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hlf<Boolean> j = a("server_modded", "serverModded");
-   public static final hlf<hlf.c> k = a("server_type", "serverType", hlf.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hlf<Boolean> l = a("opt_in", "isOptional");
-   public static final hlf<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ayi.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hlf<hlf.b> n = a("game_mode", "playerGameMode", hlf.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hlf<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hlf<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hlf<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hlf<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hlf<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hlf<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hlf<Integer> u = c("number_of_samples", "numSamples");
-   public static final hlf<Integer> v = c("render_distance", "renderDistance");
-   public static final hlf<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hlf<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hlf<Boolean> y = a("new_world", "newWorld");
-   public static final hlf<hlj.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hlf<hlj.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hlf<hlj.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hlf<hlj.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hlf<String> D = b("advancement_id", "advancementId");
-   public static final hlf<Long> E = d("advancement_game_time", "advancementGameTime");
+public class hlf {
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public static <T> hlf<T> a(String $$0, String $$1, Codec<T> $$2, hlf.a<T> $$3) {
-      return new hlf<>($$0, $$1, $$2, $$3);
-   }
+   public static class a extends Thread {
+      private final hlf.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public static hlf<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hlf<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hlf<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hlf<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hlf<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, kl.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static hlf<hlj.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hlj.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static hlf<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hlg $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
-      }
-   }
-
-   public xd a() {
-      return wp.c("telemetry.property." + this.F + ".title");
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
-   }
-
-   public String b() {
-      return this.F;
-   }
-
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public hlf.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements azv {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<hlf.b> f = azv.a(hlf.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public int a() {
-         return this.h;
+      public a(hlf.b $$0) throws IOException {
+         super("LanServerDetector #" + hlf.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(hlf.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
       }
 
       @Override
-      public String c() {
-         return this.g;
+      public void run() {
+         byte[] $$0 = new byte[1024];
+
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               hlf.b.error("Couldn't ping server", var6);
+               break;
+            }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            hlf.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   public static enum c implements azv {
-      a("realm"),
-      b("local"),
-      c("server");
+   public static class b {
+      private final List<hle> a = Lists.newArrayList();
+      private boolean b;
 
-      public static final Codec<hlf.c> d = azv.a(hlf.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
+      @Nullable
+      public synchronized List<hle> a() {
+         if (this.b) {
+            List<hle> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = hlg.a($$0);
+         String $$3 = hlg.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (hle $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new hle($$2, $$3));
+               this.b = true;
+            }
+         }
       }
    }
 }

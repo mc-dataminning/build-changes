@@ -1,84 +1,98 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public class evt {
-   private static final String a = "command_storage_";
-   private final Map<String, evt.a> b = Maps.newHashMap();
-   private final evw c;
+public record evt(arn d, fcu e, fcu f, float g, float h, boolean i, boolean j, Set<bxf> k, evt.a l) {
+   public static final evt.a a = $$0 -> {
+   };
+   public static final evt.a b = evt::a;
+   public static final evt.a c = evt::b;
 
-   public evt(evw $$0) {
-      this.c = $$0;
+   public evt(arn $$0, fcu $$1, fcu $$2, float $$3, float $$4, evt.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   private evt.a a(String $$0) {
-      evt.a $$1 = new evt.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   public evt(arn $$0, fcu $$1, fcu $$2, float $$3, float $$4, Set<bxf> $$5, evt.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   private evi.a<evt.a> b(String $$0) {
-      return new evi.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bam.h);
+   public evt(arn $$0, bvs $$1, evt.a $$2) {
+      this($$0, a($$0, $$1), fcu.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   public tq a(aku $$0) {
-      String $$1 = $$0.b();
-      evt.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new tq();
-   }
-
-   public void a(aku $$0, tq $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
-
-   public Stream<aku> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends evi {
-      private static final String a = "contents";
-      private final Map<String, tq> b = Maps.newHashMap();
-
-      evt.a a(tq $$0) {
-         tq $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
+   private static void a(bvs $$0) {
+      if ($$0 instanceof aro $$1) {
+         $$1.f.b(new ade(1032, jj.c, 0, false));
       }
+   }
 
-      @Override
-      public tq a(tq $$0, jt.a $$1) {
-         tq $$2 = new tq();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
-         $$0.a("contents", $$2);
-         return $$0;
-      }
+   private static void b(bvs $$0) {
+      $$0.g(jj.a((kc)$$0.dt()));
+   }
 
-      public tq a(String $$0) {
-         tq $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new tq();
-      }
+   public static evt a(arn $$0, bvs $$1, evt.a $$2) {
+      return new evt($$0, a($$0, $$1), fcu.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   }
 
-      public void a(String $$0, tq $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
+   private static fcu a(arn $$0, bvs $$1) {
+      return $$1.a($$0, $$0.aa()).c();
+   }
 
-         this.g();
-      }
+   public evt a(float $$0, float $$1) {
+      return new evt(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   }
 
-      public Stream<aku> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> aku.a($$0, $$1));
+   public evt a(fcu $$0) {
+      return new evt(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public evt a() {
+      return new evt(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public arn b() {
+      return this.d;
+   }
+
+   public fcu c() {
+      return this.e;
+   }
+
+   public fcu d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<bxf> i() {
+      return this.k;
+   }
+
+   public evt.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bvs var1);
+
+      default evt.a then(evt.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
    }
 }

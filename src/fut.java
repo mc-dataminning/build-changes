@@ -1,41 +1,24 @@
-import javax.annotation.Nullable;
-
-public class fut extends fvi {
-   @Nullable
-   private fqb a;
-
-   public fut(wp $$0) {
-      super($$0);
+public record fut(int a, int b) {
+   public static fut a(fur $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case a -> new fut($$1, $$2);
+         case b -> new fut($$2, $$1);
+      };
    }
 
-   @Override
-   protected void aR_() {
-      this.a = this.c(new fqb(this.n, this.l, this.p, 12));
-      this.c();
+   public fut a(fus $$0) {
+      return switch ($$0) {
+         case b -> new fut(this.a, this.b + 1);
+         case a -> new fut(this.a, this.b - 1);
+         case c -> new fut(this.a - 1, this.b);
+         case d -> new fut(this.a + 1, this.b);
+      };
    }
 
-   @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
-      }
-   }
-
-   @Override
-   public boolean aG_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aQ_() {
-      return false;
-   }
-
-   @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.r();
-      this.a($$0);
+   public int a(fur $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+      };
    }
 }

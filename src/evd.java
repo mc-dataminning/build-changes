@@ -1,46 +1,145 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public interface evd {
-   jn[] a = new jn[]{jn.e, jn.f, jn.a, jn.b, jn.c, jn.d};
+public class evd {
+   private evf[] a = new evf[128];
+   private int b;
 
-   void a(jn var1, dxq var2, ji var3, ji var4, int var5, int var6);
+   public evf a(evf $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            evf[] $$1 = new evf[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
 
-   void a(ji var1, dke var2, @Nullable eve var3);
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
+   }
 
-   void a(dxq var1, ji var2, dke var3, @Nullable eve var4, boolean var5);
+   public void a() {
+      this.b = 0;
+   }
 
-   default void a(ji $$0, dke $$1, @Nullable jn $$2, @Nullable eve $$3) {
-      for (jn $$4 : a) {
-         if ($$4 != $$2) {
-            this.a($$0.a($$4), $$1, null);
+   public evf b() {
+      return this.a[0];
+   }
+
+   public evf c() {
+      evf $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(evf $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
          }
       }
+
+      $$0.d = -1;
    }
 
-   static void a(dha $$0, jn $$1, ji $$2, ji $$3, dxq $$4, int $$5, int $$6) {
-      dxq $$7 = $$0.a_($$2);
-      if (($$5 & 128) == 0 || !$$7.a(dkg.cE)) {
-         dxq $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.C_());
-         dke.a($$7, $$8, $$0, $$2, $$5, $$6);
+   public void a(evf $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
       }
    }
 
-   static void a(dgz $$0, dxq $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", mb.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + mb.e.b($$3);
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      evf $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         evf $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      evf $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         evf $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         evf $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
             }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new z($$7);
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
       }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public evf[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

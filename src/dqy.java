@@ -1,137 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqy extends dke implements drl {
-   public static final MapCodec<dqy> a = b(dqy::new);
-   private static final int f = 1;
-   private static final fcr g = fco.a(dke.b(16.0, 14.0, 16.0), fco.c(dke.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0)).values().stream().reduce(fco.a(), fco::a));
-   private static final fcr h = dke.b(16.0, 0.0, 2.0);
-   private static final fcr i = fco.a(g, h, fco.c(dke.a(16.0, 0.0, 2.0, 0.0, 2.0)).values().stream().reduce(fco.a(), fco::a));
-   private static final fcr C = fco.b().a(0.0, -1.0, 0.0).d();
-   public static final int b = 7;
-   public static final dyq c = dyg.aZ;
-   public static final dyh d = dyg.I;
-   public static final dyh e = dyg.d;
+public class dqy extends dkj {
+   public static final MapCodec<dqy> b = b(dqy::new);
+   public static final dzk<dzq> c = dzc.aj;
 
    @Override
    public MapCodec<dqy> a() {
-      return a;
+      return b;
    }
 
-   protected dqy(dxp.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(c, Integer.valueOf(7)).b(d, Boolean.valueOf(false)).b(e, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c, d, e);
+   protected dqy(dyl.d $$0) {
+      super(false, $$0);
+      this.l(this.B.b().b(c, dzq.a).b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      if (!$$3.a($$0.b().i())) {
-         return $$0.c(e) ? i : g;
-      } else {
-         return fco.b();
+   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3) {
+      if ($$3.m().p() && new dqz($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2) {
-      return fco.b();
+   public dzp<dzq> c() {
+      return c;
    }
 
    @Override
-   protected boolean a(dxq $$0, dax $$1) {
-      return $$1.n().a(this.i());
-   }
+   protected dym a(dym $$0, drm $$1) {
+      dzq $$2 = $$0.c(c);
 
-   @Override
-   public dxq a(dax $$0) {
-      ji $$1 = $$0.a();
-      dgz $$2 = $$0.q();
-      int $$3 = a($$2, $$1);
-      return this.m().b(d, Boolean.valueOf($$2.b_($$1).a() == etx.c)).b(c, Integer.valueOf($$3)).b(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
-   }
-
-   @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
-      if (!$$1.C) {
-         $$1.a($$2, this, 1);
-      }
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, etx.c, etx.c.a($$1));
-      }
-
-      if (!$$1.w_()) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      int $$4 = a($$1, $$2);
-      dxq $$5 = $$0.b(c, Integer.valueOf($$4)).b(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
-      if ($$5.c(c) == 7) {
-         if ($$0.c(c) == 7) {
-            clv.a($$1, $$2, $$5);
-         } else {
-            $$1.b($$2, true);
-         }
-      } else if ($$0 != $$5) {
-         $$1.a($$2, $$5, 3);
-      }
-   }
-
-   @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
-      return a($$1, $$2) < 7;
-   }
-
-   @Override
-   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      if ($$3.a(fco.b(), $$2, true) && !$$3.b()) {
-         return g;
-      } else {
-         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(C, $$2, true) ? h : fco.a();
-      }
-   }
-
-   @Override
-   protected etw b_(dxq $$0) {
-      return $$0.c(d) ? etx.c.a(false) : super.b_($$0);
-   }
-
-   private boolean a(dgf $$0, ji $$1, int $$2) {
-      return $$2 > 0 && !$$0.a_($$1.e()).a(this);
-   }
-
-   public static int a(dgf $$0, ji $$1) {
-      ji.a $$2 = $$1.k().c(jn.a);
-      dxq $$3 = $$0.a_($$2);
-      int $$4 = 7;
-      if ($$3.a(dkg.ou)) {
-         $$4 = $$3.c(c);
-      } else if ($$3.c($$0, $$2, jn.b)) {
-         return 0;
-      }
-
-      for (jn $$5 : jn.c.a) {
-         dxq $$6 = $$0.a_($$2.a($$1, $$5));
-         if ($$6.a(dkg.ou)) {
-            $$4 = Math.min($$4, $$6.c(c) + 1);
-            if ($$4 == 1) {
-               break;
+      return $$0.b(c, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dzq.a;
+               case b:
+                  yield dzq.b;
+               case c:
+                  yield dzq.d;
+               case d:
+                  yield dzq.c;
+               case e:
+                  yield dzq.f;
+               case f:
+                  yield dzq.e;
+               case g:
+                  yield dzq.i;
+               case h:
+                  yield dzq.j;
+               case i:
+                  yield dzq.g;
+               case j:
+                  yield dzq.h;
+               default:
+                  throw new MatchException(null, null);
             }
          }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dzq.b;
+               case b:
+                  yield dzq.a;
+               case c:
+                  yield dzq.e;
+               case d:
+                  yield dzq.f;
+               case e:
+                  yield dzq.d;
+               case f:
+                  yield dzq.c;
+               case g:
+                  yield dzq.j;
+               case h:
+                  yield dzq.g;
+               case i:
+                  yield dzq.h;
+               case j:
+                  yield dzq.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dzq.b;
+               case b:
+                  yield dzq.a;
+               case c:
+                  yield dzq.f;
+               case d:
+                  yield dzq.e;
+               case e:
+                  yield dzq.c;
+               case f:
+                  yield dzq.d;
+               case g:
+                  yield dzq.h;
+               case h:
+                  yield dzq.i;
+               case i:
+                  yield dzq.j;
+               case j:
+                  yield dzq.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
+   }
+
+   @Override
+   protected dym a(dym $$0, dpv $$1) {
+      dzq $$2 = $$0.c(c);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(c, dzq.f);
+               case f:
+                  return $$0.b(c, dzq.e);
+               case g:
+                  return $$0.b(c, dzq.j);
+               case h:
+                  return $$0.b(c, dzq.i);
+               case i:
+                  return $$0.b(c, dzq.h);
+               case j:
+                  return $$0.b(c, dzq.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(c, dzq.d);
+               case d:
+                  return $$0.b(c, dzq.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(c, dzq.h);
+               case h:
+                  return $$0.b(c, dzq.g);
+               case i:
+                  return $$0.b(c, dzq.j);
+               case j:
+                  return $$0.b(c, dzq.i);
+            }
       }
 
-      return $$4;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(c, a);
    }
 }

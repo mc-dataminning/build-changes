@@ -11,51 +11,51 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class fo implements ge<fo.a> {
+public class fo implements gf<fo.a> {
    private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
-   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wp.b("argument.message.too_long", $$0, $$1));
+   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("argument.message.too_long", $$0, $$1));
 
    public static fo a() {
       return new fo();
    }
 
-   public static wp a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+   public static wv a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
       fo.a $$2 = (fo.a)$$0.getArgument($$1, fo.a.class);
       return $$2.a((ex)$$0.getSource());
    }
 
-   public static void a(CommandContext<ex> $$0, String $$1, Consumer<xf> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<ex> $$0, String $$1, Consumer<xl> $$2) throws CommandSyntaxException {
       fo.a $$3 = (fo.a)$$0.getArgument($$1, fo.a.class);
       ex $$4 = (ex)$$0.getSource();
-      wp $$5 = $$3.a($$4);
+      wv $$5 = $$3.a($$4);
       ev $$6 = $$4.n();
-      xf $$7 = $$6.a($$1);
+      xl $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, xf.a($$3.a).a($$5));
+         b($$2, $$4, xl.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<xf> $$0, ex $$1, xf $$2) {
+   private static void a(Consumer<xl> $$0, ex $$1, xl $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<arw> $$4 = a($$1, $$2);
-      wp $$5 = $$3.bk().decorate($$1.i(), $$2.d());
+      CompletableFuture<asg> $$4 = a($$1, $$2);
+      wv $$5 = $$3.bk().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         xf $$4x = $$2.a($$5).a($$3x.e());
+         xl $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<xf> $$0, ex $$1, xf $$2) {
-      wk $$3 = $$1.l().bk();
-      wp $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<xl> $$0, ex $$1, xl $$2) {
+      wq $$3 = $$1.l().bk();
+      wv $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<arw> a(ex $$0, xf $$1) {
-      are $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cF()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(arw.a($$1.c()));
+   private static CompletableFuture<asg> a(ex $$0, xl $$1) {
+      aro $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cG()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(asg.a($$1.c()));
    }
 
    public fo.a a(StringReader $$0) throws CommandSyntaxException {
@@ -63,7 +63,7 @@ public class fo implements ge<fo.a> {
    }
 
    public <S> fo.a a(StringReader $$0, @Nullable S $$1) throws CommandSyntaxException {
-      return fo.a.a($$0, hn.a($$1));
+      return fo.a.a($$0, ho.a($$1));
    }
 
    public Collection<String> getExamples() {
@@ -72,17 +72,17 @@ public class fo implements ge<fo.a> {
 
    public static record a(String a, fo.b[] b) {
 
-      wp a(ex $$0) throws CommandSyntaxException {
-         return this.a($$0, hn.a($$0));
+      wv a(ex $$0) throws CommandSyntaxException {
+         return this.a($$0, ho.a($$0));
       }
 
-      public wp a(ex $$0, boolean $$1) throws CommandSyntaxException {
+      public wv a(ex $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            xd $$2 = wp.b(this.a.substring(0, this.b[0].a()));
+            xj $$2 = wv.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (fo.b $$4 : this.b) {
-               wp $$5 = $$4.a($$0);
+               wv $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -97,7 +97,7 @@ public class fo implements ge<fo.a> {
 
             return $$2;
          } else {
-            return wp.b(this.a);
+            return wv.b(this.a);
          }
       }
 
@@ -115,7 +115,7 @@ public class fo implements ge<fo.a> {
 
                while (true) {
                   int $$5;
-                  hm $$7;
+                  hn $$7;
                   while (true) {
                      if (!$$0.canRead()) {
                         return new fo.a($$2, $$3.toArray(new fo.b[0]));
@@ -125,11 +125,11 @@ public class fo implements ge<fo.a> {
                         $$5 = $$0.getCursor();
 
                         try {
-                           hn $$6 = new hn($$0, true);
+                           ho $$6 = new ho($$0, true);
                            $$7 = $$6.t();
                            break;
                         } catch (CommandSyntaxException var8) {
-                           if (var8.getType() != hn.h && var8.getType() != hn.f) {
+                           if (var8.getType() != ho.h && var8.getType() != ho.f) {
                               throw var8;
                            }
 
@@ -147,9 +147,9 @@ public class fo implements ge<fo.a> {
       }
    }
 
-   public static record b(int a, int b, hm c) {
-      public wp a(ex $$0) throws CommandSyntaxException {
-         return hm.a(this.c.b($$0));
+   public static record b(int a, int b, hn c) {
+      public wv a(ex $$0) throws CommandSyntaxException {
+         return hn.a(this.c.b($$0));
       }
    }
 }

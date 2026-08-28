@@ -1,38 +1,44 @@
-public class gsq extends guj<cme, gzc, gcs> {
-   private static final aku a = aku.b("textures/entity/creeper/creeper.png");
+public class gsq implements gsa.a {
+   private final fnd a;
 
-   public gsq(gtd.a $$0) {
-      super($$0, new gcs($$0.a(ggb.ak)), 0.5F);
-      this.a(new gwu(this, $$0.f()));
+   public gsq(fnd $$0) {
+      this.a = $$0;
    }
 
-   protected void a(gzc $$0, fgr $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + ayz.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = ayz.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
-   }
+   @Override
+   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
+      jj $$5 = this.a.t.dv();
+      dhs $$6 = this.a.t.dV();
 
-   protected float a(gzc $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : ayz.a($$1, 0.5F, 1.0F);
-   }
+      for (jj $$7 : jj.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         eut $$8 = $$6.b_($$7);
+         if ($$8.a(axf.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gsa.a(
+               $$0,
+               $$1,
+               new fcp(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
 
-   public aku b(gzc $$0) {
-      return a;
-   }
-
-   public gzc a() {
-      return new gzc();
-   }
-
-   public void a(cme $$0, gzc $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.K($$2);
-      $$1.b = $$0.m();
+      for (jj $$10 : jj.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         eut $$11 = $$6.b_($$10);
+         if ($$11.a(axf.a)) {
+            gsa.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

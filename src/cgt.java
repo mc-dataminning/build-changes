@@ -1,38 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cgt {
-   @Nullable
-   public static fbx a(bwg $$0, int $$1, int $$2) {
-      boolean $$3 = cgu.a($$0, $$1);
-      return cgx.a($$0, () -> {
-         ji $$4 = cgx.a($$0.dX(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public abstract class cgt extends cgz<bwr> {
+   protected abstract boolean a(arn var1, bwr var2, bwr var3);
+
+   protected abstract cft<bwr> b();
+
+   @Override
+   public Set<cft<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   @Nullable
-   public static fbx a(bwg $$0, int $$1, int $$2, fbx $$3, double $$4) {
-      fbx $$5 = $$3.a($$0.dz(), $$0.dB(), $$0.dF());
-      boolean $$6 = cgu.a($$0, $$1);
-      return cgx.a($$0, () -> {
-         ji $$6x = cgx.a($$0.dX(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   @Override
+   protected void a(arn $$0, bwr $$1) {
+      $$1.eb().a(this.b(), this.c($$0, $$1));
    }
 
-   @Nullable
-   public static fbx a(bwg $$0, int $$1, int $$2, fbx $$3) {
-      fbx $$4 = $$0.ds().d($$3);
-      boolean $$5 = cgu.a($$0, $$1);
-      return cgx.a($$0, () -> {
-         ji $$5x = cgx.a($$0.dX(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   private Optional<bwr> c(arn $$0, bwr $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
    }
 
-   @Nullable
-   private static ji a(bwg $$0, int $$1, boolean $$2, ji $$3) {
-      ji $$4 = cgx.a($$0, $$1, $$0.dX(), $$3);
-      return !cgu.a($$4, $$0) && !cgu.a($$2, $$0, $$4) && !cgu.a($$0.O(), $$4) && !cgu.b($$0, $$4) ? $$4 : null;
+   protected Optional<cfv> a(bwr $$0) {
+      return $$0.eb().c(cft.h);
    }
 }

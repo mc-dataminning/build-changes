@@ -1,60 +1,53 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsv extends dma {
-   public static final MapCodec<dsv> a = b(dsv::new);
-   public static final int b = 1;
-   public static final dyq c = dyg.at;
-   private static final fcr[] g = dke.a(1, $$0 -> dke.b(6.0, 0.0, (double)(6 + $$0 * 4)));
-   private static final int h = 1;
+public class dsv extends dsa {
+   public static final MapCodec<dsv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eaa.a.fieldOf("wood_type").forGetter(dsa::d), t()).apply($$0, dsv::new));
+   public static final dzm b = dzc.bd;
 
    @Override
    public MapCodec<dsv> a() {
       return a;
    }
 
-   public dsv(dxp.d $$0) {
-      super($$0);
+   public dsv(eaa $$0, dyl.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.B.b().b(b, Integer.valueOf(0)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(c);
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   public fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return g[this.h($$0)];
+   public dym a(dbn $$0) {
+      eut $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(dzs.a($$0.i() + 180.0F))).b(d, Boolean.valueOf($$1.a() == euu.c));
    }
 
    @Override
-   protected dyq b() {
-      return c;
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      return $$4 == jo.a && !this.a($$0, $$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public int c() {
-      return 2;
+   public float h(dym $$0) {
+      return dzs.b($$0.c(b));
    }
 
    @Override
-   protected dgy d() {
-      return cxl.wk;
+   protected dym a(dym $$0, drm $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public dxq b(int $$0) {
-      return $$0 == 2 ? dkg.bZ.m() : super.b($$0);
+   protected dym a(dym $$0, dpv $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public void b(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(dgz $$0) {
-      return 1;
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b, d);
    }
 }

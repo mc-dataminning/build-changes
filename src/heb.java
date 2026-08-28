@@ -1,20 +1,21 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record heb(int b) implements heh<String> {
-   public static final heh.a<heb, String> a = heh.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(heb::b)).apply($$0, heb::new)), Codec.STRING
+public record heb(kw<?> b, boolean c) implements hdw {
+   public static final MapCodec<heb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(md.ao.q().fieldOf("component").forGetter(heb::b), Codec.BOOL.optionalFieldOf("ignore_default", false).forGetter(heb::c))
+            .apply($$0, heb::new)
    );
 
-   @Nullable
-   public String a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2, int $$3, cxf $$4) {
-      czp $$5 = $$0.a(kv.p);
-      return $$5 != null ? $$5.c(this.b) : null;
+   @Override
+   public boolean a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      return this.c ? $$0.d(this.b) : $$0.c(this.b);
    }
 
    @Override
-   public heh.a<heb, String> a() {
+   public MapCodec<heb> a() {
       return a;
    }
 }

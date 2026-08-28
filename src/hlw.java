@@ -1,98 +1,58 @@
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class hlw {
-   private final fmg a;
+public class hlw implements hlx<hkm> {
+   private final List<hlx<hkm>> a = Lists.newArrayList();
    @Nullable
-   private hlx b;
+   private final wv b;
 
-   public hlw(fmg $$0, fmk $$1) {
-      this.a = $$0;
+   public hlw(ald $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : wv.c($$1);
    }
 
-   public void a(glt $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
+   @Override
+   public int e() {
+      int $$0 = 0;
 
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable ggy $$0, @Nullable fbv $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(ggy $$0, ji $$1, dxq $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(cxh $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
+      for (hlx<hkm> $$1 : this.a) {
+         $$0 += $$1.e();
       }
 
-      this.b = this.a.n.r.a(this);
+      return $$0;
    }
 
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
+   public hkm a(azs $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hlx<hkm> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
          }
-      } else if (this.a.s != null) {
-         this.c();
+
+         return hlv.b;
+      } else {
+         return hlv.b;
       }
    }
 
-   public void a(hly $$0) {
-      this.a.n.r = $$0;
-      this.a.n.az();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
+   public void a(hlx<hkm> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public wv a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hls $$0) {
+      for (hlx<hkm> $$1 : this.a) {
+         $$1.a($$0);
       }
-   }
-
-   public fmg e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.i() == dgw.a;
-   }
-
-   public static wp a(String $$0) {
-      return wp.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cxh $$0, cxh $$1, ctg $$2) {
    }
 }

@@ -1,26 +1,32 @@
-public abstract class fpm extends fpo {
-   private final fpa a;
-   private int b = 16777215;
+import java.util.function.UnaryOperator;
 
-   public fpm(int $$0, int $$1, int $$2, int $$3, wp $$4, fpa $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
+public class fpm {
+   @Deprecated
+   public static ald a(String $$0) {
+      return ald.b("block/" + $$0);
    }
 
-   @Override
-   protected void a(ftn $$0) {
+   public static ald b(String $$0) {
+      return ald.b("item/" + $$0);
    }
 
-   public fpm a(int $$0) {
-      this.b = $$0;
-      return this;
+   public static ald a(dku $$0, String $$1) {
+      ald $$2 = md.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   protected final fpa a() {
-      return this.a;
+   public static ald a(dku $$0) {
+      ald $$1 = md.e.b($$0);
+      return $$1.f("block/");
    }
 
-   protected final int b() {
-      return this.b;
+   public static ald a(cxu $$0) {
+      ald $$1 = md.g.b($$0);
+      return $$1.f("item/");
+   }
+
+   public static ald a(cxu $$0, String $$1) {
+      ald $$2 = md.g.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

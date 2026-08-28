@@ -1,24 +1,10 @@
-public class cxx extends cxd {
-   public cxx(cxd.a $$0) {
-      super($$0);
+public class cxx extends cxm {
+   public cxx(bwb<? extends cmf> $$0, cxu.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bsy a(cxh $$0, cpr $$1, bvy $$2, bsx $$3) {
-      wp $$4 = $$0.a(kv.g);
-      if ($$4 != null && $$2.aq().b()) {
-         if (!$$1.dU().C && $$2.bJ()) {
-            $$2.b($$4);
-            if ($$2 instanceof bwa $$5) {
-               $$5.ga();
-            }
-
-            $$0.h(1);
-         }
-
-         return bsy.a;
-      } else {
-         return bsy.e;
-      }
+   protected boolean a(cqi $$0, jo $$1, cxy $$2, jj $$3) {
+      return !$$0.dV().s($$3) && $$0.a($$3, $$1, $$2);
    }
 }

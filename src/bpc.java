@@ -1,36 +1,27 @@
-import java.util.function.BooleanSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class bpc {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private final BooleanSupplier c;
-   private bpg d = bpf.a;
+public class bpc<S> {
+   private final Map<bpa<?>, bpg<S, ?>> a = new HashMap<>();
 
-   public bpc(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public <T> void a(bpa<T> $$0, bpg<S, T> $$1) {
+      bpg<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
+      }
    }
 
-   public boolean a() {
-      return this.d != bpf.a;
+   public <T> void a(bpa<T> $$0, bpj<S> $$1, bpg.a<S, T> $$2) {
+      this.a($$0, bpg.a($$1, $$2));
    }
 
-   public void b() {
-      this.d = bpf.a;
+   public <T> void a(bpa<T> $$0, bpj<S> $$1, bpg.b<T> $$2) {
+      this.a($$0, bpg.a($$1, $$2));
    }
 
-   public void c() {
-      this.d = new bpb(this.a, this.b, this.c);
-   }
-
-   public bpj d() {
-      return this.d;
-   }
-
-   public bph e() {
-      return this.d.d();
+   @Nullable
+   public <T> bpg<S, T> a(bpa<T> $$0) {
+      return (bpg<S, T>)this.a.get($$0);
    }
 }

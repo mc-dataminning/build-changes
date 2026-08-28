@@ -2,61 +2,55 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class aon {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("commands.setblock.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wv.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wv.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wv.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wv.c("commands.ride.mount.failure.wrong_dimension"));
 
-   public static void a(CommandDispatcher<ex> $$0, et $$1) {
-      Predicate<dxu> $$2 = $$0x -> $$0x.c().u($$0x.d());
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               ey.a("pos", gt.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("block", gq.a($$1))
-                                    .executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "pos"), gq.a($$0x, "block"), aon.a.a, null, false)))
-                                 .then(ey.a("destroy").executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "pos"), gq.a($$0x, "block"), aon.a.b, null, false))))
-                              .then(ey.a("keep").executes($$1x -> a((ex)$$1x.getSource(), gt.a($$1x, "pos"), gq.a($$1x, "block"), aon.a.a, $$2, false))))
-                           .then(ey.a("replace").executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "pos"), gq.a($$0x, "block"), aon.a.a, null, false))))
-                        .then(ey.a("strict").executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "pos"), gq.a($$0x, "block"), aon.a.a, null, true)))
-                  )
+               ((RequiredArgumentBuilder)ey.a("target", fk.a())
+                     .then(ey.a("mount").then(ey.a("vehicle", fk.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), fk.a($$0x, "vehicle"))))))
+                  .then(ey.a("dismount").executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(ex $$0, ji $$1, go $$2, aon.a $$3, @Nullable Predicate<dxu> $$4, boolean $$5) throws CommandSyntaxException {
-      ard $$6 = $$0.e();
-      if ($$6.ak()) {
-         throw a.create();
-      } else if ($$4 != null && !$$4.test(new dxu($$6, $$1, true))) {
-         throw a.create();
+   private static int a(ex $$0, bvs $$1, bvs $$2) throws CommandSyntaxException {
+      bvs $$3 = $$1.dk();
+      if ($$3 != null) {
+         throw b.create($$1.m_(), $$3.m_());
+      } else if ($$2.aq() == bwb.bR) {
+         throw d.create();
+      } else if ($$1.da().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dV() != $$2.dV()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.m_(), $$2.m_());
       } else {
-         boolean $$7;
-         if ($$3 == aon.a.b) {
-            $$6.b($$1, true);
-            $$7 = !$$2.a().l() || !$$6.a_($$1).l();
-         } else {
-            $$7 = true;
-         }
-
-         if ($$7 && !$$2.a($$6, $$1, 2 | ($$5 ? 304 : 256))) {
-            throw a.create();
-         } else {
-            if (!$$5) {
-               $$6.a($$1, $$2.a().b());
-            }
-
-            $$0.a(() -> wp.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
+         $$0.a(() -> wv.a("commands.ride.mount.success", $$1.m_(), $$2.m_()), true);
+         return 1;
       }
    }
 
-   public static enum a {
-      a,
-      b;
+   private static int a(ex $$0, bvs $$1) throws CommandSyntaxException {
+      bvs $$2 = $$1.dk();
+      if ($$2 == null) {
+         throw a.create($$1.m_());
+      } else {
+         $$1.bP();
+         $$0.a(() -> wv.a("commands.ride.dismount.success", $$1.m_(), $$2.m_()), true);
+         return 1;
+      }
    }
 }

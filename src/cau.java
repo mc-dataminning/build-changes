@@ -1,41 +1,43 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cau {
-   private static final int a = 16;
+   public static <E extends bwt> byj<E> a(cau.b<E> $$0) {
+      return a(($$0x, $$1) -> true, $$0);
+   }
 
-   public static bxs<bvy> a(Predicate<jr<chf>> $$0, cfc<jq> $$1) {
-      return cbe.a((Function<cbe.b<bvy>, ? extends App<cbe.c<bvy>, cbh<bvy>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               jq $$6 = $$2.b($$2x);
-               ji $$7 = $$6.b();
-               if ($$3.aj() == $$6.a() && $$7.a($$4.ds(), 16.0)) {
-                  ard $$8 = $$3.p().a($$6.a());
-                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     if (!a($$8, $$7)) {
-                        $$3.A().b($$7);
-                        agc.c($$3, $$7);
+   public static <E extends bwt> byj<E> a(cau.a<E> $$0, cau.b<E> $$1) {
+      return cbv.a(
+         (Function<cbv.b<E>, ? extends App<cbv.c<E>, cby<E>>>)($$2 -> $$2.group($$2.c(cft.p), $$2.a(cft.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test($$4, (E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bwr> $$7 = $$1.get($$4, (E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bwr $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
                      }
                   }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+               }))
+      );
    }
 
-   private static boolean a(ard $$0, ji $$1, bvy $$2) {
-      dxq $$3 = $$0.a_($$1);
-      return $$3.a(awp.T) && $$3.c(djx.c) && !$$2.fT();
+   @FunctionalInterface
+   public interface a<E> {
+      boolean test(arn var1, E var2);
    }
 
-   private static boolean a(ard $$0, ji $$1) {
-      List<cpd> $$2 = $$0.a(cpd.class, new fbs($$1), bvy::fT);
-      return !$$2.isEmpty();
+   @FunctionalInterface
+   public interface b<E> {
+      Optional<? extends bwr> get(arn var1, E var2);
    }
 }

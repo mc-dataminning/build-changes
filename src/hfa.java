@@ -1,20 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class hfa {
-   @Nullable
-   public aku a;
-   public final List<hfa.a> b = new ArrayList<>();
+public record hfa() implements hfi<alc<dhp>> {
+   public static final hfi.a<hfa, alc<dhp>> a = hfi.a.a(MapCodec.unit(new hfa()), alc.a(me.bl));
 
-   public static class a {
-      @Nullable
-      public hfr a;
-      public byte b;
-      public byte c;
-      public byte d;
-      public boolean e;
-      @Nullable
-      public wp f;
+   @Nullable
+   public alc<dhp> a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      return $$1 != null ? $$1.aj() : null;
+   }
+
+   @Override
+   public hfi.a<hfa, alc<dhp>> a() {
+      return a;
    }
 }

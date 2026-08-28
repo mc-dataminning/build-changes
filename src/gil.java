@@ -1,77 +1,120 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gil implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<gil.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public class gil {
+   private final GameProfile a;
+   private final Supplier<hhu> b;
+   private dhm c = dhm.e;
+   private int d;
+   @Nullable
+   private wv e;
+   private boolean f = true;
+   @Nullable
+   private xm g;
+   private xr h;
+   private int i;
 
-   public void a(ji $$0, dxq $$1, glv $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gil.a(this.b, $$1, $$2.ds()));
+   public gil(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.h = c($$1);
+      Supplier<Supplier<hhu>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public boolean a(ji $$0, dxq $$1) {
-      gil.a $$2 = (gil.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
-      }
+   private static Supplier<hhu> a(GameProfile $$0) {
+      fnd $$1 = fnd.Q();
+      hhv $$2 = $$1.an();
+      CompletableFuture<Optional<hhu>> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hhu $$5 = hhl.a($$0);
+      return () -> {
+         hhu $$3x = $$3.getNow(Optional.empty()).orElse($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public void a(int $$0, ggy $$1) {
-      ObjectIterator<Entry<gil.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<gil.a> $$3 = (Entry<gil.a>)$$2.next();
-         gil.a $$4 = (gil.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            ji $$5 = ji.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
+   public GameProfile a() {
+      return this.a;
    }
 
-   public gil a() {
-      this.b++;
-      this.c = true;
-      return this;
+   @Nullable
+   public xm b() {
+      return this.g;
    }
 
-   @Override
-   public void close() {
-      this.c = false;
+   public xr c() {
+      return this.h;
    }
 
-   public int b() {
-      return this.b;
+   public boolean d() {
+      return this.g != null;
    }
 
-   public boolean c() {
+   protected void a(xm $$0) {
+      this.g = $$0;
+      this.h = $$0.a(cql.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.g = null;
+      this.h = c($$0);
+   }
+
+   private static xr c(boolean $$0) {
+      return $$0 ? xr.c : xr.b;
+   }
+
+   public dhm e() {
       return this.c;
    }
 
-   static class a {
-      final fbx a;
-      int b;
-      dxq c;
+   protected void a(dhm $$0) {
+      this.c = $$0;
+   }
 
-      a(int $$0, dxq $$1, fbx $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
+   public int f() {
+      return this.d;
+   }
 
-      gil.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
 
-      void a(dxq $$0) {
-         this.c = $$0;
-      }
+   public hhu g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fdu h() {
+      return fnd.Q().s.R().e(this.a().getName());
+   }
+
+   public void a(@Nullable wv $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wv i() {
+      return this.e;
+   }
+
+   public void b(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

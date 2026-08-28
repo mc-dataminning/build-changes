@@ -1,15 +1,14 @@
-public class cwu extends cxd implements cyk {
-   public cwu(cxd.a $$0) {
-      super($$0);
+public class cwu extends cwf {
+   public cwu(dku $$0, cxu.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a(dgz $$0, dwf $$1, boolean $$2, cpr $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.aA_(), awa.la, awb.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   protected boolean a(dbn $$0, dym $$1) {
+      dhp $$2 = $$0.q();
+      jj $$3 = $$0.a().d();
+      dym $$4 = $$2.z($$3) ? dkw.J.m() : dkw.a.m();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

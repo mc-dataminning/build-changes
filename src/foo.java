@@ -1,32 +1,18 @@
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
 public class foo {
-   @Deprecated
-   public static aku a(String $$0) {
-      return aku.b("block/" + $$0);
-   }
+   private static final ays.b<ald, MapCodec<? extends fon>> b = new ays.b<>();
+   public static final Codec<fon> a = b.a(ald.a).dispatch(fon::a, $$0 -> $$0);
 
-   public static aku b(String $$0) {
-      return aku.b("item/" + $$0);
-   }
-
-   public static aku a(dke $$0, String $$1) {
-      aku $$2 = mb.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
-
-   public static aku a(dke $$0) {
-      aku $$1 = mb.e.b($$0);
-      return $$1.f("block/");
-   }
-
-   public static aku a(cxd $$0) {
-      aku $$1 = mb.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static aku a(cxd $$0, String $$1) {
-      aku $$2 = mb.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   public static void a() {
+      b.a(ald.b("custom_model_data"), foj.a);
+      b.a(ald.b("constant"), foi.a);
+      b.a(ald.b("dye"), fok.a);
+      b.a(ald.b("grass"), fom.a);
+      b.a(ald.b("firework"), fol.a);
+      b.a(ald.b("potion"), foq.a);
+      b.a(ald.b("map_color"), fop.a);
+      b.a(ald.b("team"), fos.a);
    }
 }

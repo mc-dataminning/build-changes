@@ -1,24 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ere extends eoj {
+public class ere extends epg {
    public static final MapCodec<ere> d = a(ere::new);
 
-   public ere(eoj.c $$0) {
+   public ere(epg.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<eoj.b> a(eoj.a $$0) {
-      return a($$0, edo.a.a, $$1 -> a($$1, $$0));
+   public Optional<epg.b> a(epg.a $$0) {
+      drm $$1 = drm.a($$0.f());
+      jj $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new epg.b($$2, (Consumer<epy>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private static void a(epb $$0, eoj.a $$1) {
-      $$0.a(new erd($$1.f(), $$1.h().d(), $$1.h().e()));
+   private void a(epy $$0, jj $$1, drm $$2, epg.a $$3) {
+      List<epk> $$4 = Lists.newArrayList();
+      erd.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public eos<?> e() {
-      return eos.o;
+   public epp<?> e() {
+      return epp.c;
    }
 }

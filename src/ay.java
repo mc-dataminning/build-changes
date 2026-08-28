@@ -5,18 +5,18 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record ay(Optional<jv<dke>> c, Optional<ef> d, Optional<dn> e) {
+public record ay(Optional<jw<dku>> c, Optional<ef> d, Optional<dn> e) {
    public static final Codec<ay> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kg.a(mc.f).optionalFieldOf("blocks").forGetter(ay::b),
+               kh.a(me.f).optionalFieldOf("blocks").forGetter(ay::b),
                ef.a.optionalFieldOf("state").forGetter(ay::c),
                dn.a.optionalFieldOf("nbt").forGetter(ay::d)
             )
             .apply($$0, ay::new)
    );
-   public static final yn<wa, ay> b = yn.a(yl.a(yl.c(mc.f)), ay::b, yl.a(ef.b), ay::c, yl.a(dn.b), ay::d, ay::new);
+   public static final yt<wg, ay> b = yt.a(yr.a(yr.c(me.f)), ay::b, yr.a(ef.b), ay::c, yr.a(dn.b), ay::d, ay::new);
 
-   public boolean a(ard $$0, ji $$1) {
+   public boolean a(arn $$0, jj $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
@@ -24,15 +24,15 @@ public record ay(Optional<jv<dke>> c, Optional<ef> d, Optional<dn> e) {
       }
    }
 
-   public boolean a(dxu $$0) {
+   public boolean a(dyq $$0) {
       return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   private boolean a(dxq $$0) {
+   private boolean a(dym $$0) {
       return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
    }
 
-   private static boolean a(dhc $$0, @Nullable dus $$1, dn $$2) {
+   private static boolean a(dhs $$0, @Nullable dvl $$1, dn $$2) {
       return $$1 != null && $$2.a($$1.b($$0.F_()));
    }
 
@@ -40,7 +40,7 @@ public record ay(Optional<jv<dke>> c, Optional<ef> d, Optional<dn> e) {
       return this.e.isPresent();
    }
 
-   public Optional<jv<dke>> b() {
+   public Optional<jw<dku>> b() {
       return this.c;
    }
 
@@ -53,7 +53,7 @@ public record ay(Optional<jv<dke>> c, Optional<ef> d, Optional<dn> e) {
    }
 
    public static class a {
-      private Optional<jv<dke>> a = Optional.empty();
+      private Optional<jw<dku>> a = Optional.empty();
       private Optional<ef> b = Optional.empty();
       private Optional<dn> c = Optional.empty();
 
@@ -64,21 +64,21 @@ public record ay(Optional<jv<dke>> c, Optional<ef> d, Optional<dn> e) {
          return new ay.a();
       }
 
-      public ay.a a(js<dke> $$0, dke... $$1) {
+      public ay.a a(jt<dku> $$0, dku... $$1) {
          return this.a($$0, Arrays.asList($$1));
       }
 
-      public ay.a a(js<dke> $$0, Collection<dke> $$1) {
-         this.a = Optional.of(jv.a(dke::p, $$1));
+      public ay.a a(jt<dku> $$0, Collection<dku> $$1) {
+         this.a = Optional.of(jw.a(dku::p, $$1));
          return this;
       }
 
-      public ay.a a(js<dke> $$0, axf<dke> $$1) {
+      public ay.a a(jt<dku> $$0, axp<dku> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }
 
-      public ay.a a(tq $$0) {
+      public ay.a a(tw $$0) {
          this.c = Optional.of(new dn($$0));
          return this;
       }

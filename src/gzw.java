@@ -1,19 +1,10 @@
-import javax.annotation.Nullable;
-
-public class gzw extends haj {
+public class gzw extends hak {
    public float a;
-   public float b;
-   public fbx c;
-   @Nullable
-   public fbx d;
-   @Nullable
-   public fbx e;
-   @Nullable
-   public fbx f;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
    public float g;
    public float h;
-
-   public gzw() {
-      this.c = fbx.c;
-   }
 }

@@ -1,41 +1,101 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.Objects;
 
-public class gx implements ArgumentType<gv> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.rotation.incomplete"));
+public class gx implements gw {
+   public static final char a = '^';
+   private final double b;
+   private final double c;
+   private final double d;
 
-   public static gx a() {
-      return new gx();
+   public gx(double $$0, double $$1, double $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static gv a(CommandContext<ex> $$0, String $$1) {
-      return (gv)$$0.getArgument($$1, gv.class);
+   @Override
+   public fcu a(ex $$0) {
+      fct $$1 = $$0.k();
+      fcu $$2 = $$0.m().a($$0);
+      float $$3 = azk.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = azk.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = azk.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = azk.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = azk.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = azk.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      fcu $$9 = new fcu((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      fcu $$10 = new fcu((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      fcu $$11 = $$9.c($$10).c(-1.0);
+      double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
+      double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
+      double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
+      return new fcu($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
-   public gv a(StringReader $$0) throws CommandSyntaxException {
+   @Override
+   public fct b(ex $$0) {
+      return fct.a;
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public static gx a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
-      } else {
-         hb $$2 = hb.a($$0, false);
+      double $$2 = a($$0, $$1);
+      if ($$0.canRead() && $$0.peek() == ' ') {
+         $$0.skip();
+         double $$3 = a($$0, $$1);
          if ($$0.canRead() && $$0.peek() == ' ') {
             $$0.skip();
-            hb $$3 = hb.a($$0, false);
-            return new hc($$3, $$2, new hb(true, 0.0));
+            double $$4 = a($$0, $$1);
+            return new gx($$2, $$3, $$4);
          } else {
             $$0.setCursor($$1);
-            throw a.createWithContext($$0);
+            throw hb.a.createWithContext($$0);
          }
+      } else {
+         $$0.setCursor($$1);
+         throw hb.a.createWithContext($$0);
       }
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   private static double a(StringReader $$0, int $$1) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw hc.a.createWithContext($$0);
+      } else if ($$0.peek() != '^') {
+         $$0.setCursor($$1);
+         throw hb.b.createWithContext($$0);
+      } else {
+         $$0.skip();
+         return $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gx $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c, this.d);
    }
 }

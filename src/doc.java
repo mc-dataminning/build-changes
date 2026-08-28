@@ -1,132 +1,55 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class doc extends djq {
-   public static final MapCodec<doc> a = b(doc::new);
-   public static final dyo<jn> b = dyg.S;
-   public static final dyh c = dyg.i;
-   private final Function<dxq, fcr> d;
-   private final Map<jn, fcr> e;
+public class doc extends dle implements dkx {
+   public static final MapCodec<doc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alc.a(me.aP).fieldOf("feature").forGetter($$0x -> $$0x.e), md.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, doc::new)
+   );
+   private static final double b = 0.4;
+   private static final fdo c = dku.b(8.0, 0.0, 9.0);
+   private final dku d;
+   private final alc<ehd<?, ?>> e;
 
    @Override
    public MapCodec<doc> a() {
       return a;
    }
 
-   public doc(dxp.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, jn.a).b(c, Boolean.valueOf(true)));
-      fcr $$1 = dke.b(12.0, 11.0, 16.0);
-      this.d = this.b($$1);
-      this.e = ImmutableMap.builderWithExpectedSize(5).putAll(fco.c(fco.a($$1, dke.a(4.0, 8.0, 10.0, 0.0, 4.0)))).put(jn.a, $$1).build();
-   }
-
-   private Function<dxq, fcr> b(fcr $$0) {
-      fcr $$1 = fco.a(dke.b(16.0, 10.0, 16.0), dke.b(8.0, 4.0, 10.0));
-      fcr $$2 = fco.a($$1, $$0, fcb.e);
-      Map<jn, fcr> $$3 = fco.d(dke.a(4.0, 4.0, 8.0, 0.0, 8.0), new fbx(8.0, 6.0, 8.0).c(0.0625));
-      return this.a($$2x -> fco.a($$2, fco.a($$3.get($$2x.c(b)), fco.b(), fcb.i)), new dyt[]{c});
+   protected doc(alc<ehd<?, ?>> $$0, dku $$1, dyl.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.d.apply($$0);
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return c;
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2) {
-      return this.e.get($$0.c(b));
+   protected boolean b(dym $$0, dgv $$1, jj $$2) {
+      return $$0.a(awz.aO) || $$0.a(dkw.fA) || $$0.a(dkw.ek) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends js<ehd<?, ?>>> a(dhs $$0) {
+      return $$0.F_().f(me.aP).a(this.e);
    }
 
    @Override
-   public dxq a(dax $$0) {
-      jn $$1 = $$0.k().g();
-      return this.m().b(b, $$1.o() == jn.a.b ? jn.a : $$1).b(c, Boolean.valueOf(true));
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      dym $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dvu($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      return $$0.C ? null : a($$2, duu.s, dvu::a);
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dxq $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dvu $$5) {
-         $$3.a($$5);
-         $$3.a(awk.ad);
-      }
-
-      return bsy.a;
-   }
-
-   @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
-   }
-
-   private void a(dgz $$0, ji $$1, dxq $$2) {
-      boolean $$3 = !$$0.C($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
-      }
-   }
-
-   @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, boolean $$3) {
-      bsu.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean c_(dxq $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dxq $$0, dgz $$1, ji $$2) {
-      return csw.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, bva $$3) {
-      dus $$4 = $$1.c_($$2);
-      if ($$4 instanceof dvu) {
-         dvu.a($$1, $$2, $$0, $$3, (dvu)$$4);
-      }
-   }
-
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      this.a($$0).ifPresent($$3x -> ((ehd)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
    }
 }

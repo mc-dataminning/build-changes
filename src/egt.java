@@ -1,56 +1,78 @@
-public class egt extends egu<ejf> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final ji ao = ji.c;
-   private final boolean ap;
+import com.mojang.serialization.Codec;
 
-   public static ji a(ji $$0) {
-      return ao.a((km)$$0);
+public abstract class egt extends ehr<ejx> {
+   public egt(Codec<ejx> $$0) {
+      super($$0);
    }
 
-   public egt(boolean $$0) {
-      super(ejf.a);
-      this.ap = $$0;
+   protected void a(dhq $$0, azs $$1, jj $$2, ejx $$3, int $$4, jj.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jo.b, $$6);
+         this.a($$0, $$5, $$3.c.a($$1, $$2));
+      }
+   }
+
+   protected void a(dhq $$0, jj.a $$1, dym $$2) {
+      dym $$3 = $$0.a_($$1);
+      if ($$3.l() || $$3.a(awz.cs)) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   protected int a(azs $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dhq $$0, jj $$1, int $$2, jj.a $$3, ejx $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
+         dym $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(awz.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dym $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(awz.Q)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean a(egw<ejf> $$0) {
-      ji $$1 = $$0.e();
-      dhy $$2 = $$0.b();
-
-      for (ji $$3 : ji.c(new ji($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new ji($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dkg.I.m());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dkg.fU.m());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dkg.a.m());
-            } else if (!$$4) {
-               this.a($$2, $$3, dkg.I.m());
-            } else if (this.ap) {
-               this.a($$2, new ji($$3), dkg.fS.m());
-            } else {
-               this.a($$2, new ji($$3), dkg.a.m());
-            }
-         }
+   public boolean a(eht<ejx> $$0) {
+      dio $$1 = $$0.b();
+      jj $$2 = $$0.e();
+      azs $$3 = $$0.d();
+      ejx $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      jj.a $$6 = new jj.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
       }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dkg.I.m());
-      }
-
-      ji $$6 = $$1.b(2);
-
-      for (jn $$7 : jn.c.a) {
-         this.a($$2, $$6.a($$7), dkg.cx.m().b(dtm.e, $$7));
-      }
-
-      return true;
    }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dhq var1, azs var2, jj var3, int var4, jj.a var5, ejx var6);
 }

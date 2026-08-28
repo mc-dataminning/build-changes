@@ -1,45 +1,30 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class bsa extends bsd {
-   public static final bsa a = new bsa(0);
-   public static final MapCodec<bsa> b = Codec.INT.fieldOf("value").xmap(bsa::a, bsa::d);
-   private final int f;
+public record bsa<T>(T a, int b) {
+   private static final Logger c = LogUtils.getLogger();
 
-   public static bsa a(int $$0) {
-      return $$0 == 0 ? a : new bsa($$0);
+   public bsa(T a, int b) {
+      if (b < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if (b == 0 && ab.aU) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+
+         this.a = a;
+         this.b = b;
+      }
    }
 
-   private bsa(int $$0) {
-      this.f = $$0;
+   public static <E> Codec<bsa<E>> a(Codec<E> $$0) {
+      return a($$0.fieldOf("data"));
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(azh $$0) {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bse<?> c() {
-      return bse.a;
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+   public static <E> Codec<bsa<E>> a(MapCodec<E> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group($$0.forGetter(bsa::a), ays.l.fieldOf("weight").forGetter(bsa::b)).apply($$1, bsa::new));
    }
 }

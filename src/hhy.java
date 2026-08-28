@@ -1,67 +1,69 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class hhy {
-   public static final Comparator<hhy> a = Comparator.<hhy, aku>comparing(hhy::a).thenComparing(hhy::b);
-   private final aku b;
-   private final aku c;
-   @Nullable
-   private gnh d;
+public class hhy extends tr {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   public hhy(aku $$0, aku $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private hhy(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public aku a() {
-      return this.b;
-   }
+   public static hhy a(ava $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = new HashMap<>();
 
-   public aku b() {
-      return this.c;
-   }
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
 
-   public hfr c() {
-      return fmg.Q().a(this.a()).apply(this.b());
-   }
-
-   public gnh a(Function<aku, gnh> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+         for (String $$6 : $$0.a()) {
+            try {
+               ald $$7 = ald.a($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
       }
 
+      tq.a().a($$3);
+      return new hhy(Map.copyOf($$3), $$2);
+   }
+
+   private static void a(String $$0, List<auy> $$1, Map<String, String> $$2) {
+      for (auy $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            tr.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
+   }
+
+   @Override
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   @Override
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
       return this.d;
    }
 
-   public fgv a(gmx $$0, Function<aku, gnh> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public fgv a(gmx $$0, Function<aku, gnh> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gub.a($$0, this.a($$1), $$2, $$3));
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         hhy $$1 = (hhy)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public ayw a(xa $$0) {
+      return hhz.a($$0, this.d);
    }
 }

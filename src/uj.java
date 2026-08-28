@@ -1,241 +1,208 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.io.BufferedOutputStream;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UTFDataFormatException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import javax.annotation.Nullable;
 
-public class uj implements ur {
-   private static final Map<String, List<String>> a = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
-      $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
-      $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
-   });
-   private static final Set<String> b = Sets.newHashSet(new String[]{"{}.size.[]", "{}.data.[].{}", "{}.palette.[].{}", "{}.entities.[].{}"});
-   private static final Pattern c = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String d = String.valueOf(':');
-   private static final String e = String.valueOf(',');
-   private static final String f = "[";
-   private static final String g = "]";
-   private static final String h = ";";
-   private static final String i = " ";
-   private static final String j = "{";
-   private static final String k = "}";
-   private static final String l = "\n";
-   private final String m;
-   private final int n;
-   private final List<String> o;
-   private String p = "";
+public class uj {
+   private static final OpenOption[] a = new OpenOption[]{
+      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
+   };
 
-   public uj() {
-      this("    ", 0, Lists.newArrayList());
-   }
-
-   public uj(String $$0, int $$1, List<String> $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-   }
-
-   public String a(un $$0) {
-      $$0.a(this);
-      return this.p;
-   }
-
-   @Override
-   public void a(ul $$0) {
-      this.p = ul.b($$0.p_());
-   }
-
-   @Override
-   public void a(to $$0) {
-      this.p = $$0.l() + "b";
-   }
-
-   @Override
-   public void a(ui $$0) {
-      this.p = $$0.l() + "s";
-   }
-
-   @Override
-   public void a(tv $$0) {
-      this.p = String.valueOf($$0.l());
-   }
-
-   @Override
-   public void a(ty $$0) {
-      this.p = $$0.l() + "L";
-   }
-
-   @Override
-   public void a(tt $$0) {
-      this.p = $$0.k() + "f";
-   }
-
-   @Override
-   public void a(tr $$0) {
-      this.p = $$0.j() + "d";
-   }
-
-   @Override
-   public void a(tn $$0) {
-      StringBuilder $$1 = new StringBuilder("[").append("B").append(";");
-      byte[] $$2 = $$0.e();
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$1.append(" ").append($$2[$$3]).append("B");
-         if ($$3 != $$2.length - 1) {
-            $$1.append(e);
-         }
+   public static tw a(Path $$0, uf $$1) throws IOException {
+      tw var4;
+      try (
+         InputStream $$2 = Files.newInputStream($$0);
+         InputStream $$3 = new ayt($$2);
+      ) {
+         var4 = a($$3, $$1);
       }
 
-      $$1.append("]");
-      this.p = $$1.toString();
+      return var4;
    }
 
-   @Override
-   public void a(tu $$0) {
-      StringBuilder $$1 = new StringBuilder("[").append("I").append(";");
-      int[] $$2 = $$0.g();
+   private static DataInputStream a(InputStream $$0) throws IOException {
+      return new DataInputStream(new ayt(new GZIPInputStream($$0)));
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$1.append(" ").append($$2[$$3]);
-         if ($$3 != $$2.length - 1) {
-            $$1.append(e);
-         }
+   private static DataOutputStream a(OutputStream $$0) throws IOException {
+      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
+   }
+
+   public static tw a(InputStream $$0, uf $$1) throws IOException {
+      tw var3;
+      try (DataInputStream $$2 = a($$0)) {
+         var3 = a((DataInput)$$2, $$1);
       }
 
-      $$1.append("]");
-      this.p = $$1.toString();
+      return var3;
    }
 
-   @Override
-   public void a(tx $$0) {
-      String $$1 = "L";
-      StringBuilder $$2 = new StringBuilder("[").append("L").append(";");
-      long[] $$3 = $$0.g();
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$2.append(" ").append($$3[$$4]).append("L");
-         if ($$4 != $$3.length - 1) {
-            $$2.append(e);
-         }
+   public static void a(Path $$0, uq $$1, uf $$2) throws IOException {
+      try (
+         InputStream $$3 = Files.newInputStream($$0);
+         InputStream $$4 = new ayt($$3);
+      ) {
+         a($$4, $$1, $$2);
       }
-
-      $$2.append("]");
-      this.p = $$2.toString();
    }
 
-   @Override
-   public void a(tw $$0) {
-      if ($$0.isEmpty()) {
-         this.p = "[]";
+   public static void a(InputStream $$0, uq $$1, uf $$2) throws IOException {
+      try (DataInputStream $$3 = a($$0)) {
+         a((DataInput)$$3, $$1, $$2);
+      }
+   }
+
+   public static void a(tw $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+      ) {
+         a($$0, $$3);
+      }
+   }
+
+   public static void a(tw $$0, OutputStream $$1) throws IOException {
+      try (DataOutputStream $$2 = a($$1)) {
+         a($$0, (DataOutput)$$2);
+      }
+   }
+
+   public static void b(tw $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+         DataOutputStream $$4 = new DataOutputStream($$3);
+      ) {
+         a($$0, (DataOutput)$$4);
+      }
+   }
+
+   @Nullable
+   public static tw a(Path $$0) throws IOException {
+      if (!Files.exists($$0)) {
+         return null;
       } else {
-         StringBuilder $$1 = new StringBuilder("[");
-         this.b("[]");
-         String $$2 = b.contains(this.a()) ? "" : this.m;
-         if (!$$2.isEmpty()) {
-            $$1.append("\n");
+         tw var3;
+         try (
+            InputStream $$1 = Files.newInputStream($$0);
+            DataInputStream $$2 = new DataInputStream($$1);
+         ) {
+            var3 = a((DataInput)$$2, uf.a());
          }
 
-         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-            $$1.append(Strings.repeat($$2, this.n + 1));
-            $$1.append(new uj($$2, this.n + 1, this.o).a($$0.k($$3)));
-            if ($$3 != $$0.size() - 1) {
-               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
-            }
-         }
-
-         if (!$$2.isEmpty()) {
-            $$1.append("\n").append(Strings.repeat($$2, this.n));
-         }
-
-         $$1.append("]");
-         this.p = $$1.toString();
-         this.b();
+         return var3;
       }
    }
 
-   @Override
-   public void a(tq $$0) {
-      if ($$0.g()) {
-         this.p = "{}";
+   public static tw a(DataInput $$0) throws IOException {
+      return a($$0, uf.a());
+   }
+
+   public static tw a(DataInput $$0, uf $$1) throws IOException {
+      ut $$2 = c($$0, $$1);
+      if ($$2 instanceof tw) {
+         return (tw)$$2;
       } else {
-         StringBuilder $$1 = new StringBuilder("{");
-         this.b("{}");
-         String $$2 = b.contains(this.a()) ? "" : this.m;
-         if (!$$2.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         Collection<String> $$3 = this.b($$0);
-         Iterator<String> $$4 = $$3.iterator();
-
-         while ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            un $$6 = $$0.c($$5);
-            this.b($$5);
-            $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new uj($$2, this.n + 1, this.o).a($$6));
-            this.b();
-            if ($$4.hasNext()) {
-               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
-            }
-         }
-
-         if (!$$2.isEmpty()) {
-            $$1.append("\n").append(Strings.repeat($$2, this.n));
-         }
-
-         $$1.append("}");
-         this.p = $$1.toString();
-         this.b();
+         throw new IOException("Root tag must be a named compound tag");
       }
    }
 
-   private void b() {
-      this.o.remove(this.o.size() - 1);
+   public static void a(tw $$0, DataOutput $$1) throws IOException {
+      c($$0, $$1);
    }
 
-   private void b(String $$0) {
-      this.o.add($$0);
-   }
-
-   protected List<String> b(tq $$0) {
-      Set<String> $$1 = Sets.newHashSet($$0.e());
-      List<String> $$2 = Lists.newArrayList();
-      List<String> $$3 = a.get(this.a());
-      if ($$3 != null) {
-         for (String $$4 : $$3) {
-            if ($$1.remove($$4)) {
-               $$2.add($$4);
-            }
-         }
-
-         if (!$$1.isEmpty()) {
-            $$1.stream().sorted().forEach($$2::add);
+   public static void a(DataInput $$0, uq $$1, uf $$2) throws IOException {
+      uv<?> $$3 = uw.a($$0.readByte());
+      if ($$3 == ty.a) {
+         if ($$1.b(ty.a) == uq.b.a) {
+            $$1.a();
          }
       } else {
-         $$2.addAll($$1);
-         Collections.sort($$2);
+         switch ($$1.b($$3)) {
+            case c:
+            default:
+               break;
+            case b:
+               ur.a($$0);
+               $$3.b($$0, $$2);
+               break;
+            case a:
+               ur.a($$0);
+               $$3.a($$0, $$1, $$2);
+         }
+      }
+   }
+
+   public static ut b(DataInput $$0, uf $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      return (ut)($$2 == 0 ? ty.b : a($$0, $$1, $$2));
+   }
+
+   public static void a(ut $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$0.a($$1);
+      }
+   }
+
+   public static void b(ut $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$1.writeUTF("");
+         $$0.a($$1);
+      }
+   }
+
+   public static void c(ut $$0, DataOutput $$1) throws IOException {
+      b($$0, new uj.a($$1));
+   }
+
+   private static ut c(DataInput $$0, uf $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      if ($$2 == 0) {
+         return ty.b;
+      } else {
+         ur.a($$0);
+         return a($$0, $$1, $$2);
+      }
+   }
+
+   private static ut a(DataInput $$0, uf $$1, byte $$2) {
+      try {
+         return uw.a($$2).c($$0, $$1);
+      } catch (IOException var6) {
+         o $$4 = o.a(var6, "Loading NBT data");
+         p $$5 = $$4.a("NBT Tag");
+         $$5.a("Tag type", $$2);
+         throw new un($$4);
+      }
+   }
+
+   public static class a extends ayn {
+      public a(DataOutput $$0) {
+         super($$0);
       }
 
-      return $$2;
-   }
-
-   public String a() {
-      return String.join(".", this.o);
-   }
-
-   protected static String a(String $$0) {
-      return c.matcher($$0).matches() ? $$0 : ul.b($$0);
-   }
-
-   @Override
-   public void a(ts $$0) {
+      @Override
+      public void writeUTF(String $$0) throws IOException {
+         try {
+            super.writeUTF($$0);
+         } catch (UTFDataFormatException var3) {
+            af.a("Failed to write NBT String", var3);
+            super.writeUTF("");
+         }
+      }
    }
 }

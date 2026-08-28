@@ -1,12 +1,29 @@
-public record aer(cxh b) implements yw<abl> {
-   public static final yn<wa, aer> a = yn.a(cxh.h, aer::b, aer::new);
+public class aer implements zc<abr> {
+   public static final yt<vr, aer> a = zc.a(aer::a, aer::new);
+   private final double b;
 
-   @Override
-   public yy<aer> a() {
-      return agd.cp;
+   public aer(eae $$0) {
+      this.b = $$0.k();
    }
 
-   public void a(abl $$0) {
+   private aer(vr $$0) {
+      this.b = $$0.readDouble();
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public ze<aer> a() {
+      return agk.ax;
+   }
+
+   public void a(abr $$0) {
       $$0.a(this);
+   }
+
+   public double b() {
+      return this.b;
    }
 }

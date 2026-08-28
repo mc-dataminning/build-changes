@@ -1,167 +1,68 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public abstract class cpz extends cqk {
-   public static final double a = 0.1;
-   public static final double b = 0.5;
-   public double c = 0.1;
+public final class cpz {
+   public static final alc<cpz> a = a("desert");
+   public static final alc<cpz> b = a("jungle");
+   public static final alc<cpz> c = a("plains");
+   public static final alc<cpz> d = a("savanna");
+   public static final alc<cpz> e = a("snow");
+   public static final alc<cpz> f = a("swamp");
+   public static final alc<cpz> g = a("taiga");
+   public static final Codec<js<cpz>> h = ala.a(me.aw);
+   public static final yt<wg, js<cpz>> i = yr.b(me.aw);
+   private static final Map<alc<dis>, alc<cpz>> j = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(diz.B, a);
+      $$0.put(diz.f, a);
+      $$0.put(diz.C, a);
+      $$0.put(diz.D, a);
+      $$0.put(diz.A, b);
+      $$0.put(diz.y, b);
+      $$0.put(diz.z, b);
+      $$0.put(diz.t, d);
+      $$0.put(diz.s, d);
+      $$0.put(diz.x, d);
+      $$0.put(diz.Y, e);
+      $$0.put(diz.X, e);
+      $$0.put(diz.M, e);
+      $$0.put(diz.e, e);
+      $$0.put(diz.O, e);
+      $$0.put(diz.r, e);
+      $$0.put(diz.d, e);
+      $$0.put(diz.G, e);
+      $$0.put(diz.H, e);
+      $$0.put(diz.I, e);
+      $$0.put(diz.J, e);
+      $$0.put(diz.g, f);
+      $$0.put(diz.h, f);
+      $$0.put(diz.p, g);
+      $$0.put(diz.o, g);
+      $$0.put(diz.v, g);
+      $$0.put(diz.u, g);
+      $$0.put(diz.q, g);
+      $$0.put(diz.w, g);
+   });
 
-   protected cpz(bvi<? extends cpz> $$0, dgz $$1) {
-      super($$0, $$1);
+   private static alc<cpz> a(String $$0) {
+      return alc.a(me.aw, ald.b($$0));
    }
 
-   protected cpz(bvi<? extends cpz> $$0, double $$1, double $$2, double $$3, dgz $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   private static cpz a(kf<cpz> $$0, alc<cpz> $$1) {
+      return kf.a($$0, $$1, new cpz());
    }
 
-   public cpz(bvi<? extends cpz> $$0, double $$1, double $$2, double $$3, fbx $$4, dgz $$5) {
-      this($$0, $$5);
-      this.b($$1, $$2, $$3, this.dK(), this.dM());
-      this.ay();
-      this.a($$4, this.c);
+   public static cpz a(kf<cpz> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      return a($$0, g);
    }
 
-   public cpz(bvi<? extends cpz> $$0, bvy $$1, fbx $$2, dgz $$3) {
-      this($$0, $$1.dz(), $$1.dB(), $$1.dF(), $$2, $$3);
-      this.c($$1);
-      this.b($$1.dK(), $$1.dM());
-   }
-
-   @Override
-   protected void a(akb.a $$0) {
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cQ().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   protected dgi.a ai_() {
-      return dgi.a.a;
-   }
-
-   @Override
-   public void h() {
-      bva $$0 = this.q();
-      this.o();
-      if (this.dU().C || ($$0 == null || !$$0.dP()) && this.dU().B(this.du())) {
-         fbv $$1 = cqm.a(this, this::b, this.ai_());
-         fbx $$2;
-         if ($$1.d() != fbv.a.a) {
-            $$2 = $$1.g();
-         } else {
-            $$2 = this.ds().e(this.dx());
-         }
-
-         cqm.a(this, 0.2F);
-         this.b($$2);
-         this.aK();
-         super.h();
-         if (this.g()) {
-            this.e(1.0F);
-         }
-
-         if ($$1.d() != fbv.a.a && this.bJ()) {
-            this.b($$1);
-         }
-
-         this.s();
-      } else {
-         this.at();
-      }
-   }
-
-   private void o() {
-      fbx $$0 = this.dx();
-      fbx $$1 = this.ds();
-      float $$4;
-      if (this.bj()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dU().a(lt.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
-
-         $$4 = this.n();
-      } else {
-         $$4 = this.m();
-      }
-
-      this.i($$0.e($$0.d().c(this.c)).c((double)$$4));
-   }
-
-   private void s() {
-      lr $$0 = this.j();
-      fbx $$1 = this.ds();
-      if ($$0 != null) {
-         this.dU().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   public boolean a(ard $$0, btp $$1, float $$2) {
-      return false;
-   }
-
-   @Override
-   protected boolean b(bva $$0) {
-      return super.b($$0) && !$$0.ad;
-   }
-
-   @Override
-   protected boolean g() {
-      return true;
-   }
-
-   @Nullable
-   protected lr j() {
-      return lt.ah;
-   }
-
-   protected float m() {
-      return 0.95F;
-   }
-
-   protected float n() {
-      return 0.8F;
-   }
-
-   @Override
-   public void b(tq $$0) {
-      super.b($$0);
-      $$0.a("acceleration_power", this.c);
-   }
-
-   @Override
-   public void a(tq $$0) {
-      super.a($$0);
-      if ($$0.b("acceleration_power", 6)) {
-         this.c = $$0.k("acceleration_power");
-      }
-   }
-
-   @Override
-   public float bw() {
-      return 1.0F;
-   }
-
-   private void a(fbx $$0, double $$1) {
-      this.i($$0.d().c($$1));
-      this.ar = true;
-   }
-
-   @Override
-   protected void b(@Nullable bva $$0, boolean $$1) {
-      super.b($$0, $$1);
-      if ($$1) {
-         this.c = 0.1;
-      } else {
-         this.c *= 0.5;
-      }
+   public static alc<cpz> a(js<dis> $$0) {
+      return $$0.e().map(j::get).orElse(c);
    }
 }

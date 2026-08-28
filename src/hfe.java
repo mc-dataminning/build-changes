@@ -1,72 +1,20 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hfe extends hfc implements hfd {
-   private static final Logger d = LogUtils.getLogger();
-   @Nullable
-   private ffr e;
-
-   public hfe(ffr $$0) {
-      this.e = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-         this.d();
-      }
-   }
-
-   public hfe(int $$0, int $$1, boolean $$2) {
-      this.e = new ffr($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-   }
-
-   @Override
-   public void d() {
-      if (this.e != null) {
-         this.c();
-         this.e.a(0, 0, 0, false);
-      } else {
-         d.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
+public record hfe(String b) implements hfi<String> {
+   public static final hfi.a<hfe, String> a = hfi.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hfe::b)).apply($$0, hfe::new)), Codec.STRING
+   );
 
    @Nullable
-   public ffr e() {
-      return this.e;
-   }
-
-   public void a(ffr $$0) {
-      if (this.e != null) {
-         this.e.close();
-      }
-
-      this.e = $$0;
+   public String a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
+      czx $$5 = $$0.a(kx.ao);
+      return $$5 == null ? null : $$5.b().get(this.b);
    }
 
    @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.close();
-         this.b();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(aku $$0, Path $$1) throws IOException {
-      if (this.e != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.e.a($$3);
-      }
+   public hfi.a<hfe, String> a() {
+      return a;
    }
 }

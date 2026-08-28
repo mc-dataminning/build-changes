@@ -1,56 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dlt extends dke {
-   public static final MapCodec<dke> a = mb.e.q().fieldOf("dead");
-   public static final MapCodec<dlt> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dlt::new));
-   private final dke c;
-
-   public dlt(dke $$0, dxp.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dlt extends dok implements dlr {
+   public static final MapCodec<dlt> c = b(dlt::new);
 
    @Override
    public MapCodec<dlt> a() {
-      return b;
+      return c;
+   }
+
+   public dlt(dyl.d $$0) {
+      super($$0, jo.a, s_, false);
+      this.l(this.B.b().b(t_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dxq $$0, ard $$1, ji $$2, azh $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.m(), 2);
-      }
+   protected dol c() {
+      return (dol)dkw.sZ;
    }
 
    @Override
-   protected dxq a(dxq $$0, dhc $$1, dho $$2, ji $$3, jn $$4, ji $$5, dxq $$6, azh $$7) {
-      if (!this.a($$1, $$3)) {
-         $$2.a($$3, this, 60 + $$7.a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected dym a(dym $$0, dym $$1) {
+      return $$1.b(t_, $$0.c(t_));
    }
 
-   protected boolean a(dgf $$0, ji $$1) {
-      for (jn $$2 : jn.values()) {
-         etw $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awv.a)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Nullable
    @Override
-   public dxq a(dax $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().C_().a(40));
-      }
+   protected cxy a(dhs $$0, jj $$1, dym $$2, boolean $$3) {
+      return new cxy(cyc.xA);
+   }
 
-      return this.m();
+   @Override
+   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
+      return dlr.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(t_);
+   }
+
+   @Override
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return !$$2.c(t_);
+   }
+
+   @Override
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
    }
 }

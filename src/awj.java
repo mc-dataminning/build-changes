@@ -1,45 +1,37 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class awj<T> implements Iterable<awh<T>> {
-   private final ke<T> a;
-   private final Map<T, awh<T>> b = new IdentityHashMap<>();
-   private final wp c;
-   private final yn<wa, awh<T>> d;
+public record awj(ald e, Optional<Float> f) {
+   public static final Codec<awj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ald.a.fieldOf("sound_id").forGetter(awj::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awj::b)).apply($$0, awj::a)
+   );
+   public static final Codec<js<awj>> b = akz.a(me.al, a);
+   public static final yt<ByteBuf, awj> c = yt.a(ald.b, awj::a, yr.l.a(yr::a), awj::b, awj::a);
+   public static final yt<wg, js<awj>> d = yr.a(me.al, c);
 
-   public awj(ke<T> $$0, wp $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = yl.a($$0.g()).a(this::b, awh::b);
+   private static awj a(ald $$0, Optional<Float> $$1) {
+      return $$1.<awj>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public yn<wa, awh<T>> a() {
-      return this.d;
+   public static awj a(ald $$0) {
+      return new awj($$0, Optional.empty());
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public static awj a(ald $$0, float $$1) {
+      return new awj($$0, Optional.of($$1));
    }
 
-   public awh<T> a(T $$0, awi $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new awh<>(this, (T)$$1x, $$1));
+   public float a(float $$0) {
+      return this.f.orElse($$0 > 1.0F ? 16.0F * $$0 : 16.0F);
    }
 
-   public ke<T> b() {
-      return this.a;
+   public ald a() {
+      return this.e;
    }
 
-   @Override
-   public Iterator<awh<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public awh<T> b(T $$0) {
-      return this.a($$0, awi.b);
-   }
-
-   public wp c() {
-      return this.c;
+   public Optional<Float> b() {
+      return this.f;
    }
 }

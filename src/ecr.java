@@ -1,20 +1,21 @@
-public interface ecr {
-   ect a();
+import java.util.stream.Stream;
 
-   int b();
+public interface ecr extends edf {
+   int ar();
 
-   boolean a(ard var1, jr<ecp> var2, ecp.a var3, fbx var4);
+   jj dv();
 
-   default ecr.a c() {
-      return ecr.a.a;
-   }
+   fcp cR();
 
-   public static enum a {
-      a,
-      b;
-   }
+   void a(ecs var1);
 
-   public interface b<T extends ecr> {
-      T c();
-   }
+   Stream<? extends ecr> da();
+
+   Stream<? extends ecr> db();
+
+   void c(bvs.e var1);
+
+   boolean dT();
+
+   boolean dU();
 }

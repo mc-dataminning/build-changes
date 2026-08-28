@@ -1,64 +1,59 @@
-import java.util.Objects;
+import java.util.List;
 
-public class fkh extends hmd {
-   private static final int a = 212;
-   private static final wp b = wp.c("mco.configure.world.name");
-   private static final wp c = wp.c("mco.configure.world.description");
-   private final fjr C;
-   private final fii D;
-   private fpz E;
-   private fpz F;
+public abstract class fkh {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public fkh(fjr $$0, fii $$1) {
-      super(wp.c("mco.configure.world.settings.title"));
-      this.C = $$0;
-      this.D = $$1;
+   public fkh(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aR_() {
-      int $$0 = this.n / 2 - 106;
-      String $$1 = this.D.e == fii.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fpq $$2 = fpq.a(wp.c($$1), $$0x -> {
-         if (this.D.e == fii.c.b) {
-            this.m.a(fkd.a(this, wp.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
-         } else {
-            this.C.b(false);
+   public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
+   }
+
+   protected abstract void a(fpz var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(fpz $$0, List<fkh> $$1, fqh<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fkh $$7 : $$1) {
+         if ($$2.a() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
          }
-      }).a(this.n / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.F = new fpz(this.m.h, $$0, g(4), 212, 20, wp.c("mco.configure.world.name"));
-      this.F.f(32);
-      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
-      this.c(this.F);
-      this.E = new fpz(this.m.h, $$0, g(8), 212, 20, wp.c("mco.configure.world.description"));
-      this.E.f(32);
-      this.E.a(this.D.a());
-      this.c(this.E);
-      fpq $$3 = this.c(fpq.a(wp.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.F.b($$1x -> $$3.j = !azw.h($$1x));
-      this.c(fpq.a(wo.e, $$0x -> this.aO_()).a(this.n / 2 + 2, g(12), 106, 20).a());
+      }
    }
 
-   @Override
-   protected void aF_() {
-      this.b(this.F);
-   }
+   public static void a(fqh<?> $$0, frj.a<?> $$1, List<fkh> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aD_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.u();
+         int $$8 = $$0.d($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   @Override
-   public void aO_() {
-      this.m.a(this.C);
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
-      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
-   }
-
-   public void g() {
-      this.C.a(this.F.a(), this.E.a());
+         for (fkh $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

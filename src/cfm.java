@@ -1,44 +1,39 @@
-public class cfm extends cfk {
-   private boolean p;
+import java.util.List;
 
-   public cfm(bwa $$0, dgz $$1) {
-      super($$0, $$1);
+public class cfm<T extends bwt & bww> extends cdn {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
+
+   public cfm(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected eum a(int $$0) {
-      this.p = this.a.aq() == bvi.H;
-      this.o = new euq(this.p);
-      this.o.a(false);
-      return new eum(this.o, $$0);
+   public boolean b() {
+      return a(this.b).O().c(dhl.P) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.eq() != null && this.b.eq().aq() == bwb.bR && this.b.es() > this.d;
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bl();
+   public void d() {
+      this.d = this.b.es();
+      this.b.X_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bww)$$0).forEach(bww::X_);
+      }
+
+      super.d();
    }
 
-   @Override
-   protected fbx b() {
-      return new fbx(this.a.dz(), this.a.e(0.5), this.a.dF());
-   }
-
-   @Override
-   protected double a(fbx $$0) {
-      return $$0.e;
-   }
-
-   @Override
-   protected boolean a(fbx $$0, fbx $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(ji $$0) {
-      return !this.b.a_($$0).s();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   private List<? extends bwt> i() {
+      double $$0 = this.b.h(bxx.m);
+      fcp $$1 = fcp.a(this.b.dt()).c($$0, 10.0, $$0);
+      return this.b.dV().a((Class<? extends bwt>)this.b.getClass(), $$1, bvz.f);
    }
 }

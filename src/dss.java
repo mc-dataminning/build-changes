@@ -1,24 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dss extends dsw {
-   public static final MapCodec<dss> a = b(dss::new);
+public class dss extends dto implements dkl {
+   public static final MapCodec<dss> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwv.q.fieldOf("color").forGetter(dss::b), t()).apply($$0, dss::new));
+   private final cwv c;
 
    @Override
    public MapCodec<dss> a() {
       return a;
    }
 
-   public dss(dxp.d $$0) {
-      super($$0);
+   public dss(cwv $$0, dyl.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected boolean e_(dxq $$0) {
-      return false;
-   }
-
-   @Override
-   protected int i_(dxq $$0) {
-      return 15;
+   public cwv b() {
+      return this.c;
    }
 }

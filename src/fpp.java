@@ -1,160 +1,366 @@
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import java.util.Map;
-import java.util.UUID;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public class fpp {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final aku[] c = new aku[]{
-      aku.b("boss_bar/pink_background"),
-      aku.b("boss_bar/blue_background"),
-      aku.b("boss_bar/red_background"),
-      aku.b("boss_bar/green_background"),
-      aku.b("boss_bar/yellow_background"),
-      aku.b("boss_bar/purple_background"),
-      aku.b("boss_bar/white_background")
-   };
-   private static final aku[] d = new aku[]{
-      aku.b("boss_bar/pink_progress"),
-      aku.b("boss_bar/blue_progress"),
-      aku.b("boss_bar/red_progress"),
-      aku.b("boss_bar/green_progress"),
-      aku.b("boss_bar/yellow_progress"),
-      aku.b("boss_bar/purple_progress"),
-      aku.b("boss_bar/white_progress")
-   };
-   private static final aku[] e = new aku[]{
-      aku.b("boss_bar/notched_6_background"),
-      aku.b("boss_bar/notched_10_background"),
-      aku.b("boss_bar/notched_12_background"),
-      aku.b("boss_bar/notched_20_background")
-   };
-   private static final aku[] f = new aku[]{
-      aku.b("boss_bar/notched_6_progress"), aku.b("boss_bar/notched_10_progress"), aku.b("boss_bar/notched_12_progress"), aku.b("boss_bar/notched_20_progress")
-   };
-   private final fmg g;
-   final Map<UUID, fqe> h = Maps.newLinkedHashMap();
+   private final Map<fpq, ald> a = Maps.newHashMap();
+   private final Set<fpq> b = Sets.newHashSet();
 
-   public fpp(fmg $$0) {
-      this.g = $$0;
+   public fpp a(fpq $$0, ald $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   public void a(fpc $$0) {
-      if (!this.h.isEmpty()) {
-         bpj $$1 = bpi.a();
-         $$1.a("bossHealth");
-         int $$2 = $$0.a();
-         int $$3 = 12;
-
-         for (fqe $$4 : this.h.values()) {
-            int $$5 = $$2 / 2 - 91;
-            this.a($$0, $$5, $$3, $$4);
-            wp $$7 = $$4.i();
-            int $$8 = this.g.h.a($$7);
-            int $$9 = $$2 / 2 - $$8 / 2;
-            int $$10 = $$3 - 9;
-            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
-            $$3 += 10 + 9;
-            if ($$3 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         $$1.c();
-      }
+   public fpp b(fpq $$0, ald $$1) {
+      this.a.put($$0, $$1);
+      this.b.add($$0);
+      return this;
    }
 
-   private void a(fpc $$0, int $$1, int $$2, bso $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = ayz.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
+   public Stream<fpq> a() {
+      return this.b.stream();
    }
 
-   private void a(fpc $$0, int $$1, int $$2, bso $$3, int $$4, aku[] $$5, aku[] $$6) {
-      $$0.a(gnh::H, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bso.b.a) {
-         $$0.a(gnh::H, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      }
+   public fpp a(fpq $$0, fpq $$1) {
+      this.a.put($$1, this.a.get($$0));
+      return this;
    }
 
-   public void a(abu $$0) {
-      $$0.a(new abu.b() {
-         @Override
-         public void a(UUID $$0, wp $$1, float $$2, bso.a $$3, bso.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fpp.this.h.put($$0, new fqe($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fpp.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fpp.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, wp $$1) {
-            fpp.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bso.a $$1, bso.b $$2) {
-            fqe $$3 = fpp.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fqe $$4 = fpp.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
+   public fpp b(fpq $$0, fpq $$1) {
+      this.a.put($$1, this.a.get($$0));
+      this.b.add($$1);
+      return this;
    }
 
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bso $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
+   public ald a(fpq $$0) {
+      for (fpq $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
+         ald $$2 = this.a.get($$1);
+         if ($$2 != null) {
+            return $$2;
          }
       }
 
-      return false;
+      throw new IllegalStateException("Can't find texture for slot " + $$0);
    }
 
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bso $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public fpp c(fpq $$0, ald $$1) {
+      fpp $$2 = new fpp();
+      $$2.a.putAll(this.a);
+      $$2.b.addAll(this.b);
+      $$2.a($$0, $$1);
+      return $$2;
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bso $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
+   public static fpp a(dku $$0) {
+      ald $$1 = J($$0);
+      return b($$1);
+   }
 
-      return false;
+   public static fpp b(dku $$0) {
+      ald $$1 = J($$0);
+      return a($$1);
+   }
+
+   public static fpp a(ald $$0) {
+      return new fpp().a(fpq.b, $$0);
+   }
+
+   public static fpp b(ald $$0) {
+      return new fpp().a(fpq.a, $$0);
+   }
+
+   public static fpp c(dku $$0) {
+      return d(fpq.p, J($$0));
+   }
+
+   public static fpp d(dku $$0) {
+      return d(fpq.i, J($$0));
+   }
+
+   public static fpp e(dku $$0) {
+      return new fpp().a(fpq.p, J($$0)).a(fpq.q, a($$0, "_emissive"));
+   }
+
+   public static fpp c(ald $$0) {
+      return d(fpq.p, $$0);
+   }
+
+   public static fpp f(dku $$0) {
+      return d(fpq.r, J($$0));
+   }
+
+   public static fpp g(dku $$0) {
+      return new fpp().a(fpq.r, J($$0)).a(fpq.q, a($$0, "_emissive"));
+   }
+
+   public static fpp d(ald $$0) {
+      return d(fpq.r, $$0);
+   }
+
+   public static fpp h(dku $$0) {
+      return d(fpq.t, J($$0));
+   }
+
+   public static fpp e(ald $$0) {
+      return d(fpq.t, $$0);
+   }
+
+   public static fpp i(dku $$0) {
+      return d(fpq.u, J($$0));
+   }
+
+   public static fpp j(dku $$0) {
+      return new fpp().a(fpq.Q, J($$0)).a(fpq.z, a($$0, "_stem"));
+   }
+
+   public static fpp f(ald $$0) {
+      return d(fpq.u, $$0);
+   }
+
+   public static fpp k(dku $$0) {
+      return d(fpq.z, J($$0));
+   }
+
+   public static fpp a(dku $$0, dku $$1) {
+      return new fpp().a(fpq.z, J($$0)).a(fpq.A, J($$1));
+   }
+
+   public static fpp l(dku $$0) {
+      return d(fpq.v, J($$0));
+   }
+
+   public static fpp m(dku $$0) {
+      return d(fpq.y, J($$0));
+   }
+
+   public static fpp g(ald $$0) {
+      return d(fpq.B, $$0);
+   }
+
+   public static fpp b(dku $$0, dku $$1) {
+      return new fpp().a(fpq.w, J($$0)).a(fpq.x, a($$1, "_top"));
+   }
+
+   public static fpp d(fpq $$0, ald $$1) {
+      return new fpp().a($$0, $$1);
+   }
+
+   public static fpp n(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.d, a($$0, "_top"));
+   }
+
+   public static fpp o(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.f, a($$0, "_top"));
+   }
+
+   public static fpp p(dku $$0) {
+      return new fpp().a(fpq.r, a($$0, "_plant")).a(fpq.i, a($$0, "_side")).a(fpq.f, a($$0, "_top"));
+   }
+
+   public static fpp q(dku $$0) {
+      return new fpp().a(fpq.i, J($$0)).a(fpq.d, a($$0, "_top")).a(fpq.c, J($$0));
+   }
+
+   public static fpp a(ald $$0, ald $$1) {
+      return new fpp().a(fpq.i, $$0).a(fpq.d, $$1);
+   }
+
+   public static fpp r(dku $$0) {
+      return new fpp().a(fpq.b, J($$0)).a(fpq.i, a($$0, "_side")).a(fpq.f, a($$0, "_top"));
+   }
+
+   public static fpp s(dku $$0) {
+      return new fpp().a(fpq.b, J($$0)).a(fpq.c, a($$0, "_particle"));
+   }
+
+   public static fpp t(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.f, a($$0, "_top")).a(fpq.e, a($$0, "_bottom"));
+   }
+
+   public static fpp u(dku $$0) {
+      ald $$1 = J($$0);
+      return new fpp().a(fpq.s, $$1).a(fpq.i, $$1).a(fpq.f, a($$0, "_top")).a(fpq.e, a($$0, "_bottom"));
+   }
+
+   public static fpp v(dku $$0) {
+      ald $$1 = J($$0);
+      return new fpp().a(fpq.b, $$1).a(fpq.s, $$1).a(fpq.i, $$1).a(fpq.d, a($$0, "_top"));
+   }
+
+   public static fpp b(ald $$0, ald $$1) {
+      return new fpp().a(fpq.f, $$0).a(fpq.e, $$1);
+   }
+
+   public static fpp w(dku $$0) {
+      return new fpp().a(fpq.f, a($$0, "_top")).a(fpq.e, a($$0, "_bottom"));
+   }
+
+   public static fpp x(dku $$0) {
+      return new fpp().a(fpq.c, J($$0));
+   }
+
+   public static fpp h(ald $$0) {
+      return new fpp().a(fpq.c, $$0);
+   }
+
+   public static fpp y(dku $$0) {
+      return new fpp().a(fpq.D, a($$0, "_0"));
+   }
+
+   public static fpp z(dku $$0) {
+      return new fpp().a(fpq.D, a($$0, "_1"));
+   }
+
+   public static fpp A(dku $$0) {
+      return new fpp().a(fpq.E, J($$0));
+   }
+
+   public static fpp B(dku $$0) {
+      return new fpp().a(fpq.H, J($$0));
+   }
+
+   public static fpp i(ald $$0) {
+      return new fpp().a(fpq.H, $$0);
+   }
+
+   public static fpp a(dku $$0, String $$1, String $$2) {
+      return new fpp().a(fpq.i, a($$0, $$1)).a(fpq.f, a($$0, $$2)).a(fpq.e, a($$0, "_bottom"));
+   }
+
+   public static fpp a(dku $$0, String $$1, String $$2, String $$3, String $$4) {
+      return new fpp().a(fpq.g, a($$0, $$1)).a(fpq.i, a($$0, $$2)).a(fpq.f, a($$0, $$3)).a(fpq.e, a($$0, $$4));
+   }
+
+   public static fpp a(cxu $$0) {
+      return new fpp().a(fpq.c, c($$0));
+   }
+
+   public static fpp C(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.g, a($$0, "_front")).a(fpq.h, a($$0, "_back"));
+   }
+
+   public static fpp D(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.g, a($$0, "_front")).a(fpq.f, a($$0, "_top")).a(fpq.e, a($$0, "_bottom"));
+   }
+
+   public static fpp E(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.g, a($$0, "_front")).a(fpq.f, a($$0, "_top"));
+   }
+
+   public static fpp F(dku $$0) {
+      return new fpp().a(fpq.i, a($$0, "_side")).a(fpq.g, a($$0, "_front")).a(fpq.d, a($$0, "_end"));
+   }
+
+   public static fpp G(dku $$0) {
+      return new fpp().a(fpq.f, a($$0, "_top"));
+   }
+
+   public static fpp c(dku $$0, dku $$1) {
+      return new fpp()
+         .a(fpq.c, a($$0, "_front"))
+         .a(fpq.o, J($$1))
+         .a(fpq.n, a($$0, "_top"))
+         .a(fpq.j, a($$0, "_front"))
+         .a(fpq.l, a($$0, "_side"))
+         .a(fpq.k, a($$0, "_side"))
+         .a(fpq.m, a($$0, "_front"));
+   }
+
+   public static fpp d(dku $$0, dku $$1) {
+      return new fpp()
+         .a(fpq.c, a($$0, "_front"))
+         .a(fpq.o, J($$1))
+         .a(fpq.n, a($$0, "_top"))
+         .a(fpq.j, a($$0, "_front"))
+         .a(fpq.k, a($$0, "_front"))
+         .a(fpq.l, a($$0, "_side"))
+         .a(fpq.m, a($$0, "_side"));
+   }
+
+   public static fpp a(String $$0) {
+      return new fpp()
+         .a(fpq.c, a(dkw.mI, $$0 + "_north"))
+         .a(fpq.e, a(dkw.mI, $$0 + "_bottom"))
+         .a(fpq.f, a(dkw.mI, $$0 + "_top"))
+         .a(fpq.j, a(dkw.mI, $$0 + "_north"))
+         .a(fpq.k, a(dkw.mI, $$0 + "_south"))
+         .a(fpq.l, a(dkw.mI, $$0 + "_east"))
+         .a(fpq.m, a(dkw.mI, $$0 + "_west"));
+   }
+
+   public static fpp H(dku $$0) {
+      return new fpp().a(fpq.L, a($$0, "_log_lit")).a(fpq.D, a($$0, "_fire"));
+   }
+
+   public static fpp a(dku $$0, boolean $$1) {
+      return new fpp()
+         .a(fpq.c, a(dkw.et, "_side"))
+         .a(fpq.e, a(dkw.et, "_bottom"))
+         .a(fpq.f, a(dkw.et, "_top"))
+         .a(fpq.i, a(dkw.et, "_side"))
+         .a(fpq.M, a($$0, $$1 ? "_lit" : ""));
+   }
+
+   public static fpp j(ald $$0) {
+      return new fpp()
+         .a(fpq.c, a(dkw.fO, "_side"))
+         .a(fpq.i, a(dkw.fO, "_side"))
+         .a(fpq.f, a(dkw.fO, "_top"))
+         .a(fpq.e, a(dkw.fO, "_bottom"))
+         .a(fpq.N, a(dkw.fO, "_inner"))
+         .a(fpq.O, $$0);
+   }
+
+   public static fpp a(boolean $$0) {
+      String $$1 = $$0 ? "_can_summon" : "";
+      return new fpp()
+         .a(fpq.c, a(dkw.rz, "_bottom"))
+         .a(fpq.i, a(dkw.rz, "_side"))
+         .a(fpq.f, a(dkw.rz, "_top"))
+         .a(fpq.P, a(dkw.rz, $$1 + "_inner_top"))
+         .a(fpq.e, a(dkw.rz, "_bottom"));
+   }
+
+   public static fpp b(cxu $$0) {
+      return new fpp().a(fpq.I, c($$0));
+   }
+
+   public static fpp I(dku $$0) {
+      return new fpp().a(fpq.I, J($$0));
+   }
+
+   public static fpp k(ald $$0) {
+      return new fpp().a(fpq.I, $$0);
+   }
+
+   public static fpp c(ald $$0, ald $$1) {
+      return new fpp().a(fpq.I, $$0).a(fpq.J, $$1);
+   }
+
+   public static fpp a(ald $$0, ald $$1, ald $$2) {
+      return new fpp().a(fpq.I, $$0).a(fpq.J, $$1).a(fpq.K, $$2);
+   }
+
+   public static ald J(dku $$0) {
+      ald $$1 = md.e.b($$0);
+      return $$1.f("block/");
+   }
+
+   public static ald a(dku $$0, String $$1) {
+      ald $$2 = md.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   }
+
+   public static ald c(cxu $$0) {
+      ald $$1 = md.g.b($$0);
+      return $$1.f("item/");
+   }
+
+   public static ald a(cxu $$0, String $$1) {
+      ald $$2 = md.g.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

@@ -1,60 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class aom {
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static <T extends ez<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("serverpack").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ey.a("push")
-                     .then(
-                        ((RequiredArgumentBuilder)ey.a("url", StringArgumentType.string())
-                              .then(
-                                 ((RequiredArgumentBuilder)ey.a("uuid", gn.a())
-                                       .then(
-                                          ey.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ex)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(gn.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ex)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gn.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
-                              ))
-                           .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
-                     )
-               ))
-            .then(ey.a("pop").then(ey.a("uuid", gn.a()).executes($$0x -> a((ex)$$0x.getSource(), gn.a($$0x, "uuid")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aom.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new aom.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aom.b(), false))
       );
    }
 
-   private static void a(ex $$0, yw<?> $$1) {
-      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
+   static class a<T extends ez<T>> implements hv.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, ht $$2, hz<T> $$3) {
+         $$0.p().onFailure();
+         ia $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
+      }
    }
 
-   private static int a(ex $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      zj $$6 = new zj($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
+   static class b<T extends ez<T>> implements hw.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, ht $$3, hz<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(ij.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new ie.a<>($$6, $$5, $$3.d(), $$0, $$1));
+         }
+      }
    }
 
-   private static int a(ex $$0, UUID $$1) {
-      zi $$2 = new zi(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+   static class c<T extends ez<T>> implements hv.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, ht $$2, hz<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         ia $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
+      }
    }
 }

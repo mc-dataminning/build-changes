@@ -1,21 +1,16 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 
 public class bco extends DataFix {
-   public bco(Schema $$0) {
-      super($$0, false);
+   public bco(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bic.c);
-      OpticFinder<?> $$1 = $$0.findField("sections");
-      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
-         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
-         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
-      });
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "BlockStateStructureTemplateFix", this.getInputSchema().getType(biq.u), $$0 -> $$0.update(DSL.remainderFinder(), bcn::a)
+      );
    }
 }

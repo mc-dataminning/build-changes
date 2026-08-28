@@ -1,40 +1,60 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class oi {
-   private final oa a;
-   private final dbr b;
-   private final dbr c;
-   private final dbr d;
-   private final Map<String, aq<?>> e = new LinkedHashMap<>();
+public class oi implements ob {
+   private final oc b;
+   private final cxu c;
+   private final dch d;
+   private final int e;
+   private final Map<String, aq<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
+   private final ddd.a<?> h;
 
-   public oi(oa $$0, dbr $$1, dbr $$2, dbr $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public oi(oc $$0, ddd.a<?> $$1, dch $$2, dho $$3, int $$4) {
+      this.b = $$0;
+      this.h = $$1;
+      this.c = $$3.i();
+      this.d = $$2;
+      this.e = $$4;
    }
 
-   public static oi a(dbr $$0, dbr $$1, dbr $$2, oa $$3) {
-      return new oi($$3, $$0, $$1, $$2);
+   public static oi a(dch $$0, oc $$1, dho $$2) {
+      return new oi($$1, ddl::new, $$0, $$2, 1);
    }
 
-   public oi a(String $$0, aq<?> $$1) {
-      this.e.put($$0, $$1);
+   public static oi a(dch $$0, oc $$1, dho $$2, int $$3) {
+      return new oi($$1, ddl::new, $$0, $$2, $$3);
+   }
+
+   public oi b(String $$0, aq<?> $$1) {
+      this.f.put($$0, $$1);
       return this;
    }
 
-   public void a(ob $$0, akt<dbv<?>> $$1) {
-      this.a($$1);
-      ah.a $$2 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
-      this.e.forEach($$2::a);
-      dct $$3 = new dct(Optional.of(this.b), Optional.of(this.c), Optional.of(this.d));
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.a.a() + "/")));
+   public oi b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
    }
 
-   private void a(akt<dbv<?>> $$0) {
-      if (this.e.isEmpty()) {
+   @Override
+   public cxu a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(od $$0, alc<dcl<?>> $$1) {
+      this.a($$1);
+      ah.a $$2 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
+      this.f.forEach($$2::a);
+      ddd $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cxy(this.c, this.e));
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
+   }
+
+   private void a(alc<dcl<?>> $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }
    }

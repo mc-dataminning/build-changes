@@ -1,51 +1,63 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fzc extends fzf<csy> {
-   private static final frd h = new frd(
-      aku.b("recipe_book/furnace_filter_enabled"),
-      aku.b("recipe_book/furnace_filter_disabled"),
-      aku.b("recipe_book/furnace_filter_enabled_highlighted"),
-      aku.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final wp i;
+public abstract class fzc extends fwf {
+   private static final int b = 100;
+   private final wv c;
+   @Nullable
+   private final wv d;
+   private final wv s;
+   @Nullable
+   protected fqp a;
+   @Nullable
+   private fqy u;
+   private final ftz v;
 
-   public fzc(csy $$0, wp $$1, List<fzf.a> $$2) {
-      super($$0, $$2);
-      this.i = $$1;
+   protected fzc(wv $$0, wv $$1, wv $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   @Override
-   protected void a() {
-      this.e.a(h);
+   protected fzc(wv $$0, wv $$1, @Nullable wv $$2, wv $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.s = $$3;
+      this.v = new ftz(0, 0, this.n, this.o);
    }
 
-   @Override
-   protected boolean a(cut $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
-   }
+   protected abstract fuc m();
 
    @Override
-   protected void a(fzd $$0, ddb $$1, bak $$2) {
-      $$0.b(this.f.l(), $$2, $$1.d());
-      if ($$1 instanceof dda $$3) {
-         $$0.a(this.f.k.get(0), $$2, $$3.b());
-         cut $$4 = this.f.k.get(1);
-         if ($$4.g().f()) {
-            $$0.a($$4, $$2, $$3.c());
-         }
+   protected void aN_() {
+      fuf $$0 = this.v.a(fuf.d().a(8));
+      $$0.c().b();
+      $$0.a(new fru(this.n(), this.p));
+      this.u = $$0.a(new fqy(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
+      this.u.b(false);
+      fuf $$1 = $$0.a(fuf.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(fqp.a(this.d, this.p).a());
       }
+
+      $$1.a(this.m());
+      this.v.a($$1x -> {
+         fql var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected wp b() {
-      return this.i;
+   protected void c() {
+      if (this.u != null) {
+         this.u.d(this.n - 100);
+      }
+
+      this.v.a();
+      ftz.a(this.v, this.J());
    }
 
    @Override
-   protected void a(fzj $$0, cpw $$1) {
-      $$0.a($$1, $$0x -> $$0x instanceof dda);
+   public wv i() {
+      return this.s;
    }
 }

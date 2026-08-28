@@ -1,287 +1,169 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class gat {
-   private static final wp a = wp.c("selectWorld.newWorld");
-   private final List<Consumer<gat>> b = new ArrayList<>();
-   private String c = a.getString();
-   private gat.a d = gat.a.a;
-   private bsv e = bsv.c;
+public class gat extends fwf {
+   private static final wv a = wv.c("gui.abuseReport.reason.title");
+   private static final wv b = wv.c("gui.abuseReport.reason.description");
+   private static final wv c = wv.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int s = 62;
+   private static final int u = 4;
    @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private gar l;
-   private gat.b m;
-   private final List<gat.b> n = new ArrayList<>();
-   private final List<gat.b> o = new ArrayList<>();
-   private dgv p;
-
-   public gat(Path $$0, gar $$1, Optional<akt<eny>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new gat.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.c().d();
-      this.i = $$1.c().e();
-      this.k = this.c(this.c);
-      this.d = $$1.i().a();
-      this.p = new dgv($$1.h().b());
-      $$1.i().b().forEach($$0x -> this.p.<dgv.a>a($$0x).a(false, null));
-      Optional.ofNullable($$1.i().c())
-         .flatMap($$1x -> $$1.a().a(mc.aR).flatMap($$1xx -> $$1xx.a($$1x)))
-         .map($$0x -> ((emk)$$0x.a()).b())
-         .ifPresent($$0x -> this.a(gao.a($$0x)));
-   }
-
-   public void a(Consumer<gat> $$0) {
-      this.b.add($$0);
-   }
-
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.c().e()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
-      }
-
-      boolean $$1 = this.i();
-      if ($$1 != this.l.c().d()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
-      }
-
-      for (Consumer<gat> $$2 : this.b) {
-         $$2.accept(this);
-      }
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
-   }
-
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
-         }
-      }
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.k;
-   }
-
-   public void a(gat.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
-
-   public gat.a d() {
-      return this.l() ? gat.a.d : this.d;
-   }
-
-   public void a(bsv $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public bsv e() {
-      return this.f() ? bsv.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == gat.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == gat.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(eem.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(gar $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public gar k() {
-      return this.l;
-   }
-
-   public void a(gar.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(dhx $$0) {
-      dhx $$1 = this.l.h();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new gar(this.l.c(), this.l.d(), this.l.e(), this.l.f(), this.l.g(), $$0, this.l.i());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.e().c();
-   }
-
-   public void a(gat.b $$0) {
-      this.m = $$0;
-      jr<eny> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public gat.b m() {
-      return this.m;
-   }
-
+   private final fwf v;
    @Nullable
-   public gao n() {
-      jr<eny> $$0 = this.m().c();
-      return $$0 != null ? gao.a.get($$0.e()) : null;
+   private gat.a w;
+   @Nullable
+   gjg x;
+   private final Consumer<gjg> y;
+   final fub z = new fub(this);
+   final gjh A;
+
+   public gat(@Nullable fwf $$0, @Nullable gjg $$1, gjh $$2, Consumer<gjg> $$3) {
+      super(a);
+      this.v = $$0;
+      this.x = $$1;
+      this.y = $$3;
+      this.A = $$2;
    }
 
-   public List<gat.b> o() {
-      return this.n;
-   }
-
-   public List<gat.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      ke<eny> $$0 = this.k().a().e(mc.bd);
-      this.n.clear();
-      this.n.addAll(a($$0, axi.a).orElseGet(() -> $$0.c().map(gat.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, axi.b).orElse(this.n));
-      jr<eny> $$1 = this.m.c();
-      if ($$1 != null) {
-         gat.b $$2 = a(this.k(), $$1.e()).map(gat.b::new).orElse(this.n.getFirst());
-         boolean $$3 = gao.a.get($$1.e()) != null;
-         if ($$3) {
-            this.m = $$2;
-         } else {
-            this.a($$2);
+   @Override
+   protected void aN_() {
+      this.z.a(a, this.p);
+      fuf $$0 = this.z.c(fuf.d().a(4));
+      this.w = $$0.a(new gat.a(this.m));
+      gat.a.a $$1 = x.a(this.x, this.w::a);
+      this.w.a($$1);
+      $$0.a(fug.b(this.I()));
+      fuf $$2 = this.z.b(fuf.e().a(8));
+      $$2.a(fqn.a(c, fvc.b(this, ayf.m)).a());
+      $$2.a(fqn.a(wu.d, $$0x -> {
+         gat.a.a $$1x = this.w.p();
+         if ($$1x != null) {
+            this.y.accept($$1x.b());
          }
+
+         this.m.a(this.v);
+      }).a());
+      this.z.a($$1x -> {
+         fql var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.z.a();
+      if (this.w != null) {
+         this.w.b(this.n, this.L(), this.z.c());
       }
    }
 
-   private static Optional<jr<eny>> a(gar $$0, Optional<akt<eny>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().e(mc.bd).a($$1x));
-   }
-
-   private static Optional<List<gat.b>> a(ke<eny> $$0, axf<eny> $$1) {
-      return $$0.a($$1).map($$0x -> $$0x.a().map(gat.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(dgv $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public dgv q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", dgw.a),
-      b("hardcore", dgw.a),
-      c("creative", dgw.b),
-      d("spectator", dgw.d);
-
-      public final dgw e;
-      public final wp f;
-      private final wp g;
-
-      private a(final String $$0, final dgw $$1) {
-         this.e = $$1;
-         this.f = wp.c("selectWorld.gameMode." + $$0);
-         this.g = wp.c("selectWorld.gameMode." + $$0 + ".info");
-      }
-
-      public wp a() {
-         return this.g;
+   @Override
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m(), this.F(), this.E(), this.G(), -16777216);
+      $$0.b(this.m(), this.F(), this.H(), this.I(), -1);
+      $$0.b(this.p, b, this.m() + 4, this.F() + 4, -1);
+      gat.a.a $$4 = this.w.p();
+      if ($$4 != null) {
+         int $$5 = this.m() + 4 + 16;
+         int $$6 = this.E() - 4;
+         int $$7 = this.F() + 4 + 9 + 2;
+         int $$8 = this.G() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.p.b($$4.b.c(), $$9);
+         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
       }
    }
 
-   public static record b(@Nullable jr<eny> a) {
-      private static final wp b = wp.c("generator.custom");
+   private int m() {
+      return (this.n - 320) / 2;
+   }
 
-      public wp a() {
-         return Optional.ofNullable(this.a).flatMap(jr::e).map($$0 -> wp.c($$0.a().h("generator"))).orElse(b);
-      }
+   private int E() {
+      return (this.n + 320) / 2;
+   }
 
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(jr::e).filter($$0 -> $$0.equals(enz.d)).isPresent();
+   private int F() {
+      return this.G() - this.I();
+   }
+
+   private int G() {
+      return this.o - this.z.b() - 4;
+   }
+
+   private int H() {
+      return 320;
+   }
+
+   private int I() {
+      return 62;
+   }
+
+   int L() {
+      return this.z.d() - this.I() - 8;
+   }
+
+   @Override
+   public void aK_() {
+      this.m.a(this.v);
+   }
+
+   public class a extends frj<gat.a.a> {
+      public a(final fnd $$1) {
+         super($$1, gat.this.n, gat.this.L(), gat.this.z.c(), 18);
+
+         for (gjg $$2 : gjg.values()) {
+            if (!gjg.a(gat.this.A).contains($$2)) {
+               this.b(new gat.a.a($$2));
+            }
+         }
       }
 
       @Nullable
-      public jr<eny> c() {
-         return this.a;
+      public gat.a.a a(gjg $$0) {
+         return this.aD_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
+
+      @Override
+      public int a() {
+         return 320;
+      }
+
+      public void a(@Nullable gat.a.a $$0) {
+         super.a($$0);
+         gat.this.x = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends frj.a<gat.a.a> {
+         final gjg b;
+
+         public a(final gjg $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(gat.this.p, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public wv a() {
+            return wv.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         public gjg b() {
+            return this.b;
+         }
       }
    }
 }

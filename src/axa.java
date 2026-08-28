@@ -1,12 +1,11 @@
 public class axa {
-   public static final axf<chf> a = a("acquirable_job_site");
-   public static final axf<chf> b = a("village");
-   public static final axf<chf> c = a("bee_home");
+   public static final axp<cik> a = a("default_spawns");
+   public static final axp<cik> b = a("full_moon_spawns");
 
    private axa() {
    }
 
-   private static axf<chf> a(String $$0) {
-      return axf.a(mc.aa, aku.b($$0));
+   private static axp<cik> a(String $$0) {
+      return axp.a(me.l, ald.b($$0));
    }
 }

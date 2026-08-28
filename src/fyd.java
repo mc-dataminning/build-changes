@@ -1,63 +1,33 @@
-import javax.annotation.Nullable;
+public class fyd extends fqn {
+   private static final ald a = ald.b("widget/page_forward_highlighted");
+   private static final ald b = ald.b("widget/page_forward");
+   private static final ald c = ald.b("widget/page_backward_highlighted");
+   private static final ald d = ald.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public abstract class fyd extends fvi {
-   private static final int b = 100;
-   private final wp c;
-   @Nullable
-   private final wp d;
-   private final wp s;
-   @Nullable
-   protected fps a;
-   @Nullable
-   private fqb u;
-   private final ftc v;
-
-   protected fyd(wp $$0, wp $$1, wp $$2) {
-      this($$0, $$1, null, $$2);
+   public fyd(int $$0, int $$1, boolean $$2, fqn.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, wu.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
-
-   protected fyd(wp $$0, wp $$1, @Nullable wp $$2, wp $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new ftc(0, 0, this.n, this.o);
-   }
-
-   protected abstract ftf m();
 
    @Override
-   protected void aR_() {
-      fti $$0 = this.v.a(fti.d().a(8));
-      $$0.c().b();
-      $$0.a(new fqx(this.n(), this.p));
-      this.u = $$0.a(new fqb(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fti $$1 = $$0.a(fti.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fps.a(this.d, this.p).a());
+   public void b(fpz $$0, int $$1, int $$2, float $$3) {
+      ald $$4;
+      if (this.u) {
+         $$4 = this.D() ? a : b;
+      } else {
+         $$4 = this.D() ? c : d;
       }
 
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fpo var10000 = this.c($$1x);
-      });
-      this.c();
+      $$0.a(goi::H, $$4, this.F(), this.G(), 23, 13);
    }
 
    @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
+   public void a(hlv $$0) {
+      if (this.v) {
+         $$0.a(hkk.a(awk.cy, 1.0F));
       }
-
-      this.v.a();
-      ftc.a(this.v, this.J());
-   }
-
-   @Override
-   public wp i() {
-      return this.s;
    }
 }

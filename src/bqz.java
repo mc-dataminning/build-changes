@@ -1,29 +1,7 @@
-public class bqz implements bra {
-   public static final bra a = new bqz();
+import jdk.jfr.consumer.RecordedEvent;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bpj f() {
-      return bpf.a;
-   }
-
-   @Override
-   public void d() {
+public record bqz(double a, double b, double c) {
+   public static bqz a(RecordedEvent $$0) {
+      return new bqz((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

@@ -1,118 +1,42 @@
-public class gle extends glg {
-   gle(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+public class gle extends glh {
+   private final gew a;
+   private final goi b = goi.j(gty.a);
+
+   gle(ghz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new gej(fnd.Q().aS().a(ghc.aK));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public gkk b() {
-      return gkk.b;
+   public gll b() {
+      return gll.d;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a(fho $$0, gny $$1, fml $$2, float $$3) {
+      float $$4 = ((float)this.s + $$3) / (float)this.t;
+      float $$5 = 0.05F + 0.5F * azk.a($$4 * (float) Math.PI);
+      int $$6 = axu.a($$5, 1.0F, 1.0F, 1.0F);
+      $$0.a();
+      $$0.a($$2.f());
+      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
+      float $$7 = 0.42553192F;
+      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
+      $$0.a(0.0F, -0.56F, 3.5F);
+      fhs $$8 = $$1.getBuffer(this.b);
+      this.a.a($$0, $$8, 15728880, hgi.d, $$6);
+      $$0.b();
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
-      }
+   public void a(fhs $$0, fml $$1, float $$2) {
    }
 
-   public static class a implements gkj<lx> {
-      private final glb a;
-
-      public a(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gle $$8 = new gle($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.C_().a(5));
-         return $$8;
-      }
-   }
-
-   public static class b implements gkj<lx> {
-      private final glb a;
-
-      public b(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gle $$8 = new gle($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.A.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
-   }
-
-   public static class c implements gkj<lx> {
-      private final glb a;
-
-      public c(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gle $$8 = new gle($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gkj<lx> {
-      private final glb a;
-
-      public d(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gle $$8 = new gle($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements gkj<lx> {
-      private final glb a;
-
-      public e(glb $$0) {
-         this.a = $$0;
-      }
-
-      public gkg a(lx $$0, ggy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gle $$8 = new gle($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements glk<lz> {
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gle($$1, $$2, $$3, $$4);
       }
    }
 }

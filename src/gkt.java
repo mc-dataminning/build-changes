@@ -1,80 +1,76 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gkt extends gmh {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
 
-public abstract class gkt extends gkg {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-
-   protected gkt(ggy $$0, double $$1, double $$2, double $$3) {
+   gkt(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
       super($$0, $$1, $$2, $$3);
-   }
-
-   protected gkt(ggy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public gkt.a p() {
-      return gkt.a.a;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
    @Override
-   public void a(fgv $$0, flo $$1, float $$2) {
-      Quaternionf $$3 = new Quaternionf();
-      this.p().setRotation($$3, $$1, $$2);
-      if (this.z != 0.0F) {
-         $$3.rotateZ(ayz.h($$2, this.A, this.z));
+   public gll b() {
+      return gll.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axu.a($$0, this.G, this.H);
+         this.a((float)axu.b($$2) / 255.0F, (float)axu.c($$2) / 255.0F, (float)axu.d($$2) / 255.0F);
+         this.e((float)axu.a($$2) / 255.0F);
+      }
+   }
+
+   public static class a implements glk<lz> {
+      private final gmc a;
+
+      public a(gmc $$0) {
+         this.a = $$0;
       }
 
-      this.a($$0, $$1, $$3, $$2);
-   }
-
-   protected void a(fgv $$0, flo $$1, Quaternionf $$2, float $$3) {
-      fbx $$4 = $$1.b();
-      float $$5 = (float)(ayz.d((double)$$3, this.d, this.g) - $$4.a());
-      float $$6 = (float)(ayz.d((double)$$3, this.e, this.h) - $$4.b());
-      float $$7 = (float)(ayz.d((double)$$3, this.f, this.i) - $$4.c());
-      this.a($$0, $$2, $$5, $$6, $$7, $$3);
-   }
-
-   protected void a(fgv $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = this.b($$5);
-      float $$7 = this.c();
-      float $$8 = this.d();
-      float $$9 = this.e();
-      float $$10 = this.f();
-      int $$11 = this.a($$5);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
-   }
-
-   private void a(fgv $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
-      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
-   }
-
-   public float b(float $$0) {
-      return this.D;
-   }
-
-   @Override
-   public gkg d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
-   }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
-
-   public interface a {
-      gkt.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      gkt.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, flo var2, float var3);
+      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkt $$8 = new gkt($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(azk.b($$1.C_(), 3.0F, 5.0F));
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

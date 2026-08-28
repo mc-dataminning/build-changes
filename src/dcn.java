@@ -1,86 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+public class dcn {
+   public static final dco a = a("crafting_building_blocks");
+   public static final dco b = a("crafting_redstone");
+   public static final dco c = a("crafting_equipment");
+   public static final dco d = a("crafting_misc");
+   public static final dco e = a("furnace_food");
+   public static final dco f = a("furnace_blocks");
+   public static final dco g = a("furnace_misc");
+   public static final dco h = a("blast_furnace_blocks");
+   public static final dco i = a("blast_furnace_misc");
+   public static final dco j = a("smoker_food");
+   public static final dco k = a("stonecutter");
+   public static final dco l = a("smithing");
+   public static final dco m = a("campfire");
 
-public abstract class dcn implements dbv<dco> {
-   private final dbr c;
-   private final cxh d;
-   private final String e;
-   @Nullable
-   private dbu f;
-
-   public dcn(String $$0, dbr $$1, cxh $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private static dco a(String $$0) {
+      return kf.a(md.aB, $$0, new dco());
    }
 
-   @Override
-   public abstract dcf<? extends dcn> a();
-
-   @Override
-   public abstract dcg<? extends dcn> b();
-
-   public boolean a(dco $$0, dgz $$1) {
-      return this.c.a($$0.c());
-   }
-
-   @Override
-   public String j() {
-      return this.e;
-   }
-
-   public dbr k() {
-      return this.c;
-   }
-
-   protected cxh l() {
-      return this.d;
-   }
-
-   @Override
-   public dbu ao_() {
-      if (this.f == null) {
-         this.f = dbu.a(this.c);
-      }
-
-      return this.f;
-   }
-
-   public cxh a(dco $$0, jt.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends dcn> {
-      T create(String var1, dbr var2, cxh var3);
-   }
-
-   public static class b<T extends dcn> implements dcf<T> {
-      private final MapCodec<T> w;
-      private final yn<wa, T> x;
-
-      protected b(dcn.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcn::j),
-                     dbr.d.fieldOf("ingredient").forGetter(dcn::k),
-                     cxh.d.fieldOf("result").forGetter(dcn::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yn.a(yl.o, dcn::j, dbr.a, dcn::k, cxh.i, dcn::l, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yn<wa, T> b() {
-         return this.x;
-      }
+   public static dco a(kf<dco> $$0) {
+      return m;
    }
 }

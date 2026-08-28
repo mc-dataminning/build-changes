@@ -1,36 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record faq(float c) implements fat {
-   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(faq::c)).apply($$0, faq::new));
-   public static final Codec<faq> b = Codec.FLOAT.xmap(faq::new, faq::c);
+public class faq implements fau {
+   private static final faq b = new faq();
+   public static final MapCodec<faq> a = MapCodec.unit(b);
 
-   @Override
-   public fas b() {
-      return fau.b;
+   private faq() {
    }
 
    @Override
-   public float b(ewo $$0) {
-      return this.c;
-   }
-
-   public static faq a(float $$0) {
-      return new faq($$0);
+   public fav b() {
+      return faw.l;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public Set<bat<?>> a() {
+      return Set.of(faf.j);
+   }
+
+   public boolean a(exl $$0) {
+      Float $$1 = $$0.c(faf.j);
+      if ($$1 != null) {
+         azs $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((faq)$$0).c, this.c) == 0 : false;
+         return true;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public static fau.a c() {
+      return () -> b;
    }
 }

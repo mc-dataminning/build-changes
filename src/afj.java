@@ -1,12 +1,16 @@
-public record afj(wp b) implements yw<abl> {
-   public static final yn<wa, afj> a = yn.a(wr.d, afj::b, afj::new);
+public record afj(int b, cxy c) implements zc<abr> {
+   public static final yt<wg, afj> a = yt.a(yr.h, afj::b, cxy.h, afj::e, afj::new);
 
    @Override
-   public yy<afj> a() {
-      return agd.aS;
+   public ze<afj> a() {
+      return agk.ct;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
+   }
+
+   public cxy e() {
+      return this.c;
    }
 }

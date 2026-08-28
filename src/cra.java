@@ -1,127 +1,81 @@
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
-public abstract class cra extends cpz implements cqh {
-   public static final dgt d = new dhs(true, false, Optional.empty(), mb.e.a(awp.cD).map(Function.identity()));
-   public static final double e = 0.25;
-
-   public cra(bvi<? extends cra> $$0, dgz $$1) {
+public class cra extends crb {
+   public cra(bwb<? extends cra> $$0, dhp $$1) {
       super($$0, $$1);
-      this.c = 0.0;
    }
 
-   public cra(bvi<? extends cra> $$0, dgz $$1, bva $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
-      this.c = 0.0;
-   }
-
-   cra(bvi<? extends cra> $$0, double $$1, double $$2, double $$3, fbx $$4, dgz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.c = 0.0;
-   }
-
-   @Override
-   protected fbs c(fbx $$0) {
-      float $$1 = this.aq().n().a() / 2.0F;
-      float $$2 = this.aq().n().b();
-      float $$3 = 0.15F;
-      return new fbs($$0.d - (double)$$1, $$0.e - 0.15F, $$0.f - (double)$$1, $$0.d + (double)$$1, $$0.e - 0.15F + (double)$$2, $$0.f + (double)$$1);
+   public cra(dhp $$0, ckq $$1) {
+      this(bwb.ay, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dA() - (double)($$1.dq() + 1.0F) * 0.5 * (double)azk.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.dE() - 0.1F,
+         $$1.dG() + (double)($$1.dq() + 1.0F) * 0.5 * (double)azk.b($$1.aU * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   public boolean i(bva $$0) {
-      return $$0 instanceof cra ? false : super.i($$0);
-   }
-
-   @Override
-   protected boolean b(bva $$0) {
-      if ($$0 instanceof cra) {
-         return false;
-      } else {
-         return $$0.aq() == bvi.R ? false : super.b($$0);
-      }
-   }
-
-   @Override
-   protected void a(fbu $$0) {
-      super.a($$0);
-      if (this.dU() instanceof ard $$1) {
-         bvy $$4 = this.q() instanceof bvy $$3 ? $$3 : null;
-         bva $$5 = $$0.a();
-         if ($$4 != null) {
-            $$4.B($$5);
-         }
-
-         btp $$6 = this.dV().c(this, $$4);
-         if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bvy $$7) {
-            ddt.a($$1, (bva)$$7, $$6);
-         }
-
-         this.a(this.ds());
-      }
-   }
-
-   @Override
-   public void j(double $$0, double $$1, double $$2) {
-   }
-
-   protected abstract void a(fbx var1);
-
-   @Override
-   protected void a(fbt $$0) {
-      super.a($$0);
-      if (!this.dU().C) {
-         km $$1 = $$0.c().q();
-         fbx $$2 = fbx.a($$1).d(0.25, 0.25, 0.25);
-         fbx $$3 = $$0.g().e($$2);
-         this.a($$3);
-         this.at();
-      }
-   }
-
-   @Override
-   protected void a(fbv $$0) {
-      super.a($$0);
-      if (!this.dU().C) {
-         this.at();
-      }
-   }
-
-   @Override
-   protected boolean g() {
-      return false;
-   }
-
-   @Override
-   public cxh f() {
-      return cxh.k;
-   }
-
-   @Override
-   protected float m() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float n() {
-      return this.m();
-   }
-
-   @Nullable
-   @Override
-   protected lr j() {
-      return null;
+   protected double bd() {
+      return 0.06;
    }
 
    @Override
    public void h() {
-      if (!this.dU().C && this.dA() > this.dU().ao() + 30) {
-         this.a(this.ds());
+      super.h();
+      fcu $$0 = this.dy();
+      fcs $$1 = crd.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dA() + $$0.d;
+      double $$3 = this.dC() + $$0.e;
+      double $$4 = this.dG() + $$0.f;
+      this.A();
+      float $$5 = 0.99F;
+      if (this.dV().a(this.cR()).noneMatch(dyl.a::l)) {
+         this.at();
+      } else if (this.bj()) {
          this.at();
       } else {
-         super.h();
+         this.i($$0.c(0.99F));
+         this.bf();
+         this.a_($$2, $$3, $$4);
       }
+   }
+
+   @Override
+   protected void a(fcr $$0) {
+      super.a($$0);
+      if (this.q() instanceof bwr $$1) {
+         bvs $$2 = $$0.a();
+         buh $$3 = this.dW().b(this, $$1);
+         if (this.dV() instanceof arn $$4 && $$2.a($$4, $$3, 1.0F)) {
+            dej.a($$4, $$2, $$3);
+         }
+      }
+   }
+
+   @Override
+   protected void a(fcq $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.at();
+      }
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+   }
+
+   @Override
+   public void a(abs $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dV().a(lv.ak, this.dA(), this.dC(), this.dG(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.n($$1, $$2, $$3);
    }
 }

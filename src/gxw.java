@@ -1,23 +1,27 @@
-public class gxw extends gxs<hbg, gey> {
-   private final gey a;
+public class gxw extends gyd<had, gds> {
+   private static final ald a = ald.b("textures/entity/creeper/creeper_armor.png");
+   private final gds b;
 
-   public gxw(gva<hbg, gey> $$0, gfy $$1) {
+   public gxw(gwc<had, gds> $$0, ggz $$1) {
       super($$0);
-      this.a = new gey($$1.a(ggb.cR));
+      this.b = new gds($$1.a(ghc.an));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, hbg $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.ao && $$3.z;
-      if (!$$3.z || $$6) {
-         fgv $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(gnh.s(gvh.a));
-         } else {
-            $$7 = $$1.getBuffer(gnh.j(gvh.a));
-         }
+   protected boolean a(had $$0) {
+      return $$0.b;
+   }
 
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gue.a($$3, 0.0F));
-      }
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected ald a() {
+      return a;
+   }
+
+   protected gds b() {
+      return this.b;
    }
 }

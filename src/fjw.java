@@ -1,99 +1,56 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fjw extends hmd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("mco.configure.world.buttons.invite");
-   private static final wp c = wp.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final wp C = wp.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final wp D = wp.c("mco.configure.world.players.error").b(-65536);
-   private final fte E = new fte(this);
-   private fpz F;
-   private fpq G;
-   private final fii H;
-   private final fjr I;
-   private final fvi J;
-   @Nullable
-   private wp K;
+public class fjw extends fjt {
+   private static final Logger e = LogUtils.getLogger();
+   public List<fjv> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public fjw(fjr $$0, fvi $$1, fii $$2) {
-      super(b);
-      this.I = $$0;
-      this.J = $$1;
-      this.H = $$2;
+   public fjw() {
    }
 
-   @Override
-   public void aR_() {
-      this.E.a(b, this.p);
-      fti $$0 = this.E.c(fti.d().a(8));
-      this.F = new fpz(this.m.h, 200, 20, wp.c("mco.configure.world.invite.profile.name"));
-      $$0.a(fta.a(this.p, this.F, c));
-      this.G = $$0.a(fpq.a(b, $$0x -> this.E()).a(200).a());
-      this.E.b(fpq.a(wo.k, $$0x -> this.aO_()).a(200).a());
-      this.E.a($$1 -> {
-         fpo var10000 = this.c($$1);
-      });
-      this.c();
+   public fjw(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   @Override
-   protected void c() {
-      this.E.a();
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
    }
 
-   @Override
-   protected void aF_() {
-      this.b(this.F);
-   }
+   public static fjw a(String $$0) {
+      fjw $$1 = new fjw();
+      $$1.a = Lists.newArrayList();
 
-   private void E() {
-      if (azw.h(this.F.a())) {
-         this.a(D);
-      } else {
-         long $$0 = this.H.a;
-         String $$1 = this.F.a().trim();
-         this.G.j = false;
-         this.F.e(false);
-         this.a(C);
-         CompletableFuture.<fii>supplyAsync(() -> {
-            try {
-               return fhh.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(fjv.a($$4.next().getAsJsonObject()));
             }
-         }, af.i()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.H.h = $$0x.h;
-               this.m.a(new fkc(this.I, this.H));
-            } else {
-               this.a(D);
-            }
+         }
 
-            this.F.e(true);
-            this.G.j = true;
-         }, this.r);
+         $$1.b = flp.a("page", $$3, 0);
+         $$1.c = flp.a("size", $$3, 0);
+         $$1.d = flp.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
-   }
 
-   private void a(wp $$0) {
-      this.K = $$0;
-      this.m.aY().c($$0);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.J);
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.K != null) {
-         $$0.a(this.p, this.K, this.n / 2, this.G.G() + this.G.y() + 8, -1);
-      }
+      return $$1;
    }
 }

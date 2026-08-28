@@ -1,77 +1,75 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class axr<T> extends AbstractCollection<T> {
-   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
-   private final Class<T> b;
-   private final List<T> c = Lists.newArrayList();
-
-   public axr(Class<T> $$0) {
-      this.b = $$0;
-      this.a.put($$0, this.c);
+public class axr {
+   public static Map<alc<? extends kf<?>>, axr.a> a(jz<alm> $$0) {
+      return kj.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> !((axr.a)$$0x.getSecond()).a())
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   @Override
-   public boolean add(T $$0) {
-      boolean $$1 = false;
+   private static <T> axr.a a(kf<T> $$0) {
+      Map<ald, IntList> $$1 = new HashMap<>();
+      $$0.l().forEach($$2 -> {
+         IntList $$3 = new IntArrayList($$2.b());
 
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            $$1 |= $$2.getValue().add($$0);
+         for (js<T> $$4 : $$2) {
+            if ($$4.f() != js.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$4);
+            }
+
+            $$3.add($$0.a($$4.a()));
          }
+
+         $$1.put($$2.h().b(), $$3);
+      });
+      return new axr.a($$1);
+   }
+
+   static <T> axq.c<T> a(kf<T> $$0, axr.a $$1) {
+      alc<? extends kf<T>> $$2 = $$0.g();
+      Map<axp<T>, List<js<T>>> $$3 = new HashMap<>();
+      $$1.b.forEach(($$3x, $$4) -> {
+         axp<T> $$5 = axp.a($$2, $$3x);
+         List<js<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.put($$5, $$6);
+      });
+      return new axq.c<>($$2, $$3);
+   }
+
+   public static final class a {
+      public static final axr.a a = new axr.a(Map.of());
+      final Map<ald, IntList> b;
+
+      a(Map<ald, IntList> $$0) {
+         this.b = $$0;
       }
 
-      return $$1;
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            List<T> $$3 = $$2.getValue();
-            $$1 |= $$3.remove($$0);
-         }
+      public void a(vr $$0) {
+         $$0.a(this.b, vr::a, vr::a);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      return this.a($$0.getClass()).contains($$0);
-   }
-
-   public <S> Collection<S> a(Class<S> $$0) {
-      if (!this.b.isAssignableFrom($$0)) {
-         throw new IllegalArgumentException("Don't know how to search for " + $$0);
-      } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(af.b()));
-         return (Collection<S>)Collections.unmodifiableCollection($$1);
+      public static axr.a b(vr $$0) {
+         return new axr.a($$0.a(vr::q, vr::a));
       }
-   }
 
-   @Override
-   public Iterator<T> iterator() {
-      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
-   }
+      public boolean a() {
+         return this.b.isEmpty();
+      }
 
-   public List<T> a() {
-      return ImmutableList.copyOf(this.c);
-   }
+      public int b() {
+         return this.b.size();
+      }
 
-   @Override
-   public int size() {
-      return this.c.size();
+      public <T> axq.c<T> a(kf<T> $$0) {
+         return axr.a($$0, this);
+      }
    }
 }

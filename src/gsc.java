@@ -1,32 +1,61 @@
 import com.google.common.collect.Maps;
-import java.util.Locale;
 import java.util.Map;
 
-public class gsc extends grx<cje, gyr, gbx> {
-   private static final Map<cje.e, aku> a = af.a(Maps.newHashMap(), $$0 -> {
-      for (cje.e $$1 : cje.e.values()) {
-         $$0.put($$1, aku.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+public class gsc implements gsa.a {
+   private static final float a = 0.02F;
+   private final Map<jj, gsc.a> b = Maps.newHashMap();
+
+   public void a(jj $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gsc.a($$1, $$2, af.c() + (long)$$3));
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
+      long $$5 = af.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gsc.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(fho $$0, gny $$1, jj $$2, gsc.a $$3) {
+      gsa.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gsa.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
-   });
-
-   public gsc(gtd.a $$0) {
-      super($$0, new gbx($$0.a(ggb.m)), new gbx($$0.a(ggb.n)), 0.5F);
    }
 
-   public aku a(gyr $$0) {
-      return a.get($$0.a);
-   }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-   public gyr a() {
-      return new gyr();
-   }
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   public void a(cje $$0, gyr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b = $$0.bM.a($$2);
-      $$1.d = $$0.bN.a($$2);
-      $$1.e = $$0.bO.a($$2);
-      $$1.c = $$0.bP.a($$2);
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

@@ -1,20 +1,8 @@
-public interface fcb {
-   fcb a = ($$0, $$1) -> false;
-   fcb b = ($$0, $$1) -> !$$0 && !$$1;
-   fcb c = ($$0, $$1) -> $$1 && !$$0;
-   fcb d = ($$0, $$1) -> !$$0;
-   fcb e = ($$0, $$1) -> $$0 && !$$1;
-   fcb f = ($$0, $$1) -> !$$1;
-   fcb g = ($$0, $$1) -> $$0 != $$1;
-   fcb h = ($$0, $$1) -> !$$0 || !$$1;
-   fcb i = ($$0, $$1) -> $$0 && $$1;
-   fcb j = ($$0, $$1) -> $$0 == $$1;
-   fcb k = ($$0, $$1) -> $$1;
-   fcb l = ($$0, $$1) -> !$$0 || $$1;
-   fcb m = ($$0, $$1) -> $$0;
-   fcb n = ($$0, $$1) -> $$0 || !$$1;
-   fcb o = ($$0, $$1) -> $$0 || $$1;
-   fcb p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fcb {
 }

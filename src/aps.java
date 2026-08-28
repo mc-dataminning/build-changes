@@ -1,127 +1,47 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class aps extends avd {
-   private static final Logger h = LogUtils.getLogger();
+public class aps {
+   private static final int a = -1;
 
-   public aps(apt $$0, jy<ald> $$1, ewf $$2) {
-      super($$0, $$1, $$2, $$0.a().G);
-      apu $$3 = $$0.a();
-      this.a($$3.E);
-      this.b($$3.F);
-      super.a($$3.W.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
-      }
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)ey.a("clear").executes($$0x -> a((ex)$$0x.getSource(), -1)))
+                        .then(ey.a("duration", gn.a(1)).executes($$0x -> a((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ey.a("rain").executes($$0x -> b((ex)$$0x.getSource(), -1)))
+                     .then(ey.a("duration", gn.a(1)).executes($$0x -> b((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)ey.a("thunder").executes($$0x -> c((ex)$$0x.getSource(), -1)))
+                  .then(ey.a("duration", gn.a(1)).executes($$0x -> c((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
+      );
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
+   private static int a(ex $$0, int $$1, bsv $$2) {
+      return $$1 == -1 ? $$2.a($$0.l().J().C_()) : $$1;
    }
 
-   @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
+   private static int a(ex $$0, int $$1) {
+      $$0.l().J().a(a($$0, $$1, arn.b), 0, false, false);
+      $$0.a(() -> wv.c("commands.weather.set.clear"), true);
+      return $$1;
    }
 
-   @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
+   private static int b(ex $$0, int $$1) {
+      $$0.l().J().a(0, a($$0, $$1, arn.c), true, false);
+      $$0.a(() -> wv.c("commands.weather.set.rain"), true);
+      return $$1;
    }
 
-   @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         h.warn("Failed to save ip banlist: ", var2);
-      }
-   }
-
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         h.warn("Failed to save user banlist: ", var2);
-      }
-   }
-
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         h.warn("Failed to load ip banlist: ", var2);
-      }
-   }
-
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         h.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         h.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         h.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         h.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         h.warn("Failed to save white-list: ", var2);
-      }
-   }
-
-   @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public apt b() {
-      return (apt)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+   private static int c(ex $$0, int $$1) {
+      $$0.l().J().a(0, a($$0, $$1, arn.d), true, true);
+      $$0.a(() -> wv.c("commands.weather.set.thunder"), true);
+      return $$1;
    }
 }

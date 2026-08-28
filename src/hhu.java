@@ -1,72 +1,37 @@
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hhu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akn b = akn.a("items");
+public record hhu(ald a, @Nullable String b, @Nullable ald c, @Nullable ald d, hhu.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public static CompletableFuture<hhu.a> a(aup $$0, Executor $$1) {
-      return CompletableFuture.<Map<aku, aun>>supplyAsync(() -> b.a($$0), $$1)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<hhu.b>> $$2 = new ArrayList<>($$1x.size());
-               $$1x.forEach(
-                  ($$2x, $$3) -> $$2.add(
-                        CompletableFuture.supplyAsync(
-                           () -> {
-                              aku $$2xx = b.b($$2x);
+      private final String c;
 
-                              try {
-                                 hhu.b var5;
-                                 try (Reader $$3x = $$3.e()) {
-                                    hcg $$4 = (hcg)hcg.a
-                                       .parse(JsonOps.INSTANCE, JsonParser.parseReader($$3x))
-                                       .ifError(
-                                          $$2xxx -> a.error("Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$2xx, $$3.b(), $$2xxx.message()})
-                                       )
-                                       .result()
-                                       .orElse(null);
-                                    var5 = new hhu.b($$2xx, $$4);
-                                 }
+      private a(final String $$0) {
+         this.c = $$0;
+      }
 
-                                 return var5;
-                              } catch (Exception var8) {
-                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$2x, $$3.b(), var8});
-                                 return new hhu.b($$2xx, null);
-                              }
-                           },
-                           $$1
-                        )
-                     )
-               );
-               return af.d($$2).thenApply($$0xx -> {
-                  Map<aku, hcg> $$1xx = new HashMap<>();
-
-                  for (hhu.b $$2x : $$0xx) {
-                     if ($$2x.b != null) {
-                        $$1xx.put($$2x.a, $$2x.b);
-                     }
+      public static hhu.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
                   }
-
-                  return new hhu.a($$1xx);
-               });
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
             }
-         );
-   }
+         }
+      }
 
-   public static record a(Map<aku, hcg> a) {
-   }
-
-   static record b(aku a, @Nullable hcg b) {
+      public String a() {
+         return this.c;
+      }
    }
 }

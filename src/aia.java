@@ -1,85 +1,28 @@
-public class aia implements yw<agf> {
-   public static final yn<vl, aia> a = yw.a(aia::a, aia::new);
-   private final ji b;
-   private final aku c;
-   private final aku d;
-   private final aku e;
-   private final String f;
-   private final dvv.a g;
-   private final int h;
-   private final int i;
+public record aia(int b, int c) implements zc<agm> {
+   public static final yt<vr, aia> a = zc.a(aia::a, aia::new);
 
-   public aia(ji $$0, aku $$1, aku $$2, aku $$3, String $$4, dvv.a $$5, int $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   private aia(vr $$0) {
+      this($$0.l(), $$0.l());
+      if (this.c < 0 && this.c != -1) {
+         throw new IllegalArgumentException("Invalid selectedItemIndex: " + this.c);
+      }
    }
 
-   private aia(vl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dvv.a.c.a($$0.p(), dvv.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public yy<aia> a() {
-      return agd.cf;
+   public ze<aia> a() {
+      return agk.bm;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public ji b() {
-      return this.b;
-   }
-
-   public aku e() {
+   public int e() {
       return this.c;
-   }
-
-   public aku f() {
-      return this.d;
-   }
-
-   public aku g() {
-      return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dvv.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
    }
 }

@@ -1,54 +1,107 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public abstract class hjx implements hkp {
+   protected hkm a;
+   protected final awl b;
+   protected final ald c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hkp.a k = hkp.a.b;
+   protected boolean l;
+   protected azs m;
 
-public interface hjx<T> {
-   static <T> hjx<T> a() {
-      return new hjx<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   protected hjx(awj $$0, awl $$1, azs $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   static <T> hjx<T> a(List<T> $$0, Function<T, Stream<aku>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final hjz<T> $$2 = new hjz<>();
-         final hjz<T> $$3 = new hjz<>();
+   protected hjx(ald $$0, awl $$1, azs $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
 
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
+   @Override
+   public ald a() {
+      return this.c;
+   }
+
+   @Override
+   public hlw a(hlv $$0) {
+      if (this.c.equals(hlv.c)) {
+         this.a = hlv.e;
+         return hlv.d;
+      } else {
+         hlw $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hlv.b;
+         } else {
+            this.a = $$1.a(this.m);
          }
 
-         $$2.a();
-         $$3.a();
-         return new hjx<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
+         return $$1;
       }
    }
 
-   List<T> a(String var1);
+   @Override
+   public hkm b() {
+      return this.a;
+   }
 
-   List<T> b(String var1);
+   @Override
+   public awl c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hkp.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
+   }
 }

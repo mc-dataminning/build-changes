@@ -1,294 +1,51 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Objects;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
-
-public class fvk extends fvi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wp b = wp.c("narrator.screen.title");
-   private static final wp c = wp.c("title.credits");
-   private static final String d = "Demo_World";
-   private static final float s = 2000.0F;
-   @Nullable
-   private fqu u;
-   private fpq v;
-   @Nullable
-   private fjz w;
-   private float x = 1.0F;
-   private boolean y;
-   private long z;
-   private final fqh A;
+public class fvk extends fwf {
+   private static final ald a = ald.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private frg d = frg.a;
+   private frg s = frg.a;
 
    public fvk() {
-      this(false);
-   }
-
-   public fvk(boolean $$0) {
-      this($$0, null);
-   }
-
-   public fvk(boolean $$0, @Nullable fqh $$1) {
-      super(b);
-      this.y = $$0;
-      this.A = Objects.requireNonNullElseGet($$1, () -> new fqh(false));
-   }
-
-   private boolean m() {
-      return this.w != null;
+      super(wv.c("demo.help.title"));
    }
 
    @Override
-   public void e() {
-      if (this.m()) {
-         this.w.e();
-      }
-   }
-
-   public static void a(hft $$0) {
-      $$0.a(fqh.a);
-      $$0.a(fqh.c);
-      $$0.a(gna.a);
-      e.a($$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public boolean aG_() {
-      return false;
-   }
-
-   @Override
-   protected void aR_() {
-      if (this.u == null) {
-         this.u = this.m.aL().a();
-      }
-
-      int $$0 = this.p.a(c);
-      int $$1 = this.n - $$0 - 2;
-      int $$2 = 24;
-      int $$3 = this.o / 4 + 48;
-      if (this.m.K()) {
-         $$3 = this.c($$3, 24);
-      } else {
-         $$3 = this.b($$3, 24);
-      }
-
-      $$3 = this.a($$3, 24);
-      fqv $$4 = this.c(fpu.a(20, $$0x -> this.m.a(new fyi(this, this.m.n, this.m.ah())), true));
-      int var10001 = this.n / 2 - 124;
-      $$3 += 36;
-      $$4.c(var10001, $$3);
-      this.c(fpq.a(wp.c("menu.options"), $$0x -> this.m.a(new fyl(this, this.m.n))).a(this.n / 2 - 100, $$3, 98, 20).a());
-      this.c(fpq.a(wp.c("menu.quit"), $$0x -> this.m.q()).a(this.n / 2 + 2, $$3, 98, 20).a());
-      fqv $$5 = this.c(fpu.b(20, $$0x -> this.m.a(new fyf(this, this.m.n)), true));
-      $$5.c(this.n / 2 + 104, $$3);
-      this.c(new fqo($$1, this.o - 10, $$0, 10, c, $$0x -> this.m.a(new fuk(this)), this.p));
-      if (this.w == null) {
-         this.w = new fjz();
-      }
-
-      if (this.m()) {
-         this.w.b(this.m, this.n, this.o);
-      }
-   }
-
-   private int a(int $$0, int $$1) {
-      if (ab.aU) {
-         this.c(fpq.a(wp.b("Create Test World"), $$0x -> gah.b(this.m, this)).a(this.n / 2 - 100, $$0 += $$1, 200, 20).a());
-      }
-
-      return $$0;
-   }
-
-   private int b(int $$0, int $$1) {
-      this.c(fpq.a(wp.c("menu.singleplayer"), $$0x -> this.m.a(new gap(this))).a(this.n / 2 - 100, $$0, 200, 20).a());
-      wp $$2 = this.E();
-      boolean $$3 = $$2 == null;
-      frb $$4 = $$2 != null ? frb.a($$2) : null;
-      int var6;
-      this.c(fpq.a(wp.c("menu.multiplayer"), $$0x -> {
-         fvi $$1x = (fvi)(this.m.n.u ? new fxy(this) : new fxz(this));
-         this.m.a($$1x);
-      }).a(this.n / 2 - 100, var6 = $$0 + $$1, 200, 20).a($$4).a()).j = $$3;
-      this.c(fpq.a(wp.c("menu.online"), $$0x -> this.m.a(new fhc(this))).a(this.n / 2 - 100, $$0 = var6 + $$1, 200, 20).a($$4).a()).j = $$3;
-      return $$0;
-   }
-
-   @Nullable
-   private wp E() {
-      if (this.m.F()) {
-         return null;
-      } else if (this.m.I()) {
-         return wp.c("title.multiplayer.disabled.banned.name");
-      } else {
-         BanDetails $$0 = this.m.H();
-         if ($$0 != null) {
-            return $$0.expires() != null ? wp.c("title.multiplayer.disabled.banned.temporary") : wp.c("title.multiplayer.disabled.banned.permanent");
-         } else {
-            return wp.c("title.multiplayer.disabled");
-         }
-      }
-   }
-
-   private int c(int $$0, int $$1) {
-      boolean $$2 = this.F();
-      this.c(fpq.a(wp.c("menu.playdemo"), $$1x -> {
-         if ($$2) {
-            this.m.x().a("Demo_World", () -> this.m.a(this));
-         } else {
-            this.m.x().a("Demo_World", MinecraftServer.d, eem.b, enz::a, this);
-         }
-      }).a(this.n / 2 - 100, $$0, 200, 20).a());
-      int var4;
-      this.v = this.c(
-         fpq.a(
-               wp.c("menu.resetdemo"),
-               $$0x -> {
-                  ewc $$1x = this.m.m();
-
-                  try (ewc.c $$2x = $$1x.e("Demo_World")) {
-                     if ($$2x.m()) {
-                        this.m
-                           .a(
-                              new fug(
-                                 this::c,
-                                 wp.c("selectWorld.deleteQuestion"),
-                                 wp.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
-                                 wp.c("selectWorld.deleteButton"),
-                                 wo.e
-                              )
-                           );
-                     }
-                  } catch (IOException var8) {
-                     frz.a(this.m, "Demo_World");
-                     a.warn("Failed to access demo world", var8);
-                  }
-               }
-            )
-            .a(this.n / 2 - 100, var4 = $$0 + $$1, 200, 20)
-            .a()
+   protected void aN_() {
+      int $$0 = -16;
+      this.c(fqn.a(wv.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         af.n().a(ayf.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fqn.a(wv.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      fnh $$1 = this.m.n;
+      this.d = frg.a(
+         this.p,
+         wv.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         wv.c("demo.help.movementMouse"),
+         wv.a("demo.help.jump", $$1.z.k()),
+         wv.a("demo.help.inventory", $$1.C.k())
       );
-      this.v.j = $$2;
-      return var4;
-   }
-
-   private boolean F() {
-      try {
-         boolean var2;
-         try (ewc.c $$0 = this.m.m().e("Demo_World")) {
-            var2 = $$0.m();
-         }
-
-         return var2;
-      } catch (IOException var6) {
-         frz.a(this.m, "Demo_World");
-         a.warn("Failed to read demo world data", var6);
-         return false;
-      }
+      this.s = frg.a(this.p, wv.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      if (this.z == 0L && this.y) {
-         this.z = af.c();
-      }
-
-      float $$4 = 1.0F;
-      if (this.y) {
-         float $$5 = (float)(af.c() - this.z) / 2000.0F;
-         if ($$5 > 1.0F) {
-            this.y = false;
-            this.x = 1.0F;
-         } else {
-            $$5 = ayz.a($$5, 0.0F, 1.0F);
-            $$4 = ayz.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
-            this.x = ayz.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
-         }
-
-         this.a($$4);
-      }
-
-      this.a($$0, $$3);
-      int $$6 = ayz.f($$4 * 255.0F) << 24;
-      if (($$6 & -67108864) != 0) {
-         super.a($$0, $$1, $$2, $$3);
-         this.A.a($$0, this.n, $$4);
-         if (this.u != null && !this.m.n.c().c()) {
-            this.u.a($$0, this.n, this.p, $$6);
-         }
-
-         String $$7 = "Minecraft " + ab.b().c();
-         if (this.m.K()) {
-            $$7 = $$7 + " Demo";
-         } else {
-            $$7 = $$7 + ("release".equalsIgnoreCase(this.m.j()) ? "" : "/" + this.m.j());
-         }
-
-         if (fmg.e().a()) {
-            $$7 = $$7 + hgz.a("menu.modded");
-         }
-
-         $$0.b(this.p, $$7, 2, this.o - 10, 16777215 | $$6);
-         if (this.m() && $$4 >= 1.0F) {
-            this.w.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private void a(float $$0) {
-      for (frn $$1 : this.aH_()) {
-         if ($$1 instanceof fpo $$2) {
-            $$2.a($$0);
-         }
-      }
+   public void b(fpz $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(goi::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
    }
 
    @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(fpc $$0, float $$1) {
-      f.a($$0, this.n, this.o, this.x, $$1);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return super.a($$0, $$1, $$2) ? true : this.m() && this.w.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void aI_() {
-      if (this.w != null) {
-         this.w.aI_();
-      }
-   }
-
-   @Override
-   public void aJ_() {
-      super.aJ_();
-      if (this.w != null) {
-         this.w.aJ_();
-      }
-   }
-
-   private void c(boolean $$0) {
-      if ($$0) {
-         try (ewc.c $$1 = this.m.m().e("Demo_World")) {
-            $$1.k();
-         } catch (IOException var7) {
-            frz.b(this.m, "Demo_World");
-            a.warn("Failed to delete demo world", var7);
-         }
-      }
-
-      this.m.a(this);
+   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

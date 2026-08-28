@@ -1,31 +1,37 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bhi extends DataFix {
-   public bhi(Schema $$0) {
-      super($$0, false);
+public class bhi extends bhm {
+   public bhi(Schema $$0, String $$1) {
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", biq.D, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(bic.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
-            )
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   private static String a(String $$0) {
-      return switch ($$0) {
-         case "0" -> "false";
-         case "1", "2" -> "true";
-         default -> $$0;
-      };
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Brain", this::b);
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("memories", this::c);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.updateMapValues(this::a);
+   }
+
+   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      return $$0.mapSecond(this::d);
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
    }
 }

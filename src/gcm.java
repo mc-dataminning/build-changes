@@ -1,45 +1,68 @@
-public class gcm extends gdv {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final ggc d;
-   private final ggc e;
+public class gcm<S extends hbb> extends geo<S> {
+   private static final String x = "left_sleeve";
+   private static final String y = "right_sleeve";
+   private static final String z = "left_pants";
+   private static final String A = "right_pants";
+   public final ghd a = this.s.b("left_sleeve");
+   public final ghd b = this.r.b("right_sleeve");
+   public final ghd c = this.u.b("left_pants");
+   public final ghd d = this.t.b("right_pants");
+   public final ghd e = this.q.b("jacket");
+   public final ghd f = this.o.b("right_ear");
+   public final ghd g = this.o.b("left_ear");
 
-   public gcm(ggc $$0) {
-      super($$0, gnh::d);
-      this.d = $$0.b("lid");
-      this.e = $$0.b("lock");
+   public gcm(ghd $$0) {
+      super($$0, goi::j);
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a("bottom", ggh.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gge.a);
-      $$1.a("lid", ggh.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gge.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", ggh.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gge.a(0.0F, 9.0F, 1.0F));
-      return ggi.a($$0, 64, 64);
+   public static ghl a(ghh $$0) {
+      ghl $$1 = gfg.a($$0, false);
+      ghn $$2 = $$1.a();
+      $$2.a("body", ghi.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), ghf.a);
+      ghn $$3 = a($$0, $$1);
+      $$3.a("hat");
+      return $$1;
    }
 
-   public static ggi b() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a("bottom", ggh.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gge.a);
-      $$1.a("lid", ggh.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gge.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", ggh.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gge.a(0.0F, 9.0F, 1.0F));
-      return ggi.a($$0, 64, 64);
+   public static ghn a(ghh $$0, ghl $$1) {
+      ghn $$2 = $$1.a();
+      ghn $$3 = $$2.a(
+         "head",
+         ghi.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         ghf.a
+      );
+      $$3.a("left_ear", ghi.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), ghf.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", ghi.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), ghf.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+      return $$3;
    }
 
-   public static ggi c() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a("bottom", ggh.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gge.a);
-      $$1.a("lid", ggh.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gge.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", ggh.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gge.a(0.0F, 9.0F, 1.0F));
-      return ggi.a($$0, 64, 64);
+   @Override
+   public void a(S $$0) {
+      super.a($$0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      float $$3 = (float) (Math.PI / 6);
+      float $$4 = $$0.u * 0.1F + $$1 * 0.5F;
+      float $$5 = 0.08F + $$2 * 0.4F;
+      this.g.g = (float) (-Math.PI / 6) - azk.b($$4 * 1.2F) * $$5;
+      this.f.g = (float) (Math.PI / 6) + azk.b($$4) * $$5;
    }
 
-   public void a(float $$0) {
-      this.d.e = -($$0 * (float) (Math.PI / 2));
-      this.e.e = this.d.e;
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

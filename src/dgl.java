@@ -1,25 +1,57 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public interface dgl extends dgr, dhc, dhe {
-   @Override
-   default <T extends dus> Optional<T> a(ji $$0, duu<T> $$1) {
-      return dhc.super.a($$0, $$1);
+public record dgl(js<cxu> d, int e, kv f, cxy g) {
+   public static final Codec<dgl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxu.e.fieldOf("id").forGetter(dgl::a),
+               ays.m.fieldOf("count").orElse(1).forGetter(dgl::b),
+               kv.a.optionalFieldOf("components", kv.c).forGetter(dgl::c)
+            )
+            .apply($$0, dgl::new)
+   );
+   public static final yt<wg, dgl> b = yt.a(cxu.f, dgl::a, yr.h, dgl::b, kv.b, dgl::c, dgl::new);
+   public static final yt<wg, Optional<dgl>> c = b.a(yr::a);
+
+   public dgl(dho $$0) {
+      this($$0, 1);
    }
 
-   @Override
-   default List<fcr> c(@Nullable bva $$0, fbs $$1) {
-      return dgr.super.c($$0, $$1);
+   public dgl(dho $$0, int $$1) {
+      this($$0.i().f(), $$1, kv.c);
    }
 
-   @Override
-   default boolean a(@Nullable bva $$0, fcr $$1) {
-      return dgr.super.a($$0, $$1);
+   public dgl(js<cxu> $$0, int $$1, kv $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Override
-   default ji a(edo.a $$0, ji $$1) {
-      return dhc.super.a($$0, $$1);
+   public dgl a(UnaryOperator<kv.a> $$0) {
+      return new dgl(this.d, this.e, $$0.apply(kv.a()).a());
+   }
+
+   private static cxy a(js<cxu> $$0, int $$1, kv $$2) {
+      return new cxy($$0, $$1, $$2.c());
+   }
+
+   public boolean a(cxy $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public js<cxu> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kv c() {
+      return this.f;
+   }
+
+   public cxy d() {
+      return this.g;
    }
 }

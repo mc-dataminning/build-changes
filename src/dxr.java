@@ -1,159 +1,279 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dxr<O, S extends dxs<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dyt<?>> c;
-   private final ImmutableList<S> d;
-
-   protected dxr(Function<O, S> $$0, O $$1, dxr.b<O, S> $$2, Map<String, dyt<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dyt<?>> $$6 = (Entry<String, dyt<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dyt<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dyt<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dyt<?> $$11 = (dyt<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dyt<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<dyt<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<dyt<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((dyt)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
-         }
-
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
-   }
-
-   private static <S extends dxs<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dyt<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dxs)((dxs)$$1x.getFirst()).b($$3, ((dyt.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dyt<?>> d() {
-      return this.c.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dyt::f).collect(Collectors.toList()))
-         .toString();
-   }
-
+public class dxr {
+   public static final String a = "spawn_data";
+   private static final String m = "next_mob_spawns_at";
+   private static final int n = 20;
+   private static final int o = 18000;
+   public static MapCodec<dxr> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               km.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               km.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               dij.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               alc.a(me.bn).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dxr::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<dij> h;
+   protected Optional<alc<exq>> i;
    @Nullable
-   public dyt<?> a(String $$0) {
-      return (dyt<?>)this.c.get($$0);
+   protected bvs j;
+   @Nullable
+   private bsb<cxy> p;
+   protected double k;
+   protected double l;
+
+   public dxr() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   public static class a<O, S extends dxs<O, S>> {
-      private final O a;
-      private final Map<String, dyt<?>> b = Maps.newHashMap();
+   public dxr(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dij> $$5, Optional<alc<exq>> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
+   public void a() {
+      this.d.clear();
+      this.h = Optional.empty();
+      this.b();
+   }
+
+   public void b() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+   }
+
+   public boolean a(dxo $$0, azs $$1) {
+      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
+      return $$2 || !$$0.b().i().c();
+   }
+
+   public boolean a(dxp $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(arn $$0, dxp $$1, int $$2) {
+      return $$0.ae() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(jj $$0) {
+      if (this.c.isEmpty()) {
+         af.b("Trial Spawner at " + $$0 + " has no detected players");
       }
 
-      public dxr.a<O, S> a(dyt<?>... $$0) {
-         for (dyt<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
+      return Math.max(0, this.c.size() - 1);
+   }
 
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(dyt<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dxr.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.b($$3);
-                  if (!dxr.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+   public void a(arn $$0, jj $$1, dxo $$2) {
+      boolean $$3 = ($$1.a() + $$0.ae()) % 20L != 0L;
+      if (!$$3) {
+         if (!$$2.i().equals(dxs.f) || !$$2.e()) {
+            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
+            boolean $$7;
+            if (!$$2.e() && !$$4.isEmpty()) {
+               Optional<Pair<cqi, js<buu>>> $$6 = a($$0, $$4);
+               $$6.ifPresent($$3x -> {
+                  cqi $$4x = (cqi)$$3x.getFirst();
+                  if ($$3x.getSecond() == buy.E) {
+                     a($$4x);
                   }
-               }
 
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+                  $$0.c(3020, jj.a((kc)$$4x.bE()), 0);
+                  $$2.a($$0, $$1);
+               });
+               $$7 = $$6.isPresent();
+            } else {
+               $$7 = false;
+            }
+
+            if (!$$2.i().equals(dxs.f) || $$7) {
+               boolean $$8 = $$2.f().c.isEmpty();
+               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
+               if (this.c.addAll($$9)) {
+                  this.f = Math.max($$0.ae() + 40L, this.f);
+                  if (!$$7) {
+                     int $$10 = $$2.e() ? 3019 : 3013;
+                     $$0.c($$10, $$1, this.c.size());
+                  }
                }
             }
          }
       }
+   }
 
-      public dxr<O, S> a(Function<O, S> $$0, dxr.b<O, S> $$1) {
-         return new dxr<>($$0, this.a, $$1, this.b);
+   private static Optional<Pair<cqi, js<buu>>> a(arn $$0, List<UUID> $$1) {
+      cqi $$2 = null;
+
+      for (UUID $$3 : $$1) {
+         cqi $$4 = $$0.a($$3);
+         if ($$4 != null) {
+            js<buu> $$5 = buy.H;
+            if ($$4.b($$5)) {
+               return Optional.of(Pair.of($$4, $$5));
+            }
+
+            if ($$4.b(buy.E)) {
+               $$2 = $$4;
+            }
+         }
+      }
+
+      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, buy.E));
+   }
+
+   public void a(dxo $$0, arn $$1) {
+      this.d.stream().map($$1::b).forEach($$1x -> {
+         if ($$1x != null) {
+            $$1.c(3012, $$1x.dv(), dxo.a.a.a());
+            if ($$1x instanceof bwt $$2) {
+               $$2.b($$1);
+            }
+
+            $$1x.a(bvs.e.b);
+         }
+      });
+      if (!$$0.d().i().c()) {
+         this.h = Optional.empty();
+      }
+
+      this.g = 0;
+      this.d.clear();
+      this.f = $$1.ae() + (long)$$0.d().h();
+      $$0.j();
+      this.e = $$1.ae() + $$0.d().a();
+   }
+
+   private static void a(cqi $$0) {
+      buw $$1 = $$0.c(buy.E);
+      if ($$1 != null) {
+         int $$2 = $$1.e() + 1;
+         int $$3 = 18000 * $$2;
+         $$0.e(buy.E);
+         $$0.a(new buw(buy.H, $$3, 0));
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<dyt<?>, Comparable<?>> var2, MapCodec<S> var3);
+   public boolean a(arn $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)$$0.ae() >= (float)$$3 + $$1;
+   }
+
+   public boolean b(arn $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)($$0.ae() - $$3) % $$1 == 0.0F;
+   }
+
+   public boolean a(arn $$0) {
+      return $$0.ae() >= this.e;
+   }
+
+   protected dij b(dxo $$0, azs $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
+      } else {
+         bsb<dij> $$2 = $$0.b().i();
+         Optional<dij> $$3 = $$2.c() ? this.h : $$2.a($$1);
+         this.h = Optional.of($$3.orElseGet(dij::new));
+         $$0.j();
+         return this.h.get();
+      }
+   }
+
+   @Nullable
+   public bvs a(dxo $$0, dhp $$1, dxs $$2) {
+      if (!$$2.d()) {
+         return null;
+      } else {
+         if (this.j == null) {
+            tw $$3 = this.b($$0, $$1.C_()).a();
+            if ($$3.b("id", 8)) {
+               this.j = bwb.a($$3, $$1, bwa.q, Function.identity());
+            }
+         }
+
+         return this.j;
+      }
+   }
+
+   public tw a(dxs $$0) {
+      tw $$1 = new tw();
+      if ($$0 == dxs.c) {
+         $$1.a("next_mob_spawns_at", this.f);
+      }
+
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (ut)dij.b.encodeStart(uk.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
+   }
+
+   public double d() {
+      return this.k;
+   }
+
+   public double e() {
+      return this.l;
+   }
+
+   bsb<cxy> a(arn $$0, dxp $$1, jj $$2) {
+      if (this.p != null) {
+         return this.p;
+      } else {
+         exq $$3 = $$0.p().bc().b($$1.k());
+         exo $$4 = new exo.a($$0).a(fae.b);
+         long $$5 = a($$0, $$2);
+         ObjectArrayList<cxy> $$6 = $$3.a($$4, $$5);
+         if ($$6.isEmpty()) {
+            return bsb.a();
+         } else {
+            bsb.a<cxy> $$7 = bsb.b();
+            ObjectListIterator var10 = $$6.iterator();
+
+            while (var10.hasNext()) {
+               cxy $$8 = (cxy)var10.next();
+               $$7.a($$8.c(1), $$8.M());
+            }
+
+            this.p = $$7.a();
+            return this.p;
+         }
+      }
+   }
+
+   private static long a(arn $$0, jj $$1) {
+      jj $$2 = new jj(azk.d((float)$$1.u() / 30.0F), azk.d((float)$$1.v() / 20.0F), azk.d((float)$$1.w() / 30.0F));
+      return $$0.E() + $$2.a();
    }
 }

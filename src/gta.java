@@ -1,21 +1,29 @@
-public class gta extends guj<cmj, haj, gcz> {
-   private static final aku a = aku.b("textures/entity/endermite.png");
+public class gta extends gvl<cjp, gzn, gcp> {
+   private static final ald a = ald.b("textures/entity/allay/allay.png");
 
-   public gta(gtd.a $$0) {
-      super($$0, new gcz($$0.a(ggb.aK)), 0.3F);
+   public gta(guf.a $$0) {
+      super($$0, new gcp($$0.a(ghc.c)), 0.4F);
+      this.a(new gyl<>(this));
    }
 
-   @Override
-   protected float aV_() {
-      return 180.0F;
-   }
-
-   @Override
-   public aku b(haj $$0) {
+   public ald a(gzn $$0) {
       return a;
    }
 
-   public haj b() {
-      return new haj();
+   public gzn a() {
+      return new gzn();
+   }
+
+   public void a(cjp $$0, gzn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gzp.a($$0, $$1, this.h);
+      $$1.a = $$0.q();
+      $$1.b = $$0.t();
+      $$1.c = $$0.L($$2);
+      $$1.d = $$0.K($$2);
+   }
+
+   protected int a(cjp $$0, jj $$1) {
+      return 15;
    }
 }

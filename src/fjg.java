@@ -1,35 +1,30 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fjg {
-   public final fko a = new fko(af.i(), TimeUnit.MILLISECONDS, af.c);
-   private final List<fko.e<?>> i;
-   public final fko.e<List<fih>> b;
-   public final fko.e<fjg.a> c;
-   public final fko.e<Integer> d;
-   public final fko.e<Boolean> e;
-   public final fko.e<fig> f;
-   public final fko.e<fil> g;
-   public final fjh h = new fjh(new fku());
+public class fjg extends fjt {
+   private static final Logger d = LogUtils.getLogger();
+   @Nullable
+   public String a;
+   @Nullable
+   public String b;
+   @Nullable
+   public String c;
 
-   public fjg(fhh $$0) {
-      this.c = this.a.a("server list", () -> {
-         fik $$1 = $$0.b();
-         return fhc.b() ? new fjg.a($$1.a, $$0.c()) : new fjg.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fkp.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fkp.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fkp.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fkp.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fkp.a);
-      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fkp.a);
-      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
-   }
+   public static fjg a(String $$0) {
+      fjg $$1 = new fjg();
 
-   public List<fko.e<?>> a() {
-      return this.i;
-   }
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = flp.b("address", $$2, null);
+         $$1.b = flp.b("resourcePackUrl", $$2, null);
+         $$1.c = flp.b("resourcePackHash", $$2, null);
+      } catch (Exception var3) {
+         d.error("Could not parse RealmsServerAddress: {}", var3.getMessage());
+      }
 
-   public static record a(List<fii> a, List<fii> b) {
+      return $$1;
    }
 }

@@ -1,39 +1,30 @@
-public class fjh {
-   private final fku a;
-   private boolean b;
-   private String c;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public fjh(fku $$0) {
-      this.a = $$0;
-      fku.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+public class fjh extends fjt {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fjf> a;
 
-   public boolean a() {
-      return this.b;
-   }
+   public static fjh a(String $$0) {
+      fjh $$1 = new fjh();
+      $$1.a = new ArrayList<>();
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fig $$0) {
-      fku.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fku.a b(fig $$0) {
-      fku.a $$1 = this.a.a();
-      if ($$0.a != null && !$$0.a.equals($$1.a)) {
-         fku.a $$2 = new fku.a();
-         $$2.a = $$0.a;
-         $$2.b = true;
-         this.a.a($$2);
-         return $$2;
-      } else {
-         return $$1;
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         if ($$2.get("servers").isJsonArray()) {
+            for (JsonElement $$4 : $$2.get("servers").getAsJsonArray()) {
+               $$1.a.add(fjf.a($$4.getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
+
+      return $$1;
    }
 }

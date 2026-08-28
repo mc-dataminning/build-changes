@@ -1,35 +1,38 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.Codec;
 import java.util.function.IntFunction;
 
-public enum bwk {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
+public enum bwk implements azn, bag {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
 
-   public static final IntFunction<bwk> s = axq.a(bwk::a, values(), axq.a.a);
-   public static final yn<ByteBuf, bwk> t = yl.a(s, bwk::a);
-   private final int u;
+   public static final Codec<bwk> c = bag.a(bwk::values);
+   public static final IntFunction<bwk> d = aya.a(bwk::b, values(), aya.a.a);
+   private final int e;
+   private final String f;
+   private final String g;
 
-   private bwk(final int $$0) {
-      this.u = $$0;
+   private bwk(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public int a() {
-      return this.u;
+   public bwk e() {
+      return this == a ? b : a;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.g;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

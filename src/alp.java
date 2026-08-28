@@ -1,43 +1,13 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+public final class alp extends RuntimeException {
+   public static final alp a = new alp();
 
-public record alp(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, auz d) {
-   private static final String e = "usercache.json";
-
-   public static alp a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      auz $$4 = new auz($$3, new File($$1, "usercache.json"));
-      return new alp($$2, $$0.getServicesKeySet(), $$3, $$4);
+   private alp() {
+      this.setStackTrace(new StackTraceElement[0]);
    }
 
-   @Nullable
-   public azm a() {
-      return azm.a(this.b, ServicesKeyType.PROFILE_KEY);
-   }
-
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
-      return this.c;
-   }
-
-   public auz f() {
-      return this.d;
+   @Override
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
    }
 }

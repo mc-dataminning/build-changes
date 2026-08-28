@@ -18,7 +18,7 @@ public record ci(
             .apply($$0, ci::new)
    );
 
-   public boolean a(cpp $$0) {
+   public boolean a(cqg $$0) {
       return this.a(this.b, $$0.a())
          && this.a(this.c, $$0.b())
          && this.a(this.d, $$0.c())

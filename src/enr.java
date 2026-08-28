@@ -1,25 +1,54 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public interface enr<P extends enq> {
-   enr<enc> a = a("block_predicate_filter", enc.a);
-   enr<ent> b = a("rarity_filter", ent.a);
-   enr<env> c = a("surface_relative_threshold_filter", env.a);
-   enr<enw> d = a("surface_water_depth_filter", enw.a);
-   enr<enb> e = a("biome", enb.a);
-   enr<enf> f = a("count", enf.a);
-   enr<enl> g = a("noise_based_count", enl.a);
-   enr<enm> h = a("noise_threshold_count", enm.a);
-   enr<ene> i = a("count_on_every_layer", ene.a);
-   enr<eng> j = a("environment_scan", eng.a);
-   enr<enj> k = a("heightmap", enj.a);
-   enr<eni> l = a("height_range", eni.a);
-   enr<enk> m = a("in_square", enk.a);
-   enr<ens> n = a("random_offset", ens.a);
-   enr<enh> o = a("fixed_placement", enh.a);
+public class enr extends enn {
+   public static final MapCodec<enr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eff.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               eff.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, enr::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final eff d;
+   private final eff e;
+   private final int f;
 
-   MapCodec<P> codec();
+   private enr(eff $$0, eff $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-   private static <P extends enq> enr<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.S, $$0, () -> $$1);
+   public static enr a(eff $$0, eff $$1, int $$2) {
+      return new enr($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(azs $$0, efi $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = azk.a($$0, $$2 + this.f, $$3);
+         int $$5 = azk.a($$0, $$2, $$4 - 1);
+         return azk.a($$0, $$2, $$5 - 1 + this.f);
+      }
+   }
+
+   @Override
+   public eno<?> a() {
+      return eno.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

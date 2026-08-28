@@ -1,42 +1,468 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dia {
-   public static final Codec<dia> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avz.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dia::new)
-   );
-   public static final dia b = new dia(awa.h, 6000, 8, 2.0);
-   private final jr<avz> c;
-   private final int d;
-   private final int e;
-   private final double f;
+public final class dia {
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = 24;
+   public static final int a = 8;
+   public static final int b = 128;
+   static final int e = (int)Math.pow(17.0, 2.0);
+   private static final bwu[] f = Stream.of(bwu.values()).filter($$0 -> $$0 != bwu.h).toArray(bwu[]::new);
 
-   public dia(jr<avz> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private dia() {
    }
 
-   public jr<avz> a() {
-      return this.c;
+   public static dia.d a(int $$0, Iterable<bvs> $$1, dia.b $$2, dhz $$3) {
+      did $$4 = new did();
+      Object2IntOpenHashMap<bwu> $$5 = new Object2IntOpenHashMap();
+
+      for (bvs $$6 : $$1) {
+         if ($$6 instanceof bwt $$7 && ($$7.fZ() || $$7.Z())) {
+            continue;
+         }
+
+         bwu $$8 = $$6.aq().f();
+         if ($$8 != bwu.h) {
+            jj $$9 = $$6.dv();
+            $$2.query(dgw.a($$9), $$6x -> {
+               dje.b $$7 = a($$9, $$6x).b().a($$6.aq());
+               if ($$7 != null) {
+                  $$4.a($$6.dv(), $$7.b());
+               }
+
+               if ($$6 instanceof bwt) {
+                  $$3.a($$6x.f(), $$8);
+               }
+
+               $$5.addTo($$8, 1);
+            });
+         }
+      }
+
+      return new dia.d($$0, $$5, $$4, $$3);
    }
 
-   public int b() {
-      return this.d;
+   static dis a(jj $$0, eaj $$1) {
+      return $$1.getNoiseBiome(kd.a($$0.u()), kd.a($$0.v()), kd.a($$0.w())).a();
    }
 
-   public int c() {
-      return this.e;
+   public static List<bwu> a(dia.d $$0, boolean $$1, boolean $$2, boolean $$3) {
+      List<bwu> $$4 = new ArrayList<>(f.length);
+
+      for (bwu $$5 : f) {
+         if (($$1 || !$$5.d()) && ($$2 || $$5.d()) && ($$3 || !$$5.e()) && $$0.a($$5)) {
+            $$4.add($$5);
+         }
+      }
+
+      return $$4;
    }
 
-   public double d() {
-      return this.f;
+   public static void a(arn $$0, eat $$1, dia.d $$2, List<bwu> $$3) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:241)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.DoStatement.toJava(DoStatement.java:148)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: invokestatic bqa.a ()Lbqb;
+      // 03: astore 4
+      // 05: aload 4
+      // 07: ldc "spawner"
+      // 09: invokeinterface bqb.a (Ljava/lang/String;)V 2
+      // 0e: aload 3
+      // 0f: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 14: astore 5
+      // 16: aload 5
+      // 18: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 1d: ifeq 59
+      // 20: aload 5
+      // 22: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 27: checkcast bwu
+      // 2a: astore 6
+      // 2c: aload 2
+      // 2d: aload 6
+      // 2f: aload 1
+      // 30: invokevirtual eat.f ()Ldgw;
+      // 33: invokevirtual dia$d.a (Lbwu;Ldgw;)Z
+      // 36: ifeq 56
+      // 39: aload 6
+      // 3b: aload 0
+      // 3c: aload 1
+      // 3d: aload 2
+      // 3e: dup
+      // 3f: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 42: pop
+      // 43: invokedynamic test (Ldia$d;)Ldia$c; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbwb;Ljj;Leaj;)Z, dia$d.a (Lbwb;Ljj;Leaj;)Z, (Lbwb;Ljj;Leaj;)Z ]
+      // 48: aload 2
+      // 49: dup
+      // 4a: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 4d: pop
+      // 4e: invokedynamic run (Ldia$d;)Ldia$a; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbwt;Leaj;)V, dia$d.a (Lbwt;Leaj;)V, (Lbwt;Leaj;)V ]
+      // 53: invokestatic dia.a (Lbwu;Larn;Leat;Ldia$c;Ldia$a;)V
+      // 56: goto 16
+      // 59: aload 4
+      // 5b: invokeinterface bqb.c ()V 1
+      // 60: return
+   }
+
+   public static void a(bwu $$0, arn $$1, eat $$2, dia.c $$3, dia.a $$4) {
+      jj $$5 = a($$1, $$2);
+      if ($$5.v() >= $$1.G_() + 1) {
+         a($$0, $$1, $$2, $$5, $$3, $$4);
+      }
+   }
+
+   @bar
+   public static void a(bwu $$0, arn $$1, jj $$2) {
+      a($$0, $$1, $$1.y($$2), $$2, ($$0x, $$1x, $$2x) -> true, ($$0x, $$1x) -> {
+      });
+   }
+
+   public static void a(bwu $$0, arn $$1, eaj $$2, jj $$3, dia.c $$4, dia.a $$5) {
+      dil $$6 = $$1.b();
+      eak $$7 = $$1.m().g();
+      int $$8 = $$3.v();
+      dym $$9 = $$2.a_($$3);
+      if (!$$9.d($$2, $$3)) {
+         jj.a $$10 = new jj.a();
+         int $$11 = 0;
+
+         for (int $$12 = 0; $$12 < 3; $$12++) {
+            int $$13 = $$3.u();
+            int $$14 = $$3.w();
+            int $$15 = 6;
+            dje.c $$16 = null;
+            bxj $$17 = null;
+            int $$18 = azk.f($$1.A.i() * 4.0F);
+            int $$19 = 0;
+
+            for (int $$20 = 0; $$20 < $$18; $$20++) {
+               $$13 += $$1.A.a(6) - $$1.A.a(6);
+               $$14 += $$1.A.a(6) - $$1.A.a(6);
+               $$10.d($$13, $$8, $$14);
+               double $$21 = (double)$$13 + 0.5;
+               double $$22 = (double)$$14 + 0.5;
+               cqi $$23 = $$1.a($$21, (double)$$8, $$22, -1.0, false);
+               if ($$23 != null) {
+                  double $$24 = $$23.i($$21, (double)$$8, $$22);
+                  if (a($$1, $$2, $$10, $$24)) {
+                     if ($$16 == null) {
+                        Optional<dje.c> $$25 = a($$1, $$6, $$7, $$0, $$1.A, $$10);
+                        if ($$25.isEmpty()) {
+                           break;
+                        }
+
+                        $$16 = $$25.get();
+                        $$18 = $$16.b() + $$1.A.a(1 + $$16.c() - $$16.b());
+                     }
+
+                     if (a($$1, $$0, $$6, $$7, $$16, $$10, $$24) && $$4.test($$16.a(), $$10, $$2)) {
+                        bwt $$26 = a($$1, $$16.a());
+                        if ($$26 == null) {
+                           return;
+                        }
+
+                        $$26.b($$21, (double)$$8, $$22, $$1.A.i() * 360.0F, 0.0F);
+                        if (a($$1, $$26, $$24)) {
+                           $$17 = $$26.a($$1, $$1.d_($$26.dv()), bwa.a, $$17);
+                           $$11++;
+                           $$19++;
+                           $$1.a_($$26);
+                           $$5.run($$26, $$2);
+                           if ($$11 >= $$26.ai()) {
+                              return;
+                           }
+
+                           if ($$26.q($$19)) {
+                              break;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static boolean a(arn $$0, eaj $$1, jj.a $$2, double $$3) {
+      if ($$3 <= 576.0) {
+         return false;
+      } else {
+         return $$0.aa().a(new fcu((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5), 24.0)
+            ? false
+            : Objects.equals(new dgw($$2), $$1.f()) || $$0.g($$2);
+      }
+   }
+
+   private static boolean a(arn $$0, bwu $$1, dil $$2, eak $$3, dje.c $$4, jj.a $$5, double $$6) {
+      bwb<?> $$7 = $$4.a();
+      if ($$7.f() == bwu.h) {
+         return false;
+      } else if (!$$7.e() && $$6 > (double)($$7.f().f() * $$7.f().f())) {
+         return false;
+      } else if (!$$7.c() || !a($$0, $$2, $$3, $$1, $$4, $$5)) {
+         return false;
+      } else if (!bxm.a($$7, $$0, $$5)) {
+         return false;
+      } else {
+         return !bxm.a($$7, $$0, bwa.a, $$5, $$0.A) ? false : $$0.b($$7.a((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5));
+      }
+   }
+
+   @Nullable
+   private static bwt a(arn $$0, bwb<?> $$1) {
+      try {
+         bvs var3 = $$1.a($$0, bwa.a);
+         if (var3 instanceof bwt) {
+            return (bwt)var3;
+         }
+
+         c.warn("Can't spawn entity of type: {}", md.f.b($$1));
+      } catch (Exception var4) {
+         c.warn("Failed to create mob", var4);
+      }
+
+      return null;
+   }
+
+   private static boolean a(arn $$0, bwt $$1, double $$2) {
+      return $$2 > (double)($$1.aq().f().f() * $$1.aq().f().f()) && $$1.h($$2) ? false : $$1.a($$0, bwa.a) && $$1.a((dhs)$$0);
+   }
+
+   private static Optional<dje.c> a(arn $$0, dil $$1, eak $$2, bwu $$3, azs $$4, jj $$5) {
+      js<dis> $$6 = $$0.t($$5);
+      return $$3 == bwu.g && $$6.a(awy.ao) && $$4.i() < 0.98F ? Optional.empty() : a($$0, $$1, $$2, $$3, $$5, $$6).a($$4);
+   }
+
+   private static boolean a(arn $$0, dil $$1, eak $$2, bwu $$3, dje.c $$4, jj $$5) {
+      return a($$0, $$1, $$2, $$3, $$5, null).b($$4);
+   }
+
+   private static bsb<dje.c> a(arn $$0, dil $$1, eak $$2, bwu $$3, jj $$4, @Nullable js<dis> $$5) {
+      return a($$4, $$0, $$3, $$1) ? ern.d : $$2.a($$5 != null ? $$5 : $$0.t($$4), $$1, $$3, $$4);
+   }
+
+   public static boolean a(jj $$0, arn $$1, bwu $$2, dil $$3) {
+      if ($$2 == bwu.a && $$1.a_($$0.e()).a(dkw.fI)) {
+         epg $$4 = $$3.b().f(me.aZ).c(epa.o);
+         return $$4 == null ? false : $$3.a($$0, $$4).b();
+      } else {
+         return false;
+      }
+   }
+
+   private static jj a(dhp $$0, eat $$1) {
+      dgw $$2 = $$1.f();
+      int $$3 = $$2.d() + $$0.A.a(16);
+      int $$4 = $$2.e() + $$0.A.a(16);
+      int $$5 = $$1.a(eel.a.b, $$3, $$4) + 1;
+      int $$6 = azk.b($$0.A, $$0.G_(), $$5);
+      return new jj($$3, $$6, $$4);
+   }
+
+   public static boolean a(dgv $$0, jj $$1, dym $$2, eut $$3, bwb<?> $$4) {
+      if ($$2.m($$0, $$1)) {
+         return false;
+      } else if ($$2.p()) {
+         return false;
+      } else if (!$$3.c()) {
+         return false;
+      } else {
+         return $$2.a(awz.aZ) ? false : !$$4.a($$2);
+      }
+   }
+
+   public static void a(dig $$0, js<dis> $$1, dgw $$2, azs $$3) {
+      dje $$4 = $$1.a().b();
+      bsb<dje.c> $$5 = $$4.a(bwu.b);
+      if (!$$5.c()) {
+         int $$6 = $$2.d();
+         int $$7 = $$2.e();
+
+         while ($$3.i() < $$4.a()) {
+            Optional<dje.c> $$8 = $$5.a($$3);
+            if (!$$8.isEmpty()) {
+               dje.c $$9 = $$8.get();
+               int $$10 = $$9.b() + $$3.a(1 + $$9.c() - $$9.b());
+               bxj $$11 = null;
+               int $$12 = $$6 + $$3.a(16);
+               int $$13 = $$7 + $$3.a(16);
+               int $$14 = $$12;
+               int $$15 = $$13;
+
+               for (int $$16 = 0; $$16 < $$10; $$16++) {
+                  boolean $$17 = false;
+
+                  for (int $$18 = 0; !$$17 && $$18 < 4; $$18++) {
+                     jj $$19 = a($$0, $$9.a(), $$12, $$13);
+                     if ($$9.a().c() && bxm.a($$9.a(), $$0, $$19)) {
+                        float $$20 = $$9.a().l();
+                        double $$21 = azk.a((double)$$12, (double)$$6 + (double)$$20, (double)$$6 + 16.0 - (double)$$20);
+                        double $$22 = azk.a((double)$$13, (double)$$7 + (double)$$20, (double)$$7 + 16.0 - (double)$$20);
+                        if (!$$0.b($$9.a().a($$21, (double)$$19.v(), $$22)) || !bxm.a($$9.a(), $$0, bwa.b, jj.a($$21, (double)$$19.v(), $$22), $$0.C_())) {
+                           continue;
+                        }
+
+                        bvs $$23;
+                        try {
+                           $$23 = $$9.a().a($$0.a(), bwa.a);
+                        } catch (Exception var27) {
+                           c.warn("Failed to create mob", var27);
+                           continue;
+                        }
+
+                        if ($$23 == null) {
+                           continue;
+                        }
+
+                        $$23.b($$21, (double)$$19.v(), $$22, $$3.i() * 360.0F, 0.0F);
+                        if ($$23 instanceof bwt $$26 && $$26.a($$0, bwa.b) && $$26.a($$0)) {
+                           $$11 = $$26.a($$0, $$0.d_($$26.dv()), bwa.b, $$11);
+                           $$0.a_($$26);
+                           $$17 = true;
+                        }
+                     }
+
+                     $$12 += $$3.a(5) - $$3.a(5);
+
+                     for ($$13 += $$3.a(5) - $$3.a(5); $$12 < $$6 || $$12 >= $$6 + 16 || $$13 < $$7 || $$13 >= $$7 + 16; $$13 = $$15 + $$3.a(5) - $$3.a(5)) {
+                        $$12 = $$14 + $$3.a(5) - $$3.a(5);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static jj a(dhs $$0, bwb<?> $$1, int $$2, int $$3) {
+      int $$4 = $$0.a(bxm.b($$1), $$2, $$3);
+      jj.a $$5 = new jj.a($$2, $$4, $$3);
+      if ($$0.B_().h()) {
+         do {
+            $$5.c(jo.a);
+         } while (!$$0.a_($$5).l());
+
+         do {
+            $$5.c(jo.a);
+         } while ($$0.a_($$5).l() && $$5.v() > $$0.G_());
+      }
+
+      return bxm.a($$1).a($$0, $$5.j());
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void run(bwt var1, eaj var2);
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void query(long var1, Consumer<eat> var3);
+   }
+
+   @FunctionalInterface
+   public interface c {
+      boolean test(bwb<?> var1, jj var2, eaj var3);
+   }
+
+   public static class d {
+      private final int a;
+      private final Object2IntOpenHashMap<bwu> b;
+      private final did c;
+      private final Object2IntMap<bwu> d;
+      private final dhz e;
+      @Nullable
+      private jj f;
+      @Nullable
+      private bwb<?> g;
+      private double h;
+
+      d(int $$0, Object2IntOpenHashMap<bwu> $$1, did $$2, dhz $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.e = $$3;
+         this.d = Object2IntMaps.unmodifiable($$1);
+      }
+
+      private boolean a(bwb<?> $$0, jj $$1, eaj $$2) {
+         this.f = $$1;
+         this.g = $$0;
+         dje.b $$3 = dia.a($$1, $$2).b().a($$0);
+         if ($$3 == null) {
+            this.h = 0.0;
+            return true;
+         } else {
+            double $$4 = $$3.b();
+            this.h = $$4;
+            double $$5 = this.c.b($$1, $$4);
+            return $$5 <= $$3.a();
+         }
+      }
+
+      private void a(bwt $$0, eaj $$1) {
+         bwb<?> $$2 = $$0.aq();
+         jj $$3 = $$0.dv();
+         double $$4;
+         if ($$3.equals(this.f) && $$2 == this.g) {
+            $$4 = this.h;
+         } else {
+            dje.b $$5 = dia.a($$3, $$1).b().a($$2);
+            if ($$5 != null) {
+               $$4 = $$5.b();
+            } else {
+               $$4 = 0.0;
+            }
+         }
+
+         this.c.a($$3, $$4);
+         bwu $$8 = $$2.f();
+         this.b.addTo($$8, 1);
+         this.e.a(new dgw($$3), $$8);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public Object2IntMap<bwu> b() {
+         return this.d;
+      }
+
+      boolean a(bwu $$0) {
+         int $$1 = $$0.b() * this.a / dia.e;
+         return this.b.getInt($$0) < $$1;
+      }
+
+      boolean a(bwu $$0, dgw $$1) {
+         return this.e.a($$0, $$1);
+      }
    }
 }

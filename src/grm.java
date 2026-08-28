@@ -1,62 +1,107 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.DoubleSupplier;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class grm implements gqy.a {
-   private final fmg a;
-   private double b = Double.MIN_VALUE;
-   private List<bva> c = Collections.emptyList();
+public class grm {
+   private final gpc a;
+   private final gqj b;
 
-   public grm(fmg $$0) {
+   public grm(gpc $$0, gqj $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bva $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dU().a_($$6, $$6.cQ().g(16.0)));
+   public grm.a a(kl $$0, grk $$1, fhw $$2, gol $$3) {
+      grm.a $$4 = new grm.a();
+      jj $$5 = $$0.j();
+      jj $$6 = $$5.b(15, 15, 15);
+      gro $$7 = new gro();
+      fho $$8 = new fho();
+      gpe.a();
+      Map<goi, fhj> $$9 = new Reference2ObjectArrayMap(goi.Q().size());
+      azs $$10 = azs.a();
+
+      for (jj $$11 : jj.c($$5, $$6)) {
+         dym $$12 = $$1.a_($$11);
+         if ($$12.s()) {
+            $$7.a($$11);
+         }
+
+         if ($$12.x()) {
+            dvl $$13 = $$1.c_($$11);
+            if ($$13 != null) {
+               this.a($$4, $$13);
+            }
+         }
+
+         eut $$14 = $$12.y();
+         if (!$$14.c()) {
+            goi $$15 = gnr.a($$14);
+            fhj $$16 = this.a($$9, $$3, $$15);
+            this.a.a($$11, $$1, $$16, $$12, $$14);
+         }
+
+         if ($$12.o() == drf.b) {
+            goi $$17 = gnr.a($$12);
+            fhj $$18 = this.a($$9, $$3, $$17);
+            $$8.a();
+            $$8.a((float)kl.b($$11.u()), (float)kl.b($$11.v()), (float)kl.b($$11.w()));
+            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
+            $$8.b();
+         }
       }
 
-      cpr $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      for (Entry<goi, fhj> $$19 : $$9.entrySet()) {
+         goi $$20 = $$19.getKey();
+         fhn $$21 = $$19.getValue().a();
+         if ($$21 != null) {
+            if ($$20 == goi.f()) {
+               $$4.e = $$21.a($$3.a(goi.f()), $$2);
+            }
+
+            $$4.c.put($$20, $$21);
+         }
       }
 
-      for (bva $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      gpe.b();
+      $$4.d = $$7.a();
+      return $$4;
+   }
+
+   private fhj a(Map<goi, fhj> $$0, gol $$1, goi $$2) {
+      fhj $$3 = $$0.get($$2);
+      if ($$3 == null) {
+         fhl $$4 = $$1.a($$2);
+         $$3 = new fhj($$4, fht.c.h, fhm.b);
+         $$0.put($$2, $$3);
+      }
+
+      return $$3;
+   }
+
+   private <E extends dvl> void a(grm.a $$0, E $$1) {
+      gqk<E> $$2 = this.b.a($$1);
+      if ($$2 != null) {
+         $$0.b.add($$1);
+         if ($$2.a($$1)) {
+            $$0.a.add($$1);
          }
       }
    }
 
-   private void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4, bva $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         ji $$12 = $$5.aR();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         ji $$13 = $$5.aP();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
+   public static final class a {
+      public final List<dvl> a = new ArrayList<>();
+      public final List<dvl> b = new ArrayList<>();
+      public final Map<goi, fhn> c = new Reference2ObjectArrayMap();
+      public grp d = new grp();
+      @Nullable
+      public fhn.b e;
 
-   private double a(bva $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(ji $$0, fgr $$1, double $$2, double $$3, double $$4, gmx $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gnr.a($$1, $$5.getBuffer(gnh.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gqy.a($$1, $$5.getBuffer(gnh.y()), this.a.s.a_($$0).b(this.a.s, $$0, fcc.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+      public void a() {
+         this.c.values().forEach(fhn::close);
+      }
    }
 }

@@ -1,203 +1,202 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+
 public class qt {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final bac<Float> e = bac.a;
-   private static final bac<Float> f = bac.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final bac<Float> g = bac.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final bac<Float> h = bac.a($$0 -> $$0 * 2.0F);
+   private static final efc.o a = a(dkw.a);
+   private static final efc.o b = a(dkw.I);
+   private static final efc.o c = a(dkw.hG);
+   private static final efc.o d = a(dkw.hH);
+   private static final efc.o e = a(dkw.iY);
+   private static final efc.o f = a(dkw.N);
+   private static final efc.o g = a(dkw.jN);
+   private static final efc.o h = a(dkw.b);
+   private static final efc.o i = a(dkw.tp);
+   private static final efc.o j = a(dkw.j);
+   private static final efc.o k = a(dkw.l);
+   private static final efc.o l = a(dkw.k);
+   private static final efc.o m = a(dkw.fA);
+   private static final efc.o n = a(dkw.i);
+   private static final efc.o o = a(dkw.rr);
+   private static final efc.o p = a(dkw.O);
+   private static final efc.o q = a(dkw.L);
+   private static final efc.o r = a(dkw.bc);
+   private static final efc.o s = a(dkw.ja);
+   private static final efc.o t = a(dkw.ec);
+   private static final efc.o u = a(dkw.to);
+   private static final efc.o v = a(dkw.rt);
+   private static final efc.o w = a(dkw.eb);
+   private static final efc.o x = a(dkw.J);
+   private static final efc.o y = a(dkw.K);
+   private static final efc.o z = a(dkw.ei);
+   private static final efc.o A = a(dkw.ej);
+   private static final efc.o B = a(dkw.ek);
+   private static final efc.o C = a(dkw.el);
+   private static final efc.o D = a(dkw.pV);
+   private static final efc.o E = a(dkw.oR);
+   private static final efc.o F = a(dkw.oP);
+   private static final efc.o G = a(dkw.lm);
+   private static final efc.o H = a(dkw.oY);
+   private static final efc.o I = a(dkw.fU);
 
-   public static <C, I extends bac<C>> ayb<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      bac<Float> $$4 = $$3 ? f : e;
-      ayb<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      ayb<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      ayb<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      ayb<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return ayb.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
+   private static efc.o a(dku $$0) {
+      return efc.a($$0.m());
    }
 
-   public static <C, I extends bac<C>> ayb<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      bac<Float> $$5 = $$4 ? g : e;
-      return ayb.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
+   public static efc.o a() {
+      return a(true, false, true);
    }
 
-   public static <C, I extends bac<C>> ayb<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      bac<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return ayb.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
-   }
-
-   private static <C, I extends bac<C>> ayb<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, bac<Float> $$7) {
-      float $$8 = -0.5775F;
-      ayb<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      ayb<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return ayb.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends bac<C>> ayb<C, I> a(I $$0, I $$1, float $$2, float $$3, bac<Float> $$4) {
-      float $$5 = edv.a(0.4F);
-      float $$6 = edv.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      ayb.b<C, I> $$8 = ayb.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
+   public static efc.o a(boolean $$0, boolean $$1, boolean $$2) {
+      efc.f $$3 = efc.a(eff.a(97), 2);
+      efc.f $$4 = efc.a(eff.a(256), 0);
+      efc.f $$5 = efc.b(eff.a(63), -1);
+      efc.f $$6 = efc.b(eff.a(74), 1);
+      efc.f $$7 = efc.a(eff.a(60), 0);
+      efc.f $$8 = efc.a(eff.a(62), 0);
+      efc.f $$9 = efc.a(eff.a(63), 0);
+      efc.f $$10 = efc.a(-1, 0);
+      efc.f $$11 = efc.a(0, 0);
+      efc.f $$12 = efc.b(-6, -1);
+      efc.f $$13 = efc.b();
+      efc.f $$14 = efc.a(diz.X, diz.Y);
+      efc.f $$15 = efc.a();
+      efc.o $$16 = efc.a(efc.a($$11, n), j);
+      efc.o $$17 = efc.a(efc.a(efc.e, r), q);
+      efc.o $$18 = efc.a(efc.a(efc.e, h), p);
+      efc.f $$19 = efc.a(diz.Q, diz.N, diz.O);
+      efc.f $$20 = efc.a(diz.f);
+      efc.o $$21 = efc.a(
+         efc.a(efc.a(diz.K), efc.a(efc.a(efc.a(eeu.X, -0.0125, 0.0125), o), h)),
+         efc.a(efc.a(diz.P), efc.a(efc.a(efc.a(eeu.Y, -0.05, 0.05), $$18), h)),
+         efc.a(efc.a(diz.u), efc.a(a(1.0), h)),
+         efc.a($$19, $$17),
+         efc.a($$20, $$17),
+         efc.a(efc.a(diz.aa), h)
+      );
+      efc.o $$22 = efc.a(efc.a(eeu.Z, 0.45, 0.58), efc.a($$11, v));
+      efc.o $$23 = efc.a(efc.a(eeu.Z, 0.35, 0.6), efc.a($$11, v));
+      efc.o $$24 = efc.a(
+         efc.a(efc.a(diz.I), efc.a(efc.a($$15, s), efc.a(efc.a(eeu.aa, -0.5, 0.2), s), efc.a(efc.a(eeu.ab, -0.0625, 0.025), w), efc.a($$11, t))),
+         efc.a(efc.a(diz.H), efc.a(efc.a($$15, h), $$22, efc.a($$11, t))),
+         efc.a(efc.a(diz.J), h),
+         efc.a(efc.a(diz.G), efc.a($$22, j)),
+         $$21,
+         efc.a(efc.a(diz.x), efc.a(a(1.75), h)),
+         efc.a(efc.a(diz.v), efc.a(efc.a(a(2.0), $$18), efc.a(a(1.0), h), efc.a(a(-1.0), j), $$18)),
+         efc.a(efc.a(diz.h), u),
+         j
+      );
+      efc.o $$25 = efc.a(
+         efc.a(efc.a(diz.I), efc.a(efc.a($$15, s), efc.a(efc.a(eeu.aa, 0.0, 0.2), s), efc.a(efc.a(eeu.ab, 0.0, 0.025), w), efc.a($$11, t))),
+         efc.a(efc.a(diz.H), efc.a(efc.a($$15, h), $$23, efc.a($$11, t))),
+         efc.a(efc.a(diz.J), efc.a(efc.a($$15, h), efc.a($$11, t))),
+         efc.a(efc.a(diz.G), efc.a($$23, efc.a($$11, t))),
+         $$21,
+         efc.a(efc.a(diz.x), efc.a(efc.a(a(1.75), h), efc.a(a(-0.5), l))),
+         efc.a(efc.a(diz.v), efc.a(efc.a(a(2.0), $$18), efc.a(a(1.0), h), efc.a(a(-1.0), $$16), $$18)),
+         efc.a(efc.a(diz.o, diz.p), efc.a(efc.a(a(1.75), l), efc.a(a(-0.95), k))),
+         efc.a(efc.a(diz.e), efc.a($$11, t)),
+         efc.a(efc.a(diz.h), u),
+         efc.a(efc.a(diz.Z), m),
+         $$16
+      );
+      efc.f $$26 = efc.a(eeu.N, -0.909, -0.5454);
+      efc.f $$27 = efc.a(eeu.N, -0.1818, 0.1818);
+      efc.f $$28 = efc.a(eeu.N, 0.5454, 0.909);
+      efc.o $$29 = efc.a(
+         efc.a(
+            efc.a,
+            efc.a(
+               efc.a(efc.a(diz.D), efc.a($$3, efc.a(efc.a($$26, l), efc.a($$27, l), efc.a($$28, l), $$16))),
+               efc.a(efc.a(diz.g), efc.a($$8, efc.a(efc.a($$9), efc.a(efc.a(eeu.W, 0.0), x)))),
+               efc.a(efc.a(diz.h), efc.a($$7, efc.a(efc.a($$9), efc.a(efc.a(eeu.W, 0.0), x))))
+            )
+         ),
+         efc.a(
+            efc.a(diz.B, diz.C, diz.D),
+            efc.a(
+               efc.a(
+                  efc.a,
+                  efc.a(
+                     efc.a($$4, d),
+                     efc.a($$6, efc.a(efc.a($$26, e), efc.a($$27, e), efc.a($$28, e), efc.e())),
+                     efc.a($$10, efc.a(efc.a(efc.e, g), f)),
+                     efc.a(efc.a($$13), d),
+                     efc.a($$12, c),
+                     $$18
+                  )
+               ),
+               efc.a($$5, efc.a(efc.a($$9, efc.a(efc.a($$6), d)), efc.e())),
+               efc.a(efc.b, efc.a($$12, c))
+            )
+         ),
+         efc.a(efc.a, efc.a($$10, efc.a(efc.a($$14, efc.a($$13, efc.a(efc.a($$11, a), efc.a(efc.d(), w), x))), $$25))),
+         efc.a($$12, efc.a(efc.a(efc.a, efc.a($$14, efc.a($$13, x))), efc.a(efc.b, $$24), efc.a($$19, efc.a(efc.c, r)), efc.a($$20, efc.a(efc.d, r)))),
+         efc.a(efc.a, efc.a(efc.a(efc.a(diz.I, diz.J), h), efc.a(efc.a(diz.Q, diz.R, diz.S), $$17), $$18))
+      );
+      Builder<efc.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(efc.a(efc.a(efc.a("bedrock_roof", eff.c(5), eff.b())), b));
       }
 
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
+      if ($$2) {
+         $$30.add(efc.a(efc.a("bedrock_floor", eff.a(), eff.b(5)), b));
       }
 
-      return $$8.a();
+      efc.o $$31 = efc.a(efc.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(efc.a(efc.a("deepslate", eff.a(0), eff.a(8)), i));
+      return efc.a((efc.o[])$$30.build().toArray(efc.o[]::new));
    }
 
-   private static <C, I extends bac<C>> ayb<C, I> a(I $$0, float $$1, bac<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return ayb.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+   public static efc.o b() {
+      efc.f $$0 = efc.a(eff.a(31), 0);
+      efc.f $$1 = efc.a(eff.a(32), 0);
+      efc.f $$2 = efc.b(eff.a(30), 0);
+      efc.f $$3 = efc.a(efc.b(eff.a(35), 0));
+      efc.f $$4 = efc.a(eff.c(5), 0);
+      efc.f $$5 = efc.b();
+      efc.f $$6 = efc.a(eeu.ac, -0.012);
+      efc.f $$7 = efc.a(eeu.ad, -0.012);
+      efc.f $$8 = efc.a(eeu.ae, -0.012);
+      efc.f $$9 = efc.a(eeu.af, 0.54);
+      efc.f $$10 = efc.a(eeu.ag, 1.17);
+      efc.f $$11 = efc.a(eeu.ah, 0.0);
+      efc.o $$12 = efc.a($$8, efc.a($$2, efc.a($$3, p)));
+      return efc.a(
+         efc.a(efc.a("bedrock_floor", eff.a(), eff.b(5)), b),
+         efc.a(efc.a(efc.a("bedrock_roof", eff.c(5), eff.b())), b),
+         efc.a($$4, z),
+         efc.a(efc.a(diz.ah), efc.a(efc.a(efc.f, C), efc.a(efc.b, efc.a($$12, efc.a($$11, C), D)))),
+         efc.a(efc.a(diz.ag), efc.a(efc.a(efc.f, efc.a(efc.a($$11, A), B)), efc.a(efc.b, efc.a($$12, efc.a($$11, A), B)))),
+         efc.a(
+            efc.a,
+            efc.a(
+               efc.a(efc.a($$1), efc.a($$5, y)),
+               efc.a(efc.a(diz.ae), efc.a(efc.a($$9), efc.a($$0, efc.a(efc.a($$10, E), F)))),
+               efc.a(efc.a(diz.af), efc.a(efc.a($$9), efc.a($$0, efc.a(efc.a($$10, G), H))))
+            )
+         ),
+         efc.a(
+            efc.a(diz.ad),
+            efc.a(
+               efc.a(efc.b, efc.a($$6, efc.a(efc.a(efc.a($$5), efc.a($$2, efc.a($$3, A))), z))),
+               efc.a(efc.a, efc.a($$0, efc.a($$3, efc.a($$7, efc.a(efc.a($$1, p), efc.a(efc.a($$5), p))))))
+            )
+         ),
+         z
+      );
    }
 
-   private static <C, I extends bac<C>> ayb<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, bac<Float> $$5) {
-      ayb<C, I> $$6 = ayb.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      ayb.b<C, I> $$7 = ayb.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, ayb.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, ayb.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         ayb<C, I> $$8 = ayb.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         ayb<C, I> $$9 = ayb.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         ayb<C, I> $$10 = ayb.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         ayb<C, I> $$11 = ayb.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
+   public static efc.o c() {
+      return I;
    }
 
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
+   public static efc.o d() {
+      return a;
    }
 
-   private static <C, I extends bac<C>> ayb<C, I> a(I $$0, float $$1, boolean $$2, bac<Float> $$3) {
-      ayb.b<C, I> $$4 = ayb.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, ayz.h(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends bac<C>> ayb<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, bac<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      ayb<C, I> $$14 = a($$1, ayz.h($$5, 0.6F, 1.5F), $$9, $$10);
-      ayb<C, I> $$15 = a($$1, ayz.h($$5, 0.6F, 1.0F), $$9, $$10);
-      ayb<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      ayb<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, ayz.h(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      ayb<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      ayb<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      ayb<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      ayb<C, I> $$21 = ayb.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      ayb<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      ayb.b<C, I> $$23 = ayb.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends bac<C>> ayb<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, bac<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return ayb.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   private static efc.f a(double $$0) {
+      return efc.a(eeu.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

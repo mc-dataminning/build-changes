@@ -1,33 +1,14 @@
 import io.netty.buffer.ByteBuf;
 
-public record zl(aku c, byte[] d) implements yw<zc> {
-   public static final yn<vl, zl> a = yw.a(zl::a, zl::new);
-   private static final int e = 5120;
-   public static final yn<ByteBuf, byte[]> b = yl.a(5120);
-
-   private zl(vl $$0) {
-      this($$0.q(), b.decode($$0));
-   }
-
-   private void a(vl $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
-   }
+public record zl(wv b) implements zc<zi> {
+   public static final yt<ByteBuf, zl> a = wx.f.a(zl::new, zl::b);
 
    @Override
-   public yy<zl> a() {
-      return zo.i;
+   public ze<zl> a() {
+      return zu.c;
    }
 
-   public void a(zc $$0) {
+   public void a(zi $$0) {
       $$0.a(this);
-   }
-
-   public aku b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
    }
 }

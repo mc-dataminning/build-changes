@@ -1,196 +1,276 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class eve {
-   public static final yn<ByteBuf, eve> a = yl.a(eve::a, eve::i);
-   private static final eve[] b = af.a(() -> {
-      eve[] $$0 = new eve[48];
-      a(new eve(jn.b, jn.c, eve.a.a), $$0);
-      return $$0;
-   });
-   private final jn c;
-   private final jn d;
-   private final jn e;
-   private final eve.a f;
-   private final int g;
-   private final List<jn> h;
-   private final List<jn> i;
-   private final List<jn> j;
-   private final Map<jn, eve> k = new EnumMap<>(jn.class);
-   private final Map<jn, eve> l = new EnumMap<>(jn.class);
-   private final Map<eve.a, eve> m = new EnumMap<>(eve.a.class);
+public class eve extends evp {
+   private final Long2ObjectMap<evk> a = new Long2ObjectOpenHashMap();
+   private static final float m = 1.0F;
+   private static final float n = 1.1F;
+   private static final int o = 10;
 
-   private eve(jn $$0, jn $$1, eve.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      km $$3 = $$1.q().d($$0.q());
-      jn $$4 = jn.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == eve.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
-      }
-
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
-   }
-
-   public static eve a(jn $$0, jn $$1, eve.a $$2) {
-      return b[b($$0, $$1, $$2)];
-   }
-
-   public eve a(jn $$0) {
-      return this.l.get($$0);
-   }
-
-   public eve b(jn $$0) {
-      return this.k.get($$0);
-   }
-
-   public eve c(jn $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
-   }
-
-   public eve d(jn $$0) {
-      eve $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public eve a(eve.a $$0) {
-      return this.m.get($$0);
-   }
-
-   public eve a() {
-      return this.a(this.f.a());
-   }
-
-   public jn b() {
-      return this.d;
-   }
-
-   public jn c() {
-      return this.c;
-   }
-
-   public jn d() {
-      return this.e;
-   }
-
-   public eve.a e() {
-      return this.f;
-   }
-
-   public List<jn> f() {
-      return this.h;
-   }
-
-   public List<jn> g() {
-      return this.i;
-   }
-
-   public List<jn> h() {
-      return this.j;
+   @Override
+   public void a(dic $$0, bwt $$1) {
+      super.a($$0, $$1);
+      this.a.clear();
+      $$1.G();
    }
 
    @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   public void b() {
+      this.c.H();
+      this.a.clear();
+      super.b();
    }
 
-   public int i() {
-      return this.g;
-   }
+   @Override
+   public evf a() {
+      int $$0;
+      if (this.f() && this.c.bj()) {
+         $$0 = this.c.dB();
+         jj.a $$1 = new jj.a(this.c.dA(), (double)$$0, this.c.dG());
 
-   public static eve a(int $$0) {
-      return b[$$0];
-   }
-
-   public static eve a(azh $$0) {
-      return af.a(b, $$0);
-   }
-
-   private static eve a(eve $$0, eve[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
+         for (dym $$2 = this.b.a($$1); $$2.a(dkw.J); $$2 = this.b.a($$1)) {
+            $$1.b(this.c.dA(), (double)(++$$0), this.c.dG());
+         }
       } else {
-         $$1[$$0.i()] = $$0;
-
-         for (eve.a $$2 : eve.a.values()) {
-            $$0.m.put($$2, a(new eve($$0.c, $$0.d, $$2), $$1));
-         }
-
-         for (jn $$3 : jn.values()) {
-            jn $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
-
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new eve($$4, $$3, $$0.f), $$1));
-         }
-
-         for (jn $$5 : jn.values()) {
-            jn $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new eve($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
+         $$0 = azk.a(this.c.dC() + 0.5);
       }
+
+      jj $$4 = jj.a(this.c.dA(), (double)$$0, this.c.dG());
+      if (!this.a($$4)) {
+         for (jj $$5 : this.a(this.c)) {
+            if (this.a($$5)) {
+               return super.c($$5);
+            }
+         }
+      }
+
+      return super.c($$4);
    }
 
-   @VisibleForTesting
-   protected static int b(jn $$0, jn $$1, eve.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jn.a.b) {
-            $$3 = $$1.o() == jn.a.a ? 1 : 0;
+   @Override
+   protected boolean a(jj $$0) {
+      evk $$1 = this.b($$0.u(), $$0.v(), $$0.w());
+      return this.c.a($$1) >= 0.0F;
+   }
+
+   @Override
+   public evo a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(evf[] $$0, evf $$1) {
+      int $$2 = 0;
+      evf $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
+      if (this.c($$3)) {
+         $$0[$$2++] = $$3;
+      }
+
+      evf $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
+      if (this.c($$4)) {
+         $$0[$$2++] = $$4;
+      }
+
+      evf $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
+      if (this.c($$5)) {
+         $$0[$$2++] = $$5;
+      }
+
+      evf $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
+      if (this.c($$6)) {
+         $$0[$$2++] = $$6;
+      }
+
+      evf $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
+      if (this.c($$7)) {
+         $$0[$$2++] = $$7;
+      }
+
+      evf $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
+      if (this.c($$8)) {
+         $$0[$$2++] = $$8;
+      }
+
+      evf $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
+      if (this.c($$9) && this.b($$3) && this.b($$7)) {
+         $$0[$$2++] = $$9;
+      }
+
+      evf $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
+      if (this.c($$10) && this.b($$4) && this.b($$7)) {
+         $$0[$$2++] = $$10;
+      }
+
+      evf $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
+      if (this.c($$11) && this.b($$5) && this.b($$7)) {
+         $$0[$$2++] = $$11;
+      }
+
+      evf $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
+      if (this.c($$12) && this.b($$6) && this.b($$7)) {
+         $$0[$$2++] = $$12;
+      }
+
+      evf $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
+      if (this.c($$13) && this.b($$3) && this.b($$8)) {
+         $$0[$$2++] = $$13;
+      }
+
+      evf $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
+      if (this.c($$14) && this.b($$4) && this.b($$8)) {
+         $$0[$$2++] = $$14;
+      }
+
+      evf $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
+      if (this.c($$15) && this.b($$5) && this.b($$8)) {
+         $$0[$$2++] = $$15;
+      }
+
+      evf $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
+      if (this.c($$16) && this.b($$6) && this.b($$8)) {
+         $$0[$$2++] = $$16;
+      }
+
+      evf $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
+      if (this.c($$17) && this.b($$6) && this.b($$5)) {
+         $$0[$$2++] = $$17;
+      }
+
+      evf $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
+      if (this.c($$18) && this.b($$3) && this.b($$5)) {
+         $$0[$$2++] = $$18;
+      }
+
+      evf $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
+      if (this.c($$19) && this.b($$6) && this.b($$4)) {
+         $$0[$$2++] = $$19;
+      }
+
+      evf $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
+      if (this.c($$20) && this.b($$3) && this.b($$4)) {
+         $$0[$$2++] = $$20;
+      }
+
+      evf $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
+         $$0[$$2++] = $$21;
+      }
+
+      evf $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
+         $$0[$$2++] = $$22;
+      }
+
+      evf $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
+         $$0[$$2++] = $$23;
+      }
+
+      evf $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
+         $$0[$$2++] = $$24;
+      }
+
+      evf $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
+         $$0[$$2++] = $$25;
+      }
+
+      evf $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
+         $$0[$$2++] = $$26;
+      }
+
+      evf $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
+         $$0[$$2++] = $$27;
+      }
+
+      evf $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
+         $$0[$$2++] = $$28;
+      }
+
+      return $$2;
+   }
+
+   private boolean b(@Nullable evf $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   private boolean c(@Nullable evf $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   @Nullable
+   @Override
+   protected evf a(int $$0, int $$1, int $$2) {
+      evf $$3 = null;
+      evk $$4 = this.b($$0, $$1, $$2);
+      float $$5 = this.c.a($$4);
+      if ($$5 >= 0.0F) {
+         $$3 = this.c($$0, $$1, $$2);
+         $$3.l = $$4;
+         $$3.k = Math.max($$3.k, $$5);
+         if ($$4 == evk.c) {
+            $$3.k++;
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected evk b(int $$0, int $$1, int $$2) {
+      return (evk)this.a.computeIfAbsent(jj.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2, this.c));
+   }
+
+   @Override
+   public evk a(evm $$0, int $$1, int $$2, int $$3) {
+      evk $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == evk.b && $$2 >= $$0.a().G_() + 1) {
+         jj $$5 = new jj($$1, $$2 - 1, $$3);
+         evk $$6 = $$0.a($$5.u(), $$5.v(), $$5.w());
+         if ($$6 == evk.o || $$6 == evk.i) {
+            $$4 = evk.o;
+         } else if ($$6 == evk.q) {
+            $$4 = evk.q;
+         } else if ($$6 == evk.x) {
+            $$4 = evk.x;
+         } else if ($$6 == evk.h) {
+            if (!$$5.equals($$0.b())) {
+               $$4 = evk.h;
+            }
          } else {
-            $$3 = $$1.o() == jn.a.b ? 1 : 0;
+            $$4 = $$6 != evk.c && $$6 != evk.b && $$6 != evk.j ? evk.c : evk.b;
          }
-
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
       }
+
+      if ($$4 == evk.c || $$4 == evk.b) {
+         $$4 = a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      return $$4;
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public eve.a a() {
-         return this == a ? b : a;
-      }
-
-      @Override
-      public String toString() {
-         return this.c;
+   private Iterable<jj> a(bwt $$0) {
+      fcp $$1 = $$0.cR();
+      boolean $$2 = $$1.a() < 1.0;
+      if (!$$2) {
+         return List.of(
+            jj.a($$1.a, (double)$$0.dB(), $$1.c),
+            jj.a($$1.a, (double)$$0.dB(), $$1.f),
+            jj.a($$1.d, (double)$$0.dB(), $$1.c),
+            jj.a($$1.d, (double)$$0.dB(), $$1.f)
+         );
+      } else {
+         double $$3 = Math.max(0.0, 1.1F - $$1.d());
+         double $$4 = Math.max(0.0, 1.1F - $$1.b());
+         double $$5 = Math.max(0.0, 1.1F - $$1.c());
+         fcp $$6 = $$1.c($$4, $$5, $$3);
+         return jj.a($$0.dY(), 10, azk.a($$6.a), azk.a($$6.b), azk.a($$6.c), azk.a($$6.d), azk.a($$6.e), azk.a($$6.f));
       }
    }
 }

@@ -1,69 +1,24 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class elx extends emf {
-   public static final MapCodec<elx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ayi.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bsd.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, elx::new)
-   );
-   private final int b;
-   private final bsd h;
+public class elx<P extends elw> {
+   public static final elx<emf> a = a("simple_state_provider", emf.b);
+   public static final elx<emg> b = a("weighted_state_provider", emg.b);
+   public static final elx<emb> c = a("noise_threshold_provider", emb.b);
+   public static final elx<ema> d = a("noise_provider", ema.g);
+   public static final elx<ely> e = a("dual_noise_provider", ely.b);
+   public static final elx<emd> f = a("rotated_block_provider", emd.b);
+   public static final elx<emc> g = a("randomized_int_state_provider", emc.b);
+   private final MapCodec<P> h;
 
-   public elx(int $$0, int $$1, int $$2, int $$3, bsd $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   private static <P extends elw> elx<P> a(String $$0, MapCodec<P> $$1) {
+      return kf.a(md.T, $$0, new elx<>($$1));
    }
 
-   @Override
-   protected emg<?> a() {
-      return emg.g;
+   private elx(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public List<ekk.a> a(dhf $$0, BiConsumer<ji, dxq> $$1, azh $$2, int $$3, ji $$4, eju $$5) {
-      jn $$6 = jn.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      ji.a $$8 = $$4.k();
-      ji $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ekk.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (eig.d($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ekk.a($$8.j(), 0, false));
-         }
-
-         $$8.c(jn.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (eig.d($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new ekk.a($$8.j(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

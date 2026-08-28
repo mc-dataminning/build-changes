@@ -1,42 +1,57 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public record add(evo b, byte c, boolean d, Optional<List<evk>> e, Optional<evq.c> f) implements yw<abl> {
-   public static final yn<wa, add> a = yn.a(evo.b, add::b, yl.c, add::e, yl.b, add::f, evk.a.a(yl.a()).a(yl::a), add::g, evq.c.a, add::h, add::new);
+public class add implements zc<abr> {
+   public static final yt<wg, add> a = zc.a(add::a, add::new);
+   private final int b;
+   private final int c;
+   private final adc d;
+   private final adh e;
 
-   public add(evo $$0, byte $$1, boolean $$2, @Nullable Collection<evk> $$3, @Nullable evq.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   public add(eat $$0, eui $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      dgw $$4 = $$0.f();
+      this.b = $$4.h;
+      this.c = $$4.i;
+      this.d = new adc($$0);
+      this.e = new adh($$4, $$1, $$2, $$3);
+   }
+
+   private add(wg $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = new adc($$0, this.b, this.c);
+      this.e = new adh($$0, this.b, this.c);
+   }
+
+   private void a(wg $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public yy<add> a() {
-      return agd.O;
+   public ze<add> a() {
+      return agk.K;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public void a(evq $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   public int b() {
+      return this.b;
    }
 
-   public byte e() {
+   public int e() {
       return this.c;
    }
 
-   public boolean f() {
+   public adc f() {
       return this.d;
    }
 
-   public Optional<List<evk>> g() {
+   public adh g() {
       return this.e;
-   }
-
-   public Optional<evq.c> h() {
-      return this.f;
    }
 }

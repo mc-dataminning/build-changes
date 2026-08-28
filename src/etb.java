@@ -1,74 +1,36 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class etb {
-   private final etc[] a;
-   private final double b;
-   private final double c;
+public class etb extends etf {
+   public static final MapCodec<etb> a = esx.b.listOf().fieldOf("rules").xmap(etb::new, $$0 -> $$0.b);
+   private final ImmutableList<esx> b;
 
-   public etb(azh $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   public etb(List<? extends esx> $$0) {
+      this.b = ImmutableList.copyOf($$0);
    }
 
-   private etb(azh $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            etc $$5 = new etc($$0);
-            int $$6 = $$3;
-            this.a = new etc[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
+   @Nullable
+   @Override
+   public eti.d a(dhs $$0, jj $$1, jj $$2, eti.d $$3, eti.d $$4, ete $$5) {
+      azs $$6 = azs.a(azk.a($$4.a()));
+      dym $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
 
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new etc($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
-
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               azh $$9 = new een(new edp($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new etc($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+      while (var9.hasNext()) {
+         esx $$8 = (esx)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new eti.d($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
          }
       }
+
+      return $$4;
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
-
-      for (etc $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
-
-         $$4 /= 2.0;
-         $$5 *= 2.0;
-      }
-
-      return $$3;
+   @Override
+   protected eth<?> a() {
+      return eth.i;
    }
 }

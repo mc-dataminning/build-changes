@@ -1,33 +1,61 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.function.UnaryOperator;
 
-public class bbp extends bgy {
-   public bbp(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bic.s, "minecraft:piston");
+public class bbp extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   public bbp(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bic.s, "minecraft:piston");
-      Type<?> $$2 = $$1.findFieldType("blockState");
-      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("blockId").asInt(0);
-      $$4 = $$4.remove("blockId");
-      int $$6 = $$4.get("blockData").asInt(0) & 15;
-      $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = bcd.b($$5 << 4 | $$6);
-      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return $$8.set(DSL.remainderFinder(), $$4)
-         .set(
-            $$3,
-            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biq.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(biq.D), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(biq.b), this::b)
+         }
+      );
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
+   }
+
+   private Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
+   }
+
+   private Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 }

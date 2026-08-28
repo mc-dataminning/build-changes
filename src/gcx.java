@@ -1,43 +1,58 @@
-import org.joml.Quaternionf;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class gcx extends gda<gzg> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final ggc a;
-   public final ggc b;
-   public final ggc c;
-   public final ggc d;
-
-   public gcx(ggc $$0) {
-      super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+public record gcx(boolean b, float c, float d, float e, float f, float g, Set<String> h) implements ghm {
+   public gcx(Set<String> $$0) {
+      this(false, 5.0F, 2.0F, $$0);
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      float $$2 = 0.875F;
-      ggh $$3 = ggh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      ggm $$4 = $$1.a("outer_glass", $$3, gge.a(0.0F, 24.0F, 0.0F));
-      ggm $$5 = $$4.a("inner_glass", $$3, gge.a.a(0.875F));
-      $$5.a("cube", ggh.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gge.a.a(0.765625F));
-      $$1.a("base", ggh.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gge.a);
-      return ggi.a($$0, 64, 32);
+   public gcx(boolean $$0, float $$1, float $$2, Set<String> $$3) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
    }
 
-   public void a(gzg $$0) {
-      super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.u * 3.0F;
-      float $$2 = gsx.a($$0.u) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+   @Override
+   public ghl apply(ghl $$0) {
+      float $$1 = this.b ? 1.5F / this.e : 1.0F;
+      float $$2 = 1.0F / this.f;
+      UnaryOperator<ghf> $$3 = $$1x -> $$1x.c(0.0F, this.c, this.d).b($$1);
+      UnaryOperator<ghf> $$4 = $$1x -> $$1x.c(0.0F, this.g, 0.0F).b($$2);
+      ghl $$5 = new ghl();
+
+      for (Entry<String, ghn> $$6 : $$0.a().a()) {
+         String $$7 = $$6.getKey();
+         ghn $$8 = $$6.getValue();
+         $$5.a().a($$7, $$8.a(this.h.contains($$7) ? $$3 : $$4));
+      }
+
+      return $$5;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public Set<String> g() {
+      return this.h;
    }
 }

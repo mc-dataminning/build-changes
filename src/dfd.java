@@ -1,26 +1,20 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dfd(jr<ddr> c, bsd d) implements dez {
-   public static final MapCodec<dfd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddr.c.fieldOf("enchantment").forGetter(dfd::b), bsd.c.fieldOf("level").forGetter(dfd::c)).apply($$0, dfd::new)
-   );
+public record dfd(deo c) implements dfa {
+   public static final MapCodec<dfd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deo.b.fieldOf("factor").forGetter(dfd::b)).apply($$0, dfd::new));
 
    @Override
-   public void a(cxh $$0, ddx.a $$1, azh $$2, bsw $$3) {
-      $$1.b(this.c, ayz.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public float a(int $$0, azs $$1, float $$2) {
+      return $$2 * this.c.a($$0);
    }
 
    @Override
    public MapCodec<dfd> a() {
-      return b;
+      return a;
    }
 
-   public jr<ddr> b() {
+   public deo b() {
       return this.c;
-   }
-
-   public bsd c() {
-      return this.d;
    }
 }

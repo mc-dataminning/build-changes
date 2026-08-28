@@ -1,36 +1,29 @@
-public class ahk implements yw<agf> {
-   public static final yn<vl, ahk> a = yw.a(ahk::a, ahk::new);
-   private static final int b = 2;
-   private final boolean c;
+public class ahk implements zc<agm> {
+   public static final yt<vr, ahk> a = zc.a(ahk::a, ahk::new);
+   private final boolean b;
 
-   public ahk(cpn $$0) {
-      this.c = $$0.b;
+   public ahk(boolean $$0) {
+      this.b = $$0;
    }
 
-   private ahk(vl $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private ahk(vr $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(vl $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yy<ahk> a() {
-      return agd.bQ;
+   public ze<ahk> a() {
+      return agk.bH;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
    public boolean b() {
-      return this.c;
+      return this.b;
    }
 }

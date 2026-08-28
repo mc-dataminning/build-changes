@@ -1,16 +1,89 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import javax.crypto.Cipher;
+public interface ve extends uq {
+   ve a = new ve() {
+   };
 
-public class ve extends MessageToByteEncoder<ByteBuf> {
-   private final vc a;
-
-   public ve(Cipher $$0) {
-      this.a = new vc($$0);
+   @Override
+   default uq.b a() {
+      return uq.b.a;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
-      this.a.a($$1, $$2);
+   @Override
+   default uq.b a(String $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(byte $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(short $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(int $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(long $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(float $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(double $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(byte[] $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(int[] $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(long[] $$0) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b a(uv<?> $$0, int $$1) {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.a b(uv<?> $$0, int $$1) {
+      return uq.a.b;
+   }
+
+   @Override
+   default uq.a a(uv<?> $$0) {
+      return uq.a.b;
+   }
+
+   @Override
+   default uq.a a(uv<?> $$0, String $$1) {
+      return uq.a.b;
+   }
+
+   @Override
+   default uq.b b() {
+      return uq.b.a;
+   }
+
+   @Override
+   default uq.b b(uv<?> $$0) {
+      return uq.b.a;
    }
 }

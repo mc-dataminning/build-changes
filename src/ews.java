@@ -1,146 +1,184 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ews {
-   public static final Codec<ews> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               exc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               ezx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               eye.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               fau.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               fau.a.fieldOf("bonus_rolls").orElse(faq.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ews::new)
-   );
-   private final List<exe> b;
-   private final List<ezx> c;
-   private final Predicate<ewo> d;
-   private final List<eyc> e;
-   private final BiFunction<cxh, ewo, cxh> f;
-   private final fat g;
-   private final fat h;
+public class ews implements exe {
+   private final exf a;
+   private final exe b;
 
-   ews(List<exe> $$0, List<ezx> $$1, List<eyc> $$2, fat $$3, fat $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = af.a($$1);
-      this.e = $$2;
-      this.f = eye.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   public ews(exf $$0, exe $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private void b(Consumer<cxh> $$0, ewo $$1) {
-      azh $$2 = $$1.b();
-      List<exd> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (exe $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (exd $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
+   @Override
+   public jj a() {
+      return this.b.a();
    }
 
-   public void a(Consumer<cxh> $$0, ewo $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cxh> $$2 = eyc.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + ayz.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   public void a(ewu $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public static ews.a a() {
-      return new ews.a();
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   public static class a implements exy<ews.a>, ezp<ews.a> {
-      private final Builder<exe> a = ImmutableList.builder();
-      private final Builder<ezx> b = ImmutableList.builder();
-      private final Builder<eyc> c = ImmutableList.builder();
-      private fat d = faq.a(1.0F);
-      private fat e = faq.a(0.0F);
+   @Override
+   public String e() {
+      return this.a.e();
+   }
 
-      public ews.a a(fat $$0) {
-         this.d = $$0;
-         return this;
-      }
+   @Override
+   public int f() {
+      return this.b.f();
+   }
 
-      public ews.a a() {
-         return this;
-      }
+   @Override
+   public void a(int $$0) {
+   }
 
-      public ews.a b(fat $$0) {
-         this.e = $$0;
-         return this;
-      }
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
 
-      public ews.a a(exe.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   @Override
+   public int h() {
+      return this.b.h();
+   }
 
-      public ews.a a(ezx.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
 
-      public ews.a a(eyc.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
+   @Override
+   public int j() {
+      return this.b.j();
+   }
 
-      public ews b() {
-         return new ews(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @Override
+   public dhm k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(jj $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dhm $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dhl o() {
+      return this.a.o();
+   }
+
+   @Override
+   public eae.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(eae.c $$0) {
+   }
+
+   @Override
+   public btn q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public fch<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dhr $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

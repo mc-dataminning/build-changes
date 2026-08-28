@@ -1,218 +1,523 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nullable;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.Args;
-import org.apache.http.util.EntityUtils;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.util.Arrays;
+import java.util.List;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fhf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private static final String c = "/upload";
-   private final File d;
-   private final long e;
-   private final int f;
-   private final fiv g;
-   private final String h;
-   private final String i;
-   private final String j;
-   private final String k;
-   private final fhl l;
-   final AtomicBoolean m = new AtomicBoolean(false);
-   @Nullable
-   private CompletableFuture<fkm> n;
-   private final RequestConfig o = RequestConfig.custom()
-      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
-      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
-      .build();
+public class fhf extends fhc implements AutoCloseable {
+   private static final Logger l = LogUtils.getLogger();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   public static final int g = 6;
+   public static final int h = 7;
+   public static final int i = 8;
+   public static final int j = 9;
+   public static final int k = 10;
+   private static final boolean m = false;
+   private int n;
+   private final int o;
+   private final int p;
+   private final IntBuffer q;
+   private final FloatBuffer r;
+   private final String s;
 
-   public fhf(File $$0, long $$1, int $$2, fiv $$3, fms $$4, String $$5, String $$6, fhl $$7) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4.a();
-      this.i = $$4.c();
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
+   public fhf(String $$0, int $$1, int $$2) {
+      this.s = $$0;
+      this.o = $$2;
+      this.p = $$1;
+      if ($$1 <= 3) {
+         this.q = MemoryUtil.memAllocInt($$2);
+         this.r = null;
+      } else {
+         this.q = null;
+         this.r = MemoryUtil.memAllocFloat($$2);
+      }
+
+      this.n = -1;
+      this.h();
    }
 
-   public fkm a() {
-      if (this.n != null) {
-         return new fkm.a().a();
+   public static int a(int $$0, CharSequence $$1) {
+      return GlStateManager._glGetUniformLocation($$0, $$1);
+   }
+
+   public static void b(int $$0, int $$1) {
+      RenderSystem.glUniform1i($$0, $$1);
+   }
+
+   public void a(gor.b $$0) {
+      this.a($$0.d(), $$0.c());
+   }
+
+   public void a(List<Float> $$0, int $$1) {
+      float[] $$2 = new float[Math.max($$1, 16)];
+      if ($$0.size() == 1) {
+         Arrays.fill($$2, $$0.getFirst().floatValue());
       } else {
-         this.n = CompletableFuture.supplyAsync(() -> this.a(0), af.h());
-         if (this.m.get()) {
-            this.b();
-            return new fkm.a().a();
-         } else {
-            return this.n.join();
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            $$2[$$3] = $$0.get($$3);
          }
       }
+
+      if (this.p <= 3) {
+         this.a((int)$$2[0], (int)$$2[1], (int)$$2[2], (int)$$2[3]);
+      } else if (this.p <= 7) {
+         this.b($$2[0], $$2[1], $$2[2], $$2[3]);
+      } else {
+         this.a(Arrays.copyOfRange($$2, 0, $$1));
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.q != null) {
+         MemoryUtil.memFree(this.q);
+      }
+
+      if (this.r != null) {
+         MemoryUtil.memFree(this.r);
+      }
+   }
+
+   private void h() {
+   }
+
+   public static int a(String $$0) {
+      int $$1 = -1;
+      if ("int".equals($$0)) {
+         $$1 = 0;
+      } else if ("float".equals($$0)) {
+         $$1 = 4;
+      } else if ($$0.startsWith("matrix")) {
+         if ($$0.endsWith("2x2")) {
+            $$1 = 8;
+         } else if ($$0.endsWith("3x3")) {
+            $$1 = 9;
+         } else if ($$0.endsWith("4x4")) {
+            $$1 = 10;
+         }
+      }
+
+      return $$1;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   public String a() {
+      return this.s;
+   }
+
+   @Override
+   public final void a(float $$0) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.h();
+   }
+
+   public final void a(int $$0, float $$1) {
+      this.r.position(0);
+      this.r.put($$0, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put($$0);
+      this.r.put($$1);
+      this.r.put($$2);
+      this.r.put($$3);
+      this.r.flip();
+      this.h();
+   }
+
+   @Override
+   public final void a(Vector4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      if (this.p >= 4) {
+         this.r.put(0, $$0);
+      }
+
+      if (this.p >= 5) {
+         this.r.put(1, $$1);
+      }
+
+      if (this.p >= 6) {
+         this.r.put(2, $$2);
+      }
+
+      if (this.p >= 7) {
+         this.r.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      if (this.p >= 0) {
+         this.q.put(0, $$0);
+      }
+
+      if (this.p >= 1) {
+         this.q.put(1, $$1);
+      }
+
+      if (this.p >= 2) {
+         this.q.put(2, $$2);
+      }
+
+      if (this.p >= 3) {
+         this.q.put(3, $$3);
+      }
+
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.h();
+   }
+
+   @Override
+   public final void a(int $$0, int $$1, int $$2) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.h();
+   }
+
+   @Override
+   public final void b(int $$0, int $$1, int $$2, int $$3) {
+      this.q.position(0);
+      this.q.put(0, $$0);
+      this.q.put(1, $$1);
+      this.q.put(2, $$2);
+      this.q.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float[] $$0) {
+      if ($$0.length < this.o) {
+         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
+      } else {
+         this.r.position(0);
+         this.r.put($$0);
+         this.r.position(0);
+         this.h();
+      }
+   }
+
+   @Override
+   public final void c(float $$0, float $$1, float $$2, float $$3) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.h();
+   }
+
+   @Override
+   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.h();
+   }
+
+   @Override
+   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.h();
+   }
+
+   @Override
+   public final void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      this.r.position(0);
+      this.r.put(0, $$0);
+      this.r.put(1, $$1);
+      this.r.put(2, $$2);
+      this.r.put(3, $$3);
+      this.r.put(4, $$4);
+      this.r.put(5, $$5);
+      this.r.put(6, $$6);
+      this.r.put(7, $$7);
+      this.r.put(8, $$8);
+      this.r.put(9, $$9);
+      this.r.put(10, $$10);
+      this.r.put(11, $$11);
+      this.r.put(12, $$12);
+      this.r.put(13, $$13);
+      this.r.put(14, $$14);
+      this.r.put(15, $$15);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix4f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
+   }
+
+   @Override
+   public final void a(Matrix3f $$0) {
+      this.r.position(0);
+      $$0.get(this.r);
+      this.h();
    }
 
    public void b() {
-      this.m.set(true);
-   }
-
-   private fkm a(int $$0) {
-      fkm.a $$1 = new fkm.a();
-      if (this.m.get()) {
-         return $$1.a();
+      if (this.p <= 3) {
+         this.i();
+      } else if (this.p <= 7) {
+         this.j();
       } else {
-         this.l.a(this.d.length());
-         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
-         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
-
-         fkm var8;
-         try {
-            this.a($$2);
-            HttpResponse $$4 = $$3.execute($$2);
-            long $$5 = this.a($$4);
-            if (!this.a($$5, $$0)) {
-               this.a($$4, $$1);
-               return $$1.a();
-            }
-
-            var8 = this.b($$5, $$0);
-         } catch (Exception var12) {
-            if (!this.m.get()) {
-               a.error("Caught exception while uploading: ", var12);
-               return $$1.a();
-            }
-
-            throw new fho();
-         } finally {
-            this.a($$2, $$3);
+         if (this.p > 10) {
+            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
+            return;
          }
 
-         return var8;
+         this.k();
       }
    }
 
-   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
-      $$0.releaseConnection();
-      if ($$1 != null) {
-         try {
-            $$1.close();
-         } catch (IOException var4) {
-            a.error("Failed to close Realms upload client");
-         }
+   private void i() {
+      this.q.rewind();
+      switch (this.p) {
+         case 0:
+            RenderSystem.glUniform1(this.n, this.q);
+            break;
+         case 1:
+            RenderSystem.glUniform2(this.n, this.q);
+            break;
+         case 2:
+            RenderSystem.glUniform3(this.n, this.q);
+            break;
+         case 3:
+            RenderSystem.glUniform4(this.n, this.q);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
       }
    }
 
-   private void a(HttpPost $$0) throws FileNotFoundException {
-      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
-      fhf.a $$1 = new fhf.a(new FileInputStream(this.d), this.d.length(), this.l);
-      $$1.setContentType("application/octet-stream");
-      $$0.setEntity($$1);
-   }
-
-   private void a(HttpResponse $$0, fkm.a $$1) throws IOException {
-      int $$2 = $$0.getStatusLine().getStatusCode();
-      if ($$2 == 401) {
-         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
-      }
-
-      $$1.a($$2);
-      if ($$0.getEntity() != null) {
-         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
-         if ($$3 != null) {
-            try {
-               JsonParser $$4 = new JsonParser();
-               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
-               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
-               $$1.a($$6.orElse(null));
-            } catch (Exception var8) {
-            }
-         }
+   private void j() {
+      this.r.rewind();
+      switch (this.p) {
+         case 4:
+            RenderSystem.glUniform1(this.n, this.r);
+            break;
+         case 5:
+            RenderSystem.glUniform2(this.n, this.r);
+            break;
+         case 6:
+            RenderSystem.glUniform3(this.n, this.r);
+            break;
+         case 7:
+            RenderSystem.glUniform4(this.n, this.r);
+            break;
+         default:
+            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
       }
    }
 
-   private boolean a(long $$0, int $$1) {
-      return $$0 > 0L && $$1 + 1 < 5;
-   }
-
-   private fkm b(long $$0, int $$1) throws InterruptedException {
-      Thread.sleep(Duration.ofSeconds($$0).toMillis());
-      return this.a($$1 + 1);
-   }
-
-   private long a(HttpResponse $$0) {
-      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
-   }
-
-   public boolean c() {
-      return this.n.isDone() || this.n.isCancelled();
-   }
-
-   class a extends InputStreamEntity {
-      private final long b;
-      private final InputStream c;
-      private final fhl d;
-
-      public a(final InputStream $$0, final long $$1, final fhl $$2) {
-         super($$0);
-         this.c = $$0;
-         this.b = $$1;
-         this.d = $$2;
+   private void k() {
+      this.r.clear();
+      switch (this.p) {
+         case 8:
+            RenderSystem.glUniformMatrix2(this.n, false, this.r);
+            break;
+         case 9:
+            RenderSystem.glUniformMatrix3(this.n, false, this.r);
+            break;
+         case 10:
+            RenderSystem.glUniformMatrix4(this.n, false, this.r);
       }
+   }
 
-      public void writeTo(OutputStream $$0) throws IOException {
-         Args.notNull($$0, "Output stream");
+   public int c() {
+      return this.n;
+   }
 
-         try (InputStream $$1 = this.c) {
-            byte[] $$2 = new byte[4096];
-            int $$3;
-            if (this.b < 0L) {
-               while (($$3 = $$1.read($$2)) != -1) {
-                  if (fhf.this.m.get()) {
-                     throw new fho();
-                  }
+   public int d() {
+      return this.o;
+   }
 
-                  $$0.write($$2, 0, $$3);
-                  this.d.b((long)$$3);
-               }
-            } else {
-               long $$4 = this.b;
+   public int e() {
+      return this.p;
+   }
 
-               while ($$4 > 0L) {
-                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
-                  if ($$3 == -1) {
-                     break;
-                  }
+   public IntBuffer f() {
+      return this.q;
+   }
 
-                  if (fhf.this.m.get()) {
-                     throw new fho();
-                  }
-
-                  $$0.write($$2, 0, $$3);
-                  this.d.b((long)$$3);
-                  $$4 -= (long)$$3;
-                  $$0.flush();
-               }
-            }
-         }
-      }
+   public FloatBuffer g() {
+      return this.r;
    }
 }

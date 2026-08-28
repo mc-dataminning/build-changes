@@ -1,61 +1,19 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.serialization.Codec;
 
-public class hfh implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final hfe f = new hfe(16, 16, false);
+public class hfh {
+   private static final ays.b<ald, hfi.a<?, ?>> b = new ays.b<>();
+   public static final Codec<hfi.a<?, ?>> a = b.a(ald.a);
 
-   public hfh() {
-      ffr $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1291911168);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, axk.c($$3, -1));
-            }
-         }
-      }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      this.f.a(false, false);
-      this.f.a(true);
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false);
-      RenderSystem.activeTexture(33984);
-   }
-
-   @Override
-   public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f.a(), 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+   public static void a() {
+      b.a(ald.b("custom_model_data"), hfc.a);
+      b.a(ald.b("main_hand"), hfg.a);
+      b.a(ald.b("charge_type"), hey.a);
+      b.a(ald.b("trim_material"), hfj.a);
+      b.a(ald.b("block_state"), hfe.a);
+      b.a(ald.b("display_context"), hfd.a);
+      b.a(ald.b("local_time"), hff.b);
+      b.a(ald.b("context_entity_type"), hfb.a);
+      b.a(ald.b("context_dimension"), hfa.a);
+      b.a(ald.b("component"), hez.b());
    }
 }

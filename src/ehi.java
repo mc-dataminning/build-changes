@@ -1,44 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class ehi extends egu<ejf> {
-   public ehi(Codec<ejf> $$0) {
+public class ehi extends ehr<ejr> {
+   private static final ImmutableList<dku> a = ImmutableList.of(dkw.I, dkw.fI, dkw.fJ, dkw.fK, dkw.fL, dkw.cD, dkw.cA);
+   private static final jo[] b = jo.values();
+   private static final double c = 0.9;
+
+   public ehi(Codec<ejr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egw<ejf> $$0) {
-      int $$1 = 0;
-      dhy $$2 = $$0.b();
-      ji $$3 = $$0.e();
-      azh $$4 = $$0.d();
-      int $$5 = $$2.a(edo.a.d, $$3.u(), $$3.w());
-      ji $$6 = new ji($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dkg.J)) {
-         dxq $$7 = dkg.mE.m();
-         dxq $$8 = dkg.mF.m();
-         int $$9 = 1 + $$4.a(10);
+   public boolean a(eht<ejr> $$0) {
+      boolean $$1 = false;
+      azs $$2 = $$0.d();
+      dio $$3 = $$0.b();
+      ejr $$4 = $$0.f();
+      jj $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dkg.J) && $$2.a_($$6.d()).a(dkg.J) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.b(dol.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               ji $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dkg.mE)) {
-                  $$2.a($$11, $$7.b(dol.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
+      for (jj $$13 : jj.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
             }
 
-            $$6 = $$6.d();
+            jj $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
          }
       }
 
-      return $$1 > 0;
+      return $$1;
+   }
+
+   private static boolean a(dhq $$0, jj $$1, ejr $$2) {
+      dym $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (jo $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).l();
+            if ($$5 && $$4 != jo.b || !$$5 && $$4 == jo.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

@@ -1,72 +1,28 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-public class dbu {
-   public static final int a = -1;
-   public static final dbu b = new dbu(List.of(), IntList.of());
-   private final List<dbr> c;
-   private final IntList d;
-
-   private dbu(List<dbr> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class dbu extends dbr {
+   public dbu(String $$0, dbx $$1, dch $$2, cxy $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static dbu a(dbr $$0) {
-      return $$0.b() ? b : new dbu(List.of($$0), IntList.of(0));
+   @Override
+   protected cxu f() {
+      return cyc.xq;
    }
 
-   public static dbu a(List<Optional<dbr>> $$0) {
-      int $$1 = $$0.size();
-      List<dbr> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
-
-      for (Optional<dbr> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            dbr $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
-            }
-
-            $$2.add($$6);
-            $$3.add($$4++);
-         } else {
-            $$3.add(-1);
-         }
-      }
-
-      return new dbu($$2, $$3);
+   @Override
+   public dcv<dbu> a() {
+      return dcv.p;
    }
 
-   public static dbu b(List<dbr> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         dbr $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new dbu($$0, $$2);
+   @Override
+   public dcw<dbu> b() {
+      return dcw.c;
    }
 
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<dbr> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public dco h() {
+      return switch (this.e()) {
+         case b -> dcn.h;
+         case a, c -> dcn.i;
+      };
    }
 }

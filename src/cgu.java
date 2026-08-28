@@ -1,33 +1,30 @@
-public class cgu {
-   public static boolean a(bwa $$0) {
-      return $$0.O() instanceof cfj;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+public class cgu extends cgz<bwr> {
+   @Override
+   public Set<cft<?>> a() {
+      return ImmutableSet.of(cft.h, cft.N, cft.ao);
    }
 
-   public static boolean a(bwg $$0, int $$1) {
-      return $$0.gg() && $$0.gd().a($$0.ds(), (double)($$0.ge() + (float)$$1) + 1.0);
-   }
+   @Override
+   protected void a(arn $$0, bwr $$1) {
+      bxr<?> $$2 = $$1.eb();
+      List<cow> $$3 = Lists.newArrayList();
+      cfv $$4 = $$2.c(cft.h).orElse(cfv.a());
+      Optional<bwt> $$5 = $$4.a($$0x -> $$0x instanceof coa || $$0x instanceof cma).map(bwt.class::cast);
 
-   public static boolean a(ji $$0, bwg $$1) {
-      return $$1.dU().e($$0.v());
-   }
+      for (bwr $$7 : $$2.c(cft.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cow && ((cow)$$7).t()) {
+            $$3.add((cow)$$7);
+         }
+      }
 
-   public static boolean a(boolean $$0, bwg $$1, ji $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cfk $$0, ji $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bwg $$0, ji $$1) {
-      return $$0.dU().b_($$1).a(awv.a);
-   }
-
-   public static boolean b(bwg $$0, ji $$1) {
-      return $$0.a(eus.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bwg $$0, ji $$1) {
-      return $$0.dU().a_($$1).e();
+      $$2.a(cft.N, $$5);
+      $$2.a(cft.ao, $$3);
    }
 }

@@ -1,22 +1,30 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public interface exy<T extends exy<T>> {
-   T b(eyc.a var1);
+public class exy extends eyd {
+   public static final MapCodec<exy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cxu.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exy::new)
+   );
+   private final js<cxu> j;
 
-   default <E> T a(Iterable<E> $$0, Function<E, eyc.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private exy(js<cxu> $$0, int $$1, int $$2, List<fau> $$3, List<eyz> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   default <E> T a(E[] $$0, Function<E, eyc.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   public eyc a() {
+      return exz.c;
    }
 
-   T c();
+   @Override
+   public void a(Consumer<cxy> $$0, exl $$1) {
+      $$0.accept(new cxy(this.j));
+   }
+
+   public static eyd.a<?> a(dho $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exy($$0.i().f(), $$1, $$2, $$3, $$4));
+   }
 }

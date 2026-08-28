@@ -1,134 +1,90 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class sp {
-   final sl a;
-   private final List<si> b = Lists.newArrayList();
-   private long c;
+public abstract class sp {
+   public static final Codec<sp> b = md.aE.q().dispatch(sp::a, $$0 -> $$0);
+   private final ti<js<tj>> a;
 
-   sp(sl $$0) {
+   public static MapCodec<? extends sp> a(kf<MapCodec<? extends sp>> $$0) {
+      a($$0, "block_based", sb.a);
+      return a($$0, "function", sf.a);
+   }
+
+   private static MapCodec<? extends sp> a(kf<MapCodec<? extends sp>> $$0, String $$1, MapCodec<? extends sp> $$2) {
+      return kf.a($$0, alc.a(me.aL, ald.b($$1)), $$2);
+   }
+
+   protected sp(ti<js<tj>> $$0) {
       this.a = $$0;
-      this.c = $$0.p();
    }
 
-   public sp a(Runnable $$0) {
-      this.b.add(si.a($$0));
-      return this;
+   public abstract void a(sn var1);
+
+   public abstract MapCodec<? extends sp> a();
+
+   public js<tj> d() {
+      return this.a.a();
    }
 
-   public sp a(long $$0, Runnable $$1) {
-      this.b.add(si.a($$0, $$1));
-      return this;
+   public ald e() {
+      return this.a.b();
    }
 
-   public sp a(int $$0) {
-      return this.a($$0, () -> {
-      });
+   public int f() {
+      return this.a.c();
    }
 
-   public sp b(Runnable $$0) {
-      this.b.add(si.a(() -> this.c($$0)));
-      return this;
+   public int g() {
+      return this.a.d();
    }
 
-   public sp a(int $$0, Runnable $$1) {
-      this.b.add(si.a(() -> {
-         if (this.a.p() < this.c + (long)$$0) {
-            throw new sd("Test timed out before sequence completed");
-         } else {
-            this.c($$1);
-         }
-      }));
-      return this;
+   public boolean h() {
+      return this.a.e();
    }
 
-   public sp b(int $$0, Runnable $$1) {
-      this.b.add(si.a(() -> {
-         if (this.a.p() < this.c + (long)$$0) {
-            this.c($$1);
-            throw new sd("Test timed out before sequence completed");
-         }
-      }));
-      return this;
+   public boolean i() {
+      return this.a.g();
    }
 
-   public void a() {
-      this.b.add(si.a(this.a::m));
+   public int j() {
+      return this.a.h();
    }
 
-   public void a(Supplier<Exception> $$0) {
-      this.b.add(si.a(() -> this.a.a($$0.get())));
+   public int k() {
+      return this.a.i();
    }
 
-   public sp.a b() {
-      sp.a $$0 = new sp.a();
-      this.b.add(si.a(() -> $$0.a(this.a.p())));
-      return $$0;
+   public boolean l() {
+      return this.a.j();
    }
 
-   public void a(long $$0) {
-      try {
-         this.c($$0);
-      } catch (sd var4) {
-      }
+   public drm m() {
+      return this.a.f();
    }
 
-   public void b(long $$0) {
-      try {
-         this.c($$0);
-      } catch (sd var4) {
-         this.a.a(var4);
-      }
+   protected ti<js<tj>> n() {
+      return this.a;
    }
 
-   private void c(Runnable $$0) {
-      try {
-         $$0.run();
-      } catch (sd var3) {
-         this.a.a(var3);
-      }
+   protected abstract xj b();
+
+   public wv c() {
+      return this.o().b(this.p());
    }
 
-   private void c(long $$0) {
-      Iterator<si> $$1 = this.b.iterator();
-
-      while ($$1.hasNext()) {
-         si $$2 = $$1.next();
-         $$2.b.run();
-         $$1.remove();
-         long $$3 = $$0 - this.c;
-         long $$4 = this.c;
-         this.c = $$0;
-         if ($$2.a != null && $$2.a != $$3) {
-            this.a.a(new sd("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
-            break;
-         }
-      }
+   protected xj o() {
+      return this.a("test_instance.description.type", this.b());
    }
 
-   public class a {
-      private static final long b = -1L;
-      private long c = -1L;
+   protected wv p() {
+      return this.a("test_instance.description.structure", this.a.b().toString()).b(this.a("test_instance.description.batch", this.a.a().g()));
+   }
 
-      void a(long $$0) {
-         if (this.c != -1L) {
-            throw new IllegalStateException("Condition already triggered at " + this.c);
-         } else {
-            this.c = $$0;
-         }
-      }
+   protected xj a(String $$0, String $$1) {
+      return this.a($$0, wv.b($$1));
+   }
 
-      public void a() {
-         long $$0 = sp.this.a.p();
-         if (this.c != $$0) {
-            if (this.c == -1L) {
-               throw new sd("Condition not triggered (t=" + $$0 + ")");
-            } else {
-               throw new sd("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
-            }
-         }
-      }
+   protected xj a(String $$0, xj $$1) {
+      return wv.a($$0, $$1.a(n.j)).b(wv.b("\n"));
    }
 }

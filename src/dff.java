@@ -1,24 +1,29 @@
-public interface dff {
-   akt<dez> a = a("mob_spawn_equipment");
-   akt<dez> b = a("pillager_spawn_crossbow");
-   akt<dez> c = a("raid/pillager_post_wave_3");
-   akt<dez> d = a("raid/pillager_post_wave_5");
-   akt<dez> e = a("raid/vindicator");
-   akt<dez> f = a("raid/vindicator_post_wave_5");
-   akt<dez> g = a("enderman_loot_drop");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qe<dez> $$0) {
-      js<ddr> $$1 = $$0.a(mc.aP);
-      $$0.a(a, new dfc($$1.b(aws.l), 5, 17));
-      $$0.a(b, new dfd($$1.b(ddw.K), bsa.a(1)));
-      $$0.a(c, new dfd($$1.b(ddw.J), bsa.a(1)));
-      $$0.a(d, new dfd($$1.b(ddw.J), bsa.a(2)));
-      $$0.a(e, new dfd($$1.b(ddw.n), bsa.a(1)));
-      $$0.a(f, new dfd($$1.b(ddw.n), bsa.a(2)));
-      $$0.a(g, new dfd($$1.b(ddw.v), bsa.a(1)));
+public record dff(deo c) implements dfa {
+   public static final MapCodec<dff> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deo.b.fieldOf("chance").forGetter(dff::b)).apply($$0, dff::new));
+
+   @Override
+   public float a(int $$0, azs $$1, float $$2) {
+      float $$3 = this.c.a($$0);
+      int $$4 = 0;
+
+      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
+         if ($$1.i() < $$3) {
+            $$4++;
+         }
+      }
+
+      return $$2 - (float)$$4;
    }
 
-   static akt<dez> a(String $$0) {
-      return akt.a(mc.aQ, aku.b($$0));
+   @Override
+   public MapCodec<dff> a() {
+      return a;
+   }
+
+   public deo b() {
+      return this.c;
    }
 }

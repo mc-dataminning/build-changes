@@ -1,132 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+public class cjo {
+   public static final alc<cjn> a = a("pale");
+   public static final alc<cjn> b = a("spotted");
+   public static final alc<cjn> c = a("snowy");
+   public static final alc<cjn> d = a("black");
+   public static final alc<cjn> e = a("ashen");
+   public static final alc<cjn> f = a("rusty");
+   public static final alc<cjn> g = a("woods");
+   public static final alc<cjn> h = a("chestnut");
+   public static final alc<cjn> i = a("striped");
+   public static final alc<cjn> j = a;
 
-public class cjo extends bxr<cjm> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final avz l;
-   private final avz m;
-   private fbx n;
-   private cjo.a o = cjo.a.d;
-
-   public cjo(avz $$0, avz $$1) {
-      super(ImmutableMap.of(cfc.m, cfd.b, cfc.n, cfd.c, cfc.o, cfd.a, cfc.Z, cfd.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   private static alc<cjn> a(String $$0) {
+      return alc.a(me.m, ald.b($$0));
    }
 
-   protected boolean a(ard $$0, cjm $$1) {
-      bvy $$2 = $$1.ea().c(cfc.o).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.ea().b(cfc.o);
-         this.b($$1, $$2);
-      }
-
-      return $$3 && $$1.aw() != bwk.i && cjm.j($$2);
+   static void a(qg<cjn> $$0, alc<cjn> $$1, String $$2, alc<dis> $$3) {
+      a($$0, $$1, $$2, jw.a($$0.a(me.aM).b($$3)));
    }
 
-   protected boolean a(ard $$0, cjm $$1, long $$2) {
-      return $$1.ea().a(cfc.o) && this.o != cjo.a.d && !$$1.ea().a(cfc.Z);
+   static void a(qg<cjn> $$0, alc<cjn> $$1, String $$2, axp<dis> $$3) {
+      a($$0, $$1, $$2, $$0.a(me.aM).b($$3));
    }
 
-   protected void b(ard $$0, cjm $$1, long $$2) {
-      bvy $$3 = $$1.ea().c(cfc.o).get();
-      bxt.a($$1, $$3);
-      $$1.b($$3);
-      $$1.ea().a(cfc.m, new cff($$3.ds(), 2.0F, 0));
-      this.k = 10;
-      this.o = cjo.a.a;
+   static void a(qg<cjn> $$0, alc<cjn> $$1, String $$2, jw<dis> $$3) {
+      ald $$4 = ald.b("entity/wolf/" + $$2);
+      ald $$5 = ald.b("entity/wolf/" + $$2 + "_tame");
+      ald $$6 = ald.b("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cjn($$4, $$5, $$6, $$3));
    }
 
-   protected void c(ard $$0, cjm $$1, long $$2) {
-      $$1.ea().b(cfc.o);
-      $$1.q();
-      $$1.b(bwk.a);
+   public static js<cjn> a(kg $$0, js<dis> $$1) {
+      kf<cjn> $$2 = $$0.f(me.m);
+      return $$2.c().filter($$1x -> ((cjn)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.a(j)).or($$2::a).orElseThrow();
    }
 
-   private void b(ard $$0, cjm $$1) {
-      $$0.a(null, $$1, this.m, awb.g, 2.0F, 1.0F);
-      Optional<bva> $$2 = $$1.t();
-      if ($$2.isPresent()) {
-         bva $$3 = $$2.get();
-         if ($$3.bJ()) {
-            $$1.c($$0, $$3);
-            if (!$$3.bJ()) {
-               $$3.a(bva.d.a);
-            }
-         }
-      }
-   }
-
-   protected void d(ard $$0, cjm $$1, long $$2) {
-      bvy $$3 = $$1.ea().c(cfc.o).get();
-      $$1.b($$3);
-      switch (this.o) {
-         case a:
-            if ($$3.f($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, awb.g, 2.0F, 1.0F);
-               $$1.b(bwk.j);
-               $$3.i($$3.ds().a($$1.ds()).d().c(0.75));
-               this.n = $$3.ds();
-               this.j = 0;
-               this.o = cjo.a.b;
-            } else if (this.k <= 0) {
-               $$1.ea().a(cfc.m, new cff($$3.ds(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = cjo.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = cjo.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
-   }
-
-   private boolean a(cjm $$0, bvy $$1) {
-      euk $$2 = $$0.O().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
-   }
-
-   private void b(cjm $$0, bvy $$1) {
-      List<UUID> $$2 = $$0.ea().c(cfc.aa).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cF());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cF());
-      }
-
-      $$0.ea().a(cfc.aa, $$2, 100L);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static void a(qg<cjn> $$0) {
+      a($$0, a, "wolf", diz.q);
+      a($$0, b, "wolf_spotted", awy.k);
+      a($$0, c, "wolf_snowy", diz.G);
+      a($$0, d, "wolf_black", diz.o);
+      a($$0, e, "wolf_ashen", diz.r);
+      a($$0, f, "wolf_rusty", awy.i);
+      a($$0, g, "wolf_woods", diz.i);
+      a($$0, h, "wolf_chestnut", diz.p);
+      a($$0, i, "wolf_striped", awy.f);
    }
 }

@@ -1,29 +1,12 @@
-public class ahu implements yw<agf> {
-   public static final yn<vl, ahu> a = yw.a(ahu::a, ahu::new);
-   private final int b;
-
-   public ahu(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahu(vl $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vl $$0) {
-      $$0.c(this.b);
-   }
+public record ahu(cqg b) implements zc<agm> {
+   public static final yt<vr, ahu> a = yt.a(cqg.a, ahu::b, ahu::new);
 
    @Override
-   public yy<ahu> a() {
-      return agd.bZ;
+   public ze<ahu> a() {
+      return agk.bU;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

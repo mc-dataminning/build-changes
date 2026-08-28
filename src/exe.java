@@ -1,66 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class exe implements eww {
-   protected final List<ezx> e;
-   private final Predicate<ewo> a;
+public interface exe extends exg {
+   @Override
+   String e();
 
-   protected exe(List<ezx> $$0) {
-      this.e = $$0;
-      this.a = af.a($$0);
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, dhr $$1) {
+      exg.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   protected static <T extends exe> P1<Mu<T>, List<ezx>> a(Instance<T> $$0) {
-      return $$0.group(ezx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
+   int f();
 
-   public void a(ewu $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-   }
+   void a(int var1);
 
-   protected final boolean a(ewo $$0) {
-      return this.a.test($$0);
-   }
+   int t();
 
-   public abstract exf a();
+   void d(int var1);
 
-   public abstract static class a<T extends exe.a<T>> implements ezp<T> {
-      private final Builder<ezx> a = ImmutableList.builder();
+   int u();
 
-      protected abstract T aE_();
+   void e(int var1);
 
-      public T a(ezx.a $$0) {
-         this.a.add($$0.build());
-         return this.aE_();
-      }
+   @Nullable
+   UUID v();
 
-      public final T e() {
-         return this.aE_();
-      }
+   void a(UUID var1);
 
-      protected List<ezx> f() {
-         return this.a.build();
-      }
+   dhm k();
 
-      public ewv.a a(exe.a<?> $$0) {
-         return new ewv.a(this, $$0);
-      }
+   void a(eae.c var1);
 
-      public exa.a b(exe.a<?> $$0) {
-         return new exa.a(this, $$0);
-      }
+   eae.c p();
 
-      public exi.a c(exe.a<?> $$0) {
-         return new exi.a(this, $$0);
-      }
+   boolean n();
 
-      public abstract exe b();
-   }
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(dhm var1);
+
+   fch<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   dhl o();
 }

@@ -1,11 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public record asy(csn b) {
-   private static final Codec<asy> c = RecordCodecBuilder.create($$0 -> $$0.group(csp.f.fieldOf("enabled").forGetter(asy::a)).apply($$0, asy::new));
-   public static final atp<asy> a = new atp<>("features", c);
+public class asy implements ase {
+   public static final ase.a a = new ase.a("server_resource_pack");
+   private final MinecraftServer.b b;
 
-   public csn a() {
-      return this.b;
+   public asy(MinecraftServer.b $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(Consumer<zc<?>> $$0) {
+      $$0.accept(new zp(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   }
+
+   @Override
+   public ase.a a() {
+      return a;
    }
 }

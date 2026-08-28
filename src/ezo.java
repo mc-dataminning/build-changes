@@ -1,59 +1,41 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public record ezo(akt<ezx> b) implements ezx {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<ezo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akt.a(mc.bk).fieldOf("name").forGetter(ezo::c)).apply($$0, ezo::new));
+public class ezo extends eyy {
+   public static final MapCodec<ezo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  eyx.e.a(dak.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ays.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ezo::new)
+   );
+   public static final dal b = new dal(0, List.of());
+   private final Optional<eyx.e<dak>> c;
+   private final Optional<Integer> d;
 
-   @Override
-   public ezy b() {
-      return ezz.p;
+   protected ezo(List<fau> $$0, Optional<eyx.e<dak>> $$1, Optional<Integer> $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void a(ewu $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         ezx.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
+   protected cxy a(cxy $$0, exl $$1) {
+      $$0.a(kx.ah, b, this::a);
+      return $$0;
    }
 
-   public boolean a(ewo $$0) {
-      ezx $$1 = $$0.a().c(this.b).map(jr.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         ewo.c<?> $$2 = ewo.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   private dal a(dal $$0) {
+      return new dal(this.d.orElseGet($$0::a), this.c.<List<dak>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
-   public static ezx.a a(akt<ezx> $$0) {
-      return () -> new ezo($$0);
-   }
-
-   public akt<ezx> c() {
-      return this.b;
+   @Override
+   public eza<ezo> b() {
+      return ezb.K;
    }
 }

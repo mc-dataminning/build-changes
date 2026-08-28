@@ -1,46 +1,43 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record faa(Optional<bx> b, ewo.b c) implements ezx {
-   public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bx.a.optionalFieldOf("predicate").forGetter(faa::c), ewo.b.e.fieldOf("entity").forGetter(faa::d)).apply($$0, faa::new)
-   );
+public class faa extends eyy {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, faa::new));
 
-   @Override
-   public ezy b() {
-      return ezz.f;
+   private faa(List<fau> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<bai<?>> a() {
-      return Set.of(ezi.f, this.c.a());
+   public eza<faa> b() {
+      return ezb.l;
    }
 
-   public boolean a(ewo $$0) {
-      bva $$1 = $$0.c(this.c.a());
-      fbx $$2 = $$0.c(ezi.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public cxy a(cxy $$0, exl $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         dde $$2 = new dde($$0);
+         Optional<dcq<ddf>> $$3 = $$1.d().t().a(dcw.b, $$2, $$1.d());
+         if ($$3.isPresent()) {
+            cxy $$4 = $$3.get().b().a($$2, $$1.d().F_());
+            if (!$$4.f()) {
+               return $$4.c($$0.M());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
    }
 
-   public static ezx.a a(ewo.b $$0) {
-      return a($$0, bx.a.a());
-   }
-
-   public static ezx.a a(ewo.b $$0, bx.a $$1) {
-      return () -> new faa(Optional.of($$1.b()), $$0);
-   }
-
-   public static ezx.a a(ewo.b $$0, bx $$1) {
-      return () -> new faa(Optional.of($$1), $$0);
-   }
-
-   public Optional<bx> c() {
-      return this.b;
-   }
-
-   public ewo.b d() {
-      return this.c;
+   public static eyy.a<?> c() {
+      return a(faa::new);
    }
 }

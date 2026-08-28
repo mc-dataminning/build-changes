@@ -1,113 +1,66 @@
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
+
 public class fmy {
-   public static final fmu a = fmu.a.a(0.5F)
-      .a()
-      .a("head", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(180.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("head", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.5F, 0.0F), fmt.b.a)))
-      .a("body", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(180.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("body", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.5F, 0.0F), fmt.b.a)))
-      .a("feet", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a)))
-      .a("right_wing", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(0.0F, -10.0F, 0.0F), fmt.b.a)))
-      .a("right_wing", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.0F, 1.0F), fmt.b.a)))
-      .a("right_wing_tip", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(0.0F, -120.0F, 0.0F), fmt.b.a)))
-      .a("left_wing", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(0.0F, 10.0F, 0.0F), fmt.b.a)))
-      .a("left_wing", new fmt(fmt.d.a, new fmv(0.0F, fmw.a(0.0F, 0.0F, 1.0F), fmt.b.a)))
-      .a("left_wing_tip", new fmt(fmt.d.b, new fmv(0.0F, fmw.b(0.0F, 120.0F, 0.0F), fmt.b.a)))
-      .b();
-   public static final fmu b = fmu.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.b(20.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.a(0.0F, 2.0F, 0.0F), fmt.b.a),
-            new fmv(0.25F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a),
-            new fmv(0.375F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4583F, fmw.a(0.0F, -1.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(40.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.25F, fmw.b(52.5F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(40.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fmt(
-            fmt.d.a,
-            new fmv(0.0F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.a(0.0F, 2.0F, 0.0F), fmt.b.a),
-            new fmv(0.25F, fmw.a(0.0F, 1.0F, 0.0F), fmt.b.a),
-            new fmv(0.375F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.4583F, fmw.a(0.0F, -1.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.a(0.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(10.0F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.b(-21.25F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.25F, fmw.b(-12.5F, 0.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(10.0F, 0.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 85.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.b(0.0F, -55.0F, 0.0F), fmt.b.a),
-            new fmv(0.25F, fmw.b(0.0F, 50.0F, 0.0F), fmt.b.a),
-            new fmv(0.375F, fmw.b(0.0F, 70.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, 85.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, 10.5F, 0.0F), fmt.b.a),
-            new fmv(0.0417F, fmw.b(0.0F, 65.5F, 0.0F), fmt.b.a),
-            new fmv(0.2083F, fmw.b(0.0F, -135.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, 10.5F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, -85.0F, 0.0F), fmt.b.a),
-            new fmv(0.125F, fmw.b(0.0F, 55.0F, 0.0F), fmt.b.a),
-            new fmv(0.25F, fmw.b(0.0F, -50.0F, 0.0F), fmt.b.a),
-            new fmv(0.375F, fmw.b(0.0F, -70.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, -85.0F, 0.0F), fmt.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new fmt(
-            fmt.d.b,
-            new fmv(0.0F, fmw.b(0.0F, -10.5F, 0.0F), fmt.b.a),
-            new fmv(0.0417F, fmw.b(0.0F, -65.5F, 0.0F), fmt.b.a),
-            new fmv(0.2083F, fmw.b(0.0F, 135.0F, 0.0F), fmt.b.a),
-            new fmv(0.5F, fmw.b(0.0F, -10.5F, 0.0F), fmt.b.a)
-         )
-      )
-      .b();
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gmy[] e = new gmy[9];
+   private boolean f;
+
+   public fmy(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gmy();
+      }
+   }
+
+   private void b() {
+      try {
+         tw $$0 = uj.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = ul.b($$0, 1343);
+         $$0 = bax.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gmy.a.parse(uk.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gmy::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
+   }
+
+   public void a() {
+      try {
+         tw $$0 = ul.e(new tw());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gmy $$2 = this.a($$1);
+            DataResult<ut> $$3 = gmy.a.encodeStart(uk.a, $$2);
+            $$0.a(String.valueOf($$1), (ut)$$3.getOrThrow());
+         }
+
+         uj.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gmy a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
+   }
 }

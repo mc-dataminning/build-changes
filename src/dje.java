@@ -1,103 +1,130 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dje extends dnb {
-   public static final MapCodec<dje> a = b(dje::new);
-   public static final dyo<jn> b = dod.e;
-   private static final Map<jn.a, fcr> c = fco.a(
-      fco.a(dke.b(12.0, 0.0, 4.0), dke.a(8.0, 10.0, 4.0, 5.0), dke.a(4.0, 8.0, 5.0, 10.0), dke.a(10.0, 16.0, 10.0, 16.0))
+public class dje {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bsb<dje.c> a = bsb.a();
+   public static final dje b = new dje.a().a();
+   public static final MapCodec<dje> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bwu.i, bsb.a(dje.c.a).promotePartial(af.a("Spawn data: ", d::error)), bag.a(bwu.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(md.f.q(), dje.b.a, md.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dje::new)
    );
-   private static final wp d = wp.c("container.repair");
-   private static final float e = 2.0F;
-   private static final int f = 40;
+   private final float f;
+   private final Map<bwu, bsb<dje.c>> g;
+   private final Map<bwb<?>, dje.b> h;
 
-   @Override
-   public MapCodec<dje> a() {
-      return a;
+   dje(float $$0, Map<bwu, bsb<dje.c>> $$1, Map<bwb<?>, dje.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   public dje(dxp.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, jn.c));
-   }
-
-   @Override
-   public dxq a(dax $$0) {
-      return this.m().b(b, $$0.g().h());
-   }
-
-   @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.aC);
-      }
-
-      return bsy.a;
+   public bsb<dje.c> a(bwu $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
    @Nullable
-   @Override
-   protected bta b(dxq $$0, dgz $$1, ji $$2) {
-      return new btg(($$2x, $$3, $$4) -> new csz($$2x, $$3, ctj.a($$1, $$2)), d);
+   public dje.b a(bwb<?> $$0) {
+      return this.h.get($$0);
    }
 
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return c.get($$0.c(b).o());
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected void a(clv $$0) {
-      $$0.b(2.0F, 40);
-   }
+   public static class a {
+      private final Map<bwu, bsb.a<dje.c>> a = af.a(bwu.class, $$0 -> bsb.b());
+      private final Map<bwb<?>, dje.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
 
-   @Override
-   public void a(dgz $$0, ji $$1, dxq $$2, dxq $$3, clv $$4) {
-      if (!$$4.bb()) {
-         $$0.c(1031, $$1, 0);
+      public dje.a a(bwu $$0, int $$1, dje.c $$2) {
+         this.a.get($$0).a($$2, $$1);
+         return this;
+      }
+
+      public dje.a a(bwb<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dje.b($$2, $$1));
+         return this;
+      }
+
+      public dje.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dje a() {
+         return new dje(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((bsb.a)$$0.getValue()).a())),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   @Override
-   public void a(dgz $$0, ji $$1, clv $$2) {
-      if (!$$2.bb()) {
-         $$0.c(1029, $$1, 0);
+   public static record b(double b, double c) {
+      public static final Codec<dje.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dje.b::new)
+      );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
       }
    }
 
-   @Override
-   public btp a(bva $$0) {
-      return $$0.dV().b($$0);
-   }
+   public static record c(bwb<?> b, int c, int d) {
+      public static final MapCodec<dje.c> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     md.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     ays.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     ays.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dje.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
 
-   @Nullable
-   public static dxq e(dxq $$0) {
-      if ($$0.a(dkg.hp)) {
-         return dkg.hq.m().b(b, $$0.c(b));
-      } else {
-         return $$0.a(dkg.hq) ? dkg.hr.m().b(b, $$0.c(b)) : null;
+      public c(bwb<?> b, int c, int d) {
+         b = b.f() == bwu.h ? bwb.aQ : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
       }
-   }
 
-   @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
+      @Override
+      public String toString() {
+         return bwb.a(this.b) + "*(" + this.c + "-" + this.d + ")";
+      }
 
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(b);
-   }
+      public bwb<?> a() {
+         return this.b;
+      }
 
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
-   }
+      public int b() {
+         return this.c;
+      }
 
-   @Override
-   public int b(dxq $$0, dgf $$1, ji $$2) {
-      return $$0.a($$1, $$2).ak;
+      public int c() {
+         return this.d;
+      }
    }
 }

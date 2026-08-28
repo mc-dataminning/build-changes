@@ -1,62 +1,139 @@
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class frg extends frf {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
-
-   public frg(fpa $$0, bnx $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void d(fpc $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
-   }
-
-   private void a(fpc $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
-   }
-
-   private void a(fpc $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(gnh.L(), $$1, $$1 + $$2 - 1, $$3, -1);
-   }
-
-   @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
-
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
-      } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", ayz.a($$0));
+public interface frg {
+   frg a = new frg() {
+      @Override
+      public void a(fpz $$0, int $$1, int $$2) {
       }
+
+      @Override
+      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      public void b(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      public int c(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static frg a(fpx $$0, wv... $$1) {
+      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   static frg a(fpx $$0, int $$1, wv... $$2) {
+      return a($$0, $$1, Integer.MAX_VALUE, $$2);
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   static frg a(fpx $$0, wv $$1, int $$2) {
+      return a($$0, $$2, Integer.MAX_VALUE, $$1);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   static frg a(final fpx $$0, final int $$1, final int $$2, final wv... $$3) {
+      return $$3.length == 0 ? a : new frg() {
+         @Nullable
+         private List<frg.a> f;
+         @Nullable
+         private tr g;
+
+         @Override
+         public void a(fpz $$0x, int $$1x, int $$2x) {
+            this.a($$0, $$1, $$2, 9, -1);
+         }
+
+         @Override
+         public void a(fpz $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (frg.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public void b(fpz $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (frg.a $$6 : this.c()) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+         }
+
+         @Override
+         public int c(fpz $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
+            int $$5 = $$2;
+
+            for (frg.a $$6 : this.c()) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         private List<frg.a> c() {
+            tr $$0 = tr.a();
+            if (this.f != null && $$0 == this.g) {
+               return this.f;
+            } else {
+               this.g = $$0;
+               List<ayw> $$1 = new ArrayList<>();
+
+               for (wv $$2 : $$3) {
+                  $$1.addAll($$0.c($$2, $$1));
+               }
+
+               this.f = new ArrayList<>();
+
+               for (ayw $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
+                  this.f.add(new frg.a($$3, $$0.a($$3)));
+               }
+
+               return this.f;
+            }
+         }
+
+         @Override
+         public int a() {
+            return this.c().size();
+         }
+
+         @Override
+         public int b() {
+            return Math.min($$1, this.c().stream().mapToInt(frg.a::b).max().orElse(0));
+         }
+      };
    }
 
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+   void a(fpz var1, int var2, int var3);
+
+   void a(fpz var1, int var2, int var3, int var4, int var5);
+
+   void b(fpz var1, int var2, int var3, int var4, int var5);
+
+   int c(fpz var1, int var2, int var3, int var4, int var5);
+
+   int a();
+
+   int b();
+
+   public static record a(ayw a, int b) {
    }
 }

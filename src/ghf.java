@@ -1,41 +1,67 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+public record ghf(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final ghf a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class ghf {
-   private final aua a = aud.c();
-   private final Map<atw, String> b;
-
-   public ghf() {
-      this.a.a();
-      Builder<atw, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         atb $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public static ghf a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public List<atw> a(List<atw> $$0) {
-      List<atw> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (atw $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
-      }
-
-      this.a.b($$2);
-      return $$1;
+   public static ghf b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public auf a() {
-      List<atc> $$0 = this.a.h();
-      return new aui(ate.b, $$0);
+   public static ghf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new ghf($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
+   }
+
+   public ghf c(float $$0, float $$1, float $$2) {
+      return new ghf(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
+   }
+
+   public ghf a(float $$0) {
+      return new ghf(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
+
+   public ghf b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
+
+   public ghf d(float $$0, float $$1, float $$2) {
+      return new ghf(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

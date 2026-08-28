@@ -1,42 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.OptionalLong;
 
 public class qj {
-   public static final akt<ept> a = ql.a("pillager_outpost/base_plates");
-
-   public static void a(qe<ept> $$0) {
-      js<esj> $$1 = $$0.a(mc.aX);
-      jr<esj> $$2 = $$1.b(qm.q);
-      js<ept> $$3 = $$0.a(mc.aZ);
-      jr<ept> $$4 = $$3.b(ql.a);
-      $$0.a(a, new ept($$4, ImmutableList.of(Pair.of(epr.a("pillager_outpost/base_plate"), 1)), ept.a.b));
-      ql.a(
-         $$0,
-         "pillager_outpost/towers",
-         new ept(
-            $$4,
-            ImmutableList.of(Pair.of(epr.b(ImmutableList.of(epr.a("pillager_outpost/watchtower"), epr.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            ept.a.b
+   public static void a(qg<ecj> $$0) {
+      $$0.a(
+         ech.a,
+         new ecj(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awz.bd, ech.e, 0.0F, new ecj.a(false, true, btb.a(0, 7), 0))
+      );
+      $$0.a(
+         ech.b,
+         new ecj(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awz.be, ech.f, 0.1F, new ecj.a(true, false, bss.a(7), 15))
+      );
+      $$0.a(
+         ech.c,
+         new ecj(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awz.bf, ech.g, 0.0F, new ecj.a(false, true, btb.a(0, 7), 0)
          )
       );
-      ql.a($$0, "pillager_outpost/feature_plates", new ept($$4, ImmutableList.of(Pair.of(epr.a("pillager_outpost/feature_plate"), 1)), ept.a.a));
-      ql.a(
-         $$0,
-         "pillager_outpost/features",
-         new ept(
-            $$4,
-            ImmutableList.of(
-               Pair.of(epr.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(epr.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(epr.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(epr.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(epr.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(epr.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(epr.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(epr.h(), 6)
-            ),
-            ept.a.b
-         )
+      $$0.a(
+         ech.d,
+         new ecj(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awz.bd, ech.e, 0.0F, new ecj.a(false, true, btb.a(0, 7), 0))
       );
    }
 }

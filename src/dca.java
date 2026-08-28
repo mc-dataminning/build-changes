@@ -1,34 +1,36 @@
-public record dca<T extends dbv<?>>(akt<dbv<?>> b, T c) {
-   public static final yn<wa, dca<?>> a = yn.a(akt.b(mc.bm), dca::a, dbv.b, dca::b, dca::new);
+public interface dca extends dcl<dbz> {
+   @Override
+   default dcw<dca> b() {
+      return dcw.a;
+   }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dca<?> $$1 && this.b == $$1.b) {
-            return true;
-         }
+   dcv<? extends dca> a();
 
-         return false;
+   dby c();
+
+   default kb<cxy> a(dbz $$0) {
+      return b($$0);
+   }
+
+   static kb<cxy> b(dbz $$0) {
+      kb<cxy> $$1 = kb.a($$0.a(), cxy.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cxu $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.j());
       }
+
+      return $$1;
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   public akt<dbv<?>> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   default dco h() {
+      return switch (this.c()) {
+         case a -> dcn.a;
+         case c -> dcn.c;
+         case b -> dcn.b;
+         case d -> dcn.d;
+      };
    }
 }

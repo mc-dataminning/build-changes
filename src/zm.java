@@ -1,25 +1,29 @@
-public record zm(String b, int c) implements yw<zc> {
-   public static final yn<vl, zm> a = yw.a(zm::a, zm::new);
+public class zm implements zc<zi> {
+   public static final yt<vr, zm> a = zc.a(zm::a, zm::new);
+   private final long b;
 
-   private zm(vl $$0) {
-      this($$0.p(), $$0.l());
+   public zm(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private zm(vr $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vr $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public yy<zm> a() {
-      return zo.j;
+   public ze<zm> a() {
+      return zu.d;
    }
 
-   public void a(zc $$0) {
+   public void a(zi $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public long b() {
+      return this.b;
    }
 }

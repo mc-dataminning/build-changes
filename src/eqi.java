@@ -1,80 +1,58 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eqi {
-   public static final int a = 90;
-   static final aku b = aku.b("igloo/top");
-   private static final aku c = aku.b("igloo/middle");
-   private static final aku d = aku.b("igloo/bottom");
-   static final Map<aku, ji> e = ImmutableMap.of(b, new ji(3, 5, 5), c, new ji(1, 3, 1), d, new ji(3, 6, 7));
-   static final Map<aku, ji> f = ImmutableMap.of(b, ji.c, c, new ji(2, -3, 4), d, new ji(0, -3, -2));
+public class eqi extends eqo {
+   public static final MapCodec<eqi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eok.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, eqi::new)
+   );
+   private final js<eok> b;
+   private final tw c;
 
-   public static void a(esm $$0, ji $$1, dqw $$2, eoo $$3, azh $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new eqi.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new eqi.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new eqi.a($$0, b, $$1, $$2, 0));
+   protected eqi(js<eok> $$0, eqq.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   public static class a extends eot {
-      public a(esm $$0, aku $$1, ji $$2, dqw $$3, int $$4) {
-         super(epa.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   private tw b() {
+      tw $$0 = new tw();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dwp.a.a.c());
+      return $$0;
+   }
 
-      public a(esm $$0, tq $$1) {
-         super(epa.I, $$1, $$0, $$1x -> a(dqw.valueOf($$1.l("Rot")), $$1x));
-      }
+   @Override
+   public kn a(etj $$0, drm $$1) {
+      return kn.i;
+   }
 
-      private static esh a(dqw $$0, aku $$1) {
-         return new esh().a($$0).a(dpf.a).a(eqi.e.get($$1)).a(erm.b).a(erv.a);
-      }
+   @Override
+   public List<eti.a> a(etj $$0, jj $$1, drm $$2, azs $$3) {
+      return List.of(eti.a.a(new eti.d($$1, dkw.pD.m().b(doz.b, jq.a(jo.a, jo.d)), this.c)));
+   }
 
-      private static ji a(aku $$0, ji $$1, int $$2) {
-         return $$1.a(eqi.f.get($$0)).c($$2);
-      }
+   @Override
+   public eoy a(etj $$0, jj $$1, drm $$2) {
+      kn $$3 = this.a($$0, $$2);
+      return new eoy($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
 
-      @Override
-      protected void a(eoz $$0, tq $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   @Override
+   public boolean a(etj $$0, dio $$1, dil $$2, eak $$3, jj $$4, jj $$5, drm $$6, eoy $$7, azs $$8, ess $$9, boolean $$10) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
 
-      @Override
-      protected void a(String $$0, ji $$1, dhq $$2, azh $$3, eob $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dkg.a.m(), 3);
-            dus $$5 = $$2.c_($$1.e());
-            if ($$5 instanceof duz) {
-               ((duz)$$5).a(ewk.B, $$3.g());
-            }
-         }
-      }
+   @Override
+   public eqp<?> a() {
+      return eqp.c;
+   }
 
-      @Override
-      public void a(dhy $$0, dhv $$1, dzn $$2, azh $$3, eob $$4, dgg $$5, ji $$6) {
-         aku $$7 = aku.a(this.a);
-         esh $$8 = a(this.c.d(), $$7);
-         ji $$9 = eqi.f.get($$7);
-         ji $$10 = this.d.a((km)esl.a($$8, new ji(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(edo.a.a, $$10.u(), $$10.w());
-         ji $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(eqi.b)) {
-            ji $$13 = this.d.a((km)esl.a($$8, new ji(3, 0, 5)));
-            dxq $$14 = $$0.a_($$13.e());
-            if (!$$14.l() && !$$14.a(dkg.cX)) {
-               $$0.a($$13, dkg.ec.m(), 3);
-            }
-         }
-
-         this.d = $$12;
-      }
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

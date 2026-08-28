@@ -1,42 +1,36 @@
-public class gxe extends gxs<gzs, gdd> {
-   public gxe(gva<gzs, gdd> $$0) {
-      super($$0);
+public class gxe extends gvl<cpl, hcv, ggo> {
+   private static final ald a = ald.b("textures/entity/warden/warden.png");
+   private static final ald j = ald.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final ald k = ald.b("textures/entity/warden/warden_heart.png");
+   private static final ald l = ald.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final ald m = ald.b("textures/entity/warden/warden_pulsating_spots_2.png");
+
+   public gxe(guf.a $$0) {
+      super($$0, new ggo($$0.a(ghc.dJ)), 0.9F);
+      this.a(new gym<>(this, j, ($$0x, $$1) -> 1.0F, ggo::d, goi::k, false));
+      this.a(new gym<>(this, l, ($$0x, $$1) -> Math.max(0.0F, azk.b($$1 * 0.045F) * 0.25F), ggo::e, goi::k, false));
+      this.a(new gym<>(this, m, ($$0x, $$1) -> Math.max(0.0F, azk.b($$1 * 0.045F + (float) Math.PI) * 0.25F), ggo::e, goi::k, false));
+      this.a(new gym<>(this, a, ($$0x, $$1) -> $$0x.a, ggo::b, goi::k, false));
+      this.a(new gym<>(this, k, ($$0x, $$1) -> $$0x.b, ggo::c, goi::k, false));
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, gzs $$3, float $$4, float $$5) {
-      hcn $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
+   public ald a(hcv $$0) {
+      return a;
+   }
 
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
+   public hcv b() {
+      return new hcv();
+   }
 
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         $$6.a($$0, $$1, $$2, hfh.d);
-         $$0.b();
-      }
+   public void a(cpl $$0, hcv $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.K($$2);
+      $$1.b = $$0.L($$2);
+      $$1.c.a($$0.a);
+      $$1.d.a($$0.b);
+      $$1.e.a($$0.c);
+      $$1.f.a($$0.d);
+      $$1.g.a($$0.bE);
+      $$1.h.a($$0.bF);
    }
 }

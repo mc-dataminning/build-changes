@@ -1,256 +1,95 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dwf extends dus {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
-   @Nullable
-   private UUID d;
-   private dwg e = this.f();
-   private dwg f = this.f();
-   private boolean g;
-
-   public dwf(ji $$0, dxq $$1) {
-      this(duu.h, $$0, $$1);
-   }
-
-   public dwf(duu $$0, ji $$1, dxq $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   protected dwg f() {
-      return new dwg();
-   }
-
-   public boolean a(cpr $$0) {
-      if (this.m().b() instanceof drk $$1) {
-         fbx $$2 = $$1.o(this.m());
-         double $$3 = $$0.dz() - ((double)this.aA_().u() + $$2.d);
-         double $$4 = $$0.dF() - ((double)this.aA_().w() + $$2.f);
-         float $$5 = $$1.h(this.m());
-         float $$6 = (float)(ayz.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return ayz.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
-      }
-   }
-
-   public dwg a(boolean $$0) {
-      return $$0 ? this.e : this.f;
-   }
-
-   public dwg j() {
-      return this.e;
-   }
-
-   public dwg k() {
-      return this.f;
-   }
-
-   public int b() {
-      return 10;
-   }
-
-   public int c() {
-      return 90;
-   }
-
-   @Override
-   protected void b(tq $$0, jt.a $$1) {
-      super.b($$0, $$1);
-      DynamicOps<un> $$2 = $$1.a(ue.a);
-      dwg.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
-      dwg.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
-      $$0.a("is_waxed", this.g);
-   }
-
-   @Override
-   protected void a(tq $$0, jt.a $$1) {
-      super.a($$0, $$1);
-      DynamicOps<un> $$2 = $$1.a(ue.a);
-      if ($$0.e("front_text")) {
-         dwg.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         dwg.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
-   }
-
-   private dwg a(dwg $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         wp $$2 = this.a($$0.a($$1, false));
-         wp $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private wp a(wp $$0) {
-      if (this.n instanceof ard $$1) {
-         try {
-            return ws.a(a(null, $$1, this.o), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(cpr $$0, boolean $$1, List<arw> $$2) {
-      if (!this.u() && $$0.cF().equals(this.t()) && this.n != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.n.a(this.aA_(), this.m(), this.m(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.al().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<dwg> $$0, boolean $$1) {
-      dwg $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private dwg a(cpr $$0, List<arw> $$1, dwg $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         arw $$4 = $$1.get($$3);
-         xm $$5 = $$2.a($$3, $$0.aa()).a();
-         if ($$0.aa()) {
-            $$2 = $$2.a($$3, wp.b($$4.b()).b($$5));
-         } else {
-            $$2 = $$2.a($$3, wp.b($$4.d()).b($$5), wp.b($$4.b()).b($$5));
-         }
-      }
-
-      return $$2;
-   }
-
-   public boolean a(dwg $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dwg $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(dwg $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(boolean $$0, cpr $$1) {
-      return this.u() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cpr $$0, dgz $$1, ji $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (wp $$5 : this.a($$3).b($$0.aa())) {
-         xm $$6 = $$5.a();
-         wn $$7 = $$6.i();
-         if ($$7 instanceof wn.f) {
-            wn.f var12 = (wn.f)$$7;
-            wn.f var10000 = var12;
-
-            try {
-               var16 = var10000.b();
-            } catch (Throwable var15) {
-               throw new MatchException(var15.toString(), var15);
-            }
-
-            String var14 = var16;
-            $$0.cU().aG().a(a($$0, $$1, $$2), var14);
-            $$4 = true;
-         }
-      }
-
-      return $$4;
-   }
-
-   private static ex a(@Nullable cpr $$0, dgz $$1, ji $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.al().getString();
-      wp $$4 = (wp)($$0 == null ? wp.b("Sign") : $$0.m_());
-      return new ex(ew.a, fbx.b($$2), fbw.a, (ard)$$1, 2, $$3, $$4, $$1.p(), $$0);
-   }
-
-   public abr s() {
-      return abr.a(this);
-   }
-
-   @Override
-   public tq a(jt.a $$0) {
-      return this.e($$0);
-   }
-
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
-   }
+public class dwf {
+   public static final alc<dwe> a = a("blank");
+   public static final alc<dwe> b = a("angler");
+   public static final alc<dwe> c = a("archer");
+   public static final alc<dwe> d = a("arms_up");
+   public static final alc<dwe> e = a("blade");
+   public static final alc<dwe> f = a("brewer");
+   public static final alc<dwe> g = a("burn");
+   public static final alc<dwe> h = a("danger");
+   public static final alc<dwe> i = a("explorer");
+   public static final alc<dwe> j = a("flow");
+   public static final alc<dwe> k = a("friend");
+   public static final alc<dwe> l = a("guster");
+   public static final alc<dwe> m = a("heart");
+   public static final alc<dwe> n = a("heartbreak");
+   public static final alc<dwe> o = a("howl");
+   public static final alc<dwe> p = a("miner");
+   public static final alc<dwe> q = a("mourner");
+   public static final alc<dwe> r = a("plenty");
+   public static final alc<dwe> s = a("prize");
+   public static final alc<dwe> t = a("scrape");
+   public static final alc<dwe> u = a("sheaf");
+   public static final alc<dwe> v = a("shelter");
+   public static final alc<dwe> w = a("skull");
+   public static final alc<dwe> x = a("snort");
+   private static final Map<cxu, alc<dwe>> y = Map.ofEntries(
+      Map.entry(cyc.rw, a),
+      Map.entry(cyc.yT, b),
+      Map.entry(cyc.yU, c),
+      Map.entry(cyc.yV, d),
+      Map.entry(cyc.yW, e),
+      Map.entry(cyc.yX, f),
+      Map.entry(cyc.yY, g),
+      Map.entry(cyc.yZ, h),
+      Map.entry(cyc.za, i),
+      Map.entry(cyc.zb, j),
+      Map.entry(cyc.zc, k),
+      Map.entry(cyc.zd, l),
+      Map.entry(cyc.ze, m),
+      Map.entry(cyc.zf, n),
+      Map.entry(cyc.zg, o),
+      Map.entry(cyc.zh, p),
+      Map.entry(cyc.zi, q),
+      Map.entry(cyc.zj, r),
+      Map.entry(cyc.zk, s),
+      Map.entry(cyc.zl, t),
+      Map.entry(cyc.zm, u),
+      Map.entry(cyc.zn, v),
+      Map.entry(cyc.zo, w),
+      Map.entry(cyc.zp, x)
+   );
 
    @Nullable
-   public UUID t() {
-      return this.d;
+   public static alc<dwe> a(cxu $$0) {
+      return y.get($$0);
    }
 
-   private void v() {
-      this.e();
-      this.n.a(this.aA_(), this.m(), this.m(), 3);
+   private static alc<dwe> a(String $$0) {
+      return alc.a(me.ax, ald.b($$0));
    }
 
-   public boolean u() {
-      return this.g;
+   public static dwe a(kf<dwe> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(UUID $$0) {
-      cpr $$1 = this.n.a($$0);
-      return $$1 == null || !$$1.a(this.aA_(), 4.0);
-   }
-
-   public static void a(dgz $$0, ji $$1, dxq $$2, dwf $$3) {
-      UUID $$4 = $$3.t();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(dwf $$0, dgz $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
-   }
-
-   public avz d() {
-      return awa.CZ;
+   private static dwe a(kf<dwe> $$0, alc<dwe> $$1, String $$2) {
+      return kf.a($$0, $$1, new dwe(ald.b($$2)));
    }
 }

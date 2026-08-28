@@ -1,94 +1,45 @@
-public class afy implements yw<abl> {
-   public static final yn<wa, afy> a = yw.a(afy::a, afy::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final jr<buc> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+public class afy implements zc<abr> {
+   public static final yt<vr, afy> a = zc.a(afy::a, afy::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public afy(int $$0, bue $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
-      }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
+   public afy(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afy(wa $$0) {
-      this.f = $$0.l();
-      this.g = buc.b.decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
+   private afy(vr $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.f);
-      buc.b.encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.l(this.j);
+   private void a(vr $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public yy<afy> a() {
-      return agd.bg;
+   public ze<afy> a() {
+      return agk.bc;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.f;
+      return this.b;
    }
 
-   public jr<buc> e() {
-      return this.g;
+   public int e() {
+      return this.c;
    }
 
    public int f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+      return this.d;
    }
 }

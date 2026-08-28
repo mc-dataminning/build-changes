@@ -1,35 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dik extends dig {
-   public static final MapCodec<dik> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dic.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, dik::new)
-   );
-   private final jv<dic> c;
-   private final int d;
-   private final int e;
+public interface dik {
+   void a(bwb<?> var1, azs var2);
 
-   public dik(jv<dic> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+   static void a(cxy $$0, List<wv> $$1, String $$2) {
+      wv $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(wu.a);
+         $$1.add(wv.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(wu.a().b(wv.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   @Override
-   protected Stream<jr<dic>> b() {
-      return this.c.a();
+   @Nullable
+   static wv a(cxy $$0, String $$1) {
+      tw $$2 = $$0.a(kx.aa, dae.a).e();
+      ald $$3 = a($$2, $$1);
+      return $$3 != null ? md.f.b($$3).map($$0x -> wv.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   @Override
-   protected MapCodec<? extends dig> a() {
-      return b;
-   }
-
-   @Override
-   public jr<dic> getNoiseBiome(int $$0, int $$1, int $$2, dil.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   @Nullable
+   private static ald a(tw $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return ald.c($$2);
+      } else {
+         return null;
+      }
    }
 }

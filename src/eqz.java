@@ -1,124 +1,53 @@
-import java.util.Map;
-
 public class eqz {
-   private static final int a = 32;
-   static final ji b = new ji(4, 0, 15);
-   private static final aku[] c = new aku[]{
-      aku.b("shipwreck/with_mast"),
-      aku.b("shipwreck/sideways_full"),
-      aku.b("shipwreck/sideways_fronthalf"),
-      aku.b("shipwreck/sideways_backhalf"),
-      aku.b("shipwreck/rightsideup_full"),
-      aku.b("shipwreck/rightsideup_fronthalf"),
-      aku.b("shipwreck/rightsideup_backhalf"),
-      aku.b("shipwreck/with_mast_degraded"),
-      aku.b("shipwreck/rightsideup_full_degraded"),
-      aku.b("shipwreck/rightsideup_fronthalf_degraded"),
-      aku.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final aku[] d = new aku[]{
-      aku.b("shipwreck/with_mast"),
-      aku.b("shipwreck/upsidedown_full"),
-      aku.b("shipwreck/upsidedown_fronthalf"),
-      aku.b("shipwreck/upsidedown_backhalf"),
-      aku.b("shipwreck/sideways_full"),
-      aku.b("shipwreck/sideways_fronthalf"),
-      aku.b("shipwreck/sideways_backhalf"),
-      aku.b("shipwreck/rightsideup_full"),
-      aku.b("shipwreck/rightsideup_fronthalf"),
-      aku.b("shipwreck/rightsideup_backhalf"),
-      aku.b("shipwreck/with_mast_degraded"),
-      aku.b("shipwreck/upsidedown_full_degraded"),
-      aku.b("shipwreck/upsidedown_fronthalf_degraded"),
-      aku.b("shipwreck/upsidedown_backhalf_degraded"),
-      aku.b("shipwreck/sideways_full_degraded"),
-      aku.b("shipwreck/sideways_fronthalf_degraded"),
-      aku.b("shipwreck/sideways_backhalf_degraded"),
-      aku.b("shipwreck/rightsideup_full_degraded"),
-      aku.b("shipwreck/rightsideup_fronthalf_degraded"),
-      aku.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, akt<ewt>> e = Map.of("map_chest", ewk.G, "treasure_chest", ewk.I, "supply_chest", ewk.H);
-
-   public static eqz.a a(esm $$0, ji $$1, dqw $$2, eoo $$3, azh $$4, boolean $$5) {
-      aku $$6 = af.a($$5 ? c : d, $$4);
-      eqz.a $$7 = new eqz.a($$0, $$6, $$1, $$2, $$5);
-      $$3.a($$7);
-      return $$7;
-   }
-
-   public static class a extends eot {
-      private final boolean h;
-
-      public a(esm $$0, aku $$1, ji $$2, dqw $$3, boolean $$4) {
-         super(epa.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
+   public static class a extends epk {
+      public a(jj $$0) {
+         super(epx.aa, 0, new eoy($$0));
       }
 
-      public a(esm $$0, tq $$1) {
-         super(epa.ab, $$1, $$0, $$1x -> a(dqw.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
+      public a(tw $$0) {
+         super(epx.aa, $$0);
       }
 
       @Override
-      protected void a(eoz $$0, tq $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static esh a(dqw $$0) {
-         return new esh().a($$0).a(dpf.a).a(eqz.b).a(erm.d);
+      protected void a(epw $$0, tw $$1) {
       }
 
       @Override
-      protected void a(String $$0, ji $$1, dhq $$2, azh $$3, eob $$4) {
-         akt<ewt> $$5 = eqz.e.get($$0);
-         if ($$5 != null) {
-            bte.a($$2, $$3, $$1.e(), $$5);
-         }
-      }
+      public void a(dio $$0, dil $$1, eak $$2, azs $$3, eoy $$4, dgw $$5, jj $$6) {
+         int $$7 = $$0.a(eel.a.c, this.f.h(), this.f.j());
+         jj.a $$8 = new jj.a(this.f.h(), $$7, this.f.j());
 
-      @Override
-      public void a(dhy $$0, dhv $$1, dzn $$2, azh $$3, eob $$4, dgg $$5, ji $$6) {
-         if (this.l()) {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         } else {
-            int $$7 = $$0.ao() + 1;
-            int $$8 = 0;
-            km $$9 = this.b.a();
-            edo.a $$10 = this.h ? edo.a.a : edo.a.c;
-            int $$11 = $$9.u() * $$9.w();
-            if ($$11 == 0) {
-               $$8 = $$0.a($$10, this.d.u(), this.d.w());
-            } else {
-               ji $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+         while ($$8.v() > $$0.G_()) {
+            dym $$9 = $$0.a_($$8);
+            dym $$10 = $$0.a_($$8.e());
+            if ($$10 == dkw.bc.m() || $$10 == dkw.b.m() || $$10 == dkw.g.m() || $$10 == dkw.c.m() || $$10 == dkw.e.m()) {
+               dym $$11 = !$$9.l() && !this.b($$9) ? $$9 : dkw.L.m();
 
-               for (ji $$13 : ji.c(this.d, $$12)) {
-                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-                  $$8 += $$14;
-                  $$7 = Math.min($$7, $$14);
+               for (jo $$12 : jo.values()) {
+                  jj $$13 = $$8.a($$12);
+                  dym $$14 = $$0.a_($$13);
+                  if ($$14.l() || this.b($$14)) {
+                     jj $$15 = $$13.e();
+                     dym $$16 = $$0.a_($$15);
+                     if (($$16.l() || this.b($$16)) && $$12 != jo.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
                }
 
-               $$8 /= $$11;
+               this.f = new eoy($$8);
+               this.a($$0, $$4, $$3, $$8, exh.F, null);
+               return;
             }
 
-            this.c(this.h ? this.a($$7, $$3) : $$8);
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+            $$8.e(0, -1, 0);
          }
       }
 
-      public boolean l() {
-         km $$0 = this.b.a();
-         return $$0.u() > 32 || $$0.v() > 32;
-      }
-
-      public int a(int $$0, azh $$1) {
-         return $$0 - this.b.a().v() / 2 - $$1.a(3);
-      }
-
-      public void c(int $$0) {
-         this.d = new ji(this.d.u(), $$0, this.d.w());
+      private boolean b(dym $$0) {
+         return $$0 == dkw.J.m() || $$0 == dkw.K.m();
       }
    }
 }

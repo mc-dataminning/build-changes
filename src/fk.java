@@ -12,14 +12,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fk implements ArgumentType<hm> {
+public class fk implements ArgumentType<hn> {
    private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wp.c("argument.entity.toomany"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wp.c("argument.player.toomany"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wp.c("argument.player.entities"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wp.c("argument.entity.notfound.entity"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wp.c("argument.entity.notfound.player"));
-   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wp.c("argument.entity.selector.not_allowed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.entity.toomany"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("argument.player.toomany"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.c("argument.player.entities"));
+   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wv.c("argument.entity.notfound.entity"));
+   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wv.c("argument.entity.notfound.player"));
+   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wv.c("argument.entity.selector.not_allowed"));
    final boolean h;
    final boolean i;
 
@@ -32,16 +32,16 @@ public class fk implements ArgumentType<hm> {
       return new fk(true, false);
    }
 
-   public static bva a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hm)$$0.getArgument($$1, hm.class)).a((ex)$$0.getSource());
+   public static bvs a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return ((hn)$$0.getArgument($$1, hn.class)).a((ex)$$0.getSource());
    }
 
    public static fk b() {
       return new fk(false, false);
    }
 
-   public static Collection<? extends bva> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bva> $$2 = c($$0, $$1);
+   public static Collection<? extends bvs> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bvs> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,28 +49,28 @@ public class fk implements ArgumentType<hm> {
       }
    }
 
-   public static Collection<? extends bva> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hm)$$0.getArgument($$1, hm.class)).b((ex)$$0.getSource());
+   public static Collection<? extends bvs> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return ((hn)$$0.getArgument($$1, hn.class)).b((ex)$$0.getSource());
    }
 
-   public static Collection<are> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hm)$$0.getArgument($$1, hm.class)).d((ex)$$0.getSource());
+   public static Collection<aro> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return ((hn)$$0.getArgument($$1, hn.class)).d((ex)$$0.getSource());
    }
 
    public static fk c() {
       return new fk(true, true);
    }
 
-   public static are e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hm)$$0.getArgument($$1, hm.class)).c((ex)$$0.getSource());
+   public static aro e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return ((hn)$$0.getArgument($$1, hn.class)).c((ex)$$0.getSource());
    }
 
    public static fk d() {
       return new fk(false, true);
    }
 
-   public static Collection<are> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      List<are> $$2 = ((hm)$$0.getArgument($$1, hm.class)).d((ex)$$0.getSource());
+   public static Collection<aro> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      List<aro> $$2 = ((hn)$$0.getArgument($$1, hn.class)).d((ex)$$0.getSource());
       if ($$2.isEmpty()) {
          throw e.create();
       } else {
@@ -78,18 +78,18 @@ public class fk implements ArgumentType<hm> {
       }
    }
 
-   public hm a(StringReader $$0) throws CommandSyntaxException {
+   public hn a(StringReader $$0) throws CommandSyntaxException {
       return this.a($$0, true);
    }
 
-   public <S> hm a(StringReader $$0, S $$1) throws CommandSyntaxException {
-      return this.a($$0, hn.a($$1));
+   public <S> hn a(StringReader $$0, S $$1) throws CommandSyntaxException {
+      return this.a($$0, ho.a($$1));
    }
 
-   private hm a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+   private hn a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
       int $$2 = 0;
-      hn $$3 = new hn($$0, $$1);
-      hm $$4 = $$3.t();
+      ho $$3 = new ho($$0, $$1);
+      hn $$4 = $$3.t();
       if ($$4.a() > 1 && this.h) {
          if (this.i) {
             $$0.setCursor(0);
@@ -110,7 +110,7 @@ public class fk implements ArgumentType<hm> {
       if ($$0.getSource() instanceof fc $$2) {
          StringReader $$3 = new StringReader($$1.getInput());
          $$3.setCursor($$1.getStart());
-         hn $$4 = new hn($$3, hn.a($$2));
+         ho $$4 = new ho($$3, ho.a($$2));
 
          try {
             $$4.t();
@@ -131,11 +131,11 @@ public class fk implements ArgumentType<hm> {
       return g;
    }
 
-   public static class a implements it<fk, fk.a.a> {
+   public static class a implements iu<fk, fk.a.a> {
       private static final byte a = 1;
       private static final byte b = 2;
 
-      public void a(fk.a.a $$0, vl $$1) {
+      public void a(fk.a.a $$0, vr $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -148,7 +148,7 @@ public class fk implements ArgumentType<hm> {
          $$1.l($$2);
       }
 
-      public fk.a.a a(vl $$0) {
+      public fk.a.a a(vr $$0) {
          byte $$1 = $$0.readByte();
          return new fk.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
       }
@@ -162,7 +162,7 @@ public class fk implements ArgumentType<hm> {
          return new fk.a.a($$0.h, $$0.i);
       }
 
-      public final class a implements it.a<fk> {
+      public final class a implements iu.a<fk> {
          final boolean b;
          final boolean c;
 
@@ -176,7 +176,7 @@ public class fk implements ArgumentType<hm> {
          }
 
          @Override
-         public it<fk, ?> a() {
+         public iu<fk, ?> a() {
             return a.this;
          }
       }

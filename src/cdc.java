@@ -1,48 +1,34 @@
 import java.util.EnumSet;
 
-public class cdc extends ccw {
-   private final bwa a;
-   private bvy b;
-   private final float c;
+public class cdc extends cdn {
+   private final bwt a;
+   private final dhp b;
 
-   public cdc(bwa $$0, float $$1) {
+   public cdc(bwt $$0, dhp $$1) {
       this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(ccw.a.c, ccw.a.a));
+      this.b = $$1;
+      this.a(EnumSet.of(cdn.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.a.cW()) {
-         return false;
+      boolean $$0 = this.a.aw || this.a.av;
+      if ($$0 && this.a.aq().a(axd.h)) {
+         jj $$1 = this.a.dv().d();
+         dym $$2 = this.b.a_($$1);
+         return $$2.a(dkw.rt) || $$2.g(this.b, $$1) == fdl.a();
       } else {
-         this.b = this.a.f();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aJ() ? false : this.a.dX().a(b(5)) == 0;
-            }
-         }
+         return false;
       }
    }
 
    @Override
-   public boolean c() {
-      return !this.a.aJ();
+   public boolean Q_() {
+      return true;
    }
 
    @Override
-   public void d() {
-      fbx $$0 = this.a.dx();
-      fbx $$1 = new fbx(this.b.dz() - this.a.dz(), 0.0, this.b.dF() - this.a.dF());
-      if ($$1.h() > 1.0E-7) {
-         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
-      }
-
-      this.a.n($$1.d, (double)this.c, $$1.f);
+   public void a() {
+      this.a.N().a();
    }
 }

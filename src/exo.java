@@ -1,132 +1,95 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class exo extends eyb {
-   public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  exo.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  ku.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  ku.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, exo::new)
-   );
-   private final exo.b b;
-   private final Optional<List<ku<?>>> c;
-   private final Optional<List<ku<?>>> d;
-   private final Predicate<ku<?>> e;
+public class exo {
+   private final arn a;
+   private final bav b;
+   private final Map<ald, exo.b> c;
+   private final float d;
 
-   exo(List<ezx> $$0, exo.b $$1, Optional<List<ku<?>>> $$2, Optional<List<ku<?>>> $$3) {
-      super($$0);
+   public exo(arn $$0, bav $$1, Map<ald, exo.b> $$2, float $$3) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<ku<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = af.a($$4);
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public eyd<exo> b() {
-      return eye.J;
+   public arn a() {
+      return this.a;
    }
 
-   @Override
-   public Set<bai<?>> a() {
-      return this.b.a();
+   public bav b() {
+      return this.b;
    }
 
-   @Override
-   public cxh a(cxh $$0, ewo $$1) {
-      kr $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
+   public void a(ald $$0, Consumer<cxy> $$1) {
+      exo.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
    }
 
-   public static exo.a a(exo.b $$0) {
-      return new exo.a($$0);
+   public float c() {
+      return this.d;
    }
 
-   public static class a extends eyb.a<exo.a> {
-      private final exo.b a;
-      private Optional<Builder<ku<?>>> b = Optional.empty();
-      private Optional<Builder<ku<?>>> c = Optional.empty();
+   public static class a {
+      private final arn a;
+      private final bav.a b = new bav.a();
+      private final Map<ald, exo.b> c = Maps.newHashMap();
+      private float d;
 
-      a(exo.b $$0) {
+      public a(arn $$0) {
          this.a = $$0;
       }
 
-      public exo.a a(ku<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+      public arn a() {
+         return this.a;
+      }
+
+      public <T> exo.a a(bat<T> $$0, T $$1) {
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      public <T> exo.a b(bat<T> $$0, @Nullable T $$1) {
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      public <T> T a(bat<T> $$0) {
+         return this.b.a($$0);
+      }
+
+      @Nullable
+      public <T> T b(bat<T> $$0) {
+         return this.b.b($$0);
+      }
+
+      public exo.a a(ald $$0, exo.b $$1) {
+         exo.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
          }
+      }
 
-         this.b.get().add($$0);
+      public exo.a a(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      public exo.a b(ku<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
-      }
-
-      protected exo.a a() {
-         return this;
-      }
-
-      @Override
-      public eyc b() {
-         return new exo(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
+      public exo a(bau $$0) {
+         bav $$1 = this.b.a($$0);
+         return new exo(this.a, $$1, this.c, this.d);
       }
    }
 
-   public static enum b implements azv {
-      a("block_entity");
-
-      public static final Codec<exo.b> b = azv.b(exo.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kr a(ewo $$0) {
-         switch (this) {
-            case a:
-               dus $$1 = $$0.c(ezi.h);
-               return $$1 != null ? $$1.q() : kr.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<bai<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(ezi.h);
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cxy> var1);
    }
 }

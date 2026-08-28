@@ -1,22 +1,38 @@
-public class fqc extends fpq {
-   protected final frd a;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-   public fqc(int $$0, int $$1, int $$2, int $$3, frd $$4, fpq.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, wo.a);
+public class fqc {
+   public static final float a = 200.0F;
+   private final List<fqc.a> b = new ArrayList<>();
+
+   public fqc a(fqc.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   public fqc(int $$0, int $$1, int $$2, int $$3, frd $$4, fpq.c $$5, wp $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
+   public fqc a(fqc $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   public fqc(int $$0, int $$1, frd $$2, fpq.c $$3, wp $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public void a(fpz $$0, fmt $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   @Override
-   public void b(fpc $$0, int $$1, int $$2, float $$3) {
-      aku $$4 = this.a.a(this.E(), this.D());
-      $$0.a(gnh::H, $$4, this.F(), this.G(), this.g, this.h);
+   private void b(fpz $$0, fmt $$1) {
+      for (fqc.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
+   }
+
+   public interface a {
+      void render(fpz var1, fmt var2);
    }
 }

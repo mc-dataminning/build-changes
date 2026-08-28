@@ -1,46 +1,81 @@
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
+import org.slf4j.Logger;
 
-public class ftp<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final ftp<?> a = new ftp<>(baf.a, ($$0, $$1) -> {
-   });
+public class ftp {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Object a = new Object();
+   private static long c = 0L;
 
-   private ftp(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   public static long a() {
+      synchronized (a) {
+         if (c == 0L) {
+            MemoryStack $$0 = MemoryStack.stackPush();
 
-   public static ftp<?> a(String $$0) {
-      return new ftp<>($$0, Consumer::accept);
-   }
+            try {
+               PointerBuffer $$1 = $$0.mallocPointer(1);
+               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+               c = $$1.get();
+            } catch (Throwable var6) {
+               if ($$0 != null) {
+                  try {
+                     $$0.close();
+                  } catch (Throwable var5) {
+                     var6.addSuppressed(var5);
+                  }
+               }
 
-   public static ftp<?> a(wp $$0) {
-      return new ftp<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
+               throw var6;
+            }
 
-   public static ftp<?> a(List<wp> $$0) {
-      return new ftp<>($$0, ($$1, $$2) -> $$0.stream().map(wp::getString).forEach($$1));
-   }
+            if ($$0 != null) {
+               $$0.close();
+            }
+         }
 
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ftp<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+         return c;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      }
+   }
+
+   public static boolean b(int $$0, String $$1) {
+      if ($$0 != 0) {
+         b.error("FreeType error: {} ({})", a($$0), $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   }
+
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      synchronized (a) {
+         if (c != 0L) {
+            FreeType.FT_Done_Library(c);
+            c = 0L;
+         }
+      }
    }
 }

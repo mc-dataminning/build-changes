@@ -1,20 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ekt(ekz b, float c) {
+public class ekt implements ejv {
    public static final Codec<ekt> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ekz.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, ekt::new)
    );
+   public final int b;
+   public final int c;
+   public final float d;
 
-   public ekz a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
+   public ekt(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

@@ -1,47 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class frb implements fto {
-   private static final int a = 170;
-   private final wp b;
-   @Nullable
-   private List<ayl> c;
-   @Nullable
-   private tl d;
-   @Nullable
-   private final wp e;
+public class frb extends btg {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   private frb(wp $$0, @Nullable wp $$1) {
-      this.b = $$0;
-      this.e = $$1;
-   }
-
-   public static frb a(wp $$0, @Nullable wp $$1) {
-      return new frb($$0, $$1);
-   }
-
-   public static frb a(wp $$0) {
-      return new frb($$0, $$0);
+   public frb(UUID $$0, wv $$1, float $$2, btg.a $$3, btg.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = af.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   public void b(ftn $$0) {
-      if (this.e != null) {
-         $$0.a(ftm.c, this.e);
-      }
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = af.c();
    }
 
-   public List<ayl> a(fmg $$0) {
-      tl $$1 = tl.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
-      }
-
-      return this.c;
-   }
-
-   public static List<ayl> a(fmg $$0, wp $$1) {
-      return $$0.h.c($$1, 170);
+   @Override
+   public float j() {
+      long $$0 = af.c() - this.i;
+      float $$1 = azk.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return azk.h($$1, this.b, this.h);
    }
 }

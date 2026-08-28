@@ -1,47 +1,28 @@
-import java.util.List;
-import java.util.Locale;
+import java.util.EnumMap;
 
-public enum gif {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
+public class gif {
+   public static final int a = 5000;
+   private final gia b;
+   private final fqv c;
+   private final EnumMap<bom, Long> d;
 
-   private final String l;
-   private final wp m;
-   private final wp n;
-
-   private gif(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = wp.c($$1);
-      this.n = wp.c($$1 + ".description");
+   public gif(gia $$0, fqv $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(bom.class);
    }
 
-   public String a() {
-      return this.l;
+   public void a() {
+      if (this.c.g()) {
+         this.a(bom.a);
+      }
    }
 
-   public wp b() {
-      return this.m;
-   }
-
-   public wp c() {
-      return this.n;
-   }
-
-   public static List<gif> a(gig $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+   private void a(bom $$0) {
+      long $$1 = af.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new ahf($$0));
+         this.d.put($$0, $$1);
+      }
    }
 }

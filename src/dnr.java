@@ -1,78 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
 
-public class dnr extends dsb implements dkh {
-   public static final MapCodec<dnr> a = b(dnr::new);
-
-   @Override
-   public MapCodec<dnr> a() {
-      return a;
-   }
-
-   public dnr(dxp.d $$0) {
+public abstract class dnr extends dku implements dnq {
+   public dnr(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dhc $$0, ji $$1, dxq $$2) {
-      return $$0.a_($$1.d()).l();
+   protected abstract MapCodec<? extends dnr> a();
+
+   @Override
+   protected void a(dym $$0, dhp $$1, jj $$2, dym $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   public boolean a(dgz $$0, azh $$1, ji $$2, dxq $$3) {
-      return true;
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      $$2.a($$3, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(ard $$0, azh $$1, ji $$2, dxq $$3) {
-      ji $$4 = $$2.d();
-      dxq $$5 = dkg.bA.m();
-      Optional<jr.c<enn>> $$6 = $$0.F_().e(mc.aV).a(rw.o);
+   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
+         cmm $$4 = cmm.a($$1, $$2, $$0);
+         this.a($$4);
+      }
+   }
 
-      label51:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         ji $$8 = $$4;
+   protected void a(cmm $$0) {
+   }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label51;
-            }
-         }
+   protected int b() {
+      return 2;
+   }
 
-         dxq $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            dkh $$11 = (dkh)$$5.b();
-            if ($$11.a($$0, $$8, $$10)) {
-               $$11.a($$0, $$1, $$8, $$10);
-            }
-         }
+   public static boolean n(dym $$0) {
+      return $$0.l() || $$0.a(awz.aN) || $$0.n() || $$0.v();
+   }
 
-         if ($$10.l()) {
-            jr<enn> $$13;
-            if ($$1.a(8) == 0) {
-               List<egg<?, ?>> $$12 = $$0.t($$8).a().d().b();
-               if ($$12.isEmpty()) {
-                  continue;
-               }
-
-               $$13 = ((ejl)$$12.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$13 = $$6.get();
-            }
-
-            $$13.a().a($$0, $$0.m().g(), $$1, $$8);
+   @Override
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      if ($$3.a(16) == 0) {
+         jj $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azo.a($$1, $$2, $$3, new ln(lv.C, $$0));
          }
       }
    }
 
-   @Override
-   public dkh.a aq_() {
-      return dkh.a.a;
+   public int b(dym $$0, dgv $$1, jj $$2) {
+      return -16777216;
    }
 }

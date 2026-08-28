@@ -1,82 +1,115 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class drm extends dja {
-   public static final MapCodec<drm> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(drm.a.b.fieldOf("kind").forGetter(dja::b), t()).apply($$0, drm::new));
-   public static final int d = dyw.a();
-   private static final int b = d + 1;
-   public static final dyq e = dyg.bd;
-   private static final fcr f = dke.b(8.0, 0.0, 8.0);
-   private static final fcr g = dke.b(10.0, 0.0, 8.0);
+public enum drm implements bag {
+   a(0, "none", h.a),
+   b(1, "clockwise_90", h.u),
+   c(2, "180", h.c),
+   d(3, "counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<? extends drm> a() {
-      return c;
+   public static final IntFunction<drm> e = aya.a(drm::b, values(), aya.a.b);
+   public static final Codec<drm> f = bag.a(drm::values);
+   public static final yt<ByteBuf, drm> g = yr.a(e, drm::b);
+   private final int h;
+   private final String i;
+   private final h j;
+
+   private drm(final int $$0, final String $$1, final h $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   protected drm(drm.a $$0, dxp.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   public drm a(drm $$0) {
+      return switch ($$0) {
+         case b -> {
+            switch (this) {
+               case a:
+                  yield b;
+               case b:
+                  yield c;
+               case c:
+                  yield d;
+               case d:
+                  yield a;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case c -> {
+            switch (this) {
+               case a:
+                  yield c;
+               case b:
+                  yield d;
+               case c:
+                  yield a;
+               case d:
+                  yield b;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch (this) {
+               case a:
+                  yield d;
+               case b:
+                  yield a;
+               case c:
+                  yield b;
+               case d:
+                  yield c;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> this;
+      };
    }
 
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.b() == drm.b.h ? g : f;
+   public h a() {
+      return this.j;
    }
 
-   @Override
-   protected fcr d_(dxq $$0) {
-      return fco.a();
-   }
-
-   @Override
-   public dxq a(dax $$0) {
-      return super.a($$0).b(e, Integer.valueOf(dyw.a($$0.i())));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends azv {
-      Map<String, drm.a> a = new Object2ObjectArrayMap();
-      Codec<drm.a> b = Codec.stringResolver(azv::c, a::get);
-   }
-
-   public static enum b implements drm.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public jo a(jo $$0) {
+      if ($$0.o() == jo.a.b) {
+         return $$0;
+      } else {
+         return switch (this) {
+            case b -> $$0.h();
+            case c -> $$0.g();
+            case d -> $$0.i();
+            default -> $$0;
+         };
       }
+   }
 
-      @Override
-      public String c() {
-         return this.j;
-      }
+   public int a(int $$0, int $$1) {
+      return switch (this) {
+         case b -> ($$0 + $$1 / 4) % $$1;
+         case c -> ($$0 + $$1 / 2) % $$1;
+         case d -> ($$0 + $$1 * 3 / 4) % $$1;
+         default -> $$0;
+      };
+   }
+
+   public static drm a(azs $$0) {
+      return af.a(values(), $$0);
+   }
+
+   public static List<drm> b(azs $$0) {
+      return af.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.i;
+   }
+
+   private int b() {
+      return this.h;
    }
 }

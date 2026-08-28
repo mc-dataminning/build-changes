@@ -1,45 +1,45 @@
-public class aez implements yw<abl> {
-   public static final yn<vl, aez> a = yw.a(aez::a, aez::new);
-   private final float b;
-   private final int c;
-   private final float d;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public aez(float $$0, int $$1, float $$2) {
+public class aez implements zc<abr> {
+   public static final yt<vr, aez> a = zc.a(aez::a, aez::new);
+   private final fdq b;
+   private final String c;
+
+   public aez(fdq $$0, @Nullable fdr $$1) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private aez(vl $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private aez(vr $$0) {
+      this.b = $$0.a(fdq.u);
+      this.c = $$0.p();
    }
 
-   private void a(vl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(vr $$0) {
+      $$0.a(fdq::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public yy<aez> a() {
-      return agd.aJ;
+   public ze<aez> a() {
+      return agk.aE;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public fdq b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

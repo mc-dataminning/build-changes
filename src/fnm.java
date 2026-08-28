@@ -1,27 +1,44 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public record fnm(int b, int c) implements fnq {
-   public static final MapCodec<fnm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayi.l.optionalFieldOf("index", 0).forGetter(fnm::b), ayi.i.fieldOf("default").forGetter(fnm::c)).apply($$0, fnm::new)
-   );
+public class fnm {
+   private double a;
+   private double b;
 
-   @Override
-   public int a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2) {
-      czp $$3 = $$0.a(kv.p);
-      if ($$3 != null) {
-         Integer $$4 = $$3.d(this.b);
-         if ($$4 != null) {
-            return axk.f($$4);
-         }
+   public Vector2i a(double $$0, double $$1) {
+      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
+         this.a = 0.0;
       }
 
-      return axk.f(this.c);
+      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
+         this.b = 0.0;
+      }
+
+      this.a += $$0;
+      this.b += $$1;
+      int $$2 = (int)this.a;
+      int $$3 = (int)this.b;
+      if ($$2 == 0 && $$3 == 0) {
+         return new Vector2i(0, 0);
+      } else {
+         this.a -= (double)$$2;
+         this.b -= (double)$$3;
+         return new Vector2i($$2, $$3);
+      }
    }
 
-   @Override
-   public MapCodec<fnm> a() {
-      return a;
+   public static int a(double $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.signum($$0);
+      $$1 -= $$3;
+      $$1 = Math.max(-1, $$1);
+
+      while ($$1 < 0) {
+         $$1 += $$2;
+      }
+
+      while ($$1 >= $$2) {
+         $$1 -= $$2;
+      }
+
+      return $$1;
    }
 }

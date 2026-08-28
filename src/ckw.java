@@ -1,43 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class ckw extends ckr {
-   @Nullable
-   private fbx b;
+public enum ckw implements bag {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public ckw(ckp $$0) {
-      super($$0);
+   public static final Codec<ckw> h = bag.a(ckw::values);
+   private static final IntFunction<ckw> j = aya.a(ckw::a, values(), aya.a.b);
+   public static final yt<ByteBuf, ckw> i = yr.a(j, ckw::a);
+   private final int k;
+   private final String l;
+
+   private ckw(final int $$0, final String $$1) {
+      this.k = $$0;
+      this.l = $$1;
+   }
+
+   public int a() {
+      return this.k;
+   }
+
+   public static ckw a(int $$0) {
+      return j.apply($$0);
    }
 
    @Override
-   public void a(ard $$0) {
-      if (this.b == null) {
-         this.b = this.a.ds();
-      }
-   }
-
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public void c() {
-      this.b = null;
-   }
-
-   @Override
-   public float e() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public fbx f() {
-      return this.b;
-   }
-
-   @Override
-   public clf<ckw> h() {
-      return clf.k;
+   public String c() {
+      return this.l;
    }
 }

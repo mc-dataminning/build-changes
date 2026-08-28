@@ -1,323 +1,296 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+
 public class goc {
-   private static final float a = 0.8888889F;
-   private final hfr[] b = new hfr[2];
-   private final hfr[] c = new hfr[2];
-   private hfr d;
+   public static final ald a = ald.b("main");
+   private final List<goe> b;
+   private final Map<ald, god.d> c;
+   private final Set<ald> d;
 
-   protected void a() {
-      this.b[0] = fmg.Q().aE().b().b(dkg.K.m()).d();
-      this.b[1] = hib.c.c();
-      this.c[0] = fmg.Q().aE().b().b(dkg.J.m()).d();
-      this.c[1] = hib.d.c();
-      this.d = hib.e.c();
+   private goc(List<goe> $$0, Map<ald, god.d> $$1, Set<ald> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private static boolean a(etw $$0, etw $$1) {
-      return $$1.a().a($$0.a());
-   }
-
-   private static boolean a(jn $$0, float $$1, dxq $$2) {
-      fcr $$3 = $$2.a($$0.g());
-      if ($$3 == fco.a()) {
-         return false;
-      } else if ($$3 == fco.b()) {
-         boolean $$4 = $$1 == 1.0F;
-         return $$0 != jn.b || $$4;
+   public static goc a(god $$0, hgu $$1, gop $$2, Set<ald> $$3) throws gop.b {
+      Stream<ald> $$4 = $$0.b().stream().flatMap(god.e::b);
+      Set<ald> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<ald> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new gop.b("Referenced external targets are not available in this context: " + $$6);
       } else {
-         fcr $$5 = fco.a(0.0, 0.0, 0.0, 1.0, (double)$$1, 1.0);
-         return fco.a($$5, $$3, $$0);
+         Builder<goe> $$7 = ImmutableList.builder();
+
+         for (god.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
+         }
+
+         return new goc($$7.build(), $$0.a(), $$5);
       }
    }
 
-   private static boolean b(jn $$0, float $$1, dxq $$2) {
-      return a($$0, $$1, $$2);
-   }
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static goe a(hgu $$0, gop $$1, god.e $$2) throws gop.b {
+      gni $$3 = $$1.b($$2.a());
 
-   private static boolean a(dxq $$0, jn $$1) {
-      return a($$1.g(), 1.0F, $$0);
-   }
+      for (god.h $$4 : $$2.f()) {
+         String $$5 = $$4.a();
+         if ($$3.a($$5) == null) {
+            throw new gop.b("Uniform '" + $$5 + "' does not exist for " + $$2.c());
+         }
+      }
 
-   public static boolean a(etw $$0, dxq $$1, jn $$2, etw $$3) {
-      return !a($$1, $$2) && !a($$0, $$3);
-   }
+      String $$6 = $$2.c().toString();
+      goe $$7 = new goe($$6, $$3, $$2.e(), $$2.f());
 
-   public void a(dgc $$0, ji $$1, fgv $$2, dxq $$3, etw $$4) {
-      boolean $$5 = $$4.a(awv.b);
-      hfr[] $$6 = $$5 ? this.b : this.c;
-      int $$7 = $$5 ? 16777215 : gmf.c($$0, $$1);
-      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-      float $$10 = (float)($$7 & 0xFF) / 255.0F;
-      dxq $$11 = $$0.a_($$1.a(jn.a));
-      etw $$12 = $$11.y();
-      dxq $$13 = $$0.a_($$1.a(jn.b));
-      etw $$14 = $$13.y();
-      dxq $$15 = $$0.a_($$1.a(jn.c));
-      etw $$16 = $$15.y();
-      dxq $$17 = $$0.a_($$1.a(jn.d));
-      etw $$18 = $$17.y();
-      dxq $$19 = $$0.a_($$1.a(jn.e));
-      etw $$20 = $$19.y();
-      dxq $$21 = $$0.a_($$1.a(jn.f));
-      etw $$22 = $$21.y();
-      boolean $$23 = !a($$4, $$14);
-      boolean $$24 = a($$4, $$3, jn.a, $$12) && !b(jn.a, 0.8888889F, $$11);
-      boolean $$25 = a($$4, $$3, jn.c, $$16);
-      boolean $$26 = a($$4, $$3, jn.d, $$18);
-      boolean $$27 = a($$4, $$3, jn.e, $$20);
-      boolean $$28 = a($$4, $$3, jn.f, $$22);
-      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
-         float $$29 = $$0.a(jn.a, true);
-         float $$30 = $$0.a(jn.b, true);
-         float $$31 = $$0.a(jn.c, true);
-         float $$32 = $$0.a(jn.e, true);
-         etv $$33 = $$4.a();
-         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
-         float $$35;
-         float $$36;
-         float $$37;
-         float $$38;
-         if ($$34 >= 1.0F) {
-            $$35 = 1.0F;
-            $$36 = 1.0F;
-            $$37 = 1.0F;
-            $$38 = 1.0F;
-         } else {
-            float $$39 = this.a($$0, $$33, $$1.f(), $$15, $$16);
-            float $$40 = this.a($$0, $$33, $$1.g(), $$17, $$18);
-            float $$41 = this.a($$0, $$33, $$1.i(), $$21, $$22);
-            float $$42 = this.a($$0, $$33, $$1.h(), $$19, $$20);
-            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(jn.c).a(jn.f));
-            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(jn.c).a(jn.e));
-            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(jn.d).a(jn.f));
-            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(jn.d).a(jn.e));
+      for (god.c $$8 : $$2.d()) {
+         Objects.requireNonNull($$8);
+         Throwable var44;
+         switch ($$8) {
+            case god.g var10:
+               god.g var52 = var10;
+
+               try {
+                  var53 = var52.a();
+               } catch (Throwable var30) {
+                  var44 = var30;
+                  boolean var65 = false;
+                  break;
+               }
+
+               String var35 = var53;
+               god.g var54 = var10;
+
+               try {
+                  var55 = var54.c();
+               } catch (Throwable var29) {
+                  var44 = var29;
+                  boolean var66 = false;
+                  break;
+               }
+
+               ald var36 = var55;
+               god.g var56 = var10;
+
+               try {
+                  var57 = var56.d();
+               } catch (Throwable var28) {
+                  var44 = var28;
+                  boolean var67 = false;
+                  break;
+               }
+
+               int var37 = var57;
+               god.g var58 = var10;
+
+               try {
+                  var59 = var58.e();
+               } catch (Throwable var27) {
+                  var44 = var27;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var59;
+               god.g var60 = var10;
+
+               try {
+                  var61 = var60.f();
+               } catch (Throwable var26) {
+                  var44 = var26;
+                  boolean var69 = false;
+                  break;
+               }
+
+               boolean var39 = var61;
+               hgd $$14x = $$0.b(var36.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$14x.a(var39, false);
+               $$7.a(new goe.c(var35, $$14x, var37, var38));
+               continue;
+            case god.f $$14:
+               god.f var10000 = $$14;
+
+               try {
+                  var45 = var10000.a();
+               } catch (Throwable var25) {
+                  var44 = var25;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var21 = var45;
+               god.f var46 = $$14;
+
+               try {
+                  var47 = var46.c();
+               } catch (Throwable var24) {
+                  var44 = var24;
+                  boolean var62 = false;
+                  break;
+               }
+
+               ald var41 = var47;
+               god.f var48 = $$14;
+
+               try {
+                  var49 = var48.d();
+               } catch (Throwable var23) {
+                  var44 = var23;
+                  boolean var63 = false;
+                  break;
+               }
+
+               boolean var42 = var49;
+               god.f var50 = $$14;
+
+               try {
+                  var51 = var50.e();
+               } catch (Throwable var22) {
+                  var44 = var22;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var51;
+               $$7.a(new goe.b(var21, var41, var42, var43));
+               continue;
+            default:
+               throw new MatchException(null, null);
          }
 
-         float $$47 = (float)($$1.u() & 15);
-         float $$48 = (float)($$1.v() & 15);
-         float $$49 = (float)($$1.w() & 15);
-         float $$50 = 0.001F;
-         float $$51 = $$24 ? 0.001F : 0.0F;
-         if ($$23 && !b(jn.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
-            $$36 -= 0.001F;
-            $$38 -= 0.001F;
-            $$37 -= 0.001F;
-            $$35 -= 0.001F;
-            fbx $$52 = $$4.c($$0, $$1);
-            float $$54;
-            float $$56;
-            float $$58;
-            float $$60;
-            float $$55;
-            float $$57;
-            float $$59;
-            float $$61;
-            if ($$52.d == 0.0 && $$52.f == 0.0) {
-               hfr $$53 = $$6[0];
-               $$54 = $$53.a(0.0F);
-               $$55 = $$53.c(0.0F);
-               $$56 = $$54;
-               $$57 = $$53.c(1.0F);
-               $$58 = $$53.a(1.0F);
-               $$59 = $$57;
-               $$60 = $$58;
-               $$61 = $$55;
-            } else {
-               hfr $$62 = $$6[1];
-               float $$63 = (float)ayz.d($$52.f, $$52.d) - (float) (Math.PI / 2);
-               float $$64 = ayz.a($$63) * 0.25F;
-               float $$65 = ayz.b($$63) * 0.25F;
-               float $$66 = 0.5F;
-               $$54 = $$62.a(0.5F + (-$$65 - $$64));
-               $$55 = $$62.c(0.5F + -$$65 + $$64);
-               $$56 = $$62.a(0.5F + -$$65 + $$64);
-               $$57 = $$62.c(0.5F + $$65 + $$64);
-               $$58 = $$62.a(0.5F + $$65 + $$64);
-               $$59 = $$62.c(0.5F + ($$65 - $$64));
-               $$60 = $$62.a(0.5F + ($$65 - $$64));
-               $$61 = $$62.c(0.5F + (-$$65 - $$64));
-            }
+         Throwable var34 = var44;
+         throw new MatchException(var34.toString(), var34);
+      }
 
-            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
-            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
-            float $$77 = $$6[0].k();
-            $$54 = ayz.h($$77, $$54, $$75);
-            $$56 = ayz.h($$77, $$56, $$75);
-            $$58 = ayz.h($$77, $$58, $$75);
-            $$60 = ayz.h($$77, $$60, $$75);
-            $$55 = ayz.h($$77, $$55, $$76);
-            $$57 = ayz.h($$77, $$57, $$76);
-            $$59 = ayz.h($$77, $$59, $$76);
-            $$61 = ayz.h($$77, $$61, $$76);
-            int $$78 = this.a($$0, $$1);
-            float $$79 = $$30 * $$8;
-            float $$80 = $$30 * $$9;
-            float $$81 = $$30 * $$10;
-            this.a($$2, $$47 + 0.0F, $$48 + $$36, $$49 + 0.0F, $$79, $$80, $$81, $$54, $$55, $$78);
-            this.a($$2, $$47 + 0.0F, $$48 + $$38, $$49 + 1.0F, $$79, $$80, $$81, $$56, $$57, $$78);
-            this.a($$2, $$47 + 1.0F, $$48 + $$37, $$49 + 1.0F, $$79, $$80, $$81, $$58, $$59, $$78);
-            this.a($$2, $$47 + 1.0F, $$48 + $$35, $$49 + 0.0F, $$79, $$80, $$81, $$60, $$61, $$78);
-            if ($$4.b($$0, $$1.d())) {
-               this.a($$2, $$47 + 0.0F, $$48 + $$36, $$49 + 0.0F, $$79, $$80, $$81, $$54, $$55, $$78);
-               this.a($$2, $$47 + 1.0F, $$48 + $$35, $$49 + 0.0F, $$79, $$80, $$81, $$60, $$61, $$78);
-               this.a($$2, $$47 + 1.0F, $$48 + $$37, $$49 + 1.0F, $$79, $$80, $$81, $$58, $$59, $$78);
-               this.a($$2, $$47 + 0.0F, $$48 + $$38, $$49 + 1.0F, $$79, $$80, $$81, $$56, $$57, $$78);
-            }
-         }
+      return $$7;
+   }
 
-         if ($$24) {
-            float $$82 = $$6[0].c();
-            float $$83 = $$6[0].d();
-            float $$84 = $$6[0].g();
-            float $$85 = $$6[0].h();
-            int $$86 = this.a($$0, $$1.e());
-            float $$87 = $$29 * $$8;
-            float $$88 = $$29 * $$9;
-            float $$89 = $$29 * $$10;
-            this.a($$2, $$47, $$48 + $$51, $$49 + 1.0F, $$87, $$88, $$89, $$82, $$85, $$86);
-            this.a($$2, $$47, $$48 + $$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
-            this.a($$2, $$47 + 1.0F, $$48 + $$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
-            this.a($$2, $$47 + 1.0F, $$48 + $$51, $$49 + 1.0F, $$87, $$88, $$89, $$83, $$85, $$86);
-         }
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(ffs $$0, int $$1, int $$2, goc.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<ald, fha<ffy>> $$5 = new HashMap<>(this.c.size() + this.d.size());
 
-         int $$90 = this.a($$0, $$1);
+      for (ald $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
+      }
 
-         for (jn $$91 : jn.c.a) {
-            float $$92;
-            float $$93;
-            float $$94;
-            float $$96;
-            float $$95;
-            float $$97;
-            boolean $$98;
-            switch ($$91) {
-               case c:
-                  $$92 = $$36;
-                  $$93 = $$35;
-                  $$94 = $$47;
-                  $$95 = $$47 + 1.0F;
-                  $$96 = $$49 + 0.001F;
-                  $$97 = $$49 + 0.001F;
-                  $$98 = $$25;
-                  break;
-               case d:
-                  $$92 = $$37;
-                  $$93 = $$38;
-                  $$94 = $$47 + 1.0F;
-                  $$95 = $$47;
-                  $$96 = $$49 + 1.0F - 0.001F;
-                  $$97 = $$49 + 1.0F - 0.001F;
-                  $$98 = $$26;
-                  break;
-               case e:
-                  $$92 = $$38;
-                  $$93 = $$36;
-                  $$94 = $$47 + 0.001F;
-                  $$95 = $$47 + 0.001F;
-                  $$96 = $$49 + 1.0F;
-                  $$97 = $$49;
-                  $$98 = $$27;
-                  break;
-               default:
-                  $$92 = $$35;
-                  $$93 = $$37;
-                  $$94 = $$47 + 1.0F - 0.001F;
-                  $$95 = $$47 + 1.0F - 0.001F;
-                  $$96 = $$49;
-                  $$97 = $$49 + 1.0F;
-                  $$98 = $$28;
-            }
+      for (Entry<ald, god.d> $$7 : this.c.entrySet()) {
+         ald $$8 = $$7.getKey();
+         god.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
 
-            if ($$98 && !b($$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
-               ji $$120 = $$1.a($$91);
-               hfr $$121 = $$6[1];
-               if (!$$5) {
-                  dke $$122 = $$0.a_($$120).b();
-                  if ($$122 instanceof dnw || $$122 instanceof dos) {
-                     $$121 = this.d;
+         var35 = $$7.getValue();
+         fgy $$11 = switch (var11) {
+            case god.a var13 -> {
+               god.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     god.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
                   }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
                }
 
-               float $$123 = $$121.a(0.0F);
-               float $$124 = $$121.a(0.5F);
-               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
-               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
-               float $$127 = $$121.c(0.5F);
-               float $$128 = $$91.o() == jn.a.c ? $$31 : $$32;
-               float $$129 = $$30 * $$128 * $$8;
-               float $$130 = $$30 * $$128 * $$9;
-               float $$131 = $$30 * $$128 * $$10;
-               this.a($$2, $$94, $$48 + $$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               this.a($$2, $$95, $$48 + $$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-               this.a($$2, $$95, $$48 + $$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-               this.a($$2, $$94, $$48 + $$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-               if ($$121 != this.d) {
-                  this.a($$2, $$94, $$48 + $$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-                  this.a($$2, $$95, $$48 + $$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-                  this.a($$2, $$95, $$48 + $$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-                  this.a($$2, $$94, $$48 + $$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               int var27 = var33;
+               yield new fgy(var26, var27, true, 0);
+            }
+            case god.b var16 -> new fgy($$1, $$2, true, 0);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
+      }
+
+      for (goe $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (ald $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
+      }
+   }
+
+   @Deprecated
+   public void a(ffy $$0, fgx $$1) {
+      ffs $$2 = new ffs();
+      goc.a $$3 = goc.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (goe $$2 : this.b) {
+         $$2.a().c($$0).a($$1);
+      }
+   }
+
+   public interface a {
+      static goc.a b(final ald $$0, final fha<ffy> $$1) {
+         return new goc.a() {
+            private fha<ffy> c = $$1;
+
+            @Override
+            public void a(ald $$0x, fha<ffy> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
                }
             }
-         }
-      }
-   }
 
-   private float a(dgc $$0, etv $$1, float $$2, float $$3, float $$4, ji $$5) {
-      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
-         float[] $$6 = new float[2];
-         if ($$4 > 0.0F || $$3 > 0.0F) {
-            float $$7 = this.a($$0, $$1, $$5);
-            if ($$7 >= 1.0F) {
-               return 1.0F;
+            @Nullable
+            @Override
+            public fha<ffy> a(ald $$0x) {
+               return $$0.equals($$0) ? this.c : null;
             }
+         };
+      }
 
-            this.a($$6, $$7);
+      void a(ald var1, fha<ffy> var2);
+
+      @Nullable
+      fha<ffy> a(ald var1);
+
+      default fha<ffy> b(ald $$0) {
+         fha<ffy> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
          }
-
-         this.a($$6, $$2);
-         this.a($$6, $$4);
-         this.a($$6, $$3);
-         return $$6[0] / $$6[1];
-      } else {
-         return 1.0F;
       }
-   }
-
-   private void a(float[] $$0, float $$1) {
-      if ($$1 >= 0.8F) {
-         $$0[0] += $$1 * 10.0F;
-         $$0[1] += 10.0F;
-      } else if ($$1 >= 0.0F) {
-         $$0[0] += $$1;
-         $$0[1]++;
-      }
-   }
-
-   private float a(dgc $$0, etv $$1, ji $$2) {
-      dxq $$3 = $$0.a_($$2);
-      return this.a($$0, $$1, $$2, $$3, $$3.y());
-   }
-
-   private float a(dgc $$0, etv $$1, ji $$2, dxq $$3, etw $$4) {
-      if ($$1.a($$4.a())) {
-         dxq $$5 = $$0.a_($$2.d());
-         return $$1.a($$5.y().a()) ? 1.0F : $$4.d();
-      } else {
-         return !$$3.e() ? 0.0F : -1.0F;
-      }
-   }
-
-   private void a(fgv $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).c($$9).b(0.0F, 1.0F, 0.0F);
-   }
-
-   private int a(dgc $$0, ji $$1) {
-      int $$2 = gmt.a($$0, $$1);
-      int $$3 = gmt.a($$0, $$1.d());
-      int $$4 = $$2 & 0xFF;
-      int $$5 = $$3 & 0xFF;
-      int $$6 = $$2 >> 16 & 0xFF;
-      int $$7 = $$3 >> 16 & 0xFF;
-      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

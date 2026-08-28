@@ -1,82 +1,113 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dns extends dmz {
+public class dns extends dku {
    public static final MapCodec<dns> a = b(dns::new);
-   private static final wp b = wp.c("container.grindstone_title");
-   private final Function<dxq, fcr> d;
+   public static final dzm b = dzc.aT;
+   private static final fdo d = dku.b(16.0, 0.0, 15.0);
+   public static final int c = 7;
 
    @Override
    public MapCodec<dns> a() {
       return a;
    }
 
-   protected dns(dxp.d $$0) {
+   protected dns(dyl.d $$0) {
       super($$0);
-      this.l(this.B.b().b(e, jn.c).b(c, dyb.b));
-      this.d = this.b();
-   }
-
-   private Function<dxq, fcr> b() {
-      fcr $$0 = fco.a(dke.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dke.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
-      fcr $$1 = fco.a($$0, h.z);
-      fcr $$2 = fco.a(dke.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
-      Map<dyb, Map<jn, fcr>> $$3 = fco.e($$2);
-      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
-   }
-
-   private fcr o(dxq $$0) {
-      return this.d.apply($$0);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcr b(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.o($$0);
+   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
+      if ($$4 == jo.b && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return this.o($$0);
+   protected boolean a(dym $$0, dhs $$1, jj $$2) {
+      dym $$3 = $$1.a_($$2.d());
+      return !$$3.e() || $$3.b() instanceof dnu || $$3.b() instanceof dye;
    }
 
    @Override
-   protected boolean a(dxq $$0, dhc $$1, ji $$2) {
+   public dym a(dbn $$0) {
+      return !this.m().a((dhs)$$0.q(), $$0.a()) ? dkw.j.m() : super.a($$0);
+   }
+
+   @Override
+   protected boolean g_(dym $$0) {
       return true;
    }
 
    @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awk.aD);
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return d;
+   }
+
+   @Override
+   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((dhs)$$1, $$2) && !$$1.r($$2.d())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((dgv)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
+      }
+   }
+
+   @Override
+   public void a(dhp $$0, dym $$1, jj $$2, bvs $$3, double $$4) {
+      if ($$0 instanceof arn $$5
+         && (double)$$0.A.i() < $$4 - 0.5
+         && $$3 instanceof bwr
+         && ($$3 instanceof cqi || $$5.O().c(dhl.c))
+         && $$3.dq() * $$3.dq() * $$3.dr() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
       }
 
-      return bsy.a;
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable bvs $$0, dym $$1, dhp $$2, jj $$3) {
+      dym $$4 = a($$1, dkw.j.m(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(edm.c, $$3, edm.a.a($$0, $$4));
+   }
+
+   private static boolean a(dgv $$0, jj $$1) {
+      return $$0.a_($$1.d()).a(awz.cC);
+   }
+
+   private static boolean a(dhs $$0, jj $$1) {
+      for (jj $$2 : jj.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(axf.a)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected bta b(dxq $$0, dgz $$1, ji $$2) {
-      return new btg(($$2x, $$3, $$4) -> new ctw($$2x, $$3, ctj.a($$1, $$2)), b);
+   protected void a(dyn.a<dku, dym> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(e, $$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.a($$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(e, c);
-   }
-
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
+   protected boolean a(dym $$0, evi $$1) {
       return false;
    }
 }

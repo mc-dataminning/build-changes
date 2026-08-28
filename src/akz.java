@@ -1,18 +1,71 @@
-import com.mojang.logging.LogUtils;
-import java.io.OutputStream;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class akz extends alb {
-   private static final Logger b = LogUtils.getLogger();
+public final class akz<E> implements Codec<js<E>> {
+   private final alc<? extends kf<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   public akz(String $$0, OutputStream $$1) {
-      super($$0, $$1);
+   public static <E> akz<E> a(alc<? extends kf<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
+   }
+
+   public static <E> akz<E> a(alc<? extends kf<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new akz<>($$0, $$1, $$2);
+   }
+
+   private akz(alc<? extends kf<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <T> DataResult<T> a(js<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alb<?> $$3) {
+         Optional<jv<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> ald.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
+   }
+
+   public <T> DataResult<Pair<js<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alb<?> $$2) {
+         Optional<jt<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            jt<E> $$4 = $$3.get();
+            DataResult<Pair<ald, T>> $$5 = ald.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(js::a));
+            } else {
+               Pair<ald, T> $$6 = (Pair<ald, T>)$$5.result().get();
+               alc<E> $$7 = alc.a(this.a, (ald)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(js::a));
+      }
    }
 
    @Override
-   protected void a(String $$0) {
-      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
-      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
-      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

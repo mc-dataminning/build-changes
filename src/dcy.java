@@ -1,46 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public record dcy(jr<cxd> c, int d, ks e) {
-   private static final Codec<dcy> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cxd.e.fieldOf("id").forGetter(dcy::b),
-               ayi.a(1, 99).optionalFieldOf("count", 1).forGetter(dcy::c),
-               ks.b.optionalFieldOf("components", ks.a).forGetter(dcy::d)
-            )
-            .apply($$0, dcy::new)
-   );
-   public static final Codec<dcy> a = Codec.withAlternative(f, cxd.e, $$0 -> new dcy((cxd)$$0.a())).validate(dcy::a);
-   public static final yn<wa, dcy> b = yn.a(cxd.f, dcy::b, yl.h, dcy::c, ks.c, dcy::d, dcy::new);
-
-   public dcy(cxd $$0) {
-      this($$0.f(), 1, ks.a);
+public record dcy<T extends dcl<?>>(ddx a, Optional<dcq<T>> b) {
+   public static <T extends dcl<?>> yt<wg, dcy<T>> a() {
+      return yt.a(ddx.b, dcy::b, $$0 -> new dcy<>($$0, Optional.empty()));
    }
 
-   private static DataResult<dcy> a(dcy $$0) {
-      return cxh.a(new cxh($$0.c, $$0.d, $$0.e)).map($$1 -> $$0);
+   public ddx b() {
+      return this.a;
    }
 
-   public cxh a(cxh $$0) {
-      cxh $$1 = $$0.a(this.c.a(), this.d);
-      $$1.b(this.e);
-      return $$1;
+   public Optional<dcq<T>> c() {
+      return this.b;
    }
 
-   public ddh a() {
-      return new ddh.f(new cxh(this.c, this.d, this.e));
+   public static record a<T extends dcl<?>>(dch a, dcy<T> b) {
+
+      public static <T extends dcl<?>> yt<wg, dcy.a<T>> a() {
+         return yt.a(dch.a, dcy.a::b, dcy.a(), dcy.a::c, dcy.a::new);
+      }
+
+      public dch b() {
+         return this.a;
+      }
+
+      public dcy<T> c() {
+         return this.b;
+      }
    }
 
-   public jr<cxd> b() {
-      return this.c;
-   }
+   public static record b<T extends dcl<?>>(List<dcy.a<T>> a) {
+      public static <T extends dcl<?>> dcy.b<T> a() {
+         return new dcy.b<>(List.of());
+      }
 
-   public int c() {
-      return this.d;
-   }
+      public static <T extends dcl<?>> yt<wg, dcy.b<T>> b() {
+         return yt.a(dcy.a.<T>a().a(yr.a()), dcy.b::e, dcy.b::new);
+      }
 
-   public ks d() {
-      return this.e;
+      public boolean a(cxy $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public dcy.b<T> b(cxy $$0) {
+         return new dcy.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<dcy.a<T>> e() {
+         return this.a;
+      }
    }
 }

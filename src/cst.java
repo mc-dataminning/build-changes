@@ -1,62 +1,121 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cst extends csi implements dwn {
+   private boolean c = true;
+   private boolean d = false;
 
-public record cst(int c, float d, boolean e) implements czm {
-   public static final Codec<cst> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayi.l.fieldOf("nutrition").forGetter(cst::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cst::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cst::c)
-            )
-            .apply($$0, cst::new)
-   );
-   public static final yn<wa, cst> b = yn.a(yl.h, cst::a, yl.l, cst::b, yl.b, cst::c, cst::new);
+   public cst(bwb<? extends cst> $$0, dhp $$1) {
+      super($$0, $$1);
+   }
 
    @Override
-   public void a(dgz $$0, bvy $$1, cxh $$2, czl $$3) {
-      azh $$4 = $$1.dX();
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), $$3.e().a(), awb.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof cpr $$5) {
-         $$5.gw().a(this);
-         $$0.a(null, $$5.dz(), $$5.dB(), $$5.dF(), awa.uT, awb.h, 0.5F, ayz.b($$4, 0.9F, 1.0F));
+   public dym v() {
+      return dkw.hz.m();
+   }
+
+   @Override
+   public int x() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.B()) {
+         this.r($$4);
       }
    }
 
-   public int a() {
+   public boolean B() {
       return this.c;
    }
 
-   public float b() {
-      return this.d;
+   public void r(boolean $$0) {
+      this.c = $$0;
    }
 
-   public boolean c() {
-      return this.e;
+   @Override
+   public double C() {
+      return this.dA();
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
+   @Override
+   public double D() {
+      return this.dC() + 0.5;
+   }
 
-      public cst.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   @Override
+   public double E() {
+      return this.dG();
+   }
 
-      public cst.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public boolean F() {
+      return false;
+   }
 
-      public cst.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public void h() {
+      this.d = false;
+      super.h();
+      this.K();
+   }
 
-      public cst b() {
-         float $$0 = csr.a(this.a, this.b);
-         return new cst(this.a, $$0, this.c);
+   @Override
+   protected double a(jj $$0, dzq $$1, double $$2) {
+      double $$3 = super.a($$0, $$1, $$2);
+      this.K();
+      return $$3;
+   }
+
+   private void K() {
+      if (!this.dV().C && this.bK() && this.B() && !this.d && this.G()) {
+         this.d = true;
+         this.e();
       }
+   }
+
+   public boolean G() {
+      if (dwo.a(this.dV(), this)) {
+         return true;
+      } else {
+         for (cmn $$1 : this.dV().a(cmn.class, this.cR().c(0.25, 0.0, 0.25), bvz.a)) {
+            if (dwo.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected cxu o() {
+      return cyc.ou;
+   }
+
+   @Override
+   public cxy dI() {
+      return new cxy(cyc.ou);
+   }
+
+   @Override
+   protected void b(tw $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
+   }
+
+   @Override
+   protected void a(tw $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public ctn a(int $$0, cqh $$1) {
+      return new cuo($$0, $$1, this);
    }
 }

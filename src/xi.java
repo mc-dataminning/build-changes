@@ -1,71 +1,63 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public record xi(String b, Instant c, long d, ww e) {
-   public static final MapCodec<xi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(xi::a),
-               ayi.q.fieldOf("time_stamp").forGetter(xi::b),
-               Codec.LONG.fieldOf("salt").forGetter(xi::c),
-               ww.a.optionalFieldOf("last_seen", ww.b).forGetter(xi::d)
-            )
-            .apply($$0, xi::new)
-   );
+public class xi {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final xh[] c;
 
-   public static xi a(String $$0) {
-      return new xi($$0, Instant.now(), 0L, ww.b);
+   public xi(int $$0) {
+      this.c = new xh[$$0];
    }
 
-   public void a(azl.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   public static xi a() {
+      return new xi(128);
    }
 
-   public xi.a a(xc $$0) {
-      return new xi.a(this.b, this.c, this.d, this.e.a($$0));
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public ww d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, ww.a d) {
-      public a(vl $$0) {
-         this($$0.d(256), $$0.t(), $$0.readLong(), new ww.a($$0));
+   public int a(xh $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
       }
 
-      public void a(vl $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
+      return -1;
+   }
+
+   @Nullable
+   public xh a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(xo $$0, @Nullable xh $$1) {
+      List<xh> $$2 = $$0.d().a();
+      ArrayDeque<xh> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      public Optional<xi> a(xc $$0) {
-         return this.d.a($$0).map($$0x -> new xi(this.a, this.b, this.c, $$0x));
+      this.a($$3);
+   }
+
+   @VisibleForTesting
+   void a(List<xh> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<xh> $$0) {
+      Set<xh> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         xh $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
    }
 }

@@ -1,126 +1,77 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
 import java.util.function.Predicate;
 
-public class ccx {
-   private static final cek a = new cek(Integer.MAX_VALUE, new ccw() {
-      @Override
-      public boolean b() {
+public class ccx extends cde {
+   private static final int g = 240;
+   private final Predicate<btn> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
+
+   public ccx(bwt $$0, Predicate<btn> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public ccx(bwt $$0, int $$1, Predicate<btn> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
+   }
+
+   @Override
+   public boolean b() {
+      if (!super.b()) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<ccw.a, cek> b = new EnumMap<>(ccw.a.class);
-   private final Set<cek> c = new ObjectLinkedOpenHashSet();
-   private final EnumSet<ccw.a> d = EnumSet.noneOf(ccw.a.class);
-
-   public void a(int $$0, ccw $$1) {
-      this.c.add(new cek($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<ccw> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(ccw $$0) {
-      for (cek $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cek $$0, EnumSet<ccw.a> $$1) {
-      for (ccw.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(cek $$0, Map<ccw.a, cek> $$1) {
-      for (ccw.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bpj $$0 = bpi.a();
-      $$0.a("goalCleanup");
-
-      for (cek $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
-            $$1.e();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cek)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cek $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
-            for (ccw.a $$3 : $$2.j()) {
-               cek $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.d();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bpj $$1 = bpi.a();
-      $$1.a("goalTick");
-
-      for (cek $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.Q_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cek> b() {
-      return this.c;
-   }
-
-   public void a(ccw.a $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(ccw.a $$0) {
-      this.d.remove($$0);
-   }
-
-   public void a(ccw.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
       } else {
-         this.a($$0);
+         return !a(this.d).O().c(dhl.c) ? false : this.a(this.d.dV().an()) && !this.h();
       }
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.a = 0;
+   }
+
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().an());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d.dV().a(this.d.ar(), this.e, -1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (this.d.dY().a(20) == 0) {
+         this.d.dV().c(1019, this.e, 0);
+         if (!this.d.aH) {
+            this.d.a(this.d.fz());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dV().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dV().an())) {
+         this.d.dV().a(this.e, false);
+         this.d.dV().c(1021, this.e, 0);
+         this.d.dV().c(2001, this.e, dku.j(this.d.dV().a_(this.e)));
+      }
+   }
+
+   private boolean a(btn $$0) {
+      return this.h.test($$0);
    }
 }

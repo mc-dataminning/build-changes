@@ -1,36 +1,33 @@
-public interface dbk extends dbv<dbj> {
-   @Override
-   default dcg<dbk> b() {
-      return dcg.a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dbk(jw<buu> c) implements dbi {
+   public static final MapCodec<dbk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kh.a(me.W).fieldOf("effects").forGetter(dbk::b)).apply($$0, dbk::new));
+   public static final yt<wg, dbk> b = yt.a(yr.c(me.W), dbk::b, dbk::new);
+
+   public dbk(js<buu> $$0) {
+      this(jw.a($$0));
    }
 
    @Override
-   dcf<? extends dbk> a();
-
-   dbi c();
-
-   default ka<cxh> a(dbj $$0) {
-      return b($$0);
+   public dbi.a<dbk> a() {
+      return dbi.a.b;
    }
 
-   static ka<cxh> b(dbj $$0) {
-      ka<cxh> $$1 = ka.a($$0.a(), cxh.k);
+   @Override
+   public boolean a(dhp $$0, cxy $$1, bwr $$2) {
+      boolean $$3 = false;
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxd $$3 = $$0.a($$2).h();
-         $$1.set($$2, $$3.j());
+      for (js<buu> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
 
-      return $$1;
+      return $$3;
    }
 
-   @Override
-   default dby h() {
-      return switch (this.c()) {
-         case a -> dbx.a;
-         case c -> dbx.c;
-         case b -> dbx.b;
-         case d -> dbx.d;
-      };
+   public jw<buu> b() {
+      return this.c;
    }
 }

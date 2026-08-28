@@ -1,33 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public abstract class dqs extends dmi {
-   private static final Map<jn.a, fcr> b = fco.b(dke.a(4.0, 4.0, 16.0));
+public class dqs extends dmq {
+   public static final MapCodec<dqs> a = b(dqs::new);
+   private static final fdo[] b = dku.a(7, $$0 -> dku.b(16.0, 0.0, (double)(2 + $$0)));
 
-   protected dqs(dxp.d $$0) {
+   @Override
+   public MapCodec<dqs> a() {
+      return a;
+   }
+
+   public dqs(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dqs> a();
-
-   @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return b.get($$0.c(a).o());
+   protected dho d() {
+      return cyc.vj;
    }
 
    @Override
-   protected dxq a(dxq $$0, dqw $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dxq a(dxq $$0, dpf $$1) {
-      return $$0.b(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b[this.h($$0)];
    }
 }

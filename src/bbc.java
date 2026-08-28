@@ -1,23 +1,40 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
-public class bbc extends bbe {
-   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
-
+public class bbc extends DataFix {
    public bbc(Schema $$0) {
-      super($$0, "AttributeIdPrefixFix", bbc::a);
+      super($$0, false);
    }
 
-   private static String a(String $$0) {
-      String $$1 = bju.a($$0);
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(biq.D), this::a);
+   }
 
-      for (String $$2 : a) {
-         String $$3 = bju.a($$2);
-         if ($$1.startsWith($$3)) {
-            return "minecraft:" + $$1.substring($$3.length());
-         }
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:arrow", bbc::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", bbc::a);
+      return this.a($$0, "minecraft:trident", bbc::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("pickup").result().isPresent()) {
+         return $$0;
+      } else {
+         boolean $$1 = $$0.get("player").asBoolean(true);
+         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
       }
+   }
 
-      return $$0;
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(biq.D, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(biq.D, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

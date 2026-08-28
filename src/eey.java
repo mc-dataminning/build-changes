@@ -1,26 +1,20 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 
-public class eey implements eev {
-   private final km e;
-   private final jn f;
-   public static final MapCodec<eey> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(km.v(16).optionalFieldOf("offset", km.h).forGetter($$0x -> $$0x.e), jn.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, eey::new)
-   );
-
-   public eey(km $$0, jn $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public interface eey {
+   default azs a(jj $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public boolean a(dhy $$0, ji $$1) {
-      ji $$2 = $$1.a(this.e);
-      return $$0.a_($$2).c($$0, $$2, this.f);
+   default azs a(ald $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public eew<?> a() {
-      return eew.d;
-   }
+   azs a(String var1);
+
+   azs a(long var1);
+
+   azs a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

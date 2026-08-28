@@ -1,28 +1,41 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cgl extends cgi<bvy> {
-   @Override
-   public Set<cfc<?>> a() {
-      return ImmutableSet.of(cfc.i);
+public class cgl extends cgz<bwr> {
+   private static final int a = 200;
+   private static final int b = 599;
+
+   public cgl() {
+      this(200);
+   }
+
+   public cgl(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(ard $$0, bvy $$1) {
-      $$1.ea().a(cfc.i, this.a($$1));
+   protected void a(arn $$0, bwr $$1) {
+      a($$1);
    }
 
-   private List<bvy> a(bvy $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   @Override
+   public Set<cft<?>> a() {
+      return ImmutableSet.of(cft.g);
    }
 
-   private boolean b(bvy $$0) {
-      return $$0.aq() == bvi.bC && $$0.n_();
+   public static void a(bwr $$0) {
+      Optional<List<bwr>> $$1 = $$0.eb().c(cft.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bwb.ap));
+         if ($$2) {
+            b($$0);
+         }
+      }
    }
 
-   private cfe c(bvy $$0) {
-      return $$0.ea().c(cfc.h).orElse(cfe.a());
+   public static void b(bwr $$0) {
+      $$0.eb().a(cft.G, true, 599L);
    }
 }

@@ -1,20 +1,16 @@
-import java.util.UUID;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public interface his {
-   void a(UUID var1, his.b var2);
+   List<gpf> a(@Nullable dym var1, @Nullable jo var2, azs var3);
 
-   void a(UUID var1, his.a var2);
+   boolean a();
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
+   boolean b();
 
-   public static enum b {
-      a,
-      b;
-   }
+   boolean c();
+
+   hgs d();
+
+   gpp e();
 }

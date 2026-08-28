@@ -1,35 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hem implements her {
-   private final gpg a;
-   private final hhy b;
+public record hem(boolean b) implements hes {
+   public static final MapCodec<hem> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hem::b)).apply($$0, hem::new)
+   );
 
-   public hem(gpg $$0, hhy $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
+      float $$4 = (float)$$0.M();
+      float $$5 = (float)$$0.k();
+      return this.b ? azk.a($$4 / $$5, 0.0F, 1.0F) : azk.a($$4, 0.0F, $$5);
    }
 
    @Override
-   public void a(cxf $$0, fgr $$1, gmx $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   public static record a(aku b) implements hev.a {
-      public static final MapCodec<hem.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aku.a.fieldOf("texture").forGetter(hem.a::b)).apply($$0, hem.a::new));
-
-      public a(cwe $$0) {
-         this(gns.b($$0));
-      }
-
-      @Override
-      public MapCodec<hem.a> a() {
-         return a;
-      }
-
-      @Override
-      public hev<?> a(gfy $$0) {
-         return new hem(new gpg($$0), gns.a(this.b));
-      }
+   public MapCodec<hem> a() {
+      return a;
    }
 }

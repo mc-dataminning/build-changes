@@ -1,44 +1,94 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class dni extends dko implements dsm {
-   protected static final MapCodec<dag> b = dag.c.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<dni> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dni::c), t()).apply($$0, dni::new));
-   private static final fcr a = dke.b(6.0, 0.0, 10.0);
-   private final dag d;
+public class dni extends dkg implements dqr {
+   public static final MapCodec<dni> a = b(dni::new);
 
    @Override
-   public MapCodec<? extends dni> a() {
-      return c;
+   public MapCodec<dni> a() {
+      return a;
    }
 
-   public dni(jr<buc> $$0, float $$1, dxp.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dni(dag $$0, dxp.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
-
-   protected static dag a(jr<buc> $$0, float $$1) {
-      return new dag(List.of(new dag.a($$0, ayz.d($$1 * 20.0F))));
+   protected dni(dyl.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fcr a(dxq $$0, dgf $$1, ji $$2, fcc $$3) {
-      return a.a($$0.a($$2));
-   }
-
-   @Override
-   public dag c() {
-      return this.d;
+   public dvl a(jj $$0, dym $$1) {
+      return new dxh($$0, $$1);
    }
 
    @Nullable
-   public bue b() {
-      return null;
+   @Override
+   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
+      return a($$2, dvn.w, $$0.C ? dxh::a : dxh::b);
+   }
+
+   @Override
+   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
+      dvl $$4 = $$1.c_($$2);
+      if ($$4 instanceof dxh) {
+         int $$5 = ((dxh)$$4).f();
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(lv.af, $$7, $$8, $$9, $$10, $$11, $$12);
+         }
+      }
+   }
+
+   @Override
+   protected cxy a(dhs $$0, jj $$1, dym $$2, boolean $$3) {
+      return cxy.k;
+   }
+
+   @Override
+   protected boolean a(dym $$0, eus $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(dym $$0, dhp $$1, jj $$2, bvs $$3) {
+      if ($$3.n(false) && !$$1.C && $$1.c_($$2) instanceof dxh $$5 && !$$5.c()) {
+         $$3.a(this, $$2);
+         dxh.c($$1, $$2, $$0, $$5);
+      }
+   }
+
+   @Nullable
+   @Override
+   public evt a(arn $$0, bvs $$1, jj $$2) {
+      if ($$0.c_($$2) instanceof dxh $$4) {
+         fcu $$6 = $$4.a($$0, $$2);
+         if ($$6 == null) {
+            return null;
+         } else {
+            return $$1 instanceof crl
+               ? new evt($$0, $$6, fcu.c, 0.0F, 0.0F, Set.of(), evt.c)
+               : new evt($$0, $$6, fcu.c, 0.0F, 0.0F, bxf.a(bxf.l, bxf.k), evt.c);
+         }
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected drf a_(dym $$0) {
+      return drf.a;
    }
 }

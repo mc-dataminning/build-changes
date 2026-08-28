@@ -1,48 +1,54 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public class bzv {
-   public static bxs<bwg> a(cfc<ji> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, fbx::c);
-   }
-
-   public static bzc<bwg> b(cfc<? extends bva> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bva::ds);
-   }
-
-   private static <T> bzc<bwg> a(cfc<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fbx> $$4) {
-      return cbe.a(
-         (Function<cbe.b<bwg>, ? extends App<cbe.c<bwg>, cbh<bwg>>>)($$5 -> $$5.group($$5.a(cfc.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cff> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     fbx $$11 = $$8.ds();
-                     fbx $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((kb)$$12, (double)$$2)) {
-                        return false;
-                     } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           fbx $$13 = $$10.get().a().a().d($$11);
-                           fbx $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           fbx $$16 = cgw.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cff($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+   public static byj<cpu> a() {
+      return cbv.a(
+         (Function<cbv.b<cpu>, ? extends App<cbv.c<cpu>, cby<cpu>>>)($$0 -> $$0.group($$0.b(cft.c), $$0.b(cft.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jr $$6 = $$0.b($$1);
+                        $$3.A()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bwr>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cpu && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cpu)$$0xxxx)
+                                    .filter(bwr::bK)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bzv::a)
+                           );
                         return true;
                      }
-                  }
-               }))
+               ))
       );
+   }
+
+   private static cpu a(cpu $$0, cpu $$1) {
+      cpu $$2;
+      cpu $$3;
+      if ($$0.t() > $$1.t()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.eb().b(cft.c);
+      return $$2;
+   }
+
+   private static boolean a(jr $$0, js<chw> $$1, cpu $$2) {
+      Optional<jr> $$3 = $$2.eb().c(cft.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
+   }
+
+   private static boolean a(js<chw> $$0, js<cpx> $$1) {
+      return $$1.a().b().test($$0);
    }
 }

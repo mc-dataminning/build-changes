@@ -1,46 +1,37 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record btu(String i) {
-   public static final btu a = new btu("generic");
-   public static final btu b = new btu("ladder");
-   public static final btu c = new btu("vines");
-   public static final btu d = new btu("weeping_vines");
-   public static final btu e = new btu("twisting_vines");
-   public static final btu f = new btu("scaffolding");
-   public static final btu g = new btu("other_climbable");
-   public static final btu h = new btu("water");
+public class btu {
+   public static final Codec<btu> a = RecordCodecBuilder.create($$0 -> $$0.group(efm.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, btu::new));
+   private final efm b;
 
-   public static btu a(dxq $$0) {
-      if ($$0.a(dkg.cX) || $$0.a(awp.R)) {
-         return b;
-      } else if ($$0.a(dkg.ft)) {
-         return c;
-      } else if ($$0.a(dkg.pb) || $$0.a(dkg.pc)) {
-         return d;
-      } else if ($$0.a(dkg.pd) || $$0.a(dkg.pe)) {
-         return e;
-      } else {
-         return $$0.a(dkg.ou) ? f : g;
-      }
+   public btu(efm $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public static btu a(bvy $$0) {
-      Optional<ji> $$1 = $$0.eN();
+   public btu(long $$0, ald $$1) {
+      this(a($$0, Optional.of($$1)));
+   }
+
+   public btu(long $$0, Optional<ald> $$1) {
+      this(a($$0, $$1));
+   }
+
+   private static efm a(long $$0, Optional<ald> $$1) {
+      efa.a $$2 = efa.b($$0);
       if ($$1.isPresent()) {
-         dxq $$2 = $$0.dU().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.bj() ? h : null;
+         $$2 = $$2.a(a($$1.get()));
       }
+
+      return new efm($$2.a());
    }
 
-   public String a() {
-      return "death.fell.accident." + this.i;
+   public static efa.a a(ald $$0) {
+      return efa.a($$0.toString());
    }
 
-   public String b() {
-      return this.i;
+   public azs a() {
+      return this.b;
    }
 }

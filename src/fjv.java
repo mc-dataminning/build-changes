@@ -1,62 +1,46 @@
-public class fjv extends hmd {
-   private final fvi a;
-   private final fjv.a b;
-   private fqj c = fqj.a;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fjv(fjd $$0, fvi $$1) {
-      super(flx.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class fjv extends fjt {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public fjv.a i = fjv.a.a;
+
+   public static fjv a(JsonObject $$0) {
+      fjv $$1 = new fjv();
+
+      try {
+         $$1.a = flp.b("id", $$0, "");
+         $$1.b = flp.b("name", $$0, "");
+         $$1.c = flp.b("version", $$0, "");
+         $$1.d = flp.b("author", $$0, "");
+         $$1.e = flp.b("link", $$0, "");
+         $$1.f = flp.b("image", $$0, null);
+         $$1.g = flp.b("trailer", $$0, "");
+         $$1.h = flp.b("recommendedPlayers", $$0, "");
+         $$1.i = fjv.a.valueOf(flp.b("type", $$0, fjv.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+      }
+
+      return $$1;
    }
 
-   public fjv(wp $$0, fvi $$1) {
-      super(flx.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public fjv(wp $$0, wp $$1, fvi $$2) {
-      super(flx.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static fjv.a a(fjd $$0) {
-      fhj $$1 = $$0.a;
-      return a(wp.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static fjv.a a(wp $$0) {
-      return a(wp.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static fjv.a a(wp $$0, wp $$1) {
-      return new fjv.a($$0, $$1);
-   }
-
-   @Override
-   public void aR_() {
-      this.c(fpq.a(wo.h, $$0 -> this.aO_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fqj.a(this.p, this.b.b, this.n * 3 / 4);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public wp i() {
-      return wp.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fpc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wp a, wp b) {
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

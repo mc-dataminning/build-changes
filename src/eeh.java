@@ -1,47 +1,33 @@
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
 
-@Deprecated
-public class eeh implements edd {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final edq i = new edq(this);
+public class eeh {
+   public static enum a implements bag {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   public eeh(long $$0) {
-      this.b($$0);
-   }
+      public static final Codec<eeh.a> l = bag.a(eeh.a::values);
+      private final String m;
 
-   @Override
-   public azh d() {
-      return new eeh(this.g());
-   }
+      private a(final String $$0) {
+         this.m = $$0;
+      }
 
-   @Override
-   public eeb e() {
-      return new edp.a(this.g());
-   }
+      public String a() {
+         return this.m;
+      }
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

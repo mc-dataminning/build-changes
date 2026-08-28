@@ -1,49 +1,36 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public enum bsv implements azv {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public abstract class bsv {
+   private static final Codec<Either<Integer, bsv>> a = Codec.either(Codec.INT, md.K.q().dispatch(bsv::c, bsw::codec));
+   public static final Codec<bsv> c = a.xmap(
+      $$0 -> (bsv)$$0.map(bss::a, $$0x -> $$0x), $$0 -> $$0.c() == bsw.a ? Either.left(((bss)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bsv> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bsv> e = b(1, Integer.MAX_VALUE);
 
-   public static final azv.a<bsv> e = azv.a(bsv::values);
-   private static final IntFunction<bsv> f = axq.a(bsv::a, values(), axq.a.b);
-   private final int g;
-   private final String h;
-
-   private bsv(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public static Codec<bsv> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public int a() {
-      return this.g;
+   public static <T extends bsv> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
    }
 
-   public wp b() {
-      return wp.c("options.difficulty." + this.h);
+   private static <T extends bsv> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      } else {
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+      }
    }
 
-   public wp d() {
-      return wp.c("options.difficulty." + this.h + ".info");
-   }
+   public abstract int a(azs var1);
 
-   public static bsv a(int $$0) {
-      return f.apply($$0);
-   }
+   public abstract int a();
 
-   @Nullable
-   public static bsv a(String $$0) {
-      return e.a($$0);
-   }
+   public abstract int b();
 
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
-   }
+   public abstract bsw<?> c();
 }

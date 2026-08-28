@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class axj {
+   public static final axp<cmj> a = a("placeable");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface axj {
+   private axj() {
+   }
+
+   private static axp<cmj> a(String $$0) {
+      return axp.a(me.X, ald.b($$0));
+   }
 }

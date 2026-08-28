@@ -1,28 +1,197 @@
-import java.util.Locale;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import javax.annotation.Nullable;
 
-public interface evy {
-   ji a();
+public class evy extends ewd {
+   private final Deque<jj> b = new ArrayDeque<>();
+   private final Deque<jj> c = new ArrayDeque<>();
+   private final Object2IntMap<jj> d = new Object2IntLinkedOpenHashMap();
 
-   float b();
+   public evy(drb $$0) {
+      super($$0);
+   }
 
-   long c();
+   @Override
+   public void a(dhp $$0, jj $$1, dym $$2, @Nullable ewb $$3, boolean $$4) {
+      ewb $$5 = a($$0, $$3);
+      this.a($$0, $$1, $$5);
+      ObjectIterator<Entry<jj>> $$6 = this.d.object2IntEntrySet().iterator();
 
-   long d();
+      for (boolean $$7 = true; $$6.hasNext(); $$7 = false) {
+         Entry<jj> $$8 = (Entry<jj>)$$6.next();
+         jj $$9 = (jj)$$8.getKey();
+         int $$10 = $$8.getIntValue();
+         int $$11 = b($$10);
+         dym $$12 = $$0.a_($$9);
+         if ($$12.a(this.a) && !$$12.c(drb.f).equals($$11)) {
+            int $$13 = 2;
+            if (!$$4 || !$$7) {
+               $$13 |= 128;
+            }
 
-   boolean g();
+            $$0.a($$9, $$12.b(drb.f, Integer.valueOf($$11)), $$13);
+         } else {
+            $$6.remove();
+         }
+      }
 
-   boolean i();
+      this.a($$0);
+   }
 
-   void b(boolean var1);
+   private void a(dhp $$0) {
+      this.d.forEach(($$1, $$2) -> {
+         ewb $$3 = a($$2);
+         dym $$4 = $$0.a_($$1);
 
-   boolean l();
+         for (jo $$5 : $$3.f()) {
+            if (a($$4, $$5)) {
+               jj $$6 = $$1.a($$5);
+               dym $$7 = $$0.a_($$6);
+               ewb $$8 = $$3.c($$5);
+               $$0.a($$7, $$6, this.a, $$8, false);
+               if ($$7.d($$0, $$6)) {
+                  for (jo $$9 : $$8.f()) {
+                     if ($$9 != $$5.g()) {
+                        $$0.b($$6.a($$9), this.a, $$8.c($$9));
+                     }
+                  }
+               }
+            }
+         }
+      });
+   }
 
-   bsv q();
+   private static boolean a(dym $$0, jo $$1) {
+      dzk<dzr> $$2 = drb.g.get($$1);
+      return $$2 == null ? $$1 == jo.a : $$0.c($$2).a();
+   }
 
-   boolean r();
+   private static ewb a(dhp $$0, @Nullable ewb $$1) {
+      ewb $$2;
+      if ($$1 != null) {
+         $$2 = $$1;
+      } else {
+         $$2 = ewb.a($$0.A);
+      }
 
-   default void a(p $$0, dhb $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+      return $$2.a(jo.b).a(ewb.a.a);
+   }
+
+   private void a(dhp $$0, jj $$1, ewb $$2) {
+      dym $$3 = $$0.a_($$1);
+      if ($$3.a(this.a)) {
+         this.a($$1, $$3.c(drb.f), $$2);
+         this.b.add($$1);
+      } else {
+         this.a($$0, $$1, 0, $$2, true);
+      }
+
+      while (!this.b.isEmpty()) {
+         jj $$4 = this.b.removeFirst();
+         int $$5 = this.d.getInt($$4);
+         ewb $$6 = a($$5);
+         int $$7 = b($$5);
+         int $$8 = this.a($$0, $$4);
+         int $$9 = this.b($$0, $$4);
+         int $$10 = Math.max($$8, $$9);
+         int $$11;
+         if ($$10 < $$7) {
+            if ($$8 > 0 && !this.c.contains($$4)) {
+               this.c.add($$4);
+            }
+
+            $$11 = 0;
+         } else {
+            $$11 = $$10;
+         }
+
+         if ($$11 != $$7) {
+            this.a($$4, $$11, $$6);
+         }
+
+         this.a($$0, $$4, $$11, $$6, $$7 > $$10);
+      }
+
+      while (!this.c.isEmpty()) {
+         jj $$13 = this.c.removeFirst();
+         int $$14 = this.d.getInt($$13);
+         int $$15 = b($$14);
+         int $$16 = this.a($$0, $$13);
+         int $$17 = this.b($$0, $$13);
+         int $$18 = Math.max($$16, $$17);
+         ewb $$19 = a($$14);
+         if ($$18 > $$15) {
+            this.a($$13, $$18, $$19);
+         } else if ($$18 < $$15) {
+            throw new IllegalStateException("Turning off wire while trying to turn it on. Should not happen.");
+         }
+
+         this.a($$0, $$13, $$18, $$19, false);
+      }
+   }
+
+   private static int a(ewb $$0, int $$1) {
+      return $$0.i() << 4 | $$1;
+   }
+
+   private static ewb a(int $$0) {
+      return ewb.a($$0 >> 4);
+   }
+
+   private static int b(int $$0) {
+      return $$0 & 15;
+   }
+
+   private void a(jj $$0, int $$1, ewb $$2) {
+      this.d.compute($$0, ($$2x, $$3) -> $$3 == null ? a($$2, $$1) : a(a($$3), $$1));
+   }
+
+   private void a(dhp $$0, jj $$1, int $$2, ewb $$3, boolean $$4) {
+      for (jo $$5 : $$3.g()) {
+         jj $$6 = $$1.a($$5);
+         this.b($$0, $$6, $$2, $$3.b($$5), $$4);
+      }
+
+      for (jo $$7 : $$3.h()) {
+         jj $$8 = $$1.a($$7);
+         boolean $$9 = $$0.a_($$8).d($$0, $$8);
+
+         for (jo $$10 : $$3.g()) {
+            jj $$11 = $$1.a($$10);
+            if ($$7 == jo.b && !$$9) {
+               jj $$12 = $$8.a($$10);
+               this.b($$0, $$12, $$2, $$3.b($$10), $$4);
+            } else if ($$7 == jo.a && !$$0.a_($$11).d($$0, $$11)) {
+               jj $$13 = $$8.a($$10);
+               this.b($$0, $$13, $$2, $$3.b($$10), $$4);
+            }
+         }
+      }
+   }
+
+   private void b(dhp $$0, jj $$1, int $$2, ewb $$3, boolean $$4) {
+      dym $$5 = $$0.a_($$1);
+      if ($$5.a(this.a)) {
+         int $$6 = this.a($$1, $$5);
+         if ($$6 < $$2 - 1 && !this.c.contains($$1)) {
+            this.c.add($$1);
+            this.a($$1, $$6, $$3);
+         }
+
+         if ($$4 && $$6 > $$2 && !this.b.contains($$1)) {
+            this.b.add($$1);
+            this.a($$1, $$6, $$3);
+         }
+      }
+   }
+
+   @Override
+   protected int a(jj $$0, dym $$1) {
+      int $$2 = this.d.getOrDefault($$0, -1);
+      return $$2 != -1 ? b($$2) : super.a($$0, $$1);
    }
 }

@@ -1,42 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cgg extends cgi<cpd> {
-   private static final int a = 40;
-
-   public cgg() {
-      super(40);
-   }
-
-   protected void a(ard $$0, cpd $$1) {
-      akt<dgz> $$2 = $$0.aj();
-      ji $$3 = $$1.du();
-      List<jq> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ji $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gA().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jq.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bxa<?> $$10 = $$1.ea();
-      if (!$$4.isEmpty()) {
-         $$10.a(cfc.f, $$4);
-      } else {
-         $$10.b(cfc.f);
-      }
-   }
-
+public class cgg extends cgz<bvi> {
    @Override
-   public Set<cfc<?>> a() {
-      return ImmutableSet.of(cfc.f);
+   public Set<cft<?>> a() {
+      return ImmutableSet.of(cft.L, cft.h);
+   }
+
+   protected void a(arn $$0, bvi $$1) {
+      $$1.eb().c(cft.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bvi $$0, cfv $$1) {
+      Optional<bvi> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.n_()).map(bvi.class::cast);
+      $$0.eb().a(cft.L, $$2);
    }
 }

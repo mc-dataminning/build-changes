@@ -1,30 +1,34 @@
-public record agx(int b, int c, boolean d) implements yw<agf> {
-   public static final yn<vl, agx> a = yw.a(agx::a, agx::new);
+public class agx implements zc<agm> {
+   public static final yt<vr, agx> a = zc.a(agx::a, agx::new);
+   private final agx.a b;
 
-   private agx(vl $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
+   public agx(agx.a $$0) {
+      this.b = $$0;
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
+   private agx(vr $$0) {
+      this.b = $$0.b(agx.a.class);
+   }
+
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yy<agx> a() {
-      return agd.bA;
+   public ze<agx> a() {
+      return agk.bu;
    }
 
-   public void a(agf $$0) {
+   public void a(agm $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public agx.a b() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.d;
+   public static enum a {
+      a,
+      b;
    }
 }

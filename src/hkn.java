@@ -1,58 +1,28 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hkn implements hkh {
-   private final hkn.a a;
-   private hkh b;
-   private final BufferedInputStream c;
+public class hkn {
+   private final List<hkm> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-   public hkn(hkn.a $$0, InputStream $$1) throws IOException {
+   public hkn(List<hkm> $$0, boolean $$1, @Nullable String $$2) {
       this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new hkn.b(this.c));
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public AudioFormat a() {
-      return this.b.a();
+   public List<hkm> a() {
+      return this.a;
    }
 
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new hkn.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
+   public boolean b() {
+      return this.b;
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      hkh create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
-      }
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

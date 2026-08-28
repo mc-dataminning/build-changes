@@ -1,14 +1,12 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpz extends dtl {
-   public static final MapCodec<dpz> b = b(dpz::new);
+public abstract class dpz extends dpy {
+   public dpz(dyl.d $$0) {
+      super($$0);
+   }
 
    @Override
-   public MapCodec<dpz> a() {
-      return b;
-   }
+   public abstract MapCodec<? extends dpz> a();
 
-   protected dpz(dxp.d $$0) {
-      super(drm.b.e, $$0);
-   }
+   public abstract dqa c();
 }

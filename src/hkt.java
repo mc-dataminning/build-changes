@@ -1,3 +1,8 @@
-public interface hkt {
-   void a(hjo var1, hkv var2, float var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hkt {
 }

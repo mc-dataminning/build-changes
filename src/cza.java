@@ -1,13 +1,7 @@
-public class cza extends cxd {
-   public cza(cxd.a $$0) {
-      super($$0);
-   }
+public interface cza {
+   boolean a(dhp var1, dwz var2, boolean var3, cqi var4);
 
-   @Override
-   public bsy a(dgz $$0, cpr $$1, bsx $$2) {
-      cxh $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(awk.c.b(this));
-      return bsy.a;
+   default boolean a(dxa $$0, cqi $$1) {
+      return $$0.a($$1);
    }
 }

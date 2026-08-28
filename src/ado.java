@@ -1,29 +1,29 @@
-public class ado implements yw<abl> {
-   public static final yn<vl, ado> a = yw.a(ado::a, ado::new);
-   private final int b;
+public class ado implements zc<abr> {
+   public static final yt<vr, ado> a = zc.a(ado::a, ado::new);
+   private final btp b;
 
-   public ado(btm $$0) {
-      this($$0.b());
-   }
-
-   public ado(int $$0) {
+   public ado(btp $$0) {
       this.b = $$0;
    }
 
-   private ado(vl $$0) {
-      this.b = $$0.l();
+   private ado(vr $$0) {
+      this.b = $$0.b(btp.class);
    }
 
-   private void a(vl $$0) {
-      $$0.c(this.b);
+   private void a(vr $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public yy<ado> a() {
-      return agd.ab;
+   public ze<ado> a() {
+      return agk.W;
    }
 
-   public void a(abl $$0) {
+   public void a(abr $$0) {
       $$0.a(this);
+   }
+
+   public btp b() {
+      return this.b;
    }
 }

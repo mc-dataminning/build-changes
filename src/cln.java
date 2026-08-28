@@ -1,39 +1,43 @@
-public class cln extends clp {
-   public cln(bvi<? extends clp> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public cln(dgz $$0, ji $$1, jn $$2) {
-      super(bvi.af, $$0, $$1, $$2);
-   }
+public class cln extends cli {
+   @Nullable
+   private fcu b;
 
-   @Override
-   public avz m() {
-      return awa.le;
+   public cln(clg $$0) {
+      super($$0);
    }
 
    @Override
-   public avz n() {
-      return awa.lc;
+   public void a(arn $$0) {
+      if (this.b == null) {
+         this.b = this.a.dt();
+      }
    }
 
    @Override
-   public avz o() {
-      return awa.ld;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public avz q() {
-      return awa.lb;
+   public void c() {
+      this.b = null;
    }
 
    @Override
-   public avz s() {
-      return awa.lf;
+   public float e() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public fcu f() {
+      return this.b;
    }
 
    @Override
-   protected cxh t() {
-      return new cxh(cxl.ve);
+   public clw<cln> h() {
+      return clw.k;
    }
 }

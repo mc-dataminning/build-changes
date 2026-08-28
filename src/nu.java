@@ -1,18 +1,23 @@
-import java.util.function.BiConsumer;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public record nu(jt.a a) implements ng {
-   @Override
-   public void generate(BiConsumer<akt<ewt>, ewt.a> $$0) {
-      $$0.accept(ewk.aQ, ewt.b().a(ews.a().a(faq.a(2.0F)).a(exb.a(cxl.dJ).a(eyt.a(faq.a(1.0F)))).a(exb.a(cxl.dK).a(eyt.a(faq.a(1.0F))))));
-      ni.a.forEach(($$1, $$2) -> $$0.accept(ewk.aW.get($$1), ewt.b().a(ews.a().a(fax.a(1.0F, 3.0F)).a(exb.a($$2)))));
-      $$0.accept(ewk.aV, ewt.b().a(ne.a(ewk.aW)));
-      $$0.accept(
-         ewk.aR,
-         ewt.b()
-            .a(ews.a().a(ewv.a(exh.a(ewk.aS).a(faa.a(ewo.b.a, bx.a.a().a(bz.i.a(cic.a.a)))), exh.a(ewk.aT).a(faa.a(ewo.b.a, bx.a.a().a(bz.i.a(cic.a.b)))))))
+public class nu {
+   public static nh a(mm $$0, CompletableFuture<ju.a> $$1) {
+      return new nh(
+         $$0,
+         exh.a(),
+         List.of(
+            new nh.a(ns::new, fae.f),
+            new nh.a(np::new, fae.c),
+            new nh.a(nq::new, fae.g),
+            new nh.a(nr::new, fae.h),
+            new nh.a(no::new, fae.r),
+            new nh.a(nv::new, fae.k),
+            new nh.a(nt::new, fae.j),
+            new nh.a(nn::new, fae.i),
+            new nh.a(nw::new, fae.s)
+         ),
+         $$1
       );
-      $$0.accept(ewk.aS, ewt.b().a(ews.a().a(faq.a(5.0F)).a(exb.a(cxl.dK))));
-      $$0.accept(ewk.aT, ewt.b().a(ews.a().a(faq.a(5.0F)).a(exb.a(cxl.dJ))));
-      $$0.accept(ewk.aU, ewt.b().a(ews.a().a(faq.a(1.0F)).a(exb.a(cxl.fC))));
    }
 }

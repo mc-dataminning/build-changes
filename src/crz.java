@@ -1,51 +1,65 @@
-public class crz extends crr {
-   public crz(bvi<? extends crz> $$0, dgz $$1) {
-      super($$0, $$1);
+public class crz {
+   public static final crz a = a("core");
+   public static final crz b = a("idle");
+   public static final crz c = a("work");
+   public static final crz d = a("play");
+   public static final crz e = a("rest");
+   public static final crz f = a("meet");
+   public static final crz g = a("panic");
+   public static final crz h = a("raid");
+   public static final crz i = a("pre_raid");
+   public static final crz j = a("hide");
+   public static final crz k = a("fight");
+   public static final crz l = a("celebrate");
+   public static final crz m = a("admire_item");
+   public static final crz n = a("avoid");
+   public static final crz o = a("ride");
+   public static final crz p = a("play_dead");
+   public static final crz q = a("long_jump");
+   public static final crz r = a("ram");
+   public static final crz s = a("tongue");
+   public static final crz t = a("swim");
+   public static final crz u = a("lay_spawn");
+   public static final crz v = a("sniff");
+   public static final crz w = a("investigate");
+   public static final crz x = a("roar");
+   public static final crz y = a("emerge");
+   public static final crz z = a("dig");
+   private final String A;
+   private final int B;
+
+   private crz(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
+   }
+
+   public String a() {
+      return this.A;
+   }
+
+   private static crz a(String $$0) {
+      return kf.a(md.C, $$0, new crz($$0));
    }
 
    @Override
-   protected cxd o() {
-      return cxl.or;
-   }
-
-   @Override
-   public cxh dH() {
-      return new cxh(cxl.or);
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public dxq v() {
-      return dkg.cD.m().b(dlh.c, jn.c);
-   }
-
-   @Override
-   public int x() {
-      return 8;
-   }
-
-   @Override
-   public csw a(int $$0, cpq $$1) {
-      return ctf.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cpr $$0) {
-      this.dU().a(ecp.j, this.ds(), ecp.a.a($$0));
-   }
-
-   @Override
-   public bsy a(cpr $$0, bsx $$1) {
-      bsy $$2 = this.b_($$0);
-      if ($$2.a() && $$0.dU() instanceof ard $$3) {
-         this.a(ecp.k, $$0);
-         cog.a($$3, $$0, true);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         crz $$1 = (crz)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
+   }
 
-      return $$2;
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
+
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

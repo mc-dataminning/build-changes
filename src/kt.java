@@ -1,117 +1,197 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.Spliterators;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public final class kt implements Predicate<kr> {
-   public static final Codec<kt> a = ku.d
-      .xmap(
-         $$0 -> new kt($$0.entrySet().stream().map(kx::a).collect(Collectors.toList())),
-         $$0 -> $$0.d.stream().filter($$0x -> !$$0x.a().d()).collect(Collectors.toMap(kx::a, kx::b))
-      );
-   public static final yn<wa, kt> b = kx.a.a(yl.a()).a(kt::new, $$0 -> $$0.d);
-   public static final kt c = new kt(List.of());
-   private final List<kx<?>> d;
+public interface kt extends Iterable<kz<?>>, kr {
+   kt a = new kt() {
+      @Nullable
+      @Override
+      public <T> T a(kw<? extends T> $$0) {
+         return null;
+      }
 
-   kt(List<kx<?>> $$0) {
-      this.d = $$0;
+      @Override
+      public Set<kw<?>> b() {
+         return Set.of();
+      }
+
+      @Override
+      public Iterator<kz<?>> iterator() {
+         return Collections.emptyIterator();
+      }
+   };
+   Codec<kt> b = b(kw.d);
+
+   static Codec<kt> a(Codec<kw<?>> $$0) {
+      return b(Codec.dispatchedMap($$0, kw::c));
    }
 
-   public static kt.a a() {
+   static Codec<kt> b(Codec<Map<kw<?>, Object>> $$0) {
+      return $$0.flatComapMap(kt.a::a, $$0x -> {
+         int $$1 = $$0x.d();
+         if ($$1 == 0) {
+            return DataResult.success(Reference2ObjectMaps.emptyMap());
+         } else {
+            Reference2ObjectMap<kw<?>, Object> $$2 = new Reference2ObjectArrayMap($$1);
+
+            for (kz<?> $$3 : $$0x) {
+               if (!$$3.a().d()) {
+                  $$2.put($$3.a(), $$3.b());
+               }
+            }
+
+            return DataResult.success($$2);
+         }
+      });
+   }
+
+   static kt a(final kt $$0, final kt $$1) {
+      return new kt() {
+         @Nullable
+         @Override
+         public <T> T a(kw<? extends T> $$0x) {
+            T $$1 = $$1.a($$0);
+            return $$1 != null ? $$1 : $$0.a($$0);
+         }
+
+         @Override
+         public Set<kw<?>> b() {
+            return Sets.union($$0.b(), $$1.b());
+         }
+      };
+   }
+
+   static kt.a a() {
       return new kt.a();
    }
 
-   public static kt a(kr $$0) {
-      return new kt(ImmutableList.copyOf($$0));
+   Set<kw<?>> b();
+
+   default boolean c(kw<?> $$0) {
+      return this.a($$0) != null;
    }
 
-   public static kt a(kr $$0, ku<?>... $$1) {
-      kt.a $$2 = new kt.a();
+   @Override
+   default Iterator<kz<?>> iterator() {
+      return Iterators.transform(this.b().iterator(), $$0 -> Objects.requireNonNull(this.b($$0)));
+   }
 
-      for (ku<?> $$3 : $$1) {
-         kx<?> $$4 = $$0.c($$3);
-         if ($$4 != null) {
-            $$2.a($$4);
+   default Stream<kz<?>> c() {
+      return StreamSupport.stream(Spliterators.spliterator(this.iterator(), (long)this.d(), 1345), false);
+   }
+
+   default int d() {
+      return this.b().size();
+   }
+
+   default boolean e() {
+      return this.d() == 0;
+   }
+
+   default kt a(final Predicate<kw<?>> $$0) {
+      return new kt() {
+         @Nullable
+         @Override
+         public <T> T a(kw<? extends T> $$0x) {
+            return $$0.test($$0) ? kt.this.a($$0) : null;
          }
-      }
 
-      return $$2.a();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 instanceof kt $$1 && this.d.equals($$1.d)) {
-         return true;
-      }
-
-      return false;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
-   }
-
-   public boolean b(kr $$0) {
-      for (kx<?> $$1 : this.d) {
-         Object $$2 = $$0.a($$1.a());
-         if (!Objects.equals($$1.b(), $$2)) {
-            return false;
+         @Override
+         public Set<kw<?>> b() {
+            return Sets.filter(kt.this.b(), $$0::test);
          }
-      }
-
-      return true;
-   }
-
-   public boolean a(kq $$0) {
-      return this.b($$0.a());
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
-   }
-
-   public ks c() {
-      ks.a $$0 = ks.a();
-
-      for (kx<?> $$1 : this.d) {
-         $$0.a($$1);
-      }
-
-      return $$0.a();
+      };
    }
 
    public static class a {
-      private final List<kx<?>> a = new ArrayList<>();
+      private final Reference2ObjectMap<kw<?>, Object> a = new Reference2ObjectArrayMap();
 
       a() {
       }
 
-      public <T> kt.a a(kx<T> $$0) {
-         return this.a($$0.a(), $$0.b());
+      public <T> kt.a a(kw<T> $$0, @Nullable T $$1) {
+         this.b($$0, $$1);
+         return this;
       }
 
-      public <T> kt.a a(ku<? super T> $$0, T $$1) {
-         for (kx<?> $$2 : this.a) {
-            if ($$2.a() == $$0) {
-               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
-            }
+      <T> void b(kw<T> $$0, @Nullable Object $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         } else {
+            this.a.remove($$0);
+         }
+      }
+
+      public kt.a a(kt $$0) {
+         for (kz<?> $$1 : $$0) {
+            this.a.put($$1.a(), $$1.b());
          }
 
-         this.a.add(new kx<>($$0, $$1));
          return this;
       }
 
       public kt a() {
-         return new kt(List.copyOf(this.a));
+         return a(this.a);
+      }
+
+      private static kt a(Map<kw<?>, Object> $$0) {
+         if ($$0.isEmpty()) {
+            return kt.a;
+         } else {
+            return $$0.size() < 8 ? new kt.a.a(new Reference2ObjectArrayMap($$0)) : new kt.a.a(new Reference2ObjectOpenHashMap($$0));
+         }
+      }
+
+      static record a(Reference2ObjectMap<kw<?>, Object> c) implements kt {
+         @Nullable
+         @Override
+         public <T> T a(kw<? extends T> $$0) {
+            return (T)this.c.get($$0);
+         }
+
+         @Override
+         public boolean c(kw<?> $$0) {
+            return this.c.containsKey($$0);
+         }
+
+         @Override
+         public Set<kw<?>> b() {
+            return this.c.keySet();
+         }
+
+         @Override
+         public Iterator<kz<?>> iterator() {
+            return Iterators.transform(Reference2ObjectMaps.fastIterator(this.c), kz::a);
+         }
+
+         @Override
+         public int d() {
+            return this.c.size();
+         }
+
+         @Override
+         public String toString() {
+            return this.c.toString();
+         }
+
+         public Reference2ObjectMap<kw<?>, Object> f() {
+            return this.c;
+         }
       }
    }
 }

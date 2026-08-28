@@ -1,98 +1,43 @@
-import java.util.Set;
+import org.joml.Quaternionf;
 
-public class gdx extends gek<haq> {
-   public static final ggl a = new gby(true, 23.0F, 4.8F, 2.7F, 3.0F, 49.0F, Set.of("head"));
+public class gdx extends gea<hah> {
+   private static final String e = "outer_glass";
+   private static final String f = "inner_glass";
+   private static final String g = "base";
+   private static final float i = (float)Math.sin(Math.PI / 4);
+   public final ghd a;
+   public final ghd b;
+   public final ghd c;
+   public final ghd d;
 
-   public gdx(ggc $$0) {
+   public gdx(ghd $$0) {
       super($$0);
+      this.a = $$0.b("base");
+      this.b = $$0.b("outer_glass");
+      this.c = this.b.b("inner_glass");
+      this.d = this.c.b("cube");
    }
 
-   public static ggi a() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      $$1.a(
-         "head",
-         ggh.c()
-            .a(0, 6)
-            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
-            .a(45, 16)
-            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
-            .a(52, 25)
-            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
-            .a(52, 25)
-            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
-         gge.a(0.0F, 11.5F, -17.0F)
-      );
-      $$1.a("body", ggh.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), gge.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 9;
-      int $$3 = 6;
-      ggh $$4 = ggh.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
-      $$1.a("right_hind_leg", $$4, gge.a(-5.5F, 15.0F, 9.0F));
-      $$1.a("left_hind_leg", $$4, gge.a(5.5F, 15.0F, 9.0F));
-      $$1.a("right_front_leg", $$4, gge.a(-5.5F, 15.0F, -9.0F));
-      $$1.a("left_front_leg", $$4, gge.a(5.5F, 15.0F, -9.0F));
-      return ggi.a($$0, 64, 64);
+   public static ghj a() {
+      ghl $$0 = new ghl();
+      ghn $$1 = $$0.a();
+      float $$2 = 0.875F;
+      ghi $$3 = ghi.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+      ghn $$4 = $$1.a("outer_glass", $$3, ghf.a(0.0F, 24.0F, 0.0F));
+      ghn $$5 = $$4.a("inner_glass", $$3, ghf.a.a(0.875F));
+      $$5.a("cube", ghi.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), ghf.a.a(0.765625F));
+      $$1.a("base", ghi.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), ghf.a);
+      return ghj.a($$0, 64, 32);
    }
 
-   public void a(haq $$0) {
+   public void a(hah $$0) {
       super.a($$0);
-      if ($$0.b) {
-         this.b.f = 0.35F * ayz.a(0.6F * $$0.u);
-         this.b.g = 0.35F * ayz.a(0.6F * $$0.u);
-         this.f.e = -0.75F * ayz.a(0.3F * $$0.u);
-         this.g.e = 0.75F * ayz.a(0.3F * $$0.u);
-      } else {
-         this.b.g = 0.0F;
-      }
-
-      if ($$0.c) {
-         if ($$0.d < 15) {
-            this.b.e = (float) (-Math.PI / 4) * (float)$$0.d / 14.0F;
-         } else if ($$0.d < 20) {
-            float $$1 = (float)(($$0.d - 15) / 5);
-            this.b.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$1;
-         }
-      }
-
-      if ($$0.h > 0.0F) {
-         this.c.e = ayz.j($$0.h, this.c.e, 1.7407963F);
-         this.b.e = ayz.j($$0.h, this.b.e, (float) (Math.PI / 2));
-         this.f.g = -0.27079642F;
-         this.g.g = 0.27079642F;
-         this.d.g = 0.5707964F;
-         this.e.g = -0.5707964F;
-         if ($$0.e) {
-            this.b.e = (float) (Math.PI / 2) + 0.2F * ayz.a($$0.u * 0.6F);
-            this.f.e = -0.4F - 0.2F * ayz.a($$0.u * 0.6F);
-            this.g.e = -0.4F - 0.2F * ayz.a($$0.u * 0.6F);
-         }
-
-         if ($$0.f) {
-            this.b.e = 2.1707964F;
-            this.f.e = -0.9F;
-            this.g.e = -0.9F;
-         }
-      } else {
-         this.d.g = 0.0F;
-         this.e.g = 0.0F;
-         this.f.g = 0.0F;
-         this.g.g = 0.0F;
-      }
-
-      if ($$0.j > 0.0F) {
-         this.d.e = -0.6F * ayz.a($$0.u * 0.15F);
-         this.e.e = 0.6F * ayz.a($$0.u * 0.15F);
-         this.f.e = 0.3F * ayz.a($$0.u * 0.25F);
-         this.g.e = -0.3F * ayz.a($$0.u * 0.25F);
-         this.b.e = ayz.j($$0.j, this.b.e, (float) (Math.PI / 2));
-      }
-
-      if ($$0.k > 0.0F) {
-         this.b.e = ayz.j($$0.k, this.b.e, 2.0561945F);
-         this.d.e = -0.5F * ayz.a($$0.u * 0.5F);
-         this.e.e = 0.5F * ayz.a($$0.u * 0.5F);
-         this.f.e = 0.5F * ayz.a($$0.u * 0.5F);
-         this.g.e = -0.5F * ayz.a($$0.u * 0.5F);
-      }
+      this.a.k = $$0.a;
+      float $$1 = $$0.u * 3.0F;
+      float $$2 = gtz.a($$0.u) * 16.0F;
+      this.b.c += $$2 / 2.0F;
+      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
+      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
    }
 }

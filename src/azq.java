@@ -1,25 +1,65 @@
-public class azq {
-   private double a;
-   private double b;
-   private double c;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = ayz.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
+public interface azq {
+   azq a(String var1);
+
+   void b(String var1);
+
+   public static class a implements azq {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
+
+      public a() {
+         this(HashMultimap.create(), () -> "");
       }
 
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
-   }
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
+      private String c() {
+         if (this.c == null) {
+            this.c = this.b.get();
+         }
+
+         return this.c;
+      }
+
+      @Override
+      public azq a(String $$0) {
+         return new azq.a(this.a, () -> this.c() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.c(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
+
+      public Optional<String> b() {
+         Multimap<String, String> $$0 = this.a();
+         if (!$$0.isEmpty()) {
+            String $$1 = $$0.asMap()
+               .entrySet()
+               .stream()
+               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
+               .collect(Collectors.joining("\n"));
+            return Optional.of($$1);
+         } else {
+            return Optional.empty();
+         }
+      }
    }
 }

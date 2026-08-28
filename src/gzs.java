@@ -1,10 +1,12 @@
-public class gzs extends gzy {
-   public float a;
+public class gzs extends hbk {
+   public cjv.e a;
    public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public chz.v h = chz.v.a;
+   public float c;
+   public float d;
+   public float e;
+
+   public gzs() {
+      this.a = cjv.e.a;
+      this.d = 1.0F;
+   }
 }

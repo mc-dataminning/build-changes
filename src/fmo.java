@@ -1,136 +1,91 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
 
-public class fmo {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+public class fmo extends awn {
+   private final Map<ddt, dds> b = new HashMap<>();
+   private final Set<ddt> c = new HashSet<>();
+   private Map<dcd, List<gai>> d = Map.of();
+   private List<gai> e = List.of();
 
-   public static void a(File $$0, ffb $$1, Consumer<wp> $$2) {
-      a($$0, null, $$1, $$2);
+   public void a(dds $$0) {
+      this.b.put($$0.a(), $$0);
    }
 
-   public static void a(File $$0, @Nullable String $$1, ffb $$2, Consumer<wp> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
-      }
+   public void a(ddt $$0) {
+      this.b.remove($$0);
+      this.c.remove($$0);
    }
 
-   private static void b(File $$0, @Nullable String $$1, ffb $$2, Consumer<wp> $$3) {
-      ffr $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
+   public void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean b(ddt $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(ddt $$0) {
+      this.c.remove($$0);
+   }
+
+   public void d(ddt $$0) {
+      this.c.add($$0);
+   }
+
+   public void c() {
+      Map<dco, List<List<dds>>> $$0 = a(this.b.values());
+      Map<dcd, List<gai>> $$1 = new HashMap<>();
+      Builder<gai> $$2 = ImmutableList.builder();
+      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(gai::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
+
+      for (gak $$3 : gak.values()) {
+         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
       }
 
-      af.i().execute(() -> {
-         try {
-            $$4.a($$6);
-            wp $$3x = wp.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new wn.d($$6.getAbsoluteFile())));
-            $$3.accept(wp.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(wp.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
+      this.d = Map.copyOf($$1);
+      this.e = $$2.build();
+   }
+
+   private static Map<dco, List<List<dds>>> a(Iterable<dds> $$0) {
+      Map<dco, List<List<dds>>> $$1 = new HashMap<>();
+      Table<dco, Integer, List<dds>> $$2 = HashBasedTable.create();
+
+      for (dds $$3 : $$0) {
+         dco $$4 = $$3.d();
+         OptionalInt $$5 = $$3.c();
+         if ($$5.isEmpty()) {
+            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+         } else {
+            List<dds> $$6 = (List<dds>)$$2.get($$4, $$5.getAsInt());
+            if ($$6 == null) {
+               $$6 = new ArrayList<>();
+               $$2.put($$4, $$5.getAsInt(), $$6);
+               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
+            }
+
+            $$6.add($$3);
          }
-      });
-   }
-
-   public static ffr a(ffb $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ffr $$3 = new ffr($$1, $$2, false);
-      RenderSystem.bindTexture($$0.g());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = af.f();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
-         }
-
-         $$2++;
-      }
-   }
-
-   public fmo(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + af.f();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
       }
 
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
+      return $$1;
    }
 
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
-      }
+   public List<gai> d() {
+      return this.e;
    }
 
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
-   }
-
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   public List<gai> a(dcd $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

@@ -1,26 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface esk<P extends esi> {
-   Codec<esi> a = mb.af.q().dispatch("processor_type", esi::a, esk::codec);
-   Codec<esj> b = a.listOf().xmap(esj::new, esj::a);
-   Codec<esj> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jr<esj>> d = akq.a(mc.aX, c);
-   esk<erm> e = a("block_ignore", erm.a);
-   esk<ero> f = a("block_rot", ero.a);
-   esk<err> g = a("gravity", err.a);
-   esk<ers> h = a("jigsaw_replacement", ers.a);
-   esk<ese> i = a("rule", ese.a);
-   esk<erw> j = a("nop", erw.a);
-   esk<erl> k = a("block_age", erl.a);
-   esk<erk> l = a("blackstone_replace", erk.a);
-   esk<ert> m = a("lava_submerged_block", ert.a);
-   esk<esb> n = a("protected_blocks", esb.b);
-   esk<erq> o = a("capped", erq.a);
+public class esk extends etc {
+   public static final MapCodec<esk> a = md.e.q().fieldOf("block").xmap(esk::new, $$0 -> $$0.b);
+   private final dku b;
 
-   MapCodec<P> codec();
+   public esk(dku $$0) {
+      this.b = $$0;
+   }
 
-   static <P extends esi> esk<P> a(String $$0, MapCodec<P> $$1) {
-      return ke.a(mb.af, $$0, () -> $$1);
+   @Override
+   public boolean a(dym $$0, azs $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected etd<?> a() {
+      return etd.b;
    }
 }

@@ -1,32 +1,45 @@
-import org.lwjgl.openal.AL10;
-
 public class fef {
-   private float a = 1.0F;
-   private feg b = feg.a;
+   private static final fep<Object> a = new fep<Object>() {
+      @Override
+      public void a(fem<Object> $$0) {
+      }
 
-   public void a(feg $$0) {
-      this.b = $$0;
-      fbx $$1 = $$0.b();
-      fbx $$2 = $$0.c();
-      fbx $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+      @Override
+      public boolean a(jj $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final fei<Object> b = new fei<Object>() {
+      @Override
+      public void a(fem<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(jj $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(jj $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> fep<T> a() {
+      return (fep<T>)a;
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
-   }
-
-   public float a() {
-      return this.a;
-   }
-
-   public void b() {
-      this.a(feg.a);
-   }
-
-   public feg c() {
-      return this.b;
+   public static <T> fei<T> b() {
+      return (fei<T>)b;
    }
 }

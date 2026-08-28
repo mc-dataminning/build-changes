@@ -1,73 +1,68 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public final class gih {
-   private static final int a = 1024;
-   private final ghy b;
-   private final gie c;
-   private final ght d;
-   @Nullable
-   private gid e;
+public class gih extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gjr b;
+   private final gih.a c;
 
-   public gih(ghy $$0, gie $$1, ght $$2) {
+   public gih(gjr $$0, gih.a $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   public static gih a(gie $$0, UserApiService $$1) {
-      ght $$2 = new ght(1024);
-      ghy $$3 = ghy.a($$0, $$1);
-      return new gih($$3, $$0, $$2);
-   }
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
 
-   public void a(fmg $$0, fvi $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gid $$4 = this.e.b();
-         $$0.a(
-            new fug(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               wp.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               wp.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               wp.c("gui.abuseReport.draft.edit"),
-               wp.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         ash.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         ash.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
    }
 
-   public ghy a() {
-      return this.b;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = ash.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azk.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azk.a($$4.get(4), -1);
+            int $$9 = azk.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
+      }
+
+      $$0.close();
    }
 
-   public ght b() {
-      return this.d;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   public boolean a(gie $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable gid $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

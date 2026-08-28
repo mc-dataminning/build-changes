@@ -1,12 +1,12 @@
 public class fa extends Exception {
-   private final wp a;
+   private final wv a;
 
-   public fa(wp $$0) {
+   public fa(wv $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public wp a() {
+   public wv a() {
       return this.a;
    }
 }

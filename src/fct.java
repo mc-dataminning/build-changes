@@ -1,66 +1,60 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public class fct {
+   public static final fct a = new fct(0.0F, 0.0F);
+   public static final fct b = new fct(1.0F, 1.0F);
+   public static final fct c = new fct(1.0F, 0.0F);
+   public static final fct d = new fct(-1.0F, 0.0F);
+   public static final fct e = new fct(0.0F, 1.0F);
+   public static final fct f = new fct(0.0F, -1.0F);
+   public static final fct g = new fct(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final fct h = new fct(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public enum fct implements azv {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
-
-   public static final azv.a<fct> t = azv.a(fct::values);
-   public static final IntFunction<fct> u = axq.a(fct::a, values(), axq.a.a);
-   private final int v;
-   private final String w;
-
-   private fct(final int $$0, final String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+   public fct(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public int a() {
-      return this.v;
+   public fct a(float $$0) {
+      return new fct(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public String c() {
-      return this.w;
+   public float a(fct $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   @Nullable
-   public static fct a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public fct b(fct $$0) {
+      return new fct(this.i + $$0.i, this.j + $$0.j);
+   }
+
+   public fct b(float $$0) {
+      return new fct(this.i + $$0, this.j + $$0);
+   }
+
+   public boolean c(fct $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public fct a() {
+      float $$0 = azk.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new fct(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return azk.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(fct $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public fct d() {
+      return new fct(-this.i, -this.j);
    }
 }

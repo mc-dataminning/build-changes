@@ -18,11 +18,11 @@ public interface ez<T extends ez<T>> {
 
    CommandDispatcher<T> w();
 
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable ia var4);
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable ib var4);
 
    boolean x();
 
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable ia $$2) {
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable ib $$2) {
       this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
    }
 

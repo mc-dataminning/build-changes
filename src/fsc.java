@@ -1,123 +1,93 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class fsc {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fpx d;
+   protected final bop e;
 
-public class fsc implements fsa {
-   private static final aku h = aku.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final fsc.a n;
-   private final List<ayl> o;
-   private fsa.a p = fsa.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+   protected fsc(fpx $$0, bop $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   public fsc(fpa $$0, fsc.a $$1, wp $$2, @Nullable wp $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
+   }
+
+   public int a() {
+      return 60 + 9;
+   }
+
+   public void a(fpz $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(goi.L(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      this.t = $$4;
-      this.u = $$5;
-   }
-
-   public fsc(fpa $$0, fsc.a $$1, wp $$2, @Nullable wp $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
-   }
-
-   @Override
-   public fsa.a a() {
-      return this.p;
-   }
-
-   @Override
-   public void a(fsb $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.e();
-         }
-      } else if (this.t) {
-         this.r = ayz.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
-      }
-   }
-
-   @Override
-   public int d() {
-      return 7 + this.f() + 3;
-   }
-
-   private int f() {
-      return Math.max(this.o.size(), 2) * 11;
-   }
-
-   @Override
-   public void a(fpc $$0, fpa $$1, long $$2) {
-      int $$3 = this.d();
-      $$0.a(gnh::H, h, 0, 0, this.c(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.f() - $$4) / 2;
-
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
+      $$0.a(goi.L(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(goi.L(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(goi.L(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(goi.L(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
 
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
-         } else {
-            $$8 = -11206656;
-         }
-
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
-      }
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   public void e() {
-      this.p = fsa.a.b;
+   protected void a(fpz $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   public void a(float $$0) {
-      this.s = $$0;
+   protected void b(fpz $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(goi.L(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   public static enum a {
-      a(aku.b("toast/movement_keys")),
-      b(aku.b("toast/mouse")),
-      c(aku.b("toast/tree")),
-      d(aku.b("toast/recipe_book")),
-      e(aku.b("toast/wooden_planks")),
-      f(aku.b("toast/social_interactions")),
-      g(aku.b("toast/right_click"));
+   protected void c(fpz $$0, int $$1, int $$2, int $$3) {
+   }
 
-      private final aku h;
+   protected long b(int $$0) {
+      return this.e.a($$0);
+   }
 
-      private a(final aku $$0) {
-         this.h = $$0;
-      }
+   protected void d(fpz $$0, int $$1, int $$2, int $$3) {
+   }
 
-      public void a(fpc $$0, int $$1, int $$2) {
-         $$0.a(gnh::H, this.h, $$1, $$2, 20, 20);
-      }
+   protected void a(fpz $$0, String $$1, int $$2, int $$3) {
+      $$0.a(goi.L(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = azk.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axu.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axu.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

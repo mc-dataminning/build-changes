@@ -1,30 +1,37 @@
-public record hz(int a, eu b, hz.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
+public interface hz<T> {
+   void a(hx<T> var1);
 
-   public void b() {
-      this.c.discard();
-   }
+   void a(@Nullable ib var1);
 
-   public int c() {
-      return this.a;
-   }
+   @Nullable
+   ib a();
 
-   public eu d() {
-      return this.b;
-   }
+   ia b();
 
-   public hz.a e() {
-      return this.c;
-   }
+   static <T extends ez<T>> hz<T> a(final hy<T> $$0, final ia $$1) {
+      return new hz<T>() {
+         @Override
+         public void a(hx<T> $$0x) {
+            $$0.a(new hu<>($$1, $$0));
+         }
 
-   @FunctionalInterface
-   public interface a {
-      void discard();
+         @Override
+         public void a(@Nullable ib $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public ib a() {
+            return $$0.b();
+         }
+
+         @Override
+         public ia b() {
+            return $$1;
+         }
+      };
    }
 }

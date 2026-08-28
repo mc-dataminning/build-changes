@@ -1,61 +1,66 @@
-import java.util.List;
-import java.util.Optional;
-
-public record dci<T extends dbv<?>>(ddh a, Optional<dca<T>> b) {
-   public static <T extends dbv<?>> yn<wa, dci<T>> a() {
-      return yn.a(ddh.b, dci::b, $$0 -> new dci<>($$0, Optional.empty()));
+public class dci extends dcb {
+   public dci(dby $$0) {
+      super($$0);
    }
 
-   public ddh b() {
-      return this.a;
+   public boolean a(dbz $$0, dhp $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kx.M)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cyc.vm)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
    }
 
-   public Optional<dca<T>> c() {
-      return this.b;
+   public cxy a(dbz $$0, ju.a $$1) {
+      int $$2 = 0;
+      cxy $$3 = cxy.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxy $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kx.M)) {
+               if (!$$3.f()) {
+                  return cxy.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cyc.vm)) {
+                  return cxy.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cxy.k;
    }
 
-   public static record a<T extends dbv<?>>(dbr a, dci<T> b) {
-
-      public static <T extends dbv<?>> yn<wa, dci.a<T>> a() {
-         return yn.a(dbr.a, dci.a::b, dci.a(), dci.a::c, dci.a::new);
-      }
-
-      public dbr b() {
-         return this.a;
-      }
-
-      public dci<T> c() {
-         return this.b;
-      }
-   }
-
-   public static record b<T extends dbv<?>>(List<dci.a<T>> a) {
-      public static <T extends dbv<?>> dci.b<T> a() {
-         return new dci.b<>(List.of());
-      }
-
-      public static <T extends dbv<?>> yn<wa, dci.b<T>> b() {
-         return yn.a(dci.a.<T>a().a(yl.a()), dci.b::e, dci.b::new);
-      }
-
-      public boolean a(cxh $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public dci.b<T> b(cxh $$0) {
-         return new dci.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dci.a<T>> e() {
-         return this.a;
-      }
+   @Override
+   public dcv<dci> a() {
+      return dcv.e;
    }
 }

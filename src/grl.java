@@ -1,107 +1,57 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class grl implements gqy.a {
-   private final fmg a;
-   private final Map<akt<dgz>, Map<String, eob>> b = Maps.newIdentityHashMap();
-   private final Map<akt<dgz>, Map<String, aao.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class grl {
+   private final Long2ObjectMap<grl.a> a = new Long2ObjectOpenHashMap();
 
-   public grl(fmg $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   public grk a(dhp $$0, kl $$1) {
+      grl.a $$2 = this.a($$0, $$1.a(), $$1.c());
+      if ($$2.a().c($$1.b())) {
+         return null;
+      } else {
+         int $$3 = $$1.a() - 1;
+         int $$4 = $$1.c() - 1;
+         int $$5 = $$1.a() + 1;
+         int $$6 = $$1.c() + 1;
+         grj[] $$7 = new grj[9];
 
-   @Override
-   public void a(fgr $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      flo $$5 = this.a.j.k();
-      akt<dgz> $$6 = this.a.s.aj();
-      ji $$7 = ji.a($$5.b().d, 0.0, $$5.b().f);
-      fgv $$8 = $$1.getBuffer(gnh.y());
-      if (this.b.containsKey($$6)) {
-         for (eob $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gnr.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
+               int $$10 = grk.a($$3, $$4, $$9, $$8);
+               grl.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
+               $$7[$$10] = $$11.b();
             }
          }
+
+         return new grk($$0, $$3, $$4, $$7);
+      }
+   }
+
+   private grl.a a(dhp $$0, int $$1, int $$2) {
+      return (grl.a)this.a.computeIfAbsent(dgw.c($$1, $$2), $$1x -> new grl.a($$0.d(dgw.a($$1x), dgw.b($$1x))));
+   }
+
+   static final class a {
+      private final eat a;
+      @Nullable
+      private grj b;
+
+      a(eat $$0) {
+         this.a = $$0;
       }
 
-      Map<String, aao.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (aao.a $$11 : $$10.values()) {
-            eob $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gnr.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gnr.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
+      public eat a() {
+         return this.a;
+      }
+
+      public grj b() {
+         if (this.b == null) {
+            this.b = new grj(this.a);
          }
+
+         return this.b;
       }
-   }
-
-   public void a(eob $$0, List<aao.a> $$1, akt<dgz> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, aao.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (aao.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

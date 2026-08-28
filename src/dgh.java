@@ -1,25 +1,37 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgh {
-   private final fbx a;
-   private final fbx b;
-   private final Predicate<dxq> c;
+public record dgh(ald e, js<cxu> f, wv g, boolean h) {
+   public static final Codec<dgh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ald.a.fieldOf("asset_id").forGetter(dgh::a),
+               cxu.e.fieldOf("template_item").forGetter(dgh::b),
+               wx.a.fieldOf("description").forGetter(dgh::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dgh::d)
+            )
+            .apply($$0, dgh::new)
+   );
+   public static final yt<wg, dgh> b = yt.a(ald.b, dgh::a, cxu.f, dgh::b, wx.b, dgh::c, yr.b, dgh::d, dgh::new);
+   public static final Codec<js<dgh>> c = akz.a(me.bh, a);
+   public static final yt<wg, js<dgh>> d = yr.a(me.bh, b);
 
-   public dgh(fbx $$0, fbx $$1, Predicate<dxq> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public wv a(js<dgf> $$0) {
+      return this.g.f().c($$0.a().d().a());
    }
 
-   public fbx a() {
-      return this.b;
+   public ald a() {
+      return this.e;
    }
 
-   public fbx b() {
-      return this.a;
+   public js<cxu> b() {
+      return this.f;
    }
 
-   public Predicate<dxq> c() {
-      return this.c;
+   public wv c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
    }
 }

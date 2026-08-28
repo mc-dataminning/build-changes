@@ -1,72 +1,30 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class elz extends emf {
-   public static final MapCodec<elz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elz::new));
+public abstract class elz extends elw {
+   protected final long c;
+   protected final etw.a d;
+   protected final float e;
+   protected final etw f;
 
-   public elz(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <P extends elz> P3<Mu<P>, Long, etw.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         etw.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ays.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected emg<?> a() {
-      return emg.e;
+   protected elz(long $$0, etw.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = etw.b(new efk(new eem($$0)), $$1);
    }
 
-   @Override
-   public List<ekk.a> a(dhf $$0, BiConsumer<ji, dxq> $$1, azh $$2, int $$3, ji $$4, eju $$5) {
-      List<ekk.a> $$6 = Lists.newArrayList();
-      ji $$7 = $$4.e();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.i(), $$5);
-      a($$0, $$1, $$2, $$7.g(), $$5);
-      a($$0, $$1, $$2, $$7.g().i(), $$5);
-      jn $$8 = jn.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         ji $$19 = new ji($$14, $$18, $$15);
-         if (eig.c($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.i(), $$5);
-            this.b($$0, $$1, $$2, $$19.g(), $$5);
-            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
-         }
-      }
-
-      $$6.add(new ekk.a(new ji($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new ji($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new ekk.a(new ji($$11 + $$20, $$16, $$13 + $$21), 0, false));
-            }
-         }
-      }
-
-      return $$6;
+   protected double a(jj $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

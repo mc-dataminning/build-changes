@@ -1,45 +1,45 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.List;
 
-public class avq implements ew {
-   private static final String b = "Rcon";
-   private static final wp c = wp.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+public class avq {
+   private int a;
+   private int b;
 
-   public avq(MinecraftServer $$0) {
-      this.e = $$0;
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public boolean a(int $$0, List<aro> $$1) {
+      int $$2 = (int)$$1.stream().filter(cqi::gn).count();
+      return $$2 >= this.b($$0);
    }
 
-   public String f() {
-      return this.d.toString();
+   public int b(int $$0) {
+      return Math.max(1, azk.f((float)(this.a * $$0) / 100.0F));
    }
 
-   public ex g() {
-      ard $$0 = this.e.J();
-      return new ex(this, fbx.a($$0.aa()), fbw.a, $$0, 4, "Rcon", c, this.e, null);
+   public void a() {
+      this.b = 0;
    }
 
-   @Override
-   public void a(wp $$0) {
-      this.d.append($$0.getString());
+   public int b() {
+      return this.b;
    }
 
-   @Override
-   public boolean t_() {
-      return true;
-   }
+   public boolean a(List<aro> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
 
-   @Override
-   public boolean u_() {
-      return true;
-   }
+      for (aro $$3 : $$0) {
+         if (!$$3.U_()) {
+            this.a++;
+            if ($$3.fQ()) {
+               this.b++;
+            }
+         }
+      }
 
-   @Override
-   public boolean c() {
-      return this.e.m();
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

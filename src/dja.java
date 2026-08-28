@@ -1,63 +1,35 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dja extends djq {
-   public static final dyh a = dyg.A;
-   private final drm.a b;
+public class dja extends diw {
+   public static final MapCodec<dja> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dis.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, dja::new)
+   );
+   private final jw<dis> c;
+   private final int d;
+   private final int e;
 
-   public dja(drm.a $$0, dxp.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.B.b().b(a, Boolean.valueOf(false)));
+   public dja(jw<dis> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dja> a();
-
-   @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dwh($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(dkg.hl) || $$1.a(dkg.hm) || $$1.a(dkg.hn) || $$1.a(dkg.ho);
-         if ($$3) {
-            return a($$2, duu.q, dwh::a);
-         }
-      }
-
-      return null;
-   }
-
-   public drm.a b() {
-      return this.b;
+   protected Stream<js<dis>> b() {
+      return this.c.a();
    }
 
    @Override
-   protected boolean a(dxq $$0, eul $$1) {
-      return false;
+   protected MapCodec<? extends diw> a() {
+      return b;
    }
 
    @Override
-   protected void a(dxr.a<dke, dxq> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dxq a(dax $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dxq $$0, dgz $$1, ji $$2, dke $$3, @Nullable eve $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2, djb.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

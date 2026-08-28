@@ -1,278 +1,324 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fpx<T> extends fpg {
-   public static final BooleanSupplier a = fvi::u;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final wp c;
-   private int d;
-   private T f;
-   private final fpx.c<T> m;
-   private final Function<T, wp> n;
-   private final Function<fpx<T>, xd> o;
-   private final fpx.b<T> p;
-   private final boolean q;
-   private final fmj.l<T> r;
+public class fpx {
+   private static final float f = 0.01F;
+   public static final float a = 0.03F;
+   public static final int b = 0;
+   public static final int c = 8;
+   public final int d = 9;
+   public final azs e = azs.a();
+   private final Function<ald, ftf> g;
+   final boolean h;
+   private final fnn i;
 
-   fpx(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      wp $$4,
-      wp $$5,
-      int $$6,
-      T $$7,
-      fpx.c<T> $$8,
-      Function<T, wp> $$9,
-      Function<fpx<T>, xd> $$10,
-      fpx.b<T> $$11,
-      fmj.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.g();
+   public fpx(Function<ald, ftf> $$0, boolean $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = new fnn(($$0x, $$1x) -> this.a($$1x.l()).a($$0x, this.h).a($$1x.c()));
    }
 
-   private void g() {
-      this.a(this.r.apply(this.f));
+   ftf a(ald $$0) {
+      return this.g.apply($$0);
    }
 
-   @Override
-   public void b() {
-      if (fvi.t()) {
-         this.a(-1);
-      } else {
-         this.a(1);
+   public String a(String $$0) {
+      try {
+         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
+         $$1.setReorderingMode(0);
+         return $$1.writeReordered(2);
+      } catch (ArabicShapingException var3) {
+         return $$0;
       }
    }
 
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = ayz.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(ayz.b(this.d + $$0, $$1.size()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9) {
+      if (this.a()) {
+         $$0 = this.a($$0);
       }
 
-      return true;
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
+   public int a(wv $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
-   private void b(T $$0) {
-      wp $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.g();
+   public int a(wv $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
-   private wp c(T $$0) {
-      return (wp)(this.q ? this.n.apply($$0) : this.d($$0));
+   public int a(ayw $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
-   private xd d(T $$0) {
-      return wo.a(this.c, this.n.apply($$0));
-   }
+   public void a(ayw $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, gny $$6, int $$7) {
+      int $$8 = a($$4);
+      fpx.b $$9 = new fpx.b(this, $$6, 0.0F, 0.0F, $$8, false, $$5, fpx.a.a, $$7);
 
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected xd d() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(ftn $$0) {
-      $$0.a(ftm.a, this.d());
-      if (this.j) {
-         T $$1 = this.b(1);
-         wp $$2 = this.c($$1);
-         if (this.aM_()) {
-            $$0.a(ftm.d, wp.a("narration.cycle_button.usage.focused", $$2));
-         } else {
-            $$0.a(ftm.d, wp.a("narration.cycle_button.usage.hovered", $$2));
+      for (int $$10 = -1; $$10 <= 1; $$10++) {
+         for (int $$11 = -1; $$11 <= 1; $$11++) {
+            if ($$10 != 0 || $$11 != 0) {
+               float[] $$12 = new float[]{$$1};
+               int $$13 = $$10;
+               int $$14 = $$11;
+               $$0.accept(($$6x, $$7x, $$8x) -> {
+                  boolean $$9x = $$7x.c();
+                  ftf $$10x = this.a($$7x.l());
+                  ffm $$11x = $$10x.a($$8x, this.h);
+                  $$9.j = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.k = $$2 + (float)$$14 * $$11x.b();
+                  $$12[0] += $$11x.a($$9x);
+                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
+               });
+            }
          }
       }
+
+      $$9.a();
+      fpx.b $$15 = new fpx.b(this, $$6, $$1, $$2, a($$3), false, $$5, fpx.a.c, $$7);
+      $$0.accept($$15);
+      $$15.a($$1);
    }
 
-   public xd c() {
-      return a_((wp)(this.q ? this.d(this.f) : this.B()));
+   private static int a(int $$0) {
+      return ($$0 & -67108864) == 0 ? axu.f($$0) : $$0;
    }
 
-   public static <T> fpx.a<T> a(Function<T, wp> $$0) {
-      return new fpx.a<>($$0);
+   private int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9, boolean $$10) {
+      $$3 = a($$3);
+      $$1 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return (int)$$1 + ($$4 ? 1 : 0);
    }
 
-   public static fpx.a<Boolean> a(wp $$0, wp $$1) {
-      return new fpx.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   private int a(ayw $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9, boolean $$10) {
+      $$3 = a($$3);
+      $$1 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return (int)$$1 + ($$4 ? 1 : 0);
    }
 
-   public static fpx.a<Boolean> e() {
-      return new fpx.a<Boolean>($$0 -> $$0 ? wo.b : wo.c).a(b);
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9, boolean $$10) {
+      fpx.b $$11 = new fpx.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      baf.c($$0, xs.a, $$11);
+      return $$11.a($$1);
    }
 
-   public static fpx.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
+   private float b(ayw $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, gny $$6, fpx.a $$7, int $$8, int $$9, boolean $$10) {
+      fpx.b $$11 = new fpx.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      $$0.accept($$11);
+      return $$11.a($$1);
    }
 
-   public static class a<T> {
-      private int a;
+   public int b(String $$0) {
+      return azk.f(this.i.a($$0));
+   }
+
+   public int a(xa $$0) {
+      return azk.f(this.i.a($$0));
+   }
+
+   public int a(ayw $$0) {
+      return azk.f(this.i.a($$0));
+   }
+
+   public String a(String $$0, int $$1, boolean $$2) {
+      return $$2 ? this.i.c($$0, $$1, xs.a) : this.i.b($$0, $$1, xs.a);
+   }
+
+   public String a(String $$0, int $$1) {
+      return this.i.b($$0, $$1, xs.a);
+   }
+
+   public xa a(xa $$0, int $$1) {
+      return this.i.a($$0, $$1, xs.a);
+   }
+
+   public int b(String $$0, int $$1) {
+      return 9 * this.i.g($$0, $$1, xs.a).size();
+   }
+
+   public int b(xa $$0, int $$1) {
+      return 9 * this.i.b($$0, $$1, xs.a).size();
+   }
+
+   public List<ayw> c(xa $$0, int $$1) {
+      return tr.a().a(this.i.b($$0, $$1, xs.a));
+   }
+
+   public boolean a() {
+      return tr.a().b();
+   }
+
+   public fnn b() {
+      return this.i;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   class b implements ayx {
+      final gny a;
+      private final boolean c;
+      private final int d;
+      private final int e;
+      private final Matrix4f f;
+      private final fpx.a g;
+      private final int h;
+      private final boolean i;
+      float j;
+      float k;
+      private final List<ftj.b> l;
       @Nullable
-      private T b;
-      private final Function<T, wp> c;
-      private fmj.l<T> d = $$0x -> null;
-      private Function<fpx<T>, xd> e = fpx::c;
-      private fpx.c<T> f = fpx.c.a(ImmutableList.of());
-      private boolean g;
+      private List<ftj.a> m;
 
-      public a(Function<T, wp> $$0) {
-         this.c = $$0;
-      }
-
-      public fpx.a<T> a(Collection<T> $$0) {
-         return this.a(fpx.c.a($$0));
-      }
-
-      @SafeVarargs
-      public final fpx.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public fpx.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(fpx.c.a(fpx.a, $$0, $$1));
-      }
-
-      public fpx.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(fpx.c.a($$0, $$1, $$2));
-      }
-
-      public fpx.a<T> a(fpx.c<T> $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fpx.a<T> a(fmj.l<T> $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fpx.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
+      private void a(ftj.a $$0) {
+         if (this.m == null) {
+            this.m = Lists.newArrayList();
          }
 
-         return this;
+         this.m.add($$0);
       }
 
-      public fpx.a<T> a(Function<fpx<T>, xd> $$0) {
-         this.e = $$0;
-         return this;
+      public b(
+         final fpx param1,
+         final gny $$0,
+         final float $$1,
+         final float $$2,
+         final int $$3,
+         final boolean $$4,
+         final Matrix4f $$5,
+         final fpx.a $$6,
+         final int $$7
+      ) {
+         this(var1, $$0, $$1, $$2, $$3, 0, $$4, $$5, $$6, $$7, true);
       }
 
-      public fpx.a<T> a() {
-         this.g = true;
-         return this;
+      public b(
+         final fpx param1,
+         final gny $$0,
+         final float $$1,
+         final float $$2,
+         final int $$3,
+         final int $$4,
+         final boolean $$5,
+         final Matrix4f $$6,
+         final fpx.a $$7,
+         final int $$8,
+         final boolean $$9
+      ) {
+         this.b = var1;
+         this.l = new ArrayList<>();
+         this.a = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.c = $$5;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$6;
+         this.g = $$7;
+         this.h = $$8;
+         this.i = $$9;
       }
 
-      public fpx<T> a(wp $$0, fpx.b<T> $$1) {
-         return this.a(0, 0, 150, 20, $$0, $$1);
+      @Override
+      public boolean accept(int $$0, xs $$1, int $$2) {
+         ftf $$3 = this.b.a($$1.l());
+         ffm $$4 = $$3.a($$2, this.b.h);
+         ftj $$5 = $$1.g() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
+         boolean $$6 = $$1.c();
+         xu $$7 = $$1.a();
+         int $$8 = this.a($$7);
+         int $$9 = this.a($$1, $$8);
+         float $$10 = $$4.a($$6);
+         float $$11 = $$0 == 0 ? this.j - 1.0F : this.j;
+         float $$12 = $$4.b();
+         if (!($$5 instanceof ftk)) {
+            float $$13 = $$6 ? $$4.a() : 0.0F;
+            this.l.add(new ftj.b(this.j, this.k, $$8, $$9, $$5, $$1, $$13, $$12));
+         }
+
+         if ($$1.e()) {
+            this.a(new ftj.a($$11, this.k + 4.5F, this.j + $$10, this.k + 4.5F - 1.0F, this.b(), $$8, $$9, $$12));
+         }
+
+         if ($$1.f()) {
+            this.a(new ftj.a($$11, this.k + 9.0F, this.j + $$10, this.k + 9.0F - 1.0F, this.b(), $$8, $$9, $$12));
+         }
+
+         this.j += $$10;
+         return true;
       }
 
-      public fpx<T> a(int $$0, int $$1, int $$2, int $$3, wp $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
+      float a(float $$0) {
+         ftj $$1 = null;
+         if (this.e != 0) {
+            ftj.a $$2 = new ftj.a($$0 - 1.0F, this.k + 9.0F, this.j, this.k - 1.0F, this.c(), this.e);
+            $$1 = this.b.a(xs.b).b();
+            fhs $$3 = this.a.getBuffer($$1.a(this.g));
+            $$1.a($$2, this.f, $$3, this.h);
+         }
+
+         this.a();
+         if (this.m != null) {
+            if ($$1 == null) {
+               $$1 = this.b.a(xs.b).b();
+            }
+
+            fhs $$4 = this.a.getBuffer($$1.a(this.g));
+
+            for (ftj.a $$5 : this.m) {
+               $$1.a($$5, this.f, $$4, this.h);
+            }
+         }
+
+         return this.j;
       }
 
-      public fpx<T> a(int $$0, int $$1, int $$2, int $$3, wp $$4, fpx.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
+      private int a(@Nullable xu $$0) {
+         if ($$0 != null) {
+            int $$1 = axu.a(this.d);
+            int $$2 = $$0.a();
+            return axu.c($$1, $$2);
          } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            wp $$8 = this.c.apply($$7);
-            wp $$9 = (wp)(this.g ? $$8 : wo.a($$4, $$8));
-            return new fpx<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+            return this.d;
          }
       }
-   }
 
-   public interface b<T> {
-      void onValueChange(fpx<T> var1, T var2);
-   }
-
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> fpx.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new fpx.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
+      private int a(xs $$0, int $$1) {
+         Integer $$2 = $$0.b();
+         if ($$2 != null) {
+            float $$3 = axu.i($$1);
+            float $$4 = axu.i($$2);
+            return $$3 != 1.0F ? axu.c(axu.b($$3 * $$4), $$2) : $$2;
+         } else {
+            return this.c ? axu.a($$1, 0.25F) : 0;
+         }
       }
 
-      static <T> fpx.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new fpx.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
+      void a() {
+         for (ftj.b $$0 : this.l) {
+            ftj $$1 = $$0.e();
+            fhs $$2 = this.a.getBuffer($$1.a(this.g));
+            $$1.a($$0, this.f, $$2, this.h);
+         }
+      }
 
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
+      private float b() {
+         return this.i ? 0.01F : -0.01F;
+      }
+
+      private float c() {
+         return this.i ? -0.01F : 0.01F;
       }
    }
 }

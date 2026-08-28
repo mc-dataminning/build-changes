@@ -1,40 +1,51 @@
-public interface awr {
-   axf<btr> a = a("damages_helmet");
-   axf<btr> b = a("bypasses_armor");
-   axf<btr> c = a("bypasses_shield");
-   axf<btr> d = a("bypasses_invulnerability");
-   axf<btr> e = a("bypasses_cooldown");
-   axf<btr> f = a("bypasses_effects");
-   axf<btr> g = a("bypasses_resistance");
-   axf<btr> h = a("bypasses_enchantments");
-   axf<btr> i = a("is_fire");
-   axf<btr> j = a("is_projectile");
-   axf<btr> k = a("witch_resistant_to");
-   axf<btr> l = a("is_explosion");
-   axf<btr> m = a("is_fall");
-   axf<btr> n = a("is_drowning");
-   axf<btr> o = a("is_freezing");
-   axf<btr> p = a("is_lightning");
-   axf<btr> q = a("no_anger");
-   axf<btr> r = a("no_impact");
-   axf<btr> s = a("always_most_significant_fall");
-   axf<btr> t = a("wither_immune_to");
-   axf<btr> u = a("ignites_armor_stands");
-   axf<btr> v = a("burns_armor_stands");
-   axf<btr> w = a("avoids_guardian_thorns");
-   axf<btr> x = a("always_triggers_silverfish");
-   axf<btr> y = a("always_hurts_ender_dragons");
-   axf<btr> z = a("no_knockback");
-   axf<btr> A = a("always_kills_armor_stands");
-   axf<btr> B = a("can_break_armor_stand");
-   axf<btr> C = a("bypasses_wolf_armor");
-   axf<btr> D = a("is_player_attack");
-   axf<btr> E = a("burn_from_stepping");
-   axf<btr> F = a("panic_causes");
-   axf<btr> G = a("panic_environmental_causes");
-   axf<btr> H = a("mace_smash");
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static axf<btr> a(String $$0) {
-      return axf.a(mc.s, aku.b($$0));
+public class awr<T> extends fec {
+   public static final yt<wg, awr<?>> a = yr.a(me.am).b(awr::a, awt::a);
+   private final aws o;
+   private final T p;
+   private final awt<T> q;
+
+   protected awr(awt<T> $$0, T $$1, aws $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
+   }
+
+   public static <T> String a(awt<T> $$0, T $$1) {
+      return a(md.v.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable ald $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public awt<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awr && Objects.equals(this.d(), ((awr)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

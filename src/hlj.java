@@ -1,74 +1,87 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class hlj {
-   public static final hlj a = new hlj(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hlf<hlj.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   private final Set<hlj.a> a = Sets.newIdentityHashSet();
+   final ffb b;
+   final Executor c;
 
-   protected hlj(Ticker $$0) {
-      this.c = $$0;
+   public hlj(ffb $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public synchronized void a(hlf<hlj.a> $$0) {
-      this.a($$0, (Function<hlf<hlj.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(hlf<hlj.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hlf<hlj.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(hlf<hlj.a> $$0, Function<hlf<hlj.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hlf<hlj.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+   public CompletableFuture<hlj.a> a(ffb.c $$0) {
+      CompletableFuture<hlj.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         ffa $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            hlj.a $$3 = new hlj.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
          }
-      }
+      });
+      return $$1;
    }
 
-   public void a(hlc $$0) {
-      $$0.send(hld.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hlf<hlj.a>)$$1, new hlj.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hld.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hlf.B, new hlj.a((int)$$1)));
-            this.d.clear();
+   public void a(Consumer<Stream<ffa>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<hlj.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            hlj.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
          }
       });
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   public void b() {
+      this.a.forEach(hlj.a::b);
+      this.a.clear();
    }
 
-   public static record a(int b) {
-      public static final Codec<hlj.a> a = Codec.INT.xmap(hlj.a::new, $$0 -> $$0.b);
+   public class a {
+      @Nullable
+      ffa b;
+      private boolean c;
 
-      public int a() {
-         return this.b;
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(final ffa $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<ffa> $$0) {
+         hlj.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         hlj.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

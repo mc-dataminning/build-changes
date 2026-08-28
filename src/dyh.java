@@ -1,38 +1,22 @@
-import java.util.List;
-import java.util.Optional;
-
-public final class dyh extends dyt<Boolean> {
-   private static final List<Boolean> a = List.of(true, false);
-   private static final int b = 0;
-   private static final int c = 1;
-
-   private dyh(String $$0) {
-      super($$0, Boolean.class);
-   }
-
-   @Override
-   public List<Boolean> a() {
-      return a;
-   }
-
-   public static dyh a(String $$0) {
-      return new dyh($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return switch ($$0) {
-         case "true" -> Optional.of(true);
-         case "false" -> Optional.of(false);
-         default -> Optional.empty();
-      };
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   public int b(Boolean $$0) {
-      return $$0 ? 0 : 1;
+public class dyh {
+   public static fcp a(fcp $$0, jo $$1, double $$2) {
+      double $$3 = $$2 * (double)$$1.f().a();
+      double $$4 = Math.min($$3, 0.0);
+      double $$5 = Math.max($$3, 0.0);
+      switch ($$1) {
+         case e:
+            return new fcp($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
+         case f:
+            return new fcp($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
+         case a:
+            return new fcp($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
+         case b:
+         default:
+            return new fcp($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
+         case c:
+            return new fcp($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
+         case d:
+            return new fcp($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
+      }
    }
 }

@@ -1,122 +1,175 @@
-import java.util.EnumSet;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gpr implements gpj<dvj> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final ggc h;
-   private final ggc i;
-   private final ggc j;
-   private final ggc k;
-   private final ggc l;
-   private final ggc m;
-   private final ggc n;
-   private static final float o = 0.125F;
+public class gpr {
+   public static final gpr a = new gpr(Map.of());
+   private static final char b = '#';
+   private final Map<String, hiz> c;
 
-   public gpr(gpk.a $$0) {
-      this($$0.f());
+   gpr(Map<String, hiz> $$0) {
+      this.c = $$0;
    }
 
-   public gpr(gfy $$0) {
-      ggc $$1 = $$0.a(ggb.ap);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      ggc $$2 = $$0.a(ggb.aq);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
-   }
-
-   public static ggi b() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      ggg $$2 = new ggg(0.2F);
-      ggg $$3 = new ggg(-0.1F);
-      $$1.a(
-         "neck",
-         ggh.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         gge.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      ggh $$4 = ggh.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, gge.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, gge.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return ggi.a($$0, 32, 32);
-   }
-
-   public static ggi c() {
-      ggk $$0 = new ggk();
-      ggm $$1 = $$0.a();
-      ggh $$2 = ggh.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jn.c));
-      $$1.a("back", $$2, gge.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, gge.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, gge.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, gge.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return ggi.a($$0, 16, 16);
-   }
-
-   private static hhy a(Optional<cxd> $$0) {
-      if ($$0.isPresent()) {
-         hhy $$1 = gns.a(dvl.a($$0.get()));
-         if ($$1 != null) {
-            return $$1;
-         }
+   @Nullable
+   public hiz a(String $$0) {
+      if (b($$0)) {
+         $$0 = $$0.substring(1);
       }
 
-      return gns.q;
+      return this.c.get($$0);
    }
 
-   public void a(dvj $$0, float $$1, fgr $$2, gmx $$3, int $$4, int $$5) {
-      $$2.a();
-      jn $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dvj.a $$7 = $$0.h;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().ae() - $$0.g) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dvj.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (ayz.b($$10) + 0.5F) * ayz.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = ayz.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+   private static boolean b(String $$0) {
+      return $$0.charAt(0) == '#';
+   }
+
+   public static gpr.a a(JsonObject $$0, ald $$1) {
+      gpr.a.a $$2 = new gpr.a.a();
+
+      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
+         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
+      }
+
+      return $$2.a();
+   }
+
+   private static void a(ald $$0, String $$1, String $$2, gpr.a.a $$3) {
+      if (b($$2)) {
+         $$3.a($$1, $$2.substring(1));
+      } else {
+         ald $$4 = ald.c($$2);
+         if ($$4 == null) {
+            throw new JsonParseException($$2 + " is not valid resource location");
+         }
+
+         $$3.a($$1, new hiz($$0, $$4));
+      }
+   }
+
+   public static record a(Map<String, gpr.d> b) {
+      public static final gpr.a a = new gpr.a(Map.of());
+
+      public Map<String, gpr.d> a() {
+         return this.b;
+      }
+
+      public static class a {
+         private final Map<String, gpr.d> a = new HashMap<>();
+
+         public gpr.a.a a(String $$0, String $$1) {
+            this.a.put($$0, new gpr.b($$1));
+            return this;
+         }
+
+         public gpr.a.a a(String $$0, hiz $$1) {
+            this.a.put($$0, new gpr.e($$1));
+            return this;
+         }
+
+         public gpr.a a() {
+            return this.a.isEmpty() ? gpr.a.a : new gpr.a(Map.copyOf(this.a));
+         }
+      }
+   }
+
+   static record b(String a) implements gpr.d {
+   }
+
+   public static class c {
+      private static final Logger a = LogUtils.getLogger();
+      private final List<gpr.a> b = new ArrayList<>();
+
+      public gpr.c a(gpr.a $$0) {
+         this.b.addLast($$0);
+         return this;
+      }
+
+      public gpr.c b(gpr.a $$0) {
+         this.b.addFirst($$0);
+         return this;
+      }
+
+      public gpr a(hjd $$0) {
+         if (this.b.isEmpty()) {
+            return gpr.a;
+         } else {
+            Object2ObjectMap<String, hiz> $$1 = new Object2ObjectArrayMap();
+            Object2ObjectMap<String, gpr.b> $$2 = new Object2ObjectArrayMap();
+
+            for (gpr.a $$3 : Lists.reverse(this.b)) {
+               $$3.b.forEach(($$2x, $$3x) -> {
+                  Objects.requireNonNull($$3x);
+                  switch ($$3x) {
+                     case gpr.e $$6x:
+                        $$2.remove($$2x);
+                        $$1.put($$2x, $$6x.a());
+                        break;
+                     case gpr.b $$7x:
+                        $$1.remove($$2x);
+                        $$2.put($$2x, $$7x);
+                        break;
+                     default:
+                        throw new MatchException(null, null);
+                  }
+               });
+            }
+
+            if ($$2.isEmpty()) {
+               return new gpr($$1);
             } else {
-               float $$13 = ayz.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+               boolean $$4 = true;
+
+               while ($$4) {
+                  $$4 = false;
+                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gpr.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
+
+                  while ($$5.hasNext()) {
+                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gpr.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gpr.b>)$$5.next();
+                     hiz $$7 = (hiz)$$1.get(((gpr.b)$$6.getValue()).a);
+                     if ($$7 != null) {
+                        $$1.put((String)$$6.getKey(), $$7);
+                        $$5.remove();
+                        $$4 = true;
+                     }
+                  }
+               }
+
+               if (!$$2.isEmpty()) {
+                  a.warn(
+                     "Unresolved texture references in {}:\n{}",
+                     $$0.get(),
+                     $$2.entrySet()
+                        .stream()
+                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((gpr.b)$$0x.getValue()).a + "\n")
+                        .collect(Collectors.joining())
+                  );
+               }
+
+               return new gpr($$1);
             }
          }
       }
-
-      this.b($$2, $$3, $$4, $$5, $$0.s());
-      $$2.b();
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, int $$3, dvz $$4) {
-      this.b($$0, $$1, $$2, $$3, $$4);
+   public sealed interface d permits gpr.e, gpr.b {
    }
 
-   private void b(fgr $$0, gmx $$1, int $$2, int $$3, dvz $$4) {
-      fgv $$5 = gns.p.a($$1, gnh::d);
-      this.h.a($$0, $$5, $$2, $$3);
-      this.m.a($$0, $$5, $$2, $$3);
-      this.n.a($$0, $$5, $$2, $$3);
-      this.a(this.i, $$0, $$1, $$2, $$3, a($$4.e()));
-      this.a(this.j, $$0, $$1, $$2, $$3, a($$4.b()));
-      this.a(this.k, $$0, $$1, $$2, $$3, a($$4.c()));
-      this.a(this.l, $$0, $$1, $$2, $$3, a($$4.d()));
-   }
-
-   private void a(ggc $$0, fgr $$1, gmx $$2, int $$3, int $$4, hhy $$5) {
-      $$0.a($$1, $$5.a($$2, gnh::d), $$3, $$4);
+   static record e(hiz a) implements gpr.d {
    }
 }

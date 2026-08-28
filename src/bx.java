@@ -21,7 +21,8 @@ public record bx(
    Optional<bx> n,
    Optional<bx> o,
    Optional<String> p,
-   Optional<ed> q
+   Optional<ed> q,
+   Optional<kv> r
 ) {
    public static final Codec<bx> a = Codec.recursive(
       "EntityPredicate",
@@ -36,12 +37,13 @@ public record bx(
                      bv.a.optionalFieldOf("flags").forGetter(bx::g),
                      bu.a.optionalFieldOf("equipment").forGetter(bx::h),
                      by.a.optionalFieldOf("type_specific").forGetter(bx::i),
-                     ayi.m.optionalFieldOf("periodic_tick").forGetter(bx::j),
+                     ays.m.optionalFieldOf("periodic_tick").forGetter(bx::j),
                      $$0.optionalFieldOf("vehicle").forGetter(bx::k),
                      $$0.optionalFieldOf("passenger").forGetter(bx::l),
                      $$0.optionalFieldOf("targeted_entity").forGetter(bx::m),
                      Codec.STRING.optionalFieldOf("team").forGetter(bx::n),
-                     ed.a.optionalFieldOf("slots").forGetter(bx::o)
+                     ed.a.optionalFieldOf("slots").forGetter(bx::o),
+                     kv.a.optionalFieldOf("components").forGetter(bx::p)
                   )
                   .apply($$1, bx::new)
          )
@@ -61,15 +63,15 @@ public record bx(
    }
 
    public static bi a(bx $$0) {
-      ezx $$1 = faa.a(ewo.b.a, $$0).build();
+      fau $$1 = fax.a(exl.b.a, $$0).build();
       return new bi(List.of($$1));
    }
 
-   public boolean a(are $$0, @Nullable bva $$1) {
-      return this.a($$0.y(), $$0.ds(), $$1);
+   public boolean a(aro $$0, @Nullable bvs $$1) {
+      return this.a($$0.y(), $$0.dt(), $$1);
    }
 
-   public boolean a(ard $$0, @Nullable fbx $$1, @Nullable bva $$2) {
+   public boolean a(arn $$0, @Nullable fcu $$1, @Nullable bvs $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().a($$2.aq())) {
@@ -79,30 +81,30 @@ public record bx(
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.dz(), $$2.dB(), $$2.dF())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.dA(), $$2.dC(), $$2.dG())) {
             return false;
          }
 
          if (this.e.isPresent()) {
-            fbx $$3 = $$2.ah();
-            fbx $$4 = $$3.c(20.0);
-            if (!this.e.get().a($$4.d, $$4.e, $$4.f, (double)$$2.Z)) {
+            fcu $$3 = $$2.ah();
+            fcu $$4 = $$3.c(20.0);
+            if (!this.e.get().a($$4.d, $$4.e, $$4.f, $$2.Z)) {
                return false;
             }
          }
 
-         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dz(), $$2.dB(), $$2.dF())) {
+         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dA(), $$2.dC(), $$2.dG())) {
             return false;
          } else {
             if (this.f.c.isPresent()) {
-               fbx $$5 = fbx.b($$2.aR());
+               fcu $$5 = fcu.b($$2.aR());
                if (!this.f.c.get().a($$0, $$5.a(), $$5.b(), $$5.c())) {
                   return false;
                }
             }
 
             if (this.f.d.isPresent()) {
-               fbx $$6 = fbx.b($$2.aQ());
+               fcu $$6 = fcu.b($$2.aQ());
                if (!this.f.d.get().a($$0, $$6.a(), $$6.b(), $$6.c())) {
                   return false;
                }
@@ -116,31 +118,35 @@ public record bx(
                return false;
             } else if (this.k.isPresent() && !this.k.get().a($$2, $$0, $$1)) {
                return false;
-            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2.dj())) {
+            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2.dk())) {
                return false;
-            } else if (this.n.isPresent() && $$2.cX().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
+            } else if (this.n.isPresent() && $$2.cY().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof bwa ? ((bwa)$$2).f() : null)) {
+            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof bwt ? ((bwt)$$2).f() : null)) {
                return false;
             } else if (this.l.isPresent() && $$2.af % this.l.get() != 0) {
                return false;
             } else {
                if (this.p.isPresent()) {
-                  fde $$7 = $$2.cq();
+                  feb $$7 = $$2.cr();
                   if ($$7 == null || !this.p.get().equals($$7.b())) {
                      return false;
                   }
                }
 
-               return this.q.isPresent() && !this.q.get().a($$2) ? false : !this.h.isPresent() || this.h.get().a($$2);
+               if (this.q.isPresent() && !this.q.get().a($$2)) {
+                  return false;
+               } else {
+                  return this.r.isPresent() && !this.r.get().a($$2) ? false : this.h.isEmpty() || this.h.get().a($$2);
+               }
             }
          }
       }
    }
 
-   public static ewo b(are $$0, bva $$1) {
-      ewr $$2 = new ewr.a($$0.y()).a(ezi.a, $$1).a(ezi.f, $$0.ds()).a(ezh.n);
-      return new ewo.a($$2).a(Optional.empty());
+   public static exl b(aro $$0, bvs $$1) {
+      exo $$2 = new exo.a($$0.y()).a(faf.a, $$1).a(faf.f, $$0.dt()).a(fae.n);
+      return new exl.a($$2).a(Optional.empty());
    }
 
    public Optional<ca> a() {
@@ -203,6 +209,10 @@ public record bx(
       return this.q;
    }
 
+   public Optional<kv> p() {
+      return this.r;
+   }
+
    public static class a {
       private Optional<ca> a = Optional.empty();
       private Optional<bo> b = Optional.empty();
@@ -221,17 +231,18 @@ public record bx(
       private Optional<bx> o = Optional.empty();
       private Optional<String> p = Optional.empty();
       private Optional<ed> q = Optional.empty();
+      private Optional<kv> r = Optional.empty();
 
       public static bx.a a() {
          return new bx.a();
       }
 
-      public bx.a a(js<bvi<?>> $$0, bvi<?> $$1) {
+      public bx.a a(jt<bwb<?>> $$0, bwb<?> $$1) {
          this.a = Optional.of(ca.a($$0, $$1));
          return this;
       }
 
-      public bx.a a(js<bvi<?>> $$0, axf<bvi<?>> $$1) {
+      public bx.a a(jt<bwb<?>> $$0, axp<bwb<?>> $$1) {
          this.a = Optional.of(ca.a($$0, $$1));
          return this;
       }
@@ -326,9 +337,29 @@ public record bx(
          return this;
       }
 
+      public bx.a a(kv $$0) {
+         this.r = Optional.of($$0);
+         return this;
+      }
+
       public bx b() {
          return new bx(
-            this.a, this.b, this.c, new bx.b(this.d, this.e, this.f), this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.p, this.q
+            this.a,
+            this.b,
+            this.c,
+            new bx.b(this.d, this.e, this.f),
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l,
+            this.m,
+            this.n,
+            this.o,
+            this.p,
+            this.q,
+            this.r
          );
       }
    }

@@ -1,24 +1,77 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public record fnp(float b, float c) implements fnq {
-   public static final MapCodec<fnp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayi.a(0.0F, 1.0F).fieldOf("temperature").forGetter(fnp::b), ayi.a(0.0F, 1.0F).fieldOf("downfall").forGetter(fnp::c))
-            .apply($$0, fnp::new)
-   );
+public class fnp {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final fnp.a f;
 
-   public fnp() {
-      this(0.5F, 1.0F);
+   public fnp(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fnp.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public int a(cxh $$0, @Nullable ggy $$1, @Nullable bvy $$2) {
-      return dgx.a((double)this.b, (double)this.c);
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
    }
 
-   @Override
-   public MapCodec<fnp> a() {
-      return a;
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public fnp.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, fnp.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static fnp.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
    }
 }

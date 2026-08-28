@@ -1,39 +1,75 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class crk extends cri {
+   private static final bvv a = bvv.c(0.0F, 0.0F);
 
-public class crk {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final crk c = a("empty").a(0, cri.b).a();
-   public static final crk d = a("simple").a(5000, cri.c).a(11000, cri.e).a();
-   public static final crk e = a("villager_baby").a(10, cri.b).a(3000, cri.d).a(6000, cri.b).a(10000, cri.d).a(12000, cri.e).a();
-   public static final crk f = a("villager_default").a(10, cri.b).a(2000, cri.c).a(9000, cri.f).a(11000, cri.b).a(12000, cri.e).a();
-   private final Map<cri, crm> g = Maps.newHashMap();
-
-   protected static crl a(String $$0) {
-      crk $$1 = ke.a(mb.B, $$0, new crk());
-      return new crl($$1);
+   public crk(bwb<? extends crk> $$0, dhp $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(cri $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new crm());
+   public crk(dhp $$0, bwr $$1, cxy $$2) {
+      super(bwb.L, $$1, $$0, $$2);
+   }
+
+   public crk(dhp $$0, double $$1, double $$2, double $$3, cxy $$4) {
+      super(bwb.L, $$1, $$2, $$3, $$0, $$4);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dV()
+               .a(
+                  new lr(lv.U, this.f()),
+                  this.dA(),
+                  this.dC(),
+                  this.dG(),
+                  ((double)this.ae.i() - 0.5) * 0.08,
+                  ((double)this.ae.i() - 0.5) * 0.08,
+                  ((double)this.ae.i() - 0.5) * 0.08
+               );
+         }
       }
    }
 
-   protected crm b(cri $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(fcr $$0) {
+      super.a($$0);
+      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
    }
 
-   protected List<crm> c(cri $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   protected void a(fcs $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         if (this.ae.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ae.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               cil $$3 = bwb.z.a(this.dV(), bwa.k);
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
+                  if (!$$3.a(a)) {
+                     break;
+                  }
+
+                  this.dV().b($$3);
+               }
+            }
+         }
+
+         this.dV().a(this, (byte)3);
+         this.at();
+      }
    }
 
-   public cri a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cri.b);
+   @Override
+   protected cxu g() {
+      return cyc.rC;
    }
 }

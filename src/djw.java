@@ -1,41 +1,45 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djw extends djq implements djv {
+public class djw extends dle implements dkx {
    public static final MapCodec<djw> a = b(djw::new);
+   private static final fdo b = fdl.a(dku.b(16.0, 8.0, 16.0), dku.b(4.0, 0.0, 8.0));
 
    @Override
    public MapCodec<djw> a() {
       return a;
    }
 
-   public djw(dxp.d $$0) {
+   protected djw(dyl.d $$0) {
       super($$0);
    }
 
    @Override
-   public cwe b() {
-      return cwe.a;
+   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
+      return b;
    }
 
    @Override
-   public dus a(ji $$0, dxq $$1) {
-      return new dun($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dus> dut<T> a(dgz $$0, dxq $$1, duu<T> $$2) {
-      return a($$2, duu.p, dun::a);
+   protected boolean b(dym $$0, dgv $$1, jj $$2) {
+      return $$0.a(dkw.ee) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected bsy a(dxq $$0, dgz $$1, ji $$2, cpr $$3, fbt $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dun $$5) {
-         $$3.a($$5);
-         $$3.a(awk.ab);
-      }
+   public boolean a(dhs $$0, jj $$1, dym $$2) {
+      return $$0.b_($$1.d()).c();
+   }
 
-      return bsy.a;
+   @Override
+   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+      return (double)$$0.A.i() < 0.45;
+   }
+
+   @Override
+   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
+      dyb.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
+   }
+
+   @Override
+   protected boolean a(dym $$0, evi $$1) {
+      return false;
    }
 }

@@ -1,24 +1,39 @@
-public class gws extends gxs<gzi, gcy<gzi>> {
-   private final gob a;
+public class gws<T extends bvs & cqy> extends gue<T, hcm> {
+   private final hdl a;
+   private final float g;
+   private final boolean h;
 
-   public gws(gva<gzi, gcy<gzi>> $$0, gob $$1) {
+   public gws(guf.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.a = $$1;
+      this.a = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public void a(fgr $$0, gmx $$1, int $$2, gzi $$3, float $$4, float $$5) {
-      dxq $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, hfh.d);
-         $$0.b();
-      }
+   public gws(guf.a $$0) {
+      this($$0, 1.0F, false);
+   }
+
+   @Override
+   protected int a(T $$0, jj $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   public void a(hcm $$0, fho $$1, gny $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.g, this.g, this.g);
+      $$1.a(this.d.b());
+      $$0.a.a($$1, $$2, $$3, hgi.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public hcm a() {
+      return new hcm();
+   }
+
+   public void a(T $$0, hcm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      this.a.a($$1.a, $$0.f(), cxw.h, $$0);
    }
 }

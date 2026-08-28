@@ -8,11 +8,11 @@ public record co(dk.d c, dk.d d) implements ea<Integer> {
    );
 
    @Override
-   public ku<Integer> a() {
-      return kv.e;
+   public kw<Integer> a() {
+      return kx.e;
    }
 
-   public boolean a(cxh $$0, Integer $$1) {
+   public boolean a(cxy $$0, Integer $$1) {
       return !this.c.d($$0.p() - $$1) ? false : this.d.d($$1);
    }
 

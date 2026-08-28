@@ -1,3 +1,43 @@
-public interface bwn {
-   void a(cgz var1, bva var2);
+public class bwn {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akk c;
+   private final akg<Integer> d;
+   private boolean e;
+   private int f;
+
+   public bwn(akk $$0, akg<Integer> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = 0;
+   }
+
+   public boolean a(azs $$0) {
+      if (this.e) {
+         return false;
+      } else {
+         this.e = true;
+         this.f = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
+   }
+
+   public void b() {
+      if (this.e && this.f++ > this.d()) {
+         this.e = false;
+      }
+   }
+
+   public float c() {
+      return this.e ? 1.0F + 1.15F * azk.a((float)this.f / (float)this.d() * (float) Math.PI) : 1.0F;
+   }
+
+   private int d() {
+      return this.c.a(this.d);
+   }
 }

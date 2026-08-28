@@ -1,43 +1,86 @@
-import java.util.Locale;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public enum fhd {
-   a,
-   b,
-   c,
-   d;
+public class fhd implements AutoCloseable {
+   private static final int a = -1;
+   private final ald b;
+   private int c;
 
-   private static final int e = 1024;
+   private fhd(int $$0, ald $$1) {
+      this.b = $$1;
+      this.c = $$0;
+   }
 
-   public static fhd a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
+   public static fhd a(ald $$0, fhd.a $$1, String $$2) throws gop.b {
+      RenderSystem.assertOnRenderThread();
+      int $$3 = GlStateManager.glCreateShader($$1.b());
+      GlStateManager.glShaderSource($$3, $$2);
+      GlStateManager.glCompileShader($$3);
+      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
+         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
+         throw new gop.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
       } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+         return new fhd($$3, $$0);
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.c == -1) {
+         throw new IllegalStateException("Already closed");
+      } else {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.c);
+         this.c = -1;
+      }
+   }
+
+   public ald a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private static final fhd.a[] c = values();
+      private final String d;
+      private final String e;
+      private final int f;
+
+      private a(final String $$0, final String $$1, final int $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      @Nullable
+      public static fhd.a a(ald $$0) {
+         for (fhd.a $$1 : c) {
+            if ($$0.a().endsWith($$1.e)) {
+               return $$1;
+            }
          }
+
+         return null;
       }
-   }
 
-   public static double a(long $$0, fhd $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
-
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      public String a() {
+         return this.d;
       }
-   }
 
-   public static String b(long $$0, fhd $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+      public int b() {
+         return this.f;
+      }
+
+      public akw c() {
+         return new akw("shaders", this.e);
+      }
    }
 }

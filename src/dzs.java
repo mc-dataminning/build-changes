@@ -1,74 +1,37 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dzs extends dzw {
-   private final jr<dic> n;
+public class dzs {
+   private static final azu a = new azu(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   public dzs(dgz $$0, dgg $$1, jr<dic> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public dxq a_(ji $$0) {
-      return dkg.nD.m();
+   public static int a(jo $$0) {
+      return a.a($$0);
    }
 
-   @Nullable
-   @Override
-   public dxq a(ji $$0, dxq $$1, int $$2) {
-      return null;
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   @Override
-   public etw b_(ji $$0) {
-      return etx.a.g();
+   public static Optional<jo> a(int $$0) {
+      jo $$1 = switch ($$0) {
+         case 0 -> jo.c;
+         case 4 -> jo.f;
+         case 8 -> jo.d;
+         case 12 -> jo.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
    }
 
-   @Override
-   public int i(ji $$0) {
-      return 0;
-   }
-
-   @Nullable
-   @Override
-   public dus a(ji $$0, dzw.b $$1) {
-      return null;
-   }
-
-   @Override
-   public void b(dus $$0) {
-   }
-
-   @Override
-   public void a(dus $$0) {
-   }
-
-   @Override
-   public void d(ji $$0) {
-   }
-
-   @Override
-   public boolean E() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return true;
-   }
-
-   @Override
-   public aqr F() {
-      return aqr.b;
-   }
-
-   @Override
-   public jr<dic> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }
